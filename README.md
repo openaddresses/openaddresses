@@ -2,6 +2,8 @@
 
 A repository of tools to retrieve and build an open database of addresses for the world.
 
+We are just starting: https://github.com/osmlab/addresses/issues?state=open
+
 ## Why?
 
 [I](http://github.com/iandees) spent a lot of time tracking down [address data](https://docs.google.com/spreadsheet/ccc?key=0AsVnlPsfrhUIdEVZTzVFalFYYnlvTkc0R05wcUpsWVE&usp=drive_web) and I want to share that work with others.
