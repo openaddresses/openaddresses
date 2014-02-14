@@ -37,8 +37,8 @@ csv().from.stream(fs.createReadStream(process.argv[2]))
         var dir = '../' + process.argv[2].split('.')[0];
         try { fs.mkdirSync(dir); } catch(Error) {}
         _(states).each(function(state, key) {
-            fs.writeFile(path.join(dir, key + '.yml'), yaml.safeDump(state));
-            console.log('Exported ' + path.join(dir, key + '.yml'));
+            fs.writeFile(path.join(dir, key + '.yaml'), yaml.safeDump(state));
+            console.log('Exported ' + path.join(dir, key + '.yaml'));
         });
     })
     .on('error', function(error){
