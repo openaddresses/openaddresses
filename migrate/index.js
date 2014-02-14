@@ -24,11 +24,9 @@ csv().from.stream(fs.createReadStream(process.argv[2]))
         }, {});
         // Toss all that don't have a URL
         if (row['availability'].trim() != '') {
-            if (row['state'].trim() == '') {
-                row['state'] = 'General';
-            }
             var state = row['state'];
             delete row['state'];
+            state = state.trim() == '' ? 'General' : state;
             states[state] = states[state] || [];
             states[state].push(row);
         }
