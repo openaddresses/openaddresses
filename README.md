@@ -8,4 +8,4 @@ A repository of tools to retrieve and build an open database of addresses for th
 
 ## License
 
-Although individual sources of data might have their own licenses, the goal is that the database as a whole be released under [Open Data Commons Attribution](http://opendatacommons.org/licenses/by/1.0/) license.
+Although individual sources of data might have their own licenses, the goal is that the database as a whole be released under [Public Domain](http://opendatacommons.org/licenses/pddl/1.0/) license.
