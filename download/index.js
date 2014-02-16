@@ -31,7 +31,7 @@ var downloadFTP = function(address, test) {
     ftp.on('ready', function() {
         ftp.get(opt.path, function(err, stream) {
             if (err) {
-                console.log(("ERROR\t" + err + " " + address.availability).red);
+                console.log(("FTP\t" + err + " " + address.availability).red);
                 ftp.destroy();
                 return;
             }
