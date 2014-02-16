@@ -19,7 +19,7 @@ var downloadHTTP = function(address, test) {
         res.statusCode == 200 ?
             console.log(res.statusCode + " OK\t" + address.availability) :
             console.log((res.statusCode + " ERROR\t" + address.availability).red);
-    });
+    }).setMaxListeners(20);
 };
 
 var downloadFTP = function(address, test) {
