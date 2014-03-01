@@ -41,6 +41,7 @@ var downloadFTP = function(address, test) {
             }
             console.log("FTP OK\t" + address.data);
             if (test) {
+                stream.destroy();
                 ftp.destroy();
             }
         });
