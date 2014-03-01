@@ -37,7 +37,9 @@ var slug = function(url) {
 };
 
 var downloadHTTP = function(address, test, callback) {
-    callback = callback || function() {};
+    // Wrap in _.once as on('error') and on('end') are not called
+    // consistently either both or alternatively.
+    callback = _.once(callback || function() {});
     var options = {
         url: address.data,
         timeout: 7000
@@ -54,6 +56,7 @@ var downloadHTTP = function(address, test, callback) {
     });
     req.on('error', function(err) {
         tapNotOK(address.data, err);
+        callback();
     });
     req.on('end', callback);
 };
