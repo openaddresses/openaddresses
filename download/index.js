@@ -11,45 +11,45 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 var argv = require('minimist')(process.argv.slice(2));
 
 var downloadHTTP = function(address, test) {
-    (test ? request.head : request.get)(address.availability, function(err, res) {
+    (test ? request.head : request.get)(address.data, function(err, res) {
         if (err) {
-            console.log(("ERROR\t" + err + " " + address.availability).red);
+            console.log(("ERROR\t" + err + " " + address.data).red);
             return;
         }
         res.statusCode == 200 ?
-            console.log(res.statusCode + " OK\t" + address.availability) :
-            console.log((res.statusCode + " ERROR\t" + address.availability).red);
+            console.log(res.statusCode + " OK\t" + address.data) :
+            console.log((res.statusCode + " ERROR\t" + address.data).red);
     }).setMaxListeners(20);
 };
 
 var downloadFTP = function(address, test) {
     var ftp = new Ftp();
-    var opt = url.parse(address.availability);
+    var opt = url.parse(address.data);
     opt.user = (opt.auth || ':').split(':')[0];
     opt.password = (opt.auth || ':').split(':')[1];
     opt.connTimeout = 5000;
     ftp.on('ready', function() {
         ftp.get(opt.path, function(err, stream) {
             if (err) {
-                console.log(("FTP\t" + err + " " + address.availability).red);
+                console.log(("FTP\t" + err + " " + address.data).red);
                 ftp.destroy();
                 return;
             }
-            console.log("FTP OK\t" + address.availability);
+            console.log("FTP OK\t" + address.data);
             if (test) {
                 ftp.destroy();
             }
         });
     });
     ftp.on('error', function(err) {
-        console.log(("FTP\t" + err + " " + address.availability).red);
+        console.log(("FTP\t" + err + " " + address.data).red);
         ftp.destroy();
     });
     ftp.connect(opt);
 };
 
 var download = function(address, test) {
-    var options = url.parse(address.availability);
+    var options = url.parse(address.data);
     options.protocol == 'ftp:' ?
         downloadFTP(address, test) :
         downloadHTTP(address, test);
