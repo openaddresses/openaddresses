@@ -105,7 +105,7 @@ var download = function(address, test, callback) {
 };
 
 var steps = [];
-_(['../canada/*', '../us/*']).each(function(path) {
+_(['../us/Missouri.yaml']).each(function(path) {
     steps.push(function() {
         var callback = this;
         Step(
