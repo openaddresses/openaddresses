@@ -11,6 +11,20 @@ var Step = require('step');
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 var argv = require('minimist')(process.argv.slice(2));
 
+var tapCount = 0;
+var tapOK = function(message) {
+    console.log('ok ' + (++tapCount) + '\t' + message);
+};
+var tapNotOK = function(message, diagnostics) {
+    console.log(('not ok ' + (++tapCount) + '\t' + message).red);
+    diagnostics && console.log(('# ' + diagnostics).red);
+};
+var tapPlan = function(num, comment) {
+    tapCount = 0;
+    console.log('1..' + num);
+    comment && console.log('# ' + comment);
+};
+
 var downloadHTTP = function(address, test, callback) {
     callback = callback || function() {};
     var options = {
@@ -19,12 +33,12 @@ var downloadHTTP = function(address, test, callback) {
     };
     (test ? request.head : request.get)(options, function(err, res) {
         if (err) {
-            console.log(("ERROR\t" + err + " " + address.data).red);
+            tapNotOK(address.data, err);
             return callback();
         }
         res.statusCode == 200 ?
-            console.log(res.statusCode + " OK\t" + address.data) :
-            console.log((res.statusCode + " ERROR\t" + address.data).red);
+            tapOK(address.data) :
+            tapNotOK(address.data, "HTTP Status " + res.statusCode);
         callback();
     }).setMaxListeners(20);
 };
@@ -39,11 +53,11 @@ var downloadFTP = function(address, test, callback) {
     ftp.on('ready', function() {
         ftp.get(opt.path, function(err, stream) {
             if (err) {
-                console.log(("FTP\t" + err + " " + address.data).red);
+                tapNotOK(address.data, err);
                 ftp.destroy();
                 return callback();
             }
-            console.log("FTP OK\t" + address.data);
+            tapOK(address.data);
             if (test) {
                 stream.unref();
                 stream.destroy();
@@ -53,7 +67,7 @@ var downloadFTP = function(address, test, callback) {
         });
     });
     ftp.on('error', function(err) {
-        console.log(("FTP\t" + err + " " + address.data).red);
+        tapNotOK(address.data, err);
         ftp.destroy();
         callback();
     });
@@ -63,7 +77,7 @@ var downloadFTP = function(address, test, callback) {
 var download = function(address, test, callback) {
     callback = callback || function() {};
     if (!address.data) {
-        console.log(("NOTICE: No data URL for " + address.website).yellow);
+        tapOK("# SKIP - no data URL for " + address.website);
         return callback();
     }
     var options = url.parse(address.data);
@@ -72,38 +86,39 @@ var download = function(address, test, callback) {
         downloadHTTP(address, test, callback);
 };
 
-var downloadFile = function(file, test, callback) {
-    callback = callback || function() {};
-    fs.readFile(file, 'utf8', function(err, data) {
-        if (err) { 
-            return callback();
-        }
+var steps = [];
+_(['us', 'canada']).each(function(dir) {
+    steps.push(function() {
+        var callback = this;
         Step(
             function() {
+                fs.readdir('../' + dir, this);
+            },
+            function(err, files) {
+                var group = this.group();
+                _(files).each(function(file) {
+                    var cb = group();
+                    fs.readFile('../' + dir + '/' + file, 'utf8', function(err, data) {
+                        cb(err, yaml.safeLoad(data));
+                    });
+                });
+            },
+            function(err, addresses) {
                 var parallel = this.parallel;
-                var addresses = yaml.safeLoad(data);
+                addresses = _(addresses).reduce(function(memo, address) {
+                    memo = memo.concat(address);
+                    return memo;
+                }, []);
+                tapPlan(addresses.length, 'Testing directory ../' + dir);
                 _(addresses).each(function(address) {
-                    download(address, test, parallel());
+                    download(address, argv['test'], parallel());
                 });
             },
             callback
         );
     });
-};
-
-_(['us', 'canada']).each(function(dir) {
-    fs.readdir('../us', function(err, files) {
-        var steps = [];
-        Step(
-            function() {
-                var parallel = this.parallel;
-                _(files).each(function(file) {
-                    downloadFile('../us/' + file, argv['test'], parallel());
-                });
-            },
-            function() {
-                process.exit(0);
-            }
-        );
-    });
 });
+steps.push(function() {
+    process.exit(0);
+})
+Step.apply(this, steps);
