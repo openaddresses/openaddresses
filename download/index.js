@@ -49,6 +49,10 @@ var downloadFTP = function(address, test) {
 };
 
 var download = function(address, test) {
+    if (!address.data) {
+        console.log(("NOTICE: No data URL for " + address.website).yellow);
+        return;
+    }
     var options = url.parse(address.data);
     options.protocol == 'ftp:' ?
         downloadFTP(address, test) :
