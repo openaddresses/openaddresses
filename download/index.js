@@ -7,6 +7,7 @@ var yaml = require('js-yaml');
 var colors = require('colors');
 var Ftp = require('ftp');
 var Step = require('step');
+var glob = require('glob');
 
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 var argv = require('minimist')(process.argv.slice(2));
@@ -23,22 +24,38 @@ var tapPlan = function(num, comment) {
     comment && console.log('# ' + comment);
 };
 
+var slug = function(url) {
+    var elems = url.split('.');
+    var ext = elems.pop();
+    if (ext.length > 4) {
+        elems.push(ext);
+        ext = '';
+    } else {
+        ext = '.' + ext;
+    }
+    return elems.join('-').replace(/[^\d^\w]+/g, '-').toLowerCase() + ext;
+};
+
 var downloadHTTP = function(address, test, callback) {
     callback = callback || function() {};
     var options = {
         url: address.data,
         timeout: 7000
     };
-    (test ? request.head : request.get)(options, function(err, res) {
-        if (err) {
-            tapNotOK(address.data, err);
-            return callback();
+    var req = (test ? request.head : request.get)(options);
+    req.setMaxListeners(20);
+    req.on('response', function(res) {
+        if (res.statusCode == 200) {
+            tapOK(address.data);
+            !test && req.pipe(fs.createWriteStream('../data/' + slug(address.data)));
+        } else {
+            tapNotOK(address.data, res.statusCode);
         }
-        res.statusCode == 200 ?
-            tapOK(address.data) :
-            tapNotOK(address.data, "HTTP Status " + res.statusCode);
-        callback();
-    }).setMaxListeners(20);
+    });
+    req.on('error', function(err) {
+        tapNotOK(address.data, err);
+    });
+    req.on('end', callback);
 };
 
 var downloadFTP = function(address, test, callback) {
@@ -60,8 +77,11 @@ var downloadFTP = function(address, test, callback) {
                 stream.unref();
                 stream.destroy();
                 ftp.destroy();
+                callback();
+            } else {
+                stream.pipe(fs.createWriteStream('../data/' + slug(address.data)));
+                stream.on('end', callback);
             }
-            callback();
         });
     });
     ftp.on('error', function(err) {
@@ -85,18 +105,18 @@ var download = function(address, test, callback) {
 };
 
 var steps = [];
-_(['us', 'canada']).each(function(dir) {
+_(['../canada/*', '../us/*']).each(function(path) {
     steps.push(function() {
         var callback = this;
         Step(
             function() {
-                fs.readdir('../' + dir, this);
+                glob(path, this);
             },
             function(err, files) {
                 var group = this.group();
                 _(files).each(function(file) {
                     var cb = group();
-                    fs.readFile('../' + dir + '/' + file, 'utf8', function(err, data) {
+                    fs.readFile(file, 'utf8', function(err, data) {
                         cb(err, yaml.safeLoad(data));
                     });
                 });
@@ -107,7 +127,7 @@ _(['us', 'canada']).each(function(dir) {
                     memo = memo.concat(address);
                     return memo;
                 }, []);
-                tapPlan(addresses.length, 'Testing directory ../' + dir);
+                tapPlan(addresses.length, 'Testing ' + path);
                 _(addresses).each(function(address) {
                     download(address, argv['test'], parallel());
                 });
