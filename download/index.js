@@ -11,16 +11,14 @@ var Step = require('step');
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 var argv = require('minimist')(process.argv.slice(2));
 
-var tapCount = 0;
 var tapOK = function(message) {
-    console.log('ok ' + (++tapCount) + '\t' + message);
+    console.log('ok\t' + message);
 };
 var tapNotOK = function(message, diagnostics) {
-    console.log(('not ok ' + (++tapCount) + '\t' + message).red);
+    console.log(('not ok\t' + message).red);
     diagnostics && console.log(('# ' + diagnostics).red);
 };
 var tapPlan = function(num, comment) {
-    tapCount = 0;
     console.log('1..' + num);
     comment && console.log('# ' + comment);
 };
@@ -120,5 +118,5 @@ _(['us', 'canada']).each(function(dir) {
 });
 steps.push(function() {
     process.exit(0);
-})
+});
 Step.apply(this, steps);
