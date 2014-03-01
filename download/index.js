@@ -11,7 +11,11 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 var argv = require('minimist')(process.argv.slice(2));
 
 var downloadHTTP = function(address, test) {
-    (test ? request.head : request.get)(address.data, function(err, res) {
+    var options = {
+        url: address.data,
+        timeout: 7000
+    };
+    (test ? request.head : request.get)(options, function(err, res) {
         if (err) {
             console.log(("ERROR\t" + err + " " + address.data).red);
             return;
