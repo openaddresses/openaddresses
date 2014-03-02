@@ -8,6 +8,32 @@ var Step = require('step');
 var glob = require('glob');
 require('colors');
 
+var queue = function(len) {
+    var jobs = [];
+    var active = [];
+    var interval = null;
+    var work = function() {
+        if (interval) return;
+        interval = setInterval(function() {
+            while (active.length < len && jobs.length) {
+                (function() {
+                    var job = jobs.shift();
+                    active.push(job);
+                    job.func(function() {
+                        active = _(active).without(job);
+                        job.callback.apply(null, arguments);
+                    });
+                })();
+            }
+            !jobs.length && !active.length && clearInterval(interval);
+        }, 10);
+    };
+    return function(func, callback) {
+        jobs.push({func: func, callback: callback});
+        work();
+    };
+};
+
 var download = function(options, callback) {
     process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
@@ -82,6 +108,7 @@ var download = function(options, callback) {
         ftp.connect(opt);
     };
 
+    var dlQueue = queue(20);
     var download = function(address, test, callback) {
         callback = callback || function() {};
         if (!address.data) {
@@ -89,9 +116,11 @@ var download = function(options, callback) {
             return callback();
         }
         var options = url.parse(address.data);
-        options.protocol == 'ftp:' ?
-            downloadFTP(address, test, callback) :
-            downloadHTTP(address, test, callback);
+        dlQueue(function(callback) {
+            options.protocol == 'ftp:' ?
+                downloadFTP(address, test, callback) :
+                downloadHTTP(address, test, callback);
+        }, callback);
     };
 
     Step(
