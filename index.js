@@ -49,7 +49,7 @@ var downloadHTTP = function(address, test, callback) {
     req.on('response', function(res) {
         if (res.statusCode == 200) {
             tapOK(address.data);
-            !test && req.pipe(fs.createWriteStream('../data/' + slug(address.data)));
+            !test && req.pipe(fs.createWriteStream('data/' + slug(address.data)));
         } else {
             tapNotOK(address.data, res.statusCode);
         }
@@ -82,7 +82,7 @@ var downloadFTP = function(address, test, callback) {
                 ftp.destroy();
                 callback();
             } else {
-                stream.pipe(fs.createWriteStream('../data/' + slug(address.data)));
+                stream.pipe(fs.createWriteStream('data/' + slug(address.data)));
                 stream.on('end', callback);
             }
         });
@@ -108,14 +108,19 @@ var download = function(address, test, callback) {
 };
 
 var steps = [];
-_(['../canada/*', '../us/*']).each(function(path) {
+_(['sources/canada/*', 'sources/us/*']).each(function(path) {
     steps.push(function() {
         var callback = this;
         Step(
             function() {
+                argv['test'] ? this() : fs.mkdir('data', this);
+            },
+            function(err) {
+                if (err) console.error(err.toString().red);
                 glob(path, this);
             },
             function(err, files) {
+                if (err) console.error(err.toString().red);
                 var group = this.group();
                 _(files).each(function(file) {
                     var cb = group();
@@ -125,6 +130,7 @@ _(['../canada/*', '../us/*']).each(function(path) {
                 });
             },
             function(err, addresses) {
+                if (err) console.error(err.toString().red);
                 var parallel = this.parallel;
                 addresses = _(addresses).reduce(function(memo, address) {
                     memo = memo.concat(address);
