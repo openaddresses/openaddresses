@@ -33,6 +33,7 @@ Step(
         download(opt, this);
     },
     function(err) {
+        // Bail out hard. Some sockets appear not to close out cleanly.
         process.exit(0);
     }
 );
