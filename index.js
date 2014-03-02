@@ -29,7 +29,7 @@ var reportProgress = function(queue) {
         }
     };
     var format = function(f) {
-        if (f == undefined) { return 'N/A '; }
+        if (f == undefined) { return ' N/A'; }
         f = Math.round(f*100) + '';
         if (f.length == 1) f = '  ' + f;
         if (f.length == 2) f = ' ' + f;
