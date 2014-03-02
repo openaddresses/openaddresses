@@ -28,12 +28,19 @@ var reportProgress = function(queue) {
             process.stdout.write('\u001B[1A\u001B[2K');
         }
     };
-    var format = function(f) {
+    var formatP = function(f) {
         if (f == undefined) { return ' N/A'; }
         f = Math.round(f*100) + '';
         if (f.length == 1) f = '  ' + f;
         if (f.length == 2) f = ' ' + f;
         return f + '%';
+    };
+    var formatR = function(f) {
+        if (f == undefined) { return '   N/A'; }
+        f = Math.round(f/1024) + '';
+        if (f.length == 1) f = '  ' + f;
+        if (f.length == 2) f = ' ' + f;
+        return f + 'K/s';
     };
     var ran = false;
     var interval = setInterval(function() {
@@ -48,7 +55,7 @@ var reportProgress = function(queue) {
         for (var i = 0; i < queue.size; i++) {
             if (i < queue.active.length) {
                 var download = queue.active[i].obj;
-                console.log(format(download.progress()) + " " + download.address.data.substring(0, 76));
+                console.log(formatP(download.progress()) + " " + formatR(download.rate()) + " " + download.address.data.substring(0, 70));
             } else {
                 console.log(' ');
             }

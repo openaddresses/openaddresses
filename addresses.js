@@ -66,6 +66,7 @@ var download = function(options, callback) {
         };
         var size;
         var downloaded = 0;
+        var started = 0;
         var HTTP = {};
         HTTP.address = address;
         HTTP.download = function(callback) {
@@ -80,6 +81,7 @@ var download = function(options, callback) {
                         test.OK(address.data);
                     } else {
                         try { size = parseInt(res.headers['content-length']); } catch(e) {};
+                        started = Date.now();
                         req.pipe(options.targetStream(address));
                         req.on('data', function(buf) {
                             downloaded += buf.length;
@@ -98,6 +100,9 @@ var download = function(options, callback) {
         HTTP.progress = function() {
             return size ? downloaded / size : undefined;
         };
+        HTTP.rate = function() {
+            return downloaded && started ? downloaded / ((Date.now() - started) / 1000) : undefined;
+        };
         return HTTP;
     };
 
@@ -108,28 +113,30 @@ var download = function(options, callback) {
         opt.connTimeout = 5000;
         var size;
         var downloaded = 0;
+        var started = 0;
         var FTP = {};
         FTP.address = address;
         FTP.download = function(callback) {
             callback = callback || function() {};
             var ftp = new Ftp();
             ftp.on('ready', function() {
-                ftp.size(opt.path, function(err, size) {
+                ftp.size(opt.path, function(err, sz) {
+                    size = sz;
                     ftp.get(opt.path, function(err, stream) {
                         if (err) {
                             test && test.notOK(address.data, err);
                             ftp.destroy();
                             return callback();
                         }
-                        test && test.OK(address.data);
                         if (test) {
+                            test.OK(address.data);
                             stream.unref();
                             stream.destroy();
                             ftp.destroy();
                             callback();
                         } else {
+                            started = Date.now();
                             stream.pipe(options.targetStream(address));
-                            var downloaded = 0;
                             stream.on('data', function(buf) {
                                 downloaded += buf.length;
                             });
@@ -147,6 +154,9 @@ var download = function(options, callback) {
         };
         FTP.progress = function() {
             return size ? downloaded / size : undefined;
+        };
+        FTP.rate = function() {
+            return downloaded && started ? downloaded / ((Date.now() - started) / 1000) : undefined;
         };
         return FTP;
     };
