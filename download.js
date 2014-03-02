@@ -37,7 +37,7 @@ function(opt, callback) {
         return elems.join('-').replace(/[^\d^\w]+/g, '-').toLowerCase() + ext;
     };
     var targetStream = function(url) {
-        return fs.createWriteStream(path.join(opt.target, + slug(url)));
+        return fs.createWriteStream(path.join(opt.target, slug(url)));
     };
 
     var downloadHTTP = function(address, test, callback) {
