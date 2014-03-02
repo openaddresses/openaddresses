@@ -14,7 +14,7 @@ We are just starting: https://github.com/osmlab/addresses/issues?state=open
 
     # Test availability of sources
     npm test
-    # Download all sources into data/
+    # Download all sources into data/ (needs work)
     npm start
 
 ## Use (module)
