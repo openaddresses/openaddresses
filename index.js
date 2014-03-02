@@ -1,4 +1,4 @@
-var download = require('./download.js');
+var download = require('./addresses.js').download;
 var minimist = require('minimist');
 var argv = require('minimist')(process.argv.slice(2));
 var Step = require('step');

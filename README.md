@@ -19,8 +19,8 @@ We are just starting: https://github.com/osmlab/addresses/issues?state=open
 
 ## Use (module)
 
-    var download = require('address-download');
-    download({
+    var addresses = require('addresses');
+    addresses.download({
         test: false, # true for testing availability, false for downloading
         source: <directorypattern>, # source yaml files to download / test
         targetStream: function(url) {
