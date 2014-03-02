@@ -35,17 +35,20 @@ var queue = function(len) {
     };
 };
 
-// Helper functions for TAP style output.
-var tapOK = function(message) {
-    console.log('ok\t'.green + message.grey);
-};
-var tapNotOK = function(message, diagnostics) {
-    console.log('not ok\t'.red + message.grey);
-    diagnostics && console.log(('# ' + diagnostics).grey);
-};
-var tapPlan = function(num, comment) {
+// Helper for TAP test outputs.
+var tap = function(num, comment) {
     console.log('1..' + num);
     comment && console.log('# ' + comment);
+    tap = {};
+    var count = 0;
+    tap.OK = function(message) {
+        console.log(('ok ' + (count++) + '\t').green + message.grey);
+    };
+    tap.notOK = function(message, diagnostics) {
+        console.log(('not ok ' + (count++) + '\t').red + message.grey);
+        diagnostics && console.log(('# ' + diagnostics).grey);
+    };
+    return tap;
 };
 
 var download = function(options, callback) {
@@ -63,14 +66,14 @@ var download = function(options, callback) {
         req.setMaxListeners(20);
         req.on('response', function(res) {
             if (res.statusCode == 200) {
-                tapOK(address.data);
+                test && test.OK(address.data);
                 !test && req.pipe(options.targetStream(address));
             } else {
-                tapNotOK(address.data, res.statusCode);
+                test && test.notOK(address.data, res.statusCode);
             }
         });
         req.on('error', function(err) {
-            tapNotOK(address.data, err);
+            test && test.notOK(address.data, err);
             callback();
         });
         req.on('end', callback);
@@ -86,11 +89,11 @@ var download = function(options, callback) {
         ftp.on('ready', function() {
             ftp.get(opt.path, function(err, stream) {
                 if (err) {
-                    tapNotOK(address.data, err);
+                    test && test.notOK(address.data, err);
                     ftp.destroy();
                     return callback();
                 }
-                tapOK(address.data);
+                test && test.OK(address.data);
                 if (test) {
                     stream.unref();
                     stream.destroy();
@@ -103,7 +106,7 @@ var download = function(options, callback) {
             });
         });
         ftp.on('error', function(err) {
-            tapNotOK(address.data, err);
+            test && test.notOK(address.data, err);
             ftp.destroy();
             callback();
         });
@@ -114,7 +117,7 @@ var download = function(options, callback) {
     var download = function(address, test, callback) {
         callback = callback || function() {};
         if (!address.data) {
-            tapOK("# SKIP - no data URL for " + address.website);
+            test && test.OK("# SKIP - no data URL for " + address.website);
             return callback();
         }
         var options = url.parse(address.data);
@@ -147,11 +150,13 @@ var download = function(options, callback) {
                 memo = memo.concat(address);
                 return memo;
             }, []);
-            tapPlan(addresses.length, 'Testing ' + options.source);
+            var test = options.test ?
+                tap(addresses.length, 'Testing ' + options.source) :
+                null;
             _(addresses).each(function(address) {
                 var cb = group();
                 process.nextTick(function() {
-                    download(address, options.test, cb);
+                    download(address, test, cb);
                 });
             });
         },
