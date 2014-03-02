@@ -1,6 +1,6 @@
-# Addresses
+# Global Addresses
 
-A global collection of addresses, open and free to use. Join, download and contribute.
+A global collection of addresses, open and free to use. Join, download and contribute. We're just getting started.
 
 ## Downloading
 
