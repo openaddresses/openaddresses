@@ -9,19 +9,23 @@ var glob = require('glob');
 require('colors');
 
 // Simple job queue.
-var queue = function(len) {
-    var jobs = [];
-    var active = [];
+var queue = function(size) {
+    var queue = {};
+    var jobs = queue.jobs = [];
+    var active = queue.active = [];
+    queue.done = 0;
+    queue.size = size;
     var interval = null;
     var work = function() {
         if (interval) return;
         interval = setInterval(function() {
-            while (active.length < len && jobs.length) {
+            while (active.length < size && jobs.length) {
                 (function() {
                     var job = jobs.shift();
                     active.push(job);
-                    job.func(function() {
+                    job.func.call(job.obj, function() {
                         active = _(active).without(job);
+                        queue.done++;
                         job.callback.apply(null, arguments);
                     });
                 })();
@@ -29,10 +33,11 @@ var queue = function(len) {
             !jobs.length && !active.length && clearInterval(interval);
         }, 10);
     };
-    return function(func, callback) {
-        jobs.push({func: func, callback: callback});
+    queue.add = function(obj, func, callback) {
+        jobs.push({obj: obj, func: func, callback: callback});
         work();
     };
+    return queue;
 };
 
 // Helper for TAP test outputs.
@@ -54,63 +59,96 @@ var tap = function(num, comment) {
 var download = function(options, callback) {
     process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
-    var downloadHTTP = function(address, test, callback) {
-        // Wrap in _.once as on('error') and on('end') are not called
-        // consistently either both or alternatively.
-        callback = _.once(callback || function() {});
+    var HTTP = function(address, test) {
         var opt = {
             url: address.data,
             timeout: 7000
         };
-        var req = (test ? request.head : request.get)(opt);
-        req.setMaxListeners(20);
-        req.on('response', function(res) {
-            if (res.statusCode == 200) {
-                test && test.OK(address.data);
-                !test && req.pipe(options.targetStream(address));
-            } else {
-                test && test.notOK(address.data, res.statusCode);
-            }
-        });
-        req.on('error', function(err) {
-            test && test.notOK(address.data, err);
-            callback();
-        });
-        req.on('end', callback);
+        var size;
+        var downloaded = 0;
+        var HTTP = {};
+        HTTP.address = address;
+        HTTP.download = function(callback) {
+            // Wrap in _.once as on('error') and on('end') are not called
+            // consistently either both or alternatively.
+            callback = _.once(callback || function() {});
+            var req = (test ? request.head : request.get)(opt);
+            req.setMaxListeners(20);
+            req.on('response', function(res) {
+                if (res.statusCode == 200) {
+                    if (test) {
+                        test.OK(address.data);
+                    } else {
+                        try { size = parseInt(res.headers['content-length']); } catch(e) {};
+                        req.pipe(options.targetStream(address));
+                        req.on('data', function(buf) {
+                            downloaded += buf.length;
+                        });
+                    }
+                } else {
+                    test && test.notOK(address.data, res.statusCode);
+                }
+            });
+            req.on('error', function(err) {
+                test && test.notOK(address.data, err);
+                callback();
+            });
+            req.on('end', callback);
+        };
+        HTTP.progress = function() {
+            return size ? downloaded / size : undefined;
+        };
+        return HTTP;
     };
 
-    var downloadFTP = function(address, test, callback) {
-        callback = callback || function() {};
-        var ftp = new Ftp();
+    var FTP = function(address, test) {
         var opt = url.parse(address.data);
         opt.user = (opt.auth || ':').split(':')[0];
         opt.password = (opt.auth || ':').split(':')[1];
         opt.connTimeout = 5000;
-        ftp.on('ready', function() {
-            ftp.get(opt.path, function(err, stream) {
-                if (err) {
-                    test && test.notOK(address.data, err);
-                    ftp.destroy();
-                    return callback();
-                }
-                test && test.OK(address.data);
-                if (test) {
-                    stream.unref();
-                    stream.destroy();
-                    ftp.destroy();
-                    callback();
-                } else {
-                    stream.pipe(options.targetStream(address));
-                    stream.on('end', callback);
-                }
+        var size;
+        var downloaded = 0;
+        var FTP = {};
+        FTP.address = address;
+        FTP.download = function(callback) {
+            callback = callback || function() {};
+            var ftp = new Ftp();
+            ftp.on('ready', function() {
+                ftp.size(opt.path, function(err, size) {
+                    ftp.get(opt.path, function(err, stream) {
+                        if (err) {
+                            test && test.notOK(address.data, err);
+                            ftp.destroy();
+                            return callback();
+                        }
+                        test && test.OK(address.data);
+                        if (test) {
+                            stream.unref();
+                            stream.destroy();
+                            ftp.destroy();
+                            callback();
+                        } else {
+                            stream.pipe(options.targetStream(address));
+                            var downloaded = 0;
+                            stream.on('data', function(buf) {
+                                downloaded += buf.length;
+                            });
+                            stream.on('end', callback);
+                        }
+                    });
+                });
             });
-        });
-        ftp.on('error', function(err) {
-            test && test.notOK(address.data, err);
-            ftp.destroy();
-            callback();
-        });
-        ftp.connect(opt);
+            ftp.on('error', function(err) {
+                test && test.notOK(address.data, err);
+                ftp.destroy();
+                callback();
+            });
+            ftp.connect(opt);
+        };
+        FTP.progress = function() {
+            return size ? downloaded / size : undefined;
+        };
+        return FTP;
     };
 
     var dlQueue = queue(20);
@@ -121,11 +159,10 @@ var download = function(options, callback) {
             return callback();
         }
         var options = url.parse(address.data);
-        dlQueue(function(callback) {
-            options.protocol == 'ftp:' ?
-                downloadFTP(address, test, callback) :
-                downloadHTTP(address, test, callback);
-        }, callback);
+        var downloader= options.protocol == 'ftp:' ?
+            FTP(address, test) :
+            HTTP(address, test);
+        dlQueue.add(downloader, downloader.download, callback);
     };
 
     Step(
@@ -162,6 +199,7 @@ var download = function(options, callback) {
         },
         callback
     );
+    return dlQueue;
 };
 
 module.exports = {
