@@ -13,11 +13,11 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 var argv = require('minimist')(process.argv.slice(2));
 
 var tapOK = function(message) {
-    console.log('ok\t' + message);
+    console.log('ok\t'.green + message.grey);
 };
 var tapNotOK = function(message, diagnostics) {
-    console.log(('not ok\t' + message).red);
-    diagnostics && console.log(('# ' + diagnostics).red);
+    console.log('not ok\t'.red + message.grey);
+    diagnostics && console.log(('# ' + diagnostics).grey);
 };
 var tapPlan = function(num, comment) {
     console.log('1..' + num);
