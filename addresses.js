@@ -8,6 +8,7 @@ var Step = require('step');
 var glob = require('glob');
 require('colors');
 
+// Simple job queue.
 var queue = function(len) {
     var jobs = [];
     var active = [];
@@ -34,20 +35,21 @@ var queue = function(len) {
     };
 };
 
+// Helper functions for TAP style output.
+var tapOK = function(message) {
+    console.log('ok\t'.green + message.grey);
+};
+var tapNotOK = function(message, diagnostics) {
+    console.log('not ok\t'.red + message.grey);
+    diagnostics && console.log(('# ' + diagnostics).grey);
+};
+var tapPlan = function(num, comment) {
+    console.log('1..' + num);
+    comment && console.log('# ' + comment);
+};
+
 var download = function(options, callback) {
     process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
-
-    var tapOK = function(message) {
-        console.log('ok\t'.green + message.grey);
-    };
-    var tapNotOK = function(message, diagnostics) {
-        console.log('not ok\t'.red + message.grey);
-        diagnostics && console.log(('# ' + diagnostics).grey);
-    };
-    var tapPlan = function(num, comment) {
-        console.log('1..' + num);
-        comment && console.log('# ' + comment);
-    };
 
     var downloadHTTP = function(address, test, callback) {
         // Wrap in _.once as on('error') and on('end') are not called
