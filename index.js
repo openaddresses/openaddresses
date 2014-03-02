@@ -24,6 +24,7 @@ var targetStream = function(address) {
 var reportProgress = function(queue) {
     var clear = function(lines) {
         for (var i = 0; i < lines; i++) {
+            // http://ascii-table.com/ansi-escape-sequences-vt-100.php
             process.stdout.write('\u001B[1A\u001B[2K');
         }
     };
@@ -36,7 +37,7 @@ var reportProgress = function(queue) {
     };
     var ran = false;
     var interval = setInterval(function() {
-        ran && clear(queue.size + 3);
+        ran && clear(queue.size + 2);
         ran = true;
         console.log('Downloads:\t' +
             queue.active.length + ' active\t' +
@@ -47,9 +48,9 @@ var reportProgress = function(queue) {
         for (var i = 0; i < queue.size; i++) {
             if (i < queue.active.length) {
                 var download = queue.active[i].obj;
-                console.log(format(download.progress()) + " " + download.address.data);
+                console.log(format(download.progress()) + " " + download.address.data.substring(0, 76));
             } else {
-                console.log('');
+                console.log(' ');
             }
         }
         !queue.active.length && clearInterval(interval);

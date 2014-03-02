@@ -10,34 +10,34 @@ require('colors');
 
 // Simple job queue.
 var queue = function(size) {
-    var queue = {};
-    var jobs = queue.jobs = [];
-    var active = queue.active = [];
-    queue.done = 0;
-    queue.size = size;
+    var q = {};
+    q.jobs = [];
+    q.active = [];
+    q.done = 0;
+    q.size = size;
     var interval = null;
     var work = function() {
         if (interval) return;
         interval = setInterval(function() {
-            while (active.length < size && jobs.length) {
+            while (q.active.length < size && q.jobs.length) {
                 (function() {
-                    var job = jobs.shift();
-                    active.push(job);
+                    var job = q.jobs.shift();
+                    q.active.push(job);
                     job.func.call(job.obj, function() {
-                        active = _(active).without(job);
-                        queue.done++;
+                        q.active = _(q.active).without(job);
+                        q.done++;
                         job.callback.apply(null, arguments);
                     });
                 })();
             }
-            !jobs.length && !active.length && clearInterval(interval);
+            !q.jobs.length && !q.active.length && clearInterval(interval);
         }, 10);
     };
-    queue.add = function(obj, func, callback) {
-        jobs.push({obj: obj, func: func, callback: callback});
+    q.add = function(obj, func, callback) {
+        q.jobs.push({obj: obj, func: func, callback: callback});
         work();
     };
-    return queue;
+    return q;
 };
 
 // Helper for TAP test outputs.
