@@ -8,8 +8,7 @@ var Step = require('step');
 var glob = require('glob');
 require('colors');
 
-module.exports =
-function(options, callback) {
+var download = function(options, callback) {
     process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
     var tapOK = function(message) {
@@ -127,4 +126,8 @@ function(options, callback) {
         },
         callback
     );
+};
+
+module.exports = {
+    download: download
 };
