@@ -8,7 +8,6 @@ Step(
         download(argv, this);
     },
     function(err) {
-        console.log('DONE');
         process.exit(0);
     }
 );
