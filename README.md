@@ -4,6 +4,16 @@ A repository of tools to retrieve and build an open database of addresses for th
 
 We are just starting: https://github.com/osmlab/addresses/issues?state=open
 
+## Use
+
+    # node 0.10.x
+    # Install
+    npm install
+    # Test availability of sources
+    npm test
+    # Download all sources into data/
+    npm start
+
 ## Why?
 
 [I](http://github.com/iandees) spent a lot of time tracking down [address data](https://docs.google.com/spreadsheet/ccc?key=0AsVnlPsfrhUIdEVZTzVFalFYYnlvTkc0R05wcUpsWVE&usp=drive_web) and I want to share that work with others.
