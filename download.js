@@ -6,11 +6,10 @@ var yaml = require('js-yaml');
 var Ftp = require('ftp');
 var Step = require('step');
 var glob = require('glob');
-var path = require('path');
 require('colors');
 
 module.exports =
-function(opt, callback) {
+function(options, callback) {
     process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
     var tapOK = function(message) {
@@ -25,35 +24,20 @@ function(opt, callback) {
         comment && console.log('# ' + comment);
     };
 
-    var slug = function(url) {
-        var elems = url.split('.');
-        var ext = elems.pop();
-        if (ext.length > 4) {
-            elems.push(ext);
-            ext = '';
-        } else {
-            ext = '.' + ext;
-        }
-        return elems.join('-').replace(/[^\d^\w]+/g, '-').toLowerCase() + ext;
-    };
-    var targetStream = function(url) {
-        return fs.createWriteStream(path.join(opt.target, slug(url)));
-    };
-
     var downloadHTTP = function(address, test, callback) {
         // Wrap in _.once as on('error') and on('end') are not called
         // consistently either both or alternatively.
         callback = _.once(callback || function() {});
-        var options = {
+        var opt = {
             url: address.data,
             timeout: 7000
         };
-        var req = (test ? request.head : request.get)(options);
+        var req = (test ? request.head : request.get)(opt);
         req.setMaxListeners(20);
         req.on('response', function(res) {
             if (res.statusCode == 200) {
                 tapOK(address.data);
-                !test && req.pipe(targetStream(address.data));
+                !test && req.pipe(options.targetStream(address.data));
             } else {
                 tapNotOK(address.data, res.statusCode);
             }
@@ -86,7 +70,7 @@ function(opt, callback) {
                     ftp.destroy();
                     callback();
                 } else {
-                    stream.pipe(fs.createWriteStream('data/' + slug(address.data)));
+                    stream.pipe(options.targetStream(address.data));
                     stream.on('end', callback);
                 }
             });
@@ -112,12 +96,9 @@ function(opt, callback) {
     };
 
     Step(
-        function() {
-            opt.target ? fs.mkdir(opt.target, this) : this();
-        },
         function(err) {
             if (err) console.error(err.toString().red);
-            glob(opt.source, this);
+            glob(options.source, this);
         },
         function(err, files) {
             if (err) console.error(err.toString().red);
@@ -136,11 +117,11 @@ function(opt, callback) {
                 memo = memo.concat(address);
                 return memo;
             }, []);
-            tapPlan(addresses.length, 'Testing ' + opt.source);
+            tapPlan(addresses.length, 'Testing ' + options.source);
             _(addresses).each(function(address) {
                 var cb = group();
                 process.nextTick(function() {
-                    download(address, opt.test, cb);
+                    download(address, options.test, cb);
                 });
             });
         },
