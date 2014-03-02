@@ -1,13 +1,13 @@
 {
-  "name": "osmlab-addresses",
+  "name": "addresses-download",
   "version": "0.0.1",
   "author": "Alex Barth <alex@mapbox.com>",
   "description": "Manage, test and download a global register of addresses.",
   "scripts": {
-    "start": "node index.js",
-    "test": "node index.js --test"
+    "start": "node index.js --source=sources/*/* --target=data",
+    "test": "node index.js --test --source=sources/*/*"
   },
-  "main": "./index.js",
+  "main": "download.js",
   "dependencies" : {
     "colors": "0.6.2",
     "js-yaml": "3.0.1",

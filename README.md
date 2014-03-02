@@ -4,15 +4,27 @@ A repository of tools to retrieve and build an open database of addresses for th
 
 We are just starting: https://github.com/osmlab/addresses/issues?state=open
 
-## Use
+## Installation
 
     # node 0.10.x
     # Install
     npm install
+
+## Use (command line)
+
     # Test availability of sources
     npm test
     # Download all sources into data/
     npm start
+
+## Use (module)
+
+    var download = require('address-download');
+    download({
+        test: false, # true for testing availability, false for downloading
+        source: <directorypattern>, # source yaml files to download / test
+        target: <directory> # target directory
+    }, callback)
 
 ## Why?
 
