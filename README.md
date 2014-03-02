@@ -34,4 +34,4 @@ We are just starting: https://github.com/osmlab/addresses/issues?state=open
 
 ## License
 
-Although individual sources of data might have their own licenses, the goal is that the database as a whole be released under [Public Domain](http://opendatacommons.org/licenses/pddl/1.0/) license.
+Code is available under BSD, the data collection (sources/) is public domain.
