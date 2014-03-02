@@ -16,8 +16,8 @@ var slug = function(url) {
     }
     return elems.join('-').replace(/[^\d^\w]+/g, '-').toLowerCase() + ext;
 };
-var targetStream = function(url) {
-    return fs.createWriteStream(path.join(argv.target, slug(url)));
+var targetStream = function(address) {
+    return fs.createWriteStream(path.join(argv.target, slug(address.data)));
 };
 
 Step(

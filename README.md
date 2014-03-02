@@ -23,8 +23,8 @@ We are just starting: https://github.com/osmlab/addresses/issues?state=open
     addresses.download({
         test: false, # true for testing availability, false for downloading
         source: <directorypattern>, # source yaml files to download / test
-        targetStream: function(url) {
-            return fs.createWriteStream((new Buffer(url)).toString('base64'));
+        targetStream: function(address) {
+            return fs.createWriteStream((new Buffer(address.data)).toString('base64'));
         } # target stream handler
     }, callback)
 

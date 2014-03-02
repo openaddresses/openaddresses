@@ -36,7 +36,7 @@ var download = function(options, callback) {
         req.on('response', function(res) {
             if (res.statusCode == 200) {
                 tapOK(address.data);
-                !test && req.pipe(options.targetStream(address.data));
+                !test && req.pipe(options.targetStream(address));
             } else {
                 tapNotOK(address.data, res.statusCode);
             }
@@ -69,7 +69,7 @@ var download = function(options, callback) {
                     ftp.destroy();
                     callback();
                 } else {
-                    stream.pipe(options.targetStream(address.data));
+                    stream.pipe(options.targetStream(address));
                     stream.on('end', callback);
                 }
             });
