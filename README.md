@@ -1,23 +1,23 @@
-# osmlab addresses
+# Addresses
 
-A repository of tools to retrieve and build an open database of addresses for the world.
+A global collection of addresses, open and free to use. Join, download and contribute.
 
-We are just starting: https://github.com/osmlab/addresses/issues?state=open
-
-## Installation
+## Downloading
 
     # node 0.10.x
     # Install
     npm install
-
-## Use (command line)
-
     # Test availability of sources
     npm test
     # Download all sources into data/ (needs work)
     npm start
 
-## Use (module)
+## Contributing addresses
+
+- [Open an issue](https://github.com/osmlab/addresses/issues?state=open) and report an address file.
+- Or create a pull request to the [sources](https://github.com/osmlab/addresses/tree/master/sources) directory.
+
+## Use as a module
 
     var addresses = require('addresses');
     addresses.download({
