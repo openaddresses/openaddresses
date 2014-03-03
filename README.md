@@ -9,7 +9,7 @@ A global collection of addresses, open and free to use. Join, download and contr
     npm install
     # Test availability of sources
     npm test
-    # Download all sources into data/ (needs work)
+    # Download all sources into data/
     npm start
 
 ## Contributing addresses
@@ -21,7 +21,7 @@ A global collection of addresses, open and free to use. Join, download and contr
 
     var addresses = require('addresses');
     addresses.download({
-        test: false, # true for testing availability, false for downloading
+        test: false, # true to test but not download
         source: <directorypattern>, # source yaml files to download / test
         targetStream: function(address) {
             return fs.createWriteStream((new Buffer(address.data)).toString('base64'));
