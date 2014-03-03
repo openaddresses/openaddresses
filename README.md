@@ -34,4 +34,4 @@ A global collection of addresses, open and free to use. Join, download and contr
 
 ## License
 
-Code is available under BSD, the data collection (sources/) is public domain.
+Code is available under BSD, the data collection (sources/) is public domain. See respective LICENSE files in project root for code and under sources/ for the data collection.
