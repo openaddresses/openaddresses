@@ -1,6 +1,6 @@
 # Global Addresses
 
-A global collection of addresses, open and free to use. Join, download and contribute. We're just getting started.
+A global collection of address data sources, open and free to use. Join, download and contribute. We're just getting started.
 
 ## Contributing addresses
 
@@ -8,6 +8,8 @@ A global collection of addresses, open and free to use. Join, download and contr
 - You can also create a pull request to the [sources](https://github.com/osmlab/addresses/tree/master/sources) directory.
 
 ## Usage
+
+The goal for this project is simply to collect data sources, but there is some node code that checks if the sources still exist and can download the sources to your computer for further use.
 
 ### Install and download
 
