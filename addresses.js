@@ -1,11 +1,10 @@
-var request = require('request');
 var url = require('url');
 var fs = require('fs');
 var _ = require('underscore');
 var yaml = require('js-yaml');
-var Ftp = require('ftp');
 var Step = require('step');
 var glob = require('glob');
+var connectors = require('./connectors.js')
 require('colors');
 
 // Simple job queue.
@@ -59,108 +58,6 @@ var tap = function(num, comment) {
 var download = function(options, callback) {
     process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
-    var HTTP = function(address, test) {
-        var opt = {
-            url: address.data,
-            timeout: 7000
-        };
-        var size;
-        var downloaded = 0;
-        var started = 0;
-        var HTTP = {};
-        HTTP.address = address;
-        HTTP.download = function(callback) {
-            // Wrap in _.once as on('error') and on('end') are not called
-            // consistently either both or alternatively.
-            callback = _.once(callback || function() {});
-            var req = (test ? request.head : request.get)(opt);
-            req.setMaxListeners(20);
-            req.on('response', function(res) {
-                if (res.statusCode == 200) {
-                    if (test) {
-                        test.OK(address.data);
-                    } else {
-                        try { size = parseInt(res.headers['content-length']); } catch(e) {};
-                        started = Date.now();
-                        req.pipe(options.targetStream(address));
-                        req.on('data', function(buf) {
-                            downloaded += buf.length;
-                        });
-                    }
-                } else {
-                    test && test.notOK(address.data, res.statusCode);
-                }
-            });
-            req.on('error', function(err) {
-                test && test.notOK(address.data, err);
-                callback();
-            });
-            req.on('end', callback);
-        };
-        HTTP.progress = function() {
-            return size ? downloaded / size : undefined;
-        };
-        HTTP.rate = function() {
-            return downloaded && started ? downloaded / ((Date.now() - started) / 1000) : undefined;
-        };
-        return HTTP;
-    };
-
-    var FTP = function(address, test) {
-        var opt = url.parse(address.data);
-        opt.user = (opt.auth || ':').split(':')[0];
-        opt.password = (opt.auth || ':').split(':')[1];
-        opt.connTimeout = 5000;
-        var size;
-        var downloaded = 0;
-        var started = 0;
-        var FTP = {};
-        FTP.address = address;
-        FTP.download = function(callback) {
-            callback = callback || function() {};
-            var ftp = new Ftp();
-            ftp.on('ready', function() {
-                ftp.size(opt.path, function(err, sz) {
-                    size = sz;
-                    ftp.get(opt.path, function(err, stream) {
-                        if (err) {
-                            test && test.notOK(address.data, err);
-                            ftp.destroy();
-                            return callback();
-                        }
-                        if (test) {
-                            test.OK(address.data);
-                            stream.unref();
-                            stream.destroy();
-                            ftp.destroy();
-                            callback();
-                        } else {
-                            started = Date.now();
-                            stream.pipe(options.targetStream(address));
-                            stream.on('data', function(buf) {
-                                downloaded += buf.length;
-                            });
-                            stream.on('end', callback);
-                        }
-                    });
-                });
-            });
-            ftp.on('error', function(err) {
-                test && test.notOK(address.data, err);
-                ftp.destroy();
-                callback();
-            });
-            ftp.connect(opt);
-        };
-        FTP.progress = function() {
-            return size ? downloaded / size : undefined;
-        };
-        FTP.rate = function() {
-            return downloaded && started ? downloaded / ((Date.now() - started) / 1000) : undefined;
-        };
-        return FTP;
-    };
-
     var dlQueue = queue(20);
     var download = function(address, test, callback) {
         callback = callback || function() {};
@@ -168,11 +65,11 @@ var download = function(options, callback) {
             test && test.OK("# SKIP - no data URL for " + address.website);
             return callback();
         }
-        var options = url.parse(address.data);
-        var downloader= options.protocol == 'ftp:' ?
-            FTP(address, test) :
-            HTTP(address, test);
-        dlQueue.add(downloader, downloader.download, callback);
+        var opt = url.parse(address.data);
+        var connector = opt.protocol == 'ftp:' ?
+            connectors.ftp(address, options.targetStream, test) :
+            connectors.http(address, options.targetStream, test);
+        dlQueue.add(connector, connector.download, callback);
     };
 
     Step(
