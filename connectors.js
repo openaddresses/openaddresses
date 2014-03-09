@@ -127,7 +127,7 @@ connectors.byAddress = function(address, targetStream) {
     if (opt.protocol == 'ftp:') {
         connector = connectors.ftp;
     } else if (opt.protocol == 'http:' || opt.protocol == 'https:') {
-        if (opt.path.search(/\/MapServer\/\d+$/) !== -1) {
+        if (opt.path.search(/\/MapServer\/\d+/) !== -1) {
             connector = connectors.esri;
         } else if (opt.path.search(/\/FeatureServer\/\d+$/) !== -1) {
             connector = connectors.esri;
