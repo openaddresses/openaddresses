@@ -7,7 +7,7 @@ var path = require('path');
 var _ = require('underscore');
 
 var slug = function(url) {
-    var elems = url.split('.');
+    var elems = url.replace(/^.*?:\/\//, '').split('.');
     var ext = elems.pop();
     if (ext.length > 4) {
         elems.push(ext);
