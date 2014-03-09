@@ -5,6 +5,7 @@ var Step = require('step');
 var fs = require('fs');
 var path = require('path');
 var _ = require('underscore');
+var yaml = require('js-yaml');
 
 var slug = function(url) {
     var elems = url.replace(/^.*?:\/\//, '').split('.');
@@ -18,7 +19,9 @@ var slug = function(url) {
     return elems.join('-').replace(/[^\d^\w]+/g, '-').toLowerCase() + ext;
 };
 var targetStream = function(address) {
-    return fs.createWriteStream(path.join(argv.target, slug(address.data)));
+    var name = slug(address.data);
+    fs.writeFile('data/' + name + '.txt', yaml.safeDump(address));
+    return fs.createWriteStream(path.join(argv.target, name));
 };
 
 var reportProgress = function(queue) {
