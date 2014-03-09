@@ -57,7 +57,7 @@ Step(
         return this;
     },
     function writeCoverage() {
-        fs.writeFileSync('site/coverage/us/county/coverage.topojson', JSON.stringify(topo));
+        fs.writeFileSync('site/coverage/us/county/coverage.json', JSON.stringify(topo));
     }
 );
         
