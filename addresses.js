@@ -1,4 +1,3 @@
-var url = require('url');
 var fs = require('fs');
 var _ = require('underscore');
 var yaml = require('js-yaml');
@@ -64,10 +63,7 @@ var download = function(options, callback) {
         if (!address.data) {
             return callback("No data URL for " + address.website);
         }
-        var opt = url.parse(address.data);
-        var connector = opt.protocol == 'ftp:' ?
-            connectors.ftp(address, options.targetStream, test) :
-            connectors.http(address, options.targetStream, test);
+        var connector = connectors.byAddress(address)(address, options.targetStream, test);
         dlQueue.add(connector, test ? connector.test : connector.download, callback);
     };
 

@@ -32,7 +32,7 @@ connectors.http = function(address, targetStream) {
                 }
                 try { size = parseInt(res.headers['content-length']); } catch(e) {};
                 started = Date.now();
-                req.pipe(targetStream(address));
+                targetStream && req.pipe(targetStream(address));
                 req.on('data', function(buf) {
                     downloaded += buf.length;
                 });
@@ -89,7 +89,7 @@ connectors.ftp = function(address, targetStream) {
                         callback();
                     } else {
                         started = Date.now();
-                        stream.pipe(targetStream(address));
+                        targetStream && stream.pipe(targetStream(address));
                         stream.on('data', function(buf) {
                             downloaded += buf.length;
                         });
@@ -114,4 +114,27 @@ connectors.ftp = function(address, targetStream) {
         return downloaded && started ? downloaded / ((Date.now() - started) / 1000) : undefined;
     };
     return FTP;
+};
+
+connectors.esri = function(address, targetStream) {
+    // Downloads for esri not implemented yet.
+    return connectors.http(address, null);
+};
+
+connectors.byAddress = function(address, targetStream) {
+    var opt = url.parse(address.data);
+    var connector = null;
+    if (opt.protocol == 'ftp:') {
+        connector = connectors.ftp;
+    } else if (opt.protocol == 'http:' || opt.protocol == 'https:') {
+        if (opt.path.search(/\/MapServer\/\d+$/) !== -1) {
+            connector = connectors.esri;
+        } else if (opt.path.search(/\/FeatureServer\/\d+$/) !== -1) {
+            connector = connectors.esri;
+        } else {
+            connector = connectors.http;
+        }
+    }
+    if (!connector) throw Error('No connector found', address);
+    return connector;
 };
