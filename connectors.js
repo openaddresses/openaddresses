@@ -5,7 +5,7 @@ var url = require('url');
 
 var connectors = module.exports = {};
 
-connectors.http = function(address, targetStream, test) {
+connectors.http = function(address, targetStream) {
     var opt = {
         url: address.data,
         timeout: 7000
@@ -15,7 +15,11 @@ connectors.http = function(address, targetStream, test) {
     var started = 0;
     var HTTP = {};
     HTTP.address = address;
-    HTTP.download = function(callback) {
+    HTTP.download = function(test, callback) {
+        if (_(test).isFunction()) {
+            callback = test;
+            test = false;
+        }
         // Wrap in _.once as on('error') and on('end') are not called
         // consistently either both or alternatively.
         callback = _.once(callback || function() {});
@@ -24,24 +28,25 @@ connectors.http = function(address, targetStream, test) {
         req.on('response', function(res) {
             if (res.statusCode == 200) {
                 if (test) {
-                    test.OK(address.data);
-                } else {
-                    try { size = parseInt(res.headers['content-length']); } catch(e) {};
-                    started = Date.now();
-                    req.pipe(targetStream(address));
-                    req.on('data', function(buf) {
-                        downloaded += buf.length;
-                    });
+                    return callback();
                 }
+                try { size = parseInt(res.headers['content-length']); } catch(e) {};
+                started = Date.now();
+                req.pipe(targetStream(address));
+                req.on('data', function(buf) {
+                    downloaded += buf.length;
+                });
             } else {
-                test && test.notOK(address.data, res.statusCode);
+                test && callback(res.statusCode);
             }
         });
         req.on('error', function(err) {
-            test && test.notOK(address.data, err);
-            callback();
+            callback(err);
         });
         req.on('end', callback);
+    };
+    HTTP.test = function(callback) {
+        HTTP.download(true, callback);
     };
     HTTP.progress = function() {
         return size ? downloaded / size : undefined;
@@ -52,7 +57,7 @@ connectors.http = function(address, targetStream, test) {
     return HTTP;
 };
 
-connectors.ftp = function(address, targetStream, test) {
+connectors.ftp = function(address, targetStream) {
     var opt = url.parse(address.data);
     opt.user = (opt.auth || ':').split(':')[0];
     opt.password = (opt.auth || ':').split(':')[1];
@@ -62,7 +67,11 @@ connectors.ftp = function(address, targetStream, test) {
     var started = 0;
     var FTP = {};
     FTP.address = address;
-    FTP.download = function(callback) {
+    FTP.download = function(test, callback) {
+        if (_(test).isFunction()) {
+            callback = test;
+            test = false;
+        }
         callback = callback || function() {};
         var ftp = new Ftp();
         ftp.on('ready', function() {
@@ -70,12 +79,10 @@ connectors.ftp = function(address, targetStream, test) {
                 size = sz;
                 ftp.get(opt.path, function(err, stream) {
                     if (err) {
-                        test && test.notOK(address.data, err);
                         ftp.destroy();
-                        return callback();
+                        return callback(err);
                     }
                     if (test) {
-                        test.OK(address.data);
                         stream.unref();
                         stream.destroy();
                         ftp.destroy();
@@ -92,11 +99,13 @@ connectors.ftp = function(address, targetStream, test) {
             });
         });
         ftp.on('error', function(err) {
-            test && test.notOK(address.data, err);
             ftp.destroy();
-            callback();
+            callback(err);
         });
         ftp.connect(opt);
+    };
+    FTP.test = function(callback) {
+        FTP.download(true, callback);
     };
     FTP.progress = function() {
         return size ? downloaded / size : undefined;

@@ -62,14 +62,13 @@ var download = function(options, callback) {
     var download = function(address, test, callback) {
         callback = callback || function() {};
         if (!address.data) {
-            test && test.OK("# SKIP - no data URL for " + address.website);
-            return callback();
+            return callback("No data URL for " + address.website);
         }
         var opt = url.parse(address.data);
         var connector = opt.protocol == 'ftp:' ?
             connectors.ftp(address, options.targetStream, test) :
             connectors.http(address, options.targetStream, test);
-        dlQueue.add(connector, connector.download, callback);
+        dlQueue.add(connector, test ? connector.test : connector.download, callback);
     };
 
     Step(
@@ -99,6 +98,10 @@ var download = function(options, callback) {
                 null;
             _(addresses).each(function(address) {
                 var cb = group();
+                cb = _(cb).wrap(function(cb, err) {
+                    test && (err ? test.notOK : test.OK)(address.data || address.website, err);
+                    cb();
+                });
                 process.nextTick(function() {
                     download(address, test, cb);
                 });
