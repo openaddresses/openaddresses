@@ -32,7 +32,7 @@ connectors.http = function(address, targetStream) {
                 }
                 try { size = parseInt(res.headers['content-length']); } catch(e) {};
                 started = Date.now();
-                targetStream && req.pipe(targetStream(address));
+                if (targetStream) req.pipe(targetStream(address));
                 req.on('data', function(buf) {
                     downloaded += buf.length;
                 });
@@ -121,7 +121,7 @@ connectors.esri = function(address, targetStream) {
     return connectors.http(address, null);
 };
 
-connectors.byAddress = function(address, targetStream) {
+connectors.byAddress = function(address) {
     var opt = url.parse(address.data);
     var connector = null;
     if (opt.protocol == 'ftp:') {
