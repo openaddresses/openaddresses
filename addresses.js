@@ -3,7 +3,7 @@ var _ = require('underscore');
 var yaml = require('js-yaml');
 var Step = require('step');
 var glob = require('glob');
-var connectors = require('./connectors.js')
+var connectors = require('./connectors.js');
 require('colors');
 
 // Simple job queue.
@@ -75,7 +75,7 @@ var download = function(options, callback) {
         function(err, files) {
             if (err) console.error(err.toString().red);
             var group = this.group();
-            _(files).each(function(file) {
+            files.forEach(function(file) {
                 var cb = group();
                 fs.readFile(file, 'utf8', function(err, data) {
                     cb(err, yaml.safeLoad(data));
@@ -85,14 +85,14 @@ var download = function(options, callback) {
         function(err, addresses) {
             if (err) console.error(err.toString().red);
             var group = this.group();
-            addresses = _(addresses).reduce(function(memo, address) {
+            addresses = addresses.reduce(function(memo, address) {
                 memo = memo.concat(address);
                 return memo;
             }, []);
             var test = options.test ?
                 tap(addresses.length, 'Testing ' + options.source) :
                 null;
-            _(addresses).each(function(address) {
+            addresses.forEach(function(address) {
                 var cb = group();
                 cb = _(cb).wrap(function(cb, err) {
                     test && (err ? test.notOK : test.OK)(address.data || address.website, err);

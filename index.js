@@ -4,10 +4,9 @@ var argv = require('minimist')(process.argv.slice(2));
 var Step = require('step');
 var fs = require('fs');
 var path = require('path');
-var _ = require('underscore');
 var yaml = require('js-yaml');
 
-var slug = function(url) {
+function slug(url) {
     var elems = url.replace(/^.*?:\/\//, '').split('.');
     var ext = elems.pop();
     if (ext.length > 4) {
@@ -17,14 +16,15 @@ var slug = function(url) {
         ext = '.' + ext;
     }
     return elems.join('-').replace(/[^\d^\w]+/g, '-').toLowerCase() + ext;
-};
-var targetStream = function(address) {
+}
+
+function targetStream(address) {
     var name = slug(address.data);
     fs.writeFile('data/' + name + '.txt', yaml.safeDump(address));
     return fs.createWriteStream(path.join(argv.target, name));
-};
+}
 
-var reportProgress = function(queue) {
+function reportProgress(queue) {
     var clear = function(lines) {
         for (var i = 0; i < lines; i++) {
             // http://ascii-table.com/ansi-escape-sequences-vt-100.php
@@ -54,7 +54,6 @@ var reportProgress = function(queue) {
             queue.jobs.length + ' in queue\t' +
             queue.done + ' done');
         console.log('');
-        queue.active;
         for (var i = 0; i < queue.size; i++) {
             if (i < queue.active.length) {
                 var download = queue.active[i].obj;
@@ -63,13 +62,17 @@ var reportProgress = function(queue) {
                 console.log(' ');
             }
         }
-        !queue.active.length && clearInterval(interval);
+        if (!queue.active.length) clearInterval(interval);
     }, 100);
-};
+}
 
 Step(
     function() {
-        argv.target ? fs.mkdir(argv.target, this) : this();
+        if (argv.target) {
+            fs.mkdir(argv.target, this);
+        } else {
+            this();
+        }
     },
     function() {
         var opt = {
@@ -78,7 +81,7 @@ Step(
             targetStream: targetStream
         };
         var queue = download(opt, this);
-        !argv.test && reportProgress(queue);
+        if (!argv.test) reportProgress(queue);
     },
     function(err) {
         // Bail out hard. Some sockets appear not to close out cleanly.
