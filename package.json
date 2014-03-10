@@ -5,18 +5,19 @@
   "description": "Manage, test and download a global register of addresses.",
   "scripts": {
     "start": "node index.js --source=sources/*/* --target=data",
-    "test": "node index.js --test --source=sources/*/*"
+    "test": "tape test/*.js"
   },
-  "main": "download.js",
-  "dependencies" : {
-    "colors": "0.6.2",
+  "main": "index.js",
+  "dependencies": {
     "js-yaml": "3.0.1",
     "underscore": "1.6.0",
     "minimist": "0.0.7",
     "request": "2.33.0",
     "ftp": "0.3.6",
     "step": "0.0.5",
-    "glob": "3.2.9"
+    "glob": "3.2.9",
+    "tape": "~2.10.2",
+    "queue-async": "~1.0.7"
   },
   "license": "BSD",
   "engines": {
