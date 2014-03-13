@@ -9,30 +9,9 @@ A global collection of address data sources, open and free to use. Join, downloa
 
 ## Usage
 
-The goal for this project is simply to collect data sources, but there is some node code that checks if the sources still exist and can download the sources to your computer for further use.
-
-### Install and download
-
-    # node 0.10.x
-    # Use NPM to install dependencies
-    npm install
-    # Check that address source data is still available
-    npm test
-    # Download all source data into data/
-    npm start
-
-### Use as a module
-
-```javascript
-var addresses = require('addresses');
-addresses.download({
-    test: false, # true to test but not download
-    source: <directorypattern>, # source yaml files to download / test
-    targetStream: function(address) {
-        return fs.createWriteStream((new Buffer(address.data)).toString('base64'));
-    } # target stream handler
-}, callback)
-```
+The goal for this project is simply to collect data sources.
+See [openaddresses-download](https://github.com/openaddresses/openaddresses-download)
+for a tool to download this data.
 
 ## Why collect addresses?
 
