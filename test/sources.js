@@ -1,13 +1,14 @@
 var test = require('tape').test,
     glob = require('glob'),
     fs = require('fs'),
+    queue = require('queue-async'),
     connectors = require('openaddresses-download').connectors;
 
-test('sources', function(t) {
-    var sources = glob.sync('sources/*.json');
-    t.plan(sources.length);
-    sources.forEach(function(source) {
-        t.test(source, function(t) {
+var q = queue(1);
+
+glob.sync('sources/*.json').forEach(function(source) {
+    q.defer(function(source, callback) {
+        test(source, function(t) {
             t.doesNotThrow(function() {
                 var data = JSON.parse(fs.readFileSync(source, 'utf8'));
                 if (data.type) {
@@ -15,18 +16,35 @@ test('sources', function(t) {
                     if (data.skip) {
                         t.ok(source + 'skipping');
                         t.end();
-                    } else { 
+                        callback();
+                    } else {
                         connectors[data.type](data, function(err, resp) {
-                            t.notOk(err, 'response is good');
-                            if (resp) resp.end();
-                            t.end();
+                            t.ok(resp, 'response is good');
+                            t.notOk(err, 'no error returned');
+                            if (!resp) {
+                                callback();
+                                return t.end();
+                            }
+                            resp.once('error', function(e) {
+                                t.fail('server failed: ' + e.message);
+                                resp.end();
+                                t.end();
+                                callback();
+                            });
+                            resp.once('data', function(d) {
+                                t.pass('received data');
+                                t.end();
+                                resp.end();
+                                callback();
+                            });
                         });
                     }
                 } else {
                     t.ok('has no type or data');
                     t.end();
+                    callback();
                 }
             }, source + ' is valid json');
         });
-    });
+    }, source);
 });
