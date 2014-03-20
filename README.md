@@ -4,18 +4,16 @@
 
 A global collection of address data sources, open and free to use. Join, download and contribute. We're just getting started.
 
-## Contributing addresses
-
-- [Open an issue](https://github.com/openaddresses/openaddresses/issues/new) and give information about where to find more address data. Be sure to include a link to the data and a description of the coverage area for the data.
-- You can also create a pull request to the [sources](https://github.com/openaddresses/openaddresses/tree/master/sources) directory.
-
-## Usage
-
 This repository is a collection of references to address data sources.
 
 - See [openaddresses-download](https://github.com/openaddresses/openaddresses-download)
 for a tool to download this data.
 - See [openaddresses.io](http://openaddresses.io/) for a data download.
+
+## Contributing addresses
+
+- [Open an issue](https://github.com/openaddresses/openaddresses/issues/new) and give information about where to find more address data. Be sure to include a link to the data and a description of the coverage area for the data.
+- You can also create a pull request to the [sources](https://github.com/openaddresses/openaddresses/tree/master/sources) directory.
 
 ## Why collect addresses?
 
