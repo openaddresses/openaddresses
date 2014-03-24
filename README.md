@@ -1,6 +1,6 @@
 # OpenAddresses
 
-[![Build Status](https://travis-ci.org/openaddresses/openaddresses.png?branch=master)](https://travis-ci.org/openaddresses/openaddresses)
+<!-- [![Build Status](https://travis-ci.org/openaddresses/openaddresses.png?branch=master)](https://travis-ci.org/openaddresses/openaddresses) -->
 
 A global collection of address data sources, open and free to use. Join, download and contribute. We're just getting started.
 
