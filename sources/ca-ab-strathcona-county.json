@@ -4,10 +4,21 @@
         "state": "ab",
         "county": "Strathcona County"
     },
-    "data": "https://data.strathcona.ca/api/geospatial/ahu6-iwum?method=export&format=Shapefile",
-    "license": null,
-    "year": "",
+    "data": "http://data.strathcona.ca/api/geospatial/ahu6-iwum?method=export&format=Shapefile",
     "type": "http",
     "compression": "zip",
-    "skip": true
+    "conform": {
+        "merge": [
+            "street_nam",
+            "street_typ"
+        ],
+        "lon": "x",
+        "lat": "y",
+        "number": "house_no",
+        "street": "street",
+        "type": "shapefile"
+    },
+    "fingerprint": "15febaaa91c43215e2c777a1aaae80f8",
+    "version": "20140325",
+    "cache": "http://s3.amazonaws.com/openaddresses/ca-ab-strathcona-county.zip"
 }
