@@ -16,7 +16,7 @@ glob.sync('sources/*.json').forEach(function(source) {
                         t.ok('Ignoring ESRI type - skipping');
                         t.end();
                         callback();
-                    } else
+                    } else {
                         t.ok(connectors[data.type], 'type is valid');
                         
                         if (data.skip) {
