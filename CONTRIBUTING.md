@@ -7,9 +7,9 @@ improvements.
 
 If opening an issue with a new datasource, first check `/sources` to 
 make sure that we don't have it already. Not sure? Open an issue, we'd 
-rather a duplicate than missing it altogether!
+rather a duplicate than miss it altogether!
 
-If you are reporting an error, and improvement, or a suggestion, we will 
+If you are reporting an error, nd improvement, or a suggestion, we will 
 do our best to review your issue and either fix or add the features to 
 our roadmap.
 
@@ -18,19 +18,45 @@ our roadmap.
 Comfortable with JSON? Feel free to submit a pull request with the data 
 instead of opening an issue. 
 
-JSON fields include:
+###JSON Fields
+
+####For Us Mortals
+
+When creating a new source, use some combination of the following objects to define the source. Please do not invent new tags without first opening an issue for discussion. Many examples of tag combinations can be found simply by browsing the `./sources` directory.
 
 `data` A URL referencing the dataset
+
 `website` A URL referencing the data portal
+
 `license` A URL or string containing the license
+
 `compression` A string containing the compression type (usually `zip`)
+
 `type` A string containing the protocol (`http`, `ftp`, `ESRI`)
+
 `year` An int containing the year the data was updated
 
 `coverage` An object containing some combination of `country`, 
-`state`, `city`.
+`state`, `city`. Each of which contain a String.
 
-Formatting:
+`note` A String containing a human readable note.
+
+#### The Machine World
+
+There are also several fields that are computer generated. please refrain from using these, our software will generate them automatically.
+
+`cache` A URL referencing a stable source for the raw file. If writing an application, use this instead of data, it is much more stable than using `data` directly.
+
+`fingerprint` A String containg the MD5 hash of the zipped raw data
+
+`processed` A String containing a link to a standardized CSV file. Processed using `openaddresses-conform`
+
+`conform` An object containing the information necessary to convert the raw data into a standardized format.
+
+`version` A string containing a timestamp of when the raw data was last updated.
+
+### Formatting:
+
 A few notes on formatting:
 
 If a field is empty please do not set it to null or an empty string. 
