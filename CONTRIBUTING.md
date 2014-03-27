@@ -1,5 +1,7 @@
 # Contributing to OpenAddresses
 
+[![Build Status](https://travis-ci.org/openaddresses/openaddresses.png?branch=master)](https://travis-ci.org/openaddresses/openaddresses)
+
 ## Reporting Issues
 
 We'd love to hear about a new address source, fixes to an old one, or 
@@ -16,7 +18,7 @@ our roadmap.
 ## Contributing Sources
 
 Comfortable with JSON? Feel free to submit a pull request with the data 
-instead of opening an issue. 
+instead of opening an issue. Before asking for a merge, please keep Travis CI happy, green is good!
 
 ###JSON Fields
 
