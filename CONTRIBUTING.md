@@ -20,6 +20,8 @@ instead of opening an issue.
 
 ###JSON Fields
 
+####For Us Mortals
+
 `data` A URL referencing the dataset
 
 `website` A URL referencing the data portal
@@ -36,6 +38,8 @@ instead of opening an issue.
 `state`, `city`. Each of which contain a String.
 
 `note` A String containing a human readable note.
+
+#### The Machine World
 
 There are also several fields that are computer generated, please refrain from using these, our software will generate them automatically.
 
