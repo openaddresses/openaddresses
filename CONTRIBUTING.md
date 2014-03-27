@@ -43,7 +43,7 @@ When creating a new source, use some combination of the following objects to def
 
 #### The Machine World
 
-There are also several fields that are computer generated, please refrain from using these, our software will generate them automatically.
+There are also several fields that are computer generated. please refrain from using these, our software will generate them automatically.
 
 `cache` A URL referencing a stable source for the raw file. If writing an application, use this instead of data, it is much more stable than using `data` directly.
 
