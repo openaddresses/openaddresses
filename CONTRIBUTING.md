@@ -7,9 +7,9 @@ improvements.
 
 If opening an issue with a new datasource, first check `/sources` to 
 make sure that we don't have it already. Not sure? Open an issue, we'd 
-rather a duplicate than missing it altogether!
+rather a duplicate than miss it altogether!
 
-If you are reporting an error, and improvement, or a suggestion, we will 
+If you are reporting an error, nd improvement, or a suggestion, we will 
 do our best to review your issue and either fix or add the features to 
 our roadmap.
 
