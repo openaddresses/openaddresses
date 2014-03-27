@@ -22,6 +22,8 @@ instead of opening an issue.
 
 ####For Us Mortals
 
+When creating a new source, use some combination of the following objects to define the source. Please do not invent new tags without first opening an issue for discussion. Many examples of tag combinations can be found simply by browsing the `./sources` directory.
+
 `data` A URL referencing the dataset
 
 `website` A URL referencing the data portal
