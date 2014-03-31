@@ -2,7 +2,8 @@ var test = require('tape').test,
     glob = require('glob'),
     fs = require('fs'),
     queue = require('queue-async'),
-    connectors = require('openaddresses-download').connectors;
+    connectors = require('openaddresses-download').connectors,
+    request = require('request');
 
 var q = queue(1);
 
