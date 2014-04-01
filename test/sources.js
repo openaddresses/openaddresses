@@ -37,9 +37,9 @@ function checkSource(i){
                         t.notOk(error, "No Error Accessing MapServer");
                         t.ok(res.statusCode == 200, 'Response 200');
                         t.ok(JSON.parse(body).error == undefined, 'Server Online');
+                        t.end();
+                        checkSource(++index);
                     });
-
-                    t.end();
                     
                 } else if (data.type == "ftp") {
                     console.log("Testing FTP");
