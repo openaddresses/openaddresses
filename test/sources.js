@@ -3,56 +3,110 @@ var test = require('tape').test,
     fs = require('fs'),
     queue = require('queue-async'),
     connectors = require('openaddresses-download').connectors,
-    request = require('request');
+    request = require('request'),
+    Ftp = require('ftp'),
+    url = require('url');
 
-var q = queue(1);
+var manifest = glob.sync('sources/*.json');
+var index = 0;
 
-glob.sync('sources/*.json').forEach(function(source) {
-    q.defer(function(source, callback) {
-        test(source, function(t) {
-            t.doesNotThrow(function() {
-                var data = JSON.parse(fs.readFileSync(source, 'utf8'));
-                if (data.type) {
-                    if (data.type = "ESRI") {
-                        t.ok('Ignoring ESRI type - skipping');
-                        t.end();
-                        callback();
-                    } else {
-                        t.ok(connectors[data.type], 'type is valid');
+checkSource(index);
+
+function checkSource(i){
+    var source = manifest[i];
+
+    if (i == manifest.lenght-1 || !source) {
+        process.exit(0);
+    }
+    
+    test(source, function(t) {
+        t.doesNotThrow(function() {
+            var data = JSON.parse(fs.readFileSync(source, 'utf8'));
+            
+            if (data.skip || data.data == undefined) {
+                console.log('Skipping Source');
+                t.pass();
+                t.end();
+                checkSource(++index);
+            } else {
+                if (data.type == "ESRI") {
+                    console.log("Testing ESRI");
+                    
+                    request(data.data + "?f=json", function (error, res, body) {
                         
-                        if (data.skip) {
-                            t.ok(source + 'skipping');
-                            t.end();
-                            callback();
+                        t.notOk(error, "No Error Accessing MapServer");
+                        t.ok(res.statusCode == 200, 'Response 200');
+                        t.ok(JSON.parse(body).error == undefined, 'Server Online');
+                    });
+
+                    t.end();
+                    
+                } else if (data.type == "ftp") {
+                    console.log("Testing FTP");
+
+                    var opt = url.parse(data.data),
+                        ftp = new Ftp();
+
+                    opt.user = (opt.auth || ':').split(':')[0];
+                    opt.password = (opt.auth || ':').split(':')[1];
+                    opt.connTimeout = 5000;
+
+                    ftp.on('ready', function() {
+                        
+                        ftp.size(opt.path, function(err, size) {
+                            if (err){
+                                console.log("Invalid FTP Path");
+                                t.fail();
+                                t.end();
+                                ftp.destroy();
+                                checkSource(++index);
+                            } else {
+                                console.log("Connection Established");
+                                t.pass();
+                                t.end();
+                                ftp.destroy();
+                                checkSource(++index);
+                            }
+                        });
+                    });
+
+                    ftp.connect(opt);
+                } else if (data.type == "http") {
+                    console.log("Testing HTTP");
+                    connectors[data.type](data, function(err, stream) {
+                        t.ok(stream, 'response is good');
+                        t.notOk(err, 'no error returned');
+                        
+                        if (!stream) {
+                            checkSource(++index);
+                            return t.end()
                         } else {
-                            connectors[data.type](data, function(err, resp) {
-                                t.ok(resp, 'response is good');
-                                t.notOk(err, 'no error returned');
-                                if (!resp) {
-                                    callback();
-                                    return t.end();
-                                }
-                                resp.once('error', function(e) {
-                                    t.fail('server failed: ' + e.message);
-                                    resp.end();
-                                    t.end();
-                                    callback();
-                                });
-                                resp.once('data', function(d) {
-                                    t.pass('received data');
-                                    t.end();
-                                    resp.end();
-                                    callback();
-                                });
+                            stream.once('error', function(e) {
+                                t.fail('server failed: ' + e.message);
+                                t.end();
+                                stream.removeAllListeners();
+                                checkSource(++index);
+                            });
+                            
+                            stream.once('data', function(d) {
+                                console.log('Received data');
+                                stream.removeAllListeners();
+                                stream.destroy(); //HTTP
+                                t.end();
+                                checkSource(++index);
                             });
                         }
-                    }
+                    });
                 } else {
-                    t.ok('has no type or data');
+                    t.fail('Incorrect Type');
                     t.end();
-                    callback();
+                    checkSource(++index);
                 }
-            }, source + ' is valid json');
-        });
-    }, source);
-});
+            }
+        }, source + ' is valid json');
+    });
+
+}
+
+
+       
