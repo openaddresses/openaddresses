@@ -15,7 +15,7 @@ for a tool to download this data.
 
 ## Why collect addresses?
 
-[Ian](http://github.com/iandees) spent a lot of time tracking down [address data](https://docs.google.com/spreadsheet/ccc?key=0AsVnlPsfrhUIdEVZTzVFalFYYnlvTkc0R05wcUpsWVE&usp=drive_web) for the US and he wanted to share that work with others.
+Street address data is essential infrastructure. Street names, house numbers and zip codes, when combined with geographic coordinates, are the hub that connects digital to physical places. Precisely because of their connecting role, free and open addresses are rocket fuel for civic and commercial innovation.
 
 ## License
 
