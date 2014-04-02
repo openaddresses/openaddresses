@@ -8,7 +8,8 @@ var test = require('tape').test,
     url = require('url');
 
 var manifest = glob.sync('sources/*.json');
-var index = 0;
+var index = 0,
+    retry = 3;
 
 checkSource(index);
 
@@ -37,6 +38,9 @@ function checkSource(i){
                         t.notOk(error, "No Error Accessing MapServer");
                         t.ok(res.statusCode == 200, 'Response 200');
                         t.ok(JSON.parse(body).error == undefined, 'Server Online');
+
+                        if (
+                        
                         t.end();
                         checkSource(++index);
                     });
