@@ -5,11 +5,22 @@
         "city": "Austin"
     },
     "data": "ftp://ftp.ci.austin.tx.us/GIS-Data/Regional/address_points/address_point.zip",
-    "license": "",
     "year": "11/8/2013",
     "type": "ftp",
     "compression": "zip",
     "fingerprint": "85240e94c4216abb2ad807906599c588",
     "version": "20140330",
-    "cache": "http://s3.amazonaws.com/openaddresses/us-tx-auston.zip"
+    "cache": "http://s3.amazonaws.com/openaddresses/us-tx-auston.zip",
+    "conform": {
+        "merge": [
+            "STREET_NAM",
+            "STREET_TYP"
+        ],
+        "lon": "x",
+        "lat": "y",
+        "number": "ADDRESS",
+        "street": "auto_street",
+        "type": "shapefile"
+    },
+    "processed": "http://s3.amazonaws.com/openaddresses/us-tx-auston.csv"
 }
