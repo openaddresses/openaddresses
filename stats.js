@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 //NPM Dependancies
-var fs = require('fs');
+var fs = require('fs'),
+    _ = require('underscore');
 
 //Setup list of sources
 var sources = fs.readdirSync("./sources/");
@@ -38,15 +39,15 @@ sources.forEach( function(source) {
         return new Error("Invalid JSON: '" + source + "'");    
     }
 
-    if (data.processed)
-        processed.push(source);
-    else
+    if (!data.processed)
         unprocessed.push(source);
-
-    if (data.cache)
-        cached.push(source);
     else
+        processed.push(source);
+
+    if (!data.cache)
         uncached.push(source);
+    else
+        cached.push(source);
 
     if (data.skip)
         skip.push(source);
@@ -66,6 +67,7 @@ uncached.forEach(function(source) {
 });
 console.log("--------------------------------------------");
 console.log("List of Unprocessed But Cached");
-processed.forEach(function(source) {
+
+_.intersection(unprocessed, cached).forEach(function(source) {
     console.log("  " + source);
 });
