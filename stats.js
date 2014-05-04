@@ -57,3 +57,13 @@ console.log("Cached: " + cached.length);
 console.log("Uncached: " + total - cached.length);
 console.log("Processed: " + processed.length);
 console.log("Unprocessed: " + total - processed.length);
+
+console.log("List of Uncached:");
+uncached.forEach(Function(source) {
+    console.log("  " + source);
+});
+
+console.log("List of Unprocessed:");
+uncached.forEach(Function(source) {
+    console.log("  " + source);
+});
