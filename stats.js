@@ -23,46 +23,48 @@ var processed = [],
 
 
 
-sources.forEach(function(source){
-    fs.readFile(source, 'utf8', function (err, data) {
-        if (err) {
-            return new Error("Can't Access: '" + source + "'");
-        }
-        
-        try {
-            var data = JSON.parse(data);
-        } catch (err) {
-            return new Error("Invalid JSON: '" + source + "'");    
-        }
-        
-        if (data.processed)
-            processed.push(source);
-        else
-            unprocessed.push(source);
-        
-        if (data.cached)
-            cached.push(source);
-        else
-            uncached.push(source);
-        
-        if (data.skip)
-            skip.push(source);
-    });
+sources.forEach( function(source) {
+    var input;
+    
+    try {
+        input = fs.readFileSync("./sources/" + source)
+    } catch (err) {
+        return new Error("Can't Access: '" + source + "'");
+    }
+
+    try {
+        var data = JSON.parse(input);
+    } catch (err) {
+        return new Error("Invalid JSON: '" + source + "'");    
+    }
+
+    if (data.processed)
+        processed.push(source);
+    else
+        unprocessed.push(source);
+
+    if (data.cache)
+        cached.push(source);
+    else
+        uncached.push(source);
+
+    if (data.skip)
+        skip.push(source);
 });
 
 console.log("OpenAddresses Stats Report\n");
 console.log("Total Sources: " + total);
-console.log("-------------------");
+console.log("--------------------------------------------");
 console.log("Cached: " + cached.length);
 console.log("Uncached: " + uncached.length);
 console.log("Processed: " + processed.length);
 console.log("Unprocessed: " + unprocessed.length);
-
+console.log("--------------------------------------------");
 console.log("List of Uncached:");
 uncached.forEach(function(source) {
     console.log("  " + source);
 });
-
+console.log("--------------------------------------------");
 console.log("List of Unprocessed:");
 uncached.forEach(function(source) {
     console.log("  " + source);
