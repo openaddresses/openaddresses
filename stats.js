@@ -65,7 +65,7 @@ uncached.forEach(function(source) {
     console.log("  " + source);
 });
 console.log("--------------------------------------------");
-console.log("List of Unprocessed:");
-uncached.forEach(function(source) {
+console.log("List of Unprocessed But Cached");
+processed.forEach(function(source) {
     console.log("  " + source);
 });
