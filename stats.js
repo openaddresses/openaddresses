@@ -4,7 +4,7 @@
 var fs = require('fs');
 
 //Setup list of sources
-var sources = fs.readdirSync(sourceDir);
+var sources = fs.readdirSync("./sources/");
 
 //Only retain *.json
 for (var i = 0; i < sources.length; i++) {
@@ -24,7 +24,7 @@ var processed = [],
 
 
 sources.forEach(function(source){
-    fs.readFile(file, 'utf8', function (err, data) {
+    fs.readFile(source, 'utf8', function (err, data) {
         if (err) {
             return new Error("Can't Access: '" + source + "'");
         }
@@ -54,16 +54,16 @@ console.log("OpenAddresses Stats Report\n");
 console.log("Total Sources: " + total);
 console.log("-------------------");
 console.log("Cached: " + cached.length);
-console.log("Uncached: " + total - cached.length);
+console.log("Uncached: " + uncached.length);
 console.log("Processed: " + processed.length);
-console.log("Unprocessed: " + total - processed.length);
+console.log("Unprocessed: " + unprocessed.length);
 
 console.log("List of Uncached:");
-uncached.forEach(Function(source) {
+uncached.forEach(function(source) {
     console.log("  " + source);
 });
 
 console.log("List of Unprocessed:");
-uncached.forEach(Function(source) {
+uncached.forEach(function(source) {
     console.log("  " + source);
 });
