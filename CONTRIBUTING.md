@@ -20,6 +20,17 @@ our roadmap.
 Comfortable with JSON? Feel free to submit a pull request with the data 
 instead of opening an issue. Before asking for a merge, please keep Travis CI happy, green is good!
 
+### Naming Files
+
+Although the file name is redundand (The same information is stored in JSON), using coherent file names makes it much easier for contributers to quickly evaluate whether a souce already exists. Please follow the following convention 
+
+Coverage | Code | Example
+-------- | ---- | -------
+Country  | {[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)}.json | `ca.json`
+Province | {[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)}-{2 letterstate/province code}.json | `us-il.json`
+County | {[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)}-{2 letterstate/province code}-{county}_county.json | `us-co-routt_county.json`
+City | {[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)}-{2 letterstate/province code}-{city}.json | `ca-bc-vancouver.json`
+
 ###JSON Fields
 
 ####For Us Mortals
