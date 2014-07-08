@@ -26,10 +26,10 @@ Although the file name is redundand (The same information is stored in JSON), us
 
 Coverage | Code | Example
 -------- | ---- | -------
-Country  | `<[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).json` | `ca.json`
-Province | `<[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)-<2 letterstate/province code>.json` | `us-il.json`
-County | `<[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)-<2 letterstate/province code>-<county>_county.json` | `us-co-routt_county.json`
-City | `<[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)-<2 letterstate/province code>-<city>.json` | `ca-bc-vancouver.json`
+Country  | <[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).json | `ca.json`
+Province | <[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)-<2 letterstate/province code>.json | `us-il.json`
+County | <[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)-<2 letterstate/province code>-<county>_county.json | `us-co-routt_county.json`
+City | <[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)-<2 letterstate/province code>-<city>.json | `ca-bc-vancouver.json`
 
 ###JSON Fields
 
