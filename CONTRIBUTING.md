@@ -37,7 +37,7 @@ City | {[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-
 
 When creating a new source, use some combination of the following objects to define the source. Please do not invent new tags without first opening an issue for discussion. Many examples of tag combinations can be found simply by browsing the `./sources` directory.
 
-`data` A URL referencing the dataset
+`data` A URL referencing the dataset (Required!)
 
 `website` A URL referencing the data portal
 
@@ -45,12 +45,12 @@ When creating a new source, use some combination of the following objects to def
 
 `compression` A string containing the compression type (usually `zip`)
 
-`type` A string containing the protocol (`http`, `ftp`, `ESRI`)
+`type` A string containing the protocol (`http`, `ftp`, `ESRI`) (Required!)
 
 `year` An int containing the year the data was updated
 
 `coverage` An object containing some combination of `country`, 
-`state`, `city`. Each of which contain a String.
+`state`, `city`. Each of which contain a String. (Required!)
 
 `note` A String containing a human readable note.
 
