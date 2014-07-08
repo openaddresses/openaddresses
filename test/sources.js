@@ -28,7 +28,6 @@ function checkSource(i){
 
             t.ok(data.coverage, "Data Coverage Included");
 
-            t.pass('Incorrect Type');
             t.end();
             checkSource(++index);
         }, source + ' is valid json');
