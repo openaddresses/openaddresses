@@ -22,10 +22,18 @@ function checkSource(i){
                 console.log('[WARN] Skip flag Detected!');
             }
 
+            t.ok(data.data, "Data URL Included");
+
+            t.ok(data.type, "Data URL Type Included");
+
+            t.ok(data.coverage, "Data Coverage Included");
+
             t.pass('Incorrect Type');
             t.end();
             checkSource(++index);
         }, source + ' is valid json');
     });
+
+
 
 }
