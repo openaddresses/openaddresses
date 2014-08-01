@@ -22,7 +22,7 @@ instead of opening an issue. Before asking for a merge, please keep Travis CI ha
 
 ### Naming Files
 
-Although the file name is redundand (The same information is stored in JSON), using coherent file names makes it much easier for contributers to quickly evaluate whether a souce already exists. Please follow the following convention 
+Although the file name is redundant (The same information is stored in JSON), using coherent file names makes it much easier for contributers to quickly evaluate whether a souce already exists. Please follow the following convention 
 
 Coverage | Code | Example
 -------- | ---- | -------
