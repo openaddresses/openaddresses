@@ -40,17 +40,17 @@ sources.forEach( function(source) {
     }
 
     if (!data.processed)
-        unprocessed.push(source);
+        unprocessed.push(data.note ? source + " | " + data.note : source);
     else
-        processed.push(source);
+        processed.push(data.note ? source + " | " + data.note : source);
 
     if (!data.cache)
-        uncached.push(source);
+        uncached.push(data.note ? source + " | " + data.note : source);
     else
-        cached.push(source);
+        cached.push(data.note ? source + " | " + data.note : source);
 
     if (data.skip)
-        skip.push(source);
+        skip.push(data.note ? source + " | " + data.note : source);
 });
 
 console.log("OpenAddresses Stats Report\n");
