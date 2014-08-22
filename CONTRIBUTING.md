@@ -4,32 +4,26 @@
 
 ## Reporting Issues
 
-We'd love to hear about a new address source, fixes to an old one, or 
-improvements. 
+We'd love to hear about a new address source, fixes to an old one, or improvements. 
 
-If opening an issue with a new datasource, first check `/sources` to 
-make sure that we don't have it already. Not sure? Open an issue, we'd 
-rather a duplicate than miss it altogether!
+If opening an issue with a new datasource, first check `/sources` to make sure that we don't have it already. Not sure? Open an issue, we'd rather a duplicate than miss it altogether!
 
-If you are reporting an error, nd improvement, or a suggestion, we will 
-do our best to review your issue and either fix or add the features to 
-our roadmap.
+If you are reporting an error, an improvement, or a suggestion, we will do our best to review your issue and either fix or add the features to our roadmap.
 
 ## Contributing Sources
 
-Comfortable with JSON? Feel free to submit a pull request with the data 
-instead of opening an issue. Before asking for a merge, please keep Travis CI happy, green is good!
+Comfortable with JSON? Feel free to submit a pull request with the data instead of opening an issue. Before asking for a merge, please keep Travis CI happy by making sure you submit well-formed JSON: green is good!
 
 ### Naming Files
 
-Although the file name is redundant (The same information is stored in JSON), using coherent file names makes it much easier for contributers to quickly evaluate whether a souce already exists. Please follow the following convention 
+Although the file name is redundant (the same information is stored in JSON), using coherent file names makes it much easier for contributers to quickly evaluate whether a souce already exists. Please follow the following convention 
 
 Coverage | Code | Example
 -------- | ---- | -------
 Country  | {[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)}.json | `ca.json`
 Province | {[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)}-{2 letterstate/province code}.json | `us-il.json`
-County | {[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)}-{2 letterstate/province code}-{county}_county.json | `us-co-routt_county.json`
-City | {[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)}-{2 letterstate/province code}-{city}.json | `ca-bc-vancouver.json`
+County | {[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)}-{2 letterstate/province code}-{county}.json | `us-co-routt.json`
+City | {[ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)}-{2 letterstate/province code}-city_of_{city}.json | `ca-bc-city_of_vancouver.json`
 
 ###JSON Fields
 
@@ -41,22 +35,21 @@ When creating a new source, use some combination of the following objects to def
 
 `website` A URL referencing the data portal
 
-`license` A URL or string containing the license
+`license` A URL or string describing the license for the dataset
 
 `compression` A string containing the compression type (usually `zip`)
 
-`type` A string containing the protocol (`http`, `ftp`, `ESRI`) (Required!)
+`type` A string containing the protocol (Required! One of: `http`, `ftp`, `ESRI`)
 
-`year` An int containing the year the data was updated
+`year` An integer containing the year the data was updated
 
-`coverage` An object containing some combination of `country`, 
-`state`, `city`. Each of which contain a String. (Required!)
+`coverage` An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String. (Required!)
 
 `note` A String containing a human readable note.
 
 #### The Machine World
 
-There are also several fields that are computer generated. please refrain from using these, our software will generate them automatically.
+There are also several fields that are computer-generated. please refrain from adding these, our software will generate them automatically.
 
 `cache` A URL referencing a stable source for the raw file. If writing an application, use this instead of data, it is much more stable than using `data` directly.
 
