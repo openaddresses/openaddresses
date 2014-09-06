@@ -59,8 +59,8 @@ for path in glob('sources/us-*.json'):
     
     county = info['coverage']['county']
     
-    if type(county) is list or basename(path)[6:-5] != county.lower().replace(' ', '-'):
-        continue
+    # if type(county) is list or basename(path)[6:-5] != county.lower().replace(' ', '-'):
+    #     continue
     
     if type(county) is list:
         county_names = [counties[(state_fips, c)] for c in county]
