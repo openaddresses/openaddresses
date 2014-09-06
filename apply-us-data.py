@@ -50,7 +50,8 @@ for path in glob('sources/us-*.json'):
     if 'US Census' in info['coverage']:
         continue
     
-    assert '\n    "coverage": {\n        "' in data
+    prefix = '\n    "coverage": {\n        '
+    assert prefix + '"' in data
     
     print path, '...'
     
@@ -77,7 +78,7 @@ for path in glob('sources/us-*.json'):
     census_dict = dict(geoid=geoid, name=county_name, state=state_name)
     census_json = json.dumps(census_dict, sort_keys=True)
     
-    new_data = data.replace('\n    "coverage": {\n        "', '\n    "coverage": {{\n        "US Census": {0},\n        "'.format(census_json))
+    new_data = data.replace(prefix, '{0}"US Census": {1},\n        '.format(prefix, census_json))
     
     with open(path, 'w') as file:
         file.write(new_data)
