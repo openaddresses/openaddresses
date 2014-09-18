@@ -22,11 +22,9 @@ var processed = [],
     uncached = [],
     skip = [];
 
-
-
 sources.forEach( function(source) {
     var input;
-    
+
     try {
         input = fs.readFileSync("./sources/" + source)
     } catch (err) {
@@ -36,7 +34,7 @@ sources.forEach( function(source) {
     try {
         var data = JSON.parse(input);
     } catch (err) {
-        return new Error("Invalid JSON: '" + source + "'");    
+        return new Error("Invalid JSON: '" + source + "'");
     }
 
     if (!data.processed)
