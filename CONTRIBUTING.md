@@ -2,10 +2,6 @@
 
 [![Build Status](https://travis-ci.org/openaddresses/openaddresses.png?branch=master)](https://travis-ci.org/openaddresses/openaddresses)
 
-## Bounty
-
-There is currently a bounty being offered by the US Open Data Institute. $10 will be given for every address source added to the project. See below for how to contribute!
-
 ## Reporting Issues
 
 We'd love to hear about a new address source, fixes to an old one, or improvements. 
