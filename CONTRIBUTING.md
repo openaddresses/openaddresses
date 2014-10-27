@@ -53,9 +53,9 @@ There are also several fields that are computer-generated. please refrain from a
 
 `cache` A URL referencing a stable source for the raw file. If writing an application, use this instead of data, it is much more stable than using `data` directly.
 
-`fingerprint` A String containing the MD5 hash of the zipped raw data
+`fingerprint` A String containing the MD5 hash of the zipped raw data.
 
-`processed` A String containing a link to a standardized CSV file. Processed using `openaddresses-conform`
+`processed` A String containing a link to a standardized CSV file. Processed using [`openaddresses-conform`](https://github.com/openaddresses/openaddresses-conform).
 
 `conform` An object containing the information necessary to convert the raw data into a standardized format.
 
