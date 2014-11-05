@@ -12,6 +12,7 @@ for a tool to download this data.
 
 - [Open an issue](https://github.com/openaddresses/openaddresses/issues/new) and give information about where to find more address data. Be sure to include a link to the data and a description of the coverage area for the data.
 - You can also create a pull request to the [sources](https://github.com/openaddresses/openaddresses/tree/master/sources) directory.
+- More details in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Why collect addresses?
 
