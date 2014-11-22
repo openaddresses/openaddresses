@@ -1,36 +1,36 @@
 {
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1085", 
+    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1085",
+    "cache": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-yeongdeungpogu.zip",
+    "compression": "zip",
     "conform": {
-        "headers": 2, 
-        "encoding": "EUCKR", 
-        "lon": "POINT_X", 
-        "number": "LNDN_MA_SN", 
-        "skiplines": 2, 
+        "type": "csv",
+        "lon": "POINT_X",
+        "skiplines": 2,
+        "number": "LNDN_MA_SN",
+        "lat": "POINT_Y",
         "advanced_merge": {
             "auto_street": {
+                "separator": " ",
                 "fields": [
-                    "RD_NM", 
-                    "BD_NM", 
+                    "RD_NM",
+                    "BD_NM",
                     "DET_BD_NM"
-                ], 
-                "separator": " "
+                ]
             }
-        }, 
-        "street": "auto_street", 
-        "lat": "POINT_Y", 
-        "srs": "EPSG:2097", 
-        "type": "csv"
-    }, 
-    "compression": "zip", 
-    "license": "CCBY", 
-    "skip": true, 
-    "cache": "http://s3.amazonaws.com/openaddresses/kr-seoul-yeongdeungpogu.zip", 
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.", 
-    "version": "20141121", 
+        },
+        "street": "auto_street",
+        "headers": 2,
+        "srs": "EPSG:2097",
+        "encoding": "EUCKR"
+    },
+    "version": "20141121",
+    "skip": true,
+    "type": "http",
     "coverage": {
-        "country": "kr", 
-        "state": "seoul", 
+        "state": "seoul",
+        "country": "kr",
         "city": "\uc601\ub4f1\ud3ec\uad6c"
-    }, 
-    "type": "http"
+    },
+    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+    "license": "CCBY"
 }

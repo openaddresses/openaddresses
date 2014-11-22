@@ -1,36 +1,36 @@
 {
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1073", 
+    "license": "CCBY",
+    "cache": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-keumcheongu.zip",
     "conform": {
-        "headers": 2, 
-        "encoding": "EUCKR", 
-        "lon": "POINT_X", 
-        "number": "LNDN_MA_SN", 
-        "skiplines": 2, 
+        "lat": "POINT_Y",
+        "type": "csv",
+        "street": "auto_street",
+        "encoding": "EUCKR",
         "advanced_merge": {
             "auto_street": {
+                "separator": " ",
                 "fields": [
-                    "RD_NM", 
-                    "BD_NM", 
+                    "RD_NM",
+                    "BD_NM",
                     "DET_BD_NM"
-                ], 
-                "separator": " "
+                ]
             }
-        }, 
-        "street": "auto_street", 
-        "lat": "POINT_Y", 
-        "srs": "EPSG:2097", 
-        "type": "csv"
-    }, 
-    "compression": "zip", 
-    "license": "CCBY", 
-    "skip": false, 
-    "cache": "http://s3.amazonaws.com/openaddresses/kr-seoul-keumcheongu.zip", 
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.", 
-    "version": "20141121", 
+        },
+        "skiplines": 2,
+        "headers": 2,
+        "srs": "EPSG:2097",
+        "number": "LNDN_MA_SN",
+        "lon": "POINT_X"
+    },
+    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1073",
+    "compression": "zip",
     "coverage": {
-        "country": "kr", 
-        "state": "seoul", 
-        "city": "\uae08\ucc9c\uad6c"
-    }, 
-    "type": "http"
+        "city": "\uae08\ucc9c\uad6c",
+        "country": "kr",
+        "state": "seoul"
+    },
+    "version": "20141121",
+    "type": "http",
+    "skip": false,
+    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage."
 }

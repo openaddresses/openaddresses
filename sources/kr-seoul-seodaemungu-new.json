@@ -1,36 +1,36 @@
 {
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1079", 
+    "license": "CCBY",
+    "compression": "zip",
+    "cache": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-seodaemungu.zip",
     "conform": {
-        "headers": 2, 
-        "encoding": "EUCKR", 
-        "lon": "POINT_X", 
-        "number": "LNDN_MA_SN", 
-        "skiplines": 2, 
+        "skiplines": 2,
         "advanced_merge": {
             "auto_street": {
+                "separator": " ",
                 "fields": [
-                    "RD_NM", 
-                    "BD_NM", 
+                    "RD_NM",
+                    "BD_NM",
                     "DET_BD_NM"
-                ], 
-                "separator": " "
+                ]
             }
-        }, 
-        "street": "auto_street", 
-        "lat": "POINT_Y", 
-        "srs": "EPSG:2097", 
-        "type": "csv"
-    }, 
-    "compression": "zip", 
-    "license": "CCBY", 
-    "skip": true, 
-    "cache": "http://s3.amazonaws.com/openaddresses/kr-seoul-seodaemungu.zip", 
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.", 
-    "version": "20141121", 
+        },
+        "lat": "POINT_Y",
+        "encoding": "EUCKR",
+        "street": "auto_street",
+        "type": "csv",
+        "headers": 2,
+        "srs": "EPSG:2097",
+        "number": "LNDN_MA_SN",
+        "lon": "POINT_X"
+    },
     "coverage": {
-        "country": "kr", 
-        "state": "seoul", 
+        "state": "seoul",
+        "country": "kr",
         "city": "\uc11c\ub300\ubb38\uad6c"
-    }, 
-    "type": "http"
+    },
+    "version": "20141121",
+    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+    "type": "http",
+    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1079",
+    "skip": true
 }

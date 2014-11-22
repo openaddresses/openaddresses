@@ -1,36 +1,36 @@
 {
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1084", 
     "conform": {
-        "headers": 2, 
-        "encoding": "EUCKR", 
-        "lon": "POINT_X", 
-        "number": "LNDN_MA_SN", 
-        "skiplines": 2, 
+        "type": "csv",
+        "headers": 2,
+        "srs": "EPSG:2097",
+        "encoding": "EUCKR",
         "advanced_merge": {
             "auto_street": {
+                "separator": " ",
                 "fields": [
-                    "RD_NM", 
-                    "BD_NM", 
+                    "RD_NM",
+                    "BD_NM",
                     "DET_BD_NM"
-                ], 
-                "separator": " "
+                ]
             }
-        }, 
-        "street": "auto_street", 
-        "lat": "POINT_Y", 
-        "srs": "EPSG:2097", 
-        "type": "csv"
-    }, 
-    "compression": "zip", 
-    "license": "CCBY", 
-    "skip": true, 
-    "cache": "http://s3.amazonaws.com/openaddresses/kr-seoul-yangcheongu.zip", 
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.", 
-    "version": "20141121", 
+        },
+        "street": "auto_street",
+        "number": "LNDN_MA_SN",
+        "lat": "POINT_Y",
+        "skiplines": 2,
+        "lon": "POINT_X"
+    },
+    "version": "20141121",
     "coverage": {
-        "country": "kr", 
-        "state": "seoul", 
+        "state": "seoul",
+        "country": "kr",
         "city": "\uc591\ucc9c\uad6c"
-    }, 
+    },
+    "compression": "zip",
+    "cache": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-yangcheongu.zip",
+    "skip": true,
+    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1084",
+    "license": "CCBY",
     "type": "http"
 }

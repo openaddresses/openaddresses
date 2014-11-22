@@ -1,36 +1,36 @@
 {
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1073", 
+    "skip": true,
+    "coverage": {
+        "city": "\uae08\ucc9c\uad6c",
+        "state": "seoul",
+        "country": "kr"
+    },
+    "license": "CCBY",
+    "type": "http",
+    "cache": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-keumcheongu.zip",
+    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+    "compression": "zip",
+    "version": "20141121",
     "conform": {
-        "headers": 2, 
-        "encoding": "EUCKR", 
-        "lon": "POINT_X", 
-        "number": "LNDN_MA_SN", 
-        "skiplines": 2, 
+        "lon": "POINT_X",
+        "number": "LNDN_MA_SN",
+        "srs": "EPSG:2097",
+        "skiplines": 2,
+        "type": "csv",
         "advanced_merge": {
             "auto_street": {
                 "fields": [
-                    "RD_NM", 
-                    "BD_NM", 
+                    "RD_NM",
+                    "BD_NM",
                     "DET_BD_NM"
-                ], 
+                ],
                 "separator": " "
             }
-        }, 
-        "street": "auto_street", 
-        "lat": "POINT_Y", 
-        "srs": "EPSG:2097", 
-        "type": "csv"
-    }, 
-    "compression": "zip", 
-    "license": "CCBY", 
-    "skip": true, 
-    "cache": "http://s3.amazonaws.com/openaddresses/kr-seoul-keumcheongu.zip", 
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.", 
-    "version": "20141121", 
-    "coverage": {
-        "country": "kr", 
-        "state": "seoul", 
-        "city": "\uae08\ucc9c\uad6c"
-    }, 
-    "type": "http"
+        },
+        "lat": "POINT_Y",
+        "street": "auto_street",
+        "headers": 2,
+        "encoding": "EUCKR"
+    },
+    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1073"
 }
