@@ -1,7 +1,19 @@
 {
+    "type": "http",
     "cache": "http://s3.amazonaws.com/data.openaddresses.io/cache/jp-shimane.zip",
+    "website": "http://nlftp.mlit.go.jp/isj/index.html",
+    "compression": "zip",
+    "attribution": "Japanese Ministry of Land, Infrastructure and Transport",
+    "coverage": {
+        "country": "jp",
+        "state": "\u5cf6\u6839\u770c"
+    },
     "conform": {
-        "encoding": "SHIFT_JISX0213",
+        "type": "csv",
+        "lat": "\u7def\u5ea6",
+        "srs": "EPSG:4612",
+        "number": "auto_number",
+        "street": "\u5927\u5b57\u30fb\u753a\u4e01\u76ee\u540d",
         "advanced_merge": {
             "auto_number": {
                 "separator": "-",
@@ -11,20 +23,9 @@
                 ]
             }
         },
-        "street": "\u5927\u5b57\u30fb\u753a\u4e01\u76ee\u540d",
-        "srs": "EPSG:4612",
-        "number": "auto_number",
-        "lat": "\u7def\u5ea6",
         "lon": "\u7d4c\u5ea6",
-        "type": "csv"
-    },
-    "compression": "zip",
-    "website": "http://nlftp.mlit.go.jp/isj/index.html",
-    "coverage": {
-        "country": "jp",
-        "state": "\u5cf6\u6839\u770c"
+        "encoding": "SHIFT_JISX0213"
     },
     "license": "http://nlftp.mlit.go.jp/ksj/other/yakkan.html",
-    "data": "http://nlftp.mlit.go.jp/isj/dls/data/12.0a/32000-12.0a.zip",
-    "type": "http"
+    "data": "http://nlftp.mlit.go.jp/isj/dls/data/12.0a/32000-12.0a.zip"
 }
