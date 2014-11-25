@@ -16,7 +16,8 @@ function checkSource(i){
         t.doesNotThrow(function() {
             var data = JSON.parse(fs.readFileSync(source, 'utf8'));
             if (data.skip) t.pass("WARN - Skip Flag Detected");            
-            t.ok(data.data, "Checking for data in " + source);
+            t.ok(data.data, "Checking for data");
+            t.ok(data.type, "Checking for type");
 
             t.end();
             checkSource(++index);
