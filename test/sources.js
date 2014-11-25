@@ -19,6 +19,7 @@ function checkSource(i){
             t.ok(data.data, "Checking for data");
             t.ok(data.type, "Checking for type");
             if (data.compression && ['zip'].indexOf(data.compression) === -1) t.fail("Compression type not supported");
+            if (['http', 'ftp', 'ESRI'].indexOf(data.type) === -1) process.exit();//t.fail("Type not supported");
 
             t.end();
             checkSource(++index);
