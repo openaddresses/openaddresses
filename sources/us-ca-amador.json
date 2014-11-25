@@ -1,6 +1,10 @@
 {
     "coverage": {
-        "US Census": {"geoid": "06005", "name": "Amador County", "state": "California"},
+        "US Census": {
+            "geoid": "06005",
+            "name": "Amador County",
+            "state": "California"
+        },
         "country": "us",
         "state": "ca",
         "county": "Amador"
@@ -9,5 +13,13 @@
     "website": "http://www.co.amador.ca.us/departments/information-technology/gis/gis-data",
     "type": "http",
     "year": 2012,
-    "compression": "zip"
+    "compression": "zip",
+    "conform": {
+        "lon": "x",
+        "lat": "y",
+        "number": "ADDRNUM",
+        "merge": ["ADDRPREFIX", "ADDRRDNAME", "ADDRRDTYPE", "ADDRSUFFIX"],
+        "street": "auto_street",
+        "type": "shapefile-polygon"
+    }
 }
