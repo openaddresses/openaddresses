@@ -16,7 +16,7 @@ function checkSource(i){
         t.doesNotThrow(function() {
             var data = JSON.parse(fs.readFileSync(source, 'utf8'));
             if (data.skip || data.data === undefined) console.log('[WARN] Skip flag Detected!');
-            
+           
             t.end();
             checkSource(++index);
         }, source + ' is valid json');
