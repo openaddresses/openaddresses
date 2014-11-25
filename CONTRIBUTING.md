@@ -47,19 +47,7 @@ When creating a new source, use some combination of the following objects to def
 
 `note` A String containing a human readable note.
 
-#### The Machine World
-
-There are also several fields that are computer-generated. please refrain from adding these, our software will generate them automatically.
-
-`cache` A URL referencing a stable source for the raw file. If writing an application, use this instead of data, it is much more stable than using `data` directly.
-
-`fingerprint` A String containing the MD5 hash of the zipped raw data.
-
-`processed` A String containing a link to a standardized CSV file. Processed using [`openaddresses-conform`](https://github.com/openaddresses/openaddresses-conform).
-
-`conform` An object containing the information necessary to convert the raw data into a standardized format.
-
-`version` A string containing a timestamp of when the raw data was last updated.
+`conform` An object containing the information necessary to convert the raw data into a standardized format. See openaddresses/openaddresses-conform
 
 ### Formatting:
 
