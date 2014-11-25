@@ -18,6 +18,7 @@ function checkSource(i){
             if (data.skip) t.pass("WARN - Skip Flag Detected");            
             t.ok(data.data, "Checking for data");
             t.ok(data.type, "Checking for type");
+            if (data.compression && ['zip'].indexOf(data.compression) === -1) t.fail("Compression type not supported");
 
             t.end();
             checkSource(++index);
