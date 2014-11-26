@@ -8,10 +8,19 @@ We'd love to hear about a new address source, fixes to an old one, or make impro
 
 ### New Sources
 
-If opening an issue with a new datasource, first check `./sources` to make sure that we don't have it already.
-We also have many sources listed on our [wiki](https://github.com/openaddresses/openaddresses/wiki) that we are aware of but due to price or format are unable to add to the project.
+Have a potential source? Fantastic! Follow these steps to help us get it into the project as fast as possible!
 
-Not sure if we know about a source? Open an issue, we'd rather a duplicate than miss it altogether!
+- Check `./sources/` to make sure we don't have it already. Sources that overlap are ok as long as they are coming from different providers.
+- Check the [wiki](https://github.com/openaddresses/openaddresses/wiki) to make sure it isn't listed there
+
+Still a new source? Awesome!
+- If the source is raster data (images/webmap/not downloadable) please add it to the [Raster Wiki](https://github.com/openaddresses/openaddresses/wiki/Raster-Data-Sources)
+- If the source costs money, please add it to the [Commercial Wiki](https://github.com/openaddresses/openaddresses/wiki/Commercial-sources)
+- If the source is parcel data, please add it to the [Parcel Wiki](https://github.com/openaddresses/openaddresses/wiki/Parcel-Sources)
+- If you have an awesome link/contact but no data, add it to the [Outreach Wiki](https://github.com/openaddresses/openaddresses/wiki/Potential-Outreach)
+- Finally if you have raw data, open a [issue](https://github.com/openaddresses/openaddresses/issues/new) and we'll add it for you or [add it yourself](https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md)
+
+Confused? Not sure where your source fits in? Open an [issue](https://github.com/openaddresses/openaddresses/issues/new), we'd rather a duplicate than miss it altogether!
 
 ### Errors & Current Sources
 
