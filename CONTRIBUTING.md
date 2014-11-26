@@ -99,7 +99,7 @@ systems. The following example will add columns to the output CSV named
 `custom_number` and `auto_street` that contained merged contents of the forms
 `STREET_A-STREET_B-STREET_C` and `ROAD_A ROAD_B`, respectively:
 
-```
+```JSON
 "conform": {
     "advanced_merge": {
         "custom_number": {
