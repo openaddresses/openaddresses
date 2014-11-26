@@ -96,7 +96,7 @@ Tag | Note |
 `city` | Name of the City or Municipality in which the address falls
 `postcode` | Postcode or zip-code field in which the address falls
 `district` | District/County/Sub-Region in which the address falls
-`state` | State/Region/Province in which the address falls
+`region` | State/Region/Province in which the address falls
 `addrtype` | Type of address. `industrial`, `residential`, etc.
 `notes` | Legal description of address or notes about the property.
 
