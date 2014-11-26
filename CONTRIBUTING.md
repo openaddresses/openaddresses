@@ -49,7 +49,7 @@ the minimum data required to process a source. If you are not able to provide th
 file a ticket instead of a pull request as the data may not be suitable for inclusion.
 
 Tag | Note |
--- | --
+| --- | --- |
 `data` | A URL referencing the dataset. This should point to the raw data and not a web portal.
 `compression` | A string containing the compression type (usually `zip`). Omit if source is not compressed.
 `type` | A string containing the protocol (One of: `http`, `ftp`, `ESRI`)
@@ -63,7 +63,7 @@ it needs a conform Object. This JSON Object tells the processing software how to
 ##### Processing Fields
 
 Tag | Note |
--- | --
+--- | ---
 `conform` **required** | Parent object
 `type` **required** | The type properties stores the format. It can currently be either `shapefile`, `shapefile-polygon`, `csv` or `geojson` **required**
 `csvsplit` | The character to delimit CSVs by. Defaults to comma.
@@ -81,7 +81,7 @@ Tag | Note |
 If using a text processing function above, the output field is usally `auto_number` or `auto_street` unless otherwise noted.
 
 Tag | Note |
--- | --
+--- | ---
 `lon` **required** | The longitude column. Due to the way the conversion scripts work this is currently always going to be `x` unless using a `csv`.
 `lat` **required** | The latitude column. Due to the way the conversion script work this is currently always going to be `y` unless using a `csv`.
 `number` **required** | The name of the number columm. This will either be the name of the column or `auto_number` if the split tool was used.
@@ -122,7 +122,7 @@ Although these tags are optional, their inclusion is very much appreciated.
 Additional metadata helps future proof the project!
 
 Tag | Note |
--- | --
+--- | ---
 `website` | A URL referencing the data portal
 `license` | A URL or string describing the license for the dataset
 `note` | A String containing a human readable note.
