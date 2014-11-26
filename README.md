@@ -1,5 +1,8 @@
 # OpenAddresses
 
+[![Build Status](https://travis-ci.org/openaddresses/openaddresses.png?branch=master)](https://travis-ci.org/openaddresses/openaddresses)
+[![Build Status](https://david-dm.org/openaddresses/openaddresses.png)](https://david-dm.org/openaddresses/openaddresses)
+
 A global collection of address data sources, open and free to use. Join, download and contribute. We're just getting started.
 
 This repository is a collection of references to address data sources.
@@ -21,8 +24,4 @@ Street address data is essential infrastructure. Street names, house numbers and
 ## License
 
 Code is available under BSD, the data collection (sources/) is public domain. See respective LICENSE files in project root for code and under sources/ for the data collection.
-
-## Status
-[![Build Status](https://travis-ci.org/openaddresses/openaddresses.png?branch=master)](https://travis-ci.org/openaddresses/openaddresses)
-[![Build Status](https://david-dm.org/openaddresses/openaddresses.png)](https://david-dm.org/openaddresses/openaddresses)
 
