@@ -69,12 +69,12 @@ Although a conform Object is not mandatory to add a source, in order for the sou
 it needs a conform Object. This JSON Object tells the processing software how to handle the format as well as mapping fields to a standard set.
 
 Conform contains fields for preparing data and fields for converting it.
-They are called [Processing Fields](#processing-fields) and Attribute Fields.
+They are called [Processing Fields](#processing-fields) and [Attribute Fields](#attribute-fields).
 
 ##### Processing Fields
 
  Tag             | Required? | Note
----------------- | --------- | ----
+---------------- | --- | ----------
 `type`           | Yes | The type properties stores the format. It can currently be either `shapefile`, `shapefile-polygon`, `csv` or `geojson`.
 `merge=["one",…,"nth"]` | | The merge tag will merge several columns together. This is typically soemthing along the lines of street-name and street-type columns. The merged column will be named auto_street.
 `split`          |     | Some databases give the number and street in one column. The split tag will split the number and the street. The resulting columns will be `auto_street` and `auto_number`.
@@ -88,22 +88,23 @@ They are called [Processing Fields](#processing-fields) and Attribute Fields.
 
 ##### Attribute Fields
 
-If using a text processing function above, the output field is usually `auto_number` or `auto_street` unless otherwise noted.
+If using a text processing field above, the results can usually be found in the `auto_number` or `auto_street` fields unless otherwise noted.
 
-Tag | Note |
---- | ---
-`lon` **required** | The longitude column. Due to the way the conversion scripts work this is currently always going to be `x` unless using a `csv`.
-`lat` **required** | The latitude column. Due to the way the conversion script work this is currently always going to be `y` unless using a `csv`.
-`number` **required** | The name of the number columm. This will either be the name of the column or `auto_number` if the split tool was used.
-`street` **required** | The name of the street column. This will either be the name of the column or `auto_street` if the split or merge tools were used.
-`city` | Name of the City or Municipality in which the address falls
-`postcode` | Postcode or zip-code field in which the address falls
-`district` | District/County/Sub-Region in which the address falls
-`region` | State/Region/Province in which the address falls
-`addrtype` | Type of address. `industrial`, `residential`, etc.
-`notes` | Legal description of address or notes about the property.
+ Tag       | Required? | Note
+---------- | --- | ----------
+`lon`      | Yes | The longitude column. Due to the way the conversion scripts work this is currently always going to be `x` unless using a `csv`.
+`lat`      | Yes | The latitude column. Due to the way the conversion script work this is currently always going to be `y` unless using a `csv`.
+`number`   | Yes | The name of the number columm. This will either be the name of the column or `auto_number` if the split tool was used.
+`street`   | Yes | The name of the street column. This will either be the name of the column or `auto_street` if the split or merge tools were used.
+`city`     |     | Name of the City or Municipality in which the address falls
+`postcode` |     | Postcode or zip-code field in which the address falls
+`district` |     | District/County/Sub-Region in which the address falls
+`region`   |     | State/Region/Province in which the address falls
+`addrtype` |     | Type of address. `industrial`, `residential`, etc.
+`notes`    |     | Legal description of address or notes about the property.
 
 ###### Advanced Merge
+
 This is sometimes necessary for the street number equivalent in Asian addressing
 systems. The following example will add columns to the output CSV named
 `custom_number` and `auto_street` that contained merged contents of the forms
