@@ -20,40 +20,51 @@ Still a new source? Awesome!
 - If you have an awesome link/contact but no data, add it to the [Outreach Wiki](https://github.com/openaddresses/openaddresses/wiki/Potential-Outreach)
 - Finally if you have raw data, open a [issue](https://github.com/openaddresses/openaddresses/issues/new) and we'll add it for you or [add it yourself](https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md)
 
-Confused? Not sure where your source fits in? Open an [issue](https://github.com/openaddresses/openaddresses/issues/new), we'd rather a duplicate than miss it altogether!
+Confused? Not sure where your source fits in?
+[Open an issue](https://github.com/openaddresses/openaddresses/issues/new),
+we’d rather a duplicate than miss it altogether!
 
 ### Errors & Current Sources
 
-If you are reporting an error, an improvement, or a suggestion, create a github issue [here](https://github.com/mapbox/mapbox-places/issues/new)
-We will do our best to review your issue and either fix or add the feature(s) to our roadmap.
+If you are reporting an error, an improvement, or a suggestion,
+[create a github issue here](https://github.com/openaddresses/openaddresses/issues/new)
+We will do our best to review your issue and either fix or add the feature(s) to our plan.
 
 ## Contributing Sources
 
 Comfortable with JSON? Feel free to submit a pull request with the data instead of opening an issue. Before asking for a merge, please keep Travis CI happy by making sure you submit well-formed JSON: green is good!
 
-For a first time contributer, getting the JSON right can be a bit of a challenge, check out other sources in `./sources/` to get an idea of what we are looking for.
-Still confused? Open an issue, we'll be happy to help you out!
+For a first time contributer, getting the JSON right can be a bit of a challenge,
+check out other sources in `./sources/` to get an idea of what we are looking for.
+Still confused? [Open an issue](https://github.com/openaddresses/openaddresses/issues/new),
+we’ll be happy to help you out!
 
 ### Naming Files
 
-Although the file name is redundant (the same information is stored in JSON), using coherent file names makes it much easier for contributers to quickly evaluate whether a source already exists. Please follow the following convention
+Although the file name is redundant (the same information is stored in JSON),
+using coherent file names makes it much easier for contributers to quickly
+evaluate whether a source already exists. Please follow the following
+convention
 
 Coverage | Code | Example
 -------- | ---- | -------
 Country  | [ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) | `ca.json`
 Province | [ISO 3166-2 alpha-2 SubRegion Code](http://en.wikipedia.org/wiki/ISO_3166-2) | `us-il.json`
-County | Standard Name (Use underscores for spaces) | `us-co-routt.json`
-City | Standard Name (Use underscores for spaces) | `ca-bc-city_of_vancouver.json`
+County   | Standard Name (Use underscores for spaces) | `us-co-routt.json`
+City     | Standard Name (Use underscores for spaces) | `ca-bc-city_of_vancouver.json`
 
 ### JSON Tags
 
-Sources use a standard set of attributes to allow for machine processing of each source. Use these tags where applicable. Check out other sources in the `./source/` directory for examples
+Sources use a standard set of attributes to allow for machine processing of
+each source. Use these tags where applicable. Check out other sources in the
+`./sources/` directory for examples
 
 #### Core Tags
 
-Required tags are enforced by Travis CI (Our testing platform). This represents
-the minimum data required to process a source. If you are not able to provide the required tags,
-file a ticket instead of a pull request as the data may not be suitable for inclusion.
+Our testing platform, Travis CI, enforces required tags. These represent the
+minimum data required to process a source. If you are not able to provide the required
+tags, [file an issue](https://github.com/openaddresses/openaddresses/issues/new)
+instead of a pull request. We’ll determine if the data is suitable for inclusion.
 
  Tag          | Required? | Note
 ------------- | --------- | ----
@@ -65,16 +76,18 @@ file a ticket instead of a pull request as the data may not be suitable for incl
 
 #### Conform Object
 
-Although a conform Object is not mandatory to add a source, in order for the source to be added into the end address file,
-it needs a conform Object. This JSON Object tells the processing software how to handle the format as well as mapping fields to a standard set.
+Although a conform Object is not a mandatory part of a source, it must be
+present for the source to be added into the end address file. This JSON
+Object tells the processing software how to handle the format as well as
+mapping fields to a standard set.
 
 Conform contains tags for preparing data and tags for converting it.
 They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attribute-tags).
 
 ##### Processing Tags
 
- Tag             | Required? | Note
----------------- | --- | ----------
+ Tag       | Required? | Note
+---------------- | --- | ----
 `type`           | Yes | The type properties stores the format. It can currently be either `shapefile`, `shapefile-polygon`, `csv` or `geojson`.
 `merge=["one",…,"nth"]` | | The merge tag will merge several columns together. This is typically soemthing along the lines of street-name and street-type columns. The merged column will be named auto_street.
 `split`          |     | Some databases give the number and street in one column. The split tag will split the number and the street. The resulting columns will be `auto_street` and `auto_number`.
@@ -88,10 +101,11 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
 
 ##### Attribute Tags
 
-If using a text processing tag above, the results can usually be found in the generated `auto_number` or `auto_street` fields unless otherwise noted.
+If using a text processing tag above, the results can usually be found in the
+generated `auto_number` or `auto_street` fields unless otherwise noted.
 
- Tag       | Required? | Note
----------- | --- | ----------
+ Tag | Required? | Note
+---------- | --- | ----
 `lon`      | Yes | The longitude column. Due to the way the conversion scripts work this is currently always going to be `x` unless using a `csv`.
 `lat`      | Yes | The latitude column. Due to the way the conversion script work this is currently always going to be `y` unless using a `csv`.
 `number`   | Yes | The name of the number columm. This will either be the name of the column or `auto_number` if the split tool was used.
@@ -125,18 +139,16 @@ systems. The following example will add columns to the output CSV named
 }
 ```
 
-
-
 #### Optional Tags
 
 Although these tags are optional, their inclusion is very much appreciated.
 Additional metadata helps future proof the project!
 
-Tag | Note |
---- | ---
-`website` | A URL referencing the data portal
-`license` | A URL or string describing the license for the dataset
-`note` | A String containing a human readable note.
+ Tag          | Note
+------------- | ----
+`website`     | A URL referencing the data portal
+`license`     | A URL or string describing the license for the dataset
+`note`        | A String containing a human readable note.
 `attribution` | Where the license requires attribution, add it here. example `CC-BY United Federation of Planets`
 
 #### Example
@@ -171,5 +183,5 @@ A few notes on formatting:
 - Four spaces for indents (No tabs!)
 - No Blank lines
 
-Although these are read by a machine, they are maintained by us mortals. Following the formatting
-guidelines keeps the rest of us sane!
+Although these are read by a machine, they are maintained by us mortals.
+Following the formatting guidelines keeps the rest of us sane!
