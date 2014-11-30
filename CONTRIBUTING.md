@@ -55,15 +55,15 @@ Required fields are enforced by Travis CI (Our testing platform). This represent
 the minimum data required to process a source. If you are not able to provide the required fields,
 file a ticket instead of a pull request as the data may not be suitable for inclusion.
 
-Tag | Note |
-| --- | --- |
-`data` **required** | A URL referencing the dataset. This should point to the raw data and not a web portal.
-`type` **required** | A string containing the protocol (One of: `http`, `ftp`, `ESRI`)
-`coverage` **required** | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String.
-`conform` | Optional Object used to find address information in a source. See below for more details.
-`compression` | Optional string containing the compression type (usually `zip`). Omit if source is not compressed.
+ Tag          | Required? | Note
+------------- | --------- | ----
+`data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal.
+`type`        | Yes | A string containing the protocol (One of: `http`, `ftp`, `ESRI`)
+`coverage`    | Yes | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String.
+`conform`     |     | Optional Object used to find address information in a source. [See below for more details](#conform-object).
+`compression` |     | Optional string containing the compression type (usually `zip`). Omit if source is not compressed.
 
-#### Conform
+#### Conform Object
 
 Although a conform Object is not mandatory to add a source, in order for the source to be added into the end address file,
 it needs a conform Object. This JSON Object tells the processing software how to handle the format as well as mapping fields to a standard set.
