@@ -49,18 +49,18 @@ City | Standard Name (Use underscores for spaces) | `ca-bc-city_of_vancouver.jso
 
 Sources use a standard set of attributes to allow for machine processing of each source. Use these tags where applicable. Check out other sources in the `./source/` directory for examples
 
-#### Mandatory
+#### Core Fields
 
-These fields are mandatory and enforced by Travis CI (Our testing platform). This represents
-the minimum data required to process a source. If you are not able to provide these fields,
+Required fields are enforced by Travis CI (Our testing platform). This represents
+the minimum data required to process a source. If you are not able to provide the required fields,
 file a ticket instead of a pull request as the data may not be suitable for inclusion.
 
 Tag | Note |
 | --- | --- |
-`data` | A URL referencing the dataset. This should point to the raw data and not a web portal.
-`compression` | A string containing the compression type (usually `zip`). Omit if source is not compressed.
-`type` | A string containing the protocol (One of: `http`, `ftp`, `ESRI`)
-`coverage` | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String.
+`data` **required** | A URL referencing the dataset. This should point to the raw data and not a web portal.
+`type` **required** | A string containing the protocol (One of: `http`, `ftp`, `ESRI`)
+`coverage` **required** | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String.
+`compression` | Optional string containing the compression type (usually `zip`). Omit if source is not compressed.
 
 #### Conform
 
