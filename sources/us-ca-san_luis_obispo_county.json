@@ -8,5 +8,21 @@
     "data": "http://gis.calpoly.edu/gis/data/slo_county%2Fbasemap%2FADDRESS_POINTS%2FADDRESS_POINTS.zip",
     "website": "http://gis.calpoly.edu/gis/data/slo_county%2Fbasemap%2FADDRESS_POINTS%2FADDRESS_POINTS.htm",
     "type": "http",
-    "compression": "zip"
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile",
+        "srs": "EPSG:2229",
+        "lon": "Long",
+        "lat": "Lat",
+        "postcode": "ZIP",
+        "city": "COMCODE",
+        "number": "ADDRESS",
+        "merge": [
+            "PREFIX",
+            "NAME",
+            "TYPE",
+            "SUFFIX"
+            ],
+        "street": "auto_street"
+    }
 }
