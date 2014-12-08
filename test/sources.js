@@ -65,6 +65,9 @@ function checkSource(i){
 
                 //Optional Conform Fields
                 t.ok(data.conform.merge ? Array.isArray(data.conform.merge) : true, "conform - Merge is an array");
+                t.ok(data.conform.addrtype ? typeof data.conform.addrtype === 'string' : true, "conform - addrtype is a string");
+                t.ok(data.conform.accuracy ? typeof data.conform.accuracy === 'number' : true, "conform - accuracy is a number");
+                t.ok(data.conform.accuracy ? data.conform.accuracy !== 0 : true, "conform - accuracy is not 0");
                 t.ok(data.conform.csvsplit ? typeof data.conform.csvsplit === 'string' : true, "conform - csvsplit is a string");
                 t.ok(data.conform.split ? typeof data.conform.split === 'string' : true, "conform - split is a string");
                 t.ok(data.conform.srs ? typeof data.conform.srs === 'string' : true, "conform - srs is a string");
