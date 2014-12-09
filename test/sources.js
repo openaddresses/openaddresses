@@ -31,7 +31,7 @@ function checkSource(i){
             if (data.skip) t.pass("WARN - Skip Flag Detected");
 
             //Ensure people don't make up values
-            generalOptions = ['attribution', 'year', 'skip', 'conform', 'coverage', 'data', 'compression', 'type', 'coverage', 'website', 'license', 'note'];
+            generalOptions = ['email', 'attribution', 'year', 'skip', 'conform', 'coverage', 'data', 'compression', 'type', 'coverage', 'website', 'license', 'note'];
 
             Object.keys(data).forEach(function (generalKey) {
                 t.ok(generalOptions.indexOf(generalKey) !== -1, generalKey + " is supported");
@@ -82,6 +82,7 @@ function checkSource(i){
             }
 
             //Optional General Fields
+            t.ok(data.coverage.email ? typeof data.coverage.email === 'string' : true, "email must be a string");
             t.ok(data.coverage.website ? typeof data.coverage.website === 'string' : true, "website must be a string");
             t.ok(data.coverage.license ? typeof data.coverage.license === 'string' : true, "license must be a string");
         }
