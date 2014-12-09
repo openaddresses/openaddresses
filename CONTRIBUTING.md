@@ -110,12 +110,25 @@ generated `auto_number` or `auto_street` fields unless otherwise noted.
 `lat`      | Yes | The latitude field. Due to the way the conversion script work this is currently always going to be `y` unless using a `csv`.
 `number`   | Yes | The name of the number field. This will either be the name of the field or `auto_number` if the split tool was used.
 `street`   | Yes | The name of the street field. This will either be the name of the field or `auto_street` if the split or merge tools were used.
+`accuracy` |     | The accuracy of the data source. See table below. Should never be 0, defaults to 5. If this is not set, address duplicates of higher accuracy will replace the addresses from this source when they are conflated.
 `city`     |     | Name of the City or Municipality in which the address falls
 `postcode` |     | Postcode or zip-code field in which the address falls
 `district` |     | District/County/Sub-Region in which the address falls
 `region`   |     | State/Region/Province in which the address falls
 `addrtype` |     | Type of address. `industrial`, `residential`, etc.
 `notes`    |     | Legal description of address or notes about the property.
+
+###### Accuracy
+
+| ID    | Type           |
+| :---: | -------------- |
+|   0   | User Corrected |
+|   1   | Rooftop        |
+|   2   | On Parcel      |
+|   3   | Driveway       |
+|   4   | Interpolation  |
+|   5   | Unknown        |
+
 
 ###### Advanced Merge
 
@@ -150,6 +163,7 @@ Additional metadata helps future proof the project!
 `license`     | A URL or string describing the license for the dataset
 `note`        | A String containing a human readable note.
 `attribution` | Where the license requires attribution, add it here. example `CC-BY United Federation of Planets`
+`email`       | This email is used to send automated emails to the data provider if a user changes there data. Do not set unless the data provider wants to recieve updates.
 
 #### Example
 
@@ -169,7 +183,8 @@ Additional metadata helps future proof the project!
         "lat": "y",
         "number": "civic_num",
         "street": "street_nam",
-        "type": "shapefile"
+        "type": "shapefile",
+        "accuracy": 3
     }
 }
 ```

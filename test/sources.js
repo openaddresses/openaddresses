@@ -31,7 +31,7 @@ function checkSource(i){
             if (data.skip) t.pass("WARN - Skip Flag Detected");
 
             //Ensure people don't make up values
-            generalOptions = ['attribution', 'year', 'skip', 'conform', 'coverage', 'data', 'compression', 'type', 'coverage', 'website', 'license', 'note'];
+            generalOptions = ['email', 'attribution', 'year', 'skip', 'conform', 'coverage', 'data', 'compression', 'type', 'coverage', 'website', 'license', 'note'];
 
             Object.keys(data).forEach(function (generalKey) {
                 t.ok(generalOptions.indexOf(generalKey) !== -1, generalKey + " is supported");
@@ -65,6 +65,9 @@ function checkSource(i){
 
                 //Optional Conform Fields
                 t.ok(data.conform.merge ? Array.isArray(data.conform.merge) : true, "conform - Merge is an array");
+                t.ok(data.conform.addrtype ? typeof data.conform.addrtype === 'string' : true, "conform - addrtype is a string");
+                t.ok(data.conform.accuracy ? typeof data.conform.accuracy === 'number' : true, "conform - accuracy is a number");
+                t.ok(data.conform.accuracy ? data.conform.accuracy !== 0 : true, "conform - accuracy is not 0");
                 t.ok(data.conform.csvsplit ? typeof data.conform.csvsplit === 'string' : true, "conform - csvsplit is a string");
                 t.ok(data.conform.split ? typeof data.conform.split === 'string' : true, "conform - split is a string");
                 t.ok(data.conform.srs ? typeof data.conform.srs === 'string' : true, "conform - srs is a string");
@@ -79,6 +82,7 @@ function checkSource(i){
             }
 
             //Optional General Fields
+            t.ok(data.coverage.email ? typeof data.coverage.email === 'string' : true, "email must be a string");
             t.ok(data.coverage.website ? typeof data.coverage.website === 'string' : true, "website must be a string");
             t.ok(data.coverage.license ? typeof data.coverage.license === 'string' : true, "license must be a string");
         }
