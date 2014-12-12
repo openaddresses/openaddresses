@@ -10,5 +10,14 @@
     "website": "http://www.edcgov.us/Government/Surveyor/FAQs/G_I_S__FAQs.aspx",
     "type": "http",
     "compression": "zip",
-    "note": "Parcel polygons that include situs addresses in the metadata. Provided in response to a public records request in December 2014 and uploaded to GitHub for public hosting."
+    "note": "Parcel polygons that include situs addresses in the metadata. Provided in response to a public records request in December 2014 and uploaded to GitHub for public hosting.",
+    "conform": {
+        "type": "shapefile-polygon",
+        "city": "CITY",
+        "number": "SITUSNUMBR",
+        "street": "auto_street",
+        "merge": ["SITUSSTRNM", "SITUSSTRTY"],
+        "lon": "x",
+        "lat": "y"
+    }
 }
