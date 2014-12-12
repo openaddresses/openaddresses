@@ -7,19 +7,24 @@
         },
         "country": "us",
         "state": "nc",
-        "county": "Wake",
-        "city": "Cary"
+        "county": "Wake"
     },
-    "data": "ftp://199.72.17.76/GIS/CaryBuildings.zip",
+    "website": "http://www.wakegov.com/gis/services/Pages/data.aspx",
+    "data": "ftp://wakeftp.co.wake.nc.us/gis/Webdownloads/SHAPEFILES/Wake_Property_2014_05.zip",
+    "license": "http://www.wakegov.com/gis/services/Pages/metadata.aspx",
+    "year": "2014",
     "type": "ftp",
     "compression": "zip",
     "conform": {
-        "split": "OwnerAdd1",
+        "merge": [
+            "STNAME",
+            "STYPE"
+        ],
         "lon": "x",
         "lat": "y",
-        "number": "auto_number",
+        "number": "stnum",
         "street": "auto_street",
-        "type": "shapefile",
-        "postcode": "phyzip"
+        "type": "shapefile-polygon",
+        "postcode": "zipnum"
     }
 }
