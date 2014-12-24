@@ -70,7 +70,7 @@ instead of a pull request. We’ll determine if the data is suitable for inclusi
 ------------- | --------- | ----
 `data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal.
 `type`        | Yes | A string containing the protocol (One of: `http`, `ftp`, `ESRI`)
-`coverage`    | Yes | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String.
+`coverage`    | Yes | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String. [See below for more details](#coverage-object)
 `conform`     |     | Optional Object used to find address information in a source. [See below for more details](#conform-object).
 `compression` |     | Optional string containing the compression type (usually `zip`). Omit if source is not compressed.
 
@@ -151,6 +151,28 @@ systems. The following example will add fields to the output CSV named
     }
 }
 ```
+
+#### Coverage Object
+
+Although a coverage Object is not a mandatory part of a source, its presence
+provides hints about the geographic extent of the address file and is used to
+render the map at [data.openaddresses.io](http://data.openaddresses.io).
+
+This object minimally contains some combination of `country`, `state`, and
+either `city` or `county`, all strings
+
+If one of the following tags are provided, it will be used to render the source
+to the map at [data.openaddresses.io](http://data.openaddresses.io):
+
+1. **US Census** with `geoid` containing two-digit state or five-digit county
+   [FIPS code](https://www.census.gov/geo/reference/codes/cou.html).
+   See [Alameda County](sources/us-ca-alameda_county.json)
+   and [Virginia](sources/us-va.json) for examples.
+2. **ISO 3166** with `alpha2` containing alphanumeric
+   [ISO-3166 code](http://en.wikipedia.org/wiki/ISO_3166).
+   See [New Zealand](sources/nz.json) for an example.
+3. **geometry** with _Polygon_ or _MultiPolygon_ type unprojected
+   [GeoJSON geometry object](http://geojson.org/geojson-spec.html#geometry-objects).
 
 #### Optional Tags
 
