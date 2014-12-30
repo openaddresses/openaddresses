@@ -61,7 +61,7 @@ function checkSource(i){
                 t.ok(data.conform.number && typeof data.conform.number === 'string', "conform - number attribute required");
                 t.ok(data.conform.street && typeof data.conform.street === 'string', "conform - street attribute required");
                 t.ok(data.conform.type && typeof data.conform.type === 'string', "conform - type attribute required");
-                t.ok(['shapefile', 'shapefile-polygon', 'csv', 'geojson'].indexOf(data.conform.type) !== -1, "conform - type is supported");
+                t.ok(['shapefile', 'shapefile-polygon', 'csv', 'geojson', 'xml'].indexOf(data.conform.type) !== -1, "conform - type is supported");
 
                 //Optional Conform Fields
                 t.ok(data.conform.merge ? Array.isArray(data.conform.merge) : true, "conform - Merge is an array");
