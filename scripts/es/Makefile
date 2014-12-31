@@ -14,7 +14,8 @@ gml:
 	python download_gml.py spain_catastre/gml_urls.txt spain_catastre/gml/
 
 convert:
-	find spain_catastre/gml/ | grep gml | parallel -t -j 1 python gml_to_csv.py {} build/
+	rm -f build/es-*.csv
+	find spain_catastre/gml/ | grep zip | grep gml | parallel -t -j 1 python gml_to_csv.py {} build/
 
 combine:
 	bash ./combine.sh

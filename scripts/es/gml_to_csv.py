@@ -5,15 +5,19 @@ import unicodecsv as csv
 lookup = {}
      
 class CSVBuilder(xml.sax.ContentHandler):
-    def __init__(self, filename, lookup):
+    def __init__(self, directory, lookup):
         self.lookup = lookup.lookup
-        self.csv_file = open(filename, 'w')
-        self.writer = csv.DictWriter(self.csv_file, ('lon', 'lat', 'number', 'street', 'postcode', 'admin'))
-        self.writer.writeheader()
+        self.writers = {}
         self.object = {}
+
+        self.out_dir = directory
+        if self.out_dir[-1]!='/':
+            self.out_dir += '/'
+        
         self.collecting = False
         self.collect_pos = False
         self.collect_num = False
+        self.srs = None
         self.strip_hash = re.compile(r'^#')
 
     def startElement(self, name, attrs):
@@ -43,6 +47,15 @@ class CSVBuilder(xml.sax.ContentHandler):
             elif self.lookup['postal'].get(lookup_key) is not None:
                 self.object['postcode'] = self.lookup['postal'].get(lookup_key)
 
+        # detect SRS, create CSV writer if necessary
+        if name == 'gml:Point':
+            self.srs = attrs.get('srsName', None)
+            if self.srs is not None:
+                self.srs = self.srs.split(':')[-1]
+                if not self.srs in self.writers:
+                    self.writers[self.srs] = csv.DictWriter(open(self.out_dir + 'es-%s.csv' % self.srs, 'a'), ('lon', 'lat', 'number', 'street', 'postcode', 'admin'))
+                    self.writers[self.srs].writeheader()
+
     def characters(self, content):
         if self.collect_pos:
             self.object['pos'] += content
@@ -58,7 +71,7 @@ class CSVBuilder(xml.sax.ContentHandler):
 
         if name == 'AD:Address':
             self.collecting = False            
-            self.writer.writerow({
+            self.writers[self.srs].writerow({
                 'lon': self.object.get('pos').split(' ')[0],
                 'lat': self.object.get('pos').split(' ')[1],
                 'number': self.object.get('number'),
@@ -104,8 +117,8 @@ class LookupBuilder(xml.sax.ContentHandler):
         if self.collect:
             self.lookup[self.lookup['_type']][self.lookup['_next']] += content
 
-def process_zipfile(in_filename, out_filename):    
-    print 'turning %s into %s' % (in_filename, out_filename) 
+def process_zipfile(in_filename, out_dir):    
+    print 'converting %s, placing output into %s' % (in_filename, out_dir) 
 
     temp_dir = tempfile.mkdtemp()
 
@@ -122,7 +135,7 @@ def process_zipfile(in_filename, out_filename):
         parser.parse(gml)
 
     # generate complete CSV
-    csv_builder = CSVBuilder(out_filename, lookup)
+    csv_builder = CSVBuilder(out_dir, lookup)
     with open(filename, 'r') as gml:
         parser = xml.sax.make_parser()
         parser.setContentHandler(csv_builder)
@@ -146,9 +159,6 @@ def main():
             process_zipfile('%s/%s' % (in_dir, filename), '%s/%s' % (out_dir, filename.replace('.zip', '.csv')))   
     
 if __name__ == '__main__':
-    if len(sys.argv)!=3:
-        print 'Usage: `python gml_to_csv.py [zipped_input_file] [output_directory]`'
-    else:
-        in_file = sys.argv[1]
-        out_file = (sys.argv[2] + '.'.join(sys.argv[1].split('/')[-1].split('.')[:-1]) + '.csv').replace('//', '/')
-        process_zipfile(in_file, out_file)
+    in_file = sys.argv[1]
+    out_dir = sys.argv[2]
+    process_zipfile(in_file, out_dir)
