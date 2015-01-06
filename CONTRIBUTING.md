@@ -168,9 +168,11 @@ to the map at [data.openaddresses.io](http://data.openaddresses.io):
    [FIPS code](https://www.census.gov/geo/reference/codes/cou.html).
    See [Alameda County](sources/us-ca-alameda_county.json)
    and [Virginia](sources/us-va.json) for examples.
-2. **ISO 3166** with `alpha2` containing alphanumeric
-   [ISO-3166 code](http://en.wikipedia.org/wiki/ISO_3166).
-   See [New Zealand](sources/nz.json) for an example.
+2. **ISO 3166** with `alpha2` containing alphanumeric two-letter
+   [ISO-3166-1 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+   or [ISO-3166-2 subdivision code](http://en.wikipedia.org/wiki/ISO_3166-2).
+   See [New Zealand](sources/nz.json), [Victoria, Australia](sources/au-victoria.json),
+   or [Dolnośląskie, Poland](sources/pl-dolnoslaskie.json) for examples.
 3. **geometry** with _Polygon_ or _MultiPolygon_ type unprojected
    [GeoJSON geometry object](http://geojson.org/geojson-spec.html#geometry-objects).
 
