@@ -23,3 +23,14 @@ done
  
 # removes all but csv files
 rm -rf !(*.csv)
+
+# move CSV to subdirectory, build CSV, minding that column order is not consistent
+mkdir csv
+mv *.csv ./csv
+python make_out.py
+
+# ignore the cadastral records -- we don't have street names for them
+grep ",Gateadresse," no.csv > no-gateadresse.csv
+
+# compress the result
+zip no.zip no-gateadresse.csv
