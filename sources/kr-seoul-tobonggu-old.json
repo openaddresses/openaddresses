@@ -1,0 +1,36 @@
+{
+    "compression": "zip",
+    "version": "20141121",
+    "skip": false,
+    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+    "type": "http",
+    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1075",
+    "coverage": {
+        "state": "seoul",
+        "country": "kr",
+        "city": "도봉구"
+    },
+    "conform": {
+        "encoding": "EUCKR",
+        "street": "auto_street",
+        "headers": 2,
+        "srs": "EPSG:2097",
+        "advanced_merge": {
+            "auto_street": {
+                "fields": [
+                    "RD_NM",
+                    "BD_NM",
+                    "DET_BD_NM"
+                ],
+                "separator": " "
+            }
+        },
+        "type": "csv",
+        "skiplines": 2,
+        "lat": "POINT_Y",
+        "lon": "POINT_X",
+        "number": "LNDN_MA_SN"
+    },
+    "license": "CCBY",
+    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-tobonggu.zip"
+}
