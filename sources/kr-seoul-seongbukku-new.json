@@ -1,0 +1,36 @@
+{
+    "type": "http",
+    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+    "coverage": {
+        "country": "kr",
+        "city": "성북구",
+        "state": "seoul"
+    },
+    "version": "20141121",
+    "conform": {
+        "headers": 2,
+        "type": "csv",
+        "lat": "POINT_Y",
+        "advanced_merge": {
+            "auto_street": {
+                "fields": [
+                    "RD_NM",
+                    "BD_NM",
+                    "DET_BD_NM"
+                ],
+                "separator": " "
+            }
+        },
+        "lon": "POINT_X",
+        "encoding": "EUCKR",
+        "street": "auto_street",
+        "srs": "EPSG:2097",
+        "number": "LNDN_MA_SN",
+        "skiplines": 2
+    },
+    "skip": true,
+    "compression": "zip",
+    "license": "CCBY",
+    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1082",
+    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-seongbukku.zip"
+}

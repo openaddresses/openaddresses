@@ -1,0 +1,36 @@
+{
+    "skip": false,
+    "version": "20141121",
+    "compression": "zip",
+    "type": "http",
+    "coverage": {
+        "state": "seoul",
+        "city": "강남구",
+        "country": "kr"
+    },
+    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1064",
+    "conform": {
+        "lon": "POINT_X",
+        "skiplines": 2,
+        "type": "csv",
+        "lat": "POINT_Y",
+        "advanced_merge": {
+            "auto_street": {
+                "separator": " ",
+                "fields": [
+                    "RD_NM",
+                    "BD_NM",
+                    "DET_BD_NM"
+                ]
+            }
+        },
+        "encoding": "EUCKR",
+        "headers": 2,
+        "srs": "EPSG:2097",
+        "number": "LNDN_MA_SN",
+        "street": "auto_street"
+    },
+    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+    "license": "CCBY",
+    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-kangnamgu.zip"
+}

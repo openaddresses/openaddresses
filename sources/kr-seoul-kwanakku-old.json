@@ -1,0 +1,36 @@
+{
+    "license": "CCBY",
+    "skip": false,
+    "version": "20141121",
+    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1070",
+    "conform": {
+        "lon": "POINT_X",
+        "skiplines": 2,
+        "advanced_merge": {
+            "auto_street": {
+                "separator": " ",
+                "fields": [
+                    "RD_NM",
+                    "BD_NM",
+                    "DET_BD_NM"
+                ]
+            }
+        },
+        "number": "LNDN_MA_SN",
+        "headers": 2,
+        "lat": "POINT_Y",
+        "street": "auto_street",
+        "type": "csv",
+        "encoding": "EUCKR",
+        "srs": "EPSG:2097"
+    },
+    "type": "http",
+    "compression": "zip",
+    "coverage": {
+        "country": "kr",
+        "city": "관악구",
+        "state": "seoul"
+    },
+    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-kwanakku.zip"
+}
