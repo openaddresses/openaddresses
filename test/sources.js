@@ -1,11 +1,24 @@
 var test = require('tape').test,
     glob = require('glob'),
-    fs = require('fs');
+    fs = require('fs'),
+    request = require('request');
+    versionCurrent = require('../package.json').version.split('.');
 
-var manifest = glob.sync('sources/*.json');
-var index = 0;
+    var manifest = glob.sync('sources/*.json');
+    var index = 0;
 
-checkSource(index);
+//Ensure tests on branch are current with master
+request.get('https://raw.githubusercontent.com/openaddresses/openaddresses/master/package.json', function(err, res, masterPackage) {
+    var versionMaster = JSON.parse(masterPackage).version.split('.');
+
+    for (var i = 0; i < 3; i++) {
+        if (versionMaster[i] > versionCurrent[i]) {
+            console.log("Branch outdated! - Please pull new changes from openaddresses/openaddresses:master");
+            process.exit(1);
+        }
+    }
+    checkSource(index);
+});
 
 function validateJSON(body) {
     try {
