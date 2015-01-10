@@ -187,7 +187,7 @@ Additional metadata helps future proof the project!
 `license`     | A URL or string describing the license for the dataset
 `note`        | A String containing a human readable note.
 `attribution` | Where the license requires attribution, add it here. example `CC-BY United Federation of Planets`
-`email`       | This email is used to send automated emails to the data provider if a user changes there data. Do not set unless the data provider wants to recieve updates.
+`email`       | This email is used to send automated emails to the data provider if a user changes their data. Do not set unless the data provider wants to receive updates.
 
 #### Example
 
