@@ -88,11 +88,11 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
 
  Tag       | Required? | Note
 ---------------- | --- | ----
-`type`           | Yes | The type properties stores the format. It can currently be either `shapefile`, `shapefile-polygon`, `csv` or `geojson`.
+`type`           | Yes | The type properties stores the format. It can currently be one of `shapefile`, `shapefile-polygon`, `csv`, `geojson`, or `xml` (for GML).
 `merge=["one",…,"nth"]` | | The `merge` tag will merge several fields together. This is typically something along the lines of street-name and street-type fields. The merged field will be named `auto_street`.
 `split`          |     | Some databases give the number and street in one field. The `split` tag will split the number and the street. The resulting fields will be `auto_street` and `auto_number`.
 `advanced_merge` |     | Can be used to merge fields more arbitrarily. See Below.
-`srs`            |     | Allows one to set a custom source srs. Currently only supported by `type:shapefile` and `type:shapefile-polygon`. Should be in the format of `EPSG:####` and can be any code supported by `ogr2ogr`. Modern shapefiles typically store their project in a `.prj` file. If this file exists, this tag should be omitted.
+`srs`            |     | Allows one to set a custom source srs. Currently only supported by `type:shapefile`, `type:shapefile-polygon`, and `type:csv`. Should be in the format of `EPSG:####` and can be any code supported by `ogr2ogr`. Modern shapefiles typically store their project in a `.prj` file. If this file exists, this tag should be omitted.
 `file`           |     | The majority of zips contain a single shapefile. Sometimes zips will contain multiple files, or the shapefile that is needed is located in a folder hierarchy in the zip. Since the program only supports determining single shapefiles not in a subfolder, file can be used to point the program to an exact file. The proper syntax would be `"file": "addresspoints/address.shp"` if the file was under a single subdirectory called `addresspoints`. Note there is no preceding forward slash.
 `encoding`       |     | A character encoding from which an input file will first be converted (into utf-8). Must be [recognizable by `iconv`](https://www.gnu.org/software/libiconv/).
 `csvsplit`       |     | The character to delimit input CSV’s by. Defaults to comma.
@@ -103,6 +103,7 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
 
 If using a text processing tag above, the results can usually be found in the
 generated `auto_number` or `auto_street` fields unless otherwise noted.
+Field names are case insensitive, but contributers are encouraged to try to match the case.
 
  Tag | Required? | Note
 ---------- | --- | ----
