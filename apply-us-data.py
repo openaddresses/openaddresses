@@ -30,11 +30,11 @@ with open(join('us-data', 'counties.txt')) as f:
             counties[(row['State FIPS'], row['Name'][:-13])] = value
     
     # more key variations
-    for ((s, c), value) in list(counties.items()):
+    for (s, c), value in counties.iteritems():
         if c.startswith('St. '):
             counties[(s, 'Saint '+c[4:])] = value
     
-    for ((s, c), value) in list(counties.items()):
+    for (s, c), value in counties.iteritems():
         counties[(s, c.lower())] = value
         counties[(s, c.replace('-', ' '))] = value
         counties[(s, c.replace('-', ' ').lower())] = value
