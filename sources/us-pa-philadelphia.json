@@ -1,5 +1,10 @@
 {
     "coverage": {
+        "US Census": {
+            "geoid": "42101",
+            "name": "Philadelphia County",
+            "state": "Pennsylvania"
+        },
         "country": "us",
         "state": "pa",
         "county": "Philadelphia"
@@ -9,14 +14,19 @@
     "year": "",
     "type": "http",
     "compression": "zip",
-    "fingerprint": "f1ef8b3d3e0330c2a85061dd6fe8827f",
-    "version": "20140330",
-    "cache": "http://s3.amazonaws.com/openaddresses/us-pa-philadelphia.zip",
-    "conform": {
-        "type": "geojson",
-        "lon": "x",
-        "lat": "y"
-    },
     "note": "shapefile is in Philadelphia_DOR_Parcels_Active201302/, see https://github.com/openaddresses/openaddresses-conform/issues/16",
-    "skip": true
+    "conform": {
+        "merge": [
+            "STDIR",
+            "STNAM",
+            "STDES"
+        ],
+        "type": "shapefile-polygon",
+        "lon": "X",
+        "lat": "Y",
+        "number": "HOUSE",
+        "street": "auto_street",
+        "headers": 1,
+        "skiplines": 1
+    }
 }

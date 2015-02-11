@@ -4,24 +4,19 @@
         "state": "ca",
         "city": "San Francisco"
     },
+    "attribution": "City of San Francisco",
     "data": "https://data.sfgov.org/download/kvej-w5kb/ZIPPED%20SHAPEFILE",
     "license": "",
     "year": "",
     "type": "http",
     "compression": "zip",
     "conform": {
-        "merge": [
-            "st_name",
-            "st_type"
-        ],
+	"split": "ADDRESS",
         "lon": "x",
         "lat": "y",
-        "number": "address",
+        "number": "auto_number",
         "street": "auto_street",
-        "type": "shapefile"
-    },
-    "fingerprint": "ff1f14f1b9220d49e2a901f43fd5fe55",
-    "version": "20140804",
-    "cache": "http://s3.amazonaws.com/openaddresses/20140804/us-ca-san_francisco.zip",
-    "processed": "http://s3.amazonaws.com/openaddresses/us-ca-san_francisco.csv"
+        "type": "shapefile",
+        "postcode": "zipcode"
+    }
 }

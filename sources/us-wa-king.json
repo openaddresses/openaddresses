@@ -1,5 +1,10 @@
 {
     "coverage": {
+        "US Census": {
+            "geoid": "53033",
+            "name": "King County",
+            "state": "Washington"
+        },
         "country": "us",
         "state": "wa",
         "county": "King"
@@ -8,5 +13,16 @@
     "type": "ftp",
     "compression": "zip",
     "data": "ftp://ftp.kingcounty.gov/gis/Web/GISData/address_SHP.zip",
-    "license": "http://www5.kingcounty.gov/gisdataportal/"
+    "license": "http://www5.kingcounty.gov/gisdataportal/",
+    "conform": {
+        "type": "shapefile",
+        "file": "address/address.shp",
+        "lon": "x",
+        "lat": "y",
+        "number": "ADDR_NUM",
+        "street": "FULLNAME",
+        "city": "CTYNAME",
+        "postcode": "ZIP5",
+        "district": "COUNTY"
+    }
 }

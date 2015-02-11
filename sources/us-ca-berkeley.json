@@ -1,16 +1,26 @@
 {
     "coverage": {
+        "US Census": {
+            "geoid": "0606000",
+            "place": "Berkeley",
+            "state": "California"
+        },
         "country": "us",
         "state": "ca",
-        "county": "Alameda",
-        "city": "Berkeley"
+        "place": "Berkeley"
     },
+    "attribution": "City of Berkeley",
     "data": "http://www.ci.berkeley.ca.us/uploadedFiles/IT/GIS/Parcels.zip",
     "website": "http://www.ci.berkeley.ca.us/datacatalog/",
     "type": "http",
     "compression": "zip",
     "note": "Metadata at http://www.ci.berkeley.ca.us/uploadedFiles/IT/GIS/Parcels.shp(1).xml",
-    "fingerprint": "246e0bd8af0d7cec761a58b98412321f",
-    "version": "20140816",
-    "cache": "http://s3.amazonaws.com/openaddresses/20140816/us-ca-berkeley.zip"
+    "conform": {
+        "lon": "x",
+        "lat": "y",
+        "number": "StreetNum",
+        "merge": ["StreetName", "StreetSufx", "Direction"],
+        "street": "auto_street",
+        "type": "shapefile-polygon"
+    }
 }

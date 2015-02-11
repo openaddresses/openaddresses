@@ -1,0 +1,35 @@
+{
+    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1067",
+    "type": "http",
+    "coverage": {
+        "country": "kr",
+        "city": "강동구",
+        "state": "seoul"
+    },
+    "conform": {
+        "skiplines": 2,
+        "type": "csv",
+        "lon": "POINT_X",
+        "lat": "POINT_Y",
+        "headers": 2,
+        "number": "LNDN_MA_SN",
+        "street": "auto_street",
+        "srs": "EPSG:2097",
+        "encoding": "EUCKR",
+        "advanced_merge": {
+            "auto_street": {
+                "fields": [
+                    "RD_NM",
+                    "BD_NM",
+                    "DET_BD_NM"
+                ],
+                "separator": " "
+            }
+        }
+    },
+    "compression": "zip",
+    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+    "skip": true,
+    "license": "CCBY",
+    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-kangdonggu.zip"
+}
