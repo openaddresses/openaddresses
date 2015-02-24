@@ -1,0 +1,26 @@
+{
+    "coverage": {
+        "US Census": {
+        	"geoid": "18",
+        	"state": "Indiana"
+        	},
+        "country": "us",
+        "state": "in"
+    },
+    "website": "http://maps.indiana.edu/metadata/Infrastructure/Streets_Address_Points_IDHS.html",
+    "data": "http://maps.indiana.edu/download/Infrastructure/Streets_Address_Points_IDHS.zip",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+    	"type": "shapefile",
+    	"lon": "x",
+    	"lat": "y",
+    	"merge": ["PREFIX", "ADD_NAME", "SUFFIX"],
+    	"number": "NUMBER",
+    	"street": "auto_street",
+    	"city": "ADD_CITY",
+    	"postcode": "ZIPCODE",
+    	"district": "COUNTY",
+    	"region": "STATE"
+    }
+}
