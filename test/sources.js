@@ -63,7 +63,7 @@ function checkSource(i){
 
             if (data.conform) {
                 //Ensure people don't make up new values
-                var conformOptions = ['type', 'csvsplit', 'merge', 'advanced_merge', 'split', 'srs', 'file', 'encoding', 'headers', 'skiplines', 'lon', 'lat', 'number', 'street', 'city', 'postcode', 'district', 'region', 'addrtype', 'notes'];
+                var conformOptions = ['type', 'csvsplit', 'merge', 'advanced_merge', 'split', 'srs', 'file', 'encoding', 'headers', 'skiplines', 'lon', 'lat', 'number', 'street', 'city', 'postcode', 'district', 'region', 'addrtype', 'notes', 'accuracy'];
                 Object.keys(data.conform).forEach(function (conformKey) {
                     t.ok(conformOptions.indexOf(conformKey) !== -1, "conform - " + conformKey + " is supported");
                 });
