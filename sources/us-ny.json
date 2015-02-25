@@ -1,10 +1,22 @@
 {
     "coverage": {
+        "US Census": {
+        	"geoid": "36",
+        	"state": "New York"
+        	},
         "country": "us",
         "state": "ny"
     },
     "website": "http://gis.ny.gov/gisdata/inventories/details.cfm?DSID=921",
-    "data": "http://gis.ny.gov/gisdata/supportfiles/org_522_streets_addresspoints_data_dictionary.zip",
-    "compression": "zip",
-    "type": "http"
+    "data": "http://gisservices.dhses.ny.gov/arcgis/rest/services/SAM_Address_Points/MapServer/1",
+    "type": "ESRI",
+    "note": "Data dictionary found at http://gis.ny.gov/gisdata/supportfiles/org_522_streets_addresspoints_data_dictionary.zip",
+    "conform": {
+    	"type": "geojson",
+    	"lon": "x",
+    	"lat": "y",
+    	"street": "CompleteStreetName",
+    	"number": "AddressNumber",
+    	"postcode": "ZipCode"
+    }
 }
