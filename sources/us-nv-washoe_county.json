@@ -15,11 +15,20 @@
     "compression": "zip",
     "conform": {
         "split": "address",
+        "merge": ["STDIRPRE","STREET","STTYPE","STDIRSUF"],
         "lon": "x",
         "lat": "y",
-        "number": "auto_number",
+        "advanced_merge": {
+            "custom_number": {
+                "separator": " ",
+                "fields": ["ADDNUM", "ADDNUMSUF"]
+            }
+        },
+        "number": "custom_number",
         "street": "auto_street",
         "type": "shapefile",
-        "postcode": "zip"
+        "postcode": "ZIP",
+        "city": "MUNI",
+        "accuracy": 2
     }
 }
