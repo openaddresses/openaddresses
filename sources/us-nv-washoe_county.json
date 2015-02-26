@@ -9,17 +9,26 @@
         "state": "nv",
         "county": "Washoe"
     },
-    "data": "ftp://wcftp.washoecounty.us/outtoworld/dwh/addresses_oct2013.zip",
-    "year": "10/2013",
+    "data": "ftp://wcftp.washoecounty.us/outtoworld/dwh/addresses_aug2014.zip",
+    "year": "08/2014",
     "type": "ftp",
     "compression": "zip",
     "conform": {
         "split": "address",
+        "merge": ["STDIRPRE","STREET","STTYPE","STDIRSUF"],
         "lon": "x",
         "lat": "y",
-        "number": "auto_number",
+        "advanced_merge": {
+            "custom_number": {
+                "separator": " ",
+                "fields": ["ADDNUM", "ADDNUMSUF"]
+            }
+        },
+        "number": "custom_number",
         "street": "auto_street",
         "type": "shapefile",
-        "postcode": "zip"
+        "postcode": "ZIP",
+        "city": "MUNI",
+        "accuracy": 2
     }
 }
