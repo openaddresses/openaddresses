@@ -10,5 +10,22 @@
     "website": "http://sonomacounty.ca.gov/ISD/Systems-and-Programming/Geographic-Information-Systems/",
     "type": "http",
     "compression": "zip",
-    "note": "Provided in response to a public records request in December 2014 and uploaded to GitHub for public hosting."
+    "note": "Provided in response to a public records request in December 2014 and uploaded to GitHub for public hosting.",
+    "conform": {
+        "type": "shapefile",
+        "merge": ["PreDir","Name","Type","SufDir"],
+        "advanced_merge": {
+            "custom_number": {
+                "separator": " ",
+                "fields": ["Num", "NumExt", "Unit"]
+            }
+        },
+        "number": "custom_number",
+        "street": "auto_street",
+        "city": "Mun",
+        "postcode": "ZipCode",
+        "accuracy": 2,
+        "lon":"x",
+        "lat":"y"
+    }
 }
