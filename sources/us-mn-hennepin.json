@@ -9,7 +9,19 @@
         "state": "mn",
         "county": "Hennepin"
     },
-    "data": "http://gis-stage.co.hennepin.mn.us/publicgisdata/hennepin_county_gis_addresses.zip",
+    "data": "http://gis-stage.hennepin.us/publicgisdata/hennepin_county_gis_addresses.zip",
     "type": "http",
-    "website": "http://www.hennepin.us/your-government/open-government/gis-open-data"
+    "compression": "zip",
+    "website": "http://www.hennepin.us/your-government/open-government/gis-open-data",
+    "conform": {
+        "lon": "x",
+        "lat": "y",
+        "number": "ANUMBER",
+        "merge": [
+            "ST_PRE_MOD", "ST_PRE_DIR", "ST_PRE_TYP", "ST_NAME", "ST_POS_TYP", "ST_POS_DIR", "ST_POS_MOD"
+        ],
+        "street": "auto_street",
+        "city": "MUNI_NAME",
+        "postcode": "ZIP4"
+    }
 }
