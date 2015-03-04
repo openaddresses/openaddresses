@@ -10,5 +10,21 @@
         "county": "Wood"
     },
     "data": "http://gis.co.wood.wi.us/gis/rest/services/FlexGIS/AddressesWGS/MapServer/0",
-    "type": "ESRI"
+    "type": "ESRI",
+    "conform": {
+        "type": "csv",
+        "number": "WebData.DBO.SiteAddresses.HSNUM",
+        "merge": [
+            "WebData.DBO.SiteAddresses.PD",
+            "WebData.DBO.SiteAddresses.PT",
+            "WebData.DBO.SiteAddresses.SN",
+            "WebData.DBO.SiteAddresses.ST",
+            "WebData.DBO.SiteAddresses.SD"
+        ],
+        "street": "auto_street",
+        "postcode": "WebData.DBO.SiteAddresses.NEWZIP",
+        "city": "WebData.DBO.SiteAddresses.Municipality",
+        "lon": "x",
+        "lat": "y"
+    }
 }
