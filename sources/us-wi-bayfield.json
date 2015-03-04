@@ -10,5 +10,15 @@
         "county": "Bayfield"
     },
     "data": "http://maps.bayfieldcounty.org/arcgis/rest/services/BFLRMapBasic/MapServer/0",
-    "type": "ESRI"
+    "type": "ESRI",
+    "conform": {
+        "type": "csv",
+        "number": "Number",
+        "merge": [ "PD", "ROADNAME", "TYPE", "SD" ],
+        "street": "auto_street",
+        "lon": "x",
+        "lat": "y",
+        "city": "PROPCITY",
+        "postcode": "PROPZIP"
+    }
 }
