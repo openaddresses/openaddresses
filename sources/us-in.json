@@ -8,14 +8,13 @@
         "state": "in"
     },
     "website": "http://maps.indiana.edu/metadata/Infrastructure/Streets_Address_Points_IDHS.html",
-    "data": "http://maps.indiana.edu/download/Infrastructure/Streets_Address_Points_IDHS.zip",
-    "type": "http",
-    "compression": "zip",
+    "data": "http://maps.indiana.edu/arcgis/rest/services/Infrastructure/Streets_Address_Points_IDHS/MapServer/0",
+    "type": "ESRI",
     "conform": {
-    	"type": "shapefile",
+    	"type": "csv",
     	"lon": "x",
     	"lat": "y",
-    	"merge": ["PREFIX", "ADD_NAME", "SUFFIX"],
+    	"merge": ["PREFIX", "ADD_NAME", "ADD_TYPE", "SUFFIX"],
     	"number": "NUMBER",
     	"street": "auto_street",
     	"city": "ADD_CITY",
