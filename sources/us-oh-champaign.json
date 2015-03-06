@@ -9,9 +9,17 @@
         "state": "oh",
         "county": "Champaign"
     },
-    "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/CHA_ADDS.zip",
+    "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/CHP_ADDS.zip",
     "type": "http",
     "compression": "zip",
-    "skip": true,
-    "note": "Data no longer there"
+    "conform": {
+        "type": "shapefile",
+        "lon": "x",
+        "lat": "y",
+        "number": "HOUSENUM",
+        "merge": ["ST_PREFIX", "ST_NAME", "ST_TYPE", "ST_SUFFIX", "ST_SUFFIX2"],
+        "street": "auto_street",
+        "city": "MUNI",
+        "postcode": "ZIPCODE"
+    }
 }
