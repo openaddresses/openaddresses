@@ -9,6 +9,16 @@
         "state": "pa",
         "county": "Snyder"
     },
-    "data": "http://www.snydercountygis.org:6080/arcgis/rest/services/Parcels2013b/MapServer/0",
-    "type": "ESRI"
+    "data": "http://www.snydercountygis.org:6080/arcgis/rest/services/ScottStructures/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "csv",
+        "lon": "x",
+        "lat": "y",
+        "number": "HouseNum",
+        "merge": [ "Prefix", "Street", "Suffix", "PostDir" ],
+        "street": "auto_street",
+        "city": "City",
+        "postcode": "Zip"
+    }
 }
