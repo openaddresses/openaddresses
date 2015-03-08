@@ -6,5 +6,13 @@
     },
     "attribution": "Ciy of Hartford",
     "data": "http://gis1.hartford.gov/arcgis/rest/services/GPSBasemapForFlex/MapServer/0",
-    "type": "ESRI"
+    "type": "ESRI",
+    "conform": {
+        "type": "csv",
+        "lon": "x",
+        "lat": "y",
+        "number": "STREETNUM",
+        "join": ["CV_STPREFIX", "CV_STNAME", "CV_STTYPE", "CV_STSUFFIX"],
+        "street": "auto_street"
+    }
 }
