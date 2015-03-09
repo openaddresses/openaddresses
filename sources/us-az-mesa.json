@@ -4,9 +4,17 @@
         "state": "az",
         "city": "Mesa"
     },
-    "data": "http://gis.mesaaz.gov/mesaaz/rest/services/Address/AddressIndexAcella/MapServer/0",
+    "data": "http://gis.mesaaz.gov/mesaaz/rest/services/Address/AddressIndex/MapServer/0",
     "type": "ESRI",
-    "skip": true,
-    "note": "Throws Length exception",
-    "attribution": "City of Mesa"
+    "attribution": "City of Mesa",
+    "conform": {
+        "type": "csv",
+        "lon": "x",
+        "lat": "y",
+        "number": "STREETNUM",
+        "merge": ["PDIR", "STNAME", "STTYPE", "SDIR"],
+        "street": "auto_street",
+        "city": "PLACE",
+        "postcode": "ZIP"
+    }
 }
