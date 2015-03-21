@@ -9,6 +9,26 @@
         "state": "nv",
         "county": "Washoe"
     },
-    "type": "ESRI",
-    "data": "http://wcgisweb.washoecounty.us/arcgis/rest/services/BaseLayersWebMercator/MapServer/2"
+    "data": "ftp://wcftp.washoecounty.us/outtoworld/dwh/addresses_aug2014.zip",
+    "year": "08/2014",
+    "type": "ftp",
+    "compression": "zip",
+    "conform": {
+        "split": "address",
+        "merge": ["STDIRPRE","STREET","STTYPE","STDIRSUF"],
+        "lon": "x",
+        "lat": "y",
+        "advanced_merge": {
+            "custom_number": {
+                "separator": " ",
+                "fields": ["ADDNUM", "ADDNUMSUF"]
+            }
+        },
+        "number": "custom_number",
+        "street": "auto_street",
+        "type": "shapefile",
+        "postcode": "ZIP",
+        "city": "MUNI",
+        "accuracy": 2
+    }
 }
