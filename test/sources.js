@@ -74,7 +74,7 @@ function checkSource(i){
                 t.ok(data.conform.type && typeof data.conform.type === 'string', "conform - type attribute required");
                 t.ok(['shapefile', 'shapefile-polygon', 'csv', 'geojson', 'xml'].indexOf(data.conform.type) !== -1, "conform - type is supported");
                 if (data.conform.type === 'csv') {
-                	t.ok(data.conform.lon && typeof data.conform.lon === 'string', "conform - lon attribute required for type csv");
+                    t.ok(data.conform.lon && typeof data.conform.lon === 'string', "conform - lon attribute required for type csv");
                     t.ok(data.conform.lat && typeof data.conform.lat === 'string', "conform - lat attribute required for type csv");
                 }
 
