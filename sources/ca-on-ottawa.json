@@ -4,9 +4,17 @@
         "state": "on",
         "city": "Ottawa"
     },
-    "data": "http://data.ottawa.ca/en/storage/f/2013-12-02T235333/mainAddr.csv",
+    "data": "data.ottawa.ca/en/storage/f/2015-01-19T162221/addresses.zip",
     "website": "http://data.ottawa.ca/dataset/address-points-main-and-subordinates",
     "license": "http://ottawa.ca/en/mobile-apps-and-open-data/open-data-terms-use",
-    "note": "Projection is EPSG:2146. X/Y fields are centroidX/centroidY.",
-    "type": "http"
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "lon": "x",
+        "lat": "y",
+        "number": "address",
+        "merge": ["roadName","roadType"],
+        "street": "auto_street",
+        "type": "shapefile"
+    }
 }
