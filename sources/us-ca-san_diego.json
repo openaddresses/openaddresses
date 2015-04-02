@@ -12,12 +12,20 @@
     "compression": "zip",
     "conform": {
         "merge": [
-            "addrname",
-            "addrsfx"
+            "ADDRPDIR",
+            "ADDRNAME",
+            "ADDRSFX",
+            "ADDRPOSTD"
         ],
         "lon": "x",
         "lat": "y",
-        "number": "addrnmbr",
+        "advanced_merge": {
+            "custom_number": {
+                "separator": " ",
+                "fields": ["ADDRNMBR", "ADDRFRAC"]
+            }
+        },
+        "number": "custom_number",
         "street": "auto_street",
         "type": "shapefile",
         "postcode": "addrzip"
