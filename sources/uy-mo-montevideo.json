@@ -11,8 +11,13 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "merge": ["NUM_PUERTA","LETRA"],
-        "number": "auto_street",
+        "advanced_merge": {
+	    "custom_number": {
+	    	"separator": "",
+                "fields": ["NUM_PUERTA", "LETRA"]
+    	    }
+        },
+        "number": "custom_number",
         "street": "NOM_CALLE",
         "type": "shapefile"
     }
