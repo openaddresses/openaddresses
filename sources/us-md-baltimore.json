@@ -9,11 +9,18 @@
         "state": "md",
         "county": "Baltimore"
     },
-    "data": "https://github.com/baltimorecounty/address-points/blob/master/shapefileWGS84_zip/AddressPoints.zip",
+    "data": "ftp://gispublic:public@ftp.baltimorecountymd.gov/Shapefile/AddressPoints.zip",
     "website": "http://www.baltimorecountymd.gov/Agencies/infotech/GIS/datadownload.html",
     "license": "Public Domain",
     "compression": "zip",
-    "type": "http",
+    "type": "ftp",
     "year": 2013,
-    "note": "converted from shapefile md state plane to shapefile wgs84 with ogr2ogr"
+    "conform": {
+        "type": "shapefile",
+        "number": "ST_NUMBER",
+        "merge": ["ST_PREMOD", "ST_PREFIXD", "ST_PREFIXT", "ST_NAME", "ST_TYPE", "ST_SUFFIXD", "ST_POSTMOD"]
+        "street": "auto_street",
+        "postcode": "ZIP",
+        "region": "STATE"
+    }
 }
