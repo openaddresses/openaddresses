@@ -14,6 +14,13 @@
     "compression": "zip",
     "note": "point shapefile Geocode_Points.shp, address columns: HOUSENUMBE, DIRPREFIX, FEATURENAM, FEATURETYP, SU_TYPE, SU_NUM, CITY, ZIPCODE",
     "year": "2014",
-    "data": "http://gis.co.franklin.wa.us/download/Points%20of%20Interest/Geocode_Points.zip",
-    "website": "http://gis.co.franklin.wa.us/download.asp"
+    "data": "http://gis.co.franklin.wa.us/download/Basemap/Address.zip",
+    "website": "http://gis.co.franklin.wa.us/download.asp",
+    "conform": {
+        "type": "shapefile",
+        "number": "HOUSENUMBE",
+        "merge": ["DIRPREFIX", "FEATURENAM", "FEATURETYP", "DIRSUFFIX"],
+        "street": "auto_street",
+        "city": "MUNI"
+    }
 }
