@@ -10,5 +10,13 @@
         "county": "Beaufort"
     },
     "type": "ESRI",
-    "data": "http://webgis.bcgov.net/arcgis/rest/services/Addresses/MapServer/0"
+    "data": "http://webgis.bcgov.net/arcgis/rest/services/Addresses/MapServer/0",
+    "conform": {
+        "type": "csv",
+        "lat": "OA:y",
+        "lon": "OA:x",
+        "number": "STREETNUM",
+        "merge": ["PREDIRECT", "STREETNAME", "TYPE", "POSTDIRECT"],
+        "street": "auto_street"
+    }
 }
