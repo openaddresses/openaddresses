@@ -13,12 +13,14 @@
     "license": "Imdemnification?",
     "type": "ESRI",
     "conform": {
-        "split": "ADDRESS2",
-        "lon": "x",
-        "lat": "y",
-        "number": "auto_number",
+        "number": "HOUSE",
+        "lon": "OA:x",
+        "lat": "OA:y",
+        "merge": ["STREET_DIR","STREET_NAM","STREET_TYP"],
         "street": "auto_street",
-        "type": "geojson",
-        "postcode": "owner_zip"
+        "type": "csv",
+        "city": "PROP_CITY",
+        "postcode": "PROP_ZIP",
+        "accuracy": 2
     }
 }
