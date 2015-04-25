@@ -1,0 +1,24 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "29095",
+            "name": "Jackson County",
+            "state": "Missouri"
+        },
+        "country": "us",
+        "state": "mo",
+        "county": "Jackson"
+    },
+    "data": "http://arcgisweb.jacksongov.org/arcgis/rest/services/Cadastral/ParcelsAndAddresses/MapServer/3",
+    "type": "ESRI",
+    "conform": {
+        "type": "csv",
+        "lat": "OA:y",
+        "lon": "OA:x",
+        "number": "ADDRNUM",
+        "merge": ["Directional_Prefix", "FULLNAME", "Road_type", "Directional_Suffix"],
+        "street": "auto_street",
+        "postcode": "ZIP",
+        "city": "MUNICIPALITY"
+    }
+}

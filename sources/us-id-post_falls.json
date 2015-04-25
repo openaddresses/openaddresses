@@ -1,17 +1,24 @@
 {
     "coverage": {
+        "US Census": {
+            "geoid": "1664810",
+            "name": "City of Post Falls",
+            "state": "Idaho"
+        },
         "country": "us",
         "state": "id",
         "city": "Post Falls"
     },
-    "data": "http://gis.postfallsidaho.org/arcgis/rest/services/MAPGALLERY/Addresses/MapServer/0",
+    "data": "http://gis.postfallsidaho.org/arcgis/rest/services/GIS2/Addresses/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "split": "address",
-        "lon": "x",
-        "lat": "y",
-        "number": "auto_number",
+        "type": "csv",
+        "lon": "OA:x",
+        "lat": "OA:y",
+        "number": "HOUSE_NUM",
+        "merge": ["PRE_DIR", "ST_NAME", "ST_TYPE"],
         "street": "auto_street",
-        "type": "geojson"
+        "city": "CITY",
+        "postcode": "ZIPCODE"
     }
 }

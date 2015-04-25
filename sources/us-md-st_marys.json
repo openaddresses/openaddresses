@@ -10,18 +10,15 @@
         "county": "Saint Mary's"
     },
     "website": "http://www.co.saint-marys.md.us/gis/",
-    "data": "ftp://www.co.saint-marys.md.us/StMarys_Address_Points.zip",
-    "license": "Indemnification",
-    "year": "2014",
-    "type": "ftp",
-    "compression": "zip",
+    "data": "http://arcims.co.saint-marys.md.us/arcgis/rest/services/FireSearch/MapServer/0",
+    "type": "ESRI",
     "conform": {
-        "lon": "x",
-        "lat": "y",
-        "split": "loc_add",
+        "type": "csv",
+        "lon": "OA:x",
+        "lat": "OA:y",
+        "merge": ["ST_DIR", "ST_NAME", "ST_TYPE"],
         "street": "auto_street",
-        "number": "auto_number",
-        "type": "shapefile",
-        "postcode": "zip"
+        "number": "HOUSE_NO",
+        "postcode": "ZIP"
     }
 }
