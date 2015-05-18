@@ -4,11 +4,20 @@
         "state": "ar",
         "city": "Fayetteville"
     },
-    "website": "ftp://ftp.accessfayetteville.org/Published/GIS/Address%20File%2020110125/",
-    "data": "ftp://ftp.accessfayetteville.org/Published/GIS/Address%20File%2020110125/Fayetteville_Address_20110125.gdb.zip",
+    "website": "ftp://ftp.accessfayetteville.org/Published/GIS/Data/Address/Address_Point/Esri_Shapefile/",
+    "data": "ftp://ftp.accessfayetteville.org/Published/GIS/Data/Address/Address_Point/Esri_Shapefile/Address_Point.zip",
     "type": "ftp",
     "compression": "zip",
-    "website": "http://www.cityoffayetteville.org",
     "attribution": "City of Fayetteville",
-    "note": "there is .shp address file for washington county, ar as well, however no zip file"
+    "conform": {
+        "type": "csv",
+        "lat": "OA:y",
+        "lon": "OA:x",
+        "number": "NUMBER",
+        "join": ["PREDIR", "NAME", "TYPE"],
+        "street": "auto_street",
+        "city": "CITY",
+        "postcode": "ZIP",
+        "region": "STATE"
+    }
 }
