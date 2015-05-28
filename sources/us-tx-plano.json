@@ -6,8 +6,17 @@
         "county": "Collin",
         "city": "Plano"
     },
-    "data": "http://gismaps.collincountytx.gov/ArcGIS/rest/services/county/IdentifyParcels/MapServer/0",
-    "type": "ESRI",
-    "skip": true,
-    "note": "timeout"
+    "data": "http://www.collincad.org/downloads/finish/16-gis-downloads/82-parcels-shapefile",
+    "website": "http://www.collincad.org/downloads/viewcategory/16-gis-downloads",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile-polygon",
+        "merge": [ "situs_stre", "situs_st_1", "situs_st_2" ],
+        "number": "situs_num",
+        "street": "auto_street",
+        "city": "situs_city",
+        "region": "situs_stat",
+        "postcode": "situs_zip"
+    }
 }
