@@ -1,11 +1,27 @@
 {
     "coverage": {
+        "US Census": {
+            "geoid": "48439",
+            "name": "Tarrant County",
+            "state": "Texas"
+        },
         "country": "us",
         "state": "tx",
-        "city": "tarrant-county"
+        "county": "Tarrant"
     },
     "data": "https://mapit.tarrantcounty.com/arcgis/rest/services/Dynamic/TADParcels/MapServer/0",
     "website": "https://gisit.tarrantcounty.com/publicmapviewer/",
     "attribution": "",
-    "type": "ESRI"
+    "type": "ESRI",
+    "conform": {
+        "type": "csv",
+        "lon": "OA:x",
+        "lat": "OA:y",
+        "number": "STREET_NO",
+        "merge": ["STREET_NAM","STREET_TYP"],
+        "street": "auto_street",
+        "city": "CITY",
+        "region": "STATE",
+        "postcode": "ZIPCODE"
+    }
 }
