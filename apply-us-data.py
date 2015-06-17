@@ -15,12 +15,12 @@ with open(join('us-data', 'states.txt')) as f:
 
 with open(join('us-data', 'counties.txt')) as f:
     counties = dict()
-    
+
     for row in csv.DictReader(f, dialect='excel-tab'):
         key = row['State FIPS'], row['Name']
         value = row['County FIPS'], row['Name']
         counties[key] = value
-        
+
         # some key variations
         if row['Name'].endswith(' County'):
             counties[(row['State FIPS'], row['Name'][:-7])] = value
@@ -28,12 +28,12 @@ with open(join('us-data', 'counties.txt')) as f:
             counties[(row['State FIPS'], row['Name'][:-7])] = value
         if row['Name'].endswith(' Municipality'):
             counties[(row['State FIPS'], row['Name'][:-13])] = value
-    
+
     # more key variations
     for (s, c), value in counties.iteritems():
         if c.startswith('St. '):
             counties[(s, 'Saint '+c[4:])] = value
-    
+
     for (s, c), value in counties.iteritems():
         counties[(s, c.lower())] = value
         counties[(s, c.replace('-', ' '))] = value
@@ -43,26 +43,26 @@ for path in glob('sources/us-*.json'):
     with open(path) as f:
         data = f.read()
         info = json.loads(data)
-    
+
     if 'county' not in info.get('coverage', {}):
         continue
-    
+
     if 'US Census' in info['coverage']:
         continue
-    
+
     prefix = '\n    "coverage": {\n        '
     assert prefix + '"' in data
-    
+
     print path, '...'
-    
+
     state_name = codes[info['coverage']['state']]
     state_fips = states[state_name]
-    
+
     county = info['coverage']['county']
-    
+
     # if type(county) is list or basename(path)[6:-5] != county.lower().replace(' ', '-'):
     #     continue
-    
+
     if type(county) is list:
         county_names = [counties[(state_fips, c)] for c in county]
         print info['coverage'], state_fips, state_name, county_names
@@ -72,13 +72,13 @@ for path in glob('sources/us-*.json'):
         county_fips, county_name = counties[(state_fips, county.replace(u'ñ', 'n'))]
     else:
         county_fips, county_name = counties[(state_fips, county)]
-    
+
     geoid = state_fips + county_fips
-    
+
     census_dict = dict(geoid=geoid, name=county_name, state=state_name)
     census_json = json.dumps(census_dict, sort_keys=True)
-    
+
     new_data = data.replace(prefix, '{0}"US Census": {1},\n        '.format(prefix, census_json))
-    
+
     with open(path, 'w') as file:
         file.write(new_data)
