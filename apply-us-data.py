@@ -30,11 +30,11 @@ with open(join('us-data', 'counties.txt')) as f:
             counties[(row['State FIPS'], row['Name'][:-13])] = value
 
     # more key variations
-    for (s, c), value in counties.iteritems():
+    for ((s, c), value) in list(counties.items()):
         if c.startswith('St. '):
             counties[(s, 'Saint '+c[4:])] = value
 
-    for (s, c), value in counties.iteritems():
+    for ((s, c), value) in list(counties.items()):
         counties[(s, c.lower())] = value
         counties[(s, c.replace('-', ' '))] = value
         counties[(s, c.replace('-', ' ').lower())] = value
@@ -82,3 +82,4 @@ for path in glob('sources/us-*.json'):
 
     with open(path, 'w') as file:
         file.write(new_data)
+
