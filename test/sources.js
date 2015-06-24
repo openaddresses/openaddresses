@@ -43,11 +43,20 @@ function checkSource(i){
         if (data) {
             if (data.skip) t.pass("WARN - Skip Flag Detected");
 
-            //Ensure people don't make up values
-            generalOptions = ['email', 'attribution', 'year', 'skip', 'conform', 'coverage', 'data', 'compression', 'type', 'coverage', 'website', 'license', 'note'];
+            // Ensure people don't make up tags
+            legalTags = [
+                // https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md#core-tags
+                'data', 'type', 'coverage', 'coverage', 'conform', 'compression',
+                
+                // https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md#optional-tags
+                'website', 'license', 'note', 'attribution', 'email',
+                
+                // Not documented, but works
+                'year', 'skip'
+                ]
 
-            Object.keys(data).forEach(function (generalKey) {
-                t.ok(generalOptions.indexOf(generalKey) !== -1, generalKey + " is supported");
+            Object.keys(data).forEach(function (userTag) {
+                t.ok(legalTags.indexOf(userTag) !== -1, '"'+userTag+'" is not a tag documented in CONTRIBUTING.md.');
             });
 
             //Mandatory Fields & Coverage
