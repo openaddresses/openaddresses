@@ -4,8 +4,14 @@
         "state": "nd",
         "city": "Bismarck"
     },
-    "data": "ftp://ftp.state.nd.us/Landbase10-30-2013.zip",
-    "type": "ftp",
+    "data": "http://opendata.arcgis.com/datasets/3d91793d1ff649be8a4cacf1873c499f_0.zip",
+    "type": "http",
     "compression": "zip",
-    "skip": true
+    "conform": {
+        "type": "shapefile",
+        "number": "housenum",
+        "merge": ["st_directi", "st_name", "st_type"],
+        "street": "auto_street",
+        "postcode": "zip"
+    }
 }
