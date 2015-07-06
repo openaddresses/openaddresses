@@ -11,7 +11,14 @@
     },
     "license": "Indemnification",
     "type": "http",
-    "data": "http://www.bigstonecounty.org/gis/shapefile.vbhtml",
-    "note": "Data URL 302 redirects to quarterly parcel shapefile in a zip.",
-    "website": "http://www.bigstonecounty.org/gis/gis.vbhtml"
+    "compression": "zip",
+    "data": "http://www.bigstonecounty.org/gis/shapefile/BigStoneTaxParcels-March2015.zip",
+    "website": "http://www.bigstonecounty.org/gis/gis.vbhtml",
+    "conform": {
+        "type": "shapefile-polygon",
+        "split": "PHYSADDR",
+        "number": "auto_number",
+        "street": "auto_street",
+        "city": "TWPNAME"
+    }
 }
