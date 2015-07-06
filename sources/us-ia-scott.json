@@ -14,5 +14,13 @@
     "data": "https://iowagisdata.org/gisdr/county/scott/open/download?filename=SHP_Address.zip",
     "type": "http",
     "compression": "zip",
-    "note": "address points; Address features, ESRI shape file: Address; AddressAlias"
+    "conform": {
+        "type": "shapefile",
+        "number": "SAN",
+        "merge": ["STN", "STS"],
+        "street": "auto_street",
+        "postcode": "ZIP",
+        "city": "COMM",
+        "region": "STATE"
+    }
 }
