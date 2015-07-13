@@ -10,7 +10,7 @@
         "county": "San Diego"
     },
     "attribution": "San Diego Geographic Information Source - JPA",
-    "data": "http://rdw.sandag.org/file_store/Address/Address_APN.zip",
+    "data": "http://data.openaddresses.io.s3.amazonaws.com/cache/us-ca-san_diego.zip",
     "license": "http://www.sangis.org/Legal_Notice.htm",
     "note": "Metadata available at http://rdw.sandag.org/file_store%5CAddress/Address_APN.pdf",
     "website": "http://rdw.sandag.org/",
@@ -18,14 +18,15 @@
     "type": "http",
     "compression": "zip",
     "conform": {
+        "type": "shapefile",
+        "lon": "OA:x",
+        "lat": "OA:y",
         "merge": [
             "ADDRPDIR",
             "ADDRNAME",
             "ADDRSFX",
             "ADDRPOSTD"
         ],
-        "lon": "x",
-        "lat": "y",
         "advanced_merge": {
             "custom_number": {
                 "separator": " ",
@@ -34,7 +35,7 @@
         },
         "number": "custom_number",
         "street": "auto_street",
-        "type": "shapefile",
-        "postcode": "addrzip"
+        "postcode": "ADDRZIP",
+        "city": "COMMUNITY"
     }
 }
