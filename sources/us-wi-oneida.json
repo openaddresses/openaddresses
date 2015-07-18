@@ -9,17 +9,20 @@
         "state": "wi",
         "county": "Oneida"
     },
-    "data": "http://gis2.msa-ps.com/ArcGIS/rest/services/StreetsAddress/MapServer/20",
+    "data": "https://gis2.msa-ps.com/ArcGIS/rest/services/StreetsAddress/MapServer/20",
     "type": "ESRI",
     "conform": {
+        "type": "csv",
+        "lon": "OA:x",
+        "lat": "OA:y",
         "merge": [
-            "roadname",
-            "type"
+            "PreType",
+            "ROADNAME",
+            "TYPE",
+            "PostDir"
         ],
-        "lon": "x",
-        "lat": "y",
-        "number": "roadnumber",
+        "number": "SITEADDNUMBER",
         "street": "auto_street",
-        "type": "geojson"
+        "city": "Municipality"
     }
 }

@@ -9,8 +9,20 @@
         "state": "wi",
         "county": "Outagamie"
     },
-    "data": "ftp://FTPGISWEBREAD:ftpgiswebread@ftp.co.outagamie.wi.us/AddressPointsSHAPE.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "skip": true
+    "data": "https://gis.outagamie.org/arcgis/rest/services/Address/ADDRESSES/MapServer/4",
+    "type": "ESRI",
+    "conform": {
+        "type": "csv",
+        "lat": "OA:y",
+        "lon": "OA:x",
+        "number": "ADDRESS_NUM",
+        "merge": [
+            "PREFIX",
+            "STREET_NAME",
+            "SUFFIX"
+        ],
+        "street": "auto_street",
+        "city": "MUNICIPALITY",
+        "postcode": "MA_ZIP"
+    }
 }
