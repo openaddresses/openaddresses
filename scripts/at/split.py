@@ -29,7 +29,7 @@ def main(address_filename, street_filename):
     for srs in writers:
         source = copy.deepcopy(template)
         source['conform']['srs'] = 'EPSG:{}'.format(srs)
-        source['file'] = 'at-{}.csv'.format(srs)
+        source['conform']['file'] = 'at-{}.csv'.format(srs)
         source['attribution'] = '© Austrian address register, date data from {}'.format(datetime.datetime.now().isoformat().split('T')[0])
         with open('at-{}.json'.format(srs), 'w') as f:
             json.dump(source, f, indent=4)
