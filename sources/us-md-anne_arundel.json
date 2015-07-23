@@ -2,11 +2,20 @@
     "coverage": {
         "country": "us",
         "state": "md",
-        "city": "anne_arundel"
+        "county": "anne_arundel"
     },
     "data": "http://www.aacounty.org/OIT/GIS/Resources/aaco_address_points.zip",
     "website": "http://www.aacounty.org/OIT/GIS/",
     "attribution": "Anne Arundel County",
     "type": "ESRI",
-    "compression": "zip"
+    "compression": "zip",
+    "conform": {
+      "type": "shapefile",
+      "merge": ["ST_NAME", "ST_TYPE", "ST_SUFFIXD"],
+      "number": "ST_NUMBER",
+      "street": "auto_street",
+      "city": "CITY_NAME",
+      "postcode": "ZIPCODE",
+      "addrtype": "BLDG_CODE"
+    }
 }
