@@ -2,11 +2,21 @@
     "coverage": {
         "country": "us",
         "state": "md",
-        "city": "frederick"
+        "county": "frederick"
     },
     "data": "http://www.frederickcountymd.gov/6465/GISDownloadTracker---Addresses",
     "website": "http://www.frederickcountymd.gov/",
     "attribution": "Frederick County",
     "type": "http",
-    "compression": "zip"
+    "compression": "zip",
+    "conform": {
+      "type": "shapefile",
+      "merge": ["ST_PREFIX", "ST_NAME", "ST_TYPE", "ST_SUFFIX"],
+      "number": "ST_NUMBER",
+      "street": "auto_street",
+      "city": "CITY",
+      "postcode": "ZIPCODE_AD",
+      "addrtype": "ADDR_TYPE",
+      "notes": "ADDR_TYPE"
+    }
 }
