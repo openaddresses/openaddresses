@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import __future__
-import csv, sys, json, copy, datetime
+import csv, sys, json, copy, datetime, time
 
 def main(address_filename, street_filename):
+    timestamp = round(time.time())
+
     streets = {}
     with open(street_filename) as f:
         reader = csv.reader(f, delimiter=';')
@@ -19,7 +21,7 @@ def main(address_filename, street_filename):
         for row in reader:
             srs = row[17].strip()
             if not srs in writers:
-                writers[srs] = csv.writer(open('at-{}.csv'.format(srs), 'w'))
+                writers[srs] = csv.writer(open('at-{}-{}.csv'.format(srs, timestamp), 'w'))
                 writers[srs].writerow(headers)
             writers[srs].writerow(row + [streets.get(row[4].strip(), '')])
 
@@ -29,7 +31,7 @@ def main(address_filename, street_filename):
     for srs in writers:
         source = copy.deepcopy(template)
         source['conform']['srs'] = 'EPSG:{}'.format(srs)
-        source['conform']['file'] = 'at-{}.csv'.format(srs)
+        source['conform']['file'] = 'at-{}-{}.csv'.format(srs, timestamp)
         source['attribution'] = '© Austrian address register, date data from {}'.format(datetime.datetime.now().isoformat().split('T')[0])
         with open('at-{}.json'.format(srs), 'w') as f:
             json.dump(source, f, indent=4)
