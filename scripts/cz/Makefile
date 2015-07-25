@@ -4,4 +4,4 @@
 
 process:
 	rm -f cz-*.csv
-	find ./data -type f -name '*.gz' | parallel -j-1 ./process_one.sh {}
+	find ./data -type f -name '*.gz' | parallel -j1 ./process_one.sh {}

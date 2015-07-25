@@ -1,7 +1,6 @@
 import __future__
 import sys, re, os
 import xml.sax
-import untangle
 import xmltodict
 import unicodecsv as csv
 
@@ -19,6 +18,10 @@ class Callbacks(object):
         obj = xmltodict.parse(x)
         self.ulice_lookup[obj['vf:Ulice']['uli:Kod']] = obj['vf:Ulice']['uli:Nazev']
 
+    def handle_data(self, x):
+        obj = xmltodict.parse(x)['vf:Obec']
+        self.place_name = obj.get('obi:Nazev', '')
+
     def handle_adresnimisto(self, x):
         self.total += 1
 
@@ -26,12 +29,13 @@ class Callbacks(object):
 
         if not obj.get('ami:Ulice',False):
             debug('ami:Kod {} - no ulice'.format(obj['ami:Kod']))
-            return
-
-        ulice = self.ulice_lookup.get(obj['ami:Ulice']['uli:Kod'], False)
-        if not ulice:
-            debug('ami:Kod {} - ulice {} not found'.format(obj['ami:Kod'], obj['ami:Ulice']['uli:Kod']))
-            return
+            ulice = ''
+        else:
+            ulice = self.ulice_lookup.get(obj['ami:Ulice']['uli:Kod'], '')
+            if ulice == '':
+                debug('ami:Kod {} - ulice {} not found'.format(obj['ami:Kod'], obj['ami:Ulice']['uli:Kod']))
+                if self.place_name == '':
+                    return
 
         if not obj.get('ami:Geometrie', False):
             debug('ami:Kod {} - no geometry'.format(obj['ami:Kod']))
@@ -56,9 +60,9 @@ class Callbacks(object):
             previously_existing_file = os.path.exists(filename)
             self.writers[srs] = csv.writer(open(filename, 'a'))
             if not previously_existing_file:
-                self.writers[srs].writerow(['LON', 'LAT', 'NUMBER', 'STREET', 'POSTCODE'])
+                self.writers[srs].writerow(['LON', 'LAT', 'NUMBER', 'STREET', 'CITY', 'POSTCODE'])
 
-        self.writers[srs].writerow([coords[0], coords[1], number, ulice, postcode])
+        self.writers[srs].writerow([coords[0], coords[1], number, ulice, self.place_name, postcode])
         self.good += 1
 
 class XMLHandler(xml.sax.ContentHandler):
@@ -109,6 +113,14 @@ class XMLHandler(xml.sax.ContentHandler):
 
 def process(filename):
     handlers = Callbacks()
+
+    # parse for city name
+    with open(filename) as gml:
+        handler = XMLHandler()
+        handler.register('vf:VymennyFormat/vf:Data/vf:Obce/vf:Obec', handlers.handle_data)
+        parser = xml.sax.make_parser()
+        parser.setContentHandler(handler)
+        parser.parse(gml)
 
     # parse for street names
     with open(filename) as gml:
