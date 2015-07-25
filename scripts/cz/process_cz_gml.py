@@ -1,5 +1,5 @@
 import __future__
-import sys, re, os
+import sys, re, os, os.path
 import xml.sax
 import xmltodict
 import unicodecsv as csv
@@ -8,11 +8,12 @@ def debug(x):
     sys.stderr.write('{}\n'.format(x))
 
 class Callbacks(object):
-    def __init__(self):
+    def __init__(self, suffix=''):
         self.total = 0
         self.good = 0
         self.ulice_lookup = {}
         self.writers = {}
+        self.suffix = suffix
 
     def handle_ulice(self, x):
         obj = xmltodict.parse(x)
@@ -49,20 +50,29 @@ class Callbacks(object):
         srs = point['@srsName'].split('::')[-1]
         coords = point['gml:pos'].split(' ')
         postcode = obj.get('ami:Psc','')
-        number = obj['ami:CisloDomovni']
+
+        conscription_number = obj.get('ami:CisloDomovni', False)
+        if not conscription_number or len(conscription_number)==0:
+            debug('ami:Kod {} - no conscription number'.format(obj['ami:Kod']))
+            return
+
+        street_number = obj.get('ami:CisloOrientacni', '').strip()
+        street_number_suffix = obj.get('ami:CisloOrientacniPismeno', '').strip()
+        if len(street_number) > 0:
+            conscription_number += '/{}{}'.format(street_number, street_number_suffix)
 
         if len(coords) != 2:
             debug('ami:Kod {} - bad coordinates {}'.format(obj['ami:Kod'], coords))
             return
 
         if not srs in self.writers:
-            filename = 'cz-{}.csv'.format(srs)
+            filename = 'cz-{}_{}.csv'.format(srs, suffix)
             previously_existing_file = os.path.exists(filename)
             self.writers[srs] = csv.writer(open(filename, 'a'))
             if not previously_existing_file:
                 self.writers[srs].writerow(['LON', 'LAT', 'NUMBER', 'STREET', 'CITY', 'POSTCODE'])
 
-        self.writers[srs].writerow([coords[0], coords[1], number, ulice, self.place_name, postcode])
+        self.writers[srs].writerow([coords[0], coords[1], conscription_number, ulice, self.place_name, postcode])
         self.good += 1
 
 class XMLHandler(xml.sax.ContentHandler):
@@ -112,7 +122,7 @@ class XMLHandler(xml.sax.ContentHandler):
                 self.watch[w]['content'] += content
 
 def process(filename):
-    handlers = Callbacks()
+    handlers = Callbacks(suffix=os.path.basename(filename).replace('.xml', ''))
 
     # parse for city name
     with open(filename) as gml:
