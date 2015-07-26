@@ -66,7 +66,7 @@ class Callbacks(object):
             return
 
         if not srs in self.writers:
-            filename = 'cz-{}_{}.csv'.format(srs, suffix)
+            filename = 'cz-{}_{}.csv'.format(srs, self.suffix)
             previously_existing_file = os.path.exists(filename)
             self.writers[srs] = csv.writer(open(filename, 'a'))
             if not previously_existing_file:
