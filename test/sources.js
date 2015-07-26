@@ -43,11 +43,20 @@ function checkSource(i){
         if (data) {
             if (data.skip) t.pass("WARN - Skip Flag Detected");
 
-            //Ensure people don't make up values
-            generalOptions = ['email', 'attribution', 'year', 'skip', 'conform', 'coverage', 'data', 'compression', 'type', 'coverage', 'website', 'license', 'note'];
+            // Ensure people don't make up tags
+            legalTags = [
+                // https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md#core-tags
+                'data', 'type', 'coverage', 'coverage', 'conform', 'compression',
+                
+                // https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md#optional-tags
+                'website', 'license', 'note', 'attribution', 'email',
+                
+                // Not documented, but works
+                'year', 'skip'
+                ]
 
-            Object.keys(data).forEach(function (generalKey) {
-                t.ok(generalOptions.indexOf(generalKey) !== -1, generalKey + " is supported");
+            Object.keys(data).forEach(function (userTag) {
+                t.ok(legalTags.indexOf(userTag) !== -1, '"'+userTag+'" is not a tag documented in CONTRIBUTING.md.');
             });
 
             //Mandatory Fields & Coverage
@@ -63,18 +72,20 @@ function checkSource(i){
 
             if (data.conform) {
                 //Ensure people don't make up new values
-                var conformOptions = ['type', 'csvsplit', 'merge', 'advanced_merge', 'split', 'srs', 'file', 'encoding', 'headers', 'skiplines', 'lon', 'lat', 'number', 'street', 'city', 'postcode', 'district', 'region', 'addrtype', 'notes'];
+                var conformOptions = ['type', 'csvsplit', 'merge', 'advanced_merge', 'split', 'srs', 'file', 'encoding', 'headers', 'skiplines', 'lon', 'lat', 'number', 'street', 'city', 'postcode', 'district', 'region', 'addrtype', 'notes', 'accuracy'];
                 Object.keys(data.conform).forEach(function (conformKey) {
                     t.ok(conformOptions.indexOf(conformKey) !== -1, "conform - " + conformKey + " is supported");
                 });
 
-                //Mandator Conform Fields
-                t.ok(data.conform.lon && typeof data.conform.lon === 'string', "conform - lon attribute required");
-                t.ok(data.conform.lat && typeof data.conform.lat === 'string', "conform - lat attribute required");
+                //Mandatory Conform Fields
                 t.ok(data.conform.number && typeof data.conform.number === 'string', "conform - number attribute required");
                 t.ok(data.conform.street && typeof data.conform.street === 'string', "conform - street attribute required");
                 t.ok(data.conform.type && typeof data.conform.type === 'string', "conform - type attribute required");
                 t.ok(['shapefile', 'shapefile-polygon', 'csv', 'geojson', 'xml'].indexOf(data.conform.type) !== -1, "conform - type is supported");
+                if (data.conform.type === 'csv') {
+                    t.ok(data.conform.lon && typeof data.conform.lon === 'string', "conform - lon attribute required for type csv");
+                    t.ok(data.conform.lat && typeof data.conform.lat === 'string', "conform - lat attribute required for type csv");
+                }
 
                 //Optional Conform Fields
                 t.ok(data.conform.merge ? Array.isArray(data.conform.merge) : true, "conform - Merge is an array");

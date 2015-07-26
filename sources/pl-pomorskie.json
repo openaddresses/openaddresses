@@ -1,6 +1,10 @@
 {
     "coverage": {
-        "ISO 3166": {"alpha2":"PL-PM", "country":"Poland", "subdivision": "Pomorskie"},
+        "ISO 3166": {
+            "alpha2": "PL-PM",
+            "country": "Poland",
+            "subdivision": "Pomorskie"
+        },
         "state": "pomorskie",
         "country": "pl"
     },
@@ -9,14 +13,18 @@
     "conform": {
         "srs": "EPSG:2180",
         "lon": "X",
-        "merge": ["ulc_nazwa", "mjs_nazwa"],
-        "street": "auto_street",
+        "region": "woj_nazwa",
+        "city": "mjs_nazwa",
+        "postcode": "pad_kod_pocztowy",
+        "street": "ulc_nazwa",
         "number": "pad_numer_porzadkowy",
         "lat": "Y",
         "file": "punkty_adr_v2/pomorskie.gml",
-        "type": "xml"
+        "type": "xml",
+        "headers": 1,
+        "skiplines": 1
     },
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/pl.zip",
+    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/pl-pomorskie.zip",
     "type": "http",
     "note": "original source is ftp://91.223.135.109/prg/punkty_adr.zip but zipfile has unfixable character encoding issues"
 }

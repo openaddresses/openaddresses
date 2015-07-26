@@ -10,5 +10,15 @@
         "county": "Florence"
     },
     "data": "http://arc2000.florenceco.org/arcgis/rest/services/AddressPoints_WebMercator/MapServer/0",
-    "type": "ESRI"
+    "type": "ESRI",
+    "conform": {
+        "type": "csv", 
+        "lat": "OA:y",
+        "lon": "OA:x",
+        "number": "ADDRNUM",
+        "merge": ["STPREDIR", "STPRETYPE", "STNAME", "STTYPE", "STDIR"],
+        "street": "auto_street",
+        "postcode": "ZIPCODE",
+        "city": "ZIPCOMM"
+    }
 }

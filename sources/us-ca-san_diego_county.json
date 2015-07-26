@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "US Census": {
+          "geoid": "06073",
+          "name": "San Diego County",
+          "state": "California"
+        },
+        "country": "us",
+        "state": "ca",
+        "county": "San Diego"
+    },
+    "attribution": "San Diego Geographic Information Source - JPA",
+    "data": "http://data.openaddresses.io.s3.amazonaws.com/cache/us-ca-san_diego.zip",
+    "license": "http://www.sangis.org/Legal_Notice.htm",
+    "note": "Metadata available at http://rdw.sandag.org/file_store%5CAddress/Address_APN.pdf",
+    "website": "http://rdw.sandag.org/",
+    "year": "",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile",
+        "lon": "OA:x",
+        "lat": "OA:y",
+        "merge": [
+            "ADDRPDIR",
+            "ADDRNAME",
+            "ADDRSFX",
+            "ADDRPOSTD"
+        ],
+        "advanced_merge": {
+            "custom_number": {
+                "separator": " ",
+                "fields": ["ADDRNMBR", "ADDRFRAC"]
+            }
+        },
+        "number": "custom_number",
+        "street": "auto_street",
+        "postcode": "ADDRZIP",
+        "city": "COMMUNITY"
+    }
+}

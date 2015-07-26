@@ -4,7 +4,15 @@
         "state": "tx",
         "city": "DeSoto"
     },
-    "data": "http://gis.dfwmaps.com/ArcGIS/rest/services/Desoto/Desoto_Baselayers_VE/MapServer/2",
+    "data": "http://gis4.dfwmaps.com/arcgis/rest/services/ICDesoto/Desoto_Baselayers_VE10/MapServer/2",
     "type": "ESRI",
-    "note": "X & Y already exist"
+    "conform": {
+        "type": "csv",
+        "lat": "OA:y",
+        "lon": "OA:x",
+        "number": "HOUSE_NUM",
+        "merge": ["PREFIX", "PRETYPE", "STREET", "TYPE", "SUFFIX"],
+        "street": "auto_street",
+        "city": "CITY"
+    }
 }

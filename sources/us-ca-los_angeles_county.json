@@ -17,12 +17,23 @@
     "compression": "zip",
     "conform": {
         "merge": [
-            "streetname",
-            "posttype"
+            "PreMod",
+            "PreDir",
+            "PreType",
+            "StreetName",
+            "PostType",
+            "PostDir",
+            "PostMod"
         ],
         "lon": "x",
         "lat": "y",
-        "number": "number",
+        "advanced_merge": {
+            "custom_number": {
+                "separator": " ",
+                "fields": ["NumPrefix", "Number", "NumSuffix"]
+            }
+        },
+        "number": "custom_number",
         "street": "auto_street",
         "type": "shapefile",
         "postcode": "zipcode"

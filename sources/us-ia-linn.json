@@ -9,18 +9,21 @@
         "state": "ia",
         "county": "Linn"
     },
-    "data": "http://gis.linncounty.org/arcgis/rest/services/LandRecords/MapServer/12",
-    "type": "ESRI",
+    "data": "https://gis.linncounty.org/webdata/gis/DataDownload/LandRecords/Addresses/ShapefileZip/LinnCoIAAddressesShapefile.zip",
+    "type": "http",
+    "compression": "zip",
     "conform": {
+        "type": "shapefile",
         "merge": [
-            "name",
-            "suftype"
+            "PREDIR",
+            "PRETYPE",
+            "NAME",
+            "SUFTYPE",
+            "SUFDIR"
         ],
-        "lon": "x",
-        "lat": "y",
-        "number": "houseno",
+        "number": "HOUSENO",
         "street": "auto_street",
-        "type": "geojson",
-        "postcode": "zip"
+        "postcode": "ZIP",
+        "city": "CITY"
     }
 }

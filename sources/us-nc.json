@@ -4,19 +4,20 @@
         "country": "us",
         "state": "nc"
     },
-    "data": "ftp://ftp.nconemap.com/outgoing/vector/NCMasterAddress09_shp.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "website": "http://data.nconemap.com/geoportal/catalog/search/resource/details.page?uuid={3A4081FC-EE40-4061-8C69-585017E44C6C}",
-    "year": "2009",
-    "note": "ZIP contains multiple shapefiles",
+    "data": "http://services.nconemap.com/arcgis/rest/services/NC1Map_Location/MapServer/0",
+    "type": "ESRI",
+    "website": "http://data.nconemap.com/geoportal/catalog/search/resource/details.page?uuid=%7B9E039D56-5202-43E7-8D36-D09414C0DBD6%7D",
+    "year": "2014",
     "conform":
     {
-        "type": "shapefile",
-        "number": "ADDRESS_NU",
-        "merge": ["STR_PR_DIR", "STR_NAME", "STR_PO_TYP"],
-        "street": "auto_street",
+        "type": "csv",
         "lon": "x",
-        "lat": "y"
+        "lat": "y",
+        "number": "ADDR_HN",
+        "merge": ["ADDR_PD", "ADDR_SN", "ADDR_ST", "ADDR_SD"],
+        "street": "auto_street",
+        "city": "COMMUNITY",
+        "postcode": "ZIPCODE",
+        "district": "COUNTY_NAME"
     }
 }

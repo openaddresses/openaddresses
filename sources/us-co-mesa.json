@@ -10,16 +10,18 @@
         "county": "Mesa"
     },
     "attribution": "Mesa County",
-    "data": "http://emap.mesacounty.us/datadownload/911AddressPoints.zip",
-    "type": "http",
-    "compression": "zip",
+    "data": "http://mcmap2.mesacounty.us/arcgis/rest/services/maps/ParcePointQuery/MapServer/0",
+    "type": "ESRI",
     "website": "http://emap.mesacounty.us/metadata/default.aspx?value=Administrative",
     "conform": {
-        "lon": "x",
-        "lat": "y",
-        "number": "HOUSE_NUMB",
-        "merge": ["PREFIX_DIR","PREFIX_TYP","STREET_NAM", "STREET_TYP", "SUFFIX_DIR"],
+        "type": "csv",
+        "lon": "OA:x",
+        "lat": "OA:y",
+        "number": "HOUSE_NUMBER",
+        "merge": ["PREFIX_DIRECTION", "PREFIX_TYPE", "STREET_NAME", "STREET_TYP", "SUFFIX_DIRECTION"],
         "street": "auto_street",
-        "type": "shapefile"
+        "city": "CITY",
+        "region": "STATE",
+        "postcode": "ZIP"
     }
 }

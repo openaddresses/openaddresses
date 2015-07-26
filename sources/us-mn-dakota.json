@@ -9,17 +9,25 @@
         "state": "mn",
         "county": "Dakota"
     },
-    "license": "Indemnification",
-    "type": "http",
-    "note": "Zipfile contains two shapefiles. One is a parcel point that is useful.",
-    "data": "http://gis.co.dakota.mn.us/websitegisdata/propertyinfo/shp/parcels_metrogis.zip",
+    "license": "https://www.co.dakota.mn.us/HomeProperty/MappingServices/GISData/Pages/default.aspx",
+    "type": "ESRI",
+    "note": "ArcGIS for Server service",
+    "data": "http://gis2.co.dakota.mn.us/arcgis/rest/services/DCGIS_OL_PropertyInformation/MapServer/3",
     "website": "http://www.co.dakota.mn.us/HomeProperty/MappingServices/GISData/Pages/default.aspx",
     "conform": {
-        "type": "shapefile",
-        "file": "parcelp_metrogis.shp",
-        "lon": "X",
-        "lat": "Y",
+        "type": "csv",
+        "merge": [
+            "ST_PRE_TYP",
+            "ST_NAME",
+            "ST_POS_TYP",
+            "ST_POS_MOD",
+            "ST_POS_DIR"
+        ],
         "number": "BLDG_NUM",
-        "street": "STREETNAME"
+        "street": "auto_street",
+        "city": "CITY",
+        "postcode": "Zip",
+        "lon": "x",
+        "lat": "y"
     }
 }

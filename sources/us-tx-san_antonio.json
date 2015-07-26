@@ -1,11 +1,22 @@
 {
     "coverage": {
+        "US Census": {"geoid": "48029", "name": "Bexar County", "state": "Texas"},
         "country": "us",
         "state": "tx",
+        "county": "Bexar",
         "city": "San Antonio"
     },
-    "data": "https://gis.sanantonio.gov/ArcGIS/rest/services/BaseData/MapServer/0",
-    "type": "ESRI",
-    "skip": true,
-    "note": "Unable to verify leaf signature"
+    "website": "http://www.sanantonio.gov/GIS/GISdata",
+    "data": "https://gis.sanantonio.gov/Download/Addresses.zip",
+    "license": "Indemnification",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile",
+        "lat": "YCoord",
+        "lon": "XCoord",
+        "merge": [ "PreDirecti", "Name", "ABBREVTYPE", "PostDirect" ],
+        "number": "HouseNumbe",
+        "street": "auto_street"
+    }
 }

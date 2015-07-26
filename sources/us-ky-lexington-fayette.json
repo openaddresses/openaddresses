@@ -9,18 +9,18 @@
         "state": "ky",
         "county": "Fayette"
     },
-    "website": "http://data.lexingtonky.gov/dataset/parcel",
-    "data": "https://opendatalex.s3.amazonaws.com/2014-02-07T183620/Parcel.zip",
+    "website": "http://data.lexingtonky.gov/dataset/address-points",
+    "data": "https://opendatalex.s3.amazonaws.com/2015-05-04T135556/AddressPoint.csv",
     "type": "http",
     "license": "Public Domain",
-    "year": "2013",
-    "compression": "zip",
+    "year": "2015",
     "conform": {
-        "lon": "x",
-        "lat": "y",
-        "number": "num1",
-        "merge": ["Name", "type", "dir"],
+        "lon": "XCoord",
+        "lat": "YCoord",
+        "number": "STADD",
+        "merge": ["STDIR", "STNAME", "STTYPE"],
         "street": "auto_street",
-        "type": "shapefile-polygon"
-    }
+        "type": "csv"
+    },
+    "note": "An additional UNIT column appears to describe sub-address units" 
 }

@@ -10,5 +10,16 @@
         "county": "York"
     },
     "data": "http://rockhillgis.cityofrockhill.com/arcgis/rest/services/Basemap_ParcelInfo/MapServer/0",
-    "type": "ESRI"
+    "type": "ESRI",
+    "conform": {
+        "type": "csv",
+        "lat": "OA:y",
+        "lon": "OA:x",
+        "number": "FULL_ADD",
+        "merge": ["GSSNAM", "GSSTYP", "GSSSF", "GSSDIR"],
+        "street": "auto_street",
+        "city": "CITY",
+        "region": "GSSTAT",
+        "postcode": "ZIP_1"
+    }
 }

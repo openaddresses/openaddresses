@@ -9,7 +9,16 @@
         "state": "il",
         "county": "Macon"
     },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_macon_co_il_taxmap/MapServer/0",
+    "data": "http://services1.arcgis.com/a3k0qIja5SolIRYR/ArcGIS/rest/services/BaseData/FeatureServer/3",
     "type": "ESRI",
-    "note": "address field will need custom processing"
+    "conform": {
+        "type": "csv",
+        "lat": "OA:y",
+        "lon": "OA:x",
+        "number": "HOUSE_NUMBER",
+        "merge": ["PRE_DIR", "STREET_NAME", "STREET_TYPE", "SUF_ST_DIR"],
+        "street": "auto_street",
+        "city": "CITY",
+        "postcode": "ZIP"
+    }
 }
