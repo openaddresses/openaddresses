@@ -1,6 +1,6 @@
 {
     "type": "http",
-    "data": "https://downloadagiv.blob.core.windows.net/crab-adressenlijst/Shapefile/CRAB_Adressenlijst.zip",
+    "data": "http://data.openaddresses.io/cache/be-CRAB-csv.zip",
     "website": "https://download.agiv.be/Producten/Detail?id=447",
     "compression": "zip",
     "coverage": {
@@ -9,14 +9,15 @@
     },
     "license": "https://wiki.openstreetmap.org/wiki/AGIV_CRAB_Import/Free_open_data_licence_Flanders",
     "conform": {
-        "file": "Shapefile/CrabAdr.shp",
-        "number": "HUISNR",
-        "type": "shapefile",
-        "encoding": "iso-8859-1",
-        "street": "STRAATNM",
-        "lon": "X",
-        "lat": "Y",
-        "srs": "EPSG:31300",
+        "file": "crab.csv",
+        "number": "HOUSENR",
+        "type": "csv",
+        "street": "STREET",
+        "city": "COMMUNE",
+        "postcode": "POSTCODE",
+        "lon": "LON",
+        "lat": "LAT",
+        "srs": "EPSG:4326",
         "headers": 1,
         "skiplines": 1
     }
