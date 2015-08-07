@@ -68,10 +68,14 @@ for path in glob('sources/us-*.json'):
         print info['coverage'], state_fips, state_name, county_names
         continue
 
-    if u'ñ' in county:
-        county_fips, county_name = counties[(state_fips, county.replace(u'ñ', 'n'))]
-    else:
-        county_fips, county_name = counties[(state_fips, county)]
+    try:
+        if u'ñ' in county:
+            county_fips, county_name = counties[(state_fips, county.replace(u'ñ', 'n'))]
+        else:
+            county_fips, county_name = counties[(state_fips, county)]
+    except Exception as inst:
+        print "  error generating county"
+        continue
 
     geoid = state_fips + county_fips
 
