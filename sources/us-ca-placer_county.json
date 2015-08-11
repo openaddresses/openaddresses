@@ -5,7 +5,7 @@
         "state": "ca",
         "county": "Placer"
     },
-    "data": "ftp://ftp1.placer.ca.gov/cdra/gis/parcel_point_ByAddress.zip",
+    "data": "ftp://ftp1.placer.ca.gov/cdra/GIS/AddressMaster.zip",
     "attribution": "County of Placer",
     "license": "http://www.placer.ca.gov/departments/communitydevelopment/gis/gis_download",
     "type": "ftp",
@@ -14,8 +14,9 @@
         "type": "shapefile",
         "lon": "x",
         "lat": "y",
-        "split": "FULLSTREET",
-        "number": "auto_number",
-        "street": "auto_street"
+        "merge": ["PREFIXDIR" ,"STREETNAME", "STREETTYPE"],
+        "number": "STREETNUM",
+        "street": "auto_street",
+        "postcode": "ZIPCODE"
     }
 }
