@@ -1,6 +1,9 @@
 {
     "coverage": {
-        "US Census": {"geoid": "23", "state": "Maine"},
+        "US Census": {
+            "geoid": "23",
+            "state": "Maine"
+        },
         "country": "us",
         "state": "me"
     },
@@ -8,14 +11,13 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "merge": [
-            "streetname",
-            "suffix"
-        ],
         "lon": "x",
         "lat": "y",
         "number": "address_nu",
-        "street": "auto_street",
+        "street": [
+            "streetname",
+            "suffix"
+        ],
         "type": "shapefile"
     }
 }

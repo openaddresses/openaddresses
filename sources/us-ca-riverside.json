@@ -1,23 +1,25 @@
 {
-	"coverage": {
-		"US Census": {
-			"geoid": "06065",
-			"name": "Riverside County",
-			"state": "California"
-		},
-		"country": "us",
-		"state": "ca",
-		"county": "Riverside"
-	},
-	"data": "http://data.openaddresses.io/cache/us-ca-riverside.zip",
-	"website": "http://gis.rivcoit.org/GISData.aspx",
-	"type": "http",
-	"compression": "zip",
-	"conform": {
-		"type": "shapefile",
-		"merge": ["STREET_NAM","STREET_TYP"],
-		"number": "HOUSE_NUMB",
-		"street": "auto_street",
-		"postcode": "zip"
-	}
+    "coverage": {
+        "US Census": {
+            "geoid": "06065",
+            "name": "Riverside County",
+            "state": "California"
+        },
+        "country": "us",
+        "state": "ca",
+        "county": "Riverside"
+    },
+    "data": "http://data.openaddresses.io/cache/us-ca-riverside.zip",
+    "website": "http://gis.rivcoit.org/GISData.aspx",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile",
+        "number": "HOUSE_NUMB",
+        "street": [
+            "STREET_NAM",
+            "STREET_TYP"
+        ],
+        "postcode": "zip"
+    }
 }

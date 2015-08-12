@@ -1,6 +1,10 @@
 {
     "coverage": {
-        "US Census": {"geoid": "06061", "name": "Placer County", "state": "California"},
+        "US Census": {
+            "geoid": "06061",
+            "name": "Placer County",
+            "state": "California"
+        },
         "country": "us",
         "state": "ca",
         "county": "Placer"
@@ -14,9 +18,12 @@
         "type": "shapefile",
         "lon": "x",
         "lat": "y",
-        "merge": ["PREFIXDIR" ,"STREETNAME", "STREETTYPE"],
         "number": "STREETNUM",
-        "street": "auto_street",
+        "street": [
+            "PREFIXDIR",
+            "STREETNAME",
+            "STREETTYPE"
+        ],
         "postcode": "ZIPCODE"
     }
 }

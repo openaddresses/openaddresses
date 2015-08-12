@@ -1,6 +1,10 @@
 {
     "coverage": {
-        "US Census": {"geoid": "20073", "name": "Greenwood County", "state": "Kansas"},
+        "US Census": {
+            "geoid": "20073",
+            "name": "Greenwood County",
+            "state": "Kansas"
+        },
         "country": "us",
         "state": "ks",
         "county": "Greenwood"
@@ -8,8 +12,12 @@
     "conform": {
         "type": "csv",
         "number": "addnum",
-        "merge": ["predir", "st_name", "st_type", "postdir"],
-        "street": "auto_street",
+        "street": [
+            "predir",
+            "st_name",
+            "st_type",
+            "postdir"
+        ],
         "postcode": "zipcode",
         "lon": "x",
         "lat": "y"

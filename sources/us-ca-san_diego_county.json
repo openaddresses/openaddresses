@@ -1,9 +1,9 @@
 {
     "coverage": {
         "US Census": {
-          "geoid": "06073",
-          "name": "San Diego County",
-          "state": "California"
+            "geoid": "06073",
+            "name": "San Diego County",
+            "state": "California"
         },
         "country": "us",
         "state": "ca",
@@ -21,20 +21,22 @@
         "type": "shapefile",
         "lon": "OA:x",
         "lat": "OA:y",
-        "merge": [
+        "advanced_merge": {
+            "custom_number": {
+                "separator": " ",
+                "fields": [
+                    "ADDRNMBR",
+                    "ADDRFRAC"
+                ]
+            }
+        },
+        "number": "custom_number",
+        "street": [
             "ADDRPDIR",
             "ADDRNAME",
             "ADDRSFX",
             "ADDRPOSTD"
         ],
-        "advanced_merge": {
-            "custom_number": {
-                "separator": " ",
-                "fields": ["ADDRNMBR", "ADDRFRAC"]
-            }
-        },
-        "number": "custom_number",
-        "street": "auto_street",
         "postcode": "ADDRZIP",
         "city": "COMMUNITY"
     }

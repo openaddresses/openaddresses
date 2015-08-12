@@ -1,6 +1,10 @@
 {
     "coverage": {
-        "US Census": {"geoid": "20085", "name": "Jackson County", "state": "Kansas"},
+        "US Census": {
+            "geoid": "20085",
+            "name": "Jackson County",
+            "state": "Kansas"
+        },
         "country": "us",
         "state": "ks",
         "county": "Jackson"
@@ -8,8 +12,12 @@
     "conform": {
         "type": "csv",
         "number": "PropStNum",
-        "merge": ["PropStDir", "PropStName", "PropStType", "PropStTyDi"],
-        "street": "auto_street",
+        "street": [
+            "PropStDir",
+            "PropStName",
+            "PropStType",
+            "PropStTyDi"
+        ],
         "city": "PropCity",
         "postcode": "PropZip",
         "lon": "x",

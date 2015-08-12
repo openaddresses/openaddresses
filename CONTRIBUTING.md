@@ -89,7 +89,6 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
  Tag       | Required? | Note
 ---------------- | --- | ----
 `type`           | Yes | The type properties stores the format. It can currently be one of `shapefile`, `shapefile-polygon`, `csv`, `geojson`, or `xml` (for GML).
-`merge=["one",…,"nth"]` | | The `merge` tag will merge several fields together. This is typically something along the lines of street-name and street-type fields. The merged field will be named `auto_street`.
 `split`          |     | Some databases give the number and street in one field. The `split` tag will split the number and the street. The resulting fields will be `auto_street` and `auto_number`.
 `advanced_merge` |     | Can be used to merge fields more arbitrarily. See Below.
 `srs`            |     | Allows one to set a custom source srs. Currently only supported by `type:shapefile`, `type:shapefile-polygon`, and `type:csv`. Should be in the format of `EPSG:####` and can be any code supported by `ogr2ogr`. Modern shapefiles typically store their project in a `.prj` file. If this file exists, this tag should be omitted.
@@ -108,7 +107,7 @@ Field names are case insensitive, but contributers are encouraged to try to matc
  Tag | Required? | Note
 ---------- | --- | ----
 `number`   | Yes | The name of the number field. This will either be the name of the field or `auto_number` if the split tool was used.
-`street`   | Yes | The name of the street field. This will either be the name of the field or `auto_street` if the split or merge tools were used.
+`street`   | Yes | The name of the street field. This will either be a string containing the name of the field or and array of fields to concatenate together
 `lon`      |     | The longitude column. This is required for CSV sources and should be omitted for other types.
 `lat`      |     | The latitude field. This is required for CSV sources and should be omitted for other types.
 `accuracy` |     | The accuracy of the data source. See table below. Should never be 0, defaults to 5. If this is not set, address duplicates of higher accuracy will replace the addresses from this source when they are conflated.

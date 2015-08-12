@@ -15,11 +15,13 @@
     "compression": "zip",
     "conform": {
         "type": "shapefile",
-        "merge": ["ST_NAME", "ST_TYPE"],
         "lon": "x",
         "lat": "y",
         "number": "ADDR_NUMBE",
-        "street": "auto_street",
+        "street": [
+            "ST_NAME",
+            "ST_TYPE"
+        ],
         "city": "CITY",
         "postcode": "ZIPCODE"
     }

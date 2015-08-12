@@ -1,6 +1,10 @@
 {
     "coverage": {
-        "US Census": {"geoid": "20161", "name": "Riley County", "state": "Kansas"},
+        "US Census": {
+            "geoid": "20161",
+            "name": "Riley County",
+            "state": "Kansas"
+        },
         "country": "us",
         "state": "ks",
         "county": "Riley"
@@ -8,8 +12,11 @@
     "conform": {
         "type": "csv",
         "number": "ADDRNUM",
-        "merge": ["ROADPREDIR", "ROADNAME", "ROADTYPE"],
-        "street": "auto_street",
+        "street": [
+            "ROADPREDIR",
+            "ROADNAME",
+            "ROADTYPE"
+        ],
         "city": "PSTLCITY",
         "postcode": "PSTLZIP5",
         "lon": "LON",

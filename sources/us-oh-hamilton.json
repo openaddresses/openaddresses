@@ -1,6 +1,10 @@
 {
     "coverage": {
-        "US Census": {"geoid": "39061", "county": "Hamilton County", "state": "Ohio"},
+        "US Census": {
+            "geoid": "39061",
+            "county": "Hamilton County",
+            "state": "Ohio"
+        },
         "country": "us",
         "state": "oh",
         "county": "Hamilton",
@@ -9,14 +13,13 @@
     "data": "http://cagisonline.hamilton-co.org/arcgis/rest/services/Countywide_Layers/addressesTables/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "merge": [
-            "cagstrname",
-            "cagsfx"
-        ],
         "lon": "x",
         "lat": "y",
         "number": "hnum",
-        "street": "auto_street",
+        "street": [
+            "cagstrname",
+            "cagsfx"
+        ],
         "type": "geojson",
         "postcode": "zipcode"
     }

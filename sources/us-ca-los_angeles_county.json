@@ -16,7 +16,20 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "merge": [
+        "lon": "x",
+        "lat": "y",
+        "advanced_merge": {
+            "custom_number": {
+                "separator": " ",
+                "fields": [
+                    "NumPrefix",
+                    "Number",
+                    "NumSuffix"
+                ]
+            }
+        },
+        "number": "custom_number",
+        "street": [
             "PreMod",
             "PreDir",
             "PreType",
@@ -25,16 +38,6 @@
             "PostDir",
             "PostMod"
         ],
-        "lon": "x",
-        "lat": "y",
-        "advanced_merge": {
-            "custom_number": {
-                "separator": " ",
-                "fields": ["NumPrefix", "Number", "NumSuffix"]
-            }
-        },
-        "number": "custom_number",
-        "street": "auto_street",
         "type": "shapefile",
         "postcode": "zipcode"
     }
