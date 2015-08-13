@@ -12,14 +12,13 @@
     "data": "http://gisservices.co.anoka.mn.us/anoka_gis/rest/services/Address_Pts/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "merge": [
-            "loc_name",
-            "loc_type"
-        ],
         "lon": "x",
         "lat": "y",
         "number": "loc_numb",
-        "street": "auto_street",
+        "street": [
+            "loc_name",
+            "loc_type"
+        ],
         "type": "geojson",
         "postcode": "loc_zip"
     }

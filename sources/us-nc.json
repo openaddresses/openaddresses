@@ -1,6 +1,9 @@
 {
     "coverage": {
-        "US Census": {"geoid": "37", "state": "North Carolina"},
+        "US Census": {
+            "geoid": "37",
+            "state": "North Carolina"
+        },
         "country": "us",
         "state": "nc"
     },
@@ -8,14 +11,17 @@
     "type": "ESRI",
     "website": "http://data.nconemap.com/geoportal/catalog/search/resource/details.page?uuid=%7B9E039D56-5202-43E7-8D36-D09414C0DBD6%7D",
     "year": "2014",
-    "conform":
-    {
+    "conform": {
         "type": "csv",
         "lon": "x",
         "lat": "y",
         "number": "ADDR_HN",
-        "merge": ["ADDR_PD", "ADDR_SN", "ADDR_ST", "ADDR_SD"],
-        "street": "auto_street",
+        "street": [
+            "ADDR_PD",
+            "ADDR_SN",
+            "ADDR_ST",
+            "ADDR_SD"
+        ],
         "city": "COMMUNITY",
         "postcode": "ZIPCODE",
         "district": "COUNTY_NAME"

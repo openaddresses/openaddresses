@@ -1,21 +1,23 @@
 {
     "coverage": {
-        "US Census": {"geoid": "46", "state": "South Dakota"},
+        "US Census": {
+            "geoid": "46",
+            "state": "South Dakota"
+        },
         "country": "us",
         "state": "sd"
     },
     "data": "http://arcgis.sd.gov/arcgis/rest/services/BIT/AddressViewer/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "merge": [
+        "lon": "x",
+        "lat": "y",
+        "number": "house_num",
+        "street": [
             "StreetName",
             "StreetPosdirectional",
             "StreetPostType"
         ],
-        "lon": "x",
-        "lat": "y",
-        "number": "house_num",
-        "street": "auto_street",
         "city": "CITY",
         "postcode": "ZipCode",
         "type": "csv"

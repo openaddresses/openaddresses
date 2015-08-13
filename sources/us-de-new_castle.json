@@ -1,6 +1,10 @@
 {
     "coverage": {
-        "US Census": {"geoid": "10003", "name": "New Castle County", "state": "Delaware"},
+        "US Census": {
+            "geoid": "10003",
+            "name": "New Castle County",
+            "state": "Delaware"
+        },
         "country": "us",
         "state": "de",
         "county": "New Castle"
@@ -8,8 +12,12 @@
     "conform": {
         "type": "csv",
         "number": "STNO",
-        "merge": ["PREDIR", "STNAME", "SUFFIX", "POSTDIR"],
-        "street": "auto_street",
+        "street": [
+            "PREDIR",
+            "STNAME",
+            "SUFFIX",
+            "POSTDIR"
+        ],
         "postcode": "ZIP",
         "city": "CITY",
         "region": "STATE",

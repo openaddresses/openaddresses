@@ -13,14 +13,13 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "merge": [
-            "ST_NAME",
-            "ST_TYPE"
-        ],
         "lon": "x",
         "lat": "y",
         "number": "HOUSENUM",
-        "street": "auto_street",
+        "street": [
+            "ST_NAME",
+            "ST_TYPE"
+        ],
         "type": "shapefile",
         "postcode": "zipcode"
     }

@@ -10,9 +10,12 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-      "type": "shapefile-polygon",
-      "merge": ["stdirpre", "st_name", "st_type"],
-      "number": "bldg_no",
-      "street": "auto_street"
+        "type": "shapefile-polygon",
+        "number": "bldg_no",
+        "street": [
+            "stdirpre",
+            "st_name",
+            "st_type"
+        ]
     }
 }
