@@ -1,6 +1,10 @@
 {
     "coverage": {
-        "US Census": {"geoid": "06097", "name": "Sonoma County", "state": "California"},
+        "US Census": {
+            "geoid": "06097",
+            "name": "Sonoma County",
+            "state": "California"
+        },
         "country": "us",
         "state": "ca",
         "county": "Sonoma"
@@ -13,19 +17,27 @@
     "note": "Provided in response to a public records request in December 2014 and uploaded to GitHub for public hosting.",
     "conform": {
         "type": "shapefile",
-        "merge": ["PreDir","Name","Type","SufDir"],
         "advanced_merge": {
             "custom_number": {
                 "separator": " ",
-                "fields": ["Num", "NumExt", "Unit"]
+                "fields": [
+                    "Num",
+                    "NumExt",
+                    "Unit"
+                ]
             }
         },
         "number": "custom_number",
-        "street": "auto_street",
+        "street": [
+            "PreDir",
+            "Name",
+            "Type",
+            "SufDir"
+        ],
         "city": "Mun",
         "postcode": "ZipCode",
         "accuracy": 2,
-        "lon":"x",
-        "lat":"y"
+        "lon": "x",
+        "lat": "y"
     }
 }

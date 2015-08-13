@@ -1,6 +1,10 @@
 {
     "coverage": {
-        "US Census": {"geoid": "24021", "name": "Frederick County", "state": "Maryland"},
+        "US Census": {
+            "geoid": "24021",
+            "name": "Frederick County",
+            "state": "Maryland"
+        },
         "country": "us",
         "state": "md",
         "county": "frederick"
@@ -11,13 +15,17 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-      "type": "shapefile",
-      "merge": ["ST_PREFIX", "ST_NAME", "ST_TYPE", "ST_SUFFIX"],
-      "number": "ST_NUM",
-      "street": "auto_street",
-      "city": "CITY",
-      "postcode": "ZIPCODE_AD",
-      "addrtype": "ADDR_TYPE",
-      "notes": "ADDR_TYPE"
+        "type": "shapefile",
+        "number": "ST_NUM",
+        "street": [
+            "ST_PREFIX",
+            "ST_NAME",
+            "ST_TYPE",
+            "ST_SUFFIX"
+        ],
+        "city": "CITY",
+        "postcode": "ZIPCODE_AD",
+        "addrtype": "ADDR_TYPE",
+        "notes": "ADDR_TYPE"
     }
 }

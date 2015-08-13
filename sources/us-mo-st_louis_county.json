@@ -15,20 +15,22 @@
     "note": "Licensed under CC0 as part of St Louis County Open Data Portal. 'Addrtype' is Mailing type followed by Address Type. 'Notes' is the parcel identifier number for the parcel in which the address is located. Contact is blord- castillo@stlouisco.com or mmclean@stlouisco.com.",
     "conform": {
         "type": "geojson",
-        "merge": [
-            "ADRSTR",
-            "ADRSUF"
-        ],
         "advanced_merge": {
             "custom_addrtype": {
                 "separator": " ",
-                "fields": ["MAILTYPE", "ADDRTYPE"]
+                "fields": [
+                    "MAILTYPE",
+                    "ADDRTYPE"
+                ]
             }
         },
         "lon": "x",
         "lat": "y",
         "number": "ADRNO",
-        "street": "auto_street",
+        "street": [
+            "ADRSTR",
+            "ADRSUF"
+        ],
         "city": "CITYNAME",
         "postcode": "ZIP1",
         "addrtype": "custom_addrtype",

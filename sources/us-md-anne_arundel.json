@@ -1,6 +1,10 @@
 {
     "coverage": {
-        "US Census": {"geoid": "24003", "name": "Anne Arundel County", "state": "Maryland"},
+        "US Census": {
+            "geoid": "24003",
+            "name": "Anne Arundel County",
+            "state": "Maryland"
+        },
         "country": "us",
         "state": "md",
         "county": "anne arundel"
@@ -11,12 +15,15 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-      "type": "shapefile",
-      "merge": ["ST_NAME", "ST_TYPE", "ST_SUFFIXD"],
-      "number": "ST_NUMBER",
-      "street": "auto_street",
-      "city": "CITY_NAME",
-      "postcode": "ZIPCODE",
-      "addrtype": "BLDG_CODE"
+        "type": "shapefile",
+        "number": "ST_NUMBER",
+        "street": [
+            "ST_NAME",
+            "ST_TYPE",
+            "ST_SUFFIXD"
+        ],
+        "city": "CITY_NAME",
+        "postcode": "ZIPCODE",
+        "addrtype": "BLDG_CODE"
     }
 }

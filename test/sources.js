@@ -72,14 +72,14 @@ function checkSource(i){
 
             if (data.conform) {
                 //Ensure people don't make up new values
-                var conformOptions = ['type', 'csvsplit', 'merge', 'advanced_merge', 'split', 'srs', 'file', 'encoding', 'headers', 'skiplines', 'lon', 'lat', 'number', 'street', 'city', 'postcode', 'district', 'region', 'addrtype', 'notes', 'accuracy'];
+                var conformOptions = ['type', 'csvsplit', 'advanced_merge', 'split', 'srs', 'file', 'encoding', 'headers', 'skiplines', 'lon', 'lat', 'number', 'street', 'city', 'postcode', 'district', 'region', 'addrtype', 'notes', 'accuracy'];
                 Object.keys(data.conform).forEach(function (conformKey) {
                     t.ok(conformOptions.indexOf(conformKey) !== -1, "conform - " + conformKey + " is supported");
                 });
 
                 //Mandatory Conform Fields
                 t.ok(data.conform.number && typeof data.conform.number === 'string', "conform - number attribute required");
-                t.ok(data.conform.street && typeof data.conform.street === 'string', "conform - street attribute required");
+                t.ok(data.conform.street && (typeof data.conform.street === 'string' || Array.isArray(data.conform.street)), "conform - street attribute required");
                 t.ok(data.conform.type && typeof data.conform.type === 'string', "conform - type attribute required");
                 t.ok(['shapefile', 'shapefile-polygon', 'csv', 'geojson', 'xml'].indexOf(data.conform.type) !== -1, "conform - type is supported");
                 if (data.conform.type === 'csv') {
@@ -88,7 +88,6 @@ function checkSource(i){
                 }
 
                 //Optional Conform Fields
-                t.ok(data.conform.merge ? Array.isArray(data.conform.merge) : true, "conform - Merge is an array");
                 t.ok(data.conform.addrtype ? typeof data.conform.addrtype === 'string' : true, "conform - addrtype is a string");
                 t.ok(data.conform.accuracy ? typeof data.conform.accuracy === 'number' : true, "conform - accuracy is a number");
                 t.ok(data.conform.accuracy ? data.conform.accuracy !== 0 : true, "conform - accuracy is not 0");

@@ -13,11 +13,15 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "merge": ["STPRE", "STNAME", "STTYPE", "STSUF"],
         "lon": "x",
         "lat": "y",
         "number": "HOUSENO",
-        "street": "auto_street",
+        "street": [
+            "STPRE",
+            "STNAME",
+            "STTYPE",
+            "STSUF"
+        ],
         "postcode": "ZIP",
         "region": "STATE"
     }

@@ -1,6 +1,10 @@
 {
     "coverage": {
-        "US Census": {"geoid": "37119", "name": "Mecklenburg County", "state": "North Carolina"},
+        "US Census": {
+            "geoid": "37119",
+            "name": "Mecklenburg County",
+            "state": "North Carolina"
+        },
         "country": "us",
         "state": "nc",
         "county": "Mecklenburg",
@@ -12,14 +16,13 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "merge": [
-            "nme_street",
-            "cde_roadwa"
-        ],
         "lon": "x",
         "lat": "y",
         "number": "txt_street",
-        "street": "auto_street",
+        "street": [
+            "nme_street",
+            "cde_roadwa"
+        ],
         "type": "shapefile"
     }
 }

@@ -12,14 +12,13 @@
     "data": "http://arcims.laramiecounty.com/arcgis/rest/services/Floodplains/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "merge": [
-            "st_name",
-            "st_type"
-        ],
         "lon": "x",
         "lat": "y",
         "number": "address_id",
-        "street": "auto_street",
+        "street": [
+            "st_name",
+            "st_type"
+        ],
         "type": "geojson",
         "postcode": "zip"
     }
