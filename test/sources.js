@@ -4,7 +4,7 @@ var test = require('tape').test,
     request = require('request');
     versionCurrent = require('../package.json').version.split('.');
 
-    var manifest = glob.sync('sources/*.json');
+    var manifest = glob.sync('sources/**/*.json');
     var index = 0;
 
 //Ensure tests on branch are current with master
