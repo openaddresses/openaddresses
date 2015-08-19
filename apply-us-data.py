@@ -50,11 +50,11 @@ for path in glob('sources/us/**/*.json'):
     if 'US Census' in info['coverage']:
         continue
 
-    prefix = '\n    "coverage": {\n        '
-    assert prefix + '"' in data
-
     print path, '...'
-
+    
+    prefix = '\n    "coverage": {\n        ' 
+    assert prefix + '"' in data
+    
     state_name = codes[info['coverage']['state']]
     state_fips = states[state_name]
 
