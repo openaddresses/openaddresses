@@ -39,7 +39,7 @@ with open(join('us-data', 'counties.txt')) as f:
         counties[(s, c.replace('-', ' '))] = value
         counties[(s, c.replace('-', ' ').lower())] = value
 
-for path in glob('sources/us-*.json'):
+for path in glob('sources/us/**/*.json'):
     with open(path) as f:
         data = f.read()
         info = json.loads(data)
