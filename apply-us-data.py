@@ -40,9 +40,13 @@ with open(join('us-data', 'counties.txt')) as f:
         counties[(s, c.replace('-', ' ').lower())] = value
 
 for path in glob('sources/us/**/*.json'):
-    with open(path) as f:
-        data = f.read()
-        info = json.loads(data)
+    try:
+        with open(path) as f:
+            data = f.read()
+            info = json.loads(data)
+    except:
+        print path, ' is invalid json'
+        raise
 
     if 'county' not in info.get('coverage', {}):
         continue
