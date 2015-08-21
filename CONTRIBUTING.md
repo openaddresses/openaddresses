@@ -89,7 +89,6 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
  Tag       | Required? | Note
 ---------------- | --- | ----
 `type`           | Yes | The type properties stores the format. It can currently be one of `shapefile`, `shapefile-polygon`, `csv`, `geojson`, or `xml` (for GML).
-`merge=["one",…,"nth"]` | | The **deprecated** `merge` tag will merge several fields together. This is typically something along the lines of street-name and street-type fields. The merged field will be named `auto_street`.
 `split`          |     | Some databases give the number and street in one field. The `split` tag will split the number and the street. The resulting fields will be `auto_street` and `auto_number`.
 `advanced_merge` |     | Can be used to merge fields more arbitrarily. See Below.
 `srs`            |     | Allows one to set a custom source srs. Currently only supported by `type:shapefile`, `type:shapefile-polygon`, and `type:csv`. Should be in the format of `EPSG:####` and can be any code supported by `ogr2ogr`. Modern shapefiles typically store their project in a `.prj` file. If this file exists, this tag should be omitted.
