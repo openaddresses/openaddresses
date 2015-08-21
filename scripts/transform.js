@@ -9,10 +9,9 @@ manifest.forEach(function(source) {
 
     // ===== Transform Here =====
 
-    if (s.type !== "ESRI") return;
     if (!s.conform) return;
+    if (s.conform.type === 'csv') return;
 
-    s.conform.type = 'geojson';
     delete s.conform.lat;
     delete s.conform.lon;
 
