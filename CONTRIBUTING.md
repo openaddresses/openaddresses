@@ -107,7 +107,7 @@ Field names are case insensitive, but contributers are encouraged to try to matc
  Tag | Required? | Note
 ---------- | --- | ----
 `number`   | Yes | The name of the number field. This will either be the name of the field or `auto_number` if the split tool was used.
-`street`   | Yes | The name of the street field. This will either be the name of the field or an ordered list of fields to merge together. Use `auto_street` if the split or merge tools were used.
+`street`   | Yes | The name of the street field. This will either be the name of the field or an ordered list of fields to merge together. Use `auto_street` if the split tool was used.
 `lon`      |     | The longitude column. This is required for CSV sources and should be omitted for other types.
 `lat`      |     | The latitude field. This is required for CSV sources and should be omitted for other types.
 `accuracy` |     | The accuracy of the data source. See table below. Should never be 0, defaults to 5. If this is not set, address duplicates of higher accuracy will replace the addresses from this source when they are conflated.
