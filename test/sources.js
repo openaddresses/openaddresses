@@ -85,6 +85,9 @@ function checkSource(i){
                 if (data.conform.type === 'csv') {
                     t.ok(data.conform.lon && typeof data.conform.lon === 'string', "conform - lon attribute required for type csv");
                     t.ok(data.conform.lat && typeof data.conform.lat === 'string', "conform - lat attribute required for type csv");
+                } else {
+                    t.ok(!data.conform.lon, 'lon should only be set for csv type');
+                    t.ok(!data.conform.lat, 'lat should only be set for csv type');
                 }
 
                 //Optional Conform Fields
