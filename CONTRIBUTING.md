@@ -150,27 +150,40 @@ Function | Note
 
 ##### Attribute Tag Examples
 
-**Basic Usage**
+###### Basic Usage
 
 The most basic usage is simply mapping an attribute tag to a field in the source data.
 
+_Format_
+```JSON
+"{Attribute Tag}": "{Field Name}"
+```
+
+_Example_
 ```JSON
 "number": "SITUS_NUMBER",
 "street": "SITUS_STREET"
 ```
 
-**Merge Fields**
+###### Merge Field
 
-Often times there are multiple fields that should be merged together. An `[]` of field names
+Often times there are multiple fields that should be merged together. An array (`[]`) of field names
 can be used with any attribute tag. The field names will joined with a space (` `).
 
+_Format_
+```JSON
+"{Attribute Tag}": ["{Field Name}"]
+```
+
+_Example_
 ```JSON
 "number": "SITUS_NUMBER",
 "street": ["SITUS_STREET_PRE", "SITUS_STREET_NME", "SITUS_STREET_TYP", "SITUS_STREET_POST"]
 ```
 
-**regexp function**
+###### regexp function
 
+_Format_
 ```JSON
 "{Attribute Tag}": {
     "function": "regexp",
@@ -180,16 +193,50 @@ can be used with any attribute tag. The field names will joined with a space (` 
 }
 ```
 
-**join function**
+_Example_
+
+If no replace attribute is given, numbered capture groups are concatenated together to form the output.
+
+```JSON
+"number": {
+    "function": "regexp",
+    "field": "SITUS_ADDRESS",
+    "pattern": "^([0-9]+)"
+}
+```
+
+If a replace field is given the `pattern` is found and replaced. Numbered capture groups in the pattern can be referenced using the `${n}` syntax as below.
+
+_Example_
+```JSON
+"street": {
+    "function": "regexp",
+    "field": "SITUS_ADDRESS",
+    "pattern": "^(?:[0-9]+ )(.*)",
+    "replace": "$1"
+}
+```
+
+###### join function
 
 The join function allows fields to be merged given an arbitrary delimiter. For delimiting
 by spaces there is a more conscise format - see the example for `Merge Fields`
 
+_Format_
 ```JSON
 "{Attribute Tag}": {
     "function": "join",
     "fields": ["{Field1}", "{Field2}", "etc..." ],
     "separator": "{Separator}"
+}
+```
+
+_Example_
+```JSON
+"number": {
+    "function": "join",
+    "fields": ["BLOCK_NUM", "BLOCK_GRP"],
+    "separator": "-"
 }
 ```
 
