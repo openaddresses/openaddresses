@@ -78,8 +78,6 @@ function checkSource(i){
                 });
 
                 //Mandatory Conform Fields
-                t.ok(data.conform.number && typeof data.conform.number === 'string', "conform - number attribute required");
-                t.ok(data.conform.street && (typeof data.conform.street === 'string' || Array.isArray(data.conform.street)), "conform - street attribute required");
                 t.ok(data.conform.type && typeof data.conform.type === 'string', "conform - type attribute required");
                 t.ok(['shapefile', 'shapefile-polygon', 'csv', 'geojson', 'xml'].indexOf(data.conform.type) !== -1, "conform - type is supported");
                 if (data.conform.type === 'csv') {
@@ -89,7 +87,33 @@ function checkSource(i){
                     t.ok(!data.conform.lon, 'lon should only be set for csv type');
                     t.ok(!data.conform.lat, 'lat should only be set for csv type');
                 }
+                t.ok(data.conform.number, "conform - number attribute required");
+                t.ok(data.conform.street, "conform - street attribute required");
 
+                //Conform Attributes
+                ['number', 'street', 'city', 'postcode', 'district', 'region', 'notes'].forEach(function(attrib) {
+                    if (!data.conform[attrib]) { return; }
+                    if (typeof data.conform[attrib] === 'string') {
+                        t.ok(data.conform[attrib], attrib + ' references static field');
+                    } else if (Array.isArray(data.conform[attrib])) {
+                        t.ok(data.conform[attrib].length > 1, 'merge array has more than 1 element');
+                        t.ok(data.conform[attrib], attrib + ' references fields to be merged');
+                    } else if (typeof data.conform[attrib] === 'object') {
+                        t.ok(fxn.function, 'named function');
+                        if (fxn.function === 'regexp') {
+                            t.ok(fxn.pattern, 'Must have pattern');
+                            t.ok(typeof fxn.field === 'string', 'must reference field');
+                            t.ok(fxn.replace ? typeof fxn.replace === 'string' : true, 'replace is a string');
+                        } else if (fxn.function === 'join') { 
+                            t.ok(Array.isArray(fxn.fields), 'must reference fields');
+                            t.ok(typeof fxn.separator === 'string', 'replace is a string');
+                        } else {
+                            t.fail(fxn.function + ' is not a valid function');
+                        }
+                    }
+                    
+                });
+                
                 //Optional Conform Fields
                 t.ok(data.conform.addrtype ? typeof data.conform.addrtype === 'string' : true, "conform - addrtype is a string");
                 t.ok(data.conform.accuracy ? typeof data.conform.accuracy === 'number' : true, "conform - accuracy is a number");
@@ -99,12 +123,7 @@ function checkSource(i){
                 t.ok(data.conform.srs ? typeof data.conform.srs === 'string' : true, "conform - srs is a string");
                 t.ok(data.conform.file ? typeof data.conform.file === 'string' : true, "conform - file is a string");
                 t.ok(data.conform.encoding ? typeof data.conform.encoding === 'string' : true, "conform - encoding is a string");
-                t.ok(data.conform.city ? typeof data.conform.city === 'string' : true, "conform - city is a string");
-                t.ok(data.conform.postcode ? typeof data.conform.postcode === 'string' : true, "conform - postcode is a string");
-                t.ok(data.conform.district ? typeof data.conform.district === 'string' : true, "conform - district is a string");
-                t.ok(data.conform.region ? typeof data.conform.region === 'string' : true, "conform - region is a string");
                 t.ok(data.conform.addrtype ? typeof data.conform.addrtype === 'string' : true, "conform - addrtype is a string");
-                t.ok(data.conform.notes ? typeof data.conform.notes === 'string' : true, "conform - notes is a string");
             }
 
             //Optional General Fields
