@@ -12,9 +12,17 @@
     "data": "http://gis.co.wadena.mn.us/arcgis/rest/services/WADENAPUBLIC/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "split": "GISData.dbo.tblParcelJoin.TAXPAYER_ADDRESS2",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "GISData.dbo.tblParcelJoin.PHYSICAL_ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "GISData.dbo.tblParcelJoin.PHYSICAL_ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "geojson"
     }
 }
