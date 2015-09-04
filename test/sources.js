@@ -99,16 +99,16 @@ function checkSource(i){
                         t.ok(data.conform[attrib].length > 1, 'merge array has more than 1 element');
                         t.ok(data.conform[attrib], attrib + ' references fields to be merged');
                     } else if (typeof data.conform[attrib] === 'object') {
-                        t.ok(fxn.function, 'named function');
-                        if (fxn.function === 'regexp') {
-                            t.ok(fxn.pattern, 'Must have pattern');
-                            t.ok(typeof fxn.field === 'string', 'must reference field');
-                            t.ok(fxn.replace ? typeof fxn.replace === 'string' : true, 'replace is a string');
-                        } else if (fxn.function === 'join') { 
-                            t.ok(Array.isArray(fxn.fields), 'must reference fields');
-                            t.ok(typeof fxn.separator === 'string', 'replace is a string');
+                        t.ok(data.conform[attrib].function, 'named function');
+                        if (data.conform[attrib].function === 'regexp') {
+                            t.ok(data.conform[attrib].pattern, 'must have pattern');
+                            t.ok(typeof data.conform[attrib].field === 'string', 'must reference field');
+                            t.ok(data.conform[attrib].replace ? typeof data.conform[attrib].replace === 'string' : true, 'replace is a string');
+                        } else if (data.conform[attrib].function === 'join') { 
+                            t.ok(Array.isArray(data.conform[attrib].fields), 'must reference fields');
+                            t.ok(typeof data.conform[attrib].separator === 'string', 'replace is a string');
                         } else {
-                            t.fail(fxn.function + ' is not a valid function');
+                            t.fail(data.conform[attrib].function + ' is not a valid function');
                         }
                     }
                     

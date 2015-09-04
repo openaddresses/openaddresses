@@ -7,7 +7,7 @@ A global collection of address data sources, open and free to use. Join, downloa
 
 This repository is a collection of references to address data sources.
 
-- See [openaddresses.io](http://openaddresses.io/) for a data download.
+- See [openaddresses.io](http://openaddresses.io/) for a data download. 
 
 ## Contributing addresses
 
