@@ -99,16 +99,16 @@ function checkSource(i){
                         t.ok(data.conform[attrib].length > 1, 'merge array has more than 1 element');
                         t.ok(data.conform[attrib], attrib + ' references fields to be merged');
                     } else if (typeof data.conform[attrib] === 'object') {
-                        t.ok(data.conform[attrib].fxn.function, 'named function');
-                        if (data.conform[attrib].fxn.function === 'regexp') {
-                            t.ok(data.conform[attrib].fxn.pattern, 'must have pattern');
-                            t.ok(typeof data.conform[attrib].fxn.field === 'string', 'must reference field');
-                            t.ok(data.conform[attrib].fxn.replace ? typeof data.conform[attrib].fxn.replace === 'string' : true, 'replace is a string');
-                        } else if (data.conform[attrib].fxn.function === 'join') { 
-                            t.ok(Array.isArray(data.conform[attrib].fxn.fields), 'must reference fields');
-                            t.ok(typeof data.conform[attrib].fxn.separator === 'string', 'replace is a string');
+                        t.ok(data.conform[attrib].function, 'named function');
+                        if (data.conform[attrib].function === 'regexp') {
+                            t.ok(data.conform[attrib].pattern, 'must have pattern');
+                            t.ok(typeof data.conform[attrib].field === 'string', 'must reference field');
+                            t.ok(data.conform[attrib].replace ? typeof data.conform[attrib].fxn.replace === 'string' : true, 'replace is a string');
+                        } else if (data.conform[attrib].function === 'join') { 
+                            t.ok(Array.isArray(data.conform[attrib].fields), 'must reference fields');
+                            t.ok(typeof data.conform[attrib].separator === 'string', 'replace is a string');
                         } else {
-                            t.fail(data.conform[attrib].fxn.function + ' is not a valid function');
+                            t.fail(data.conform[attrib].function + ' is not a valid function');
                         }
                     }
                     
