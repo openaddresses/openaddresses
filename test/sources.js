@@ -103,7 +103,7 @@ function checkSource(i){
                         if (data.conform[attrib].function === 'regexp') {
                             t.ok(data.conform[attrib].pattern, 'must have pattern');
                             t.ok(typeof data.conform[attrib].field === 'string', 'must reference field');
-                            t.ok(data.conform[attrib].replace ? typeof data.conform[attrib].fxn.replace === 'string' : true, 'replace is a string');
+                            t.ok(data.conform[attrib].replace ? typeof data.conform[attrib].replace === 'string' : true, 'replace is a string');
                         } else if (data.conform[attrib].function === 'join') { 
                             t.ok(Array.isArray(data.conform[attrib].fields), 'must reference fields');
                             t.ok(typeof data.conform[attrib].separator === 'string', 'replace is a string');
