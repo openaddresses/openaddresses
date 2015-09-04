@@ -9,21 +9,17 @@
         "state": "pa",
         "county": "Philadelphia"
     },
-    "data": "http://www.pasda.psu.edu/data/philacity/data/Philadelphia_DOR_Parcels_Active201302.zip",
-    "license": "http://www.pasda.psu.edu/uci/PhiladelphiaAgreement.asp",
-    "year": "",
+    "data": "https://raw.githubusercontent.com/CityOfPhiladelphia/OIT-geodata/master/Open%20Address%20Data/phl_openaddress.csv",
+    "license": "https://raw.githubusercontent.com/CityOfPhiladelphia/OIT-geodata/master/Open%20Address%20Data/Readme.md",
     "type": "http",
-    "compression": "zip",
-    "note": "shapefile is in Philadelphia_DOR_Parcels_Active201302/, see https://github.com/openaddresses/openaddresses-conform/issues/16",
+    "note": "Philadelphia County coterminus with City of Philadelphia; Data updated regularly",
     "conform": {
-        "type": "shapefile-polygon",
-        "number": "HOUSE",
-        "street": [
-            "STDIR",
-            "STNAM",
-            "STDES"
-        ],
-        "headers": 1,
-        "skiplines": 1
+        "type": "csv",
+        "srs": "EPSG:6874",
+        "number": "NUMBER",
+        "street": "STREET",
+        "lat": "LAT",
+        "lon": "LON",
+        "accuracy": 2
     }
 }
