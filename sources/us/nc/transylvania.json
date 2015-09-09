@@ -9,8 +9,20 @@
         "state": "nc",
         "county": "Transylvania"
     },
-    "skip": true,
-    "note": "Contains no parcel address data",
     "data": "http://arcgis.webgis.net/arcgis/rest/services/NC/Transylvania/MapServer/10",
-    "type": "ESRI"
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "legal_addr",
+            "pattern": "^([0-9]+)"
+            },
+        "street": {
+            "function": "regexp",
+            "field": "legal_addr",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
 }

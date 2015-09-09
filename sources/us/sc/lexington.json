@@ -9,16 +9,19 @@
         "state": "sc",
         "county": "Lexington"
     },
+    "skip": true,
+    "note": "esri-dump not returning valid geojson of complete layer",
     "data": "http://maps.lex-co.com/arcgis/rest/services/AddressPts/MapServer/0",
     "type": "ESRI",
-    "skip": true,
-    "note": "Incorrect Projection",
     "conform": {
         "number": "street_num",
         "street": [
             "street_name",
-            "street_type"
+            "street_type",
+            "suf_dir"
         ],
+        "city": "postoffice",
+        "postcode": "zip",
         "type": "geojson"
     }
 }
