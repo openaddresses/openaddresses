@@ -72,9 +72,14 @@ function checkSource(i){
 
             if (data.conform) {
                 //Ensure people don't make up new values
-                var conformOptions = ['type', 'csvsplit', 'advanced_merge', 'split', 'srs', 'file', 'encoding', 'headers', 'skiplines', 'lon', 'lat', 'number', 'street', 'city', 'postcode', 'district', 'region', 'addrtype', 'notes', 'accuracy'];
+                var conformOptions = [
+                    'type', 'csvsplit', 'advanced_merge', 'split', 'srs',
+                    'file', 'encoding', 'headers', 'skiplines', 'lon', 'lat',
+                    'number', 'street', 'city', 'postcode', 'district',
+                    'region', 'addrtype', 'notes', 'accuracy', 'id'
+                    ];
                 Object.keys(data.conform).forEach(function (conformKey) {
-                    t.ok(conformOptions.indexOf(conformKey) !== -1, "conform - " + conformKey + " is supported");
+                    t.ok(conformOptions.indexOf(conformKey) !== -1, 'conform - "' + conformKey + '" is not a recognized attribute tag');
                 });
 
                 //Mandatory Conform Fields
@@ -115,15 +120,16 @@ function checkSource(i){
                 });
                 
                 //Optional Conform Fields
-                t.ok(data.conform.addrtype ? typeof data.conform.addrtype === 'string' : true, "conform - addrtype is a string");
-                t.ok(data.conform.accuracy ? typeof data.conform.accuracy === 'number' : true, "conform - accuracy is a number");
+                t.ok(data.conform.id ? typeof data.conform.id === 'string' : true, "conform - id should be a string");
+                t.ok(data.conform.addrtype ? typeof data.conform.addrtype === 'string' : true, "conform - addrtype should be a string");
+                t.ok(data.conform.accuracy ? typeof data.conform.accuracy === 'number' : true, "conform - accuracy should be a number");
                 t.ok(data.conform.accuracy ? data.conform.accuracy !== 0 : true, "conform - accuracy is not 0");
-                t.ok(data.conform.csvsplit ? typeof data.conform.csvsplit === 'string' : true, "conform - csvsplit is a string");
-                t.ok(data.conform.split ? typeof data.conform.split === 'string' : true, "conform - split is a string");
-                t.ok(data.conform.srs ? typeof data.conform.srs === 'string' : true, "conform - srs is a string");
-                t.ok(data.conform.file ? typeof data.conform.file === 'string' : true, "conform - file is a string");
-                t.ok(data.conform.encoding ? typeof data.conform.encoding === 'string' : true, "conform - encoding is a string");
-                t.ok(data.conform.addrtype ? typeof data.conform.addrtype === 'string' : true, "conform - addrtype is a string");
+                t.ok(data.conform.csvsplit ? typeof data.conform.csvsplit === 'string' : true, "conform - csvsplit should be a string");
+                t.ok(data.conform.split ? typeof data.conform.split === 'string' : true, "conform - split should be a string");
+                t.ok(data.conform.srs ? typeof data.conform.srs === 'string' : true, "conform - srs should be a string");
+                t.ok(data.conform.file ? typeof data.conform.file === 'string' : true, "conform - file should be a string");
+                t.ok(data.conform.encoding ? typeof data.conform.encoding === 'string' : true, "conform - encoding should be a string");
+                t.ok(data.conform.addrtype ? typeof data.conform.addrtype === 'string' : true, "conform - addrtype should be a string");
             }
 
             //Optional General Fields

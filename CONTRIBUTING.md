@@ -134,6 +134,7 @@ Attribute tags are functions or field names for mapping the source data into a g
 `postcode` |     | Postcode or zip-code field in which the address falls
 `district` |     | District/County/Sub-Region in which the address falls
 `region`   |     | State/Region/Province in which the address falls
+`id`       |     | Unique identifier, [such as a parcel APN](https://en.wikipedia.org/wiki/Assessor%27s_parcel_number).
 `addrtype` |     | Type of address. `industrial`, `residential`, etc.
 `notes`    |     | Legal description of address or notes about the property.
 
