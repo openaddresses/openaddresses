@@ -60,8 +60,8 @@ Province | [ISO 3166-2 alpha-2 SubRegion Code](http://en.wikipedia.org/wiki/ISO_
 Coverage | Example |
 -------- | ------- |
 State    | us/md/statewide.json |
-County   | us/md/montgomery_county.json |
-City     | us/md/baltimore.json |
+County   | us/md/montgomery.json |
+City     | us/md/city_of_baltimore.json |
 
 ### JSON Tags
 
@@ -255,13 +255,13 @@ to the map at [data.openaddresses.io](http://data.openaddresses.io):
 
 1. **US Census** with `geoid` containing two-digit state or five-digit county
    [FIPS code](https://www.census.gov/geo/reference/codes/cou.html).
-   See [Alameda County](sources/us-ca-alameda_county.json)
-   and [Virginia](sources/us-va.json) for examples.
+   See [Alameda County](sources/us/ca/alameda_county.json)
+   and [Virginia](sources/us/va/statewide.json) for examples.
 2. **ISO 3166** with `alpha2` containing alphanumeric two-letter
    [ISO-3166-1 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
    or [ISO-3166-2 subdivision code](http://en.wikipedia.org/wiki/ISO_3166-2).
-   See [New Zealand](sources/nz.json), [Victoria, Australia](sources/au-victoria.json),
-   or [Dolnośląskie, Poland](sources/pl-dolnoslaskie.json) for examples.
+   See [New Zealand](sources/nz/countrywide.json), [Victoria, Australia](sources/au/victoria.json),
+   or [Dolnośląskie, Poland](sources/pl/dolnoslaskie.json) for examples.
 3. **geometry** with _Polygon_ or _MultiPolygon_ type unprojected
    [GeoJSON geometry object](http://geojson.org/geojson-spec.html#geometry-objects).
 
