@@ -15,18 +15,16 @@
         "srs": "EPSG:2097",
         "skiplines": 2,
         "type": "csv",
-        "advanced_merge": {
-            "auto_street": {
-                "fields": [
-                    "RD_NM",
-                    "BD_NM",
-                    "DET_BD_NM"
-                ],
-                "separator": " "
-            }
-        },
         "lat": "POINT_Y",
-        "street": "auto_street",
+        "street": {
+            "function": "join",
+            "fields": [
+                "RD_NM",
+                "BD_NM",
+                "DET_BD_NM"
+            ],
+            "separator": " "
+        },
         "headers": 2,
         "encoding": "EUCKR"
     },

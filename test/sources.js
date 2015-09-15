@@ -73,7 +73,7 @@ function checkSource(i){
             if (data.conform) {
                 //Ensure people don't make up new values
                 var conformOptions = [
-                    'type', 'csvsplit', 'advanced_merge', 'split', 'srs',
+                    'type', 'csvsplit', 'split', 'srs',
                     'file', 'encoding', 'headers', 'skiplines', 'lon', 'lat',
                     'number', 'street', 'city', 'postcode', 'district',
                     'region', 'addrtype', 'notes', 'accuracy', 'id'

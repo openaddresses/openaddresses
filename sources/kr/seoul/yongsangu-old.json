@@ -1,19 +1,17 @@
 {
     "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1086",
     "conform": {
-        "street": "auto_street",
+        "street": {
+            "function": "join",
+            "fields": [
+                "RD_NM",
+                "BD_NM",
+                "DET_BD_NM"
+            ],
+            "separator": " "
+        },
         "number": "LNDN_MA_SN",
         "skiplines": 2,
-        "advanced_merge": {
-            "auto_street": {
-                "separator": " ",
-                "fields": [
-                    "RD_NM",
-                    "BD_NM",
-                    "DET_BD_NM"
-                ]
-            }
-        },
         "type": "csv",
         "lat": "POINT_Y",
         "lon": "POINT_X",
