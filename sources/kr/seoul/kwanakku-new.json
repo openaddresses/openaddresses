@@ -3,23 +3,21 @@
     "conform": {
         "lat": "POINT_Y",
         "encoding": "EUCKR",
-        "street": "auto_street",
+        "street": {
+            "function": "join",
+            "fields": [
+                "RD_NM",
+                "BD_NM",
+                "DET_BD_NM"
+            ],
+            "separator": " "
+        },
         "lon": "POINT_X",
         "skiplines": 2,
         "headers": 2,
         "type": "csv",
         "number": "LNDN_MA_SN",
-        "srs": "EPSG:2097",
-        "advanced_merge": {
-            "auto_street": {
-                "separator": " ",
-                "fields": [
-                    "RD_NM",
-                    "BD_NM",
-                    "DET_BD_NM"
-                ]
-            }
-        }
+        "srs": "EPSG:2097"
     },
     "coverage": {
         "country": "kr",

@@ -9,11 +9,13 @@ manifest.forEach(function(source) {
 
     // ===== Transform Here =====
 
-    if (!s.conform) return;
-    if (s.conform.type === 'csv') return;
-
-    delete s.conform.lat;
-    delete s.conform.lon;
+    if (s.coverage.country !== 'jp') return;
+    delete s.conform.advanced_merge;
+    s.conform.number = {
+        "function": "join",
+        "fields": ["\u8857\u533a\u7b26\u53f7\u30fb\u5730\u756a","\u5ea7\u6a19\u7cfb\u756a\u53f7"],
+        "separator": "-"
+    }
 
     // ===== End Transform ======
 

@@ -7,20 +7,18 @@
     "conform": {
         "number": "LNDN_MA_SN",
         "headers": 2,
-        "street": "auto_street",
+        "street": {
+            "function": "join",
+            "fields": [
+                "RD_NM",
+                "BD_NM",
+                "DET_BD_NM"
+            ],
+            "separator": " "
+        },
         "srs": "EPSG:2097",
         "lat": "POINT_Y",
         "skiplines": 2,
-        "advanced_merge": {
-            "auto_street": {
-                "fields": [
-                    "RD_NM",
-                    "BD_NM",
-                    "DET_BD_NM"
-                ],
-                "separator": " "
-            }
-        },
         "type": "csv",
         "encoding": "EUCKR",
         "lon": "POINT_X"
