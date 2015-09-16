@@ -11,16 +11,14 @@
         "lon": "POINT_X",
         "type": "csv",
         "encoding": "EUCKR",
-        "street": "auto_street",
-        "advanced_merge": {
-            "auto_street": {
-                "fields": [
-                    "RD_NM",
-                    "BD_NM",
-                    "DET_BD_NM"
-                ],
-                "separator": " "
-            }
+        "street": {
+            "function": "join",
+            "fields": [
+                "RD_NM",
+                "BD_NM",
+                "DET_BD_NM"
+            ],
+            "separator": " "
         }
     },
     "coverage": {

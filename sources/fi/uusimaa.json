@@ -11,19 +11,17 @@
     },
     "license": "http://creativecommons.org/licenses/by/4.0/",
     "conform": {
-        "advanced_merge": {
-            "street_number": {
-                "separator": "",
-                "fields": ["osoitenumero", "kiinteiston_jakokirjain"]
-            }
-        },
         "srs": "EPSG:3879",
         "file": "Paakaupunkiseudun_osoiteluettelo/PKS_avoin_osoiteluettelo.csv",
         "encoding": "ISO-8859-10",
         "csvsplit": ",",
         "lon": "E",
         "lat": "N",
-        "number": "street_number",
+        "number": {
+            "function": "join",
+            "fields": ["osoitenumero", "kiinteiston_jakokirjain"],
+            "separator": ""
+        },
         "street": "katunimi",
         "city": "kaupunki",
         "type": "csv",

@@ -5,26 +5,28 @@
     "compression": "zip",
     "attribution": "Japanese Ministry of Land, Infrastructure and Transport",
     "coverage": {
-        "ISO 3166": {"alpha2": "JP-47", "country": "Japan", "prefecture": "Okinawa"},
+        "ISO 3166": {
+            "alpha2": "JP-47",
+            "country": "Japan",
+            "prefecture": "Okinawa"
+        },
         "country": "jp",
-        "state": "\u6c96\u7e04\u770c"
+        "state": "沖縄県"
     },
     "conform": {
         "type": "csv",
-        "lat": "\u7def\u5ea6",
+        "lat": "緯度",
         "srs": "EPSG:4612",
-        "number": "auto_number",
-        "street": "\u5927\u5b57\u30fb\u753a\u4e01\u76ee\u540d",
-        "advanced_merge": {
-            "auto_number": {
-                "separator": "-",
-                "fields": [
-                    "\u8857\u533a\u7b26\u53f7\u30fb\u5730\u756a",
-                    "\u5ea7\u6a19\u7cfb\u756a\u53f7"
-                ]
-            }
+        "number": {
+            "function": "join",
+            "fields": [
+                "街区符号・地番",
+                "座標系番号"
+            ],
+            "separator": "-"
         },
-        "lon": "\u7d4c\u5ea6",
+        "street": "大字・町丁目名",
+        "lon": "経度",
         "encoding": "SHIFT_JISX0213"
     },
     "license": "http://nlftp.mlit.go.jp/ksj/other/yakkan.html"

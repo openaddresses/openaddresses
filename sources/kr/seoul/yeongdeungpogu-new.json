@@ -7,17 +7,15 @@
         "skiplines": 2,
         "number": "LNDN_MA_SN",
         "lat": "POINT_Y",
-        "advanced_merge": {
-            "auto_street": {
-                "separator": " ",
-                "fields": [
-                    "RD_NM",
-                    "BD_NM",
-                    "DET_BD_NM"
-                ]
-            }
+        "street": {
+            "function": "join",
+            "fields": [
+                "RD_NM",
+                "BD_NM",
+                "DET_BD_NM"
+            ],
+            "separator": " "
         },
-        "street": "auto_street",
         "headers": 2,
         "srs": "EPSG:2097",
         "encoding": "EUCKR"

@@ -9,20 +9,18 @@
         "lon": "POINT_X",
         "type": "csv",
         "lat": "POINT_Y",
-        "advanced_merge": {
-            "auto_street": {
-                "separator": " ",
-                "fields": [
-                    "RD_NM",
-                    "BD_NM",
-                    "DET_BD_NM"
-                ]
-            }
-        },
         "srs": "EPSG:2097",
         "skiplines": 2,
         "number": "LNDN_MA_SN",
-        "street": "auto_street",
+        "street": {
+            "function": "join",
+            "fields": [
+                "RD_NM",
+                "BD_NM",
+                "DET_BD_NM"
+            ],
+            "separator": " "
+        },
         "headers": 2
     },
     "coverage": {

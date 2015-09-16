@@ -4,22 +4,20 @@
     "conform": {
         "lon": "POINT_X",
         "encoding": "EUCKR",
-        "street": "auto_street",
+        "street": {
+            "function": "join",
+            "fields": [
+                "RD_NM",
+                "BD_NM",
+                "DET_BD_NM"
+            ],
+            "separator": " "
+        },
         "type": "csv",
         "srs": "EPSG:2097",
         "lat": "POINT_Y",
         "headers": 2,
         "number": "LNDN_MA_SN",
-        "advanced_merge": {
-            "auto_street": {
-                "separator": " ",
-                "fields": [
-                    "RD_NM",
-                    "BD_NM",
-                    "DET_BD_NM"
-                ]
-            }
-        },
         "skiplines": 2
     },
     "license": "CCBY",

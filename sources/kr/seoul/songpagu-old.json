@@ -10,20 +10,18 @@
         "skiplines": 2,
         "headers": 2,
         "lon": "POINT_X",
-        "advanced_merge": {
-            "auto_street": {
-                "separator": " ",
-                "fields": [
-                    "RD_NM",
-                    "BD_NM",
-                    "DET_BD_NM"
-                ]
-            }
-        },
         "encoding": "EUCKR",
         "number": "LNDN_MA_SN",
         "lat": "POINT_Y",
-        "street": "auto_street"
+        "street": {
+            "function": "join",
+            "fields": [
+                "RD_NM",
+                "BD_NM",
+                "DET_BD_NM"
+            ],
+            "separator": " "
+        }
     },
     "license": "CCBY",
     "coverage": {
