@@ -57,7 +57,9 @@ for path in glob('sources/us/**/*.json'):
     print path, '...'
     
     prefix = '\n    "coverage": {\n        ' 
-    assert prefix + '"' in data
+    if prefix + '"' not in data:
+        print path, ' is not valid prefix'
+        continue
     
     state_name = codes[info['coverage']['state']]
     state_fips = states[state_name]
