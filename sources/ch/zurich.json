@@ -1,0 +1,25 @@
+{
+    "coverage": {
+        "country": "ch",
+        "city": "Zurich"
+    },
+    "data": "https://data.stadt-zuerich.ch/storage/f/adressen/adressen.json",
+    "website": "https://data.stadt-zuerich.ch/dataset/adressen",
+    "license": "CC 0",
+    "type": "http",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "Adresse",
+            "pattern": "(.* )([0-9]+)",
+            "replace": "$2"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Adresse",
+            "pattern": "(.*)( [0-9]+)",
+            "replace": "$1"
+        },
+        "type": "geojson"
+    }
+}
