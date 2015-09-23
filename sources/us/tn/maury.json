@@ -1,0 +1,26 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "47119", "name": "Maury County", "state": "Tennessee"},
+        "country": "us",
+        "state": "tn",
+        "county": "Maury"
+    },
+    "data": "http://maps.maurycounty-tn.gov/arcgis/rest/services/TaxParcelQuery/MapServer/0/",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "SITEADDRESS",
+            "pattern": "^([0-9]+)( .*)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITEADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}
+
