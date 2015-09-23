@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "08021",
+            "name": "Conejos County",
+            "state": "Colorado"
+        },
+        "country": "us",
+        "state": "co",
+        "county": "Conejos"
+    },
+    "data": "http://services1.arcgis.com/zH7gQ37AKcpvTX6d/ArcGIS/rest/services/ConejosParcels_09212015/FeatureServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "POST_1",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "POST_1",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}
