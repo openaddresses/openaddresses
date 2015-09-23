@@ -6,14 +6,23 @@
             "state": "Colorado"
         },
         "country": "us",
-        "state": "co"
+        "state": "co",
+        "county": "Conejos"
     },
     "data": "http://services1.arcgis.com/zH7gQ37AKcpvTX6d/ArcGIS/rest/services/ConejosParcels_09212015/FeatureServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "split": "POST_1",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "SITUS_ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITUS_ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     }
 }
