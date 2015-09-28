@@ -68,7 +68,7 @@ function checkSource(i){
             t.ok(data.coverage.province ? typeof data.coverage.country === 'string' : true, "coverage - Province must be a string");
             t.ok(data.coverage.county ? typeof data.coverage.county === 'string' : true, "coverage - County must be a string");
             t.ok(data.coverage.city ? typeof data.coverage.city === 'string' : true, "coverage - City must be a string");
-            t.ok(['http', 'ftp', 'ESRI'].indexOf(data.type) !== -1, "Type valid");
+            t.ok(['http', 'ftp', 'esri'].indexOf(data.type.lower()) !== -1, "Type valid");
 
             if (data.conform) {
                 //Ensure people don't make up new values
