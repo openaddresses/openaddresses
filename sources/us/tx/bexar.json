@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "48029",
+            "state": "Texas",
+            "name": "Bexar County"
+        },
+        "country": "us",
+        "state": "tx",
+        "county": "Bexar"
+    },
+    "skip": true,
+    "note": "timeout",
+    "data": "http://mapservices.bexar.org/arcgis/rest/services/Parcels/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "split": "AddrLn2",
+        "number": {
+            "function": "regexp",
+            "field": "AddrLn2",
+            "pattern": "^([0-9]+)( .*)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "AddrLn2",
+            "pattern": "^(?:[0-9]+)(.*)",
+            "replace": "$1"
+        },
+        "postcode": "Zip",
+        "city": "AddrCity"
+    }
+}

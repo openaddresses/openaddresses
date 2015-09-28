@@ -1,0 +1,33 @@
+{
+    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1085",
+    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+    "skip": false,
+    "type": "http",
+    "conform": {
+        "srs": "EPSG:2097",
+        "lat": "POINT_Y",
+        "number": "LNDN_MA_SN",
+        "lon": "POINT_X",
+        "street": {
+            "function": "join",
+            "fields": [
+                "RD_NM",
+                "BD_NM",
+                "DET_BD_NM"
+            ],
+            "separator": " "
+        },
+        "encoding": "EUCKR",
+        "skiplines": 2,
+        "type": "csv",
+        "headers": 2
+    },
+    "coverage": {
+        "city": "영등포구",
+        "state": "seoul",
+        "country": "kr"
+    },
+    "license": "CCBY",
+    "compression": "zip",
+    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-yeongdeungpogu.zip"
+}

@@ -1,0 +1,31 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "39153",
+            "state": "Ohio",
+            "name": "Summit County"
+        },
+        "country": "us",
+        "state": "oh",
+        "county": "summit"
+    },
+    "conform": {
+        "type": "shapefile",
+        "number": {
+            "function": "regexp",
+            "field": "addr",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "addr",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    },
+    "data": "https://fiscaloffice.summitoh.net/gis/downloads/parcels/Parcels.zip",
+    "website": "https://fiscaloffice.summitoh.net/index.php/documents-a-forms/viewcategory/40-gis-data-downloads",
+    "type": "http",
+    "compression": "zip",
+    "license": "Indemnification"
+}

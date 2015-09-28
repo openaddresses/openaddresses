@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27159",
+            "name": "Wadena County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Wadena"
+    },
+    "data": "http://gis.co.wadena.mn.us/arcgis/rest/services/WADENAPUBLIC/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "GISData.dbo.tblParcelJoin.PHYSICAL_ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "GISData.dbo.tblParcelJoin.PHYSICAL_ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "geojson"
+    }
+}

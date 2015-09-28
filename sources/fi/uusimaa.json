@@ -1,0 +1,30 @@
+{
+    "compression": "zip",
+    "attribution": "City of Helsinki Real Estate Department, City Survey Division",
+    "website": "http://ptp.hel.fi/avoindata/",
+    "type": "http",
+    "data": "http://ptp.hel.fi/avoindata/aineistot/Paakaupunkiseudun_osoiteluettelo.zip",
+    "coverage": {
+        "ISO 3166": {"alpha2": "FI-18", "region": "Uusimaa", "country": "Finland"},
+        "region": "Uusimaa",
+        "country": "fi"
+    },
+    "license": "http://creativecommons.org/licenses/by/4.0/",
+    "conform": {
+        "srs": "EPSG:3879",
+        "file": "Paakaupunkiseudun_osoiteluettelo/PKS_avoin_osoiteluettelo.csv",
+        "encoding": "ISO-8859-10",
+        "csvsplit": ",",
+        "lon": "E",
+        "lat": "N",
+        "number": {
+            "function": "join",
+            "fields": ["osoitenumero", "kiinteiston_jakokirjain"],
+            "separator": ""
+        },
+        "street": "katunimi",
+        "city": "kaupunki",
+        "type": "csv",
+        "accuracy": 1
+    }
+}
