@@ -1,26 +1,22 @@
 {
     "coverage": {
-        "US Census": {
-            "geoid": "48021",
-            "name": "Bastrop County",
-            "state": "Texas"
-        },
+        "US Census": {"geoid": "48021", "name": "Bastrop County", "state": "Texas"},
         "country": "us",
         "state": "tx",
         "county": "Bastrop"
     },
-    "data": "http://www.bastropcountytexas.gov/users/0001/maps/other/Bastrop_County_Address_Points.zip",
-    "type": "http",
-    "compression": "zip",
+    "data": "http://mapsatbis.com/bisgis/rest/services/BastropWeb/MapServer/0",
+    "type": "ESRI",
     "conform": {
-        "type": "shapefile",
+        "number": "BastropCad.DBO.Accounts.situs_num",
         "street": [
-            "PRD",
-            "STN",
-            "STS"
+            "BastropCad.DBO.Accounts.situs_street_prefx",
+            "BastropCad.DBO.Accounts.situs_street",
+            "BastropCad.DBO.Accounts.situs_street_sufix"
         ],
-        "number": "SAN",
-        "postcode": "ZIPCODE",
-        "city": "CITY"
+        "city": "BastropCad.DBO.Accounts.situs_city",
+        "region": "BastropCad.DBO.Accounts.situs_state",
+        "postcode": "BastropCad.DBO.Accounts.situs_zip",
+        "type": "geojson"
     }
 }
