@@ -272,7 +272,7 @@ Additional metadata helps future proof the project!
  Tag          | Note
 ------------- | ----
 `website`     | A URL referencing the data portal
-`license`     | A URL or string describing the license for the dataset
+`license`     | An object with license details for the dataset. Supported properties include `url` and `text`. **Deprecated value:** a URL or string describing the license.
 `note`        | A String containing a human readable note.
 `attribution` | Where the license requires attribution, add it here. example `CC-BY United Federation of Planets`
 `email`       | This email is used to send automated emails to the data provider if a user changes their data. Do not set unless the data provider wants to receive updates.
@@ -287,7 +287,7 @@ Additional metadata helps future proof the project!
     },
     "data": "http://geonb.snb.ca/downloads/gcadb/geonb_gcadb-bdavg_shp.zip",
     "website": "http://www.snb.ca/geonb1/e/DC/catalogue-E.asp",
-    "license": "http://geonb.snb.ca/downloads/documents/geonb_license_e.pdf",
+    "license": {"url": "http://geonb.snb.ca/downloads/documents/geonb_license_e.pdf"},
     "type": "http",
     "compression": "zip",
     "conform": {
