@@ -135,7 +135,20 @@ function checkSource(i){
             //Optional General Fields
             t.ok(data.coverage.email ? typeof data.coverage.email === 'string' : true, "email must be a string");
             t.ok(data.coverage.website ? typeof data.coverage.website === 'string' : true, "website must be a string");
-            t.ok(data.coverage.license ? typeof data.coverage.license === 'string' : true, "license must be a string");
+            if (data.coverage.license) {
+                if (typeof data.coverage.license === 'string') {
+                    t.pass('license supplied as a string [Deprecated]');
+                }
+                else if (typeof data.coverage.license === 'object') {
+                    t.pass('license supplied as an object')
+                    ['url', 'text', 'attribution', 'attribution name'].forEach(function(attrib) {
+                        if (!data.coverage.license[attrib]) {return;}
+                        t.ok(typeof data.coverage.license[attrib] === 'string', "license - " + attrib + " must be a string");
+                    });
+                }
+                else {
+                    t.fail("license must be of type string string or object");
+                }           
         }
         t.end();
         checkSource(++index);
