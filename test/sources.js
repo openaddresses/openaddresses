@@ -134,21 +134,21 @@ function checkSource(i){
             }
 
             //Optional General Fields
-            t.ok(data.coverage.email ? typeof data.coverage.email === 'string' : true, "email must be a string");
-            t.ok(data.coverage.website ? typeof data.coverage.website === 'string' : true, "website must be a string");
-            if (data.coverage.license) {
-                if (typeof data.coverage.license === 'string') {
+            t.ok(data.email ? typeof data.email === 'string' : true, "email must be a string");
+            t.ok(data.website ? typeof data.website === 'string' : true, "website must be a string");
+            if (data.license) {
+                if (typeof data.license === 'string') {
                     t.pass('license supplied as a string [Deprecated]');
                 }
-                else if (typeof data.coverage.license === 'object') {
+                else if (typeof data.license === 'object') {
                     t.pass('license supplied as an object')
-                    ['url', 'text', 'attribution', 'attribution name'].forEach(function(attrib) {
-                        if (!data.coverage.license[attrib]) {return;}
-                        t.ok(typeof data.coverage.license[attrib] === 'string', "license - " + attrib + " must be a string");
-                        if (attrib === 'url') {
-                        	t.ok(validator.isURL(data.coverage.license[attrib]),"license - url must be a valid URL");
+                    ['url', 'text', 'attribution name'].forEach(function(attrib) {
+                        if (!data.license[attrib]) {return;}
+                        t.ok(typeof data.license[attrib] === 'string', "license - " + attrib + " must be a string");
                         }
                     });
+                    t.ok(data.license.url ? validator.isURL(data.license.url) : true, "license - url must be a valid URL");
+                    t.ok(data.license.attribution ? typeof data.license.attribution === 'boolean' : true, "license - attribution must be boolean");
                 }
                 else {
                     t.fail("license must be of type string or object");
