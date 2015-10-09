@@ -145,8 +145,7 @@ function checkSource(i){
                     ['url', 'text', 'attribution name'].forEach(function(attrib) {
                         if (!data.license[attrib]) {return;}
                         t.ok(typeof data.license[attrib] === 'string', "license - " + attrib + " must be a string");
-                        }
-                    });
+                        });
                     t.ok(data.license.url ? validator.isURL(data.license.url) : true, "license - url must be a valid URL");
                     t.ok(data.license.attribution ? typeof data.license.attribution === 'boolean' : true, "license - attribution must be boolean");
                 }
