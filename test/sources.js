@@ -2,6 +2,7 @@ var test = require('tape').test,
     glob = require('glob'),
     fs = require('fs'),
     request = require('request');
+    validator = require('validator');
     versionCurrent = require('../package.json').version.split('.');
 
     var manifest = glob.sync('sources/**/*.json');
@@ -144,6 +145,9 @@ function checkSource(i){
                     ['url', 'text', 'attribution', 'attribution name'].forEach(function(attrib) {
                         if (!data.coverage.license[attrib]) {return;}
                         t.ok(typeof data.coverage.license[attrib] === 'string', "license - " + attrib + " must be a string");
+                        if (attrib === 'url') {
+                        	t.ok(validator.isURL(data.coverage.license[attrib]),"license - url must be a valid URL");
+                        }
                     });
                 }
                 else {
