@@ -140,7 +140,7 @@ function checkSource(i){
             }
             if (data.website) {
                 t.ok(typeof data.website === 'string',"website must be a string");
-                t.ok(validator.isEmail(data.email),"website must be a valid URL");
+                t.ok(validator.isURL(data.website),"website must be a valid URL");
             }
             if (data.license) {
                 if (typeof data.license === 'string') {
