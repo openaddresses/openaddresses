@@ -33,7 +33,7 @@ function validateJSON(body) {
 function checkSource(i){
     var source = manifest[i];
 
-    if (i == manifest.lenght-1 || !source) process.exit(0);
+    if (i == manifest.lenght-1 || !source) {process.exit(0);}
 
     test(source, function(t) {
         var raw = fs.readFileSync(source, 'utf8');
@@ -42,7 +42,7 @@ function checkSource(i){
         t.ok(data, "Data is valid JSON");
 
         if (data) {
-            if (data.skip) t.pass("WARN - Skip Flag Detected");
+            if (data.skip) {t.pass("WARN - Skip Flag Detected");}
 
             // Ensure people don't make up tags
             legalTags = [
@@ -54,7 +54,7 @@ function checkSource(i){
                 
                 // Not documented, but works
                 'year', 'skip'
-                ]
+                ];
 
             Object.keys(data).forEach(function (userTag) {
                 t.ok(legalTags.indexOf(userTag) !== -1, '"'+userTag+'" is not a tag documented in CONTRIBUTING.md.');
@@ -63,7 +63,7 @@ function checkSource(i){
             //Mandatory Fields & Coverage
             t.ok(data.data, "Checking for data");
             t.ok(data.type, "Checking for type");
-            if (data.compression && ['zip'].indexOf(data.compression) === -1) t.fail("Compression type not supported");
+            if (data.compression && ['zip'].indexOf(data.compression) === -1) {t.fail("Compression type not supported");}
             t.ok(typeof data.coverage === 'object', "Coverage Object Exists");
             t.ok(typeof data.coverage.country === 'string', "coverage - Country must be a string");
             t.ok(data.coverage.province ? typeof data.coverage.country === 'string' : true, "coverage - Province must be a string");
@@ -141,7 +141,7 @@ function checkSource(i){
                     t.pass('license supplied as a string [Deprecated]');
                 }
                 else if (typeof data.license === 'object') {
-                    t.pass('license supplied as an object')
+                    t.pass('license supplied as an object');
                     ['url', 'text', 'attribution name'].forEach(function(attrib) {
                         if (!data.license[attrib]) {return;}
                         t.ok(typeof data.license[attrib] === 'string', "license - " + attrib + " must be a string");
@@ -152,6 +152,7 @@ function checkSource(i){
                 else {
                     t.fail("license must be of type string or object");
                 }           
+            }
         }
         t.end();
         checkSource(++index);
