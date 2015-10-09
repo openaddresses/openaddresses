@@ -272,9 +272,9 @@ Additional metadata helps future proof the project!
  Tag          | Note
 ------------- | ----
 `website`     | A URL referencing the data portal
-`license`     | An object with license details for the dataset. Supported properties include `url` and `text`. **Deprecated value:** a URL or string describing the license.
+`license`     | An object with license details for the dataset. Supported properties:<br><br>`url`: link to license terms, e.g. “http://creativecommons.org/licenses/by/4.0/”.<br>`text`: short description of license terms, e.g. “CC BY 4.0”.<br>`attribution`: Boolean value for required attribution. Defaults to _true_ if other attribution details are present, otherwise _false_.<br>`attribution name`: name of data owner requiring attribution, e.g. “United Federation of Planets”.<br><br>**Deprecated value:** a URL or string describing the license.
 `note`        | A String containing a human readable note.
-`attribution` | Where the license requires attribution, add it here. example `CC-BY United Federation of Planets`
+`attribution` | **Deprecated:** Where the license requires attribution, add it here. example `CC-BY United Federation of Planets`
 `email`       | This email is used to send automated emails to the data provider if a user changes their data. Do not set unless the data provider wants to receive updates.
 
 #### Example
