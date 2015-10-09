@@ -147,7 +147,7 @@ function checkSource(i){
                     });
                 }
                 else {
-                    t.fail("license must be of type string string or object");
+                    t.fail("license must be of type string or object");
                 }           
         }
         t.end();
