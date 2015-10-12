@@ -134,8 +134,14 @@ function checkSource(i){
             }
 
             //Optional General Fields
-            t.ok(data.email ? typeof data.email === 'string' : true, "email must be a string");
-            t.ok(data.website ? typeof data.website === 'string' : true, "website must be a string");
+            if (data.email) {
+                t.ok(typeof data.email === 'string',"email must be a string");
+                t.ok(validator.isEmail(data.email),"email must be a valid email address");
+            }
+            if (data.website) {
+                t.ok(typeof data.website === 'string',"website must be a string");
+                t.ok(validator.isURL(data.website),"website must be a valid URL");
+            }
             if (data.license) {
                 if (typeof data.license === 'string') {
                     t.pass('license supplied as a string [Deprecated]');
