@@ -11,16 +11,13 @@
     },
     "data": "http://ccgovernment.carr.org/ccg/mapserver4/gis/webpage/download/ccg_AddressPoints.zip",
     "website": "http://ccgovernment.carr.org/ccg/mapserver4/gis/webpage/DigitalData.html",
-    "license": "PD",
+    "license": {"url": "http://ccgovernment.carr.org/ccg/mapserver4/gis/webpage/TermsOfUse.pdf"},
     "compression": "zip",
     "type": "http",
-    "year": 2014,
     "conform": {
-        "file": "ccg_AddressPoints/ccg_AddressPoints.shp",
-        "split": "full_addre",
-        "street": "auto_street",
-        "number": "auto_number",
+        "street": ["ST_NUMBER","ST_NUM_SUF"],
+        "number": ["ST_PREFIX","ST_NAME","ST_TYPE","ST_SUFFIX"],
         "type": "shapefile",
-        "postcode": "zipcode"
+        "postcode": "ZIPCODE"
     }
 }
