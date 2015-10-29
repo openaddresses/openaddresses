@@ -5,5 +5,19 @@
         "city": "Shorewood"
     },
     "data": "http://gis.msa-ps.com/arcgis/rest/services/Shorewood/Shorewood_GIS/MapServer/3",
-    "type": "ESRI"
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "PropAddress",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PropAddress",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
 }
