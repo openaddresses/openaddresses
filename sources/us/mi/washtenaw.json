@@ -12,7 +12,12 @@
     "conform": {
         "type": "geojson",
         "number": "PROP_STREET_NUM",
-        "street": "PROP_STREET",
+        "street": {
+            "function": "regexp",
+            "field": "PROP_STREET",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "city": "PROP_CITY",
         "region": "PROP_STATE",
         "postcode": "PROP_ZIP"
