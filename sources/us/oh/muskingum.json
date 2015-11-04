@@ -13,9 +13,14 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "split": "LSN",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "shapefile"
+      "number": "HOUSENUM",
+      "street": [
+        "ST_PREFIX",
+        "ST_NAME",
+        "ST_TYPE",
+        "ST_SUFFIX"
+      ],
+      "postcode": "zipcode",
+      "type": "shapefile"
     }
 }
