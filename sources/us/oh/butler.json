@@ -13,10 +13,17 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "split": "LSN",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "shapefile",
-        "postcode": "zipcode"
+      "number": {
+          "function": "regexp",
+          "field": "LSN",
+          "pattern": "^([0-9]+)"
+      },
+      "street": {
+          "function": "regexp",
+          "field": "LSN",
+          "pattern": "^(?:[0-9]+ )(.*)",
+          "replace": "$1"
+      },
+      "postcode": "zipcode"
     }
 }
