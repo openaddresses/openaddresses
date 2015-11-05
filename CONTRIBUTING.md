@@ -46,7 +46,7 @@ using coherent file names makes it much easier for contributers to quickly
 evaluate whether a source already exists. Please use the following
 conventions.
 
-`/sources/{County}/{Region}/{Source}`
+`/sources/{Country}/{Region}/{Source}`
 
 #### Directories
 
@@ -121,7 +121,7 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
 
 ##### Attribute Tags
 
-Attribute tags are functions or field names for mapping the source data into a given format. 
+Attribute tags are functions or field names for mapping the source data into a given format.
 
  Tag | Required? | Note
 ---------- | --- | ----
