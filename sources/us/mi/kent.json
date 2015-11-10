@@ -9,20 +9,28 @@
         "state": "mi",
         "county": "Kent"
     },
-    "data": "http://gis.kentcountymi.gov/public/kcsalesviewerweb/proxy.ashx?http://gis.kentcountymi.gov/prodarcgis/rest/services/External/MapServer/6",
+    "data": "http://gis.kentcountymi.gov/prodarcgis/rest/services/External/MapServer/5",
     "type": "ESRI",
     "website": "https://www.accesskent.com/Departments/GIS/",
     "license": "",
     "note": "Data includes polygon shape of parcels. Polygon is found in the SHAPE column. Address data is found in PROPERTYADDRESS, PROPADDRESSCITY, PROPADDRESSSTATE_ZIPCODE, PROPADDRESSNUMBER, PROPADDSTREET.",
     "conform": {
         "type": "geojson",
-        "number": "AddrNo",
-        "street": [
-            "Prefix",
-            "BaseName",
-            "Type",
-            "Suffix"
-        ],
-        "city": "CITYID"
+        "number": "PROPADDRESSNUMBER",
+        "street": "PROPADDSTREET",
+        "city": "PROP_ADDRESS_CITY",
+        "region": {
+          "function": "regexp",
+          "field": "PROPADDRESSSTATE_ZIPCODE",
+          "pattern": "^([A-Z]{2})",
+          "replace": "$1"
+        },
+        "postcode": {
+          "function": "regexp",
+          "field": "PROPADDRESSSTATE_ZIPCODE",
+          "pattern": "^(^[A-Z]{2})(\\d{5})",
+          "replace": "$1"
+        },
+        "id": "PPN"
     }
 }
