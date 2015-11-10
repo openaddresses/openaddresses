@@ -12,5 +12,15 @@
         "share-alike": false
     },
     "website": "http://data.gov.au/dataset/launceston-city-council-addresses",
-    "type": "ESRI"
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "Address",
+        "street": {
+            "function": "regexp",
+            "field": "Address",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
 }
