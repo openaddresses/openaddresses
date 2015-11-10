@@ -15,8 +15,16 @@
     "attribution": "City of Montgomery",
     "conform": {
         "type": "geojson",
-        "split": "PROP_ADDRESS_1",
-        "street": "auto_street",
-        "number": "auto_number"
+        "number": {
+            "function": "regexp",
+            "field": "PROP_ADDRESS_1",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PROP_ADDRESS_1",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     }
 }
