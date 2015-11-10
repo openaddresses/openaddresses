@@ -1,0 +1,30 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "26099",
+            "state": "Michigan",
+            "county": "Macomb"
+        },
+        "country": "us",
+        "state": "mi",
+        "county": "Macomb"
+    },
+    "data": "http://gis.macombgov.org/arcgis1/rest/services/Hosted/SAW_Parcels/FeatureServer/0",
+    "website": "https://gis.macombgov.org/portal1/home/",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "city": "CVT_NAME"
+    }
+}
