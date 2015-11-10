@@ -13,5 +13,16 @@
     },
     "attribution": "Secretaria de Infraestrutura e Serviços Urbanos do Recife",
     "type": "http",
-    "compression": "zip"
+    "compression": "zip",
+    "conform": {
+        "type": "geojson",
+        "file": "lotes.geojson",
+        "number": "endereco_numero",
+        "street": {
+            "function": "regexp",
+            "field": "endereco_completo",
+            "pattern": "^(.*?)(, [0-9]+)?$",
+            "replace": "$1"
+        }
+    }
 }
