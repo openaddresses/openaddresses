@@ -11,9 +11,17 @@
     },
     "conform": {
         "type": "geojson",
-        "split": "Situs2",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "Situs2",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Situs2",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     },
     "attribution": "Stanislaus County",
     "data": "http://gis.stancounty.com/stangis_map_services/ArcGIS/rest/services/maps/parcels/MapServer/0",
