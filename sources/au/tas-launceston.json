@@ -6,7 +6,21 @@
     },
     "attribution": "City of Launceston",
     "data": "http://mapping.launceston.tas.gov.au/arcgis/rest/services/Public/Addresses/MapServer/0",
-    "license": "http://creativecommons.org/licenses/by/3.0/au/deed.en",
+    "license": {
+        "url": "http://creativecommons.org/licenses/by/3.0/au/deed.en",
+        "attribution": true,
+        "share-alike": false
+    },
     "website": "http://data.gov.au/dataset/launceston-city-council-addresses",
-    "type": "ESRI"
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "Address",
+        "street": {
+            "function": "regexp",
+            "field": "Address",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
 }

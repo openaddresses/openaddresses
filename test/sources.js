@@ -154,6 +154,7 @@ function checkSource(i){
                         });
                     t.ok(data.license.url ? validator.isURL(data.license.url) : true, "license - url must be a valid URL");
                     t.ok(data.license.attribution ? typeof data.license.attribution === 'boolean' : true, "license - attribution must be boolean");
+                    t.ok(data.license['share-alike'] ? typeof data.license['share-alike'] === 'boolean' : true, "license - share-alike must be boolean");
                 }
                 else {
                     t.fail("license must be of type string or object");
