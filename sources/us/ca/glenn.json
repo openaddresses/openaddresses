@@ -11,9 +11,17 @@
     },
     "conform": {
         "type": "geojson",
-        "split": "SITEADDRESS",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "SITEADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITEADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     },
     "data": "http://gis.gcppwa.net/arcgis/rest/services/Districts/GCDistricts/MapServer/0",
     "type": "ESRI"
