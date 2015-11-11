@@ -23,9 +23,21 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "split": "address",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "shapefile"
+      "type": "shapefile",
+      "number": {
+          "function": "regexp",
+          "field": "ADDRESS",
+          "pattern": "^([0-9]+)"
+      },
+      "street": {
+          "function": "regexp",
+          "field": "ADDRESS",
+          "pattern": "^(?:[0-9]+ )(.*)",
+          "replace": "$1"
+      },
+      "city": "CITY",
+      "postcode": "ZIP_CODE",
+      "lat": "LATITUDE",
+      "lon": "LONGITUDE"
     }
 }
