@@ -20,10 +20,21 @@
     "data": "http://maps.arvada.org/ArcGIS/rest/services/Address/Master_Address_Join/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "split": "address",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "geojson",
-        "postcode": "zip_5"
+      "type": "geojson",
+      "number": {
+          "function": "regexp",
+          "field": "ADDRESS",
+          "pattern": "^([0-9]+)"
+      },
+      "street": {
+          "function": "regexp",
+          "field": "ADDRESS",
+          "pattern": "^(?:[0-9]+ )(.*)",
+          "replace": "$1"
+      },
+      "city": "MAILING_CITY",
+      "district": "JURISD_COUNTY",
+      "region": "STATE",
+      "postcode": "ZIP_5"
     }
 }
