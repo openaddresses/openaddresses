@@ -11,13 +11,17 @@
     },
     "conform": {
         "type": "geojson",
-        "number": "site_hsnum",
-        "street": [
-            "site_dirpfx",
-            "site_strnam",
-            "site_strtyp",
-            "site_dirsfx"
-        ]
+        "number": {
+            "function": "regexp",
+            "field": "SITE_ADDR",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITE_ADDR",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     },
     "data": "http://fremontgis.com/arcgis_102/rest/services/parcels/MapServer/0",
     "type": "ESRI"
