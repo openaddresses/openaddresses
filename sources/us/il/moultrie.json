@@ -9,7 +9,33 @@
         "state": "il",
         "county": "Moultrie"
     },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_moultrie_co_il_taxmap_web_mercator/MapServer/0",
+    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_moultrie_co_il_taxmap3_web_mercator/MapServer/0",
     "type": "ESRI",
-    "note": "address field will need more processing"
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "Site_Address",
+            "pattern": "([0-9]+)(.*)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Site_Address",
+            "pattern": "([0-9]+)(.*)~(.*), IL ([0-9]+)",
+            "replace": "$2"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "Site_Address",
+            "pattern": "([0-9]+)(.*)~(.*), IL ([0-9]+)",
+            "replace": "$3"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "Site_Address",
+            "pattern": "([0-9]+)(.*)~(.*), IL ([0-9]+)",
+            "replace": "$4"
+        }
+    }
 }
