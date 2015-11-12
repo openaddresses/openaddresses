@@ -9,8 +9,11 @@
         "state": "il",
         "county": "Lake"
     },
-    "data": "http://maps.lakecountyil.gov/arcgis/rest/services/GISMapping/TaxPortalBaseMap/MapServer/41",
+    "data": "http://maps.lakecountyil.gov/arcgis/rest/services/GISMapping/CommonLayers/MapServer/1",
     "type": "ESRI",
-    "skip": true,
-    "note": "times out"
+    "conform": {
+        "type": "geojson",
+        "number": ["PLA_NUMBER", "PLA_NUMSUF"],
+        "street": ["PLA_DIRECT", "PLA_NAME", "PLA_TYPE", "PLA_SUFFIX"]
+    }
 }
