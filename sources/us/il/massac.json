@@ -1,20 +1,28 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "17127",
-            "name": "Massac County",
-            "state": "Illinois"
-        },
-        "country": "us",
-        "state": "il",
-        "county": "Massac"
+  "coverage": {
+    "US Census": {
+      "geoid": "17127",
+      "name": "Massac County",
+      "state": "Illinois"
     },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_massac_co_il_taxmap/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "split": "address",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "geojson"
-    }
+    "country": "us",
+    "state": "il",
+    "county": "Massac"
+  },
+  "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_massac_co_il_taxmap/MapServer/0",
+  "type": "ESRI",
+  "conform": {
+    "number": {
+      "function": "regexp",
+      "field": "address",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "address",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "type": "geojson"
+  }
 }

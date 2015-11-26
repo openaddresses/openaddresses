@@ -1,20 +1,28 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "17111",
-            "name": "McHenry County",
-            "state": "Illinois"
-        },
-        "country": "us",
-        "state": "il",
-        "county": "McHenry"
+  "coverage": {
+    "US Census": {
+      "geoid": "17111",
+      "name": "McHenry County",
+      "state": "Illinois"
     },
-    "conform": {
-        "type": "geojson",
-        "split": "SiteAddressStreet",
-        "number": "auto_number",
-        "street": "auto_street"
+    "country": "us",
+    "state": "il",
+    "county": "McHenry"
+  },
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "SiteAddressStreet",
+      "pattern": "^([0-9]+)"
     },
-    "data": "http://www.mchenrycountygis.org/arcgis/rest/services/parcelsfull/MapServer/0",
-    "type": "ESRI"
+    "street": {
+      "function": "regexp",
+      "field": "SiteAddressStreet",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    }
+  },
+  "data": "http://www.mchenrycountygis.org/arcgis/rest/services/parcelsfull/MapServer/0",
+  "type": "ESRI"
 }

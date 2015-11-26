@@ -1,22 +1,30 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "30001",
-            "name": "Beaverhead County",
-            "state": "Montana"
-        },
-        "country": "us",
-        "state": "mt",
-        "county": "Beaverhead"
+  "coverage": {
+    "US Census": {
+      "geoid": "30001",
+      "name": "Beaverhead County",
+      "state": "Montana"
     },
-    "conform": {
-        "type": "shapefile-polygon",
-        "split": "AddressLin",
-        "number": "auto_number",
-        "street": "auto_street"
+    "country": "us",
+    "state": "mt",
+    "county": "Beaverhead"
+  },
+  "conform": {
+    "type": "shapefile-polygon",
+    "number": {
+      "function": "regexp",
+      "field": "AddressLin",
+      "pattern": "^([0-9]+)"
     },
-    "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Beaverhead/BeaverheadOwnerParcel_shp.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "note": "won't split properly"
+    "street": {
+      "function": "regexp",
+      "field": "AddressLin",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    }
+  },
+  "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Beaverhead/BeaverheadOwnerParcel_shp.zip",
+  "type": "ftp",
+  "compression": "zip",
+  "note": "won't split properly"
 }

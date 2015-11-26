@@ -1,22 +1,30 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "30063",
-            "name": "Missoula County",
-            "state": "Montana"
-        },
-        "country": "us",
-        "state": "mt",
-        "county": "Missoula"
+  "coverage": {
+    "US Census": {
+      "geoid": "30063",
+      "name": "Missoula County",
+      "state": "Montana"
     },
-    "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Missoula/MissoulaOwnerParcel_shp.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "split": "AddressLin",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "shapefile-polygon",
-        "accuracy": 2
-    }
+    "country": "us",
+    "state": "mt",
+    "county": "Missoula"
+  },
+  "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Missoula/MissoulaOwnerParcel_shp.zip",
+  "type": "ftp",
+  "compression": "zip",
+  "conform": {
+    "number": {
+      "function": "regexp",
+      "field": "AddressLin",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "AddressLin",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "type": "shapefile-polygon",
+    "accuracy": 2
+  }
 }

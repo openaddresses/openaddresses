@@ -1,28 +1,36 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "27011",
-            "name": "Big Stone County",
-            "state": "Minnesota"
-        },
-        "country": "us",
-        "state": "mn",
-        "county": "Big Stone"
+  "coverage": {
+    "US Census": {
+      "geoid": "27011",
+      "name": "Big Stone County",
+      "state": "Minnesota"
     },
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
+    "country": "us",
+    "state": "mn",
+    "county": "Big Stone"
+  },
+  "license": {
+    "text": "Indemnification",
+    "attribution": false,
+    "share-alike": false
+  },
+  "type": "http",
+  "compression": "zip",
+  "data": "http://www.bigstonecounty.org/gis/shapefile/BigStoneTaxParcels-August2015.zip",
+  "website": "http://www.bigstonecounty.org/gis/gis.vbhtml",
+  "conform": {
+    "type": "shapefile-polygon",
+    "number": {
+      "function": "regexp",
+      "field": "PHYSADDR",
+      "pattern": "^([0-9]+)"
     },
-    "type": "http",
-    "compression": "zip",
-    "data": "http://www.bigstonecounty.org/gis/shapefile/BigStoneTaxParcels-August2015.zip",
-    "website": "http://www.bigstonecounty.org/gis/gis.vbhtml",
-    "conform": {
-        "type": "shapefile-polygon",
-        "split": "PHYSADDR",
-        "number": "auto_number",
-        "street": "auto_street",
-        "city": "TWPNAME"
-    }
+    "street": {
+      "function": "regexp",
+      "field": "PHYSADDR",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "city": "TWPNAME"
+  }
 }

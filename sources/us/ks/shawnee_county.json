@@ -1,21 +1,25 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "20177",
-            "name": "Shawnee County",
-            "state": "Kansas"
-        },
-        "country": "us",
-        "state": "ks",
-        "county": "Shawnee"
+  "coverage": {
+    "US Census": {
+      "geoid": "20177",
+      "name": "Shawnee County",
+      "state": "Kansas"
     },
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "split": "PADDRESS",
-        "street": "auto_street",
-        "postcode": "ZipCode"
+    "country": "us",
+    "state": "ks",
+    "county": "Shawnee"
+  },
+  "conform": {
+    "type": "geojson",
+    "number": "HOUSENUM",
+    "street": {
+      "function": "regexp",
+      "field": "PADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
     },
-    "data": "http://gis.snco.us/ArcGIS/rest/services/Basemap_102100/MapServer/1",
-    "type": "ESRI"
+    "postcode": "ZipCode"
+  },
+  "data": "http://gis.snco.us/ArcGIS/rest/services/Basemap_102100/MapServer/1",
+  "type": "ESRI"
 }

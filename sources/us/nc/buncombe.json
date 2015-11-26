@@ -1,23 +1,26 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "37021",
-            "name": "Buncombe County",
-            "state": "North Carolina"
-        },
-        "country": "us",
-        "state": "nc",
-        "county": "Buncombe"
+  "coverage": {
+    "US Census": {
+      "geoid": "37021",
+      "name": "Buncombe County",
+      "state": "North Carolina"
     },
-    "data": "http://gisdownload.buncombecounty.org/addresses.zip",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://www.buncombecounty.org/Governing/Depts/GIS/DataDownload.aspx",
-    "conform": {
-        "split": "full_civic",
-        "number": "auto_number",
-        "street": "auto_Street",
-        "type": "shapefile",
-        "postcode": "postal_cod"
-    }
+    "country": "us",
+    "state": "nc",
+    "county": "Buncombe"
+  },
+  "data": "http://gisdownload.buncombecounty.org/addresses.zip",
+  "type": "http",
+  "compression": "zip",
+  "website": "http://www.buncombecounty.org/Governing/Depts/GIS/DataDownload.aspx",
+  "conform": {
+    "number": {
+      "function": "regexp",
+      "field": "full_civic",
+      "pattern": "^([0-9]+)"
+    },
+    "street": "auto_Street",
+    "type": "shapefile",
+    "postcode": "postal_cod"
+  }
 }

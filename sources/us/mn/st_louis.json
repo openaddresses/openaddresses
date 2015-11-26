@@ -1,22 +1,30 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "27137",
-            "name": "St. Louis County",
-            "state": "Minnesota"
-        },
-        "country": "us",
-        "state": "mn",
-        "county": "St. Louis"
+  "coverage": {
+    "US Census": {
+      "geoid": "27137",
+      "name": "St. Louis County",
+      "state": "Minnesota"
     },
-    "data": "http://gis.stlouiscountymn.gov/arcgis/rest/services/GeneralUse/Cadastral/MapServer/33",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "split": "PHYSADDR",
-        "number": "auto_number",
-        "street": "auto_street",
-        "city": "PHYSCITY",
-        "postcode": "PHYSZIP"
-    }
+    "country": "us",
+    "state": "mn",
+    "county": "St. Louis"
+  },
+  "data": "http://gis.stlouiscountymn.gov/arcgis/rest/services/GeneralUse/Cadastral/MapServer/33",
+  "type": "ESRI",
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "PHYSADDR",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "PHYSADDR",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "city": "PHYSCITY",
+    "postcode": "PHYSZIP"
+  }
 }

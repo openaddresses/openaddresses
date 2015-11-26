@@ -1,20 +1,28 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "20155",
-            "name": "Reno County",
-            "state": "Kansas"
-        },
-        "country": "us",
-        "state": "ks",
-        "county": "Reno"
+  "coverage": {
+    "US Census": {
+      "geoid": "20155",
+      "name": "Reno County",
+      "state": "Kansas"
     },
-    "conform": {
-        "type": "geojson",
-        "number": "auto_number",
-        "split": "Appraiser_Data_Export.PROPADD",
-        "street": "auto_street"
+    "country": "us",
+    "state": "ks",
+    "county": "Reno"
+  },
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "Appraiser_Data_Export.PROPADD",
+      "pattern": "^([0-9]+)"
     },
-    "data": "http://renogis3.renogov.org/arcgis/rest/services/Test/WebLayers/MapServer/7",
-    "type": "ESRI"
+    "street": {
+      "function": "regexp",
+      "field": "Appraiser_Data_Export.PROPADD",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    }
+  },
+  "data": "http://renogis3.renogov.org/arcgis/rest/services/Test/WebLayers/MapServer/7",
+  "type": "ESRI"
 }

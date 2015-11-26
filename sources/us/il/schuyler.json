@@ -1,20 +1,28 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "17169",
-            "name": "Schuyler County",
-            "state": "Illinois"
-        },
-        "country": "us",
-        "state": "il",
-        "county": "Schuyler"
+  "coverage": {
+    "US Census": {
+      "geoid": "17169",
+      "name": "Schuyler County",
+      "state": "Illinois"
     },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_schuyler_co_il_taxmap/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "split": "site_address",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "geojson"
-    }
+    "country": "us",
+    "state": "il",
+    "county": "Schuyler"
+  },
+  "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_schuyler_co_il_taxmap/MapServer/0",
+  "type": "ESRI",
+  "conform": {
+    "number": {
+      "function": "regexp",
+      "field": "site_address",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "site_address",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "type": "geojson"
+  }
 }

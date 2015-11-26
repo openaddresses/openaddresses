@@ -1,22 +1,30 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "30077",
-            "name": "Powell County",
-            "state": "Montana"
-        },
-        "country": "us",
-        "state": "mt",
-        "county": "Powell"
+  "coverage": {
+    "US Census": {
+      "geoid": "30077",
+      "name": "Powell County",
+      "state": "Montana"
     },
-    "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Powell/PowellOwnerParcel_shp.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "split": "OwnerAddre",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "shapefile-polygon",
-        "postcode": "ownerzipco"
-    }
+    "country": "us",
+    "state": "mt",
+    "county": "Powell"
+  },
+  "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Powell/PowellOwnerParcel_shp.zip",
+  "type": "ftp",
+  "compression": "zip",
+  "conform": {
+    "number": {
+      "function": "regexp",
+      "field": "OwnerAddre",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "OwnerAddre",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "type": "shapefile-polygon",
+    "postcode": "ownerzipco"
+  }
 }

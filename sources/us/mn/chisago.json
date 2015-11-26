@@ -1,29 +1,37 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "27025",
-            "name": "Chisago County",
-            "state": "Minnesota"
-        },
-        "country": "us",
-        "state": "mn",
-        "county": "Chisago"
+  "coverage": {
+    "US Census": {
+      "geoid": "27025",
+      "name": "Chisago County",
+      "state": "Minnesota"
     },
-    "conform": {
-        "type": "geojson",
-        "split": "ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street",
-        "city": "CITY",
-        "postcode": "ZIP"
+    "country": "us",
+    "state": "mn",
+    "county": "Chisago"
+  },
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "ADDRESS",
+      "pattern": "^([0-9]+)"
     },
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
+    "street": {
+      "function": "regexp",
+      "field": "ADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
     },
-    "type": "ESRI",
-    "data": "https://gis.chisagocounty.us/arcgis/rest/services/GISData/MapServer/1",
-    "website": "http://gis.chisagocounty.us/Link/jsfe/index.aspx",
-    "note": "Shp download has no .prj file, but available at http://gis.chisagocounty.us/ZipFiles/addresses.zip"
+    "city": "CITY",
+    "postcode": "ZIP"
+  },
+  "license": {
+    "text": "Indemnification",
+    "attribution": false,
+    "share-alike": false
+  },
+  "type": "ESRI",
+  "data": "https://gis.chisagocounty.us/arcgis/rest/services/GISData/MapServer/1",
+  "website": "http://gis.chisagocounty.us/Link/jsfe/index.aspx",
+  "note": "Shp download has no .prj file, but available at http://gis.chisagocounty.us/ZipFiles/addresses.zip"
 }

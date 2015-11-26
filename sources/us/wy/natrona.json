@@ -1,22 +1,26 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "56025",
-            "name": "Natrona County",
-            "state": "Wyoming"
-        },
-        "country": "us",
-        "state": "wy",
-        "county": "Natrona"
+  "coverage": {
+    "US Census": {
+      "geoid": "56025",
+      "name": "Natrona County",
+      "state": "Wyoming"
     },
-    "data": "http://maps.casperwy.gov/arcgis10_1/rest/services/View_Permit/VP_Starter_Map/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STREET_NUM",
-        "split": "ADDRESS",
-        "street": "auto_street",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
-    }
+    "country": "us",
+    "state": "wy",
+    "county": "Natrona"
+  },
+  "data": "http://maps.casperwy.gov/arcgis10_1/rest/services/View_Permit/VP_Starter_Map/MapServer/0",
+  "type": "ESRI",
+  "conform": {
+    "type": "geojson",
+    "number": "STREET_NUM",
+    "street": {
+      "function": "regexp",
+      "field": "ADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "region": "STATE",
+    "postcode": "ZIPCODE"
+  }
 }

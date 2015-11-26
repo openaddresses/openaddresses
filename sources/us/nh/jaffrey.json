@@ -1,16 +1,24 @@
 {
-    "coverage": {
-        "country": "us",
-        "state": "nh",
-        "city": "jaffrey"
+  "coverage": {
+    "country": "us",
+    "state": "nh",
+    "city": "jaffrey"
+  },
+  "data": "http://107.20.209.214/ArcGIS/rest/services/JaffreyNH/JaffreyDynamic/MapServer/1",
+  "website": "http://www.town.jaffrey.nh.us/",
+  "type": "ESRI",
+  "conform": {
+    "street": {
+      "function": "regexp",
+      "field": "Jaff_parcels.Address",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
     },
-    "data": "http://107.20.209.214/ArcGIS/rest/services/JaffreyNH/JaffreyDynamic/MapServer/1",
-    "website": "http://www.town.jaffrey.nh.us/",
-    "type": "ESRI",
-    "conform": {
-        "split": "Jaff_parcels.Address",
-        "street": "auto_street",
-        "number": "auto_number",
-        "type": "geojson"
-    }
+    "number": {
+      "function": "regexp",
+      "field": "Jaff_parcels.Address",
+      "pattern": "^([0-9]+)"
+    },
+    "type": "geojson"
+  }
 }

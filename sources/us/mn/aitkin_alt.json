@@ -1,20 +1,28 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "27001",
-            "name": "Aitkin County",
-            "state": "Minnesota"
-        },
-        "country": "us",
-        "state": "mn",
-        "county": "Aitkin"
+  "coverage": {
+    "US Census": {
+      "geoid": "27001",
+      "name": "Aitkin County",
+      "state": "Minnesota"
     },
-    "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/Adair/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "split": "PROPADDRESS",
-        "number": "auto_number",
-        "street": "auto_street"
+    "country": "us",
+    "state": "mn",
+    "county": "Aitkin"
+  },
+  "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/Adair/MapServer/1",
+  "type": "ESRI",
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "PROPADDRESS",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "PROPADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
     }
+  }
 }

@@ -1,20 +1,28 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "27021",
-            "name": "Cass County",
-            "state": "Minnesota"
-        },
-        "country": "us",
-        "state": "mn",
-        "county": "Cass"
+  "coverage": {
+    "US Census": {
+      "geoid": "27021",
+      "name": "Cass County",
+      "state": "Minnesota"
     },
-    "data": "http://cassweb3.co.cass.mn.us/arcgis/rest/services/Basic_Layers2/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "split": "PHYSADDR",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "geojson"
-    }
+    "country": "us",
+    "state": "mn",
+    "county": "Cass"
+  },
+  "data": "http://cassweb3.co.cass.mn.us/arcgis/rest/services/Basic_Layers2/MapServer/1",
+  "type": "ESRI",
+  "conform": {
+    "number": {
+      "function": "regexp",
+      "field": "PHYSADDR",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "PHYSADDR",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "type": "geojson"
+  }
 }

@@ -1,20 +1,28 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "17083",
-            "name": "Jersey County",
-            "state": "Illinois"
-        },
-        "country": "us",
-        "state": "il",
-        "county": "Jersey"
+  "coverage": {
+    "US Census": {
+      "geoid": "17083",
+      "name": "Jersey County",
+      "state": "Illinois"
     },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_jersey_co_il_taxmap/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "split": "site_address",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "geojson"
-    }
+    "country": "us",
+    "state": "il",
+    "county": "Jersey"
+  },
+  "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_jersey_co_il_taxmap/MapServer/0",
+  "type": "ESRI",
+  "conform": {
+    "number": {
+      "function": "regexp",
+      "field": "site_address",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "site_address",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "type": "geojson"
+  }
 }

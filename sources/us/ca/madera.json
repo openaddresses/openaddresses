@@ -1,24 +1,32 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "06039",
-            "name": "Madera County",
-            "state": "California"
-        },
-        "country": "us",
-        "state": "ca",
-        "county": "Madera"
+  "coverage": {
+    "US Census": {
+      "geoid": "06039",
+      "name": "Madera County",
+      "state": "California"
     },
-    "conform": {
-        "type": "shapefile",
-        "split": "Address",
-        "number": "auto_number",
-        "street": "auto_street"
+    "country": "us",
+    "state": "ca",
+    "county": "Madera"
+  },
+  "conform": {
+    "type": "shapefile",
+    "number": {
+      "function": "regexp",
+      "field": "Address",
+      "pattern": "^([0-9]+)"
     },
-    "data": "https://github.com/datadesk/us-ca-madera_county-situs-shp/blob/master/Asr_Situs.zip?raw=true",
-    "attribution": "Madera County",
-    "website": "http://www.madera-county.com/index.php/assessment-information/261-assessors-maps-cadastral-drafting",
-    "type": "http",
-    "compression": "zip",
-    "note": "Provided in response to a public records request in January 2015 and uploaded to GitHub for public hosting."
+    "street": {
+      "function": "regexp",
+      "field": "Address",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    }
+  },
+  "data": "https://github.com/datadesk/us-ca-madera_county-situs-shp/blob/master/Asr_Situs.zip?raw=true",
+  "attribution": "Madera County",
+  "website": "http://www.madera-county.com/index.php/assessment-information/261-assessors-maps-cadastral-drafting",
+  "type": "http",
+  "compression": "zip",
+  "note": "Provided in response to a public records request in January 2015 and uploaded to GitHub for public hosting."
 }

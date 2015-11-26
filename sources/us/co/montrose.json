@@ -1,22 +1,30 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "08085",
-            "name": "Montrose County",
-            "state": "Colorado"
-        },
-        "country": "us",
-        "state": "co",
-        "county": "Montrose"
+  "coverage": {
+    "US Census": {
+      "geoid": "08085",
+      "name": "Montrose County",
+      "state": "Colorado"
     },
-    "conform": {
-        "type": "geojson",
-        "split": "FSA",
-        "number": "auto_number",
-        "street": "auto_street",
-        "postcode": "ZIPCODE",
-        "city": "PCN"
+    "country": "us",
+    "state": "co",
+    "county": "Montrose"
+  },
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "FSA",
+      "pattern": "^([0-9]+)"
     },
-    "data": "http://mcmap.montrosecounty.net:8080/arcgis/rest/services/MontroseCOaddress/MapServer/0",
-    "type": "ESRI"
+    "street": {
+      "function": "regexp",
+      "field": "FSA",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "postcode": "ZIPCODE",
+    "city": "PCN"
+  },
+  "data": "http://mcmap.montrosecounty.net:8080/arcgis/rest/services/MontroseCOaddress/MapServer/0",
+  "type": "ESRI"
 }

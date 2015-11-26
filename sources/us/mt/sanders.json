@@ -1,21 +1,29 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "30089",
-            "name": "Sanders County",
-            "state": "Montana"
-        },
-        "country": "us",
-        "state": "mt",
-        "county": "Sanders"
+  "coverage": {
+    "US Census": {
+      "geoid": "30089",
+      "name": "Sanders County",
+      "state": "Montana"
     },
-    "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Sanders/SandersOwnerParcel_shp.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "split": "OwnerAddre",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "shapefile-polygon"
-    }
+    "country": "us",
+    "state": "mt",
+    "county": "Sanders"
+  },
+  "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Sanders/SandersOwnerParcel_shp.zip",
+  "type": "ftp",
+  "compression": "zip",
+  "conform": {
+    "number": {
+      "function": "regexp",
+      "field": "OwnerAddre",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "OwnerAddre",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "type": "shapefile-polygon"
+  }
 }

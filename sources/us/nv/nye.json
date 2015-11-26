@@ -1,20 +1,28 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "32023",
-            "name": "Nye County",
-            "state": "Nevada"
-        },
-        "country": "us",
-        "state": "nv",
-        "county": "Nye"
+  "coverage": {
+    "US Census": {
+      "geoid": "32023",
+      "name": "Nye County",
+      "state": "Nevada"
     },
-    "data": "http://nyenv.mygisonline.com/arcgis/rest/services/NV_Nye/NyeNVfeatures/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "split": "address",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "geojson"
-    }
+    "country": "us",
+    "state": "nv",
+    "county": "Nye"
+  },
+  "data": "http://nyenv.mygisonline.com/arcgis/rest/services/NV_Nye/NyeNVfeatures/MapServer/0",
+  "type": "ESRI",
+  "conform": {
+    "number": {
+      "function": "regexp",
+      "field": "address",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "address",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "type": "geojson"
+  }
 }

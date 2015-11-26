@@ -1,21 +1,29 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "55025",
-            "name": "Dane County",
-            "state": "Wisconsin"
-        },
-        "country": "us",
-        "state": "wi",
-        "county": "Dane"
+  "coverage": {
+    "US Census": {
+      "geoid": "55025",
+      "name": "Dane County",
+      "state": "Wisconsin"
     },
-    "data": "https://dcimapapps.countyofdane.com/arcgis/rest/services/Parcels/MapServer/4",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "split": "SITEADDRESS",
-        "number": "auto_number",
-        "street": "auto_street",
-        "accuracy": 2
-    }
+    "country": "us",
+    "state": "wi",
+    "county": "Dane"
+  },
+  "data": "https://dcimapapps.countyofdane.com/arcgis/rest/services/Parcels/MapServer/4",
+  "type": "ESRI",
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "SITEADDRESS",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "SITEADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "accuracy": 2
+  }
 }

@@ -1,23 +1,31 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "26121",
-            "name": "Muskegon County",
-            "state": "Michigan"
-        },
-        "country": "us",
-        "state": "mi",
-        "county": "Muskegon"
+  "coverage": {
+    "US Census": {
+      "geoid": "26121",
+      "name": "Muskegon County",
+      "state": "Michigan"
     },
-    "data": "http://www.muskegoncountygis.com/ArcGIS/rest/services/Parcels/MapServer/2",
-    "type": "ESRI",
-    "website": "http://www.muskegoncountygis.com/",
-    "license": "",
-    "note": "Data includes polygon shape of parcels. Address data is found in PROP_COMBINED_ADDRESS, PROP_CITY, PROP_STATE, PROP_ZIP.",
-    "conform": {
-        "split": "PROP_COMBINED_ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "geojson"
-    }
+    "country": "us",
+    "state": "mi",
+    "county": "Muskegon"
+  },
+  "data": "http://www.muskegoncountygis.com/ArcGIS/rest/services/Parcels/MapServer/2",
+  "type": "ESRI",
+  "website": "http://www.muskegoncountygis.com/",
+  "license": "",
+  "note": "Data includes polygon shape of parcels. Address data is found in PROP_COMBINED_ADDRESS, PROP_CITY, PROP_STATE, PROP_ZIP.",
+  "conform": {
+    "number": {
+      "function": "regexp",
+      "field": "PROP_COMBINED_ADDRESS",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "PROP_COMBINED_ADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "type": "geojson"
+  }
 }

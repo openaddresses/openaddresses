@@ -1,27 +1,35 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "19135",
-            "name": "Monroe County",
-            "state": "Iowa"
-        },
-        "country": "us",
-        "state": "ia",
-        "county": "Monroe"
+  "coverage": {
+    "US Census": {
+      "geoid": "19135",
+      "name": "Monroe County",
+      "state": "Iowa"
     },
-    "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Monroe/Address_68.zip",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
+    "country": "us",
+    "state": "ia",
+    "county": "Monroe"
+  },
+  "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Monroe/Address_68.zip",
+  "license": {
+    "text": "Public Domain",
+    "attribution": false,
+    "share-alike": false
+  },
+  "year": "2012?",
+  "type": "ftp",
+  "compression": "zip",
+  "conform": {
+    "number": {
+      "function": "regexp",
+      "field": "address",
+      "pattern": "^([0-9]+)"
     },
-    "year": "2012?",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "split": "address",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "shapefile"
-    }
+    "street": {
+      "function": "regexp",
+      "field": "address",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "type": "shapefile"
+  }
 }

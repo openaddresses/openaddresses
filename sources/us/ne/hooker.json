@@ -1,20 +1,28 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "31091",
-            "name": "Hooker County",
-            "state": "Nebraska"
-        },
-        "country": "us",
-        "state": "ne",
-        "county": "Hooker"
+  "coverage": {
+    "US Census": {
+      "geoid": "31091",
+      "name": "Hooker County",
+      "state": "Nebraska"
     },
-    "data": "http://maps6.gisworkshop.com/ArcGIS/rest/services/Hooker/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "split": "PROPADDRESS",
-        "number": "auto_number",
-        "street": "auto_street"
+    "country": "us",
+    "state": "ne",
+    "county": "Hooker"
+  },
+  "data": "http://maps6.gisworkshop.com/ArcGIS/rest/services/Hooker/MapServer/0",
+  "type": "ESRI",
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "PROPADDRESS",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "PROPADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
     }
+  }
 }

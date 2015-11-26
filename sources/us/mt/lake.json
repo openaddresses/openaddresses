@@ -1,21 +1,29 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "30047",
-            "name": "Lake County",
-            "state": "Montana"
-        },
-        "country": "us",
-        "state": "mt",
-        "county": "Lake"
+  "coverage": {
+    "US Census": {
+      "geoid": "30047",
+      "name": "Lake County",
+      "state": "Montana"
     },
-    "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Lake/LakeOwnerParcel_shp.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "split": "OwnerAddre",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "shapefile-polygon"
-    }
+    "country": "us",
+    "state": "mt",
+    "county": "Lake"
+  },
+  "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Lake/LakeOwnerParcel_shp.zip",
+  "type": "ftp",
+  "compression": "zip",
+  "conform": {
+    "number": {
+      "function": "regexp",
+      "field": "OwnerAddre",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "OwnerAddre",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "type": "shapefile-polygon"
+  }
 }

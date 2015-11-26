@@ -1,22 +1,30 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "30111",
-            "name": "Yellowstone County",
-            "state": "Montana"
-        },
-        "country": "us",
-        "state": "mt",
-        "county": "Yellowstone"
+  "coverage": {
+    "US Census": {
+      "geoid": "30111",
+      "name": "Yellowstone County",
+      "state": "Montana"
     },
-    "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Yellowstone/YellowstoneOwnerParcel_shp.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "split": "AddressLin",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "shapefile-polygon",
-        "accuracy": 2
-    }
+    "country": "us",
+    "state": "mt",
+    "county": "Yellowstone"
+  },
+  "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Yellowstone/YellowstoneOwnerParcel_shp.zip",
+  "type": "ftp",
+  "compression": "zip",
+  "conform": {
+    "number": {
+      "function": "regexp",
+      "field": "AddressLin",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "AddressLin",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "type": "shapefile-polygon",
+    "accuracy": 2
+  }
 }

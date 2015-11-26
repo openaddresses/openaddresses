@@ -1,22 +1,25 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "38105",
-            "name": "Williams County",
-            "state": "North Dakota"
-        },
-        "country": "us",
-        "state": "nd",
-        "county": "Williams"
+  "coverage": {
+    "US Census": {
+      "geoid": "38105",
+      "name": "Williams County",
+      "state": "North Dakota"
     },
-    "type": "ESRI",
-    "data": "http://services1.arcgis.com/D85sDZoJyameepNh/ArcGIS/rest/services/Master_Addresses/FeatureServer/0",
-    "conform": {
-        "type": "geojson",
-        "split": "ADDR",
-        "number": "auto_number",
-        "street": "STREET",
-        "city": "city",
-        "postcode": "Zipcode"
-    }
+    "country": "us",
+    "state": "nd",
+    "county": "Williams"
+  },
+  "type": "ESRI",
+  "data": "http://services1.arcgis.com/D85sDZoJyameepNh/ArcGIS/rest/services/Master_Addresses/FeatureServer/0",
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "ADDR",
+      "pattern": "^([0-9]+)"
+    },
+    "street": "STREET",
+    "city": "city",
+    "postcode": "Zipcode"
+  }
 }

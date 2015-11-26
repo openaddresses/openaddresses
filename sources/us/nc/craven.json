@@ -1,23 +1,31 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "37049",
-            "name": "Craven County",
-            "state": "North Carolina"
-        },
-        "country": "us",
-        "state": "nc",
-        "county": "Craven"
+  "coverage": {
+    "US Census": {
+      "geoid": "37049",
+      "name": "Craven County",
+      "state": "North Carolina"
     },
-    "conform": {
-        "type": "shapefile-polygon",
-        "split": "PROP_ADD",
-        "number": "auto_number",
-        "street": "auto_street"
+    "country": "us",
+    "state": "nc",
+    "county": "Craven"
+  },
+  "conform": {
+    "type": "shapefile-polygon",
+    "number": {
+      "function": "regexp",
+      "field": "PROP_ADD",
+      "pattern": "^([0-9]+)"
     },
-    "data": "http://gis.cravencountync.gov/Downloads/Shape_files/county_shape.zip",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://gis.cravencountync.gov/downloads-zip-files.aspx",
-    "note": "Cadastral (property boundaries) and data county_shape.zip includes property address data via http://gis.cravencountync.gov/Downloads/Shape_files/county_shape_file_description.txt"
+    "street": {
+      "function": "regexp",
+      "field": "PROP_ADD",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    }
+  },
+  "data": "http://gis.cravencountync.gov/Downloads/Shape_files/county_shape.zip",
+  "type": "http",
+  "compression": "zip",
+  "website": "http://gis.cravencountync.gov/downloads-zip-files.aspx",
+  "note": "Cadastral (property boundaries) and data county_shape.zip includes property address data via http://gis.cravencountync.gov/Downloads/Shape_files/county_shape_file_description.txt"
 }

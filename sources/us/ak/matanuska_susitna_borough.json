@@ -1,22 +1,30 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "02170",
-            "name": "Matanuska-Susitna Borough",
-            "state": "Alaska"
-        },
-        "country": "us",
-        "state": "ak",
-        "county": "matanuska susitna borough"
+  "coverage": {
+    "US Census": {
+      "geoid": "02170",
+      "name": "Matanuska-Susitna Borough",
+      "state": "Alaska"
     },
-    "data": "http://maps.matsugov.us/ArcGIS/rest/services/ParcelViewer/MapServer/7",
-    "website": "http://www.matsugov.us/",
-    "attribution": "Matanuska-Susitna Borough",
-    "type": "ESRI",
-    "conform": {
-        "split": "ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "geojson"
-    }
+    "country": "us",
+    "state": "ak",
+    "county": "matanuska susitna borough"
+  },
+  "data": "http://maps.matsugov.us/ArcGIS/rest/services/ParcelViewer/MapServer/7",
+  "website": "http://www.matsugov.us/",
+  "attribution": "Matanuska-Susitna Borough",
+  "type": "ESRI",
+  "conform": {
+    "number": {
+      "function": "regexp",
+      "field": "ADDRESS",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "ADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "type": "geojson"
+  }
 }

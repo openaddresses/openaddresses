@@ -1,22 +1,30 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "55127",
-            "name": "Walworth County",
-            "state": "Wisconsin"
-        },
-        "country": "us",
-        "state": "wi",
-        "county": "Walworth"
+  "coverage": {
+    "US Census": {
+      "geoid": "55127",
+      "name": "Walworth County",
+      "state": "Wisconsin"
     },
-    "data": "http://gisinfo.co.walworth.wi.us/arcgis/rest/services/WALCOBasemap/MapServer/9",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "split": "ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street",
-        "city": "COMMUNITY",
-        "accuracy": 1
-    }
+    "country": "us",
+    "state": "wi",
+    "county": "Walworth"
+  },
+  "data": "http://gisinfo.co.walworth.wi.us/arcgis/rest/services/WALCOBasemap/MapServer/9",
+  "type": "ESRI",
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "ADDRESS",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "ADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "city": "COMMUNITY",
+    "accuracy": 1
+  }
 }

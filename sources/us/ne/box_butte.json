@@ -1,20 +1,28 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "31013",
-            "name": "Box Butte County",
-            "state": "Nebraska"
-        },
-        "country": "us",
-        "state": "ne",
-        "county": "Box Butte"
+  "coverage": {
+    "US Census": {
+      "geoid": "31013",
+      "name": "Box Butte County",
+      "state": "Nebraska"
     },
-    "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/BoxButte/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "split": "PROPADDRESS",
-        "number": "auto_number",
-        "street": "auto_street"
+    "country": "us",
+    "state": "ne",
+    "county": "Box Butte"
+  },
+  "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/BoxButte/MapServer/1",
+  "type": "ESRI",
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "PROPADDRESS",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "PROPADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
     }
+  }
 }

@@ -1,21 +1,29 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "55093",
-            "name": "Pierce County",
-            "state": "Wisconsin"
-        },
-        "country": "us",
-        "state": "wi",
-        "county": "Pierce"
+  "coverage": {
+    "US Census": {
+      "geoid": "55093",
+      "name": "Pierce County",
+      "state": "Wisconsin"
     },
-    "data": "http://www.co.pierce.wi.us/arcgis/rest/services/Pierce_Sheriff_EmergencyServices/MapServer/8",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "split": "ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street",
-        "postcode": "ZIPCODE"
-    }
+    "country": "us",
+    "state": "wi",
+    "county": "Pierce"
+  },
+  "data": "http://www.co.pierce.wi.us/arcgis/rest/services/Pierce_Sheriff_EmergencyServices/MapServer/8",
+  "type": "ESRI",
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "ADDRESS",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "ADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "postcode": "ZIPCODE"
+  }
 }

@@ -1,27 +1,35 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "53031",
-            "name": "Jefferson County",
-            "state": "Washington"
-        },
-        "country": "us",
-        "state": "wa",
-        "county": "Jefferson"
+  "coverage": {
+    "US Census": {
+      "geoid": "53031",
+      "name": "Jefferson County",
+      "state": "Washington"
     },
-    "license": "http://www.co.jefferson.wa.us/idms/mapserver.shtml",
-    "type": "http",
-    "compression": "zip",
-    "note": "parcel polygon shapefile Parcels.shp, address columns: sihse, sistn, Situs_City, silcd (zip5)",
-    "year": "2014",
-    "data": "http://www.co.jefferson.wa.us/idms/shapefiles/Parcels_Public.zip",
-    "website": "http://www.co.jefferson.wa.us/idms/shapefiles.shtml",
-    "conform": {
-        "type": "shapefile-polygon",
-        "split": "Situs_Addr",
-        "number": "auto_number",
-        "street": "auto_street",
-        "city": "Situs_City",
-        "postcode": "Situs_Zip"
-    }
+    "country": "us",
+    "state": "wa",
+    "county": "Jefferson"
+  },
+  "license": "http://www.co.jefferson.wa.us/idms/mapserver.shtml",
+  "type": "http",
+  "compression": "zip",
+  "note": "parcel polygon shapefile Parcels.shp, address columns: sihse, sistn, Situs_City, silcd (zip5)",
+  "year": "2014",
+  "data": "http://www.co.jefferson.wa.us/idms/shapefiles/Parcels_Public.zip",
+  "website": "http://www.co.jefferson.wa.us/idms/shapefiles.shtml",
+  "conform": {
+    "type": "shapefile-polygon",
+    "number": {
+      "function": "regexp",
+      "field": "Situs_Addr",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "Situs_Addr",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "city": "Situs_City",
+    "postcode": "Situs_Zip"
+  }
 }

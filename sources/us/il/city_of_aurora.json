@@ -1,29 +1,37 @@
 {
-    "coverage": {
-        "geometry": {
-            "type": "Point",
-            "coordinates": [
-                -88.376,
-                41.751
-            ]
-        },
-        "US Census": {
-            "geoid": "1703012",
-            "name": "City of Aurora",
-            "state": "Illinois"
-        },
-        "country": "us",
-        "state": "il",
-        "city": "Aurora"
+  "coverage": {
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -88.376,
+        41.751
+      ]
     },
-    "type": "ESRI",
-    "data": "http://gis.aurora-il.org/arcgis/rest/services/AddressPoints/AddressPoints/MapServer/0",
-    "conform": {
-        "type": "geojson",
-        "split": "ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street",
-        "city": "CITY",
-        "postcode": "ZIPCODE"
-    }
+    "US Census": {
+      "geoid": "1703012",
+      "name": "City of Aurora",
+      "state": "Illinois"
+    },
+    "country": "us",
+    "state": "il",
+    "city": "Aurora"
+  },
+  "type": "ESRI",
+  "data": "http://gis.aurora-il.org/arcgis/rest/services/AddressPoints/AddressPoints/MapServer/0",
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "ADDRESS",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "ADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "city": "CITY",
+    "postcode": "ZIPCODE"
+  }
 }

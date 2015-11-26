@@ -1,20 +1,28 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "18005",
-            "name": "Bartholomew County",
-            "state": "Indiana"
-        },
-        "country": "us",
-        "state": "in",
-        "county": "Bartholomew"
+  "coverage": {
+    "US Census": {
+      "geoid": "18005",
+      "name": "Bartholomew County",
+      "state": "Indiana"
     },
-    "conform": {
-        "type": "geojson",
-        "split": "ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street"
+    "country": "us",
+    "state": "in",
+    "county": "Bartholomew"
+  },
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "ADDRESS",
+      "pattern": "^([0-9]+)"
     },
-    "data": "http://egislb-1921188874.us-east-1.elb.amazonaws.com/arcgis/rest/services/eGISBartholomewINPublic/BartholomewINDynamic/MapServer/0",
-    "type": "ESRI"
+    "street": {
+      "function": "regexp",
+      "field": "ADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    }
+  },
+  "data": "http://egislb-1921188874.us-east-1.elb.amazonaws.com/arcgis/rest/services/eGISBartholomewINPublic/BartholomewINDynamic/MapServer/0",
+  "type": "ESRI"
 }

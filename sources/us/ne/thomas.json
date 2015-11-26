@@ -1,20 +1,28 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "31171",
-            "name": "Thomas County",
-            "state": "Nebraska"
-        },
-        "country": "us",
-        "state": "ne",
-        "county": "Thomas"
+  "coverage": {
+    "US Census": {
+      "geoid": "31171",
+      "name": "Thomas County",
+      "state": "Nebraska"
     },
-    "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/Thomas/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "split": "PROPADDRESS",
-        "number": "auto_number",
-        "street": "auto_street"
+    "country": "us",
+    "state": "ne",
+    "county": "Thomas"
+  },
+  "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/Thomas/MapServer/0",
+  "type": "ESRI",
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "PROPADDRESS",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "PROPADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
     }
+  }
 }

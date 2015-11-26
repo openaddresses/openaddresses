@@ -1,20 +1,28 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "3539380",
-            "name": "City of Las Cruces",
-            "state": "New Mexico"
-        },
-        "country": "us",
-        "state": "nm",
-        "city": "Las Cruces"
+  "coverage": {
+    "US Census": {
+      "geoid": "3539380",
+      "name": "City of Las Cruces",
+      "state": "New Mexico"
     },
-    "data": "http://services1.arcgis.com/ejcbAsQEUUGWEyzb/ArcGIS/rest/services/Addresses/FeatureServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "split": "FULLADDR",
-        "number": "auto_number",
-        "street": "auto_street"
+    "country": "us",
+    "state": "nm",
+    "city": "Las Cruces"
+  },
+  "data": "http://services1.arcgis.com/ejcbAsQEUUGWEyzb/ArcGIS/rest/services/Addresses/FeatureServer/1",
+  "type": "ESRI",
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "FULLADDR",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "FULLADDR",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
     }
+  }
 }

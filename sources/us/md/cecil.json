@@ -1,24 +1,32 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "24015",
-            "name": "Cecil County",
-            "state": "Maryland"
-        },
-        "country": "us",
-        "state": "md",
-        "county": "Cecil"
+  "coverage": {
+    "US Census": {
+      "geoid": "24015",
+      "name": "Cecil County",
+      "state": "Maryland"
     },
-    "data": "http://www.ccgov.org/uploads/PlanningAndZoning/GIS/Data/Addresspoints.zip",
-    "website": "http://www.ccgov.org/dept_planning/gis/avdata.cfm",
-    "license": "http://www.ccgov.org/dept_planning/gis/orthos/licenseagreement_4_6_07.pdf",
-    "compression": "zip",
-    "type": "http",
-    "year": 2014,
-    "conform": {
-        "split": "address",
-        "street": "auto_street",
-        "number": "auto_number",
-        "type": "shapefile"
-    }
+    "country": "us",
+    "state": "md",
+    "county": "Cecil"
+  },
+  "data": "http://www.ccgov.org/uploads/PlanningAndZoning/GIS/Data/Addresspoints.zip",
+  "website": "http://www.ccgov.org/dept_planning/gis/avdata.cfm",
+  "license": "http://www.ccgov.org/dept_planning/gis/orthos/licenseagreement_4_6_07.pdf",
+  "compression": "zip",
+  "type": "http",
+  "year": 2014,
+  "conform": {
+    "street": {
+      "function": "regexp",
+      "field": "address",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "number": {
+      "function": "regexp",
+      "field": "address",
+      "pattern": "^([0-9]+)"
+    },
+    "type": "shapefile"
+  }
 }

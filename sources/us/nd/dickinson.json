@@ -1,15 +1,23 @@
 {
-    "coverage": {
-        "country": "us",
-        "state": "nd",
-        "city": "Dickinson"
+  "coverage": {
+    "country": "us",
+    "state": "nd",
+    "city": "Dickinson"
+  },
+  "type": "ESRI",
+  "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/CityofDickinsonElectric/MapServer/4",
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "PROPADDRESS",
+      "pattern": "^([0-9]+)"
     },
-    "type": "ESRI",
-    "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/CityofDickinsonElectric/MapServer/4",
-    "conform": {
-        "type": "geojson",
-        "split": "PROPADDRESS",
-        "number": "auto_number",
-        "street": "auto_street"
+    "street": {
+      "function": "regexp",
+      "field": "PROPADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
     }
+  }
 }

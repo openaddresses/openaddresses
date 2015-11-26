@@ -1,24 +1,32 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "27005",
-            "name": "Becker County",
-            "state": "Minnesota"
-        },
-        "country": "us",
-        "state": "mn",
-        "county": "Becker"
+  "coverage": {
+    "US Census": {
+      "geoid": "27005",
+      "name": "Becker County",
+      "state": "Minnesota"
     },
-    "data": "http://gis-server.co.becker.mn.us/data/gis/shapefiles/drive_pnts.zip",
-    "license": "",
-    "year": "",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "split": "address",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "shapefile",
-        "postcode": "zip"
-    }
+    "country": "us",
+    "state": "mn",
+    "county": "Becker"
+  },
+  "data": "http://gis-server.co.becker.mn.us/data/gis/shapefiles/drive_pnts.zip",
+  "license": "",
+  "year": "",
+  "type": "http",
+  "compression": "zip",
+  "conform": {
+    "number": {
+      "function": "regexp",
+      "field": "address",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "address",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    },
+    "type": "shapefile",
+    "postcode": "zip"
+  }
 }

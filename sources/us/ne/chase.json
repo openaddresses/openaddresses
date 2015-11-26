@@ -1,20 +1,28 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "31029",
-            "name": "Chase County",
-            "state": "Nebraska"
-        },
-        "country": "us",
-        "state": "ne",
-        "county": "Chase"
+  "coverage": {
+    "US Census": {
+      "geoid": "31029",
+      "name": "Chase County",
+      "state": "Nebraska"
     },
-    "data": "http://maps6.gisworkshop.com/ArcGIS/rest/services/Chase/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "split": "PROPADDRESS",
-        "number": "auto_number",
-        "street": "auto_street"
+    "country": "us",
+    "state": "ne",
+    "county": "Chase"
+  },
+  "data": "http://maps6.gisworkshop.com/ArcGIS/rest/services/Chase/MapServer/0",
+  "type": "ESRI",
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "PROPADDRESS",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "PROPADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
     }
+  }
 }

@@ -1,26 +1,34 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "27123",
-            "name": "Ramsey County",
-            "state": "Minnesota"
-        },
-        "country": "us",
-        "state": "mn",
-        "county": "Ramsey"
+  "coverage": {
+    "US Census": {
+      "geoid": "27123",
+      "name": "Ramsey County",
+      "state": "Minnesota"
     },
-    "conform": {
-        "type": "geojson",
-        "split": "SiteAddress",
-        "number": "auto_number",
-        "street": "auto_street"
+    "country": "us",
+    "state": "mn",
+    "county": "Ramsey"
+  },
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "SiteAddress",
+      "pattern": "^([0-9]+)"
     },
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "note": "A better address points layer may soon be available.",
-    "data": "https://maps.co.ramsey.mn.us/arcgis/rest/services/OpenData/OpenData_All/MapServer/5",
-    "type": "ESRI"
+    "street": {
+      "function": "regexp",
+      "field": "SiteAddress",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    }
+  },
+  "license": {
+    "text": "Indemnification",
+    "attribution": false,
+    "share-alike": false
+  },
+  "note": "A better address points layer may soon be available.",
+  "data": "https://maps.co.ramsey.mn.us/arcgis/rest/services/OpenData/OpenData_All/MapServer/5",
+  "type": "ESRI"
 }
