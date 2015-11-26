@@ -11,9 +11,17 @@
     },
     "conform": {
         "type": "geojson",
-        "split": "FSA",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "FSA",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "FSA",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "postcode": "ZIPCODE",
         "city": "PCN"
     },

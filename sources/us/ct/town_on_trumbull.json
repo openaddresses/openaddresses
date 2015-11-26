@@ -9,9 +9,13 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "split": "Location",
         "number": "ST_NUM",
-        "street": "auto_street",
+        "street": {
+            "function": "regexp",
+            "field": "Location",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "id": "PAR_ID",
         "accuracy": 2
     }

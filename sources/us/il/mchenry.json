@@ -11,9 +11,17 @@
     },
     "conform": {
         "type": "geojson",
-        "split": "SiteAddressStreet",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "SiteAddressStreet",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SiteAddressStreet",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     },
     "data": "http://www.mchenrycountygis.org/arcgis/rest/services/parcelsfull/MapServer/0",
     "type": "ESRI"

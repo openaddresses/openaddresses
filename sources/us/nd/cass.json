@@ -12,9 +12,13 @@
     "data": "http://gisweb.casscountynd.gov/arcgis/rest/services/PublicDynamic/MapServer/22",
     "type": "ESRI",
     "conform": {
-        "split": "property_addr",
         "number": "addr_num",
-        "street": "auto_street",
+        "street": {
+            "function": "regexp",
+            "field": "property_addr",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "geojson",
         "postcode": "zip_code"
     }

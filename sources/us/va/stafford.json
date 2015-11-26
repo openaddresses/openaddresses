@@ -14,9 +14,17 @@
     "compression": "zip",
     "website": "http://staffordcountyva.gov/index.aspx?nid=1318",
     "conform": {
-        "split": "fulladd",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "fulladd",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "fulladd",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "shapefile-polygon"
     }
 }

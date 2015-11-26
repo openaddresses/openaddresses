@@ -14,9 +14,17 @@
     "compression": "zip",
     "website": "http://www.richmondgov.com/content/GIS/index.aspx",
     "conform": {
-        "split": "AddressLab",
-        "street": "auto_street",
-        "number": "auto_number",
+        "street": {
+            "function": "regexp",
+            "field": "AddressLab",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "number": {
+            "function": "regexp",
+            "field": "AddressLab",
+            "pattern": "^([0-9]+)"
+        },
         "type": "shapefile",
         "postcode": "zip5"
     }

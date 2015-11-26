@@ -11,9 +11,17 @@
     },
     "conform": {
         "type": "geojson",
-        "split": "CRS.dbo.DKBasemap.PropertyAddress",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "CRS.dbo.DKBasemap.PropertyAddress",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "CRS.dbo.DKBasemap.PropertyAddress",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "postcode": ""
     },
     "data": "http://67.214.197.22/arcgis/rest/services/BasicMap2013/MapServer/7",

@@ -11,9 +11,17 @@
     },
     "conform": {
         "type": "geojson",
-        "number": "auto_number",
-        "split": "Appraiser_Data_Export.PROPADD",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "Appraiser_Data_Export.PROPADD",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Appraiser_Data_Export.PROPADD",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     },
     "data": "http://renogis3.renogov.org/arcgis/rest/services/Test/WebLayers/MapServer/7",
     "type": "ESRI"

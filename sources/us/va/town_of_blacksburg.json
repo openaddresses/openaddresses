@@ -15,8 +15,16 @@
     "website": "http://www.gis.lib.vt.edu/gis_data/Blacksburg/GISPage.html",
     "conform": {
         "type": "shapefile",
-        "split": "ADDR",
-        "street": "auto_street",
-        "number": "auto_number"
+        "street": {
+            "function": "regexp",
+            "field": "ADDR",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "number": {
+            "function": "regexp",
+            "field": "ADDR",
+            "pattern": "^([0-9]+)"
+        }
     }
 }

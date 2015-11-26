@@ -6,10 +6,18 @@
     },
     "type": "ESRI",
     "data": "https://webmaps.orcity.org/arcgis/rest/services/AddressPts/MapServer/0",
-    "conform":{
-        "type":"geojson",
-        "split": "GoldStandard.dbo.ocMap_Address_Pts_Query_as_Table.Situs_Full_Address",
-        "street": "auto_street",
-        "number": "auto_number"
+    "conform": {
+        "type": "geojson",
+        "street": {
+            "function": "regexp",
+            "field": "GoldStandard.dbo.ocMap_Address_Pts_Query_as_Table.Situs_Full_Address",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "number": {
+            "function": "regexp",
+            "field": "GoldStandard.dbo.ocMap_Address_Pts_Query_as_Table.Situs_Full_Address",
+            "pattern": "^([0-9]+)"
+        }
     }
 }

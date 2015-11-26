@@ -15,9 +15,17 @@
     "website": "http://emap.mesacounty.us/metadata/default.aspx?value=Administrative",
     "conform": {
         "type": "geojson",
-        "split": "LOCATION",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "LOCATION",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "LOCATION",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "city": "CITY",
         "region": "STATE",
         "postcode": "ZIP"

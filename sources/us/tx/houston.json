@@ -18,9 +18,17 @@
     "note": "Something wrong with the zip 'invalid signature', works with `unzip` though.",
     "conform": {
         "type": "shapefile-polygon",
-        "split": "LocAddr",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "LocAddr",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "LocAddr",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "postcode": "zip"
     }
 }

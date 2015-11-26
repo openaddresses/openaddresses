@@ -12,9 +12,17 @@
     "data": "http://gis.co.crow-wing.mn.us/arcgis/rest/services/CROWWINGPUBLIC/MapServer/4",
     "type": "ESRI",
     "conform": {
-        "split": "ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "geojson",
         "postcode": "ZIP"
     },

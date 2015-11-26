@@ -9,9 +9,17 @@
     "website": "http://www.haddam.org/",
     "type": "ESRI",
     "conform": {
-        "split": "ParcelPolygon.StreetAddr",
-        "street": "auto_street",
-        "number": "auto_number",
+        "street": {
+            "function": "regexp",
+            "field": "ParcelPolygon.StreetAddr",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "number": {
+            "function": "regexp",
+            "field": "ParcelPolygon.StreetAddr",
+            "pattern": "^([0-9]+)"
+        },
         "type": "geojson"
     }
 }

@@ -14,8 +14,11 @@
     "compression": "zip",
     "website": "http://www.buncombecounty.org/Governing/Depts/GIS/DataDownload.aspx",
     "conform": {
-        "split": "full_civic",
-        "number": "auto_number",
+        "number": {
+            "function": "regexp",
+            "field": "full_civic",
+            "pattern": "^([0-9]+)"
+        },
         "street": "auto_Street",
         "type": "shapefile",
         "postcode": "postal_cod"

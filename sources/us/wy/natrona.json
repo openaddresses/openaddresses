@@ -14,8 +14,12 @@
     "conform": {
         "type": "geojson",
         "number": "STREET_NUM",
-        "split": "ADDRESS",
-        "street": "auto_street",
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "region": "STATE",
         "postcode": "ZIPCODE"
     }

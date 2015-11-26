@@ -13,9 +13,17 @@
     "data": "http://jeffco.us/ArcGIS/rest/services/address/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "split": "ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "geojson",
         "postcode": "zip"
     }

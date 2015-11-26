@@ -14,8 +14,12 @@
     "compression": "zip",
     "website": "http://madisoncountygis.com/nc/madison/downloads.php",
     "conform": {
-        "split": "address",
-        "street": "auto_street",
+        "street": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "number": "addnum",
         "type": "shapefile"
     }

@@ -12,9 +12,17 @@
     "data": "http://gis.co.roseau.mn.us/arcgis/rest/services/Roseau_OperationalData/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "split": "RoseauAS400.dbo.tblParcelJoin.PhysAddr",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "RoseauAS400.dbo.tblParcelJoin.PhysAddr",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "RoseauAS400.dbo.tblParcelJoin.PhysAddr",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "geojson",
         "city": "RoseauAS400.dbo.tblParcelJoin.PhysCity",
         "accuracy": 2

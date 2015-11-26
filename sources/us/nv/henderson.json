@@ -8,9 +8,17 @@
     "license": "http://www.cityofhenderson.com/gis/disclaimer.php",
     "type": "ESRI",
     "conform": {
-        "split": "ADDRESS1",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS1",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS1",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "geojson"
     }
 }

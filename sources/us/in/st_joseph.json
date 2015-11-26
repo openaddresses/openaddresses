@@ -21,9 +21,17 @@
     "year": "2014",
     "note": "Full parcel shapefile set (not points)",
     "conform": {
-        "split": "prop_addr",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "prop_addr",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "prop_addr",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "shapefile-polygon"
     }
 }

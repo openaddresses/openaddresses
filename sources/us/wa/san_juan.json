@@ -12,9 +12,17 @@
     "data": "http://sjcgis.org/arcgis/rest/services/Polaris/Buildings/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "split": "FULLADDR",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "FULLADDR",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "FULLADDR",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "addrtype": "BLDGTYPE",
         "type": "geojson"
     }

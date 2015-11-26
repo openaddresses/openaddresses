@@ -13,9 +13,13 @@
     "data": "http://maps.larimer.org/arcgis/rest/services/maps/selectableLayers/MapServer/3",
     "type": "ESRI",
     "conform": {
-        "split": "SITEADDR",
         "number": "addrnum",
-        "street": "auto_street",
+        "street": {
+            "function": "regexp",
+            "field": "SITEADDR",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "geojson",
         "postcode": "zipcode"
     }
