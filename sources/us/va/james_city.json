@@ -1,35 +1,27 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "51095",
-      "name": "James City County",
-      "state": "Virginia"
+    "coverage": {
+        "US Census": {
+            "geoid": "51095",
+            "name": "James City County",
+            "state": "Virginia"
+        },
+        "country": "us",
+        "state": "va",
+        "county": "James City"
     },
-    "country": "us",
-    "state": "va",
-    "county": "James City"
-  },
-  "website": "https://www.jamescitycountyva.gov/assessments/gis-mapping-layers.html",
-  "data": "ftp://property.jamescitycountyva.gov/GIS/layers/jcc_parcels.zip",
-  "type": "ftp",
-  "compression": "zip",
-  "note": {
-    "email": "propertyinfo@jamescitycountyva.gov",
-    "phone": "757-253-6650",
-    "metadata": "ftp://property.jamescitycountyva.gov/GIS/layers/GIS_Metadata.pdf"
-  },
-  "conform": {
-    "street": {
-      "function": "regexp",
-      "field": "locaddr",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
+    "website": "https://www.jamescitycountyva.gov/assessments/gis-mapping-layers.html",
+    "data": "ftp://property.jamescitycountyva.gov/GIS/layers/jcc_parcels.zip",
+    "type": "ftp",
+    "compression": "zip",
+    "note": {
+        "email": "propertyinfo@jamescitycountyva.gov",
+        "phone": "757-253-6650",
+        "metadata": "ftp://property.jamescitycountyva.gov/GIS/layers/GIS_Metadata.pdf"
     },
-    "number": {
-      "function": "regexp",
-      "field": "locaddr",
-      "pattern": "^([0-9]+)"
-    },
-    "type": "shapefile-polygon"
-  }
+    "conform": {
+        "split": "locaddr",
+        "street": "auto_street",
+        "number": "auto_number",
+        "type": "shapefile-polygon"
+    }
 }

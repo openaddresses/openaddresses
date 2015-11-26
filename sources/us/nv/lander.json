@@ -1,29 +1,21 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "32015",
-      "name": "Lander County",
-      "state": "Nevada"
+    "coverage": {
+        "US Census": {
+            "geoid": "32015",
+            "name": "Lander County",
+            "state": "Nevada"
+        },
+        "country": "us",
+        "state": "nv",
+        "county": "Lander"
     },
-    "country": "us",
-    "state": "nv",
-    "county": "Lander"
-  },
-  "data": "http://landernv.mygisonline.com/arcgis/rest/services/NV_Lander/LanderNVfeatures/MapServer/0",
-  "type": "ESRI",
-  "conform": {
-    "number": {
-      "function": "regexp",
-      "field": "mailing",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "mailing",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "type": "geojson",
-    "postcode": "zip"
-  }
+    "data": "http://landernv.mygisonline.com/arcgis/rest/services/NV_Lander/LanderNVfeatures/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "split": "mailing",
+        "number": "auto_number",
+        "street": "auto_street",
+        "type": "geojson",
+        "postcode": "zip"
+    }
 }
