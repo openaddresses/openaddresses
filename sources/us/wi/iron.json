@@ -1,29 +1,29 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "55051",
-      "name": "Iron County",
-      "state": "Wisconsin"
+    "coverage": {
+        "US Census": {
+            "geoid": "55051",
+            "name": "Iron County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Iron"
     },
-    "country": "us",
-    "state": "wi",
-    "county": "Iron"
-  },
-  "data": "http://maps.ironcountywi.org:6080/arcgis/rest/services/addresses/MapServer/0",
-  "type": "ESRI",
-  "note": "Number contains letters",
-  "conform": {
-    "type": "geojson",
-    "number": {
-      "function": "regexp",
-      "field": "ADDRESS",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "ADDRESS",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
+    "data": "http://maps.ironcountywi.org:6080/arcgis/rest/services/addresses/MapServer/0",
+    "type": "ESRI",
+    "note": "Number contains letters",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     }
-  }
 }

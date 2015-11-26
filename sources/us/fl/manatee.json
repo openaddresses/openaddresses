@@ -1,37 +1,37 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "12081",
-      "name": "Manatee County",
-      "state": "Florida"
+    "coverage": {
+        "US Census": {
+            "geoid": "12081",
+            "name": "Manatee County",
+            "state": "Florida"
+        },
+        "country": "us",
+        "state": "fl",
+        "county": "Manatee"
     },
-    "country": "us",
-    "state": "fl",
-    "county": "Manatee"
-  },
-  "attribution": "Manatee County",
-  "data": "http://www.mymanatee.org/gisapps/data/shape/parcels.zip",
-  "website": "http://www.mymanatee.org/home/government/departments/information-technology/gis-home/gis-datadownload.html",
-  "license": {
-    "text": "Public Domain",
-    "attribution": false,
-    "share-alike": false
-  },
-  "type": "http",
-  "compression": "zip",
-  "conform": {
-    "street": {
-      "function": "regexp",
-      "field": "primary_ad",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
+    "attribution": "Manatee County",
+    "data": "http://www.mymanatee.org/gisapps/data/shape/parcels.zip",
+    "website": "http://www.mymanatee.org/home/government/departments/information-technology/gis-home/gis-datadownload.html",
+    "license": {
+        "text": "Public Domain",
+        "attribution": false,
+        "share-alike": false
     },
-    "number": {
-      "function": "regexp",
-      "field": "primary_ad",
-      "pattern": "^([0-9]+)"
-    },
-    "type": "shapefile-polygon",
-    "postcode": "prop_zip"
-  }
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "street": {
+            "function": "regexp",
+            "field": "primary_ad",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "number": {
+            "function": "regexp",
+            "field": "primary_ad",
+            "pattern": "^([0-9]+)"
+        },
+        "type": "shapefile-polygon",
+        "postcode": "prop_zip"
+    }
 }

@@ -1,28 +1,28 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "31073",
-      "name": "Gosper County",
-      "state": "Nebraska"
+    "coverage": {
+        "US Census": {
+            "geoid": "31073",
+            "name": "Gosper County",
+            "state": "Nebraska"
+        },
+        "country": "us",
+        "state": "ne",
+        "county": "Gosper"
     },
-    "country": "us",
-    "state": "ne",
-    "county": "Gosper"
-  },
-  "data": "http://maps6.gisworkshop.com/ArcGIS/rest/services/Gosper/MapServer/2",
-  "type": "ESRI",
-  "conform": {
-    "type": "geojson",
-    "number": {
-      "function": "regexp",
-      "field": "PROPADDRESS",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "PROPADDRESS",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
+    "data": "http://maps6.gisworkshop.com/ArcGIS/rest/services/Gosper/MapServer/2",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     }
-  }
 }

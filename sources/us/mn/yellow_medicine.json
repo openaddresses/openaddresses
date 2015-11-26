@@ -1,29 +1,29 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "27173",
-      "name": "Yellow Medicine County",
-      "state": "Minnesota"
+    "coverage": {
+        "US Census": {
+            "geoid": "27173",
+            "name": "Yellow Medicine County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Yellow Medicine"
     },
-    "country": "us",
-    "state": "mn",
-    "county": "Yellow Medicine"
-  },
-  "data": "http://gis.co.ym.mn.gov/arcgis/rest/services/YellowMedicine/YellowMedicine_DataLayers/MapServer/39",
-  "type": "ESRI",
-  "note": "polygon",
-  "conform": {
-    "number": {
-      "function": "regexp",
-      "field": "YellowMedicineTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "YellowMedicineTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "type": "geojson"
-  }
+    "data": "http://gis.co.ym.mn.gov/arcgis/rest/services/YellowMedicine/YellowMedicine_DataLayers/MapServer/39",
+    "type": "ESRI",
+    "note": "polygon",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "YellowMedicineTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "YellowMedicineTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "geojson"
+    }
 }

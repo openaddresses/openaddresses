@@ -1,28 +1,28 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "31119",
-      "name": "Madison County",
-      "state": "Nebraska"
+    "coverage": {
+        "US Census": {
+            "geoid": "31119",
+            "name": "Madison County",
+            "state": "Nebraska"
+        },
+        "country": "us",
+        "state": "ne",
+        "county": "Madison"
     },
-    "country": "us",
-    "state": "ne",
-    "county": "Madison"
-  },
-  "data": "http://maps6.gisworkshop.com/ArcGIS/rest/services/Madison/MapServer/0",
-  "type": "ESRI",
-  "conform": {
-    "type": "geojson",
-    "number": {
-      "function": "regexp",
-      "field": "PROPADDRESS",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "PROPADDRESS",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
+    "data": "http://maps6.gisworkshop.com/ArcGIS/rest/services/Madison/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     }
-  }
 }

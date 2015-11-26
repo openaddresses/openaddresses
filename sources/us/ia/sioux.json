@@ -1,35 +1,35 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "19167",
-      "name": "Sioux County",
-      "state": "Iowa"
+    "coverage": {
+        "US Census": {
+            "geoid": "19167",
+            "name": "Sioux County",
+            "state": "Iowa"
+        },
+        "country": "us",
+        "state": "ia",
+        "county": "Sioux"
     },
-    "country": "us",
-    "state": "ia",
-    "county": "Sioux"
-  },
-  "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Sioux/Address_84.zip",
-  "license": {
-    "text": "Public Domain",
-    "attribution": false,
-    "share-alike": false
-  },
-  "year": "2012?",
-  "type": "ftp",
-  "compression": "zip",
-  "conform": {
-    "number": {
-      "function": "regexp",
-      "field": "address",
-      "pattern": "^([0-9]+)"
+    "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Sioux/Address_84.zip",
+    "license": {
+        "text": "Public Domain",
+        "attribution": false,
+        "share-alike": false
     },
-    "street": {
-      "function": "regexp",
-      "field": "address",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "type": "shapefile"
-  }
+    "year": "2012?",
+    "type": "ftp",
+    "compression": "zip",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "shapefile"
+    }
 }

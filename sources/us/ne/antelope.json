@@ -1,28 +1,28 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "31003",
-      "name": "Antelope County",
-      "state": "Nebraska"
+    "coverage": {
+        "US Census": {
+            "geoid": "31003",
+            "name": "Antelope County",
+            "state": "Nebraska"
+        },
+        "country": "us",
+        "state": "ne",
+        "county": "Antelope"
     },
-    "country": "us",
-    "state": "ne",
-    "county": "Antelope"
-  },
-  "data": "http://maps6.gisworkshop.com/ArcGIS/rest/services/Antelope/MapServer/0",
-  "type": "ESRI",
-  "conform": {
-    "type": "geojson",
-    "number": {
-      "function": "regexp",
-      "field": "PROPADDRESS",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "PROPADDRESS",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
+    "data": "http://maps6.gisworkshop.com/ArcGIS/rest/services/Antelope/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     }
-  }
 }

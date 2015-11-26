@@ -1,28 +1,28 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "38089",
-      "name": "Stark County",
-      "state": "North Dakota"
+    "coverage": {
+        "US Census": {
+            "geoid": "38089",
+            "name": "Stark County",
+            "state": "North Dakota"
+        },
+        "country": "us",
+        "state": "nd",
+        "county": "Stark"
     },
-    "country": "us",
-    "state": "nd",
-    "county": "Stark"
-  },
-  "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/StarkAuditor/MapServer/0",
-  "type": "ESRI",
-  "conform": {
-    "type": "geojson",
-    "number": {
-      "function": "regexp",
-      "field": "PROPADDRESS",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "PROPADDRESS",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
+    "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/StarkAuditor/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     }
-  }
 }

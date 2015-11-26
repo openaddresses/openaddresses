@@ -1,35 +1,35 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "19049",
-      "name": "Dallas County",
-      "state": "Iowa"
+    "coverage": {
+        "US Census": {
+            "geoid": "19049",
+            "name": "Dallas County",
+            "state": "Iowa"
+        },
+        "country": "us",
+        "state": "ia",
+        "county": "Dallas"
     },
-    "country": "us",
-    "state": "ia",
-    "county": "Dallas"
-  },
-  "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Dallas/Address_25.zip",
-  "license": {
-    "text": "Public Domain",
-    "attribution": false,
-    "share-alike": false
-  },
-  "year": "2012?",
-  "type": "ftp",
-  "compression": "zip",
-  "conform": {
-    "number": {
-      "function": "regexp",
-      "field": "address",
-      "pattern": "^([0-9]+)"
+    "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Dallas/Address_25.zip",
+    "license": {
+        "text": "Public Domain",
+        "attribution": false,
+        "share-alike": false
     },
-    "street": {
-      "function": "regexp",
-      "field": "address",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "type": "shapefile"
-  }
+    "year": "2012?",
+    "type": "ftp",
+    "compression": "zip",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "shapefile"
+    }
 }

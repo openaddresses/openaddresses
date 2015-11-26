@@ -1,29 +1,29 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "30019",
-      "name": "Daniels County",
-      "state": "Montana"
+    "coverage": {
+        "US Census": {
+            "geoid": "30019",
+            "name": "Daniels County",
+            "state": "Montana"
+        },
+        "country": "us",
+        "state": "mt",
+        "county": "Daniels"
     },
-    "country": "us",
-    "state": "mt",
-    "county": "Daniels"
-  },
-  "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Daniels/DanielsOwnerParcel_shp.zip",
-  "type": "ftp",
-  "compression": "zip",
-  "conform": {
-    "number": {
-      "function": "regexp",
-      "field": "OwnerAddre",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "OwnerAddre",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "type": "shapefile-polygon"
-  }
+    "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Daniels/DanielsOwnerParcel_shp.zip",
+    "type": "ftp",
+    "compression": "zip",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "OwnerAddre",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "OwnerAddre",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "shapefile-polygon"
+    }
 }

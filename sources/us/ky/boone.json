@@ -1,28 +1,28 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "05009",
-      "name": "Boone County",
-      "state": "Kentucky"
+    "coverage": {
+        "US Census": {
+            "geoid": "05009",
+            "name": "Boone County",
+            "state": "Kentucky"
+        },
+        "country": "us",
+        "state": "ky",
+        "county": "Boone"
     },
-    "country": "us",
-    "state": "ky",
-    "county": "Boone"
-  },
-  "data": "https://services1.arcgis.com/GkTTq9BaSPUnctWP/ArcGIS/rest/services/mapping/FeatureServer/1",
-  "type": "ESRI",
-  "conform": {
-    "type": "geojson",
-    "number": {
-      "function": "regexp",
-      "field": "ADR_LABEL",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "ADR_LABEL",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
+    "data": "https://services1.arcgis.com/GkTTq9BaSPUnctWP/ArcGIS/rest/services/mapping/FeatureServer/1",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "ADR_LABEL",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADR_LABEL",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     }
-  }
 }

@@ -1,28 +1,28 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "42021",
-      "name": "Cambria County",
-      "state": "Pennsylvania"
+    "coverage": {
+        "US Census": {
+            "geoid": "42021",
+            "name": "Cambria County",
+            "state": "Pennsylvania"
+        },
+        "country": "us",
+        "state": "pa",
+        "county": "Cambria"
     },
-    "country": "us",
-    "state": "pa",
-    "county": "Cambria"
-  },
-  "data": "http://gis2.cambriacountypa.gov/georesources/rest/services/Resources/fsSurfaceParcels/MapServer/2",
-  "type": "ESRI",
-  "conform": {
-    "type": "geojson",
-    "number": {
-      "function": "regexp",
-      "field": "SITUS_DESC_1",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "SITUS_DESC_1",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
+    "data": "http://gis2.cambriacountypa.gov/georesources/rest/services/Resources/fsSurfaceParcels/MapServer/2",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "SITUS_DESC_1",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITUS_DESC_1",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     }
-  }
 }

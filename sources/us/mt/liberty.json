@@ -1,30 +1,30 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "30051",
-      "name": "Liberty County",
-      "state": "Montana"
+    "coverage": {
+        "US Census": {
+            "geoid": "30051",
+            "name": "Liberty County",
+            "state": "Montana"
+        },
+        "country": "us",
+        "state": "mt",
+        "county": "Liberty"
     },
-    "country": "us",
-    "state": "mt",
-    "county": "Liberty"
-  },
-  "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Liberty/LibertyOwnerParcel_shp.zip",
-  "type": "ftp",
-  "compression": "zip",
-  "conform": {
-    "number": {
-      "function": "regexp",
-      "field": "OwnerAddre",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "OwnerAddre",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "type": "shapefile-polygon",
-    "postcode": "ownerzipco"
-  }
+    "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Liberty/LibertyOwnerParcel_shp.zip",
+    "type": "ftp",
+    "compression": "zip",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "OwnerAddre",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "OwnerAddre",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "shapefile-polygon",
+        "postcode": "ownerzipco"
+    }
 }

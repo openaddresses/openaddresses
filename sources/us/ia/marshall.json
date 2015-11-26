@@ -1,35 +1,35 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "19127",
-      "name": "Marshall County",
-      "state": "Iowa"
+    "coverage": {
+        "US Census": {
+            "geoid": "19127",
+            "name": "Marshall County",
+            "state": "Iowa"
+        },
+        "country": "us",
+        "state": "ia",
+        "county": "Marshall"
     },
-    "country": "us",
-    "state": "ia",
-    "county": "Marshall"
-  },
-  "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Marshall/Address_64.zip",
-  "license": {
-    "text": "Public Domain",
-    "attribution": false,
-    "share-alike": false
-  },
-  "year": "2012?",
-  "type": "ftp",
-  "compression": "zip",
-  "conform": {
-    "number": {
-      "function": "regexp",
-      "field": "address",
-      "pattern": "^([0-9]+)"
+    "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Marshall/Address_64.zip",
+    "license": {
+        "text": "Public Domain",
+        "attribution": false,
+        "share-alike": false
     },
-    "street": {
-      "function": "regexp",
-      "field": "address",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "type": "shapefile"
-  }
+    "year": "2012?",
+    "type": "ftp",
+    "compression": "zip",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "shapefile"
+    }
 }

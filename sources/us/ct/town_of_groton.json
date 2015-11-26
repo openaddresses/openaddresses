@@ -1,32 +1,32 @@
 {
-  "coverage": {
-    "geometry": {
-      "type": "Point",
-      "coordinates": [
-        -72.08,
-        41.35
-      ]
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -72.08,
+                41.35
+            ]
+        },
+        "country": "us",
+        "state": "ct",
+        "city": "Groton"
     },
-    "country": "us",
-    "state": "ct",
-    "city": "Groton"
-  },
-  "conform": {
-    "type": "geojson",
-    "number": {
-      "function": "regexp",
-      "field": "LOGI_FULLNAM",
-      "pattern": "^([0-9]+)"
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "LOGI_FULLNAM",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "LOGI_FULLNAM",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "postcode": "ZIP"
     },
-    "street": {
-      "function": "regexp",
-      "field": "LOGI_FULLNAM",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "postcode": "ZIP"
-  },
-  "attribution": "City of Groton",
-  "data": "http://maps.groton-ct.gov/arcgis/rest/services/BaseMap/MapServer/2",
-  "type": "ESRI"
+    "attribution": "City of Groton",
+    "data": "http://maps.groton-ct.gov/arcgis/rest/services/BaseMap/MapServer/2",
+    "type": "ESRI"
 }

@@ -1,34 +1,34 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "48201",
-      "name": "Harris County",
-      "state": "Texas"
+    "coverage": {
+        "US Census": {
+            "geoid": "48201",
+            "name": "Harris County",
+            "state": "Texas"
+        },
+        "country": "us",
+        "state": "tx",
+        "county": "Harris",
+        "city": "Houston"
     },
-    "country": "us",
-    "state": "tx",
-    "county": "Harris",
-    "city": "Houston"
-  },
-  "data": "http://pdata.hcad.org/GIS/Parcels.exe",
-  "license": "",
-  "year": "",
-  "type": "http",
-  "compression": "zip",
-  "note": "Something wrong with the zip 'invalid signature', works with `unzip` though.",
-  "conform": {
-    "type": "shapefile-polygon",
-    "number": {
-      "function": "regexp",
-      "field": "LocAddr",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "LocAddr",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "postcode": "zip"
-  }
+    "data": "http://pdata.hcad.org/GIS/Parcels.exe",
+    "license": "",
+    "year": "",
+    "type": "http",
+    "compression": "zip",
+    "note": "Something wrong with the zip 'invalid signature', works with `unzip` though.",
+    "conform": {
+        "type": "shapefile-polygon",
+        "number": {
+            "function": "regexp",
+            "field": "LocAddr",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "LocAddr",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "postcode": "zip"
+    }
 }

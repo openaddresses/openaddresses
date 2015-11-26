@@ -1,29 +1,29 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "30039",
-      "name": "Granite County",
-      "state": "Montana"
+    "coverage": {
+        "US Census": {
+            "geoid": "30039",
+            "name": "Granite County",
+            "state": "Montana"
+        },
+        "country": "us",
+        "state": "mt",
+        "county": "Granite"
     },
-    "country": "us",
-    "state": "mt",
-    "county": "Granite"
-  },
-  "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Granite/GraniteOwnerParcel_shp.zip",
-  "type": "ftp",
-  "compression": "zip",
-  "conform": {
-    "number": {
-      "function": "regexp",
-      "field": "OwnerAddre",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "OwnerAddre",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "type": "shapefile-polygon"
-  }
+    "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Granite/GraniteOwnerParcel_shp.zip",
+    "type": "ftp",
+    "compression": "zip",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "OwnerAddre",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "OwnerAddre",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "shapefile-polygon"
+    }
 }

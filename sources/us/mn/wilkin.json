@@ -1,29 +1,29 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "27167",
-      "name": "Wilkin County",
-      "state": "Minnesota"
+    "coverage": {
+        "US Census": {
+            "geoid": "27167",
+            "name": "Wilkin County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Wilkin"
     },
-    "country": "us",
-    "state": "mn",
-    "county": "Wilkin"
-  },
-  "data": "http://gisweb.co.wilkin.mn.us/arcgis/rest/services/WilkinPublic/MapServer/16",
-  "type": "ESRI",
-  "conform": {
-    "number": {
-      "function": "regexp",
-      "field": "address",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "address",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "type": "geojson",
-    "postcode": "zip"
-  }
+    "data": "http://gisweb.co.wilkin.mn.us/arcgis/rest/services/WilkinPublic/MapServer/16",
+    "type": "ESRI",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "geojson",
+        "postcode": "zip"
+    }
 }

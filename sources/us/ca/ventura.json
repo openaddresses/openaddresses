@@ -1,38 +1,38 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "06111",
-      "name": "Ventura County",
-      "state": "California"
+    "coverage": {
+        "US Census": {
+            "geoid": "06111",
+            "name": "Ventura County",
+            "state": "California"
+        },
+        "country": "us",
+        "state": "ca",
+        "county": "Ventura"
     },
-    "country": "us",
-    "state": "ca",
-    "county": "Ventura"
-  },
-  "attribution": "Ventura County",
-  "website": "http://www.ventura.org/gis-mapping/gis-data-downloads-mapping-base",
-  "data": "http://vcportal.ventura.org/GIS/public/mapping_base/MasterAddressPoints.zip",
-  "license": {
-    "text": "Indemnification",
-    "attribution": false,
-    "share-alike": false
-  },
-  "year": "2014",
-  "type": "http",
-  "compression": "zip",
-  "conform": {
-    "number": {
-      "function": "regexp",
-      "field": "FULLSITUS",
-      "pattern": "^([0-9]+)"
+    "attribution": "Ventura County",
+    "website": "http://www.ventura.org/gis-mapping/gis-data-downloads-mapping-base",
+    "data": "http://vcportal.ventura.org/GIS/public/mapping_base/MasterAddressPoints.zip",
+    "license": {
+        "text": "Indemnification",
+        "attribution": false,
+        "share-alike": false
     },
-    "street": {
-      "function": "regexp",
-      "field": "FULLSITUS",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "type": "shapefile",
-    "postcode": "zip"
-  }
+    "year": "2014",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "FULLSITUS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "FULLSITUS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "shapefile",
+        "postcode": "zip"
+    }
 }

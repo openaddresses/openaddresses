@@ -1,28 +1,28 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "04021",
-      "name": "Pinal County",
-      "state": "Arizona"
+    "coverage": {
+        "US Census": {
+            "geoid": "04021",
+            "name": "Pinal County",
+            "state": "Arizona"
+        },
+        "country": "us",
+        "state": "az",
+        "county": "Pinal"
     },
-    "country": "us",
-    "state": "az",
-    "county": "Pinal"
-  },
-  "data": "https://gismaps-test.pinalcountyaz.gov/arcgisextdev/rest/services/Base_Webservice/MapServer/69",
-  "type": "ESRI",
-  "conform": {
-    "type": "geojson",
-    "number": {
-      "function": "regexp",
-      "field": "FullAddress",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "FullAddress",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
+    "data": "https://gismaps-test.pinalcountyaz.gov/arcgisextdev/rest/services/Base_Webservice/MapServer/69",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "FullAddress",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "FullAddress",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     }
-  }
 }

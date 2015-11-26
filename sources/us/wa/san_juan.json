@@ -1,29 +1,29 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "53055",
-      "name": "San Juan County",
-      "state": "Washington"
+    "coverage": {
+        "US Census": {
+            "geoid": "53055",
+            "name": "San Juan County",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa",
+        "county": "San Juan"
     },
-    "country": "us",
-    "state": "wa",
-    "county": "San Juan"
-  },
-  "data": "http://sjcgis.org/arcgis/rest/services/Polaris/Buildings/MapServer/0",
-  "type": "ESRI",
-  "conform": {
-    "number": {
-      "function": "regexp",
-      "field": "FULLADDR",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "FULLADDR",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "addrtype": "BLDGTYPE",
-    "type": "geojson"
-  }
+    "data": "http://sjcgis.org/arcgis/rest/services/Polaris/Buildings/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "FULLADDR",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "FULLADDR",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "addrtype": "BLDGTYPE",
+        "type": "geojson"
+    }
 }

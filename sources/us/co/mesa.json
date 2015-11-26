@@ -1,33 +1,33 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "08077",
-      "name": "Mesa County",
-      "state": "Colorado"
+    "coverage": {
+        "US Census": {
+            "geoid": "08077",
+            "name": "Mesa County",
+            "state": "Colorado"
+        },
+        "country": "us",
+        "state": "co",
+        "county": "Mesa"
     },
-    "country": "us",
-    "state": "co",
-    "county": "Mesa"
-  },
-  "attribution": "Mesa County",
-  "data": "http://mcmap2.mesacounty.us/arcgis/rest/services/maps/ParcePointQuery/MapServer/0",
-  "type": "ESRI",
-  "website": "http://emap.mesacounty.us/metadata/default.aspx?value=Administrative",
-  "conform": {
-    "type": "geojson",
-    "number": {
-      "function": "regexp",
-      "field": "LOCATION",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "LOCATION",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "city": "CITY",
-    "region": "STATE",
-    "postcode": "ZIP"
-  }
+    "attribution": "Mesa County",
+    "data": "http://mcmap2.mesacounty.us/arcgis/rest/services/maps/ParcePointQuery/MapServer/0",
+    "type": "ESRI",
+    "website": "http://emap.mesacounty.us/metadata/default.aspx?value=Administrative",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "LOCATION",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "LOCATION",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "city": "CITY",
+        "region": "STATE",
+        "postcode": "ZIP"
+    }
 }

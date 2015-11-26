@@ -1,29 +1,29 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "30041",
-      "name": "Hill County",
-      "state": "Montana"
+    "coverage": {
+        "US Census": {
+            "geoid": "30041",
+            "name": "Hill County",
+            "state": "Montana"
+        },
+        "country": "us",
+        "state": "mt",
+        "county": "Hill"
     },
-    "country": "us",
-    "state": "mt",
-    "county": "Hill"
-  },
-  "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Hill/HillOwnerParcel_shp.zip",
-  "type": "ftp",
-  "compression": "zip",
-  "conform": {
-    "number": {
-      "function": "regexp",
-      "field": "OwnerAddre",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "OwnerAddre",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "type": "shapefile-polygon"
-  }
+    "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Hill/HillOwnerParcel_shp.zip",
+    "type": "ftp",
+    "compression": "zip",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "OwnerAddre",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "OwnerAddre",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "shapefile-polygon"
+    }
 }

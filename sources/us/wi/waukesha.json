@@ -1,31 +1,31 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "55133",
-      "name": "Waukesha County",
-      "state": "Wisconsin"
+    "coverage": {
+        "US Census": {
+            "geoid": "55133",
+            "name": "Waukesha County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Waukesha"
     },
-    "country": "us",
-    "state": "wi",
-    "county": "Waukesha"
-  },
-  "data": "http://arcgisweb.waukeshacounty.gov/waukeshacounty/rest/services/E911/MapServer/12",
-  "type": "ESRI",
-  "conform": {
-    "type": "geojson",
-    "number": {
-      "function": "regexp",
-      "field": "Full_Address",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "Full_Address",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "city": "Municipality",
-    "postcode": "ZipCode",
-    "accuracy": 1
-  }
+    "data": "http://arcgisweb.waukeshacounty.gov/waukeshacounty/rest/services/E911/MapServer/12",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "Full_Address",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Full_Address",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "city": "Municipality",
+        "postcode": "ZipCode",
+        "accuracy": 1
+    }
 }

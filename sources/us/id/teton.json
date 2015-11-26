@@ -1,25 +1,25 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "16081",
-      "name": "Teton County",
-      "state": "Idaho"
+    "coverage": {
+        "US Census": {
+            "geoid": "16081",
+            "name": "Teton County",
+            "state": "Idaho"
+        },
+        "country": "us",
+        "state": "id",
+        "county": "Teton"
     },
-    "country": "us",
-    "state": "id",
-    "county": "Teton"
-  },
-  "data": "http://www.co.teton.id.us/arcgis/rest/services/ADDRESS/MapServer/0",
-  "type": "ESRI",
-  "conform": {
-    "number": "housenumber",
-    "street": {
-      "function": "regexp",
-      "field": "labelname",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "type": "geojson",
-    "postcode": "zipcode"
-  }
+    "data": "http://www.co.teton.id.us/arcgis/rest/services/ADDRESS/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "number": "housenumber",
+        "street": {
+            "function": "regexp",
+            "field": "labelname",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "geojson",
+        "postcode": "zipcode"
+    }
 }

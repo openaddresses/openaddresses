@@ -1,30 +1,30 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "51790",
-      "name": "City of Staunton",
-      "state": "Virginia"
+    "coverage": {
+        "US Census": {
+            "geoid": "51790",
+            "name": "City of Staunton",
+            "state": "Virginia"
+        },
+        "country": "us",
+        "state": "va",
+        "city": "Staunton"
     },
-    "country": "us",
-    "state": "va",
-    "city": "Staunton"
-  },
-  "data": "http://gis.ci.staunton.va.us:8087/stagis/rest/services/Services/Parcels/FeatureServer/0",
-  "type": "ESRI",
-  "website": "http://gis.ci.staunton.va",
-  "conform": {
-    "type": "geojson",
-    "street": {
-      "function": "regexp",
-      "field": "P_ADDRESS",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "number": {
-      "function": "regexp",
-      "field": "P_ADDRESS",
-      "pattern": "^([0-9]+)"
-    },
-    "accuracy": 2
-  }
+    "data": "http://gis.ci.staunton.va.us:8087/stagis/rest/services/Services/Parcels/FeatureServer/0",
+    "type": "ESRI",
+    "website": "http://gis.ci.staunton.va",
+    "conform": {
+        "type": "geojson",
+        "street": {
+            "function": "regexp",
+            "field": "P_ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "number": {
+            "function": "regexp",
+            "field": "P_ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "accuracy": 2
+    }
 }

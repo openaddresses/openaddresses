@@ -1,30 +1,30 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "51153",
-      "name": "Prince William County",
-      "state": "Virginia"
+    "coverage": {
+        "US Census": {
+            "geoid": "51153",
+            "name": "Prince William County",
+            "state": "Virginia"
+        },
+        "country": "us",
+        "state": "va",
+        "county": "Prince William"
     },
-    "country": "us",
-    "state": "va",
-    "county": "Prince William"
-  },
-  "data": "http://gisweb.pwcgov.org/arcgis/rest/services/Maps/LandRecords/MapServer/2",
-  "type": "ESRI",
-  "conform": {
-    "type": "geojson",
-    "number": {
-      "function": "regexp",
-      "field": "ADDRESS",
-      "pattern": "^([0-9]+)"
-    },
-    "street": {
-      "function": "regexp",
-      "field": "ADDRESS",
-      "pattern": "^(?:[0-9]+ )(.*)",
-      "replace": "$1"
-    },
-    "city": "CITY",
-    "postcode": "ZIP"
-  }
+    "data": "http://gisweb.pwcgov.org/arcgis/rest/services/Maps/LandRecords/MapServer/2",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "city": "CITY",
+        "postcode": "ZIP"
+    }
 }
