@@ -9,22 +9,24 @@
         "state": "al",
         "county": "Montgomery"
     },
-    "data": "http://gis.montgomeryal.gov/ArcGIS/rest/services/Parcel/MapServer/11",
+    "data": "http://gis.montgomeryal.gov/server/rest/services/Buildings/MapServer/0",
     "type": "ESRI",
     "website": "http://montgomeryal.gov",
     "attribution": "City of Montgomery",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "PROP_ADDRESS_1",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PROP_ADDRESS_1",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+        "number": [
+            "ST_NUM",
+            "NUM_SUFX"
+        ],
+        "street": [
+            "PRE_DIR",
+            "PRE_TYPE",
+            "ST_NAME",
+            "POST_TYPE",
+            "POST_DIR"
+        ],
+        "postcode": "ZIPCODE",
+        "city": "PLACE"
     }
 }
