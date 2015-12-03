@@ -12,9 +12,17 @@
     "data": "http://cassweb3.co.cass.mn.us/arcgis/rest/services/Basic_Layers2/MapServer/1",
     "type": "ESRI",
     "conform": {
-        "split": "PHYSADDR",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "PHYSADDR",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PHYSADDR",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "geojson"
     }
 }

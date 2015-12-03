@@ -7,9 +7,17 @@
     },
     "conform": {
         "type": "geojson",
-        "split": "PARCEL_ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+          "function": "regexp",
+          "field": "PARCEL_ADDRESS",
+          "pattern": "^([0-9]+)"
+        },
+        "street": {
+          "function": "regexp",
+          "field": "PARCEL_ADDRESS",
+          "pattern": "^(?:[0-9]+ )(.*)",
+          "replace": "$1"
+        }
     },
     "attribution": "Kern, Cleveland, Canadian, Logan Counties - Association of Central Oklahoma Governments",
     "data": "http://arcgis4.roktech.net/arcgis/rest/services/ACOG/acog_query/MapServer/16",

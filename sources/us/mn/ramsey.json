@@ -11,9 +11,17 @@
     },
     "conform": {
         "type": "geojson",
-        "split": "SiteAddress",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "SiteAddress",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SiteAddress",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     },
     "license": {
         "text": "Indemnification",

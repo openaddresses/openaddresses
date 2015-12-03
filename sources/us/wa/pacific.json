@@ -11,9 +11,17 @@
     },
     "conform": {
         "type": "shapefile-polygon",
-        "split": "SITUS",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "SITUS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITUS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     },
     "license": "http://www.co.pacific.wa.us/gis/DesktopGIS/WEB/index.html",
     "type": "http",

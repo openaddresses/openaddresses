@@ -9,9 +9,17 @@
     "website": "http://www.town.avon.ct.us/Public_Documents/index",
     "type": "ESRI",
     "conform": {
-        "split": "parcel_polygon.PropertyLoc",
-        "street": "auto_street",
-        "number": "auto_number",
+        "street": {
+            "function": "regexp",
+            "field": "parcel_polygon.PropertyLoc",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "number": {
+            "function": "regexp",
+            "field": "parcel_polygon.PropertyLoc",
+            "pattern": "^([0-9]+)"
+        },
         "type": "geojson"
     }
 }

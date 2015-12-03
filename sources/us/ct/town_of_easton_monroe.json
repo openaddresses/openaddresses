@@ -9,9 +9,17 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "split": "CombinedCAMA_CombinedCAMA_SiteAddress",
-        "street": "auto_street",
-        "number": "auto_number",
+        "street": {
+            "function": "regexp",
+            "field": "CombinedCAMA_CombinedCAMA_SiteAddress",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "number": {
+            "function": "regexp",
+            "field": "CombinedCAMA_CombinedCAMA_SiteAddress",
+            "pattern": "^([0-9]+)"
+        },
         "city": "CombinedCAMA_CombinedCAMA_SiteCity",
         "postcode": "CombinedCAMA_CombinedCAMA_SiteZip",
         "region": "CombinedCAMA_CombinedCAMA_SiteState",

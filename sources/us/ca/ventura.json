@@ -21,9 +21,17 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "split": "FULLSITUS",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "FULLSITUS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "FULLSITUS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "shapefile",
         "postcode": "zip"
     }
