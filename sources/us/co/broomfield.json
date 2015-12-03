@@ -12,8 +12,12 @@
     "conform": {
         "type": "geojson",
         "number": "ADDRESS_NUMBER",
-        "split": "FULL_ADDRESS",
-        "street": "auto_street"
+        "street": {
+            "function": "regexp",
+            "field": "FULL_ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     },
     "data": "http://gis.broomfield.org/ArcGIS/rest/services/Assessor/Subdivisions_Parcels_2D/MapServer/0",
     "type": "ESRI"

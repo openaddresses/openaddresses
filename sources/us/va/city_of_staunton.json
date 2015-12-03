@@ -14,9 +14,17 @@
     "website": "http://gis.ci.staunton.va",
     "conform": {
         "type": "geojson",
-        "split": "P_ADDRESS",
-        "street": "auto_street",
-        "number": "auto_number",
+        "street": {
+            "function": "regexp",
+            "field": "P_ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "number": {
+            "function": "regexp",
+            "field": "P_ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
         "accuracy": 2
     }
 }

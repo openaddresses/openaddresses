@@ -19,9 +19,18 @@
         "srs": "EPSG:4326",
         "lon": "LONGITUDE",
         "lat": "LATITUDE",
-        "split": "ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^([0-9]+)( .*)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "city": "CITY",
         "type": "csv",
         "postcode": "ZIPCODE"

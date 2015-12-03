@@ -13,9 +13,17 @@
     "type": "ftp",
     "compression": "zip",
     "conform": {
-        "split": "AddressLin",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "AddressLin",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "AddressLin",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "shapefile-polygon",
         "accuracy": 2
     }

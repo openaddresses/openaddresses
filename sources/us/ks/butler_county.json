@@ -12,8 +12,12 @@
     "conform": {
         "type": "geojson",
         "number": "HNO",
-        "split": "LABEL",
-        "street": "auto_street",
+        "street": {
+            "function": "regexp",
+            "field": "LABEL",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "postcode": ""
     },
     "data": "http://ww1.bucoks.com/arcgis/rest/services/BuCo_NGAddress_Points/MapServer/0",
