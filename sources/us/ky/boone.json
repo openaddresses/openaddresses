@@ -13,16 +13,8 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADR_LABEL",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADR_LABEL",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+        "split": "ADR_LABEL",
+        "number": "auto_number",
+        "street": "auto_street"
     }
 }
