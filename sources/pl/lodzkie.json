@@ -17,7 +17,13 @@
     "compression": "zip",
     "conform": {
         "srs": "EPSG:2180",
+        "id": "id_techniczny_obiektu",
         "region": "woj_nazwa",
+        "district": {
+            "function": "join",
+            "fields": ["pow_nazwa", "gmi_nazwa"],
+            "separator": ", "
+        },
         "city": "mjs_nazwa",
         "postcode": "pad_kod_pocztowy",
         "street": "ulc_nazwa",
