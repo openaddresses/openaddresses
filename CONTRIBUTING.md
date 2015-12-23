@@ -127,6 +127,7 @@ Attribute tags are functions or field names for mapping the source data into a g
 ---------- | --- | ----
 `number`   | Yes | The name of the number field. This will either be the name of the field or `auto_number` if the split tool was used.
 `street`   | Yes | The name of the street field. This will either be the name of the field or an ordered list of fields to merge together. Use `auto_street` if the split tool was used.
+`unit`     |     | The Unit number. This is an optional attribute and can be used for uniquely identifying addresses where the street number is the same but a "unit" number is specified, i.e. `300 Willow Valley Lakes Drive #3A` where `3A` can be found as a separate attribute in the source.
 `lon`      |     | The longitude column. This is required for CSV sources and should be omitted for other types.
 `lat`      |     | The latitude field. This is required for CSV sources and should be omitted for other types.
 `city`     |     | Name of the City or Municipality in which the address falls
