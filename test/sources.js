@@ -76,7 +76,7 @@ function checkSource(i){
                 var conformOptions = [
                     'type', 'csvsplit', 'split', 'srs',
                     'file', 'encoding', 'headers', 'skiplines', 'lon', 'lat',
-                    'number', 'street', 'city', 'postcode', 'district',
+                    'number', 'street', 'unit', 'city', 'postcode', 'district',
                     'region', 'addrtype', 'notes', 'accuracy', 'id'
                     ];
                 Object.keys(data.conform).forEach(function (conformKey) {
@@ -97,7 +97,7 @@ function checkSource(i){
                 t.ok(data.conform.street, "conform - street attribute required");
 
                 //Conform Attributes
-                ['number', 'street', 'city', 'postcode', 'district', 'region', 'notes'].forEach(function(attrib) {
+                ['number', 'street', 'unit', 'city', 'postcode', 'district', 'region', 'notes'].forEach(function(attrib) {
                     if (!data.conform[attrib]) { return; }
                     if (typeof data.conform[attrib] === 'string') {
                         t.ok(data.conform[attrib], attrib + ' references static field');
