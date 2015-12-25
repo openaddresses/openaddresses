@@ -9,8 +9,13 @@
         "state": "mo",
         "county": "Boone"
     },
-    "data": "https://maps.showmeboone.com/arcgis/rest/services/BC_Basemap_Address/MapServer/0",
     "type": "ESRI",
-    "skip": true,
-    "note": "unable to verify leaf sig"
+    "data": "https://maps.showmeboone.com/arcgis/rest/services/BC_Basemap_Address/MapServer/0",
+    "conform": {
+        "type": "geojson",
+        "number": ["HOUSENO", "POST_QUAL", "APT"],
+        "street": ["PRE_DIR", "STREET", "SUFFIX", "POST_DIR"],
+        "postcode": "ZIP",
+        "city": "CITY"
+    }
 }
