@@ -12,17 +12,29 @@
     "data": "http://maps.co.alexander.nc.us/arcgis/rest/services/Regional_Site/MapServer/0",
     "type": "ESRI",
     "conform": {
+        "type": "geojson",
         "number": {
             "function": "regexp",
-            "field": "num_street",
+            "field": "NUM_STREET",
             "pattern": "^([0-9]+)"
         },
         "street": {
             "function": "regexp",
-            "field": "num_street",
+            "field": "NUM_STREET",
             "pattern": "^(?:[0-9]+ )(.*)",
             "replace": "$1"
         },
-        "type": "geojson"
+        "city": {
+            "function": "regexp",
+            "field": "CITY_STATE",
+            "pattern": "^(.*), (.*)",
+            "replace": "$1"
+        },
+        "region": {
+            "function": "regexp",
+            "field": "CITY_STATE",
+            "pattern": "^(.*), (.*)",
+            "replace": "$2"
+        }
     }
 }
