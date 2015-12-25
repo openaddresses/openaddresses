@@ -9,12 +9,21 @@
         "state": "ky",
         "county": "Boone"
     },
-    "data": "https://services1.arcgis.com/GkTTq9BaSPUnctWP/ArcGIS/rest/services/mapping/FeatureServer/1",
+    "data": "https://services1.arcgis.com/GkTTq9BaSPUnctWP/ArcGIS/rest/services/Boone_County_1/FeatureServer/1",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "split": "ADR_LABEL",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "ADR_LABEL",
+            "pattern": "^([0-9]+) (.*)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADR_LABEL",
+            "pattern": "^(?:[0-9]+) (.*)",
+            "replace": "$2"
+        },
     }
 }
