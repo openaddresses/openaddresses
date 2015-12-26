@@ -1,0 +1,30 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -81.09,
+                34.94
+            ]
+        },
+        "country": "us",
+        "state": "sc",
+        "city": "Rock Hill"
+    },
+    "type": "ESRI",
+    "data": "http://rockhillgis.cityofrockhill.com/arcgis/rest/services/mbl_add/address/MapServer/0",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "WHOLE_ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "WHOLE_ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$2"
+        }
+    }
+}

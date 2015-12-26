@@ -9,20 +9,15 @@
         "state": "ne",
         "county": "Lincoln"
     },
-    "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/Lincoln/MapServer/1",
+    "data": "http://ags3.lincoln.ne.gov/arcgis/rest/services/BuildingSafety/Addresses/MapServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "PROPADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PROPADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+        "number": ["PREADDRNUM", "ADDRNUM", "ADDRNUMSUF"],
+        "unit": "UNITNO",
+        "street": "FULLNAME",
+        "city": "MUNICIPALITY",
+        "region": "STATE",
+        "postcode": "ZIP"
     }
 }

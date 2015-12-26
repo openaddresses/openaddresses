@@ -9,16 +9,35 @@
         "state": "mn",
         "county": "Scott"
     },
+    "type": "ESRI",
+    "data": "http://gis.co.scott.mn.us/scgis/rest/services/AGOL/SC_PARCELS_AGOL/MapServer/0",
+    "website": "http://www.co.scott.mn.us/PROPERTYGISLAND/GEOGRAPHICINFORMATIONSYSTEMS/Pages/GeographicInformationSystems.aspx",
     "conform": {
         "type": "geojson",
         "number": "housgs",
-        "street": [
-            "stregs",
-            "sttygs",
-            "adirgs"   
-        ]
-    },
-    "type": "ESRI",
-    "data": "http://gis.co.scott.mn.us/scgis/rest/services/OpenData/SC_Property/MapServer/6",
-    "website": "http://www.co.scott.mn.us/PROPERTYGISLAND/GEOGRAPHICINFORMATIONSYSTEMS/Pages/GeographicInformationSystems.aspx"
+        "number": {
+            "function": "regexp",
+            "field": "PROPA1",
+            "pattern": "([0-9]*) (.*)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PROPA1",
+            "pattern": "([0-9]*) (.*)",
+            "replace": "$2"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "PROPA2",
+            "pattern": "([A-Z ]*) MN ([0-9]*)",
+            "replace": "$1"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "PROPA2",
+            "pattern": "([A-Z ]*) MN ([0-9]*)",
+            "replace": "$1"
+        }
+    }
 }

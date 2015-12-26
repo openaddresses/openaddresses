@@ -9,15 +9,16 @@
         "state": "mi",
         "county": "Muskegon"
     },
-    "data": "http://www.muskegoncountygis.com/ArcGIS/rest/services/Parcels/MapServer/2",
+    "data": "http://www.muskegoncountygis.com/arcgis/rest/services/VotingLocation/VotingLocation/MapServer/5",
     "type": "ESRI",
     "website": "http://www.muskegoncountygis.com/",
-    "license": "",
-    "note": "Data includes polygon shape of parcels. Address data is found in PROP_COMBINED_ADDRESS, PROP_CITY, PROP_STATE, PROP_ZIP.",
     "conform": {
+        "type": "geojson",
         "split": "PROP_COMBINED_ADDRESS",
         "number": "auto_number",
         "street": "auto_street",
-        "type": "geojson"
+        "city": "PROP_CITY",
+        "region": "PROP_STATE",
+        "postcode": "PROP_ZIP"
     }
 }
