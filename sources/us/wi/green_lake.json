@@ -9,18 +9,21 @@
         "state": "wi",
         "county": "Green Lake"
     },
-    "data": "http://gis.co.green-lake.wi.us/arcgis/rest/services/PARCEL/MapServer/4",
+    "data": "http://gis.co.green-lake.wi.us/arcgis/rest/services/PARCEL/MapServer/3",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "Num",
+        "id": "PARCELID",
+        "number": ["ADDNUMPREFIX", "ADDNUM", "ADDNUMSUFFIX"],
         "street": [
-            "PreDir",
-            "Street",
-            "Type",
-            "PostDir"
+            "PREFIX",
+            "STREETNAME",
+            "STREETTYPE",
+            "SUFFIX"
         ],
-        "city": "PostOffice",
-        "region": "County"
+        "unit": "UNITID",
+        "postcode": "ZIPCODE",
+        "city": "PLACENAME",
+        "region": "STATE"
     }
 }
