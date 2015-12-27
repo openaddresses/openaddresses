@@ -87,17 +87,17 @@ function checkSource(i){
                 t.ok(data.conform.type && typeof data.conform.type === 'string', "conform - type attribute required");
                 t.ok(['shapefile', 'shapefile-polygon', 'csv', 'geojson', 'xml'].indexOf(data.conform.type) !== -1, "conform - type is supported");
                 if (data.conform.type === 'csv') {
-                    t.ok(data.conform.lon && typeof data.conform.lon === 'string', "conform - lon attribute required for type csv");
-                    t.ok(data.conform.lat && typeof data.conform.lat === 'string', "conform - lat attribute required for type csv");
+                    t.ok(data.conform.hasOwnProperty('lon'), "conform - lon attribute required for type csv");
+                    t.ok(data.conform.hasOwnProperty('lat'), "conform - lat attribute required for type csv");
                 } else {
-                    t.ok(!data.conform.lon, 'lon should only be set for csv type');
-                    t.ok(!data.conform.lat, 'lat should only be set for csv type');
+                    t.ok(!data.conform.hasOwnProperty('lon'), 'lon should only be set for csv type');
+                    t.ok(!data.conform.hasOwnProperty('lat'), 'lat should only be set for csv type');
                 }
-                t.ok(data.conform.number, "conform - number attribute required");
-                t.ok(data.conform.street, "conform - street attribute required");
+                t.ok(data.conform.hasOwnProperty('number'), "conform - number attribute required");
+                t.ok(data.conform.hasOwnProperty('street'), "conform - street attribute required");
 
                 //Conform Attributes
-                ['number', 'street', 'unit', 'city', 'postcode', 'district', 'region', 'notes'].forEach(function(attrib) {
+                ['lat', 'lon', 'number', 'street', 'unit', 'city', 'postcode', 'district', 'region', 'notes'].forEach(function(attrib) {
                     if (!data.conform[attrib]) { return; }
                     if (typeof data.conform[attrib] === 'string') {
                         t.ok(data.conform[attrib], attrib + ' references static field');
