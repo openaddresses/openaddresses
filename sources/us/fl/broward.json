@@ -1,27 +1,28 @@
-http://gis.broward.org/arcgis/rest/services/PointAddressLabels/MapServer/0
 {
     "coverage": {
         "US Census": {
-            "geoid": "37025",
-            "name": "Cabarrus County",
-            "state": "North Carolina"
+            "geoid": "12011",
+            "name": "Broward County",
+            "state": "Florida"
         },
         "country": "us",
-        "state": "nc",
-        "county": "Cabarrus"
+        "state": "fl",
+        "county": "Broward"
     },
-    "data": "http://www.cabarruscounty.us/government/departments/information-technology/Data%20Downloads/Addresses.zip",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://www.cabarruscounty.us/government/departments/information-technology/Pages/Data-Services.aspx",
+    "data": "http://gis.broward.org/arcgis/rest/services/PointAddressLabels/MapServer/0",
+    "type": "ESRI",
     "conform": {
-        "file": "Addresses/Addresses.shp",
+        "type": "geojson",
+        "number": "SITUS_HOUSE_NUMBER",
+        "unit": "SITUS_UNIT_NUMBER",
         "street": [
-            "road_name",
-            "road_type"
+            "SITUS_STREET_PRE_DIRECTION",
+            "SITUS_STREET_PRETYPE",
+            "SITUS_STREET_NAME",
+            "SITUS_STREET_TYPE",
+            "SITUS_STREET_SUFFIX_DIRECTION"
         ],
-        "number": "addressnum",
-        "type": "shapefile",
-        "postcode": "zip"
+        "city": "CITY_NAME",
+        "postcode": "ZIP_CODE"
     }
 }
