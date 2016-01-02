@@ -1,0 +1,30 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "16051",
+            "name": "Jefferson County",
+            "state": "Idaho"
+        },
+        "country": "us",
+        "state": "id",
+        "county": "Jefferson"
+    },
+    "data": "http://maps.co.jefferson.id.us/arcgis/rest/services/Address/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "HOUSE_NUM",
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$2"
+        },
+        "unit": [
+            "SB_UNIT_TP",
+            "SB_UNIT"
+        ],
+        "city": "COMMUNITY",
+        "postcode": "ZIP"
+    }
+}
