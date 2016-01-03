@@ -1,0 +1,31 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -104.383,
+                44.405
+            ]
+        },
+        "country": "us",
+        "state": "wy",
+        "city": "Sundance"
+    },
+    "data": "http://services2.arcgis.com/3vf4sgqBAWcEpmNB/ArcGIS/rest/services/SundanceBaseMap/FeatureServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^([0-9]+)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}
