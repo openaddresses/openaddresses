@@ -21,18 +21,15 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "FULLSITUS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "FULLSITUS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
+        "number": "ADDRESS",
+        "street": [
+          "STREET_DIR",
+          "STREET_NAM",
+          "STREET_SUF"
+        ],
+        "unit": "SUITE",
         "type": "shapefile",
-        "postcode": "zip"
+        "city": "CITY",
+        "postcode": "ZIP"
     }
 }
