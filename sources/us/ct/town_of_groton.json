@@ -13,17 +13,13 @@
     },
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "LOGI_FULLNAM",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "LOGI_FULLNAM",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
+        "number": "LOGI_STNUM",
+        "street": [
+          "LOGI_STNAM",
+          "LOGI_STTYP",
+          "LOGI_STSUF"
+        ],
+        "unit": "UNIT",
         "postcode": "ZIP"
     },
     "attribution": "City of Groton",
