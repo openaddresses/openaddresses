@@ -27,6 +27,11 @@
         "city": "PO_NAME",
         "district": "MUNICIPALITY",
         "region": "STATE",
-        "postcode": "ZIP_5"
+        "postcode": {
+          "function": "regexp",
+          "field": "ZIP_5",
+          "pattern": "(\d+),(\d+)",
+          "replace": "$1$2"
+        }
     }
 }
