@@ -1,10 +1,43 @@
 {
-    "coverage": {
-        "country": "de",
-        "state": "berline"
-    },
-    "data": "http://fbarc.stadt-berlin.de/FIS_Broker_Atom/Hauskoordinaten/HKO_EPSG3068.zip",
-    "website": "http://fbinter.stadt-berlin.de/fb/berlin/service.jsp?id=a_hauskoordinaten@senstadt&type=FEED",
-    "type": "http",
-    "compression": "zip"
+	"coverage": {
+		"country": "de",
+		"state": "berline",
+		"ISO 3166": {
+            "alpha2": "DE-BE",
+            "country": "Germany",
+            "subdivision": "Berlin"
+        }
+	},
+	"data": "http://fbarc.stadt-berlin.de/FIS_Broker_Atom/Hauskoordinaten/HKO_EPSG3068.zip",
+	"website": "http://fbinter.stadt-berlin.de/fb/berlin/service.jsp?id=a_hauskoordinaten@senstadt&type=FEED",
+	"type": "http",
+	"compression": "zip",
+	"license": {
+		"text": "Nutzungsbestimmungen Geoportal Berlin",
+		"url": "http://www.stadtentwicklung.berlin.de/geoinformation/download/nutzIII.pdf",
+		"attribution": true,
+		"share-alike": false,
+		"attribution name": "Geoportal Berlin / Hauskoordinaten Berlin"
+	},
+	"conform": {
+		"type": "csv",
+		"srs": "EPSG:3068",
+		"csvsplit": ";",
+		"lat": {
+			"function": "regexp",
+			"field": "NNNNNNN_NNN",
+			"pattern": "^([0-9]+),([0-9]+)$",
+			"replace": "$1.$2"
+		},
+		"lon": {
+			"function": "regexp",
+			"field": "EEEEEEEE_EEE",
+			"pattern": "^([0-9]+),([0-9]+)$",
+			"replace": "$1.$2"
+		},
+		"city": "ONM",
+		"postcode": "PLZ",
+		"street": "STN",
+		"number": ["HNR", "ADZ"]
+	}
 }
