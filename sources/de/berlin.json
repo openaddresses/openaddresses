@@ -22,19 +22,10 @@
 	"conform": {
 		"type": "csv",
 		"srs": "EPSG:3068",
+		"encoding": "ISO-8859-1",
 		"csvsplit": ";",
-		"lat": {
-			"function": "regexp",
-			"field": "NNNNNNN_NNN",
-			"pattern": "^([0-9]+),([0-9]+)$",
-			"replace": "$1.$2"
-		},
-		"lon": {
-			"function": "regexp",
-			"field": "EEEEEEEE_EEE",
-			"pattern": "^([0-9]+),([0-9]+)$",
-			"replace": "$1.$2"
-		},
+		"lat": "NNNNNNN_NNN",
+		"lon": "EEEEEEEE_EEE",
 		"city": "ONM",
 		"postcode": "PLZ",
 		"street": "STN",
