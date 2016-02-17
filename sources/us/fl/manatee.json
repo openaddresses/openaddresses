@@ -20,17 +20,15 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "street": {
-            "function": "regexp",
-            "field": "primary_ad",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "number": {
-            "function": "regexp",
-            "field": "primary_ad",
-            "pattern": "^([0-9]+)"
-        },
+        "number": "PROP_HN",
+        "street": [
+          "PROP_SN",
+          "PROP_ST1",
+          "PROP_ST2",
+          "PROP_DIR"
+        ],
+        "unit": "UNIT",
+        "city": "PROP_CITYN",
         "type": "shapefile-polygon",
         "postcode": "prop_zip"
     }
