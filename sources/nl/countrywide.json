@@ -1,16 +1,25 @@
 {
-    "coverage": {
-        "ISO 3166": {"alpha2": "NL", "country": "Netherlands"},
-        "country": "nl"
-    },
-    "data": "http://data.openaddresses.io/cache/nl.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "lon": "lon",
-        "lat": "lat",
-        "number": "number",
-        "street": "street",
-        "type": "csv"
-    }
+	"coverage": {
+		"ISO 3166": {
+			"alpha2": "NL",
+			"country": "Netherlands"
+		},
+		"country": "nl"
+	},
+	"data": "https://www.dropbox.com/s/8uaqry2w657p44n/bagadres.zip?dl=1",
+	"website": "http://www.nlextract.nl",
+	"type": "http",
+	"compression": "zip",
+	"conform": {
+		"lon": "lon",
+		"lat": "lat",
+		"number": ["huisletter", "huisnummer","huisnummertoevoeging"],
+		"street": "openbareruimte",
+		"postcode": "postcode",
+		"city": "woonplaats",
+		"district":"gemeente",
+		"region": "provincie",
+		"type": "csv",
+		"csvsplit": ";"
+	}
 }

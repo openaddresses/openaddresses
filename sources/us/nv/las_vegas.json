@@ -7,9 +7,17 @@
     "data": "http://mapdata.lasvegasnevada.gov/clvgis/rest/services/AdministrativeBoundaries/Condo_Parcels/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "split": "ADDRESS1",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS1",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS1",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "geojson"
     }
 }

@@ -12,10 +12,17 @@
     "data": "http://www.co.teton.id.us/arcgis/rest/services/ADDRESS/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "split": "labelname",
         "number": "housenumber",
-        "street": "auto_street",
+        "street": {
+            "function": "regexp",
+            "field": "labelname",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "unit": "SUB_UNIT",
         "type": "geojson",
+        "city": "COMMUNITY",
+        "region": "STATE",
         "postcode": "zipcode"
     }
 }

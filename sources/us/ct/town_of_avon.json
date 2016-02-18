@@ -1,0 +1,25 @@
+{
+    "coverage": {
+        "country": "us",
+        "state": "ct",
+        "city": "avon"
+    },
+    "attribution": "City of Avon",
+    "data": "http://107.20.209.214/ArcGIS/rest/services/AvonCT/AvonDynamic_Private/MapServer/0",
+    "website": "http://www.town.avon.ct.us/Public_Documents/index",
+    "type": "ESRI",
+    "conform": {
+        "street": {
+            "function": "regexp",
+            "field": "parcel_polygon.PropertyLoc",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "number": {
+            "function": "regexp",
+            "field": "parcel_polygon.PropertyLoc",
+            "pattern": "^([0-9]+)"
+        },
+        "type": "geojson"
+    }
+}

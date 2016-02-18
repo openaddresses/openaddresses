@@ -15,9 +15,17 @@
     "type": "ftp",
     "compression": "zip",
     "conform": {
-        "split": "SITUSLINE1",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "SITUSLINE1",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITUSLINE1",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "shapefile",
         "postcode": "SITUSZIP"
     }

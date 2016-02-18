@@ -13,9 +13,13 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "split": "FULLADDR",
         "number": "ADDRNUM",
-        "street": "auto_street",
+        "street": {
+            "function": "regexp",
+            "field": "FULLADDR",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "postcode": "ZIP",
         "city": "MUNICIPALITY"
     }

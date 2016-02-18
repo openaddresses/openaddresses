@@ -12,9 +12,17 @@
     "conform": {
         "id": "ParcelAttr",
         "type": "shapefile-polygon",
-        "split": "ParcelAt_2",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "ParcelAt_2",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ParcelAt_2",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     },
     "attribution": "Orange County",
     "data": "https://github.com/datadesk/us-ca-orange_county-situs_parcels-shp/blob/master/situs_parcels.zip?raw=true",

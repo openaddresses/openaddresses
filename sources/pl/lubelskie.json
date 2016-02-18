@@ -8,11 +8,22 @@
         "state": "lubelskie",
         "country": "pl"
     },
-    "license": "Polish Law on Geodesy and Cartography of 17 May 1989 - see https://github.com/openaddresses/openaddresses/issues/187#issuecomment-63327973",
+    "license": {
+        "text": "Polish Law on Geodesy and Cartography of 17 May 1989",
+        "url": "https://github.com/openaddresses/openaddresses/issues/187#issuecomment-63327973",
+        "attribution": false,
+        "share-alike": false
+    },
     "compression": "zip",
     "conform": {
         "srs": "EPSG:2180",
+        "id": "id_techniczny_obiektu",
         "region": "woj_nazwa",
+        "district": {
+            "function": "join",
+            "fields": ["pow_nazwa", "gmi_nazwa"],
+            "separator": ", "
+        },
         "city": "mjs_nazwa",
         "postcode": "pad_kod_pocztowy",
         "street": "ulc_nazwa",

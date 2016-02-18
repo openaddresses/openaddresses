@@ -11,9 +11,17 @@
     },
     "conform": {
         "type": "shapefile-polygon",
-        "split": "PROP_ADD",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "PROP_ADD",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PROP_ADD",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     },
     "data": "http://gis.cravencountync.gov/Downloads/Shape_files/county_shape.zip",
     "type": "http",

@@ -11,9 +11,17 @@
     },
     "conform": {
         "type": "shapefile",
-        "split": "Address",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "Address",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Address",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     },
     "data": "https://github.com/datadesk/us-ca-madera_county-situs-shp/blob/master/Asr_Situs.zip?raw=true",
     "attribution": "Madera County",

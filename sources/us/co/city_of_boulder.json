@@ -22,9 +22,19 @@
     "compression": "zip",
     "website": "http://data.opencolorado.org/dataset/boulder-addresses/resource/50d86ebc-b489-4791-b63d-2e2da5b5b052",
     "conform": {
-        "split": "ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "shapefile"
+      "type": "shapefile",
+      "number": [
+        "ADDR_NUM",
+        "ADDR_SUFX"
+      ],
+      "street": {
+          "function": "regexp",
+          "field": "ADDRESS",
+          "pattern": "^(?:[0-9]+ (?:1/2)?)(.*)(?:,.*)?$",
+          "replace": "$1"
+      },
+      "city": "CITY",
+      "region": "STATE",
+      "postcode": "ZIPCODE"
     }
 }

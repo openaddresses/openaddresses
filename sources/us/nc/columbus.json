@@ -9,14 +9,18 @@
         "state": "nc",
         "county": "Columbus"
     },
-    "data": "http://www.columbusco.org/GISData/Addresses.zip",
-    "license": "",
-    "year": "",
+    "data": "http://columbusco.org/Portals/0/Tax/Addresses.zip",
     "type": "http",
     "compression": "zip",
     "conform": {
-        "number": "address",
-        "street": "roadname",
-        "type": "shapefile"
+        "type": "shapefile",
+        "number": "ADDRESS",
+        "street": {
+            "function": "regexp",
+            "field": "FULLADD",
+            "pattern": "^([0-9]+) (.*)",
+            "replace": "$2"
+        },
+        "unit": "APT"
     }
 }

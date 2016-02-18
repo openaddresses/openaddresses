@@ -9,13 +9,21 @@
         "state": "mt",
         "county": "Carbon"
     },
-    "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Carbon/CarbonOwnerParcel_shp.zip",
+    "data": "ftp://ftp.geoinfo.msl.mt.gov/Data/Spatial/MSDI/Cadastral/Parcels/Carbon/CarbonOwnerParcel_shp.zip",
     "type": "ftp",
     "compression": "zip",
     "conform": {
-        "split": "OwnerAddre",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "OwnerAddre",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "OwnerAddre",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "shapefile-polygon"
     }
 }

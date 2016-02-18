@@ -9,13 +9,31 @@
         "state": "ga",
         "county": "Fulton"
     },
+    "type": "ESRI",
     "attribution": "Fulton County",
     "website": "http://share.myfultoncountyga.us:8080/geoportal/catalog/main/home.page",
-    "data": "http://share.myfultoncountyga.us/GPDownload/FultonCounty/Tax_Parcels",
-    "license": "Indemnification",
-    "year": "2014",
-    "type": "http",
-    "compression": "zip",
-    "note": "Data hidden behind a License Agreement form",
-    "skip": true
+    "data": "http://gis.fultoncountyga.gov/ArcGIS10/rest/services/AddressQuadrantVerification/MapServer/0",
+    "license": {
+        "text": "Indemnification",
+        "attribution": false,
+        "share-alike": false
+    },
+    "conform": {
+        "type": "geojson",
+        "number": [
+            "PreAddrNum",
+            "StNumber"
+        ],
+        "street": [
+            "PreMod",
+            "PreDir",
+            "PreType",
+            "Name",
+            "PostType",
+            "PostDir",
+            "PostMod"
+        ],
+        "city": "City",
+        "postcode": "Zip"
+    }
 }

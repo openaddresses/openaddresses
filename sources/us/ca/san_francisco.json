@@ -11,15 +11,26 @@
     },
     "attribution": "City and County of San Francisco",
     "data": "https://data.sfgov.org/download/kvej-w5kb/ZIPPED%20SHAPEFILE",
-    "license": "Public Domain",
+    "license": {
+        "text": "Public Domain",
+        "attribution": false,
+        "share-alike": false
+    },
     "website": "http://www.sfgov.org",
     "type": "http",
     "compression": "zip",
     "conform": {
-        "split": "ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "shapefile",
-        "postcode": "zipcode"
+      "type": "shapefile",
+      "number": {
+          "function": "regexp",
+          "field": "ADDRESS",
+          "pattern": "^([0-9A-Z]+) "
+      },
+      "street": [
+          "ST_NAME",
+          "ST_TYPE"
+      ],
+      "unit": "UNIT_NUM",
+      "postcode": "zipcode"
     }
 }

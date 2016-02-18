@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "31017",
+            "name": "Brown County",
+            "state": "Nebraska"
+        },
+        "country": "us",
+        "state": "ne",
+        "county": "Brown"
+    },
+    "data": "http://maps6.gisworkshop.com/ArcGIS/rest/services/Brown/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}

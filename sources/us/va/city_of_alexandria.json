@@ -9,13 +9,22 @@
         "state": "va",
         "city": "Alexandria"
     },
-    "data": "http://maps.alexandriava.gov/alexmaps/rest/services/alxBasemapWm/MapServer/1",
+    "data": "https://maps15.alexandriava.gov/arcgis/rest/services/alxAddressWm/MapServer/0",
     "type": "ESRI",
     "website": "https://www.alexandriava.gov/gis/info/default.aspx?id=7654",
     "conform": {
-        "split": "FULL_ADDS",
-        "street": "auto_street",
-        "number": "auto_number",
-        "type": "geojson"
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "FULL_ADDS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "FULL_ADDS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "postcode": "ZIP"
     }
 }

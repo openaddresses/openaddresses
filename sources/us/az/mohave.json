@@ -13,8 +13,18 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "split": "SITE_ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "SITE_ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITE_ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "postcode": "ZIP",
+        "city": "CITY"
     }
 }

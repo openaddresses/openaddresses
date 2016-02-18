@@ -11,13 +11,25 @@
     },
     "conform": {
         "type": "geojson",
-        "split": "ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "city": "CITY",
         "postcode": "ZIP"
     },
-    "license": "Indemnification",
+    "license": {
+        "text": "Indemnification",
+        "attribution": false,
+        "share-alike": false
+    },
     "type": "ESRI",
     "data": "https://gis.chisagocounty.us/arcgis/rest/services/GISData/MapServer/1",
     "website": "http://gis.chisagocounty.us/Link/jsfe/index.aspx",

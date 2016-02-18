@@ -16,11 +16,20 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "number": "number",
+        "number": "Number",
         "street": [
-            "street_nam",
-            "street_typ"
+            "Pre_Direct",
+            "Street_Nam",
+            "Street_Typ",
+            "Suffix_Dir"
         ],
+        "city":  {
+          "function": "regexp",
+          "field": "City_State",
+          "pattern": "^(?:.*)( CO)$",
+          "replace": "$1"
+        },
+        "postcode": "Zip",
         "type": "shapefile"
     }
 }

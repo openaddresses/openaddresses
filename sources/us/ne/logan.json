@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "31113",
+            "name": "Logan County",
+            "state": "Nebraska"
+        },
+        "country": "us",
+        "state": "ne",
+        "county": "Logan"
+    },
+    "data": "http://maps6.gisworkshop.com/ArcGIS/rest/services/Logan/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}

@@ -12,13 +12,23 @@
     "attribution": "Manatee County",
     "data": "http://www.mymanatee.org/gisapps/data/shape/parcels.zip",
     "website": "http://www.mymanatee.org/home/government/departments/information-technology/gis-home/gis-datadownload.html",
-    "license": "Public Domain",
+    "license": {
+        "text": "Public Domain",
+        "attribution": false,
+        "share-alike": false
+    },
     "type": "http",
     "compression": "zip",
     "conform": {
-        "split": "primary_ad",
-        "street": "auto_street",
-        "number": "auto_number",
+        "number": "PROP_HN",
+        "street": [
+          "PROP_SN",
+          "PROP_ST1",
+          "PROP_ST2",
+          "PROP_DIR"
+        ],
+        "unit": "UNIT",
+        "city": "PROP_CITYN",
         "type": "shapefile-polygon",
         "postcode": "prop_zip"
     }

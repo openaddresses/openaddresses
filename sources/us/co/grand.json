@@ -11,9 +11,17 @@
     },
     "conform": {
         "type": "geojson",
-        "split": "GIS_ADD",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "GIS_ADD",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "GIS_ADD",
+            "pattern": "^(?:[0-9]+ )(.*)(?: UNIT .*)?",
+            "replace": "$1"
+        }
     },
     "data": "http://www.grandgis.com/arcgis/rest/services/Parcels/MapServer/0",
     "type": "ESRI"

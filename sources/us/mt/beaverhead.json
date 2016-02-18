@@ -11,11 +11,19 @@
     },
     "conform": {
         "type": "shapefile-polygon",
-        "split": "AddressLin",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "AddressLin",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "AddressLin",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     },
-    "data": "ftp://anonymous:anonymous@ftp.gis.mt.gov/CadastralFramework/Beaverhead/BeaverheadOwnerParcel_shp.zip",
+    "data": "ftp://ftp.geoinfo.msl.mt.gov/Data/Spatial/MSDI/Cadastral/Parcels/Beaverhead/BeaverheadOwnerParcel_shp.zip",
     "type": "ftp",
     "compression": "zip",
     "note": "won't split properly"

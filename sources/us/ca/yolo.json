@@ -20,9 +20,17 @@
     "conform": {
         "id": "APN",
         "type": "shapefile-polygon",
-        "split": "SITUS",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "Address",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Address",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "postcode": "ZIP",
         "city": "CITY"
     }

@@ -10,14 +10,36 @@
         "county": "Dickinson"
     },
     "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Dickinson/Address_30.zip",
-    "license": "Public Domain",
+    "license": {
+        "text": "Public Domain",
+        "attribution": false,
+        "share-alike": false
+    },
     "year": "2012?",
     "type": "ftp",
     "compression": "zip",
     "conform": {
-        "split": "address",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^.* ((Unit|Apt) [0-9A-Za-z])$",
+            "replace": "$1"
+        },
+        "city": "POSTAL_COM",
+        "district": "COUNTY",
+        "region": "STATE",
+        "postcode": "ZIP_CODE",
         "type": "shapefile"
     }
 }

@@ -19,9 +19,17 @@
     "data": "http://arcgis.webgis.net/arcgis/rest/services/NC/CityOfKing/MapServer/6",
     "type": "ESRI",
     "conform": {
-        "split": "PropertyAddr",
-        "street": "auto_street",
-        "number": "auto_number",
+        "number": {
+            "function": "regexp",
+            "field": "PropertyAddr",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PropertyAddr",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "geojson",
         "postcode": "ownerzip"
     }

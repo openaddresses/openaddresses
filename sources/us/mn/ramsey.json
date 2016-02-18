@@ -11,12 +11,20 @@
     },
     "conform": {
         "type": "geojson",
-        "split": "SiteAddress",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": "ANUMBER",
+        "street": ["StreetPreModifier", "StreetPrefixDirectional", "StreetPreType","ST_NAME","StreetPostType","StreetPostDirectional","StreetPostModifier"],
+        "unit": ["SubType1","SubNumber1"],
+        "city": "PostalCity",
+        "postcode": "ZIP",
+        "district": "CO_NAME",
+        "notes": "Comments"
     },
-    "license": "Indemnification",
-    "note": "A better address points layer may soon be available.",
-    "data": "https://maps.co.ramsey.mn.us/arcgis/rest/services/OpenData/OpenData_All/MapServer/5",
+    "license": {
+        "text": "Indemnification",
+        "attribution": false,
+        "share-alike": false
+    },
+    "note": "This source has been provided by the county as the new official source of addresses.",
+    "data": "https://maps.co.ramsey.mn.us/arcgis/rest/services/AddressEditor/AddressPointsAll/MapServer/0",
     "type": "ESRI"
 }

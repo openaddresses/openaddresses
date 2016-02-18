@@ -16,16 +16,21 @@
         "state": "co",
         "city": "Aurora"
     },
-    "data": "https://apps2.auroragov.org/OpenData/DataDownload/LL_AddressPoints_SHP.zip",
+    "data": "https://ags.auroragov.org/aurora/rest/services/OpenData/MapServer/9",
     "license": "Crappy License",
     "attribution": "City of Aurora",
-    "note": "Incorrect Projection",
-    "type": "http",
-    "compression": "zip",
+    "type": "ESRI",
     "conform": {
-        "split": "address",
-        "number": "auto_number",
-        "street": "auto_street",
-        "type": "shapefile"
+        "type": "geojson",
+        "number": "ADDRESS_NUMBER",
+        "street": [
+            "STREET_DIRECTION",
+            "STREET_NAME",
+            "STREET_TYPE",
+            "DIRSUF"
+        ],
+        "city": "CITY",
+        "postcode": "ZIP_CODE",
+        "region": "COUNTY"
     }
 }

@@ -1,22 +1,36 @@
 {
+    "skip": true,
     "coverage": {
         "country": "us",
         "state": "mn"
     },
-    "data": "ftp://gisftp.metc.state.mn.us/Parcels2009.zip",
-    "license": "PD + Indemnification",
-    "year": "2009",
+    "data": "ftp://ftp.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_state_metrogis/loc_address_points/shp_loc_address_points.zip",
+    "license": {
+        "text": "PD + Indemnification",
+        "attribution": false,
+        "share-alike": false
+    },
+    "year": "2015",
     "type": "ftp",
     "compression": "zip",
-    "note": "zlib error: too many length or distance symbols",
     "conform": {
-        "file": "Parcels2009All7Points.shp",
-        "street": [
-            "streetname",
-            "streettype",
-            "suffix_dir"
+        "type": "shapefile",
+        "file": "AddressPoints.shp",
+        "number": [
+            "ANUMBERPRE",
+            "ANUMBER",
+            "SNUMBERSUF"
         ],
-        "number": "bldg_num",
-        "type": "shapefile"
+        "street": [
+            "ST_PRE_MOD",
+            "ST_PRE_DIR",
+            "ST_PRE_TYP",
+            "ST_NAME",
+            "ST_POS_TYP",
+            "ST_POS_DIR",
+            "ST_POS_MOD"
+        ],
+        "city": "MUNI_NAME",
+        "postcode": "ZIP"
     }
 }

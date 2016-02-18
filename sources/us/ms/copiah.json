@@ -12,9 +12,17 @@
     "data": "http://gis.cmpdd.org/arcgis/rest/services/Viewers/Copiah/MapServer/2",
     "type": "ESRI",
     "conform": {
-        "split": "situs",
-        "street": "auto_street",
-        "number": "auto_number",
+        "street": {
+            "function": "regexp",
+            "field": "situs",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "number": {
+            "function": "regexp",
+            "field": "situs",
+            "pattern": "^([0-9]+)"
+        },
         "type": "geojson",
         "postcode": "zip"
     }

@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "31023",
+            "name": "Butler County",
+            "state": "Nebraska"
+        },
+        "country": "us",
+        "state": "ne",
+        "county": "Butler"
+    },
+    "data": "http://maps6.gisworkshop.com/ArcGIS/rest/services/Butler/MapServer/25",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}

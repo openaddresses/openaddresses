@@ -14,8 +14,16 @@
     "note": "SITEADDR has the city after the road name, so the split is going to be crummy",
     "conform": {
         "type": "geojson",
-        "split": "SITEADDR",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "SITEADDR",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITEADDR",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     }
 }
