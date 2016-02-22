@@ -1,12 +1,18 @@
 {
     "coverage": {
-        "geometry": {"type": "Point", "coordinates": [-98.12, 29.70]},
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -98.12,
+                29.70
+            ]
+        },
         "country": "us",
         "state": "tx",
         "city": "New Braunfels"
     },
     "website": "http://www.nbtexas.org/index.aspx?NID=1246",
-    "data": "http://gis.nbtexas.org/arcgis/rest/services/Maps/DataExtract/MapServer/0",
+    "data": "http://gis.nbtexas.org/arcgis/rest/services/Maps/OpenData_Addressing/MapServer/0",
     "license": {
         "text": "Indemnification",
         "attribution": false,
@@ -14,9 +20,17 @@
     },
     "type": "ESRI",
     "conform": {
-        "number": "StreetNum",
-        "street": "MSAG_Name",
-        "postcode": "ZIPCode",
-        "type": "geojson"
+        "type": "geojson",
+        "number": [
+            "StreetNum",
+            "StreetNumSuf"
+        ],
+        "street": [
+            "PreDir",
+            "StreetName",
+            "StreetType",
+            "PostDir"
+        ],
+        "postcode": "ZIPCode"
     }
 }

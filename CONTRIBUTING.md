@@ -34,7 +34,7 @@ We will do our best to review your issue and either fix or add the feature(s) to
 
 Comfortable with JSON? Feel free to submit a pull request with the data instead of opening an issue. Before asking for a merge, please keep Travis CI happy by making sure you submit well-formed JSON: green is good!
 
-For a first time contributer, getting the JSON right can be a bit of a challenge,
+For a first time contributor, getting the JSON right can be a bit of a challenge,
 check out other sources in `./sources/` to get an idea of what we are looking for.
 Still confused? [Open an issue](https://github.com/openaddresses/openaddresses/issues/new),
 we’ll be happy to help you out!
@@ -42,7 +42,7 @@ we’ll be happy to help you out!
 ### Naming Files
 
 Although the file name is redundant (the same information is stored in JSON),
-using coherent file names makes it much easier for contributers to quickly
+using coherent file names makes it much easier for contributors to quickly
 evaluate whether a source already exists. Please use the following
 conventions.
 
@@ -221,7 +221,7 @@ _Example_
 ###### join function
 
 The join function allows fields to be merged given an arbitrary delimiter. For delimiting
-by spaces there is a more conscise format - see the example for `Merge Fields`
+by spaces there is a more concise format - see the example for `Merge Fields`
 
 _Format_
 ```JSON
