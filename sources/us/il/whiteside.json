@@ -13,8 +13,16 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "split": "PSTLADDRESS",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "SITEADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITEADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     }
 }
