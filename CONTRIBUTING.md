@@ -6,6 +6,8 @@
 
 We'd love to hear about a new address source, fixes to an old one, or make improvements.
 
+OpenAddresses is a collection of _authoritative data_ for address locations around the world. We collect address data from authoritative sources; we do not create our own data. A source is a location where authoritative address data can be found. Examples might be a downloadable CSV file or live ArcServer feature service hosted by a national postal service, a state GIS department, or a county property parcel database.
+
 ### New Sources
 
 Have a potential source? Fantastic! Follow these steps to help us get it into the project as fast as possible!
