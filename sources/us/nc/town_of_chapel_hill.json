@@ -1,11 +1,28 @@
 {
     "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -79.109,
+                35.921
+            ]
+        },
         "country": "us",
         "state": "nc",
         "town": "Chapel Hill"
     },
-    "data": "http://gis.townofchapelhill.org/GIS_Data/addresses.zip",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://gis.townofchapelhill.org/download_data/"
+    "data": "https://gisweb.townofchapelhill.org/arcgis/rest/services/CorporateData/AddressPoints/MapServer/0",
+    "type": "ESRI",
+    "website": "http://gis.townofchapelhill.org/download_data/",
+    "conform": {
+        "type": "geojson",
+        "number": "HouseNum",
+        "street": [
+            "DirPrefix",
+            "Name",
+            "Type",
+            "DirSuffix"
+        ],
+        "region": "State"
+    }
 }
