@@ -16,17 +16,15 @@
     "type": "http",
     "year": 2014,
     "conform": {
-        "street": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "number": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^([0-9]+)"
-        },
+        "number": "STRT_ADD",
+        "street": [
+            "STRT_PFX",
+            "STRT_NAME",
+            "TYP",
+            "STRT_SUF"
+        ],
+        "unit": "UNIT",
+        "city": "COMMUNITY",
         "type": "shapefile"
     }
 }
