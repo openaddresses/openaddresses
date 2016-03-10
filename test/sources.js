@@ -102,7 +102,7 @@ function checkSource(i){
                     if (typeof data.conform[attrib] === 'string') {
                         t.ok(data.conform[attrib], attrib + ' references static field');
                     } else if (Array.isArray(data.conform[attrib])) {
-                        t.ok(data.conform[attrib].length > 1, 'merge array has more than 1 element');
+                        t.ok(data.conform[attrib].length >= 1, 'merge array should have at least one element');
                         t.ok(data.conform[attrib], attrib + ' references fields to be merged');
                     } else if (typeof data.conform[attrib] === 'object') {
                         t.ok(data.conform[attrib].function, 'named function');
