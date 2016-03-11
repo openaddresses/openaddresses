@@ -1,20 +1,35 @@
 {
     "type": "http",
-    "note": "data URL expires; must use web interface & email workflow to download fresh data. cached archive acquired 2014-11-17. License provisions in archive are outdated as per conversation with LIST staff available at https://soundcloud.com/sbma444/confirmation-of-tasmanias-list-dataset-being-cc-by",
+    "note": "data is split up by council area. cached archive acquired 2014-11-17. License is now listed as CC-BY on the website",
     "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/au-tasmania.zip",
     "license": {
-        "text": "CCBY",
+	"url": "http://creativecommons.org/licenses/by/3.0/au/",
+        "text": "CC BY 3.0 AU",
         "attribution": true,
-        "share-alike": false
+        "share-alike": false,
+        "attribution name": "LIST Address Points from www.theLIST.tas.gov.au © State of Tasmania"
     },
-    "website": "https://www.thelist.tas.gov.au/app/content/data/geo-meta-data-record?profileType=&groupName=&bboxNorth=&bboxWest=&bboxSouth=&bboxEast=&query=address&_keywordCategory=-1&isTasmania=true&custodian=&detailRecordUID=403743d1-4d87-4fa4-8a51-91928f5935d6&searchCriteriaURL=query%3Daddress%26perPage%3D10%26sortBy%3DTitle%3AASC",
+    "website": "http://listdata.thelist.tas.gov.au/opendata/index.html#LIST_Address_Points",
     "conform": {
         "type": "shapefile",
         "number": "ST_NO_FROM",
+        "number": {
+            "function": "join",
+            "fields": [
+                "ST_NO_FROM",
+                "NO1_SUFFIX"
+            ],
+            "separator": ""
+        },
         "street": [
             "STREET",
-            "ST_TYPE"
-        ]
+            "ST_TYPE",
+            "ST_SUFFIX"
+        ],
+        "city": "LOCALITY",
+        "region": "STATE",
+        "postcode": "POSTCODE",
+        "id": "PID"
     },
     "coverage": {
         "ISO 3166": {
