@@ -13,17 +13,14 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-      "number": {
-          "function": "regexp",
-          "field": "LSN",
-          "pattern": "^([0-9]+)"
-      },
+      "number": "HOUSENUM",
       "street": {
           "function": "regexp",
           "field": "LSN",
           "pattern": "^(?:[0-9]+ )(.*)",
           "replace": "$1"
       },
+      "unit": "UNITNUM",
       "type": "shapefile",
       "postcode": "zipcode"
     }
