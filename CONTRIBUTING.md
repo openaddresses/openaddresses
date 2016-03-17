@@ -279,6 +279,7 @@ Additional metadata helps future proof the project!
 `note`        | A String containing a human readable note.
 `attribution` | **Deprecated:** Where the license requires attribution, add it here. example `CC-BY United Federation of Planets`
 `email`       | This email is used to send automated emails to the data provider if a user changes their data. Do not set unless the data provider wants to receive updates.
+`language`    | ISO 639-1 code for the language of the data. For example: `en`, `fr` or `de`.
 
 #### Example
 
@@ -293,6 +294,7 @@ Additional metadata helps future proof the project!
     "license": {"url": "http://geonb.snb.ca/downloads/documents/geonb_license_e.pdf"},
     "type": "http",
     "compression": "zip",
+    "language": "en",
     "conform": {
         "number": "civic_num",
         "street": "street_nam",
@@ -301,6 +303,19 @@ Additional metadata helps future proof the project!
     }
 }
 ```
+
+### Language
+
+Names of places, cities, addresses etc. are often translated to various languages. For example: Munich, Bavaria, Germany
+vs. München, Bayern, Deutschland. The optional `language` tag defines, which language is in use in the metadata entry.
+A data source usually includes addresses in a single language (e.g. Montreal in Canada contains only French names).
+Some data sources can define several translations of address components under appropriate csv column labels. For example,
+Brussels in Belgium has both Dutch and French names. Such a bilingual data source can be linked to OpenAddresses
+with two separate metadata entries, one for reading the [French addresses](https://github.com/openaddresses/openaddresses/blob/master/sources/be/wa/brussels-fr.json)
+and one for reading the [Dutch addresses](https://github.com/openaddresses/openaddresses/blob/master/sources/be/wa/brussels-nl.json).
+An application,which uses OpenAddresses and wishes to generate multilingual address entries, can access the data via both metadata entries
+and merge the language versions by identifying the address items by their `id` unique identifier tag.
+
 
 ### Formatting:
 
@@ -313,3 +328,4 @@ A few notes on formatting:
 
 Although these are read by a machine, they are maintained by us mortals.
 Following the formatting guidelines keeps the rest of us sane!
+
