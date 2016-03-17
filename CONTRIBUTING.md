@@ -1,6 +1,6 @@
 # Contributing to OpenAddresses
 
-[![Build Status](https://travis-ci.org/openaddresses/openaddresses.png?branch=master)](https://travis-ci.org/openaddresses/openaddresses)
+[![Build Status](https://travis-ci.org/openaddresses/openaddresses.svg?branch=master)](https://travis-ci.org/openaddresses/openaddresses)
 
 ## Reporting Sources & Issues
 
