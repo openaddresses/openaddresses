@@ -50,7 +50,7 @@ function checkSource(i){
                 'data', 'type', 'coverage', 'coverage', 'conform', 'compression',
                 
                 // https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md#optional-tags
-                'website', 'license', 'note', 'attribution', 'email',
+                'website', 'license', 'note', 'attribution', 'email', 'language',
                 
                 // Not documented, but works
                 'year', 'skip'
