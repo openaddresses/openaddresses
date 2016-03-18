@@ -11,17 +11,12 @@
     },
     "conform": {
         "type": "shapefile-polygon",
-        "number": {
-            "function": "regexp",
-            "field": "PROP_ADD",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PROP_ADD",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+        "number": "PASTNU",
+        "street": [
+            "PASTDR",
+            "PASTNA",
+            "PASTAB"
+        ]
     },
     "data": "http://gis.cravencountync.gov/Downloads/Shape_files/county_shape.zip",
     "type": "http",

@@ -10,7 +10,7 @@
         "county": "san francisco"
     },
     "attribution": "City and County of San Francisco",
-    "data": "https://data.sfgov.org/download/kvej-w5kb/ZIPPED%20SHAPEFILE",
+    "data": "http://apps.sfgov.org/datafiles/view.php?file=sfgis/eas_addresses_with_units.zip",
     "license": {
         "text": "Public Domain",
         "attribution": false,
@@ -22,16 +22,15 @@
     "conform": {
       "type": "shapefile",
       "number": {
-          "function": "regexp",
-          "field": "ADDRESS",
-          "pattern": "^([0-9]+)"
+        "function": "join",
+        "fields": ["ADDR_NUM", "ADDR_N_SFX"],
+        "separator": ""
       },
-      "street": {
-          "function": "regexp",
-          "field": "ADDRESS",
-          "pattern": "^(?:[0-9]+ )(.*)",
-          "replace": "$1"
-      },
+      "street": [
+          "ST_NAME",
+          "ST_TYPE"
+      ],
+      "unit": "UNIT_NUM",
       "postcode": "zipcode"
     }
 }

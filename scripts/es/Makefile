@@ -1,5 +1,5 @@
 xml:
-	curl "http://www.catastro.minhap.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml" | grep enclosure | sed -e "s/^.*http/http/" -e "s/\" type.*$//" > xml_urls.txt
+	curl "http://www.catastro.minhap.es/INSPIRE/Addresses/ES.SDGC.AD.atom.xml" | grep enclosure | sed -e "s/^.*http/http/" -e "s/\" type.*$$//" > xml_urls.txt
 	mkdir xml
 	cd xml && cat ../xml_urls.txt | xargs -I {} curl {} -O
 

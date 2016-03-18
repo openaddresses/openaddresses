@@ -9,19 +9,30 @@
         "state": "pa",
         "county": "Allegheny"
     },
-    "data": "ftp://www.pasda.psu.edu/pub/pasda/alleghenycounty/AlleghenyCounty_AddressPoints201503.zip",
-    "license": "",
-    "year": "2015-03",
-    "type": "ftp",
-    "compression": "zip",
+    "data": "http://geodata.alleghenycounty.us/arcgis/rest/services/OPENDATA/Addresses/MapServer/0",
+    "type": "ESRI",
     "conform": {
-        "type": "shapefile",
-        "number": "ADDR_NUM",
-        "street": [
-            "ST_PREFIX",
-            "ST_NAME",
-            "ST_TYPE"
+        "type": "geojson",
+        "number": [
+            "ADDR_NUM_PREFIX",
+            "ADDR_NUM",
+            "ADDR_NUM_SUFFIX"
         ],
-        "postcode": "ZIP_CODE"
+        "street": [
+            "ST_PREMODIFIER",
+            "ST_PREFIX",
+            "ST_PRETYPE",
+            "ST_NAME",
+            "ST_TYPE",
+            "ST_SUFFIX",
+            "ST_POSTMODIFIER"
+        ],
+        "unit": [
+            "UNIT_TYPE",
+            "UNIT"
+        ],
+        "postcode": "ZIP_CODE",
+        "district": "COUNTY",
+        "region": "STATE"
     }
 }
