@@ -9,20 +9,11 @@
         "state": "co",
         "county": "Grand"
     },
+    "data": "http://www.grandgis.com/arcgis/rest/services/AddressPoint/MapServer/0",
+    "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "GIS_ADD",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "GIS_ADD",
-            "pattern": "^(?:[0-9]+ )(.*)(?: UNIT .*)?",
-            "replace": "$1"
-        }
-    },
-    "data": "http://www.grandgis.com/arcgis/rest/services/Parcels/MapServer/0",
-    "type": "ESRI"
+        "number": "ADDRNUM",
+        "street": "FULLNAME"
+    }
 }
