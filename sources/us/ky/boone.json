@@ -9,21 +9,27 @@
         "state": "ky",
         "county": "Boone"
     },
-    "data": "https://services1.arcgis.com/GkTTq9BaSPUnctWP/ArcGIS/rest/services/Boone_County_1/FeatureServer/1",
+    "data": "https://services1.arcgis.com/GkTTq9BaSPUnctWP/ArcGIS/rest/services/Address/FeatureServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADR_LABEL",
-            "pattern": "^([0-9]+) (.*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADR_LABEL",
-            "pattern": "^(?:[0-9]+) (.*)",
-            "replace": "$2"
-        }
+        "number": [
+            "ADR_NUM",
+            "ADR_NUM_SU"
+        ],
+        "street": [
+            "PRE_DIR",
+            "PSTR_NAME",
+            "PSTR_TYPE",
+            "PSUF_DIR"
+        ],
+        "unit": [
+            "ADR_UNIT_T",
+            "ADR_UNIT_I"
+        ],
+        "city": "ADR_CITY",
+        "district": "CNTY_NAME",
+        "region": "ADR_STATE",
+        "postcode": "ADR_ZIP5"
     }
 }

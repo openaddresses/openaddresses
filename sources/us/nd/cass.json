@@ -13,12 +13,15 @@
     "type": "ESRI",
     "conform": {
         "number": "addr_num",
-        "street": {
-            "function": "regexp",
-            "field": "property_addr",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
+        "street": [
+            "PRE_TYPE",
+            "PRE_DIR",
+            "ST_NAME",
+            "ST_TYPE",
+            "SUF_DIR"
+        ],
+        "unit": "UNIT",
+        "city": "CITY",
         "type": "geojson",
         "postcode": "zip_code"
     }
