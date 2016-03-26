@@ -21,6 +21,12 @@
         "file": "L3_TAXPAR_POLY_ASSESS.shp",
         "number": "addr_num",
         "street": "full_str",
+        "unit": {
+            "function": "regexp",
+            "field": "SITE_ADDR",
+            "pattern": "^(?:.*) #([0-9]+)$",
+            "replace": "$1"
+        },
         "type": "shapefile-polygon",
         "city": "city",
         "postcode": "zip"

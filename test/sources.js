@@ -39,7 +39,7 @@ function checkSource(i){
         var raw = fs.readFileSync(source, 'utf8');
         var data = validateJSON(raw);
 
-        t.ok(data, "Data is valid JSON");
+        t.ok(data, "Data should be valid JSON");
 
         if (data) {
             if (data.skip) {t.pass("WARN - Skip Flag Detected");}
@@ -50,7 +50,7 @@ function checkSource(i){
                 'data', 'type', 'coverage', 'coverage', 'conform', 'compression',
                 
                 // https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md#optional-tags
-                'website', 'license', 'note', 'attribution', 'email',
+                'website', 'license', 'note', 'attribution', 'email', 'language',
                 
                 // Not documented, but works
                 'year', 'skip'
@@ -61,15 +61,15 @@ function checkSource(i){
             });
 
             //Mandatory Fields & Coverage
-            t.ok(data.data, "Checking for data");
-            t.ok(data.type, "Checking for type");
-            if (data.compression && ['zip'].indexOf(data.compression) === -1) {t.fail("Compression type not supported");}
-            t.ok(typeof data.coverage === 'object', "Coverage Object Exists");
-            t.ok(typeof data.coverage.country === 'string', "coverage - Country must be a string");
-            t.ok(data.coverage.province ? typeof data.coverage.country === 'string' : true, "coverage - Province must be a string");
-            t.ok(data.coverage.county ? typeof data.coverage.county === 'string' : true, "coverage - County must be a string");
-            t.ok(data.coverage.city ? typeof data.coverage.city === 'string' : true, "coverage - City must be a string");
-            t.ok(['http', 'ftp', 'esri'].indexOf(data.type.toLowerCase()) !== -1, "Type valid");
+            t.ok(data.data, "Should be data");
+            t.ok(data.type, "Should be a type");
+            if (data.compression && ['zip'].indexOf(data.compression) === -1) {t.fail("Should be a supported compression type");}
+            t.ok(typeof data.coverage === 'object', "Should have a Coverage Object");
+            t.ok(typeof data.coverage.country === 'string', "Country coverage should be a string");
+            t.ok(data.coverage.province ? typeof data.coverage.country === 'string' : true, "Province coverage should be a string");
+            t.ok(data.coverage.county ? typeof data.coverage.county === 'string' : true, "County coverage should be a string");
+            t.ok(data.coverage.city ? typeof data.coverage.city === 'string' : true, "City coverage should be a string");
+            t.ok(['http', 'ftp', 'esri'].indexOf(data.type.toLowerCase()) !== -1, "Should be a valid type");
 
             if (data.conform) {
                 //Ensure people don't make up new values
@@ -84,8 +84,8 @@ function checkSource(i){
                 });
 
                 //Mandatory Conform Fields
-                t.ok(data.conform.type && typeof data.conform.type === 'string', "conform - type attribute required");
-                t.ok(['shapefile', 'shapefile-polygon', 'csv', 'geojson', 'xml'].indexOf(data.conform.type) !== -1, "conform - type is supported");
+                t.ok(data.conform.type && typeof data.conform.type === 'string', "Conform should have a type attribute");
+                t.ok(['shapefile', 'shapefile-polygon', 'csv', 'geojson', 'xml'].indexOf(data.conform.type) !== -1, "Conform should have a supported type");
                 if (data.conform.type === 'csv') {
                     t.ok(data.conform.hasOwnProperty('lon'), "conform - lon attribute required for type csv");
                     t.ok(data.conform.hasOwnProperty('lat'), "conform - lat attribute required for type csv");
@@ -100,21 +100,20 @@ function checkSource(i){
                 ['lat', 'lon', 'number', 'street', 'unit', 'city', 'postcode', 'district', 'region', 'notes'].forEach(function(attrib) {
                     if (!data.conform[attrib]) { return; }
                     if (typeof data.conform[attrib] === 'string') {
-                        t.ok(data.conform[attrib], attrib + ' references static field');
+                        t.ok(data.conform[attrib], attrib + ' should not be an empty string');
                     } else if (Array.isArray(data.conform[attrib])) {
-                        t.ok(data.conform[attrib].length > 1, 'merge array has more than 1 element');
-                        t.ok(data.conform[attrib], attrib + ' references fields to be merged');
+                        t.ok(data.conform[attrib].length >= 1, attrib + ' merge array should have at least one element');
                     } else if (typeof data.conform[attrib] === 'object') {
-                        t.ok(data.conform[attrib].function, 'named function');
+                        t.ok(data.conform[attrib].function, attrib + ' should name a function');
                         if (data.conform[attrib].function === 'regexp') {
-                            t.ok(data.conform[attrib].pattern, 'must have pattern');
-                            t.ok(typeof data.conform[attrib].field === 'string', 'must reference field');
-                            t.ok(data.conform[attrib].replace ? typeof data.conform[attrib].replace === 'string' : true, 'replace is a string');
+                            t.ok(data.conform[attrib].pattern, attrib + ' regexp should have pattern');
+                            t.ok(typeof data.conform[attrib].field === 'string', attrib + ' regexp should reference a field');
+                            t.ok(data.conform[attrib].replace ? typeof data.conform[attrib].replace === 'string' : true, attrib + ' regexp replace should be a string');
                         } else if (data.conform[attrib].function === 'join') { 
-                            t.ok(Array.isArray(data.conform[attrib].fields), 'must reference fields');
-                            t.ok(typeof data.conform[attrib].separator === 'string', 'replace is a string');
+                            t.ok(Array.isArray(data.conform[attrib].fields), attrib + ' join should reference fields');
+                            t.ok(typeof data.conform[attrib].separator === 'string', attrib + ' join separator should be a string');
                         } else {
-                            t.fail(data.conform[attrib].function + ' is not a valid function');
+                            t.fail(data.conform[attrib].function + ' function should be valid');
                         }
                     }
                     

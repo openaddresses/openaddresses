@@ -9,18 +9,21 @@
         "state": "nc",
         "county": "Cabarrus"
     },
-    "data": "http://www.cabarruscounty.us/government/departments/information-technology/Data%20Downloads/Addresses.zip",
-    "type": "http",
-    "compression": "zip",
+    "data": "http://gisservices2.cabarruscounty.us/arcgis/rest/services/opendata/MapServer/42",
+    "type": "ESRI",
     "website": "http://www.cabarruscounty.us/government/departments/information-technology/Pages/Data-Services.aspx",
     "conform": {
-        "file": "Addresses/Addresses.shp",
+        "type": "geojson",
         "street": [
+            "road_pre",
             "road_name",
-            "road_type"
+            "road_type",
+            "road_suf"
         ],
         "number": "addressnum",
-        "type": "shapefile",
-        "postcode": "zip"
+        "unit": "unit_num",
+        "city": "City",
+        "region": "State",
+        "postcode": "Zip"
     }
 }

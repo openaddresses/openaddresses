@@ -4,6 +4,12 @@
         "state": "ri",
         "city": "Providence"
     },
+    "conform": {
+        "type": "shapefile-polygon",
+        "number": { "function": "regexp", "field": "Property_A", "pattern": "^([0-9]+)" },
+        "street": { "function": "regexp", "field": "Property_A", "pattern": "^(?:[0-9]+ )(.*)", "replace": "$1" },
+        "postcode": "ZIP_POSTAL"
+    },
     "data": "https://data.providenceri.gov/api/geospatial/ynak-nf84?method=export&format=Original",
     "website": "https://data.providenceri.gov/Reference/Providence-Parcel-Boundaries/ynak-nf84",
     "license": "",

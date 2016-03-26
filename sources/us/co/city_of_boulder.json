@@ -24,8 +24,8 @@
     "conform": {
       "type": "shapefile",
       "number": [
-        "ADDR_NUM",
-        "ADDR_SUFX"
+        "ADDRESS_NU",
+        "ADDRESS__1"
       ],
       "street": {
           "function": "regexp",
@@ -33,6 +33,10 @@
           "pattern": "^(?:[0-9]+ (?:1/2)?)(.*)(?:,.*)?$",
           "replace": "$1"
       },
+      "unit": [
+        "UNIT_TYPE",
+        "UNIT"
+      ],
       "city": "CITY",
       "region": "STATE",
       "postcode": "ZIPCODE"

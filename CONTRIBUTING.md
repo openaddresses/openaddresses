@@ -1,10 +1,12 @@
 # Contributing to OpenAddresses
 
-[![Build Status](https://travis-ci.org/openaddresses/openaddresses.png?branch=master)](https://travis-ci.org/openaddresses/openaddresses)
+[![Build Status](https://travis-ci.org/openaddresses/openaddresses.svg?branch=master)](https://travis-ci.org/openaddresses/openaddresses)
 
 ## Reporting Sources & Issues
 
 We'd love to hear about a new address source, fixes to an old one, or make improvements.
+
+OpenAddresses is a collection of _authoritative data_ for address locations around the world. We collect address data from authoritative sources; we do not create our own data. A source is a location where authoritative address data can be found. Examples might be a downloadable CSV file or live ArcServer feature service hosted by a national postal service, a state GIS department, or a county property parcel database.
 
 ### New Sources
 
@@ -34,7 +36,7 @@ We will do our best to review your issue and either fix or add the feature(s) to
 
 Comfortable with JSON? Feel free to submit a pull request with the data instead of opening an issue. Before asking for a merge, please keep Travis CI happy by making sure you submit well-formed JSON: green is good!
 
-For a first time contributer, getting the JSON right can be a bit of a challenge,
+For a first time contributor, getting the JSON right can be a bit of a challenge,
 check out other sources in `./sources/` to get an idea of what we are looking for.
 Still confused? [Open an issue](https://github.com/openaddresses/openaddresses/issues/new),
 we’ll be happy to help you out!
@@ -42,7 +44,7 @@ we’ll be happy to help you out!
 ### Naming Files
 
 Although the file name is redundant (the same information is stored in JSON),
-using coherent file names makes it much easier for contributers to quickly
+using coherent file names makes it much easier for contributors to quickly
 evaluate whether a source already exists. Please use the following
 conventions.
 
@@ -221,7 +223,7 @@ _Example_
 ###### join function
 
 The join function allows fields to be merged given an arbitrary delimiter. For delimiting
-by spaces there is a more conscise format - see the example for `Merge Fields`
+by spaces there is a more concise format - see the example for `Merge Fields`
 
 _Format_
 ```JSON
@@ -277,6 +279,7 @@ Additional metadata helps future proof the project!
 `note`        | A String containing a human readable note.
 `attribution` | **Deprecated:** Where the license requires attribution, add it here. example `CC-BY United Federation of Planets`
 `email`       | This email is used to send automated emails to the data provider if a user changes their data. Do not set unless the data provider wants to receive updates.
+`language`    | ISO 639-1 code for the language of the data. For example: `en`, `fr` or `de`.
 
 #### Example
 
@@ -291,6 +294,7 @@ Additional metadata helps future proof the project!
     "license": {"url": "http://geonb.snb.ca/downloads/documents/geonb_license_e.pdf"},
     "type": "http",
     "compression": "zip",
+    "language": "en",
     "conform": {
         "number": "civic_num",
         "street": "street_nam",
@@ -299,6 +303,19 @@ Additional metadata helps future proof the project!
     }
 }
 ```
+
+### Language
+
+Names of places, cities, addresses etc. are often translated to various languages. For example: Munich, Bavaria, Germany
+vs. München, Bayern, Deutschland. The optional `language` tag defines, which language is in use in the metadata entry.
+A data source usually includes addresses in a single language (e.g. Montreal in Canada contains only French names).
+Some data sources can define several translations of address components under appropriate csv column labels. For example,
+Brussels in Belgium has both Dutch and French names. Such a bilingual data source can be linked to OpenAddresses
+with two separate metadata entries, one for reading the [French addresses](https://github.com/openaddresses/openaddresses/blob/master/sources/be/wa/brussels-fr.json)
+and one for reading the [Dutch addresses](https://github.com/openaddresses/openaddresses/blob/master/sources/be/wa/brussels-nl.json).
+An application,which uses OpenAddresses and wishes to generate multilingual address entries, can access the data via both metadata entries
+and merge the language versions by identifying the address items by their `id` unique identifier tag.
+
 
 ### Formatting:
 
@@ -311,3 +328,4 @@ A few notes on formatting:
 
 Although these are read by a machine, they are maintained by us mortals.
 Following the formatting guidelines keeps the rest of us sane!
+
