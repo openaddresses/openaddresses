@@ -7,11 +7,19 @@
     "data": "http://gis4.dfwmaps.com/arcgis/rest/services/ICColleyville/Colleyville_BaseLayers_VE/MapServer/1",
     "type": "ESRI",
     "conform": {
-        "number": "StreetNumb",
-        "street": [
-            "StreetName",
-            "StreetType"
-        ],
+        "number": {
+            "function": "regexp",
+            "field": "Situs_Addr",
+            "pattern": "^([0-9]+)( .*)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Situs_Addr",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "type": "geojson"
-    }
+    },
+    "note": "Situs_Addr can contain unit #, regexp should be revisited"
 }
