@@ -1,0 +1,24 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "on",
+        "county": "Bruce"
+    },
+    "website": "http://www.brucecounty.on.ca/services-health/planning-services/interactive-maps.php",
+    "data": "https://maps.brucecounty.on.ca/arcgis/rest/services/public/parcels_pub_wa/MapServer/3",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "CivicAddress",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "CivicAddress",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}
