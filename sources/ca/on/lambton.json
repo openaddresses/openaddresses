@@ -1,0 +1,26 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "on",
+        "county": "Lambton"
+    },
+    "type": "http",
+    "data": "http://data.openaddresses.io/cache/ca-on-lambton.geojson",
+    "conform":{
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^([0-9]+)( .*)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "city": "MUNICIPALITY"
+    },
+    "note": "Token Required - https://www.lambtongis.ca/sites/?viewer=lcgis"
+}
