@@ -1,0 +1,25 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "on",
+        "county": "Essex"
+    },
+    "type": "ESRI",
+    "data": "http://data.openaddresses.io/cache/ca-on-essex_county.geojson",
+    "conform":{
+        "number": {
+            "function": "regexp",
+            "field": "CIVIC",
+            "pattern": "^([0-9]+)( .*)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "CIVIC",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "geojson"
+    },
+    "note": "Token Required - http://gisweb.countyofessex.on.ca/htmlcounty24/Index.html?configBase=http://gisweb.countyofessex.on.ca/Geocortex/Essentials/County/REST/sites/County_of_Essex__Public/viewers/htmlpublic/virtualdirectory/Resources/Config/Default&extent=313436.05,4695451.23,395580.67,4640491.63"
+}
