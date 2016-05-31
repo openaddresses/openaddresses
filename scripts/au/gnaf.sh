@@ -17,7 +17,7 @@ createdb -U $PGUSER $DBNAME
 echo "CREATE EXTENSION postgis;" | $PSQL
 
 # fetch data/resources
-git clone git@github.com:minus34/gnaf-loader.git $TMP/gnaf-loader &
+git clone https://github.com/minus34/gnaf-loader.git $TMP/gnaf-loader &
 curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/MAY16_AdminBounds_ESRIShapefileorDBFfile_20160523140152.zip' -o $TMP/gnaf-admin.zip &
 curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/MAY16_GNAF%2BEULA_PipeSeparatedValue_20160523140820.zip' -o $TMP/gnaf.zip &
 wait
