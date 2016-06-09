@@ -16,14 +16,11 @@ location based national datasets.
 
 More information at http://www.data.gov.au/dataset/geocoded-national-address-file-g-naf
 
-Cache
+Experimental Docker (Incomplete)
 ----
 
 `gnaf.sh` contains a script for caching G-NAF data with
 [gnaf-loader](https://github.com/minus34/gnaf-loader).
-
-Experimental Docker (Incomplete)
-----
 
 `Dockerfile` contains an experimental Docker process for caching G-NAF.  We are
 experimenting with Docker because it allows for code execution in a controlled

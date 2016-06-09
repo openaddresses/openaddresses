@@ -2,20 +2,19 @@
 
 set -eu
 
-TMP=${TMP:-'/tmp/gnaf'}
-PGUSER='postgres'
-DBNAME='gnaf'
-PSQL="psql -t -q -U $PGUSER $DBNAME"
-
 # set up postgres, directories
-mkdir -p $TMP/gnaf
-mkdir -p $TMP/gnaf-admin
-dropdb -U $PGUSER --if-exists $DBNAME
-createdb -U $PGUSER $DBNAME
-echo "CREATE EXTENSION postgis;" | $PSQL
+TMP=/work/tmp
+mkdir $TMP
+mkdir $TMP/gnaf $TMP/gnaf-admin $TMP/tablespace
+chown postgres:postgres $TMP/tablespace
+
+/etc/init.d/postgresql start 
+sudo -u postgres psql -c "CREATE USER gnafun WITH CREATEUSER PASSWORD 'gnafpw'"
+sudo -u postgres psql -c "CREATE TABLESPACE gnafts OWNER gnafun LOCATION '$TMP/tablespace'"
+sudo -u postgres psql -c 'CREATE DATABASE gnafdb OWNER gnafun TABLESPACE gnafts'
+sudo -u postgres psql -c 'CREATE EXTENSION postgis'
 
 # fetch data/resources
-git clone git@github.com:minus34/gnaf-loader.git $TMP/gnaf-loader &
 curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/FEB16_AdminBounds_ESRI.zip' -o $TMP/gnaf-admin.zip &
 curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/FEB16_GNAF%2BEULA_PipeSeparatedValue_20160222170142.zip' -o $TMP/gnaf.zip &
 wait
@@ -26,11 +25,10 @@ GNAF_DIR="$(find $TMP -type d | grep 'G-NAF' | grep 'Authority Code' | xargs -I 
 BOUNDARY_DIR="$(find $TMP -type d | grep 'AdminBounds_ESRI' | grep -v 'Administrative Boundaries' | head -n1)"
 
 # load data into tables
-python $TMP/gnaf-loader/load-gnaf.py \
-    --pguser $PGUSER \
-    --pgdb $DBNAME \
-    --gnaf-tables-path $GNAF_DIR
-    --admin-bdys-path $BOUNDARY_DIR
+python /usr/local/gnaf-loader/load-gnaf.py \
+    --pguser gnafun --pgdb gnafdb --pgpassword gnafpw \
+    --gnaf-tables-path "$GNAF_DIR" \
+    --admin-bdys-path "$BOUNDARY_DIR"
 
 # select output from tables
 echo "CREATE TABLE openaddresses AS
@@ -60,13 +58,16 @@ SELECT
     state AS region
 
 FROM gnaf.addresses adr;
-" | $PSQL
+" | psql postgres://gnafun:gnafpw@localhost/gnafdb
 
 # copy to CSV
 touch $TMP/au.csv
 chmod a+w $TMP/au.csv
-echo "COPY openaddresses TO '$TMP/au.csv' DELIMITER ',' CSV HEADER;" | $PSQL
-zip $TMP/au.zip $TMP/au.csv
+echo "COPY openaddresses TO '$TMP/au.csv' DELIMITER ',' CSV HEADER;" | psql -t -q postgres://gnafun:gnafpw@localhost/gnafdb
 
-# upload to S3
-aws s3 cp $TMP/au.zip s3://data.openaddresses.io/cache/au.zip
+mkdir /work/cache
+zip -j /work/cache/au.zip $TMP/au.csv
+
+# clean up temporary files
+/etc/init.d/postgresql stop
+rm -rf $TMP
