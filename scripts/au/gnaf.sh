@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# requires: postgis unzip parallel curl git python-psycopg2 zip
+
 set -eu
 
 # set up postgres, directories
@@ -15,20 +17,21 @@ sudo -u postgres psql -c 'CREATE DATABASE gnafdb OWNER gnafun TABLESPACE gnafts'
 sudo -u postgres psql -c 'CREATE EXTENSION postgis'
 
 # fetch data/resources
-curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/FEB16_AdminBounds_ESRI.zip' -o $TMP/gnaf-admin.zip &
-curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/FEB16_GNAF%2BEULA_PipeSeparatedValue_20160222170142.zip' -o $TMP/gnaf.zip &
+curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/MAY16_AdminBounds_ESRIShapefileorDBFfile_20160523140152.zip' -o $TMP/gnaf-admin.zip &
+curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/MAY16_GNAF%2BEULA_PipeSeparatedValue_20160523140820.zip' -o $TMP/gnaf.zip &
 wait
 parallel "unzip -d $TMP/{} $TMP/{}.zip" ::: gnaf gnaf-admin
 
 # find file directories
 GNAF_DIR="$(find $TMP -type d | grep 'G-NAF' | grep 'Authority Code' | xargs -I {} dirname {} | head -n1)"
-BOUNDARY_DIR="$(find $TMP -type d | grep 'AdminBounds_ESRI' | grep -v 'Administrative Boundaries' | head -n1)"
+BOUNDARY_DIR="$(find $TMP -type d | grep -v 'Administrative Boundaries' | head -n1)"
 
 # load data into tables
 python /usr/local/gnaf-loader/load-gnaf.py \
     --pguser gnafun --pgdb gnafdb --pgpassword gnafpw \
     --gnaf-tables-path "$GNAF_DIR" \
-    --admin-bdys-path "$BOUNDARY_DIR"
+    --admin-bdys-path "$BOUNDARY_DIR" \
+    --raw-unlogged
 
 # select output from tables
 echo "CREATE TABLE openaddresses AS
