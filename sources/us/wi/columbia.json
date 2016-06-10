@@ -9,11 +9,17 @@
         "state": "wi",
         "county": "Columbia"
     },
-    "data": "http://lrs.co.columbia.wi.us/ArcGIS/rest/services/LRS/Addresses/MapServer/0",
+    "data": "http://lrs.co.columbia.wi.us/arcgis/rest/services/OpenData_GIS/TaxParcels_Surveys/MapServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
         "number": "ADDRESSNUM",
-        "street": "FULL_NM"
+        "street": [
+            "ST_PRE_ABBR",
+            "ST_NM",
+            "ST_SFX_ABBR",
+            "ST_TY_ABBR"
+        ],
+        "zip": "ZIP"
     }
 }
