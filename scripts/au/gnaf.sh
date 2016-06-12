@@ -70,7 +70,7 @@ chmod a+w $TMP/au.csv
 echo "COPY openaddresses TO '$TMP/au.csv' DELIMITER ',' CSV HEADER;" | psql -t -q postgres://gnafun:gnafpw@localhost/gnafdb
 
 mkdir /work/cache
-zip -j /work/cache/au.zip $TMP/au.csv
+zip -j /work/cache/au-may2016.zip $TMP/au.csv
 
 # clean up temporary files
 /etc/init.d/postgresql stop

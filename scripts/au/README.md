@@ -16,16 +16,15 @@ location based national datasets.
 
 More information at http://www.data.gov.au/dataset/geocoded-national-address-file-g-naf
 
-Experimental Docker (Incomplete)
+Using Docker
 ----
 
 `gnaf.sh` contains a script for caching G-NAF data with
 [gnaf-loader](https://github.com/minus34/gnaf-loader).
 
-`Dockerfile` contains an experimental Docker process for caching G-NAF.  We are
-experimenting with Docker because it allows for code execution in a controlled
-environment. Docker support is incomplete, but can be partially completed using
-these commands:
+`Dockerfile` contains a Docker process for caching G-NAF. Docker allows for
+code execution in a controlled environment. On Ubuntu, Docker can be installed
+with `apt-get install docker.io`.
 
     # prepare a temporary work directory for Docker
     mkdir /tmp/work
@@ -36,4 +35,7 @@ these commands:
     docker build -t au-gnaf .
     
     # run cache, leaving data in work directory
-    docker run -i -t --volume /tmp/work:/work au-gnaf /usr/local/bin/run-cache
+    docker run --volume /tmp/work:/work au-gnaf /usr/local/bin/run-cache
+    
+    # upload contents of cache directory to S3
+    aws s3 sync /tmp/work/cache s3://data.openaddresses.io/cache
