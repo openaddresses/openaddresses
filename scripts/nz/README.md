@@ -36,21 +36,21 @@ apt-get install docker.io.
 Getting Data
 ----
 
-Start by [finding the Street Address (Electoral) dataset](https://data.linz.govt.nz/search/?q=street+address+electoral)
-on [LINZ Data Service](https://data.linz.govt.nz/), and select “download” from
-the drop-down menu:
+1.  Start by [finding the Street Address (Electoral) dataset](https://data.linz.govt.nz/search/?q=street+address+electoral)
+    on [LINZ Data Service](https://data.linz.govt.nz/), and select “download” from
+    the drop-down menu:
+    
+    ![Download data](images/1.png)
 
-![Download data](images/1.png)
+2.  Accept the terms of service and create a download. You will be asked to create
+    an account on the website with your email address:
+    
+    ![Create download](images/2.png)
 
-Accept the terms of service and create a download. You will be asked to create
-an account on the website with your email address:
+3.  Wait for the downloaded to be created; appears to take ~5 minutes:
+    
+    ![Wait for creation](images/3.png)
 
-![Create download](images/2.png)
-
-Wait for the downloaded to be created; appears to take ~5 minutes:
-
-![Wait for creation](images/3.png)
-
-Download the 91MB address shapefile, `lds-nz-street-address-electoral-SHP.zip`:
-
-![Get file](images/4.png)
+4.  Download the 91MB address shapefile, `lds-nz-street-address-electoral-SHP.zip`:
+    
+    ![Get file](images/4.png)
