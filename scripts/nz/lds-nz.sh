@@ -7,15 +7,15 @@
 
 DST_SHAPEFILE="nz-street-address-electoral.shp"
 
-TEMP_SRC_DIR=lds-src
-TEMP_DST_DIR=lds-dst
+TEMP_SRC_DIR=/work/source
+TEMP_DST_DIR=/work/dest
 
-ZIP_FILENAME=lds-nz-street-address-electoral-SHP.zip
+ZIP_FILENAME=`find /work -name lds-nz-street-address-electoral-SHP.zip | head -n 1`
 
-mkdir -p "$TEMP_SRC_DIR"
+mkdir "$TEMP_SRC_DIR"
 unzip $ZIP_FILENAME -d "$TEMP_SRC_DIR"
 
-mkdir -p "$TEMP_DST_DIR"
+mkdir "$TEMP_DST_DIR"
 
 i=0
 for src_file in "$TEMP_SRC_DIR"/nz-street-address-electoral/*.shp ; do
@@ -28,4 +28,7 @@ for src_file in "$TEMP_SRC_DIR"/nz-street-address-electoral/*.shp ; do
     i=$(($i+1))
 done
 
-zip --junk-paths "$TEMP_DST_DIR/$ZIP_FILENAME" "$TEMP_DST_DIR"/*
+mkdir -p /work/cache/nz
+zip --junk-paths /work/cache/nz/lds-nz-street-address-electoral-SHP.zip "$TEMP_DST_DIR"/*
+
+rm -rf $TEMP_SRC_DIR $TEMP_DST_DIR
