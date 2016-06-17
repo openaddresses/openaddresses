@@ -24,14 +24,17 @@ apt-get install docker.io.
     chmod ugo+rwxt /tmp/work
     cp lds-nz-street-address-electoral-SHP.zip /tmp/work/
 
-    # build docker image
+    # build docker image from cache
+    curl http://data.openaddresses.io/cache/nz/nz-docker-6f346f299.tar.bz2 | bzcat | docker load
+    
+    # image can alternatively be built the slow way
     docker build -t nz-lds .
 
     # run cache, leaving data in work directory
     docker run --volume /tmp/work:/work nz-lds /usr/local/bin/run-cache
 
     # upload contents of cache directory to S3
-    aws s3 sync /tmp/work/cache s3://data.openaddresses.io/cache
+    aws s3 sync --acl public-read /tmp/work/cache s3://data.openaddresses.io/cache
 
 Getting Data
 ----

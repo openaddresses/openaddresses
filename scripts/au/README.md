@@ -31,11 +31,14 @@ with `apt-get install docker.io`.
     chgrp docker /tmp/work
     chmod ugo+rwxt /tmp/work
     
-    # build docker image
+    # build docker image from cache
+    curl http://data.openaddresses.io/cache/au/au-docker-e3b835b57.tar.bz2 | bzcat | docker load
+    
+    # image can alternatively be built the slow way
     docker build -t au-gnaf .
     
     # run cache, leaving data in work directory
     docker run --volume /tmp/work:/work au-gnaf /usr/local/bin/run-cache
     
     # upload contents of cache directory to S3
-    aws s3 sync /tmp/work/cache s3://data.openaddresses.io/cache
+    aws s3 sync --acl public-read /tmp/gnaf-may16/cache s3://data.openaddresses.io/cache
