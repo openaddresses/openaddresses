@@ -22,7 +22,10 @@ execution in a controlled environment. On Ubuntu, Docker can be installed with
     chgrp docker /tmp/work
     chmod ugo+rwxt /tmp/work
 
-    # build docker image
+    # build docker image from cache
+    curl http://data.openaddresses.io/cache/us/tn/us-tn-docker-4a3d2f591.tar.bz2 | bzcat | docker load
+
+    # image can alternatively be built the slow way
     docker build -t us-tn .
 
     # run cache, leaving data in work directory
