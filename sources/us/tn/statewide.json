@@ -1,0 +1,27 @@
+{
+    "coverage": {
+        "country": "us",
+        "US Census": "47",
+        "state": "tn"
+    },
+    "data": "http://data.openaddresses.io/cache/us/tn.zip",
+    "type": "http",
+    "compression": "zip",
+    "website": "http://tnmap.tn.gov/",
+    "year": "MAY 2016",
+    "conform": {
+        "type": "shapefile-polygon",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "([0-9]+)$",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "(.*)(?:[0-9]+)?",
+            "replace": "$1"
+        }
+    }
+}
