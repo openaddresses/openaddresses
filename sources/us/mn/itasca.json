@@ -1,0 +1,29 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27061",
+            "name": "Itasca County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Itasca"
+    },
+    "data": "https://gisdata.mn.gov/dataset/us-mn-co-itasca-plan-parcels",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "ADDR_10001",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDR_10001",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "shapefile"
+    }
+}
