@@ -85,7 +85,7 @@ function checkSource(i){
 
                 //Mandatory Conform Fields
                 t.ok(data.conform.type && typeof data.conform.type === 'string', "Conform should have a type attribute");
-                t.ok(['shapefile', 'shapefile-polygon', 'csv', 'geojson', 'xml'].indexOf(data.conform.type) !== -1, "Conform should have a supported type");
+                t.ok(['gdb', 'shapefile', 'shapefile-polygon', 'csv', 'geojson', 'xml'].indexOf(data.conform.type) !== -1, "Conform should have a supported type");
                 if (data.conform.type === 'csv') {
                     t.ok(data.conform.hasOwnProperty('lon'), "conform - lon attribute required for type csv");
                     t.ok(data.conform.hasOwnProperty('lat'), "conform - lat attribute required for type csv");
