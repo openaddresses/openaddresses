@@ -7,28 +7,26 @@
         "country": "us",
         "state": "ma"
     },
-    "data": "https://www.dropbox.com/s/15bzesrcesp5wt2/SHPStatewideParcels.zip?dl=1",
-    "website": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/datalayers/download-level3-parcels.html",
+    "data": "http://gisprpxy.itd.state.ma.us/arcgisserver/rest/services/AGOL/MassGIS_Master_Address_Points/MapServer/0",
+    "website": "http://www.mass.gov/anf/research-and-tech/it-serv-and-support/application-serv/office-of-geographic-information-massgis/",
     "license": {
         "text": "Public Domain",
-        "attribution": false,
+        "attribution name": "Office of Geographic Information (MassGIS), Commonwealth of Massachusetts, MassIT",
         "share-alike": false
     },
-    "year": "2014",
-    "type": "http",
-    "compression": "zip",
+    "type": "ESRI",
     "conform": {
-        "file": "L3_TAXPAR_POLY_ASSESS.shp",
-        "number": "addr_num",
-        "street": "full_str",
-        "unit": {
-            "function": "regexp",
-            "field": "SITE_ADDR",
-            "pattern": "^(?:.*) #([0-9]+)$",
-            "replace": "$1"
-        },
-        "type": "shapefile-polygon",
-        "city": "city",
-        "postcode": "zip"
+        "type": "geojson",
+        "number": "ADDR_NUM",
+        "unit": "UNIT",
+        "street": [
+            "PRE_MOD",
+            "PRE_DIR",
+            "BASE",
+            "POST_MOD",
+            "POST_DIR"
+        ],
+        "city": "TOWN",
+        "postcode": "ZIPCODE"
     }
 }
