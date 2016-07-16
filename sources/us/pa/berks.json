@@ -13,17 +13,16 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number":  {
+        "number": {
             "function": "regexp",
             "field": "FULLSITEADDRESS",
-            "pattern": "([0-9]+)(.*)",
-            "replace": "$1"
+            "pattern": "^([0-9]+)"
         },
-        "street":  {
+        "street": {
             "function": "regexp",
             "field": "FULLSITEADDRESS",
-            "pattern": "([0-9]+)(.*)",
-            "replace": "$2"
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
         },
         "city": "MUNICIPALNAME"
     }
