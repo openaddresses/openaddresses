@@ -14,13 +14,13 @@
         "number": {
             "function": "regexp",
             "field": "ADDRESS",
-            "pattern": "([0-9]+)$",
-            "replace": "$1"
+            "pattern": "(.*?)(([0-9]+)?)$",
+            "replace": "$2"
         },
         "street": {
             "function": "regexp",
             "field": "ADDRESS",
-            "pattern": "(.*)(?:[0-9]+)?",
+            "pattern": "(.*?)(([0-9]+)?)$",
             "replace": "$1"
         }
     }
