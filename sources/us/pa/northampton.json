@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "42095",
+            "name": "Northampton County",
+            "state": "Pennsylvania"
+        },
+        "country": "us",
+        "state": "pa",
+        "county": "Northampton"
+    },
+    "data": "https://gis.northamptoncounty.org/arcgisweb/rest/services/Assessment_Data/ParcelCama/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "LOCATION",
+            "pattern": "^([0-9]+) "
+        },
+        "street": {
+            "function": "regexp",
+            "field": "LOCATION",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}
