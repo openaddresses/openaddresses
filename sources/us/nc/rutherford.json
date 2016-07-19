@@ -11,21 +11,22 @@
     },
     "conform": {
         "type": "geojson",
-        "number": "ST_NBR",
+        "number": [
+            "HSENUMBER",
+            "HSENUMSUF"
+        ],
         "street": [
-            "ST_DIR",
-            "ST_NAME",
-            "ST_SUFFIX"
+            "PREDIR",
+            "STR_NAME",
+            "STR_TYPE",
+            "POSTDIR"
         ],
         "unit": "APT_NBR",
-        "postcode": "ZIP",
-        "city": "CITY"
+        "postcode": "STR_ZIP",
+        "city": "STR_CMNTY",
+        "region": "STATE"
     },
-    "data": "http://arcgis.webgis.net/arcgis/rest/services/NC/Rutherford/MapServer/4",
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
+    "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/RutherfordCounty/MapServer/46",
+    "note": "included HSENUMSUF because there appear to be some transposition errors in the data",
     "type": "ESRI"
 }
