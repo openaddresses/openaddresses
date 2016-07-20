@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17029",
+            "name": "Coles County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Coles"
+    },
+    "data": "http://www.co.coles.il.us/coleswebgis/rest/services/Coles911Addressing/Coles911/MapServer/2",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "site_address",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "site_address",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}
