@@ -9,20 +9,18 @@
         "state": "il",
         "county": "Morgan"
     },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_morgan_co_il_taxmap/MapServer/0",
+    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_morgan_co_il_gis/MapServer/1",
     "type": "ESRI",
     "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "site_address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "site_address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
+        "number": "HNUM",
+        "street": [
+            "PRE_DIR",
+            "STREET",
+            "TYPE"
+        ],
+        "city": "CITY",
+        "state": "STATE",
+        "postcode": "ZIP",
         "type": "geojson"
     }
 }
