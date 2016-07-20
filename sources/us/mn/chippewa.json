@@ -24,7 +24,16 @@
             "pattern": "^(?:[0-9]+) (.*)",
             "replace": "$1"
         },
-        "city": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
+        "city": {
+            "function": "regexp",
+            "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
+            "pattern": "^([^,]+)"
+        },
+        "region": {
+            "function": "regexp",
+            "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
+            "pattern": ", ([A-Z]+)$"
+        },
         "postcode": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ZIP"
     }
 }
