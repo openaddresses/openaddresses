@@ -1,0 +1,29 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27125",
+            "name": "Red Lake County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Red Lake"
+    },
+    "data": "http://gismap.co.pennington.mn.us/arcgis/rest/services/RedLake/RedLake_Internal/MapServer/26",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "RedLakeCountyTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "RedLakeCountyTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
+            "pattern": "^(?:[0-9]+) (.*)",
+            "replace": "$1"
+        },
+        "postcode": "RedLakeCountyTaxData.dbo.tblParcelJoin.PROPERTY_ZIP"
+    }
+}
