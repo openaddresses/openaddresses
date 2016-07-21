@@ -13,7 +13,16 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "Site_Address",
-        "street": "Site_Address"
+        "number": {
+            "function": "regexp",
+            "field": "site_addr",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "site_addr",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     }
 }
