@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17157",
+            "name": "Randolph County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Randolph"
+    },
+    "data": "https://services5.arcgis.com/pweYHqdOby1TE9DD/ArcGIS/rest/services/TaxParcelsFull/FeatureServer/0",
+    "type": "ESRI",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "site_addre",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "site_addre",
+            "pattern": "^(?:[0-9]+ +)(.*)",
+            "replace": "$1"
+        },
+        "type": "geojson"
+    }
+}
