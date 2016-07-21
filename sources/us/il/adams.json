@@ -1,31 +1,19 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "17001",
-            "name": "Adams County",
+            "geoid": "17095",
+            "name": "Knox County",
             "state": "Illinois"
         },
         "country": "us",
         "state": "il",
-        "county": "Adams"
+        "county": "Knox"
     },
-    "data": "http://www.adamscountyarcserver.com/arcgis/rest/services/Adams_County_Basemap_Complete/MapServer/1",
+    "data": "http://gis.co.knox.il.us/arcgis/rest/services/Test_1/Parcel_service_V4/MapServer/12",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "MASTERADD",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "MASTERADD",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "CITY",
-        "postcode": "ZIP",
-        "region": "STATE"
+        "number": "ADDRESS",
+        "street": "ADDRESS"
     }
 }
