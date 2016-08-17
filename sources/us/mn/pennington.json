@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27113",
+            "name": "Pennington County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Pennington"
+    },
+    "data": "http://gismap.co.pennington.mn.us/arcgis/rest/services/Pennington/Pennington_Internal/MapServer/30",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "PenningtonTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PenningtonTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
+            "pattern": "^(?:[0-9]+) (.*)",
+            "replace": "$1"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "PenningtonTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
+            "pattern": "^([^,]+)"
+        },
+        "postcode": "PenningtonTaxData.dbo.tblParcelJoin.PROPERTY_ZIP"
+    }
+}

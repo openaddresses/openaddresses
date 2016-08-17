@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17117",
+            "name": "Macoupin County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Macoupin"
+    },
+    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_macoupin_co_il_taxmap/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "Address",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Address",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "geojson"
+    }
+}

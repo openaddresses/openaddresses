@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "18103",
+            "name": "Miami County",
+            "state": "Indiana"
+        },
+        "country": "us",
+        "state": "in",
+        "county": "Miami"
+    },
+    "data": "https://elb2.39dn.com/arcgis/rest/services/eGISDynamicServices/MiamiINDynamic/MapServer/8",
+    "type": "ESRI",
+    "conform": {
+      "number": {
+          "function": "regexp",
+          "field": "Address",
+          "pattern": "^([0-9]+)"
+      },
+      "street": {
+          "function": "regexp",
+          "field": "Address",
+          "pattern": "^(?:[0-9]+ )(.*)",
+          "replace": "$1"
+      },
+      "type": "geojson"
+    }
+}

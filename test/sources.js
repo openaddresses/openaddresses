@@ -85,7 +85,7 @@ function checkSource(i){
 
                 //Mandatory Conform Fields
                 t.ok(data.conform.type && typeof data.conform.type === 'string', "Conform should have a type attribute");
-                t.ok(['shapefile', 'shapefile-polygon', 'csv', 'geojson', 'xml'].indexOf(data.conform.type) !== -1, "Conform should have a supported type");
+                t.ok(['gdb', 'shapefile', 'shapefile-polygon', 'csv', 'geojson', 'xml'].indexOf(data.conform.type) !== -1, "Conform should have a supported type");
                 if (data.conform.type === 'csv') {
                     t.ok(data.conform.hasOwnProperty('lon'), "conform - lon attribute required for type csv");
                     t.ok(data.conform.hasOwnProperty('lat'), "conform - lat attribute required for type csv");
@@ -97,7 +97,7 @@ function checkSource(i){
                 t.ok(data.conform.hasOwnProperty('street'), "conform - street attribute required");
 
                 //Conform Attributes
-                ['lat', 'lon', 'number', 'street', 'unit', 'city', 'postcode', 'district', 'region', 'notes'].forEach(function(attrib) {
+                ['lat', 'lon', 'number', 'street', 'unit', 'city', 'postcode', 'district', 'region', 'notes', 'id'].forEach(function(attrib) {
                     if (!data.conform[attrib]) { return; }
                     if (typeof data.conform[attrib] === 'string') {
                         t.ok(data.conform[attrib], attrib + ' should not be an empty string');
@@ -120,7 +120,6 @@ function checkSource(i){
                 });
                 
                 //Optional Conform Fields
-                t.ok(data.conform.id ? typeof data.conform.id === 'string' : true, "conform - id should be a string");
                 t.ok(data.conform.addrtype ? typeof data.conform.addrtype === 'string' : true, "conform - addrtype should be a string");
                 t.ok(data.conform.accuracy ? typeof data.conform.accuracy === 'number' : true, "conform - accuracy should be a number");
                 t.ok(data.conform.accuracy ? data.conform.accuracy !== 0 : true, "conform - accuracy is not 0");

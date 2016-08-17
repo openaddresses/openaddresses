@@ -10,7 +10,7 @@
         "county": "Manatee"
     },
     "attribution": "Manatee County",
-    "data": "http://www.mymanatee.org/gisapps/data/shape/parcels.zip",
+    "data": "http://www.mymanatee.org/gisapps/data/shape/ADDRESS.zip",
     "website": "http://www.mymanatee.org/home/government/departments/information-technology/gis-home/gis-datadownload.html",
     "license": {
         "text": "Public Domain",
@@ -20,16 +20,18 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "number": "PROP_HN",
-        "street": [
-          "PROP_SN",
-          "PROP_ST1",
-          "PROP_ST2",
-          "PROP_DIR"
-        ],
-        "unit": "UNIT",
-        "city": "PROP_CITYN",
         "type": "shapefile-polygon",
-        "postcode": "prop_zip"
+        "number": "ST_NUM",
+        "street": [
+          "SDIRPRE",
+          "SFEANME",
+          "SFEATYP",
+          "SDIRSUF"
+        ],
+        "unit": "LV_APT",
+        "city": "POSTAL_COM",
+        "district": "COUNTY_NAM",
+        "region": "STATE",
+        "postcode": "ZIP"
     }
 }

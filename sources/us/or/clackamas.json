@@ -1,0 +1,31 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "41005",
+            "name": "Clackamas County",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "county": "Clackamas"
+    },
+    "data": "http://data.openaddresses.io/cache/us-or-clackamas.zip",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile",
+        "number": {
+            "function": "regexp",
+            "field": "SITUS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITUS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "postcode": "SITUS_ZIP",
+        "city": "SITUS_CITY"
+    }
+}

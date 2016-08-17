@@ -1,0 +1,33 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27031",
+            "name": "Cook County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Cook"
+    },
+    "data": "http://mapp.co.cook.mn.us/publicgis/rest/services/Public/TaxParcels/FeatureServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "PROPERTYADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PROPERTYADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*?)((UNIT|UNTI|APT|SLIP|#|BLDG).*|$)",
+            "replace": "$1"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "PROPERTYADDRESS",
+            "pattern": "((?:UNIT|UNTI|APT|SLIP|#|BLDG).*)$"
+        }
+    }
+}
