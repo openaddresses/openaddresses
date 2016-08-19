@@ -27,12 +27,14 @@
         "city": {
             "function": "regexp",
             "field": "PHYSCITY",
-            "pattern": "^(.*) MN$"
+            "pattern": "^(.*) MN$",
+            "replace": "$1"
         },
         "region": {
             "function": "regexp",
             "field": "PHYSCITY",
-            "pattern": "^.* (MN)$"
+            "pattern": "^.* (MN)$",
+            "replace": "$1"
         },
         "postcode": "PHYSZIP"
     }
