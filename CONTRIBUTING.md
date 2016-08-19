@@ -198,8 +198,9 @@ _Format_
 
 _Example_
 
-If no replace attribute is given, numbered capture groups are concatenated together to form the output.
+If no replace attribute is given, numbered capture groups are concatenated together to form the output. If a SITUS_ADDRESS record contains "301 Main St", the regex below will return "301" to isolate the address number.
 
+_Example_
 ```JSON
 "number": {
     "function": "regexp",
@@ -208,7 +209,7 @@ If no replace attribute is given, numbered capture groups are concatenated toget
 }
 ```
 
-If a replace field is given the `pattern` is found and replaced. Numbered capture groups in the pattern can be referenced using the `${n}` syntax as below.
+If a replace field is given the `pattern` is found and replaced. Numbered capture groups in the pattern can be referenced using the `${n}` syntax as below. This would then return the "Main St" portion of the SITUS_ADDRESS record containing "301 Main St".
 
 _Example_
 ```JSON
