@@ -13,17 +13,9 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
+        "number": "HNUM_HALF",
+        "street": "STREET",
+        "unit": "Location",
         "postcode": "ZIP_CODE",
         "city": "CITY",
         "region": "STATE"
