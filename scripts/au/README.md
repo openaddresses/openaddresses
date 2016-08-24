@@ -41,4 +41,4 @@ with `apt-get install docker.io`.
     docker run --volume /tmp/work:/work au-gnaf /usr/local/bin/run-cache
     
     # upload contents of cache directory to S3
-    aws s3 sync --acl public-read /tmp/gnaf-may16/cache s3://data.openaddresses.io/cache
+    aws s3 sync --acl public-read /tmp/gnaf-aug16/cache s3://data.openaddresses.io/cache

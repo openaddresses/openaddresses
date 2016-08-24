@@ -17,8 +17,8 @@ sudo -u postgres psql -c 'CREATE DATABASE gnafdb OWNER gnafun TABLESPACE gnafts'
 sudo -u postgres psql -c 'CREATE EXTENSION postgis'
 
 # fetch data/resources
-curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/MAY16_AdminBounds_ESRIShapefileorDBFfile_20160523140152.zip' -o $TMP/gnaf-admin.zip &
-curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/MAY16_GNAF%2BEULA_PipeSeparatedValue_20160523140820.zip' -o $TMP/gnaf.zip &
+curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/AUG16_AdminBounds_ESRIShapefileorDBFfile.zip' -o $TMP/gnaf-admin.zip &
+curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/AUG16_GNAF%2BEULA_PipeSeparatedValue.zip' -o $TMP/gnaf.zip &
 wait
 parallel "unzip -d $TMP/{} $TMP/{}.zip" ::: gnaf gnaf-admin
 
@@ -70,7 +70,7 @@ chmod a+w $TMP/au.csv
 echo "COPY openaddresses TO '$TMP/au.csv' DELIMITER ',' CSV HEADER;" | psql -t -q postgres://gnafun:gnafpw@localhost/gnafdb
 
 mkdir /work/cache
-zip -j /work/cache/au-may2016.zip $TMP/au.csv
+zip -j /work/cache/au-aug2016.zip $TMP/au.csv
 
 # clean up temporary files
 /etc/init.d/postgresql stop
