@@ -1,0 +1,26 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "37029",
+            "name": "Camden County",
+            "state": "North Carolina"
+        },
+        "country": "us",
+        "state": "nc",
+        "county": "Camden"
+    },
+    "data": "http://arcgis.roktech.net/arcgis/rest/services/CamdenCountyNC/base/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "Number",
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "unit": "Suffix",
+        "city": "Town"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27089",
+            "name": "Marshall County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Marshall"
+    },
+    "data": "http://gismap.co.norman.mn.us/arcgis/rest/services/Marshall/Marshall_Internal_LINK/MapServer/24",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+          "number": {
+            "function": "regexp",
+            "field": "MarshallCountyTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
+            "pattern": "([0-9]*) (.*)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "MarshallCountyTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
+            "pattern": "([0-9]*) (.*)",
+            "replace": "$2"
+        },
+        "postcode": "MarshallCountyTaxData.dbo.tblParcelJoin.PROPERTY_ZIP"
+    }
+}

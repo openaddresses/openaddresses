@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17101",
+            "name": "Lawrence County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Lawrence"
+    },
+    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_lawrence_co_il_taxmap/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "location",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "location",
+            "pattern": "^(?:[0-9]+ )([^;]+);.*$",
+            "replace": "$1"
+        },
+        "type": "geojson"
+    }
+}

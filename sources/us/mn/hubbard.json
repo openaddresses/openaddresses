@@ -1,0 +1,26 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27057",
+            "name": "Hubbard County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Hubbard"
+    },
+    "data": "http://www.co.hubbard.mn.us/arcgis/rest/services/Dynamic_Layers/MapServer/8/",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "BUILDING",
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "city": "POSTAL",
+        "postcode": "POSTAL_CODE"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "46031",
+            "name": "Lawrence County",
+            "state": "South Dakota"
+        },
+        "country": "us",
+        "state": "sd"
+    },
+    "data": "http://web1.mobile311.com/arcgis/rest/services/LawrenceCounty/LawrenceCounty/MapServer/16",
+    "type": "ESRI",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "SITUS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITUS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "geojson"
+    }
+}

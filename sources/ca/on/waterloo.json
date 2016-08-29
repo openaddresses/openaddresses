@@ -1,0 +1,24 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "on",
+        "county": "Waterloo"
+    },
+    "website": "http://www.regionofwaterloo.ca/en/discoveringtheregion/maps.asp",
+    "data": "http://gis.region.waterloo.on.ca/arcgis/rest/services/Basemap/MapServer/4",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "Location",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Location",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "42073",
+            "name": "Lawrence County",
+            "state": "Pennsylvania"
+        },
+        "country": "us",
+        "state": "pa",
+        "county": "Lawrence"
+    },
+    "data": "http://gis.leoc.net/arcgis/rest/services/AssessmentInformation/MapServer/3",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number":  {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "([0-9]+)(.*)",
+            "replace": "$1"
+        },
+        "street":  {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "([0-9]+)(.*)",
+            "replace": "$2"
+        }
+    }
+}

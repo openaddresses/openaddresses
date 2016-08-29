@@ -9,20 +9,20 @@
         "state": "in",
         "county": "Bartholomew"
     },
+    "data": "https://elb2.39dn.com/arcgis/rest/services/eGISDynamicServices/BartholomewINDynamic/MapServer/0",
+    "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
-    },
-    "data": "http://egislb-1921188874.us-east-1.elb.amazonaws.com/arcgis/rest/services/eGISBartholomewINPublic/BartholomewINDynamic/MapServer/0",
-    "type": "ESRI"
+        "number": "NUMBER",
+        "street": [
+            "PREDIR",
+            "STREETNAME",
+            "STREETTYPE",
+            "POSTDIR"
+        ],
+        "unit": "SUITE_UNIT",
+        "city": "CITY",
+        "region": "STATE",
+        "postcode": "ZIP"
+    }
 }

@@ -100,7 +100,7 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
 
  Tag       | Required? | Note
 ---------------- | --- | ----
-`type`           | Yes | The type properties stores the format. It can currently be one of `shapefile`, `shapefile-polygon`, `csv`, `geojson`, or `xml` (for GML).
+`type`           | Yes | The type properties stores the format. It can currently be one of `gdb`, `shapefile`, `shapefile-polygon`, `csv`, `geojson`, or `xml` (for GML).
 `srs`            |     | Allows one to set a custom source srs. Currently only supported by `type:shapefile`, `type:shapefile-polygon`, and `type:csv`. Should be in the format of `EPSG:####` and can be any code supported by `ogr2ogr`. Modern shapefiles typically store their project in a `.prj` file. If this file exists, this tag should be omitted.
 `file`           |     | The majority of zips contain a single shapefile. Sometimes zips will contain multiple files, or the shapefile that is needed is located in a folder hierarchy in the zip. Since the program only supports determining single shapefiles not in a subfolder, file can be used to point the program to an exact file. The proper syntax would be `"file": "addresspoints/address.shp"` if the file was under a single subdirectory called `addresspoints`. Note there is no preceding forward slash.
 `encoding`       |     | A character encoding from which an input file will first be converted (into utf-8). Must be [recognizable by `iconv`](https://www.gnu.org/software/libiconv/).
@@ -198,8 +198,9 @@ _Format_
 
 _Example_
 
-If no replace attribute is given, numbered capture groups are concatenated together to form the output.
+If no replace attribute is given, numbered capture groups are concatenated together to form the output. If a SITUS_ADDRESS record contains "301 Main St", the regex below will return "301" to isolate the address number.
 
+_Example_
 ```JSON
 "number": {
     "function": "regexp",
@@ -208,7 +209,7 @@ If no replace attribute is given, numbered capture groups are concatenated toget
 }
 ```
 
-If a replace field is given the `pattern` is found and replaced. Numbered capture groups in the pattern can be referenced using the `${n}` syntax as below.
+If a replace field is given the `pattern` is found and replaced. Numbered capture groups in the pattern can be referenced using the `${n}` syntax as below. This would then return the "Main St" portion of the SITUS_ADDRESS record containing "301 Main St".
 
 _Example_
 ```JSON
