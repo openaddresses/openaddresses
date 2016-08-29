@@ -9,13 +9,17 @@
         "state": "mn",
         "county": "Chisago"
     },
+    "type": "ESRI",
+    "data": "https://gis.chisagocounty.us/arcgis/rest/services/DynamicData/MapServer/1",
+    "website": "http://gis.chisagocounty.us/Link/jsfe/index.aspx",
+    "license": {
+        "text": "Indemnification",
+        "attribution": false,
+        "share-alike": false
+    },
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
+        "number": "ADDNUM",
         "street": {
             "function": "regexp",
             "field": "ADDRESS",
@@ -24,14 +28,5 @@
         },
         "city": "CITY",
         "postcode": "ZIP"
-    },
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "type": "ESRI",
-    "data": "https://gis.chisagocounty.us/arcgis/rest/services/GISData/MapServer/1",
-    "website": "http://gis.chisagocounty.us/Link/jsfe/index.aspx",
-    "note": "Shp download has no .prj file, but available at http://gis.chisagocounty.us/ZipFiles/addresses.zip"
+    }
 }
