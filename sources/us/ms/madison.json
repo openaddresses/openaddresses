@@ -12,8 +12,18 @@
     "data": "http://gis.cmpdd.org/arcgis/rest/services/Viewers/Madison/MapServer/13",
     "type": "ESRI",
     "conform": {
-        "street": "PHYSTREET",
-        "number": "PHYNUM",
+        "number": {
+            "function": "regexp",
+            "field": "Physical",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Physical,
+            "pattern": "^(?:[0-9\-]*[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "postcode": "Zip",
         "type": "geojson"
     }
 }
