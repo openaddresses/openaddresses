@@ -19,23 +19,9 @@
         "metadata": "ftp://property.jamescitycountyva.gov/GIS/layers/GIS_Metadata.pdf"
     },
     "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "LocAddr",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "LocAddr",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "LocZip",
-            "pattern": "^([0-9]{5})([0-9]{4})$",
-            "replace": "$1-$2"
-        },
+        "split": "locaddr",
+        "street": "auto_street",
+        "number": "auto_number",
         "type": "shapefile-polygon"
     }
 }
