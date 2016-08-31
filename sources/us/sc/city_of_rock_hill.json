@@ -23,13 +23,13 @@
         "street": {
             "function": "regexp",
             "field": "WHOLE_ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)(?,.*)",
+            "pattern": "^(?:[0-9]+ )([^,]*)(?:,.*)?$",
             "replace": "$2"
         },
         "unit": {
             "function": "regexp",
             "field": "WHOLE_ADDRESS",
-            "pattern": ",(.*)",
+            "pattern": "(?:.*),[\\s]*(.*)$",
             "replace": "$1"
         }
     }
