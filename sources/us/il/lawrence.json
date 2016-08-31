@@ -23,6 +23,12 @@
             "pattern": "^(?:[0-9]+ )([^;]+);.*$",
             "replace": "$1"
         },
+        "postcode": {
+            "function": "regexp",
+            "field": "location",
+            "pattern": "(?:.*;[\\s]*)([0-9]+(?:\\-[0-9]+)?)$",
+            "replace": "$1"
+        },
         "type": "geojson"
     }
 }
