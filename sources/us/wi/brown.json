@@ -14,8 +14,16 @@
     "type": "http",
     "conform": {
         "type": "shapefile",
-        "split": "Address",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "Address",
+            "pattern": "^(\S+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Address",
+            "pattern": "^(?:\S+ )(.*)",
+            "replace": "$1"
+        }
     }
 }
