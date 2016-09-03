@@ -12,8 +12,12 @@
     "conform": {
         "type": "geojson",
         "number": "HOUSENUM",
-        "split": "PADDRESS",
-        "street": "auto_street",
+        "street": {
+            "function": "regexp",
+            "field": "PADDRESS",
+            "pattern": "^(?:\\S+ )(.*)",
+            "replace": "$1"
+        },
         "postcode": "ZipCode"
     },
     "data": "http://gis.snco.us/ArcGIS/rest/services/Basemap_102100/MapServer/1",

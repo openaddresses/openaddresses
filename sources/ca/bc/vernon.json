@@ -15,9 +15,17 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "split": "full_addre",
-        "street": "auto_street",
-        "number": "auto_number",
+        "number": {
+            "function": "regexp",
+            "field": "full_addre",
+            "pattern": "^(\\S+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "full_addre",
+            "pattern": "^(?:\\S+ )(.*)",
+            "replace": "$1"
+        },
         "type": "shapefile"
     },
     "skip": true,

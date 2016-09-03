@@ -14,9 +14,17 @@
     "website": "http://www.muskegoncountygis.com/",
     "conform": {
         "type": "geojson",
-        "split": "PROP_COMBINED_ADDRESS",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "PROP_COMBINED_ADDRESS",
+            "pattern": "^(\\S+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PROP_COMBINED_ADDRESS",
+            "pattern": "^(?:\\S+ )(.*)",
+            "replace": "$1"
+        },
         "city": "PROP_CITY",
         "region": "PROP_STATE",
         "postcode": "PROP_ZIP"

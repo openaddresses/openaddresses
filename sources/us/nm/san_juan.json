@@ -14,9 +14,17 @@
     "compression": "zip",
     "conform": {
         "file": "AssessorPublicInfo/AssessorPublicInfo.shp",
-        "split": "physaddr",
-        "street": "auto_street",
-        "number": "auto_number",
+        "number": {
+            "function": "regexp",
+            "field": "physaddr",
+            "pattern": "^(\\S+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "physaddr",
+            "pattern": "^(?:\\S+ )(.*)",
+            "replace": "$1"
+        },
         "type": "shapefile-polygon"
     },
     "note": "units are embedded in physaddr field, eg - 4760 N Butler Ave #B"
