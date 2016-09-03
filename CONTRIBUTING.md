@@ -150,6 +150,7 @@ Function | Note
 -------- | -----
 `regexp` | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field
 `join`   | Allow multiple fields to be joined with a given delimiter.
+`format` | Allow multiple fields to be formatted into a single string.
 
 ##### Attribute Tag Examples
 
@@ -241,6 +242,28 @@ _Example_
     "function": "join",
     "fields": ["BLOCK_NUM", "BLOCK_GRP"],
     "separator": "-"
+}
+```
+
+###### format function
+
+The format function allows fields to be formatted into a single string. Each item in the fields list can be referenced with a numbered variable such as `$1`, `$2`, etc.
+
+_Format_
+```JSON
+"{Attribute Tag}": {
+    "function": "format",
+    "fields": ["{Field1}", "{Field2}", "etc..." ],
+    "format": "{Format String}"
+}
+```
+
+_Example_
+```JSON
+"number": {
+    "function": "format",
+    "fields": ["number", "letter", "supplement"],
+    "separator": "$1$2-$3"
 }
 ```
 
