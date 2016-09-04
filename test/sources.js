@@ -112,6 +112,9 @@ function checkSource(i){
                         } else if (data.conform[attrib].function === 'join') { 
                             t.ok(Array.isArray(data.conform[attrib].fields), attrib + ' join should reference fields');
                             t.ok(typeof data.conform[attrib].separator === 'string', attrib + ' join separator should be a string');
+                        } else if (data.conform[attrib].function === 'format') {
+                            t.ok(Array.isArray(data.conform[attrib].fields), attrib + ' format should reference fields');
+                            t.ok(typeof data.conform[attrib].format === 'string', attrib + ' format should be a string');
                         } else {
                             t.fail(data.conform[attrib].function + ' function should be valid');
                         }
