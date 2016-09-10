@@ -9,16 +9,25 @@
         "state": "co",
         "county": "Broomfield"
     },
+    "data": "http://gis.broomfield.org/ArcGIS/rest/services/CommunityDevelopment/Floodplain_Parcels_2D/MapServer/0",
+    "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "ADDRESS_NUMBER",
-        "street": {
-            "function": "regexp",
-            "field": "FULL_ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
-    },
-    "data": "http://gis.broomfield.org/ArcGIS/rest/services/Assessor/Subdivisions_Parcels_2D/MapServer/0",
-    "type": "ESRI"
+        "number": [
+            "ADDRESS_NUMBER",
+            "ADDRESS_NUMBER_SUFFIX"
+        ],
+        "unit": "CONCATENATE_UNIT",
+        "street": [
+            "STREET_PREDIRECTIONAL",
+            "STREET_PREMODIFIER",
+            "STREET_PRETYPE",
+            "STREET_NAME",
+            "STREET_POSTTYPE",
+            "STREET_POSTMODIFIER",
+            "STREET_POSTDIRECTIONAL"
+        ],
+        "city": "CITY",
+        "postcode": "ZIPCODE"
+    }
 }
