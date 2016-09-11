@@ -9,22 +9,15 @@
         "state": "va",
         "town": "Blacksburg"
     },
-    "data": "http://www.gis.lib.vt.edu/gis_data/Blacksburg/CDfiles/Address.zip",
+    "data": "http://www.gis.lib.vt.edu/gis_data/Blacksburg/CDfiles/Addresses.zip",
     "type": "http",
     "compression": "zip",
     "website": "http://www.gis.lib.vt.edu/gis_data/Blacksburg/GISPage.html",
     "conform": {
         "type": "shapefile",
-        "street": {
-            "function": "regexp",
-            "field": "ADDR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "number": {
-            "function": "regexp",
-            "field": "ADDR",
-            "pattern": "^([0-9]+)"
-        }
+        "number": "STNUM",
+        "unit": ["unit_desig", "unit"],
+        "street": ["STREET_PRE", "STREET_NAM", "STREET_TYP", "STREET_POS"],
+        "city": "COMMUNITY"
     }
 }
