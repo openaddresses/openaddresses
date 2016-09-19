@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "48167", 
+            "name": "Galveston County", 
+            "state": "Texas"},
+        "country": "us",
+        "state": "tx",
+        "county": "Galveston"
+    },
+    "data": "http://services2.arcgis.com/7Zo7vX4Yxo9Z7Vw3/ArcGIS/rest/services/MyMapService/FeatureServer/0",
+    "type": "ESRI",
+    "conform": {
+        "number": "SITUS_NO",
+        "street": {
+            "function": "regexp",
+            "field": "SITUS",
+            "pattern": "^(?:[0-9]+ )?(.*?),(?: )(.*?),(?: )(.*)(?: )([0-9]+)$",
+            "replace": "$1"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "SITUS",
+            "pattern": "^(?:[0-9]+ )?(.*?),(?: )(.*?),(?: )(.*)(?: )([0-9]+)$",
+            "replace": "$2"
+        },
+        "region": {
+            "function": "regexp",
+            "field": "SITUS",
+            "pattern": "^(?:[0-9]+ )?(.*?),(?: )(.*?),(?: )(.*)(?: )([0-9]+)$",
+            "replace": "$3"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "SITUS",
+            "pattern": "^(?:[0-9]+ )?(.*?),(?: )(.*?),(?: )(.*)(?: )([0-9]+)$",
+            "replace": "$4"
+        },
+        "type": "geojson"
+    }
+}
