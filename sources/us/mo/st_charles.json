@@ -1,0 +1,25 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "29183",
+            "name": "St. Charles County",
+            "state": "Missouri"
+        },
+        "country": "us",
+        "state": "mo",
+        "county": "St. Charles County"
+    },
+    "data": "http://map.sccmo.org/proxy/proxy.ashx?http://10.10.143.115/scc_gis/rest/services/appservices/taxinformation/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "SitusNumber",
+        "street": {
+            "function": "regexp",
+            "field": "SiteAddress",
+            "pattern": "^(?:[0-9]+ )?(.*)",
+            "replace": "$1"
+        },
+        "city": "Municipality"
+    }
+}
