@@ -1,0 +1,29 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "06101",
+            "name": "Sutter County",
+            "state": "California"
+        },
+        "country": "us",
+        "state": "ca",
+        "county": "Sutter"
+    },
+    "data": "https://services6.arcgis.com/rHMUPKWdiOvdGXkw/ArcGIS/rest/services/Tax_Parcels/FeatureServer/0",
+    "website": "https://www.co.sutter.ca.us/doc/government/depts/cs/ps/cs_planning_services",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "SITUS_ADD",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITUS_ADD",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}
