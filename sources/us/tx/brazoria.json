@@ -1,0 +1,29 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "48039",
+            "name": "Brazoria County",
+            "state": "Texas"
+        },
+        "country": "us",
+        "state": "tx",
+        "county": "Brazoria"
+    },
+    "data": "https://www.dropbox.com/sh/bs49q17bdii1lok/AACae2LFSQttOhkP2RP5asXZa/PARCELS_W_OWNER.zip?dl=1",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile",
+        "number": {
+          "function": "regexp",
+          "field": "situs_disp",
+          "pattern": "^([0-9]+)"
+        },
+        "street": {
+          "function": "regexp",
+          "field": "situs_disp",
+          "pattern": "^(?:[0-9]+ )(.*)",
+          "replace": "$1"
+        }
+    }
+}
