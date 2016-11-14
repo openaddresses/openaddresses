@@ -1,0 +1,26 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "53",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa"
+    },
+    "data": "http://geoservices.wa.gov/arcgis/rest/services/Parcels/ECY_Washington_State_Parcel_Database_2015/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "SITUS_ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITUS_ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}
