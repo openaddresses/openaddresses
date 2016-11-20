@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "56",
+            "state": "Wyoming"
+        },
+        "country": "us",
+        "state": "wy"
+    },
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/iandees/96d690/wyoming_parcels.geojson.zip",
+    "note": "Exported with esri2geojson from http://gis.wyo.gov/arcgis/rest/services/ets/ParcelsSecure/MapServer/0 with login parceluser/Parcels2016 from Nancy von Mayer",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "LOCATIONADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "LOCATIONADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}
