@@ -16,9 +16,11 @@ sudo -u postgres psql -c "CREATE TABLESPACE gnafts OWNER gnafun LOCATION '$TMP/t
 sudo -u postgres psql -c 'CREATE DATABASE gnafdb OWNER gnafun TABLESPACE gnafts'
 sudo -u postgres psql -c 'CREATE EXTENSION postgis'
 
-# fetch data/resources
-curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/AUG16_AdminBounds_ESRIShapefileorDBFfile.zip' -o $TMP/gnaf-admin.zip &
-curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/AUG16_GNAF%2BEULA_PipeSeparatedValue.zip' -o $TMP/gnaf.zip &
+# fetch data/resources, cached from:
+# http://data.gov.au/dataset/bdcf5b09-89bc-47ec-9281-6b8e9ee147aa/resource/53c24b8e-4f55-4eed-a189-2fc0dcca6381/download/nov16adminboundsesrishapefileordbffile.zip
+# http://data.gov.au/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/99b44dff-4e84-4cb7-9cbf-a68d3ebf964a/download/nov16gnafpipeseparatedvalue.zip
+curl -s 'http://s3.amazonaws.com/data.openaddresses.io/cache/au/gnaf-admin-nov2016.zip' -o $TMP/gnaf-admin.zip &
+curl -s 'http://s3.amazonaws.com/data.openaddresses.io/cache/au/gnaf-nov2016.zip' -o $TMP/gnaf.zip &
 wait
 parallel "unzip -d $TMP/{} $TMP/{}.zip" ::: gnaf gnaf-admin
 
@@ -70,7 +72,7 @@ chmod a+w $TMP/au.csv
 echo "COPY openaddresses TO '$TMP/au.csv' DELIMITER ',' CSV HEADER;" | psql -t -q postgres://gnafun:gnafpw@localhost/gnafdb
 
 mkdir /work/cache
-zip -j /work/cache/au-aug2016.zip $TMP/au.csv
+zip -j /work/cache/au-nov2016.zip $TMP/au.csv
 
 # clean up temporary files
 /etc/init.d/postgresql stop
