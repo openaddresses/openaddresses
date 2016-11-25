@@ -280,7 +280,7 @@ to the map at [data.openaddresses.io](http://data.openaddresses.io):
 
 1. **US Census** with `geoid` containing two-digit state or five-digit county
    [FIPS code](https://www.census.gov/geo/reference/codes/cou.html).
-   See [Alameda County](sources/us/ca/alameda_county.json)
+   See [Alameda County](sources/us/ca/alameda.json)
    and [Virginia](sources/us/va/statewide.json) for examples.
 2. **ISO 3166** with `alpha2` containing alphanumeric two-letter
    [ISO-3166-1 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
