@@ -3,8 +3,31 @@
   "data": "http://54.213.14.253/arcgis/rest/services/Parcels/WC_Parcels/FeatureServer/0",
   "type": "ESRI",
   "coverage": {
+    "US Census": {
+      "geoid": "38101",
+      "name": "Ward County",
+      "state": "North Dakota"
+    },
+    "country": "us",
+    "state": "nd",
+    "county": "Ward"
+  },
+  "license": {
+    "share-alike": false,
+    "attribution": false
   },
   "conform": {
-    "type": "geojson"
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "ADDRESS",
+      "pattern": "^([0-9]+)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "ADDRESS",
+      "pattern": "^(?:[0-9]+ )(.*)",
+      "replace": "$1"
+    }
   }
 }
