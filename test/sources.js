@@ -33,7 +33,7 @@ function validateJSON(body) {
 function checkSource(i){
     var source = manifest[i];
 
-    if (i == manifest.lenght-1 || !source) {process.exit(0);}
+    if (i === manifest.length-1 || !source) {process.exit(0);}
 
     test(source, function(t) {
         var raw = fs.readFileSync(source, 'utf8');
