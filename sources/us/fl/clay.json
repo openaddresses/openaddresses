@@ -10,20 +10,26 @@
         "county": "Clay"
     },
     "attribution": "Clay County",
-    "data": "http://www.ccpao.com/public/Parcel.zip",
+    "data": "https://maps.claycountygov.com:6443/arcgis/rest/services/SiteAddresses/MapServer/0",
     "website": "http://www.ccpao.com/datadownloadGIS_all.html",
-    "type": "http",
-    "compression": "zip",
+    "type": "ESRI",
     "conform": {
-        "type": "shapefile-polygon",
-        "number": "HOUSE_NO",
-        "street": [
-            "STREET",
-            "ST_MD",
-            "ST_DIR"
+        "type": "geojson",
+        "number": [
+            "House",
+            "Half"
         ],
-        "unit": "ST_UNIT",
-        "city": "ST_CITY",
-        "postcode": "ST_ZIP5"
+        "unit": [
+            "UnitType",
+            "Unit"
+        ],
+        "street": [
+            "PreDir",
+            "StreetName",
+            "StreetType",
+            "SuffixDir"
+        ],
+        "city": "Community",
+        "postcode": "Zip"
     }
 }

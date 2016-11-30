@@ -19,18 +19,15 @@
     "data": "http://tetonwy.greenwoodmap.com/gis/download/ownership_shp.zip",
     "type": "http",
     "conform": {
-        "type": "shapefile-polygon",
-        "number": {
-            "function": "regexp",
-            "field": "st_address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "st_address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
+        "type": "shapefile",
+        "file": "address.shp",
+        "number": "street_num",
+        "unit": "st_unit",
+        "street": [
+            "st_dir",
+            "st_name",
+            "st_type"
+        ],
         "id": "pidn",
         "accuracy": 2
     }
