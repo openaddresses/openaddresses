@@ -48,10 +48,10 @@ function checkSource(i){
             legalTags = [
                 // https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md#core-tags
                 'data', 'type', 'coverage', 'coverage', 'conform', 'compression',
-                
+
                 // https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md#optional-tags
                 'website', 'license', 'note', 'attribution', 'email', 'language',
-                
+
                 // Not documented, but works
                 'year', 'skip'
                 ];
@@ -109,19 +109,23 @@ function checkSource(i){
                             t.ok(data.conform[attrib].pattern, attrib + ' regexp should have pattern');
                             t.ok(typeof data.conform[attrib].field === 'string', attrib + ' regexp should reference a field');
                             t.ok(data.conform[attrib].replace ? typeof data.conform[attrib].replace === 'string' : true, attrib + ' regexp replace should be a string');
-                        } else if (data.conform[attrib].function === 'join') { 
+                        } else if (data.conform[attrib].function === 'join') {
                             t.ok(Array.isArray(data.conform[attrib].fields), attrib + ' join should reference fields');
                             t.ok(typeof data.conform[attrib].separator === 'string', attrib + ' join separator should be a string');
                         } else if (data.conform[attrib].function === 'format') {
                             t.ok(Array.isArray(data.conform[attrib].fields), attrib + ' format should reference fields');
                             t.ok(typeof data.conform[attrib].format === 'string', attrib + ' format should be a string');
+                        } else if (data.conform[attrib].function === 'prefix_number') {
+                          t.ok(typeof data.conform[attrib].field === 'string', attrib + ' prefix_number should reference a field');
+                        } else if (data.conform[attrib].function === 'prefix_street') {
+                          t.ok(typeof data.conform[attrib].field === 'string', attrib + ' prefix_street should reference a field');
                         } else {
                             t.fail(data.conform[attrib].function + ' function should be valid');
                         }
                     }
-                    
+
                 });
-                
+
                 //Optional Conform Fields
                 t.ok(data.conform.addrtype ? typeof data.conform.addrtype === 'string' : true, "conform - addrtype should be a string");
                 t.ok(data.conform.accuracy ? typeof data.conform.accuracy === 'number' : true, "conform - accuracy should be a number");
@@ -158,7 +162,7 @@ function checkSource(i){
                 }
                 else {
                     t.fail("license must be of type string or object");
-                }           
+                }
             }
         }
         t.end();
