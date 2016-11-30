@@ -61,7 +61,21 @@ SELECT
     latitude AS lat,
     locality_name AS city,
     locality_postcode AS postcode,
-    state AS region
+    state AS region,
+
+    (
+        CASE geocode_type WHEN 'BUILDING CENTROID' THEN 1 -- rooftop
+                          WHEN 'FRONTAGE CENTRE SETBACK' THEN 2 -- interpolation
+                          WHEN 'GAP GEOCODE' THEN 4 -- interpolation
+                          WHEN 'LOCALITY' THEN 4 -- interpolation
+                          WHEN 'PROPERTY ACCESS POINT SETBACK' THEN 3 -- driveway
+                          WHEN 'PROPERTY CENTROID' THEN 2 -- parcel
+                          WHEN 'PROPERTY CENTROID MANUAL' THEN 2 -- parcel
+                          WHEN 'STREET LOCALITY' THEN 4 -- interpolation
+                          ELSE 5 -- unknown
+        END
+    )
+    AS accuracy
 
 FROM gnaf.addresses adr;
 " | psql postgres://gnafun:gnafpw@localhost/gnafdb
