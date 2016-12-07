@@ -16,15 +16,23 @@
         "state": "mo",
         "city": "Kansas City"
     },
-    "data": "http://maps.kcmo.org/kcgis/rest/services/external/Platting/MapServer/34",
-    "type": "ESRI",
+    "type": "http",
+    "data": "https://data.kcmo.org/api/views/3639-4c86/rows.csv?accessType=DOWNLOAD",
     "conform": {
-        "type": "geojson",
-        "number": "ADDR",
+        "type": "csv",
+        "lat": "Latitude",
+        "lon": "Longitude",
+        "number": [
+            "Address Number",
+            "Fraction"
+        ],
         "street": [
-            "PREFIX",
-            "STREET",
-            "STREET_TYPE"
-        ]
+            "Prefix",
+            "Street",
+            "Street Type"
+        ],
+        "unit": "Suite",
+        "city": "City",
+        "region": "State"
     }
 }
