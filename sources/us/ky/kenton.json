@@ -1,0 +1,29 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "05117",
+            "name": "Kenton County",
+            "state": "Kentucky"
+        },
+        "country": "us",
+        "state": "ky",
+        "county": "Kenton"
+    },
+    "data": "http://kcgis.kcor.org/arcgis/rest/services/KentonPVAMap2/MapServer/6",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+          "function": "regexp",
+          "field": "ADDRESS",
+          "pattern": "^([0-9][^ ]*)"
+        },
+        "street": {
+          "function": "regexp",
+          "pattern": "^(?:[0-9][^ ]*)(.*)",
+          "field": "ADDRESS",
+          "replace": "$1"
+        },
+        "city": "CITY_TEXT"
+    }
+}
