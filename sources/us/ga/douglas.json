@@ -16,14 +16,18 @@
         "number": {
             "function": "regexp",
             "field": "ADDRESS",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
+            "pattern": "^([0-9]+)"
         },
         "street": {
             "function": "regexp",
             "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
+            "pattern": "^(?:[0-9]+)(.*?)( (UNIT|APT|BLDG|STE).*|$)",
             "replace": "$1"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": " ((?:UNIT|APT|BLDG|STE) .+)$"
         }
     }
 }
