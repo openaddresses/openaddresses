@@ -1,0 +1,32 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "5380010",
+            "name": "City of Yakima",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa",
+        "county": "Yakima"
+    },
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/nvkelso/cd363b/parcels_thurston_county_washington_state.zip",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile-polygon",
+        "number": {
+            "function": "regexp",
+            "field": "SITUS_STRE",
+            "pattern": "^([0-9]+)(.*)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITUS_STRE",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "city": "SITUS_CITY",
+        "postcode": "SITUS_ZIP"
+    }
+}
