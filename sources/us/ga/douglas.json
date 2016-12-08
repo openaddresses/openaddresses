@@ -1,0 +1,29 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "13097",
+            "name": "Douglas County",
+            "state": "Georgia"
+        },
+        "country": "us",
+        "state": "ga",
+        "county": "Douglas"
+    },
+    "data": "http://gis.co.douglas.ga.us/ArcGIS/rest/services/Base_Map/MapServer/16",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^([0-9]+)( .*)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}
