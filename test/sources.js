@@ -115,10 +115,10 @@ function checkSource(i){
                         } else if (data.conform[attrib].function === 'format') {
                             t.ok(Array.isArray(data.conform[attrib].fields), attrib + ' format should reference fields');
                             t.ok(typeof data.conform[attrib].format === 'string', attrib + ' format should be a string');
-                        } else if (data.conform[attrib].function === 'prefix_number') {
-                          t.ok(typeof data.conform[attrib].field === 'string', attrib + ' prefix_number should reference a field');
-                        } else if (data.conform[attrib].function === 'prefix_street') {
-                          t.ok(typeof data.conform[attrib].field === 'string', attrib + ' prefix_street should reference a field');
+                        } else if (data.conform[attrib].function === 'prefixed_number') {
+                          t.ok(typeof data.conform[attrib].field === 'string', attrib + ' prefixed_number should reference a field');
+                        } else if (data.conform[attrib].function === 'postfixed_street') {
+                          t.ok(typeof data.conform[attrib].field === 'string', attrib + ' postfixed_street should reference a field');
                         } else {
                             t.fail(data.conform[attrib].function + ' function should be valid');
                         }
