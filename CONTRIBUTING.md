@@ -147,7 +147,9 @@ This list gives a brief summary of what each function does. Examples can be foun
 
 Function | Note
 -------- | -----
-`regexp` | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field
+`prefixed_number` | Allow number to be extracted from the beginning of a single field (extracts `102` from `102 East Maple Street`).
+`postfixed_street` | Allow street to be extracted from the end of a single field (extracts `East Maple Street` from `102 East Maple Street`).
+`regexp` | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field.
 `join`   | Allow multiple fields to be joined with a given delimiter.
 `format` | Allow multiple fields to be formatted into a single string.
 
@@ -183,6 +185,36 @@ _Example_
 "number": "SITUS_NUMBER",
 "street": ["SITUS_STREET_PRE", "SITUS_STREET_NME", "SITUS_STREET_TYP", "SITUS_STREET_POST"]
 ```
+
+###### prefixed_number and postfixed_street functions
+
+The `prefixed_number` and `postfixed_street` functions are used to extract an address number and street from a field.  While the same functionality can be accomplished using the `regexp` function, these convenience functions are meant to reduce copy/pasting of common regexes among various sources.  The standard case for using these two functions is for a source in a country that has number-prefixed address formats, such as Australia, New Zealand, and the United States.  
+
+_Format_
+```JSON
+"{Attribute Tag}": {
+    "function": "prefixed_number",
+    "field": "{Field Name}"
+}
+"{Attribute Tag}": {
+    "function": "postfixed_street",
+    "field": "{Field Name}"
+}
+```
+
+_Example_
+```JSON
+"number": {
+  "function": "prefixed_number",
+  "field": "SITUS_ADDRESS"
+},
+"street": {
+  "function": "postfixed_street",
+  "field": "SITUS_ADDRESS"
+}
+```
+
+Using the above example, if the `SITUS_ADDRESS` field value is `102 East Maple Street`, `prefixed_number` and `postfixed_street` would extract the value `102` and `East Maple Street` for number and street, respectively.
 
 ###### regexp function
 
@@ -220,6 +252,8 @@ _Example_
     "replace": "$1"
 }
 ```
+
+The source data should be examined to determine if the shorthand methods `prefixed_number` and `postfixed_street` could be used instead of `regexp`.
 
 ###### join function
 
@@ -351,4 +385,3 @@ A few notes on formatting:
 
 Although these are read by a machine, they are maintained by us mortals.
 Following the formatting guidelines keeps the rest of us sane!
-
