@@ -19,16 +19,16 @@
       "pattern": "^([0-9]+-?[A-Z]?) ",
       "replace": "$1"
     },
-    "street": {
-      "function": "regexp",
-      "field": "Site_Address",
-      "pattern": "^(?:[0-9]+-?[A-Z]? )(.*?)((UNIT|APT|BLDG|LOT|#).*|$)",
-      "replace": "$1"
-    },
     "unit": {
       "function": "regexp",
       "field": "Site_Address",
       "pattern": " ((?:UNIT|APT|BLDG|LOT|#).*)$",
+      "replace": "$1"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "Site_Address",
+      "pattern": "^(?:[0-9]+-?[A-Z]? )(.*?)((UNIT|APT|BLDG|LOT|#).*|$)",
       "replace": "$1"
     }
   }
