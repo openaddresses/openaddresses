@@ -1,0 +1,93 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Source",
+    "description": "An OpenAddresses source",
+    "type": "object",
+    "required": ["type", "data", "coverage"],
+    "additionalProperties": false,
+    "properties": {
+      "type": {
+        "type": "string",
+        "enum": ["http", "ftp", "ESRI"]
+      },
+      "data": {
+        "type": "string",
+        "format": "uri"
+      },
+      "coverage": {
+        "type": "object",
+        "$ref": "#/definitions/coverage"
+      },
+      "website": {
+        "type": "string",
+        "format": "uri"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "conform": {
+        "type": "object",
+        "$ref": "#/definitions/conform"
+      },
+      "compression": {
+        "type": "string"
+      },
+      "license": {
+        "type": "string"
+      },
+      "note": {
+        "type": "string"
+      },
+      "attribution": {
+        "type": "string"
+      },
+      "language": {
+        "type": "string"
+      },
+      "year": {
+        "type": "string"
+      },
+      "skip": {
+        "type": "boolean"
+      }
+    },
+    "definitions": {
+      "coverage": {
+        "required": ["country"],
+        "properties": {
+          "country": {
+            "type": "string"
+          }
+        }
+      },
+      "conform": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["geojson", "shapefile", "shapefile-polygon"]
+          },
+          "addrtype": {
+            "type": "string"
+          },
+          "accuracy": {
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
+          },
+          "csvsplit": {
+            "type": "string"
+          },
+          "srs": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          },
+          "encoding": {
+            "type": "string"
+          }
+        }
+      }
+    }
+}
