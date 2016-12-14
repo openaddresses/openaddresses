@@ -152,6 +152,8 @@ Function | Note
 `regexp` | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field.
 `join`   | Allow multiple fields to be joined with a given delimiter.
 `format` | Allow multiple fields to be formatted into a single string.
+`remove_prefix` | Removes a field value from the beginning of another field value.
+`remove_postfix` | Removes a field value from the end of another field value.
 
 ##### Attribute Tag Examples
 
@@ -297,6 +299,52 @@ _Example_
     "function": "format",
     "fields": ["number", "letter", "supplement"],
     "separator": "$1$2-$3"
+}
+```
+
+###### remove_prefix and remove_postfix functions
+
+The `remove_prefix` and `remove_postfix` functions modify a field's value by removing another field's value from the beginning or end.  These convenience functions are meant to reduce the complexity of `regexp` functions that are not aware of other field values.  While not common, this functionality is very handy for sources that have, for example, separate house number and address fields where the former is a prefix of the latter.
+
+_Format_
+```JSON
+"{Attribute Tag}": {
+    "function": "remove_prefix",
+    "field": "{Field1}",
+    "field_to_remove": "{Field2}"
+}
+"{Attribute Tag}": {
+    "function": "remove_postfix",
+    "field": "{Field1}",
+    "field_to_remove": "{Field2}"
+}
+```
+
+_Example_
+```JSON
+"number": "HOUSE_NUMBER",
+"street": {
+  "function": "remove_prefix",
+  "field": "SITUS_ADDRESS",
+  "field_to_remove": "HOUSE_NUMBER"
+}
+```
+
+The above conform example can transform:
+
+```
+{
+  "HOUSE_NUMBER": "102"
+  "SITUS_ADDRESS": "102 East Maple Street",
+}
+```
+
+into:
+
+```
+{
+  "number": "102",
+  "street": "East Maple Street"
 }
 ```
 
