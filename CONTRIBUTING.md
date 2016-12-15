@@ -259,8 +259,7 @@ The source data should be examined to determine if the shorthand methods `prefix
 
 ###### join function
 
-The join function allows fields to be merged given an arbitrary delimiter. For delimiting
-by spaces there is a more concise format - see the example for `Merge Fields`
+The join function allows fields to be merged given an arbitrary delimiter. The default value for the optional `separator` parameter is a single space (` `).  See the example for `Merge Fields`.  
 
 _Format_
 ```JSON
