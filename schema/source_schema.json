@@ -76,8 +76,83 @@
       "properties": {
         "country": {
           "type": "string"
+        },
+        "province": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "county": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "geometry": {
+          "description": "from https://github.com/fge/sample-json-schemas/blob/master/geojson/geometry.json",
+          "oneOf": [
+            {
+              "title": "Point",
+              "properties": {
+                "type": { "enum": [ "Point" ] },
+                "coordinates": { "$ref": "#/definitions/position" }
+              }
+            },
+            {
+              "title": "Polygon",
+              "properties": {
+                "type": { "enum": [ "Polygon" ] },
+                "coordinates": { "$ref": "#/definitions/polygon" }
+              }
+            },
+            {
+              "title": "MultiPolygon",
+              "properties": {
+                "type": { "enum": [ "MultiPolygon" ] },
+                "coordinates": {
+                  "type": "array",
+                  "items": { "$ref": "#/definitions/polygon" }
+                }
+              }
+            }
+          ]
         }
       }
+    },
+    "position": {
+      "description": "A single position",
+      "type": "array",
+      "minItems": 2,
+      "items": [
+        { "type": "number" },
+        { "type": "number" }
+      ],
+      "additionalItems": false
+    },
+    "positionArray": {
+      "description": "An array of positions",
+      "type": "array",
+      "items": { "$ref": "#/definitions/position" }
+    },
+    "lineString": {
+      "description": "An array of two or more positions",
+      "allOf": [
+        { "$ref": "#/definitions/positionArray" },
+        { "minItems": 2 }
+      ]
+    },
+    "linearRing": {
+      "description": "An array of four positions where the first equals the last",
+      "allOf": [
+        { "$ref": "#/definitions/positionArray" },
+        { "minItems": 4 }
+      ]
+    },
+    "polygon": {
+      "description": "An array of linear rings",
+      "type": "array",
+      "items": { "$ref": "#/definitions/linearRing" }
     },
     "license": {
       "type": "object",
@@ -100,7 +175,20 @@
         }
       }
     },
+    "base_conform_field_value": {
+      "description": "convenience definition for one of null, string, or string array",
+      "oneOf": [
+        { "type": "null" },
+        { "type": "string" },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        }
+      ]
+    },
     "conform": {
+      "description": "top-level conform object definition",
       "type": "object",
       "required": ["number", "street"],
       "properties": {
@@ -119,13 +207,11 @@
           "type": "string"
         },
         "accuracy": {
+          "description": "https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md#accuracy",
           "type": "integer",
           "minimum": 0,
           "maximum": 5,
           "exclusiveMinimum": true
-        },
-        "csvsplit": {
-          "type": "string"
         },
         "srs": {
           "type": "string",
@@ -135,6 +221,9 @@
           "type": "string"
         },
         "encoding": {
+          "type": "string"
+        },
+        "csvsplit": {
           "type": "string"
         },
         "headers": {
@@ -150,7 +239,7 @@
         },
         "id": {
           "oneOf": [
-            { "type": "string" },
+            { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
@@ -160,13 +249,7 @@
         },
         "number": {
           "oneOf": [
-            { "type": "null" },
-            { "type": "string" },
-            {
-              "type": "array",
-              "minItems": 1,
-              "items": { "type": "string" }
-            },
+            { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
             { "$ref": "#/definitions/function_prefixed_number" },
             { "$ref": "#/definitions/function_remove_prefix" },
@@ -177,13 +260,7 @@
         },
         "street": {
           "oneOf": [
-            { "type": "null" },
-            { "type": "string" },
-            {
-              "type": "array",
-              "minItems": 1,
-              "items": { "type": "string" }
-            },
+            { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
             { "$ref": "#/definitions/function_postfixed_street" },
             { "$ref": "#/definitions/function_remove_prefix" },
@@ -194,13 +271,7 @@
         },
         "unit": {
           "oneOf": [
-            { "type": "null" },
-            { "type": "string" },
-            {
-              "type": "array",
-              "minItems": 1,
-              "items": { "type": "string" }
-            },
+            { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
@@ -210,13 +281,7 @@
         },
         "city": {
           "oneOf": [
-            { "type": "null" },
-            { "type": "string" },
-            {
-              "type": "array",
-              "minItems": 1,
-              "items": { "type": "string" }
-            },
+            { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
@@ -226,13 +291,7 @@
         },
         "district": {
           "oneOf": [
-            { "type": "null" },
-            { "type": "string" },
-            {
-              "type": "array",
-              "minItems": 1,
-              "items": { "type": "string" }
-            },
+            { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
@@ -242,13 +301,7 @@
         },
         "region": {
           "oneOf": [
-            { "type": "null" },
-            { "type": "string" },
-            {
-              "type": "array",
-              "minItems": 1,
-              "items": { "type": "string" }
-            },
+            { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
@@ -258,13 +311,7 @@
         },
         "postcode": {
           "oneOf": [
-            { "type": "null" },
-            { "type": "string" },
-            {
-              "type": "array",
-              "minItems": 1,
-              "items": { "type": "string" }
-            },
+            { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
@@ -289,6 +336,7 @@
       }
     },
     "function_regexp": {
+      "description": "regexp function definition",
       "type": "object",
       "required": ["function", "field", "pattern"],
       "properties": {
@@ -309,6 +357,7 @@
       }
     },
     "function_prefixed_number": {
+      "description": "prefixed_number function definition",
       "type": "object",
       "required": ["function", "field"],
       "properties": {
@@ -322,6 +371,7 @@
       }
     },
     "function_postfixed_street": {
+      "description": "postfixed_street function definition",
       "type": "object",
       "required": ["function", "field"],
       "properties": {
@@ -335,6 +385,7 @@
       }
     },
     "function_remove_prefix": {
+      "description": "remove_prefix function definition",
       "type": "object",
       "required": ["function", "field", "field_to_remove"],
       "properties": {
@@ -351,6 +402,7 @@
       }
     },
     "function_remove_postfix": {
+      "description": "remove_postfix function definition",
       "type": "object",
       "required": ["function", "field", "field_to_remove"],
       "properties": {
@@ -367,6 +419,7 @@
       }
     },
     "function_join": {
+      "description": "join function definition",
       "type": "object",
       "required": ["function", "fields"],
       "properties": {
@@ -385,6 +438,7 @@
       }
     },
     "function_format": {
+      "description": "format function definition",
       "type": "object",
       "required": ["function", "fields", "format"],
       "properties": {
