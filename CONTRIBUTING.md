@@ -298,7 +298,7 @@ _Example_
 "number": {
     "function": "format",
     "fields": ["number", "letter", "supplement"],
-    "separator": "$1$2-$3"
+    "format": "$1$2-$3"
 }
 ```
 
