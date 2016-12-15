@@ -1,93 +1,273 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Source",
-    "description": "An OpenAddresses source",
-    "type": "object",
-    "required": ["type", "data", "coverage"],
-    "additionalProperties": false,
-    "properties": {
-      "type": {
-        "type": "string",
-        "enum": ["http", "ftp", "ESRI"]
-      },
-      "data": {
-        "type": "string",
-        "format": "uri"
-      },
-      "coverage": {
-        "type": "object",
-        "$ref": "#/definitions/coverage"
-      },
-      "website": {
-        "type": "string",
-        "format": "uri"
-      },
-      "email": {
-        "type": "string",
-        "format": "email"
-      },
-      "conform": {
-        "type": "object",
-        "$ref": "#/definitions/conform"
-      },
-      "compression": {
-        "type": "string"
-      },
-      "license": {
-        "type": "string"
-      },
-      "note": {
-        "type": "string"
-      },
-      "attribution": {
-        "type": "string"
-      },
-      "language": {
-        "type": "string"
-      },
-      "year": {
-        "type": "string"
-      },
-      "skip": {
-        "type": "boolean"
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Source",
+  "description": "An OpenAddresses source",
+  "type": "object",
+  "required": [
+    "type",
+    "data",
+    "coverage"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "http",
+        "HTTP",
+        "ftp",
+        "ESRI"
+      ]
+    },
+    "data": {
+      "type": "string",
+      "format": "uri"
+    },
+    "coverage": {
+      "type": "object",
+      "$ref": "#/definitions/coverage"
+    },
+    "website": {
+      "type": "string",
+      "format": "uri"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "conform": {
+      "type": "object",
+      "$ref": "#/definitions/conform"
+    },
+    "compression": {
+      "type": "string"
+    },
+    "license": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "object" }
+      ]
+    },
+    "note": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "object" }
+      ]
+    },
+    "attribution": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "year": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "number" }
+      ]
+    },
+    "skip": {
+      "type": "boolean"
+    }
+  },
+  "definitions": {
+    "coverage": {
+      "required": [
+        "country"
+      ],
+      "properties": {
+        "country": {
+          "type": "string"
+        }
       }
     },
-    "definitions": {
-      "coverage": {
-        "required": ["country"],
-        "properties": {
-          "country": {
-            "type": "string"
-          }
+    "conform": {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "geojson",
+            "shapefile",
+            "shapefile-polygon",
+            "gdb",
+            "xml",
+            "csv"
+          ]
+        },
+        "addrtype": {
+          "type": "string"
+        },
+        "accuracy": {
+          "type": "integer",
+          "minimum": 0,
+          "exclusiveMinimum": true
+        },
+        "csvsplit": {
+          "type": "string"
+        },
+        "srs": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "encoding": {
+          "type": "string"
+        },
+        "number": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string" },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string" }
+            },
+            {
+              "type": "object",
+              "oneOf": [
+                { "$ref": "#/definitions/function_regexp" },
+                { "$ref": "#/definitions/function_prefixed_number" },
+                { "$ref": "#/definitions/function_postfixed_street" },
+                { "$ref": "#/definitions/function_remove_prefix" },
+                { "$ref": "#/definitions/function_remove_postfix" },
+                { "$ref": "#/definitions/function_join" },
+                { "$ref": "#/definitions/function_format" }
+              ]
+            }
+          ]
+        },
+        "street": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string" },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string" }
+            },
+            {
+              "type": "object",
+              "oneOf": [
+                { "$ref": "#/definitions/function_regexp" },
+                { "$ref": "#/definitions/function_prefixed_number" },
+                { "$ref": "#/definitions/function_postfixed_street" },
+                { "$ref": "#/definitions/function_remove_prefix" },
+                { "$ref": "#/definitions/function_remove_postfix" },
+                { "$ref": "#/definitions/function_join" },
+                { "$ref": "#/definitions/function_format" }
+              ]
+            }
+          ]
         }
-      },
-      "conform": {
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": ["geojson", "shapefile", "shapefile-polygon"]
-          },
-          "addrtype": {
-            "type": "string"
-          },
-          "accuracy": {
-            "type": "integer",
-            "minimum": 0,
-            "exclusiveMinimum": true
-          },
-          "csvsplit": {
-            "type": "string"
-          },
-          "srs": {
-            "type": "string"
-          },
-          "file": {
-            "type": "string"
-          },
-          "encoding": {
-            "type": "string"
-          }
+      }
+    },
+    "function_regexp": {
+      "required": ["function", "field", "pattern"],
+      "properties": {
+        "function": {
+          "type": "string",
+          "enum": ["regexp"]
+        },
+        "field": {
+          "type": "string"
+        },
+        "pattern": {
+          "type": "string",
+          "format": "regex"
+        },
+        "replace": {
+          "type": "string"
+        }
+      }
+    },
+    "function_prefixed_number": {
+      "required": ["function", "field"],
+      "properties": {
+        "function": {
+          "type": "string",
+          "enum": ["prefixed_number"]
+        },
+        "field": {
+          "type": "string"
+        }
+      }
+    },
+    "function_postfixed_street": {
+      "required": ["function", "field"],
+      "properties": {
+        "function": {
+          "type": "string",
+          "enum": ["postfixed_street"]
+        },
+        "field": {
+          "type": "string"
+        }
+      }
+    },
+    "function_remove_prefix": {
+      "required": ["function", "field", "field_to_remove"],
+      "properties": {
+        "function": {
+          "type": "string",
+          "enum": ["remove_prefix"]
+        },
+        "field": {
+          "type": "string"
+        },
+        "field_to_remove": {
+          "type": "string"
+        }
+      }
+    },
+    "function_remove_postfix": {
+      "required": ["function", "field", "field_to_remove"],
+      "properties": {
+        "function": {
+          "type": "string",
+          "enum": ["remove_postfix"]
+        },
+        "field": {
+          "type": "string"
+        },
+        "field_to_remove": {
+          "type": "string"
+        }
+      }
+    },
+    "function_join": {
+      "required": ["function", "fields"],
+      "properties": {
+        "function": {
+          "type": "string",
+          "enum": ["join"]
+        },
+        "fields": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "separator": {
+          "type": "string"
+        }
+      }
+    },
+    "function_format": {
+      "required": ["function", "fields", "format"],
+      "properties": {
+        "function": {
+          "type": "string",
+          "enum": ["format"]
+        },
+        "fields": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "format": {
+          "type": "string"
         }
       }
     }
+  }
 }
