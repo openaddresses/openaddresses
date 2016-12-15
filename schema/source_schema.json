@@ -19,32 +19,29 @@
       ]
     },
     "data": {
-      "type": "string",
-      "format": "uri"
+      "type": "string"
     },
     "coverage": {
-      "type": "object",
       "$ref": "#/definitions/coverage"
     },
     "website": {
-      "type": "string",
-      "format": "uri"
+      "type": "string"
     },
     "email": {
       "type": "string",
       "format": "email"
     },
     "conform": {
-      "type": "object",
       "$ref": "#/definitions/conform"
     },
     "compression": {
-      "type": "string"
+      "type": "string",
+      "enum": ["zip"]
     },
     "license": {
       "oneOf": [
         { "type": "string" },
-        { "type": "object" }
+        { "$ref": "#/definitions/license" }
       ]
     },
     "note": {
@@ -57,7 +54,8 @@
       "type": "string"
     },
     "language": {
-      "type": "string"
+      "type": "string",
+      "pattern": "[a-zA-Z]{2}"
     },
     "year": {
       "oneOf": [
@@ -71,6 +69,7 @@
   },
   "definitions": {
     "coverage": {
+      "type": "object",
       "required": [
         "country"
       ],
@@ -80,7 +79,30 @@
         }
       }
     },
+    "license": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "text": {
+          "type": "string"
+        },
+        "attribution": {
+          "type": "boolean"
+        },
+        "attribution name": {
+          "type": "string"
+        },
+        "share-alike": {
+          "type": "boolean"
+        }
+      }
+    },
     "conform": {
+      "type": "object",
+      "required": ["number", "street"],
       "properties": {
         "type": {
           "type": "string",
@@ -99,19 +121,42 @@
         "accuracy": {
           "type": "integer",
           "minimum": 0,
+          "maximum": 5,
           "exclusiveMinimum": true
         },
         "csvsplit": {
           "type": "string"
         },
         "srs": {
-          "type": "string"
+          "type": "string",
+          "regex": "EPSG:[0-9]{4}"
         },
         "file": {
           "type": "string"
         },
         "encoding": {
           "type": "string"
+        },
+        "headers": {
+          "type": "integer",
+          "minimum": -1
+        },
+        "skiplines": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "notes": {
+          "type": "string"
+        },
+        "id": {
+          "oneOf": [
+            { "type": "string" },
+            { "$ref": "#/definitions/function_regexp" },
+            { "$ref": "#/definitions/function_remove_prefix" },
+            { "$ref": "#/definitions/function_remove_postfix" },
+            { "$ref": "#/definitions/function_join" },
+            { "$ref": "#/definitions/function_format" }
+          ]
         },
         "number": {
           "oneOf": [
@@ -122,17 +167,12 @@
               "minItems": 1,
               "items": { "type": "string" }
             },
-            {
-              "type": "object",
-              "oneOf": [
-                { "$ref": "#/definitions/function_regexp" },
-                { "$ref": "#/definitions/function_prefixed_number" },
-                { "$ref": "#/definitions/function_remove_prefix" },
-                { "$ref": "#/definitions/function_remove_postfix" },
-                { "$ref": "#/definitions/function_join" },
-                { "$ref": "#/definitions/function_format" }
-              ]
-            }
+            { "$ref": "#/definitions/function_regexp" },
+            { "$ref": "#/definitions/function_prefixed_number" },
+            { "$ref": "#/definitions/function_remove_prefix" },
+            { "$ref": "#/definitions/function_remove_postfix" },
+            { "$ref": "#/definitions/function_join" },
+            { "$ref": "#/definitions/function_format" }
           ]
         },
         "street": {
@@ -144,22 +184,112 @@
               "minItems": 1,
               "items": { "type": "string" }
             },
+            { "$ref": "#/definitions/function_regexp" },
+            { "$ref": "#/definitions/function_postfixed_street" },
+            { "$ref": "#/definitions/function_remove_prefix" },
+            { "$ref": "#/definitions/function_remove_postfix" },
+            { "$ref": "#/definitions/function_join" },
+            { "$ref": "#/definitions/function_format" }
+          ]
+        },
+        "unit": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string" },
             {
-              "type": "object",
-              "oneOf": [
-                { "$ref": "#/definitions/function_regexp" },
-                { "$ref": "#/definitions/function_postfixed_street" },
-                { "$ref": "#/definitions/function_remove_prefix" },
-                { "$ref": "#/definitions/function_remove_postfix" },
-                { "$ref": "#/definitions/function_join" },
-                { "$ref": "#/definitions/function_format" }
-              ]
-            }
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string" }
+            },
+            { "$ref": "#/definitions/function_regexp" },
+            { "$ref": "#/definitions/function_remove_prefix" },
+            { "$ref": "#/definitions/function_remove_postfix" },
+            { "$ref": "#/definitions/function_join" },
+            { "$ref": "#/definitions/function_format" }
+          ]
+        },
+        "city": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string" },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string" }
+            },
+            { "$ref": "#/definitions/function_regexp" },
+            { "$ref": "#/definitions/function_remove_prefix" },
+            { "$ref": "#/definitions/function_remove_postfix" },
+            { "$ref": "#/definitions/function_join" },
+            { "$ref": "#/definitions/function_format" }
+          ]
+        },
+        "district": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string" },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string" }
+            },
+            { "$ref": "#/definitions/function_regexp" },
+            { "$ref": "#/definitions/function_remove_prefix" },
+            { "$ref": "#/definitions/function_remove_postfix" },
+            { "$ref": "#/definitions/function_join" },
+            { "$ref": "#/definitions/function_format" }
+          ]
+        },
+        "region": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string" },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string" }
+            },
+            { "$ref": "#/definitions/function_regexp" },
+            { "$ref": "#/definitions/function_remove_prefix" },
+            { "$ref": "#/definitions/function_remove_postfix" },
+            { "$ref": "#/definitions/function_join" },
+            { "$ref": "#/definitions/function_format" }
+          ]
+        },
+        "postcode": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string" },
+            {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string" }
+            },
+            { "$ref": "#/definitions/function_regexp" },
+            { "$ref": "#/definitions/function_remove_prefix" },
+            { "$ref": "#/definitions/function_remove_postfix" },
+            { "$ref": "#/definitions/function_join" },
+            { "$ref": "#/definitions/function_format" }
+          ]
+        },
+        "lon": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string" },
+            { "type": "object", "$ref": "#/definitions/function_regexp" }
+          ]
+        },
+        "lat": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string" },
+            { "type": "object", "$ref": "#/definitions/function_regexp" }
           ]
         }
       }
     },
     "function_regexp": {
+      "type": "object",
       "required": ["function", "field", "pattern"],
       "properties": {
         "function": {
@@ -179,6 +309,7 @@
       }
     },
     "function_prefixed_number": {
+      "type": "object",
       "required": ["function", "field"],
       "properties": {
         "function": {
@@ -191,6 +322,7 @@
       }
     },
     "function_postfixed_street": {
+      "type": "object",
       "required": ["function", "field"],
       "properties": {
         "function": {
@@ -203,6 +335,7 @@
       }
     },
     "function_remove_prefix": {
+      "type": "object",
       "required": ["function", "field", "field_to_remove"],
       "properties": {
         "function": {
@@ -218,6 +351,7 @@
       }
     },
     "function_remove_postfix": {
+      "type": "object",
       "required": ["function", "field", "field_to_remove"],
       "properties": {
         "function": {
@@ -233,6 +367,7 @@
       }
     },
     "function_join": {
+      "type": "object",
       "required": ["function", "fields"],
       "properties": {
         "function": {
@@ -250,6 +385,7 @@
       }
     },
     "function_format": {
+      "type": "object",
       "required": ["function", "fields", "format"],
       "properties": {
         "function": {
