@@ -10,15 +10,24 @@
         "county": "Pueblo"
     },
     "attribution": "Pubelo County",
-    "data": "http://maps.co.pueblo.co.us/outside/rest/services/pueblo_county_address_points/MapServer/0",
+    "data": "https://services1.arcgis.com/IL17xsvNU5Bmw3RY/ArcGIS/rest/services/AddressPoints_UpdateSept2016/FeatureServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "ADDRNUM",
-        "street": "STNAME",
+        "id": "OBJECTID",
+        "number": [
+            "ADDRNUM",
+            "ADDRFRAC"
+        ],
         "unit": "APT_UNIT",
-        "postcode": "ZIP",
-        "city": "CITY",
+        "street": [
+            "STPREDIR",
+            "STNAME",
+            "STTYPE",
+            "STDIR"
+        ],
+        "postcode": "ZIPCODE",
+        "city": "CITY_NAME",
         "region": "STATE",
         "accuracy": 1
     }
