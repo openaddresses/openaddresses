@@ -45,9 +45,6 @@ function testAllSources(validate) {
           var data = JSON.parse(fs.readFileSync(source, 'utf8'));
 
           var valid = validate(data);
-          if (!valid) {
-            console.error(JSON.stringify(validate.errors, null, 2));
-          }
 
           t.notOk(validate.errors, source);
 
