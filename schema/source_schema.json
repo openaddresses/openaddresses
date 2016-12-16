@@ -90,69 +90,9 @@
           "type": "string"
         },
         "geometry": {
-          "description": "from https://github.com/fge/sample-json-schemas/blob/master/geojson/geometry.json",
-          "oneOf": [
-            {
-              "title": "Point",
-              "properties": {
-                "type": { "enum": [ "Point" ] },
-                "coordinates": { "$ref": "#/definitions/position" }
-              }
-            },
-            {
-              "title": "Polygon",
-              "properties": {
-                "type": { "enum": [ "Polygon" ] },
-                "coordinates": { "$ref": "#/definitions/polygon" }
-              }
-            },
-            {
-              "title": "MultiPolygon",
-              "properties": {
-                "type": { "enum": [ "MultiPolygon" ] },
-                "coordinates": {
-                  "type": "array",
-                  "items": { "$ref": "#/definitions/polygon" }
-                }
-              }
-            }
-          ]
+          "$ref": "http://json.schemastore.org/geojson#/definitions/geometry"
         }
       }
-    },
-    "position": {
-      "description": "A single position",
-      "type": "array",
-      "minItems": 2,
-      "items": [
-        { "type": "number" },
-        { "type": "number" }
-      ],
-      "additionalItems": false
-    },
-    "positionArray": {
-      "description": "An array of positions",
-      "type": "array",
-      "items": { "$ref": "#/definitions/position" }
-    },
-    "lineString": {
-      "description": "An array of two or more positions",
-      "allOf": [
-        { "$ref": "#/definitions/positionArray" },
-        { "minItems": 2 }
-      ]
-    },
-    "linearRing": {
-      "description": "An array of four positions where the first equals the last",
-      "allOf": [
-        { "$ref": "#/definitions/positionArray" },
-        { "minItems": 4 }
-      ]
-    },
-    "polygon": {
-      "description": "An array of linear rings",
-      "type": "array",
-      "items": { "$ref": "#/definitions/linearRing" }
     },
     "license": {
       "type": "object",
@@ -191,6 +131,7 @@
       "description": "top-level conform object definition",
       "type": "object",
       "required": ["number", "street"],
+      "additionalProperties": false,
       "properties": {
         "type": {
           "type": "string",
@@ -323,14 +264,14 @@
           "oneOf": [
             { "type": "null" },
             { "type": "string" },
-            { "type": "object", "$ref": "#/definitions/function_regexp" }
+            { "$ref": "#/definitions/function_regexp" }
           ]
         },
         "lat": {
           "oneOf": [
             { "type": "null" },
             { "type": "string" },
-            { "type": "object", "$ref": "#/definitions/function_regexp" }
+            { "$ref": "#/definitions/function_regexp" }
           ]
         }
       }
@@ -339,6 +280,7 @@
       "description": "regexp function definition",
       "type": "object",
       "required": ["function", "field", "pattern"],
+      "additionalProperties": false,
       "properties": {
         "function": {
           "type": "string",
@@ -360,6 +302,7 @@
       "description": "prefixed_number function definition",
       "type": "object",
       "required": ["function", "field"],
+      "additionalProperties": false,
       "properties": {
         "function": {
           "type": "string",
@@ -374,6 +317,7 @@
       "description": "postfixed_street function definition",
       "type": "object",
       "required": ["function", "field"],
+      "additionalProperties": false,
       "properties": {
         "function": {
           "type": "string",
@@ -388,6 +332,7 @@
       "description": "remove_prefix function definition",
       "type": "object",
       "required": ["function", "field", "field_to_remove"],
+      "additionalProperties": false,
       "properties": {
         "function": {
           "type": "string",
@@ -405,6 +350,7 @@
       "description": "remove_postfix function definition",
       "type": "object",
       "required": ["function", "field", "field_to_remove"],
+      "additionalProperties": false,
       "properties": {
         "function": {
           "type": "string",
@@ -422,6 +368,7 @@
       "description": "join function definition",
       "type": "object",
       "required": ["function", "fields"],
+      "additionalProperties": false,
       "properties": {
         "function": {
           "type": "string",
@@ -441,6 +388,7 @@
       "description": "format function definition",
       "type": "object",
       "required": ["function", "fields", "format"],
+      "additionalProperties": false,
       "properties": {
         "function": {
           "type": "string",

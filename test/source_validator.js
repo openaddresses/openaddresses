@@ -2,40 +2,47 @@ var test = require('tape').test,
     glob = require('glob'),
     fs = require('fs'),
     request = require('request'),
-    validator = require('validator'),
     versionCurrent = require('../package.json').version.split('.'),
     Ajv = require('ajv'),
     schema = require('../schema/source_schema.json');
 
-var ajv = new Ajv( { extendRefs: true} );
-var validate = ajv.compile(schema);
-
+// all the sources
 var manifest = glob.sync('sources/**/*.json');
 var index = 0;
 
-//Ensure tests on branch are current with master
-request.get('https://raw.githubusercontent.com/openaddresses/openaddresses/master/package.json', function(err, res, masterPackage) {
-    var versionMaster = JSON.parse(masterPackage).version.split('.');
+var ajv = new Ajv( { loadSchema: loadSchema } );
 
-    for (var i = 0; i < 3; i++) {
-        if (versionMaster[i] > versionCurrent[i]) {
-            console.log("Branch outdated! - Please pull new changes from openaddresses/openaddresses:master");
-            process.exit(1);
-        }
-    }
-    checkSource(index);
+ajv.compileAsync(schema, function (err, validate) {
+    if (err) return;
+    testAllTheThings(validate);
 });
 
-function validateJSON(body) {
-    try {
-        var data = JSON.parse(body);
-        return data;
-    } catch(e) {
-        return null;
-    }
+function loadSchema(uri, callback) {
+    request.get({url:uri}, function(err, res, body) {
+        if (err || res.statusCode >= 400) {
+            callback(err || new Error('Loading error: ' + res.statusCode));
+        } else {
+            callback(null, JSON.parse(body));
+        }
+    });
 }
 
-function checkSource(i){
+function testAllTheThings(validate) {
+  //Ensure tests on branch are current with master
+  request.get('https://raw.githubusercontent.com/openaddresses/openaddresses/master/package.json', function(err, res, masterPackage) {
+      var versionMaster = JSON.parse(masterPackage).version.split('.');
+
+      for (var i = 0; i < 3; i++) {
+          if (versionMaster[i] > versionCurrent[i]) {
+              console.log("Branch outdated! - Please pull new changes from openaddresses/openaddresses:master");
+              process.exit(1);
+          }
+      }
+      checkSource(index, validate);
+  });
+}
+
+function checkSource(i, validate){
     var source = manifest[i];
 
     if (i === manifest.length || !source) {process.exit(0);}
@@ -43,7 +50,7 @@ function checkSource(i){
     test(source, function(t) {
         var raw = fs.readFileSync(source, 'utf8');
 
-        var data = validateJSON(raw);
+        var data = JSON.parse(raw);
 
         var valid = validate(data);
         if (!valid) {
@@ -52,6 +59,6 @@ function checkSource(i){
 
         t.ok(valid, validate.errors);
         t.end();
-        checkSource(++index);
+        checkSource(++index, validate);
     });
 }
