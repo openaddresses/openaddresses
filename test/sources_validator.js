@@ -52,7 +52,7 @@ function testAllSources(validate) {
 
         t.end();
 
-      })
+      });
 
   });
 }
