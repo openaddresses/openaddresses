@@ -6,17 +6,15 @@ var test = require('tape').test,
     Ajv = require('ajv'),
     schema = require('../schema/source_schema.json');
 
-// all the sources
-var manifest = glob.sync('sources/**/*.json');
-var index = 0;
-
 var ajv = new Ajv( { loadSchema: loadSchema } );
 
+// the schema contains a remote schema for geojson so it must be loaded async
 ajv.compileAsync(schema, function (err, validate) {
     if (err) return;
-    testAllTheThings(validate);
+    testAllSources(validate);
 });
 
+// this function instructs Ajv on how to load remote sources
 function loadSchema(uri, callback) {
     request.get({url:uri}, function(err, res, body) {
         if (err || res.statusCode >= 400) {
@@ -27,7 +25,7 @@ function loadSchema(uri, callback) {
     });
 }
 
-function testAllTheThings(validate) {
+function testAllSources(validate) {
   //Ensure tests on branch are current with master
   request.get('https://raw.githubusercontent.com/openaddresses/openaddresses/master/package.json', function(err, res, masterPackage) {
       var versionMaster = JSON.parse(masterPackage).version.split('.');
@@ -38,27 +36,26 @@ function testAllTheThings(validate) {
               process.exit(1);
           }
       }
-      checkSource(index, validate);
-  });
-}
 
-function checkSource(i, validate){
-    var source = manifest[i];
+      test('schema-validate sources', function(t) {
+        // find all the sources
+        var manifest = glob.sync('sources/**/*.json');
 
-    if (i === manifest.length || !source) {process.exit(0);}
+        manifest.forEach(function(source) {
+          var data = JSON.parse(fs.readFileSync(source, 'utf8'));
 
-    test(source, function(t) {
-        var raw = fs.readFileSync(source, 'utf8');
+          var valid = validate(data);
+          if (!valid) {
+            console.error(JSON.stringify(validate.errors, null, 2));
+          }
 
-        var data = JSON.parse(raw);
+          t.notOk(validate.errors, source);
 
-        var valid = validate(data);
-        if (!valid) {
-          console.error(JSON.stringify(validate.errors, null, 2));
-        }
+        });
 
-        t.ok(valid, validate.errors);
         t.end();
-        checkSource(++index, validate);
-    });
+
+      })
+
+  });
 }
