@@ -7,21 +7,23 @@ var ajv = new Ajv( { loadSchema: loadSchema } );
 
 // the schema contains a remote schema for geojson so it must be loaded async
 ajv.compileAsync(schema, function (err, validate) {
-    if (err) return;
-    testSchemaItself(validate);
+  if (err) return;
+  testSchemaItself(validate);
 });
 
 // this function instructs Ajv on how to load remote sources
 function loadSchema(uri, callback) {
-    request.get({url:uri}, function(err, res, body) {
-        if (err || res.statusCode >= 400) {
-            callback(err || new Error('Loading error: ' + res.statusCode));
-        } else {
-            callback(null, JSON.parse(body));
-        }
-    });
+  request.get({url:uri}, function(err, res, body) {
+    if (err || res.statusCode >= 400) {
+      callback(err || new Error('Loading error: ' + res.statusCode));
+    } else {
+      callback(null, JSON.parse(body));
+    }
+  });
 }
 
+// convenience function that looks for an additionalProperty error condition
+// anywhere in the errors array
 function isAdditionalPropertyError(validate, property) {
   if (!validate.errors) return false;
 
@@ -30,6 +32,8 @@ function isAdditionalPropertyError(validate, property) {
   });
 }
 
+// convenience function that looks for an incorrect type error condition
+// anywhere in the errors array
 function isEnumValueError(validate, property) {
   if (!validate.errors) return false;
 
@@ -38,6 +42,8 @@ function isEnumValueError(validate, property) {
   });
 }
 
+// convenience function that looks for an missingProperty error condition
+// anywhere in the errors array
 function isMissingPropertyError(validate, type) {
   if (!validate.errors) return false;
 
@@ -46,6 +52,8 @@ function isMissingPropertyError(validate, type) {
   });
 }
 
+// convenience function that looks for an type error condition
+// anywhere in the errors array
 function isTypeError(validate, property) {
   if (!validate.errors) return false;
 
