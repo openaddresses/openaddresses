@@ -14,13 +14,21 @@
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "prefixed_number",
-            "field": "CompleteAddress"
+            "function": "regexp",
+            "field": "CompleteAddress",
+            "pattern": "^(\\d+-?(?:[A-Z]|\\d+)?\\b)"
         },
         "street": {
-            "function": "postfixed_street",
-            "field": "CompleteAddress"
-            },
+            "function": "regexp",
+            "field": "CompleteAddress",
+            "pattern": "^(?:\\d+-?(?:[A-Z]|\\d+)?\\b)(.*?)( (Unit|Apt|Bldg|Ste).*|$)",
+            "replace": "$1"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "CompleteAddress",
+            "pattern": " ((?:Unit|Apt|Bldg|Ste) .+)$"
+        }
         "postcode": "Zip",
         "city": "City"
     }
