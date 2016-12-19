@@ -1,0 +1,27 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "13057",
+            "name": "Cherokee County",
+            "state": "Georgia"
+        },
+        "country": "us",
+        "state": "ga",
+        "county": "Cherokee"
+    },
+    "data": "http://gis.cherokeega.com/arcgis/rest/services/Address/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "CompleteAddress"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "CompleteAddress"
+            },
+        "postcode": "Zip",
+        "city": "City"
+    }
+}
