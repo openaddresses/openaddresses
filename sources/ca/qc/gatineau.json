@@ -10,12 +10,18 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "number": "NUMERO_CIV",
-        "street": [
-            "GENERIQUE",
-            "LIAISON",
-            "SPECIFIQUE"
-        ],
+        "number": {
+            "function": "regexp",
+            "field": "ADR_COMPLE",
+            "pattern": "([0-9]+(?:\(.*?\))?)( .*)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADR_COMPLE",
+            "pattern": "([0-9]+(?:\(.*?\))? )(.*)",
+            "replace": "$2"
+        },
         "type": "shapefile"
     }
 }
