@@ -179,7 +179,7 @@
           "type": "string"
         },
         "id": {
-          "description": "doesn't include prefixed_number or postfixed_street",
+          "description": "unique identifier for the address row",
           "oneOf": [
             { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
@@ -190,7 +190,7 @@
           ]
         },
         "number": {
-          "description": "doesn't include postfixed_street",
+          "description": "the house number for the address row",
           "oneOf": [
             { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
@@ -202,7 +202,7 @@
           ]
         },
         "street": {
-          "description": "doesn't include prefixed_number",
+          "description": "the street/road for the address row",
           "oneOf": [
             { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
@@ -214,7 +214,7 @@
           ]
         },
         "unit": {
-          "description": "doesn't include prefixed_number or postfixed_street",
+          "description": "the suite/unit/apartment for the address row",
           "oneOf": [
             { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
@@ -225,7 +225,7 @@
           ]
         },
         "city": {
-          "description": "doesn't include prefixed_number or postfixed_street",
+          "description": "the city/locality for the address row",
           "oneOf": [
             { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
@@ -236,7 +236,7 @@
           ]
         },
         "district": {
-          "description": "doesn't include prefixed_number or postfixed_street",
+          "description": "the county for the address row",
           "oneOf": [
             { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
@@ -247,7 +247,7 @@
           ]
         },
         "region": {
-          "description": "doesn't include prefixed_number or postfixed_street",
+          "description": "the state/province for the address row",
           "oneOf": [
             { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
@@ -258,7 +258,7 @@
           ]
         },
         "postcode": {
-          "description": "doesn't include prefixed_number or postfixed_street",
+          "description": "the postcode for the address row",
           "oneOf": [
             { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
@@ -269,6 +269,7 @@
           ]
         },
         "lon": {
+          "description": "longitude value for the address row, only applies to CSV sources",
           "oneOf": [
             { "type": "null" },
             { "type": "string" },
@@ -276,6 +277,7 @@
           ]
         },
         "lat": {
+          "description": "latitude value for the address row, only applies to CSV sources",
           "oneOf": [
             { "type": "null" },
             { "type": "string" },
