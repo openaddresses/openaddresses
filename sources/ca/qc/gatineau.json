@@ -4,20 +4,24 @@
         "state": "qc",
         "city": "Gatineau"
     },
-    "data": "http://gatineau.ca/donneesouvertes/telechargement/ADRESSE.zip",
+    "data": "http://gatineau.ca/upload/donneesouvertes/ADRESSE.zip",
     "website": "http://gatineau.ca/donneesouvertes/fiche_metadonnees_en.aspx?id=1393013950",
     "license": "http://gatineau.ca/donneesouvertes/licence_en.aspx",
     "type": "http",
     "compression": "zip",
     "conform": {
-        "number": "NUMERO_CIV",
-        "street": [
-            "GENERIQUE",
-            "LIAISON",
-            "SPECIFIQUE"
-        ],
+        "number": {
+            "function": "regexp",
+            "field": "ADR_COMPLE",
+            "pattern": "([0-9]+(?:\\(.*?\\))?)( .*)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADR_COMPLE",
+            "pattern": "([0-9]+(?:\\(.*?\\))? )(.*)",
+            "replace": "$2"
+        },
         "type": "shapefile"
-    },
-    "skip": true,
-    "note": "No direct download due to clickthrough"
+    }
 }
