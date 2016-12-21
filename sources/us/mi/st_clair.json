@@ -13,7 +13,13 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "PROP_ADDRESS_NUMBER",
-        "street": "PROP_ADDRESS_STREET"
+        "number": {
+            "function": "prefixed_number",
+            "field": "PROP_ADDRESS_COMBINED"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "PROP_ADDRESS_COMBINED"
+        }
     }
 }
