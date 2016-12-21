@@ -1,0 +1,26 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "38077",
+            "name": "Richland County",
+            "state": "North Dakota"
+        },
+        "country": "us",
+        "state": "nd",
+        "city": "Richland"
+    },
+    "type": "http",
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/6b5774/us-nd-richland.geojson.zip",
+    "compression": "zip",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "RICHLAND.DBO.ALL_PARCEL_DATA.Street_Address"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "RICHLAND.DBO.ALL_PARCEL_DATA.Street_Address"
+        }
+    }
+}
