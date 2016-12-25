@@ -1,0 +1,49 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "36071",
+            "name": "Orange County",
+            "state": "New York"
+        },
+        "country": "us",
+        "state": "ny",
+        "county":"Orange"
+    },
+    "data": "http://ocgis.orangecountygov.com/ArcGIS/rest/services/Dynamic/LandBase/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "StreetAddress"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SteetAddress",
+            "pattern": "^\\s*(?:\\d+-?(?:[A-Z]|\\d+)?\\b)?\\s*(.*?)( ((Unit|Suite|Apt) .+|REAR))?$",
+            "$1"
+        },
+        "unit": [
+            "UnitType",
+            "UnitNumber"
+        ],
+        "city": {
+            "function": "regexp",
+            "field": "CityStateZip",
+            "pattern": "^([A-Z]+) (NY) ([0-9]+)$",
+            "replace": "$1"
+        },
+        "region": {
+            "function": "regexp",
+            "field": "CityStateZip",
+            "pattern": "^([A-Z]+) (NY) ([0-9]+)$",
+            "replace": "$2"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "CityStateZip",
+            "pattern": "^([A-Z]+) (NY) ([0-9]+)$",
+            "replace": "$3"
+        }
+    }
+}
