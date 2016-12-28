@@ -12,15 +12,20 @@
     "conform": {
         "number": {
             "function": "regexp",
-            "field": "ADR_COMPLE",
-            "pattern": "([0-9]+(?:\\(.*?\\))?)( .*)",
-            "replace": "$1"
+            "field": "NUMERO_CIV",
+            "pattern": "^([0-9]+)"
         },
-        "street": {
+        "street": [
+            "GENERIQUE",
+            "LIAISON",
+            "SPECIFIQUE",
+            "DIRECTION"
+        ],
+        "unit": {
             "function": "regexp",
-            "field": "ADR_COMPLE",
-            "pattern": "([0-9]+(?:\\(.*?\\))? )(.*)",
-            "replace": "$2"
+            "field": "NUMERO_CIV",
+            "pattern": "^(?:[0-9]+)(.*)",
+            "replace": "$1"
         },
         "type": "shapefile"
     }
