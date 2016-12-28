@@ -1,0 +1,33 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "56023",
+            "name": "Lincoln County",
+            "state": "Wyoming"
+        },
+        "country": "us",
+        "state": "wy",
+        "county": "Lincoln"
+    },
+    "data": "https://www.dropbox.com/s/2m0s7fqrv9u9jyh/LincolnCoWyRuralAddresses.zip?dl=1",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "ADDRESS"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*?)(UNIT .*|$)",
+            "replace": "$1"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "(UNIT .*)$"
+        }
+    }
+}
