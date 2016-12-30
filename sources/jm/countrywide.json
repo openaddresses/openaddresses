@@ -6,13 +6,18 @@
             "country": "Jamaica"
         }
     },
-    "type": "ESRI",
-    "data": "http://gaia.globejamaica.com/NLA_Flex/rest/services/LandBase/MapServer/37",
+    "type": "http",
+    "compression": "zip",
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/936e31/jamaica.geojson.zip",
     "conform": {
         "type": "geojson",
-        "number": "Str_Num",
-        "street": "Str_Name",
-        "city": "Street_Address",
+        "number": "STREET_",
+        "street": {
+            "function": "remove_prefix",
+            "field": "STREET_ADDRESS",
+            "field_to_remove": "STREET_"
+        },
+        "city": "LOCATION",
         "region": "PARISH"
     }
 }
