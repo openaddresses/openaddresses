@@ -102,6 +102,7 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
 ---------------- | --- | ----
 `type`           | Yes | The type properties stores the format. It can currently be one of `gdb`, `shapefile`, `shapefile-polygon`, `csv`, `geojson`, or `xml` (for GML).
 `srs`            |     | Allows one to set a custom source srs. Currently only supported by `type:shapefile`, `type:shapefile-polygon`, and `type:csv`. Should be in the format of `EPSG:####` and can be any code supported by `ogr2ogr`. Modern shapefiles typically store their project in a `.prj` file. If this file exists, this tag should be omitted.
+`layer`          |     | The `gdb` source type allows multiple layers of geodata in a single input file. Use the `layer` tag to specify which of those layers to use. It can either be the string name of the layer or an integer index of the layer.
 `file`           |     | The majority of zips contain a single shapefile. Sometimes zips will contain multiple files, or the shapefile that is needed is located in a folder hierarchy in the zip. Since the program only supports determining single shapefiles not in a subfolder, file can be used to point the program to an exact file. The proper syntax would be `"file": "addresspoints/address.shp"` if the file was under a single subdirectory called `addresspoints`. Note there is no preceding forward slash.
 `encoding`       |     | A character encoding from which an input file will first be converted (into utf-8). Must be [recognizable by `iconv`](https://www.gnu.org/software/libiconv/).
 `csvsplit`       |     | The character to delimit input CSV’s by. Defaults to comma.
@@ -152,6 +153,8 @@ Function | Note
 `regexp` | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field.
 `join`   | Allow multiple fields to be joined with a given delimiter.
 `format` | Allow multiple fields to be formatted into a single string.
+`remove_prefix` | Removes a field value from the beginning of another field value.
+`remove_postfix` | Removes a field value from the end of another field value.
 
 ##### Attribute Tag Examples
 
@@ -257,8 +260,7 @@ The source data should be examined to determine if the shorthand methods `prefix
 
 ###### join function
 
-The join function allows fields to be merged given an arbitrary delimiter. For delimiting
-by spaces there is a more concise format - see the example for `Merge Fields`
+The join function allows fields to be merged given an arbitrary delimiter. The default value for the optional `separator` parameter is a single space (` `).  See the example for `Merge Fields`.  
 
 _Format_
 ```JSON
@@ -296,7 +298,53 @@ _Example_
 "number": {
     "function": "format",
     "fields": ["number", "letter", "supplement"],
-    "separator": "$1$2-$3"
+    "format": "$1$2-$3"
+}
+```
+
+###### remove_prefix and remove_postfix functions
+
+The `remove_prefix` and `remove_postfix` functions modify a field's value by removing another field's value from the beginning or end.  These convenience functions are meant to reduce the complexity of `regexp` functions that are not aware of other field values.  While not common, this functionality is very handy for sources that have, for example, separate house number and address fields where the former is a prefix of the latter.
+
+_Format_
+```JSON
+"{Attribute Tag}": {
+    "function": "remove_prefix",
+    "field": "{Field1}",
+    "field_to_remove": "{Field2}"
+}
+"{Attribute Tag}": {
+    "function": "remove_postfix",
+    "field": "{Field1}",
+    "field_to_remove": "{Field2}"
+}
+```
+
+_Example_
+```JSON
+"number": "HOUSE_NUMBER",
+"street": {
+  "function": "remove_prefix",
+  "field": "SITUS_ADDRESS",
+  "field_to_remove": "HOUSE_NUMBER"
+}
+```
+
+The above conform example can transform:
+
+```
+{
+  "HOUSE_NUMBER": "102"
+  "SITUS_ADDRESS": "102 East Maple Street",
+}
+```
+
+into:
+
+```
+{
+  "number": "102",
+  "street": "East Maple Street"
 }
 ```
 
