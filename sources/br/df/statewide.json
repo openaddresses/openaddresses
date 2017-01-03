@@ -1,0 +1,29 @@
+{
+    "coverage": {
+        "country": "br",
+        "state": "df"
+    },
+    "data": "http://www.geoservicos.segeth.df.gov.br/ArcGIS/rest/services/Operational/LOTE/MapServer/0",
+    "website": "http://www.geoportal.segeth.df.gov.br/",
+    "attribution": "Governo do Distrito Federal - Secretaria de Estado de Gestão do Território e Habitação",
+    "accuracy": "2",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "lote",
+        "street": ["setor", "quadra", "conjunto"],
+        "city": {
+            "function": "regexp",
+            "field": "end_comp",
+            "pattern": "^(Plano Piloto|Gama|Taguatinga|Brazlândia|Sobradinho|Planaltina|Paranoá|Núcleo Bandeirante|Ceilândia|Guará|Cruzeiro|Samambaia|Santa Maria|São Sebastião|Recanto das Emas|Lago Sul|Riacho Fundo|Lago Norte|Candangolândia|Águas Claras|Riacho Fundo II|Sudoeste e Octogonal|Varjão|Park Way|SCIA|Sobradinho II|Jardim Botânico|Itapoã|SIA|Vicente Pires|Fercal)",
+            "replace": "$1"
+
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "cep",
+            "pattern": "^([0-9][0-9][0-9][0-9][0-9])([0-9][0-9][0-9])$",
+            "replace": "$1-$2"
+        }
+    }
+}
