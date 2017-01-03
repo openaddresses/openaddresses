@@ -13,6 +13,12 @@
         "street": "streetname",
         "city": "postalarea",
         "region": "Stockholm",
+        "postcode": {
+            "function": "regexp",
+            "field": "postalcode",
+            "pattern": "^([0-9]{3})([0-9]{2})$",
+            "replace": "$1 $2"
+        },
         "type": "csv",
         "lat":"lat",
         "lon":"lon",
