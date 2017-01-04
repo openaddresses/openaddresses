@@ -1,0 +1,33 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "BR-SP",
+            "country": "Brazil",
+            "state": "São Paulo"
+        },
+        "country": "br",
+        "state": "sp"
+    },
+    "website": "http://www.censo2010.ibge.gov.br/cnefe/",
+    "license": {
+        "attribution": true,
+        "attribution name": "Instituto Brasileiro de Geografia e Estatística"
+    },
+    "data": "https://dl.dropboxusercontent.com/s/8khlwjh97625gwn/br-35.zip",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "csv",
+        "lat": "lat",
+        "lon": "lon",
+        "number": ["number", "number_suffix"],
+        "street": ["street_type", "street_title", "street_name"],
+        "city": "municipality",
+        "postcode": {
+            "function": "regexp",
+            "field": "postcode",
+            "pattern": "^([0-9]{5})([0-9]{3})$",
+            "replace": "$1-$2"
+        }
+    }
+}
