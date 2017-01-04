@@ -17,7 +17,11 @@
             "field": "STREET_ADDRESS",
             "field_to_remove": "street_"
         },
-        "city": "LOCATION",
+        "city": {
+            "function": "regexp",
+            "field": "LOCATION",
+            "pattern": "^(?:C\\s*/\\s*O\\s*)?(.*?)\\s*(?:(?:P(?:\\.|\\s*)\\s*[OA]\\.?.*)|(?:\\sP))?$"
+        },
         "region": "PARISH"
     }
 }
