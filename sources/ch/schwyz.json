@@ -18,7 +18,11 @@
         "id": "GWR_EGID",
         "number": "Hausnummer",
         "street": "Lokalisati",
-        "city": "Ortschafts",
+        "city": {
+            "function": "regexp",
+            "field: "Ortschafts",
+            "pattern": "^(.+)(?:\\s+SZ)\\s*$"
+        },
         "postcode": "PLZ",
         "lat": "Y",
         "lon": "X"

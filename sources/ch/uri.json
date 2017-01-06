@@ -18,7 +18,11 @@
         "id": "gwr_egid",
         "number": "hausnummer",
         "street": "strassennamen",
-        "city": "ortschaft",
+        "city": {
+            "function": "regexp",
+            "field": "ortschaft",
+            "pattern": "^(.+?)(?:(?<=Seedorf)UR|\\s+UR)?\\s*$"
+        },
         "postcode": "plz",
         "lat": "Y",
         "lon": "X"

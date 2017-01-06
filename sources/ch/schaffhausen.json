@@ -16,7 +16,11 @@
         "file": "Ge_Gebaeudeeingang.shp",
         "number": "HAUSNUMMER",
         "street": "STRASSE",
-        "city": "ORTSCHAFT",
+        "city": {
+            "function": "regexp",
+            "field": "ORTSCHAFT",
+            "pattern": "^(.+)(?:\\s+SH)\\s*$"
+        },
         "postcode": "PLZ",
         "srs": "EPSG:2056"
     }

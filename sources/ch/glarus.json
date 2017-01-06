@@ -18,7 +18,11 @@
         "id": "RegBL_EGID",
         "number": "Numero_maison",
         "street": "Nom_de_rue",
-        "city": "Ortschaft",
+        "city": {
+            "function": "regexp",
+            "field": "Ortschaft",
+            "pattern": "^(.+?)(?:\\s+GL)?\\s*$"
+        },
         "postcode": "PLZ",
         "lat": "Y",
         "lon": "X"
