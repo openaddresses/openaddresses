@@ -18,7 +18,11 @@
         "id": "regbl_egid",
         "number": "house_number",
         "street": "street_name",
-        "city": "city",
+        "city": {
+            "function": "regexp",
+            "field": "city",
+            "pattern": "^(.+?)(?:\\s+\\(?\\s*GR\\)?)?\\s*$"
+        },
         "postcode": "postalcode",
         "lat": "Y",
         "lon": "X"
