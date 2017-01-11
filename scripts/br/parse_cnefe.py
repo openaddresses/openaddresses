@@ -42,11 +42,8 @@ cnefe_schema = [
 ]
 
 def dms_to_decimal(c):
-    try:
-        [d,m,s,q] = c.split()
-        return (float(d) + float(m)/60 + float(s)/3600) * (-1 if q in ['O', 'S'] else 1)
-    except:
-        return ''
+    [d,m,s,q] = c.split()
+    return (float(d) + float(m)/60 + float(s)/3600) * (-1 if q in ['O', 'S'] else 1)
 
 def parse_line(l, initial):
     a = initial.copy()
@@ -86,18 +83,23 @@ def do_file(region):
 
             a = parse_line(line,region)
 
-            if not a['number']:
-                count['s/n'] += 1
+            if a['number']:
+                count['has number'] += 1
                 
             #find coordinates
             cd_geo = a['census sector'] + a['block'] + a['face']
 
             if a['lon']:
-                a['lon'] = dms_to_decimal(a['lon'])
-                a['lat'] = dms_to_decimal(a['lat'])
-                count['gps'] += 1
+                try:
+                    a['lon'] = dms_to_decimal(a['lon'])
+                    a['lat'] = dms_to_decimal(a['lat'])
+                    count['gps'] += 1
+                except Exception as err:
+                    print('Warning:', err, file=sys.stderr)
+                    a['lon'] = ''
+                    a['lat'] = ''
             elif cd_geo in coords:
-                count['on face'] += 1
+                count['has face'] += 1
                 a['lon'] = str(coords[cd_geo].x)
                 a['lat'] = str(coords[cd_geo].y)
             else:
@@ -105,17 +107,17 @@ def do_file(region):
 
             try:
                 out.writerow(a)
-            except:
-                count['write failed'] += 1
+            except Exception as err:
+                print('Warning:', err, file=sys.stderr)
 
-    for c in ['s/n', 'gps', 'on face', 'no coords']:
+    for c in ['has number', 'has face', 'gps', 'no coords']:
         count[c] = '{:.1%}'.format(count[c]/count['total'])
                 
     log.writerow(count)
 
 manifest_fields = ['state', None, 'municipality', None, 'district',
                     None, 'subdistrict', 'id']
-log_fields = ['total', 's/n', 'on face', 'gps', 'no coords', 'write failed']
+log_fields = ['total', 'has number', 'has face', 'gps', 'no coords']
 
 manifest = csv.DictReader(open('data/manifest.csv'), fieldnames = manifest_fields)
 

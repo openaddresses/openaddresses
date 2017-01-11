@@ -1,7 +1,7 @@
 fetch:
 	mkdir -p downloads
-	wget --continue -P downloads/ -r ftp://ftp.ibge.gov.br/Censos/Censo_Demografico_2010/Cadastro_Nacional_de_Enderecos_Fins_Estatisticos/
-	wget --continue -P downloads/ -r ftp://geoftp.ibge.gov.br/recortes_para_fins_estatisticos/malha_de_setores_censitarios/censo_2010/base_de_faces_de_logradouros/
+	wget -N -nv -P downloads/ -r ftp://ftp.ibge.gov.br/Censos/Censo_Demografico_2010/Cadastro_Nacional_de_Enderecos_Fins_Estatisticos/
+        wget -N -nv -P downloads/ -r ftp://geoftp.ibge.gov.br/recortes_para_fins_estatisticos/malha_de_setores_censitarios/censo_2010/base_de_faces_de_logradouros/
 
 unpack:
 	mkdir -p data
