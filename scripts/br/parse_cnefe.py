@@ -4,152 +4,139 @@ import csv, argparse, sys, locale, re
 import fiona
 from shapely.geometry import mapping, shape
 
-parser = argparse.ArgumentParser(description="Convert CNEFE data to CSV format")
-parser.add_argument('--no-subaddresses', action='store_true', help="Strip unit information")
-parser.add_argument('r', help="CNEFE region id")
+parser = argparse.ArgumentParser(description='Convert CNEFE data to CSV format')
+parser.add_argument('region', help='CNEFE region id')
 args = parser.parse_args()
 
-fieldnames = [
-    "lon",
-    "lat",
-    "census_sector",
-    "block",
-    "face",
-    "urban_or_rural",
-    "street_type",
-    "street_title",
-    "street_name",
-    "number",
-    "number_suffix",
-    "suburb",
-    "postcode",
-    "subdistrict",
-    "district",
-    "municipality",
-    "state",
+cnefe_schema = [
+    # see data/Layout_Donwload.xls for details
+    ('census sector', 1, 15),
+    ('sector type', 16, 1),
+    ('street type', 17, 20),
+    ('street title', 37, 30),
+    ('street name', 67, 60),
+    ('number', 127, 8),
+    ('number suffix', 135, 7),
+    ('unit k1', 142, 20),
+    ('unit v1', 162, 10),
+    ('unit k2', 172, 20),
+    ('unit v2', 192, 10),
+    ('unit k3', 202, 20),
+    ('unit v3', 222, 10),
+    ('unit k4', 232, 20),
+    ('unit v4', 252, 10),
+    ('unit k5', 262, 20),
+    ('unit v5', 282, 10),
+    ('unit k6', 292, 20),
+    ('unit v6', 312, 10),
+    ('lat', 322, 15),
+    ('lon', 337, 15),
+    ('locality', 352, 60),
+    ('address type', 472, 2),
+    ('note', 474, 40),
+    ('unique or multiple', 514, 1),
+    ('collective dwelling', 515, 30),
+    ('block', 545, 3),
+    ('face', 548, 3),
+    ('postal code', 551, 8)
 ]
 
-if not args.no_subaddresses:
-    fieldnames.extend([
-        "unit_k1",
-        "unit_v1",
-        "unit_k2",
-        "unit_v2",
-        "unit_k3",
-        "unit_v3",
-        "unit_k4",
-        "unit_v4",
-        "unit_k5",
-        "unit_v5",
-        "unit_k6",
-        "unit_v6",
-        "addr_type",
-        "note",
-        "unique_or_multiple",
-        "collective_dwelling",
-    ])
-
-def shrink(s):
-    return ' '.join(s.split())
-
 def dms_to_decimal(c):
-    [d,m,s,q] = c.split()
-    return (float(d) + float(m)/60 + float(s)/3600) * (-1 if q in ["O", "S"] else 1)
+    try:
+        [d,m,s,q] = c.split()
+        return (float(d) + float(m)/60 + float(s)/3600) * (-1 if q in ['O', 'S'] else 1)
+    except:
+        return ''
 
-def do_file(r):
+def parse_line(l, initial):
+    a = initial.copy()
+    for (field, start, length) in cnefe_schema:
+        a[field] = l[start-1:start-1+length].strip()
 
-    count = r.copy()
-    count['total'] = 0
-    count['gps'] = 0
-    count['on face'] = 0
-    count['face missing'] = 0
-    count['write failed'] = 0
+    # cleanups
+    a['census sector'] = a['census sector'].replace(' ', '0')
+    a['postal code'] = a['postal code'].zfill(8)
+    if a['number'] == '0':
+        a['number'] = ''
+        
+    return a
 
-    coords = {} # a dict with coordinates representing each block face
+def do_file(region):
+
+    count = region.copy()
+    for c in log_fields:
+        count[c] = 0
+
+    coords = {} # a dict of coordinates representing each block face
 
     try:
-        with fiona.open("data/" + r["id"] + '_face.shp') as source:
+        with fiona.open('data/' + region['id'] + '_face.shp') as source:
             for x in source:
-                c = shape(x['geometry']).interpolate(0.5, normalized=True)
-                coords[x['properties']['CD_GEO']] = c
-    except Exception as err:
-        print("Error:", r["id"], err, file=log)
+                if x['geometry']:
+                    c = shape(x['geometry']).interpolate(0.5, normalized=True)
+                    coords[x['properties']['CD_GEO']] = c
+    except IOError as err:
+        print('Warning:', err, file=sys.stderr)
 
-    with open("data/" + r["id"] + ".TXT", 'r', errors='replace') as f:
+    with open('data/' + region['id'] + '.TXT', 'r', errors='replace') as cnefe_file:
     
-        for l in f:
+        for line in cnefe_file:
         
-            a = r.copy() # initialize with subdistrict data
-
             count['total'] += 1
 
-            a["census_sector"] = l[0:15]
-            a["urban_or_rural"] = l[15]
-            a["street_type"] = shrink(l[16:36])
-            a["street_title"] = shrink(l[36:66])
-            a["street_name"] = shrink(l[66:126])
-            a["number"] = shrink(l[126:134])
-            a["number_suffix"] = shrink(l[134:141])
-            a["unit_k1"] = shrink(l[141:161])
-            a["unit_v1"] = shrink(l[161:171])
-            a["unit_k2"] = shrink(l[171:191])
-            a["unit_v2"] = shrink(l[191:201])
-            a["unit_k3"] = shrink(l[201:221])
-            a["unit_v3"] = shrink(l[221:231])
-            a["unit_k4"] = shrink(l[231:251])
-            a["unit_v4"] = shrink(l[251:261])
-            a["unit_k5"] = shrink(l[261:281])
-            a["unit_v5"] = shrink(l[281:291])
-            a["unit_k6"] = shrink(l[291:311])
-            a["unit_v6"] = shrink(l[311:321])
-            a["lat"] = l[321:336].strip()
-            a["lon"] = l[336:351].strip()
-            a["suburb"] = shrink(l[351:411])
-            a["addr_type"] = l[471:473]
-            a["note"] = shrink(l[473:513])
-            a["unique_or_multiple"] = l[513].strip()
-            a["collective_dwelling"] = shrink(l[514:544])
-            a["block"] = l[544:547]
-            a["face"] = l[547:550]
-            a["postcode"] = l[550:558]
+            a = parse_line(line,region)
 
-            #cleanups
-            a['census_sector'] = a['census_sector'].replace(' ', '0')
-
-            if a['number'] == '0':
-                a['number'] = ''
-
+            if not a['number']:
+                count['s/n'] += 1
+                
             #find coordinates
-            cd_geo = a["census_sector"] + a["block"] + a["face"]
+            cd_geo = a['census sector'] + a['block'] + a['face']
 
-            if a["lon"]:
-                a["lon"] = dms_to_decimal(a["lon"])
-                a["lat"] = dms_to_decimal(a["lat"])
+            if a['lon']:
+                a['lon'] = dms_to_decimal(a['lon'])
+                a['lat'] = dms_to_decimal(a['lat'])
                 count['gps'] += 1
             elif cd_geo in coords:
                 count['on face'] += 1
-                a["lon"] = str(coords[cd_geo].x)
-                a["lat"] = str(coords[cd_geo].y)
+                a['lon'] = str(coords[cd_geo].x)
+                a['lat'] = str(coords[cd_geo].y)
             else:
-                count['face missing'] += 1
+                count['no coords'] += 1
 
             try:
                 out.writerow(a)
             except:
                 count['write failed'] += 1
 
-    print(count, file=log)
+    for c in ['s/n', 'gps', 'on face', 'no coords']:
+        count[c] = '{:.1%}'.format(count[c]/count['total'])
+                
+    log.writerow(count)
 
-manifest = csv.DictReader(open('manifest.csv'))
+manifest_fields = ['state', None, 'municipality', None, 'district',
+                    None, 'subdistrict', 'id']
+log_fields = ['total', 's/n', 'on face', 'gps', 'no coords', 'write failed']
 
-log = open(args.r + ".log", 'w')
-out = csv.DictWriter(sys.stdout, fieldnames, extrasaction="ignore")
+manifest = csv.DictReader(open('data/manifest.csv'), fieldnames = manifest_fields)
+
+if next(manifest) != {None: 'Subdistrito', 'state': 'UF', 'id': 'Arquivo', 'district': 'Nome Distrito', 'subdistrict': 'Nome Subdistrito', 'municipality': 'Nome Município'}:
+    sys.exit("Error: Couldn't understand manifest file")
+
+outfields = [a for (a,b,c) in cnefe_schema]    
+outfields.extend(['subdistrict','district','municipality','state'])
+
+log = csv.DictWriter(open(args.region + '.log', 'w'),
+                     log_fields + ['id', 'municipality','state'],
+                     extrasaction='ignore')
+log.writeheader()
+
+out = csv.DictWriter(sys.stdout, outfields, extrasaction='ignore')
 out.writeheader()
 
 for s in manifest:
-    if s["id"].startswith(args.r):
+    if s['id'].startswith(args.region):
+        print('Info: processing ' + s['id'], file=sys.stderr)
         try:
             do_file(s)
-        except Exception as err:
-            print("Error:", s["id"], err, file=log)
-
+        except IOError as err:
+            print('Warning:', err, file=sys.stderr)
