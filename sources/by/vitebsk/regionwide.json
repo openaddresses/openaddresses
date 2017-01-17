@@ -10,9 +10,18 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "ADDRESS",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:.*?),(.*)",
+            "replace": "$1"
+        },
         "street": "ADDRESS",
-        "district": "District",
-        "region": "Region"
+        "city": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(.*?),.*",
+            "replace": "$1"
+        }
     }
 }
