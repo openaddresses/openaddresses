@@ -9,7 +9,11 @@
         "type": "geojson",
         "number": "HAUSNUMMER",
         "street": "LOK_NAME",
-        "city": "ORTSCHAFT",
+        "city": {
+            "function": "regexp",
+            "field": "ORTSCHAFT",
+            "pattern": "^(.+?)(?:\\s+LU)?\\s*$"
+        },
         "postcode": "PLZ"
     }
 }
