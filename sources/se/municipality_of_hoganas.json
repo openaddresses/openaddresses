@@ -7,8 +7,16 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "AddressPlace",
-        "street": "StreetName",
+        "number": {
+            "function": "regexp",
+            "field": "Name",
+            "pattern": "^(?:.*?)\\s*([\\d]+\\w*(?:\\-[\\d]+\\w*)?)$"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Name",
+            "pattern": "^(.*?)\\s*(?:[\\d]+\\w*(?:\\-[\\d]+\\w*)?)$"
+        },
         "city": "PostCity",
         "postcode": {
             "function": "regexp",
