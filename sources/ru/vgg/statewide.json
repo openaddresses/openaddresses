@@ -12,7 +12,11 @@
     "type": "ESRI",
     "language": "ru",
     "conform": {
-        "number": ["consturct", "letter"],
+        "number": {
+            "function": "format",
+            "fields": ["construct", "letter"],
+            "format": "$1$2"
+        },
         "street": ["street_type_text","street"],
         "city": "raion",
         "district": "raion_name",
