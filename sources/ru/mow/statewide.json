@@ -19,10 +19,15 @@
     "compression": "zip",
     "language": "ru",
     "conform": {
-        "number": ["Housenumber","Unit","Building"],
+        "number": {
+            "function": "format",
+            "fields": ["Housenumber", "Building"],
+            "format": "дом $1, строение $2"
+        },
         "street": "StreetParsed",
         "city": "CityParsed",
         "district": "raion",
+        "unit": "Unit",
         "id": "GUID",
         "type": "csv",
         "lat": "lat",
