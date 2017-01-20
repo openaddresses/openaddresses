@@ -1,0 +1,33 @@
+{
+    "coverage": {
+        "country": "ch",
+        "city": "Grisons",
+        "ISO 3166": {
+            "alpha2": "CH-GR"
+        }
+    },
+    "website": "http://geogr.mapserver.ch/shop/?q=de/prod_av",
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/sergiyprotsiv/8d3c1a/ch-gr.csv.zip",
+    "type": "http",
+    "compression": "zip",
+    "license": {
+        "attribution": false,
+        "share-alike": false
+    },
+    "conform": {
+        "type": "csv",
+        "file": "ch-gr.csv",
+        "encoding": "utf-8",
+        "id": "regbl_egid",
+        "number": "house_number",
+        "street": "street_name",
+        "city": {
+            "function": "regexp",
+            "field": "city",
+            "pattern": "^(.+?)(?:\\s+\\(?\\s*GR\\)?)?\\s*$"
+        },
+        "postcode": "postalcode",
+        "lat": "Y",
+        "lon": "X"
+    }
+}

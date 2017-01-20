@@ -12,7 +12,11 @@
         "type": "geojson",
         "number": "DEINR",
         "street": "STRNAME1",
-        "city": "LOCALITE",
+        "city": {
+            "function": "regexp",
+            "pattern": "^(.*?)(?:\\s+FR)?\\s*$",
+            "field" :"LOCALITE"
+        },
         "postcode": "PLZ4"
     }
 }
