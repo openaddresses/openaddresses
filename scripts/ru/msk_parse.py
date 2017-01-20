@@ -82,10 +82,10 @@ for i in range(25000/step, count / step + 1):
 
 			# Check if the first field contains 
 			if m is not None:
-				city = matchstring[len(m.group(1)):len(matchstring)]
+				city = matchstring
 				elems.pop(0)
 			else:
-				city = u"Москва"
+				city = u"г. Москва"
 			
 			export_string += '"'+city.strip().encode('utf-8')+'",'
 		
