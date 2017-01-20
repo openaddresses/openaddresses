@@ -6,7 +6,7 @@
         },
         "country": "by"
     },
-    "data": "http://mogilev.gismap.by/arcgis/rest/services/mglotsset/MapServer/0",
+    "data": "http://mogilev.gismap.by/arcgis/rest/services/Poisk/MapServer/2"
     "type": "ESRI",
     "conform": {
         "type": "geojson",
@@ -28,7 +28,7 @@
         "city": {
             "function": "regexp",
             "field": "ADDRESS",
-            "pattern": "^(?:.*?)\\b((?:(?:г|аг|гп|пгт)(?:\\.|\\s+)|(?:д(?:\\.\\s+|\\.(?=\\w)|\\s+)(?!\\d)))\\s*\\w[^,\\d]*(?:(?<=\\-)[\\d]+)?)"
+            "pattern": "^(?:.*?)\\b((?:(?:г|аг|гп|пгт)(?:\\.|\\s+)|(?:д(?:\\.\\s+|\\.(?=\\w)|\\s+)(?!\\d)))(?:\\s*\\w+(?=[\\s,\\-]))+(?:\\-[\\d]+)?)"
         }
     }
 }
