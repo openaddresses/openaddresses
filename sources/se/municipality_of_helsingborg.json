@@ -1,0 +1,25 @@
+{
+    "coverage": {
+        "country": "se",
+        "city": "Helsingborg"
+    },
+    "data": "http://geodata.helsingborg.se/arcgis/rest/services/Trafik/Skolskjuts_160914/MapServer/37",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": ["ENUMERATOR","DESIGNATIONNUMBERLETTER"],
+        "street": {
+            "function": "regexp",
+            "field": "STREETNAME",
+            "pattern": "^(.*?)(?: \\|.+)?$"
+        },
+        "city": "CITY",
+        "postcode": {
+            "function": "regexp",
+            "field": "POSTCODE",
+            "pattern": "^([\\d]{3})([\\d]{2})$",
+            "replace": "$1 $2"
+        },
+        "id": "BALID"
+    }
+}

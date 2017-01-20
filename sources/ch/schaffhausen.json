@@ -1,0 +1,30 @@
+{
+    "coverage": {
+        "country": "ch",
+        "city": "Schaffhausen",
+        "ISO 3166": {
+            "alpha2": "CH-SH"
+        }
+    },
+    "website": "http://gis.sh.ch/GIS_SH/BM3.asp",
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/sergiyprotsiv/88c155/order-sch.zip",
+    "type": "http",
+    "compression": "zip",
+    "license": {
+        "attribution": true,
+        "share-alike": false
+    },
+    "conform": {
+        "type": "shapefile",
+        "file": "Ge_Gebaeudeeingang.shp",
+        "number": "HAUSNUMMER",
+        "street": "STRASSE",
+        "city": {
+            "function": "regexp",
+            "field": "ORTSCHAFT",
+            "pattern": "^(.+)(?:\\s+SH)\\s*$"
+        },
+        "postcode": "PLZ",
+        "srs": "EPSG:2056"
+    }
+}

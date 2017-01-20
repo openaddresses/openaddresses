@@ -1,0 +1,20 @@
+{
+    "coverage": {
+        "country": "se",
+        "city": "Gislaved"
+    },
+    "data": "https://egis.gislaved.se/arcgis/rest/services/Adresser_egis/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "AddressPlace",
+        "street": "StreetName",
+        "city": "PostCity",
+        "postcode": {
+            "function": "regexp",
+            "field": "PostCode",
+            "pattern": "^([\\d]{3})([\\d]{2})$",
+            "replace": "$1 $2"
+        }
+    }
+}

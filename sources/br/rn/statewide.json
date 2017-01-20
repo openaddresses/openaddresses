@@ -1,0 +1,50 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "BR-RN",
+            "country": "Brazil",
+            "state": "Rio Grande do Norte"
+        },
+        "country": "br",
+        "state": "rn"
+    },
+    "website": "http://www.censo2010.ibge.gov.br/cnefe/",
+    "license": {
+        "attribution": true,
+        "attribution name": "Instituto Brasileiro de Geografia e Estatística"
+    },
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/astoff/fce2c0/br-24.zip",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "csv",
+        "lat": "lat",
+        "lon": "lon",
+        "number": [
+            "number",
+            "number suffix"
+        ],
+        "street": [
+            "street type",
+            "street title",
+            "street name"
+        ],
+        "unit": [
+            "unit k1", "unit v1",
+            "unit k2", "unit v2",
+            "unit k3", "unit v3",
+            "unit k4", "unit v4",
+            "unit k5", "unit v5",
+            "unit k6", "unit v6"
+        ],
+        "city": "municipality",
+        "region": "state",
+        "postcode": {
+            "function": "regexp",
+            "field": "postal code",
+            "pattern": "^([0-9]{5})([0-9]{3})$",
+            "replace": "$1-$2"
+        },
+        "accuracy": 5
+    }
+}
