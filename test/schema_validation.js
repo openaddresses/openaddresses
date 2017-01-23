@@ -159,6 +159,22 @@ function testSchemaItself(validate) {
 
   });
 
+  test.test('string data value should not fail', function(t) {
+    var source = {
+      type: 'http',
+      coverage: {
+        country: 'some country'
+      },
+      data: 'http://xyz.com/'
+    };
+
+    var valid = validate(source);
+
+    t.ok(valid, 'string data value should not fail');
+    t.end();
+
+  });
+
   test.test('non-string website value should fail', function(t) {
     var source = {
       type: 'http',
@@ -173,6 +189,23 @@ function testSchemaItself(validate) {
 
     t.notOk(valid, 'non-string website value should fail');
     t.ok(isTypeError(validate, 'website'), JSON.stringify(validate.errors));
+    t.end();
+
+  });
+
+  test.test('string website value should not fail', function(t) {
+    var source = {
+      type: 'http',
+      coverage: {
+        country: 'some country'
+      },
+      data: 'http://xyz.com/',
+      website: 'this is a string'
+    };
+
+    var valid = validate(source);
+
+    t.ok(valid, 'string website value should not fail');
     t.end();
 
   });
