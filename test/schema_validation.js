@@ -62,6 +62,14 @@ function isTypeError(validate, property) {
   });
 }
 
+function isFormatError(validate, property) {
+  if (!validate.errors) return false;
+
+  return validate.errors.some(function(err) {
+    return err.schemaPath === '#/properties/' + property + '/format';
+  });
+}
+
 function testSchemaItself(validate) {
   test('bare minimum source should pass', function(t) {
     ['http', 'ftp', 'ESRI'].forEach(function(type) {
@@ -165,6 +173,119 @@ function testSchemaItself(validate) {
 
     t.notOk(valid, 'non-string website value should fail');
     t.ok(isTypeError(validate, 'website'), JSON.stringify(validate.errors));
+    t.end();
+
+  });
+
+  test.test('non-string email value should fail', function(t) {
+    [null, 17, {}, [], true].forEach((value) => {
+      var source = {
+        type: 'http',
+        coverage: {
+          country: 'some country'
+        },
+        data: 'http://xyz.com/',
+        email: value
+      };
+
+      var valid = validate(source);
+
+      t.notOk(valid, 'non-string email value should fail');
+      t.ok(isTypeError(validate, 'email'), JSON.stringify(validate.errors));
+
+    });
+    t.end();
+
+  });
+
+  test.test('non-email-formatted email field should fail', function(t) {
+    var source = {
+      type: 'http',
+      coverage: {
+        country: 'some country'
+      },
+      data: 'http://xyz.com/',
+      email: 'this is not a valid email address'
+    };
+
+    var valid = validate(source);
+
+    t.notOk(valid, 'non-email email value should fail');
+    t.ok(isFormatError(validate, 'email', JSON.stringify(validate.errors));
+    t.end();
+
+  });
+
+  test.test('email-formatted email field should not fail', function(t) {
+    var source = {
+      type: 'http',
+      coverage: {
+        country: 'some country'
+      },
+      data: 'http://xyz.com/',
+      email: 'me@example.com'
+    };
+
+    var valid = validate(source);
+
+    t.ok(valid, 'email-formatted email value should not fail');
+    t.end();
+
+  });
+
+  test.test('non-string compression should fail', function(t) {
+    [null, 17, {}, [], true].forEach((value) => {
+      var source = {
+        type: 'http',
+        coverage: {
+          country: 'some country'
+        },
+        data: 'http://xyz.com/',
+        compression: value
+      };
+
+      var valid = validate(source);
+
+      t.notOk(valid, 'non-string email value should fail');
+      t.ok(isTypeError(validate, 'compression'), JSON.stringify(validate.errors));
+
+    });
+
+    t.end();
+
+  });
+
+  test.test('non-"zip" compression value should fail', function(t) {
+    var source = {
+      type: 'http',
+      coverage: {
+        country: 'some country'
+      },
+      data: 'http://xyz.com/',
+      compression: 'this value is not "zip"'
+    };
+
+    var valid = validate(source);
+
+    t.notOk(valid, 'non-"zip" compression value should fail');
+    t.ok(isEnumValueError(validate, 'compression'), JSON.stringify(validate.errors));
+    t.end();
+
+  });
+
+  test.test('"zip" compression value should not fail', function(t) {
+    var source = {
+      type: 'http',
+      coverage: {
+        country: 'some country'
+      },
+      data: 'http://xyz.com/',
+      compression: 'zip'
+    };
+
+    var valid = validate(source);
+
+    t.ok(valid, '"zip" compression value should not fail');
     t.end();
 
   });
