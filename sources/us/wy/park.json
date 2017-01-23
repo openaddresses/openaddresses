@@ -1,0 +1,25 @@
+{
+  "coverage": {
+    "US Census": {
+      "geoid": "56029",
+      "name": "Park County",
+      "state": "Wyoming"
+    },
+    "country": "us",
+    "state": "wy",
+    "county": "Park"
+  },
+  "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/nvkelso/5a5bf6/ParkCountyADDRESS_POINTS_point.zip",
+  "type": "http",
+  "conform": {
+    "type": "shapefile",
+    "number": {
+      "function": "prefixed_number",
+      "field": "DLVRY_ADD",
+    },
+    "street": {
+      "function": "postfixed_street",
+      "field": "DLVRY_ADD",
+    }
+  }
+}
