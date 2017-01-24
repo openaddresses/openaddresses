@@ -29,6 +29,18 @@
         "unit": [
             "Unit Type",
             "Unit Number"
-        ]
+        ],
+        "lat": {
+            "function": "regexp",
+            "field": "Geometry",
+            "pattern": "^\\((\\S+), (\\S+)\\)$",
+            "replace": "$1"
+        },
+        "lon": {
+            "function": "regexp",
+            "field": "Geometry",
+            "pattern": "^\\((\\S+), (\\S+)\\)$",
+            "replace": "$2"
+        }
     }
 }
