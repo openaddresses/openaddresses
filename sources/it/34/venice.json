@@ -9,9 +9,9 @@
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "format",
-            "fields": ["CIVICO_NUM","CIVICO_SUB"],
-            "format": "$1$2"
+            "function": "regexp",
+            "field": "INDIRIZZO",
+            "pattern": "^(?:.+?)(?:,\\s*(.*?)\\s*)$"
         },
         "street": {
             "function": "regexp",
