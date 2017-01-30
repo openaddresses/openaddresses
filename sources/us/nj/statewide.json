@@ -2,29 +2,34 @@
     "coverage": {
         "US Census": {
             "geoid": "34",
-            "name": "Morris County",
             "state": "New Jersey"
         },
         "country": "us",
         "state": "nj"
     },
-    "data": "http://geodata.state.nj.us/arcgis/rest/services/Features/Cadastral/MapServer/0",
+    "data": "https://njgin.state.nj.us/download2/Address/ADDR_POINT_NJ_fgdb.zip",
     "website": "https://njgin.state.nj.us/NJ_NJGINExplorer/ShowMetadata.jsp?docId={EC181B3D-4D15-11E1-A2E4-0003BA2C919E}",
-    "type": "ESRI",
+    "type": "http",
+    "compression": "zip",
     "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "PROP_LOC",
-            "pattern": "^([0-9]+) (.*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PROP_LOC",
-            "pattern": "^([0-9]+) (.*)",
-            "replace": "$2"
-        },
-        "accuracy": 2
+        "type": "gdb",
+        "layer": "AddressPoints_NJ",
+        "number": [
+            "PRE_NUM",
+            "ADDR_NUM",
+            "SUF_NUM"
+        ],
+        "street": [
+            "PRE_DIR",
+            "PRE_TYPE",
+            "PRE_MOD",
+            "NAME",
+            "SUF_TYPE",
+            "SUF_DIR",
+            "SUF_MOD"
+        ],
+        "postcode": "ZIP_CODE",
+        "id": "AP_GUID",
+        "accuracy": 1
     }
 }

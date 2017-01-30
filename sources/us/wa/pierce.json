@@ -1,0 +1,33 @@
+{
+  "coverage": {
+    "US Census": {
+      "geoid": "53053",
+      "name": "Pierce County",
+      "state": "Washington"
+    },
+    "country": "us",
+    "state": "wa",
+    "county": "Pierce"
+  },
+  "data": "https://services2.arcgis.com/1UvBaQ5y1ubjUPmd/arcgis/rest/services/Tax_Parcels/FeatureServer/0",
+  "type": "ESRI",
+  "conform": {
+    "type": "geojson",
+    "number": {
+      "function": "regexp",
+      "field": "Site_Address",
+      "pattern": "^([0-9]+-?[a-z]?\\b)"
+    },
+    "street": {
+      "function": "regexp",
+      "field": "Site_Address",
+      "pattern": "^(?:(?:[0-9]+-?[A-Z]?|XXX)\\b)?(.*?)\\b(?:(?:UNIT|APT|BLDG|LOT|#).*|$)\\b",
+      "replace": "$1"
+    },
+    "unit": {
+      "function": "regexp",
+      "field": "Site_Address",
+      "pattern": "\\b((?:UNIT|APT|BLDG|LOT|#).*)\\b$"
+    }
+  }
+}

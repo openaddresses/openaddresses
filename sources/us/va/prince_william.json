@@ -9,22 +9,17 @@
         "state": "va",
         "county": "Prince William"
     },
-    "data": "http://gisweb.pwcgov.org/arcgis/rest/services/Maps/LandRecords/MapServer/2",
+    "data": "http://gisweb.pwcgov.org/arcgis/rest/services/AGOL/AGOL/MapServer/14",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "CITY",
-        "postcode": "ZIP"
+        "number": "st_no",
+        "street": [
+            "st_name",
+            "st_type"
+        ],
+        "unit": "unit_no",
+        "city": "city",
+        "postcode": "zip"
     }
 }

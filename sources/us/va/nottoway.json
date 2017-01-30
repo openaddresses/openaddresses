@@ -9,15 +9,17 @@
         "state": "va",
         "county": "Nottoway"
     },
+    "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Nottoway/Nottoway_WL_P/MapServer/5",
+    "type": "ESRI",
     "conform": {
-        "type": "csv",
-        "number": "HOUSENO",
-        "street": ["ST_NAME", "ST_TYPE", "ST_DIR"],
+        "type": "geojson",
+        "number": "HOUSENUM",
+        "street": [
+            "ST_DIR",
+            "ST_NAME",
+            "ST_TYPE"
+        ],
         "city": "CITY",
-        "postcode": "ZIP",
-        "lon": "OA:x",
-        "lat": "OA:y"
-    },
-    "data": "http://vcloud.timmons.com/ArcGIS/rest/services/NottowayWeb/NottowayWeb_Main/MapServer/0",
-    "type": "ESRI"
+        "postcode": "ZIP"
+    }
 }

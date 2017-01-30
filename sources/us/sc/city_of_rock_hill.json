@@ -23,8 +23,14 @@
         "street": {
             "function": "regexp",
             "field": "WHOLE_ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$2"
+            "pattern": "^(?:[0-9]+ )([^,]*)(?:,.*)?$",
+            "replace": "$1"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "WHOLE_ADDRESS",
+            "pattern": "(?:.*),[\\s]*(.*)$",
+            "replace": "$1"
         }
     }
 }

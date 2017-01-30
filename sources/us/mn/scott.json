@@ -10,34 +10,30 @@
         "county": "Scott"
     },
     "type": "ESRI",
-    "data": "http://gis.co.scott.mn.us/scgis/rest/services/AGOL/SC_PARCELS_AGOL/MapServer/0",
-    "website": "http://www.co.scott.mn.us/PROPERTYGISLAND/GEOGRAPHICINFORMATIONSYSTEMS/Pages/GeographicInformationSystems.aspx",
+    "data": "https://services.arcgis.com/DqIh9WAsIZcPlBEF/arcgis/rest/services/Address_Points/FeatureServer/0",
+    "website": "http://opendata.gis.co.scott.mn.us/datasets/69c050b1159540c29c7ffc884c12f066_0",
     "conform": {
         "type": "geojson",
-        "number": "housgs",
-        "number": {
-            "function": "regexp",
-            "field": "PROPA1",
-            "pattern": "([0-9]*) (.*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PROPA1",
-            "pattern": "([0-9]*) (.*)",
-            "replace": "$2"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "PROPA2",
-            "pattern": "([A-Z ]*) MN ([0-9]*)",
-            "replace": "$1"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "PROPA2",
-            "pattern": "([A-Z ]*) MN ([0-9]*)",
-            "replace": "$2"
-        }
+        "number": [
+            "ANUMBERPRE",
+            "ANUMBER",
+            "ANUMBERSUF"
+        ],
+        "unit": [
+            "SUB_TYPE1",
+            "SUB_ID1"
+        ],
+        "street": [
+            "ST_PRE_MOD",
+            "ST_PRE_DIR",
+            "ST_PRE_TYP",
+            "ST_NAME",
+            "ST_POS_TYP",
+            "ST_POS_DIR",
+            "ST_POS_MOD"
+        ],
+        "city": "MUNI_NAME",
+        "region": "CO_NAME",
+        "postcode": "ZIP"
     }
 }

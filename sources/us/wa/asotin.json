@@ -1,0 +1,30 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "53003",
+            "name": "Asotin County",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa",
+        "city": "Asotin"
+    },
+    "type": "http",
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/d927c9/asotin.geojson.zip",
+    "website": "http://www.co.asotin.wa.us/public-works-gis/county-road-maps/",
+    "compression": "zip",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "address"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "address"
+        },
+        "city": "city",
+        "region": "state",
+        "postcode": "postalcode"
+    }
+}

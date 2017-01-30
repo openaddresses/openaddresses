@@ -1,0 +1,32 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "21037",
+            "name": "Campbell County",
+            "state": "Kentucky"
+        },
+        "country": "us",
+        "state": "ky",
+        "county": "Campbell"
+    },
+    "data": "http://linkgis.org/arcgisweb/rest/services/addressPoints/MapServer/3",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "field": "NUMADDR",
+            "function": "prefixed_number"
+        },
+        "unit": {
+            "field": "NUMADDR",
+            "function": "regexp",
+            "pattern": "((?:(?:(?:LOT|STE|UNIT|APT|GRGE|CTG) )|(?:#)).+)$"
+        },
+        "street": {
+            "field": "NUMADDR",
+            "function": "regexp",
+            "pattern": "^(?:[0-9]+ )(.*?)(?: (LOT|STE|UNIT|APT|GRGE|CTG).*|$)",
+            "replace": "$1"
+        }
+    }
+}

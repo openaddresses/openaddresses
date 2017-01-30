@@ -18,9 +18,17 @@
     "website": "http://www.co.jefferson.wa.us/idms/shapefiles.shtml",
     "conform": {
         "type": "shapefile-polygon",
-        "split": "Situs_Addr",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "Situs_Addr",
+            "pattern": "^(\\S+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Situs_Addr",
+            "pattern": "^(?:\\S+ )(.*)",
+            "replace": "$1"
+        },
         "city": "Situs_City",
         "postcode": "Situs_Zip"
     }

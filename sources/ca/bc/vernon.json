@@ -4,7 +4,7 @@
         "state": "bc",
         "city": "Vernon"
     },
-    "data": "https://www.dropbox.com/s/nxxdre7x8ucljim/vernon_civic_address_points.zip?dl=1",
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/28ff81/vernon_civic_address_points.zip",
     "website": "http://www.vernon.ca/map/data_catalogue.html",
     "license": {
         "url": "http://www.vernon.ca/map/open_data_catalogue.html",
@@ -15,9 +15,17 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "split": "full_addre",
-        "street": "auto_street",
-        "number": "auto_number",
+        "number": {
+            "function": "regexp",
+            "field": "full_addre",
+            "pattern": "^(\\S+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "full_addre",
+            "pattern": "^(?:\\S+ )(.*)",
+            "replace": "$1"
+        },
         "type": "shapefile"
     },
     "skip": true,

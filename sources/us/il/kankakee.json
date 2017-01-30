@@ -27,6 +27,17 @@
             "pattern": "^(?:[0-9]+ )(.*)",
             "replace": "$1"
         },
+        "city": {
+            "function": "regexp",
+            "field": "site_csz",
+            "pattern": "^(.*?),(?:.*)"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "site_csz",
+            "pattern": "^(?:.*?)([0-9]+(?:\\-[0-9]+)?)",
+            "replace": "$1"
+        },
         "id": "pin",
         "accuracy": 2
     }

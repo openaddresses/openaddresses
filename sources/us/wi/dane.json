@@ -13,9 +13,17 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "split": "SITEADDRESS",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "SITEADDRESS",
+            "pattern": "^(\\S+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITEADDRESS",
+            "pattern": "^(?:\\S+ )(.*)",
+            "replace": "$1"
+        },
         "accuracy": 2
     }
 }

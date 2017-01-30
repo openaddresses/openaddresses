@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "country": "ch",
+        "city": "Bern",
+        "ISO 3166": {
+            "alpha2": "CH-BE"
+        }
+    },
+    "website": "http://www.apps.be.ch/geo/index.php?Itemid=2&task=showMetadata&type=complete&id=5dfcc475-ef53-4483-a7f0-5d8e503fea9f&lang=de",
+    "data": "http://files.be.ch/bve/agi/geoportal/geo/zip/GEBADR.zip",
+    "type": "http",
+    "compression": "zip",
+    "license": {
+        "text": "CC 0",
+        "attribution": false,
+        "share-alike": false,
+        "discussion": "http://wiki.openstreetmap.org/wiki/Canton_Berne_Address_Data"
+    },
+    "conform": {
+        "type": "shapefile",
+        "file": "GEBADR/LV95/data/GEBADR_GADR.shp",
+        "encoding": "utf-8",
+        "id": "BE_GID",
+        "number": "GEBNR",
+        "street": "LOKALISAT",
+        "city": {
+            "function": "regexp",
+            "field": "ORT",
+            "pattern": "(^.*?)(?: BE)?$"
+        },
+        "postcode": "PLZ",
+        "addrtype": "NUTZUNG"
+    }
+}

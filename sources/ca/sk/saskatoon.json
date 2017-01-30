@@ -14,8 +14,16 @@
         "type": "csv",
         "lon": "x",
         "lat": "y",
-        "split": "name",
-        "number": "auto_number",
-        "street": "auto_street"
+        "number": {
+            "function": "regexp",
+            "field": "name",
+            "pattern": "^(\\S+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "name",
+            "pattern": "^(?:\\S+ )(.*)",
+            "replace": "$1"
+        }
     }
 }

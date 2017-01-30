@@ -9,22 +9,15 @@
         "state": "mn",
         "county": "St. Louis"
     },
-    "data": "http://gis.stlouiscountymn.gov/arcgis/rest/services/GeneralUse/Cadastral/MapServer/19",
-    "type": "ESRI",
+    "data": "http://www.stlouiscountymn.gov/Portals/0/library/land-property/maps/geospatial-data/AddressPoints_Oct2016_shp.zip?ver=2016-10-16-170108-690",
+    "type": "http",
+    "compression": "zip",
     "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "PHYSADDR",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PHYSADDR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "PHYSCITY",
-        "postcode": "PHYSZIP"
+        "type": "shapefile",
+        "number": "ADDNUM",
+        "unit": "Unit",
+        "street": "StreetName",
+        "city": "Town_Name",
+        "postcode": "ZIP5"
     }
 }

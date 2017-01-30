@@ -12,9 +12,17 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "split": "address",
-        "number": "auto_number",
-        "street": "auto_street",
+        "number": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^(\\S+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^(?:\\S+ )(.*)",
+            "replace": "$1"
+        },
         "type": "shapefile",
         "srs": "EPSG:26917"
     }

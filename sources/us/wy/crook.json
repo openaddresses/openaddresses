@@ -1,26 +1,20 @@
 {
     "coverage": {
-        "US Census": {"geoid": "56011", "name": "Crook County", "state": "Wyoming"},
+        "US Census": {
+            "geoid": "56011",
+            "name": "Crook County",
+            "state": "Wyoming"
+        },
         "country": "us",
         "state": "wy",
         "county": "Crook"
     },
-    "data": "http://gis.crookcounty.wy.gov/arcgis/rest/services/CrookCountyBasemap/MapServer/0",
+    "data": "http://gis.crookcounty.wy.gov/arcgis/rest/services/GrowthAndDevelopment_Data/MapServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+        "number": "ADDR_NUMB",
+        "street": "ROAD",
+        "city": "Community"
     }
 }
-

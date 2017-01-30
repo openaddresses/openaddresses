@@ -9,13 +9,18 @@
         "state": "wi",
         "county": "Brown"
     },
-    "data": "http://maps.gis.co.brown.wi.us/web_documents/LIO/addresses/BrownCountyWI_20150518_AddressPoints.zip",
+    "data": "http://maps.gis.co.brown.wi.us/web_documents/LIO/addresses/BrownCountyWI_AddressPoints_20160104.zip",
     "website": "http://maps.gis.co.brown.wi.us/web_documents/LIO/addresses/",
     "type": "http",
     "conform": {
         "type": "shapefile",
-        "split": "Address",
-        "number": "auto_number",
-        "street": "auto_street"
+        "file": "BrownCountyWI_AddressPoints_20160104.shp",
+        "number": "AddressNum",
+        "street": {
+            "function": "regexp",
+            "field": "Address",
+            "pattern": "^(?:\\S+ )(.*)",
+            "replace": "$1"
+        }
     }
 }

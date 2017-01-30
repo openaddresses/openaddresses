@@ -15,9 +15,17 @@
     "type": "ftp",
     "compression": "zip",
     "conform": {
-        "split": "address",
-        "street": "auto_street",
-        "number": "auto_number",
+        "number": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^(\\S+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^(?:\\S+ )(.*)",
+            "replace": "$1"
+        },
         "type": "shapefile"
     }
 }

@@ -19,9 +19,16 @@
     "note": "Includes full parcel shapefile of the island of Oahu. SRS is EPSG: 2784",
     "conform": {
         "type": "shapefile-polygon",
-        "number": "housenumbr",
-        "street": "streename",
-        "unit": "housesuffx",
-        "city": "city"
+        "number": {
+            "function": "join",
+            "fields": [
+                "HOUSEPRFX",  
+                "HOUSENUMBR"
+            ],
+            "separator": "-"
+        },
+        "street": "STREETNAME",
+        "unit": "HOUSESUFFX",
+        "city": "CITY"
     }
 }

@@ -8,9 +8,17 @@
     "website": "http://www.town.jaffrey.nh.us/",
     "type": "ESRI",
     "conform": {
-        "split": "Jaff_parcels.Address",
-        "street": "auto_street",
-        "number": "auto_number",
+        "number": {
+            "function": "regexp",
+            "field": "Jaff_parcels.Address",
+            "pattern": "^(\\S+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Jaff_parcels.Address",
+            "pattern": "^(?:\\S+ )(.*)",
+            "replace": "$1"
+        },
         "type": "geojson"
     }
 }

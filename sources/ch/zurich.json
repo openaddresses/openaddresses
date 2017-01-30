@@ -12,18 +12,20 @@
     },
     "type": "http",
     "conform": {
+        "encoding": "utf-8",
         "number": {
             "function": "regexp",
             "field": "Adresse",
-            "pattern": "(.* )([0-9]+)",
+            "pattern": "(.* )([0-9]+[^\\s]*)[\\s]*$",
             "replace": "$2"
         },
         "street": {
             "function": "regexp",
             "field": "Adresse",
-            "pattern": "(.*)( [0-9]+)",
+            "pattern": "(.*)( [0-9]+[^\\s]*)[\\s]*$",
             "replace": "$1"
         },
+        "postcode": "PLZ",
         "type": "geojson"
     }
 }

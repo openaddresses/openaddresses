@@ -13,7 +13,11 @@
     "conform": {
         "type": "shapefile",
         "srs": "EPSG:26591",
-        "number": ["NUMERO", "ESPONENTE"],
+        "number": {
+            "fields": ["NUMERO", "ESPONENTE"],
+            "function": "join",
+            "separator": "/"
+        },
         "street": "VIA_NOME_U",
         "city": "Ferrara",
         "district": "Ferrara",

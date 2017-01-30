@@ -9,21 +9,18 @@
         "state": "pa",
         "county": "Cumberland"
     },
-    "data": "http://gis.ccpa.net/arcgiswebadaptor/rest/services/Parcels/MapServer/42",
+    "data": "http://gis.ccpa.net/arcgiswebadaptor/rest/services/Zoning/MapServer/0",
     "website": "http://www.ccpa.net/index.aspx?NID=2080",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "SITUS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SITUS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$2"
-        }
+        "number": "SAN",
+        "street": [
+            "PRD",
+            "STN",
+            "STS"
+        ],
+        "unit": "APTNUM",
+        "city": "CITY"
     }
 }

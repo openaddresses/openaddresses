@@ -6,20 +6,17 @@
 		},
 		"country": "nl"
 	},
-	"data": "https://www.dropbox.com/s/8uaqry2w657p44n/bagadres.zip?dl=1",
-	"website": "http://www.nlextract.nl",
-	"type": "http",
-	"compression": "zip",
+	"data": "https://basisregistraties.arcgisonline.nl/arcgis/rest/services/BAG/BAG/MapServer/0",
+	"type": "ESRI",
 	"conform": {
-		"lon": "lon",
-		"lat": "lat",
-		"number": ["huisletter", "huisnummer","huisnummertoevoeging"],
-		"street": "openbareruimte",
+		"type": "geojson",
+		"number": {
+			"function": "format",
+			"fields": ["huisnummer", "huisletter", "huisnummertoevoeging"],
+			"format": "$1$2-$3"
+		},
+		"street": "openbareruimtenaam",
 		"postcode": "postcode",
-		"city": "woonplaats",
-		"district":"gemeente",
-		"region": "provincie",
-		"type": "csv",
-		"csvsplit": ";"
+		"city": "woonplaatsnaam"
 	}
 }

@@ -20,8 +20,13 @@
         "street": {
             "function": "regexp",
             "field": "GISData.dbo.tblParcelJoin.PHYSICAL_ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
+            "pattern": "^(?:[0-9\\-]+ )(.*)(?: [0-9]{5})$",
             "replace": "$1"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "GISData.dbo.tblParcelJoin.PHYSICAL_ADDRESS",
+            "pattern": "^(?:.* )([0-9]{5})$"
         },
         "type": "geojson"
     }

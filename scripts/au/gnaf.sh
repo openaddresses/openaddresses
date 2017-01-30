@@ -16,9 +16,11 @@ sudo -u postgres psql -c "CREATE TABLESPACE gnafts OWNER gnafun LOCATION '$TMP/t
 sudo -u postgres psql -c 'CREATE DATABASE gnafdb OWNER gnafun TABLESPACE gnafts'
 sudo -u postgres psql -c 'CREATE EXTENSION postgis'
 
-# fetch data/resources
-curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/MAY16_AdminBounds_ESRIShapefileorDBFfile_20160523140152.zip' -o $TMP/gnaf-admin.zip &
-curl -s 'https://s3-ap-southeast-2.amazonaws.com/datagovau/MAY16_GNAF%2BEULA_PipeSeparatedValue_20160523140820.zip' -o $TMP/gnaf.zip &
+# fetch data/resources, cached from:
+# http://data.gov.au/dataset/bdcf5b09-89bc-47ec-9281-6b8e9ee147aa/resource/53c24b8e-4f55-4eed-a189-2fc0dcca6381/download/nov16adminboundsesrishapefileordbffile.zip
+# http://data.gov.au/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/99b44dff-4e84-4cb7-9cbf-a68d3ebf964a/download/nov16gnafpipeseparatedvalue.zip
+curl -s 'http://s3.amazonaws.com/data.openaddresses.io/cache/au/gnaf-admin-nov2016.zip' -o $TMP/gnaf-admin.zip &
+curl -s 'http://s3.amazonaws.com/data.openaddresses.io/cache/au/gnaf-nov2016.zip' -o $TMP/gnaf.zip &
 wait
 parallel "unzip -d $TMP/{} $TMP/{}.zip" ::: gnaf gnaf-admin
 
@@ -59,7 +61,21 @@ SELECT
     latitude AS lat,
     locality_name AS city,
     locality_postcode AS postcode,
-    state AS region
+    state AS region,
+
+    (
+        CASE geocode_type WHEN 'BUILDING CENTROID' THEN 1 -- rooftop
+                          WHEN 'FRONTAGE CENTRE SETBACK' THEN 2 -- interpolation
+                          WHEN 'GAP GEOCODE' THEN 4 -- interpolation
+                          WHEN 'LOCALITY' THEN 4 -- interpolation
+                          WHEN 'PROPERTY ACCESS POINT SETBACK' THEN 3 -- driveway
+                          WHEN 'PROPERTY CENTROID' THEN 2 -- parcel
+                          WHEN 'PROPERTY CENTROID MANUAL' THEN 2 -- parcel
+                          WHEN 'STREET LOCALITY' THEN 4 -- interpolation
+                          ELSE 5 -- unknown
+        END
+    )
+    AS accuracy
 
 FROM gnaf.addresses adr;
 " | psql postgres://gnafun:gnafpw@localhost/gnafdb
@@ -70,7 +86,7 @@ chmod a+w $TMP/au.csv
 echo "COPY openaddresses TO '$TMP/au.csv' DELIMITER ',' CSV HEADER;" | psql -t -q postgres://gnafun:gnafpw@localhost/gnafdb
 
 mkdir /work/cache
-zip -j /work/cache/au-may2016.zip $TMP/au.csv
+zip -j /work/cache/au-nov2016.zip $TMP/au.csv
 
 # clean up temporary files
 /etc/init.d/postgresql stop

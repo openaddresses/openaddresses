@@ -12,11 +12,19 @@
     "data": "http://maps.lex-co.com/arcgis/rest/services/AddressPts/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "number": "street_num",
+        "number": [
+          "street_num",
+          "HALF"
+        ],
         "street": [
+            "PRE_DIR",
             "street_name",
             "street_type",
             "suf_dir"
+        ],
+        "unit": [
+            "UNIT_TYPE",
+            "UNIT"
         ],
         "city": "postoffice",
         "postcode": "zip",

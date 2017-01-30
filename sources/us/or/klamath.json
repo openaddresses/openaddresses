@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "41035",
+            "name": "Klamath County",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "city": "Klamath"
+    },
+    "type": "ESRI",
+    "data": "http://services.arcgis.com/H6Mh1bySxR4oHx6x/ArcGIS/rest/services/KC_Taxlots/FeatureServer/0",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "SITUS_ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITUS_ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "SITUS_CSZ",
+            "pattern": "(?:.* )([0-9]+)$",
+            "replace": "$1"
+        }
+    }
+}

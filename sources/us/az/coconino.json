@@ -1,0 +1,33 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "04005",
+            "name": "Coconino County",
+            "state": "Arizona"
+        },
+        "country": "us",
+        "state": "az",
+        "county": "Coconino"
+    },
+    "data": "https://utility.arcgis.com/usrsvcs/servers/76ca136c49db437aa624ab8f05d493bd/rest/services/OpenData/CoconinoCountyOpenData/FeatureServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "CURRENTADDRESS",
+            "pattern": "^([0-9]+(?:-[^ ]+)?)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "CURRENTADDRESS",
+            "pattern": "^(?:[0-9]+(?:-[^ ]+)? )(.*?)((BUILDING [0-9]+)? (UNIT|APT|BLDG|STE).*|$)",
+            "replace": "$1"
+        },
+        "unit": {
+          "function": "regexp",
+          "field": "CURRENTADDRESS",
+          "pattern": " ((?:BUILDING [0-9]+ )?(?:UNIT|APT|BLDG|STE) .+)$"
+        }
+    }
+}
