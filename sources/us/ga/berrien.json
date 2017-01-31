@@ -5,25 +5,14 @@
         "state": "ga",
         "county": "Berrien"
     },
-    "data": "http://data.openaddresses.io/cache/us-ga-berrien_county.csv",
-    "type": "http",
+    "data": "http://www.sgrcmaps.com/arcgis/rest/services/Berrien/AddressLocations/MapServer/0",
+    "note": "street is occasionally an intersection, eg - 360 CHURCH ST N SHOCKLEY ST",
+    "type": "ESRI",
     "conform": {
-        "type": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "region": "REGION"
+        "type": "geojson",
+        "number": "1417",
+        "street": "StreetName",
+        "city": "City",
+        "postcode": "ZipCode"
     }
 }
-
