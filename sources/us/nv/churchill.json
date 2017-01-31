@@ -9,6 +9,16 @@
         "state": "nv",
         "county": "Churchill"
     },
+    "note": {
+      "description": "This parcel data sometimes has multiple addresses per line, the street rexexp ",
+      "examples": [
+          "SERPA PL",
+          "6485 RENO HWY & 6495 RENO HWY",
+          "27-19-26",
+          "2837 ELIZABETH PARKWAY",
+          "5517 DILLON RD OR 1977 DAVIS LN"
+      ]
+    },
     "data": "http://www.churchillcounty.org/DocumentCenter/View/8794",
     "type": "http",
     "compression": "zip",
@@ -21,7 +31,7 @@
         "street": {
             "function": "regexp",
             "field": "CONCAT",
-            "pattern": "^(?:[0-9]+ )(.+?)(?:\\s+(?:OR|&)\\s+.*)?$"
+            "pattern": "^(?:[0-9]+ )([A-Z].+?)(?:\\s+(?:OR|\\(|&)\\s+.*)?$"
         },
         "city": "CONCAT"
     }
