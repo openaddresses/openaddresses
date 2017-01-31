@@ -6,7 +6,7 @@
         "county": "Berrien"
     },
     "data": "http://www.sgrcmaps.com/arcgis/rest/services/Berrien/AddressLocations/MapServer/0",
-    "note": "street is occasionally an intersection, eg - N FIVE ASH ST AT N ELM ST, the regex uses everything up to 'AT'.",
+    "note": "street is occasionally an intersection, eg - N FIVE ASH ST AT N ELM ST, the regex uses everything up to 'AT' or '@'.",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
@@ -14,7 +14,7 @@
         "street": {
             "function": "regexp",
             "field": "StreetName",
-            "pattern": "^(.+?)(?:\\bAT\\b.+)?$"
+            "pattern": "^(.+?)(?:\\b(?:AT|@)\\b.+)?$"
         },
         "city": "City",
         "postcode": {
