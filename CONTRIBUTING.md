@@ -372,7 +372,7 @@ to the map at [data.openaddresses.io](http://data.openaddresses.io):
 3. **geometry** with unprojected [GeoJSON geometry object](http://geojson.org/geojson-spec.html#geometry-objects)
     - _Polygon_ - for example, [state of Arkansas](sources/us/ar/statewide.json)
     - _MultiPolygon_ - for example, [state of Tennesse](sources/us/tn/statewide.json)
-    - _Point_ - for example, [city of Johns Creek](sources/us/ga/city_of_johns_creek.json), estimated from another mapping provider or [Who's on First](https://whosonfirst.mapzen.com/spelunker/)
+    - _Point_ - for example, city of [Johns Creek](sources/us/ga/city_of_johns_creek.json), estimated from another mapping provider or [Who's on First](https://whosonfirst.mapzen.com/spelunker/)
 
 #### Optional Tags
 
