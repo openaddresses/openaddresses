@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "32001",
+            "name": "Churchill County",
+            "state": "Nevada"
+        },
+        "country": "us",
+        "state": "nv",
+        "county": "Churchill"
+    },
+    "data": "http://www.churchillcounty.org/DocumentCenter/View/8794",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile",
+        "number": {
+            "function": "prefixed_number",
+            "field": "CONCAT"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "CONCAT",
+            "regexp": "^(?:[0-9]+ )(.+?)(?:\\b(?:OR|&)\\b.*)?$"
+        },
+        "city": "CONCAT"
+    }
+}
