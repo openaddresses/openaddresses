@@ -4,13 +4,47 @@
         "state": "bc",
         "city": "Vernon"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/28ff81/vernon_civic_address_points.zip",
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/e8d8c2/vernon_civic_address_points.zip",
     "website": "http://www.vernon.ca/map/data_catalogue.html",
     "license": {
         "url": "http://www.vernon.ca/map/open_data_catalogue.html",
         "text": "Indemnification",
         "attribution": false,
         "share-alike": false
+    },
+    "note": {
+        "caching": "data url needs periodic update since it's cached",
+        "quality": "The vast majority of the data is fine, but there are some issues with several addresses and I was unable to make sense of them from other sources though someone from Vernon, BC may be able to help.  Below are examples where there appear to be 2 house numbers that prefix the street but the lat/lon's on other mapping sites supply no proof of this.  On Google street view, these appear to be gated housing complexes.  If the house number is really the first number, complicating regexes is that numeric street names lack the ordinal identifiers.",
+        "problematic-addresses": {
+            "source": [
+                "7 9060 TRONSON RD",
+                "22 9060 TRONSON RD",
+                "34 6450 OKANAGAN LANDING RD",
+                "102 1711 KALAMALKA LAKE RD"
+            ],
+            "parsed": [
+                {
+                     "number": "7",
+                     "street": "9060 TRONSON RD"
+                },
+                {
+                     "number": "22",
+                     "street": "9060 TRONSON RD"
+                },
+                {
+                     "number": "34",
+                     "street": "6450 OKANAGAN LANDING RD"
+                },
+                {
+                     "number": "102",
+                     "street": "1711 KALAMALKA LAKE RD"
+                }
+            ]
+        },
+        "ordinal-less-addresses": [
+            "2907 30 AVE",
+            "3301 20 ST"
+        ]
     },
     "type": "http",
     "compression": "zip",
@@ -27,7 +61,5 @@
             "replace": "$1"
         },
         "type": "shapefile"
-    },
-    "skip": true,
-    "note": "data url stale. to be replaced with cached file"
+    }
 }
