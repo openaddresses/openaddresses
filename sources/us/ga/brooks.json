@@ -6,15 +6,12 @@
         "county": "Brooks"
     },
     "data": "http://www.sgrcmaps.com/arcgis/rest/services/Brooks/RoadAddresses/MapServer/0",
+    "notes": "While this source does have separate fields for the street components, streets like 'HWY 122' lack the 'HWY' portion in any field, so the concatenated version works best overall.",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
         "number": "STNUM",
-        "street": [
-            "PREDIR",
-            "NAME",
-            "TYPE"
-        ],
+        "street": "LABEL",
         "unit": [
             "UNIT_TYPE",
             "UNIT_NUM"
