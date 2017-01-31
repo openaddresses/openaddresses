@@ -4,8 +4,9 @@
         "state": "bc",
         "city": "Vernon"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/28ff81/vernon_civic_address_points.zip",
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/e8d8c2/vernon_civic_address_points.zip",
     "website": "http://www.vernon.ca/map/data_catalogue.html",
+    "note": "data url needs periodic update since it's cached",
     "license": {
         "url": "http://www.vernon.ca/map/open_data_catalogue.html",
         "text": "Indemnification",
@@ -15,19 +16,12 @@
     "type": "http",
     "compression": "zip",
     "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "full_addre",
-            "pattern": "^(\\S+)"
-        },
+        "number": "STREET_NUM",
         "street": {
-            "function": "regexp",
-            "field": "full_addre",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
+            "function": "remove_prefix",
+            "field": "FULL_ADDRE",
+            "replace": "STREET_NUM"
         },
         "type": "shapefile"
-    },
-    "skip": true,
-    "note": "data url stale. to be replaced with cached file"
+    }
 }
