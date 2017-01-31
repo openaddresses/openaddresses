@@ -360,17 +360,19 @@ either `city` or `county`, all strings
 If one of the following tags are provided, it will be used to render the source
 to the map at [data.openaddresses.io](http://data.openaddresses.io):
 
-1. **US Census** with `geoid` containing two-digit state or five-digit county
-   [FIPS code](https://www.census.gov/geo/reference/codes/cou.html).
-   See [Alameda County](sources/us/ca/alameda.json)
-   and [Virginia](sources/us/va/statewide.json) for examples.
+1. **US Census** with `geoid` containing [FIPS code](https://www.census.gov/geo/reference/codes/cou.html)
+    - 2-digit state, example: [Virginia](sources/us/va/statewide.json)
+    - 5-digit county, example: [Alameda County, California](sources/us/ca/alameda.json)
+    - 7-digit city, example: [Johns Creek, Georgia](sources/us/ga/city_of_johns_creek.json)
 2. **ISO 3166** with `alpha2` containing alphanumeric two-letter
    [ISO-3166-1 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
    or [ISO-3166-2 subdivision code](http://en.wikipedia.org/wiki/ISO_3166-2).
    See [New Zealand](sources/nz/countrywide.json), [Victoria, Australia](sources/au/victoria.json),
    or [Dolnośląskie, Poland](sources/pl/dolnoslaskie.json) for examples.
-3. **geometry** with _Polygon_ or _MultiPolygon_ type unprojected
-   [GeoJSON geometry object](http://geojson.org/geojson-spec.html#geometry-objects).
+3. **geometry** with unprojected [GeoJSON geometry object](http://geojson.org/geojson-spec.html#geometry-objects)
+    - _Polygon_ - for example, [state of Arkansas](sources/us/ar/statewide.json)
+    - _MultiPolygon_ - for example, [state of Tennesse](sources/us/tn/statewide.json)
+    - _Point_ - for example, city of [Johns Creek](sources/us/ga/city_of_johns_creek.json), estimated from another mapping provider or [Who's on First](https://whosonfirst.mapzen.com/spelunker/)
 
 #### Optional Tags
 
