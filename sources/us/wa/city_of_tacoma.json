@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -122.525,
+                47.243
+            ]
+        },
+        "US Census": {
+            "geoid": "5370000",
+            "name": "City of Tacoma",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa",
+        "county": "Pierce",
+        "city": "Tacoma"
+    },
+    "note": {
+      "description": "forthcoming"
+    },
+    "data": "https://www.dropbox.com/sh/jtzicj9d0hsyrs7/AADfsHr3m1ArHqi3NGRQaw5Pa?dl=1",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile",
+        "number": {
+            "function": "regexp",
+            "field": "MAPTIP",
+            "pattern": "^(\\d+(?:\\s+1\/2)?)\\s+(?:.+)$"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "MAPTIP",
+            "pattern": "^(?:\\d+(?: 1\/2)?)\\s+(.+?)(?:\\s+(?:#.*|[A-Z]|[A-Z]?-?\\d+|(?:UNIT|STE|BLDG)\\s+\\w+|REAR|LOWR|UPPR))?$"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "MAPTIP",
+            "pattern": "^(?:.+?)\\s+(#.*|[A-Z]|[A-Z]?-?\\d+|(?:UNIT|STE|BLDG)\\s+\\w+|REAR|LOWR|UPPR)?$"
+        }
+    }
+}
