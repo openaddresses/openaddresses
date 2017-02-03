@@ -17,14 +17,22 @@
         "number": {
             "function": "regexp",
             "field": "alternativ",
-            "pattern": "^(.+?) ([0-9]+(?:/[0-9]+[a-z]?)?), .*$",
-            "replace": "$2"
+            "pattern": ".*?((?:č\\.?(p|ev)\\.?)?\\s*\\d+(?:\/\\d+[a-z]?)?)"
         },
         "street": {
             "function": "regexp",
             "field": "alternativ",
-            "pattern": "^(.+?) ([0-9]+(?:/[0-9]+[a-z]?)?), .*$",
-            "replace": "$1"
+            "pattern": "(.*?)(?:(?:č\\.?(p|ev)\\.?)?\\s*\\d+(?:\\d+[a-z]?)?)"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "alternativ",
+            "pattern": "(?:.*),\\s+(?:\\d+\\s+)?(\\w.*)"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "alternativ",
+            "pattern": "(?:.*),\\s+(\\d+)"
         },
         "file": "czech_addresses_wgs84_12092016_MASTER.csv",
         "type": "csv",
