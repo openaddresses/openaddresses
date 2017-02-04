@@ -1,26 +1,58 @@
 {
-    "website": "http://vdp.cuzk.cz/vdp/ruian/vymennyformat/vyhledej?vf.pu=S&_vf.pu=on&_vf.pu=on&vf.cr=U&vf.up=OB&vf.ds=Z&vf.vu=Z&_vf.vu=on&_vf.vu=on&_vf.vu=on&_vf.vu=on&vf.uo=O&ob.kod=531723&search=Vyhledat",
-    "conform": {
-        "srs": "EPSG:5514",
-        "lon": "LON", 
-	"lat": "LAT",
-        "number": "NUMBER",
-	"street": "STREET",
-	"city": "CITY",
-	"postcode": "POSTCODE",
-        "file": "cz-5514.csv",
-        "type": "csv", 
-        "accuracy": 1
-    }, 
-    "compression": "zip", 
-    "license": "§ 62 of Law 111/2009 Sb - http://www.zakonyprolidi.cz/cs/2009-111#p62",
-    "type": "http", 
     "coverage": {
-        "country": "cz", 
-        "ISO 3166": {
-            "alpha2": "CZ", 
-            "country": "Czech Republic"
+      "country": "cz",
+      "ISO 3166": {
+          "alpha2": "CZ",
+          "country": "Czech Republic"
+      }
+    },
+    "website": "http://vdp.cuzk.cz/vdp/ruian/vymennyformat/vyhledej?vf.pu=S&_vf.pu=on&_vf.pu=on&vf.cr=U&vf.up=OB&vf.ds=Z&vf.vu=Z&_vf.vu=on&_vf.vu=on&_vf.vu=on&_vf.vu=on&vf.uo=O&ob.kod=531723&search=Vyhledat",
+    "license": "§ 62 of Law 111/2009 Sb - http://www.zakonyprolidi.cz/cs/2009-111#p62",
+    "type": "http",
+    "compression": "zip",
+    "data": "https://www.dropbox.com/s/fhopgbg4vkyoobr/czech_addresses_wgs84_12092016_MASTER.zip?dl=1",
+    "note": {
+        "address formats": "http://www.upu.int/fileadmin/documentsFiles/activities/addressingUnit/czeEn.pdf",
+        "description": "according to format, there are cities w/o streets, just house numbers",
+        "examples": {
+            "street+house+neighbourhood+postcode+city": [
+                "Jiřská 9/10, Hradčany, 11900 Praha 1",
+                "Jelení 91/7a, Hradčany, 11800 Praha 1",
+                "Hrad I. nádvoří 1, Hradčany, 11900 Praha 1",
+                "Malá Strana 57, 15000 Praha 1",
+                "Albertov č.ev. 7/3a, Nové Město, 12800 Praha 2"
+            ],
+            "house+postcode+city": [
+              "č.p. 111, 27042 Skryje",
+              "č.ev. 57, 79862 Rozstání"
+            ]
         }
-    }, 
-    "data": "http://data.openaddresses.io/cache/cz-20150726.zip"
+    },
+    "conform": {
+        "lat": "POINT_Y",
+        "lon": "POINT_X",
+        "number": {
+            "function": "regexp",
+            "field": "alternativ",
+            "pattern": ".*?((?:č\\.?(?:p|ev)\\.?)?\\s*\\d+(?:\/\\d+[a-z]?)?)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "alternativ",
+            "pattern": "(.*?)(?:(?:č\\.?(?:p|ev)\\.?)?\\s*\\d+(?:\\d+[a-z]?)?)"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "alternativ",
+            "pattern": "(?:.*),\\s+(?:\\d+\\s+)?(\\w.*)"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "alternativ",
+            "pattern": "(?:.*),\\s+(\\d+)"
+        },
+        "file": "czech_addresses_wgs84_12092016_MASTER.csv",
+        "type": "csv",
+        "accuracy": 1
+    }
 }
