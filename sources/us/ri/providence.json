@@ -26,14 +26,14 @@
         "street": {
             "function": "regexp",
             "field": "property_a",
-            "pattern": "^(?:\\d+(?:\\w+|-\\d+|\/2)?)\\s+(.+?)(?:\\b(?:Unit|Bldg|Apt)\\b.*)?$"
+            "pattern": "^(?:\\d+(?:\\w+|-\\d+|\/2)?)\\s+(.+?)(?:\\b(?:Unit|Bldg|Apt)\\b(?:\\s+\\w+)?)?$"
         },
         "unit": {
             "function": "regexp",
             "field": "property_a",
-            "pattern": "^(?:\\d+(?:\\w+|-\\d+|\/2)?)\\s+(?:.+?)(\\b(?:Unit|Bldg|Apt)\\b.*)?$"
+            "pattern": "^(?:\\d+(?:\\w+|-\\d+|\/2)?)\\s+(?:.+?)(\\b(?:Unit|Bldg|Apt)\\b(?:\\s+\\w+)?)?$"
         },
-        "postcode": "ZIP_POSTAL"
+        "postcode": "zip_postal"
     },
     "data": "https://data.providenceri.gov/api/geospatial/29is-vppi?method=export&format=Shapefile",
     "website": "https://data.providenceri.gov/Neighborhoods/Providence-Parcel-Boundaries-2015/29is-vppi",
