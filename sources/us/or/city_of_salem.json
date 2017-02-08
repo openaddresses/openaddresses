@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -123.098,
+                44.933
+            ]
+        },
+        "US Census": {
+            "geoid": "4164900",
+            "name": "City of Salem",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "city": "Albany"
+    },
+    "website": "http://opendata.arcgis.com/datasets/salem::primary-address-1?geometry=-127.378%2C44.245%2C-118.683%2C45.606",
+    "data": "https://services.arcgis.com/kIA6yS9KDGqZL7U3/arcgis/rest/services/Primary_Address/FeatureServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "id": "OBJECTID",
+        "number": "ADDR_NUM",
+        "street": {
+            "function": "remove_prefix",
+            "field": "FULL_NAME",
+            "field_to_remove": "ADDR_NUM"
+        },
+        "city": "CITY",
+        "district": "COUNTY"
+    }
+}
