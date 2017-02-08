@@ -19,10 +19,12 @@
     "note": {
         "file extension": "kml",
         "examples": [
+            "1102 Spadina Cres W, Saskatoon,  SK CA",
             "1139 4th St E, Saskatoo, SK CA",
             "102 Sears Cove, Saskatoon, SK CA",
             "317B Taylor St E, Saskatoon,  SK CA",
             "233/235 11th St E, Saskatoon,  SK CA",
+            "304 A 111th St W, Saskatoon, SK CA",
             "N/A, Saskatoon,  SK CA",
             "U OF S, Saskatoon, SK CA"
         ]
@@ -33,12 +35,12 @@
         "number": {
             "function": "regexp",
             "field": "Name",
-            "pattern": "^(\\d+(?:[a-zA-Z]|\/\\d+)?)"
+            "pattern": "^(\\d+(?:[A-Z]|\/\\d+|\\s+[A-DF-MO-RT-VX-Z])?)"
         },
         "street": {
             "function": "regexp",
             "field": "Name",
-            "pattern": "^(?:\\d+(?:[a-zA-Z]|\/\\d+)?)\\s+(.*?),"
+            "pattern": "^(?:\\d+(?:[A-Z]|\/\\d+|\\s+[A-DF-MO-RT-VX-Z])?)\\s+(.*?),"
         }
     }
 }
