@@ -5,31 +5,30 @@
         "city": "Gatineau",
         "geometry": {
             "type": "Point",
-            "coordinates": [-75.767, 45.485] 
+            "coordinates": [-75.767, 45.485]
         }
     },
     "data": "http://gatineau.ca/upload/donneesouvertes/ADRESSE.zip",
     "website": "http://gatineau.ca/donneesouvertes/fiche_metadonnees_en.aspx?id=1393013950",
     "license": "http://gatineau.ca/donneesouvertes/licence_en.aspx",
+    "note": "don't use component fields, see https://github.com/openaddresses/openaddresses/pull/2266",
     "type": "http",
     "compression": "zip",
     "conform": {
         "number": {
             "function": "regexp",
-            "field": "NUMERO_CIV",
-            "pattern": "^([0-9]+)"
+            "field": "ADR_COMPLE",
+            "pattern": "^(\\d+)"
         },
-        "street": [
-            "GENERIQUE",
-            "LIAISON",
-            "SPECIFIQUE",
-            "DIRECTION"
-        ],
+        "street": {
+            "function": "regexp",
+            "field": "ADR_COMPLE",
+            "pattern": "^(?:\\d+(?:\\(.*?\\))?\\s+)(.*)"
+        },
         "unit": {
             "function": "regexp",
-            "field": "NUMERO_CIV",
-            "pattern": "^(?:[0-9]+)(.*)",
-            "replace": "$1"
+            "field": "ADR_COMPLE",
+            "pattern": "(?:\\((.*?)\\))"
         },
         "type": "shapefile"
     }
