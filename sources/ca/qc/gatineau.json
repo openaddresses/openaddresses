@@ -18,20 +18,17 @@
         "number": {
             "function": "regexp",
             "field": "NUMERO_CIV",
-            "pattern": "([0-9]+(?:\\(.*?\\))?)( .*)",
-            "replace": "$1"
+            "pattern": "^(\\d+)"
         },
         "street": {
             "function": "regexp",
             "field": "ADR_COMPLE",
-            "pattern": "([0-9]+(?:\\(.*?\\))? )(.*)",
-            "replace": "$2"
+            "pattern": "(?:\\d+(?:\\(?:.*?\\))?\\s+)(.*)"
         },
         "unit": {
             "function": "regexp",
             "field": "ADR_COMPLE",
-            "pattern": "(?:[0-9]+)(\\(|.*?\\))? ",
-            "replace": "$2"
+            "pattern": "(?:\\d+)(\\(?:|.*?\\))?"
         },
         "type": "shapefile"
     }
