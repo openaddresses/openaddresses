@@ -1,28 +1,44 @@
 {
     "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -106.717,
+                52.139
+            ]
+        },
         "country": "ca",
         "state": "sk",
         "city": "Saskatoon"
     },
-    "skip": true,
-    "data": "https://saskatoonopendataconfig.blob.core.windows.net/converteddata/ParcelAddress.csv",
+    "data": "http://opendata-saskatoon.cloudapp.net/DataBrowser/DownloadKml?container=SaskatoonOpenDataCatalogueBeta&entitySet=ParcelAddress&filter=NOFILTER",
     "website": "http://opendata-saskatoon.cloudapp.net/",
     "license": "http://www.saskatoon.ca/DEPARTMENTS/Corporate%20Services/Corporate%20Information%20Services/OpenData/Pages/TermsofService.aspx",
     "type": "http",
-    "note": "file extension is CSV",
+    "note": {
+        "file extension": "kml",
+        "examples": [
+            "1139 4th St E, Saskatoo, SK CA",
+            "102 Sears Cove, Saskatoon, SK CA",
+            "317B Taylor St E, Saskatoon,  SK CA",
+            "233/235 11th St E, Saskatoon,  SK CA",
+            "N/A, Saskatoon,  SK CA",
+            "U OF S, Saskatoon, SK CA"
+        ]
+    },
     "conform": {
-        "type": "csv",
-        "lon": "x",
-        "lat": "y",
+        "type": "xml",
+        "lon": "X",
+        "lat": "Y",
         "number": {
             "function": "regexp",
-            "field": "name",
-            "pattern": "^(\\S+)"
+            "field": "Name",
+            "pattern": "^(\\d+(?:[a-zA-Z]|\/\\d+)?)"
         },
         "street": {
             "function": "regexp",
-            "field": "name",
-            "pattern": "^(?:\\S+ )(.*)",
+            "field": "Name",
+            "pattern": "^(?:\\d+(?:[a-zA-Z]|\/\\d+)?)\\s(.*?),",
             "replace": "$1"
         }
     }
