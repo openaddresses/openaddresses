@@ -5,7 +5,7 @@
         "city": "Gatineau",
         "geometry": {
             "type": "Point",
-            "coordinates": [-75.767, 45.485] 
+            "coordinates": [-75.767, 45.485]
         }
     },
     "data": "http://gatineau.ca/upload/donneesouvertes/ADRESSE.zip",
@@ -17,18 +17,18 @@
     "conform": {
         "number": {
             "function": "regexp",
-            "field": "NUMERO_CIV",
-            "pattern": "^(\\d+)"
+            "field": "ADR_COMPLE",
+            "pattern": "^(\\d+)(?:.*)$"
         },
         "street": {
             "function": "regexp",
             "field": "ADR_COMPLE",
-            "pattern": "(?:\\d+(?:\\(?:.*?\\))?\\s+)(.*)"
+            "pattern": "^(?:\\d+(?:\\(.*?\\))?\\s+)(.*)$"
         },
         "unit": {
             "function": "regexp",
             "field": "ADR_COMPLE",
-            "pattern": "(?:\\d+)(\\(?:|.*?\\))?"
+            "pattern": "^(?:\\d+)(\\(?:|.*?\\))?(?:.*)$"
         },
         "type": "shapefile"
     }
