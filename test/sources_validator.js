@@ -42,11 +42,15 @@ function testAllSources(validate) {
       var manifest = glob.sync('sources/**/*.json');
 
       manifest.forEach(function(source) {
-        var data = JSON.parse(fs.readFileSync(source, 'utf8'));
+        try {
+          var data = JSON.parse(fs.readFileSync(source, 'utf8'));
+          var valid = validate(data);
 
-        var valid = validate(data);
+          t.notOk(validate.errors, source);
 
-        t.notOk(validate.errors, source);
+        } catch (err) {
+          t.fail(`could not parse ${source} as JSON: ${err}`);
+        }
 
       });
 
