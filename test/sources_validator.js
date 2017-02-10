@@ -37,11 +37,11 @@ function testAllSources(validate) {
       }
     }
 
-    test('schema-validate sources', function(t) {
-      // find all the sources
-      var manifest = glob.sync('sources/**/*.json');
+    // find all the sources
+    var manifest = glob.sync('sources/**/*.json');
 
-      manifest.forEach(function(source) {
+    manifest.forEach(function(source) {
+      test(`schema-validation for source ${source}`, (t) => {
         try {
           var data = JSON.parse(fs.readFileSync(source, 'utf8'));
           var valid = validate(data);
@@ -52,9 +52,9 @@ function testAllSources(validate) {
           t.fail(`could not parse ${source} as JSON: ${err}`);
         }
 
-      });
+        t.end();
 
-      t.end();
+      });
 
     });
 
