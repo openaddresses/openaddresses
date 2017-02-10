@@ -44,7 +44,7 @@ function testAllSources(validate) {
           var data = JSON.parse(fs.readFileSync(source, 'utf8'));
           var valid = validate(data);
 
-          t.notOk(validate.errors, source);
+          t.notOk(validate.errors, source, 'schema validation failed');
 
         } catch (err) {
           t.fail(`could not parse ${source} as JSON: ${err}`);
