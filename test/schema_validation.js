@@ -27,7 +27,7 @@ function loadSchema(uri, callback) {
 function isAdditionalPropertyError(validate, property) {
   if (!validate.errors) return false;
 
-  return validate.errors.some(function(err) {
+  return validate.errors.some((err) => {
     return err.params.additionalProperty === property;
   });
 }
@@ -37,7 +37,7 @@ function isAdditionalPropertyError(validate, property) {
 function isEnumValueError(validate, property) {
   if (!validate.errors) return false;
 
-  return validate.errors.some(function(err) {
+  return validate.errors.some((err) => {
     return err.schemaPath === '#/properties/' + property + '/enum';
   });
 }
@@ -47,7 +47,7 @@ function isEnumValueError(validate, property) {
 function isMissingPropertyError(validate, type) {
   if (!validate.errors) return false;
 
-  return validate.errors.some(function(err) {
+  return validate.errors.some((err) => {
     return err.params.missingProperty === type;
   });
 }
@@ -57,7 +57,7 @@ function isMissingPropertyError(validate, type) {
 function isTypeError(validate, property) {
   if (!validate.errors) return false;
 
-  return validate.errors.some(function(err) {
+  return validate.errors.some((err) => {
     return err.schemaPath === '#/properties/' + property + '/type';
   });
 }
@@ -65,7 +65,7 @@ function isTypeError(validate, property) {
 function isOneOfError(validate, property) {
   if (!validate.errors) return false;
 
-  return validate.errors.some(function(err) {
+  return validate.errors.some((err) => {
     return err.schemaPath === '#/properties/' + property + '/oneOf';
   });
 }
@@ -73,7 +73,7 @@ function isOneOfError(validate, property) {
 function isFormatError(validate, property) {
   if (!validate.errors) return false;
 
-  return validate.errors.some(function(err) {
+  return validate.errors.some((err) => {
     return err.schemaPath === '#/properties/' + property + '/format';
   });
 }
@@ -81,14 +81,14 @@ function isFormatError(validate, property) {
 function isPatternError(validate, property) {
   if (!validate.errors) return false;
 
-  return validate.errors.some(function(err) {
+  return validate.errors.some((err) => {
     return err.schemaPath === '#/properties/' + property + '/pattern';
   });
 }
 
 function testSchemaItself(validate) {
-  test('bare minimum source should pass', function(t) {
-    ['http', 'ftp', 'ESRI'].forEach(function(type) {
+  test('bare minimum source should pass', (t) => {
+    ['http', 'ftp', 'ESRI'].forEach((type) => {
       var source = {
         coverage: {
           country: 'some country'
@@ -107,7 +107,7 @@ function testSchemaItself(validate) {
 
   });
 
-  test.test('unknown field should fail', function(t) {
+  test.test('unknown field should fail', (t) => {
     var source = {
       coverage: {
         country: 'some country'
@@ -125,7 +125,7 @@ function testSchemaItself(validate) {
 
   });
 
-  test.test('type other than http/ftp/ESRI should fail', function(t) {
+  test.test('type other than http/ftp/ESRI should fail', (t) => {
     var source = {
       coverage: {
         country: 'some country'
@@ -142,7 +142,7 @@ function testSchemaItself(validate) {
 
   });
 
-  test.test('source without type should fail', function(t) {
+  test.test('source without type should fail', (t) => {
     var source = {
       coverage: {
         country: 'some country'
@@ -158,7 +158,7 @@ function testSchemaItself(validate) {
 
   });
 
-  test.test('non-string data value should fail', function(t) {
+  test.test('non-string data value should fail', (t) => {
     var source = {
       type: 'http',
       coverage: {
@@ -175,7 +175,7 @@ function testSchemaItself(validate) {
 
   });
 
-  test.test('string data value should not fail', function(t) {
+  test.test('string data value should not fail', (t) => {
     var source = {
       type: 'http',
       coverage: {
@@ -191,7 +191,7 @@ function testSchemaItself(validate) {
 
   });
 
-  test.test('non-string website value should fail', function(t) {
+  test.test('non-string website value should fail', (t) => {
     var source = {
       type: 'http',
       coverage: {
@@ -209,7 +209,7 @@ function testSchemaItself(validate) {
 
   });
 
-  test.test('string website value should not fail', function(t) {
+  test.test('string website value should not fail', (t) => {
     var source = {
       type: 'http',
       coverage: {
@@ -226,7 +226,7 @@ function testSchemaItself(validate) {
 
   });
 
-  test.test('non-string email value should fail', function(t) {
+  test.test('non-string email value should fail', (t) => {
     [null, 17, {}, [], true].forEach((value) => {
       var source = {
         type: 'http',
@@ -247,7 +247,7 @@ function testSchemaItself(validate) {
 
   });
 
-  test.test('non-email-formatted email field should fail', function(t) {
+  test.test('non-email-formatted email field should fail', (t) => {
     var source = {
       type: 'http',
       coverage: {
@@ -265,7 +265,7 @@ function testSchemaItself(validate) {
 
   });
 
-  test.test('email-formatted email field should not fail', function(t) {
+  test.test('email-formatted email field should not fail', (t) => {
     var source = {
       type: 'http',
       coverage: {
@@ -282,7 +282,7 @@ function testSchemaItself(validate) {
 
   });
 
-  test.test('non-string compression should fail', function(t) {
+  test.test('non-string compression should fail', (t) => {
     [null, 17, {}, [], true].forEach((value) => {
       var source = {
         type: 'http',
@@ -304,7 +304,7 @@ function testSchemaItself(validate) {
 
   });
 
-  test.test('non-"zip" compression value should fail', function(t) {
+  test.test('non-"zip" compression value should fail', (t) => {
     var source = {
       type: 'http',
       coverage: {
@@ -322,7 +322,7 @@ function testSchemaItself(validate) {
 
   });
 
-  test.test('"zip" compression value should not fail', function(t) {
+  test.test('"zip" compression value should not fail', (t) => {
     var source = {
       type: 'http',
       coverage: {
@@ -361,7 +361,7 @@ function testSchemaItself(validate) {
 
   });
 
-  test.test('string attribution value should not fail', function(t) {
+  test.test('string attribution value should not fail', (t) => {
     var source = {
       type: 'http',
       coverage: {
