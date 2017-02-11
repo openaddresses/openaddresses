@@ -244,7 +244,7 @@ function testSchemaItself(validate) {
     var valid = validate(source);
 
     t.notOk(valid, 'non-email email value should fail');
-    t.ok(isFormatError(validate, 'email', JSON.stringify(validate.errors));
+    t.ok(isFormatError(validate, 'email', JSON.stringify(validate.errors)));
     t.end();
 
   });
@@ -280,7 +280,7 @@ function testSchemaItself(validate) {
       var valid = validate(source);
 
       t.notOk(valid, 'non-string email value should fail');
-      t.ok(isTypeError(validate, 'compression'), JSON.stringify(validate.errors));
+      t.ok(isEnumValueError(validate, 'compression'), JSON.stringify(validate.errors));
 
     });
 
@@ -319,6 +319,45 @@ function testSchemaItself(validate) {
     var valid = validate(source);
 
     t.ok(valid, '"zip" compression value should not fail');
+    t.end();
+
+  });
+
+  test.test('non-string attribution should fail', (t) => {
+    [null, 17, {}, [], true].forEach((value) => {
+      var source = {
+        type: 'http',
+        coverage: {
+          country: 'some country'
+        },
+        data: 'http://xyz.com/',
+        attribution: value
+      };
+
+      var valid = validate(source);
+
+      t.notOk(valid, 'non-string attribution value should fail');
+      t.ok(isTypeError(validate, 'attribution'), JSON.stringify(validate.errors));
+
+    });
+
+    t.end();
+
+  });
+
+  test.test('string attribution value should not fail', function(t) {
+    var source = {
+      type: 'http',
+      coverage: {
+        country: 'some country'
+      },
+      data: 'http://xyz.com/',
+      attribution: 'this is a string'
+    };
+
+    var valid = validate(source);
+
+    t.ok(valid, 'string attribution value should not fail');
     t.end();
 
   });
