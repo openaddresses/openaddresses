@@ -529,4 +529,47 @@ function testSchemaItself(validate) {
 
   });
 
+  test.test('non-string/object note should fail', (t) => {
+    [null, 17, [], true].forEach((value) => {
+      var source = {
+        type: 'http',
+        coverage: {
+          country: 'some country'
+        },
+        data: 'http://xyz.com/',
+        note: value
+      };
+
+      var valid = validate(source);
+
+      t.notOk(valid, 'non-string/object note value should fail');
+      t.ok(isOneOfError(validate, 'note'), JSON.stringify(validate.errors));
+
+    });
+
+    t.end();
+
+  });
+
+  test.test('string/integer note should not fail', (t) => {
+    [{}, 'string'].forEach((value) => {
+      var source = {
+        type: 'http',
+        coverage: {
+          country: 'some country'
+        },
+        data: 'http://xyz.com/',
+        note: value
+      };
+
+      var valid = validate(source);
+
+      t.ok(valid, 'string/object note value should not fail');
+
+    });
+
+    t.end();
+
+  });
+
 }
