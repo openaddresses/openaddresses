@@ -70,6 +70,14 @@ function isFormatError(validate, property) {
   });
 }
 
+function isPatternError(validate, property) {
+  if (!validate.errors) return false;
+
+  return validate.errors.some(function(err) {
+    return err.schemaPath === '#/properties/' + property + '/pattern';
+  });
+}
+
 function testSchemaItself(validate) {
   test('bare minimum source should pass', function(t) {
     ['http', 'ftp', 'ESRI'].forEach(function(type) {
@@ -358,6 +366,71 @@ function testSchemaItself(validate) {
     var valid = validate(source);
 
     t.ok(valid, 'string attribution value should not fail');
+    t.end();
+
+  });
+
+  test.test('non-string language should fail', (t) => {
+    [null, 17, {}, [], true].forEach((value) => {
+      var source = {
+        type: 'http',
+        coverage: {
+          country: 'some country'
+        },
+        data: 'http://xyz.com/',
+        language: value
+      };
+
+      var valid = validate(source);
+
+      t.notOk(valid, 'non-string language value should fail');
+      t.ok(isTypeError(validate, 'language'), JSON.stringify(validate.errors));
+
+    });
+
+    t.end();
+
+  });
+
+  test.test('non-2-letter-string language should fail', (t) => {
+    ['a', 'a1', '1a', 'aaa'].forEach((value) => {
+      var source = {
+        type: 'http',
+        coverage: {
+          country: 'some country'
+        },
+        data: 'http://xyz.com/',
+        language: value
+      };
+
+      var valid = validate(source);
+
+      t.notOk(valid, 'non-string language value should fail');
+      t.ok(isPatternError(validate, 'language'), JSON.stringify(validate.errors));
+
+    });
+
+    t.end();
+
+  });
+
+  test.test('case-insensitive 2-letter-string language should not fail', (t) => {
+    ['aa', 'Aa', 'aA', 'AA'].forEach((value) => {
+      var source = {
+        type: 'http',
+        coverage: {
+          country: 'some country'
+        },
+        data: 'http://xyz.com/',
+        language: value
+      };
+
+      var valid = validate(source);
+
+      t.ok(valid, '2-letter string language value should not fail');
+
+    });
+
     t.end();
 
   });
