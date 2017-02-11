@@ -435,4 +435,47 @@ function testSchemaItself(validate) {
 
   });
 
+  test.test('non-boolean skip should fail', (t) => {
+    [null, 17, {}, [], 'string'].forEach((value) => {
+      var source = {
+        type: 'http',
+        coverage: {
+          country: 'some country'
+        },
+        data: 'http://xyz.com/',
+        skip: value
+      };
+
+      var valid = validate(source);
+
+      t.notOk(valid, 'non-boolean skip value should fail');
+      t.ok(isTypeError(validate, 'skip'), JSON.stringify(validate.errors));
+
+    });
+
+    t.end();
+
+  });
+
+  test.test('boolean skip should not fail', (t) => {
+    [true, false].forEach((value) => {
+      var source = {
+        type: 'http',
+        coverage: {
+          country: 'some country'
+        },
+        data: 'http://xyz.com/',
+        skip: value
+      };
+
+      var valid = validate(source);
+
+      t.ok(valid, 'boolean skip value should not fail');
+
+    });
+
+    t.end();
+
+  });
+
 }
