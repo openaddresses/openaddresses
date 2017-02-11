@@ -62,6 +62,14 @@ function isTypeError(validate, property) {
   });
 }
 
+function isOneOfError(validate, property) {
+  if (!validate.errors) return false;
+
+  return validate.errors.some(function(err) {
+    return err.schemaPath === '#/properties/' + property + '/oneOf';
+  });
+}
+
 function isFormatError(validate, property) {
   if (!validate.errors) return false;
 
@@ -471,6 +479,49 @@ function testSchemaItself(validate) {
       var valid = validate(source);
 
       t.ok(valid, 'boolean skip value should not fail');
+
+    });
+
+    t.end();
+
+  });
+
+  test.test('non-string/integer year should fail', (t) => {
+    [null, 17.3, {}, [], true].forEach((value) => {
+      var source = {
+        type: 'http',
+        coverage: {
+          country: 'some country'
+        },
+        data: 'http://xyz.com/',
+        year: value
+      };
+
+      var valid = validate(source);
+
+      t.notOk(valid, 'non-string/integer year value should fail');
+      t.ok(isOneOfError(validate, 'year'), JSON.stringify(validate.errors));
+
+    });
+
+    t.end();
+
+  });
+
+  test.test('string/integer year should not fail', (t) => {
+    [17, 'string'].forEach((value) => {
+      var source = {
+        type: 'http',
+        coverage: {
+          country: 'some country'
+        },
+        data: 'http://xyz.com/',
+        year: value
+      };
+
+      var valid = validate(source);
+
+      t.ok(valid, 'string/integer year value should not fail');
 
     });
 
