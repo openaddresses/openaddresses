@@ -15,7 +15,7 @@ ajv.compileAsync(schema, function (err, validate) {
 function loadSchema(uri, callback) {
   request.get({url:uri}, function(err, res, body) {
     if (err || res.statusCode >= 400) {
-      callback(err || new Error('Loading error: ' + res.statusCode));
+      callback(err || new Error(`Loading error: ${res.statusCode}`));
     } else {
       callback(null, JSON.parse(body));
     }
@@ -38,7 +38,7 @@ function isEnumValueError(validate, property) {
   if (!validate.errors) return false;
 
   return validate.errors.some((err) => {
-    return err.schemaPath === '#/properties/' + property + '/enum';
+    return err.schemaPath === `#/properties/${property}/enum`;
   });
 }
 
@@ -58,7 +58,7 @@ function isTypeError(validate, property) {
   if (!validate.errors) return false;
 
   return validate.errors.some((err) => {
-    return err.schemaPath === '#/properties/' + property + '/type';
+    return err.schemaPath === `#/properties/${property}/type`;
   });
 }
 
@@ -66,7 +66,7 @@ function isOneOfError(validate, property) {
   if (!validate.errors) return false;
 
   return validate.errors.some((err) => {
-    return err.schemaPath === '#/properties/' + property + '/oneOf';
+    return err.schemaPath === `#/properties/${property}/oneOf`;
   });
 }
 
@@ -74,7 +74,7 @@ function isFormatError(validate, property) {
   if (!validate.errors) return false;
 
   return validate.errors.some((err) => {
-    return err.schemaPath === '#/properties/' + property + '/format';
+    return err.schemaPath === `#/properties/${property}/format`;
   });
 }
 
@@ -82,7 +82,7 @@ function isPatternError(validate, property) {
   if (!validate.errors) return false;
 
   return validate.errors.some((err) => {
-    return err.schemaPath === '#/properties/' + property + '/pattern';
+    return err.schemaPath === `#/properties/${property}/pattern`;
   });
 }
 
@@ -99,7 +99,7 @@ function testSchemaItself(validate) {
 
       var valid = validate(source);
 
-      t.ok(valid, 'type ' + type + ' should pass');
+      t.ok(valid, `type ${type} should pass`);
 
     });
 
