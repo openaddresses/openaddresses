@@ -65,6 +65,9 @@
     },
     "skip": {
       "type": "boolean"
+    },
+    "test": {
+      "$ref": "#/definitions/test"
     }
   },
   "definitions": {
@@ -290,6 +293,42 @@
             { "type": "string" },
             { "$ref": "#/definitions/function_regexp" }
           ]
+        }
+      }
+    },
+    "test": {
+      "description": "test definition",
+      "type": "object",
+      "required": ["description"],
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "acceptance-tests": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/acceptance-test" }
+        }
+      }
+    },
+    "acceptance-test": {
+      "description": "acceptance-test definition",
+      "type": "object",
+      "required": ["description", "inputs", "expected"],
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "inputs": {
+          "type": "object"
+        },
+        "expected": {
+          "type": "object"
         }
       }
     },

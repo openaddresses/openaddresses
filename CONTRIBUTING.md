@@ -423,6 +423,63 @@ and one for reading the [Dutch addresses](https://github.com/openaddresses/opena
 An application,which uses OpenAddresses and wishes to generate multilingual address entries, can access the data via both metadata entries
 and merge the language versions by identifying the address items by their `id` unique identifier tag.
 
+### Testing (optional)
+
+Some sources, like the [Czech Republic](sources/cz/countrywide.json), consist of a single text field that contains the `number`, `street`, `city`, and `postcode` values.  With inputs like 'Jelení 91/7a, Hradčany, 11800 Praha 1' and 'č.ev. 57, 79862 Rozstání', it's very obvious that [regular expressions](http://www.regular-expressions.info/) are going to be needed to extract the individual field values.  For historical and testing purposes, it's sometimes necessary to note some of the variations of data found in the source so that other modifying the regular expressions don't unintentionally break input parsing.  To accommodate this, OpenAddresses sources support a `test` top-level element containing acceptance tests for fields utilizing the `regexp` function.  Adding tests is entirely optional but is encouraged for sources with complicated regular expressions so that others know the rationale behind them.  See the [Czech Republic](sources/cz/countrywide.json) for test examples.  
+
+The child elements of `test` are:
+
+* `enabled` - boolean value dictating whether these tests should be run (defaults to `true`)
+* `description` - text describing the purpose of the tests
+* `acceptance-tests` - array of tests that should be run
+
+#### Acceptance Tests
+
+The `acceptance-tests` array consists of objects with the following structure:
+
+* `description` - text describing the purpose of a test
+* `inputs` - object map of strings->strings keyed on the data source field name to test value
+* `expected` - object map of strings->strings keyed on `conform` fields to expected value for those fields
+
+#### Example
+
+The following is an example for defining tests that use regular expressions to extract from an input field named `address` a number and street where the former prefixes the latter:
+
+```
+{
+  "enabled": true,
+  "description": "house numbers should prefix streets",
+  "acceptance-tests": [
+    {
+      "description": "the house number can consist of only digits",
+      "inputs": {
+        "address": "123 Main Street"
+      },
+      "expected": {
+        "number": "123",
+        "street": "Main Street"
+      }
+    },
+    {
+      "description": "the house number can be postfixed with a letter",
+      "inputs": {
+        "address": "123A Main Street"
+      },
+      "expected": {
+        "number": "123A",
+        "street": "Main Street"
+      }
+    }
+  ]
+}
+```
+
+#### Running Tests
+
+The tests will run within the [machine](https://github.com/openaddresses/machine) when a source is submitted, but for more immediate feedback on how regular expressions are working, install [Node.js](https://nodejs.org/) (at least v4.0.0) locally and run either of the following:
+
+* `npm test` (to run all tests)
+* `node test/acceptance_tests.js` (to run only acceptance tests)
 
 ### Formatting:
 
