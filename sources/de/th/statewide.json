@@ -16,7 +16,11 @@
     		"srs": "EPSG:4647",
 		"street": "COLUMN14",
 		"city": "COLUMN19",
-		"number": ["COLUMN10","COLUMN11"],
+		"number": {
+            "function": "format",
+            "fields": ["COLUMN10", "COLUMN11"],
+            "format": "$1$2"
+        },
 		"lat": "COLUMN13",
 		"lon": "COLUMN12"
 	}
