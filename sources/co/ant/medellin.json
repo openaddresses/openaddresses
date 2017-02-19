@@ -11,6 +11,10 @@
     "conform": {
         "type": "geojson",
         "number": "PLACA",
-        "street": ["TIPO_VIA", "NUMERO_VIA", "APENDICE_VIA"]
+        "street": {
+            "function": "format",
+            "fields": ["TIPO_VIA", "NUMERO_VIA", "APENDICE_VIA"],
+            "format": "$1 $2$3"
+        }
     }
 }
