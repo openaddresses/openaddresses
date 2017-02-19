@@ -10,11 +10,12 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "PLACA",
-        "street": {
-            "function": "format",
-            "fields": ["TIPO_VIA", "NUMERO_VIA", "APENDICE_VIA"],
-            "format": "$1 $2$3"
-        }
+        "number": {
+            "function": "regexp",
+            "field": "PLACA",
+            "pattern": "^.*?(?:\(.*\).*?$"
+        },
+        "street": "VIA",
+        "unit": "INTERIOR"
     }
 }
