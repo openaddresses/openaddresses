@@ -10,6 +10,7 @@
     },
     "data": "http://mapservices.crd.bc.ca/arcgis/rest/services/Properties/MapServer/0",
     "type": "ESRI",
+    "note": "not ideal treatment of number.  source has 3 fields for number: StreetNumberPrefix, StreetNumber, and StreetNumberSuffix.  format is '$1-$2$3'.  current join doesn't handle multiple delimiters and format would hardcode a hyphen.  since there are only 4 records with a StreetPrefix, it's ignored for now.",
     "conform": {
         "type": "geojson",
         "id": "OBJECTID",
@@ -26,8 +27,6 @@
             "StreetType",
             "StreetDirSuffix"
         ],
-        "unit": "UnitNumber",
-        "city": "StreetNumberPrefix",
-        "region": "FullAddress"
+        "unit": "UnitNumber"
     }
 }
