@@ -1,0 +1,33 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "county": "Capital",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-124.333, 48.660]
+        }
+    },
+    "data": "http://mapservices.crd.bc.ca/arcgis/rest/services/Properties/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "id": "OBJECTID",
+        "number": {
+            "function": "join",
+            "fields": [
+                "StreetNumber",
+                "StreetNumberSuffix"
+            ],
+            "separator": ""
+        },
+        "street": [
+            "StreetName",
+            "StreetType",
+            "StreetDirSuffix"
+        ],
+        "unit": "UnitNumber",
+        "city": "StreetNumberPrefix",
+        "region": "FullAddress"
+    }
+}
