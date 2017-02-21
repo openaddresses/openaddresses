@@ -21,13 +21,15 @@ try:
 
     while True:
         if not feature.get('geometry') or feature['geometry']['coordinates'][0] == 'Nan':
+            feature = next(features)
             continue
         props = feature['properties']
         interior = props['PDoCInteri']
-        if interior and interior.strip():
+        if interior and interior.strip() and not interior.strip()[0].isdigit():
             street = props['PDoTexto']
-            props['PDoCInteri'] = street
-            props['PDoTexto'] = interior
+            if street.strip():
+                props['PDoCInteri'] = street
+                props['PDoTexto'] = interior
         outfile.write(json.dumps(feature))
         feature = next(features)
         outfile.write(',\n')
