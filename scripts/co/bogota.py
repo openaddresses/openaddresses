@@ -32,5 +32,5 @@ try:
 except StopIteration:
     outfile.write('\n')
 
-args.outfile.write(']}')
+outfile.write(']}')
 
