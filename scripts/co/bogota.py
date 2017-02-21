@@ -20,6 +20,8 @@ try:
     feature = next(features)
 
     while True:
+        if not feature.get('geometry') or feature['geometry']['coordinates'][0] == 'Nan':
+            continue
         props = feature['properties']
         interior = props['PDoCInteri']
         if interior and interior.strip():
