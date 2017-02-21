@@ -1,0 +1,30 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "41007",
+            "name": "Clatsop County",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "county": "Clatsop"
+    },
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "gdb",
+        "file": "Delivery/addresses_oregon.gdb",
+        "layer": "Clatsop",
+        "number": {
+            "function": "prefixed_number",
+            "field": "SITUS_ADDR"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "SITUS_ADDR"
+        },
+        "city": "SITUS_CITY",
+        "postcode": "ZIP"
+    }
+}
