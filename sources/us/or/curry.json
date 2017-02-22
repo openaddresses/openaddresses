@@ -21,8 +21,24 @@
             "field": "SITUS_ONE"
         },
         "street": {
-            "function": "postfixed_street",
-            "field": "SITUS_ONE"
+            "function": "regexp",
+            "field": "SITUS_ONE",
+            "pattern": "^\\d+\\s+([^,]+)"
         }
+    },
+    "test": {
+        "enabled": true,
+        "description": "these are the tests that exercise valid inputs for Curry County",
+        "acceptance-tests": [
+            {
+                "description": "address with no unit",
+                "inputs": {
+                    "SITUS_ONE": "98171 TUTTLE LN"
+                },
+                "expected": {
+                    "street": "TUTTLE LN"
+                }
+            }
+        ]
     }
 }
