@@ -1,0 +1,30 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "06015",
+            "name": "Del Norte County",
+            "state": "California"
+        },
+        "country": "us",
+        "state": "ca",
+        "county": "Del Norte"
+    },
+    "data": "https://services3.arcgis.com/IkUDY1vRIUWiVvcz/ArcGIS/rest/services/DN_Parcels/FeatureServer/0",
+    "website": "http://www.co.del-norte.ca.us/departments/information-technology/geographic-information-services-gis",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "SIT_ST_NUM",
+        "street": "SIT_ST_NAM",
+        "city": {
+            "function": "regexp",
+            "field": "SITUS_CI_1",
+            "pattern": "^([A-Z ]+)"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "SITUS_CI_1",
+            "pattern": "(\\d{5})$"
+        }
+    }
+}
