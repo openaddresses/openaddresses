@@ -25,9 +25,9 @@ try:
             continue
         props = feature['properties']
         interior = props['PDoCInteri']
-        if interior and interior.strip() and not interior.strip()[0].isdigit():
+        if interior and interior.strip():
             street = props['PDoTexto']
-            if street and street.strip():
+            if street and street.strip() and not street.strip()[0].isdigit():
                 props['PDoCInteri'] = street
                 props['PDoTexto'] = interior
         outfile.write(json.dumps(feature))
