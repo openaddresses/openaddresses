@@ -1,4 +1,5 @@
 import json
+import math
 import sys
 import logging
 
@@ -20,7 +21,7 @@ try:
     feature = next(features)
 
     while True:
-        if not feature.get('geometry') or feature['geometry']['coordinates'][0] == 'Nan':
+        if not feature.get('geometry') or feature['geometry']['coordinates'][0] == 'NaN' or (type(feature['geometry']['coordinates'][0]) is float and math.isnan(feature['geometry']['coordinates'][0])):
             feature = next(features)
             continue
         props = feature['properties']
