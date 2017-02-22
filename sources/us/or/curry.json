@@ -1,0 +1,29 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "41015",
+            "name": "Curry County",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "county": "Curry"
+    },
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "gdb",
+        "file": "Delivery/addresses_oregon.gdb",
+        "layer": "Curry",
+        "number": {
+            "function": "prefixed_number",
+            "field": "SITUS_ONE"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITUS_ONE",
+            "pattern": "^\\d+\\s+([^,]+)"
+        }
+    }
+}

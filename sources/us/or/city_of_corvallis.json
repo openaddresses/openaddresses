@@ -1,0 +1,47 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -123.318,
+                44.563
+            ]
+        },
+        "US Census": {
+            "geoid": "4115800",
+            "name": "City of Corvallis",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "city": "Corvallis"
+    },
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "gdb",
+        "file": "Delivery/addresses_oregon.gdb",
+        "layer": "_Corvallis",
+        "number": {
+            "function": "join",
+            "fields": [
+                "ST_NUMBR",
+                "ST_NSFX"
+            ],
+            "separator": ""
+        },
+        "street": [
+            "ST_PFX",
+            "ST_NAME",
+            "ST_TYPE",
+            "ST_SFX"
+        ],
+        "unit": [
+            "UNIT",
+            "UNITNUM"
+        ],
+        "city": "CITY",
+        "postcode": "ZIP"
+    }
+}

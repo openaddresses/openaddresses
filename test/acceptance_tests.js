@@ -9,16 +9,17 @@ function getActualValue(matcher, replace) {
   // if a replace was specified, replace the matched groups
   // eg - if matched groups are ["abc", "a", "c"] and replace is "$1:$2"
   //      then the output is "a:c"
-  if (replace) {
-    return matcher.reduce((acc, curr, idx) => {
-      // ignore the first matched group since it's the entire string
-      return idx === 0 ? acc : acc.replace(`$${idx}`, curr);
-    }, replace);
+  if (matcher) {
+    if (replace) {
+      return matcher.reduce((acc, curr, idx) => {
+        // ignore the first matched group since it's the entire string
+        return idx === 0 ? acc : acc.replace(`$${idx}`, curr);
+      }, replace);
+    }
 
+    // otherwise, return the trimmed concatenation of all the matched groups
+    return matcher.slice(1).join('').trim();
   }
-
-  // otherwise, return the trimmed concatenation of all the matched groups
-  return matcher.slice(1).join('').trim();
 
 }
 
