@@ -1,13 +1,20 @@
 {
     "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -123.318,
+                44.563
+            ]
+        },
         "US Census": {
-            "geoid": "41001",
-            "name": "Baker County",
+            "geoid": "4115800",
+            "name": "City of Corvalis",
             "state": "Oregon"
         },
         "country": "us",
         "state": "or",
-        "county": "Baker"
+        "city": "Corvalis"
     },
     "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
     "type": "http",
@@ -15,14 +22,26 @@
     "conform": {
         "type": "gdb",
         "file": "Delivery/addresses_oregon.gdb",
-        "layer": "Baker",
-        "number": "HouseNo",
+        "layer": "_Corvalis",
+        "number": {
+            "function": "join",
+            "fields": [
+                "ST_NUMBR",
+                "ST_NSFX"
+            ],
+            "separator": ""
+        },
         "street": [
-            "Direction",
-            "RoadName",
-            "RoadType"
+            "ST_PFX",
+            "ST_NAME",
+            "ST_TYPE",
+            "ST_SFX"
         ],
-        "unit": "Extension",
-        "city": "CityCounty"
+        "unit": [
+            "UNIT",
+            "UNITNUM"
+        ],
+        "city": "CITY",
+        "postcode": "ZIP"
     }
 }
