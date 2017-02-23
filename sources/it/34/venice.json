@@ -1,0 +1,23 @@
+{
+    "coverage": {
+        "country": "it",
+        "city": "Venice"
+    },
+    "data": "http://sit.comune.venezia.it:6080/arcgis/rest/services/Mappe_base/Cartografia_di_base_a_Colori/MapServer/2",
+    "type": "ESRI",
+    "language": "it",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "INDIRIZZO",
+            "pattern": "^(?:.+?)(?:,\\s*(.*?)\\s*)$"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "INDIRIZZO",
+            "pattern": "^(.+?)(?:,.*)?$"
+        },
+        "city": "Venezia"
+    }
+}
