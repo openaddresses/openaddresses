@@ -9,18 +9,141 @@
         "state": "tx",
         "county": "Montgomery"
     },
-    "data": "http://mapsatbis.com/bisgis/rest/services/MontgomeryWebParcels/MapServer/0",
+    "data": "http://services1.arcgis.com/PRoAPGnMSUqvTrzq/ArcGIS/rest/services/TaxParcel/FeatureServer/0",
     "type": "ESRI",
     "conform": {
-        "number": "MontgomeryCad.DBO.Accounts.situs_num",
-        "street": [
-            "MontgomeryCad.DBO.Accounts.situs_street_prefx",
-            "MontgomeryCad.DBO.Accounts.situs_street",
-            "MontgomeryCad.DBO.Accounts.situs_street_sufix"
-        ],
-        "city": "MontgomeryCad.DBO.Accounts.situs_city",
-        "region": "MontgomeryCad.DBO.Accounts.situs_state",
-        "postcode": "MontgomeryCad.DBO.Accounts.situs_zip",
-        "type": "geojson"
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "PropertyAd",
+            "pattern": "^(\\d+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PropertyAd",
+            "pattern": "^(?:\\d+(?:-?\\w(?:/\\w)?)?)?\\b(.+?)\\s*,"
+        },
+        "unit": {
+          "function": "regexp",
+          "field": "PropertyAd",
+          "pattern": "^(?:\\d+)(?:-?(.+?))\\s+"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "PropertyAd",
+            "pattern": ",\\s*(.+?)\\s*,\\s+(?:TX)\\s+"
+        },
+        "region": {
+            "function": "regexp",
+            "field": "PropertyAd",
+            "pattern": "\\b(TX)\\b"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "PropertyAd",
+            "pattern": "\\s(\\d{5})$"
+        }
+    },
+    "test": {
+        "enabled": true,
+        "description": "full addresses with city, state, and zip are in a single field",
+        "acceptance-tests": [
+            {
+                "description": "only-numbers house number",
+                "inputs": {
+                    "PropertyAd": "6 MCCLELLAN CIR, HUMBLE, TX  77339"
+                },
+                "expected": {
+                    "number": "6",
+                    "street": "MCCLELLAN CIR",
+                    "unit": "",
+                    "city": "HUMBLE",
+                    "region": "TX",
+                    "postcode": "77339"
+                }
+            },
+            {
+                "description": "number is hyphenated",
+                "inputs": {
+                    "PropertyAd": "23207-2 DECKER PRAIRIE ROSEHILL RD, MAGNOLIA, TX  77355"
+                },
+                "expected": {
+                    "number": "23207",
+                    "street": "DECKER PRAIRIE ROSEHILL RD",
+                    "unit": "2",
+                    "city": "MAGNOLIA",
+                    "region": "TX",
+                    "postcode": "77355"
+                }
+            },
+            {
+                "description": "number is hyphenated w/alpha",
+                "inputs": {
+                    "PropertyAd": "20111-A PLANTATION CREEK DR, PORTER, TX  77365"
+                },
+                "expected": {
+                    "number": "20111",
+                    "street": "PLANTATION CREEK DR",
+                    "unit": "A",
+                    "city": "PORTER",
+                    "region": "TX",
+                    "postcode": "77365"
+                }
+            },
+            {
+                "description": "number is hyphenated w/2 /-delimited alphas",
+                "inputs": {
+                    "PropertyAd": "37019-A/B HICKORY RIDGE RD, MAGNOLIA, TX  77354"
+                },
+                "expected": {
+                    "number": "37019",
+                    "street": "HICKORY RIDGE RD",
+                    "unit": "A/B",
+                    "city": "MAGNOLIA",
+                    "region": "TX",
+                    "postcode": "77354"
+                }
+            },
+            {
+                "description": "number has alpha and unhyphenated",
+                "inputs": {
+                    "PropertyAd": "24103A SPENCER BLVD, MAGNOLIA, TX  77355"
+                },
+                "expected": {
+                    "number": "24103",
+                    "street": "SPENCER BLVD",
+                    "unit": "A",
+                    "city": "MAGNOLIA",
+                    "region": "TX",
+                    "postcode": "77355"
+                }
+            },
+            {
+                "description": "number-less address",
+                "inputs": {
+                    "PropertyAd": "KINGS MANOR DR, HUMBLE, TX  77339"
+                },
+                "expected": {
+                    "number": "",
+                    "street": "KINGS MANOR DR",
+                    "city": "HUMBLE",
+                    "region": "TX",
+                    "postcode": "77339"
+                }
+            },
+            {
+                "description": "street starts with number",
+                "inputs": {
+                    "PropertyAd": "1ST ST, SPLENDORA, TX  77372"
+                },
+                "expected": {
+                    "number": "",
+                    "street": "1ST ST",
+                    "city": "SPLENDORA",
+                    "region": "TX",
+                    "postcode": "77372"
+                }
+            }
+        ]
     }
 }
