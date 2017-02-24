@@ -16,17 +16,17 @@
         "number": {
             "function": "regexp",
             "field": "PropertyAd",
-            "pattern": "^(\\d+(?:\\s+1/2)?)(?:-?\\w(?:/\\w)?)?\\b"
+            "pattern": "^(\\d+(?:\\s+1/2)?)(?:-\\d+|-?(?:[A-Z]/)*[A-Z])?\\b"
         },
         "street": {
             "function": "regexp",
             "field": "PropertyAd",
-            "pattern": "^(?:\\d+(?:\\s+1/2)?(?:-?\\w(?:/\\w)?)?)?\\b(.+?)\\s*,"
+            "pattern": "^(?:\\d+(?:\\s+1/2)?(?:-\\d+|-?(?:[A-Z]/)*[A-Z])?)?\\b(.+?)\\s*,"
         },
         "unit": {
           "function": "regexp",
           "field": "PropertyAd",
-          "pattern": "^(?:\\d+(?:\\s+1/2)?)(?:()|-(\\d+)|-?((?:[A-Z]/)*[A-Z]))\\s+"
+          "pattern": "^(?:\\d+(?:\\s+1/2)?)(?:-(\\d+)|-?((?:[A-Z]/)*[A-Z])|(?!))\\s+"
         },
         "city": {
             "function": "regexp",
@@ -116,6 +116,20 @@
                     "city": "MAGNOLIA",
                     "region": "TX",
                     "postcode": "77354"
+                }
+            },
+            {
+                "description": "number is hyphenated w/3 /-delimited alphas",
+                "inputs": {
+                    "PropertyAd": "410-A/B/C DANIELS ST, WILLIS, TX  77378"
+                },
+                "expected": {
+                    "number": "410",
+                    "street": "DANIELS ST",
+                    "unit": "A/B/C",
+                    "city": "WILLIS",
+                    "region": "TX",
+                    "postcode": "77378"
                 }
             },
             {
