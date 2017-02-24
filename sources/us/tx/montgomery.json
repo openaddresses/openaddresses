@@ -23,6 +23,11 @@
             "field": "PropertyAd",
             "pattern": "^(?:\\d+(?:\\s+1/2)?(?:-?\\w(?:/\\w)?)?)?\\b(.+?)\\s*,"
         },
+        "unit": {
+          "function": "regexp",
+          "field": "PropertyAd",
+          "pattern": "^(?:\\d+(?:\\s+1/2)?)(?:()|-(\\d+)|-?((?:[A-Z]/)*[A-Z]))\\s+"
+        },
         "city": {
             "function": "regexp",
             "field": "PropertyAd",
@@ -44,6 +49,20 @@
         "description": "full addresses with city, state, and zip are in a single field",
         "acceptance-tests": [
             {
+                "description": "empty row",
+                "inputs": {
+                    "PropertyAd": ""
+                },
+                "expected": {
+                    "number": "",
+                    "street": "",
+                    "unit": "",
+                    "city": "",
+                    "region": "",
+                    "postcode": ""
+                }
+            },
+            {
                 "description": "only-numbers house number",
                 "inputs": {
                     "PropertyAd": "66 MCCLELLAN CIR, HUMBLE, TX  77339"
@@ -51,6 +70,7 @@
                 "expected": {
                     "number": "66",
                     "street": "MCCLELLAN CIR",
+                    "unit": "",
                     "city": "HUMBLE",
                     "region": "TX",
                     "postcode": "77339"
@@ -64,6 +84,7 @@
                 "expected": {
                     "number": "23207",
                     "street": "DECKER PRAIRIE ROSEHILL RD",
+                    "unit": "2",
                     "city": "MAGNOLIA",
                     "region": "TX",
                     "postcode": "77355"
@@ -77,6 +98,7 @@
                 "expected": {
                     "number": "20111",
                     "street": "PLANTATION CREEK DR",
+                    "unit": "A",
                     "city": "PORTER",
                     "region": "TX",
                     "postcode": "77365"
@@ -90,6 +112,7 @@
                 "expected": {
                     "number": "37019",
                     "street": "HICKORY RIDGE RD",
+                    "unit": "A/B",
                     "city": "MAGNOLIA",
                     "region": "TX",
                     "postcode": "77354"
@@ -103,6 +126,7 @@
                 "expected": {
                     "number": "24103",
                     "street": "SPENCER BLVD",
+                    "unit": "A",
                     "city": "MAGNOLIA",
                     "region": "TX",
                     "postcode": "77355"
@@ -116,6 +140,7 @@
                 "expected": {
                     "number": "",
                     "street": "KINGS MANOR DR",
+                    "unit": "",
                     "city": "HUMBLE",
                     "region": "TX",
                     "postcode": "77339"
@@ -129,6 +154,7 @@
                 "expected": {
                     "number": "",
                     "street": "1ST ST",
+                    "unit": "",
                     "city": "SPLENDORA",
                     "region": "TX",
                     "postcode": "77372"
@@ -142,6 +168,7 @@
                 "expected": {
                     "number": "67  1/2",
                     "street": "APRIL WIND DR S",
+                    "unit": "",
                     "city": "MONTGOMERY",
                     "region": "TX",
                     "postcode": "77356"
