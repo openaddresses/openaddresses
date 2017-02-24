@@ -9,9 +9,12 @@
         "state": "tx",
         "county": "Moore"
     },
-    "data": "http://mapsatbis.com/bisgis/rest/services/MooreWeb/MapServer/0",
-    "type": "ESRI",
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/d5c1c8/us-tx-moore.geojson.zip",
+    "note": "getting 'Connection refused' on ESRI source in machine (http://mapsatbis.com/bisgis/rest/services/MooreWeb/MapServer/0), so cached",
+    "type": "http",
+    "compression": "zip",
     "conform": {
+        "type": "geojson",
         "number": "MooreCad.DBO.Accounts.situs_num",
         "street": [
             "MooreCad.DBO.Accounts.situs_street_prefx",
@@ -20,7 +23,6 @@
         ],
         "city": "MooreCad.DBO.Accounts.situs_city",
         "region": "MooreCad.DBO.Accounts.situs_state",
-        "postcode": "MooreCad.DBO.Accounts.situs_zip",
-        "type": "geojson"
+        "postcode": "MooreCad.DBO.Accounts.situs_zip"
     }
 }
