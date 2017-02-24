@@ -16,17 +16,17 @@
         "number": {
             "function": "regexp",
             "field": "PropertyAd",
-            "pattern": "^(\\d+)(?:-?\\w(?:/\\w)?)?\\b"
+            "pattern": "^(\\d+(?:\\s+1/2)?)(?:-?\\w(?:/\\w)?)?\\b"
         },
         "street": {
             "function": "regexp",
             "field": "PropertyAd",
-            "pattern": "^(?:\\d+(?:-?\\w(?:/\\w)?)?)?\\b(.+?)\\s*,"
+            "pattern": "^(?:\\d+(?:\\s+1/2)?(?:-?\\w(?:/\\w)?)?)?\\b(.+?)\\s*,"
         },
         "unit": {
           "function": "regexp",
           "field": "PropertyAd",
-          "pattern": "^(?:\\d+)(?:-?(\\w(?:/\\w)?))\\s+"
+          "pattern": "^(?:\\d+(?:\\s+1/2)?)(?:-(\\d+)|-?((?:[A-Z]/)*[A-Z]))\\s+"
         },
         "city": {
             "function": "regexp",
@@ -51,10 +51,10 @@
             {
                 "description": "only-numbers house number",
                 "inputs": {
-                    "PropertyAd": "6 MCCLELLAN CIR, HUMBLE, TX  77339"
+                    "PropertyAd": "66 MCCLELLAN CIR, HUMBLE, TX  77339"
                 },
                 "expected": {
-                    "number": "6",
+                    "number": "66",
                     "street": "MCCLELLAN CIR",
                     "unit": "",
                     "city": "HUMBLE",
@@ -126,6 +126,7 @@
                 "expected": {
                     "number": "",
                     "street": "KINGS MANOR DR",
+                    "unit": "",
                     "city": "HUMBLE",
                     "region": "TX",
                     "postcode": "77339"
@@ -139,9 +140,24 @@
                 "expected": {
                     "number": "",
                     "street": "1ST ST",
+                    "unit": "",
                     "city": "SPLENDORA",
                     "region": "TX",
                     "postcode": "77372"
+                }
+            },
+            {
+                "description": "street starts with number",
+                "inputs": {
+                    "PropertyAd": "67  1/2 APRIL WIND DR S, MONTGOMERY, TX  77356"
+                },
+                "expected": {
+                    "number": "67  1/2",
+                    "street": "APRIL WIND DR S",
+                    "unit": "",
+                    "city": "MONTGOMERY",
+                    "region": "TX",
+                    "postcode": "77356"
                 }
             }
         ]
