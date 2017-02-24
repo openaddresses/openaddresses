@@ -30,6 +30,8 @@ function getActualValue(matcher, replace) {
     return matcher.slice(1).join('').trim();
   }
 
+  return '';
+
 }
 
 function shouldRunAcceptanceTests(source) {
@@ -73,7 +75,7 @@ fs.readFile(filename, (err, data) => {
         const expected_value = acceptanceTest.expected[field];
 
         // run test only if test has input and expected value for this field
-        if (input_value && expected_value) {
+        if (input_value && expected_value !== undefined) {
           // the compiled regexp to match with
           const regexp = fields_with_regexp[field].regexp;
 
