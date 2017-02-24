@@ -1,7 +1,16 @@
 const fs = require('fs');
 const _ = require('lodash');
 const tape = require('tape');
-const glob = require('glob');
+
+const filename = process.argv[2];
+if (!filename) {
+  console.error('no source supplied');
+  process.exit(1);
+}
+if (!fs.existsSync(filename)) {
+  console.error(`file ${filename} not found`);
+  process.exit(1);
+}
 
 // this function matches the behavior of row_fxn_regexp in the machine, with the
 // addition of trimming return values to match behavior later in the machine
@@ -29,63 +38,59 @@ function shouldRunAcceptanceTests(source) {
           _.get(source.test, 'acceptance-tests', []).length > 0;
 }
 
-// iterate all the source files
-glob.sync('sources/**/*.json').forEach((filename) => {
-  fs.readFile(filename, (err, data) => {
-    const source = JSON.parse(data);
+fs.readFile(filename, (err, data) => {
+  const source = JSON.parse(data);
 
-    if (!shouldRunAcceptanceTests(source)) {
-      return;
+  if (!shouldRunAcceptanceTests(source)) {
+    return;
+  }
+
+  // find all the conform fields that utilize the regexp function and compile
+  // them for later.  The output of this is an object keyed on the regexp fields.
+  const fields_with_regexp = Object.keys(source.conform).reduce((acc, curr) => {
+    if (_.isObject(source.conform[curr]) && source.conform[curr]['function'] === 'regexp') {
+      acc[curr] = {
+        // which field to use from the test inputs blob
+        input_field: source.conform[curr].field,
+        regexp: new RegExp(source.conform[curr].pattern),
+        replace: source.conform[curr].replace
+      };
+
     }
+    return acc;
 
-    // find all the conform fields that utilize the regexp function and compile
-    // them for later.  The output of this is an object keyed on the regexp fields.
-    const fields_with_regexp = Object.keys(source.conform).reduce((acc, curr) => {
-      if (_.isObject(source.conform[curr]) && source.conform[curr]['function'] === 'regexp') {
-        acc[curr] = {
-          // which field to use from the test inputs blob
-          input_field: source.conform[curr].field,
-          regexp: new RegExp(source.conform[curr].pattern),
-          replace: source.conform[curr].replace
-        };
+  }, {});
 
-      }
-      return acc;
+  // iterate the tests, validating each
+  source.test['acceptance-tests'].forEach((acceptanceTest) => {
+    tape.test(`testing '${acceptanceTest.description}'`, (t) => {
 
-    }, {});
+      // iterate the conform fields that use the regexp function
+      Object.keys(fields_with_regexp).forEach((field) => {
 
-    // iterate the tests, validating each
-    source.test['acceptance-tests'].forEach((acceptanceTest) => {
-      tape.test(`testing '${acceptanceTest.description}'`, (t) => {
+        // figure out which input value to use from the inputs blob
+        const input_value = acceptanceTest.inputs[fields_with_regexp[field].input_field];
+        const expected_value = acceptanceTest.expected[field];
 
-        // iterate the conform fields that use the regexp function
-        Object.keys(fields_with_regexp).forEach((field) => {
+        // run test only if test has input and expected value for this field
+        if (input_value && expected_value) {
+          // the compiled regexp to match with
+          const regexp = fields_with_regexp[field].regexp;
 
-          // figure out which input value to use from the inputs blob
-          const input_value = acceptanceTest.inputs[fields_with_regexp[field].input_field];
-          const expected_value = acceptanceTest.expected[field];
+          // the specific match group(s) to use, if any
+          const replace = fields_with_regexp[field].replace;
 
-          // run test only if test has input and expected value for this field
-          if (input_value && expected_value) {
-            // the compiled regexp to match with
-            const regexp = fields_with_regexp[field].regexp;
+          // run the regex against the input value
+          const actual_value = getActualValue(input_value.match(regexp), replace);
 
-            // the specific match group(s) to use, if any
-            const replace = fields_with_regexp[field].replace;
+          t.equals(actual_value, expected_value,
+              `${field} field: expected '${expected_value}' from input '${input_value}'`);
 
-            // run the regex against the input value
-            const actual_value = getActualValue(input_value.match(regexp), replace);
-
-            t.equals(actual_value, expected_value,
-                `${field} field: expected '${expected_value}' from input '${input_value}'`);
-
-          }
-
-        });
-
-        t.end();
+        }
 
       });
+
+      t.end();
 
     });
 
