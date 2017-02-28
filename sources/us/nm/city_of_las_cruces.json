@@ -9,24 +9,24 @@
         "state": "nm",
         "city": "Las Cruces"
     },
-    "data": "http://services1.arcgis.com/ejcbAsQEUUGWEyzb/ArcGIS/rest/services/Addresses/FeatureServer/1",
+    "data": "http://services1.arcgis.com/ejcbAsQEUUGWEyzb/ArcGIS/rest/services/DACAddresses/FeatureServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "FULLADDR",
-            "pattern": "^([0-9]+)"
+            "function": "join",
+            "fields": ["ADDRNUM", "ADDRNUMSUF"],
+            "separator": ""
         },
-        "street": {
-            "function": "regexp",
-            "field": "FULLADDR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
+        "street": [
+            "PRE_DIR",
+            "STREET",
+            "RD_NAME_TYPE",
+            "SUFFIX"
+        ],
         "unit": [
-          "UNITTYPE",
-          "UNITID"
+            "UNITTYPE",
+            "UNITID"
         ]
     }
 }
