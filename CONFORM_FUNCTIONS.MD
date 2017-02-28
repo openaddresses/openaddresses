@@ -38,7 +38,7 @@ Understandably, the Honolulu County GIS department stores these 2 fields separat
 ```json
 {
 	"HOUSEPRFX": "91",
-	"HOUSENUMBR: "921"
+	"HOUSENUMBR": "921"
 }
 ```
 
@@ -79,7 +79,7 @@ The Netherlands GIS administration stores these 3 fields separately but they mus
 ```json
 {
 	"huisnummer": "25",
-	"huisletter: "k",
+	"huisletter": "k",
 	"huisnummertoevoeging": 143
 }
 ```
