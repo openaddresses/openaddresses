@@ -92,11 +92,11 @@ The `format` parameter is required and has no default value.
 
 #### Definition:
 
-| parameter | value | default |
-| --------- | ----- | |
-| `function` | `format` | |
-| `fields` | an array of data source field names | none |
-| `format` | any string referencing all elements from `fields` using `$`-positional notation | |
+| parameter | value | default
+| --------- | ----- | -------
+| `function` | `format` |
+| `fields` | an array of data source field names | none
+| `format` | any string referencing all elements from `fields` using `$`-positional notation |
 
 ## Extraction Functions
 
@@ -135,10 +135,10 @@ A source may not necessarily have to use both functions together in a conform bu
 
 #### Definition:
 
-| parameter | value | default |
-| --------- | ----- | |
-| `function` | `prefixed_number` / `postfixed_street` | |
-| `field` | any field name in the data source | none (required) |
+| parameter | value | default
+| --------- | ----- | -------
+| `function` | `prefixed_number` / `postfixed_street` |
+| `field` | any field name in the data source | none (required)
 
 ### `remove_prefix` and `remove_postfix`
 
@@ -179,11 +179,11 @@ For a more complicated example, see [Grand Forks, ND](https://github.com/openadd
 
 #### Definition:
 
-| parameter | value | default |
-| --------- | ----- | |
-| `function` | `remove_prefix` / `remove_postfix` | |
-| `field` | any field name in the data source | none (required) |
-| `field_to_remove` | any field name in the data source | none (required) |
+| parameter | value | default
+| --------- | ----- | -------
+| `function` | `remove_prefix` / `remove_postfix` |
+| `field` | any field name in the data source | none (required)
+| `field_to_remove` | any field name in the data source | none (required)
 
 ### `regexp`
 
@@ -230,12 +230,12 @@ While virtually all modern regular expression flavors share identical basic beha
 
 #### Definition:
 
-| parameter | type | value | default |
-| --------- | ----- | |
-| `function` | string | `regexp` | |
-| `field` | string | any field name in the data source | none (required) |
-| `pattern` | string | a compilable regular expression | none (required) |
-| `replace` | string | a string referencing 0 or more captured groups in `pattern` | none (optional) |
+| parameter | type | value | default
+| --------- | ---- | ----- | -------
+| `function` | string | `regexp` |
+| `field` | string | any field name in the data source | none (required)
+| `pattern` | string | a compilable regular expression | none (required)
+| `replace` | string | a string referencing 0 or more captured groups in `pattern` | none (optional)
 
 ## Acceptance Testing
 
@@ -245,19 +245,19 @@ Acceptance tests are entirely optional but are helpful in maintaining sources.  
 
 The `test` element is a child of the source root and contains the following required fields:
 
-| property | type | description | values |
-| -------- | ---- | ----------- | ------ |
-| `enabled`  | boolean | signals the machine to run the tests | `true` or `false` |
-| `description` | string | high-level summary of the tests | any string |
-| `acceptance-tests` | array | list of tests to run | |
+| property | type | description | values
+| -------- | ---- | ----------- | ------
+| `enabled`  | boolean | signals the machine to run the tests | `true` or `false`
+| `description` | string | high-level summary of the tests | any string
+| `acceptance-tests` | array | list of tests to run |
 
 Each test in `acceptance-tests` contains the following required fields:
 
-| property | type | description | values |
-| -------- | ---- | ----------- | ------ |
-| `description` | string | summary of the test | any string |
-| `inputs` | object | map of source key -> value | string->string mapping |
-| `expected` | object | map of output field -> value | string->string mapping, keys are conform address field names |
+| property | type | description | values
+| -------- | ---- | ----------- | ------
+| `description` | string | summary of the test | any string
+| `inputs` | object | map of source key -> value | string->string mapping
+| `expected` | object | map of output field -> value | string->string mapping, keys are conform address field names
 
 The [machine](https://github.com/openaddresses/machine) runs the acceptance tests when `enabled` is set to `true`.  As it operates on all defined address fields in the source conform, all data source fields used by the source conform must be defined in `inputs`.  
 
