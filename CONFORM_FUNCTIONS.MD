@@ -131,6 +131,8 @@ This example is very useful where a data source has very plain vanilla single "n
 
 It's quite common for a data source to contain a record that may not have a house number assigned yet (for, say, an empty lot in a new development).  If `prefixed_number` cannot find a contiguous sequence of number prefixing a value, an empty string is returned.  For example, if the data source value is "Main Street", then `prefixed_number` would return "", denoting no house number.  
 
+The implementations of `prefixed_number` and `postfixed_street` are very simple, they do not accommodate more complicated numbering schemes containing letters or fractional house numbers, such as "143A Main Street" and "15 1/2 South Maple Avenue", respectively.  
+
 A source may not necessarily have to use both functions together in a conform but they commonly are.  
 
 #### Definition:
@@ -187,7 +189,9 @@ For a more complicated example, see [Grand Forks, ND](https://github.com/openadd
 
 ### `regexp`
 
-The `regexp` function is the immensely powerful yet arcane [sonic screwdriver](https://en.wikipedia.org/wiki/Sonic_screwdriver) for when no other extraction functions are an appropriate fit.  The term "regexp" refers to [regular expressions](http://www.regular-expressions.info/), patterns used for searching for sequences in larger pieces of text.  A full tutorial on regular expressions it outside the purpose of this documentation but there [are](http://www.regular-expressions.info/tutorial.html) [plenty](https://regexone.com/) [available](http://www.rexegg.com/).  
+The `regexp` function is the immensely powerful yet arcane [sonic screwdriver](https://en.wikipedia.org/wiki/Sonic_screwdriver) for when no other extraction functions are an appropriate fit.  Their usage is found where source data is messy or several OpenAddresses address field values are contained in one source field.  
+
+The term "regexp" refers to [regular expressions](http://www.regular-expressions.info/), patterns used for searching for sequences in larger pieces of text.  A full tutorial on regular expressions it outside the purpose of this documentation but there [are](http://www.regular-expressions.info/tutorial.html) [plenty](https://regexone.com/) [available](http://www.rexegg.com/).  
 
 The `regexp` function needs to know which field to operate on (`field`) and the codified search expression (`pattern`).  Optionally, the specific captured group to extract can be specified with `replace`; otherwise all captured groups are concatenated and returned.  
 
@@ -239,7 +243,7 @@ While virtually all modern regular expression flavors share identical basic beha
 
 ## Acceptance Testing
 
-Arguably, the hardest part about defining sources correctly is making sure that the functions are configured correctly.  To address this, OpenAddresses recently adopted including acceptance tests in sources to provide a test bed that serves to provide both a set of test inputs and outputs and an historical record of what data formats the source contains.  An example of acceptance tests is available for [Curry County, OR](https://github.com/openaddresses/openaddresses/blob/master/sources/us/or/curry.json).  
+Arguably, the hardest part about defining sources correctly is making sure that the functions are configured correctly.  To address this, OpenAddresses recently adopted including acceptance tests in sources to provide a test bed that serves to provide both a set of test inputs and outputs and an historical record of what data formats the source contains.  Examples of acceptance tests are available for [Curry County, OR](https://github.com/openaddresses/openaddresses/blob/master/sources/us/or/curry.json) and [Montgomery County, TX](https://github.com/openaddresses/openaddresses/blob/master/sources/us/tx/montgomery.json).  
 
 Acceptance tests are entirely optional but are helpful in maintaining sources.  For example, some sources, like the [Czech Republic](https://github.com/openaddresses/openaddresses/blob/master/sources/cz/countrywide.json), contain highly complicated and fragile `regexp` patterns.  The acceptance tests provide a codified justification for the complexity of the patterns so future maintainers have a base level of understanding that doesn't have to be learned the hard way.  While optional, acceptance tests are recommended for all but the most trivial `regexp` patterns.  
 
