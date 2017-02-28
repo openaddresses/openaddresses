@@ -47,7 +47,7 @@ The addressable house number, when the `join` function above is applied, would b
 #### Definition:
 
 | parameter | value | default
-| --------- | ----- |
+| --------- | ----- | -------
 | `function` | `join` |
 | `field` | any field name in the data source | none
 | `separator` | any string of length 0 or greater | a single space
