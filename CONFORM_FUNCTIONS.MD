@@ -18,11 +18,11 @@ One note, however, is that functions cannot be combined at this time.  That is, 
 
 ## Formatting Functions
 
-There are 2 functions that are specifically designed to combine 2 or more fields into 1.  
+There are two functions that are specifically designed to combine two or more fields into one.  
 
 ### `join`
 
-The `join` function combines any number of fields using a delimiter and is useful in cases where, for example, a complex house number is stored as 2 separate fields in the source data.  An example of this function comes from [Honolulu, HI](https://github.com/openaddresses/openaddresses/blob/master/sources/us/hi/honolulu.json):
+The `join` function combines any number of fields using a delimiter and is useful in cases where, for example, a complex house number is stored as two separate fields in the source data.  An example of this function comes from [Honolulu, HI](https://github.com/openaddresses/openaddresses/blob/master/sources/us/hi/honolulu.json):
 
 ```json
 "street": {
@@ -32,8 +32,8 @@ The `join` function combines any number of fields using a delimiter and is usefu
 }
 ```
 
-For ease of administration, large areas of the island of Honolulu, HI [are split into 9 zones and each zone is split into up to 9 sections](http://westhawaiitoday.com/sections/news/local-news/big-island-street-addresses.html).  These 2 numbers, combined with the physical house number, create the addressable house number.  
-Understandably, the Honolulu County GIS department stores these 2 fields separately but for OpenAddresses purposes, they need to be combined.  For example, the source data may look like:
+For ease of administration, large areas of the island of Honolulu, HI [are split into nine zones and each zone is split into up to nine sections](http://westhawaiitoday.com/sections/news/local-news/big-island-street-addresses.html).  These two numbers, combined with the physical house number, create the addressable house number.  
+Understandably, the Honolulu County GIS department stores these two fields separately but for OpenAddresses purposes, they need to be combined.  For example, the source data may look like:
 
 ```json
 {
@@ -54,7 +54,7 @@ The addressable house number, when the `join` function above is applied, would b
 
 ### `format`
 
-In some instances, the `join` function may not be enough to handle combining several fields where [2+ delimiters](https://github.com/openaddresses/openaddresses/blob/master/sources/nl/countrywide.json) or [hard-coded characters](https://github.com/openaddresses/openaddresses/blob/master/sources/cn/42/wuhan.json) are required for correct value expression.    
+In some instances, the `join` function may not be enough to handle combining several fields where [two or more delimiters](https://github.com/openaddresses/openaddresses/blob/master/sources/nl/countrywide.json) or [hard-coded characters](https://github.com/openaddresses/openaddresses/blob/master/sources/cn/42/wuhan.json) are required for correct value expression.    
 
 An example of the `format` function can be in the [Netherlands](https://github.com/openaddresses/openaddresses/blob/master/sources/nl/countrywide.json):
 
@@ -74,7 +74,7 @@ House numbers in the Netherlands are composed of a number concatenated with some
 - Rondweg 25-k143, Bladel, NL
 - Berkenring 123-m, Zundert, NL
 
-The Netherlands GIS administration stores these 3 fields separately but they must be joined by the OpenAddresses source.  For example, the source data may look like:
+The Netherlands GIS administration stores these three fields separately but they must be joined by the OpenAddresses source.  For example, the source data may look like:
 
 ```json
 {
@@ -131,7 +131,7 @@ This example is very useful where a data source has very plain vanilla single "n
 
 It's quite common for a data source to contain a record that may not have a house number assigned yet (for, say, an empty lot in a new development).  If `prefixed_number` cannot find a contiguous sequence of number prefixing a value, an empty string is returned.  For example, if the data source value is "Main Street", then `prefixed_number` would return "", denoting no house number.  
 
-The implementations of `prefixed_number` and `postfixed_street` are very simple, they do not accommodate more complicated numbering schemes containing letters or fractional house numbers, such as "143A Main Street" and "15 1/2 South Maple Avenue", respectively.  
+The implementations of `prefixed_number` and `postfixed_street` are very simple, they do not accommodate more complicated numbering schemes containing letters, or fractional or hyphenated house numbers, such as "143A Main Street", "15 1/2 South Maple Avenue", or "65-43 Austin St", respectively.  
 
 A source may not necessarily have to use both functions together in a conform but they commonly are.  
 
@@ -211,7 +211,7 @@ An example of `regexp` usage can be found in [Yolo County, California](https://g
 }
 ```
 
-The `pattern` for `number` matches a contiguous block of 1 or more numbers from the beginning of `Address` and assigns to the `number` field whereas the `pattern` for `street` matches everything after the numbers at the beginning of `Address` and assigns to the `street` field.  Here's an example data source record:
+The `pattern` for `number` matches a contiguous block of one or more numbers from the beginning of `Address` and assigns to the `number` field whereas the `pattern` for `street` matches everything after the numbers at the beginning of `Address` and assigns to the `street` field.  Here's an example data source record:
 
 ```json
 {
