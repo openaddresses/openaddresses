@@ -10,7 +10,7 @@
         "city": "East Peoria"
     },
     "type": "ESRI",
-    "data": "http://www.centralilmaps.com/arcgis/rest/services/EastPeoriaGIS_NewFlex/MapServer/3",
+    "data": "http://www.centralilmaps.com/arcgis/rest/services/Citylink_Flex/MapServer/10",
     "conform": {
         "type": "geojson",
         "accuracy": 2,
@@ -20,6 +20,16 @@
           "ADDR_SN",
           "ADDR_ST"
         ],
+        "city": {
+            "function": "regexp",
+            "field": "CITY_STATE",
+            "pattern": "^(.+?)\\s+IL$"
+        },
+        "region": {
+            "function": "regexp",
+            "field": "CITY_STATE",
+            "pattern": "\\b(IL)\\b"
+        },
         "postcode": "ZIP_CODE"
     }
 }
