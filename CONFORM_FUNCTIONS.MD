@@ -66,9 +66,9 @@ An example of the `format` function can be in the [Netherlands](https://github.c
 }
 ```
 
-The positional numeric `$` format refers to the 0-based nth element in the `fields` array.  The `-` is a literal hyphen.  
+The positional numeric `$` format refers to the 1-based nth element in the `fields` array.  The `-` is a literal hyphen.  
 
-House numbers in the Netherlands are composed of a number concatenated with some optional letters and then a hyphen concatenated optionally with some more numbers.  Some examples of this are:
+House numbers in the Netherlands are composed of a number, an optional letter, and an optional number suffix, which are concatenated using a hyphen. Some examples of this are:
 
 - Ambachtsweg 4, Eede, NL
 - Rondweg 25-k143, Bladel, NL
@@ -86,7 +86,7 @@ The Netherlands GIS administration stores these three fields separately but they
 
 The addressable house number, when the `format` function above is applied, would be "25-k143" for the address "Rondweg 25-k143, Bladel, NL".  
 
-One a notable behavior when using the `format` function is that if a referenced field has no value, it and the optional literal character values before it are not output.  That is, for "Ambachtsweg 4", "4" is the `huisnummber` value and both `huisletter` and `huisnummertoevoeging` have no value so the `$2-$3` part of the `format` has no effect and no literal hyphen is output.  
+One a notable behavior when using the `format` function is that if a referenced field has no value, it and the optional literal character values before it are not output.  That is, for "Ambachtsweg 4", "4" is the `huisnummer` value and both `huisletter` and `huisnummertoevoeging` have no value so the `$2-$3` part of the `format` has no effect and no literal hyphen is output.  
 
 The `format` parameter is required and has no default value.
 
