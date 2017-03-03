@@ -20,7 +20,7 @@
         "street": {
             "function": "regexp",
             "field": "StreetAddress",
-            "pattern": "^\\s*(?:\\d+)\\s+(.+?)(?: (?:(?:Apt|Lot|Suite|Unit) .+|REAR))?\\s*$"
+            "pattern": "^\\s*(?:\\d+)\\s+(.+?)(?:\\b(?:(?:Apt|Lot|Suite|Unit)\\b.*|REAR)\\b)?\\s*$"
         },
         "unit": "UnitNumber",
         "city": {
@@ -69,6 +69,20 @@
                     "city": "MONTGOMERY",
                     "region": "NY",
                     "postcode": "12549"
+                }
+            },
+            {
+                "description": "Apt with no number",
+                "inputs": {
+                    "StreetAddress": "129 W MAIN ST Apt",
+                    "CityStateZip": "GOSHEN NY 10924"
+                },
+                "expected": {
+                    "number": "129",
+                    "street": "W MAIN ST",
+                    "city": "GOSHEN",
+                    "region": "NY",
+                    "postcode": "10924"
                 }
             },
             {
