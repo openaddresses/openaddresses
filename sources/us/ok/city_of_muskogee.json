@@ -21,11 +21,15 @@
     "conform": {
         "type": "shapefile",
         "id": "LOC_ID",
-        "number": "STR_NO",
-        "street": {
-            "function": "remove_prefix",
+        "number": {
+            "function": "regexp",
             "field": "ADDRESS",
-            "field_to_remove": "STR_NO"
+            "pattern": "^(\\d+(?:\\s+1\\s*/\\s*2)?)(?:.*)$"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:\\d+(?:\\s+1\\s*/\\s*2)?)\\s*(.*?)\\s*(?:\\b(?:APT|LOT|SU?I?TE|UNIT)\\b.*)?$"
         }
     }
 }
