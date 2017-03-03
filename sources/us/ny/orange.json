@@ -20,7 +20,7 @@
         "street": {
             "function": "regexp",
             "field": "StreetAddress",
-            "pattern": "^\\s*(?:\\d+)\\s+(.+?)\\s*(?:\\b(?:(?:Apt|Lot|Suite|Unit)\\b.*|REAR)\\b)?\\s*$"
+            "pattern": "^\\s*(?:\\d+)\\s+(.+?)\\s*(?:\\b(?:(?:Apt|Lot|Suite|Unit|MH\\d+)\\b.*|REAR)\\b)?\\s*$"
         },
         "unit": "UnitNumber",
         "city": {
@@ -139,6 +139,20 @@
                     "city": "MIDDLETOWN",
                     "region": "NY",
                     "postcode": "10940"
+                }
+            },
+            {
+                "description": "'MH[0-9]' unit designator appended to street name",
+                "inputs": {
+                    "StreetAddress": "498 RED APPLE CT MH9",
+                    "CityStateZip": "CENTRAL VALLEY NY 10917"
+                },
+                "expected": {
+                    "number": "498",
+                    "street": "RED APPLE CT",
+                    "city": "CENTRAL VALLEY",
+                    "region": "NY",
+                    "postcode": "10917"
                 }
             },
             {
