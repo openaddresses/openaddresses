@@ -125,6 +125,34 @@
                     "region": "NY",
                     "postcode": "10940"
                 }
+            },
+            {
+                "description": "city is missing from CityStateZip",
+                "inputs": {
+                    "StreetAddress": "2736 ST RTE 52",
+                    "CityStateZip": "NY 12556"
+                },
+                "expected": {
+                    "number": "2736",
+                    "street": "ST RTE 52",
+                    "city": "",
+                    "region": "NY",
+                    "postcode": "12556"
+                }
+            },
+            {
+                "description": "city/postcode are missing from CityStateZip",
+                "inputs": {
+                    "StreetAddress": "331 MOUNTAIN LODGE RD",
+                    "CityStateZip": "NY"
+                },
+                "expected": {
+                    "number": "331",
+                    "street": "MOUNTAIN LODGE RD",
+                    "city": "",
+                    "region": "NY",
+                    "postcode": ""
+                }
             }
         ]
     }
