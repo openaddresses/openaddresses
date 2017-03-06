@@ -178,19 +178,19 @@ _Example_
 ##### Attribute Functions
 
 Some sources do not offer data nicely separated into distinct fields so advanced techniques must be used extract and format values appropriately.  Attribute functions allow basic text manipulation to be performed on any of the given attribute tags.
-This list gives a brief summary of what each function does.  For more information and examples regarding attribute functions, click [here](CONFORM_FUNCTIONS.md).  
+This list gives a brief summary of what each function does.  For more information and examples regarding attribute functions, click [here](ATTRIBUTE_FUNCTIONS.md).  
 
 Function | Note
 -------- | -----
-[`join`](CONFORM_FUNCTIONS.md#join) | Allow multiple fields to be joined with a given delimiter.
-[`format`](CONFORM_FUNCTIONS.md#format) | Allow multiple fields to be formatted into a single string.
-[`prefixed_number`](CONFORM_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow number to be extracted from the beginning of a single field (extracts `102` from `102 East Maple Street`).
-[`postfixed_street`](CONFORM_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow street to be extracted from the end of a single field (extracts `East Maple Street` from `102 East Maple Street`).
-[`remove_prefix`](CONFORM_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the beginning of another field value.
-[`remove_postfix`](CONFORM_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the end of another field value.
-[`regexp`](CONFORM_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field.
+[`join`](ATTRIBUTE_FUNCTIONS.md#join) | Allow multiple fields to be joined with a given delimiter
+[`format`](ATTRIBUTE_FUNCTIONS.md#format) | Allow multiple fields to be formatted into a single string
+[`prefixed_number`](ATTRIBUTE_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow number to be extracted from the beginning of a single field (extracts `102` from `102 East Maple Street`)
+[`postfixed_street`](ATTRIBUTE_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow street to be extracted from the end of a single field (extracts `East Maple Street` from `102 East Maple Street`)
+[`remove_prefix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the beginning of another field value
+[`remove_postfix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the end of another field value
+[`regexp`](ATTRIBUTE_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field
 
-Sources vary in how they present data so several approaches to conforming data may apply.   
+Sources vary in how they store data so several approaches to conforming attributes may apply.   
 
 #### Coverage Object
 

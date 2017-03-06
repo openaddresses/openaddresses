@@ -1,6 +1,6 @@
-# Conform Functions
+# Attribute Functions
 
-The conform section of a source contains, along with metadata, the address fields and how to derive their values.  The address fields are:
+The conform section of a source contains, along with metadata, the address attributes and how to derive their values.  The address attributes are:
 
 - `number` - the house number of an address
 - `street` - the street the address is on
@@ -10,9 +10,9 @@ The conform section of a source contains, along with metadata, the address field
 - `region` - the first level administrative divisions within a country, such as state or province
 - `postcode` - the alphanumeric code used in many countries for sorting mail
 
-Of these fields, only `number` and `street` are required in a source.
+Of these attributes, only `number` and `street` are required in a source.
 
-In an ideal world, data sources would have a single field for each OpenAddresses address field.  That is, there would be a single field for `number`, a single field for `street`, and so on.  Unfortunately that's rarely the case.  A common occurrence is for the house number and street name to be combined into a single field, for example "123 South Main Street".  To accommodate data sources like this, OpenAddresses source conforms support a number of functions to separate and join fields to create appropriate values.  This page details each of the available functions and ends with a section on acceptance testing for validation.
+In an ideal world, data sources would have a single field for each OpenAddresses conform attribute.  That is, there would be a single field for `number`, a single field for `street`, and so on.  Unfortunately that's rarely the case.  A common occurrence is for the house number and street name to be combined into a single field, for example "123 South Main Street".  To accommodate data sources like this, OpenAddresses source conforms support a number of functions to separate and join fields to create appropriate values.  This page details each of the available functions and ends with a section on acceptance testing for validation.
 
 One note, however, is that functions cannot be combined at this time.  That is, a `regexp` function cannot be combined with a `prefixed_number` function to operate on a single field.
 
@@ -189,7 +189,7 @@ For a more complicated example, see [Grand Forks, ND](https://github.com/openadd
 
 ### `regexp`
 
-The `regexp` function is the immensely powerful yet arcane [sonic screwdriver](https://en.wikipedia.org/wiki/Sonic_screwdriver) for when no other extraction functions are an appropriate fit.  Their usage is found where source data is messy or several OpenAddresses address field values are contained in one source field.
+The `regexp` function is the immensely powerful yet arcane [sonic screwdriver](https://en.wikipedia.org/wiki/Sonic_screwdriver) for when no other extraction functions are an appropriate fit.  Their usage is found where source data is messy or several OpenAddresses attribute values are contained in one source field.
 
 The term "regexp" refers to [regular expressions](http://www.regular-expressions.info/), patterns used for searching for sequences in larger pieces of text.  A full tutorial on regular expressions it outside the purpose of this documentation but there [are](http://www.regular-expressions.info/tutorial.html) [plenty](https://regexone.com/) [available](http://www.rexegg.com/).
 
@@ -228,7 +228,7 @@ The application of the `number` and `street` regular expressions would result in
 }
 ```
 
-When using the `replace` parameter, add the positional captured groups in the desired format, with each group number prefixed with a `$`.  For example, `$1` would use the first captured group for the field value.
+When using the `replace` parameter, add the positional captured groups in the desired format, with each group number prefixed with a `$`.  For example, `$1` would use the first captured group for the attribute value.
 
 While virtually all modern regular expression flavors share identical basic behavior, there can be subtle nuances.  The code that executes the `regexp` conform implementations is written in Python so please write regular expressions [accordingly](https://docs.python.org/3/library/re.html).
 
@@ -261,9 +261,9 @@ Each test in `acceptance-tests` contains the following required fields:
 | -------- | ---- | ----------- | ------
 | `description` | string | summary of the test | any string
 | `inputs` | object | map of source key -> value | string->string mapping
-| `expected` | object | map of output field -> value | string->string mapping, keys are conform address field names
+| `expected` | object | map of output attribute -> value | string->string mapping, keys are conform attribute names
 
-The [machine](https://github.com/openaddresses/machine) runs the acceptance tests when `enabled` is set to `true`.  As it operates on all defined address fields in the source conform, all data source fields used by the source conform must be defined in `inputs`.
+The [machine](https://github.com/openaddresses/machine) runs the acceptance tests when `enabled` is set to `true`.  As it operates on all defined attributes in the source conform, all data source fields used by the source conform must be defined in `inputs`.
 
 ### Example
 
