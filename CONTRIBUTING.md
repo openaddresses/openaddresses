@@ -140,25 +140,11 @@ Attribute tags are functions or field names for mapping the source data into a g
 `addrtype` |     | Type of address. `industrial`, `residential`, etc.
 `notes`    |     | Legal description of address or notes about the property.
 
+##### Assembling Attributes
 
-##### Attribute Functions
+In many sources, attribute values are provided in either single fields or several fields to be merged together.  Often times the `number` attribute is a single field in the source and the `street` attribute is merged together from several fields (see [Alameda County, California](sources/us/ca/alameda.json)).  
 
-Attribute functions allow basic text manipulation to be performed on any of the given attribute tags.
-This list gives a brief summary of what each function does.  For more information and examples regarding attribute functions, click [here](CONFORM_FUNCTIONS.md).  
-
-Function | Note
--------- | -----
-[`join`](CONFORM_FUNCTIONS.md#join) | Allow multiple fields to be joined with a given delimiter.
-[`format`](CONFORM_FUNCTIONS.md#format) | Allow multiple fields to be formatted into a single string.
-[`prefixed_number`](CONFORM_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow number to be extracted from the beginning of a single field (extracts `102` from `102 East Maple Street`).
-[`postfixed_street`](CONFORM_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow street to be extracted from the end of a single field (extracts `East Maple Street` from `102 East Maple Street`).
-[`remove_prefix`](CONFORM_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the beginning of another field value.
-[`remove_postfix`](CONFORM_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the end of another field value.
-[`regexp`](CONFORM_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field.
-
-##### Attribute Tag Examples
-
-###### Basic Usage
+###### Single Source Field
 
 The most basic usage is simply mapping an attribute tag to a field in the source data.
 
@@ -173,7 +159,7 @@ _Example_
 "street": "SITUS_STREET"
 ```
 
-###### Merge Field
+###### Merged Fields
 
 Often times there are multiple fields that should be merged together. An array (`[]`) of field names
 can be used with any attribute tag. The field names will joined with a space (` `).
@@ -188,6 +174,23 @@ _Example_
 "number": "SITUS_NUMBER",
 "street": ["SITUS_STREET_PRE", "SITUS_STREET_NME", "SITUS_STREET_TYP", "SITUS_STREET_POST"]
 ```
+
+##### Attribute Functions
+
+Some sources do not offer data nicely separated into distinct fields so advanced techniques must be used extract and format values appropriately.  Attribute functions allow basic text manipulation to be performed on any of the given attribute tags.
+This list gives a brief summary of what each function does.  For more information and examples regarding attribute functions, click [here](CONFORM_FUNCTIONS.md).  
+
+Function | Note
+-------- | -----
+[`join`](CONFORM_FUNCTIONS.md#join) | Allow multiple fields to be joined with a given delimiter.
+[`format`](CONFORM_FUNCTIONS.md#format) | Allow multiple fields to be formatted into a single string.
+[`prefixed_number`](CONFORM_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow number to be extracted from the beginning of a single field (extracts `102` from `102 East Maple Street`).
+[`postfixed_street`](CONFORM_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow street to be extracted from the end of a single field (extracts `East Maple Street` from `102 East Maple Street`).
+[`remove_prefix`](CONFORM_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the beginning of another field value.
+[`remove_postfix`](CONFORM_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the end of another field value.
+[`regexp`](CONFORM_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field.
+
+Sources vary in how they present data so several approaches to conforming data may apply.   
 
 #### Coverage Object
 
