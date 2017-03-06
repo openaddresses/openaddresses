@@ -150,10 +150,10 @@ Function | Note
 -------- | -----
 [`join`](CONFORM_FUNCTIONS.md#join) | Allow multiple fields to be joined with a given delimiter.
 [`format`](CONFORM_FUNCTIONS.md#format) | Allow multiple fields to be formatted into a single string.
-[`prefixed_number`](CONFORM_FUNCTIONS.md#prefixed_number) | Allow number to be extracted from the beginning of a single field (extracts `102` from `102 East Maple Street`).
-[`postfixed_street`](CONFORM_FUNCTIONS.md#postfixed_street) | Allow street to be extracted from the end of a single field (extracts `East Maple Street` from `102 East Maple Street`).
-[`remove_prefix`](CONFORM_FUNCTIONS.md#remove_prefix) | Removes a field value from the beginning of another field value.
-[`remove_postfix`](CONFORM_FUNCTIONS.md#remove_postfix) | Removes a field value from the end of another field value.
+[`prefixed_number`](CONFORM_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow number to be extracted from the beginning of a single field (extracts `102` from `102 East Maple Street`).
+[`postfixed_street`](CONFORM_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow street to be extracted from the end of a single field (extracts `East Maple Street` from `102 East Maple Street`).
+[`remove_prefix`](CONFORM_FUNCTIONS.md#remove_prefix-and-remove_prefix) | Removes a field value from the beginning of another field value.
+[`remove_postfix`](CONFORM_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the end of another field value.
 [`regexp`](CONFORM_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field.
 
 ##### Attribute Tag Examples
