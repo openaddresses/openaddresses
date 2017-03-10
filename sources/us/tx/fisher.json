@@ -15,14 +15,28 @@
     "compression": "zip",
     "conform": {
         "type": "geojson",
-        "number": "FisherCad.DBO.TempAccounts.situs_num",
-        "street": [
-            "FisherCad.DBO.TempAccounts.situs_street_prefx",
-            "FisherCad.DBO.TempAccounts.situs_street",
-            "FisherCad.DBO.TempAccounts.situs_street_sufix"
-        ],
-        "city": "FisherCad.DBO.TempAccounts.situs_city",
-        "region": "FisherCad.DBO.TempAccounts.situs_state",
-        "postcode": "FisherCad.DBO.TempAccounts.situs_zip"
+        "number": {
+            "function": "prefixed_number",
+            "field": "FisherCad.DBO.TempAccounts.situs_street_prefx"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "FisherCad.DBO.TempAccounts.situs_street_prefx"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "FisherCad.DBO.TempAccounts.situs_city",
+            "pattern": "^(.+)\\s+TX"
+        },
+        "region": {
+            "function": "regexp",
+            "field": "FisherCad.DBO.TempAccounts.situs_city",
+            "pattern": "\\b(TX)\\b"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "FisherCad.DBO.TempAccounts.situs_city",
+            "pattern": "(\\d+)$"
+        }
     }
 }
