@@ -17,14 +17,14 @@
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "format",
-            "fields": ["STR_NO_PRE", "STR_NO", "STR_NO_SUF"],
-            "format": "$1 $2$3"
+            "function": "regexp",
+            "field": "FULL_ADD",
+            "pattern": "^((?:[\\d]+[\\- ])?[\\d]+[A-Z]?).*$"
         },
-        "street": [
-            "STR_NAME",
-            "STR_TYPE",
-            "STR_DR_SUF"
-        ]
+        "street": {
+            "function": "regexp",
+            "field": "FULL_ADD",
+            "pattern": "^(?:(?:[\\d]+[\\- ])?[\\d]+[A-Z]?\\s+)(.*)"
+        }
     }
 }
