@@ -9,14 +9,14 @@ var test = require('tape').test,
 var ajv = new Ajv( { loadSchema: loadSchema } );
 
 // the schema contains a remote schema for geojson so it must be loaded async
-ajv.compileAsync(schema, function (err, validate) {
+ajv.compileAsync(schema, (err, validate) => {
   if (err) return;
   testAllSources(validate);
 });
 
 // this function instructs Ajv on how to load remote sources
 function loadSchema(uri, callback) {
-  request.get({url:uri}, function(err, res, body) {
+  request.get({url:uri}, (err, res, body) => {
     if (err || res.statusCode >= 400) {
       callback(err || new Error('Loading error: ' + res.statusCode));
     } else {
@@ -27,7 +27,7 @@ function loadSchema(uri, callback) {
 
 function testAllSources(validate) {
   //Ensure tests on branch are current with master
-  request.get('https://raw.githubusercontent.com/openaddresses/openaddresses/master/package.json', function(err, res, masterPackage) {
+  request.get('https://raw.githubusercontent.com/openaddresses/openaddresses/master/package.json', (err, res, masterPackage) => {
     var versionMaster = JSON.parse(masterPackage).version.split('.');
 
     for (var i = 0; i < 3; i++) {
@@ -37,20 +37,22 @@ function testAllSources(validate) {
       }
     }
 
-    test('schema-validate sources', function(t) {
-      // find all the sources
-      var manifest = glob.sync('sources/**/*.json');
+    // find all the sources
+    glob.sync('sources/**/*.json').forEach((source) => {
+      test(`schema-validation for source ${source}`, (t) => {
+        try {
+          var data = JSON.parse(fs.readFileSync(source, 'utf8'));
+          var valid = validate(data);
 
-      manifest.forEach(function(source) {
-        var data = JSON.parse(fs.readFileSync(source, 'utf8'));
+          t.notOk(validate.errors, source, 'schema validation failed');
 
-        var valid = validate(data);
+        } catch (err) {
+          t.fail(`could not parse ${source} as JSON: ${err}`);
+        }
 
-        t.notOk(validate.errors, source);
+        t.end();
 
       });
-
-      t.end();
 
     });
 

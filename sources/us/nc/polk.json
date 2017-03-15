@@ -1,0 +1,82 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "37149",
+            "name": "Polk County",
+            "state": "North Carolina"
+        },
+        "country": "us",
+        "state": "nc",
+        "county": "Polk"
+    },
+    "data": "https://services1.arcgis.com/23uf7jKvz6SRPFWJ/ArcGIS/rest/services/TaxParcels/FeatureServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "PHYSICAL_LOCATION_STREET_NUMBER",
+        "street": {
+            "function": "regexp",
+            "field": "PHYSICAL_STREET_ADDRESS",
+            "pattern": "^\\d+\\s+(.+?)(?:,?\\s*#\\d+)?\\s*$"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "PHYSICAL_STREET_ADDRESS",
+            "pattern": "^\\d+\\s+(?:.+?)(?:,?\\s*#(\\d+))\\s*$"
+        }
+    },
+    "test": {
+        "enabled": true,
+        "description": "need to separate street and unit from input",
+        "acceptance-tests": [
+            {
+                "description": "address without unit",
+                "inputs": {
+                    "PHYSICAL_LOCATION_STREET_NUMBER": "86",
+                    "PHYSICAL_STREET_ADDRESS": "86 NORTH TRADE ST  "
+                },
+                "expected": {
+                    "number": "86",
+                    "street": "NORTH TRADE ST",
+                    "unit": ""
+                }
+            },
+            {
+                "description": "unit can be prefixed with ','",
+                "inputs": {
+                    "PHYSICAL_LOCATION_STREET_NUMBER": "335",
+                    "PHYSICAL_STREET_ADDRESS": "335 MELROSE AV, #104  "
+                },
+                "expected": {
+                    "number": "335",
+                    "street": "MELROSE AV",
+                    "unit": "104"
+                }
+            },
+            {
+                "description": "unit can be a '#' followed by numbers",
+                "inputs": {
+                    "PHYSICAL_LOCATION_STREET_NUMBER": "1152",
+                    "PHYSICAL_STREET_ADDRESS": "1152 WHITE OAK LANE #19  "
+                },
+                "expected": {
+                    "number": "1152",
+                    "street": "WHITE OAK LANE",
+                    "unit": "19"
+                }
+            },
+            {
+                "description": "embedded '#' that's not unit",
+                "inputs": {
+                    "PHYSICAL_LOCATION_STREET_NUMBER": "8414",
+                    "PHYSICAL_STREET_ADDRESS": "8414 NC #9 HWY  "
+                },
+                "expected": {
+                    "number": "8414",
+                    "street": "NC #9 HWY",
+                    "unit": ""
+                }
+            }
+        ]
+    }
+}

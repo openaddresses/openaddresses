@@ -5,25 +5,20 @@
         "state": "ga",
         "county": "Brooks"
     },
-    "data": "http://data.openaddresses.io/cache/us-ga-brooks_county.csv",
-    "type": "http",
+    "data": "http://www.sgrcmaps.com/arcgis/rest/services/Brooks/RoadAddresses/MapServer/0",
+    "note": "While this source does have separate fields for the street components, streets like 'HWY 122' lack the 'HWY' portion in any field, so the concatenated version works best overall.",
+    "type": "ESRI",
     "conform": {
-        "type": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "region": "REGION"
+        "type": "geojson",
+        "number": "STNUM",
+        "street": "LABEL",
+        "unit": [
+            "UNIT_TYPE",
+            "UNIT_NUM"
+        ],
+        "city": "CITY",
+        "district": "COUNTY",
+        "region": "STATE",
+        "postcode": "ZIP"
     }
 }
-

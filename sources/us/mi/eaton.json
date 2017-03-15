@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "26045",
+            "state": "Michigan",
+            "county": "Eaton"
+        },
+        "country": "us",
+        "state": "mi",
+        "county": "Eaton"
+    },
+    "data": "http://ecgis.eatoncounty.org/ecgis/rest/services/Equalization/Parcels/Mapserver/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "PSTLADDRESS"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "PSTLADDRESS"
+        },
+        "city": "PSTLCITY",
+        "region": "PSTLSTATE",
+        "postcode": "PSTLZIP5"
+    }
+}

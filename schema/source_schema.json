@@ -55,16 +55,19 @@
     },
     "language": {
       "type": "string",
-      "pattern": "[a-zA-Z]{2}"
+      "pattern": "^[a-zA-Z]{2}$"
     },
     "year": {
       "oneOf": [
         { "type": "string" },
-        { "type": "number" }
+        { "type": "integer" }
       ]
     },
     "skip": {
       "type": "boolean"
+    },
+    "test": {
+      "$ref": "#/definitions/test"
     }
   },
   "definitions": {
@@ -293,6 +296,42 @@
         }
       }
     },
+    "test": {
+      "description": "test definition",
+      "type": "object",
+      "required": ["description"],
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "acceptance-tests": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/acceptance-test" }
+        }
+      }
+    },
+    "acceptance-test": {
+      "description": "acceptance-test definition",
+      "type": "object",
+      "required": ["description", "inputs", "expected"],
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "inputs": {
+          "type": "object"
+        },
+        "expected": {
+          "type": "object"
+        }
+      }
+    },
     "function_regexp": {
       "description": "regexp function definition",
       "type": "object",
@@ -308,7 +347,7 @@
         },
         "pattern": {
           "type": "string",
-          "format": "regex"
+          "format": "string"
         },
         "replace": {
           "type": "string"

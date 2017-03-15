@@ -1,0 +1,33 @@
+{
+    "coverage": {
+        "country": "ch",
+        "city": "Solothurn",
+        "ISO 3166": {
+            "alpha2": "CH-SO"
+        }
+    },
+    "website": "http://geoweb.so.ch/geodaten/index.php",
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/sergiyprotsiv/b1f209/ch-solothurn.csv.zip",
+    "type": "http",
+    "compression": "zip",
+    "license": {
+        "attribution": false,
+        "share-alike": false,
+        "url": "http://geoweb.so.ch/geodaten/index.php"
+    },
+    "conform": {
+        "type": "csv",
+        "file": "ch-solothurn.csv",
+        "encoding": "utf-8",
+        "number": "hausnummer",
+        "street": "strasse",
+        "city": {
+            "function": "regexp",
+            "field": "public_geo_gemeinden_name",
+            "pattern": "^(.+?)(?:\\s+SO)?\\s*$"
+        },
+        "postcode": "public_geo_gemeinden_plz",
+        "lat": "Y",
+        "lon": "X"
+    }
+}
