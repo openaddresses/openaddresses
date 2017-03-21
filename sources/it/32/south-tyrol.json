@@ -1,7 +1,6 @@
 {
-    "data": "http://geoservices.buergernetz.bz.it/geoserver/p_bz-gnames/ows?SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=p_bz-gnames:Addresses&SRSNAME=EPSG:25832&outputFormat=SHAPE-ZIP",
+    "data": "http://geoservices.buergernetz.bz.it/geoserver/p_bz-gnames/ows?SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=p_bz-gnames:Addresses&SRSNAME=EPSG:25832&outputFormat=CSV",
     "type": "http",
-    "compression": "zip",
     "coverage": {
         "county": "bz",
         "state": "32",
@@ -19,23 +18,30 @@
     },
     "conform": {
         "accuracy": 1,
-        "type": "shapefile",
+        "type": "csv",
+        "encoding": "ISO-8859-15",
         "srs": "EPSG:25832",
-        "number": "GEHA_NUMM0",
+        "lat": "GEHA_COORD_Y",
+        "lon": "GEHA_COORD_X",
+        "number": {
+            "function": "join",
+            "fields": ["GEHA_NUMMER", "GEHA_NENNER"],
+            "separator": " "
+        },
         "street": {
             "function": "join",
-            "fields": ["GEHA_STRA0", "GEHA_STRA1"],
+            "fields": ["GEHA_STRASSE_DE", "GEHA_STRASSE_IT"],
             "separator": " / "
         },
         "postcode": "GEHA_POSTL",
         "city": {
             "function": "join",
-            "fields": ["GEHA_GEME0", "GEHA_GEME1"],
+            "fields": ["GEHA_GEMEINDE_DE", "GEHA_GEMEINDE_IT"],
             "separator": " / "
         },
         "district": {
             "function": "join",
-            "fields": ["GEHA_FRAK0", "GEHA_FRAK1"],
+            "fields": ["GEHA_FRAKTION_DE", "GEHA_FRAKTION_IT"],
             "separator": " / "
         }
     }

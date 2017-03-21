@@ -5,25 +5,12 @@
         "state": "ga",
         "county": "Cook"
     },
-    "data": "http://data.openaddresses.io/cache/us-ga-cook_county.csv",
-    "type": "http",
+    "data": "http://www.sgrcmaps.com/arcgis/rest/services/Cook/CookParcels/MapServer/0",
+    "type": "ESRI",
     "conform": {
-        "type": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "region": "REGION"
+        "type": "geojson",
+        "number": "ADD_NUM",
+        "street": "ST_NAME",
+        "city": "Community"
     }
 }
-
