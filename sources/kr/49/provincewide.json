@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "KR-49",
+            "country": "Republic of Korea",
+            "subdivision": "Jeju"
+        },
+        "country": "kr",
+        "state": "49"
+    },
+    "data": "http://www.juso.go.kr/dn.do?boardId=GEODATA&fileName=%EA%B3%B5%EA%B0%84%EC%A0%95%EB%B3%B4%EC%9A%94%EC%95%BDDB_2%EC%9B%94%EB%B6%84.zip&realFileName=ENTRC_DB_1702.zip&regYmd=2017&num=10&fileNo=76008&logging=Y",
+    "website": "http://www.juso.go.kr/addrlink/addressBuildDevNew.do?menu=geodata",
+    "license": {
+        "attribution name": "Ministry of the Interior"
+        },
+    "type": "http",
+    "compression": "zip",
+    "language": "kr",
+    "conform": {
+        "type": "csv",
+        "file": "entrc_jeju.txt",
+        "headers": -1,
+        "encoding": "EUCKR",
+        "number": {
+            "function": "join",
+            "fields": [
+                "COLUMN10",
+                "COLUMN11"
+            ],
+            "separator": " "
+        },
+        
+        "street": "COLUMN8",
+        "postcode": "COLUMN13",
+        "district": "COLUMN6",
+        "city": "COLUMN5",
+        "region": "COLUMN4",
+        "addrtype": "COLUMN14",
+        "id": {
+            "fields": ["COLUMN3","COLUMN2"],
+            "function": "join",
+            "separator": "-"
+        },
+        "srs": "EPCG:5179",
+        "lat": "COLUMN18",
+        "lon": "COLUMN17"
+    }
+}
