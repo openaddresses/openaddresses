@@ -18,7 +18,11 @@
     "type": "ESRI",
     "language": "it",
     "conform": {
-        "number": ["CIVICO","ESPONENTE"],
+        "number": {
+            "function": "format",
+            "fields": ["CIVICO", "ESPONENTE"],
+            "format": "$1/$2"
+        },
         "street": "TOPONIMO_VIA",
         "city": "COMUNE",
         "type": "geojson",
