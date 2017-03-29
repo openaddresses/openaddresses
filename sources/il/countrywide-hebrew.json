@@ -1,0 +1,21 @@
+{
+    "coverage": {
+        "country": "il",
+        "ISO 3166": {"alpha2": "IL", "country": "Israel"}
+    },
+    "data": "http://www.sol-israel.co.il/arcgis/rest/services/Amidar_Vector/MapServer/9",
+    "type": "ESRI",
+    "skip": true,
+    "language": "HE",
+    "conform": {
+        "type": "geojson",
+        "city": "SETL_NAME",
+        "number": {
+            "function": "format",
+            "fields": ["HOUSE_NUM", "ENTRY_LETR"],
+            "format": "$1$2"
+        },
+        "unit": "ENTRY_LETR",
+        "street": "STR_FULNAM"
+    }
+}
