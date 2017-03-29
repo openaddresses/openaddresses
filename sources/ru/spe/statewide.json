@@ -1,0 +1,33 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "RU-SPE",
+            "country": "Russian Federation",
+            "subdivision": "Saint Petersburg"
+        },
+        "country": "ru",
+        "state": "SPE"
+    },
+    "data": "http://gis.iac.spb.ru/arcgis/rest/services/EAS_SERVICE/EAS_SERVICE_WGS84/MapServer/3",
+    "type": "ESRI",
+    "language": "ru",
+    "conform": {
+        "number": {
+            "function": "format",
+            "fields": ["HOUSE", "LITER", "КОРПУС"],
+            "format": "$1$2 корпус $3"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PADDRESS",
+            "pattern": "^(?:.*?),(.*),(?:.*?)$" 
+        },
+        "city": {
+            "function": "regexp",
+            "field": "PADDRESS",
+            "pattern": "^(.*?),(?:.*?)$" 
+        },
+        "id": "ID_BUILDING_EAS",
+        "type": "geojson"
+    }
+}

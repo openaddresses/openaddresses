@@ -5,25 +5,31 @@
         "state": "ga",
         "county": "Berrien"
     },
-    "data": "http://data.openaddresses.io/cache/us-ga-berrien_county.csv",
-    "type": "http",
+    "data": "http://www.sgrcmaps.com/arcgis/rest/services/Berrien/AddressLocations/MapServer/0",
+    "note": {
+        "description": "street is occasionally an intersection, eg - N FIVE ASH ST AT N ELM ST, the regex uses everything up to 'AT' or '@'.  This doesn't catch everything but it's close.",
+        "problem addresses": [
+            "976 EVERETTE CARTER RD AND WALTON (not easily fixable, 'AND' is legit in some addresses)",
+            "2218 POPLAR SPRINGS CHURCH RD AT168",
+            "2456 MUDD CREEK RD ROBERT HUGHES RD",
+            "6578 MUDD CREEK RD MILLTOWN RD"
+        ],
+        "postcode": "postcode is sometimes suffixed with '-'"
+    },
+    "type": "ESRI",
     "conform": {
-        "type": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
+        "type": "geojson",
+        "number": "AddNum",
         "street": {
             "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "field": "StreetName",
+            "pattern": "^(.+?)(?:\\s+(?:AT|@)\\s+.+)?$"
         },
-        "region": "REGION"
+        "city": "City",
+        "postcode": {
+            "function": "regexp",
+            "field": "ZipCode",
+            "pattern": "^(\\d+)(?:.*)$"
+        }
     }
 }
-

@@ -140,25 +140,11 @@ Attribute tags are functions or field names for mapping the source data into a g
 `addrtype` |     | Type of address. `industrial`, `residential`, etc.
 `notes`    |     | Legal description of address or notes about the property.
 
+##### Assembling Attributes
 
-##### Attribute Functions
+In many sources, attribute values are provided in either single fields or several fields to be merged together.  Often times the `number` attribute is a single field in the source and the `street` attribute is merged together from several fields (see [Alameda County, California](sources/us/ca/alameda.json)).  
 
-Attribute functions allow basic text manipulation to be performed on any of the given attribute tags.
-This list gives a brief summary of what each function does. Examples can be found below.
-
-Function | Note
--------- | -----
-`prefixed_number` | Allow number to be extracted from the beginning of a single field (extracts `102` from `102 East Maple Street`).
-`postfixed_street` | Allow street to be extracted from the end of a single field (extracts `East Maple Street` from `102 East Maple Street`).
-`regexp` | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field.
-`join`   | Allow multiple fields to be joined with a given delimiter.
-`format` | Allow multiple fields to be formatted into a single string.
-`remove_prefix` | Removes a field value from the beginning of another field value.
-`remove_postfix` | Removes a field value from the end of another field value.
-
-##### Attribute Tag Examples
-
-###### Basic Usage
+###### Single Source Field
 
 The most basic usage is simply mapping an attribute tag to a field in the source data.
 
@@ -173,7 +159,7 @@ _Example_
 "street": "SITUS_STREET"
 ```
 
-###### Merge Field
+###### Merged Fields
 
 Often times there are multiple fields that should be merged together. An array (`[]`) of field names
 can be used with any attribute tag. The field names will joined with a space (` `).
@@ -189,164 +175,22 @@ _Example_
 "street": ["SITUS_STREET_PRE", "SITUS_STREET_NME", "SITUS_STREET_TYP", "SITUS_STREET_POST"]
 ```
 
-###### prefixed_number and postfixed_street functions
+##### Attribute Functions
 
-The `prefixed_number` and `postfixed_street` functions are used to extract an address number and street from a field.  While the same functionality can be accomplished using the `regexp` function, these convenience functions are meant to reduce copy/pasting of common regexes among various sources.  The standard case for using these two functions is for a source in a country that has number-prefixed address formats, such as Australia, New Zealand, and the United States.  
+Some sources do not offer data nicely separated into distinct fields so advanced techniques must be used extract and format values appropriately.  Attribute functions allow basic text manipulation to be performed on any of the given attribute tags.
+This list gives a brief summary of what each function does.  For more information and examples regarding attribute functions, click [here](ATTRIBUTE_FUNCTIONS.md).  
 
-_Format_
-```JSON
-"{Attribute Tag}": {
-    "function": "prefixed_number",
-    "field": "{Field Name}"
-}
-"{Attribute Tag}": {
-    "function": "postfixed_street",
-    "field": "{Field Name}"
-}
-```
+Function | Note
+-------- | -----
+[`join`](ATTRIBUTE_FUNCTIONS.md#join) | Allow multiple fields to be joined with a given delimiter
+[`format`](ATTRIBUTE_FUNCTIONS.md#format) | Allow multiple fields to be formatted into a single string
+[`prefixed_number`](ATTRIBUTE_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow number to be extracted from the beginning of a single field (extracts `102` from `102 East Maple Street`)
+[`postfixed_street`](ATTRIBUTE_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow street to be extracted from the end of a single field (extracts `East Maple Street` from `102 East Maple Street`)
+[`remove_prefix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the beginning of another field value
+[`remove_postfix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the end of another field value
+[`regexp`](ATTRIBUTE_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field
 
-_Example_
-```JSON
-"number": {
-  "function": "prefixed_number",
-  "field": "SITUS_ADDRESS"
-},
-"street": {
-  "function": "postfixed_street",
-  "field": "SITUS_ADDRESS"
-}
-```
-
-Using the above example, if the `SITUS_ADDRESS` field value is `102 East Maple Street`, `prefixed_number` and `postfixed_street` would extract the value `102` and `East Maple Street` for number and street, respectively.
-
-###### regexp function
-
-_Format_
-```JSON
-"{Attribute Tag}": {
-    "function": "regexp",
-    "field": "{Field Name}",
-    "pattern": "{Regex Pattern}",
-    "replace": "{Replace Pattern}"
-}
-```
-
-_Example_
-
-If no replace attribute is given, numbered capture groups are concatenated together to form the output. If a SITUS_ADDRESS record contains "301 Main St", the regex below will return "301" to isolate the address number.
-
-_Example_
-```JSON
-"number": {
-    "function": "regexp",
-    "field": "SITUS_ADDRESS",
-    "pattern": "^([0-9]+)"
-}
-```
-
-If a replace field is given the `pattern` is found and replaced. Numbered capture groups in the pattern can be referenced using the `${n}` syntax as below. This would then return the "Main St" portion of the SITUS_ADDRESS record containing "301 Main St".
-
-_Example_
-```JSON
-"street": {
-    "function": "regexp",
-    "field": "SITUS_ADDRESS",
-    "pattern": "^(?:[0-9]+ )(.*)",
-    "replace": "$1"
-}
-```
-
-The source data should be examined to determine if the shorthand methods `prefixed_number` and `postfixed_street` could be used instead of `regexp`.
-
-###### join function
-
-The join function allows fields to be merged given an arbitrary delimiter. The default value for the optional `separator` parameter is a single space (` `).  See the example for `Merge Fields`.  
-
-_Format_
-```JSON
-"{Attribute Tag}": {
-    "function": "join",
-    "fields": ["{Field1}", "{Field2}", "etc..." ],
-    "separator": "{Separator}"
-}
-```
-
-_Example_
-```JSON
-"number": {
-    "function": "join",
-    "fields": ["BLOCK_NUM", "BLOCK_GRP"],
-    "separator": "-"
-}
-```
-
-###### format function
-
-The format function allows fields to be formatted into a single string. Each item in the fields list can be referenced with a numbered variable such as `$1`, `$2`, etc.
-
-_Format_
-```JSON
-"{Attribute Tag}": {
-    "function": "format",
-    "fields": ["{Field1}", "{Field2}", "etc..." ],
-    "format": "{Format String}"
-}
-```
-
-_Example_
-```JSON
-"number": {
-    "function": "format",
-    "fields": ["number", "letter", "supplement"],
-    "format": "$1$2-$3"
-}
-```
-
-###### remove_prefix and remove_postfix functions
-
-The `remove_prefix` and `remove_postfix` functions modify a field's value by removing another field's value from the beginning or end.  These convenience functions are meant to reduce the complexity of `regexp` functions that are not aware of other field values.  While not common, this functionality is very handy for sources that have, for example, separate house number and address fields where the former is a prefix of the latter.
-
-_Format_
-```JSON
-"{Attribute Tag}": {
-    "function": "remove_prefix",
-    "field": "{Field1}",
-    "field_to_remove": "{Field2}"
-}
-"{Attribute Tag}": {
-    "function": "remove_postfix",
-    "field": "{Field1}",
-    "field_to_remove": "{Field2}"
-}
-```
-
-_Example_
-```JSON
-"number": "HOUSE_NUMBER",
-"street": {
-  "function": "remove_prefix",
-  "field": "SITUS_ADDRESS",
-  "field_to_remove": "HOUSE_NUMBER"
-}
-```
-
-The above conform example can transform:
-
-```
-{
-  "HOUSE_NUMBER": "102"
-  "SITUS_ADDRESS": "102 East Maple Street",
-}
-```
-
-into:
-
-```
-{
-  "number": "102",
-  "street": "East Maple Street"
-}
-```
+Sources vary in how they store data so several approaches to conforming attributes may apply.   
 
 #### Coverage Object
 
@@ -360,17 +204,19 @@ either `city` or `county`, all strings
 If one of the following tags are provided, it will be used to render the source
 to the map at [data.openaddresses.io](http://data.openaddresses.io):
 
-1. **US Census** with `geoid` containing two-digit state or five-digit county
-   [FIPS code](https://www.census.gov/geo/reference/codes/cou.html).
-   See [Alameda County](sources/us/ca/alameda.json)
-   and [Virginia](sources/us/va/statewide.json) for examples.
+1. **US Census** with `geoid` containing [FIPS code](https://www.census.gov/geo/reference/codes/cou.html)
+    - 2-digit state, example: [Virginia](sources/us/va/statewide.json)
+    - 5-digit county, example: [Alameda County, California](sources/us/ca/alameda.json)
+    - 7-digit city, example: [Johns Creek, Georgia](sources/us/ga/city_of_johns_creek.json)
 2. **ISO 3166** with `alpha2` containing alphanumeric two-letter
    [ISO-3166-1 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
    or [ISO-3166-2 subdivision code](http://en.wikipedia.org/wiki/ISO_3166-2).
    See [New Zealand](sources/nz/countrywide.json), [Victoria, Australia](sources/au/victoria.json),
    or [Dolnośląskie, Poland](sources/pl/dolnoslaskie.json) for examples.
-3. **geometry** with _Polygon_ or _MultiPolygon_ type unprojected
-   [GeoJSON geometry object](http://geojson.org/geojson-spec.html#geometry-objects).
+3. **geometry** with unprojected [GeoJSON geometry object](http://geojson.org/geojson-spec.html#geometry-objects)
+    - _Polygon_ - for example, [state of Arkansas](sources/us/ar/statewide.json)
+    - _MultiPolygon_ - for example, [state of Tennesse](sources/us/tn/statewide.json)
+    - _Point_ - for example, city of [Johns Creek](sources/us/ga/city_of_johns_creek.json), estimated from another mapping provider or [Who's on First](https://whosonfirst.mapzen.com/spelunker/)
 
 #### Optional Tags
 
@@ -420,7 +266,6 @@ with two separate metadata entries, one for reading the [French addresses](https
 and one for reading the [Dutch addresses](https://github.com/openaddresses/openaddresses/blob/master/sources/be/wa/brussels-nl.json).
 An application,which uses OpenAddresses and wishes to generate multilingual address entries, can access the data via both metadata entries
 and merge the language versions by identifying the address items by their `id` unique identifier tag.
-
 
 ### Formatting:
 
