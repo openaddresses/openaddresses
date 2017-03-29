@@ -9,21 +9,24 @@
         "state": "il",
         "county": "Will"
     },
-    "data": "http://apps.willcogis.org/arcgis/rest/services/AGO/AddressPointsAGO/MapServer/0",
+    "data": "http://apps.willcogis.org/arcgis/rest/services/BasemapLayers/AddressPoints/MapServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "HOUSENUMBE",
-        "street": [
-            "PREFIXDIRE",
-            "PREFIXTYPE",
-            "STREETNAME",
-            "SUFFIXTYPE",
-            "SUFFIXDIRE"
+        "number": [
+            "gisedit.DBO.Address_Points.HOUSENUMBE",
+            "gisedit.DBO.Address_Points.ADDR_FRACT"
         ],
-        "city": "CITY",
-        "postcode": "ZIP_CODE",
-        "district": "COUNTY",
-        "region": "STATE"
+        "street": [
+            "gisedit.DBO.Address_Points.PREFIXDIRE",
+            "gisedit.DBO.Address_Points.PREFIXTYPE",
+            "gisedit.DBO.Address_Points.STREETNAME",
+            "gisedit.DBO.Address_Points.SUFFIXTYPE",
+            "gisedit.DBO.Address_Points.SUFFIXDIRE"
+        ],
+        "city": "gisedit.DBO.Address_Points.CITY",
+        "postcode": "gisedit.DBO.Address_Points.ZIP_CODE",
+        "district": "gisedit.DBO.Address_Points.COUNTY",
+        "region": "gisedit.DBO.Address_Points.STATE"
     }
 }
