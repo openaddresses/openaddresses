@@ -8,36 +8,24 @@
         "country": "br",
         "state": "df"
     },
-    "website": "http://www.censo2010.ibge.gov.br/cnefe/",
-    "license": {
-        "attribution": true,
-        "attribution name": "Instituto Brasileiro de Geografia e Estatística"
-    },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/astoff/d93240/br-53.zip",
-    "type": "http",
-    "compression": "zip",
+    "data": "http://www.geoservicos.segeth.df.gov.br/ArcGIS/rest/services/Operational/LOTE/MapServer/0",
+    "website": "http://www.geoportal.segeth.df.gov.br/",
+    "type": "ESRI",
     "conform": {
-        "type": "csv",
-        "lat": "lat",
-        "lon": "lon",
-        "number": "number",
-        "street": "street name",
-        "unit": [
-            "unit k1", "unit v1",
-            "unit k2", "unit v2",
-            "unit k3", "unit v3",
-            "unit k4", "unit v4",
-            "unit k5", "unit v5",
-            "unit k6", "unit v6"
-        ],
-        "city": "municipality",
-        "region": "state",
+        "type": "geojson",
+        "accuracy": 2,
+        "number": "lote",
+        "street": ["setor", "quadra", "conjunto"],
+        "city": {
+            "function": "regexp",
+            "field": "end_comp",
+            "pattern": "^(Plano Piloto|Gama|Taguatinga|Brazlândia|Sobradinho|Planaltina|Paranoá|Núcleo Bandeirante|Ceilândia|Guará|Cruzeiro|Samambaia|Santa Maria|São Sebastião|Recanto das Emas|Lago Sul|Riacho Fundo|Lago Norte|Candangolândia|Águas Claras|Riacho Fundo II|Sudoeste e Octogonal|Varjão|Park Way|SCIA|Sobradinho II|Jardim Botânico|Itapoã|SIA|Vicente Pires|Fercal|)"
+        },
         "postcode": {
             "function": "regexp",
-            "field": "postal code",
+            "field": "cep",
             "pattern": "^([0-9]{5})([0-9]{3})$",
             "replace": "$1-$2"
-        },
-        "accuracy": 5
+        }
     }
 }
