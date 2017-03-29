@@ -118,5 +118,5 @@ for dp, dn, fn in os.walk(cache_dir):
 print "Done with extraction, converting to CSV..."
 
 common_csv_path = os.path.abspath("./mexico_ne.csv")
-csv_command = 'ogr2ogr -f CSV ' + common_csv_path + ' ' + common_shape_path + ' -lco GEOMETRY=AS_XY'
+csv_command = 'ogr2ogr -t_srs EPSG:4326 -f CSV ' + common_csv_path + ' ' + common_shape_path + ' -nln mexico_ne_wgs84 -lco GEOMETRY=AS_XY'
 os.system(csv_command)
