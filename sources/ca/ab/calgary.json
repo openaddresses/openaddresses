@@ -5,26 +5,27 @@
         "city": "Calgary",
         "geometry": { "type": "Point", "coordinates": [-114.08, 51.08] }
     },
-    "data": "https://data.calgary.ca/_layouts/OpenData/DownloadDataset.ashx?DatasetId=PDC0-99999-99999-00407-P(CITYonlineDefault)&VariantId=1(CITYonlineDefault)",
+    "data": "https://data.calgary.ca/api/views/uwj2-d2wc/rows.csv?accessType=DOWNLOAD",
     "website": "https://data.calgary.ca/",
-    "license": "https://data.calgary.ca/OpenData/Pages/TermsofUse.aspx",
+    "license": "https://data.calgary.ca/stories/s/u45n-7awa",
     "type": "http",
-    "compression": "zip",
     "conform": {
-        "number": [
-            "HOUSE_NUMB",
-            "HOUSE_ALPH"
-        ],
+        "type": "csv",
+        "lat": "latitude",
+        "lon": "longitude",
+        "number": {
+            "function": "join",
+            "fields": [
+                "HOUSE_NUMBER",
+                "HOUSE_ALPHA"
+            ],
+            "separator": ""
+        },
         "street": [
-            "STREET_NAM",
-            "STREET_TYP",
-            "STREET_QUA"
-        ],
-        "unit": [
-          "SUITE_NUMB",
-          "SUITE_ALPH"
-        ],
-        "type": "shapefile"
+            "STREET_NAME",
+            "STREET_TYPE",
+            "STREET_QUAD"
+        ]
     },
     "attribution": "City of Calgary"
 }
