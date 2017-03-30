@@ -1,9 +1,8 @@
-var test = require('tape').test,
+var tape = require('tape'),
     glob = require('glob'),
     fs = require('fs'),
-    request = require('request'),
-    versionCurrent = require('../package.json').version.split('.'),
     Ajv = require('ajv'),
+    request = require('request'),
     schema = require('../schema/source_schema.json');
 
 var ajv = new Ajv( { loadSchema: loadSchema } );
@@ -26,25 +25,15 @@ function loadSchema(uri, callback) {
 }
 
 function testAllSources(validate) {
-  //Ensure tests on branch are current with master
-  request.get('https://raw.githubusercontent.com/openaddresses/openaddresses/master/package.json', (err, res, masterPackage) => {
-    var versionMaster = JSON.parse(masterPackage).version.split('.');
-
-    for (var i = 0; i < 3; i++) {
-      if (versionMaster[i] > versionCurrent[i]) {
-        console.log("Branch outdated! - Please pull new changes from openaddresses/openaddresses:master");
-        process.exit(1);
-      }
-    }
-
-    // find all the sources
-    glob.sync('sources/**/*.json').forEach((source) => {
-      test(`schema-validation for source ${source}`, (t) => {
+  // find all the sources, has to be synchronous for tape
+  glob.sync('sources/**/*.json').forEach((source) => {
+    tape(`tests for ${source}`, (test) => {
+      test.test(`schema-validation for source ${source}`, (t) => {
         try {
-          var data = JSON.parse(fs.readFileSync(source, 'utf8'));
-          var valid = validate(data);
+          const data = JSON.parse(fs.readFileSync(source, 'utf8'));
+          const valid = validate(data);
 
-          t.notOk(validate.errors, source, 'schema validation failed');
+          t.ok(valid, `${source}: ${JSON.stringify(validate.errors)}`);
 
         } catch (err) {
           t.fail(`could not parse ${source} as JSON: ${err}`);
@@ -57,4 +46,5 @@ function testAllSources(validate) {
     });
 
   });
+
 }
