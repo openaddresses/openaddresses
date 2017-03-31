@@ -16,15 +16,20 @@
         "state": "la",
         "city": "New Orleans"
     },
-    "data": "http://gis.nola.gov:6080/arcgis/rest/services/Staging/addresses_reverse_ETL/MapServer/0",
+    "data": "http://gis.nola.gov:6080/arcgis/rest/services/Address/SiteAddressPoint/MapServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "HOUSE_NUMBER",
-        "street": [
-            "DIR",
-            "STREET",
-            "TYPE"
-        ]
+        "number": [
+            "PREADDRNUM",
+            "ADDRNUM",
+            "ADDRNUMSUF"
+        ],
+        "street": "FULLNAME",
+        "unit": [
+            "UNITTYPE",
+            "UNITID"
+        ],
+        "city": "MUNICIPALITY"
     }
 }
