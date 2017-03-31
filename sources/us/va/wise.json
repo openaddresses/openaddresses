@@ -9,12 +9,18 @@
         "state": "va",
         "county": "Wise"
     },
+    "data": "https://www.webgis.net/arcgis/rest/services/VA/WiseCo_WebGIS/MapServer/2",
+    "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "id": "PARCEL_ID",
-        "number": {"function": "regexp", "field": "SitusAddress", "pattern": "^([0-9]+) "},
-        "street": {"function": "regexp", "field": "SitusAddress", "pattern": "^(?:[0-9]+ )?(.+)$"}
-    },
-    "data": "http://arcgis.webgis.net/arcgis/rest/services/VA/WiseCo_WebGIS/MapServer/52",
-    "type": "ESRI"
+        "number": {
+            "function": "prefixed_number",
+            "field": "FULLADDR"
+        },
+        "number": {
+            "function": "postfixed_street",
+            "field": "FULLADDR"
+        },
+        "unit": "UNIT"
+    }
 }
