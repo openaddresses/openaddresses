@@ -11,18 +11,18 @@
     },
     "license": "http://www.islandcountyassessor.com/about-us/gis-mapping/arcgis-explorer-interactive-mapping-viewer/",
     "type": "ESRI",
-    "data": "http://maps.islandcounty.net/arcgis/rest/services/Layers/Parcels/MapServer/0",
+    "data": "http://maps.islandcounty.net/arcgis/rest/services/Layers/AllLayers/MapServer/30",
     "website": "http://www.islandcountyassessor.com/about-us/gis-mapping/arcgis-explorer-interactive-mapping-viewer/",
+    "note": "source contains separated fields but combined field is more accurate",
     "conform": {
         "type": "geojson",
-        "number": "situs_num",
-        "street": [
-            "situs_street_prefx",
-            "situs_street",
-            "situs_street_sufix"
-        ],
-        "city": "situs_city",
-        "region": "situs_state",
-        "postcode": "situs_zip"
+        "number": {
+            "function": "prefixed_number",
+            "field": "FULLADDR"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "FULLADDR"
+        }
     }
 }
