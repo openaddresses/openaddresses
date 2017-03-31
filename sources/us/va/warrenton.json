@@ -4,6 +4,15 @@
         "state": "va",
         "town": "Warrenton"
     },
-    "data": "http://arcgis.webgis.net/arcgis/rest/services/VA/Smyth/MapServer/12",
-    "type": "ESRI"
+    "data": "https://www.webgis.net/arcgis/rest/services/VA/Warrenton_WebGIS/MapServer/1",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "ADDRNUM",
+        "street": {
+            "function": "remove_prefix",
+            "field": "FULLADDR",
+            "field_to_remove": "ADDRNUM"
+        }
+    }
 }
