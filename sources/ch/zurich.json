@@ -3,7 +3,7 @@
         "country": "ch",
         "city": "Zurich"
     },
-    "data": "https://data.stadt-zuerich.ch/storage/f/adressen/adressen.json",
+    "data": "https://data.stadt-zuerich.ch/dataset/adressen/resource/2f3e80d8-646d-4247-8542-37837b6ed3db/download/adressen.zip",
     "website": "https://data.stadt-zuerich.ch/dataset/adressen",
     "license": {
         "text": "CC 0",
@@ -13,18 +13,8 @@
     "type": "http",
     "conform": {
         "encoding": "utf-8",
-        "number": {
-            "function": "regexp",
-            "field": "Adresse",
-            "pattern": "(.* )([0-9]+[^\\s]*)[\\s]*$",
-            "replace": "$2"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Adresse",
-            "pattern": "(.*)( [0-9]+[^\\s]*)[\\s]*$",
-            "replace": "$1"
-        },
+        "number": "HAUSNUMMER",
+        "street": "LOKALISATI",
         "postcode": "PLZ",
         "type": "geojson"
     }
