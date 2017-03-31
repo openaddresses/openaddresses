@@ -9,20 +9,30 @@
         "state": "nc",
         "county": "Alamance"
     },
-    "data": "http://apps.alamance-nc.com/gisftp/Parcels_2-29-16.zip",
+    "data": "http://apps.alamance-nc.com/gisftp/Address_Points_Aug31_2016.zip",
     "note": "source changes, will probably change again soon",
     "type": "http",
     "compression": "zip",
     "website": "http://apps.alamance-nc.com/gisftp/",
     "conform": {
-        "number": "AKPST_",
-        "street": [
-            "AKPDIR",
-            "AKPSTN",
-            "AKPSTP"
-        ],
-        "unit": "AKPUN_",
         "type": "shapefile",
-        "postcode": "zipcode"
+        "number": [
+            "ADDRNUMBER",
+            "ADDRSUFFIX"
+        ],
+        "street": [
+            "DIRECTION",
+            "STREETNAME",
+            "STREETTYPE",
+            "STREETSUFF"
+        ],
+        "unit": [
+            "UNITTYPE",
+            "UNIT"
+        ],
+        "city": "JURISDICTI",
+        "district": "COUNTY",
+        "region": "STATE",
+        "postcode": "ZIPCODE"
     }
 }
