@@ -1,13 +1,22 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
+
 import json
-import requests
 import zipfile
 import os.path
+import lxml.html
 import time
+import requests
+import dryscrape
+import random
+from unidecode import unidecode
 
 
 json_dir = "./output"
 cache_dir = "./cache"
 tmp_dir = "./tmp"
+
+inegi_base_url = 'http://buscador.inegi.org.mx'
 
 
 # Returns the path where a file should be cached
@@ -41,26 +50,45 @@ def download_file_to_cache(url, chunk_size):
 			cached_file.write(chunk)
 
 
-# First we get the URLs of necessary files to be downloaded
-# Currently using the JSON files pre-populated by Mapbox, would normally need to scrap the INEGI website for links
+# First we parse the main page of the INEGI website to get the relevant files to download
+# To skip loading almost 4000 pages (the website is slow and not very reliable) we build the zipfile URLs based on a naming schema
+# For that we need the (normalized) name of the state, so we search and process the links by state
+# We also use the urban/rural distinction and the numeric code of the file, both are available from the search results page
 
 
 relevant_urls = set()
 
-for dp, dn, fn in os.walk(json_dir):
-	for file_name in [ fi for fi in fn if fi.endswith(".json") ]:
-		file_path = os.path.join(dp, file_name)
+s = dryscrape.Session()
+s.visit(inegi_base_url + '/search?client=ProductosR&proxystylesheet=ProductosR&getfields=*&sort=meta:edicion:D:E:::D&entsp=a__inegi_politica_p72&lr=lang_es%7Clang_en&oe=UTF-8&ie=UTF-8&entqr=3&filter=0&ip=10.152.21.8&site=ProductosBuscador&tlen=260&ulang=en&access=p&entqrm=0&ud=1&num=10&q=N%C3%BAmeros+Exteriores+inmeta:Tema%3DCartograf%C3%ADa%2520Geoestad%C3%ADstica&dnavs=inmeta:Tema%3DCartograf%C3%ADa%2520Geoestad%C3%ADstica')
+s.at_xpath('.//ul[@id="attr_2"]//li[@id="attr_2_more_less"]/a').click() # This expands the list of states, needs to be 'clicked' twice
+s.at_xpath('.//ul[@id="attr_2"]//li[@id="attr_2_more_less"]/a').click()
+page = lxml.html.fromstring(s.body())
+
+inegi_step_size = 800
+
+for link in page.findall('.//ul[@id="attr_2"]//li[@class="dn-attr-v"]'):
+	ref = link.find('div/a')
+	state_name = ref.text
+	state_name_norm = 'distrito_federal' if state_name == u'Ciudad de México' else unidecode(state_name).encode('ascii').replace(' ','_')
+	state_link = ref.attrib['href']
+	state_muni_count = int(link.find('span').text[1:-1])
+	
+	print "Processing " + state_name + ' (' + str(state_muni_count) + ' municipalities)...'
+	
+	for p in range((state_muni_count - 1) / inegi_step_size + 1):
+		page_url = inegi_base_url + state_link + '&num=' + str(inegi_step_size) + '&start=' + str(p * inegi_step_size)
+		s.visit(page_url)
+		page = lxml.html.fromstring(s.body())
 		
-		if os.stat(file_path).st_size == 0:
-			continue
-		
-		with open(os.path.join(dp, file_name)) as json_file:
-			data = json.load(json_file)
-    		relevant_urls.add(data["data"])
-  
+		for link in page.findall('.//div[@class="main-results"]/a[@href]'):
+			source_url = link.attrib['href']
+			urban = 'urbana' if 'Urbana' in link.find('span/span').text_content() else 'rural'
+			zip_url = 'http://internet.contenidos.inegi.org.mx/contenidos/Productos/prod_serv/contenidos/espanol/bvinegi/productos/geografia/'+ urban + '/SHP_2/' + state_name_norm + '/' + source_url[-12:] + '_s.zip'
+			relevant_urls.add(zip_url)		
+
 print "There are " + str(len(relevant_urls)) + " files to download."  		
 
-# Filter out the ones that have already been downloaded
+# Filter out the files that have already been downloaded
 urls_to_download = filter(lambda x: not file_already_cached(x), relevant_urls)
 
 # Attempt to download all the files one by one (not to overload the server, multiple streams result in many 403 responses)
@@ -83,22 +111,32 @@ while len(urls_to_download) > 0:
 	time.sleep(10)
 
 
-	
+
 print "All files are cached, building the common data source"
 
-common_shape_path = os.path.abspath("./mexico_ne.shp")
-if os.path.exists(common_shape_path):
-	os.remove(common_shape_path)
+
+
+# Once all the zip files are cached, we process them recursively and put the data into an temporary SQLite database
+common_db_path = os.path.abspath("./mexico_ne.db")
+
+if os.path.exists(common_db_path):
+	os.remove(common_db_path)
+	
+# Add a table providing municipality details (from http://www.conabio.gob.mx/informacion/gis/maps/geo/loc2010gw.zip)
+# More details at http://www.conabio.gob.mx/informacion/metadata/gis/loc2010gw.xml?_xsl=/db/metadata/xsl/fgdc_html.xsl&_indent=no
+os.system('ogr2ogr -f "SQLite" ' + common_db_path + ' "/vsizip/' + os.path.abspath("./loc2010gw.zip") + '/loc2010gw.shp" -nln loc2010')
+
 
 # Checks the zip file for the presence of address shapefiles and extracts them into a common shapefile (OGR seems to have an issue with appending to csv)
 def extract_shapes_from_zip(zip_path):
 	with zipfile.ZipFile(zip_path, 'r') as zip_file:
 		zip_member_names = zip_file.namelist()
 		for shp_name in [ fi for fi in zip_member_names if fi.endswith("ne.shp")]:
-			command = 'ogr2ogr -f "ESRI Shapefile" -append ' + common_shape_path + ' /vsizip/' + os.path.abspath(os.path.join(zip_path, shp_name))
+			print shp_name
+			command = 'ogr2ogr -append -f "SQLite" ' + common_db_path + ' -sql "select *, \'' + shp_name[-15:-6] + '\' as loc from \\"' + shp_name[-15:-4] +'\\"" /vsizip/' + os.path.abspath(os.path.join(zip_path, shp_name)) + ' -t_srs EPSG:4326 -nln mexico_ne'
 			os.system(command)
 			
-# Recursively extract the shapefiles from a zip file and all the other zipfiles within it			
+# Recursively extracts the shapefiles from a zip file and all the other zipfiles within it			
 def extract_all_relevant_data_from_zip(zip_path):
 	print "Extracting from " + zip_path
 	extract_shapes_from_zip(zip_path)
@@ -110,13 +148,14 @@ def extract_all_relevant_data_from_zip(zip_path):
 			extract_all_relevant_data_from_zip(temp_path)
 			os.remove(temp_path)
 
-
+# Walk through all the cached zip files
 for dp, dn, fn in os.walk(cache_dir):
 	for file_name in [ fi for fi in fn if fi.endswith(".zip") ]:
 		extract_all_relevant_data_from_zip(os.path.join(dp, file_name))
 
 print "Done with extraction, converting to CSV..."
 
+# Convert to CSV and zip
 common_csv_path = os.path.abspath("./mexico_ne.csv")
-csv_command = 'ogr2ogr -t_srs EPSG:4326 -f CSV ' + common_csv_path + ' ' + common_shape_path + ' -nln mexico_ne_wgs84 -lco GEOMETRY=AS_XY'
-os.system(csv_command)
+os.system('ogr2ogr -f CSV ' + common_csv_path + ' ' + common_db_path + ' -sql "select a.*, nom_ent, nom_mun, nom_loc from mexico_ne a left join (select loc, m.nom_ent, m.nom_mun, nom_loc from (select loc, substr(\'0\' || loc,length(loc)-7, 9) loc, substr(\'0\' || loc,length(loc)-7, 5) mun from ( select distinct loc from mexico_ne) b) natural left join (select distinct nom_ent, nom_mun, cve_edo || cve_mun as mun from loc2010) m natural left join loc2010 l where l.cve_loc is null or (loc = l.cve_edo || l.cve_mun || l.cve_loc)) a using (loc)" -lco GEOMETRY=AS_XY')
+os.system('zip -9 mexico_ne.zip ' + common_csv_path)
