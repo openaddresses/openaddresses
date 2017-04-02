@@ -7,7 +7,7 @@ A global collection of address data sources, open and free to use. Join, downloa
 
 This repository is a collection of references to address data sources.
 
-- See [openaddresses.io](http://openaddresses.io/) for a data download. 
+- See [openaddresses.io](http://openaddresses.io/) for a data download.
 
 ## Contributing addresses
 
@@ -17,9 +17,8 @@ This repository is a collection of references to address data sources.
 
 ## Why collect addresses?
 
-Street address data is essential infrastructure. Street names, house numbers and zip codes, when combined with geographic coordinates, are the hub that connects digital to physical places. Precisely because of their connecting role, free and open addresses are rocket fuel for civic and commercial innovation.
+Street address data is essential infrastructure. Street names, house numbers and zip codes combined with geographic coordinates connects digital to physical places. Free and open addresses are rocket fuel for civic and commercial innovation.
 
 ## License
 
 Code is available under BSD, the data collection (sources/) is public domain. See respective LICENSE files in project root for code and under sources/ for the data collection.
-
