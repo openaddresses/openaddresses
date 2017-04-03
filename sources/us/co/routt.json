@@ -9,14 +9,19 @@
         "state": "co",
         "county": "Routt"
     },
-    "data": "http://maps.co.routt.co.us/arcgis/rest/services/InternalWeb/MapServer/0",
+    "data": "http://maps.co.routt.co.us/arcgis/rest/services/PublicData/AddressPoints/MapServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "CompleteAddressNum",
-        "street": "CompleteStreetName",
+        "number": {
+            "function": "prefixed_number",
+            "field": "CompleteAddress"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "CompleteAddress"
+        },
         "unit": "CompleteSubaddress",
-        "city": "Community",
         "postcode": "ZIP"
     }
 }
