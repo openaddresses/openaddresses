@@ -17,7 +17,7 @@ This repository is a collection of references to address data sources.
 
 ## Why collect addresses?
 
-Street address data is essential infrastructure. Street names, house numbers and zip codes combined with geographic coordinates connects digital to physical places. Free and open addresses are rocket fuel for civic and commercial innovation.
+Street address data is essential infrastructure. Street names, house numbers, and post codes combined with geographic coordinates connects digital to physical places. Free and open addresses are rocket fuel for civic and commercial innovation.
 
 ## License
 
