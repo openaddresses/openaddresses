@@ -1,0 +1,25 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "37181",
+            "name": "Vance County",
+            "state": "North Carolina"
+        },
+        "country": "us",
+        "state": "nc",
+        "county": "Vance"
+    },
+    "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Vance/MapServer/162",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "PHYSADDRESS"
+        },
+        "street": {
+          "function": "postfixed_street",
+          "field": "PHYSADDRESS"
+        }
+    }
+}
