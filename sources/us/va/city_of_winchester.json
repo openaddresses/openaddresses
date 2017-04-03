@@ -1,0 +1,25 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "51840",
+            "name": "City of Winchester",
+            "state": "Virginia"
+        },
+        "country": "us",
+        "state": "va",
+        "city": "Winchester"
+    },
+    "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Winchester/Winchester_WL_P/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "ParcelAddress1"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "ParcelAddress1"
+        }
+    }
+}
