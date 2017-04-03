@@ -1,0 +1,40 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "51678",
+            "name": "City of Lexington",
+            "state": "Virginia"
+        },
+        "country": "us",
+        "state": "va",
+        "city": "Lexington"
+    },
+    "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Lexington/Lexington_WL_P/MapServer/2",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "ParcelAddress1"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "ParcelAddress1"
+        },
+        "city": {
+          "function": "regexp",
+          "field": "ParcelAddress2",
+          "pattern": "^(.+?)\\s+VA\\s+"
+        },
+        "region": {
+          "function": "regexp",
+          "field": "ParcelAddress2",
+          "pattern": "\\b(VA)\\b"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "ParcelAddress2",
+            "pattern": "(\\d+)$"
+        }
+    }
+}
