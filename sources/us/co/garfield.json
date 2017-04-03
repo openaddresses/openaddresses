@@ -15,13 +15,15 @@
     "compression": "zip",
     "conform": {
         "type": "shapefile-polygon",
-        "number": "STREETNO",
-        "street": [
-            "STREETDIR",
-            "STREETNAME",
-            "STREETSUF"
-        ],
-        "postcode": "SITUSZIP",
-        "city": "LOCCITY"
+        "number": {
+            "function": "prefixed_number",
+            "field": "PHYSADDRES"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "PHYSADDRES"
+        },
+        "postcode": "PHYSZIP",
+        "city": "PHYSCITY"
     }
 }
