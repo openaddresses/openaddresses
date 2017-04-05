@@ -1,0 +1,241 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "0.0.1",
+        "title": "WalkersApp API"
+    },
+    "host": "localhost",
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "basePath": "/api",
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "paths": {
+        "/auth": {
+            "post": {
+                "description": "Autorizes the user in the system and returns a unique token.\n",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "body",
+                        "description": null,
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Unique token.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/getHistory": {
+            "post": {
+                "description": "Returns history of all user operations.\n",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "body",
+                        "description": ".",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "descritpion": "OK",
+                        "schema": {
+                            "title": "ArrayOfHistories",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/History"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sendLocation": {
+            "post": {
+                "description": "Returns history of all user operations.\n",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "body",
+                        "description": "Unique token.",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "track",
+                        "in": "body",
+                        "description": "Array of locations.",
+                        "required": true,
+                        "schema": {
+                            "title": "ArrayOfLocation",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Treck"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/getTasks": {
+            "post": {
+                "description": "Gets `Tasks` objects.\n",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "title": "ArrayOfTasks",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Task"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/takeTask": {
+            "post": {
+                "description": "Assigns the user to the task.\n",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK. You are assigned to this task."
+                    },
+                    "400": {
+                        "description": "Sorry, task is already taken."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Resourse": {
+            "type": "object",
+            "properties": {
+                "resourse-name": {
+                    "type": "string"
+                },
+                "resourse-type": {
+                    "type": "string"
+                }
+            }
+        },
+        "Treck": {
+            "type": "object",
+            "properties": {
+                "latitude": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "Current Latitude position of the user on the map."
+                },
+                "longitude": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "Current Latitude position of the user on the map."
+                }
+            }
+        },
+        "History": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "start-time": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "end-time": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "result": {
+                    "type": "string"
+                },
+                "cost": {
+                    "type": "number",
+                    "format": "float"
+                }
+            }
+        },
+        "Task": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "Unique identifier of task."
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Header of the task."
+                },
+                "info": {
+                    "type": "string",
+                    "description": "Details of the task."
+                },
+                "latitude": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "Latitude position of task in the map."
+                },
+                "longitude": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "Longtitude position of task in the map."
+                },
+                "cost": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "Price for perfomance a task."
+                }
+            }
+        }
+    }
+}
