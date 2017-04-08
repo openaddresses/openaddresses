@@ -9,20 +9,17 @@
         "state": "fl",
         "county": "Escambia"
     },
-    "data": "http://arcgis4.roktech.net/arcgis/rest/services/Pensacola/GoMaps4/MapServer/84",
-    "note": "the layer name implies just city of Pensacola but data is all of Escambia county",
+    "data": "http://arcgis4.roktech.net/arcgis/rest/services/escambia/escambia_query/MapServer/1",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITEADDR"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITEADDR"
-        },
-        "city": "CITY",
-        "postcode": "ZIP"
+        "number": "BLDG_NUM",
+        "street": [
+            "PREFIX_DIR",
+            "STREET_NAME",
+            "SUFFIX",
+            "SUFFIX_DIR"
+        ],
+        "unit": "SUITE_UNIT"
     }
 }
