@@ -230,7 +230,7 @@ Additional metadata helps future proof the project!
 `note`        | A String containing a human readable note.
 `attribution` | **Deprecated:** Where the license requires attribution, add it here. example `CC-BY United Federation of Planets`
 `email`       | This email is used to send automated emails to the data provider if a user changes their data. Do not set unless the data provider wants to receive updates.
-`language`    | ISO 639-1 code for the language of the data. For example: `en`, `fr` or `de`.
+`language`    | [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1), [ISO 639-2](https://en.wikipedia.org/wiki/ISO_639-2), or [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3) code for the language of the data. For example: `en`, `fr`, `de`, or `lld`.
 
 #### Example
 
