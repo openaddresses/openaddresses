@@ -417,8 +417,8 @@ function testSchemaItself(validate) {
 
     });
 
-    test.test('non-2-letter-string language should fail', (t) => {
-      ['a', 'a1', '1a', 'aaa'].forEach((value) => {
+    test.test('non-2- or 3-letter string language should fail', (t) => {
+      ['a', 'a1', '1a', 'a a', 'aaaa'].forEach((value) => {
         var source = {
           type: 'http',
           coverage: {
@@ -439,8 +439,8 @@ function testSchemaItself(validate) {
 
     });
 
-    test.test('case-insensitive 2-letter-string language should not fail', (t) => {
-      ['aa', 'Aa', 'aA', 'AA'].forEach((value) => {
+    test.test('case-insensitive 2- or 3-letter string language should not fail', (t) => {
+      ['aa', 'Aa', 'aA', 'AA', 'aaa', 'en', 'gb', 'lld'].forEach((value) => {
         var source = {
           type: 'http',
           coverage: {
@@ -452,7 +452,7 @@ function testSchemaItself(validate) {
 
         var valid = validate(source);
 
-        t.ok(valid, '2-letter string language value should not fail');
+        t.ok(valid, '2- or 3-letter string language value should not fail');
 
       });
 

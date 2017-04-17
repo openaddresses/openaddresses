@@ -16,6 +16,7 @@
         "attribution": false,
         "share-alike": false
     },
+    "language": "lld",
     "conform": {
         "accuracy": 1,
         "type": "csv",
@@ -28,21 +29,9 @@
             "fields": ["GEHA_NUMMER", "GEHA_NENNER"],
             "separator": " "
         },
-        "street": {
-            "function": "join",
-            "fields": ["GEHA_STRASSE_DE", "GEHA_STRASSE_IT"],
-            "separator": " / "
-        },
+        "street": "GEHA_STRASSE_LD",
         "postcode": "GEHA_POSTL",
-        "city": {
-            "function": "join",
-            "fields": ["GEHA_GEMEINDE_DE", "GEHA_GEMEINDE_IT"],
-            "separator": " / "
-        },
-        "district": {
-            "function": "join",
-            "fields": ["GEHA_FRAKTION_DE", "GEHA_FRAKTION_IT"],
-            "separator": " / "
-        }
+        "city": "GEHA_GEMEINDE_LD",
+        "district": "GEHA_FRAKTION_LD"
     }
 }
