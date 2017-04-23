@@ -11,7 +11,11 @@
     "conform": {
         "type": "geojson",
         "number": "HOUSE_NO",
-        "street": ["STREET","SECT","","ALLEY"],
+        "street": {
+            "function": "join",
+            "fields": ["STREET","SECT","LANE","ALLEY"],
+            "separator": ""
+        },
         "city": "LI",
         "district": "TOWNNAME",
         "region": "COUNTY"
