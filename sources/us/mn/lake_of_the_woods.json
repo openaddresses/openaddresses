@@ -14,15 +14,13 @@
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "ADDRESS"
         },
         "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+            "function": "postfixed_street",
+            "field": "ADDRESS"
+        },
+        "unit": "SEC_ADD"
     }
 }
