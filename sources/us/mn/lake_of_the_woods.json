@@ -9,20 +9,18 @@
         "state": "mn",
         "county": "Lake of the Woods"
     },
-    "data": "http://oak.co.lake-of-the-woods.mn.us/arcgis/rest/services/LOW_Internal/MapServer/54",
+    "data": "http://oak.co.lake-of-the-woods.mn.us/arcgis/rest/services/LOW_Internal/MapServer/31",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "AS400_Export.dbo.tblParcelJoin.PropAdd"
         },
         "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+            "function": "postfixed_street",
+            "field": "AS400_Export.dbo.tblParcelJoin.PropAdd"
+        },
+        "city": "AS400_Export.dbo.tblParcelJoin.PropCity"
     }
 }
