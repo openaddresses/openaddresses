@@ -11,7 +11,11 @@
     "conform": {
         "type": "geojson",
         "number": "NO",
-        "street": ["ROADNAME","LANE"],
+        "street": {
+            "function": "join",
+            "fields": ["ROADNAME","LANE"],
+            "separator": "-"
+        },
         "city": "VILLAGE",
         "district": "DISTRICT",
         "region": "COUNTY"
