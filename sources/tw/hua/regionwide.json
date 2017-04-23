@@ -6,12 +6,16 @@
         },
         "country": "tw"
     },
-    "data": "http://water.tainan.gov.tw/tnwrbarcgis/rest/services/TNRW/Address/MapServer/0",
+    "data": "http://gis.hl.gov.tw/arcgis/rest/services/HLADDR/HLADDR_user/MapServer/1",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
         "number": "NUMBER_",
-        "street": ["ROAD","LANE","ALLEY"],
+        "street": {
+            "function": "join",
+            "fields": ["ROAD","LANE","ALLEY"],
+            "separator": ""
+        },
         "city": "NEW_ID",
         "district": "COUN_ID"
     }
