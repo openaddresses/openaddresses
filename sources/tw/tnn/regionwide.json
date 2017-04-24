@@ -10,11 +10,20 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "NO",
+        "number":{
+            "function": "regexp",
+            "field": "NO",
+            "pattern": "^([0-9\uff10-\uff19]+號?)"
+        },
+        "unit":{
+            "function": "regexp",
+            "field": "NO",
+            "pattern": "^(?:[0-9\uff10-\uff19]+號?)(.*)"
+        },
         "street": {
             "function": "join",
             "fields": ["ROADNAME","LANE"],
-            "separator": "-"
+            "separator": ""
         },
         "city": "VILLAGE",
         "district": "DISTRICT",
