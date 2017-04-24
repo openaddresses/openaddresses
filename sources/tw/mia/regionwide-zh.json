@@ -11,17 +11,13 @@
     "language": "zh",
     "conform": {
         "type": "geojson",
-        "number": {
-          "function": "remove_prefix",
-            "field": "ADDRESSALL",
-            "field_to_remove": "ROAD"
-        },
+        "number": "NUM",
         "street": {
             "function": "join",
             "fields": ["ROAD","LANE","ALLEY"],
             "separator": ""
         },
         "city": "VILLAGE",
-        "district": "TOWNN"
+        "district": "TOWN"
     }
 }
