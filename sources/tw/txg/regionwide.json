@@ -11,7 +11,16 @@
     "skip": true,
     "conform": {
         "type": "geojson",
-        "number": "號",
+        "number":{
+            "function": "regexp",
+            "field": "號",
+            "pattern": "^([0-9\uff10-\uff19]+\u865f?)"
+        },
+        "unit":{
+            "function": "regexp",
+            "field": "號",
+            "pattern": "^(?:[0-9\uff10-\uff19]+\u865f?)(.*)"
+        },
         "street": {
             "function": "join",
             "fields": ["路名","巷","弄"],
