@@ -11,7 +11,16 @@
     "language": "zh",
     "conform": {
         "type": "geojson",
-        "number": "NUM",
+        "number":{
+            "function": "regexp",
+            "field": "NUM",
+            "pattern": "^([0-9\uff10-\uff19]+\u865f?)"
+        },
+        "unit":{
+            "function": "regexp",
+            "field": "NUM",
+            "pattern": "^(?:[0-9\uff10-\uff19]+\u865f?)(.*)"
+        },
         "street": {
             "function": "join",
             "fields": ["ROAD","LANE","ALLEY"],
