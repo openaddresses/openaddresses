@@ -11,7 +11,16 @@
     "language": "en",
     "conform": {
         "type": "geojson",
-        "number": "ENUM",
+        "number":{
+            "function": "regexp",
+            "field": "ENUM",
+            "pattern": "^([0-9\uff10-\uff19]+\u865f?)"
+        },
+        "unit":{
+            "function": "regexp",
+            "field": "ENUM",
+            "pattern": "^(?:[0-9\uff10-\uff19]+\u865f?)(.*)"
+        },
         "street": {
             "function": "join",
             "fields": ["EROAD","ELANE","EALLEY"],
