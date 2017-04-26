@@ -10,7 +10,16 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "NO_CH",
+        "number":{
+            "function": "regexp",
+            "field": "NO_CH",
+            "pattern": "^([0-9\uff10-\uff19]+\u865f?)"
+        },
+        "unit":{
+            "function": "regexp",
+            "field": "NO_CH",
+            "pattern": "^(?:[0-9\uff10-\uff19]+\u865f?)(.*)"
+        },
         "street": {
             "function": "join",
             "fields": ["ROADSEC","LANE_C","LONG_C"],
