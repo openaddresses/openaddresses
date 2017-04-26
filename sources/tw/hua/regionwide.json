@@ -10,7 +10,16 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "NUMBER_",
+        "number":{
+            "function": "regexp",
+            "field": "NUMBER_",
+            "pattern": "^([0-9\uff10-\uff19]+\u865f?)"
+        },
+        "unit":{
+            "function": "regexp",
+            "field": "NUMBER_",
+            "pattern": "^(?:[0-9\uff10-\uff19]+\u865f?)(.*)"
+        },
         "street": {
             "function": "join",
             "fields": ["ROAD","LANE","ALLEY"],
