@@ -10,7 +10,16 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "ADDR_NO",
+        "number":{
+            "function": "regexp",
+            "field": "ADDR_NO",
+            "pattern": "^([0-9\uff10-\uff19]+\u865f?)"
+        },
+        "unit":{
+            "function": "regexp",
+            "field": "ADDR_NO",
+            "pattern": "^(?:[0-9\uff10-\uff19]+\u865f?)(.*)"
+        },
         "street": {
             "function": "join",
             "fields": ["STREET","ALLEY","ALLEY1"],
