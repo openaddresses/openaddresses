@@ -62,5 +62,5 @@ for dp, dn, fn in os.walk(tmp_dir):
 	
 # Combine the data into a common csv table
 print "Converting to csv and packaging as zip"
-os.system('ogr2ogr -f CSV ' + common_csv_path + ' ' + common_db_path)
+os.system('ogr2ogr -f CSV ' + common_csv_path + ' ' + common_db_path + ' -lco GEOMETRY=AS_XY')
 os.system('zip -9 portugal_geoedif.zip ' + common_csv_path)
