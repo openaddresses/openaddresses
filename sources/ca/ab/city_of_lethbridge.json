@@ -1,0 +1,27 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "city": "Lethbridge",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -112.916,
+                49.688
+            ]
+        }
+    },
+    "data": "http://gis.lethbridge.ca/lethwebgisarcgis/rest/services/OpenData/odl_parcels/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "Address"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "Address"
+        }
+    }
+}
