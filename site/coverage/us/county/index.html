@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OpenAddresses Coverage</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+</head>
+    
+<body>
+  <div id="map" style="position: absolute; top: 0px; left: 0; right: 0; bottom: 0"></div>
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+    
+  <script>
+    var map = L.map('map').fitBounds([[24.9493, -125.0011], [49.5904, -66.9326 ]]);
+      
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    function propertyLayout(properties) {
+        var s = '<b>' + properties.COUNTY + '</b>';
+        if (properties.data) 
+            s += '</br> <a href="' + properties.data + '">Data</a>';
+        if (properties.license)
+            s += '</br>' + 'License: ' + properties.license;
+        if (properties.year)
+            s += '</br>' + 'Year: ' + properties.year;
+        return s;
+    }
+            
+    // bind County names to popup
+    function onEachFeature(feature, layer) {
+      layer.bindPopup(propertyLayout(feature.properties));
+    }
+
+  // add county layer
+  var county_layer = L.geoJson(null, {
+    style: function(feature) {
+        if (feature.properties.data) 
+            return { color: '#0fa', weight: 1, opacity: 1, fillOpacity: 0.3} 
+        else 
+            return { color: '#666', weight: 1, opacity: 1, fillOpacity: 0.3}
+    },
+    onEachFeature: onEachFeature
+  });    
+  map.addLayer(county_layer)
+    
+  var county_geojson;
+  // request the county topojson
+  $.getJSON('coverage.json', function (data) {
+    county_geojson = topojson.feature(data, data.objects.counties);
+    county_layer.addData(county_geojson);
+  });	
+
+  </script>
+    
+</body>
+</html>
