@@ -1,0 +1,24 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "RU-KHM",
+            "country": "Russian Federation",
+            "subdivision": "Khanty-Mansiyskiy avtonomnyy okrug-Yugra"
+        },
+        "country": "ru",
+        "state": "KHM"
+    },
+    "data": "http://pubweb.admhmao.ru/arcgis/rest/services/PUBLIC/MAP_TOWN/MapServer/14",
+    "type": "ESRI",
+    "language": "ru",
+    "conform": {
+        "number": "NUM_HOUSE",
+        "street":  {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "((?:ул|ал|бул|пер|пл|пр|мкр)\\.?\\s*[^,]+)"
+        },
+        "city": "CITY",
+        "type": "geojson"
+    }
+}
