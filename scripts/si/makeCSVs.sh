@@ -11,7 +11,7 @@ echo Working in $PWD
 stat -c '%y' ${folder}HS/SI.GURS.RPE.PUB.HS.shp  | cut -d' ' -f1 > ${folder}timestamp.txt
 
 # http://gis.stackexchange.com/questions/85028/dissolve-aggregate-polygons-with-ogr2ogr-or-gpc
-ogr2ogr -t_srs "EPSG:4326" -f CSV ${folder}addresses-noname.csv ${folder}HS/ -lco GEOMETRY=AS_XY -lco WRITE_BOM=YES -lco SEPARATOR=SEMICOLON -dialect sqlite \
+ogr2ogr -t_srs "EPSG:4326" -f CSV ${folder}addresses-noname-cp1250.csv ${folder}HS/ -lco GEOMETRY=AS_XY -lco SEPARATOR=SEMICOLON -dialect sqlite \
  -sql "SELECT geometry,
 		LABELA as number,
 		UL_MID,
@@ -20,7 +20,9 @@ ogr2ogr -t_srs "EPSG:4326" -f CSV ${folder}addresses-noname.csv ${folder}HS/ -lc
 		PO_MID,
 		PT_MID
 	FROM 'SI.GURS.RPE.PUB.HS' WHERE STATUS ='V'" \
- -nln addresses-noname
+ -nln addresses-noname-cp1250
+iconv -f CP1250 -t UTF8 ${folder}addresses-noname-cp1250.csv -o ${folder}addresses-noname.csv
+rm ${folder}addresses-noname-cp1250.csv
 
 # Street names
 ogr2ogr -f CSV ${folder}street-names-cp1250.csv ${folder}UL/ -lco SEPARATOR=SEMICOLON -dialect sqlite \
