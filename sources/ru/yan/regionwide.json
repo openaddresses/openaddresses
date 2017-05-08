@@ -12,7 +12,11 @@
     "type": "ESRI",
     "language": "ru",
     "conform": {
-        "number": ["h_nomber","litera"],
+        "number": {
+            "function": "format",
+            "fields": ["h_nomber","litera"],
+            "format": "$1$2"
+        },
         "street":  "st_name",
         "city": "np",
         "type": "geojson"
