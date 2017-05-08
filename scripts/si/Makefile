@@ -6,6 +6,7 @@ all:
 	./getSource.sh $(TMP)
 	./makeCSVs.sh $(TMP)
 	python addNames.py $(TMP)
+	head -n20 $(TMP)si-addresses-$(TS).csv
 
 	# publish zips:
 	sed "s/%YYYY-MM-DD%/$(TS)/g" LICENSE-data-template.txt > $(TMP)LICENSE-data.txt
