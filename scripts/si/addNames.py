@@ -100,20 +100,6 @@ def main(path):
 
             writer.writerow(rowOut)
 
-    # Adjust json template with new timestamps
-#    template = {}
-#    with open('at_source.json', 'r') as f:
-#        template = json.load(f)
-#    for srs in writers:
-#        source = copy.deepcopy(template)
-#        source['data'] = 'http://data.openaddresses.io/cache/at-{}.zip'.format(timestamp)
-#        source['conform']['srs'] = 'EPSG:{}'.format(srs)
-#        source['conform']['file'] = 'at-{}-{}.csv'.format(srs, timestamp)
-#        source['attribution'] = '© Austrian address register, date data from {}'.format(datetime.datetime.now().isoformat().split('T')[0])
-#        with open('at-{}.json'.format(srs), 'w') as f:
-#            json.dump(source, f, indent=4)
-
-#    print(timestamp)
 
 if __name__ == '__main__':
     main(path=sys.argv[1])
