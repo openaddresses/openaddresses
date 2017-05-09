@@ -5,7 +5,7 @@ echo -n "START:	"
 date -u +"%Y-%m-%dT%H:%M:%SZ"
 echo Making CSVs from shapefiles within ${folder}:
 
-#cd ${folder}
+rm ${folder}*.csv
 
 echo Working in $PWD
 stat -c '%y' ${folder}HS/SI.GURS.RPE.PUB.HS.shp  | cut -d' ' -f1 > ${folder}timestamp.txt
@@ -64,5 +64,3 @@ head ${folder}*.csv
 echo "  done."
 echo -n "END:	"
 date -u +"%Y-%m-%dT%H:%M:%SZ"
-
-#cd ..
