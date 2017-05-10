@@ -1,10 +1,15 @@
 #!/bin/bash
 dest="${1}"
 credentialsFile="CREDENTIALS-egp.gu.gov.si.txt"
-maxAge=1440
+maxAge=720
 
-#check age of existing files
-countTooOld=`find ${dest}RPE_PE.ZIP ${dest}RPE_UL.ZIP ${dest}RPE_HS.ZIP -mmin +${maxAge} | wc -l`
+countTooOld=3
+
+if [ -f "${dest}RPE_PE.ZIP"  -a -f "${dest}RPE_UL.ZIP" -a -f "${dest}RPE_HS.ZIP" ] ; then
+	#check age of existing files
+	countTooOld=`find ${dest}RPE_PE.ZIP ${dest}RPE_UL.ZIP ${dest}RPE_HS.ZIP -mmin +${maxAge} | wc -l`
+fi
+
 # exit if all are newer than max age
 if [ "$countTooOld" -gt "0" ]; then
 	echo "Need to download $countTooOld files (they are either missing or older than $maxAge minutes)"
