@@ -7,11 +7,10 @@ echo Making CSVs from shapefiles within ${folder}:
 
 rm ${folder}*.csv
 
-echo Working in $PWD
 stat -c '%y' ${folder}HS/SI.GURS.RPE.PUB.HS.shp  | cut -d' ' -f1 > ${folder}timestamp.txt
 
 # http://gis.stackexchange.com/questions/85028/dissolve-aggregate-polygons-with-ogr2ogr-or-gpc
-ogr2ogr -t_srs "EPSG:4326" -f CSV ${folder}addresses-noname-cp1250.csv ${folder}HS/ -lco GEOMETRY=AS_XY -lco SEPARATOR=SEMICOLON -dialect sqlite \
+ogr2ogr -t_srs "EPSG:4326" -f CSV ${folder}addresses-noname.csv ${folder}HS/ -lco GEOMETRY=AS_XY -lco SEPARATOR=SEMICOLON -dialect sqlite \
  -sql "SELECT geometry,
 		LABELA as number,
 		UL_MID,
@@ -20,33 +19,23 @@ ogr2ogr -t_srs "EPSG:4326" -f CSV ${folder}addresses-noname-cp1250.csv ${folder}
 		PO_MID,
 		PT_MID
 	FROM 'SI.GURS.RPE.PUB.HS' WHERE STATUS ='V'" \
- -nln addresses-noname-cp1250
-iconv -f CP1250 -t UTF8 ${folder}addresses-noname-cp1250.csv -o ${folder}addresses-noname.csv
-rm ${folder}addresses-noname-cp1250.csv
+ -nln addresses-noname
 
 # Street names
-ogr2ogr -f CSV ${folder}street-names-cp1250.csv ${folder}UL/ -lco SEPARATOR=SEMICOLON -dialect sqlite \
+ogr2ogr -f CSV ${folder}street-names.csv ${folder}UL/ -lco SEPARATOR=SEMICOLON -dialect sqlite \
  -sql "SELECT UL_MID, UL_UIME FROM 'SI.GURS.RPE.PUB.UL'"
-iconv -f CP1250 -t UTF8 ${folder}street-names-cp1250.csv -o ${folder}street-names.csv
-rm ${folder}street-names-cp1250.csv
 
 # City names
-ogr2ogr -f CSV ${folder}city-names-cp1250.csv ${folder}NA/ -lco SEPARATOR=SEMICOLON -dialect sqlite \
+ogr2ogr -f CSV ${folder}city-names.csv ${folder}NA/ -lco SEPARATOR=SEMICOLON -dialect sqlite \
  -sql "SELECT NA_MID, NA_UIME FROM 'SI.GURS.RPE.PUB.NA'"
-iconv -f CP1250 -t UTF8 ${folder}city-names-cp1250.csv -o ${folder}city-names.csv
-rm ${folder}city-names-cp1250.csv
 
 # Commune names
-ogr2ogr -f CSV ${folder}commune-names-cp1250.csv ${folder}OB/ -lco SEPARATOR=SEMICOLON -dialect sqlite \
+ogr2ogr -f CSV ${folder}commune-names.csv ${folder}OB/ -lco SEPARATOR=SEMICOLON -dialect sqlite \
  -sql "SELECT OB_MID, OB_UIME FROM 'SI.GURS.RPE.PUB.OB'"
-iconv -f CP1250 -t UTF8 ${folder}commune-names-cp1250.csv -o ${folder}commune-names.csv
-rm ${folder}commune-names-cp1250.csv
 
 # Region names
-ogr2ogr -f CSV ${folder}region-names-cp1250.csv ${folder}SR/ -lco SEPARATOR=SEMICOLON -dialect sqlite \
+ogr2ogr -f CSV ${folder}region-names.csv ${folder}SR/ -lco SEPARATOR=SEMICOLON -dialect sqlite \
  -sql "SELECT SR_MID, SR_UIME FROM 'SI.GURS.RPE.PUB.SR'"
-iconv -f CP1250 -t UTF8 ${folder}region-names-cp1250.csv -o ${folder}region-names.csv
-rm ${folder}region-names-cp1250.csv
 
 # Post codes
 ogr2ogr -f CSV ${folder}post-codes.csv ${folder}PT/ -lco SEPARATOR=SEMICOLON -dialect sqlite \
@@ -56,6 +45,14 @@ ogr2ogr -f CSV ${folder}post-codes.csv ${folder}PT/ -lco SEPARATOR=SEMICOLON -di
 ogr2ogr -f CSV ${folder}spatial-unit-region-mapping.csv ${folder}PO/ -lco SEPARATOR=SEMICOLON -dialect sqlite \
  -sql "SELECT PO_MID, SR_MID FROM 'SI.GURS.RPE.PUB.PO'"
 
+# convert them all to UTF8 for further processing
+for file in ${folder}*.csv
+do
+    iconv -f CP1250 -t UTF8 "$file" -o "$file.tmp" &&
+    mv -f "$file.tmp" "$file"
+done
+
+file ${folder}*.csv
 ls -la ${folder}*.csv
 wc -l ${folder}*.csv
 head ${folder}*.csv
