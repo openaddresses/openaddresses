@@ -1,25 +1,43 @@
 #!/bin/bash
 dest="${1}"
 credentialsFile="CREDENTIALS-egp.gu.gov.si.txt"
+maxAge=720
+
+countTooOld=3
+
+if [ -f "${dest}RPE_PE.ZIP"  -a -f "${dest}RPE_UL.ZIP" -a -f "${dest}RPE_HS.ZIP" ] ; then
+	#check age of existing files
+	countTooOld=`find ${dest}RPE_PE.ZIP ${dest}RPE_UL.ZIP ${dest}RPE_HS.ZIP -mmin +${maxAge} | wc -l`
+fi
+
+# exit if all are newer than max age
+if [ "$countTooOld" -gt "0" ]; then
+	echo "Need to download $countTooOld files (they are either missing or older than $maxAge minutes)"
+else
+	echo "No need to download anything (source files are already there and not older than $maxAge minutes)"
+	exit 0
+fi
 
 #------ download all:------
 # read possibly existing credentials...
 source $credentialsFile
 
+echo Credentials for http://egp.gu.gov.si/egp/
+
 if [ -z "$username" ]; then
-    echo -n "Enter Username:";
+    echo -n "	Username: ";
     read -r username
     echo -n 'username="' > $credentialsFile
     echo -n $username >> $credentialsFile
     echo  '"' >> $credentialsFile
 else
-    echo "Username: '$username'";
+    echo "	Username: '$username'";
 fi
 
 if [ -z "$password" ]; then
-    echo -n "Enter Password:";
+    echo -n "	Password: ";
     read -r password
-    read -p "Save in plain text to $credentialsFile for future use? (y/N) " -n 1 -r
+    read -p "	Save password in plain text to $credentialsFile for future use? (y/N) " -n 1 -r
     echo    # (optional) move to a new line
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
@@ -29,7 +47,7 @@ if [ -z "$password" ]; then
         echo  '"' >> $credentialsFile
     fi
 else
-    echo "Password: ******";
+    echo "	Password: *********";
 fi
 
 # Log in to the server.  This can be done only once.
@@ -56,7 +74,7 @@ wget --quiet --load-cookies cookies.txt \
      --delete-after \
      http://egp.gu.gov.si/egp/login.html
 
-# Now grab the page or pages we care about.
+# Now grab the data we care about.
 
 #RPE_PE.ZIP
 wget --load-cookies cookies.txt \
@@ -80,8 +98,8 @@ rm cookies.txt
 rm login.htm*
 
 #----- extract: -------
-for file in ${dest}RPE_*.ZIP; do extdir=`basename "$file" .ZIP`; echo $extdir; unzip -d "${dest}$extdir" "$file"; done
-for file in ${dest}RPE_*/*.zip; do unzip -d "${dest}" "$file"; done
+for file in ${dest}RPE_*.ZIP; do extdir=`basename "$file" .ZIP`; echo $extdir; unzip -o -d "${dest}$extdir" "$file"; done
+for file in ${dest}RPE_*/*.zip; do unzip -o -d "${dest}" "$file"; done
 
 
 echo getSource finished.
