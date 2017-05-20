@@ -1,5 +1,6 @@
 TMP = /tmp/openaddresses-si/
 TS = $$(cat $(TMP)timestamp.txt)
+TSYYYY = $$(cat $(TMP)timestamp.txt | cut -b 1-4)
 
 all:
 	mkdir -p $(TMP) || true
@@ -18,7 +19,7 @@ all:
 	#bash -c "aws s3 cp $(TMP)si-addresses-$(TS).zip s3://data.openaddresses.io/cache/si-addresses-$(TS).zip"
 
 	# update json:
-	sed "s/%YYYY-MM-DD%/$(TS)/g" countrywide-template.json > ../../sources/si/countrywide.json 
+	sed "s/%YYYY-MM-DD%/$(TS)/g" countrywide-template.json | sed "s/%YYYY%/$(TSYYYY)/g" > ../../sources/si/countrywide.json 
 
 clean:
 	rm -r $(TMP)
