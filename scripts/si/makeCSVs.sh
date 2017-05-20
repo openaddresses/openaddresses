@@ -17,7 +17,8 @@ ogr2ogr -t_srs "EPSG:4326" -f CSV ${folder}addresses-noname.csv ${folder}HS/ -lc
 		NA_MID,
 		OB_MID,
 		PO_MID,
-		PT_MID
+		PT_MID,
+		HS_MID
 	FROM 'SI.GURS.RPE.PUB.HS' WHERE STATUS ='V'" \
  -nln addresses-noname
 
