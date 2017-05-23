@@ -10,7 +10,7 @@ rm ${folder}*.csv
 stat -c '%y' ${folder}HS/SI.GURS.RPE.PUB.HS.shp  | cut -d' ' -f1 > ${folder}timestamp.txt
 
 # http://gis.stackexchange.com/questions/85028/dissolve-aggregate-polygons-with-ogr2ogr-or-gpc
-ogr2ogr -t_srs "EPSG:4326" -f CSV ${folder}addresses-noname.csv ${folder}HS/ -lco GEOMETRY=AS_XY -lco SEPARATOR=SEMICOLON -dialect sqlite \
+ogr2ogr -t_srs "EPSG:4326" -f CSV ${folder}addresses-noname.csv ${folder}HS-etrs89/ -lco GEOMETRY=AS_XY -lco SEPARATOR=SEMICOLON -dialect sqlite \
  -sql "SELECT geometry,
 		LABELA as number,
 		UL_MID,
@@ -19,7 +19,7 @@ ogr2ogr -t_srs "EPSG:4326" -f CSV ${folder}addresses-noname.csv ${folder}HS/ -lc
 		PO_MID,
 		PT_MID,
 		HS_MID
-	FROM 'SI.GURS.RPE.PUB.HS' WHERE STATUS ='V'" \
+	FROM 'SI.GURS.RPE.PUB.HS-etrs89' WHERE STATUS ='V'" \
  -nln addresses-noname
 
 # Street names

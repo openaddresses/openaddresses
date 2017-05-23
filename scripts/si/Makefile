@@ -5,6 +5,11 @@ TSYYYY = $$(cat $(TMP)timestamp.txt | cut -b 1-4)
 all:
 	mkdir -p $(TMP) || true
 	./getSource.sh $(TMP)
+
+	cd GeoCoordinateConverter && $(MAKE) -f Makefile.unix
+	mkdir -p $(TMP)HS-etrs89
+	./GeoCoordinateConverter/gk-shp -t 9 -dd $(TMP)HS/SI.GURS.RPE.PUB.HS.shp $(TMP)HS-etrs89/SI.GURS.RPE.PUB.HS-etrs89.shp
+
 	./makeCSVs.sh $(TMP)
 	python addNames.py $(TMP)
 	wc -l $(TMP)si-addresses-$(TS).csv
@@ -23,4 +28,4 @@ all:
 
 clean:
 	rm -r $(TMP)
-
+	cd GeoCoordinateConverter && $(MAKE) -f Makefile.unix clean
