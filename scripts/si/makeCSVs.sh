@@ -24,11 +24,11 @@ ogr2ogr -t_srs "EPSG:4326" -f CSV ${folder}addresses-noname.csv ${folder}HS-etrs
 
 # Street names
 ogr2ogr -f CSV ${folder}street-names.csv ${folder}UL/ -lco SEPARATOR=SEMICOLON -dialect sqlite \
- -sql "SELECT UL_MID, UL_UIME FROM 'SI.GURS.RPE.PUB.UL'"
+ -sql "SELECT UL_MID, UL_UIME || CASE WHEN UL_DJ IS NULL THEN '' ELSE ' / ' || UL_DJ END AS UL_NAME FROM 'SI.GURS.RPE.PUB.UL'"
 
 # City names
 ogr2ogr -f CSV ${folder}city-names.csv ${folder}NA/ -lco SEPARATOR=SEMICOLON -dialect sqlite \
- -sql "SELECT NA_MID, NA_UIME FROM 'SI.GURS.RPE.PUB.NA'"
+ -sql "SELECT NA_MID, NA_UIME || CASE WHEN NA_DJ IS NULL THEN '' ELSE ' / ' || NA_DJ END AS NA_NAME FROM 'SI.GURS.RPE.PUB.NA'"
 
 # Commune names
 ogr2ogr -f CSV ${folder}commune-names.csv ${folder}OB/ -lco SEPARATOR=SEMICOLON -dialect sqlite \
