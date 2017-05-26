@@ -25,7 +25,7 @@ apt-get install docker.io.
     cp lds-nz-street-address-SHP.zip /tmp/work/
 
     # build docker image from cache
-    curl http://data.openaddresses.io/cache/nz/nz-docker-6f346f299.tar.bz2 | bzcat | docker load
+    curl https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/thatdatabaseguy/e42f66/nz-docker-2b8fbaac84c6.tar.bz2 | bzcat | docker load
     
     # image can alternatively be built the slow way
     docker build -t nz-lds .
