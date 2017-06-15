@@ -5,20 +5,26 @@
         "city": "Kelowna",
         "geometry": { "type": "Point", "coordinates": [-119.50, 49.90] }
     },
-    "data": "http://www.kelowna.ca/images/opendata/LegalParcels_SHP.zip",
-    "website": "http://www.kelowna.ca/CM/Page3936.aspx",
+    "data": "http://geo.kelowna.ca/arcgis/rest/services/OpenData/MapServer/7",
+    "website": "http://opendata.kelowna.ca/datasets/address-points",
     "license": {
         "url": "http://opendatacommons.org/licenses/pddl/1.0/",
         "attribution": false,
         "share-alike": false
     },
-    "type": "http",
-    "compression": "zip",
+    "type": "ESRI",
     "conform": {
-        "file": "LegalParcels.shp",
-        "number": "StNo",
-        "street": "RdName",
-        "type": "shapefile-polygon"
+        "type": "geojson",
+        "number": [
+            "STR_NO_PRE",
+            "STR_NO",
+            "STR_NO_SUF"
+        ],
+        "street": [
+            "STR_NAME",
+            "STR_TYPE",
+            "STR_DR_SUF"
+        ],
     },
     "attribution": "City of Kelowna"
 }
