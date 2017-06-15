@@ -17,23 +17,15 @@
         "city": "Bellevue"
     },
     "type": "ESRI",
-    "data": "http://gisweb.bellevuewa.gov/cobgis/rest/services/eGov/Geology/MapServer/0",
+    "data": "http://gisweb.bellevuewa.gov/cobgis/rest/services/Catalog/Catalog_General/MapServer/87",
     "conform": {
         "type": "geojson",
-        "number": [
-            "AddrNum",
-            "Fraction"
-        ],
-        "unit": [
-            "UnitType",
-            "UnitNum"
-        ],
-        "street": [
-            "PreDir",
-            "StreetName",
-            "PostType",
-            "SuffixDir"
-        ],
-        "postcode": "Zipcode"
+        "number": "HouseNumber",
+        "street": {
+            "function": "remove_prefix",
+            "field": "HouseNumberStreetNameFull",
+            "field_to_remove": "HouseNumber"
+        },
+        "unit": "UnitDetailFull"
     }
 }
