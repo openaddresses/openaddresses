@@ -9,13 +9,14 @@
         "state": "nc",
         "county": "Alamance"
     },
-    "data": "http://apps.alamance-nc.com/gisftp/Address_Points_Aug31_2016.zip",
-    "note": "source changes, will probably change again soon",
+    "data": "http://apps.alamance-nc.com/gisftp/Streets_Parcels_Cities_ETJ_AddressPoints.gdb.zip",
+    "note": "filename used to be date-stamped, this appears to be more general",
     "type": "http",
     "compression": "zip",
     "website": "http://apps.alamance-nc.com/gisftp/",
     "conform": {
-        "type": "shapefile",
+        "type": "gdb",
+        "layer": "Address",
         "number": [
             "ADDRNUMBER",
             "ADDRSUFFIX"
@@ -24,7 +25,7 @@
             "DIRECTION",
             "STREETNAME",
             "STREETYPE",
-            "STREETSUFF"
+            "STREETSUFFIX"
         ],
         "unit": [
             "UNITYPE",
