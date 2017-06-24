@@ -25,12 +25,4 @@ Data can be obtained from Geodetska  uprava  Republike  Slovenije - http://egp.g
 
 ### Dependancies
 GeoCoordinateConverter for most accurate reprojection
-https://github.com/mrihtar/GeoCoordinateConverter (included as git submodule)
-
-For headless operation on machines without X11 libraris you will need to remove compilation of GUI, 
-Do so in `GeoCoordinateConverter/Makefile.unix`:
-diff:
-```
--TGTS = gk-slo gk-shp xgk-slo
-+TGTS = gk-slo gk-shp
-```
+https://github.com/mrihtar/GeoCoordinateConverter (will be checked out and built if it is not existing yet)
