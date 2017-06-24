@@ -80,19 +80,19 @@ wget --quiet --load-cookies cookies.txt \
 wget --load-cookies cookies.txt \
      --directory-prefix "${dest}" \
      --content-disposition -N \
-     http://egp.gu.gov.si/egp/download-file.html?id=105
+     "http://egp.gu.gov.si/egp/download-file.html?id=105&format=10&d96=0"
 
 #RPE_UL.ZIP
 wget --load-cookies cookies.txt \
      --directory-prefix "${dest}" \
      --content-disposition -N \
-     http://egp.gu.gov.si/egp/download-file.html?id=106
+     "http://egp.gu.gov.si/egp/download-file.html?id=106&format=10&d96=0"
 
 #RPE_HS.ZIP
 wget --load-cookies cookies.txt \
      --directory-prefix "${dest}" \
      --content-disposition -N \
-     http://egp.gu.gov.si/egp/download-file.html?id=107
+     "http://egp.gu.gov.si/egp/download-file.html?id=107&format=10&d96=0"
 
 rm cookies.txt
 rm login.htm*
