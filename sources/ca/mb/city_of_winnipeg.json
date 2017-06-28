@@ -1,0 +1,46 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "mb",
+        "city": "Winnipeg",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -97.292,
+                49.853
+            ]
+        }
+    },
+    "data": "https://data.winnipeg.ca/api/views/cam2-ii3u/rows.csv?accessType=DOWNLOAD",
+    "website": "https://data.winnipeg.ca/City-Planning/Addresses/cam2-ii3u",
+    "type": "http",
+    "conform": {
+        "type": "csv",
+        "lat": "Geometry",
+        "number": [
+            "Street Number",
+            "Street Number Suffix"
+        ],
+        "street": [
+            "Street Name",
+            "Street Type",
+            "Street Direction"
+        ],
+        "unit": [
+            "Unit Type",
+            "Unit Number"
+        ],
+        "lat": {
+            "function": "regexp",
+            "field": "Geometry",
+            "pattern": "^\\((\\S+), (\\S+)\\)$",
+            "replace": "$1"
+        },
+        "lon": {
+            "function": "regexp",
+            "field": "Geometry",
+            "pattern": "^\\((\\S+), (\\S+)\\)$",
+            "replace": "$2"
+        }
+    }
+}
