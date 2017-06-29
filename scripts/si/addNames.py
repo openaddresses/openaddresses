@@ -91,6 +91,10 @@ def main(path):
         for rowIn in reader:
             rowOut = rowIn
 
+            # round the coordinates to 7 decimals (roughly 1cm precision)
+            rowOut[0] = round(float(rowIn[0]), 7)
+            rowOut[1] = round(float(rowIn[1]), 7)
+
             # map IDs to values
             rowOut[3] = streets.get(rowIn[3], cities.get(rowIn[4], '??'))
             rowOut[4] = cities.get(rowIn[4], '??')

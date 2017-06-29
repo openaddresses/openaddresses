@@ -19,7 +19,9 @@ ogr2ogr -t_srs "EPSG:4326" -f CSV ${folder}addresses-noname.csv ${folder}HS-etrs
 		PO_MID,
 		PT_MID,
 		HS_MID
-	FROM 'SI.GURS.RPE.PUB.HS-etrs89' WHERE STATUS ='V' ORDER BY HS_MID" \
+	FROM 'SI.GURS.RPE.PUB.HS-etrs89' 
+	WHERE STATUS ='V'
+	ORDER BY OB_MID, NA_MID, UL_MID, HS, HD, HS_MID" \
  -nln addresses-noname
 
 # Street names
