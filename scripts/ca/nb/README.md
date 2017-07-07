@@ -25,4 +25,4 @@ with `apt-get install docker.io`.
     docker run --volume /tmp/work:/work geonb /usr/local/bin/run-cache
 
     # upload contents of cache directory to S3
-    aws s3 sync --acl public-read /tmp/work/cache s3://data.openaddresses.io/cache
+    aws s3 sync --acl public-read /tmp/work/output.csv s3://data.openaddresses.io/cache/uploads/ingalls/ca-nb-province.csv
