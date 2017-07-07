@@ -101,6 +101,15 @@ echo "
             END AS street,
             unit_id AS unit_id,
             floor AS floor,
+            counties.name AS district,
+            CASE
+                WHEN place_names.name_e = place_names.name_f THEN
+                    place_names.name_e
+                WHEN street_types.lang_cd = 1 THEN
+                    place_names.name_e||','||place_names.name_f
+                WHEN  street_types.lang_cd = 0 THEN
+                    place_names.name_f||','||place_names.name_e
+            END AS place,
             ST_Transform(ST_SetSRID(ST_Point(x_coordinate, y_coordinate), 2953), 4326) AS geom
         FROM
             coordinate_classes,
@@ -126,11 +135,11 @@ echo "
     UPDATE final
         SET
             x = ST_X(geom),
-            y = ST_Y(geom)
+            y = ST_Y(geom);
 " | psql -U postgres geonb
 
 echo "
-    COPY final (number, street, ST_X(geom), ST_Y(geom)) TO '$TMP/output.csv';
+    COPY final (number, street, place, district, x, y) TO '$TMP/output.csv' WITH CSV HEADER;
 " | psql -U postgres geonb
 
 # clean up temporary files
