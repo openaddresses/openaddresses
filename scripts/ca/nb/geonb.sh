@@ -88,6 +88,10 @@ echo "
 " | psql -U postgres geonb
 
 echo "
+    DELETE FROM locations WHERE civic_num IS NULL OR civic_num = '0';
+" | psql -U postgres
+
+echo "
     CREATE TABLE final AS
         SELECT
             l.id AS id,
@@ -112,20 +116,11 @@ echo "
             END AS place,
             ST_Transform(ST_SetSRID(ST_Point(x_coordinate, y_coordinate), 2953), 4326) AS geom
         FROM
-            coordinate_classes,
-            coordinate_methods,
-            coordinate_sources,
-            counties,
-            locations l,
-            place_names,
-            street_directions,
-            street_types,
-            unit_types
-        WHERE
-            l.county_cd = counties.cd
-            AND l.pln_cd = place_names.cd
-            AND l.st_type_cd = street_types.cd
-            AND l.street_dir_cd = street_directions.cd;
+            locations l
+            INNER JOIN counties ON l.county_cd = counties.cd
+            INNER JOIN place_names ON l.pln_cd = place_names.cd
+            LEFT JOIN street_directions ON l.street_dir_cd = street_directions.cd
+            LEFT JOIN street_types ON l.st_type_cd = street_types.cd;
 " | psql -U postgres geonb
 
 echo "
