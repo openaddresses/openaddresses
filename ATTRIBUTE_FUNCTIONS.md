@@ -241,6 +241,66 @@ While virtually all modern regular expression flavors share identical basic beha
 | `pattern` | string | a compilable regular expression | none (required)
 | `replace` | string | a string referencing 0 or more captured groups in `pattern` | none (optional)
 
+## Compound functions
+
+Sometimes a single conform function is not enough to correctly process a source field, but applying two or more functions would be simpler and more correct than writing a regex.
+
+### `chain`
+
+The `chain` function allows for combining any number of conform functions as a sequence. The most common use case is when a source field contains `number`, `street`, and `unit` e.g. "310 WOOD ST APT 3" and "APT 3" is also listed as a separate field. Without writing a regex (which can be complex if there are many unit types), it would be impossible to extract "WOOD ST" as the `street` field. However, with `chain`, it can be easily accomplished by first extracting the street name + unit with `postfixed_street` and then removing the unit field using `remove_postfix`. Here's an example of a conform which does just that:
+
+```json
+"number": {
+    "function": "prefixed_number",
+    "field": "Prop_Addr"
+},
+"street": {
+    "function": "chain",
+    "variable": "street_wip",
+    "functions": [
+        {
+            "function": "postfixed_street",
+            "field": "Prop_Addr"
+        },
+        {
+            "function": "remove_postfix",
+            "field": "street_wip",
+            "field_to_remove": "Prop_Addr_Unit"
+        }
+    ]
+},
+"unit": "Prop_Addr_Unit"
+```
+
+The `variable` parameter in a `chain` function is a user-defined field which stores the intermediate results of the chain. In the first step in the `street` field example above, `postfixed_street` removes the house number, but the result of that computation is stored in the temporary field `street_wip` instead of an output field. In step 2, `street_wip` is referenced as the input field instead of the source field `Prop_Addr`. A `chain` function can contain any number of steps and the user-defined variable will accumulate the results of each step. The only requirement for user-specified variable names is that they should not conflict with the source fields or the standard output field names used in OpenAddresses conforms e.g. `street`, `number`, etc.
+
+Given the following source record:
+
+```json
+{
+    "Prop_Addr": "310 WOOD ST APT 3",
+    "Prop_Addr_Unit": "APT 3"
+}
+```
+
+Applying the above conform results in the following:
+
+```json
+{
+    "number": "310",
+    "street": "WOOD ST",
+    "unit": "APT 3"
+}
+```
+
+#### Definition:
+
+| parameter | value | default
+| --------- | ----- | -------
+| `function` | `chain` |
+| `variable` | a temporary field name to store intermediate results | none (required)
+| ` functions` | a list of conform function definitions (which can also be `chain`) | none (required)
+
 ## Acceptance Testing
 
 Arguably, the hardest part about defining sources correctly is making sure that the functions are configured correctly.  To address this, OpenAddresses recently adopted including acceptance tests in sources to provide a test bed that serves to provide both a set of test inputs and outputs and an historical record of what data formats the source contains.  Examples of acceptance tests are available for [Curry County, OR](https://github.com/openaddresses/openaddresses/blob/master/sources/us/or/curry.json) and [Montgomery County, TX](https://github.com/openaddresses/openaddresses/blob/master/sources/us/tx/montgomery.json).
