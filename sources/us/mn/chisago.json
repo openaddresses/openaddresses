@@ -19,14 +19,23 @@
     },
     "conform": {
         "type": "geojson",
-        "number": "ADDNUM",
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "CITY",
+        "number": "ANUMBER",
+        "street": [
+            "ST_PRE_MOD",
+            "ST_PRE_DIR",
+            "ST_PRE_TYP",
+            "ST_NAME",
+            "ST_POS_TYP",
+            "ST_POS_DIR",
+            "ST_POS_MOD"
+        ],
+        "unit": [
+            "SUB_TYPE1",
+            "SUB_ID1"
+        ],
+        "city": "POSTCOMM",
+        "district": "CO_NAME",
+        "region": "STATE_CODE",
         "postcode": "ZIP"
     }
 }
