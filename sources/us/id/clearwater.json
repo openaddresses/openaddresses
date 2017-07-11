@@ -19,8 +19,18 @@
             "field": "prop_stree"
         },
         "street": {
-            "function": "postfixed_street",
-            "field": "prop_stree"
+            "function": "chain",
+            "variable": "street_wip",
+            "functions": [
+                {
+                    "function": "postfixed_street",
+                    "field": "prop_stree"
+                },
+                {
+                    "function": "remove_postfix",
+                    "field": "street_wip",
+                    "field_to_remove": "DLVRY_APT"
+                }
         },
         "unit": "DLVRY_APT",
         "city": "prop_city",
