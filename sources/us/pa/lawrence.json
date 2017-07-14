@@ -9,21 +9,13 @@
         "state": "pa",
         "county": "Lawrence"
     },
-    "data": "http://gis.leoc.net/arcgis/rest/services/AssessmentInformation/MapServer/3",
+    "data": "http://gis.leoc.net/arcgis/rest/services/AssessmentInformation/MapServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number":  {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "([0-9]+)(.*)",
-            "replace": "$1"
-        },
-        "street":  {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "([0-9]+)(.*)",
-            "replace": "$2"
-        }
+        "number": "SAN",
+        "street": "STNAME",
+        "city": "MCN",
+        "postcode": "ZIP"
     }
 }
