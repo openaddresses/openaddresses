@@ -20,15 +20,25 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "SiteAddresses.HSNUM",
+        "number": {
+            "function": "format",
+            "fields": [
+                "AddNum",
+                "AddNumSuffix"
+            ],
+            "format": "$1$2"
+        },
         "street": [
-            "SiteAddresses.PD",
-            "SiteAddresses.PT",
-            "SiteAddresses.SN",
-            "SiteAddresses.ST",
-            "SiteAddresses.SD"
+            "Prefix",
+            "StreetName",
+            "StreetType",
+            "Suffix"
         ],
-        "postcode": "SiteAddresses.NEWZIP",
-        "city": "SiteAddresses.Municipality"
+        "unit": [
+            "UnitType",
+            "UnitId"
+        ],
+        "postcode": "ZipCode",
+        "city": "PlaceName"
     }
 }
