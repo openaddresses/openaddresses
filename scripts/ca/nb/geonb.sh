@@ -5,7 +5,8 @@
 set -eu
 
 # set up postgres, directories
-TMP=/work/tmp
+WORKDIR=/work
+TMP=$WORKDIR/tmp
 mkdir $TMP
 
 echo "
@@ -99,9 +100,9 @@ echo "
             l.civic_num||COALESCE(l.civic_num_suff,'') AS number,
             CASE
                 WHEN street_types.lang_cd = 1 THEN
-                    street_name||COALESCE(' '||street_types.name, '')||COALESCE(' '||street_directions.name_e, '')
+                    trim(concat_ws(' ', street_name, street_types.name, street_directions.name_e))
                 ELSE
-                    COALESCE(street_types.name,'')||street_name||COALESCE(street_directions.name_f, '')
+                    trim(concat_ws(' ', street_types.name, street_name, street_directions.name_f))
             END AS street,
             unit_id AS unit_id,
             floor AS floor,
@@ -134,7 +135,7 @@ echo "
 " | psql -U postgres geonb
 
 echo "
-    COPY final (number, street, place, district, x, y) TO '$TMP/output.csv' WITH CSV HEADER;
+    COPY final (number, street, place, district, x, y) TO '$WORKDIR/output.csv' WITH CSV HEADER;
 " | psql -U postgres geonb
 
 # clean up temporary files
