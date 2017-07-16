@@ -14,7 +14,11 @@
     "conform": {
         "type": "geojson",
         "number": "ADDRNUM",
-        "street": "FULLNAME",
+        "street": {
+            "function": "remove_prefix",
+            "field": "FULLNAME",
+            "field_to_remove": "ADDRNUM"
+        },
         "unit": [
             "UNITTYPE",
             "UNITID"
