@@ -9,22 +9,19 @@
         "state": "va",
         "county": "Stafford"
     },
-    "data": "http://gis.stafford.va.us/Public/parcels/PARCELS.zip",
+    "data": "https://opendata.arcgis.com/datasets/1929cb9780754c798e3ed4f7d6fb34c5_0.zip",
     "type": "http",
     "compression": "zip",
-    "website": "http://staffordcountyva.gov/index.aspx?nid=1318",
+    "website": "http://data-staffordva-gis.opendata.arcgis.com/",
+    "note": "source contains POSTDIR but doesn't seem to reflect reality",
     "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "fulladd",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "fulladd",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "type": "shapefile-polygon"
+        "type": "shapefile-polygon",
+        "number": "STNO",
+        "street": [
+            "STNAME",
+            "SUFFIX"
+        ],
+        "city": "CITY",
+        "postcode": "ZIP"
     }
 }
