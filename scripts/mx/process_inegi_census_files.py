@@ -7,8 +7,10 @@ import os.path
 import lxml.html
 import time
 import requests
+import csv
 import dryscrape
 import random
+import re
 from unidecode import unidecode
 
 
@@ -17,7 +19,6 @@ cache_dir = "./cache"
 tmp_dir = "./tmp"
 
 inegi_base_url = 'http://buscador.inegi.org.mx'
-
 
 # Returns the path where a file should be cached
 def cache_file_path(url):
@@ -111,7 +112,6 @@ while len(urls_to_download) > 0:
 	time.sleep(10)
 
 
-
 print "All files are cached, building the common data source"
 
 
@@ -121,11 +121,10 @@ common_db_path = os.path.abspath("./mexico_ne.db")
 
 if os.path.exists(common_db_path):
 	os.remove(common_db_path)
-	
+
 # Add a table providing municipality details (from http://www.conabio.gob.mx/informacion/gis/maps/geo/loc2010gw.zip)
 # More details at http://www.conabio.gob.mx/informacion/metadata/gis/loc2010gw.xml?_xsl=/db/metadata/xsl/fgdc_html.xsl&_indent=no
-os.system('ogr2ogr -f "SQLite" ' + common_db_path + ' "/vsizip/' + os.path.abspath("./loc2010gw.zip") + '/loc2010gw.shp" -nln loc2010')
-
+os.system('ogr2ogr -f "SQLite" ' + common_db_path + ' "' + os.path.abspath("./loc2010gw.shp") + '" -nln loc2010')
 
 # Checks the zip file for the presence of address shapefiles and extracts them into a common shapefile (OGR seems to have an issue with appending to csv)
 def extract_shapes_from_zip(zip_path):
@@ -153,9 +152,52 @@ for dp, dn, fn in os.walk(cache_dir):
 	for file_name in [ fi for fi in fn if fi.endswith(".zip") ]:
 		extract_all_relevant_data_from_zip(os.path.join(dp, file_name))
 
+
 print "Done with extraction, converting to CSV..."
 
 # Convert to CSV and zip
-common_csv_path = os.path.abspath("./mexico_ne.csv")
-os.system('ogr2ogr -f CSV ' + common_csv_path + ' ' + common_db_path + ' -sql "select a.*, nom_ent, nom_mun, nom_loc from mexico_ne a left join (select loc, m.nom_ent, m.nom_mun, nom_loc from (select loc, substr(\'0\' || loc,length(loc)-7, 9) loc, substr(\'0\' || loc,length(loc)-7, 5) mun from ( select distinct loc from mexico_ne) b) natural left join (select distinct nom_ent, nom_mun, cve_edo || cve_mun as mun from loc2010) m natural left join loc2010 l where l.cve_loc is null or (loc = l.cve_edo || l.cve_mun || l.cve_loc)) a using (loc)" -lco GEOMETRY=AS_XY')
-os.system('zip -9 mexico_ne.zip ' + common_csv_path)
+common_csv_temp_path = os.path.abspath("./mexico_ne.tmp.csv")
+common_csv_path = os.path.abspath('./mexico_ne.csv')
+os.system('ogr2ogr -f CSV ' + common_csv_temp_path + ' ' + common_db_path + ' -sql "select a.*, nom_ent, nom_mun, nom_loc from mexico_ne a left join (select loc, m.nom_ent, m.nom_mun, nom_loc from (select loc, substr(\'0\' || loc,length(loc)-7, 9) loc, substr(\'0\' || loc,length(loc)-7, 5) mun from ( select distinct loc from mexico_ne) b) natural left join (select distinct nom_ent, nom_mun, cve_edo || cve_mun as mun from loc2010) m natural left join loc2010 l where l.cve_loc is null or (loc = l.cve_edo || l.cve_mun || l.cve_loc)) a using (loc)" -lco GEOMETRY=AS_XY')
+
+numeric_pattern = u'(?:[^\W\d_]{,2}[\d]+[^\W\d_]{,2}[\-\u2013\./][^\W\d_]{,2}[\d]+[^\W\d_]{,2}|[\d]*[^\W\d_][\d]*(?:[\-\u2013\./ ]|\s[\-\u2013/]\s)?[^\W\d_]?[\d]+[^\W\d_]?|[^\W\d_]?[\d]+[^\W\d_]?(?:[\-\u2013\./ ]|\s[\-\u2013/]\s)?[\d]*[^\W\d_][\d]*|[\d]+|[^\W\d_](?:(?:[\-\u2013/][^\W\d_])|(?:[\-\u2013\./][^\W\d_]?[\d]+[^\W\d_]?))?)'
+
+number_phrase_pattern = u'(?:(?:№|númro|númr|número|núm.ro|núm|nº|n°|numro|numr|numero|num.ro|num|nrº|nr°|nro|nr.º|nr.°|nr|no|nmrº|nmr°|nmro|nmr.º|nmr.°|nmr.o|n.º|n.°|n.ro|#)\s*)?'
+
+supermanzana_regex = re.compile(u'(?:supermanzana|super mz|super manzana|sm|s.m.|s.m|s m)(?:\s+{})?\s*{}\\b'.format(number_phrase_pattern, numeric_pattern), re.I | re.U)
+
+manzana_regex = re.compile(u'(?:manzana|mza\.?|mz\.?)(?:\s+{})?\s*{}\\b'.format(number_phrase_pattern, numeric_pattern), re.I | re.U)
+
+lote_regex = re.compile(u'(?:lote|lte\.?|lt\.?|l\.?)(?:\s+{})?\s*{}\\b'.format(number_phrase_pattern, numeric_pattern), re.I | re.U)
+
+sin_numero_regex = re.compile('s\.?\s*\/?\s*n\.?', re.I)
+
+temp_csv = open(common_csv_temp_path)
+reader = csv.reader(temp_csv)
+out = open(common_csv_path, 'w')
+writer = csv.writer(out)
+headers = reader.next()
+numext_index = headers.index('numext')
+observ_index = headers.index('observ')
+
+writer.writerow(headers)
+for row in reader:
+    numext = row[numext_index]
+    observ = row[observ_index]
+    stripped = supermanzana_regex.sub('', observ)
+    stripped = manzana_regex.sub('', stripped)
+    stripped = lote_regex.sub('', stripped)
+    if observ.strip() and not stripped.strip():
+        if not sin_numero_regex.match(numext.strip()):
+            numext = numext + ' ' + observ.strip()
+        else:
+            numext = observ.strip()
+        row[numext_index] = numext
+        row[observ_index] = ''
+    writer.writerow(row)
+
+out.flush()
+out.close()
+temp_csv.close()
+os.remove(common_csv_temp_path)
+os.system('zip -9 -j mexico_ne.zip ' + common_csv_path)
