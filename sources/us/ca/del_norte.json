@@ -14,17 +14,12 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "SIT_ST_NUM",
-        "street": "SIT_ST_NAM",
-        "city": {
-            "function": "regexp",
-            "field": "SITUS_CI_1",
-            "pattern": "^([A-Z ]+)"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "SITUS_CI_1",
-            "pattern": "(\\d{5})$"
-        }
+        "number": "StreetNum",
+        "street": [
+            "Street",
+            "StreetType"
+        ],
+        "city": "Community",
+        "postcode": "Zip"
     }
 }
