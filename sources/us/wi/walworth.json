@@ -13,18 +13,9 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "COMMUNITY",
+        "number": "NUMBER",
+        "street": [ "STRPREFIX", "STREET", "STRTYPE" ],
+        "city": "MUNI_NAM",
         "accuracy": 1
     }
 }
