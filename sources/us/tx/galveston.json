@@ -15,32 +15,27 @@
         "street": {
             "function": "regexp",
             "field": "SITUS",
-            "pattern": "^(?:[0-9]+ )?(.*?),(?: )?(|[^,]+),?(?: )(.*?),(?: )(.*)(?: )([0-9]+)$",
-            "replace": "$1"
+            "pattern": "^\\s*(?:[\\d]+(?:[\\s-]\\d\\s*/\\s*\\d)?|\\d+-\\d+|\\d+-?[A-Z])\\s*(.*?)(?=,| (?:UNITS?|TRA?I?LE?RS?|SU?I?TES?|SPA?CE?S?|REAR|LOTS?|FRO?NT|FLO?O?R?S?|BU?I?LDI?N?GS?|APA?R?T?M?E?N?TS?)\\b|(?: (?:TIKI ISLAND|TEXAS CITY|SANTA FE|SAN LEON|PORT BOLIVAR|LEAGUE CITY|LA MARQUE|KEMAH|JAMAICA BEACH|HITCHCOCK|HIGH ISLAND|GILCHRIST|GALVESTON|FRIENDSWOOD|DICKINSON|CRYSTAL BEACH|CLEAR LAKE SHORES|CAPLEN|BOLIVAR PENINSULA|BAYVIEW|BAYOU VISTA|BACLIFF|ALTA LOMA|ALGOA),?\\s*TX\\s*(?:[,\\s]\\s*[0-9]{5}(?:\\-[0-9]{4})?)?$))"
         },
         "unit": {
             "function": "regexp",
             "field": "SITUS",
-            "pattern": "^(?:[0-9]+ )?(.*?),(?: )?(|[^,]+),?(?: )(.*?),(?: )(.*)(?: )([0-9]+)$",
-            "replace": "$2"
+            "pattern": "^(?:.*?),?(?: )?((?:(?:UNITS?|TRA?I?LE?RS?|SU?I?TES?|SPA?CE?S?|LOTS?|FLO?O?R?S?|BU?I?LDI?N?GS?|APA?R?T?M?E?N?TS?)(?:\\s*#|\\s+(?:NUMB?E?R?S?|NOS?\\.?))?\\s*(?:[0-9]*[A-Z]?(?:[,\\s]\\s*[0-9]*[A-Z]?)(?![A-Z]))*\\s*(?:&|AND)?\\s*[0-9]*(?:[A-Z](?![A-Z]))?)|(?:REAR|FRO?NT)\\b)(?:.*)$"
         },
         "city": {
             "function": "regexp",
             "field": "SITUS",
-            "pattern": "^(?:[0-9]+ )?(.*?),(?: )?(|[^,]+),?(?: )(.*?),(?: )(.*)(?: )([0-9]+)$",
-            "replace": "$3"
+            "pattern": "^(?:.*?)\\b(TIKI ISLAND|TEXAS CITY|SANTA FE|SAN LEON|PORT BOLIVAR|LEAGUE CITY|LA MARQUE|KEMAH|JAMAICA BEACH|HITCHCOCK|HIGH ISLAND|GILCHRIST|GALVESTON|FRIENDSWOOD|DICKINSON|CRYSTAL BEACH|CLEAR LAKE SHORES|CAPLEN|BOLIVAR PENINSULA|BAYVIEW|BAYOU VISTA|BACLIFF|ALTA LOMA|ALGOA),?\\s*TX\\s*(?:[,\\s]\\s*[0-9]{5}(?:\\-0-9{4})?)?$"
         },
         "region": {
             "function": "regexp",
             "field": "SITUS",
-            "pattern": "^(?:[0-9]+ )?(.*?),(?: )?(|[^,]+),?(?: )(.*?),(?: )(.*)(?: )([0-9]+)$",
-            "replace": "$4"
+            "pattern": "^.*?,?\\s*(TX)\\s*(?:[,\\s]\\s*[0-9]{5}(?:\\-[0-9]{4})?)?$"
         },
         "postcode": {
             "function": "regexp",
             "field": "SITUS",
-            "pattern": "^(?:[0-9]+ )?(.*?),(?: )?(|[^,]+),?(?: )(.*?),(?: )(.*)(?: )([0-9]+)$",
-            "replace": "$5"
+            "pattern": "^.*?([0-9]{5}(?:\\-[0-9]{4})?)$"
         },
         "type": "geojson"
     },
