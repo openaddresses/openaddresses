@@ -14,14 +14,15 @@
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "prefixed_number",
-            "field": "HOUSE_NUMB"
+            "function": "regexp",
+            "field": "HOUSE_NUMB",
+            "pattern": "^(\\d+)"
         },
         "street": "RDNAME",
         "unit": {
             "function": "regexp",
             "field": "HOUSE_NUMB",
-            "pattern": "^\\d+(?:\\s+(.+))$"
+            "pattern": "^\\d+\\s+(.+)$"
         },
         "city": "PO_NAME",
         "postcode": "ZIP"

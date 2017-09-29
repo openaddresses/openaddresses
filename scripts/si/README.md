@@ -16,9 +16,13 @@
 6. Adjust the scripts to use these ZIPs.
 
 ### Technical info:
-Encoding in shapefiles is Windows-1250 (`CP1250` in `iconv`), result is UTF8
+Encoding in source shapefiles is Windows-1250 (`CP1250` in `iconv`), result is UTF8
 
 Source shapefile structure is described in http://www.e-prostor.gov.si/fileadmin/struktura/RPE_struktura.pdf
 
 ### Dataset source
 Data can be obtained from Geodetska  uprava  Republike  Slovenije - http://egp.gu.gov.si/egp/ under CreativeCommons attribution license - CC-BY 2.5 (http://creativecommons.org/licenses/by/2.5 ), attribution details: http://www.e-prostor.gov.si/fileadmin/struktura/preberi_me.pdf
+
+### Dependancies
+GeoCoordinateConverter for most accurate reprojection
+https://github.com/mrihtar/GeoCoordinateConverter (will be checked out and built if it is not existing yet)

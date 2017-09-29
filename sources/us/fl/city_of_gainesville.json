@@ -16,7 +16,8 @@
         "state": "fl",
         "city": "Gainesville"
     },
-    "data": "https://services.arcgis.com/cNo3jpluyt69V8Ek/arcgis/rest/services/AddressPoints/FeatureServer/0",
+    "data": "https://services.arcgis.com/cNo3jpluyt69V8Ek/ArcGIS/rest/services/ACFR_Addressess/FeatureServer/0",
+    "note": "while there is a UNIT field, it appears to incorrectly contain the same value that's in ROADTYPE.  the FULLADDR field does have the unit appended with a '-'.",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
@@ -26,7 +27,11 @@
             "ROADNAME",
             "ROADTYPE"
         ],
-        "unit": "UNIT",
+        "unit": {
+            "function": "regexp",
+            "field": "FULLADDR",
+            "pattern": "-\\s+(.+)$"
+        },
         "city": "CITY",
         "district": "COUNTY",
         "region": "STATE",

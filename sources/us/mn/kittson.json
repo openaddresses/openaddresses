@@ -9,23 +9,12 @@
         "state": "mn",
         "county": "Kittson"
     },
-    "data": "http://gis.co.kittson.mn.us/arcgis/rest/services/Kittson_All/MapServer/27",
+    "data": "http://gis.co.kittson.mn.us/arcgis/rest/services/E911_Data/MapServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "KittsonAS400.dbo.tblParcelJoin.PROPERTY_ADDRESS_1",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "KittsonAS400.dbo.tblParcelJoin.PROPERTY_ADDRESS_1",
-            "pattern": "^(?:[0-9]+) (.*)",
-            "replace": "$1"
-        },
-        "city": "KittsonAS400.dbo.tblParcelJoin.PROPERTY_CITY",
-        "region": "KittsonAS400.dbo.tblParcelJoin.PROPERTY_STATE",
-        "postcode": "KittsonAS400.dbo.tblParcelJoin.PROPERTY_ZIPCODE_6"
+        "number": "HNUM",
+        "street": "STREET",
+        "city": "CITY"
     }
 }

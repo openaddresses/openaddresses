@@ -13,7 +13,7 @@ OpenAddresses is a collection of _authoritative data_ for address locations arou
 Have a potential source? Fantastic! Follow these steps to help us get it into the project as fast as possible!
 
 - Check `./sources/` to make sure we don't have it already. Sources that overlap are ok as long as they are coming from different providers.
-- Check the [wiki](https://github.com/openaddresses/openaddresses/wiki) to make sure it isn't listed there
+- Check the [wiki](https://github.com/openaddresses/openaddresses/wiki) to make sure it isn't listed there.
 
 Still a new source? Awesome!
 - If the source is raster data (images/webmap/not downloadable) please add it to the [Raster Wiki](https://github.com/openaddresses/openaddresses/wiki/Raster-Data-Sources)
@@ -29,7 +29,7 @@ we’d rather a duplicate than miss it altogether!
 ### Errors & Current Sources
 
 If you are reporting an error, an improvement, or a suggestion,
-[create a github issue here](https://github.com/openaddresses/openaddresses/issues/new)
+[create a github issue here](https://github.com/openaddresses/openaddresses/issues/new).
 We will do our best to review your issue and either fix or add the feature(s) to our plan.
 
 ## Contributing Sources
@@ -69,7 +69,7 @@ City     | us/md/city_of_baltimore.json |
 
 Sources use a standard set of attributes to allow for machine processing of
 each source. Use these tags where applicable. Check out other sources in the
-`./sources/` directory for examples
+`./sources/` directory for examples.
 
 #### Core Tags
 
@@ -199,7 +199,7 @@ provides hints about the geographic extent of the address file and is used to
 render the map at [data.openaddresses.io](http://data.openaddresses.io).
 
 This object minimally contains some combination of `country`, `state`, and
-either `city` or `county`, all strings
+either `city` or `county`, all strings.
 
 If one of the following tags are provided, it will be used to render the source
 to the map at [data.openaddresses.io](http://data.openaddresses.io):

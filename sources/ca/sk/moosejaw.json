@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "sk",
+        "city": "Moosejaw",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -104.65,
+                50.48
+            ]
+        }
+    },
+    "data": "http://gis.moosejaw.ca/arcgis/rest/services/Public/Parcels/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "FullAddress"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "FullAddress"
+        },
+        "city": "Municipality"
+    }
+}

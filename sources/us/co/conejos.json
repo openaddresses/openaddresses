@@ -9,20 +9,19 @@
         "state": "co",
         "county": "Conejos"
     },
-    "data": "http://services1.arcgis.com/zH7gQ37AKcpvTX6d/ArcGIS/rest/services/ConejosParcels_08172016/FeatureServer/0",
+    "data": "https://services1.arcgis.com/zH7gQ37AKcpvTX6d/ArcGIS/rest/services/ConejosParcels_04122017/FeatureServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
         "number": {
             "function": "regexp",
-            "field": "POST_1",
-            "pattern": "^([0-9]+)"
+            "field": "SITUS_1",
+            "pattern": "\\s+0*(\\d+)$"
         },
         "street": {
             "function": "regexp",
-            "field": "POST_1",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "field": "SITUS_1",
+            "pattern": "^(.+?)\\s+\\d+$"
         }
     }
 }

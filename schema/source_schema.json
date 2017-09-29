@@ -196,7 +196,8 @@
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "number": {
@@ -208,7 +209,8 @@
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "street": {
@@ -220,7 +222,8 @@
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "unit": {
@@ -231,7 +234,8 @@
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "city": {
@@ -242,7 +246,8 @@
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "district": {
@@ -253,7 +258,8 @@
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "region": {
@@ -264,7 +270,8 @@
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "postcode": {
@@ -275,7 +282,8 @@
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "lon": {
@@ -456,6 +464,36 @@
         },
         "format": {
           "type": "string"
+        }
+      }
+    },
+    "function_chain": {
+      "description": "chain function definition",
+      "type": "object",
+      "required": ["function", "variable", "functions"],
+      "additionalProperties": false,
+      "properties": {
+        "function": {
+          "type": "string",
+          "enum": ["chain"]
+        },
+        "variable": {
+          "type": "string"
+        },
+        "functions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              { "$ref": "#/definitions/function_regexp" },
+              { "$ref": "#/definitions/function_prefixed_number" },
+              { "$ref": "#/definitions/function_remove_prefix" },
+              { "$ref": "#/definitions/function_remove_postfix" },
+              { "$ref": "#/definitions/function_join" },
+              { "$ref": "#/definitions/function_format" },
+              { "$ref": "#/definitions/function_chain" }
+            ]
+          }
         }
       }
     }

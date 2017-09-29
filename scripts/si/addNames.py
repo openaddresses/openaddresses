@@ -68,20 +68,20 @@ def main(path):
 
     # Main loop: transform
     # ==> addresses-noname.csv <==
-    # X;Y;number;UL_MID;NA_MID;OB_MID;PO_MID;PT_MID
-    # 13.917661399610203;45.92620750719454;64;16267520;10084270;11026516;10350212;21428337
-    # 13.917606514772237;45.926377945666744;65;16267520;10084270;11026516;10350212;21428337
-    # 13.917449024108413;45.926520420054231;67;16267520;10084270;11026516;10350212;21428337
+    # X;Y;number;UL_MID;NA_MID;OB_MID;PO_MID;PT_MID;HS_MID
+    # 13.917641089428125;45.926208653275097;64;16267520;10084270;11026516;10350212;21428337;11070205
+    # 13.917586202711593;45.926379094149475;65;16267520;10084270;11026516;10350212;21428337;11070213
+    # 13.917428708459077;45.926521570535712;67;16267520;10084270;11026516;10350212;21428337;11070230
 
     # to:
     # ==> si-addresses-YYYYMMDD.csv <==
-    # lon;lat;number;street;city;commune;region;postcode
-    # 13.917661399610203;45.92620750719454;64;Otlica;Otlica;Ajdovščina;Goriška;5270
-    # 13.917606514772237;45.926377945666744;65;Otlica;Otlica;Ajdovščina;Goriška;5270
-    # 13.917449024108413;45.926520420054231;67;Otlica;Otlica;Ajdovščina;Goriška;5270
+    # lon;lat;number;street;city;commune;region;postcode;id
+    # 13.917641089428125;45.926208653275097;64;Otlica;Otlica;Ajdovščina;Goriška;5270;11070205
+    # 13.917586202711593;45.926379094149475;65;Otlica;Otlica;Ajdovščina;Goriška;5270;11070213
+    # 13.917428708459077;45.926521570535712;67;Otlica;Otlica;Ajdovščina;Goriška;5270;11070230
 
     writer = csv.writer(open(os.path.join(path, 'si-addresses-{}.csv'.format(timestamp)), 'w'), delimiter=";")
-    headers = ['lon', 'lat', 'number', 'street', 'city', 'commune', 'region', 'postcode']
+    headers = ['lon', 'lat', 'number', 'street', 'city', 'commune', 'region', 'postcode', 'id']
     writer.writerow(headers)
 
     with open(os.path.join(path, "addresses-noname.csv")) as f:
@@ -90,6 +90,10 @@ def main(path):
 
         for rowIn in reader:
             rowOut = rowIn
+
+            # round the coordinates to 7 decimals (roughly 1cm precision)
+            rowOut[0] = round(float(rowIn[0]), 7)
+            rowOut[1] = round(float(rowIn[1]), 7)
 
             # map IDs to values
             rowOut[3] = streets.get(rowIn[3], cities.get(rowIn[4], '??'))
