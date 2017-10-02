@@ -10,28 +10,33 @@
         "county": "Sarasota"
     },
     "attribution": "Sarasota County",
-    "data": "ftp://ftp.scgov.net/Pub/data/SCGIS/gislayers/AddressPoints.zip",
-    "website": "http://gis.scgov.net/data_download_page.asp",
+    "data": "https://services3.arcgis.com/icrWMv7eBkctFu1f/arcgis/rest/services/AddressPoints_/FeatureServer/0",
+    "website": "https://hub.arcgis.com/datasets/8f17abc4d8664f079cecc944d86c31a1_0",
     "license": {
         "text": "Public Domain",
         "attribution": false,
         "share-alike": false
     },
-    "type": "ftp",
-    "compression": "zip",
+    "type": "ESRI",
     "conform": {
-        "number": "addnumber",
+        "type": "geojson",
+        "id": "AddPointID",
+        "number": "AddNumber",
         "street": [
-            "StreetPreD",
-            "streetname",
-            "streetsuff",
-            "StreetPost"
+            "StreetPreMod",
+            "StreetPreDir",
+            "StreetPreType",
+            "StreetName",
+            "StreetSuffix",
+            "StreetPostDir",
+            "StreetPostMod"
         ],
         "unit": [
           "UnitType",
           "UnitNumber"
         ],
-        "postcode": "ZIP",
-        "type": "shapefile"
+        "city": "PostalComm",
+        "region": "State",
+        "postcode": "ZIP"
     }
 }
