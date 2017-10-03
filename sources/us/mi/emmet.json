@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "26047",
+            "state": "Michigan",
+            "county": "Emmet"
+        },
+        "country": "us",
+        "state": "mi",
+        "county": "Emmet"
+    },
+    "data": "http://gis.emmetcounty.org/arcgis/rest/services/ParcelOverlay/MapServer/4",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "PAR_ADDR"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "PAR_ADDR"
+        },
+        "city": "PAR_CITY",
+        "region": "PAR_ST",
+        "postcode": "PAR_ZIP"
+    }
+}
