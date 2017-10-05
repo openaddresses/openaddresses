@@ -18,7 +18,12 @@
     },
     "conform": {
         "type": "shapefile",
-        "unit": "Unit",
+        "unit": {
+            "function": "regexp",
+            "field": "Unit",
+            "pattern": "^(0)()$|^()(.*)$",
+            "replace": "$2"
+        },
         "number": "House",
         "street": "Street",
         "city": "Suburb",
