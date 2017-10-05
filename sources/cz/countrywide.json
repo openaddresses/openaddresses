@@ -34,12 +34,12 @@
         "number": {
             "function": "regexp",
             "field": "alternativ",
-            "pattern": ".*?((?:č\\.?(?:p|ev)\\.?)?\\s*\\d+(?:\/\\d+[a-z]?)?)"
+            "pattern": "^[^,]*?\\s*((?:č\\.?(?:p|ev)\\.?)?\\s*\\d+(?:\\s*/\\s*\\d+[a-z]?)?)(?=\\s*,)"
         },
         "street": {
             "function": "regexp",
             "field": "alternativ",
-            "pattern": "(.*?)(?:(?:č\\.?(?:p|ev)\\.?)?\\s*\\d+(?:\\d+[a-z]?)?)"
+            "pattern": "^([^,]*?)\\s*(?:(?:č\\.?(?:p|ev)\\.?)?\\s*\\d+(?:\\s*/\\s*\\d+[a-z]?)?)(?=\\s*,)"
         },
         "city": {
             "function": "regexp",
@@ -141,6 +141,42 @@
                     "street": "",
                     "city": "Rozstání",
                     "postcode": "79862"
+                }
+            },
+            {
+                "description": "street name containing initial number",
+                "inputs": {
+                    "alternativ": "28. října 24, 56301 Lanškroun"
+                },
+                "expected": {
+                    "number": "24",
+                    "street": "28. října",
+                    "city": "Lanškroun",
+                    "postcode": "56301"
+                }
+            },
+            {
+                "description": "street name containing initial number with /-delimited house number",
+                "inputs": {
+                    "alternativ": "1. května 683/86, 69201 Mikulov"
+                },
+                "expected": {
+                    "number": "683/86",
+                    "street": "1. května",
+                    "city": "Mikulov",
+                    "postcode": "69201"
+                }
+            },
+            {
+                "description": "street name containing non-initial number",
+                "inputs": {
+                    "alternativ": "třída 5. května 7, 37372 Lišov"
+                },
+                "expected": {
+                    "number": "7",
+                    "street": "třída 5. května",
+                    "city": "Lišov",
+                    "postcode": "37372"
                 }
             }
         ]
