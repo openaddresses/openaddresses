@@ -20,7 +20,11 @@
     "compression": "zip",
     "conform": {
         "street": "street",
-        "number": "number",
+        "number": {
+            "function": "join",
+            "fields": ["constriptionnumber", "number"],
+            "separator": "/"
+        },
         "type": "csv",
         "csvsplit": ";",
         "file": "sk/countrywide.csv",
@@ -28,5 +32,58 @@
         "lon": "lon",
         "city": "city",
         "postcode": "postcode"
+    },
+    "test": {
+        "enabled": true,
+        "description": "these are the tests that exercise valid inputs for slovakia countrywide",
+        "acceptance-tests": [
+            {
+                "description": "address with /-delimited number",
+                "inputs": {
+                    "street": "Jegorovova",
+                    "number": "20",
+                    "city": "Banská Bystrica",
+                    "postcode": "97401",
+                    "constriptionnumber": "2347"
+                },
+                "expected": {
+                    "number": "2347/20",
+                    "street": "Jegorovova",
+                    "city": "Banská Bystrica",
+                    "postcode": "97401"
+                }
+            },
+            {
+                "description": "address with /-delimited number with letter",
+                "inputs": {
+                    "street": "Na Vinohrady",
+                    "number": "29A",
+                    "city": "Trenčín",
+                    "postcode": "91105",
+                    "constriptionnumber": "1275"
+                },
+                "expected": {
+                    "number": "1275/29A",
+                    "street": "Na Vinohrady",
+                    "city": "Trenčín",
+                    "postcode": "91105"
+                }
+            },
+            {
+                "description": "address without conscription number",
+                "inputs": {
+                    "street": "Kollárova",
+                    "number": "13",
+                    "city": "Kráľovský Chlmec",
+                    "postcode": "07701"
+                },
+                "expected": {
+                    "number": "13",
+                    "street": "Kollárova",
+                    "city": "Kráľovský Chlmec",
+                    "postcode": "07701"
+                }
+            }
+        ]
     }
 }
