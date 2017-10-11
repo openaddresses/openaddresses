@@ -9,17 +9,19 @@
         "state": "nc",
         "county": "Vance"
     },
-    "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Vance/MapServer/162",
+    "data": "https://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Vance/MapServer/93",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "PHYSADDRES"
-        },
-        "street": {
-          "function": "postfixed_street",
-          "field": "PHYSADDRES"
-        }
+        "number": "st_number",
+        "street": [
+            "st_prefixd",
+            "st_name",
+            "st_type",
+            "st_sfx",
+            "st_suffixd"
+        ],
+        "unit": "unit",
+        "city": "community"
     }
 }
