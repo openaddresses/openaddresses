@@ -25,12 +25,13 @@
         "postcode": {
             "function": "regexp",
             "field": "ADD_3",
-            "pattern": "\\d{5}$"
+            "pattern": "(.*)(\\d{5})$",
+            "replace": "$1"
         },
         "city": {
             "function": "regexp",
             "field": "ADD_3",
-            "pattern": "(.*?)(, WA)",
+            "pattern": "(.*?)(, WA)(.*)",
             "replace": "$1"
         }
     }
