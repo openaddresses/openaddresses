@@ -9,20 +9,29 @@
         "state": "wa",
         "county": "Garfield"
     },
-    "data": "http://www.garfield-county.com/geographic-information-systems/documents/parcels/ParcelsSHP.zip",
-    "website": "http://www.co.cowlitz.wa.us/index.aspx?nid=201",
-    "type": "http",
-    "compression": "zip",
+    "data": "https://services5.arcgis.com/1UmAlNNRc6UDVQ4y/ArcGIS/rest/services/Garfield_parcels/FeatureServer/0",
+    "website": "https://www.arcgis.com/home/item.html?id=25f924757dd845d19e7d6f516729f0ff",
+    "type": "ESRI",
     "conform": {
-        "type": "shapefile-polygon",
-        "number": "STREETNO",
-        "unit": "UNITNUMBER",
-        "street": [
-            "STREETDIR",
-            "STREETNAME",
-            "STREETSUF"
-        ],
-        "postcode": "SITUSZIP",
-        "city": "LOCCITY"
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "ADDR_1"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "ADDR_1"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "ADDR_3",
+            "pattern": "\d{5}$"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "ADDR_3",
+            "pattern": "(.*?)(, WA)",
+            "replace": "$2"
+        }
     }
 }
