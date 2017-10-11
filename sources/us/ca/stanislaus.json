@@ -12,15 +12,27 @@
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "Situs2",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "Situs2"
         },
         "street": {
+            "function": "chain",
+            "variable": "Situs2_wip",
+            "functions": [{
+                "function": "postfixed_street",
+                "field": "Situs2"
+            },{
+                "function": "regexp",
+                "field": "Situs2_wip",
+                "pattern": "(.*?)( #[A-Za-z0-9])",
+                "replace": "$1"
+            }]
+        },
+        "unit": {
             "function": "regexp",
             "field": "Situs2",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "pattern": "(.*?)( #[A-Za-z0-9])",
+            "replace": "$2"
         }
     },
     "attribution": "Stanislaus County",
