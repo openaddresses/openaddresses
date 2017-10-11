@@ -16,20 +16,20 @@
         "type": "geojson",
         "number": {
             "function": "prefixed_number",
-            "field": "ADDR_1"
+            "field": "ADD_1"
         },
         "street": {
             "function": "postfixed_street",
-            "field": "ADDR_1"
+            "field": "ADD_1"
         },
         "postcode": {
             "function": "regexp",
-            "field": "ADDR_3",
+            "field": "ADD_3",
             "pattern": "\\d{5}$"
         },
         "city": {
             "function": "regexp",
-            "field": "ADDR_3",
+            "field": "ADD_3",
             "pattern": "(.*?)(, WA)",
             "replace": "$2"
         }
