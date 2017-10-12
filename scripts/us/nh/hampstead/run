@@ -35,4 +35,4 @@ while read -r PARCEL; do
     " | jq -rc '.' >> $(dirname $0)/output.geojson
 done <<< "$(jq -rc '.features[]' $(dirname $0)/hampstead.geojson)"
 
-$(yarn bin)/pt2itp convert $(dirname $0)/output.geojson > $(dirname $0)/hampstead.geojson
+$(yarn bin)/pt2itp convert < $(dirname $0)/output.geojson > $(dirname $0)/hampstead.geojson
