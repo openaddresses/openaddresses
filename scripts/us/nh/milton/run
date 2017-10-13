@@ -1,0 +1,39 @@
+#! /bin/bash
+
+set -euo pipefail
+
+echo "# Milton NH"
+
+if [[ ! -e $(yarn bin)/pt2itp ]]; then
+    yarn add pt2itp # yarnpkg.com
+fi
+
+if [[ ! -e $(dirname $0)/us-nh-milton_parcels.geojson ]]; then
+    echo "ok - Downloading Parcels"
+    esri2geojson\
+        'http://75.144.151.57/arcgis/rest/services/MilfordNH_OperationalLayers/MapServer/10'\
+        $(dirname $0)/us-nh-milton_parcels.geojson
+
+    # STASHED: data.openaddresses.io/cache/uploads/ingalls/us-nh-milton_parcels.geojson
+else
+    echo "ok - Parcel file exists"
+fi
+
+rm $(dirname $0)/output.geojson 2>&1 || true > /dev/null
+
+while read -r PARCEL; do
+    RES="$(curl -s "http://75.144.151.57/arcgis/rest/services/MilfordNH_OperationalLayers/MapServer/13/query?where=REM_GIS_ID='$(echo "$PARCEL" | jq -rc '.properties.GIS_ID')'&outFields=*&f=json"\
+        | jq -rc '.features[0].attributes')"
+
+    echo "
+        {
+            \"type\": \"Feature\",
+            \"geometry\": $(echo $PARCEL | jq -rc '.geometry'),
+            \"properties\": $(echo $RES )
+        }
+    " | jq -rc '.' >> $(dirname $0)/output.geojson
+done <<< "$(jq -rc '.features[]' $(dirname $0)/us-nh-milton_parcels.geojson)"
+
+$(yarn bin)/pt2itp convert < $(dirname $0)/output.geojson > $(dirname $0)/us-nh-milton.geojson
+
+sed -i '/"properties":null/d' $(dirname $0)/us-nh-milton.geojson
