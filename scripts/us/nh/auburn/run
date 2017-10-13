@@ -1,13 +1,29 @@
 #! /bin/bash
 
-echo "# Hampstead NH"
+set -euo pipefail
 
-yarn add pt2itp # yarnpkg.com
+echo "# Auburn NH"
 
-if [[ ! -e $(dirname $0)/hampstead.geojson ]]; then
+if [[ ! -e $(yarn bin)/pt2itp ]]; then
+    yarn add pt2itp # yarnpkg.com
+fi
+
+if [[ ! -e $(dirname $0)/auburn.geojson ]]; then
     echo "ok - Downloading Parcels"
-    esri2geojson -H 'Host: arcgis2.axisgis.com' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: */*' -H 'Accept-Language: en-US,en;q=0.5' -H 'Referer: https://www.axisgis.com/hampsteadnh/' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Origin: https://www.axisgis.com' -H 'Connection: keep-alive' -p 'token=wYzBLoloKAWV3l9O9_LPB0Vo-Axo6WaY8_RDw4CVw6rci2QwdEEBTxU1GWGwJcMe' 'https://arcgis2.axisgis.com/arcgis/rest/services/HampsteadNH/HampsteadNHDynamic/MapServer/14' $(dirname $0)/hampstead.geojson
-    # STASHED: data.openaddresses.io/cache/uploads/ingalls/us-nh-hampstead_parcels.geojson
+    esri2geojson\
+        -H 'Host: arcgis2.axisgis.com'\
+        -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0'\
+        -H 'Accept: */*'\
+        -H 'Accept-Language: en-US,en;q=0.5'\
+        -H 'Referer: https://www.axisgis.com/auburnnh/'\
+        -H 'Content-Type: application/x-www-form-urlencoded'\
+        -H 'Origin: https://www.axisgis.com'\
+        -H 'Connection: keep-alive'\
+        -p 'token=wYzBLoloKAWV3l9O9_LPB0Vo-Axo6WaY8_RDw4CVw6rci2QwdEEBTxU1GWGwJcMe'\
+        'https://arcgis.axisgis.com/arcgis/rest/services/AuburnNH/AuburnNHDynamic/MapServer/12'\
+        $(dirname $0)/auburn.geojson
+
+    # STASHED: data.openaddresses.io/cache/uploads/ingalls/us-nh-auburn_parcels.geojson
 else
     echo "ok - Parcel file exists"
 fi
@@ -15,13 +31,13 @@ fi
 rm $(dirname $0)/output.geojson 2>&1 || true > /dev/null
 
 while read -r PARCEL; do
-    RES="$(curl -s "https://www.axisgis.com/node/axisapi/parcel/HampsteadNH?f=json&q=$(echo "$PARCEL" | jq -rc '.properties.FULL_NUM')"\
+    RES="$(curl -s "https://www.axisgis.com/node/axisapi/parcel/AuburnNH?f=json&q=$(echo "$PARCEL" | jq -rc '.properties.Full_Num')"\
             -H 'Host: www.axisgis.com'\
             -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0'\
             -H 'Accept: */*'\
             -H 'Accept-Language: en-US,en;q=0.5'\
             --compressed\
-            -H 'Referer: https://www.axisgis.com/hampsteadnh/'\
+            -H 'Referer: https://www.axisgis.com/auburnnh/'\
             -H 'Content-Type: application/x-www-form-urlencoded'\
             -H 'Connection: keep-alive'\
         | jq -rc '.Properties[0]')"
@@ -33,8 +49,8 @@ while read -r PARCEL; do
             \"properties\": $(echo $RES )
         }
     " | jq -rc '.' >> $(dirname $0)/output.geojson
-done <<< "$(jq -rc '.features[]' $(dirname $0)/hampstead.geojson)"
+done <<< "$(jq -rc '.features[]' $(dirname $0)/auburn.geojson)"
 
-$(yarn bin)/pt2itp convert < $(dirname $0)/output.geojson > $(dirname $0)/hampstead.geojson
+$(yarn bin)/pt2itp convert < $(dirname $0)/output.geojson > $(dirname $0)/us-nh-auburn.geojson
 
-sed -i '/"properties":null/d' $(dirname $0)/hampstead.geojson
+sed -i '/"properties":null/d' $(dirname $0)/us-nh-auburn.geojson
