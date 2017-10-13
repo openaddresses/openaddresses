@@ -1,0 +1,38 @@
+#! /bin/bash
+
+echo "# Hampstead NH"
+
+yarn add pt2itp # yarnpkg.com
+
+if [[ ! -e $(dirname $0)/hampstead.geojson ]]; then
+    echo "ok - Downloading Parcels"
+    esri2geojson -H 'Host: arcgis2.axisgis.com' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0' -H 'Accept: */*' -H 'Accept-Language: en-US,en;q=0.5' -H 'Referer: https://www.axisgis.com/hampsteadnh/' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Origin: https://www.axisgis.com' -H 'Connection: keep-alive' -p 'token=wYzBLoloKAWV3l9O9_LPB0Vo-Axo6WaY8_RDw4CVw6rci2QwdEEBTxU1GWGwJcMe' 'https://arcgis2.axisgis.com/arcgis/rest/services/HampsteadNH/HampsteadNHDynamic/MapServer/14' $(dirname $0)/hampstead.geojson
+    # STASHED: data.openaddresses.io/cache/uploads/ingalls/us-nh-hampstead_parcels.geojson
+else
+    echo "ok - Parcel file exists"
+fi
+
+rm $(dirname $0)/output.geojson 2>&1 || true > /dev/null
+
+while read -r PARCEL; do
+    RES="$(curl -s "https://www.axisgis.com/node/axisapi/parcel/HampsteadNH?f=json&q=$(echo "$PARCEL" | jq -rc '.properties.FULL_NUM')"\
+            -H 'Host: www.axisgis.com'\
+            -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0'\
+            -H 'Accept: */*'\
+            -H 'Accept-Language: en-US,en;q=0.5'\
+            --compressed\
+            -H 'Referer: https://www.axisgis.com/hampsteadnh/'\
+            -H 'Content-Type: application/x-www-form-urlencoded'\
+            -H 'Connection: keep-alive'\
+        | jq -rc '.Properties[0]')"
+
+    echo "
+        {
+            \"type\": \"Feature\",
+            \"geometry\": $(echo $PARCEL | jq -rc '.geometry'),
+            \"properties\": $(echo $RES )
+        }
+    " | jq -rc '.' >> $(dirname $0)/output.geojson
+done <<< "$(jq -rc '.features[]' $(dirname $0)/hampstead.geojson)"
+
+$(yarn bin)/pt2itp convert < $(dirname $0)/output.geojson > $(dirname $0)/hampstead.geojson
