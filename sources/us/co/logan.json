@@ -1,0 +1,164 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "08075",
+            "name": "Logan County",
+            "state": "Colorado"
+        },
+        "country": "us",
+        "state": "co",
+        "county": "Logan"
+    },
+    "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/LoganCOFeatures/FeatureServer/2",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "ADDRESS"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^\\d+\\s+(.+?)(?:\\s+UNIT\\s+.+?)?(?:\\s+(?:STERLING|ATWOOD|FLEMING|MERINO|PADRONI|PEETZ|WILLARD|ILIFF|CROOK|HAXTUN|DAILEY|The Town of Fleming|,\\s+CO\\.))"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "(UNIT\\s+\\S+)"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "\\b(STERLING|ATWOOD|FLEMING|MERINO|PADRONI|PEETZ|WILLARD|ILIFF|CROOK|HAXTUN|DAILEY|The Town of Fleming)\\b"
+        },
+        "region": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "\\b(CO)\\b"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "(\\d+)$"
+        }
+    },
+    "test": {
+        "enabled": true,
+        "description": "These are tests for extracting number, street, unit, city, region, and postcode",
+        "acceptance-tests": [
+            {
+                "description": "county road, no unit",
+                "inputs": {
+                    "Address": "9971  C R 85 FLEMING , CO. 80728"
+                },
+                "expected": {
+                    "number": "9971",
+                    "street": "C R 85",
+                    "unit": "",
+                    "city": "FLEMING",
+                    "region": "CO",
+                    "postcode": "80728"
+                }
+            },
+            {
+                "description": "non-county road, no unit",
+                "inputs": {
+                    "Address": "99  PARKVIEW DR STERLING, CO. 80751"
+                },
+                "expected": {
+                    "number": "99",
+                    "street": "PARKVIEW DR",
+                    "unit": "",
+                    "city": "STERLING",
+                    "region": "CO",
+                    "postcode": "80751"
+                }
+            },
+            {
+                "description": "decimal county road, no unit",
+                "inputs": {
+                    "Address": "9317  C R 20.5 MERINO , CO. 80741"
+                },
+                "expected": {
+                    "number": "9317",
+                    "street": "C R 20.5",
+                    "unit": "",
+                    "city": "MERINO",
+                    "region": "CO",
+                    "postcode": "80741"
+                }
+            },
+            {
+                "description": "has numeric UNIT unit",
+                "inputs": {
+                    "Address": "603  PARK ST UNIT 110 STERLING, CO. 80751"
+                },
+                "expected": {
+                    "number": "603",
+                    "street": "PARK ST",
+                    "unit": "UNIT 110",
+                    "city": "STERLING",
+                    "region": "CO",
+                    "postcode": "80751"
+                }
+            },
+            {
+                "description": "has UNIT unit with county road",
+                "inputs": {
+                    "Address": "5299  C R 71  UNIT A FLEMING, CO. 80728"
+                },
+                "expected": {
+                    "number": "5299",
+                    "street": "C R 71",
+                    "unit": "UNIT A",
+                    "city": "FLEMING",
+                    "region": "CO",
+                    "postcode": "80728"
+                }
+            },
+            {
+                "description": "odd town name",
+                "inputs": {
+                    "Address": "22745 C R 93 The Town of Fleming 80728"
+                },
+                "expected": {
+                    "number": "22745",
+                    "street": "C R 93",
+                    "unit": "",
+                    "city": "The Town of Fleming",
+                    "region": "",
+                    "postcode": "80728"
+                }
+            },
+            {
+                "description": "region without '.'",
+                "inputs": {
+                    "Address": "7635 7TH ST ATWOOD, CO 80722"
+                },
+                "expected": {
+                    "number": "7635",
+                    "street": "7TH ST",
+                    "unit": "",
+                    "city": "ATWOOD",
+                    "region": "CO",
+                    "postcode": "80722"
+                }
+            },
+            {
+              "description": "no city",
+              "inputs": {
+                  "Address": "604  GARDINER ST , CO. 80747"
+              },
+              "expected": {
+                "number": "604",
+                "street": "GARDINER ST",
+                "unit": "",
+                "city": "",
+                "region": "CO",
+                "postcode": "80747"
+              }
+            }
+        ]
+    }
+}
