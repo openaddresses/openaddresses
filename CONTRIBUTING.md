@@ -211,7 +211,7 @@ to the map at [data.openaddresses.io](http://data.openaddresses.io):
 2. **ISO 3166** with `alpha2` containing alphanumeric two-letter
    [ISO-3166-1 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
    or [ISO-3166-2 subdivision code](http://en.wikipedia.org/wiki/ISO_3166-2).
-   See [New Zealand](sources/nz/countrywide.json), [Victoria, Australia](sources/au/victoria.json),
+   See [New Zealand](sources/nz/countrywide.json), [Victoria, Australia](sources/au/vic/statewide.json),
    or [Dolnośląskie, Poland](sources/pl/dolnoslaskie.json) for examples.
 3. **geometry** with unprojected [GeoJSON geometry object](http://geojson.org/geojson-spec.html#geometry-objects)
     - _Polygon_ - for example, [state of Arkansas](sources/us/ar/statewide.json)
