@@ -14,15 +14,198 @@
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "prefixed_number",
-            "field": "PAR_ADDR"
+            "function": "regexp",
+            "field": "PAR_ADDR",
+            "pattern": "^(\\d+(?:\\.\\d+)?)\\s"
         },
         "street": {
-            "function": "postfixed_street",
-            "field": "PAR_ADDR"
+            "function": "regexp",
+            "field": "PAR_ADDR",
+            "pattern": "^(?:\\d+(?:\\.\\d+)?)?(.+?)(?:\\s+(?:BLD\\s.+|[A-Z]?#.+|COT\\s.+|UNIT\\s.+|STE\\s.+|APT\\s.+|[A-Z]\\d+))?$"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "PAR_ADDR",
+            "pattern": "\\s(BLD\\s.+|[A-Z]?#.+|COT\\s.+|UNIT\\s.+|STE\\s.+|APT\\s.+|[A-Z]\\d+)$"
         },
         "city": "PAR_CITY",
         "region": "PAR_ST",
         "postcode": "PAR_ZIP"
+    },
+    "test": {
+        "enabled": true,
+        "description": "Summit County, CO embeds unit and road altname info into address field",
+        "acceptance-tests": [
+            {
+                "description": "no number or unit",
+                "inputs": {
+                    "PAR_ADDR": "S SELDON RD",
+                    "PAR_CITY": "PETOSKEY",
+                    "PAR_ST": "MI",
+                    "PAR_ZIP": "49770"
+                },
+                "expected": {
+                    "number": "",
+                    "street": "S SELDON RD",
+                    "unit": "",
+                    "city": "PETOSKEY",
+                    "region": "MI",
+                    "postcode": "49770"
+                }
+            },
+            {
+                "description": "no unit",
+                "inputs": {
+                    "PAR_ADDR": "9999 E MITCHELL RD",
+                    "PAR_CITY": "PETOSKEY",
+                    "PAR_ST": "MI",
+                    "PAR_ZIP": "49770"
+                },
+                "expected": {
+                    "number": "9999",
+                    "street": "E MITCHELL RD",
+                    "unit": "",
+                    "city": "PETOSKEY",
+                    "region": "MI",
+                    "postcode": "49770"
+                }
+            },
+            {
+                "description": "BLD unit designator",
+                "inputs": {
+                    "PAR_ADDR": "997 WILLIS AV BLD A#1-6",
+                    "PAR_CITY": "PETOSKEY",
+                    "PAR_ST": "MI",
+                    "PAR_ZIP": "49770"
+                },
+                "expected": {
+                    "number": "997",
+                    "street": "WILLIS AV",
+                    "unit": "BLD A#1-6",
+                    "city": "PETOSKEY",
+                    "region": "MI",
+                    "postcode": "49770"
+                }
+            },
+            {
+                "description": "# unit designator",
+                "inputs": {
+                    "PAR_ADDR": "944 GLEN HAVEN CIR #1",
+                    "PAR_CITY": "PETOSKEY",
+                    "PAR_ST": "MI",
+                    "PAR_ZIP": "49770"
+                },
+                "expected": {
+                    "number": "944",
+                    "street": "GLEN HAVEN CIR",
+                    "unit": "#1",
+                    "city": "PETOSKEY",
+                    "region": "MI",
+                    "postcode": "49770"
+                }
+            },
+            {
+                "description": "decimal house number",
+                "inputs": {
+                    "PAR_ADDR": "810.5 HARBOR WATCH DR #102",
+                    "PAR_CITY": "PETOSKEY",
+                    "PAR_ST": "MI",
+                    "PAR_ZIP": "49770"
+                },
+                "expected": {
+                    "number": "810.5",
+                    "street": "HARBOR WATCH DR",
+                    "unit": "#102",
+                    "city": "PETOSKEY",
+                    "region": "MI",
+                    "postcode": "49770"
+                }
+            },
+            {
+                "description": "COT (cottage?) unit designator",
+                "inputs": {
+                    "PAR_ADDR": "8480 CEDAR LN COT 23",
+                    "PAR_CITY": "HARBOR SPRINGS",
+                    "PAR_ST": "MI",
+                    "PAR_ZIP": "49740"
+                },
+                "expected": {
+                    "number": "8480",
+                    "street": "CEDAR LN",
+                    "unit": "COT 23",
+                    "city": "HARBOR SPRINGS",
+                    "region": "MI",
+                    "postcode": "49740"
+                }
+            },
+            {
+                "description": "UNIT unit designator",
+                "inputs": {
+                    "PAR_ADDR": "827 ARLINGTON AV UNIT 9",
+                    "PAR_CITY": "PETOSKEY",
+                    "PAR_ST": "MI",
+                    "PAR_ZIP": "49770"
+                },
+                "expected": {
+                    "number": "827",
+                    "street": "ARLINGTON AV",
+                    "unit": "UNIT 9",
+                    "city": "PETOSKEY",
+                    "region": "MI",
+                    "postcode": "49770"
+                }
+            },
+            {
+                "description": "STE unit designator",
+                "inputs": {
+                    "PAR_ADDR": "751 SPRING ST STE A",
+                    "PAR_CITY": "PETOSKEY",
+                    "PAR_ST": "MI",
+                    "PAR_ZIP": "49770"
+                },
+                "expected": {
+                    "number": "751",
+                    "street": "SPRING ST",
+                    "unit": "STE A",
+                    "city": "PETOSKEY",
+                    "region": "MI",
+                    "postcode": "49770"
+                }
+            },
+            {
+                "description": "alpha-numeric unit designator",
+                "inputs": {
+                    "PAR_ADDR": "4000 MAIN ST G19",
+                    "PAR_CITY": "PETOSKEY",
+                    "PAR_ST": "MI",
+                    "PAR_ZIP": "49770"
+                },
+                "expected": {
+                    "number": "4000",
+                    "street": "MAIN ST",
+                    "unit": "G19",
+                    "city": "PETOSKEY",
+                    "region": "MI",
+                    "postcode": "49770"
+                }
+            },
+            {
+                "description": "APT unit designator",
+                "inputs": {
+                    "PAR_ADDR": "2922 BALCHIK LN APT A",
+                    "PAR_CITY": "PETOSKEY",
+                    "PAR_ST": "MI",
+                    "PAR_ZIP": "49770"
+                },
+                "expected": {
+                    "number": "2922",
+                    "street": "BALCHIK LN",
+                    "unit": "APT A",
+                    "city": "PETOSKEY",
+                    "region": "MI",
+                    "postcode": "49770"
+                }
+            }
+        ]
     }
 }
