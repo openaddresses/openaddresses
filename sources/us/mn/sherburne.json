@@ -9,20 +9,21 @@
         "state": "mn",
         "county": "Sherburne"
     },
-    "data": "ftp://publicworksGuest:p@cc3sss@www.co.sherburne.mn.us/GISData/AddressPoints.zip",
-    "type": "ftp",
-    "compression": "zip",
+    "data": "https://gis.co.sherburne.mn.us/arcgis/rest/services/Address/NewAddress/MapServer/0",
+    "type": "ESRI",
     "conform": {
-        "type": "shapefile",
-        "number": "HOUSENUM",
-        "street": [
-            "PREDIR",
-            "STRNAME",
-            "STRTYPE",
-            "STRDIR"
-        ],
-        "postcode": "ZIP5",
-        "city": "CITY",
-        "unit": "UNIT"
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "PHY_ADDR_FULL"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "PHY_ADDR_FULL"
+        },
+        "city": "POSTCOMM",
+        "district": "COUNTY",
+        "region": "STATE",
+        "postcode": "ZIP"
     }
 }
