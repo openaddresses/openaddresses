@@ -1,33 +1,33 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "33",
-            "state": "New Hampshire"
-        },
-        "country": "us",
-        "state": "nh"
-    },
-    "data": "http://granitweb.sr.unh.edu:6080/arcgis/rest/services/MapServices/Parcels/MapServer/0",
-    "website": "http://www.granit.unh.edu/data/onlinemapservices/mapservicesoverview.html",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^(?:[0-9]+ )(.*?)(?:\s(?:\(?(?:Unit|UNIT)?\s?#).*(\)?))",
-            "replace": "$1"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "(?:\(?(?:Unit|UNIT)?\s?#).*(\)?)"
-        },
-        "city": "TOWN_NAME"
-    }
+	"coverage": {
+		"US Census": {
+			"geoid": "33",
+			"state": "New Hampshire"
+		},
+		"country": "us",
+		"state": "nh"
+	},
+	"data": "http://granitweb.sr.unh.edu:6080/arcgis/rest/services/MapServices/Parcels/MapServer/0",
+	"website": "http://www.granit.unh.edu/data/onlinemapservices/mapservicesoverview.html",
+	"type": "ESRI",
+	"conform": {
+		"type": "geojson",
+		"number": {
+			"function": "regexp",
+			"field": "Address",
+			"pattern": "^([0-9]+)"
+		},
+		"street": {
+			"function": "regexp",
+			"field": "Address",
+			"pattern": "^(?:[0-9]+ )(.*?)(?:\\s(?:\\(?(?:Unit|UNIT)?\\s?#).*(\\)?))",
+			"replace": "$1"
+		},
+		"unit": {
+			"function": "regexp",
+			"field": "Address",
+			"pattern": "(?:\\(?(?:Unit|UNIT)?\\s?#).*(\\)?)"
+		},
+		"city": "TOWN_NAME"
+	}
 }
