@@ -16,21 +16,74 @@
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)",
-            "replace": "$1"
+            "function": "prefixed_number",
+            "field": "ADDRESS"
         },
         "street": {
             "function": "regexp",
             "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*?)(?:\\s(?:UNIT|SPACE|#)\\s?.*)$",
+            "pattern": "^(?:[0-9]+ )(.*?)(?: (?:UNIT|SPACE|#) ?.*)?$",
             "replace": "$1"
         },
         "unit": {
             "function": "regexp",
             "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(?:.*?)((?:UNIT|SPACE|#)\\s?.*)$"
+            "pattern": "^(?:[0-9]+ )(?:.*?)((?:UNIT|SPACE|#) ?.*)$"
         }
+    },
+    "test": {
+        "enabled": true,
+        "description": "Ensure Valid Regex for City of Sundance",
+        "acceptance-tests": [{
+			"description": "address with no unit",
+			"inputs": {
+				"ADDRESS": "300 N GREEN RIVER AVE"
+			},
+			"expected": {
+				"number": "300",
+				"street": "N GREEN RIVER AVE",
+				"unit": ""
+			}
+        },{
+			"description": "address with UNIT",
+			"inputs": {
+				"ADDRESS": "34 BARLOW CANYON RD UNIT A"
+			},
+			"expected": {
+				"number": "34",
+				"street": "BARLOW CANYON RD",
+				"unit": "UNIT A"
+			}
+        },{
+			"description": "address with # Unit",
+			"inputs": {
+				"ADDRESS": "481 SAND CREEK RD #1"
+			},
+			"expected": {
+				"number": "481",
+				"street": "SAND CREEK RD",
+				"unit": "#1"
+			}
+        },{
+			"description": "address with space",
+			"inputs": {
+				"ADDRESS": "1657 STATE HIGHWAY 24 SPACE 1"
+			},
+			"expected": {
+				"number": "1657",
+				"street": "STATE HIGHWAY 24",
+				"unit": "SPACE 1"
+			}
+        },{
+			"description": "Ensure unit changes never grab the highway ref",
+			"inputs": {
+				"ADDRESS": "1657 STATE HIGHWAY 24"
+			},
+			"expected": {
+				"number": "1657",
+				"street": "STATE HIGHWAY 24",
+				"unit": ""
+			}
+		}]
     }
 }
