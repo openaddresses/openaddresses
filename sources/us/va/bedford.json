@@ -10,18 +10,33 @@
         "county": "Bedford"
     },
     "website": "http://www.co.bedford.va.us/GIS/index.asp",
-    "data": "http://bedfordco.dreamhosters.com/SHPFiles/E911Address.zip",
+    "data": "http://webgis.bedfordcountyva.gov/arcgis/rest/services/BRWA/MapServer/1",
     "license": {
         "text": "Indemnification",
         "attribution": false,
         "share-alike": false
     },
     "year": "2014",
-    "type": "http",
-    "compression": "zip",
+    "type": "ESRI",
     "conform": {
-        "type": "shapefile",
+        "type": "geojson",
         "number": "ADDRESS",
-        "street": "ROADNAME"
+        "street": {
+            "function": "chain",
+            "variable": "street_wip",
+            "functions": [
+                {
+                    "function": "remove_prefix",
+                    "field": "FULLADDR",
+                    "field_to_remove": "ADDRESS"
+                },
+                {
+                    "function": "remove_postfix",
+                    "field": "street_wip",
+                    "field_to_remove": "APARTMENT"
+                }
+            ]
+        },
+        "unit": "APARTMENT"
     }
 }
