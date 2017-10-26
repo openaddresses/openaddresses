@@ -14,16 +14,14 @@
     "note": "Number contains letters",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+        "number": "FIRENUMBER",
+        "street": [
+            "PRE_DIR",
+            "STREETNAME",
+            "SUFFIX",
+            "POST_DIR"
+        ],
+        "city": "TOWN",
+        "postcode": "ZIPCODE"
     }
 }

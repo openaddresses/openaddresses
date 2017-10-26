@@ -9,21 +9,69 @@
         "state": "sc",
         "county": "Greenville"
     },
-    "data": "http://www.gcgis.org/arcgis/rest/services/CAM/CAM_JS/MapServer/19",
+    "data": "http://www.gcgis.org/arcgis/rest/services/CIM/CIM/MapServer/72",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "ADDRESS"
         },
         "street": {
             "function": "regexp",
             "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "pattern": "^\\d+\\s+(?:\\d+\\s+)?(.+)$"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^\\d+\\s+(\\d+\\s+)"
         },
         "postcode": "ZIPCODE"
+    },
+    "test": {
+        "enabled": true,
+        "description": "these are the tests that exercise extract the 2nd number as unit",
+        "acceptance-tests": [
+            {
+                "description": "address without unit",
+                "inputs": {
+                    "ADDRESS": "107 MOUNT LEBANON CHURCH RD",
+                    "ZIPCODE": "29651"
+                },
+                "expected": {
+                    "number": "107",
+                    "street": "MOUNT LEBANON CHURCH RD",
+                    "unit": "",
+                    "postcode": "29651"
+                }
+            },
+            {
+                "description": "address with unit",
+                "inputs": {
+                    "ADDRESS": "803 15 EDWARDS RD",
+                    "ZIPCODE": "29615"
+                },
+                "expected": {
+                    "number": "803",
+                    "street": "EDWARDS RD",
+                    "unit": "15",
+                    "postcode": "29615"
+                }
+            },
+            {
+                "description": "address with unit before cardinal street name",
+                "inputs": {
+                    "ADDRESS": "510 1 6TH ST",
+                    "ZIPCODE": "29611"
+                },
+                "expected": {
+                    "number": "510",
+                    "street": "6TH ST",
+                    "unit": "1",
+                    "postcode": "29611"
+                }
+            }
+        ]
     }
 }

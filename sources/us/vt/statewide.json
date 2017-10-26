@@ -8,17 +8,22 @@
         "state": "vt"
     },
     "website": "http://vcgi.vermont.gov/warehouse/theme_index",
-    "data": "http://maps.vcgi.org/gisdata/vcgi/packaged_zips/EmergencyE911_ESITE.zip",
+    "data": "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_EMERGENCY_SP_NOCACHE_v1/MapServer/29",
     "license": "http://vcgi.vermont.gov/sites/vcgi/files/warehouse/VCGI_Warranty_Copyright_Notice_2013.pdf",
     "attribution": "VT Enhanced 911 Board, VCGI",
     "year": "2013",
-    "type": "http",
-    "compression": "zip",
+    "type": "ESRI",
     "note": "E911 Site locations including buildings, hydrants, public phones",
     "conform": {
-        "type": "shapefile",
-        "number": "HOUSENUMBE",
-        "street": "PRIMARYNAM",
+        "type": "geojson",
+        "number": "HOUSENUMBER",
+        "street": [
+            "PD",
+            "PT",
+            "SN",
+            "ST",
+            "SD"
+        ],
         "city": "TOWNNAME",
         "postcode": "ZIP",
         "addrtype": "SITETYPE"

@@ -13,7 +13,7 @@ OpenAddresses is a collection of _authoritative data_ for address locations arou
 Have a potential source? Fantastic! Follow these steps to help us get it into the project as fast as possible!
 
 - Check `./sources/` to make sure we don't have it already. Sources that overlap are ok as long as they are coming from different providers.
-- Check the [wiki](https://github.com/openaddresses/openaddresses/wiki) to make sure it isn't listed there
+- Check the [wiki](https://github.com/openaddresses/openaddresses/wiki) to make sure it isn't listed there.
 
 Still a new source? Awesome!
 - If the source is raster data (images/webmap/not downloadable) please add it to the [Raster Wiki](https://github.com/openaddresses/openaddresses/wiki/Raster-Data-Sources)
@@ -29,7 +29,7 @@ we’d rather a duplicate than miss it altogether!
 ### Errors & Current Sources
 
 If you are reporting an error, an improvement, or a suggestion,
-[create a github issue here](https://github.com/openaddresses/openaddresses/issues/new)
+[create a github issue here](https://github.com/openaddresses/openaddresses/issues/new).
 We will do our best to review your issue and either fix or add the feature(s) to our plan.
 
 ## Contributing Sources
@@ -69,7 +69,7 @@ City     | us/md/city_of_baltimore.json |
 
 Sources use a standard set of attributes to allow for machine processing of
 each source. Use these tags where applicable. Check out other sources in the
-`./sources/` directory for examples
+`./sources/` directory for examples.
 
 #### Core Tags
 
@@ -102,6 +102,7 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
 ---------------- | --- | ----
 `type`           | Yes | The type properties stores the format. It can currently be one of `gdb`, `shapefile`, `shapefile-polygon`, `csv`, `geojson`, or `xml` (for GML).
 `srs`            |     | Allows one to set a custom source srs. Currently only supported by `type:shapefile`, `type:shapefile-polygon`, and `type:csv`. Should be in the format of `EPSG:####` and can be any code supported by `ogr2ogr`. Modern shapefiles typically store their project in a `.prj` file. If this file exists, this tag should be omitted.
+`layer`          |     | The `gdb` source type allows multiple layers of geodata in a single input file. Use the `layer` tag to specify which of those layers to use. It can either be the string name of the layer or an integer index of the layer.
 `file`           |     | The majority of zips contain a single shapefile. Sometimes zips will contain multiple files, or the shapefile that is needed is located in a folder hierarchy in the zip. Since the program only supports determining single shapefiles not in a subfolder, file can be used to point the program to an exact file. The proper syntax would be `"file": "addresspoints/address.shp"` if the file was under a single subdirectory called `addresspoints`. Note there is no preceding forward slash.
 `encoding`       |     | A character encoding from which an input file will first be converted (into utf-8). Must be [recognizable by `iconv`](https://www.gnu.org/software/libiconv/).
 `csvsplit`       |     | The character to delimit input CSV’s by. Defaults to comma.
@@ -139,21 +140,11 @@ Attribute tags are functions or field names for mapping the source data into a g
 `addrtype` |     | Type of address. `industrial`, `residential`, etc.
 `notes`    |     | Legal description of address or notes about the property.
 
+##### Assembling Attributes
 
-##### Attribute Functions
+In many sources, attribute values are provided in either single fields or several fields to be merged together.  Often times the `number` attribute is a single field in the source and the `street` attribute is merged together from several fields (see [Alameda County, California](sources/us/ca/alameda.json)).  
 
-Attribute functions allow basic text manipulation to be performed on any of the given attribute tags.
-This list gives a brief summary of what each function does. Examples can be found below.
-
-Function | Note
--------- | -----
-`regexp` | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field
-`join`   | Allow multiple fields to be joined with a given delimiter.
-`format` | Allow multiple fields to be formatted into a single string.
-
-##### Attribute Tag Examples
-
-###### Basic Usage
+###### Single Source Field
 
 The most basic usage is simply mapping an attribute tag to a field in the source data.
 
@@ -168,7 +159,7 @@ _Example_
 "street": "SITUS_STREET"
 ```
 
-###### Merge Field
+###### Merged Fields
 
 Often times there are multiple fields that should be merged together. An array (`[]`) of field names
 can be used with any attribute tag. The field names will joined with a space (` `).
@@ -184,87 +175,22 @@ _Example_
 "street": ["SITUS_STREET_PRE", "SITUS_STREET_NME", "SITUS_STREET_TYP", "SITUS_STREET_POST"]
 ```
 
-###### regexp function
+##### Attribute Functions
 
-_Format_
-```JSON
-"{Attribute Tag}": {
-    "function": "regexp",
-    "field": "{Field Name}",
-    "pattern": "{Regex Pattern}",
-    "replace": "{Replace Pattern}"
-}
-```
+Some sources do not offer data nicely separated into distinct fields so advanced techniques must be used extract and format values appropriately.  Attribute functions allow basic text manipulation to be performed on any of the given attribute tags.
+This list gives a brief summary of what each function does.  For more information and examples regarding attribute functions, click [here](ATTRIBUTE_FUNCTIONS.md).  
 
-_Example_
+Function | Note
+-------- | -----
+[`join`](ATTRIBUTE_FUNCTIONS.md#join) | Allow multiple fields to be joined with a given delimiter
+[`format`](ATTRIBUTE_FUNCTIONS.md#format) | Allow multiple fields to be formatted into a single string
+[`prefixed_number`](ATTRIBUTE_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow number to be extracted from the beginning of a single field (extracts `102` from `102 East Maple Street`)
+[`postfixed_street`](ATTRIBUTE_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow street to be extracted from the end of a single field (extracts `East Maple Street` from `102 East Maple Street`)
+[`remove_prefix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the beginning of another field value
+[`remove_postfix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the end of another field value
+[`regexp`](ATTRIBUTE_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field
 
-If no replace attribute is given, numbered capture groups are concatenated together to form the output. If a SITUS_ADDRESS record contains "301 Main St", the regex below will return "301" to isolate the address number.
-
-_Example_
-```JSON
-"number": {
-    "function": "regexp",
-    "field": "SITUS_ADDRESS",
-    "pattern": "^([0-9]+)"
-}
-```
-
-If a replace field is given the `pattern` is found and replaced. Numbered capture groups in the pattern can be referenced using the `${n}` syntax as below. This would then return the "Main St" portion of the SITUS_ADDRESS record containing "301 Main St".
-
-_Example_
-```JSON
-"street": {
-    "function": "regexp",
-    "field": "SITUS_ADDRESS",
-    "pattern": "^(?:[0-9]+ )(.*)",
-    "replace": "$1"
-}
-```
-
-###### join function
-
-The join function allows fields to be merged given an arbitrary delimiter. For delimiting
-by spaces there is a more concise format - see the example for `Merge Fields`
-
-_Format_
-```JSON
-"{Attribute Tag}": {
-    "function": "join",
-    "fields": ["{Field1}", "{Field2}", "etc..." ],
-    "separator": "{Separator}"
-}
-```
-
-_Example_
-```JSON
-"number": {
-    "function": "join",
-    "fields": ["BLOCK_NUM", "BLOCK_GRP"],
-    "separator": "-"
-}
-```
-
-###### format function
-
-The format function allows fields to be formatted into a single string. Each item in the fields list can be referenced with a numbered variable such as `$1`, `$2`, etc.
-
-_Format_
-```JSON
-"{Attribute Tag}": {
-    "function": "format",
-    "fields": ["{Field1}", "{Field2}", "etc..." ],
-    "format": "{Format String}"
-}
-```
-
-_Example_
-```JSON
-"number": {
-    "function": "format",
-    "fields": ["number", "letter", "supplement"],
-    "separator": "$1$2-$3"
-}
-```
+Sources vary in how they store data so several approaches to conforming attributes may apply.   
 
 #### Coverage Object
 
@@ -273,22 +199,24 @@ provides hints about the geographic extent of the address file and is used to
 render the map at [data.openaddresses.io](http://data.openaddresses.io).
 
 This object minimally contains some combination of `country`, `state`, and
-either `city` or `county`, all strings
+either `city` or `county`, all strings.
 
 If one of the following tags are provided, it will be used to render the source
 to the map at [data.openaddresses.io](http://data.openaddresses.io):
 
-1. **US Census** with `geoid` containing two-digit state or five-digit county
-   [FIPS code](https://www.census.gov/geo/reference/codes/cou.html).
-   See [Alameda County](sources/us/ca/alameda.json)
-   and [Virginia](sources/us/va/statewide.json) for examples.
+1. **US Census** with `geoid` containing [FIPS code](https://www.census.gov/geo/reference/codes/cou.html)
+    - 2-digit state, example: [Virginia](sources/us/va/statewide.json)
+    - 5-digit county, example: [Alameda County, California](sources/us/ca/alameda.json)
+    - 7-digit city, example: [Johns Creek, Georgia](sources/us/ga/city_of_johns_creek.json)
 2. **ISO 3166** with `alpha2` containing alphanumeric two-letter
    [ISO-3166-1 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
    or [ISO-3166-2 subdivision code](http://en.wikipedia.org/wiki/ISO_3166-2).
-   See [New Zealand](sources/nz/countrywide.json), [Victoria, Australia](sources/au/victoria.json),
+   See [New Zealand](sources/nz/countrywide.json), [Victoria, Australia](sources/au/vic/statewide.json),
    or [Dolnośląskie, Poland](sources/pl/dolnoslaskie.json) for examples.
-3. **geometry** with _Polygon_ or _MultiPolygon_ type unprojected
-   [GeoJSON geometry object](http://geojson.org/geojson-spec.html#geometry-objects).
+3. **geometry** with unprojected [GeoJSON geometry object](http://geojson.org/geojson-spec.html#geometry-objects)
+    - _Polygon_ - for example, [state of Arkansas](sources/us/ar/statewide.json)
+    - _MultiPolygon_ - for example, [state of Tennesse](sources/us/tn/statewide.json)
+    - _Point_ - for example, city of [Johns Creek](sources/us/ga/city_of_johns_creek.json), estimated from another mapping provider or [Who's on First](https://whosonfirst.mapzen.com/spelunker/)
 
 #### Optional Tags
 
@@ -302,7 +230,7 @@ Additional metadata helps future proof the project!
 `note`        | A String containing a human readable note.
 `attribution` | **Deprecated:** Where the license requires attribution, add it here. example `CC-BY United Federation of Planets`
 `email`       | This email is used to send automated emails to the data provider if a user changes their data. Do not set unless the data provider wants to receive updates.
-`language`    | ISO 639-1 code for the language of the data. For example: `en`, `fr` or `de`.
+`language`    | [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1), [ISO 639-2](https://en.wikipedia.org/wiki/ISO_639-2), or [ISO 639-3](https://en.wikipedia.org/wiki/ISO_639-3) code for the language of the data. For example: `en`, `fr`, `de`, or `lld`.
 
 #### Example
 
@@ -339,7 +267,6 @@ and one for reading the [Dutch addresses](https://github.com/openaddresses/opena
 An application,which uses OpenAddresses and wishes to generate multilingual address entries, can access the data via both metadata entries
 and merge the language versions by identifying the address items by their `id` unique identifier tag.
 
-
 ### Formatting:
 
 A few notes on formatting:
@@ -351,4 +278,3 @@ A few notes on formatting:
 
 Although these are read by a machine, they are maintained by us mortals.
 Following the formatting guidelines keeps the rest of us sane!
-

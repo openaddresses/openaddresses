@@ -8,19 +8,16 @@
         "country": "us",
         "state": "sd"
     },
-    "data": "http://web1.mobile311.com/arcgis/rest/services/LawrenceCounty/LawrenceCounty/MapServer/16",
+    "data": "http://web1.mobile311.com/arcgis/rest/services/SouthDakota/LawrenceCounty/MapServer/19",
     "type": "ESRI",
     "conform": {
         "number": {
-            "function": "regexp",
-            "field": "SITUS",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "SITUS"
         },
         "street": {
-            "function": "regexp",
-            "field": "SITUS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "function": "postfixed_street",
+            "field": "SITUS"
         },
         "type": "geojson"
     }

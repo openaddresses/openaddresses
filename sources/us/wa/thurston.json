@@ -18,14 +18,18 @@
         "number": {
             "function": "regexp",
             "field": "SITUS_STRE",
-            "pattern": "^([0-9]+)(.*)",
-            "replace": "$1"
+            "pattern": "^([0-9]+)"
         },
         "street": {
             "function": "regexp",
             "field": "SITUS_STRE",
-            "pattern": "^(?:[0-9]+ )(.*)",
+            "pattern": "^(?:[0-9]+ )(.*?)(?: (UNIT|APT|BLDG|STE|#).*|$)",
             "replace": "$1"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "SITUS_STRE",
+            "pattern": " ((?:(?:(?:UNIT|APT|BLDG|STE) )|(?:#)).+)$"
         },
         "city": "SITUS_CITY",
         "postcode": "SITUS_ZIP"

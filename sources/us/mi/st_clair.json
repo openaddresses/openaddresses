@@ -1,0 +1,25 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "26147",
+            "name": "St. Clair County",
+            "state": "Michigan"
+        },
+        "country": "us",
+        "state": "mi",
+        "county": "St. Clair"
+    },
+    "data": "http://gis.stclaircounty.org:6080/arcgis/rest/services/parcels_web/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "PROP_ADDRESS_COMBINED"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "PROP_ADDRESS_COMBINED"
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -97.34,
+                37.68
+            ]
+        },
+        "US Census": {
+            "geoid": "2079000",
+            "name": "City of Witchita",
+            "state": "Kansas"
+        },
+        "country": "us",
+        "state": "ks",
+        "city": "Witchita"
+    },
+    "data": "http://gismaps.wichita.gov/agsweb/rest/services/COWGIS/Property_and_Location/MapServer/4",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "Prop_Addr"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "Prop_Addr"
+        },
+        "postcode": "Prop_zip",
+        "city": "Prop_City"
+    }
+}

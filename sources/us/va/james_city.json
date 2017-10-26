@@ -10,7 +10,7 @@
         "county": "James City"
     },
     "website": "https://www.jamescitycountyva.gov/assessments/gis-mapping-layers.html",
-    "data": "ftp://property.jamescitycountyva.gov/GIS/layers/jcc_parcels.zip",
+    "data": "ftp://property.jamescitycountyva.gov/GIS/layers/JCC_Address_Points.zip",
     "type": "ftp",
     "compression": "zip",
     "note": {
@@ -19,17 +19,16 @@
         "metadata": "ftp://property.jamescitycountyva.gov/GIS/layers/GIS_Metadata.pdf"
     },
     "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "locaddr",
-            "pattern": "^(\\S+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "locaddr",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
-        },
-        "type": "shapefile-polygon"
+        "type": "shapefile",
+        "number": "ADDR_NUM",
+        "street": [
+            "PRE_DIR",
+            "PLAINST",
+            "STREETTYPE",
+            "SUF_DIR"
+        ],
+        "unit": "APT",
+        "city": "City",
+        "postcode": "Zip_Code"
     }
 }

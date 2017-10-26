@@ -1,0 +1,30 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "TW-CYI",
+            "country": "Taiwan"
+        },
+        "country": "tw"
+    },
+    "data": "http://regis.chiayi.gov.tw/ArcGIS/rest/services/cyDoor/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number":{
+            "function": "regexp",
+            "field": "ADDR_NO",
+            "pattern": "^([0-9\uff10-\uff19]+\u865f?)"
+        },
+        "unit":{
+            "function": "regexp",
+            "field": "ADDR_NO",
+            "pattern": "^(?:[0-9\uff10-\uff19]+\u865f?)(.*)"
+        },
+        "street": {
+            "function": "join",
+            "fields": ["STREET","ALLEY","ALLEY1"],
+            "separator": ""
+        },
+        "district": "LI_CODE"
+    }
+}

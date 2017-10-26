@@ -1,0 +1,30 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -87.614,
+                37.996
+            ]
+        },
+        "US Census": {
+            "geoid": "1822000",
+            "name": "City of Evansville",
+            "state": "Indiana"
+        },
+        "country": "us",
+        "state": "in",
+        "city": "Evansville"
+    },
+    "data": "http://maps.evansvillegis.com/arcgis_server/rest/services/PROPERTY/ADDRESSES/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "ADDRESS_NUMBER",
+        "street": {
+            "function": "remove_prefix",
+            "field": "prop_street",
+            "field_to_remove": "ADDRESS_NUMBER"
+        }
+      }
+}

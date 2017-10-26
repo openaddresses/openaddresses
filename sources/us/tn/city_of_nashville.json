@@ -1,19 +1,40 @@
 {
     "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -86.925,
+                36.186
+            ]
+        },
+        "US Census": {
+            "geoid": "4752000",
+            "name": "City of Nashville",
+            "state": "Tennessee"
+        },
         "country": "us",
         "state": "tn",
         "city": "Nashville"
     },
     "attribution": "City of Nashville",
-    "data": "http://maps.nashville.gov/arcgis/rest/services/Cadastral/Parcels/FeatureServer/0",
-    "type": "ESRI",
+    "note": "Esri server is at https://maps.nashville.gov/arcgis/rest/services/Addressing/AddressPoints/MapServer/0 but times out a lot so the cache should be refresh periodically",
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/1a6f9f/us-tn-nashville.geojson.zip",
+    "type": "http",
+    "compression": "zip",
     "conform": {
-        "number": "prop_house_num",
-        "street": "prop_street",
-        "unit": "prop_suite",
-        "city": "prop_city",
-        "region": "prop_region",
         "type": "geojson",
-        "postcode": "prop_zip"
+        "number": [
+            "Number",
+            "Fraction"
+        ],
+        "street": [
+            "StreetPrefixCode",
+            "StreetName",
+            "StreetTypeCode",
+            "PostDirectionCode"
+        ],
+        "unit": "Suite",
+        "city": "City",
+        "postcode": "Zip"
     }
 }

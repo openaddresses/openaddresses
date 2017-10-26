@@ -10,8 +10,8 @@
         "county": "Citrus"
     },
     "attribution": "Citrus County",
-    "data": "http://ftp.bocc.citrus.fl.us/GIS/website/data/ADDRESS_POINTS.zip",
-    "website": "http://gis.citrus.fl.us/data-downloads.html",
+    "data": "http://ftp.citrusbocc.com/GIS/website/data/ADDRESS_POINTS.zip",
+    "website": "https://gis.citrusbocc.com/data-downloads.html",
     "type": "http",
     "compression": "zip",
     "conform": {
@@ -27,6 +27,10 @@
         "unit": "STSUB",
         "city": "CITY",
         "region": "STATE",
-        "postcode": "ZIP"
+        "postcode": {
+            "function": "regexp",
+            "field": "ZIP",
+            "pattern": "^(\\d+)"
+        }
     }
 }

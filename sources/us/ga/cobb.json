@@ -1,0 +1,24 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "13067",
+            "name": "Cobb County",
+            "state": "Georgia"
+        },
+        "country": "us",
+        "state": "ga",
+        "county": "Cobb"
+    },
+    "type": "ESRI",
+    "data": "http://www.cobbgis.org:81/arcgislb1/rest/services/tax/cobbparcelsmap_wgs/MapServer/3",
+    "conform": {
+        "type": "geojson",
+        "number": "ST_NUMBER",
+        "street": {
+            "function": "remove_prefix",
+            "field": "SITUS_ADDR",
+            "field_to_remove": "ST_NUMBER"
+        },
+        "unit": "UNIT_NUM"
+    }
+}

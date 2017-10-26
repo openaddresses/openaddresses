@@ -13,7 +13,12 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "add2",
-        "street": "add4"
+        "number": {
+            "function": "remove_postfix",
+            "field": "Addcomp",
+            "field_to_remove": "ADD4"
+        },
+        "street": "ADD4",
+        "unit": "UNIT_SUITE"
     }
 }

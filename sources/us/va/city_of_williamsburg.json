@@ -1,0 +1,29 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [ -76.717, 37.275 ]
+        },
+        "US Census": {
+            "geoid": "51830",
+            "name": "City of Williamsburg",
+            "state": "Virginia"
+        },
+        "country": "us",
+        "state": "va",
+        "city": "Williamsburg"
+    },
+    "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Williamsburg/Williamsburg_WL_P/MapServer/1",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "ADDRESS"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "ADDRESS"
+        }
+    }
+}

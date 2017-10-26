@@ -1,0 +1,35 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -80.215,
+                32.999
+            ]
+        },
+        "US Census": {
+            "geoid": "4570270",
+            "name": "City of Summerville",
+            "state": "South Carolina"
+        },
+        "country": "us",
+        "state": "sc",
+        "city": "Summerville"
+    },
+    "data": "http://arcgis4.roktech.net/arcgis/rest/services/Summerville/GoMaps4/MapServer/1",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "ADDRESS"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "ADDRESS"
+        },
+        "unit": "UNIT_TYPE",
+        "city": "CITY",
+        "postcode": "ZIP_CODE"
+    }
+}
