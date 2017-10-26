@@ -9,8 +9,12 @@
         "state": "nc",
         "county": "Henderson"
     },
+    "data": "https://gisproxy.hendersoncountync.gov/arcgis/rest/services/All_Dynamic_Layers/MapServer/1",
+    "type": "ESRI",
+    "website": "http://www.hendersoncountync.org/gis/gisdownload.html",
     "conform": {
-        "type": "shapefile",
+        "type": "geojson",
+        "id": "ADDRESSID",
         "number": "ADDNUM",
         "street": [
             "PREDIR",
@@ -19,10 +23,9 @@
             "POSTDIR"
         ],
         "unit": "UNIT",
-        "postcode": "ZIP_CODE"
-    },
-    "data": "ftp://207.4.201.222/Public/Addresses.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "website": "http://www.hendersoncountync.org/gis/gisdownload.html"
+        "city": "POST_COM",
+        "district": "COUNTY",
+        "region": "STATE",
+        "postcode": "POST_CODE"
+    }
 }
