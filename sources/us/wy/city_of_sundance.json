@@ -24,8 +24,13 @@
         "street": {
             "function": "regexp",
             "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
+            "pattern": "^(?:[0-9]+ )(.*?)(?:\\s(?:UNIT|SPACE|#)\\s?.*)$",
             "replace": "$1"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(?:.*?)((?:UNIT|SPACE|#)\\s?.*)$"
         }
     }
 }
