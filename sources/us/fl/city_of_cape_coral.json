@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -81.996562,
+                26.644142
+            ]
+        },
+        "US Census": {
+            "geoid": "1210275",
+            "name": "Cape Coral",
+            "state": "Florida"
+        },
+        "country": "us",
+        "state": "fl",
+        "county": "Lee",
+        "city": "Cape Coral"
+    },
+    "data": "https://capeims.capecoral.net/arcgis/rest/services/AGOL/Ownership_Public/FeatureServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "Street_Number",
+        "street": {
+            "function": "chain",
+            "variable": "street_wip",
+            "functions": [
+                {
+                    "function": "remove_prefix",
+                    "field": "Site_Address",
+                    "field_to_remove": "Street_Number"
+                },
+                {
+                    "function": "remove_postfix",
+                    "field": "street_wip",
+                    "field_to_remove": "Site_Unit_Number"
+                }
+            ]
+        },
+        "unit": "Site_Unit_Number",
+        "postcode": "SiteZip"
+    }
+}
