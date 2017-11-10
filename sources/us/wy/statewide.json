@@ -13,16 +13,57 @@
     "compression": "zip",
     "conform": {
         "type": "geojson",
+        "id": "PARCELNO",
         "number": {
             "function": "regexp",
             "field": "LOCATIONADDRESS",
             "pattern": "^([0-9]+)"
         },
+        "unit": {
+            "function": "regexp",
+            "field": "LOCATIONADDRESS",
+            "pattern": "^(?:[0-9]+ )(?:.*?)( {2}.*)$"
+        },
         "street": {
             "function": "regexp",
             "field": "LOCATIONADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
+            "pattern": "^(?:[0-9]+ )(.*?)(?: {2}.*)?$",
             "replace": "$1"
         }
+    },
+    "test": {
+        "enabled": true,
+        "description": "Ensure Valid Regex for Unit Numbers",
+        "acceptance-tests": [{
+            "description": "Parse address with no unit",
+            "inputs": {
+                "LOCATIONADDRESS": "100 N 9TH ST"
+            },
+            "expected": {
+                "number": "100",
+                "street": "N 9TH ST",
+                "unit": ""
+            }
+        },{
+            "description": "Parse address with unit",
+            "inputs": {
+                "LOCATIONADDRESS": "100 N 7TH ST  A"
+            },
+            "expected": {
+                "number": "100",
+                "street": "N 7TH ST",
+                "unit": "A"
+            }
+        },{
+            "description": "Parse address with unit",
+            "inputs": {
+                "LOCATIONADDRESS": "100 MITCHELL ST  F-6"
+            },
+            "expected": {
+                "number": "100",
+                "street": "MITCHELL ST",
+                "unit": "F-6"
+            }
+        }]
     }
 }

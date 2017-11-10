@@ -20,16 +20,19 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "ADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "ADDRESS"
-        },
-        "unit": "UNIT_TYPE",
-        "city": "CITY",
-        "postcode": "ZIP_CODE"
+        "id": "SITEADDID",
+        "number": "ADDRNUM",
+        "street": [
+            "ADDPREDIR",
+            "ADDRRDNAME",
+            "ADDRRDTYPE",
+            "ADDSUFDIR"
+        ],
+        "unit": [
+            "UNITTYPE",
+            "UNITID"
+        ],
+        "district": "COUNTY",
+        "postcode": "ADDRZIP"
     }
 }
