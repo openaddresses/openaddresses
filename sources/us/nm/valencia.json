@@ -11,10 +11,9 @@
         "type": "geojson",
         "number": "HouseNum",
         "street": {
-            "function": "regexp",
+            "function": "remove_prefix",
             "field": "Situs",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
+            "field_to_remove": "HouseNum"
         }
     }
 }
