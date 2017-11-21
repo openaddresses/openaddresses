@@ -16,9 +16,18 @@
             "field": "Situs2"
         },
         "street": {
+            "function": "postfixed_street",
+            "field": "Situs2"
+        },
+        "postcode": {
             "function": "regexp",
-            "field": "Situs2_wip",
-            "pattern": "(.*?)( #[A-Za-z0-9])",
+            "field": "Situs1",
+            "pattern": "[0-9]{5}$"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "Situs1",
+            "pattern": "(.*)( CA .*)",
             "replace": "$1"
         },
         "unit": {
