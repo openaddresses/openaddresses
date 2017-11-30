@@ -1,0 +1,30 @@
+{
+    "coverage": {
+        "country": "us",
+        "state": "wa"
+    },
+    "data": "http://geoservices.wa.gov/arcgis/rest/services/Parcels/ECY_Washington_State_Parcel_Database_2017/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "SITUS_ADDRESS"
+        },
+        "number": {
+            "function": "postfixed_street",
+            "field": "SITUS_ADDRESS"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "SITUS_CITY_NM",
+            "pattern": "(.*)( WA .*)",
+            "replace": "$1"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "SITUS_CITY_NM",
+            "pattern": "[0-9]{5}$"
+        }
+    }
+}
