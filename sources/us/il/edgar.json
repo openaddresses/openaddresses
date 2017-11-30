@@ -5,7 +5,7 @@
         "state": "il",
         "county": "Edgar"
     },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_edgar_co_il_taxmap_PAT/MapServer/0",
+    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_edgar_co_il_search_PAT/MapServer/2",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
@@ -16,18 +16,6 @@
         "street": {
             "function": "postfixed_street",
             "field": "Address"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "CityStateZip",
-            "pattern": "(.*)( IL .*)",
-            "replace": "$1"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "CityStateZip",
-            "pattern": "(.* IL )(.*)",
-            "replace": "$2"
         }
     }
 }
