@@ -1,0 +1,21 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "17045", "name": "Edgar County", "state": "Illinois"},
+        "country": "us",
+        "state": "il",
+        "county": "Edgar"
+    },
+    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_edgar_co_il_search_PAT/MapServer/2",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "Address"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "Address"
+        }
+    }
+}
