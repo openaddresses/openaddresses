@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "country": "us",
+        "state": "mi",
+        "county": "Mason"
+    },
+    "data": "http://data.openaddresses.io/cache/uploads/ingalls/us-mi-mason.zip",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile-polygon",
+        "id": "Parcel",
+        "number": {
+            "function": "prefixed_number",
+            "field": "PropStreet"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "PropStreet"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "PropCitySt",
+            "pattern": "(.*),.*",
+            "replace": "$1"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "PropCitySt",
+            "pattern": ".*([0-9]{5})$",
+            "replace": "$1"
+        }
+    }
+}
