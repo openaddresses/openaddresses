@@ -14,16 +14,12 @@
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "Situs",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
+            "function": "prefixed_number",
+            "field": "Situs"
         },
         "street": {
-            "function": "regexp",
-            "field": "Situs",
-            "pattern": "^(?:[0-9]+)(.*)",
-            "replace": "$1"
+            "function": "postfixed_street",
+            "field": "Situs"
         }
     }
 }
