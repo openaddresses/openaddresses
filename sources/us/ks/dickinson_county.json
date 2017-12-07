@@ -12,18 +12,28 @@
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "CRS.dbo.DKBasemap.PropertyAddress",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "PropertyAddress"
         },
         "street": {
             "function": "regexp",
-            "field": "CRS.dbo.DKBasemap.PropertyAddress",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "field": "PropertyAddress",
+            "pattern": "^([0-9]+ )(.*),(.*),(.*)([0-9]{5})$",
+            "replace": "$2"
         },
-        "postcode": ""
+        "city": {
+            "function": "regexp",
+            "field": "PropertyAddress",
+            "pattern": "^(?:[0-9]+ )(.*),(.*),(.*)([0-9]{5})$",
+            "replace": "$3"
+        },
+         "postcode": {
+            "function": "regexp",
+            "field": "PropertyAddress",
+            "pattern": ".*([0-9]{5})$",
+            "replace": "$1"
+        }       }
     },
-    "data": "http://67.214.197.22/arcgis/rest/services/BasicMap2013/MapServer/7",
+    "data": "http://dkcoksgis.org/arcgis/rest/services/PublicMaps/ParcelSearch/MapServer/28",
     "type": "ESRI"
 }
