@@ -80,7 +80,7 @@ instead of a pull request. We’ll determine if the data is suitable for inclusi
 
  Tag          | Required? | Note
 ------------- | --------- | ----
-`data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal.
+`data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal. If there isn't a good URL for the source, members of the OpenAddresses GitHub organization can upload files to https://results.openaddresses.io/upload-cache which provides a cached URL.
 `type`        | Yes | A string containing the protocol (One of: `http`, `ftp`, `ESRI`)
 `coverage`    | Yes | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String. [See below for more details](#coverage-object)
 `conform`     |     | Optional Object used to find address information in a source. [See below for more details](#conform-object).
