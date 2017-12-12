@@ -1,28 +1,25 @@
 {
     "coverage": {
-        "US Census": {
-            "geoid": "37109",
-            "name": "Lincoln County",
-            "state": "North Carolina"
-        },
+        "US Census": {"geoid": "37109", "name": "Lincoln County", "state": "North Carolina"},
         "country": "us",
         "state": "nc",
         "county": "Lincoln"
     },
-    "data": "http://207.4.172.206/shpfiles/address.zip",
+    "data": "http://data.nconemap.gov/downloads/vector/parcels/Lincoln_parcels_2017_10_17.zip",
     "type": "http",
     "compression": "zip",
-    "website": "http://www.co.lincoln.nc.us/index.aspx?NID=470",
+    "website": "http://data.nconemap.gov/geoportal/catalog/search/resource/details.page?uuid=%7B837C5704-49C8-45A3-B084-AEBF4CD09804%7D",
     "conform": {
-        "street": [
-            "PRE_DIR",
-            "rdname",
-            "rdtype",
-            "POST_DIR"
-        ],
-        "number": "hsenumber",
-        "unit": "HSENUMSUF",
-        "postcode": "STR_ZIP",
-        "type": "shapefile"
+        "type": "shapefile",
+        "file": "nc_lincoln_parcels_pt_2017_10_17.shp",
+        "id": "PARNO",
+        "number": {
+            "function": "prefixed_number",
+            "field": "SITEADD"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "SITEADD"
+        }
     }
 }
