@@ -19,7 +19,11 @@
         "srs": "EPSG:2056",
         "type": "csv",
 		"encoding": "utf-8",
-        "id": "EGID",
+        "id": {
+			"function": "join",
+			"fields": ["EGID", "EDID"],
+			"separator": "-"
+		},
         "number": "DEINR",
         "street": "STRNAME",
         "lon": "GKODE",
