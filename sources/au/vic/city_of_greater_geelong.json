@@ -18,10 +18,9 @@
     },
     "conform": {
         "type": "shapefile-polygon",
-        "id": "PFI",
         "unit": {
             "function": "chain",
-            "variable": "number_wip",
+            "variable": "unit_wip",
             "functions": [
                 {
                     "function": "remove_postfix",
@@ -30,19 +29,30 @@
                 },
                 {
                     "function": "regexp",
-                    "field": "number_wip",
-                    "pattern": "^(.*)[ ]*VIC[ ]*s*",
+                    "field": "unit_wip",
+                    "pattern": "^(.*)[ ]+VIC",
                     "replace": "$1"
                 },
                 {
                     "function": "remove_postfix",
-                    "field": "number_wip",
+                    "field": "unit_wip",
+                    "field_to_remove": "Suburb"
+                },
+                {
+                    "function": "regexp",
+                    "field": "unit_wip",
+                    "pattern": "^(.*),",
+                    "replace": "$1"
+                },
+                {
+                    "function": "remove_postfix",
+                    "field": "unit_wip",
                     "field_to_remove": "Street"
                 },
                 {
                     "function": "regexp",
-                    "field": "number_wip",
-                    "pattern": "^(.*)/(.*)",
+                    "field": "unit_wip",
+                    "pattern": "(?:^(.*)\/.*$)|(?:(^).*$)",
                     "replace": "$1"
                 }
             ]
@@ -59,7 +69,18 @@
                 {
                     "function": "regexp",
                     "field": "number_wip",
-                    "pattern": "^(.*)[ ]*VIC[ ]*s*",
+                    "pattern": "^(.*)[ ]+VIC",
+                    "replace": "$1"
+                },
+                {
+                    "function": "remove_postfix",
+                    "field": "number_wip",
+                    "field_to_remove": "Suburb"
+                },
+                {
+                    "function": "regexp",
+                    "field": "number_wip",
+                    "pattern": "^(.*),",
                     "replace": "$1"
                 },
                 {
@@ -70,13 +91,30 @@
                 {
                     "function": "regexp",
                     "field": "number_wip",
-                    "pattern": "^(.*)/(.*)",
+                    "pattern": "^(.*)\/(.*)",
                     "replace": "$2"
                 }
             ]
         },
         "street": "Street",
         "city": "Suburb",
+        "region": {
+            "function": "chain",
+            "variable": "region_wip",
+            "functions": [
+                {
+                    "function": "remove_postfix",
+                    "field": "FullAddres",
+                    "field_to_remove": "PostCode"
+                },
+                {
+                    "function": "regexp",
+                    "field": "region_wip",
+                    "pattern": "^.*(VIC).*$",
+                    "replace": "$1"
+                }
+            ]
+        },
         "postcode": "PostCode"
     }
 }
