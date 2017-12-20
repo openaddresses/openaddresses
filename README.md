@@ -1,7 +1,11 @@
-# OpenAddresses
+<h1 align="center">OpenAddresses</h1>
 
-[![Build Status](https://travis-ci.org/openaddresses/openaddresses.png?branch=master)](https://travis-ci.org/openaddresses/openaddresses)
-[![Build Status](https://david-dm.org/openaddresses/openaddresses.png)](https://david-dm.org/openaddresses/openaddresses)
+<p align="center">
+  <a href="https://travis-ci.org/openaddresses/openaddresses"><img src="https://travis-ci.org/openaddresses/openaddresses.png?branch=master"/></a>
+  <a href="https://david-dm.org/openaddresses/openaddresses"><img src="https://david-dm.org/openaddresses/openaddresses.png"/></a>
+</p>
+
+## Brief
 
 A global collection of address data sources, open and free to use. Join, download and contribute. We're just getting started.
 
