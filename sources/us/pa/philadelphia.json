@@ -9,7 +9,7 @@
         "state": "pa",
         "county": "Philadelphia"
     },
-    "data": "https://phl.carto.com/api/v2/sql?q=SELECT+location,street_direction,street_name,street_designation,unit,zip_code,ST_X(the_geom)+AS+lon,ST_Y(the_geom)+AS+lat+FROM+opa_properties_public&format=csv",
+    "data": "https://phl.carto.com/api/v2/sql?q=SELECT+parcel_number,location,street_direction,street_name,street_designation,unit,zip_code,ST_X(the_geom)+AS+lon,ST_Y(the_geom)+AS+lat+FROM+opa_properties_public&format=csv",
     "license": {
         "url": "https://www.opendataphilly.org/organization/about/city-of-philadelphia"
     },
@@ -18,6 +18,7 @@
     "conform": {
         "type": "csv",
         "accuracy": 2,
+        "id": "parcel_number",
         "lat": "lat",
         "lon": "lon",
         "number": {
