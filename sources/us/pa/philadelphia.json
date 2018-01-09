@@ -9,18 +9,120 @@
         "state": "pa",
         "county": "Philadelphia"
     },
-    "data": "https://raw.githubusercontent.com/CityOfPhiladelphia/OIT-geodata/master/Open%20Address%20Data/phl_openaddress.csv",
-    "license": "https://github.com/CityOfPhiladelphia/OIT-geodata/blob/master/Open%20Address%20Data/Readme.md",
+    "data": "https://phl.carto.com/api/v2/sql?q=SELECT+location,street_direction,street_name,street_designation,unit,zip_code,ST_X(the_geom)+AS+lon,ST_Y(the_geom)+AS+lat+FROM+opa_properties_public&format=csv",
+    "license": {
+        "url": "https://www.opendataphilly.org/organization/about/city-of-philadelphia"
+    },
     "type": "http",
     "note": "Philadelphia County coterminus with City of Philadelphia",
     "conform": {
         "type": "csv",
-        "number": "NUMBER",
-        "street": "STREET",
-        "unit": "UNIT",
-        "lat": "LAT",
-        "lon": "LON",
-        "postcode": "ZIPCODE",
-        "accuracy": 2
+        "accuracy": 2,
+        "lat": "lat",
+        "lon": "lon",
+        "number": {
+            "function": "regexp",
+            "field": "location",
+            "pattern": "^([0-9A-Z]+(?: 1\/2)?(?:-[0-9A-Z]+(?: 1\/2)?)?) .*$"
+        },
+        "street": ["street_direction", "street_name", "street_designation"],
+        "unit": "unit",
+        "postcode": "zip_code"
+    },
+    "test": {
+        "enabled": true,
+        "description": "Ensure correct construction of street number and street values.",
+        "acceptance-tests": [
+            {
+                "description": "Ranged address with letter suffix",
+                "inputs": {
+                    "location": "2019R-39 S 26TH ST",
+                    "street_direction": "S",
+                    "street_name": "26TH",
+                    "street_designation": "ST",
+                    "unit": "",
+                    "zip_code": ""
+                },
+                "expected": {
+                    "number": "2019R-39",
+                    "street": "S 26TH ST"
+                }
+            },
+            {
+                "description": "Ranged address with half suffix",
+                "inputs": {
+                    "location": "909 1/2-11 S 9TH ST",
+                    "street_direction": "S",
+                    "street_name": "9TH",
+                    "street_designation": "ST",
+                    "unit": "",
+                    "zip_code": ""
+                },
+                "expected": {
+                    "number": "909 1/2-11",
+                    "street": "S 9TH ST"
+                }
+            },
+            {
+                "description": "Ranged address with no suffix",
+                "inputs": {
+                    "location": "2320-30 CARPENTER ST",
+                    "street_direction": "",
+                    "street_name": "CARPENTER",
+                    "street_designation": "ST",
+                    "unit": "",
+                    "zip_code": ""
+                },
+                "expected": {
+                    "number": "2320-30",
+                    "street": "CARPENTER ST"
+                }
+            },
+            {
+                "description": "Address with half suffix",
+                "inputs": {
+                    "location": "1307 1/2 ADAMS AVE",
+                    "street_direction": "",
+                    "street_name": "ADAMS",
+                    "street_designation": "AVE",
+                    "unit": "",
+                    "zip_code": ""
+                },
+                "expected": {
+                    "number": "1307 1/2",
+                    "street": "ADAMS AVE"
+                }
+            },
+            {
+                "description": "Address with letter suffix",
+                "inputs": {
+                    "location": "2025L BEN FRANKLIN PKWY",
+                    "street_direction": "",
+                    "street_name": "BEN FRANKLIN",
+                    "street_designation": "PKWY",
+                    "unit": "",
+                    "zip_code": ""
+                },
+                "expected": {
+                    "number": "2025L",
+                    "street": "BEN FRANKLIN PKWY"
+                }
+            },
+            {
+                "description": "Address with no suffix",
+                "inputs": {
+                    "location": "1815 BEYER AVE",
+                    "street_direction": "",
+                    "street_name": "BEYER",
+                    "street_designation": "AVE",
+                    "unit": "",
+                    "zip_code": ""
+                },
+                "expected": {
+                    "number": "1815",
+                    "street": "BEYER AVE"
+                }
+            }
+        ]
     }
 }
