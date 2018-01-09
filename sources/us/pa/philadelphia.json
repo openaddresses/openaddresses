@@ -27,7 +27,23 @@
         },
         "street": ["street_direction", "street_name", "street_designation"],
         "unit": "unit",
-        "postcode": "zip_code"
+        "postcode": {
+            "function": "chain",
+            "variable": "full_zip",
+            "functions": [
+                {
+                    "function": "regexp",
+                    "field": "zip_code",
+                    "pattern": "^([0-9]{5})-?([0-9]{4}|)$",
+                    "replace": "$1-$2"
+                },
+                {
+                    "function": "regexp",
+                    "field": "full_zip",
+                    "pattern": "^(.*?)-?$"
+                }
+            ]
+        }
     },
     "test": {
         "enabled": true,
@@ -121,6 +137,76 @@
                 "expected": {
                     "number": "1815",
                     "street": "BEYER AVE"
+                }
+            },
+            {
+                "description": "Zip with five digits",
+                "inputs": {
+                    "location": "",
+                    "street_direction": "",
+                    "street_name": "",
+                    "street_designation": "",
+                    "unit": "",
+                    "zip_code": "19143"
+                },
+                "expected": {
+                    "postcode": "19143"
+                }
+            },
+            {
+                "description": "Zip with nine digits",
+                "inputs": {
+                    "location": "",
+                    "street_direction": "",
+                    "street_name": "",
+                    "street_designation": "",
+                    "unit": "",
+                    "zip_code": "191432010"
+                },
+                "expected": {
+                    "postcode": "19143-2010"
+                }
+            },
+            {
+                "description": "Zip with five digits and a dash",
+                "inputs": {
+                    "location": "",
+                    "street_direction": "",
+                    "street_name": "",
+                    "street_designation": "",
+                    "unit": "",
+                    "zip_code": "19143-"
+                },
+                "expected": {
+                    "postcode": "19143"
+                }
+            },
+            {
+                "description": "Zip with 5/4 digits",
+                "inputs": {
+                    "location": "",
+                    "street_direction": "",
+                    "street_name": "",
+                    "street_designation": "",
+                    "unit": "",
+                    "zip_code": "19143-2010"
+                },
+                "expected": {
+                    "postcode": "19143-2010"
+                }
+            },
+            {
+                "description": "No zip",
+                "inputs": {
+                    "location": "",
+                    "street_direction": "",
+                    "street_name": "",
+                    "street_designation": "",
+                    "unit": "",
+                    "zip_code": ""
+                },
+                "expected": {
+                    "postcode": ""
                 }
             }
         ]
