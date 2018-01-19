@@ -10,6 +10,7 @@ testSchemaItself(ajv.compile(schema));
 
 const nonStringValues = [null, 17, {}, [], true];
 const nonBooleanValues = [null, 17, {}, [], 'string'];
+const nonObjectValues = [null, 17, [], true, 'string'];
 
 // this function instructs Ajv on how to load remote sources
 function loadSchema(uri) {
@@ -107,22 +108,6 @@ function testSchemaItself(validate) {
 
             });
 
-            t.end();
-
-        });
-
-        test.test('coverage missing country should fail', (t) => {
-            const source = {
-                coverage: {
-                },
-                type: 'http',
-                data: 'http://xyz.com/'
-            };
-
-            const valid = validate(source);
-
-            t.notOk(valid, 'coverage missing country should fail');
-            t.ok(isMissingPropertyError(validate, '.coverage', 'country'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -600,6 +585,59 @@ function testSchemaItself(validate) {
             t.end();
 
         });
+
+    });
+
+    tape('coverage tests', test => {
+      test.test('missing coverage property should fail', t => {
+          const source = {
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'missing coverage property should fail');
+          t.ok(isMissingPropertyError(validate, '', 'coverage'), JSON.stringify(validate.errors));
+          t.end();
+
+      });
+
+      test.test('non-object coverage should fail', t => {
+          nonObjectValues.forEach(value => {
+              const source = {
+                  coverage: value,
+                  type: 'http',
+                  data: 'http://xyz.com/'
+              };
+
+              const valid = validate(source);
+
+              t.notOk(valid, 'non-object coverage should fail');
+              t.ok(isTypeError(validate, '.coverage'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+      });
+
+      test.test('missing country should fail', t => {
+          const source = {
+              coverage: {
+              },
+              type: 'http',
+              data: 'http://xyz.com/'
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'coverage missing country should fail');
+          t.ok(isMissingPropertyError(validate, '.coverage', 'country'), JSON.stringify(validate.errors));
+          t.end();
+
+      });
+
 
     });
 
