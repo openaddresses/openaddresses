@@ -595,6 +595,113 @@ function testSchemaItself(validate) {
 
     });
 
+    tape('prefixed_number function tests', test => {
+      test.test('missing field property should fail', t => {
+        const source = {
+          coverage: {
+              country: 'some country'
+          },
+          type: 'ESRI',
+          data: 'http://xyz.com/',
+          conform: {
+            type: 'geojson',
+            number: {
+                function: 'prefixed_number'
+            },
+            street: 'street field'
+          }
+        };
+
+        const valid = validate(source);
+
+        t.notOk(valid, 'missing field value should fail');
+        t.ok(isMissingPropertyError(validate, '.conform.number', 'field'), JSON.stringify(validate.errors));
+        t.end();
+
+      });
+
+      test.test('non-string field value should fail', t => {
+        nonStringValues.forEach(value => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                  function: 'prefixed_number',
+                  field: value
+              },
+              street: 'street field'
+            }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'non-string field value should fail');
+          t.ok(isTypeError(validate, '.conform.number.field'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('string field value should not fail', t => {
+        const source = {
+          coverage: {
+              country: 'some country'
+          },
+          type: 'ESRI',
+          data: 'http://xyz.com/',
+          conform: {
+            type: 'geojson',
+            number: {
+                function: 'prefixed_number',
+                field: 'number field'
+            },
+            street: 'street field'
+          }
+        };
+
+        const valid = validate(source);
+
+        t.ok(valid, 'string conform.number.field value should not fail');
+        t.end();
+
+      });
+
+      test.test('unknown field should fail', t => {
+        const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'http',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                  function: 'prefixed_number',
+                  field: 'number field',
+                  unknown_field: 'value'
+              },
+              street: 'street field'
+            }
+
+        };
+
+        const valid = validate(source);
+
+        t.notOk(valid, 'unknown field in prefixed_number should fail');
+        t.ok(isAdditionalPropertyError(validate, '.conform.number', 'unknown_field'), JSON.stringify(validate.errors));
+        t.end();
+
+      });
+
+    });
+
     tape('postfixed_street function tests', test => {
       test.test('missing field property should fail', t => {
         const source = {
