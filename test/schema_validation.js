@@ -180,18 +180,22 @@ function testSchemaItself(validate) {
         });
 
         test.test('non-string data value should fail', (t) => {
-            const source = {
-                type: 'http',
-                coverage: {
-                    country: 'some country'
-                },
-                data: 17
-            };
+            nonStringValues.forEach(value => {
+              const source = {
+                  type: 'http',
+                  coverage: {
+                      country: 'some country'
+                  },
+                  data: value
+              };
 
-            const valid = validate(source);
+              const valid = validate(source);
 
-            t.notOk(valid, 'non-string data value should fail');
-            t.ok(isTypeError(validate, '.data'), JSON.stringify(validate.errors));
+              t.notOk(valid, 'non-string data value should fail');
+              t.ok(isTypeError(validate, '.data'), JSON.stringify(validate.errors));
+
+            });
+
             t.end();
 
         });
@@ -213,19 +217,23 @@ function testSchemaItself(validate) {
         });
 
         test.test('non-string website value should fail', (t) => {
-            const source = {
-                type: 'http',
-                coverage: {
-                    country: 'some country'
-                },
-                data: 'http://xyz.com/',
-                website: 17
-            };
+            nonStringValues.forEach(value => {
+              const source = {
+                  type: 'http',
+                  coverage: {
+                      country: 'some country'
+                  },
+                  data: 'http://xyz.com/',
+                  website: value
+              };
 
-            const valid = validate(source);
+              const valid = validate(source);
 
-            t.notOk(valid, 'non-string website value should fail');
-            t.ok(isTypeError(validate, '.website'), JSON.stringify(validate.errors));
+              t.notOk(valid, 'non-string website value should fail');
+              t.ok(isTypeError(validate, '.website'), JSON.stringify(validate.errors));
+
+            });
+
             t.end();
 
         });
@@ -248,7 +256,7 @@ function testSchemaItself(validate) {
         });
 
         test.test('non-string email value should fail', (t) => {
-            [null, 17, {}, [], true].forEach((value) => {
+            nonStringValues.forEach((value) => {
                 const source = {
                     type: 'http',
                     coverage: {
@@ -304,7 +312,7 @@ function testSchemaItself(validate) {
         });
 
         test.test('non-string compression should fail', (t) => {
-            [null, 17, {}, [], true].forEach((value) => {
+            nonStringValues.forEach((value) => {
                 const source = {
                     type: 'http',
                     coverage: {
@@ -361,7 +369,7 @@ function testSchemaItself(validate) {
         });
 
         test.test('non-string attribution should fail', (t) => {
-            [null, 17, {}, [], true].forEach((value) => {
+            nonStringValues.forEach((value) => {
                 const source = {
                     type: 'http',
                     coverage: {
@@ -400,7 +408,7 @@ function testSchemaItself(validate) {
         });
 
         test.test('non-string language should fail', (t) => {
-            [null, 17, {}, [], true].forEach((value) => {
+            nonStringValues.forEach((value) => {
                 const source = {
                     type: 'http',
                     coverage: {
