@@ -8,6 +8,9 @@ ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'), "http://jso
 ajv.addMetaSchema(require('./geojson.json'), "http://json.schemastore.org/geojson#/definitions/geometry");
 testSchemaItself(ajv.compile(schema));
 
+const nonStringValues = [null, 17, {}, [], true];
+const nonBooleanValues = [null, 17, {}, [], 'string'];
+
 // this function instructs Ajv on how to load remote sources
 function loadSchema(uri) {
     request.json(uri, (err, res, body) => {
@@ -18,12 +21,15 @@ function loadSchema(uri) {
 
 // convenience function that looks for an additionalProperty error condition
 // anywhere in the errors array
-function isAdditionalPropertyError(validate, property) {
+function isAdditionalPropertyError(validate, dataPath, property) {
     if (!validate.errors) return false;
 
-    return validate.errors.some((err) => {
-        return err.params.additionalProperty === property;
+    return validate.errors.some(err => {
+      return err.keyword === 'additionalProperties' &&
+          err.dataPath === dataPath &&
+          err.params.additionalProperty === property;
     });
+
 }
 
 // convenience function that looks for an incorrect type error condition
@@ -38,22 +44,25 @@ function isEnumValueError(validate, property) {
 
 // convenience function that looks for an missingProperty error condition
 // anywhere in the errors array
-function isMissingPropertyError(validate, type) {
+function isMissingPropertyError(validate, dataPath, fieldName) {
     if (!validate.errors) return false;
 
-    return validate.errors.some((err) => {
-        return err.params.missingProperty === type;
+    return validate.errors.some(err => {
+        return err.dataPath === dataPath &&
+          err.params.missingProperty === fieldName
     });
+
 }
 
 // convenience function that looks for an type error condition
 // anywhere in the errors array
-function isTypeError(validate, property) {
-    if (!validate.errors) return false;
+function isTypeError(validate, dataPath) {
+  if (!validate.errors) return false;
 
-    return validate.errors.some((err) => {
-        return err.schemaPath === `#/properties/${property}/type`;
-    });
+  return validate.errors.some(err => {
+    return err.keyword === 'type' && err.dataPath === dataPath;
+  });
+
 }
 
 function isOneOfError(validate, property) {
@@ -113,7 +122,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'coverage missing country should fail');
-            t.ok(isMissingPropertyError(validate, 'country'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '.coverage', 'country'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -131,7 +140,8 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'type-less source should fail');
-            t.ok(isAdditionalPropertyError(validate, 'unknown_field'), JSON.stringify(validate.errors));
+            t.ok(isAdditionalPropertyError(validate, '', 'unknown_field'), JSON.stringify(validate.errors));
+
             t.end();
 
         });
@@ -164,7 +174,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'type-less source should fail');
-            t.ok(isMissingPropertyError(validate, 'type'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '', 'type'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -181,7 +191,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'non-string data value should fail');
-            t.ok(isTypeError(validate, 'data'), JSON.stringify(validate.errors));
+            t.ok(isTypeError(validate, '.data'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -215,7 +225,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'non-string website value should fail');
-            t.ok(isTypeError(validate, 'website'), JSON.stringify(validate.errors));
+            t.ok(isTypeError(validate, '.website'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -251,7 +261,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string email value should fail');
-                t.ok(isTypeError(validate, 'email'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '.email'), JSON.stringify(validate.errors));
 
             });
             t.end();
@@ -307,7 +317,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string compression value should fail');
-                t.ok(isTypeError(validate, 'compression'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '.compression'), JSON.stringify(validate.errors));
 
             });
 
@@ -364,7 +374,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string attribution value should fail');
-                t.ok(isTypeError(validate, 'attribution'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '.attribution'), JSON.stringify(validate.errors));
 
             });
 
@@ -403,7 +413,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string language value should fail');
-                t.ok(isTypeError(validate, 'language'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '.language'), JSON.stringify(validate.errors));
 
             });
 
@@ -468,7 +478,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-boolean skip value should fail');
-                t.ok(isTypeError(validate, 'skip'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '.skip'), JSON.stringify(validate.errors));
 
             });
 
@@ -582,6 +592,283 @@ function testSchemaItself(validate) {
             t.end();
 
         });
+
+    });
+
+    tape('postfixed_street function tests', test => {
+      test.test('missing field property should fail', t => {
+        const source = {
+          coverage: {
+              country: 'some country'
+          },
+          type: 'ESRI',
+          data: 'http://xyz.com/',
+          conform: {
+            type: 'geojson',
+            number: 'number field',
+            street: {
+              function: 'postfixed_street'
+            }
+          }
+        };
+
+        const valid = validate(source);
+
+        t.notOk(valid, 'missing field value should fail');
+        t.ok(isMissingPropertyError(validate, '.conform.street', 'field'), JSON.stringify(validate.errors));
+        t.end();
+
+      });
+
+      test.test('non-string field value should fail', t => {
+        nonStringValues.forEach(value => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: 'number field',
+              street: {
+                function: 'postfixed_street',
+                field: value
+              }
+            }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'non-string field value should fail');
+          t.ok(isTypeError(validate, '.conform.street.field'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('string field value should not fail', t => {
+        const source = {
+          coverage: {
+              country: 'some country'
+          },
+          type: 'ESRI',
+          data: 'http://xyz.com/',
+          conform: {
+            type: 'geojson',
+            number: 'number field',
+            street: {
+              function: 'postfixed_street',
+              field: 'street field'
+            }
+          }
+        };
+
+        const valid = validate(source);
+
+        t.ok(valid, 'string conform.street.field value should not fail');
+        t.end();
+
+      });
+
+      test.test('non-boolean may_contain_units should fail', t => {
+          nonBooleanValues.forEach(value => {
+              const source = {
+                  type: 'http',
+                  coverage: {
+                      country: 'some country'
+                  },
+                  data: 'http://xyz.com/',
+                  conform: {
+                    type: 'geojson',
+                    number: 'number field',
+                    street: {
+                      function: 'postfixed_street',
+                      field: 'street field',
+                      may_contain_units: value
+                    }
+                  }
+              };
+
+              const valid = validate(source);
+
+              t.notOk(valid, 'non-boolean may_contain_units value should fail');
+              t.ok(isTypeError(validate, '.conform.street.may_contain_units'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+      });
+
+      test.test('boolean may_contain_units should not fail', t => {
+          [true, false].forEach(value => {
+              const source = {
+                  type: 'http',
+                  coverage: {
+                      country: 'some country'
+                  },
+                  data: 'http://xyz.com/',
+                  conform: {
+                    type: 'geojson',
+                    number: 'number field',
+                    street: {
+                      function: 'postfixed_street',
+                      field: 'street field',
+                      may_contain_units: value
+                    }
+                  }
+              };
+
+              const valid = validate(source);
+
+              t.ok(valid, 'boolean may_contain_units value should not fail');
+
+          });
+
+          t.end();
+
+      });
+
+      test.test('unknown field should fail', (t) => {
+          const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'http',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: 'number field',
+                street: {
+                  function: 'postfixed_street',
+                  field: 'street field',
+                  unknown_field: 'value'
+                }
+              }
+
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'unknown field in postfixed_street should fail');
+          t.ok(isAdditionalPropertyError(validate, '.conform.street', 'unknown_field'), JSON.stringify(validate.errors));
+          t.end();
+
+      });
+
+    });
+
+    tape('postfixed_unit function tests', test => {
+      test.test('missing field property should fail', t => {
+        const source = {
+          coverage: {
+              country: 'some country'
+          },
+          type: 'ESRI',
+          data: 'http://xyz.com/',
+          conform: {
+            type: 'geojson',
+            number: 'number field',
+            street: 'street field',
+            unit: {
+              function: 'postfixed_unit'
+            }
+          }
+        };
+
+        const valid = validate(source);
+
+        t.notOk(valid, 'missing field value should fail');
+        t.ok(isMissingPropertyError(validate, '.conform.unit', 'field'), JSON.stringify(validate.errors));
+        t.end();
+
+      });
+
+      test.test('non-string field value should fail', t => {
+        nonStringValues.forEach(value => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: 'number field',
+              street: 'street field',
+              unit: {
+                function: 'postfixed_unit',
+                field: value
+              }
+            }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'non-string field value should fail');
+          t.ok(isTypeError(validate, '.conform.unit.field'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('string field value should not fail', t => {
+        const source = {
+          coverage: {
+              country: 'some country'
+          },
+          type: 'ESRI',
+          data: 'http://xyz.com/',
+          conform: {
+            type: 'geojson',
+            number: 'number field',
+            street: 'street field',
+            unit: {
+              function: 'postfixed_unit',
+              field: 'street field'
+            }
+          }
+        };
+
+        const valid = validate(source);
+
+        t.ok(valid, 'string conform.unit.field value should not fail');
+        t.end();
+
+      });
+
+      test.test('unknown field should fail', t => {
+        const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'http',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: 'number field',
+              street: 'street field',
+              unit: {
+                function: 'postfixed_unit',
+                field: 'unit field',
+                unknown_field: 'value'
+              }
+            }
+
+        };
+
+        const valid = validate(source);
+
+        t.notOk(valid, 'unknown field in postfixed_unit should fail');
+        t.ok(isAdditionalPropertyError(validate, '.conform.unit', 'unknown_field'), JSON.stringify(validate.errors));
+        t.end();
+
+      });
 
     });
 

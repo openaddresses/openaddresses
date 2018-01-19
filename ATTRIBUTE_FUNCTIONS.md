@@ -102,9 +102,9 @@ The `format` parameter is required and has no default value.
 
 More numerous than the formatting functions are the extraction functions.  These functions are used conditionally pull sections from larger values.
 
-### `prefixed_number` and `postfixed_street`
+### `prefixed_number`, `postfixed_street`, and `postfixed_unit`
 
-A number of countries, namely the United States, Canada, and others, format addresses with the house number prefixing the street name, for example, "123 South Main Street".  The `prefixed_number` and `postfixed_street` functions are for convenience to avoid the laborious and monotonous task of maintaining many copies of much more complicated `regexp` functions among a large number of sources.  Respectively, they simply return the contiguous block of numbers from the beginning and the value after those numbers.
+A number of countries, namely the United States, Canada, and others, format addresses with the house number prefixing the street name and sometimes suffixed with a unit, for example, "123 South Main Street".  The `prefixed_number`, `postfixed_street`, and `postfixed_unit` functions are for convenience to avoid the laborious and monotonous task of maintaining many copies of much more complicated `regexp` functions among a large number of sources.  Respectively, they simply return the contiguous block of numbers from the beginning and the value after those numbers.
 
 An example usage of this is in [Asotin County, WA](https://github.com/openaddresses/openaddresses/blob/master/sources/us/wa/asotin.json):
 
@@ -135,12 +135,39 @@ The implementations of `prefixed_number` and `postfixed_street` are very simple,
 
 A source may not necessarily have to use both functions together in a conform but they commonly are.
 
+It's also common for a single address field to contain a unit designator at the end, as in "123 Maple Street Apt 4A".  In this case, `postfixed_unit` should be used in combination with `postfixed_street` to extract `Apt 4A`.  Because `postfixed_street` considers the street value to be anything after the house number, it's normal to set `may_contain_units` to `true` in `postfixed_street` when using `postfixed_unit`.  
+
+`postfixed_unit` recognizes the following words as unit designators:
+
+* Unit
+* Apartment
+* Apt
+* Suite
+* Ste
+* Building
+* Bldg
+* Lot
+* #
+
+Any text found after the unit designator is considered part of the unit.  The downside of this is that if a street name legitimately
+contains one of these words, such as "Lindsay Lot Road", which is fortunately a fairly rare occurrence.  
+
 #### Definition:
+
+`prefixed_number` and `postfixed_unit` each take a single parameter named `field`:
 
 | parameter | value | default
 | --------- | ----- | -------
-| `function` | `prefixed_number` / `postfixed_street` |
+| `function` | `prefixed_number` / `postfixed_unit` |
 | `field` | any field name in the data source | none (required)
+
+`postfixed_street` takes two parameters: `field` (required) and `may_contain_units` (optional):
+
+| parameter | value | default
+| --------- | ----- | -------
+| `function` | `prefixed_unit` |
+| `field` | any field name in the data source | none (required)
+| `may_contain_units` | `true` or `false` | `false`
 
 ### `remove_prefix` and `remove_postfix`
 
