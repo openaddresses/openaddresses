@@ -473,7 +473,7 @@ function testSchemaItself(validate) {
         });
 
         test.test('non-boolean skip should fail', (t) => {
-            [null, 17, {}, [], 'string'].forEach((value) => {
+            nonBooleanValues.forEach((value) => {
                 const source = {
                     type: 'http',
                     coverage: {
