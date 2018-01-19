@@ -186,6 +186,7 @@ Function | Note
 [`format`](ATTRIBUTE_FUNCTIONS.md#format) | Allow multiple fields to be formatted into a single string
 [`prefixed_number`](ATTRIBUTE_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow number to be extracted from the beginning of a single field (extracts `102` from `102 East Maple Street`)
 [`postfixed_street`](ATTRIBUTE_FUNCTIONS.md#prefixed_number-and-postfixed_street) | Allow street to be extracted from the end of a single field (extracts `East Maple Street` from `102 East Maple Street`)
+[`postfixed_unit`](ATTRIBUTE_FUNCTIONS.md#prefixed_number-postfixed_street-and-postfixed_street) | Allow unit to be extracted from the end of a single field (extracts `Apt 4A` from `102 East Maple Street Apt 4A`)
 [`remove_prefix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the beginning of another field value
 [`remove_postfix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the end of another field value
 [`regexp`](ATTRIBUTE_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field

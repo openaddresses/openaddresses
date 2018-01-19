@@ -231,6 +231,7 @@
           "oneOf": [
             { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
+            { "$ref": "#/definitions/function_postfixed_unit" },
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
@@ -385,6 +386,24 @@
         "function": {
           "type": "string",
           "enum": ["postfixed_street"]
+        },
+        "field": {
+          "type": "string"
+        },
+        "may_contain_units": {
+          "type": "boolean"
+        }
+      }
+    },
+    "function_postfixed_unit": {
+      "description": "postfixed_unit function definition",
+      "type": "object",
+      "required": ["function", "field"],
+      "additionalProperties": false,
+      "properties": {
+        "function": {
+          "type": "string",
+          "enum": ["postfixed_unit"]
         },
         "field": {
           "type": "string"
