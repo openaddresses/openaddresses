@@ -112,20 +112,20 @@ function testSchemaItself(validate) {
 
         });
 
-        test.test('unknown field should fail', (t) => {
+        test.test('unknown property should fail', (t) => {
             const source = {
                 coverage: {
                     country: 'some country'
                 },
                 type: 'http',
                 data: 'http://xyz.com/',
-                unknown_field: 'value'
+                unknown_property: 'value'
             };
 
             const valid = validate(source);
 
             t.notOk(valid, 'type-less source should fail');
-            t.ok(isAdditionalPropertyError(validate, '', 'unknown_field'), JSON.stringify(validate.errors));
+            t.ok(isAdditionalPropertyError(validate, '', 'unknown_property'), JSON.stringify(validate.errors));
 
             t.end();
 
@@ -638,7 +638,6 @@ function testSchemaItself(validate) {
 
       });
 
-
     });
 
     tape('prefixed_number function tests', test => {
@@ -719,7 +718,7 @@ function testSchemaItself(validate) {
 
       });
 
-      test.test('unknown field should fail', t => {
+      test.test('unknown property should fail', t => {
         const source = {
             coverage: {
                 country: 'some country'
@@ -731,7 +730,7 @@ function testSchemaItself(validate) {
               number: {
                   function: 'prefixed_number',
                   field: 'number field',
-                  unknown_field: 'value'
+                  unknown_property: 'value'
               },
               street: 'street field'
             }
@@ -740,8 +739,8 @@ function testSchemaItself(validate) {
 
         const valid = validate(source);
 
-        t.notOk(valid, 'unknown field in prefixed_number should fail');
-        t.ok(isAdditionalPropertyError(validate, '.conform.number', 'unknown_field'), JSON.stringify(validate.errors));
+        t.notOk(valid, 'unknown property in prefixed_number should fail');
+        t.ok(isAdditionalPropertyError(validate, '.conform.number', 'unknown_property'), JSON.stringify(validate.errors));
         t.end();
 
       });
@@ -885,7 +884,7 @@ function testSchemaItself(validate) {
 
       });
 
-      test.test('unknown field should fail', (t) => {
+      test.test('unknown property should fail', (t) => {
           const source = {
               coverage: {
                   country: 'some country'
@@ -898,7 +897,7 @@ function testSchemaItself(validate) {
                 street: {
                   function: 'postfixed_street',
                   field: 'street field',
-                  unknown_field: 'value'
+                  unknown_property: 'value'
                 }
               }
 
@@ -906,8 +905,8 @@ function testSchemaItself(validate) {
 
           const valid = validate(source);
 
-          t.notOk(valid, 'unknown field in postfixed_street should fail');
-          t.ok(isAdditionalPropertyError(validate, '.conform.street', 'unknown_field'), JSON.stringify(validate.errors));
+          t.notOk(valid, 'unknown property in postfixed_street should fail');
+          t.ok(isAdditionalPropertyError(validate, '.conform.street', 'unknown_property'), JSON.stringify(validate.errors));
           t.end();
 
       });
@@ -995,7 +994,7 @@ function testSchemaItself(validate) {
 
       });
 
-      test.test('unknown field should fail', t => {
+      test.test('unknown property should fail', t => {
         const source = {
             coverage: {
                 country: 'some country'
@@ -1009,7 +1008,7 @@ function testSchemaItself(validate) {
               unit: {
                 function: 'postfixed_unit',
                 field: 'unit field',
-                unknown_field: 'value'
+                unknown_property: 'value'
               }
             }
 
@@ -1017,11 +1016,341 @@ function testSchemaItself(validate) {
 
         const valid = validate(source);
 
-        t.notOk(valid, 'unknown field in postfixed_unit should fail');
-        t.ok(isAdditionalPropertyError(validate, '.conform.unit', 'unknown_field'), JSON.stringify(validate.errors));
+        t.notOk(valid, 'unknown property in postfixed_unit should fail');
+        t.ok(isAdditionalPropertyError(validate, '.conform.unit', 'unknown_property'), JSON.stringify(validate.errors));
         t.end();
 
       });
+
+    });
+
+    tape('remove_prefix function tests', test => {
+        test.test('missing field should fail', t => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: {
+                    function: 'remove_prefix',
+                    field: 'field value'
+                },
+                street: 'street field'
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'missing field_to_remove value should fail');
+            t.ok(isMissingPropertyError(validate, '.conform.number', 'field_to_remove'), JSON.stringify(validate.errors));
+            t.end();
+
+        });
+
+        test.test('non-string field value should fail', t => {
+          nonStringValues.forEach(value => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: 'number field',
+                street: {
+                  function: 'remove_prefix',
+                  field: value,
+                  field_to_remove: 'field to remove'
+                }
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-string field value should fail');
+            t.ok(isTypeError(validate, '.conform.street.field'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+        });
+
+        test.test('missing field_to_remove should fail', t => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: {
+                    function: 'remove_prefix',
+                    field_to_remove: 'field_to_remove value'
+                },
+                street: 'street field'
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'missing field value should fail');
+            t.ok(isMissingPropertyError(validate, '.conform.number', 'field'), JSON.stringify(validate.errors));
+            t.end();
+
+        });
+
+        test.test('non-string field_to_remove value should fail', t => {
+          nonStringValues.forEach(value => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: 'number field',
+                street: {
+                  function: 'remove_prefix',
+                  field: 'field value',
+                  field_to_remove: value
+                }
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-string field value should fail');
+            t.ok(isTypeError(validate, '.conform.street.field_to_remove'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+        });
+
+        test.test('string field and field_to_remove values should not fail', t => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: 'number field',
+              street: {
+                function: 'remove_prefix',
+                field: 'field',
+                field_to_remove: 'field to remove'
+              }
+            }
+          };
+
+          const valid = validate(source);
+
+          t.ok(valid, 'string conform.street.field value should not fail');
+          t.end();
+
+        });
+
+        test.test('unknown property should fail', t => {
+          const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'http',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: 'number field',
+                street: {
+                  function: 'remove_prefix',
+                  field: 'unit field',
+                  unknown_property: 'value'
+                }
+              }
+
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'unknown property in postfixed_unit should fail');
+          t.ok(isAdditionalPropertyError(validate, '.conform.street', 'unknown_property'), JSON.stringify(validate.errors));
+          t.end();
+
+        });
+
+    });
+
+    tape('remove_postfix function tests', test => {
+        test.test('missing field should fail', t => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: {
+                    function: 'remove_postfix',
+                    field: 'field value'
+                },
+                street: 'street field'
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'missing field_to_remove value should fail');
+            t.ok(isMissingPropertyError(validate, '.conform.number', 'field_to_remove'), JSON.stringify(validate.errors));
+            t.end();
+
+        });
+
+        test.test('non-string field value should fail', t => {
+          nonStringValues.forEach(value => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: 'number field',
+                street: {
+                  function: 'remove_postfix',
+                  field: value,
+                  field_to_remove: 'field to remove'
+                }
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-string field value should fail');
+            t.ok(isTypeError(validate, '.conform.street.field'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+        });
+
+        test.test('missing field_to_remove should fail', t => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: {
+                    function: 'remove_postfix',
+                    field_to_remove: 'field_to_remove value'
+                },
+                street: 'street field'
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'missing field value should fail');
+            t.ok(isMissingPropertyError(validate, '.conform.number', 'field'), JSON.stringify(validate.errors));
+            t.end();
+
+        });
+
+        test.test('non-string field_to_remove value should fail', t => {
+          nonStringValues.forEach(value => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: 'number field',
+                street: {
+                  function: 'remove_postfix',
+                  field: 'field value',
+                  field_to_remove: value
+                }
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-string field value should fail');
+            t.ok(isTypeError(validate, '.conform.street.field_to_remove'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+        });
+
+        test.test('string field and field_to_remove values should not fail', t => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: 'number field',
+              street: {
+                function: 'remove_postfix',
+                field: 'field',
+                field_to_remove: 'field to remove'
+              }
+            }
+          };
+
+          const valid = validate(source);
+
+          t.ok(valid, 'string conform.street.field value should not fail');
+          t.end();
+
+        });
+
+        test.test('unknown property should fail', t => {
+          const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'http',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: 'number field',
+                street: {
+                  function: 'remove_postfix',
+                  field: 'unit field',
+                  unknown_property: 'value'
+                }
+              }
+
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'unknown property in postfixed_unit should fail');
+          t.ok(isAdditionalPropertyError(validate, '.conform.street', 'unknown_property'), JSON.stringify(validate.errors));
+          t.end();
+
+        });
 
     });
 
