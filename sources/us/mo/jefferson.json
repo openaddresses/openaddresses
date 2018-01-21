@@ -1,0 +1,71 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "29099",
+            "name": "Jefferson County",
+            "state": "Missouri"
+        },
+        "country": "us",
+        "state": "mo",
+        "county": "Jefferson"
+    },
+    "data": "https://www.semogis.com/arcgis/rest/services/JeffersonLayers/MapServer/7",
+    "type": "ESRI",
+    "conform": {
+        "type":"geojson",
+        "id": "ADDR_ID",
+        "number": {
+            "function": "prefixed_number",
+            "field": "Site_Address"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Site_Address",
+            "pattern": "^(?:\\s*\\d+\\s+)?(.+)\\s+(?:\\d{5})?$"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "Site_Address",
+            "pattern": "\\s+(\\d{5})$"
+        }
+    },
+    "test": {
+        "enabled": true,
+        "description": "these are the tests that exercise valid inputs for Jefferson County, MO",
+        "acceptance-tests": [
+            {
+                "description": "address with number, street, and postcode",
+                "inputs": {
+                    "Site_Address": "635 LONEDELL RD  63010"
+                },
+                "expected": {
+                    "number": "635",
+                    "street": "LONEDELL RD",
+                    "postcode": "63010"
+                }
+            },
+            {
+                "description": "address with just street and postcode",
+                "inputs": {
+                    "Site_Address": " BLACKBERRY LN  63052"
+                },
+                "expected": {
+                    "number": "",
+                    "street": "BLACKBERRY LN",
+                    "postcode": "63052"
+                }
+            },
+            {
+                "description": "address with just number and street",
+                "inputs": {
+                    "Site_Address": "108 BETHANY CT  "
+                },
+                "expected": {
+                    "number": "108",
+                    "street": "BETHANY CT",
+                    "postcode": ""
+                }
+            }
+        ]
+    }
+}
