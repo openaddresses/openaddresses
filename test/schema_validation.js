@@ -10,6 +10,8 @@ testSchemaItself(ajv.compile(schema));
 
 const nonStringValues = [null, 17, {}, [], true];
 const nonBooleanValues = [null, 17, {}, [], 'string'];
+const nonObjectValues = [null, 17, [], true, 'string'];
+const nonArrayValues = [null, 17, {}, true, 'string'];
 
 // this function instructs Ajv on how to load remote sources
 function loadSchema(uri) {
@@ -89,6 +91,15 @@ function isPatternError(validate, property) {
     });
 }
 
+function isMinItemsError(validate, dataPath) {
+  if (!validate.errors) return false;
+
+  return validate.errors.some(err => {
+    return err.keyword === 'minItems' && err.dataPath === dataPath;
+  });
+
+}
+``
 function testSchemaItself(validate) {
     tape('test schema itself', (test) => {
         test.test('bare minimum source should pass', (t) => {
@@ -111,36 +122,20 @@ function testSchemaItself(validate) {
 
         });
 
-        test.test('coverage missing country should fail', (t) => {
-            const source = {
-                coverage: {
-                },
-                type: 'http',
-                data: 'http://xyz.com/'
-            };
-
-            const valid = validate(source);
-
-            t.notOk(valid, 'coverage missing country should fail');
-            t.ok(isMissingPropertyError(validate, '.coverage', 'country'), JSON.stringify(validate.errors));
-            t.end();
-
-        });
-
-        test.test('unknown field should fail', (t) => {
+        test.test('unknown property should fail', (t) => {
             const source = {
                 coverage: {
                     country: 'some country'
                 },
                 type: 'http',
                 data: 'http://xyz.com/',
-                unknown_field: 'value'
+                unknown_property: 'value'
             };
 
             const valid = validate(source);
 
             t.notOk(valid, 'type-less source should fail');
-            t.ok(isAdditionalPropertyError(validate, '', 'unknown_field'), JSON.stringify(validate.errors));
+            t.ok(isAdditionalPropertyError(validate, '', 'unknown_property'), JSON.stringify(validate.errors));
 
             t.end();
 
@@ -180,18 +175,22 @@ function testSchemaItself(validate) {
         });
 
         test.test('non-string data value should fail', (t) => {
-            const source = {
-                type: 'http',
-                coverage: {
-                    country: 'some country'
-                },
-                data: 17
-            };
+            nonStringValues.forEach(value => {
+              const source = {
+                  type: 'http',
+                  coverage: {
+                      country: 'some country'
+                  },
+                  data: value
+              };
 
-            const valid = validate(source);
+              const valid = validate(source);
 
-            t.notOk(valid, 'non-string data value should fail');
-            t.ok(isTypeError(validate, '.data'), JSON.stringify(validate.errors));
+              t.notOk(valid, 'non-string data value should fail');
+              t.ok(isTypeError(validate, '.data'), JSON.stringify(validate.errors));
+
+            });
+
             t.end();
 
         });
@@ -213,19 +212,23 @@ function testSchemaItself(validate) {
         });
 
         test.test('non-string website value should fail', (t) => {
-            const source = {
-                type: 'http',
-                coverage: {
-                    country: 'some country'
-                },
-                data: 'http://xyz.com/',
-                website: 17
-            };
+            nonStringValues.forEach(value => {
+              const source = {
+                  type: 'http',
+                  coverage: {
+                      country: 'some country'
+                  },
+                  data: 'http://xyz.com/',
+                  website: value
+              };
 
-            const valid = validate(source);
+              const valid = validate(source);
 
-            t.notOk(valid, 'non-string website value should fail');
-            t.ok(isTypeError(validate, '.website'), JSON.stringify(validate.errors));
+              t.notOk(valid, 'non-string website value should fail');
+              t.ok(isTypeError(validate, '.website'), JSON.stringify(validate.errors));
+
+            });
+
             t.end();
 
         });
@@ -248,7 +251,7 @@ function testSchemaItself(validate) {
         });
 
         test.test('non-string email value should fail', (t) => {
-            [null, 17, {}, [], true].forEach((value) => {
+            nonStringValues.forEach((value) => {
                 const source = {
                     type: 'http',
                     coverage: {
@@ -304,7 +307,7 @@ function testSchemaItself(validate) {
         });
 
         test.test('non-string compression should fail', (t) => {
-            [null, 17, {}, [], true].forEach((value) => {
+            nonStringValues.forEach((value) => {
                 const source = {
                     type: 'http',
                     coverage: {
@@ -361,7 +364,7 @@ function testSchemaItself(validate) {
         });
 
         test.test('non-string attribution should fail', (t) => {
-            [null, 17, {}, [], true].forEach((value) => {
+            nonStringValues.forEach((value) => {
                 const source = {
                     type: 'http',
                     coverage: {
@@ -400,7 +403,7 @@ function testSchemaItself(validate) {
         });
 
         test.test('non-string language should fail', (t) => {
-            [null, 17, {}, [], true].forEach((value) => {
+            nonStringValues.forEach((value) => {
                 const source = {
                     type: 'http',
                     coverage: {
@@ -465,7 +468,7 @@ function testSchemaItself(validate) {
         });
 
         test.test('non-boolean skip should fail', (t) => {
-            [null, 17, {}, [], 'string'].forEach((value) => {
+            nonBooleanValues.forEach((value) => {
                 const source = {
                     type: 'http',
                     coverage: {
@@ -592,6 +595,165 @@ function testSchemaItself(validate) {
             t.end();
 
         });
+
+    });
+
+    tape('coverage tests', test => {
+      test.test('missing coverage property should fail', t => {
+          const source = {
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'missing coverage property should fail');
+          t.ok(isMissingPropertyError(validate, '', 'coverage'), JSON.stringify(validate.errors));
+          t.end();
+
+      });
+
+      test.test('non-object coverage should fail', t => {
+          nonObjectValues.forEach(value => {
+              const source = {
+                  coverage: value,
+                  type: 'http',
+                  data: 'http://xyz.com/'
+              };
+
+              const valid = validate(source);
+
+              t.notOk(valid, 'non-object coverage should fail');
+              t.ok(isTypeError(validate, '.coverage'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+      });
+
+      test.test('missing country should fail', t => {
+          const source = {
+              coverage: {
+              },
+              type: 'http',
+              data: 'http://xyz.com/'
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'coverage missing country should fail');
+          t.ok(isMissingPropertyError(validate, '.coverage', 'country'), JSON.stringify(validate.errors));
+          t.end();
+
+      });
+
+    });
+
+    tape('prefixed_number function tests', test => {
+      test.test('missing field property should fail', t => {
+        const source = {
+          coverage: {
+              country: 'some country'
+          },
+          type: 'ESRI',
+          data: 'http://xyz.com/',
+          conform: {
+            type: 'geojson',
+            number: {
+                function: 'prefixed_number'
+            },
+            street: 'street field'
+          }
+        };
+
+        const valid = validate(source);
+
+        t.notOk(valid, 'missing field value should fail');
+        t.ok(isMissingPropertyError(validate, '.conform.number', 'field'), JSON.stringify(validate.errors));
+        t.end();
+
+      });
+
+      test.test('non-string field value should fail', t => {
+        nonStringValues.forEach(value => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                  function: 'prefixed_number',
+                  field: value
+              },
+              street: 'street field'
+            }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'non-string field value should fail');
+          t.ok(isTypeError(validate, '.conform.number.field'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('string field value should not fail', t => {
+        const source = {
+          coverage: {
+              country: 'some country'
+          },
+          type: 'ESRI',
+          data: 'http://xyz.com/',
+          conform: {
+            type: 'geojson',
+            number: {
+                function: 'prefixed_number',
+                field: 'number field'
+            },
+            street: 'street field'
+          }
+        };
+
+        const valid = validate(source);
+
+        t.ok(valid, 'string conform.number.field value should not fail');
+        t.end();
+
+      });
+
+      test.test('unknown property should fail', t => {
+        const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'http',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                  function: 'prefixed_number',
+                  field: 'number field',
+                  unknown_property: 'value'
+              },
+              street: 'street field'
+            }
+
+        };
+
+        const valid = validate(source);
+
+        t.notOk(valid, 'unknown property in prefixed_number should fail');
+        t.ok(isAdditionalPropertyError(validate, '.conform.number', 'unknown_property'), JSON.stringify(validate.errors));
+        t.end();
+
+      });
 
     });
 
@@ -732,7 +894,7 @@ function testSchemaItself(validate) {
 
       });
 
-      test.test('unknown field should fail', (t) => {
+      test.test('unknown property should fail', (t) => {
           const source = {
               coverage: {
                   country: 'some country'
@@ -745,7 +907,7 @@ function testSchemaItself(validate) {
                 street: {
                   function: 'postfixed_street',
                   field: 'street field',
-                  unknown_field: 'value'
+                  unknown_property: 'value'
                 }
               }
 
@@ -753,8 +915,8 @@ function testSchemaItself(validate) {
 
           const valid = validate(source);
 
-          t.notOk(valid, 'unknown field in postfixed_street should fail');
-          t.ok(isAdditionalPropertyError(validate, '.conform.street', 'unknown_field'), JSON.stringify(validate.errors));
+          t.notOk(valid, 'unknown property in postfixed_street should fail');
+          t.ok(isAdditionalPropertyError(validate, '.conform.street', 'unknown_property'), JSON.stringify(validate.errors));
           t.end();
 
       });
@@ -842,7 +1004,7 @@ function testSchemaItself(validate) {
 
       });
 
-      test.test('unknown field should fail', t => {
+      test.test('unknown property should fail', t => {
         const source = {
             coverage: {
                 country: 'some country'
@@ -856,7 +1018,7 @@ function testSchemaItself(validate) {
               unit: {
                 function: 'postfixed_unit',
                 field: 'unit field',
-                unknown_field: 'value'
+                unknown_property: 'value'
               }
             }
 
@@ -864,8 +1026,1002 @@ function testSchemaItself(validate) {
 
         const valid = validate(source);
 
-        t.notOk(valid, 'unknown field in postfixed_unit should fail');
-        t.ok(isAdditionalPropertyError(validate, '.conform.unit', 'unknown_field'), JSON.stringify(validate.errors));
+        t.notOk(valid, 'unknown property in postfixed_unit should fail');
+        t.ok(isAdditionalPropertyError(validate, '.conform.unit', 'unknown_property'), JSON.stringify(validate.errors));
+        t.end();
+
+      });
+
+    });
+
+    tape('remove_prefix function tests', test => {
+        test.test('missing field should fail', t => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: {
+                    function: 'remove_prefix',
+                    field: 'field value'
+                },
+                street: 'street field'
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'missing field_to_remove value should fail');
+            t.ok(isMissingPropertyError(validate, '.conform.number', 'field_to_remove'), JSON.stringify(validate.errors));
+            t.end();
+
+        });
+
+        test.test('non-string field value should fail', t => {
+          nonStringValues.forEach(value => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: 'number field',
+                street: {
+                  function: 'remove_prefix',
+                  field: value,
+                  field_to_remove: 'field to remove'
+                }
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-string field value should fail');
+            t.ok(isTypeError(validate, '.conform.street.field'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+        });
+
+        test.test('missing field_to_remove should fail', t => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: {
+                    function: 'remove_prefix',
+                    field_to_remove: 'field_to_remove value'
+                },
+                street: 'street field'
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'missing field value should fail');
+            t.ok(isMissingPropertyError(validate, '.conform.number', 'field'), JSON.stringify(validate.errors));
+            t.end();
+
+        });
+
+        test.test('non-string field_to_remove value should fail', t => {
+          nonStringValues.forEach(value => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: 'number field',
+                street: {
+                  function: 'remove_prefix',
+                  field: 'field value',
+                  field_to_remove: value
+                }
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-string field value should fail');
+            t.ok(isTypeError(validate, '.conform.street.field_to_remove'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+        });
+
+        test.test('string field and field_to_remove values should not fail', t => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: 'number field',
+              street: {
+                function: 'remove_prefix',
+                field: 'field',
+                field_to_remove: 'field to remove'
+              }
+            }
+          };
+
+          const valid = validate(source);
+
+          t.ok(valid, 'string conform.street.field value should not fail');
+          t.end();
+
+        });
+
+        test.test('unknown property should fail', t => {
+          const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'http',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: 'number field',
+                street: {
+                  function: 'remove_prefix',
+                  field: 'unit field',
+                  unknown_property: 'value'
+                }
+              }
+
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'unknown property in postfixed_unit should fail');
+          t.ok(isAdditionalPropertyError(validate, '.conform.street', 'unknown_property'), JSON.stringify(validate.errors));
+          t.end();
+
+        });
+
+    });
+
+    tape('remove_postfix function tests', test => {
+        test.test('missing field should fail', t => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: {
+                    function: 'remove_postfix',
+                    field_to_remove: 'field_to_remove value'
+                },
+                street: 'street field'
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'missing field_to_remove value should fail');
+            t.ok(isMissingPropertyError(validate, '.conform.number', 'field'), JSON.stringify(validate.errors));
+            t.end();
+
+        });
+
+        test.test('non-string field value should fail', t => {
+          nonStringValues.forEach(value => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: 'number field',
+                street: {
+                  function: 'remove_postfix',
+                  field: value,
+                  field_to_remove: 'field to remove'
+                }
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-string field value should fail');
+            t.ok(isTypeError(validate, '.conform.street.field'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+        });
+
+        test.test('missing field_to_remove should fail', t => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: {
+                    function: 'remove_postfix',
+                    field: 'field value'
+                },
+                street: 'street field'
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'missing field value should fail');
+            t.ok(isMissingPropertyError(validate, '.conform.number', 'field_to_remove'), JSON.stringify(validate.errors));
+            t.end();
+
+        });
+
+        test.test('non-string field_to_remove value should fail', t => {
+          nonStringValues.forEach(value => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: 'number field',
+                street: {
+                  function: 'remove_postfix',
+                  field: 'field value',
+                  field_to_remove: value
+                }
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-string field value should fail');
+            t.ok(isTypeError(validate, '.conform.street.field_to_remove'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+        });
+
+        test.test('string field and field_to_remove values should not fail', t => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: 'number field',
+              street: {
+                function: 'remove_postfix',
+                field: 'field',
+                field_to_remove: 'field to remove'
+              }
+            }
+          };
+
+          const valid = validate(source);
+
+          t.ok(valid, 'string conform.street.field value should not fail');
+          t.end();
+
+        });
+
+        test.test('unknown property should fail', t => {
+          const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'http',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: 'number field',
+                street: {
+                  function: 'remove_postfix',
+                  field: 'unit field',
+                  unknown_property: 'value'
+                }
+              }
+
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'unknown property in postfixed_unit should fail');
+          t.ok(isAdditionalPropertyError(validate, '.conform.street', 'unknown_property'), JSON.stringify(validate.errors));
+          t.end();
+
+        });
+
+    });
+
+    tape('regexp function tests', test => {
+      test.test('missing field value should fail', t => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                  function: 'regexp',
+                  pattern: 'pattern value'
+              },
+              street: 'street field'
+            }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'missing field value should fail');
+          t.ok(isMissingPropertyError(validate, '.conform.number', 'field'), JSON.stringify(validate.errors));
+          t.end();
+
+      });
+
+      test.test('missing pattern value should fail', t => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                  function: 'regexp',
+                  field: 'field value'
+              },
+              street: 'street field'
+            }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'missing pattern value should fail');
+          t.ok(isMissingPropertyError(validate, '.conform.number', 'pattern'), JSON.stringify(validate.errors));
+          t.end();
+
+      });
+
+      test.test('non-string field value should fail', t => {
+        nonStringValues.forEach(value => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                function: 'regexp',
+                field: value,
+                pattern: 'pattern value'
+              },
+              street: 'street field'
+            }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'non-string field value should fail');
+          t.ok(isTypeError(validate, '.conform.number.field'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('non-string pattern value should fail', t => {
+        nonStringValues.forEach(value => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                function: 'regexp',
+                field: 'field value',
+                pattern: value
+              },
+              street: 'street field'
+            }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'non-string pattern value should fail');
+          t.ok(isTypeError(validate, '.conform.number.pattern'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('non-string replace value should fail', t => {
+        nonStringValues.forEach(value => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                function: 'regexp',
+                field: 'field value',
+                pattern: 'pattern value',
+                replace: value
+              },
+              street: 'street field'
+            }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'non-string replace value should fail');
+          t.ok(isTypeError(validate, '.conform.number.replace'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('string field and pattern w/o replace should not fail', t => {
+        const source = {
+          coverage: {
+              country: 'some country'
+          },
+          type: 'ESRI',
+          data: 'http://xyz.com/',
+          conform: {
+            type: 'geojson',
+            number: {
+              function: 'regexp',
+              field: 'field value',
+              pattern: 'pattern value'
+            },
+            street: 'street field'
+          }
+        };
+
+        const valid = validate(source);
+
+        t.ok(valid, 'string conform.street.field/pattern value should not fail');
+        t.end();
+
+      });
+
+      test.test('string field, pattern, and replace should not fail', t => {
+        const source = {
+          coverage: {
+              country: 'some country'
+          },
+          type: 'ESRI',
+          data: 'http://xyz.com/',
+          conform: {
+            type: 'geojson',
+            number: {
+              function: 'regexp',
+              field: 'field value',
+              pattern: 'pattern value',
+              replace: 'replace value'
+            },
+            street: 'street field'
+          }
+        };
+
+        const valid = validate(source);
+
+        t.ok(valid, 'string conform.street.field/pattern/replace values should not fail');
+        t.end();
+
+      });
+
+      test.test('unknown property should fail', t => {
+        const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'http',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                function: 'regexp',
+                field: 'field value',
+                pattern: 'pattern value',
+                unknown_property: 'value'
+              },
+              street: 'street field'
+            }
+
+        };
+
+        const valid = validate(source);
+
+        t.notOk(valid, 'unknown property in regexp should fail');
+        t.ok(isAdditionalPropertyError(validate, '.conform.number', 'unknown_property'), JSON.stringify(validate.errors));
+        t.end();
+
+      });
+
+    });
+
+    tape('join function tests', test => {
+        test.test('missing fields value should fail', t => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                  function: 'join'
+              },
+              street: 'street field'
+            }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'missing fields value should fail');
+          t.ok(isMissingPropertyError(validate, '.conform.number', 'fields'), JSON.stringify(validate.errors));
+          t.end();
+
+
+        });
+
+        test.test('non-array fields value should fail', t => {
+          nonArrayValues.forEach(value => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: {
+                  function: 'join',
+                  fields: value
+                },
+                street: 'street field'
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-array fields value should fail');
+            t.ok(isTypeError(validate, '.conform.number.fields'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+        });
+
+        test.test('empty fields array should fail', t => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                function: 'join',
+                fields: []
+              },
+              street: 'street field'
+            }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'empty fields array should fail');
+          t.ok(isMinItemsError(validate, '.conform.number.fields'), JSON.stringify(validate.errors));
+          t.end();
+
+        });
+
+        test.test('non-string elements of fields array should fail', t => {
+          nonStringValues.forEach(value => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: {
+                  function: 'join',
+                  fields: ['field 1', value, 'field 2']
+                },
+                street: 'street field'
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-string elements of fields array should fail');
+            t.ok(isTypeError(validate, '.conform.number.fields[1]'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+        });
+
+        test.test('non-string separator value should fail', t => {
+          nonStringValues.forEach(value => {
+            const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'ESRI',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: {
+                  function: 'join',
+                  fields: ['field1', 'field2'],
+                  separator: value
+                },
+                street: 'street field'
+              }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-string separator value should fail');
+            t.ok(isTypeError(validate, '.conform.number.separator'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+        });
+
+        test.test('non-empty fields containing only strings should not fail', t => {
+          const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'http',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: {
+                  function: 'join',
+                  fields: ['field 1', 'field 2']
+                },
+                street: 'street field'
+              }
+          };
+
+          const valid = validate(source);
+
+          t.ok(valid, 'non-empty fields containing only strings should not fail');
+          t.end();
+
+        });
+
+        test.test('non-empty fields containing only strings and string separator value should not fail', t => {
+          const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'http',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: {
+                  function: 'join',
+                  fields: ['field 1', 'field 2'],
+                  separator: 'separator value'
+                },
+                street: 'street field'
+              }
+          };
+
+          const valid = validate(source);
+
+          t.ok(valid, 'non-empty fields containing only strings and string separator should not fail');
+          t.end();
+
+        });
+
+        test.test('unknown property should fail', t => {
+          const source = {
+              coverage: {
+                  country: 'some country'
+              },
+              type: 'http',
+              data: 'http://xyz.com/',
+              conform: {
+                type: 'geojson',
+                number: {
+                  function: 'join',
+                  fields: ['field 1', 'field 2'],
+                  unknown_property: 'value'
+                },
+                street: 'street field'
+              }
+
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'unknown property in join should fail');
+          t.ok(isAdditionalPropertyError(validate, '.conform.number', 'unknown_property'), JSON.stringify(validate.errors));
+          t.end();
+
+        });
+
+    });
+
+    tape('join function tests', test => {
+      test.test('missing fields value should fail', t => {
+        const source = {
+          coverage: {
+              country: 'some country'
+          },
+          type: 'ESRI',
+          data: 'http://xyz.com/',
+          conform: {
+            type: 'geojson',
+            number: {
+                function: 'format',
+                format: 'format value'
+            },
+            street: 'street field'
+          }
+        };
+
+        const valid = validate(source);
+
+        t.notOk(valid, 'missing fields value should fail');
+        t.ok(isMissingPropertyError(validate, '.conform.number', 'fields'), JSON.stringify(validate.errors));
+        t.end();
+
+
+      });
+
+      test.test('missing format value should fail', t => {
+        const source = {
+          coverage: {
+              country: 'some country'
+          },
+          type: 'ESRI',
+          data: 'http://xyz.com/',
+          conform: {
+            type: 'geojson',
+            number: {
+                function: 'format',
+                fields: ['field 1', 'field 2']
+            },
+            street: 'street field'
+          }
+        };
+
+        const valid = validate(source);
+
+        t.notOk(valid, 'missing format value should fail');
+        t.ok(isMissingPropertyError(validate, '.conform.number', 'format'), JSON.stringify(validate.errors));
+        t.end();
+
+
+      });
+
+      test.test('non-array fields value should fail', t => {
+        nonArrayValues.forEach(value => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                function: 'format',
+                fields: value,
+                format: 'format value'
+              },
+              street: 'street field'
+            }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'non-array fields value should fail');
+          t.ok(isTypeError(validate, '.conform.number.fields'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('empty fields array should fail', t => {
+        const source = {
+          coverage: {
+              country: 'some country'
+          },
+          type: 'ESRI',
+          data: 'http://xyz.com/',
+          conform: {
+            type: 'geojson',
+            number: {
+              function: 'format',
+              fields: [],
+              format: 'format value'
+            },
+            street: 'street field'
+          }
+        };
+
+        const valid = validate(source);
+
+        t.notOk(valid, 'empty fields array should fail');
+        t.ok(isMinItemsError(validate, '.conform.number.fields'), JSON.stringify(validate.errors));
+        t.end();
+
+      });
+
+      test.test('non-string elements of fields array should fail', t => {
+        nonStringValues.forEach(value => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                function: 'format',
+                fields: ['field 1', value, 'field 2'],
+                format: 'format value'
+              },
+              street: 'street field'
+            }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'non-string elements of fields array should fail');
+          t.ok(isTypeError(validate, '.conform.number.fields[1]'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('non-string format value should fail', t => {
+        nonStringValues.forEach(value => {
+          const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'ESRI',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                function: 'format',
+                fields: ['field1', 'field2'],
+                format: value
+              },
+              street: 'street field'
+            }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'non-string format value should fail');
+          t.ok(isTypeError(validate, '.conform.number.format'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('non-empty fields containing only strings and string format should not fail', t => {
+        const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'http',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                function: 'format',
+                fields: ['field 1', 'field 2'],
+                format: 'format value'
+              },
+              street: 'street field'
+            }
+        };
+
+        const valid = validate(source);
+
+        t.ok(valid, 'non-empty fields containing only strings and string format should not fail');
+        t.end();
+
+      });
+
+      test.test('unknown property should fail', t => {
+        const source = {
+            coverage: {
+                country: 'some country'
+            },
+            type: 'http',
+            data: 'http://xyz.com/',
+            conform: {
+              type: 'geojson',
+              number: {
+                function: 'format',
+                fields: ['field 1', 'field 2'],
+                format: 'format value',
+                unknown_property: 'value'
+              },
+              street: 'street field'
+            }
+
+        };
+
+        const valid = validate(source);
+
+        t.notOk(valid, 'unknown property in format should fail');
+        t.ok(isAdditionalPropertyError(validate, '.conform.number', 'unknown_property'), JSON.stringify(validate.errors));
         t.end();
 
       });
