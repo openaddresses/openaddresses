@@ -1804,7 +1804,7 @@ function testSchemaItself(validate) {
 
     });
 
-    tape('join function tests', test => {
+    tape('format function tests', test => {
       test.test('missing fields value should fail', t => {
         const source = {
           coverage: {
