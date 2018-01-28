@@ -12,6 +12,8 @@ const nonStringValues = [null, 17, {}, [], true];
 const nonBooleanValues = [null, 17, {}, [], 'string'];
 const nonObjectValues = [null, 17, [], true, 'string'];
 const nonArrayValues = [null, 17, {}, true, 'string'];
+const nonIntegerValues = [null, 17.3, {}, [], true, 'string'];
+const nonStringOrIntegerValues = [null, 17.3, {}, [], true];
 
 // this function instructs Ajv on how to load remote sources
 function loadSchema(uri) {
@@ -34,16 +36,6 @@ function isAdditionalPropertyError(validate, dataPath, property) {
 
 }
 
-// convenience function that looks for an incorrect type error condition
-// anywhere in the errors array
-function isEnumValueError(validate, property) {
-    if (!validate.errors) return false;
-
-    return validate.errors.some((err) => {
-        return err.schemaPath === `#/properties/${property}/enum`;
-    });
-}
-
 // convenience function that looks for an missingProperty error condition
 // anywhere in the errors array
 function isMissingPropertyError(validate, dataPath, fieldName) {
@@ -56,50 +48,26 @@ function isMissingPropertyError(validate, dataPath, fieldName) {
 
 }
 
-// convenience function that looks for an type error condition
-// anywhere in the errors array
-function isTypeError(validate, dataPath) {
+function isError(keyword, validate, dataPath) {
   if (!validate.errors) return false;
 
   return validate.errors.some(err => {
-    return err.keyword === 'type' && err.dataPath === dataPath;
+    return err.keyword === keyword &&
+        err.dataPath === dataPath
   });
 
 }
 
-function isOneOfError(validate, property) {
-    if (!validate.errors) return false;
+// convenience methods for different error types
+const isEnumValueError = isError.bind(null, 'enum');
+const isTypeError = isError.bind(null, 'type');
+const isMinItemsError = isError.bind(null, 'minItems');
+const isMaximumValueError = isError.bind(null, 'maximum');
+const isMinimumValueError = isError.bind(null, 'minimum');
+const isPatternError = isError.bind(null, 'pattern');
+const isOneOfError = isError.bind(null, 'oneOf');
+const isFormatError = isError.bind(null, 'format');
 
-    return validate.errors.some((err) => {
-        return err.schemaPath === `#/properties/${property}/oneOf`;
-    });
-}
-
-function isFormatError(validate, property) {
-    if (!validate.errors) return false;
-
-    return validate.errors.some((err) => {
-        return err.schemaPath === `#/properties/${property}/format`;
-    });
-}
-
-function isPatternError(validate, property) {
-    if (!validate.errors) return false;
-
-    return validate.errors.some((err) => {
-        return err.schemaPath === `#/properties/${property}/pattern`;
-    });
-}
-
-function isMinItemsError(validate, dataPath) {
-  if (!validate.errors) return false;
-
-  return validate.errors.some(err => {
-    return err.keyword === 'minItems' && err.dataPath === dataPath;
-  });
-
-}
-``
 function testSchemaItself(validate) {
     tape('test schema itself', (test) => {
         test.test('bare minimum source should pass', (t) => {
@@ -153,7 +121,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'non-http/ftp/ESRI type should fail');
-            t.ok(isEnumValueError(validate, 'type'), JSON.stringify(validate.errors));
+            t.ok(isEnumValueError(validate, '.type'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -284,7 +252,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'non-email email value should fail');
-            t.ok(isFormatError(validate, 'email', JSON.stringify(validate.errors)));
+            t.ok(isFormatError(validate, '.email', JSON.stringify(validate.errors)));
             t.end();
 
         });
@@ -341,7 +309,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'non-"zip" compression value should fail');
-            t.ok(isEnumValueError(validate, 'compression'), JSON.stringify(validate.errors));
+            t.ok(isEnumValueError(validate, '.compression'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -438,7 +406,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string language value should fail');
-                t.ok(isPatternError(validate, 'language'), JSON.stringify(validate.errors));
+                t.ok(isPatternError(validate, '.language'), JSON.stringify(validate.errors));
 
             });
 
@@ -524,7 +492,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string/integer year value should fail');
-                t.ok(isOneOfError(validate, 'year'), JSON.stringify(validate.errors));
+                t.ok(isOneOfError(validate, '.year'), JSON.stringify(validate.errors));
 
             });
 
@@ -567,7 +535,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string/object note value should fail');
-                t.ok(isOneOfError(validate, 'note'), JSON.stringify(validate.errors));
+                t.ok(isOneOfError(validate, '.note'), JSON.stringify(validate.errors));
 
             });
 
@@ -595,6 +563,534 @@ function testSchemaItself(validate) {
             t.end();
 
         });
+
+    });
+
+    tape('conform tests', test => {
+      test.test('non-string type should fail', t => {
+          nonStringValues.forEach((value) => {
+              const source = {
+                  type: 'http',
+                  coverage: {
+                      country: 'some country'
+                  },
+                  data: 'http://xyz.com/',
+                  conform: {
+                      type: value,
+                      number: 'number field',
+                      street: 'street field'
+                  }
+              };
+
+              const valid = validate(source);
+
+              t.notOk(valid, 'non-string type value should fail');
+              t.ok(isTypeError(validate, '.conform.type'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+      });
+
+      test.test('unsupported type should fail', t => {
+        const source = {
+            type: 'http',
+            coverage: {
+                country: 'some country'
+            },
+            data: 'http://xyz.com/',
+            conform: {
+                type: 'unsupported type',
+                number: 'number field',
+                street: 'street field'
+            }
+        };
+
+        const valid = validate(source);
+
+        t.notOk(valid, 'non-integer note value should fail');
+        t.ok(isEnumValueError(validate, '.conform.type'), JSON.stringify(validate.errors));
+        t.end();
+
+      });
+
+      test.test('supported type values should not fail', t => {
+          ['geojson', 'shapefile', 'shapefile-polygon', 'gdb', 'xml', 'csv'].forEach((value) => {
+              const source = {
+                  type: 'http',
+                  coverage: {
+                      country: 'some country'
+                  },
+                  data: 'http://xyz.com/',
+                  conform: {
+                      type: value,
+                      number: 'number field',
+                      street: 'street field'
+                  }
+              };
+
+              const valid = validate(source);
+
+              t.ok(valid, 'supported conform.type value should not fail');
+
+          });
+
+          t.end();
+
+      });
+
+      test.test('non-string addrtype should fail', t => {
+          nonStringValues.forEach((value) => {
+              const source = {
+                  type: 'http',
+                  coverage: {
+                      country: 'some country'
+                  },
+                  data: 'http://xyz.com/',
+                  conform: {
+                      type: 'geojson',
+                      addrtype: value,
+                      number: 'number field',
+                      street: 'street field'
+                  }
+              };
+
+              const valid = validate(source);
+
+              t.notOk(valid, 'non-string addrtype value should fail');
+              t.ok(isTypeError(validate, '.conform.addrtype'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+      });
+
+      test.test('non-integer accuracy should fail', t => {
+        nonIntegerValues.forEach((value) => {
+            const source = {
+                type: 'http',
+                coverage: {
+                    country: 'some country'
+                },
+                data: 'http://xyz.com/',
+                conform: {
+                    type: 'geojson',
+                    accuracy: value,
+                    number: 'number field',
+                    street: 'street field'
+                }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-integer accuracy value should fail');
+            t.ok(isTypeError(validate, '.conform.accuracy'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('accuracy less than 1 should fail', t => {
+        [-1, 0].forEach(value => {
+          const source = {
+              type: 'http',
+              coverage: {
+                  country: 'some country'
+              },
+              data: 'http://xyz.com/',
+              conform: {
+                  type: 'geojson',
+                  number: 'number field',
+                  street: 'street field',
+                  accuracy: value
+              }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'value less than 1 should fail');
+          t.ok(isMinimumValueError(validate, '.conform.accuracy'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('accuracy greater than 5 should fail', t => {
+        [6, 7].forEach(value => {
+          const source = {
+              type: 'http',
+              coverage: {
+                  country: 'some country'
+              },
+              data: 'http://xyz.com/',
+              conform: {
+                  type: 'geojson',
+                  number: 'number field',
+                  street: 'street field',
+                  accuracy: value
+              }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'non-integer note value should fail');
+          t.ok(isMaximumValueError(validate, '.conform.accuracy'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('non-string srs should fail', t => {
+          nonStringValues.forEach((value) => {
+              const source = {
+                  type: 'http',
+                  coverage: {
+                      country: 'some country'
+                  },
+                  data: 'http://xyz.com/',
+                  conform: {
+                      type: 'geojson',
+                      srs: value,
+                      number: 'number field',
+                      street: 'street field'
+                  }
+              };
+
+              const valid = validate(source);
+
+              t.notOk(valid, 'non-string srs value should fail');
+              t.ok(isTypeError(validate, '.conform.srs'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+      });
+
+      test.test('srs not matching EPSG:# format should fail', t => {
+          const source = {
+              type: 'http',
+              coverage: {
+                  country: 'some country'
+              },
+              data: 'http://xyz.com/',
+              conform: {
+                  type: 'geojson',
+                  srs: 'EPSG:abcd',
+                  number: 'number field',
+                  street: 'street field'
+              }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'srs value not matching pattern should fail');
+          t.ok(isPatternError(validate, '.conform.srs'), JSON.stringify(validate.errors));
+          t.end();
+
+      });
+
+      test.test('non-string file should fail', t => {
+        nonStringValues.forEach((value) => {
+            const source = {
+                type: 'http',
+                coverage: {
+                    country: 'some country'
+                },
+                data: 'http://xyz.com/',
+                conform: {
+                    type: 'csv',
+                    file: value,
+                    number: 'number field',
+                    street: 'street field'
+                }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-integer/string file value should fail');
+            t.ok(isTypeError(validate, '.conform.file'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('non-string/integer layer should fail', t => {
+          nonStringOrIntegerValues.forEach(value => {
+            const source = {
+                type: 'http',
+                coverage: {
+                    country: 'some country'
+                },
+                data: 'http://xyz.com/',
+                conform: {
+                    type: 'csv',
+                    layer: value,
+                    number: 'number field',
+                    street: 'street field'
+                }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-integer/string layer value should fail');
+            t.ok(isTypeError(validate, '.conform.layer'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+      });
+
+      test.test('non-string encoding should fail', t => {
+        nonStringValues.forEach((value) => {
+            const source = {
+                type: 'http',
+                coverage: {
+                    country: 'some country'
+                },
+                data: 'http://xyz.com/',
+                conform: {
+                    type: 'csv',
+                    encoding: value,
+                    number: 'number field',
+                    street: 'street field'
+                }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-integer note value should fail');
+            t.ok(isTypeError(validate, '.conform.encoding'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('non-string csvsplit should fail', t => {
+        nonStringValues.forEach((value) => {
+            const source = {
+                type: 'http',
+                coverage: {
+                    country: 'some country'
+                },
+                data: 'http://xyz.com/',
+                conform: {
+                    type: 'csv',
+                    csvsplit: value,
+                    number: 'number field',
+                    street: 'street field'
+                }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-integer note value should fail');
+            t.ok(isTypeError(validate, '.conform.csvsplit'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('non-integer headers should fail', t => {
+        nonIntegerValues.forEach((value) => {
+            const source = {
+                type: 'http',
+                coverage: {
+                    country: 'some country'
+                },
+                data: 'http://xyz.com/',
+                conform: {
+                    type: 'csv',
+                    headers: value,
+                    number: 'number field',
+                    street: 'street field'
+                }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-integer note value should fail');
+            t.ok(isTypeError(validate, '.conform.headers'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('headers less than -1 should fail', t => {
+        const source = {
+            type: 'http',
+            coverage: {
+                country: 'some country'
+            },
+            data: 'http://xyz.com/',
+            conform: {
+                type: 'csv',
+                headers: -2,
+                number: 'number field',
+                street: 'street field'
+            }
+        };
+
+        const valid = validate(source);
+
+        t.notOk(valid, 'value less than 1 should fail');
+        t.ok(isMinimumValueError(validate, '.conform.headers'), JSON.stringify(validate.errors));
+        t.end();
+
+
+      });
+
+      test.test('non-integer skiplines should fail', t => {
+        nonIntegerValues.forEach((value) => {
+            const source = {
+                type: 'http',
+                coverage: {
+                    country: 'some country'
+                },
+                data: 'http://xyz.com/',
+                conform: {
+                    type: 'csv',
+                    skiplines: value,
+                    number: 'number field',
+                    street: 'street field'
+                }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-integer note value should fail');
+            t.ok(isTypeError(validate, '.conform.skiplines'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('skiplines less than 1 should fail', t => {
+        [-1, 0].forEach(value => {
+          const source = {
+              type: 'http',
+              coverage: {
+                  country: 'some country'
+              },
+              data: 'http://xyz.com/',
+              conform: {
+                  type: 'csv',
+                  skiplines: value,
+                  number: 'number field',
+                  street: 'street field'
+              }
+          };
+
+          const valid = validate(source);
+
+          t.notOk(valid, 'value less than 1 should fail');
+          t.ok(isMinimumValueError(validate, '.conform.skiplines'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('non-string notes should fail', t => {
+        nonStringValues.forEach((value) => {
+            const source = {
+                type: 'http',
+                coverage: {
+                    country: 'some country'
+                },
+                data: 'http://xyz.com/',
+                conform: {
+                    type: 'geojson',
+                    notes: value,
+                    number: 'number field',
+                    street: 'street field'
+                }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-string note value should fail');
+            t.ok(isTypeError(validate, '.conform.notes'), JSON.stringify(validate.errors));
+
+        });
+
+        t.end();
+
+      });
+
+      test.test('non-string/array/object id should fail', t => {
+          [null, 17, true].forEach(value => {
+              const source = {
+                  type: 'http',
+                  coverage: {
+                      country: 'some country'
+                  },
+                  data: 'http://xyz.com/',
+                  conform: {
+                      type: 'geojson',
+                      id: value,
+                      number: 'number field',
+                      street: 'street field'
+                  }
+              };
+
+              const valid = validate(source);
+
+              t.notOk(valid, 'non-string/array/object id value should fail');
+              t.ok(isTypeError(validate, '.conform.id'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+      });
+
+      test.test('id array containing non-string elements should fail', t => {
+          nonStringValues.forEach(value => {
+              const source = {
+                  type: 'http',
+                  coverage: {
+                      country: 'some country'
+                  },
+                  data: 'http://xyz.com/',
+                  conform: {
+                      type: 'geojson',
+                      id: ['field1', value, 'field2'],
+                      number: 'number field',
+                      street: 'street field'
+                  }
+              };
+
+              const valid = validate(source);
+
+              t.notOk(valid, 'non-string elements in id array should fail');
+              t.ok(isTypeError(validate, '.conform.id'), JSON.stringify(validate.errors));
+
+          });
+
+          t.end();
+
+      });
 
     });
 
@@ -1804,7 +2300,7 @@ function testSchemaItself(validate) {
 
     });
 
-    tape('join function tests', test => {
+    tape('format function tests', test => {
       test.test('missing fields value should fail', t => {
         const source = {
           coverage: {
