@@ -13,12 +13,16 @@
         "state": "vt",
         "city": "burlington"
     },
-    "data": "https://services1.arcgis.com/1bO0c7PxQdsGidPK/ArcGIS/rest/services/City_of_Burlington_Property_Details/FeatureServer/0",
+    "data": "http://gis.burlingtonvt.gov:6080/arcgis/rest/services/Assessor/Parcel_Map/MapServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "StreetNumber",
-        "street": "StreetName",
-        "unit": "Unit"
+        "accuracy": 2,
+        "id": "UID",
+        "number": "ST_NUM",
+        "street": [
+            "ST_NAME",
+            "ST_TYPE"
+        ]
     }
 }
