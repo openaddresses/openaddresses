@@ -1,0 +1,33 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "06081",
+            "name": "San Mateo County",
+            "state": "California"
+        },
+        "country": "us",
+        "state": "ca",
+        "county": "San Mateo"
+    },
+    "attribution": "San Mateo County",
+    "data": "http://maps.smcgov.org/GIS_data_download/SAN_MATEO_COUNTY_PARCELS.zip",
+    "license": "https://isd.smcgov.org/gis-data-download",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "file": "SAN MATEO COUNTY PARCELS/ACTIVE_PARCELS_ADDRESS.shp",
+        "type": "shapefile-polygon",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "id": "APN"
+    }
+}

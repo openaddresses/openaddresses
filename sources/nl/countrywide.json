@@ -1,0 +1,22 @@
+{
+	"coverage": {
+		"ISO 3166": {
+			"alpha2": "NL",
+			"country": "Netherlands"
+		},
+		"country": "nl"
+	},
+	"data": "https://basisregistraties.arcgisonline.nl/arcgis/rest/services/BAG/BAG/MapServer/0",
+	"type": "ESRI",
+	"conform": {
+		"type": "geojson",
+		"number": {
+			"function": "format",
+			"fields": ["huisnummer", "huisletter", "huisnummertoevoeging"],
+			"format": "$1$2-$3"
+		},
+		"street": "openbareruimtenaam",
+		"postcode": "postcode",
+		"city": "woonplaatsnaam"
+	}
+}

@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17107",
+            "name": "Logan County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Logan"
+    },
+    "data": "http://www.centralilmaps.com/arcgis/rest/services/Logan_Flex_Property/MapServer/4",
+    "type": "ESRI",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "site_address",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "site_address",
+            "pattern": "^(?:[0-9]+ +)(.*)",
+            "replace": "$1"
+        },
+        "type": "geojson"
+    }
+}

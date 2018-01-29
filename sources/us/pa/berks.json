@@ -1,0 +1,26 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "42011",
+            "name": "Berks County",
+            "state": "Pennsylvania"
+        },
+        "country": "us",
+        "state": "pa",
+        "county": "Berks"
+    },
+    "data": "http://gis.co.berks.pa.us/arcgis/rest/services/Assess/AssessBase/MapServer/4",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "FULLSITEADDRESS"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "FULLSITEADDRESS"
+        },
+        "city": "MUNICIPALNAME"
+    }
+}

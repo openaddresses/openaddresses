@@ -1,0 +1,45 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "19169",
+            "name": "Story County",
+            "state": "Iowa"
+        },
+        "country": "us",
+        "state": "ia",
+        "county": "Story"
+    },
+    "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Story/Address_85.zip",
+    "license": {
+        "text": "Public Domain",
+        "attribution": false,
+        "share-alike": false
+    },
+    "year": "2012?",
+    "type": "ftp",
+    "compression": "zip",
+    "conform": {
+        "number": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "^.* ((Unit|Apt) [0-9A-Za-z])$",
+            "replace": "$1"
+        },
+        "city": " POSTAL_COM",
+        "district": "COUNTY",
+        "region": "STATE",
+        "postcode": "ZIP_CODE",
+        "type": "shapefile"
+    }
+}

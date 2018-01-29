@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "51077",
+            "name": "Grayson County",
+            "state": "Virginia"
+        },
+        "country": "us",
+        "state": "va",
+        "county": "Grayson"
+    },
+    "data": "https://www.webgis.net/arcgis/rest/services/VA/GraysonCo_WebGIS1/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "FULLADDR"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "FULLADDR"
+        },
+        "unit": "UNIT",
+        "city": "CITY",
+        "postcode": "ZIP_CODE"
+    }
+}

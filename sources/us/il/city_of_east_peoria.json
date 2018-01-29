@@ -1,0 +1,42 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "1722164",
+            "name": "City of East Peoria",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "city": "East Peoria",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -89.564842,
+                40.717134
+            ]
+        }
+    },
+    "type": "ESRI",
+    "data": "http://www.centralilmaps.com/arcgis/rest/services/Citylink_Flex/MapServer/10",
+    "conform": {
+        "type": "geojson",
+        "accuracy": 2,
+        "number": "ADDR_HN",
+        "street": [
+          "ADDR_PD",
+          "ADDR_SN",
+          "ADDR_ST"
+        ],
+        "city": {
+            "function": "regexp",
+            "field": "CITY_STATE",
+            "pattern": "^(.+?)\\s+IL$"
+        },
+        "region": {
+            "function": "regexp",
+            "field": "CITY_STATE",
+            "pattern": "\\b(IL)\\b"
+        },
+        "postcode": "ZIP_CODE"
+    }
+}

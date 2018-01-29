@@ -1,0 +1,31 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                36.145,
+                49.994
+            ]
+        },
+        "country": "UA",
+        "state": "UA-63",
+        "city": "Kharkiv"
+    },
+    "data": "http://cdr.citynet.kharkov.ua/arcgis/rest/services/gis_ort_stat_general/MapServer/1",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "FULLADDRRU",
+            "pattern": "^(?:[^,]+, )(.+)$",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "FULLADDRRU",
+            "pattern": "^([^,]+)"
+        },
+        "srs": "EPSG:28467"
+    }
+}

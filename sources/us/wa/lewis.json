@@ -1,0 +1,30 @@
+{
+    "coverage": {
+      "US Census": {
+          "geoid": "53041",
+          "name": "Lewis County",
+          "state": "Washington"
+      },
+      "country": "us",
+      "state": "wa",
+      "county": "Lewis"
+    },
+    "data": "http://maps.lewiscountywa.gov/data/parcels_NoOwner.zip",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile",
+        "number": {
+            "function": "regexp",
+            "field": "SITEADD",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITEADD",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "city": "SITECITY"
+    }
+}

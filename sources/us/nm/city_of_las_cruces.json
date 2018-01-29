@@ -1,0 +1,39 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "3539380",
+            "name": "City of Las Cruces",
+            "state": "New Mexico"
+        },
+        "country": "us",
+        "state": "nm",
+        "city": "Las Cruces",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -106.7798,
+                32.314
+            ]
+        }
+    },
+    "data": "http://services1.arcgis.com/ejcbAsQEUUGWEyzb/ArcGIS/rest/services/DACAddresses/FeatureServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "join",
+            "fields": ["ADDRNUM", "ADDRNUMSUF"],
+            "separator": ""
+        },
+        "street": [
+            "PRE_DIR",
+            "STREET",
+            "RD_NAME_TYPE",
+            "SUFFIX"
+        ],
+        "unit": [
+            "UNITTYPE",
+            "UNITID"
+        ]
+    }
+}

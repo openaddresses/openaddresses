@@ -1,0 +1,35 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -87.906,
+                43.091
+            ]
+        },
+        "US Census": {
+            "geoid": "5573725",
+            "name": "City of Shorewood",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "city": "Shorewood"
+    },
+    "data": "http://gis.msa-ps.com/arcgis/rest/services/Shorewood/Shorewood_GIS/MapServer/3",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "PropAddress",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PropAddress",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}

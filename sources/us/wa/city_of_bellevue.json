@@ -1,0 +1,31 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -122.225,
+                47.597
+            ]
+        },
+        "US Census": {
+            "geoid": "5305210",
+            "name": "City of Bellevue",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa",
+        "city": "Bellevue"
+    },
+    "type": "ESRI",
+    "data": "http://gisweb.bellevuewa.gov/cobgis/rest/services/Catalog/Catalog_General/MapServer/87",
+    "conform": {
+        "type": "geojson",
+        "number": "HouseNumber",
+        "street": {
+            "function": "remove_prefix",
+            "field": "HouseNumberStreetNameFull",
+            "field_to_remove": "HouseNumber"
+        },
+        "unit": "UnitDetailFull"
+    }
+}

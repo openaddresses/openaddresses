@@ -1,0 +1,35 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [ -77.42,37.54 ]
+        },
+        "US Census": {
+            "geoid": "51760",
+            "name": "City of Richmond",
+            "state": "Virginia"
+        },
+        "country": "us",
+        "state": "va",
+        "city": "Richmond"
+    },
+    "data": "ftp://ftp.ci.richmond.va.us/GIS/Shapefiles/Parcels_Addresses/AddressPoints.zip",
+    "type": "ftp",
+    "compression": "zip",
+    "website": "http://www.richmondgov.com/content/GIS/index.aspx",
+    "conform": {
+        "street": {
+            "function": "regexp",
+            "field": "AddressLab",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "number": {
+            "function": "regexp",
+            "field": "AddressLab",
+            "pattern": "^([0-9]+)"
+        },
+        "type": "shapefile",
+        "postcode": "zip5"
+    }
+}

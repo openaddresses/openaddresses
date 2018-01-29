@@ -1,0 +1,33 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -79.9421416,
+                32.78126
+            ]
+        },
+        "country": "us",
+        "state": "sc",
+        "city": "Charleston"
+    },
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRLABEL",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRLABEL",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "city": "CMTYNAME",
+        "postcode": "ZIPCODE"
+    },
+    "type": "ESRI",
+    "data": "http://gis.charleston-sc.gov/arcgis/rest/services/External/OData_Central/MapServer/0",
+    "website": "http://data.charleston-sc.opendata.arcgis.com/"
+}

@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55079",
+            "name": "Milwaukee County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Milwaukee"
+    },
+    "data": "http://lio.milwaukeecounty.org/arcgis/rest/services/Location/Location/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "id": "ADDRESS_ID",
+        "number": "HOUSENO",
+        "street": [
+            "DIR",
+            "STREET",
+            "STTYPE",
+            "PDIR"
+        ],
+        "unit": "UNIT",
+        "city": "MUNI",
+        "postcode": {
+            "function": "regexp",
+            "field": "ZIP_CODE",
+            "pattern": "^([\\d]{5})([\\d]{4})$",
+            "replace": "$1-$2"
+        },
+        "accuracy": 1
+    }
+}

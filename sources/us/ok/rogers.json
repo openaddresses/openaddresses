@@ -1,0 +1,30 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "40131",
+            "name": "Rogers County",
+            "state": "Oklahoma"
+        },
+        "country": "us",
+        "state": "ok",
+        "county": "Rogers"
+    },
+    "data": "https://maps.meshekgis.com/arcgis/rest/services/public/OK_Parcels_Map/MapServer/2",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "SITUS"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "SITUS",
+            "may_contain_units": true
+        },
+        "unit": {
+            "function": "postfixed_unit",
+            "field": "SITUS"
+        }
+    }
+}

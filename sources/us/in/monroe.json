@@ -1,0 +1,26 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "18105",
+            "name": "Monroe County",
+            "state": "Indiana"
+        },
+        "country": "us",
+        "state": "in",
+        "county": "Monroe"
+    },
+    "data": "https://elb2.39dn.com/arcgis/rest/services/eGISDynamicServices/MonroeINDynamic/MapServer/5",
+    "type": "ESRI",
+    "skip": true,
+    "note": "39dn requested that we stop using data obtained from their servers on 2017-05-07",
+    "conform": {
+      "number": {
+          "function": "regexp",
+          "field": "address",
+          "pattern": "^([0-9]+)"
+      },
+      "street": "street",
+      "postcode": "zip",
+      "type": "geojson"
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -82.08,
+                28.062
+            ]
+        },
+        "US Census": {
+            "geoid": "55141",
+            "name": "Wood County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Wood"
+    },
+    "data": "http://gis.co.wood.wi.us/gis/rest/services/WAB/LandRecords/MapServer/75",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "format",
+            "fields": [
+                "AddNum",
+                "AddNumSuffix"
+            ],
+            "format": "$1$2"
+        },
+        "street": [
+            "Prefix",
+            "StreetName",
+            "StreetType",
+            "Suffix"
+        ],
+        "unit": [
+            "UnitType",
+            "UnitId"
+        ],
+        "postcode": "ZipCode",
+        "city": "PlaceName"
+    }
+}

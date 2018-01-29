@@ -1,0 +1,43 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "06099",
+            "name": "Stanislaus County",
+            "state": "California"
+        },
+        "country": "us",
+        "state": "ca",
+        "county": "Stanislaus"
+    },
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "Situs2"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "Situs2"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "Situs1",
+            "pattern": "[0-9]{5}$"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "Situs1",
+            "pattern": "(.*)( CA .*)",
+            "replace": "$1"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "Situs2",
+            "pattern": "(.*?)( #[A-Za-z0-9])",
+            "replace": "$2"
+        }
+    },
+    "attribution": "Stanislaus County",
+    "data": "http://gis.stancounty.com/stangis_map_services/ArcGIS/rest/services/maps/parcels/MapServer/0",
+    "type": "ESRI"
+}

@@ -1,0 +1,29 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "42087",
+            "name": "Mifflin County",
+            "state": "Pennsylvania"
+        },
+        "country": "us",
+        "state": "pa",
+        "county": "Mifflin"
+    },
+    "data": "http://gis.co.mifflin.pa.us/arcgis/rest/services/parcel_program/MapServer/5",
+    "website": "http://www.co.mifflin.pa.us/dept/GIS/Pages/GIS-Data-Agreement.aspx",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "LOCATION",
+            "pattern": "^([0-9]+) "
+        },
+        "street": {
+            "function": "regexp",
+            "field": "LOCATION",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}

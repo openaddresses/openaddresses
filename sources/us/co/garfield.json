@@ -1,0 +1,29 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "08045",
+            "name": "Garfield County",
+            "state": "Colorado"
+        },
+        "country": "us",
+        "state": "co",
+        "county": "Garfield"
+    },
+    "type": "ftp",
+    "data": "http://www.garfield-county.com/geographic-information-systems/documents/parcels/ParcelsSHP.zip",
+    "website": "http://www.garfield-county.com/geographic-information-systems/index.aspx",
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile-polygon",
+        "number": {
+            "function": "prefixed_number",
+            "field": "PHYSADDRES"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "PHYSADDRES"
+        },
+        "postcode": "PHYSZIP",
+        "city": "PHYSCITY"
+    }
+}

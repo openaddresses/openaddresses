@@ -1,0 +1,21 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "on",
+        "county": "dufferin"
+    },
+    "data": "http://data.openaddresses.io/cache/ca-on-dufferin.zip",
+    "type": "http",
+    "compression": "zip",
+    "note": "Obtained through FOI Request June 2016 by Nicholas Ingalls <nicholas.ingalls@gmail.com>",
+    "conform": {
+        "number": "CIVIC_NO",
+        "street": {
+            "function": "regexp",
+            "field": "FULLADDY",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "type": "shapefile"
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27071",
+            "name": "Koochiching County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Koochiching"
+    },
+    "data": "http://services3.arcgis.com/8mdusDCY0WncdJVw/ArcGIS/rest/services/Parcels/FeatureServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "ADDR_1",
+            "pattern": "([0-9]*) (.*)",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDR_1",
+            "pattern": "([0-9]*) (.*)",
+            "replace": "$2"
+        },
+        "city": "CITY",
+        "postcode": "ZipCode5"
+    }
+}

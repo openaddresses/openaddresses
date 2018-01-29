@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "ab",
+        "city": "Medicine Hat",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -114.0717,
+                51.2855
+            ]
+        }
+    },
+    "data": "http://gis2.medicinehat.ca:6080/arcgis/rest/services/Operational_Layers/MapServer/3",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "join",
+            "fields": [
+                "HOUSE_NB",
+                "HOUSE_SF"
+            ],
+            "separator": ""
+        },
+        "street": [
+            "NAME",
+            "STTYPE",
+            "DIRECTION"
+        ],
+        "unit": "APT_NB",
+        "postcode": "POSTALCODE"
+    }
+}

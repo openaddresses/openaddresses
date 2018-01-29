@@ -1,0 +1,27 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "08107",
+            "name": "Routt County",
+            "state": "Colorado"
+        },
+        "country": "us",
+        "state": "co",
+        "county": "Routt"
+    },
+    "data": "http://maps.co.routt.co.us/arcgis/rest/services/PublicData/AddressPoints/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "CompleteAddress"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "CompleteAddress"
+        },
+        "unit": "CompleteSubaddress",
+        "postcode": "ZIP"
+    }
+}

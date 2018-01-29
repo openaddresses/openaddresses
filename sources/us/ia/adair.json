@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "19001",
+            "name": "Adair County",
+            "state": "Iowa"
+        },
+        "country": "us",
+        "state": "ia",
+        "county": "Adair"
+    },
+    "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/Adair/MapServer/1",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }
+}

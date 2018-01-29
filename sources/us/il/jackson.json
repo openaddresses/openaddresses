@@ -1,0 +1,27 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17077",
+            "name": "Jackson County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Jackson"
+    },
+    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_jackson_co_il_taxmap/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)"
+        },
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "type": "geojson"
+    }
+}

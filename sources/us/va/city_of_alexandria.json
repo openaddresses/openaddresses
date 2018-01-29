@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [ -77.047, 38.804 ]
+        },
+        "US Census": {
+            "geoid": "51510",
+            "name": "City of Alexandria",
+            "state": "Virginia"
+        },
+        "country": "us",
+        "state": "va",
+        "city": "Alexandria"
+    },
+    "data": "https://maps15.alexandriava.gov/arcgis/rest/services/alxAddressWm/MapServer/0",
+    "type": "ESRI",
+    "website": "https://www.alexandriava.gov/gis/info/default.aspx?id=7654",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "FULL_ADDS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "FULL_ADDS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "postcode": "ZIP"
+    }
+}

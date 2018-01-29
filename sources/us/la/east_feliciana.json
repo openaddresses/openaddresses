@@ -1,0 +1,25 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "22037",
+            "name": "East Feliciana Parish",
+            "state": "Louisiana"
+        },
+        "country": "us",
+        "state": "la",
+        "county": "East Feliciana"
+    },
+    "data": "http://services1.arcgis.com/fe3XWHMASK948q2c/ArcGIS/rest/services/EastFelParcels/FeatureServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "Address_91"
+        },
+        "street": {
+          "function": "postfixed_street",
+          "field": "Address_91"
+        }
+    }
+}

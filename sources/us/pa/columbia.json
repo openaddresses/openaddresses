@@ -1,0 +1,29 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "42037",
+            "name": "Columbia County",
+            "state": "Pennsylvania"
+        },
+        "country": "us",
+        "state": "pa",
+        "county": "Columbia"
+    },
+    "data": "http://gismaps.columbiapa.org/arcgis/rest/services/Editing/MontourAddresses/MapServer/0",
+    "website": "http://gis.columbiapa.org/mapsonline/default.aspx",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "FULLADDR",
+            "pattern": "^([0-9]+(?:[A-Z]| 1/2)?)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "FULLADDR",
+            "pattern": "^(?:[0-9]+(?:[A-Z]| 1/2)?)(.*)",
+            "replace": "$1"
+        }
+    }
+}
