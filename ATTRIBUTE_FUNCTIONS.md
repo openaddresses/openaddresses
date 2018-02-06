@@ -102,9 +102,9 @@ The `format` parameter is required and has no default value.
 
 More numerous than the formatting functions are the extraction functions.  These functions are used conditionally pull sections from larger values.
 
-### `prefixed_number` and `postfixed_street`
+### `prefixed_number`, `postfixed_street`, and `postfixed_unit`
 
-A number of countries, namely the United States, Canada, and others, format addresses with the house number prefixing the street name, for example, "123 South Main Street".  The `prefixed_number` and `postfixed_street` functions are for convenience to avoid the laborious and monotonous task of maintaining many copies of much more complicated `regexp` functions among a large number of sources.  Respectively, they simply return the contiguous block of numbers from the beginning and the value after those numbers.
+A number of countries, namely the United States, Canada, and others, format addresses with the house number prefixing the street name and sometimes suffixed with a unit, for example, "123 South Main Street".  The `prefixed_number`, `postfixed_street`, and `postfixed_unit` functions are for convenience to avoid the laborious and monotonous task of maintaining many copies of much more complicated `regexp` functions among a large number of sources.  Respectively, they simply return the contiguous block of numbers from the beginning and the value after those numbers.
 
 An example usage of this is in [Asotin County, WA](https://github.com/openaddresses/openaddresses/blob/master/sources/us/wa/asotin.json):
 
@@ -135,12 +135,39 @@ The implementations of `prefixed_number` and `postfixed_street` are very simple,
 
 A source may not necessarily have to use both functions together in a conform but they commonly are.
 
+It's also common for a single address field to contain a unit designator at the end, as in "123 Maple Street Apt 4A".  In this case, `postfixed_unit` should be used in combination with `postfixed_street` to extract `Apt 4A`.  Because `postfixed_street` considers the street value to be anything after the house number, it's normal to set `may_contain_units` to `true` in `postfixed_street` when using `postfixed_unit`.  
+
+`postfixed_unit` recognizes the following words as unit designators:
+
+* Unit
+* Apartment
+* Apt
+* Suite
+* Ste
+* Building
+* Bldg
+* Lot
+* #
+
+Any text found after the unit designator is considered part of the unit.  The downside of this is that if a street name legitimately
+contains one of these words, such as "Lindsay Lot Road", which is fortunately a fairly rare occurrence.  
+
 #### Definition:
+
+`prefixed_number` and `postfixed_unit` each take a single parameter named `field`:
 
 | parameter | value | default
 | --------- | ----- | -------
-| `function` | `prefixed_number` / `postfixed_street` |
+| `function` | `prefixed_number` / `postfixed_unit` |
 | `field` | any field name in the data source | none (required)
+
+`postfixed_street` takes two parameters: `field` (required) and `may_contain_units` (optional):
+
+| parameter | value | default
+| --------- | ----- | -------
+| `function` | `prefixed_unit` |
+| `field` | any field name in the data source | none (required)
+| `may_contain_units` | `true` or `false` | `false`
 
 ### `remove_prefix` and `remove_postfix`
 
@@ -240,6 +267,66 @@ While virtually all modern regular expression flavors share identical basic beha
 | `field` | string | any field name in the data source | none (required)
 | `pattern` | string | a compilable regular expression | none (required)
 | `replace` | string | a string referencing 0 or more captured groups in `pattern` | none (optional)
+
+## Compound functions
+
+Sometimes a single conform function is not enough to correctly process a source field, but applying two or more functions would be simpler and more correct than writing a regex.
+
+### `chain`
+
+The `chain` function allows for combining any number of conform functions as a sequence. The most common use case is when a source field contains `number`, `street`, and `unit` e.g. "310 WOOD ST APT 3" and "APT 3" is also listed as a separate field. Without writing a regex (which can be complex if there are many unit types), it would be impossible to extract "WOOD ST" as the `street` field. However, with `chain`, it can be easily accomplished by first extracting the street name + unit with `postfixed_street` and then removing the unit field using `remove_postfix`. Here's an example of a conform which does just that:
+
+```json
+"number": {
+    "function": "prefixed_number",
+    "field": "Prop_Addr"
+},
+"street": {
+    "function": "chain",
+    "variable": "street_wip",
+    "functions": [
+        {
+            "function": "postfixed_street",
+            "field": "Prop_Addr"
+        },
+        {
+            "function": "remove_postfix",
+            "field": "street_wip",
+            "field_to_remove": "Prop_Addr_Unit"
+        }
+    ]
+},
+"unit": "Prop_Addr_Unit"
+```
+
+The `variable` parameter in a `chain` function is a user-defined field which stores the intermediate results of the chain. In the first step in the `street` field example above, `postfixed_street` removes the house number, but the result of that computation is stored in the temporary field `street_wip` instead of an output field. In step 2, `street_wip` is referenced as the input field instead of the source field `Prop_Addr`. A `chain` function can contain any number of steps and the user-defined variable will accumulate the results of each step. The only requirement for user-specified variable names is that they should not conflict with the source fields or the standard output field names used in OpenAddresses conforms e.g. `street`, `number`, etc.
+
+Given the following source record:
+
+```json
+{
+    "Prop_Addr": "310 WOOD ST APT 3",
+    "Prop_Addr_Unit": "APT 3"
+}
+```
+
+Applying the above conform results in the following:
+
+```json
+{
+    "number": "310",
+    "street": "WOOD ST",
+    "unit": "APT 3"
+}
+```
+
+#### Definition:
+
+| parameter | value | default
+| --------- | ----- | -------
+| `function` | `chain` |
+| `variable` | a temporary field name to store intermediate results | none (required)
+| ` functions` | a list of conform function definitions (which can also be `chain`) | none (required)
 
 ## Acceptance Testing
 

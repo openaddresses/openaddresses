@@ -5,12 +5,20 @@
         "county": "Lennox & Addington"
     },
     "type": "ESRI",
-    "data": "http://services.arcgis.com/YmmKxwNVvLQW5zcm/ArcGIS/rest/services/LACivicAddress/FeatureServer/0",
+    "data": "https://services.arcgis.com/YmmKxwNVvLQW5zcm/ArcGIS/rest/services/LACivicAddress/FeatureServer/0",
     "website": "http://www.lennox-addington.on.ca/",
     "conform":{
         "type": "geojson",
-        "number": "Number",
+        "number": {
+            "function": "format",
+            "fields": [
+                "Number",
+                "ALPHA_SUFFIX"
+            ],
+            "format": "$1$2"
+        },
         "street": "STREET_NAM",
+        "unit": "UNIT_IDENT",
         "city": "BELL_MUNIC"
     }
 }

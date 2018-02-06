@@ -1,5 +1,9 @@
 {
     "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [ -96.6134262084961, 33.196609461052844 ]
+        },
         "US Census": {
             "geoid": "4845744",
             "name": "City of McKinney",
@@ -10,7 +14,7 @@
         "county": "Taylor",
         "city": "McKinney"
     },
-    "data": "http://maps.mckinneytexas.org/mckinney/rest/services/OpenData/Base_Layers/MapServer/0",
+    "data": "http://maps.mckinneytexas.org/mckinney/rest/services/OpenData/Addresses_Boundaries/MapServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
@@ -27,7 +31,8 @@
             "function": "regexp",
             "field": "SitusAdd",
             "pattern": "^\\d+\\s.+?(\\s(?:BLDG|STE)\\s+\\w+\\s*)$"
-        }
+        },
+        "city": "CITY"
     },
     "test": {
         "enabled": true,

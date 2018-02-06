@@ -1,5 +1,9 @@
 {
     "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [ -80.57, 37.13 ]
+        },
         "US Census": {
             "geoid": "51750",
             "name": "City of Radford",
@@ -12,12 +16,16 @@
     "data": "http://radfordgis.radford.va.us/arcgiscloud/rest/services/Realestate1/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "number": "addrnum",
+        "number": "ADDRNUM",
         "street": [
-            "stname",
-            "STABBRTYPE"
+            "STPREFXDIR",
+            "STNAME",
+            "STABBRTYPE",
+            "STSUFFIX"
         ],
+        "unit": "LIVINGUNIT",
         "type": "geojson",
-        "postcode": "addrzip"
+        "city": "CITY",
+        "postcode": "ADDRZIP"
     }
 }

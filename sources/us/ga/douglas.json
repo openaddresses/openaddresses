@@ -9,25 +9,53 @@
         "state": "ga",
         "county": "Douglas"
     },
-    "data": "http://gis.co.douglas.ga.us/ArcGIS/rest/services/Base_Map/MapServer/16",
-    "type": "ESRI",
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/db6c64/us-ga-douglas.geojson.zip",
+    "note": "sourced from http://www.gis.dcga.us/arcgis/rest/services/MapLayers/MapServer/13 using pyesridump (read times out)",
+    "type": "http",
+    "compression": "zip",
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "PropertyAddress"
         },
         "street": {
             "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+)(.*?)( (UNIT|APT|BLDG|STE).*|$)",
-            "replace": "$1"
+            "field": "PropertyAddress",
+            "pattern": "^(?:[0-9]+)(.+?)(?:\\s+(?:UNIT|APT|BLDG|STE)\\s+.+)?$"
         },
         "unit": {
             "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": " ((?:UNIT|APT|BLDG|STE) .+)$"
+            "field": "PropertyAddress",
+            "pattern": " ((?:UNIT|APT|BLDG|STE)\\s+.+)$"
         }
+    },
+    "test": {
+        "enabled": true,
+        "description": "these are the tests that exercise extracting embedded units",
+        "acceptance-tests": [
+            {
+                "description": "address without unit",
+                "inputs": {
+                    "PropertyAddress": "7392 BREEZE ST"
+                },
+                "expected": {
+                    "number": "7392",
+                    "street": "BREEZE ST",
+                    "unit": ""
+                }
+            },
+            {
+                "description": "address with APT unit",
+                "inputs": {
+                    "PropertyAddress": "13 CRESTVIEW DR APT A"
+                },
+                "expected": {
+                    "number": "13",
+                    "street": "CRESTVIEW DR",
+                    "unit": "APT A"
+                }
+            }
+        ]
     }
 }

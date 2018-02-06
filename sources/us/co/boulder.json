@@ -9,20 +9,30 @@
         "state": "co",
         "county": "Boulder"
     },
-    "data": "https://gisftp02.state.co.us/c.StateLevelAgencies/GOV/OIT/CSO/GIS/CY2016/Parcels/ParcelsByCounty_SHP/Boulder.zip",
-    "type": "http",
-    "compression": "zip",
+    "data": "http://maps.bouldercounty.org/arcgis/rest/services/PARCELS/ADDRESS_POINTS/MapServer/0",
+    "type": "ESRI",
     "conform": {
-        "type": "shapefile",
-        "number": {
-            "function": "prefixed_number",
-            "field": "situsAdd"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "situsAdd"
-        },
-        "city": "sitAddCty",
-        "postcode": "sitAddZip"
+        "type": "geojson",
+        "number": [
+            "STREET_NUMBER_PREFIX",
+            "STREET_NUMBER",
+            "STREET_NUMBER_SUFFIX"
+        ],
+        "street": [
+            "PREFIX",
+            "PRETYPE",
+            "STREETNAME",
+            "STREETTYPE",
+            "SUFFIX",
+            "POSTMODIFIER"
+        ],
+        "unit": [
+            "UNITTYPE",
+            "UNIT"
+        ],
+        "city": "CITY",
+        "district": "COUNTY",
+        "region": "STATE",
+        "postcode": "ZIPCODE"
     }
 }

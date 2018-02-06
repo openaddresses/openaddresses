@@ -9,18 +9,20 @@
         "state": "nc",
         "county": "Madison"
     },
-    "data": "http://dl.agd.cc/State/NC/Madison/downloads/Addresses.zip",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://madisoncountygis.com/nc/madison/downloads.php",
+    "data": "https://services3.arcgis.com/NwIC4HArqo0JlKGT/ArcGIS/rest/services/Addresses_6_15/FeatureServer/0",
+    "type": "ESRI",
+    "website": "http://www.madisongis.com",
     "conform": {
-        "street": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "number": "addnum",
-        "type": "shapefile"
+        "type": "geojson",
+        "number": "ADDNUM",
+        "street": [
+            "PREDIR",
+            "STREETNAME",
+            "STREETTYPE",
+            "SUFDIR"
+        ],
+        "unit": "LOC",
+        "city": "CITY",
+        "district": "COUNTY"
     }
 }

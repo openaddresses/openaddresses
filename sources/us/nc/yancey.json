@@ -9,11 +9,17 @@
         "state": "nc",
         "county": "Yancey"
     },
-    "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Yancey/MapServer/32",
+    "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Yancey/MapServer/42",
+    "note": "STREET_NUMBER can contain non-number info (such as 'LT33') so only use digits-only values",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "STREET_NUM",
-        "street": "STREET_NAM"
+        "number": {
+            "function": "regexp",
+            "field": "STREET_NUM",
+            "pattern": "^\\s*(\\d+)\\s*$"
+        },
+        "street": "STREET_NAM",
+        "unit": "STREET_APT"
     }
 }
