@@ -10,21 +10,21 @@
         "county": "Larimer"
     },
     "attribution": "Larimer County",
-    "data": "http://maps.larimer.org/arcgis/rest/services/maps/selectableLayers/MapServer/3",
+    "data": "https://maps1.larimer.org/arcgis/rest/services/MapServices/Parcels/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "number": "addrnum",
-        "street": {
-            "function": "regexp",
-            "field": "SITEADDR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "unit": [
-          "ADDRBLDGNUM",
-          "ADDRUNITNUM"
-        ],
         "type": "geojson",
-        "postcode": "zipcode"
+        "number": "ADDRESSNUM",
+        "street": {
+            "function": "remove_prefix",
+            "field": "FULLADDRESS",
+            "field_to_remove": "ADDRESSNUM"
+        },
+        "city": "CITY",
+        "postcode": {
+            "function": "regexp",
+            "field": "ZIPCODE",
+            "pattern": "^(\\d{5})"
+        }
     }
 }

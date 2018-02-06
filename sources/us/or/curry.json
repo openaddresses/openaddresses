@@ -1,0 +1,125 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "41015",
+            "name": "Curry County",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "county": "Curry"
+    },
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "gdb",
+        "file": "Delivery/addresses_oregon.gdb",
+        "layer": "Curry",
+        "number": {
+            "function": "prefixed_number",
+            "field": "SITUS_ONE"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITUS_ONE",
+            "pattern": "^\\d+\\s+([^,]+)"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "SITUS_ONE",
+            "pattern": "(?:,\\s+(.+))$"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "SITUS_TWO",
+            "pattern": "^(.+?)(?:,|\\d+)"
+        },
+        "region": {
+            "function": "regexp",
+            "field": "SITUS_TWO",
+            "pattern": "\\b(OR)\\b"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "SITUS_TWO",
+            "pattern": "\\b(\\d+)$"
+        }
+    },
+    "test": {
+        "enabled": true,
+        "description": "these are the tests that exercise valid inputs for Curry County",
+        "acceptance-tests": [
+            {
+                "description": "address with no unit",
+                "inputs": {
+                    "SITUS_ONE": "98171 TUTTLE LN",
+                    "SITUS_TWO": "BROOKINGS, OR 97415"
+                },
+                "expected": {
+                    "street": "TUTTLE LN",
+                    "unit": "",
+                    "city": "BROOKINGS",
+                    "region": "OR",
+                    "postcode": "97415"
+                }
+            },
+            {
+                "description": "address with # unit",
+                "inputs": {
+                    "SITUS_ONE": "31084 CRABAPPLE WAY, #10",
+                    "SITUS_TWO": "GOLD BEACH, OR 97444"
+                },
+                "expected": {
+                    "street": "CRABAPPLE WAY",
+                    "unit": "#10",
+                    "city": "GOLD BEACH",
+                    "region": "OR",
+                    "postcode": "97444"
+                }
+            },
+            {
+                "description": "address with unconventional unit",
+                "inputs": {
+                    "SITUS_ONE": "32051 WATSON LN, SP K",
+                    "SITUS_TWO": "GOLD BEACH, OR 97444"
+                },
+                "expected": {
+                    "street": "WATSON LN",
+                    "unit": "SP K",
+                    "city": "GOLD BEACH",
+                    "region": "OR",
+                    "postcode": "97444"
+                }
+            },
+            {
+                "description": "address with no city/region/zip",
+                "inputs": {
+                    "SITUS_ONE": "402 8 ST",
+                    "SITUS_TWO": ""
+                },
+                "expected": {
+                    "street": "8 ST",
+                    "unit": "",
+                    "city": "",
+                    "region": "",
+                    "postcode": ""
+                }
+            },
+            {
+                "description": "address with no only city/zip",
+                "inputs": {
+                    "SITUS_ONE": "29672 STEWART ST",
+                    "SITUS_TWO": "GOLD BEACH 97444"
+                },
+                "expected": {
+                    "street": "STEWART ST",
+                    "unit": "",
+                    "city": "GOLD BEACH ",
+                    "region": "",
+                    "postcode": "97444"
+                }
+            }
+        ]
+    }
+}

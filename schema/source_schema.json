@@ -55,16 +55,19 @@
     },
     "language": {
       "type": "string",
-      "pattern": "[a-zA-Z]{2}"
+      "pattern": "^[a-zA-Z]{2,3}$"
     },
     "year": {
       "oneOf": [
         { "type": "string" },
-        { "type": "number" }
+        { "type": "integer" }
       ]
     },
     "skip": {
       "type": "boolean"
+    },
+    "test": {
+      "$ref": "#/definitions/test"
     }
   },
   "definitions": {
@@ -118,7 +121,6 @@
     "base_conform_field_value": {
       "description": "convenience definition for one of null, string, or string array",
       "oneOf": [
-        { "type": "null" },
         { "type": "string" },
         {
           "type": "array",
@@ -150,13 +152,12 @@
         "accuracy": {
           "description": "https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md#accuracy",
           "type": "integer",
-          "minimum": 0,
-          "maximum": 5,
-          "exclusiveMinimum": true
+          "minimum": 1,
+          "maximum": 5
         },
         "srs": {
           "type": "string",
-          "regex": "EPSG:[0-9]+"
+          "pattern": "EPSG:[0-9]+"
         },
         "file": {
           "type": "string"
@@ -193,7 +194,8 @@
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "number": {
@@ -205,7 +207,8 @@
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "street": {
@@ -217,7 +220,8 @@
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "unit": {
@@ -225,10 +229,12 @@
           "oneOf": [
             { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
+            { "$ref": "#/definitions/function_postfixed_unit" },
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "city": {
@@ -239,7 +245,8 @@
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "district": {
@@ -250,7 +257,8 @@
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "region": {
@@ -261,7 +269,8 @@
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "postcode": {
@@ -272,7 +281,8 @@
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
-            { "$ref": "#/definitions/function_format" }
+            { "$ref": "#/definitions/function_format" },
+            { "$ref": "#/definitions/function_chain" }
           ]
         },
         "lon": {
@@ -293,6 +303,42 @@
         }
       }
     },
+    "test": {
+      "description": "test definition",
+      "type": "object",
+      "required": ["description"],
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "acceptance-tests": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/acceptance-test" }
+        }
+      }
+    },
+    "acceptance-test": {
+      "description": "acceptance-test definition",
+      "type": "object",
+      "required": ["description", "inputs", "expected"],
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "inputs": {
+          "type": "object"
+        },
+        "expected": {
+          "type": "object"
+        }
+      }
+    },
     "function_regexp": {
       "description": "regexp function definition",
       "type": "object",
@@ -307,8 +353,7 @@
           "type": "string"
         },
         "pattern": {
-          "type": "string",
-          "format": "string"
+          "type": "string"
         },
         "replace": {
           "type": "string"
@@ -339,6 +384,24 @@
         "function": {
           "type": "string",
           "enum": ["postfixed_street"]
+        },
+        "field": {
+          "type": "string"
+        },
+        "may_contain_units": {
+          "type": "boolean"
+        }
+      }
+    },
+    "function_postfixed_unit": {
+      "description": "postfixed_unit function definition",
+      "type": "object",
+      "required": ["function", "field"],
+      "additionalProperties": false,
+      "properties": {
+        "function": {
+          "type": "string",
+          "enum": ["postfixed_unit"]
         },
         "field": {
           "type": "string"
@@ -418,6 +481,37 @@
         },
         "format": {
           "type": "string"
+        }
+      }
+    },
+    "function_chain": {
+      "description": "chain function definition",
+      "type": "object",
+      "required": ["function", "variable", "functions"],
+      "additionalProperties": false,
+      "properties": {
+        "function": {
+          "type": "string",
+          "enum": ["chain"]
+        },
+        "variable": {
+          "type": "string"
+        },
+        "functions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+                { "$ref": "#/definitions/base_conform_field_value" },
+                { "$ref": "#/definitions/function_regexp" },
+                { "$ref": "#/definitions/function_postfixed_street" },
+                { "$ref": "#/definitions/function_remove_prefix" },
+                { "$ref": "#/definitions/function_remove_postfix" },
+                { "$ref": "#/definitions/function_join" },
+                { "$ref": "#/definitions/function_format" },
+                { "$ref": "#/definitions/function_chain" }
+            ]
+          }
         }
       }
     }

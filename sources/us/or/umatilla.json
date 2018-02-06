@@ -1,0 +1,31 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "41059",
+            "name": "Umatilla County",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "county": "Umatilla"
+    },
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "gdb",
+        "file": "Delivery/addresses_oregon.gdb",
+        "layer": "Umatilla",
+        "number": {
+            "function": "prefixed_number",
+            "field": "Address"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "Address"
+        },
+        "city": "City",
+        "region": "State",
+        "postcode": "Zip"
+    }
+}

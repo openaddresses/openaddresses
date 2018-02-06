@@ -4,15 +4,21 @@
         "state": "on",
         "county": "Oxford"
     },
-    "data": "http://public.oxfordcounty.ca/gis/rest/services/Address_points/MapServer/0",
+    "data": "https://public.oxfordcounty.ca/gis/rest/services/Address_search_1/MapServer/0",
     "website": "http://www.oxfordcounty.ca/Services-for-You/Mapping/Maps",
     "type": "ESRI",
     "conform": {
-        "number": "ADDRESS_NUMBER",
+        "type": "geojson",
+        "id": "ADDRESSID",
+        "number": [
+            "ADDRESS_NUMBER",
+            "ADDRESS_QUALIFIER"
+        ],
         "street": "ROADNAME",
-        "city": "MU_NAME",
-        "postcode": "POSTAL_CODE",
-        "region": "PROVINCE",
-        "type": "geojson"
+        "unit": [
+            "UNIT_TYPE",
+            "UNIT"
+        ],
+        "city": "MU_NAME"
     }
 }

@@ -9,17 +9,16 @@
         "state": "id",
         "county": "Madison"
     },
-    "data": "http://jessie.rexburg.org/mrgis/rest/services/Data/AddressLabel/MapServer/1",
+    "data": "http://jessie.rexburg.org/mrgis/rest/services/Data/Addresses/MapServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
         "id": "ADDRESSID",
         "number": "HOUSENUMBER",
-        "street": [
-            "PREFIX",
-            "BASENAME",
-            "STREETTYPE",
-            "SUFFIX"
-        ]
+        "street": {
+            "function": "remove_prefix",
+            "field": "AddressLabel",
+            "field_to_remove": "HOUSENUMBER"
+        }
     }
 }

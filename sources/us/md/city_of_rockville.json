@@ -1,0 +1,89 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -77.181,
+                39.087
+            ]
+        },
+        "US Census": {
+            "geoid": "2467675",
+            "name": "City of Rockville",
+            "state": "Maryland"
+        },
+        "country": "us",
+        "state": "md",
+        "city": "Rockville"
+    },
+    "data": "http://maps.rockvillemd.gov/arcgis/rest/services/Rockville_Addresses_WebMerc/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^\\s*(\\d+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^\\s*(?:\\d+(?:-\\w+)?)\\s+(.+?)(?:, SUITE \\d+)?$"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "\\s*\\d+-(\\w+)\\s"
+        }
+    },
+    "test": {
+        "enabled": true,
+        "description": "units are optionally appended to number with hyphen, though can be appended with comma and word 'SUITE' (latter is dropped due to inability to represent either in regexp pattern)",
+        "acceptance-tests": [
+            {
+                "description": "address without unit",
+                "inputs": {
+                    "ADDRESS": "6 ORCHARD WAY N"
+                },
+                "expected": {
+                    "number": "6",
+                    "street": "ORCHARD WAY N",
+                    "unit": ""
+                }
+            },
+            {
+                "description": "address with digits+hyphen+alpha house number",
+                "inputs": {
+                  "ADDRESS": "10003-B FIELDS RD"
+                },
+                "expected": {
+                    "number": "10003",
+                    "street": "FIELDS RD",
+                    "unit": "B"
+                }
+            },
+            {
+                "description": "address with digits+hyphen+digit house number",
+                "inputs": {
+                  "ADDRESS": "16021-15 INDUSTRIAL DR"
+                },
+                "expected": {
+                    "number": "16021",
+                    "street": "INDUSTRIAL DR",
+                    "unit": "15"
+                }
+            },
+            {
+                "description": "address with unit postfixed in 'SUITE'-format",
+                "inputs": {
+                  "ADDRESS": "3202 TOWER OAKS BLVD, SUITE 180"
+                },
+                "expected": {
+                    "number": "3202",
+                    "street": "TOWER OAKS BLVD",
+                    "unit": ""
+                }
+            }
+        ]
+    }
+}

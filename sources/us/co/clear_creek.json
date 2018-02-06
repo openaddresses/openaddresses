@@ -10,13 +10,19 @@
         "county": "Clear Creek"
     },
     "type": "http",
-    "data": "http://www.co.clear-creek.co.us/DocumentCenter/View/3990",
+    "data": "https://gisftp02.state.co.us/c.StateLevelAgencies/GOV/OIT/CSO/GIS/CY2016/Parcels/ParcelsByCounty_SHP/ClearCreek.zip",
     "compression": "zip",
     "conform": {
         "type": "shapefile",
-        "number": "STREET_NUM",
-        "street": "FULL_NAME",
-        "city": "CITY",
-        "postcode": "Zip_code"
+        "number": {
+            "function": "prefixed_number",
+            "field": "situsAdd"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "situsAdd"
+        },
+        "city": "sitAddCity",
+        "postcode": "sitAddZip"
     }
 }

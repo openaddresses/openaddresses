@@ -7,18 +7,33 @@
         },
         "country": "us",
         "state": "ny",
-        "city": "new york"
+        "city": "new york",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -73.9808,
+                40.7648
+            ]
+        }
     },
-    "data": "https://data.cityofnewyork.us/api/views/g6pj-hd8k/files/741cfc4e-dcb9-41cb-897c-37722fb3dae6?download=true&filename=AddressPoint.zip",
+    "data": "https://data.cityofnewyork.us/api/geospatial/g6pj-hd8k?method=export&format=Shapefile",
     "website": "https://data.cityofnewyork.us/City-Government/NYC-Address-Points/g6pj-hd8k",
     "type": "http",
     "compression": "zip",
     "conform": {
-        "number": "H_NO",
-        "street": "ST_NAME",
-        "unit": "HNO_SUFFIX",
+        "number": "h_no",
+        "street": [
+            "pre_modifi",
+            "pre_direct",
+            "pre_type",
+            "st_name",
+            "post_type",
+            "post_modif",
+            "post_direc"
+        ],
+        "unit": "hno_suffix",
+        "postcode": "zipcode",
         "type": "shapefile",
-        "postcode": "ZIPCODE",
-        "id": "ADDRESS_ID"
+        "id": "address_id"
     }
 }

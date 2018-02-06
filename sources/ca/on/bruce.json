@@ -7,19 +7,9 @@
     "type": "ESRI",
     "data": "http://maps.brucecounty.on.ca/arcgis/rest/services/public/parcels_pub_wa/MapServer/3",
     "conform":{
-        "number": {
-            "function": "regexp",
-            "field": "bcwa.VIEWER1.%tbl911_address_vw_1.CivicAddress",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "bcwa.VIEWER1.%tbl911_address_vw_1.CivicAddress",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "bcwa.VIEWER1.%tbl911_address_vw_1.Municipality",
-        "type": "geojson"
+        "type": "geojson",
+        "number": "ADDR_NUM",
+        "street": "RD_NAME",
+        "unit": "UNIT_NUM"
     }
 }
