@@ -1,0 +1,242 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "08117",
+            "name": "Summit County",
+            "state": "Colorado"
+        },
+        "country": "us",
+        "state": "co",
+        "county": "Summit"
+    },
+    "data": "https://services6.arcgis.com/dmNYNuTJZDtkcRJq/arcgis/rest/services/Address_Points/FeatureServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "id": "SITUSADDRESS_ID",
+        "number": "HouseNumberValue",
+        "street": {
+            "function": "regexp",
+            "field": "FullAddress",
+            "pattern": "^(?:\\d+(?:[A-Z]|-\\d+|\\.\\d+)?\\s+)(.+?)(?:(?:\\(|UNIT\\s|LOT\\s|BLDG\\s|OFC\\s|SPC\\s).+)?$"
+        },
+        "unit": [
+            "PrimaryUnitTypeAbbreviation",
+            "PrimaryUnitIdentifier",
+            "SecondaryUnitTypeAbbreviation",
+            "SecondaryUnitIdentifier"
+        ],
+        "city": "TownName",
+        "district": "CountyName"
+    },
+    "test": {
+        "enabled": true,
+        "description": "Summit County, CO embeds unit and road altname info into address field",
+        "acceptance-tests": [
+            {
+                "description": "nothing fancy",
+                "inputs": {
+                    "SITUSADDRESS_ID": "51088",
+                    "HouseNumberValue": "561",
+                    "FullAddress": "561 Water Dance DR",
+                    "PrimaryUnitTypeAbbreviation": "",
+                    "SecondaryUnitTypeAbbreviation": "",
+                    "SecondaryUnitIdentifier": "",
+                    "PrimaryUnitIdentifier": "",
+                    "TownName": "Frisco",
+                    "CountyName": "Summit"
+                },
+                "expected": {
+                    "street": "Water Dance DR"
+                }
+            },
+            {
+                "description": "road altname",
+                "inputs": {
+                    "SITUSADDRESS_ID": "51088",
+                    "HouseNumberValue": "1031",
+                    "FullAddress": "1031 Soda Ridge RD (CR 4)",
+                    "PrimaryUnitTypeAbbreviation": "",
+                    "PrimaryUnitIdentifier": "",
+                    "SecondaryUnitTypeAbbreviation": "",
+                    "SecondaryUnitIdentifier": "",
+                    "TownName": "Unincorporated Summit County",
+                    "CountyName": "Summit"
+                },
+                "expected": {
+                    "street": "Soda Ridge RD"
+                }
+            },
+            {
+                "description": "BLDG unit designator",
+                "inputs": {
+                    "SITUSADDRESS_ID": "71425",
+                    "HouseNumberValue": "57",
+                    "FullAddress": "57 Snowflake DR BLDG 6",
+                    "PrimaryUnitTypeAbbreviation": "BLDG",
+                    "PrimaryUnitIdentifier": "6",
+                    "SecondaryUnitTypeAbbreviation": "",
+                    "SecondaryUnitIdentifier": "",
+                    "TownName": "Breckenridge",
+                    "CountyName": "Summit"
+                },
+                "expected": {
+                    "street": "Snowflake DR"
+                }
+            },
+            {
+                "description": "BLDG unit designator with road altname",
+                "inputs": {
+                    "SITUSADDRESS_ID": "75787",
+                    "HouseNumberValue": "1198",
+                    "FullAddress": "1198 S Adams AVE (CR 49) BLDG E",
+                    "PrimaryUnitTypeAbbreviation": "BLDG",
+                    "PrimaryUnitIdentifier": "E",
+                    "SecondaryUnitTypeAbbreviation": "",
+                    "SecondaryUnitIdentifier": "",
+                    "TownName": "Breckenridge",
+                    "CountyName": "Summit"
+                },
+                "expected": {
+                    "street": "S Adams AVE"
+                }
+            },
+            {
+                "description": "multiple unit designators",
+                "inputs": {
+                    "SITUSADDRESS_ID": "66600",
+                    "HouseNumberValue": "0303",
+                    "FullAddress": "0303 Pelican CIR (CR 318) BLDG 19 UNIT 1909",
+                    "PrimaryUnitTypeAbbreviation": "BLDG",
+                    "PrimaryUnitIdentifier": "19",
+                    "SecondaryUnitTypeAbbreviation": "UNIT",
+                    "SecondaryUnitIdentifier": "1909",
+                    "TownName": "Unincorporated Summit County",
+                    "CountyName": "Summit"
+                },
+                "expected": {
+                    "street": "Pelican CIR"
+                }
+            },
+            {
+                "description": "LOT unit designator",
+                "inputs": {
+                    "SITUSADDRESS_ID": "74599",
+                    "HouseNumberValue": "302",
+                    "FullAddress": "302 N Main ST LOT 2A",
+                    "PrimaryUnitTypeAbbreviation": "LOT",
+                    "PrimaryUnitIdentifier": "2A",
+                    "SecondaryUnitTypeAbbreviation": "",
+                    "SecondaryUnitIdentifier": "",
+                    "TownName": "Breckenridge",
+                    "CountyName": "Summit"
+                },
+                "expected": {
+                    "street": "N Main ST"
+                }
+            },
+            {
+                "description": "OFC unit designator",
+                "inputs": {
+                    "SITUSADDRESS_ID": "74198",
+                    "HouseNumberValue": "765",
+                    "FullAddress": "765 W Anemone TRL OFC 102",
+                    "PrimaryUnitTypeAbbreviation": "OFC",
+                    "PrimaryUnitIdentifier": "102",
+                    "SecondaryUnitTypeAbbreviation": "",
+                    "SecondaryUnitIdentifier": "",
+                    "TownName": "Dillon",
+                    "CountyName": "Summit"
+                },
+                "expected": {
+                    "street": "W Anemone TRL"
+                }
+            },
+            {
+                "description": "SPC unit designator",
+                "inputs": {
+                    "SITUSADDRESS_ID": "72358",
+                    "HouseNumberValue": "16165",
+                    "FullAddress": "16165 State Hwy 9 SPC A4",
+                    "PrimaryUnitTypeAbbreviation": "SPC",
+                    "PrimaryUnitIdentifier": "A4",
+                    "SecondaryUnitTypeAbbreviation": "",
+                    "SecondaryUnitIdentifier": "",
+                    "TownName": "Unincorporated Summit County",
+                    "CountyName": "Summit"
+                },
+                "expected": {
+                    "street": "State Hwy 9"
+                }
+            },
+            {
+                "description": "UNIT unit designator",
+                "inputs": {
+                    "SITUSADDRESS_ID": "75836",
+                    "HouseNumberValue": "308",
+                    "FullAddress": "308 N French ST UNIT 1",
+                    "PrimaryUnitTypeAbbreviation": "UNIT",
+                    "PrimaryUnitIdentifier": "1",
+                    "SecondaryUnitTypeAbbreviation": "",
+                    "SecondaryUnitIdentifier": "",
+                    "TownName": "Breckenridge",
+                    "CountyName": "Summit"
+                },
+                "expected": {
+                    "street": "N French ST"
+                }
+            },
+            {
+                "description": "house number w/alpha",
+                "inputs": {
+                    "SITUSADDRESS_ID": "67901",
+                    "HouseNumberValue": "505C",
+                    "FullAddress": "505C S Main ST UNIT C5",
+                    "PrimaryUnitTypeAbbreviation": "UNIT",
+                    "PrimaryUnitIdentifier": "C5",
+                    "SecondaryUnitTypeAbbreviation": "",
+                    "SecondaryUnitIdentifier": "",
+                    "TownName": "Breckenridge",
+                    "CountyName": "Summit"
+                },
+                "expected": {
+                    "street": "S Main ST"
+                }
+            },
+            {
+                "description": "decimal house number",
+                "inputs": {
+                    "SITUSADDRESS_ID": "68166",
+                    "HouseNumberValue": "306.5",
+                    "FullAddress": "306.5 S Ridge ST UNIT B",
+                    "PrimaryUnitTypeAbbreviation": "UNIT",
+                    "PrimaryUnitIdentifier": "B",
+                    "SecondaryUnitTypeAbbreviation": "",
+                    "SecondaryUnitIdentifier": "",
+                    "TownName": "Breckenridge",
+                    "CountyName": "Summit"
+                },
+                "expected": {
+                    "street": "S Ridge ST"
+                }
+            },
+            {
+                "description": "hyphenated house number",
+                "inputs": {
+                    "SITUSADDRESS_ID": "55123",
+                    "HouseNumberValue": "301-1",
+                    "FullAddress": "301-1 N Main ST",
+                    "PrimaryUnitTypeAbbreviation": "",
+                    "PrimaryUnitIdentifier": "",
+                    "SecondaryUnitTypeAbbreviation": "",
+                    "SecondaryUnitIdentifier": "",
+                    "TownName": "Breckenridge",
+                    "CountyName": "Summit"
+                },
+                "expected": {
+                    "street": "N Main ST"
+                }
+            }
+        ]
+    }
+}

@@ -1,13 +1,17 @@
-# OpenAddresses
+<h1 align="center">OpenAddresses</h1>
 
-[![Build Status](https://travis-ci.org/openaddresses/openaddresses.png?branch=master)](https://travis-ci.org/openaddresses/openaddresses)
-[![Build Status](https://david-dm.org/openaddresses/openaddresses.png)](https://david-dm.org/openaddresses/openaddresses)
+<p align="center">
+  <a href="https://travis-ci.org/openaddresses/openaddresses"><img src="https://travis-ci.org/openaddresses/openaddresses.png?branch=master"/></a>
+  <a href="https://david-dm.org/openaddresses/openaddresses"><img src="https://david-dm.org/openaddresses/openaddresses.png"/></a>
+</p>
+
+## Brief
 
 A global collection of address data sources, open and free to use. Join, download and contribute. We're just getting started.
 
 This repository is a collection of references to address data sources.
 
-- See [openaddresses.io](http://openaddresses.io/) for a data download. 
+- See [openaddresses.io](http://openaddresses.io/) for a data download.
 
 ## Contributing addresses
 
@@ -17,9 +21,8 @@ This repository is a collection of references to address data sources.
 
 ## Why collect addresses?
 
-Street address data is essential infrastructure. Street names, house numbers and zip codes, when combined with geographic coordinates, are the hub that connects digital to physical places. Precisely because of their connecting role, free and open addresses are rocket fuel for civic and commercial innovation.
+Street address data is essential infrastructure. Street names, house numbers, and post codes combined with geographic coordinates connects digital to physical places. Free and open addresses are rocket fuel for civic and commercial innovation.
 
 ## License
 
 Code is available under BSD, the data collection (sources/) is public domain. See respective LICENSE files in project root for code and under sources/ for the data collection.
-

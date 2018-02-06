@@ -1,0 +1,36 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "06093", "name": "Siskiyou County", "state": "California"},
+        "country": "us",
+        "state": "ca",
+        "county": "Siskiyou"
+    },
+    "note": "Obtained via FOIA request - ingalls - 2017/11",
+    "data": "http://data.openaddresses.io/cache/uploads/ingalls/us-ca-siskiyou.zip",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile-polygon",
+        "id": "APN",
+        "number": {
+            "function": "prefixed_number",
+            "field": "FormattedS"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "FormattedS"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "Formatte_1",
+            "pattern": "(.*) CA .*$",
+            "replace": "$1"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "Formatte_1",
+            "pattern": ".*([0-9]{5})$",
+            "replace": "$1"
+        }
+    }
+}

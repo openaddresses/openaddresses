@@ -8,11 +8,23 @@
     },
     "data": "http://epsilon.sk/sk-countrywide.zip",
     "attribution": "Ministerstvo vnútra Slovenskej republiky / Ministry of Interior of the Slovak Republic",
+    "website": "https://data.gov.sk/dataset/register-adries-register-vchodov",
+    "license": {
+        "text": "CC BY 4.0",
+        "url": "http://www.opendefinition.org/licenses/cc-by",
+        "attribution": true,
+        "attribution name": "Ministerstvo vnútra Slovenskej republiky / Ministry of Interior of the Slovak Republic",
+        "share-alike": false
+    },
     "type": "http",
     "compression": "zip",
     "conform": {
         "street": "street",
-        "number": "number",
+        "number": {
+            "function": "join",
+            "fields": ["constriptionnumber", "number"],
+            "separator": "/"
+        },
         "type": "csv",
         "csvsplit": ";",
         "file": "sk/countrywide.csv",
@@ -20,5 +32,59 @@
         "lon": "lon",
         "city": "city",
         "postcode": "postcode"
+    },
+    "test": {
+        "enabled": true,
+        "description": "these are the tests that exercise valid inputs for slovakia countrywide",
+        "acceptance-tests": [
+            {
+                "description": "address with /-delimited number",
+                "inputs": {
+                    "street": "Jegorovova",
+                    "number": "20",
+                    "city": "Banská Bystrica",
+                    "postcode": "97401",
+                    "constriptionnumber": "2347"
+                },
+                "expected": {
+                    "number": "2347/20",
+                    "street": "Jegorovova",
+                    "city": "Banská Bystrica",
+                    "postcode": "97401"
+                }
+            },
+            {
+                "description": "address with /-delimited number with letter",
+                "inputs": {
+                    "street": "Na Vinohrady",
+                    "number": "29A",
+                    "city": "Trenčín",
+                    "postcode": "91105",
+                    "constriptionnumber": "1275"
+                },
+                "expected": {
+                    "number": "1275/29A",
+                    "street": "Na Vinohrady",
+                    "city": "Trenčín",
+                    "postcode": "91105"
+                }
+            },
+            {
+                "description": "address without conscription number",
+                "inputs": {
+                    "street": "Kollárova",
+                    "number": "13",
+                    "city": "Kráľovský Chlmec",
+                    "postcode": "07701",
+                    "constriptionnumber": ""
+                },
+                "expected": {
+                    "number": "13",
+                    "street": "Kollárova",
+                    "city": "Kráľovský Chlmec",
+                    "postcode": "07701"
+                }
+            }
+        ]
     }
 }

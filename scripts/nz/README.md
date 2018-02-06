@@ -5,13 +5,13 @@ Land Information New Zealand (LINZ) provides downloadable address data from
 its data service website at https://data.linz.govt.nz. The file requires a
 user account to retrieve, so it must be cached using this script.
 
-More information at https://data.linz.govt.nz/layer/779-nz-street-address-electoral/
+More information at https://data.linz.govt.nz/layer/3353-nz-street-address/
 
 Using Docker
 ----
 
 `lds-nz.sh` contains a script for caching LDS data. You will need to provide
-a copy of _Street Address (Electoral)_ data, which can be downloaded from
+a copy of _Street Address_ data, which can be downloaded from
 Land Information New Zealand’s website. See _Getting Data_ below.
 
 `Dockerfile` contains a Docker process for caching data. Docker allows for code
@@ -22,10 +22,10 @@ apt-get install docker.io.
     mkdir /tmp/work
     chgrp docker /tmp/work
     chmod ugo+rwxt /tmp/work
-    cp lds-nz-street-address-electoral-SHP.zip /tmp/work/
+    cp lds-nz-street-address-SHP.zip /tmp/work/
 
     # build docker image from cache
-    curl http://data.openaddresses.io/cache/nz/nz-docker-6f346f299.tar.bz2 | bzcat | docker load
+    curl https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/thatdatabaseguy/e42f66/nz-docker-2b8fbaac84c6.tar.bz2 | bzcat | docker load
     
     # image can alternatively be built the slow way
     docker build -t nz-lds .
@@ -39,7 +39,7 @@ apt-get install docker.io.
 Getting Data
 ----
 
-1.  Start by [finding the Street Address (Electoral) dataset](https://data.linz.govt.nz/search/?q=street+address+electoral)
+1.  Start by [finding the Street Address dataset](https://data.linz.govt.nz/search/?q=street+address)
     on [LINZ Data Service](https://data.linz.govt.nz/), and select “download” from
     the drop-down menu:
     
@@ -50,10 +50,6 @@ Getting Data
     
     ![Create download](images/2.png)
 
-3.  Wait for the downloaded to be created; appears to take ~5 minutes:
+3.  Download the 168MB address shapefile, `lds-nz-street-address-SHP.zip`:
     
-    ![Wait for creation](images/3.png)
-
-4.  Download the 91MB address shapefile, `lds-nz-street-address-electoral-SHP.zip`:
-    
-    ![Get file](images/4.png)
+    ![Get file](images/3.png)

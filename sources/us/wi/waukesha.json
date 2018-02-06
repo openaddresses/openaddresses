@@ -13,19 +13,18 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "Full_Address",
-            "pattern": "^([0-9]+)"
-        },
+        "number": "StreetNumber",
         "street": {
-            "function": "regexp",
+            "function": "remove_prefix",
             "field": "Full_Address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "field_to_remove": "StreetNumber"
         },
         "city": "Municipality",
-        "postcode": "ZipCode",
+        "postcode": {
+            "function": "regexp",
+            "field": "ZipCode",
+            "pattern": "^(\\d+)"
+        },
         "accuracy": 1
     }
 }

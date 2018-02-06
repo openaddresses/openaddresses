@@ -1,0 +1,31 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "TW-HUA",
+            "country": "Taiwan"
+        },
+        "country": "tw"
+    },
+    "data": "http://gis.hl.gov.tw/arcgis/rest/services/HLADDR/HLADDR_user/MapServer/1",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number":{
+            "function": "regexp",
+            "field": "NUMBER_",
+            "pattern": "^([0-9\uff10-\uff19]+\u865f?)"
+        },
+        "unit":{
+            "function": "regexp",
+            "field": "NUMBER_",
+            "pattern": "^(?:[0-9\uff10-\uff19]+\u865f?)(.*)"
+        },
+        "street": {
+            "function": "join",
+            "fields": ["ROAD","LANE","ALLEY"],
+            "separator": ""
+        },
+        "city": "NEW_ID",
+        "district": "COUN_ID"
+    }
+}
