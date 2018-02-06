@@ -12,15 +12,29 @@
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "Situs2",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "Situs2"
         },
         "street": {
+            "function": "postfixed_street",
+            "field": "Situs2"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "Situs1",
+            "pattern": "[0-9]{5}$"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "Situs1",
+            "pattern": "(.*)( CA .*)",
+            "replace": "$1"
+        },
+        "unit": {
             "function": "regexp",
             "field": "Situs2",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "pattern": "(.*?)( #[A-Za-z0-9])",
+            "replace": "$2"
         }
     },
     "attribution": "Stanislaus County",

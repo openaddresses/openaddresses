@@ -9,20 +9,19 @@
         "state": "nc",
         "county": "Union"
     },
-    "data": "http://www.co.union.nc.us/Portals/0/GIS/shapes/address_points.zip",
+    "data": "http://gis-web.co.union.nc.us/arcgis/rest/services/GoMaps/UnionGoMaps/MapServer/7",
     "license": "",
     "year": "11/2013",
-    "type": "http",
-    "compression": "zip",
+    "type": "ESRI",
     "conform": {
-        "number": "num",
-        "street": [
-            "DIR",
-            "name",
-            "type",
-            "SUFFIX"
-        ],
-        "unit": "APT",
-        "type": "shapefile"
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "DISPLAY"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "DISPLAY"
+        }
     }
 }

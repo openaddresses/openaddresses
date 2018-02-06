@@ -16,19 +16,20 @@
         "state": "az",
         "city": "Mesa"
     },
-    "data": "http://gis.mesaaz.gov/mesaaz/rest/services/Address/AddressIndex/MapServer/0",
+    "data": "http://gis.mesaaz.gov/mesaaz/rest/services/Geocortex/BaseMap_dynamic/MapServer/5",
     "type": "ESRI",
     "attribution": "City of Mesa",
     "conform": {
         "type": "geojson",
-        "number": "STREETNUM",
-        "street": [
-            "PDIR",
-            "STNAME",
-            "STTYPE",
-            "SDIR"
+        "number": [
+            "ADDRESSNUMBER",
+            "ADDRESSFRACTION"
         ],
-        "city": "PLACE",
-        "postcode": "ZIP"
+        "street": "ADDRESSSTREETNAME",
+        "unit": [
+            "UNITDESIGNATION",
+            "UNITNUMBER"
+        ],
+        "city": "JURISDICTION"
     }
 }

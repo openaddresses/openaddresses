@@ -9,18 +9,19 @@
         "state": "wi",
         "county": "Brown"
     },
-    "data": "http://maps.gis.co.brown.wi.us/web_documents/LIO/addresses/BrownCountyWI_AddressPoints_20160104.zip",
+    "data": "http://maps.gis.co.brown.wi.us/web_documents/LIO/addresses/BrownCountyWI_AddressPoints_20170605.zip",
     "website": "http://maps.gis.co.brown.wi.us/web_documents/LIO/addresses/",
     "type": "http",
     "conform": {
         "type": "shapefile",
-        "file": "BrownCountyWI_AddressPoints_20160104.shp",
+        "file": "BrownCountyWI_AddressPoints_20170605.shp",
+        "id": "Address_ID",
         "number": "AddressNum",
         "street": {
-            "function": "regexp",
+            "function": "remove_prefix",
             "field": "Address",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
-        }
+            "field_to_remove": "AddressNum"
+        },
+        "city": "MUNI"
     }
 }

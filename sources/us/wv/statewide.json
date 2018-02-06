@@ -13,11 +13,18 @@
     "year": "January 2015",
     "conform": {
         "type": "geojson",
-        "number": "ADDR_LABEL",
-        "street": "FULLNAME",
-        "city": "PO_NAME",
-        "district": "MUNICIPALITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "number": "ADDRNUM",
+        "street": {
+            "function": "remove_prefix",
+            "field": "FULLNAME",
+            "field_to_remove": "ADDRNUM"
+        },
+        "unit": [
+            "UNITTYPE",
+            "UNITID"
+        ],
+        "city": "MUNICIPALITY",
+        "region": "State",
+        "postcode": "Zip"
     }
 }

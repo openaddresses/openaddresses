@@ -5,11 +5,15 @@
         "county": "Brant"
     },
     "type": "ESRI",
-    "data": "https://maps.brant.ca/cobgis/rest/services/CountyOfBrantGIS/MapServer/68",
+    "data": "https://maps.brant.ca/cobgis/rest/services/CountyOfBrantGIS/MapServer/73",
     "website": "http://www.brant.ca/en/county-government/Maps.asp",
+    "note": "separate fields exist for 'number' but they can contain data that creates invalid house numbers",
     "conform":{
         "type": "geojson",
-        "number": "street_number",
+        "number": {
+            "function": "prefixed_number",
+            "field": "full_address"
+        },
         "street": [
             "street_direction_prefix",
             "street_name",

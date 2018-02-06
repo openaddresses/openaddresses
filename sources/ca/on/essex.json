@@ -5,19 +5,16 @@
         "county": "Essex"
     },
     "type": "http",
-    "data": "http://data.openaddresses.io/cache/ca-on-essex_county.geojson",
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/ef22e9/ca-on-essex_county.geojson.zip",
+    "compression": "zip",
     "conform":{
         "number": {
-            "function": "regexp",
-            "field": "CIVIC",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
+            "function": "prefixed_number",
+            "field": "CIVIC"
         },
         "street": {
-            "function": "regexp",
-            "field": "CIVIC",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "function": "postfixed_street",
+            "field": "CIVIC"
         },
         "type": "geojson"
     },

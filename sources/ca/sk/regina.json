@@ -5,14 +5,20 @@
         "city": "Regina",
         "geometry": { "type": "Point", "coordinates": [-104.65, 50.48] }
     },
-    "data": "https://reginaopendata.blob.core.windows.net/opendata/Address/SHP_ZIP/shp.AddressPoint.zip",
-    "website": "http://openregina.cloudapp.net/DataBrowser/OpenRegina/AddressPoint#param=NOFILTER--DataView--Results",
+    "data": "https://opengis.regina.ca/arcgis/rest/services/OpenData/Address/MapServer/0",
+    "website": "https://opengis.regina.ca/TaxWeb/viewer.html",
     "license": "http://www.regina.ca/residents/open-government/data/terms/index.html",
-    "type": "http",
-    "compression": "zip",
+    "type": "ESRI",
     "conform": {
+        "type": "geojson",
         "number": "BUILDING",
-        "street": "STREET",
-        "type": "shapefile"
+        "street": [
+            "DIRECTION",
+            "STREET"
+        ],
+        "unit": [
+            "UNIT",
+            "SUITE_NAME"
+        ]
     }
 }

@@ -9,22 +9,20 @@
         "state": "va",
         "county": "Smyth"
     },
-    "data": "https://www.webgis.net/arcgis/rest/services/VA/Smyth1/MapServer/15",
+    "data": "https://www.webgis.net/arcgis/rest/services/VA/Smyth/MapServer/15",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "ADDRESS"
         },
         "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "function": "postfixed_street",
+            "field": "ADDRESS"
         },
         "city": "CITY",
+        "region": "STATE",
         "postcode": "ZIP5"
     }
 }

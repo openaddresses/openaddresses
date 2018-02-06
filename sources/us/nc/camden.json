@@ -9,16 +9,15 @@
         "state": "nc",
         "county": "Camden"
     },
-    "data": "http://arcgis.roktech.net/arcgis/rest/services/CamdenCountyNC/base/MapServer/0",
+    "data": "https://arcgis4.roktech.net/arcgis/rest/services/CamdenCountyNC/ROKMAPS/MapServer/8",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
         "number": "Number",
         "street": {
-            "function": "regexp",
+            "function": "remove_prefix",
             "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "field_to_remove": "Number"
         },
         "unit": "Suffix",
         "city": "Town"

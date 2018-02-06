@@ -8,27 +8,33 @@
         "country": "us",
         "state": "hi",
         "county": "honolulu",
-        "city": "honolulu"
+        "city": "honolulu",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -157.857826,
+                21.299475
+            ]
+        }
     },
     "attribution": "City of Honolulu",
-    "data": "ftp://gisftp.hicentral.com/Layers/Cadastral/taxparcel_siteaddress.zip",
+    "data": "http://webserverholis.honolulugis.org/arcgis/rest/services/Public/Cadastral/MapServer/3",
     "website": "http://gis.hicentral.com/data.html",
-    "year": "2012",
-    "type": "ftp",
-    "compression": "zip",
+    "type": "ESRI",
     "note": "Includes full parcel shapefile of the island of Oahu. SRS is EPSG: 2784",
     "conform": {
-        "type": "shapefile-polygon",
+        "type": "geojson",
         "number": {
             "function": "join",
             "fields": [
-                "HOUSEPRFX",  
-                "HOUSENUMBR"
+                "HOUSEPRFX",
+                "HOUSENUMBER"
             ],
             "separator": "-"
         },
         "street": "STREETNAME",
         "unit": "HOUSESUFFX",
-        "city": "CITY"
+        "city": "CITY",
+        "postcode": "ZIP"
     }
 }
