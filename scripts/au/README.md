@@ -14,7 +14,7 @@ formed by the nine governments of Australia to collate and standardise, format
 and aggregate location data from each of the jurisdictions into authoritative
 location based national datasets.
 
-More information at http://www.data.gov.au/dataset/geocoded-national-address-file-g-naf
+More information at https://data.gov.au/dataset/geocoded-national-address-file-g-naf
 
 Using Docker
 ----

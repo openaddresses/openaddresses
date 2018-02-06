@@ -9,18 +9,24 @@
         "state": "id",
         "county": "Canyon"
     },
-    "data": "http://gis.canyonco.org:6080/arcgis/rest/services/cc/Taxparcels/FeatureServer/0",
+    "data": "http://gis.canyonco.org:6080/arcgis/rest/services/cc/Address_Points/MapServer/0",
     "type": "ESRI",
     "conform": {
-        "number": "sitenum",
+        "type": "geojson",
+        "number": "SiteNum",
         "street": [
             "Predir",
-            "sitestreet",
-            "streettype",
+            "SiteStreet",
+            "StreetType",
             "Postdir"
         ],
-        "unit": "SiteSuite",
-        "postcode": "SiteZip",
-        "type": "geojson"
+        "unit": [
+            "SiteSubTyp",
+            "SiteSubNum"
+        ],
+        "city": "SiteCity",
+        "district": "SiteCounty",
+        "region": "SiteState",
+        "postcode": "SiteZip"
     }
 }

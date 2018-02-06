@@ -1,0 +1,31 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "TW-TXG",
+            "country": "Taiwan"
+        },
+        "country": "tw"
+    },
+    "data": "http://ge-lab-212.ceci.com.tw/arcgis/rest/services/05007/TC_Basemap/MapServer/0",
+    "type": "ESRI",
+    "skip": true,
+    "conform": {
+        "type": "geojson",
+        "number":{
+            "function": "regexp",
+            "field": "號",
+            "pattern": "^([0-9\uff10-\uff19]+\u865f?)"
+        },
+        "unit":{
+            "function": "regexp",
+            "field": "號",
+            "pattern": "^(?:[0-9\uff10-\uff19]+\u865f?)(.*)"
+        },
+        "street": {
+            "function": "join",
+            "fields": ["路名","巷","弄"],
+            "separator": ""
+        },
+        "city": "TOWN_NAME"
+    }
+}

@@ -12,14 +12,15 @@
     "conform": {
         "type": "geojson",
         "number": "HOUSENUM",
-        "street": {
-            "function": "regexp",
-            "field": "PADDRESS",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
-        },
+        "street": [
+            "DIR_PRE",
+            "STRT_NAM",
+            "TYPE_SUF"
+        ],
+        "unit": "UNIT_NUM",
+        "city": "PCITY",
         "postcode": "ZipCode"
     },
-    "data": "http://gis.snco.us/ArcGIS/rest/services/Basemap_102100/MapServer/1",
+    "data": "http://gis.snco.us/arcgis2/rest/services/Basemap_Cached/MapServer/5",
     "type": "ESRI"
 }

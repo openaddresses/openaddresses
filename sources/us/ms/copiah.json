@@ -12,18 +12,14 @@
     "data": "http://gis.cmpdd.org/arcgis/rest/services/County/Copiah_County/MapServer/2",
     "type": "ESRI",
     "conform": {
-        "street": {
-            "function": "regexp",
-            "field": "situs",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "number": {
-            "function": "regexp",
-            "field": "situs",
-            "pattern": "^([0-9]+)"
-        },
         "type": "geojson",
-        "postcode": "zip"
+        "number": {
+            "function": "prefixed_number",
+            "field": "SITUS"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "SITUS"
+        }
     }
 }

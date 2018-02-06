@@ -1,22 +1,21 @@
 {
     "coverage": {
-        "ISO 3166": {
-            "ISO 3166": {"alpha2": "CA-NB", "country": "Canada", "subdivision": "New Brunswick"},
-            "province": "New Brunswick",
-            "country": "Canada"
-        },
+        "ISO 3166": {"alpha2": "CA-NB", "country": "Canada", "subdivision": "New Brunswick"},
         "country": "ca",
         "state": "nb"
     },
-    "data": "http://geonb.snb.ca/downloads/gcadb/geonb_gcadb-bdavg_shp.zip",
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/thatdatabaseguy/ef025b/output.csv",
+    "note": "This data is processed using the Docker file at scripts/ca/nb/*",
     "website": "http://www.snb.ca/geonb1/e/DC/catalogue-E.asp",
     "license": {"url": "http://geonb.snb.ca/documents/license/geonb-odl_en.pdf"},
     "type": "http",
-    "compression": "zip",
     "conform": {
-        "encoding": "utf-8",
-        "number": "civic_num",
-        "street": "street_nam",
-        "type": "shapefile"
+        "number": "number",
+        "street": "street",
+        "city": "place",
+        "district": "district",
+        "lon": "x",
+        "lat": "y",
+        "type": "csv"
     }
 }

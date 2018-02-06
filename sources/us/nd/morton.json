@@ -1,0 +1,23 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "38059",
+            "name": "Morton County",
+            "state": "North Dakota"
+        },
+        "country": "us",
+        "state": "nd",
+        "county": "Morton"
+    },
+    "data": "https://services2.arcgis.com/KK9EVAUoqJyQSD0q/ArcGIS/rest/services/AddressNoNames/FeatureServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "HOUSE_NUM",
+        "street": {
+            "function": "remove_prefix",
+            "field": "DLVRY_ADD",
+            "field_to_remove": "HOUSE_NUM"
+        }
+    }
+}

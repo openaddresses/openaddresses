@@ -10,7 +10,7 @@
         "county": "Tangipahoa"
     },
     "type": "ESRI",
-    "data": "http://97.80.58.182:6080/arcgis/rest/services/TanGIS/MapServer/5",
+    "data": "http://97.80.58.182:6080/arcgis/rest/services/TanGIS/MapServer/9",
     "conform": {
         "type": "geojson",
         "number": {
@@ -20,6 +20,43 @@
         "street": {
             "function": "postfixed_street",
             "field": "Address"
-        }
+        },
+        "city": {
+            "function": "regexp",
+            "field": "Zip_City",
+            "pattern": "^(.+?)(?:\\s+\\(.+\\))?$"
+        },
+        "region": "Zip_State",
+        "postcode": "Zip_Code"
+    },
+    "test": {
+        "enabled": true,
+        "description": "these are the tests that exercise removing the parentheses from city",
+        "acceptance-tests": [
+            {
+                "description": "city w/o parentheses",
+                "inputs": {
+                    "Address": "12044 REID ROAD",
+                    "Zip_City": "Amite",
+                    "Zip_State": "Louisiana",
+                    "Zip_Code": "70422"
+                },
+                "expected": {
+                    "city": "Amite"
+                }
+            },
+            {
+                "description": "city w/parentheses",
+                "inputs": {
+                    "Address": "19525 PAR LANE",
+                    "Zip_City": "Hammond (North)",
+                    "Zip_State": "Louisiana",
+                    "Zip_Code": "70401"
+                },
+                "expected": {
+                    "city": "Hammond"
+                }
+            }
+        ]
     }
 }
