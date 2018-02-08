@@ -17,19 +17,18 @@
             ]
         }
     },
-    "data": "https://gis.gbrct.org:6443/arcgis/rest/services/Trumbull/Trumbull_Parcels_NAD83/MapServer/4",
+    "data": "https://gis.ctmetro.org/arcgis/rest/services/Trumbull/Trumbull_Parcels_NAD83/MapServer/4",
     "website": "http://www.trumbull-ct.gov/",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
         "number": "ST_NUM",
         "street": {
-            "function": "regexp",
+            "function": "remove_prefix",
             "field": "Location",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "field_to_remove": "ST_NUM"
         },
-        "id": "PAR_ID",
+        "id": "Par_ID",
         "accuracy": 2
-    }
+}
 }
