@@ -5,30 +5,35 @@
         "state": "ca",
         "county": "Siskiyou"
     },
-    "note": "Obtained via FOIA request - ingalls - 2017/11",
-    "data": "http://data.openaddresses.io/cache/uploads/ingalls/us-ca-siskiyou.zip",
+    "note": "Obtained via FOIA request - ingalls - 2017/11, updated by justin - 2018/02",
+    "data": "https://www.dropbox.com/s/mt6jp62lecrcfdh/sisk.csv?dl=1",
     "type": "http",
-    "compression": "zip",
     "conform": {
-        "type": "shapefile-polygon",
-        "id": "APN",
+        "type": "csv",
+        "lat": "POINT_Y",
+        "lon": "POINT_X",
         "number": {
             "function": "prefixed_number",
-            "field": "FormattedS"
+            "field": "ADDR_1"
         },
         "street": {
             "function": "postfixed_street",
-            "field": "FormattedS"
+            "field": "ADDR_1",
+            "may_contain_units": true
+        },
+        "unit": {
+            "function": "postfixed_unit",
+            "field": "ADDR_1"
         },
         "city": {
             "function": "regexp",
-            "field": "Formatte_1",
+            "field": "ADDR_2",
             "pattern": "(.*) CA .*$",
             "replace": "$1"
         },
         "postcode": {
             "function": "regexp",
-            "field": "Formatte_1",
+            "field": "ADDR_2",
             "pattern": ".*([0-9]{5})$",
             "replace": "$1"
         }
