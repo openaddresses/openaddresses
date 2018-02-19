@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -121.226271,
+                37.796187
+            ]
+        },
+        "US Census": {
+            "geoid": "0645484",
+            "name": "City of Manteca",
+            "state": "California"
+        },
+        "country": "us",
+        "state": "ca",
+        "county": "San Joaquin",
+        "city": "Manteca"
+    },
+    "data": "https://gisweb.ci.manteca.ca.us/arcgis/rest/services/layers/ParcelAddresses/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "SITUS_ADDRESS"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "SITUS_ADDRESS",
+            "may_contain_units": true
+        },
+        "unit": {
+            "function": "postfixed_unit",
+            "field": "SITUS_ADDRESS"
+        },
+        "city": "LOC_CITY",
+        "region": "LOC_ST",
+        "postcode": "LOC_ZIP"
+    }
+}
