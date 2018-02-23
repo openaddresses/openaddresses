@@ -13,17 +13,13 @@
     },
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRLABEL",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRLABEL",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
+        "number": "HOUSEFULL",
+        "street": [
+            "PREDIR",
+            "STNAME",
+            "STTYPE",
+            "SUFDIR"
+        ],
         "city": "CMTYNAME",
         "postcode": "ZIPCODE"
     },
