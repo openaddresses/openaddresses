@@ -1,0 +1,22 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "29123", "name": "Madison County", "state": "Missouri"},
+        "country": "us",
+        "state": "mo",
+        "county": "Madison"
+    },
+    "data": "https://www.semogis.com/arcgis/rest/services/MadisonCo/MadisonAssess/MapServer/5",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "id": "ParcelNumb",
+        "number": {
+            "function": "prefixed_number",
+            "field": "LocationSt"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "LocationSt"
+        }
+    }
+}
