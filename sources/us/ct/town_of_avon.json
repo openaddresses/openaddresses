@@ -7,23 +7,27 @@
             ],
             "type": "Point"
         },
+        "US Census": {
+            "geoid": "0902060",
+            "name": "Town of Avon",
+            "state": "Connecticut"
+        },
         "country": "us",
         "state": "ct",
+        "county": "Hartford",
         "city": "avon"
     },
     "attribution": "City of Avon",
-    "data": "http://107.20.209.214/ArcGIS/rest/services/AvonCT/AvonDynamic_Public/MapServer/0",
-    "website": "http://www.town.avon.ct.us/Public_Documents/index",
+    "data": "http://54.243.125.146/arcgis/rest/services/AvonCT/AvonCT_Basemap2017/MapServer/21",
+    "website": "http://hosting.tighebond.com/AvonCT_public/index.html",
     "type": "ESRI",
     "conform": {
-        "number": {
-            "function": "prefixed_number",
-            "field": "parcel_polygon.PropertyLoc"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "parcel_polygon.PropertyLoc"
-        },
-        "type": "geojson"
+        "type": "geojson",
+        "number": "SADDNO",
+        "street": "SADDSTNAME",
+        "unit": "SUNIT",
+        "city": "MUNINAME",
+        "district": "CNTYNAME",
+        "region": "STNAME"
     }
 }
