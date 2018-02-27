@@ -26,7 +26,7 @@ parallel "unzip -d $TMP/{} $TMP/{}.zip" ::: gnaf gnaf-admin
 
 # find file directories
 GNAF_DIR="$(find $TMP -type d | grep 'G-NAF' | grep 'Authority Code' | xargs -I {} dirname {} | head -n1)"
-BOUNDARY_DIR="$(find $TMP -type d | grep -v 'Administrative Boundaries' | head -n1)"
+BOUNDARY_DIR="$(find $TMP -type d | grep 'Administrative Boundaries' | head -n1)"
 
 # load data into tables
 python /usr/local/gnaf-loader/load-gnaf.py \
