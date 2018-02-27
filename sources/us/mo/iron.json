@@ -1,0 +1,22 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "29093", "name": "Iron County", "state": "Missouri"},
+        "country": "us",
+        "state": "mo",
+        "county": "Iron"
+    },
+    "data": "https://www.semogis.com/arcgis/rest/services/IronCo/IronAssess/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "SITE_ADD"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "SITE_ADD"
+        },
+        "city": "SITE_CITY"
+    }
+}
