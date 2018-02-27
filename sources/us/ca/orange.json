@@ -10,42 +10,38 @@
         "county": "Orange"
     },
     "attribution": "Orange County",
-    "data": "https://github.com/datadesk/us-ca-orange_county-situs_parcels-shp/blob/master/situs_parcels.zip?raw=true",
+    "note": "Data formerly from (2015 FOIA): https://github.com/datadesk/us-ca-orange_county-situs_parcels-shp/blob/master/situs_parcels.zip?raw=true",
+    "data": "https://www.ocgis.com/arcpub/rest/services/GeoResearch/Map_Layers/MapServer/60",
     "website": "http://ocpublicworks.com/survey/services/gis",
-    "type": "http",
-    "compression": "zip",
-    "note": "Parcel polygons that include situs addresses in the metadata. Provided in response to a public records request in January 2015 and uploaded to GitHub for public hosting. A situs address dbf was provided separately from the parcels shapefile, which were then joined together in QGIS using an intermediary file's 'APN' value according to instructions provided by a county official.",
+    "type": "ESRI",
     "conform": {
-        "id": "ParcelAttr",
-        "type": "shapefile-polygon",
+        "id": "ASSESSMENT_NO",
+        "type": "geojson",
         "number": {
             "function": "prefixed_number",
-            "field": "ParcelAt_2"
+            "field": "SITE_ADDRESS"
         },
         "street": {
             "function": "regexp",
-            "field": "ParcelAt_2",
+            "field": "SITE_ADDRESS",
             "pattern": "^(?:[0-9]+(?:[A-Z]|[ -]1/2)?\\s+)(.+?)(?:(?:(?:STE|UNIT|APT|BLDG)\\s+|#)(?:\\d+[A-Z]?|[A-Z]\\d*))?(?:\\s+(?:ANAHEIM|ALISO VIEJO|MISSION VIEJO|BREA|BUENA PARK|CAPISTRANO BEACH|CORONA DEL MAR|COSTA MESA|COTO DE CAZA|COWAN HEIGHTS|CYPRESS|DANA POINT|DOVE CANYON|EL TORO|FOOTHILL RANCH|FOUNTAIN VALLEY|FOUNTAIN VLY|FULLERTON|GARDEN GROVE|HUNTINGTON BEACH|IRVINE|LA HABRA|LA PALMA|LA HABRA HEIGHTS|LADERA RANCH|LAGUNA BEACH|LAGUNA HILLS|LAGUNA WOODS|LAGUNA NIGUEL|LAKE FOREST|LOS ALAMITOS|MIDWAY CITY|MODJESKA|NEWPORT COAST|NEWPORT BEACH|ORANGE|ORANGE COUNTY|PLACENTIA|SAN JUAN CAPISTRANO|SAN CLEMENTE|RCHO STA MARGARITA|SANTA ANA|SANTA MARGARITA|SEAL BEACH|SILVERADO|SOUTH LAGUNA|STANTON|SUNSET BEACH|TRABUCO CANYON|TUSTIN|VILLA PARK|WESTMINSTER|YORBA LINDA))?(?:\\s+CA)?(?:\\s+\\d+)?$"
         },
         "unit": {
             "function": "regexp",
-            "field": "ParcelAt_2",
+            "field": "SITE_ADDRESS",
             "pattern": "\\s((?:(?:STE|UNIT|APT|BLDG)\\s+|#)(?:\\d+[A-Z]?|[A-Z]\\d*))\\b"
         },
         "city": {
             "function": "regexp",
-            "field": "ParcelAt_2",
+            "field": "SITE_ADDRESS",
             "pattern": "(ANAHEIM|ALISO VIEJO|MISSION VIEJO|BREA|BUENA PARK|CAPISTRANO BEACH|CORONA DEL MAR|COSTA MESA|COTO DE CAZA|COWAN HEIGHTS|CYPRESS|DANA POINT|DOVE CANYON|EL TORO|FOOTHILL RANCH|FOUNTAIN VALLEY|FOUNTAIN VLY|FULLERTON|GARDEN GROVE|HUNTINGTON BEACH|IRVINE|LA HABRA|LA PALMA|LA HABRA HEIGHTS|LADERA RANCH|LAGUNA BEACH|LAGUNA HILLS|LAGUNA WOODS|LAGUNA NIGUEL|LAKE FOREST|LOS ALAMITOS|MIDWAY CITY|MODJESKA|NEWPORT COAST|NEWPORT BEACH|ORANGE|ORANGE COUNTY|PLACENTIA|SAN JUAN CAPISTRANO|SAN CLEMENTE|RCHO STA MARGARITA|SANTA ANA|SANTA MARGARITA|SEAL BEACH|SILVERADO|SOUTH LAGUNA|STANTON|SUNSET BEACH|TRABUCO CANYON|TUSTIN|VILLA PARK|WESTMINSTER|YORBA LINDA)\\s+CA\\b"
         },
         "region": {
             "function": "regexp",
-            "field": "ParcelAt_2",
+            "field": "SITE_ADDRESS",
             "pattern": "\\b(CA)\\b"
         },
-        "postcode": {
-            "function": "regexp",
-            "field": "ParcelAt_2",
-            "pattern": "\\b(\\d{5}|\\d{9})$"
+        "postcode": "SITE_ZIP5"
         }
     },
     "test": {
