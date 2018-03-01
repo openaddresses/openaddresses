@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const glob = require('glob');
 const fs = require('fs');
 
@@ -15,7 +17,7 @@ glob.sync('sources/**/*.json').forEach(source => {
                 conform: s.conform,
                 compression: s.compression,
                 license: s.license,
-                note: s.note
+                note: s.note,
                 attribution: s.attribution,
                 language: s.language,
                 year: s.year,
