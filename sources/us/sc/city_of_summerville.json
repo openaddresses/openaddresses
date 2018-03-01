@@ -16,23 +16,30 @@
         "state": "sc",
         "city": "Summerville"
     },
-    "data": "http://arcgis4.roktech.net/arcgis/rest/services/Summerville/GoMaps4/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "SITEADDID",
-        "number": "ADDRNUM",
-        "street": [
-            "ADDPREDIR",
-            "ADDRRDNAME",
-            "ADDRRDTYPE",
-            "ADDSUFDIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://arcgis4.roktech.net/arcgis/rest/services/Summerville/GoMaps4/MapServer/1",
+                "conform": {
+                    "type": "geojson",
+                    "id": "SITEADDID",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "ADDPREDIR",
+                        "ADDRRDNAME",
+                        "ADDRRDTYPE",
+                        "ADDSUFDIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "district": "COUNTY",
+                    "postcode": "ADDRZIP"
+                }
+            }
         ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "district": "COUNTY",
-        "postcode": "ADDRZIP"
+        "buildings": []
     }
 }

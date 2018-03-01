@@ -9,21 +9,28 @@
         "state": "tx",
         "county": "Bexar"
     },
-    "data": "http://mapservices.bexar.org/arcgis/rest/services/Parcels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "Situs",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Situs",
-            "pattern": "^(?:[0-9]+)(.*)",
-            "replace": "$1"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://mapservices.bexar.org/arcgis/rest/services/Parcels/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "Situs",
+                        "pattern": "^([0-9]+)( .*)",
+                        "replace": "$1"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Situs",
+                        "pattern": "^(?:[0-9]+)(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ],
+        "buildings": []
     }
 }

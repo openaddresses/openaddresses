@@ -9,24 +9,31 @@
         "state": "or",
         "county": "Lane"
     },
-    "data": "http://lcmaps.lanecounty.org/arcgis/rest/services/LaneCountyMaps/AddressParcel/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "house_nbr",
-            "house_suffix_code"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://lcmaps.lanecounty.org/arcgis/rest/services/LaneCountyMaps/AddressParcel/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "house_nbr",
+                        "house_suffix_code"
+                    ],
+                    "street": [
+                        "pre_direction_code",
+                        "street_name",
+                        "street_type_code"
+                    ],
+                    "unit": [
+                        "unit_type_code",
+                        "unit_id"
+                    ],
+                    "city": "city_name",
+                    "postcode": "five_digit_zip_code"
+                }
+            }
         ],
-        "street": [
-            "pre_direction_code",
-            "street_name",
-            "street_type_code"
-        ],
-        "unit": [
-            "unit_type_code",
-            "unit_id"
-        ],
-        "city": "city_name",
-        "postcode": "five_digit_zip_code"
+        "buildings": []
     }
 }

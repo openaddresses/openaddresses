@@ -3,19 +3,32 @@
         "country": "ca",
         "state": "on",
         "city": "Hamilton",
-        "geometry": { "type": "Point", "coordinates": [-79.87, 43.26] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -79.87,
+                43.26
+            ]
+        }
     },
-    "data": "http://opendata.hamilton.ca/SHP/Address_Points.zip",
-    "license": "http://www.hamilton.ca/NR/rdonlyres/C58984A4-FE11-40B9-A231-8572EB922AAA/0/OpenDataTermsAndConditions_Final.htm",
-    "website": "http://www.hamilton.ca/ProjectsInitiatives/OpenData/",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "street_num",
-        "street": [
-            "name",
-            "suffix"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://opendata.hamilton.ca/SHP/Address_Points.zip",
+                "website": "http://www.hamilton.ca/ProjectsInitiatives/OpenData/",
+                "conform": {
+                    "number": "street_num",
+                    "street": [
+                        "name",
+                        "suffix"
+                    ],
+                    "type": "shapefile"
+                },
+                "compression": "zip",
+                "license": "http://www.hamilton.ca/NR/rdonlyres/C58984A4-FE11-40B9-A231-8572EB922AAA/0/OpenDataTermsAndConditions_Final.htm"
+            }
         ],
-        "type": "shapefile"
+        "buildings": []
     }
 }

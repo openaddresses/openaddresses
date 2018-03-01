@@ -9,20 +9,27 @@
         "state": "va",
         "county": "Henrico"
     },
-    "data": "http://gis.co.henrico.va.us/arcgis/rest/services/OpenData/MapServer/35",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NUMBER",
-        "street": [
-            "PRE_DIR",
-            "ST_NAME",
-            "ST_TYPE",
-            "SUF_DIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.co.henrico.va.us/arcgis/rest/services/OpenData/MapServer/35",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HOUSE_NUMBER",
+                    "street": [
+                        "PRE_DIR",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+        "buildings": []
     }
 }

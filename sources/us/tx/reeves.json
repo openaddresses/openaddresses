@@ -9,18 +9,25 @@
         "state": "tx",
         "county": "Reeves"
     },
-    "data": "http://mapsatbis.com/bisgis/rest/services/ReevesWeb/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": "ReevesCad.dbo.Accounts.situs_num",
-        "street": [
-            "ReevesCad.dbo.Accounts.situs_street_prefx",
-            "ReevesCad.dbo.Accounts.situs_street",
-            "ReevesCad.dbo.Accounts.situs_street_sufix"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://mapsatbis.com/bisgis/rest/services/ReevesWeb/MapServer/0",
+                "conform": {
+                    "number": "ReevesCad.dbo.Accounts.situs_num",
+                    "street": [
+                        "ReevesCad.dbo.Accounts.situs_street_prefx",
+                        "ReevesCad.dbo.Accounts.situs_street",
+                        "ReevesCad.dbo.Accounts.situs_street_sufix"
+                    ],
+                    "city": "ReevesCad.dbo.Accounts.situs_city",
+                    "region": "ReevesCad.dbo.Accounts.situs_state",
+                    "postcode": "ReevesCad.dbo.Accounts.situs_zip",
+                    "type": "geojson"
+                }
+            }
         ],
-        "city": "ReevesCad.dbo.Accounts.situs_city",
-        "region": "ReevesCad.dbo.Accounts.situs_state",
-        "postcode": "ReevesCad.dbo.Accounts.situs_zip",
-        "type": "geojson"
+        "buildings": []
     }
 }

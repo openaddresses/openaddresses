@@ -17,18 +17,25 @@
         "county": "Cook",
         "city": "Evanston"
     },
-    "type": "ESRI",
-    "data": "https://maps.cityofevanston.org/arcgis/rest/services/OpenData/ArcGISOpenData/MapServer/4",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NUMBER",
-        "street": [
-            "STREET",
-            "SUFFIX_ABBREV"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://maps.cityofevanston.org/arcgis/rest/services/OpenData/ArcGISOpenData/MapServer/4",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HOUSE_NUMBER",
+                    "street": [
+                        "STREET",
+                        "SUFFIX_ABBREV"
+                    ],
+                    "unit": "NUMBER_SUFFIX",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": "NUMBER_SUFFIX",
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

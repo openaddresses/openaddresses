@@ -3,7 +3,8 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -71.3500,43.00
+                -71.35,
+                43
             ]
         },
         "US Census": {
@@ -16,19 +17,26 @@
         "county": "Rockingham",
         "city": "Auburn"
     },
-    "note": "Processed using scripts/us/nh/auburn/run",
-    "data": "http://data.openaddresses.io/cache/uploads/ingalls/us-nh-auburn.geojson",
-    "website": "http://www.auburnnh.us/assessing",
-    "type": "http",
-    "language": "en",
-    "conform": {
-        "type": "geojson",
-        "accuracy": 2,
-        "id": "PID",
-        "number": "LOCNUMB",
-        "street": "LOCNAME",
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://data.openaddresses.io/cache/uploads/ingalls/us-nh-auburn.geojson",
+                "website": "http://www.auburnnh.us/assessing",
+                "conform": {
+                    "type": "geojson",
+                    "accuracy": 2,
+                    "id": "PID",
+                    "number": "LOCNUMB",
+                    "street": "LOCNAME",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                },
+                "note": "Processed using scripts/us/nh/auburn/run",
+                "language": "en"
+            }
+        ],
+        "buildings": []
     }
 }

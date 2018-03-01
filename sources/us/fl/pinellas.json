@@ -9,24 +9,31 @@
         "state": "fl",
         "county": "Pinellas"
     },
-    "attribution": "Pinellas County",
-    "website": "http://gis.pinellascounty.org/gisData/gisDataSets.aspx",
-    "data": "http://egis.pinellascounty.org/arcgis/rest/services/PublicWebGIS/Parcels/MapServer/0",
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "year": "2014",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "street": "FULLNAME",
-        "number": "ADDRNUM",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://egis.pinellascounty.org/arcgis/rest/services/PublicWebGIS/Parcels/MapServer/0",
+                "website": "http://gis.pinellascounty.org/gisData/gisDataSets.aspx",
+                "conform": {
+                    "type": "geojson",
+                    "street": "FULLNAME",
+                    "number": "ADDRNUM",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "postcode": "POSTCODE"
+                },
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "attribution": "Pinellas County",
+                "year": "2014"
+            }
         ],
-        "postcode": "POSTCODE"
+        "buildings": []
     }
 }

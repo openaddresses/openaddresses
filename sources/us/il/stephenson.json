@@ -9,20 +9,27 @@
         "state": "il",
         "county": "Stephenson"
     },
-    "data": "http://map.wingis.org/arcgis/rest/services/1_Layers/MapServer/3",
-    "type": "ESRI",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "site_addre",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "site_addre",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "type": "geojson"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://map.wingis.org/arcgis/rest/services/1_Layers/MapServer/3",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "site_addre",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "site_addre",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "type": "geojson"
+                }
+            }
+        ],
+        "buildings": []
     }
 }

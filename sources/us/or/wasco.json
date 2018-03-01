@@ -9,22 +9,29 @@
         "state": "or",
         "county": "Wasco"
     },
-    "data": "http://216.110.207.61/arcgis/rest/services/BaseMap/MapServer/8",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STRUCTNO",
-        "street": [
-            "PREDIR",
-            "PRETYPE",
-            "STREETNAME",
-            "STREETTYPE",
-            "SUFDIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://216.110.207.61/arcgis/rest/services/BaseMap/MapServer/8",
+                "conform": {
+                    "type": "geojson",
+                    "number": "STRUCTNO",
+                    "street": [
+                        "PREDIR",
+                        "PRETYPE",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFDIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NO"
+                    ],
+                    "id": "STRUCTNO"
+                }
+            }
         ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NO"
-        ],
-        "id": "STRUCTNO"
+        "buildings": []
     }
 }

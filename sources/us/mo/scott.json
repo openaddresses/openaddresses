@@ -9,22 +9,29 @@
         "state": "mo",
         "county": "Scott"
     },
-    "data": "https://www.semogis.com/arcgis/rest/services/ScottCo/ScottAssess/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type":"geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITE_ADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITE_ADDRESS",
-            "may_contain_units": true
-        },
-        "unit": {
-            "function": "postfixed_unit",
-            "field": "SITE_ADDRESS"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://www.semogis.com/arcgis/rest/services/ScottCo/ScottAssess/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITE_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITE_ADDRESS",
+                        "may_contain_units": true
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "SITE_ADDRESS"
+                    }
+                }
+            }
+        ],
+        "buildings": []
     }
 }

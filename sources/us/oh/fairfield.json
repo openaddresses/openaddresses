@@ -9,19 +9,26 @@
         "state": "oh",
         "county": "Fairfield"
     },
-    "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/FAI_ADDS.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "HOUSENUM",
-        "street": [
-            "PREFIX",
-            "NAME",
-            "TYPE",
-            "SUFFIX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/FAI_ADDS.zip",
+                "conform": {
+                    "number": "HOUSENUM",
+                    "street": [
+                        "PREFIX",
+                        "NAME",
+                        "TYPE",
+                        "SUFFIX"
+                    ],
+                    "unit": "UNITNUM",
+                    "city": "MUNI",
+                    "type": "shapefile"
+                },
+                "compression": "zip"
+            }
         ],
-        "unit": "UNITNUM",
-        "city": "MUNI",
-        "type": "shapefile"
+        "buildings": []
     }
 }

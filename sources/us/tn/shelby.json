@@ -9,27 +9,34 @@
         "state": "tn",
         "county": "Shelby"
     },
-    "data": "https://opendata.arcgis.com/datasets/ab59956e886f403e8f427c2d675af4c3_0.zip",
-    "website": "http://opendata.arcgis.com/datasets/ab59956e886f403e8f427c2d675af4c3_0/data",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "STNUM",
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUM"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://opendata.arcgis.com/datasets/ab59956e886f403e8f427c2d675af4c3_0.zip",
+                "website": "http://opendata.arcgis.com/datasets/ab59956e886f403e8f427c2d675af4c3_0/data",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "STNUM",
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "street": [
+                        "PREDIR",
+                        "PRETYPE",
+                        "NAME",
+                        "TYPE",
+                        "SUFDIR"
+                    ],
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                },
+                "compression": "zip"
+            }
         ],
-        "street": [
-            "PREDIR",
-            "PRETYPE",
-            "NAME",
-            "TYPE",
-            "SUFDIR"
-        ],
-        "city": "CITY",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

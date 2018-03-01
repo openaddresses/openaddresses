@@ -7,21 +7,28 @@
         },
         "country": "us",
         "state": "ny",
-        "county":"Sullivan"
+        "county": "Sullivan"
     },
-    "data": "https://services7.arcgis.com/bx3OlIPqiDclwaja/ArcGIS/rest/services/SCGISO_911_Data_Update/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://services7.arcgis.com/bx3OlIPqiDclwaja/ArcGIS/rest/services/SCGISO_911_Data_Update/FeatureServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "PSTLCITY",
+                    "district": "CountyName",
+                    "region": "STATE",
+                    "postcode": "ZIPCode"
+                }
+            }
         ],
-        "city": "PSTLCITY",
-        "district": "CountyName",
-        "region": "STATE",
-        "postcode": "ZIPCode"
+        "buildings": []
     }
 }

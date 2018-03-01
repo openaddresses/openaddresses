@@ -9,36 +9,43 @@
         "state": "il",
         "county": "Kankakee"
     },
-    "website": "http://www.k3gis.com/",
-    "license": "http://www.k3gis.com/#contact",
-    "compression": "zip",
-    "data": "http://webfiles.k3gis.com/download/cadastral/Parcels.zip",
-    "type": "http",
-    "conform": {
-        "type": "shapefile-polygon",
-        "number": {
-            "function": "regexp",
-            "field": "site_addre",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "site_addre",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "site_csz",
-            "pattern": "^(.*?),(?:.*)"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "site_csz",
-            "pattern": "^(?:.*?)([0-9]+(?:\\-[0-9]+)?)",
-            "replace": "$1"
-        },
-        "id": "pin",
-        "accuracy": 2
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://webfiles.k3gis.com/download/cadastral/Parcels.zip",
+                "website": "http://www.k3gis.com/",
+                "conform": {
+                    "type": "shapefile-polygon",
+                    "number": {
+                        "function": "regexp",
+                        "field": "site_addre",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "site_addre",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "site_csz",
+                        "pattern": "^(.*?),(?:.*)"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "site_csz",
+                        "pattern": "^(?:.*?)([0-9]+(?:\\-[0-9]+)?)",
+                        "replace": "$1"
+                    },
+                    "id": "pin",
+                    "accuracy": 2
+                },
+                "compression": "zip",
+                "license": "http://www.k3gis.com/#contact"
+            }
+        ],
+        "buildings": []
     }
 }

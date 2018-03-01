@@ -1,22 +1,33 @@
 {
     "coverage": {
-        "US Census": {"geoid": "48165", "name": "Gaines County", "state": "Texas"},
+        "US Census": {
+            "geoid": "48165",
+            "name": "Gaines County",
+            "state": "Texas"
+        },
         "country": "us",
         "state": "tx",
         "county": "Gaines"
     },
-    "data": "http://mapsatbis.com/bisgis/rest/services/GainesWeb/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": "GainesCad.DBO.Accounts.situs_num",
-        "street": [
-            "GainesCad.DBO.Accounts.situs_street_prefx",
-            "GainesCad.DBO.Accounts.situs_street",
-            "GainesCad.DBO.Accounts.situs_street_sufix"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://mapsatbis.com/bisgis/rest/services/GainesWeb/MapServer/0",
+                "conform": {
+                    "number": "GainesCad.DBO.Accounts.situs_num",
+                    "street": [
+                        "GainesCad.DBO.Accounts.situs_street_prefx",
+                        "GainesCad.DBO.Accounts.situs_street",
+                        "GainesCad.DBO.Accounts.situs_street_sufix"
+                    ],
+                    "city": "GainesCad.DBO.Accounts.situs_city",
+                    "region": "GainesCad.DBO.Accounts.situs_state",
+                    "postcode": "GainesCad.DBO.Accounts.situs_zip",
+                    "type": "geojson"
+                }
+            }
         ],
-        "city": "GainesCad.DBO.Accounts.situs_city",
-        "region": "GainesCad.DBO.Accounts.situs_state",
-        "postcode": "GainesCad.DBO.Accounts.situs_zip",
-        "type": "geojson"
+        "buildings": []
     }
 }

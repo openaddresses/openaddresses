@@ -16,23 +16,30 @@
         "state": "ca",
         "city": "Anaheim"
     },
-    "data": "https://gis.anaheim.net/server/rest/services/OpenData/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "ADDR_ID",
-        "number": [
-            "ADDR_ST_NMBR",
-            "ADDR_ST_FRAC"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://gis.anaheim.net/server/rest/services/OpenData/MapServer/1",
+                "conform": {
+                    "type": "geojson",
+                    "id": "ADDR_ID",
+                    "number": [
+                        "ADDR_ST_NMBR",
+                        "ADDR_ST_FRAC"
+                    ],
+                    "street": [
+                        "ADDR_ST_PFX",
+                        "ADDR_ST_NAME",
+                        "ADDR_ST_NAME_SFX",
+                        "ADDR_ST_SFX"
+                    ],
+                    "unit": "ADDR_ST_UNIT",
+                    "city": "POSTALCITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "street": [
-            "ADDR_ST_PFX",
-            "ADDR_ST_NAME",
-            "ADDR_ST_NAME_SFX",
-            "ADDR_ST_SFX"
-        ],
-        "unit": "ADDR_ST_UNIT",
-        "city": "POSTALCITY",
-        "postcode": "ZIPCODE"
+        "buildings": []
     }
 }

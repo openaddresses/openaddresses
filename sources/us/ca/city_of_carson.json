@@ -16,23 +16,30 @@
         "state": "ca",
         "city": "Carson"
     },
-    "data": "http://www.carsonproperty.info/ArcGIS/rest/services/basemap/MapServer/1",
-    "website": "http://ci.carson.ca.us/",
-    "attribution": "City of Carson",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-          "SITENUMBER",
-          "SITEFRAC"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://www.carsonproperty.info/ArcGIS/rest/services/basemap/MapServer/1",
+                "website": "http://ci.carson.ca.us/",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "SITENUMBER",
+                        "SITEFRAC"
+                    ],
+                    "street": [
+                        "SITEPREF",
+                        "STREETNAME",
+                        "STREETTYPE"
+                    ],
+                    "unit": "SITEUNIT",
+                    "city": "SITECITY",
+                    "postcode": "SITEZIP"
+                },
+                "attribution": "City of Carson"
+            }
         ],
-        "street": [
-          "SITEPREF",
-          "STREETNAME",
-          "STREETTYPE"
-        ],
-        "unit": "SITEUNIT",
-        "city": "SITECITY",
-        "postcode": "SITEZIP"
+        "buildings": []
     }
 }

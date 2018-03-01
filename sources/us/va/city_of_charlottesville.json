@@ -16,14 +16,21 @@
         "state": "va",
         "city": "Charlottesville"
     },
-    "data": "http://widget.charlottesville.org/gis/zip_download/parcel_point.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "ST_NUMBER",
-        "street": "ST_NAME",
-        "unit": "ST_UNIT",
-        "postcode": "ZIPCODE"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://widget.charlottesville.org/gis/zip_download/parcel_point.zip",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "ST_NUMBER",
+                    "street": "ST_NAME",
+                    "unit": "ST_UNIT",
+                    "postcode": "ZIPCODE"
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
     }
 }

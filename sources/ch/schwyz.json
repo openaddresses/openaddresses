@@ -6,29 +6,36 @@
             "alpha2": "CH-SZ"
         }
     },
-    "website": "http://geoshop.sz.ch/client5/index_sz.html?user=sz_public&password=public",
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/sergiyprotsiv/559828/ch-sz.csv.zip",
-    "type": "http",
-    "skip": true,
-    "compression": "zip",
-    "license": {
-        "attribution": false,
-        "share-alike": false
-    },
-    "conform": {
-        "type": "csv",
-        "file": "ch-sz.csv",
-        "encoding": "utf-8",
-        "id": "GWR_EGID",
-        "number": "Hausnummer",
-        "street": "Lokalisati",
-        "city": {
-            "function": "regexp",
-            "field": "Ortschafts",
-            "pattern": "^(.+?)(?:\\s+SZ)?\\s*$"
-        },        
-        "postcode": "PLZ",
-        "lat": "Y",
-        "lon": "X"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/sergiyprotsiv/559828/ch-sz.csv.zip",
+                "website": "http://geoshop.sz.ch/client5/index_sz.html?user=sz_public&password=public",
+                "conform": {
+                    "type": "csv",
+                    "file": "ch-sz.csv",
+                    "encoding": "utf-8",
+                    "id": "GWR_EGID",
+                    "number": "Hausnummer",
+                    "street": "Lokalisati",
+                    "city": {
+                        "function": "regexp",
+                        "field": "Ortschafts",
+                        "pattern": "^(.+?)(?:\\s+SZ)?\\s*$"
+                    },
+                    "postcode": "PLZ",
+                    "lat": "Y",
+                    "lon": "X"
+                },
+                "compression": "zip",
+                "license": {
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "skip": true
+            }
+        ],
+        "buildings": []
     }
 }

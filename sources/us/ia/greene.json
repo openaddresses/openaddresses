@@ -9,37 +9,44 @@
         "state": "ia",
         "county": "Greene"
     },
-    "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Greene/Address_37.zip",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "year": "2012?",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^.* ((Unit|Apt) [0-9A-Za-z])$",
-            "replace": "$1"
-        },
-        "city": "POSTAL_COM",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP_CODE",
-        "type": "shapefile"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ftp",
+                "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Greene/Address_37.zip",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "address",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "address",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "address",
+                        "pattern": "^.* ((Unit|Apt) [0-9A-Za-z])$",
+                        "replace": "$1"
+                    },
+                    "city": "POSTAL_COM",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP_CODE",
+                    "type": "shapefile"
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "year": "2012?"
+            }
+        ],
+        "buildings": []
     }
 }

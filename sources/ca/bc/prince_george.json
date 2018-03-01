@@ -3,30 +3,43 @@
         "country": "ca",
         "state": "bc",
         "city": "Prince George",
-        "geometry": { "type": "Point", "coordinates": [-122.77, 53.93] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -122.77,
+                53.93
+            ]
+        }
     },
-    "data": "https://pgmappub.princegeorge.ca/cpgarcserver/rest/services/OpenData/OpenData_Cadastre/MapServer/228",
-    "website": "http://princegeorge.ca/cityservices/online/odc/Pages/Documents.aspx",
-    "license": "http://princegeorge.ca/cityservices/online/odc/Pages/Terms.aspx",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "AddrPrefix",
-            "AddrNumber",
-            "AddrSuffix"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://pgmappub.princegeorge.ca/cpgarcserver/rest/services/OpenData/OpenData_Cadastre/MapServer/228",
+                "website": "http://princegeorge.ca/cityservices/online/odc/Pages/Documents.aspx",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "AddrPrefix",
+                        "AddrNumber",
+                        "AddrSuffix"
+                    ],
+                    "unit": [
+                        "AddrUnitType",
+                        "AddrUnitID"
+                    ],
+                    "street": [
+                        "StrPrefix",
+                        "StrName",
+                        "StrType",
+                        "StrSuffix"
+                    ],
+                    "city": "Community",
+                    "region": "Province"
+                },
+                "license": "http://princegeorge.ca/cityservices/online/odc/Pages/Terms.aspx"
+            }
         ],
-        "unit": [
-            "AddrUnitType",
-            "AddrUnitID"
-        ],
-        "street": [
-            "StrPrefix",
-            "StrName",
-            "StrType",
-            "StrSuffix"
-        ],
-        "city": "Community",
-        "region": "Province"
+        "buildings": []
     }
 }

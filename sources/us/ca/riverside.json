@@ -9,20 +9,27 @@
         "state": "ca",
         "county": "Riverside"
     },
-    "data": "http://data.openaddresses.io/cache/us-ca-riverside.zip",
-    "website": "http://gis.rivcoit.org/GISData.aspx",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "HOUSE_NUMB",
-        "street": [
-            "DIR",
-            "STREET_NAM",
-            "STREET_TYP"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://data.openaddresses.io/cache/us-ca-riverside.zip",
+                "website": "http://gis.rivcoit.org/GISData.aspx",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "HOUSE_NUMB",
+                    "street": [
+                        "DIR",
+                        "STREET_NAM",
+                        "STREET_TYP"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "postcode": "zip"
+                },
+                "compression": "zip"
+            }
         ],
-        "unit": "UNIT",
-        "city": "CITY",
-        "postcode": "zip"
+        "buildings": []
     }
 }

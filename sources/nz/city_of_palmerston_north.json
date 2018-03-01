@@ -10,16 +10,23 @@
         "country": "nz",
         "city": "Palmerston North"
     },
-    "data": "http://gis.pncc.govt.nz/arcgis/rest/services/Public/WEB_Open_Data/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-            "ST_NAME",
-            "ST_DESC"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.pncc.govt.nz/arcgis/rest/services/Public/WEB_Open_Data/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "ST_NAME",
+                        "ST_DESC"
+                    ],
+                    "postcode": "POSTCODE",
+                    "city": "TOWN"
+                }
+            }
         ],
-        "postcode": "POSTCODE",
-        "city": "TOWN"
+        "buildings": []
     }
 }

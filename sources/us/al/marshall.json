@@ -9,17 +9,24 @@
         "state": "al",
         "county": "Marshall"
     },
-    "data": "http://146.148.59.120/arcgis/rest/services/Parcels/Marshall/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SitusAddre"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SitusAddre"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://146.148.59.120/arcgis/rest/services/Parcels/Marshall/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SitusAddre"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SitusAddre"
+                    }
+                }
+            }
+        ],
+        "buildings": []
     }
 }

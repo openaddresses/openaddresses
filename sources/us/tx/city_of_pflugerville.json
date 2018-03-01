@@ -5,17 +5,35 @@
             "name": "City of Pflugerville",
             "state": "Texas"
         },
-        "geometry": {"type": "Point", "coordinates": [-83.15, 42.66]},
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -83.15,
+                42.66
+            ]
+        },
         "country": "us",
         "state": "tx",
         "city": "Pflugerville"
     },
-    "type": "ESRI",
-    "data": "http://services.arcgis.com/qDOnMQ2aoGtLgVxL/ArcGIS/rest/services/Addresses_Oct_2015/FeatureServer/0",
-    "conform": {
-        "type": "geojson",
-        "number": "Address_",
-        "street": ["PREFIX_DIR", "STREET_NAM", "STREET_TYP", "SUFFIX_DIR"],
-        "unit": "Apt_No"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://services.arcgis.com/qDOnMQ2aoGtLgVxL/ArcGIS/rest/services/Addresses_Oct_2015/FeatureServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "Address_",
+                    "street": [
+                        "PREFIX_DIR",
+                        "STREET_NAM",
+                        "STREET_TYP",
+                        "SUFFIX_DIR"
+                    ],
+                    "unit": "Apt_No"
+                }
+            }
+        ],
+        "buildings": []
     }
 }

@@ -9,22 +9,29 @@
         "state": "tn",
         "county": "Putnam"
     },
-    "data": "http://services.putnamco.org/arcgis/rest/services/Basemaps/PublicSafety/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "PREADDRNUM",
-            "ADDRNUM",
-            "ADDRNUMSUF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://services.putnamco.org/arcgis/rest/services/Basemaps/PublicSafety/MapServer/2",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": "FULLNAME",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "street": "FULLNAME",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

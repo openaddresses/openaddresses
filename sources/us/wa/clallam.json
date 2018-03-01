@@ -9,19 +9,29 @@
         "state": "wa",
         "county": "Clallam"
     },
-    "conform": {
-        "type": "shapefile-polygon",
-        "id": "PNUM",
-        "number": "SITUS_ADDR",
-        "street": ["SITUS_DIR", "SITUS_RD"],
-        "city": "SITUS_CITY",
-        "postcode": "ZIP_CODE"
-    },
-    "license": "http://www.clallam.net/maps/parcels.html",
-    "type": "http",
-    "compression": "zip",
-    "note": "parcel polygon shapefile prc_detail_p.shp, address columns: SITUS_ADDR, SITUS_DIR, SITUS_RD, SITUS_EXT, SITUS_CITY",
-    "year": "2014",
-    "data": "http://www.clallam.net/maps/parcel.zip",
-    "website": "http://www.clallam.net/maps/mapdata.html"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://www.clallam.net/maps/parcel.zip",
+                "website": "http://www.clallam.net/maps/mapdata.html",
+                "conform": {
+                    "type": "shapefile-polygon",
+                    "id": "PNUM",
+                    "number": "SITUS_ADDR",
+                    "street": [
+                        "SITUS_DIR",
+                        "SITUS_RD"
+                    ],
+                    "city": "SITUS_CITY",
+                    "postcode": "ZIP_CODE"
+                },
+                "compression": "zip",
+                "license": "http://www.clallam.net/maps/parcels.html",
+                "note": "parcel polygon shapefile prc_detail_p.shp, address columns: SITUS_ADDR, SITUS_DIR, SITUS_RD, SITUS_EXT, SITUS_CITY",
+                "year": "2014"
+            }
+        ],
+        "buildings": []
+    }
 }

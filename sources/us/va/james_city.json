@@ -9,26 +9,33 @@
         "state": "va",
         "county": "James City"
     },
-    "website": "https://www.jamescitycountyva.gov/assessments/gis-mapping-layers.html",
-    "data": "ftp://property.jamescitycountyva.gov/GIS/layers/JCC_Address_Points.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "note": {
-        "email": "propertyinfo@jamescitycountyva.gov",
-        "phone": "757-253-6650",
-        "metadata": "ftp://property.jamescitycountyva.gov/GIS/layers/GIS_Metadata.pdf"
-    },
-    "conform": {
-        "type": "shapefile",
-        "number": "ADDR_NUM",
-        "street": [
-            "PRE_DIR",
-            "PLAINST",
-            "STREETTYPE",
-            "SUF_DIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ftp",
+                "data": "ftp://property.jamescitycountyva.gov/GIS/layers/JCC_Address_Points.zip",
+                "website": "https://www.jamescitycountyva.gov/assessments/gis-mapping-layers.html",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "PLAINST",
+                        "STREETTYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": "APT",
+                    "city": "City",
+                    "postcode": "Zip_Code"
+                },
+                "compression": "zip",
+                "note": {
+                    "email": "propertyinfo@jamescitycountyva.gov",
+                    "phone": "757-253-6650",
+                    "metadata": "ftp://property.jamescitycountyva.gov/GIS/layers/GIS_Metadata.pdf"
+                }
+            }
         ],
-        "unit": "APT",
-        "city": "City",
-        "postcode": "Zip_Code"
+        "buildings": []
     }
 }

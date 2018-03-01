@@ -17,16 +17,23 @@
         "county": "San Bernardino",
         "city": "Rancho Cucamonga"
     },
-    "data": "https://regis.cityofrc.us/arcgis/rest/services/GISMapsMYNBH/Addresses_WGS/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ST_NUMBER",
-        "street": [
-            "ST_NAME",
-            "ST_SUFF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://regis.cityofrc.us/arcgis/rest/services/GISMapsMYNBH/Addresses_WGS/FeatureServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ST_NUMBER",
+                    "street": [
+                        "ST_NAME",
+                        "ST_SUFF"
+                    ],
+                    "unit": "UNITS",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": "UNITS",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

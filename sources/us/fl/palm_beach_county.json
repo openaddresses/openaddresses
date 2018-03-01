@@ -9,27 +9,34 @@
         "state": "fl",
         "county": "Palm Beach"
     },
-    "attribution": "Palm Beach County",
-    "data": "ftp://pbcgis:sigcbp@ftp.co.palm-beach.fl.us/cwgis/SITUS_PUB.zip",
-    "website": "http://www.pbcgov.com/iss/itoperations/cwgis/GISdatasearch/",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "STREET_NO",
-        "street": [
-            "STREET_PRE",
-            "STREET_NAM",
-            "STREET_SUF",
-            "STREET_POS"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ftp",
+                "data": "ftp://pbcgis:sigcbp@ftp.co.palm-beach.fl.us/cwgis/SITUS_PUB.zip",
+                "website": "http://www.pbcgov.com/iss/itoperations/cwgis/GISdatasearch/",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "STREET_NO",
+                    "street": [
+                        "STREET_PRE",
+                        "STREET_NAM",
+                        "STREET_SUF",
+                        "STREET_POS"
+                    ],
+                    "unit": "APARTMENT",
+                    "city": "CITY",
+                    "postcode": "ZIP_CODE"
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "attribution": "Palm Beach County"
+            }
         ],
-        "unit": "APARTMENT",
-        "city": "CITY",
-        "postcode": "ZIP_CODE"
+        "buildings": []
     }
 }

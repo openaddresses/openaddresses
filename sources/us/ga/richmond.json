@@ -9,23 +9,30 @@
         "state": "ga",
         "county": "Richmond"
     },
-    "data": "http://gismap.augustaga.gov/arcgis/rest/services/CityView/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gismap.augustaga.gov/arcgis/rest/services/CityView/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADDRNUM",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": [
+                        "ROADDIRPRE",
+                        "ROADNAME",
+                        "ROADTYPE",
+                        "ROADDIRSUFF"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "street": [
-            "ROADDIRPRE",
-            "ROADNAME",
-            "ROADTYPE",
-            "ROADDIRSUFF"
-        ],
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

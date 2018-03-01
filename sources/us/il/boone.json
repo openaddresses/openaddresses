@@ -9,18 +9,25 @@
         "state": "il",
         "county": "Boone"
     },
-    "data": "http://maps.boonecountyil.org/arcgis/rest/services/Ownership_Parcels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "add_num",
-        "street": [
-            "add_prefix",
-            "add_strt",
-            "add_type",
-            "add_sdir"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://maps.boonecountyil.org/arcgis/rest/services/Ownership_Parcels/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "add_num",
+                    "street": [
+                        "add_prefix",
+                        "add_strt",
+                        "add_type",
+                        "add_sdir"
+                    ],
+                    "city": "add_munic",
+                    "postcode": "add_zip"
+                }
+            }
         ],
-        "city": "add_munic",
-        "postcode": "add_zip"
+        "buildings": []
     }
 }

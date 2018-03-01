@@ -9,19 +9,26 @@
         "state": "nc",
         "county": "Carteret"
     },
-    "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Carteret/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "Address",
-        "street": [
-            "PREDIR",
-            "StreetName",
-            "Type",
-            "SUFDIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Carteret/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "Address",
+                    "street": [
+                        "PREDIR",
+                        "StreetName",
+                        "Type",
+                        "SUFDIR"
+                    ],
+                    "unit": "Unit",
+                    "city": "COMMUNITY",
+                    "postcode": "Zipcode"
+                }
+            }
         ],
-        "unit": "Unit",
-        "city": "COMMUNITY",
-        "postcode": "Zipcode"
+        "buildings": []
     }
 }

@@ -9,23 +9,30 @@
         "state": "va",
         "county": "Spotsylvania"
     },
-    "data": "http://gis.spotsylvania.va.us/arcgis/rest/services/Spotsylvania/MapServer/6",
-    "type": "ESRI",
-    "website": "http://gis.spotsylvania.va.us/Spotsylvania/",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "PREADDRNUM",
-            "ADDRNUM",
-            "ADDRNUMSUF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.spotsylvania.va.us/arcgis/rest/services/Spotsylvania/MapServer/6",
+                "website": "http://gis.spotsylvania.va.us/Spotsylvania/",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": [
+                        "STPREDIR",
+                        "STNAME",
+                        "STPOSTDIR",
+                        "STTYPE"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "street": [
-            "STPREDIR",
-            "STNAME",
-            "STPOSTDIR",
-            "STTYPE"
-        ],
-        "city": "CITY",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

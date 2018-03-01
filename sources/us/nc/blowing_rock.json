@@ -16,17 +16,24 @@
         "state": "nc",
         "place": "Blowing Rock"
     },
-    "data": "https://services5.arcgis.com/qWbsNTne6eidnUv9/ArcGIS/rest/services/BlowingRock_Parcels_201709/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "street": {
-            "function": "postfixed_street",
-            "field": "PROPADDRES"
-        },
-        "number": {
-            "function": "prefixed_number",
-            "field": "PROPADDRES"
-        },
-        "type": "geojson"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://services5.arcgis.com/qWbsNTne6eidnUv9/ArcGIS/rest/services/BlowingRock_Parcels_201709/FeatureServer/0",
+                "conform": {
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PROPADDRES"
+                    },
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PROPADDRES"
+                    },
+                    "type": "geojson"
+                }
+            }
+        ],
+        "buildings": []
     }
 }

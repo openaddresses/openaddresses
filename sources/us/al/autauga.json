@@ -9,16 +9,23 @@
         "state": "al",
         "county": "Autauga"
     },
-    "data": "http://146.148.59.120/arcgis/rest/services/Parcels/Autauga/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "P_HOUSE",
-        "street": "P_STREET",
-        "postcode": {
-            "function": "regexp",
-            "field": "P_CITY",
-            "pattern": "([0-9]{5})$"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://146.148.59.120/arcgis/rest/services/Parcels/Autauga/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "P_HOUSE",
+                    "street": "P_STREET",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "P_CITY",
+                        "pattern": "([0-9]{5})$"
+                    }
+                }
+            }
+        ],
+        "buildings": []
     }
 }

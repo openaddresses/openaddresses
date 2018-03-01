@@ -9,19 +9,26 @@
         "state": "pa",
         "county": "Snyder"
     },
-    "data": "http://www.unionco.org/unioncomaps/rest/services/Snyder/Structures/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "House_No",
-        "street": [
-            "PREFIXDIR",
-            "STREETNAME",
-            "STREETSUF",
-            "POSTDIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://www.unionco.org/unioncomaps/rest/services/Snyder/Structures/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "House_No",
+                    "street": [
+                        "PREFIXDIR",
+                        "STREETNAME",
+                        "STREETSUF",
+                        "POSTDIR"
+                    ],
+                    "unit": "UNITID",
+                    "city": "City",
+                    "postcode": "Zip"
+                }
+            }
         ],
-        "unit": "UNITID",
-        "city": "City",
-        "postcode": "Zip"
+        "buildings": []
     }
 }

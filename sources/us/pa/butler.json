@@ -9,21 +9,28 @@
         "state": "pa",
         "county": "Butler"
     },
-    "data": "http://maps.co.butler.pa.us/arcgis/rest/services/ButlerCounty/ButlerMapService/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "LOCATION",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "LOCATION",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "MCN"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://maps.co.butler.pa.us/arcgis/rest/services/ButlerCounty/ButlerMapService/MapServer/1",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "LOCATION",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "LOCATION",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": "MCN"
+                }
+            }
+        ],
+        "buildings": []
     }
 }

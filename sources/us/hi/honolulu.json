@@ -17,24 +17,31 @@
             ]
         }
     },
-    "attribution": "City of Honolulu",
-    "data": "http://webserverholis.honolulugis.org/arcgis/rest/services/Public/Cadastral/MapServer/3",
-    "website": "http://gis.hicentral.com/data.html",
-    "type": "ESRI",
-    "note": "Includes full parcel shapefile of the island of Oahu. SRS is EPSG: 2784",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "join",
-            "fields": [
-                "HOUSEPRFX",
-                "HOUSENUMBER"
-            ],
-            "separator": "-"
-        },
-        "street": "STREETNAME",
-        "unit": "HOUSESUFFX",
-        "city": "CITY",
-        "postcode": "ZIP"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://webserverholis.honolulugis.org/arcgis/rest/services/Public/Cadastral/MapServer/3",
+                "website": "http://gis.hicentral.com/data.html",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "HOUSEPRFX",
+                            "HOUSENUMBER"
+                        ],
+                        "separator": "-"
+                    },
+                    "street": "STREETNAME",
+                    "unit": "HOUSESUFFX",
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                },
+                "note": "Includes full parcel shapefile of the island of Oahu. SRS is EPSG: 2784",
+                "attribution": "City of Honolulu"
+            }
+        ],
+        "buildings": []
     }
 }

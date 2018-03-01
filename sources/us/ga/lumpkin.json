@@ -9,17 +9,24 @@
         "state": "ga",
         "county": "Lumpkin"
     },
-    "data": "http://arcgis4.roktech.net/arcgis/rest/services/Lumpkin/Lumpkin_BaseMap/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NUM",
-        "street": [
-            "ST_PREFIX",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SUFFIX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://arcgis4.roktech.net/arcgis/rest/services/Lumpkin/Lumpkin_BaseMap/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HOUSE_NUM",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX"
+                    ],
+                    "unit": "HOUSE_ALPHA"
+                }
+            }
         ],
-        "unit": "HOUSE_ALPHA"
+        "buildings": []
     }
 }

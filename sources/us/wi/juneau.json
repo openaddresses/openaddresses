@@ -9,12 +9,19 @@
         "state": "wi",
         "county": "Juneau"
     },
-    "data": "https://gis2.msa-ps.com/ArcGIS/rest/services/StreetsAddress/MapServer/2",
-    "type": "ESRI",
-    "note": "Number col contains letters & Needs to be reprojected!",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": "STNAME"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://gis2.msa-ps.com/ArcGIS/rest/services/StreetsAddress/MapServer/2",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HOUSENUM",
+                    "street": "STNAME"
+                },
+                "note": "Number col contains letters & Needs to be reprojected!"
+            }
+        ],
+        "buildings": []
     }
 }

@@ -9,20 +9,27 @@
         "state": "pa",
         "county": "Wayne"
     },
-    "website": "http://wcplanninggis.maps.arcgis.com/apps/webappviewer/index.html",
-    "data": "http://services1.arcgis.com/VMKRr2Ecl6EFwJpm/ArcGIS/rest/services/Addresses/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NO",
-        "street": [
-            "PREFIX",
-            "STREET",
-            "SUFFIX",
-            "PDS"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://services1.arcgis.com/VMKRr2Ecl6EFwJpm/ArcGIS/rest/services/Addresses/FeatureServer/0",
+                "website": "http://wcplanninggis.maps.arcgis.com/apps/webappviewer/index.html",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HOUSE_NO",
+                    "street": [
+                        "PREFIX",
+                        "STREET",
+                        "SUFFIX",
+                        "PDS"
+                    ],
+                    "unit": "SUPPLEMENTAL",
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": "SUPPLEMENTAL",
-        "city": "COMMUNITY",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

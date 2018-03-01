@@ -9,17 +9,24 @@
         "state": "nc",
         "county": "Caswell"
     },
-    "data": "https://www.webgis.net/arcgis/rest/services/NC/Caswell/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "street": [
-            "ST_PREFIX",
-            "ST_PREFIX_",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SUFFIX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://www.webgis.net/arcgis/rest/services/NC/Caswell/MapServer/0",
+                "conform": {
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_PREFIX_",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX"
+                    ],
+                    "number": "POSTADDRES",
+                    "type": "geojson"
+                }
+            }
         ],
-        "number": "POSTADDRES",
-        "type": "geojson"
+        "buildings": []
     }
 }

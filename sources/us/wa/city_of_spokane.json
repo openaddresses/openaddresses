@@ -16,27 +16,34 @@
         "state": "wa",
         "city": "Spokane"
     },
-    "data": "https://static.spokanecity.org/download/gistransfer/pubdata/Address.zip",
-    "license": {
-        "text": "Indemnification",
-        "url":"https://my.spokanecity.org/opendata/gis/data/#disclaimer",
-        "attribution": false,
-        "share-alike": false
-    },
-    "type": "http",
-    "compression": "zip",
-    "note": "",
-    "website": "https://my.spokanecity.org/opendata/gis/data/",
-    "attribution": "City of Spokane",
-    "conform": {
-        "type": "shapefile",
-        "number": [
-            "AddressNum",
-            "AddressSub"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://static.spokanecity.org/download/gistransfer/pubdata/Address.zip",
+                "website": "https://my.spokanecity.org/opendata/gis/data/",
+                "conform": {
+                    "type": "shapefile",
+                    "number": [
+                        "AddressNum",
+                        "AddressSub"
+                    ],
+                    "street": "FullName",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zipcode"
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "Indemnification",
+                    "url": "https://my.spokanecity.org/opendata/gis/data/#disclaimer",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "note": "",
+                "attribution": "City of Spokane"
+            }
         ],
-        "street": "FullName",
-        "city": "City",
-        "region": "State",
-        "postcode": "Zipcode"
+        "buildings": []
     }
 }

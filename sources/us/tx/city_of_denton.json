@@ -16,19 +16,26 @@
         "state": "tx",
         "city": "Denton"
     },
-    "data": "https://services.arcgis.com/9dTWrhPzuDPnUVXr/ArcGIS/rest/services/City_Addresses/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "LO_ADDRESS",
-        "street": [
-            "STDIR",
-            "STNAME",
-            "STTYPE"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://services.arcgis.com/9dTWrhPzuDPnUVXr/ArcGIS/rest/services/City_Addresses/FeatureServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "LO_ADDRESS",
+                    "street": [
+                        "STDIR",
+                        "STNAME",
+                        "STTYPE"
+                    ],
+                    "unit": "SUITE",
+                    "city": "SITE_CITY",
+                    "postcode": "SITE_ZIP",
+                    "region": "SITE_STATE"
+                }
+            }
         ],
-        "unit": "SUITE",
-        "city": "SITE_CITY",
-        "postcode": "SITE_ZIP",
-        "region": "SITE_STATE"
+        "buildings": []
     }
 }

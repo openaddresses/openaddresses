@@ -9,26 +9,33 @@
         "state": "fl",
         "county": "Seminole"
     },
-    "data": "http://www.apps.seminolecountyfl.gov/is/gis/GISData/Addresses.zip",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://www.seminolecountyfl.gov/departments-services/information-services/gis-geographic-information-systems/gis-data.stml",
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "conform": {
-        "type": "shapefile",
-        "number": "PAD_NUM",
-        "street": [
-            "PAD_DIR",
-            "PAD_NAME",
-            "PAD_STR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://www.apps.seminolecountyfl.gov/is/gis/GISData/Addresses.zip",
+                "website": "http://www.seminolecountyfl.gov/departments-services/information-services/gis-geographic-information-systems/gis-data.stml",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "PAD_NUM",
+                    "street": [
+                        "PAD_DIR",
+                        "PAD_NAME",
+                        "PAD_STR"
+                    ],
+                    "unit": "ADDRESS2",
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "id": "PARCEL"
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                }
+            }
         ],
-        "unit": "ADDRESS2",
-        "city": "CITY",
-        "postcode": "ZIP",
-        "id": "PARCEL"
+        "buildings": []
     }
 }

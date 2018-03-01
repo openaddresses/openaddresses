@@ -16,22 +16,29 @@
         "state": "il",
         "city": "Aurora"
     },
-    "type": "ESRI",
-    "data": "http://gis.aurora-il.org/arcgis/rest/services/AddressPoints/AddressPoints/MapServer/0",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "CITY",
-        "postcode": "ZIPCODE"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.aurora-il.org/arcgis/rest/services/AddressPoints/AddressPoints/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": "CITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "buildings": []
     }
 }

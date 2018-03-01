@@ -9,22 +9,29 @@
         "state": "wi",
         "county": "Waukesha"
     },
-    "data": "http://maps.waukcogeo.com/arcgis/rest/services/E911/MapServer/11",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "StreetNumber",
-        "street": {
-            "function": "remove_prefix",
-            "field": "Full_Address",
-            "field_to_remove": "StreetNumber"
-        },
-        "city": "Municipality",
-        "postcode": {
-            "function": "regexp",
-            "field": "ZipCode",
-            "pattern": "^(\\d+)"
-        },
-        "accuracy": 1
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://maps.waukcogeo.com/arcgis/rest/services/E911/MapServer/11",
+                "conform": {
+                    "type": "geojson",
+                    "number": "StreetNumber",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "Full_Address",
+                        "field_to_remove": "StreetNumber"
+                    },
+                    "city": "Municipality",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "ZipCode",
+                        "pattern": "^(\\d+)"
+                    },
+                    "accuracy": 1
+                }
+            }
+        ],
+        "buildings": []
     }
 }

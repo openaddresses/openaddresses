@@ -7,26 +7,33 @@
         "country": "us",
         "state": "in"
     },
-    "website": "http://maps.indiana.edu/previewMaps/Infrastructure/Streets_Address_Points_IDHS.html",
-    "data": "http://maps.indiana.edu/download/Infrastructure/Streets_Address_Points_IDHS.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "gdb",
-        "number": "NUMBER",
-        "street": [
-            "PREFIX",
-            "ADD_NAME",
-            "ADD_TYPE",
-            "SUFFIX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://maps.indiana.edu/download/Infrastructure/Streets_Address_Points_IDHS.zip",
+                "website": "http://maps.indiana.edu/previewMaps/Infrastructure/Streets_Address_Points_IDHS.html",
+                "conform": {
+                    "type": "gdb",
+                    "number": "NUMBER",
+                    "street": [
+                        "PREFIX",
+                        "ADD_NAME",
+                        "ADD_TYPE",
+                        "SUFFIX"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "ADD_CITY",
+                    "postcode": "ZIPCODE",
+                    "district": "COUNTY",
+                    "region": "STATE"
+                },
+                "compression": "zip"
+            }
         ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "city": "ADD_CITY",
-        "postcode": "ZIPCODE",
-        "district": "COUNTY",
-        "region": "STATE"
+        "buildings": []
     }
 }

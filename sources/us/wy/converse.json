@@ -9,23 +9,30 @@
         "state": "wy",
         "county": "Converse"
     },
-    "compression": "zip",
-    "data": "http://maps.greenwoodmap.com/converse/download/ownership.zip",
-    "type": "http",
-    "conform": {
-        "type": "shapefile-polygon",
-        "number": {
-            "function": "regexp",
-            "field": "st_address",
-            "pattern": "^([0-9]+)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "st_address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "id": "pidn"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://maps.greenwoodmap.com/converse/download/ownership.zip",
+                "conform": {
+                    "type": "shapefile-polygon",
+                    "number": {
+                        "function": "regexp",
+                        "field": "st_address",
+                        "pattern": "^([0-9]+)",
+                        "replace": "$1"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "st_address",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "id": "pidn"
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
     }
 }

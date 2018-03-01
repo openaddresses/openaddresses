@@ -3,20 +3,33 @@
         "country": "ca",
         "state": "bc",
         "county": "North Cowichan",
-        "geometry": { "type": "Point", "coordinates": [-123.72, 48.83] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -123.72,
+                48.83
+            ]
+        }
     },
-    "data": "http://data.northcowichan.ca/DataBrowser/DownloadCsv?container=mncowichan&entitySet=PropertyReport&filter=NOFILTER",
-    "website": "http://data.northcowichan.ca/default.aspx",
-    "type": "http",
-    "conform": {
-        "lon": "x",
-        "lat": "y",
-        "number": "HOUSE",
-        "street": "STREET",
-        "city": "CITY",
-        "id": "LEGAL_ID",
-        "postcode": "POSTAL_CODE",
-        "type": "csv"
-    },
-    "attribution": "City of North Cowichan"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://data.northcowichan.ca/DataBrowser/DownloadCsv?container=mncowichan&entitySet=PropertyReport&filter=NOFILTER",
+                "website": "http://data.northcowichan.ca/default.aspx",
+                "conform": {
+                    "lon": "x",
+                    "lat": "y",
+                    "number": "HOUSE",
+                    "street": "STREET",
+                    "city": "CITY",
+                    "id": "LEGAL_ID",
+                    "postcode": "POSTAL_CODE",
+                    "type": "csv"
+                },
+                "attribution": "City of North Cowichan"
+            }
+        ],
+        "buildings": []
+    }
 }

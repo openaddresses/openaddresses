@@ -9,29 +9,36 @@
         "state": "wa",
         "county": "Yakima"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/nvkelso/cd363b/parcels_thurston_county_washington_state.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile-polygon",
-        "file": "Parcels.shp",
-        "number": {
-            "function": "regexp",
-            "field": "SITUS_STRE",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SITUS_STRE",
-            "pattern": "^(?:[0-9]+ )(.*?)(?: (UNIT|APT|BLDG|STE|#).*|$)",
-            "replace": "$1"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "SITUS_STRE",
-            "pattern": " ((?:(?:(?:UNIT|APT|BLDG|STE) )|(?:#)).+)$"
-        },
-        "city": "SITUS_CITY",
-        "postcode": "SITUS_ZIP"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/nvkelso/cd363b/parcels_thurston_county_washington_state.zip",
+                "conform": {
+                    "type": "shapefile-polygon",
+                    "file": "Parcels.shp",
+                    "number": {
+                        "function": "regexp",
+                        "field": "SITUS_STRE",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "SITUS_STRE",
+                        "pattern": "^(?:[0-9]+ )(.*?)(?: (UNIT|APT|BLDG|STE|#).*|$)",
+                        "replace": "$1"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "SITUS_STRE",
+                        "pattern": " ((?:(?:(?:UNIT|APT|BLDG|STE) )|(?:#)).+)$"
+                    },
+                    "city": "SITUS_CITY",
+                    "postcode": "SITUS_ZIP"
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
     }
 }

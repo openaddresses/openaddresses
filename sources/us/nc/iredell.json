@@ -9,28 +9,35 @@
         "state": "nc",
         "county": "Iredell"
     },
-    "data": "https://www.co.iredell.nc.us/DocumentCenter/View/1808",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://www.co.iredell.nc.us/Departments/GISMaps/datadownloads.aspx",
-    "conform": {
-        "type": "shapefile",
-        "number": [
-            "St_Number",
-            "St_NumSuff"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://www.co.iredell.nc.us/DocumentCenter/View/1808",
+                "website": "http://www.co.iredell.nc.us/Departments/GISMaps/datadownloads.aspx",
+                "conform": {
+                    "type": "shapefile",
+                    "number": [
+                        "St_Number",
+                        "St_NumSuff"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "Unit"
+                    ],
+                    "street": [
+                        "PreDir",
+                        "St_Name",
+                        "St_Type",
+                        "PostDir"
+                    ],
+                    "city": "POCity",
+                    "region": "County",
+                    "postcode": "Zipcode"
+                },
+                "compression": "zip"
+            }
         ],
-        "unit": [
-            "UnitType",
-            "Unit"
-        ],
-        "street": [
-            "PreDir",
-            "St_Name",
-            "St_Type",
-            "PostDir"
-        ],
-        "city": "POCity",
-        "region": "County",
-        "postcode": "Zipcode"
+        "buildings": []
     }
 }

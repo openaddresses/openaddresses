@@ -9,21 +9,28 @@
         "state": "pa",
         "county": "Adams"
     },
-    "data": "http://gis.adamscounty.us/arcgis/rest/services/Maps/Deeds2/MapServer/10",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ST_NUM",
-        "street": [
-            "PRE_DIR",
-            "ST_NAME",
-            "ST_TYPE",
-            "POST_DIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.adamscounty.us/arcgis/rest/services/Maps/Deeds2/MapServer/10",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ST_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "POST_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_VAL"
+                    ],
+                    "city": "COMMUNITY"
+                }
+            }
         ],
-        "unit": [
-          "UNIT_TYPE",
-          "UNIT_VAL"
-        ],
-        "city": "COMMUNITY"
+        "buildings": []
     }
 }

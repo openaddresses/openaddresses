@@ -9,24 +9,31 @@
         "state": "co",
         "county": "Denver"
     },
-    "conform": {
-        "type": "shapefile",
-        "number": [
-            "ADDRESS__1",
-            "ADDRESS__2"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://www.denvergov.org/media/gis/DataCatalog/addresses/shape/addresses.zip",
+                "conform": {
+                    "type": "shapefile",
+                    "number": [
+                        "ADDRESS__1",
+                        "ADDRESS__2"
+                    ],
+                    "street": [
+                        "PREDIRECTI",
+                        "STREET_NAM",
+                        "POSTTYPE",
+                        "POSTDIRECT"
+                    ],
+                    "unit": [
+                        "COMPOSITE_",
+                        "COMPOSIT_U"
+                    ]
+                },
+                "compression": "zip"
+            }
         ],
-        "street": [
-          "PREDIRECTI",
-          "STREET_NAM",
-          "POSTTYPE",
-          "POSTDIRECT"
-        ],
-        "unit": [
-          "COMPOSITE_",
-          "COMPOSIT_U"
-        ]
-    },
-    "data": "https://www.denvergov.org/media/gis/DataCatalog/addresses/shape/addresses.zip",
-    "type": "http",
-    "compression": "zip"
+        "buildings": []
+    }
 }

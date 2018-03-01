@@ -5,18 +5,28 @@
         "US Census": {
             "geoid": "36029"
         },
-        "county":"erie"
+        "county": "erie"
     },
-    "website": "http://gis2.erie.gov/HTML5/ErieCountyNY/",
-    "data": "http://gis2.erie.gov/arcgis/rest/services/ErieCountyNY/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "PIN",
-        "street": "ADDNAME",
-        "number": "ADDNUM",
-        "city": "CITYTOWN",
-        "postcode": ["ZIP", "ZIP4"],
-        "accuracy":2
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis2.erie.gov/arcgis/rest/services/ErieCountyNY/MapServer/2",
+                "website": "http://gis2.erie.gov/HTML5/ErieCountyNY/",
+                "conform": {
+                    "type": "geojson",
+                    "id": "PIN",
+                    "street": "ADDNAME",
+                    "number": "ADDNUM",
+                    "city": "CITYTOWN",
+                    "postcode": [
+                        "ZIP",
+                        "ZIP4"
+                    ],
+                    "accuracy": 2
+                }
+            }
+        ],
+        "buildings": []
     }
 }

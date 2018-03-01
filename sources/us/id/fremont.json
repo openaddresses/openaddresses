@@ -9,22 +9,29 @@
         "state": "id",
         "county": "Fremont"
     },
-    "compression": "zip",
-    "data": "http://maps.greenwoodmap.com/fremontid/download/ownership.zip",
-    "type": "http",
-    "conform": {
-        "type": "shapefile",
-        "number": {
-            "function": "regexp",
-            "field": "st_address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "st_address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "id": "pidn"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://maps.greenwoodmap.com/fremontid/download/ownership.zip",
+                "conform": {
+                    "type": "shapefile",
+                    "number": {
+                        "function": "regexp",
+                        "field": "st_address",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "st_address",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "id": "pidn"
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
     }
 }

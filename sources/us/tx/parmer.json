@@ -9,18 +9,25 @@
         "state": "tx",
         "county": "Parmer"
     },
-    "data": "http://mapsatbis.com/bisgis/rest/services/ParmerWeb/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": "ParmerCad.DBO.Accounts.situs_num",
-        "street": [
-            "ParmerCad.DBO.Accounts.situs_street_prefx",
-            "ParmerCad.DBO.Accounts.situs_street",
-            "ParmerCad.DBO.Accounts.situs_street_sufix"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://mapsatbis.com/bisgis/rest/services/ParmerWeb/MapServer/0",
+                "conform": {
+                    "number": "ParmerCad.DBO.Accounts.situs_num",
+                    "street": [
+                        "ParmerCad.DBO.Accounts.situs_street_prefx",
+                        "ParmerCad.DBO.Accounts.situs_street",
+                        "ParmerCad.DBO.Accounts.situs_street_sufix"
+                    ],
+                    "city": "ParmerCad.DBO.Accounts.situs_city",
+                    "region": "ParmerCad.DBO.Accounts.situs_state",
+                    "postcode": "ParmerCad.DBO.Accounts.situs_zip",
+                    "type": "geojson"
+                }
+            }
         ],
-        "city": "ParmerCad.DBO.Accounts.situs_city",
-        "region": "ParmerCad.DBO.Accounts.situs_state",
-        "postcode": "ParmerCad.DBO.Accounts.situs_zip",
-        "type": "geojson"
+        "buildings": []
     }
 }

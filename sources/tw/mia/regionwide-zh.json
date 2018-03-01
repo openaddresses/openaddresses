@@ -6,27 +6,38 @@
         },
         "country": "tw"
     },
-    "data": "http://ja.miaoli.gov.tw/arcgis/rest/services/Miaoli/miaoliDpDynamic_B/FeatureServer/1",
-    "type": "ESRI",
-    "language": "zh",
-    "conform": {
-        "type": "geojson",
-        "number":{
-            "function": "regexp",
-            "field": "NUM",
-            "pattern": "^([0-9\uff10-\uff19]+\u865f?)"
-        },
-        "unit":{
-            "function": "regexp",
-            "field": "NUM",
-            "pattern": "^(?:[0-9\uff10-\uff19]+\u865f?)(.*)"
-        },
-        "street": {
-            "function": "join",
-            "fields": ["ROAD","LANE","ALLEY"],
-            "separator": ""
-        },
-        "city": "VILLAGE",
-        "district": "TOWN"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://ja.miaoli.gov.tw/arcgis/rest/services/Miaoli/miaoliDpDynamic_B/FeatureServer/1",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "NUM",
+                        "pattern": "^([0-9０-９]+號?)"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "NUM",
+                        "pattern": "^(?:[0-9０-９]+號?)(.*)"
+                    },
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "ROAD",
+                            "LANE",
+                            "ALLEY"
+                        ],
+                        "separator": ""
+                    },
+                    "city": "VILLAGE",
+                    "district": "TOWN"
+                },
+                "language": "zh"
+            }
+        ],
+        "buildings": []
     }
 }

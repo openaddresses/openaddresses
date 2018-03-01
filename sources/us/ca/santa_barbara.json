@@ -9,28 +9,35 @@
         "state": "ca",
         "county": "Santa Barbara"
     },
-    "attribution": "Santa Barbara County",
-    "data": "http://cosb.countyofsb.org/gis/download/Parcel_layers2011_0210.zip",
-    "license": "http://cosb.countyofsb.org/gis/default.aspx?id=3458",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "id": "APN",
-        "type": "shapefile-polygon",
-        "number": [
-          "SNum",
-          "SFra"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://cosb.countyofsb.org/gis/download/Parcel_layers2011_0210.zip",
+                "conform": {
+                    "id": "APN",
+                    "type": "shapefile-polygon",
+                    "number": [
+                        "SNum",
+                        "SFra"
+                    ],
+                    "street": [
+                        "SDir",
+                        "SStreet",
+                        "SStreetSuf"
+                    ],
+                    "unit": [
+                        "SUnitType",
+                        "SUnitNumb"
+                    ],
+                    "city": "SCity",
+                    "postcode": "SZip"
+                },
+                "compression": "zip",
+                "license": "http://cosb.countyofsb.org/gis/default.aspx?id=3458",
+                "attribution": "Santa Barbara County"
+            }
         ],
-        "street": [
-            "SDir",
-            "SStreet",
-            "SStreetSuf"
-        ],
-        "unit": [
-            "SUnitType",
-            "SUnitNumb"
-        ],
-        "city": "SCity",
-        "postcode": "SZip"
+        "buildings": []
     }
 }

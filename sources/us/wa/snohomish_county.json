@@ -9,24 +9,31 @@
         "state": "wa",
         "county": "Snohomish"
     },
-    "data": "ftp://ftp.snoco.org/Assessor/shapefiles/parcelcent.zip",
-    "license": "Unknown",
-    "year": "2013",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "SITUSLINE1",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SITUSLINE1",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "type": "shapefile",
-        "postcode": "SITUSZIP"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ftp",
+                "data": "ftp://ftp.snoco.org/Assessor/shapefiles/parcelcent.zip",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "SITUSLINE1",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "SITUSLINE1",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "type": "shapefile",
+                    "postcode": "SITUSZIP"
+                },
+                "compression": "zip",
+                "license": "Unknown",
+                "year": "2013"
+            }
+        ],
+        "buildings": []
     }
 }

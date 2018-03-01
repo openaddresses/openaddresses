@@ -3,18 +3,31 @@
         "country": "ca",
         "state": "ab",
         "city": "Banff",
-        "geometry": { "type": "Point", "coordinates": [-115.57, 51.18] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -115.57,
+                51.18
+            ]
+        }
     },
-    "data": "https://banffdata.blob.core.windows.net/converted/shp.AddressPoints.zip",
-    "website": "http://www.banffopendata.ca/DataBrowser/BanffData/AddressPoints",
-    "license": "http://www.banffopendata.ca/Home/About",
-    "type": "http",
-    "compression": "zip",
-    "attribution": "City of Banff",
-    "conform": {
-        "type": "shapefile",
-        "number": "STREET_NUM",
-        "street": "STREET_NAM",
-        "unit": "SUITE"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://banffdata.blob.core.windows.net/converted/shp.AddressPoints.zip",
+                "website": "http://www.banffopendata.ca/DataBrowser/BanffData/AddressPoints",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "STREET_NUM",
+                    "street": "STREET_NAM",
+                    "unit": "SUITE"
+                },
+                "compression": "zip",
+                "license": "http://www.banffopendata.ca/Home/About",
+                "attribution": "City of Banff"
+            }
+        ],
+        "buildings": []
     }
 }

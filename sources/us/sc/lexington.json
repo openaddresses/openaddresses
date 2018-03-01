@@ -9,25 +9,32 @@
         "state": "sc",
         "county": "Lexington"
     },
-    "data": "http://maps.lex-co.com/arcgis/rest/services/AddressPts/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": [
-          "street_num",
-          "HALF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://maps.lex-co.com/arcgis/rest/services/AddressPts/MapServer/0",
+                "conform": {
+                    "number": [
+                        "street_num",
+                        "HALF"
+                    ],
+                    "street": [
+                        "PRE_DIR",
+                        "street_name",
+                        "street_type",
+                        "suf_dir"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT"
+                    ],
+                    "city": "postoffice",
+                    "postcode": "zip",
+                    "type": "geojson"
+                }
+            }
         ],
-        "street": [
-            "PRE_DIR",
-            "street_name",
-            "street_type",
-            "suf_dir"
-        ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT"
-        ],
-        "city": "postoffice",
-        "postcode": "zip",
-        "type": "geojson"
+        "buildings": []
     }
 }

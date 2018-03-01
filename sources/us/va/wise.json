@@ -9,18 +9,25 @@
         "state": "va",
         "county": "Wise"
     },
-    "data": "https://www.webgis.net/arcgis/rest/services/VA/WiseCo_WebGIS/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "FULLADDR"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "FULLADDR"
-        },
-        "unit": "UNIT"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/WiseCo_WebGIS/MapServer/2",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FULLADDR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FULLADDR"
+                    },
+                    "unit": "UNIT"
+                }
+            }
+        ],
+        "buildings": []
     }
 }

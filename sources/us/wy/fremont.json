@@ -9,21 +9,28 @@
         "state": "wy",
         "county": "Fremont"
     },
-    "data": "http://gwmap.s3.amazonaws.com/fremontwy/download/Site_Address.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "srs": "EPSG:3738",
-        "number": "ADDR_HN",
-        "street": [
-            "ADDR_PD",
-            "ADDR_PT",
-            "ADDR_SN",
-            "ADDR_ST",
-            "ADDR_SD"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://gwmap.s3.amazonaws.com/fremontwy/download/Site_Address.zip",
+                "conform": {
+                    "type": "shapefile",
+                    "srs": "EPSG:3738",
+                    "number": "ADDR_HN",
+                    "street": [
+                        "ADDR_PD",
+                        "ADDR_PT",
+                        "ADDR_SN",
+                        "ADDR_ST",
+                        "ADDR_SD"
+                    ],
+                    "postcode": "Zip",
+                    "city": "LOCATIONCI"
+                },
+                "compression": "zip"
+            }
         ],
-        "postcode": "Zip",
-        "city": "LOCATIONCI"
+        "buildings": []
     }
 }

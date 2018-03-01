@@ -9,22 +9,29 @@
         "state": "ca",
         "county": "San Bernardino"
     },
-    "conform": {
-        "id": "APN",
-        "type": "shapefile-polygon",
-        "number": "NUMBER",
-        "street": [
-            "PREDIR",
-            "STREETNAME",
-            "STREETTYPE"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "ftp://gisftp:1sbcftp1@gis1.sbcounty.gov/gims/parcel_basemap_data/countywide_parcels_09_18_2017.zip",
+                "website": "http://cms.sbcounty.gov/gis/FTPServices.aspx",
+                "conform": {
+                    "id": "APN",
+                    "type": "shapefile-polygon",
+                    "number": "NUMBER",
+                    "street": [
+                        "PREDIR",
+                        "STREETNAME",
+                        "STREETTYPE"
+                    ],
+                    "postcode": "ZIP",
+                    "city": "CITY",
+                    "region": "STATE"
+                },
+                "compression": "zip",
+                "attribution": "San Bernardino County"
+            }
         ],
-        "postcode": "ZIP",
-        "city": "CITY",
-        "region": "STATE"
-    },
-    "attribution": "San Bernardino County",
-    "data": "ftp://gisftp:1sbcftp1@gis1.sbcounty.gov/gims/parcel_basemap_data/countywide_parcels_09_18_2017.zip",
-    "website": "http://cms.sbcounty.gov/gis/FTPServices.aspx",
-    "type": "http",
-    "compression": "zip"
+        "buildings": []
+    }
 }

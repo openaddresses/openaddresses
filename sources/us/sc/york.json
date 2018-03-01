@@ -9,20 +9,27 @@
         "state": "sc",
         "county": "York"
     },
-    "data": "http://rockhillgis.cityofrockhill.com/arcgis/rest/services/Basemap_ParcelInfo/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "FULL_ADD",
-        "street": [
-            "GSSNAM",
-            "GSSTYP",
-            "GSSSF",
-            "GSSDIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://rockhillgis.cityofrockhill.com/arcgis/rest/services/Basemap_ParcelInfo/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "FULL_ADD",
+                    "street": [
+                        "GSSNAM",
+                        "GSSTYP",
+                        "GSSSF",
+                        "GSSDIR"
+                    ],
+                    "unit": "GSAPT",
+                    "city": "CITY",
+                    "region": "GSSTAT",
+                    "postcode": "ZIP_1"
+                }
+            }
         ],
-        "unit": "GSAPT",
-        "city": "CITY",
-        "region": "GSSTAT",
-        "postcode": "ZIP_1"
+        "buildings": []
     }
 }

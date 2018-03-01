@@ -3,7 +3,7 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -97.650,
+                -97.65,
                 35.256
             ]
         },
@@ -16,24 +16,31 @@
         "state": "ok",
         "city": "Newcastle"
     },
-    "data": "http://arcgis4.roktech.net/arcgis/rest/services/NewcastleOK/base/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STRUCTURE_NUM",
-        "street": [
-            "PRE_DIR",
-            "STREET_NAME",
-            "STREET_TYPE",
-            "POST_DIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://arcgis4.roktech.net/arcgis/rest/services/NewcastleOK/base/MapServer/2",
+                "conform": {
+                    "type": "geojson",
+                    "number": "STRUCTURE_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "POST_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_DESIG"
+                    ],
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_DESIG"
-        ],
-        "city": "CITY",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

@@ -16,19 +16,26 @@
         "state": "co",
         "city": "Westminster"
     },
-    "attribution": "City of Westminster",
-    "data": "http://maps.cityofwestminster.us/arcgis/rest/services/Addresses/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": "ADDRNUM",
-        "street": [
-            "STREETDIR",
-            "STREETNAME",
-            "STREETTYPE"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://maps.cityofwestminster.us/arcgis/rest/services/Addresses/MapServer/0",
+                "conform": {
+                    "number": "ADDRNUM",
+                    "street": [
+                        "STREETDIR",
+                        "STREETNAME",
+                        "STREETTYPE"
+                    ],
+                    "unit": "UNITNUM",
+                    "type": "geojson",
+                    "postcode": "ZIPCODE",
+                    "district": "COUNTY"
+                },
+                "attribution": "City of Westminster"
+            }
         ],
-        "unit": "UNITNUM",
-        "type": "geojson",
-        "postcode": "ZIPCODE",
-        "district": "COUNTY"
+        "buildings": []
     }
 }

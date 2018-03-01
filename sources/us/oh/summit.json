@@ -9,27 +9,34 @@
         "state": "oh",
         "county": "summit"
     },
-    "conform": {
-        "type": "shapefile",
-        "number": {
-            "function": "regexp",
-            "field": "addr",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "addr",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
-    },
-    "data": "https://fiscaloffice.summitoh.net/gis/downloads/parcels/Parcels.zip",
-    "website": "https://fiscaloffice.summitoh.net/index.php/documents-a-forms/viewcategory/40-gis-data-downloads",
-    "type": "http",
-    "compression": "zip",
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://fiscaloffice.summitoh.net/gis/downloads/parcels/Parcels.zip",
+                "website": "https://fiscaloffice.summitoh.net/index.php/documents-a-forms/viewcategory/40-gis-data-downloads",
+                "conform": {
+                    "type": "shapefile",
+                    "number": {
+                        "function": "regexp",
+                        "field": "addr",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "addr",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                }
+            }
+        ],
+        "buildings": []
     }
 }

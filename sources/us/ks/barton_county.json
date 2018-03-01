@@ -1,19 +1,30 @@
 {
     "coverage": {
-        "US Census": {"geoid": "20009", "name": "Barton County", "state": "Kansas"},
+        "US Census": {
+            "geoid": "20009",
+            "name": "Barton County",
+            "state": "Kansas"
+        },
         "country": "us",
         "state": "ks",
         "county": "barton"
     },
-    "conform": {
-        "type": "csv",
-        "number": "NUM",
-        "street": "STR",
-        "city": "CITY",
-        "postcode": "ZIP",
-        "lon": "LNG",
-        "lat": "LAT"
-    },
-    "type": "http",
-    "data": "http://data.openaddresses.io/cache/us-ks-barton_county.csv"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://data.openaddresses.io/cache/us-ks-barton_county.csv",
+                "conform": {
+                    "type": "csv",
+                    "number": "NUM",
+                    "street": "STR",
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "lon": "LNG",
+                    "lat": "LAT"
+                }
+            }
+        ],
+        "buildings": []
+    }
 }

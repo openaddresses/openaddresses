@@ -9,28 +9,35 @@
         "state": "fl",
         "county": "Citrus"
     },
-    "attribution": "Citrus County",
-    "data": "http://ftp.citrusbocc.com/GIS/website/data/ADDRESS_POINTS.zip",
-    "website": "https://gis.citrusbocc.com/data-downloads.html",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "file": "Address_Point_Export_For_FTP.shp",
-        "number": "STNO",
-        "street": [
-            "PREDIR",
-            "STNAME",
-            "SUFFIX",
-            "POSTDIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://ftp.citrusbocc.com/GIS/website/data/ADDRESS_POINTS.zip",
+                "website": "https://gis.citrusbocc.com/data-downloads.html",
+                "conform": {
+                    "type": "shapefile",
+                    "file": "Address_Point_Export_For_FTP.shp",
+                    "number": "STNO",
+                    "street": [
+                        "PREDIR",
+                        "STNAME",
+                        "SUFFIX",
+                        "POSTDIR"
+                    ],
+                    "unit": "STSUB",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "ZIP",
+                        "pattern": "^(\\d+)"
+                    }
+                },
+                "compression": "zip",
+                "attribution": "Citrus County"
+            }
         ],
-        "unit": "STSUB",
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": {
-            "function": "regexp",
-            "field": "ZIP",
-            "pattern": "^(\\d+)"
-        }
+        "buildings": []
     }
 }

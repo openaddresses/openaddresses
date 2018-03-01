@@ -16,29 +16,36 @@
         "state": "or",
         "city": "Portland Metro"
     },
-    "data": "http://library.oregonmetro.gov/rlisdiscovery/master_address.zip",
-    "license": {
-        "url": "http://www.oregonmetro.gov/sites/default/files/Open_Database_and_Content_Licenses.pdf",
-        "text": "Open Database License (ODbL) v1.0",
-        "attribution": true,
-        "attribution name": "Oregon Metro",
-        "share-alike": true
-    },
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "HOUSE",
-        "street": [
-            "FDPRE",
-            "FNAME",
-            "FTYPE",
-            "FDSUF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://library.oregonmetro.gov/rlisdiscovery/master_address.zip",
+                "conform": {
+                    "number": "HOUSE",
+                    "street": [
+                        "FDPRE",
+                        "FNAME",
+                        "FTYPE",
+                        "FDSUF"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NO"
+                    ],
+                    "type": "shapefile",
+                    "postcode": "zip"
+                },
+                "compression": "zip",
+                "license": {
+                    "url": "http://www.oregonmetro.gov/sites/default/files/Open_Database_and_Content_Licenses.pdf",
+                    "text": "Open Database License (ODbL) v1.0",
+                    "attribution": true,
+                    "attribution name": "Oregon Metro",
+                    "share-alike": true
+                }
+            }
         ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NO"
-        ],
-        "type": "shapefile",
-        "postcode": "zip"
+        "buildings": []
     }
 }

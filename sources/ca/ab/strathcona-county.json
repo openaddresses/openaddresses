@@ -3,28 +3,41 @@
         "country": "ca",
         "state": "ab",
         "county": "Strathcona County",
-        "geometry": { "type": "Point", "coordinates": [-113.20, 53.57] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -113.2,
+                53.57
+            ]
+        }
     },
-    "data": "https://data.strathcona.ca/api/geospatial/guuy-s4yx?method=export&format=Shapefile",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": [
-            "house_no",
-            "house_no_s"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://data.strathcona.ca/api/geospatial/guuy-s4yx?method=export&format=Shapefile",
+                "website": "https://data.strathcona.ca/",
+                "conform": {
+                    "number": [
+                        "house_no",
+                        "house_no_s"
+                    ],
+                    "street": [
+                        "pre_dir",
+                        "street_nam",
+                        "street_typ",
+                        "sufdir"
+                    ],
+                    "postcode": "postal",
+                    "city": "city",
+                    "district": "county",
+                    "region": "prov",
+                    "type": "shapefile"
+                },
+                "compression": "zip",
+                "attribution": "City of Strathcona"
+            }
         ],
-        "street": [
-            "pre_dir",
-            "street_nam",
-            "street_typ",
-            "sufdir"
-        ],
-        "postcode": "postal",
-        "city": "city",
-        "district": "county",
-        "region": "prov",
-        "type": "shapefile"
-    },
-    "website": "https://data.strathcona.ca/",
-    "attribution": "City of Strathcona"
+        "buildings": []
+    }
 }

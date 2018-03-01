@@ -1,29 +1,35 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "06063", 
-            "name": "Plumas County", 
+            "geoid": "06063",
+            "name": "Plumas County",
             "state": "California"
         },
         "country": "us",
         "state": "ga",
         "county": "Plumas"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/nvkelso/e8ef1c/plumas_california_usa_kmz_csv_results.csv",
-    "type": "http",
-    "conform": {
-        "type": "csv",
-        "lat": "lat",
-        "lon": "lon",
-        "number": "RDNUM",
-        "street": [
-            "RDPREDIR",
-            "RDPREFIX",
-            "RDNAME",
-            "RDSUFFIX",
-            "RDPOSTDIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/nvkelso/e8ef1c/plumas_california_usa_kmz_csv_results.csv",
+                "conform": {
+                    "type": "csv",
+                    "lat": "lat",
+                    "lon": "lon",
+                    "number": "RDNUM",
+                    "street": [
+                        "RDPREDIR",
+                        "RDPREFIX",
+                        "RDNAME",
+                        "RDSUFFIX",
+                        "RDPOSTDIR"
+                    ],
+                    "city": "COMMUNITY"
+                }
+            }
         ],
-        "city": "COMMUNITY"
+        "buildings": []
     }
 }
-

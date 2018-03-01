@@ -9,15 +9,30 @@
         "state": "va",
         "town": "Blacksburg"
     },
-    "data": "http://www.gis.lib.vt.edu/gis_data/Blacksburg/CDfiles/Addresses.zip",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://www.gis.lib.vt.edu/gis_data/Blacksburg/GISPage.html",
-    "conform": {
-        "type": "shapefile",
-        "number": "STNUM",
-        "unit": ["unit_desig", "unit"],
-        "street": ["STREET_PRE", "STREET_NAM", "STREET_TYP", "STREET_POS"],
-        "city": "COMMUNITY"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://www.gis.lib.vt.edu/gis_data/Blacksburg/CDfiles/Addresses.zip",
+                "website": "http://www.gis.lib.vt.edu/gis_data/Blacksburg/GISPage.html",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "STNUM",
+                    "unit": [
+                        "unit_desig",
+                        "unit"
+                    ],
+                    "street": [
+                        "STREET_PRE",
+                        "STREET_NAM",
+                        "STREET_TYP",
+                        "STREET_POS"
+                    ],
+                    "city": "COMMUNITY"
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
     }
 }

@@ -1,17 +1,28 @@
 {
     "coverage": {
-        "US Census": {"geoid": "22051", "name": "Jefferson Parish", "state": "Louisiana"},
+        "US Census": {
+            "geoid": "22051",
+            "name": "Jefferson Parish",
+            "state": "Louisiana"
+        },
         "country": "us",
         "state": "la",
         "county": "Jefferson"
     },
-    "data": "http://webmap.jeffparish.net/arcgis/rest/services/CODE/Code_Enforcement/MapServer/5",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRESS",
-        "street": "STREET",
-        "unit": "SUITE",
-        "postcode": "ZIP"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://webmap.jeffparish.net/arcgis/rest/services/CODE/Code_Enforcement/MapServer/5",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADDRESS",
+                    "street": "STREET",
+                    "unit": "SUITE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "buildings": []
     }
 }

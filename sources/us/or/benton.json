@@ -9,23 +9,30 @@
         "state": "or",
         "county": "Benton"
     },
-    "data": "http://maps.co.benton.or.us/gisdata/Address/houses.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "ST_NUMBR",
-        "street": [
-            "ST_PFX",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SFX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://maps.co.benton.or.us/gisdata/Address/houses.zip",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "ST_NUMBR",
+                    "street": [
+                        "ST_PFX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SFX"
+                    ],
+                    "unit": [
+                        "UNIT",
+                        "UNITNUM"
+                    ],
+                    "postcode": "ZIP",
+                    "city": "CITY"
+                },
+                "compression": "zip"
+            }
         ],
-        "unit": [
-            "UNIT",
-            "UNITNUM"
-        ],
-        "postcode": "ZIP",
-        "city": "CITY"
+        "buildings": []
     }
 }

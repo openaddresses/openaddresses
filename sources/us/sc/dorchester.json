@@ -9,18 +9,25 @@
         "state": "sc",
         "county": "Dorchester"
     },
-    "data": "https://gisservices.dorchestercounty.net/arcgis/rest/services/MATIX/MATIX_Parcel/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-          "UNITTYPE",
-          "UNITID"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://gisservices.dorchestercounty.net/arcgis/rest/services/MATIX/MATIX_Parcel/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "region": "STATE_",
+                    "postcode": "ZIPCODE_"
+                }
+            }
         ],
-        "city": "MUNICIPALITY",
-        "region": "STATE_",
-        "postcode": "ZIPCODE_"
+        "buildings": []
     }
 }

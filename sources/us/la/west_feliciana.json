@@ -9,21 +9,28 @@
         "state": "la",
         "county": "West Feliciana"
     },
-    "data": "http://services.geoportalmaps.com/arcgis/rest/services/WestFeliciana_Services/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "HOUSENUMBE",
-            "HNUMSUFFIX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://services.geoportalmaps.com/arcgis/rest/services/WestFeliciana_Services/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "HOUSENUMBE",
+                        "HNUMSUFFIX"
+                    ],
+                    "street": [
+                        "STREETDIRP",
+                        "STREETNAME",
+                        "THOROUGHFA",
+                        "STREETDIRS"
+                    ],
+                    "city": "COMMUNITYN",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "street": [
-            "STREETDIRP",
-            "STREETNAME",
-            "THOROUGHFA",
-            "STREETDIRS"
-        ],
-        "city": "COMMUNITYN",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

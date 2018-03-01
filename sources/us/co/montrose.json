@@ -9,22 +9,29 @@
         "state": "co",
         "county": "Montrose"
     },
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "FSA",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "FSA",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "postcode": "ZIPCODE",
-        "city": "PCN"
-    },
-    "data": "http://mcmap.montrosecounty.net:8080/arcgis/rest/services/MontroseCOaddress/MapServer/0",
-    "type": "ESRI"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://mcmap.montrosecounty.net:8080/arcgis/rest/services/MontroseCOaddress/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "FSA",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "FSA",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "postcode": "ZIPCODE",
+                    "city": "PCN"
+                }
+            }
+        ],
+        "buildings": []
+    }
 }

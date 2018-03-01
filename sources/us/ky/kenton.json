@@ -9,19 +9,26 @@
         "state": "ky",
         "county": "Kenton"
     },
-    "data": "http://kcgis.kcor.org/arcgis/rest/services/beats2/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "LOCNUM",
-        "unit": "UNITDESIG",
-        "street": [
-          "PREFIX",
-          "NAME",
-          "ST_TYPE",
-          "SUFFIX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://kcgis.kcor.org/arcgis/rest/services/beats2/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "LOCNUM",
+                    "unit": "UNITDESIG",
+                    "street": [
+                        "PREFIX",
+                        "NAME",
+                        "ST_TYPE",
+                        "SUFFIX"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "city": "CITY",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

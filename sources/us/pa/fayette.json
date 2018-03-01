@@ -9,15 +9,22 @@
         "state": "pa",
         "county": "Fayette"
     },
-    "data": "http://fayettemaps.rba.com:8082/geoserver/fayette/ows?service=WFS&version=1.0.0&request=GetFeature&typename=fayette:ParcelsPolygon&outputFormat=json",
-    "type": "http",
-    "conform": {
-        "type": "geojson",
-        "accuracy": 2,
-        "number": "ADDR_PHYSI",
-        "street": [
-            "ADDR_PHY_1",
-            "ADDR_PHY_2"
-        ]
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://fayettemaps.rba.com:8082/geoserver/fayette/ows?service=WFS&version=1.0.0&request=GetFeature&typename=fayette:ParcelsPolygon&outputFormat=json",
+                "conform": {
+                    "type": "geojson",
+                    "accuracy": 2,
+                    "number": "ADDR_PHYSI",
+                    "street": [
+                        "ADDR_PHY_1",
+                        "ADDR_PHY_2"
+                    ]
+                }
+            }
+        ],
+        "buildings": []
     }
 }

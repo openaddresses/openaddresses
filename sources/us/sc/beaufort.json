@@ -9,17 +9,24 @@
         "state": "sc",
         "county": "Beaufort"
     },
-    "type": "ESRI",
-    "data": "http://webgis.bcgov.net/arcgis/rest/services/Addresses/MapServer/0",
-    "conform": {
-        "type": "geojson",
-        "number": "STREETNUM",
-        "street": [
-            "PREDIRECT",
-            "STREETNAME",
-            "TYPE",
-            "POSTDIRECT"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://webgis.bcgov.net/arcgis/rest/services/Addresses/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "STREETNUM",
+                    "street": [
+                        "PREDIRECT",
+                        "STREETNAME",
+                        "TYPE",
+                        "POSTDIRECT"
+                    ],
+                    "unit": "UNITNUM"
+                }
+            }
         ],
-        "unit": "UNITNUM"
+        "buildings": []
     }
 }

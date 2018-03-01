@@ -16,21 +16,28 @@
         "state": "co",
         "city": "Erie"
     },
-    "type": "ESRI",
-    "data": "http://eags.erieco.gov/arcgis/rest/services/AddressPts/MapServer/0",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NUM",
-        "unit": "UNIT",
-        "street": [
-            "PRE_DIR",
-            "CC_ST_NAME",
-            "ST_TYPE",
-            "SUF_DIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://eags.erieco.gov/arcgis/rest/services/AddressPts/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HOUSE_NUM",
+                    "unit": "UNIT",
+                    "street": [
+                        "PRE_DIR",
+                        "CC_ST_NAME",
+                        "ST_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "city": "JURIS",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "city": "JURIS",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+        "buildings": []
     }
 }

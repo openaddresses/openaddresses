@@ -9,20 +9,27 @@
         "state": "md",
         "county": "Allegany"
     },
-    "website": "http://alleganygis.allconet.org/",
-    "data": "http://alleganygis.allconet.org/allcogis/rest/services/Parcels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "strtnum",
-        "street": [
-            "strtdir",
-            "strtnam",
-            "strttyp",
-            "strtsfx"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://alleganygis.allconet.org/allcogis/rest/services/Parcels/MapServer/0",
+                "website": "http://alleganygis.allconet.org/",
+                "conform": {
+                    "type": "geojson",
+                    "number": "strtnum",
+                    "street": [
+                        "strtdir",
+                        "strtnam",
+                        "strttyp",
+                        "strtsfx"
+                    ],
+                    "unit": "strtunt",
+                    "city": "city",
+                    "postcode": "zipcode"
+                }
+            }
         ],
-        "unit": "strtunt",
-        "city": "city",
-        "postcode": "zipcode"
+        "buildings": []
     }
 }

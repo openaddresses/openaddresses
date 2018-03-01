@@ -9,20 +9,27 @@
         "state": "nv",
         "county": "Elko"
     },
-    "data": "http://gis.elkocountynv.net:1402/arcgis/rest/services/Basemap/AddressPoints/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NUMB",
-        "street": [
-            "PRE_DIRECT",
-            "STREET_NAM",
-            "STREET_TYP",
-            "SUFFIX_DIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.elkocountynv.net:1402/arcgis/rest/services/Basemap/AddressPoints/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HOUSE_NUMB",
+                    "street": [
+                        "PRE_DIRECT",
+                        "STREET_NAM",
+                        "STREET_TYP",
+                        "SUFFIX_DIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "ZONE",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "ZONE",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

@@ -9,23 +9,30 @@
         "state": "va",
         "county": "Clarke"
     },
-    "data": "ftp://ftp.clarkecounty.gov/gis/buildings.zip",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "year": "2014",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "file": "buildings/buildings.shp",
-        "number": "number",
-        "street": [
-            "name",
-            "type"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ftp",
+                "data": "ftp://ftp.clarkecounty.gov/gis/buildings.zip",
+                "conform": {
+                    "file": "buildings/buildings.shp",
+                    "number": "number",
+                    "street": [
+                        "name",
+                        "type"
+                    ],
+                    "type": "shapefile-polygon",
+                    "postcode": "zipcode"
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "year": "2014"
+            }
         ],
-        "type": "shapefile-polygon",
-        "postcode": "zipcode"
+        "buildings": []
     }
 }

@@ -16,17 +16,24 @@
         "state": "ny",
         "city": "rochester"
     },
-    "website": "http://maps.cityofrochester.gov/propinfo/",
-    "data": "http://maps.cityofrochester.gov/arcgis/rest/services/App_PropertyInformation/ROC_Parcel_Query_SDE/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "PARCELID",
-        "street": "STREET_NAME",
-        "number": "STREET_NUM",
-        "postcode": "ZIP5",
-        "city": "CITY",
-        "addrtype": "CLASSDSCRP",
-        "accuracy": 2
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://maps.cityofrochester.gov/arcgis/rest/services/App_PropertyInformation/ROC_Parcel_Query_SDE/MapServer/0",
+                "website": "http://maps.cityofrochester.gov/propinfo/",
+                "conform": {
+                    "type": "geojson",
+                    "id": "PARCELID",
+                    "street": "STREET_NAME",
+                    "number": "STREET_NUM",
+                    "postcode": "ZIP5",
+                    "city": "CITY",
+                    "addrtype": "CLASSDSCRP",
+                    "accuracy": 2
+                }
+            }
+        ],
+        "buildings": []
     }
 }

@@ -9,17 +9,24 @@
         "state": "pa",
         "county": "Greene"
     },
-    "data": "http://54.235.209.242/arcgis/rest/services/GreeneCounty_PA/GreeneCountyWebMap/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "ADDRESS0"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "ADDRESS0"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://54.235.209.242/arcgis/rest/services/GreeneCounty_PA/GreeneCountyWebMap/MapServer/2",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS0"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS0"
+                    }
+                }
+            }
+        ],
+        "buildings": []
     }
 }

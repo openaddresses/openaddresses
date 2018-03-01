@@ -9,26 +9,33 @@
         "state": "tn",
         "county": "Jefferson"
     },
-    "data": "https://services7.arcgis.com/in9ruKxwZKI20efQ/arcgis/rest/services/JeffersonAddresses/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STNUM",
-        "street": [
-            "PREDIR",
-            "PRETYPE",
-            "NAME",
-            "TYPE",
-            "SUFDIR",
-            "POSTMOD"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://services7.arcgis.com/in9ruKxwZKI20efQ/arcgis/rest/services/JeffersonAddresses/FeatureServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "STNUM",
+                    "street": [
+                        "PREDIR",
+                        "PRETYPE",
+                        "NAME",
+                        "TYPE",
+                        "SUFDIR",
+                        "POSTMOD"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUM"
-        ],
-        "city": "CITY",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

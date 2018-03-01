@@ -16,24 +16,31 @@
             ]
         }
     },
-    "data": "https://data.cityofnewyork.us/api/geospatial/g6pj-hd8k?method=export&format=Shapefile",
-    "website": "https://data.cityofnewyork.us/City-Government/NYC-Address-Points/g6pj-hd8k",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "h_no",
-        "street": [
-            "pre_modifi",
-            "pre_direct",
-            "pre_type",
-            "st_name",
-            "post_type",
-            "post_modif",
-            "post_direc"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://data.cityofnewyork.us/api/geospatial/g6pj-hd8k?method=export&format=Shapefile",
+                "website": "https://data.cityofnewyork.us/City-Government/NYC-Address-Points/g6pj-hd8k",
+                "conform": {
+                    "number": "h_no",
+                    "street": [
+                        "pre_modifi",
+                        "pre_direct",
+                        "pre_type",
+                        "st_name",
+                        "post_type",
+                        "post_modif",
+                        "post_direc"
+                    ],
+                    "unit": "hno_suffix",
+                    "postcode": "zipcode",
+                    "type": "shapefile",
+                    "id": "address_id"
+                },
+                "compression": "zip"
+            }
         ],
-        "unit": "hno_suffix",
-        "postcode": "zipcode",
-        "type": "shapefile",
-        "id": "address_id"
+        "buildings": []
     }
 }

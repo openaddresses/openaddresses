@@ -9,15 +9,22 @@
         "state": "mn",
         "county": "Stearns"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/d09cac/Address_Points_Lat_Long.csv.zip",
-    "compression": "zip",
-    "type": "http",
-    "note": "https://github.com/openaddresses/openaddresses/issues/2504",
-    "conform": {
-        "type": "csv",
-        "lon": "Long",
-        "lat": "Lat",
-        "number": "HouseNum",
-        "street": "Street"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/d09cac/Address_Points_Lat_Long.csv.zip",
+                "conform": {
+                    "type": "csv",
+                    "lon": "Long",
+                    "lat": "Lat",
+                    "number": "HouseNum",
+                    "street": "Street"
+                },
+                "compression": "zip",
+                "note": "https://github.com/openaddresses/openaddresses/issues/2504"
+            }
+        ],
+        "buildings": []
     }
 }

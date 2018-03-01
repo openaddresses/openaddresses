@@ -9,19 +9,26 @@
         "state": "ok",
         "county": "Oklahoma"
     },
-    "data": "https://gis.okc.gov/arcgis/rest/services/Accela/AGIS_PPLS_DEV/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "ADDRESS",
-            "ADDRESS2"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://gis.okc.gov/arcgis/rest/services/Accela/AGIS_PPLS_DEV/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "ADDRESS",
+                        "ADDRESS2"
+                    ],
+                    "street": [
+                        "ST_PRE",
+                        "ST_NAME",
+                        "ST_TYPE"
+                    ],
+                    "unit": "UNIT"
+                }
+            }
         ],
-        "street": [
-            "ST_PRE",
-            "ST_NAME",
-            "ST_TYPE"
-        ],
-        "unit": "UNIT"
+        "buildings": []
     }
 }

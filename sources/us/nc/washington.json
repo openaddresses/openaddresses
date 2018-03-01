@@ -9,17 +9,24 @@
         "state": "nc",
         "county": "Washington"
     },
-    "conform": {
-        "type": "shapefile",
-        "number": "NUMBER",
-        "street": "STREET",
-        "unit": "StreetMisc",
-        "postcode": "ZipCode",
-        "city": "COMMUNITY",
-        "region": "State"
-    },
-    "data": "http://www.washconc.org/GIS%20Maps/AddressPts_Dec13.zip",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://www.washconc.org/gis_mapping.aspx"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://www.washconc.org/GIS%20Maps/AddressPts_Dec13.zip",
+                "website": "http://www.washconc.org/gis_mapping.aspx",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "NUMBER",
+                    "street": "STREET",
+                    "unit": "StreetMisc",
+                    "postcode": "ZipCode",
+                    "city": "COMMUNITY",
+                    "region": "State"
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
+    }
 }

@@ -8,14 +8,24 @@
         "country": "ru",
         "state": "TYU"
     },
-    "data": "https://gis.72to.ru/arcgis/rest/services/Vybor/ELECTIONS/MapServer/1",
-    "type": "ESRI",
-    "language": "ru",
-    "conform": {
-        "number": "HOUSE",
-        "street":  ["STREET_TYPE","STREET_NAME"],
-        "district": "DISTRICT",
-        "city": "CITY",
-        "type": "geojson"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://gis.72to.ru/arcgis/rest/services/Vybor/ELECTIONS/MapServer/1",
+                "conform": {
+                    "number": "HOUSE",
+                    "street": [
+                        "STREET_TYPE",
+                        "STREET_NAME"
+                    ],
+                    "district": "DISTRICT",
+                    "city": "CITY",
+                    "type": "geojson"
+                },
+                "language": "ru"
+            }
+        ],
+        "buildings": []
     }
 }

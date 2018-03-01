@@ -9,16 +9,23 @@
         "state": "va",
         "county": "Greene"
     },
-    "data": "https://www.webgis.net/arcgis/rest/services/VA/GreeneCo_WebGIS/MapServer/3",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/GreeneCo_WebGIS/MapServer/3",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY"
+                }
+            }
         ],
-        "city": "MUNICIPALITY"
+        "buildings": []
     }
 }

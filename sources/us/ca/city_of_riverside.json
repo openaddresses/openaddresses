@@ -16,14 +16,21 @@
         "state": "ca",
         "city": "Riverside"
     },
-    "data": "https://services.arcgis.com/Fu2oOWg1Aw7azh41/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADPTNUM1",
-        "street": {
-            "function": "postfixed_street",
-            "field": "ADDR"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://services.arcgis.com/Fu2oOWg1Aw7azh41/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADPTNUM1",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDR"
+                    }
+                }
+            }
+        ],
+        "buildings": []
     }
 }

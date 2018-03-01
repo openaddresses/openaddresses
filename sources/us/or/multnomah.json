@@ -9,20 +9,27 @@
         "state": "or",
         "county": "Multnomah"
     },
-    "data": "http://www3.multco.us/arcgispublic/rest/services/BaseMap/Streetmap/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "SITUSNUM",
-        "street": [
-            "SITUSDIR",
-            "SITUSNAME",
-            "SITUSSUFFIX",
-            "SITUSTYPE"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://www3.multco.us/arcgispublic/rest/services/BaseMap/Streetmap/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "SITUSNUM",
+                    "street": [
+                        "SITUSDIR",
+                        "SITUSNAME",
+                        "SITUSSUFFIX",
+                        "SITUSTYPE"
+                    ],
+                    "unit": "SITUSSUFFIXNUM",
+                    "city": "SITUSCITY",
+                    "region": "SITUSSTATE",
+                    "postcode": "SITUSZIP"
+                }
+            }
         ],
-        "unit": "SITUSSUFFIXNUM",
-        "city": "SITUSCITY",
-        "region": "SITUSSTATE",
-        "postcode": "SITUSZIP"
+        "buildings": []
     }
 }

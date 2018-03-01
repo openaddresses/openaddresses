@@ -11,18 +11,25 @@
             ]
         }
     },
-    "data": "http://gis.lethbridge.ca/lethwebgisarcgis/rest/services/OpenData/odl_parcels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "accuracy": 2,
-        "number": {
-            "function": "prefixed_number",
-            "field": "Address"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "Address"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.lethbridge.ca/lethwebgisarcgis/rest/services/OpenData/odl_parcels/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "accuracy": 2,
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Address"
+                    }
+                }
+            }
+        ],
+        "buildings": []
     }
 }

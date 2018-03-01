@@ -9,21 +9,28 @@
         "state": "pa",
         "county": "Mifflin"
     },
-    "data": "http://gis.co.mifflin.pa.us/arcgis/rest/services/parcel_program/MapServer/5",
-    "website": "http://www.co.mifflin.pa.us/dept/GIS/Pages/GIS-Data-Agreement.aspx",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "LOCATION",
-            "pattern": "^([0-9]+) "
-        },
-        "street": {
-            "function": "regexp",
-            "field": "LOCATION",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.co.mifflin.pa.us/arcgis/rest/services/parcel_program/MapServer/5",
+                "website": "http://www.co.mifflin.pa.us/dept/GIS/Pages/GIS-Data-Agreement.aspx",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "LOCATION",
+                        "pattern": "^([0-9]+) "
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "LOCATION",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ],
+        "buildings": []
     }
 }

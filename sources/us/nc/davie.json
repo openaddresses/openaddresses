@@ -9,20 +9,27 @@
         "state": "nc",
         "county": "Davie"
     },
-    "conform": {
-        "type": "shapefile-polygon",
-        "file": "address.shp",
-        "number": "HSNM",
-        "street": [
-            "PREDIR",
-            "STREET",
-            "TYPE",
-            "POSTDIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://maps.co.davie.nc.us/DavieGISweb/gisdata/address.zip",
+                "website": "http://www.daviecountync.gov/index.aspx?NID=394",
+                "conform": {
+                    "type": "shapefile-polygon",
+                    "file": "address.shp",
+                    "number": "HSNM",
+                    "street": [
+                        "PREDIR",
+                        "STREET",
+                        "TYPE",
+                        "POSTDIR"
+                    ],
+                    "unit": "UNIT"
+                },
+                "compression": "zip"
+            }
         ],
-        "unit": "UNIT"
-    },
-    "data": "http://maps.co.davie.nc.us/DavieGISweb/gisdata/address.zip",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://www.daviecountync.gov/index.aspx?NID=394"
+        "buildings": []
+    }
 }

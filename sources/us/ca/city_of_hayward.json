@@ -17,25 +17,31 @@
         "county": "Alameda",
         "city": "Hayward"
     },
-    "data": "http://maps.hayward-ca.gov/arcgis/rest/services/OpenData/COH_Addresses/FeatureServer/0",
-    "website": "http://opendata.hayward-ca.gov/datasets/5b2d03233e0344c7a291c3f126cfa407_0",
-    "attribution": "City of Hayward and Fairview. Licensed for Public Use",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number":
-          "HouseNum",
-        "street": [
-          "Prefix",
-          "Pre_Type",
-          "Street_Name",
-          "Street_Type",
-          "Suffix_Dir"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://maps.hayward-ca.gov/arcgis/rest/services/OpenData/COH_Addresses/FeatureServer/0",
+                "website": "http://opendata.hayward-ca.gov/datasets/5b2d03233e0344c7a291c3f126cfa407_0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HouseNum",
+                    "street": [
+                        "Prefix",
+                        "Pre_Type",
+                        "Street_Name",
+                        "Street_Type",
+                        "Suffix_Dir"
+                    ],
+                    "unit": "House_Unit",
+                    "city": "City",
+                    "postcode": "Zipcode",
+                    "addrtype": "FeatureCode",
+                    "id": "Address_ID"
+                },
+                "attribution": "City of Hayward and Fairview. Licensed for Public Use"
+            }
         ],
-        "unit": "House_Unit",
-        "city": "City",
-        "postcode": "Zipcode",
-        "addrtype": "FeatureCode",
-        "id": "Address_ID"
+        "buildings": []
     }
 }

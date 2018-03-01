@@ -9,23 +9,30 @@
         "state": "ca",
         "place": "Berkeley"
     },
-    "attribution": "City of Berkeley",
-    "website": "http://www.ci.berkeley.ca.us/datacatalog/",
-    "data": "http://www.ci.berkeley.ca.us/uploadedFiles/IT/GIS/Parcels.zip",
-    "type": "http",
-    "compression": "zip",
-    "note": "Metadata at http://www.ci.berkeley.ca.us/uploadedFiles/IT/GIS/Parcels.shp(1).xml",
-    "conform": {
-        "id": "APN",
-        "number": "StreetNum",
-        "street": [
-            "StreetName",
-            "StreetSufx",
-            "Direction"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://www.ci.berkeley.ca.us/uploadedFiles/IT/GIS/Parcels.zip",
+                "website": "http://www.ci.berkeley.ca.us/datacatalog/",
+                "conform": {
+                    "id": "APN",
+                    "number": "StreetNum",
+                    "street": [
+                        "StreetName",
+                        "StreetSufx",
+                        "Direction"
+                    ],
+                    "unit": "Unit",
+                    "city": "City",
+                    "postcode": "Zip",
+                    "type": "shapefile-polygon"
+                },
+                "compression": "zip",
+                "note": "Metadata at http://www.ci.berkeley.ca.us/uploadedFiles/IT/GIS/Parcels.shp(1).xml",
+                "attribution": "City of Berkeley"
+            }
         ],
-        "unit": "Unit",
-        "city": "City",
-        "postcode": "Zip",
-        "type": "shapefile-polygon"
+        "buildings": []
     }
 }

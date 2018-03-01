@@ -11,24 +11,31 @@
             ]
         }
     },
-    "data": "http://gis2.medicinehat.ca:6080/arcgis/rest/services/Operational_Layers/MapServer/3",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "join",
-            "fields": [
-                "HOUSE_NB",
-                "HOUSE_SF"
-            ],
-            "separator": ""
-        },
-        "street": [
-            "NAME",
-            "STTYPE",
-            "DIRECTION"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis2.medicinehat.ca:6080/arcgis/rest/services/Operational_Layers/MapServer/3",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "HOUSE_NB",
+                            "HOUSE_SF"
+                        ],
+                        "separator": ""
+                    },
+                    "street": [
+                        "NAME",
+                        "STTYPE",
+                        "DIRECTION"
+                    ],
+                    "unit": "APT_NB",
+                    "postcode": "POSTALCODE"
+                }
+            }
         ],
-        "unit": "APT_NB",
-        "postcode": "POSTALCODE"
+        "buildings": []
     }
 }

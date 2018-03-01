@@ -9,17 +9,27 @@
         "state": "or",
         "county": "Jackson"
     },
-    "data": "https://spatial.jacksoncounty.org/arcgis/rest/services/OpenData/ReferenceData/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "PREADDRNUM",
-            "ADDRNUM",
-            "ADDRNUMSUF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://spatial.jacksoncounty.org/arcgis/rest/services/OpenData/ReferenceData/MapServer/1",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": "FULLNAME",
+                    "city": "MUNICIPALITY"
+                }
+            }
         ],
-        "unit": ["UNITTYPE", "UNITID"],
-        "street": "FULLNAME",
-        "city": "MUNICIPALITY"
+        "buildings": []
     }
 }

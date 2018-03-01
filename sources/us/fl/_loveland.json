@@ -7,24 +7,31 @@
         "country": "us",
         "state": "fl"
     },
-    "conform": {
-        "type": "shapefile",
-        "number": {
-            "function": "regexp",
-            "field": "phy_addr1",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "phy_addr1",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "city",
-        "district": "county",
-        "region": "state"
-    },
-    "data": "http://data.openaddresses.io/cache/us-fl_makeloveland.zip",
-    "type": "http",
-    "compression": "zip"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://data.openaddresses.io/cache/us-fl_makeloveland.zip",
+                "conform": {
+                    "type": "shapefile",
+                    "number": {
+                        "function": "regexp",
+                        "field": "phy_addr1",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "phy_addr1",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": "city",
+                    "district": "county",
+                    "region": "state"
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
+    }
 }

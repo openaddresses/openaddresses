@@ -3,24 +3,37 @@
         "country": "ca",
         "state": "on",
         "city": "Durham",
-        "geometry": { "type": "Point", "coordinates": [-79.14,43.85] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -79.14,
+                43.85
+            ]
+        }
     },
-    "data": "https://maps.durham.ca/arcgis/rest/services/Open_Data/Durham_OpenData/MapServer/0",
-    "website": "https://www.durham.ca/corpservices.asp?nr=/departments/corpservices/it/gis/opendata.htm&setFooter=/includes/GISfooter.inc",
-    "license": "https://www.durham.ca/corpservices.asp?nr=/departments/corpservices/it/gis/opendatalicense.htm&setFooter=/includes/GISfooter.inc",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "CIVIC_NUM",
-            "CIVIC_SFX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://maps.durham.ca/arcgis/rest/services/Open_Data/Durham_OpenData/MapServer/0",
+                "website": "https://www.durham.ca/corpservices.asp?nr=/departments/corpservices/it/gis/opendata.htm&setFooter=/includes/GISfooter.inc",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "CIVIC_NUM",
+                        "CIVIC_SFX"
+                    ],
+                    "street": [
+                        "ROAD_NAME",
+                        "ROAD_TYPE",
+                        "ROAD_DIR"
+                    ],
+                    "unit": "UNIT_NUM",
+                    "city": "MUNICIPALITY"
+                },
+                "license": "https://www.durham.ca/corpservices.asp?nr=/departments/corpservices/it/gis/opendatalicense.htm&setFooter=/includes/GISfooter.inc"
+            }
         ],
-        "street": [
-            "ROAD_NAME",
-            "ROAD_TYPE",
-            "ROAD_DIR"
-        ],
-        "unit": "UNIT_NUM",
-        "city": "MUNICIPALITY"
+        "buildings": []
     }
 }

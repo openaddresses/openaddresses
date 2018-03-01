@@ -9,20 +9,27 @@
         "state": "or",
         "county": "Jefferson"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "gdb",
-        "file": "Delivery/addresses_oregon.gdb",
-        "layer": "Jefferson",
-        "number": "Number",
-        "street": [
-            "Direction",
-            "Name",
-            "Suffix"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
+                "conform": {
+                    "type": "gdb",
+                    "file": "Delivery/addresses_oregon.gdb",
+                    "layer": "Jefferson",
+                    "number": "Number",
+                    "street": [
+                        "Direction",
+                        "Name",
+                        "Suffix"
+                    ],
+                    "city": "City",
+                    "postcode": "ZIP"
+                },
+                "compression": "zip"
+            }
         ],
-        "city": "City",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

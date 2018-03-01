@@ -9,26 +9,33 @@
         "state": "fl",
         "county": "Hillsborough"
     },
-    "attribution": "Hillsborough County",
-    "data": "https://arcgis.tampagov.net/arcgis/rest/services/Address/AddressPoints/FeatureServer/0",
-    "type": "ESRI",
-    "website": "ftp://ftp.hillsboroughcounty.org/",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "ADDRNUM",
-            "ADDRNUMSUF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://arcgis.tampagov.net/arcgis/rest/services/Address/AddressPoints/FeatureServer/0",
+                "website": "ftp://ftp.hillsboroughcounty.org/",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": [
+                        "DIRPRE",
+                        "STREETNAME",
+                        "TYPE",
+                        "DIRSUF"
+                    ],
+                    "postcode": "ZIP"
+                },
+                "attribution": "Hillsborough County"
+            }
         ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "street": [
-            "DIRPRE",
-            "STREETNAME",
-            "TYPE",
-            "DIRSUF"
-        ],
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

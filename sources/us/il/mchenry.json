@@ -9,20 +9,27 @@
         "state": "il",
         "county": "McHenry"
     },
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "SiteAddressStreet",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SiteAddressStreet",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
-    },
-    "data": "http://www.mchenrycountygis.org/arcgis/rest/services/parcelsfull/MapServer/0",
-    "type": "ESRI"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://www.mchenrycountygis.org/arcgis/rest/services/parcelsfull/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "SiteAddressStreet",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "SiteAddressStreet",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ],
+        "buildings": []
+    }
 }

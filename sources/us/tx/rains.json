@@ -9,18 +9,25 @@
         "state": "tx",
         "county": "Rains"
     },
-    "data": "http://mapsatbis.com/bisgis/rest/services/RainsWeb/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": "RainsCad.dbo.Accounts.situs_num",
-        "street": [
-            "RainsCad.dbo.Accounts.situs_street_prefx",
-            "RainsCad.dbo.Accounts.situs_street",
-            "RainsCad.dbo.Accounts.situs_street_sufix"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://mapsatbis.com/bisgis/rest/services/RainsWeb/MapServer/0",
+                "conform": {
+                    "number": "RainsCad.dbo.Accounts.situs_num",
+                    "street": [
+                        "RainsCad.dbo.Accounts.situs_street_prefx",
+                        "RainsCad.dbo.Accounts.situs_street",
+                        "RainsCad.dbo.Accounts.situs_street_sufix"
+                    ],
+                    "city": "RainsCad.dbo.Accounts.situs_city",
+                    "region": "RainsCad.dbo.Accounts.situs_state",
+                    "postcode": "RainsCad.dbo.Accounts.situs_zip",
+                    "type": "geojson"
+                }
+            }
         ],
-        "city": "RainsCad.dbo.Accounts.situs_city",
-        "region": "RainsCad.dbo.Accounts.situs_state",
-        "postcode": "RainsCad.dbo.Accounts.situs_zip",
-        "type": "geojson"
+        "buildings": []
     }
 }

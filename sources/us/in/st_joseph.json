@@ -9,29 +9,36 @@
         "state": "in",
         "county": "St. Joseph"
     },
-    "data": "https://data.southbendin.gov/api/geospatial/puej-rcqm?method=export&format=Shapefile",
-    "website": "https://data.southbendin.gov/Geographic-Boundaries/Boundaries-St-Joseph-County-Parcels/puej-rcqm",
-    "license": {
-        "text": "Public domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "type": "http",
-    "compression": "zip",
-    "year": "2014",
-    "note": "Full parcel shapefile set (not points)",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "prop_addr",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "prop_addr",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "type": "shapefile-polygon"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://data.southbendin.gov/api/geospatial/puej-rcqm?method=export&format=Shapefile",
+                "website": "https://data.southbendin.gov/Geographic-Boundaries/Boundaries-St-Joseph-County-Parcels/puej-rcqm",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "prop_addr",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "prop_addr",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "type": "shapefile-polygon"
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "Public domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "note": "Full parcel shapefile set (not points)",
+                "year": "2014"
+            }
+        ],
+        "buildings": []
     }
 }

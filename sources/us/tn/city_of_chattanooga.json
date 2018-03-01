@@ -17,29 +17,36 @@
         "county": "Hamilton",
         "city": "Chattanooga"
     },
-    "data": "https://data.chattlibrary.org/api/views/rz29-uyu4/rows.csv?accessType=DOWNLOAD",
-    "website": "https://data.chattlibrary.org/Government/Address-Data/rz29-uyu4",
-    "license": "https://data.chattlibrary.org/terms",
-    "type": "http",
-    "conform": {
-        "srs": "EPSG:4326",
-        "lon": "LONGITUDE",
-        "lat": "LATITUDE",
-        "number": "STNUM",
-        "street": [
-            "DIRPFX",
-            "PRETYPE",
-            "STNAME",
-            "TYPESFX",
-            "DIRSFX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://data.chattlibrary.org/api/views/rz29-uyu4/rows.csv?accessType=DOWNLOAD",
+                "website": "https://data.chattlibrary.org/Government/Address-Data/rz29-uyu4",
+                "conform": {
+                    "srs": "EPSG:4326",
+                    "lon": "LONGITUDE",
+                    "lat": "LATITUDE",
+                    "number": "STNUM",
+                    "street": [
+                        "DIRPFX",
+                        "PRETYPE",
+                        "STNAME",
+                        "TYPESFX",
+                        "DIRSFX"
+                    ],
+                    "unit": [
+                        "CATEGORY",
+                        "UNIT",
+                        "BUILDING"
+                    ],
+                    "city": "CITY",
+                    "type": "csv",
+                    "postcode": "ZIPCODE"
+                },
+                "license": "https://data.chattlibrary.org/terms"
+            }
         ],
-        "unit": [
-            "CATEGORY",
-            "UNIT",
-            "BUILDING"
-        ],
-        "city": "CITY",
-        "type": "csv",
-        "postcode": "ZIPCODE"
+        "buildings": []
     }
 }

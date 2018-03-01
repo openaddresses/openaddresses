@@ -9,25 +9,32 @@
         "state": "ny",
         "county": "Broome"
     },
-    "website": "http://www.bcgis.com/website/gisweb/portal.htm?tab=requests",
-    "data": "http://www.bcgis.com/website/gisweb/GISdata/br_911_addresses.zip",
-    "type": "http",
-    "compression": "zip",
-    "license": "http://broomegis.co.broome.ny.us/website/gisweb/gisdata.htm",
-    "conform": {
-        "type": "shapefile",
-        "number": [
-            "HSNO",
-            "HSSUF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://www.bcgis.com/website/gisweb/GISdata/br_911_addresses.zip",
+                "website": "http://www.bcgis.com/website/gisweb/portal.htm?tab=requests",
+                "conform": {
+                    "type": "shapefile",
+                    "number": [
+                        "HSNO",
+                        "HSSUF"
+                    ],
+                    "postcode": "ZIPCODE",
+                    "street": [
+                        "PRD",
+                        "PRT",
+                        "STN",
+                        "STS",
+                        "POD"
+                    ],
+                    "unit": "QUALIFIER"
+                },
+                "compression": "zip",
+                "license": "http://broomegis.co.broome.ny.us/website/gisweb/gisdata.htm"
+            }
         ],
-        "postcode": "ZIPCODE",
-        "street": [
-            "PRD",
-            "PRT",
-            "STN",
-            "STS",
-            "POD"
-        ],
-        "unit": "QUALIFIER"
+        "buildings": []
     }
 }

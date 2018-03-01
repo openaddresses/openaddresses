@@ -9,18 +9,25 @@
         "state": "co",
         "county": "Delta"
     },
-    "conform": {
-        "type": "geojson",
-        "number": "Site_HseNu",
-        "street": [
-            "Prefix_Dir",
-            "Site_St",
-            "Site_St_Ty"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://maps.deltacounty.com/arcgis/rest/services/Prcl_Base/MapServer/1",
+                "conform": {
+                    "type": "geojson",
+                    "number": "Site_HseNu",
+                    "street": [
+                        "Prefix_Dir",
+                        "Site_St",
+                        "Site_St_Ty"
+                    ],
+                    "city": "Site_City",
+                    "postcode": "Site_Zip",
+                    "region": "Site_State"
+                }
+            }
         ],
-        "city": "Site_City",
-        "postcode": "Site_Zip",
-        "region": "Site_State"
-    },
-    "data": "http://maps.deltacounty.com/arcgis/rest/services/Prcl_Base/MapServer/1",
-    "type": "ESRI"
+        "buildings": []
+    }
 }

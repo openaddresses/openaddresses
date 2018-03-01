@@ -16,27 +16,34 @@
         "city": "Portland",
         "state": "or"
     },
-    "compression": "zip",
-    "conform": {
-        "number": "address_number_char",
-        "lon": "x",
-        "lat": "y",
-        "type": "csv",
-        "street": [
-            "str_predir_code",
-            "street_name",
-            "street_type_code",
-            "str_postdir_code"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ftp",
+                "data": "ftp://ftp02.portlandoregon.gov/CivicApps/address.zip",
+                "conform": {
+                    "number": "address_number_char",
+                    "lon": "x",
+                    "lat": "y",
+                    "type": "csv",
+                    "street": [
+                        "str_predir_code",
+                        "street_name",
+                        "street_type_code",
+                        "str_postdir_code"
+                    ],
+                    "unit": "unit_value",
+                    "city": "city",
+                    "district": "county",
+                    "postcode": "zip_code",
+                    "region": "state_abbrev",
+                    "srs": "EPSG:2913"
+                },
+                "compression": "zip",
+                "note": "zipped csv",
+                "skip": false
+            }
         ],
-        "unit": "unit_value",
-        "city": "city",
-        "district": "county",
-        "postcode": "zip_code",
-        "region": "state_abbrev",
-        "srs": "EPSG:2913"
-    },
-    "skip": false,
-    "note": "zipped csv",
-    "data": "ftp://ftp02.portlandoregon.gov/CivicApps/address.zip",
-    "type": "ftp"
+        "buildings": []
+    }
 }

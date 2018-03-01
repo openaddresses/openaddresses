@@ -5,22 +5,35 @@
         "county": "york",
         "geometry": {
             "type": "Point",
-            "coordinates": [-79.512, 43.682]
+            "coordinates": [
+                -79.512,
+                43.682
+            ]
         }
     },
-    "data": "http://data.openaddresses.io/cache/ca-on-york.zip",
-    "website": "http://www.york.ca/opendatalist/",
-    "attribution": "York Region",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": ["ADDRESS_NU","ADD_NUM_SU"],
-        "street": "FULL_STREE",
-        "unit": [
-            "UNIT_DESIG",
-            "SUITE_NUMB"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://data.openaddresses.io/cache/ca-on-york.zip",
+                "website": "http://www.york.ca/opendatalist/",
+                "conform": {
+                    "number": [
+                        "ADDRESS_NU",
+                        "ADD_NUM_SU"
+                    ],
+                    "street": "FULL_STREE",
+                    "unit": [
+                        "UNIT_DESIG",
+                        "SUITE_NUMB"
+                    ],
+                    "postcode": "MAIL_POSTA",
+                    "type": "shapefile"
+                },
+                "compression": "zip",
+                "attribution": "York Region"
+            }
         ],
-        "postcode": "MAIL_POSTA",
-        "type": "shapefile"
+        "buildings": []
     }
 }

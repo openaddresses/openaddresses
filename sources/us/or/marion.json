@@ -9,18 +9,25 @@
         "state": "or",
         "county": "Marion"
     },
-    "website": "http://gis.co.marion.or.us/GISDownload/gisdownload.aspx",
-    "data": "http://gis.co.marion.or.us/gisdownload/download/assessors/taxlot.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile-polygon",
-        "number": "XSTNO",
-        "street": [
-            "SDIRPX",
-            "STNAM",
-            "STYP",
-            "SDIRSX"
-        ]
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://gis.co.marion.or.us/gisdownload/download/assessors/taxlot.zip",
+                "website": "http://gis.co.marion.or.us/GISDownload/gisdownload.aspx",
+                "conform": {
+                    "type": "shapefile-polygon",
+                    "number": "XSTNO",
+                    "street": [
+                        "SDIRPX",
+                        "STNAM",
+                        "STYP",
+                        "SDIRSX"
+                    ]
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
     }
 }

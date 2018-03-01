@@ -9,22 +9,29 @@
         "state": "sc",
         "county": "Calhoun"
     },
-    "data": "http://webgis.ursokr.com/arcgis/rest/services/COL/Calhoun_Dynamic/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "Z11_ADD",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Z11_ADD",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "CITY",
-        "postcode": "ZIP"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://webgis.ursokr.com/arcgis/rest/services/COL/Calhoun_Dynamic/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "Z11_ADD",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Z11_ADD",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "buildings": []
     }
 }

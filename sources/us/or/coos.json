@@ -9,22 +9,29 @@
         "state": "or",
         "county": "Coos"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "gdb",
-        "file": "Delivery/addresses_oregon.gdb",
-        "layer": "Coos",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITUSSTR"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITUSSTR"
-        },
-        "city": "SITUSCITY",
-        "postcode": "SITUSZIP"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
+                "conform": {
+                    "type": "gdb",
+                    "file": "Delivery/addresses_oregon.gdb",
+                    "layer": "Coos",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUSSTR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUSSTR"
+                    },
+                    "city": "SITUSCITY",
+                    "postcode": "SITUSZIP"
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
     }
 }

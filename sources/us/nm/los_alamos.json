@@ -9,27 +9,34 @@
         "state": "nm",
         "county": "Los Alamos"
     },
-    "data": "http://gis.losalamosnm.us/arcgis/rest/services/basemaps/basemap/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "NUMBER",
-            "POSTNUMBER"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.losalamosnm.us/arcgis/rest/services/basemaps/basemap/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "NUMBER",
+                        "POSTNUMBER"
+                    ],
+                    "street": [
+                        "PREDIR",
+                        "STREET",
+                        "STREET_TYPE",
+                        "POSTDIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT"
+                    ],
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "street": [
-            "PREDIR",
-            "STREET",
-            "STREET_TYPE",
-            "POSTDIR"
-        ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT"
-        ],
-        "city": "CITY",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

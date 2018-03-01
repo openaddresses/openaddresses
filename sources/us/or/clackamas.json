@@ -9,23 +9,30 @@
         "state": "or",
         "county": "Clackamas"
     },
-    "data": "http://data.openaddresses.io/cache/us-or-clackamas.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": {
-            "function": "regexp",
-            "field": "SITUS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SITUS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "postcode": "SITUS_ZIP",
-        "city": "SITUS_CITY"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://data.openaddresses.io/cache/us-or-clackamas.zip",
+                "conform": {
+                    "type": "shapefile",
+                    "number": {
+                        "function": "regexp",
+                        "field": "SITUS",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "SITUS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "postcode": "SITUS_ZIP",
+                    "city": "SITUS_CITY"
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
     }
 }

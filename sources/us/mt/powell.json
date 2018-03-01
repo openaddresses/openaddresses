@@ -9,21 +9,28 @@
         "state": "mt",
         "county": "Powell"
     },
-    "data": "ftp://ftp.geoinfo.msl.mt.gov/Data/Spatial/MSDI/Cadastral/Parcels/Powell/PowellOwnerParcel_shp.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "AddressLin",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "AddressLin",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "type": "shapefile-polygon"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ftp",
+                "data": "ftp://ftp.geoinfo.msl.mt.gov/Data/Spatial/MSDI/Cadastral/Parcels/Powell/PowellOwnerParcel_shp.zip",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "AddressLin",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "AddressLin",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "type": "shapefile-polygon"
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
     }
 }

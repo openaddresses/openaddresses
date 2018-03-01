@@ -3,20 +3,33 @@
         "country": "ca",
         "state": "on",
         "city": "windsor",
-        "geometry": { "type": "Point", "coordinates": [-83.03, 42.30] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -83.03,
+                42.3
+            ]
+        }
     },
-    "data": "http://www.citywindsor.ca/opendata/Lists/OpenData/Attachments/20/Land_Parcels_LL84.zip",
-    "website": "http://www.citywindsor.ca/opendata/pages/open-data-catalogue.aspx",
-    "license": "http://www.citywindsor.ca/opendata/Documents/OpenDataTermsofUse.pdf",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "ADD_NUMBER",
-        "street": [
-            "STREET",
-            "SUFFIX",
-            "DIRECTION"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://www.citywindsor.ca/opendata/Lists/OpenData/Attachments/20/Land_Parcels_LL84.zip",
+                "website": "http://www.citywindsor.ca/opendata/pages/open-data-catalogue.aspx",
+                "conform": {
+                    "number": "ADD_NUMBER",
+                    "street": [
+                        "STREET",
+                        "SUFFIX",
+                        "DIRECTION"
+                    ],
+                    "type": "shapefile-polygon"
+                },
+                "compression": "zip",
+                "license": "http://www.citywindsor.ca/opendata/Documents/OpenDataTermsofUse.pdf"
+            }
         ],
-        "type": "shapefile-polygon"
+        "buildings": []
     }
 }

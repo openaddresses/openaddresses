@@ -8,27 +8,37 @@
         "country": "ru",
         "state": "NVS"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/sergiyprotsiv/65f9c7/ru-ns_centr.csv.zip",
-    "website": "http://maps.nso.ru/arcgis/rest/services/BIPD/InfrastructureHiden/MapServer/4",
-    "type": "http",
-    "compression": "zip",
-    "language": "ru",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^(?:.*?)(?:, (.+))$"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^(.*?)(?:, (?:.+))$"
-        },
-        "city": ["CityType","CityName"],
-        "id": "FiasCode",
-        "postcode": "Postcode",
-        "type": "csv",
-        "lat": "centroid_lat",
-        "lon": "centroid_lon"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/sergiyprotsiv/65f9c7/ru-ns_centr.csv.zip",
+                "website": "http://maps.nso.ru/arcgis/rest/services/BIPD/InfrastructureHiden/MapServer/4",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^(?:.*?)(?:, (.+))$"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^(.*?)(?:, (?:.+))$"
+                    },
+                    "city": [
+                        "CityType",
+                        "CityName"
+                    ],
+                    "id": "FiasCode",
+                    "postcode": "Postcode",
+                    "type": "csv",
+                    "lat": "centroid_lat",
+                    "lon": "centroid_lon"
+                },
+                "compression": "zip",
+                "language": "ru"
+            }
+        ],
+        "buildings": []
     }
 }

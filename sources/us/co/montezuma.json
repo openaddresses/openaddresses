@@ -9,22 +9,29 @@
         "state": "co",
         "county": "Montezuma"
     },
-    "conform": {
-        "type": "shapefile",
-        "number": "StreetNo",
-        "street": [
-            "StreetDir",
-            "StreetName",
-            "StreetSuf",
-            "StDirSuffx"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ftp",
+                "data": "ftp://206.123.215.195/GIS/Addresses.zip",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "StreetNo",
+                    "street": [
+                        "StreetDir",
+                        "StreetName",
+                        "StreetSuf",
+                        "StDirSuffx"
+                    ],
+                    "unit": "UnitNo",
+                    "city": "City",
+                    "postcode": "ZIPCODE",
+                    "region": "state",
+                    "notes": "Updated to reference shapefile instead of Map Service"
+                },
+                "compression": "zip"
+            }
         ],
-        "unit": "UnitNo",
-        "city": "City",
-        "postcode": "ZIPCODE",
-        "region": "state",
-        "notes": "Updated to reference shapefile instead of Map Service"
-    },
-    "data": "ftp://206.123.215.195/GIS/Addresses.zip",
-    "compression": "zip",
-    "type": "ftp"
+        "buildings": []
+    }
 }

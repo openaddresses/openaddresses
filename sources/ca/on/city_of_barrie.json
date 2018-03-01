@@ -11,16 +11,23 @@
             ]
         }
     },
-    "data": "http://gisservices.barrie.ca/arcgis/rest/services/Open_Data/AddressVW/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUMBER",
-        "street": [
-            "SSTRNAME",
-            "SSTRSUFF",
-            "SSTRDIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gisservices.barrie.ca/arcgis/rest/services/Open_Data/AddressVW/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADDRNUMBER",
+                    "street": [
+                        "SSTRNAME",
+                        "SSTRSUFF",
+                        "SSTRDIR"
+                    ],
+                    "unit": "UNITNUMBER"
+                }
+            }
         ],
-        "unit": "UNITNUMBER"
+        "buildings": []
     }
 }

@@ -9,16 +9,23 @@
         "state": "sc",
         "county": "Georgetown"
     },
-    "data": "http://gis1.georgetowncountysc.org:6080/arcgis/rest/services/MapServer2017/MapServer/9",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis1.georgetowncountysc.org:6080/arcgis/rest/services/MapServer2017/MapServer/9",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HOUSENUM",
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ],
+        "buildings": []
     }
 }

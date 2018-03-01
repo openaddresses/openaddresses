@@ -7,15 +7,22 @@
         "country": "us",
         "state": "ct"
     },
-    "conform": {
-        "type": "geojson",
-        "number": "AddressNumber",
-        "street": "CompleteStreetName",
-        "unit": "AddressNumberSuffix",
-        "postcode": "ZipCode",
-        "city": "Municipal_PlaceName",
-        "region": "County_PlaceName"
-    },
-    "data": "http://www.ctgismaps2.ct.gov/arcgis/rest/services/CT_Open_Maps/Address_Points/MapServer/0",
-    "type": "ESRI"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://www.ctgismaps2.ct.gov/arcgis/rest/services/CT_Open_Maps/Address_Points/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "AddressNumber",
+                    "street": "CompleteStreetName",
+                    "unit": "AddressNumberSuffix",
+                    "postcode": "ZipCode",
+                    "city": "Municipal_PlaceName",
+                    "region": "County_PlaceName"
+                }
+            }
+        ],
+        "buildings": []
+    }
 }

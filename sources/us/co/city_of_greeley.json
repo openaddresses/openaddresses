@@ -16,22 +16,29 @@
         "state": "co",
         "city": "Greeley"
     },
-    "attribution": "City of Greeley",
-    "data": "http://gis3.greeleygov.com/greeleygis/rest/services/Data_Services/GreeleyAddresses/MapServer/0",
-    "type": "ESRI",
-    "website": "http://greeleygis.greeley.opendata.arcgis.com/",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-          "PREDIRECTION",
-          "STREETPRETYPE",
-          "STREETNAME",
-          "STREETTYPE"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis3.greeleygov.com/greeleygis/rest/services/Data_Services/GreeleyAddresses/MapServer/0",
+                "website": "http://greeleygis.greeley.opendata.arcgis.com/",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "PREDIRECTION",
+                        "STREETPRETYPE",
+                        "STREETNAME",
+                        "STREETTYPE"
+                    ],
+                    "unit": "UNITNUM",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                },
+                "attribution": "City of Greeley"
+            }
         ],
-        "unit": "UNITNUM",
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

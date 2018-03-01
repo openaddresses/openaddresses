@@ -9,28 +9,35 @@
         "state": "ca",
         "county": "Alameda"
     },
-    "data": "https://data.acgov.org/api/geospatial/8e4s-7f4v?method=export&format=Original",
-    "license": "http://www.acgov.org/acdata/terms.htm",
-    "attribution": "Alameda County",
-    "year": "",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "srs": "EPSG:3857",
-        "number": "ST_NUM",
-        "street": [
-            "DIRPRE",
-            "FEANME",
-            "FEATYP",
-            "DIRSUF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://data.acgov.org/api/geospatial/8e4s-7f4v?method=export&format=Original",
+                "conform": {
+                    "type": "shapefile",
+                    "srs": "EPSG:3857",
+                    "number": "ST_NUM",
+                    "street": [
+                        "DIRPRE",
+                        "FEANME",
+                        "FEATYP",
+                        "DIRSUF"
+                    ],
+                    "unit": [
+                        "UNIT_TYP",
+                        "UNIT"
+                    ],
+                    "postcode": "zipcode",
+                    "city": "CITY",
+                    "id": "APN"
+                },
+                "compression": "zip",
+                "license": "http://www.acgov.org/acdata/terms.htm",
+                "attribution": "Alameda County",
+                "year": ""
+            }
         ],
-        "unit": [
-          "UNIT_TYP",
-          "UNIT"
-        ],
-        "postcode": "zipcode",
-        "city": "CITY",
-        "id": "APN"
+        "buildings": []
     }
 }

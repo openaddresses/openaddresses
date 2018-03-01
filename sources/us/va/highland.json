@@ -9,18 +9,25 @@
         "state": "va",
         "county": "Highland"
     },
-    "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Highland/Highland_WL_P/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDR",
-        "street": [
-            "PREFIX",
-            "ROAD_NAME",
-            "SUFFIX",
-            "POSTDIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Highland/Highland_WL_P/MapServer/1",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADDR",
+                    "street": [
+                        "PREFIX",
+                        "ROAD_NAME",
+                        "SUFFIX",
+                        "POSTDIR"
+                    ],
+                    "unit": "APARTMENT",
+                    "city": "COMMUNITY"
+                }
+            }
         ],
-        "unit": "APARTMENT",
-        "city": "COMMUNITY"
+        "buildings": []
     }
 }

@@ -9,18 +9,25 @@
         "state": "il",
         "county": "DuPage"
     },
-    "data": "http://gis.dupageco.org/arcgis/rest/services/ParcelSearch/DuPageAssessmentParcelViewer/MapServer/4",
-    "type": "ESRI",
-    "conform": {
-        "number": "PROPSTNUM",
-        "street": [
-            "PROPSTDIR",
-            "PROPSTNAME"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.dupageco.org/arcgis/rest/services/ParcelSearch/DuPageAssessmentParcelViewer/MapServer/4",
+                "conform": {
+                    "number": "PROPSTNUM",
+                    "street": [
+                        "PROPSTDIR",
+                        "PROPSTNAME"
+                    ],
+                    "unit": "PROPAPT",
+                    "city": "PROPCITY",
+                    "region": "PROPSTATE",
+                    "postcode": "PROPZIP",
+                    "type": "geojson"
+                }
+            }
         ],
-        "unit": "PROPAPT",
-        "city": "PROPCITY",
-        "region": "PROPSTATE",
-        "postcode": "PROPZIP",
-        "type": "geojson"
+        "buildings": []
     }
 }

@@ -9,11 +9,22 @@
         "state": "oh",
         "county": "Clermont"
     },
-    "data": "http://maps.clermontcountyohio.gov/arcgis/rest/services/WMAS/Parcels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADRNO",
-        "street": ["ADRDIR", "ADRSTR", "ADRSUF"]
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://maps.clermontcountyohio.gov/arcgis/rest/services/WMAS/Parcels/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADRNO",
+                    "street": [
+                        "ADRDIR",
+                        "ADRSTR",
+                        "ADRSUF"
+                    ]
+                }
+            }
+        ],
+        "buildings": []
     }
 }

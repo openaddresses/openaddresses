@@ -9,20 +9,27 @@
         "state": "ga",
         "county": "Liberty"
     },
-    "data": "http://maps.crc.ga.gov/crcarcgis/rest/services/HinesvilleView/HinesvilleView/MapServer/6",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "House_No",
-        "street": [
-            "St_PreDir",
-            "St_Name",
-            "St_Type",
-            "St_Suffix"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://maps.crc.ga.gov/crcarcgis/rest/services/HinesvilleView/HinesvilleView/MapServer/6",
+                "conform": {
+                    "type": "geojson",
+                    "number": "House_No",
+                    "street": [
+                        "St_PreDir",
+                        "St_Name",
+                        "St_Type",
+                        "St_Suffix"
+                    ],
+                    "unit": "Unit",
+                    "city": "City",
+                    "postcode": "ZIP",
+                    "region": "State"
+                }
+            }
         ],
-        "unit": "Unit",
-        "city": "City",
-        "postcode": "ZIP",
-        "region": "State"
+        "buildings": []
     }
 }

@@ -9,16 +9,23 @@
         "state": "tx",
         "county": "Collin"
     },
-    "data": "http://gismaps.collincountytx.gov/ArcGIS/rest/services/dynamic/AddressPoints/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "street": [
-            "ADD_PRE",
-            "ADD_NAME",
-            "ADD_TYPE",
-            "ADD_SUF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gismaps.collincountytx.gov/ArcGIS/rest/services/dynamic/AddressPoints/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "street": [
+                        "ADD_PRE",
+                        "ADD_NAME",
+                        "ADD_TYPE",
+                        "ADD_SUF"
+                    ],
+                    "number": "ADD_NUMBER"
+                }
+            }
         ],
-        "number": "ADD_NUMBER"
+        "buildings": []
     }
 }

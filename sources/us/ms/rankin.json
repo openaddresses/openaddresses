@@ -9,17 +9,24 @@
         "state": "ms",
         "county": "Rankin"
     },
-    "data": "http://gis.cmpdd.org/arcgis/rest/services/County/RankinCounty/MapServer/3",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "ST_NUMBER",
-            "ST_NUMSUFF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.cmpdd.org/arcgis/rest/services/County/RankinCounty/MapServer/3",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "ST_NUMBER",
+                        "ST_NUMSUFF"
+                    ],
+                    "unit": "UNIT",
+                    "street": "FULLNAME",
+                    "city": "COMMUNITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "street": "FULLNAME",
-        "city":"COMMUNITY",
-        "postcode": "ZIPCODE"
+        "buildings": []
     }
 }

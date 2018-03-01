@@ -9,19 +9,26 @@
         "state": "fl",
         "county": "Martin"
     },
-    "data": "http://geoweb.martin.fl.us/arcgis/rest/services/geocoding/address_points/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ST_NO",
-        "street": [
-            "PREFIX",
-            "STREET",
-            "STREET_TYP",
-            "POSTDIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://geoweb.martin.fl.us/arcgis/rest/services/geocoding/address_points/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ST_NO",
+                    "street": [
+                        "PREFIX",
+                        "STREET",
+                        "STREET_TYP",
+                        "POSTDIR"
+                    ],
+                    "unit": "SUITE",
+                    "city": "CITY_NAME",
+                    "postcode": "ZIP_CODE"
+                }
+            }
         ],
-        "unit": "SUITE",
-        "city": "CITY_NAME",
-        "postcode": "ZIP_CODE"
+        "buildings": []
     }
 }

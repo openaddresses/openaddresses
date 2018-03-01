@@ -11,18 +11,25 @@
             ]
         }
     },
-    "data": "http://maps.rdcounty.ca:6080/arcgis/rest/services/RDC_ArcGIS_Base_Map/MapServer/8",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_ID",
-        "street": [
-            "DIR_PREF",
-            "NAME_PREF",
-            "MAIN_NAME",
-            "ROAD_TYPE",
-            "DIR_SUFX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://maps.rdcounty.ca:6080/arcgis/rest/services/RDC_ArcGIS_Base_Map/MapServer/8",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HOUSE_ID",
+                    "street": [
+                        "DIR_PREF",
+                        "NAME_PREF",
+                        "MAIN_NAME",
+                        "ROAD_TYPE",
+                        "DIR_SUFX"
+                    ],
+                    "unit": "UNIT_NUM"
+                }
+            }
         ],
-        "unit": "UNIT_NUM"
+        "buildings": []
     }
 }

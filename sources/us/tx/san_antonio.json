@@ -1,32 +1,46 @@
 {
     "coverage": {
-        "US Census": {"geoid": "48029", "name": "Bexar County", "state": "Texas"},
+        "US Census": {
+            "geoid": "48029",
+            "name": "Bexar County",
+            "state": "Texas"
+        },
         "geometry": {
             "type": "Point",
-            "coordinates": [-98.51685391439918,29.42392567108253]
+            "coordinates": [
+                -98.51685391439918,
+                29.42392567108253
+            ]
         },
         "country": "us",
         "state": "tx",
         "county": "Bexar",
         "city": "San Antonio"
     },
-    "website": "http://www.sanantonio.gov/GIS/GISdata",
-    "data": "https://gis.sanantonio.gov/Download/Addresses.zip",
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "HouseNumbe",
-        "street": [
-            "PreDirecti",
-            "Name",
-            "ABBREVTYPE",
-            "PostDirect"
-        ]
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://gis.sanantonio.gov/Download/Addresses.zip",
+                "website": "http://www.sanantonio.gov/GIS/GISdata",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "HouseNumbe",
+                    "street": [
+                        "PreDirecti",
+                        "Name",
+                        "ABBREVTYPE",
+                        "PostDirect"
+                    ]
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                }
+            }
+        ],
+        "buildings": []
     }
 }

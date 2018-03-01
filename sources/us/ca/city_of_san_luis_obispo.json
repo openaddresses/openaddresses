@@ -16,16 +16,23 @@
         "state": "ca",
         "city": "San Luis Obispo"
     },
-    "data": "https://services.arcgis.com/yygmGNIVQrHqSELP/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "streetNumber",
-        "street": [
-            "streetName",
-            "streetType"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://services.arcgis.com/yygmGNIVQrHqSELP/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "streetNumber",
+                    "street": [
+                        "streetName",
+                        "streetType"
+                    ],
+                    "unit": "suite",
+                    "postcode": "zipCode"
+                }
+            }
         ],
-        "unit": "suite",
-        "postcode": "zipCode"
+        "buildings": []
     }
 }

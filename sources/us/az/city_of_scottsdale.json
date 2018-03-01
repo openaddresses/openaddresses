@@ -16,19 +16,26 @@
         "state": "az",
         "city": "Scottsdale"
     },
-    "data": "https://maps.scottsdaleaz.gov/arcgis/rest/services/Address_Search_Test/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "street_num",
-        "street": [
-            "street_dir",
-            "street_name",
-            "street_type_extended"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://maps.scottsdaleaz.gov/arcgis/rest/services/Address_Search_Test/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "street_num",
+                    "street": [
+                        "street_dir",
+                        "street_name",
+                        "street_type_extended"
+                    ],
+                    "unit": [
+                        "suffix_type",
+                        "suffix_num"
+                    ]
+                }
+            }
         ],
-        "unit": [
-            "suffix_type",
-            "suffix_num"
-        ]
+        "buildings": []
     }
 }

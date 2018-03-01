@@ -9,23 +9,30 @@
         "state": "sc",
         "county": "Aiken"
     },
-    "data": "http://acms1.aikencountysc.gov/arcgis/rest/services/TheAddresser/TheAddresser_ACGISDB_FS_Child/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "PADDNUMBER",
-        "street": [
-            "PADDPREFIX",
-            "PADDSTREET",
-            "PADDTYPE",
-            "PADDSUFFIX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://acms1.aikencountysc.gov/arcgis/rest/services/TheAddresser/TheAddresser_ACGISDB_FS_Child/MapServer/1",
+                "conform": {
+                    "type": "geojson",
+                    "number": "PADDNUMBER",
+                    "street": [
+                        "PADDPREFIX",
+                        "PADDSTREET",
+                        "PADDTYPE",
+                        "PADDSUFFIX"
+                    ],
+                    "unit": [
+                        "PADDUNITTYPE",
+                        "PADDAPT"
+                    ],
+                    "city": "PADDCITY",
+                    "region": "PADDSTATE",
+                    "postcode": "PADDZIP"
+                }
+            }
         ],
-        "unit": [
-          "PADDUNITTYPE",
-          "PADDAPT"
-        ],
-        "city": "PADDCITY",
-        "region": "PADDSTATE",
-        "postcode": "PADDZIP"
+        "buildings": []
     }
 }

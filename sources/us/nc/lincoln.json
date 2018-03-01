@@ -9,20 +9,27 @@
         "state": "nc",
         "county": "Lincoln"
     },
-    "data": "http://207.4.172.206/shpfiles/address.zip",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://www.co.lincoln.nc.us/index.aspx?NID=470",
-    "conform": {
-        "street": [
-            "PRE_DIR",
-            "rdname",
-            "rdtype",
-            "POST_DIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://207.4.172.206/shpfiles/address.zip",
+                "website": "http://www.co.lincoln.nc.us/index.aspx?NID=470",
+                "conform": {
+                    "street": [
+                        "PRE_DIR",
+                        "rdname",
+                        "rdtype",
+                        "POST_DIR"
+                    ],
+                    "number": "hsenumber",
+                    "unit": "HSENUMSUF",
+                    "postcode": "STR_ZIP",
+                    "type": "shapefile"
+                },
+                "compression": "zip"
+            }
         ],
-        "number": "hsenumber",
-        "unit": "HSENUMSUF",
-        "postcode": "STR_ZIP",
-        "type": "shapefile"
+        "buildings": []
     }
 }

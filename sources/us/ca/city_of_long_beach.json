@@ -4,7 +4,7 @@
             "type": "Point",
             "coordinates": [
                 -118.226,
-                33.800
+                33.8
             ]
         },
         "US Census": {
@@ -16,19 +16,26 @@
         "state": "ca",
         "city": "Long Beach"
     },
-    "data": "http://tsdgis.longbeach.gov/webgis/rest/services/HANSENBLLIC/BLAddrDetail/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "ADDRESS",
-            "FRACTION"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://tsdgis.longbeach.gov/webgis/rest/services/HANSENBLLIC/BLAddrDetail/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "ADDRESS",
+                        "FRACTION"
+                    ],
+                    "street": [
+                        "PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "SUFFIX"
+                    ]
+                }
+            }
         ],
-        "street": [
-            "PREFIX",
-            "ST_NAME",
-            "ST_TYPE",
-            "SUFFIX"
-        ]
+        "buildings": []
     }
 }

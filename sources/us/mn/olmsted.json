@@ -9,28 +9,35 @@
         "state": "mn",
         "county": "Olmsted"
     },
-    "data": "http://gweb01.co.olmsted.mn.us/arcgis/rest/services/E911_Addresses_PRL/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "ADDRESS_ID",
-        "number": "ADDNO",
-        "street": [
-            "PRE_MOD",
-            "PRE_DIR",
-            "PRE_TYPE",
-            "ST_NAME",
-            "ST_TYPE",
-            "POST_DIR",
-            "POST_MOD"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gweb01.co.olmsted.mn.us/arcgis/rest/services/E911_Addresses_PRL/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "id": "ADDRESS_ID",
+                    "number": "ADDNO",
+                    "street": [
+                        "PRE_MOD",
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "POST_DIR",
+                        "POST_MOD"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT"
+                    ],
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP5"
+                }
+            }
         ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT"
-        ],
-        "city": "CITY",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP5"
+        "buildings": []
     }
 }

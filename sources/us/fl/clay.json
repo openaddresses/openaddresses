@@ -9,27 +9,34 @@
         "state": "fl",
         "county": "Clay"
     },
-    "attribution": "Clay County",
-    "data": "https://maps.claycountygov.com:6443/arcgis/rest/services/SiteAddresses/MapServer/0",
-    "website": "http://www.ccpao.com/datadownloadGIS_all.html",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "House",
-            "Half"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://maps.claycountygov.com:6443/arcgis/rest/services/SiteAddresses/MapServer/0",
+                "website": "http://www.ccpao.com/datadownloadGIS_all.html",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "House",
+                        "Half"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "Unit"
+                    ],
+                    "street": [
+                        "PreDir",
+                        "StreetName",
+                        "StreetType",
+                        "SuffixDir"
+                    ],
+                    "city": "Community",
+                    "postcode": "Zip"
+                },
+                "attribution": "Clay County"
+            }
         ],
-        "unit": [
-            "UnitType",
-            "Unit"
-        ],
-        "street": [
-            "PreDir",
-            "StreetName",
-            "StreetType",
-            "SuffixDir"
-        ],
-        "city": "Community",
-        "postcode": "Zip"
+        "buildings": []
     }
 }

@@ -9,18 +9,25 @@
         "state": "tx",
         "county": "Milam"
     },
-    "data": "http://mapsatbis.com/bisgis/rest/services/MilamWeb/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": "MilamCad.DBO.Accounts.situs_num",
-        "street": [
-            "MilamCad.DBO.Accounts.situs_street_prefx",
-            "MilamCad.DBO.Accounts.situs_street",
-            "MilamCad.DBO.Accounts.situs_street_sufix"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://mapsatbis.com/bisgis/rest/services/MilamWeb/MapServer/0",
+                "conform": {
+                    "number": "MilamCad.DBO.Accounts.situs_num",
+                    "street": [
+                        "MilamCad.DBO.Accounts.situs_street_prefx",
+                        "MilamCad.DBO.Accounts.situs_street",
+                        "MilamCad.DBO.Accounts.situs_street_sufix"
+                    ],
+                    "city": "MilamCad.DBO.Accounts.situs_city",
+                    "region": "MilamCad.DBO.Accounts.situs_state",
+                    "postcode": "MilamCad.DBO.Accounts.situs_zip",
+                    "type": "geojson"
+                }
+            }
         ],
-        "city": "MilamCad.DBO.Accounts.situs_city",
-        "region": "MilamCad.DBO.Accounts.situs_state",
-        "postcode": "MilamCad.DBO.Accounts.situs_zip",
-        "type": "geojson"
+        "buildings": []
     }
 }

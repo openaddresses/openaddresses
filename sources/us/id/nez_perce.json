@@ -9,29 +9,36 @@
         "state": "id",
         "county": "Nez Perce"
     },
-    "data": "http://gis.co.nezperce.id.us/gis/rest/services/NPCGIS/npc_structures/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "ADDPFX",
-            "ADDNUM",
-            "ADDSFX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.co.nezperce.id.us/gis/rest/services/NPCGIS/npc_structures/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "ADDPFX",
+                        "ADDNUM",
+                        "ADDSFX"
+                    ],
+                    "unit": [
+                        "PRUNITTYPE",
+                        "PRUNITID"
+                    ],
+                    "street": [
+                        "RDRPREMOD",
+                        "RDRPREDIR",
+                        "RDRPREFIX",
+                        "RDNAME",
+                        "RDSUFFIX",
+                        "RDPOSTDIR",
+                        "RDPOSTMOD"
+                    ],
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": [
-            "PRUNITTYPE",
-            "PRUNITID"
-        ],
-        "street": [
-            "RDRPREMOD",
-            "RDRPREDIR",
-            "RDRPREFIX",
-            "RDNAME",
-            "RDSUFFIX",
-            "RDPOSTDIR",
-            "RDPOSTMOD"
-        ],
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

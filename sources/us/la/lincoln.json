@@ -9,16 +9,23 @@
         "state": "la",
         "county": "Lincoln"
     },
-    "type": "ESRI",
-    "data": "http://webserv.lincolnparish.org/arcgis/rest/services/Lincoln_Parish_Data/MapServer/0",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NUM",
-        "street": {
-            "function": "regexp",
-            "field": "FUL_NAME",
-            "pattern": "^(.+?)(?: Pvt)?$"
-        },
-        "unit": "UNIT"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://webserv.lincolnparish.org/arcgis/rest/services/Lincoln_Parish_Data/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HOUSE_NUM",
+                    "street": {
+                        "function": "regexp",
+                        "field": "FUL_NAME",
+                        "pattern": "^(.+?)(?: Pvt)?$"
+                    },
+                    "unit": "UNIT"
+                }
+            }
+        ],
+        "buildings": []
     }
 }

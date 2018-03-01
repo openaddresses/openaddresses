@@ -9,18 +9,25 @@
         "state": "ca",
         "county": "Tulare"
     },
-    "data": "https://gis.tularecounty.ca.gov:6443/arcgis/rest/services/Public/Address_points/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "G_NUMBER",
-        "street": [
-            "G_PREFIX",
-            "G_STREET",
-            "G_SUFFIX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://gis.tularecounty.ca.gov:6443/arcgis/rest/services/Public/Address_points/FeatureServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "G_NUMBER",
+                    "street": [
+                        "G_PREFIX",
+                        "G_STREET",
+                        "G_SUFFIX"
+                    ],
+                    "unit": "G_APTNUM",
+                    "city": "OCITY",
+                    "postcode": "OZIP5"
+                }
+            }
         ],
-        "unit": "G_APTNUM",
-        "city": "OCITY",
-        "postcode": "OZIP5"
+        "buildings": []
     }
 }

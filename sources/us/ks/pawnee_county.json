@@ -1,19 +1,30 @@
 {
     "coverage": {
-        "US Census": {"geoid": "20145", "name": "Pawnee County", "state": "Kansas"},
+        "US Census": {
+            "geoid": "20145",
+            "name": "Pawnee County",
+            "state": "Kansas"
+        },
         "country": "us",
         "state": "ks",
         "county": "Pawnee"
     },
-    "conform": {
-        "type": "csv",
-        "number": "NUM",
-        "street": "STR",
-        "city": "CITY",
-        "postcode": "ZIP",
-        "lon": "LON",
-        "lat": "LAT"
-    },
-    "data": "http://data.openaddresses.io/cache/us-ks-pawnee_county.csv",
-    "type": "http"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://data.openaddresses.io/cache/us-ks-pawnee_county.csv",
+                "conform": {
+                    "type": "csv",
+                    "number": "NUM",
+                    "street": "STR",
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "lon": "LON",
+                    "lat": "LAT"
+                }
+            }
+        ],
+        "buildings": []
+    }
 }

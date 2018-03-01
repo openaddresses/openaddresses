@@ -9,20 +9,27 @@
         "state": "mo",
         "county": "Vernon"
     },
-    "data": "http://www.vernoncounty.org/vcarcgis/rest/services/VCGISpub/Address_WebMap/MapServer/0",
-    "note": "Data does not include zip code & state details.",
-    "website": " http://www.vernoncounty.org/webgis/VCGISPublicWM/",
-    "type": "ESRI",
-    "conform": {
-        "id": "ADDR_ID",
-        "number": "ADDNUM",
-        "street": [
-            "DIRECTION",
-            "STREETNAME",
-            "STREETTYPE",
-            "POSTDIRECT"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://www.vernoncounty.org/vcarcgis/rest/services/VCGISpub/Address_WebMap/MapServer/0",
+                "website": " http://www.vernoncounty.org/webgis/VCGISPublicWM/",
+                "conform": {
+                    "id": "ADDR_ID",
+                    "number": "ADDNUM",
+                    "street": [
+                        "DIRECTION",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "POSTDIRECT"
+                    ],
+                    "unit": "APT",
+                    "type": "geojson"
+                },
+                "note": "Data does not include zip code & state details."
+            }
         ],
-        "unit": "APT",
-        "type":"geojson"
-       }
+        "buildings": []
+    }
 }

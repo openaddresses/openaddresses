@@ -16,20 +16,27 @@
             ]
         }
     },
-    "data": "http://stlcin.missouri.org/citydata/downloads/pargeocd.zip",
-    "license": "http://stlcin.missouri.org/citydata/downloads/terms.cfm",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://stlcin.missouri.org/citydata/downloads/",
-    "conform": {
-        "number": "housenum",
-        "street": [
-            "predir",
-            "streetname",
-            "streettype",
-            "sufdir"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://stlcin.missouri.org/citydata/downloads/pargeocd.zip",
+                "website": "http://stlcin.missouri.org/citydata/downloads/",
+                "conform": {
+                    "number": "housenum",
+                    "street": [
+                        "predir",
+                        "streetname",
+                        "streettype",
+                        "sufdir"
+                    ],
+                    "unit": "UNITNUM",
+                    "type": "shapefile"
+                },
+                "compression": "zip",
+                "license": "http://stlcin.missouri.org/citydata/downloads/terms.cfm"
+            }
         ],
-        "unit": "UNITNUM",
-        "type": "shapefile"
+        "buildings": []
     }
 }

@@ -8,22 +8,29 @@
         "country": "ca",
         "state": "mb"
     },
-    "data": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/ROLL_ENTRY/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "Property_Address"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "Property_Address"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "Muni_Name_With_Typ",
-            "pattern": "^(.+?)\\s+\\("
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/ROLL_ENTRY/FeatureServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Property_Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Property_Address"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "Muni_Name_With_Typ",
+                        "pattern": "^(.+?)\\s+\\("
+                    }
+                }
+            }
+        ],
+        "buildings": []
     }
 }

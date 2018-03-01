@@ -9,16 +9,23 @@
         "state": "or",
         "county": "Hood River"
     },
-    "type": "ESRI",
-    "data": "http://webmap.co.hood-river.or.us/arcgis/rest/services/AllDataLayers/MapServer/1",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NUMBER",
-        "street": [
-            "PREFIX_DIRECTION",
-            "STREET_NAME",
-            "STREET_TYPE"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://webmap.co.hood-river.or.us/arcgis/rest/services/AllDataLayers/MapServer/1",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HOUSE_NUMBER",
+                    "street": [
+                        "PREFIX_DIRECTION",
+                        "STREET_NAME",
+                        "STREET_TYPE"
+                    ],
+                    "unit": "UNIT"
+                }
+            }
         ],
-        "unit": "UNIT"
+        "buildings": []
     }
 }

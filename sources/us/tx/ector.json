@@ -9,20 +9,27 @@
         "state": "tx",
         "county": "Ector"
     },
-    "data": "https://gis.odessa-tx.gov/portal/sharing/rest/content/items/80e941000144430fb9bf4095a5edd60d/data",
-    "website": "http://www.odessa-tx.gov/index.aspx?page=354",
-    "note": "despite the URL it's coming from, the data is for all of Ector County, TX",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile-polygon",
-        "number": "STR_NUM",
-        "street": [
-            "STR_DIR",
-            "STR_NAM",
-            "STR_SUF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://gis.odessa-tx.gov/portal/sharing/rest/content/items/80e941000144430fb9bf4095a5edd60d/data",
+                "website": "http://www.odessa-tx.gov/index.aspx?page=354",
+                "conform": {
+                    "type": "shapefile-polygon",
+                    "number": "STR_NUM",
+                    "street": [
+                        "STR_DIR",
+                        "STR_NAM",
+                        "STR_SUF"
+                    ],
+                    "city": "CIT_NAM",
+                    "district": "COU_NAM"
+                },
+                "compression": "zip",
+                "note": "despite the URL it's coming from, the data is for all of Ector County, TX"
+            }
         ],
-        "city": "CIT_NAM",
-        "district": "COU_NAM"
+        "buildings": []
     }
 }

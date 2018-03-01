@@ -9,20 +9,27 @@
         "state": "tx",
         "county": "Comal"
     },
-    "data": "http://cceo.org/arcgis/rest/services/OpenDataPortal/Address_Open_Data/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "StreetNum",
-            "StreetNumSuf"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://cceo.org/arcgis/rest/services/OpenDataPortal/Address_Open_Data/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "StreetNum",
+                        "StreetNumSuf"
+                    ],
+                    "street": [
+                        "PreDir",
+                        "StreetName",
+                        "StreetType",
+                        "PostDir"
+                    ],
+                    "city": "Jurisdiction"
+                }
+            }
         ],
-        "street": [
-            "PreDir",
-            "StreetName",
-            "StreetType",
-            "PostDir"
-        ],
-        "city": "Jurisdiction"
+        "buildings": []
     }
 }

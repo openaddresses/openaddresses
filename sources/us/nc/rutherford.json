@@ -9,23 +9,30 @@
         "state": "nc",
         "county": "Rutherford"
     },
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "HSENUMBER",
-            "HSENUMSUF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/RutherfordCounty/MapServer/16",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "HSENUMBER",
+                        "HSENUMSUF"
+                    ],
+                    "street": [
+                        "PREDIR",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "POSTDIR"
+                    ],
+                    "postcode": "STR_ZIP",
+                    "city": "STR_CMNTY",
+                    "region": "STATE"
+                },
+                "note": "included HSENUMSUF because there appear to be some transposition errors in the data"
+            }
         ],
-        "street": [
-            "PREDIR",
-            "STR_NAME",
-            "STR_TYPE",
-            "POSTDIR"
-        ],
-        "postcode": "STR_ZIP",
-        "city": "STR_CMNTY",
-        "region": "STATE"
-    },
-    "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/RutherfordCounty/MapServer/16",
-    "note": "included HSENUMSUF because there appear to be some transposition errors in the data",
-    "type": "ESRI"
+        "buildings": []
+    }
 }

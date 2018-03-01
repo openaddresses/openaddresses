@@ -9,17 +9,24 @@
         "state": "nc",
         "county": "Transylvania"
     },
-    "data": "http://www.webgis.net/arcgis/rest/services/NC/Transylvania/MapServer/10",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "LEGAL_ADDR"
-            },
-        "street": {
-            "function": "postfixed_street",
-            "field": "LEGAL_ADDR"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://www.webgis.net/arcgis/rest/services/NC/Transylvania/MapServer/10",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "LEGAL_ADDR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "LEGAL_ADDR"
+                    }
+                }
+            }
+        ],
+        "buildings": []
     }
 }

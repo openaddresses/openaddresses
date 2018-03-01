@@ -9,22 +9,29 @@
         "state": "mt",
         "county": "Beaverhead"
     },
-    "conform": {
-        "type": "shapefile-polygon",
-        "number": {
-            "function": "regexp",
-            "field": "AddressLin",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "AddressLin",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
-    },
-    "data": "ftp://ftp.geoinfo.msl.mt.gov/Data/Spatial/MSDI/Cadastral/Parcels/Beaverhead/BeaverheadOwnerParcel_shp.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "note": "won't split properly"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ftp",
+                "data": "ftp://ftp.geoinfo.msl.mt.gov/Data/Spatial/MSDI/Cadastral/Parcels/Beaverhead/BeaverheadOwnerParcel_shp.zip",
+                "conform": {
+                    "type": "shapefile-polygon",
+                    "number": {
+                        "function": "regexp",
+                        "field": "AddressLin",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "AddressLin",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                },
+                "compression": "zip",
+                "note": "won't split properly"
+            }
+        ],
+        "buildings": []
+    }
 }

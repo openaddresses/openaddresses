@@ -16,20 +16,27 @@
         "state": "az",
         "city": "Mesa"
     },
-    "data": "http://gis.mesaaz.gov/mesaaz/rest/services/Geocortex/BaseMap_dynamic/MapServer/5",
-    "type": "ESRI",
-    "attribution": "City of Mesa",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "ADDRESSNUMBER",
-            "ADDRESSFRACTION"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.mesaaz.gov/mesaaz/rest/services/Geocortex/BaseMap_dynamic/MapServer/5",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "ADDRESSNUMBER",
+                        "ADDRESSFRACTION"
+                    ],
+                    "street": "ADDRESSSTREETNAME",
+                    "unit": [
+                        "UNITDESIGNATION",
+                        "UNITNUMBER"
+                    ],
+                    "city": "JURISDICTION"
+                },
+                "attribution": "City of Mesa"
+            }
         ],
-        "street": "ADDRESSSTREETNAME",
-        "unit": [
-            "UNITDESIGNATION",
-            "UNITNUMBER"
-        ],
-        "city": "JURISDICTION"
+        "buildings": []
     }
 }

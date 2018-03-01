@@ -9,23 +9,30 @@
         "state": "co",
         "county": "Jefferson"
     },
-    "attribution": "Jefferson County",
-    "data": "http://maps.jeffco.us/arcgis/rest/services/jMap/Address/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "ADRUID",
-        "number": [
-            "ADRHSNO",
-            "ADRHSNOSFX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://maps.jeffco.us/arcgis/rest/services/jMap/Address/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "id": "ADRUID",
+                    "number": [
+                        "ADRHSNO",
+                        "ADRHSNOSFX"
+                    ],
+                    "street": [
+                        "STRDIRPRE",
+                        "STRNAME",
+                        "STRTYPE",
+                        "STRDIRSFX"
+                    ],
+                    "unit": "SUBADRUNIT",
+                    "postcode": "ZIP"
+                },
+                "attribution": "Jefferson County"
+            }
         ],
-        "street": [
-            "STRDIRPRE",
-            "STRNAME",
-            "STRTYPE",
-            "STRDIRSFX"
-        ],
-        "unit": "SUBADRUNIT",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

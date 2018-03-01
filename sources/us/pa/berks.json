@@ -9,18 +9,25 @@
         "state": "pa",
         "county": "Berks"
     },
-    "data": "http://gis.co.berks.pa.us/arcgis/rest/services/Assess/AssessBase/MapServer/4",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "FULLSITEADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "FULLSITEADDRESS"
-        },
-        "city": "MUNICIPALNAME"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.co.berks.pa.us/arcgis/rest/services/Assess/AssessBase/MapServer/4",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FULLSITEADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FULLSITEADDRESS"
+                    },
+                    "city": "MUNICIPALNAME"
+                }
+            }
+        ],
+        "buildings": []
     }
 }

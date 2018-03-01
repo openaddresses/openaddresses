@@ -17,19 +17,26 @@
         "county": "Cobb",
         "city": "Marietta"
     },
-    "data": "https://secure.mariettaga.gov/arcgis/rest/services/AGOL_OpenData/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ST_NUMBER",
-        "street": [
-            "ST_DIRECTION",
-            "ST_NAME",
-            "ST_SUFFIX",
-            "POST_DIRECTION"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://secure.mariettaga.gov/arcgis/rest/services/AGOL_OpenData/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ST_NUMBER",
+                    "street": [
+                        "ST_DIRECTION",
+                        "ST_NAME",
+                        "ST_SUFFIX",
+                        "POST_DIRECTION"
+                    ],
+                    "unit": "APARTMENT",
+                    "postcode": "ZIP_CODE",
+                    "accuracy": 2
+                }
+            }
         ],
-        "unit": "APARTMENT",
-        "postcode": "ZIP_CODE",
-        "accuracy": 2
+        "buildings": []
     }
 }

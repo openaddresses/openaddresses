@@ -1,18 +1,35 @@
 {
     "coverage": {
-        "US Census": {"geoid": "39113", "name": "Montgomery County", "state": "Ohio"},
+        "US Census": {
+            "geoid": "39113",
+            "name": "Montgomery County",
+            "state": "Ohio"
+        },
         "country": "us",
         "state": "oh",
         "county": "Montgomery"
     },
-    "data": "http://www.mcegisohio.org/arcgis/rest/services/AUDGIS_B1/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDR_NUM",
-        "street": ["PRE_DIR", "PRE_TYPE", "STR_NAME", "STR_TYPE", "SUF_DIR"],
-        "city": "CITY",
-        "postcode": "ZIP",
-        "region": "STATE"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://www.mcegisohio.org/arcgis/rest/services/AUDGIS_B1/MapServer/1",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "buildings": []
     }
 }

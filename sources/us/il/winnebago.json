@@ -9,17 +9,24 @@
         "state": "il",
         "county": "Winnebago"
     },
-    "data": "http://map.wingis.org/arcgis/rest/services/NPPWD/MapServer/21",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "LOPHouseNumber",
-        "street": [
-            "LOPPrefixDirectional",
-            "LOPStreetName",
-            "LOPStreetSuffix",
-            "LOPPostDirectional"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://map.wingis.org/arcgis/rest/services/NPPWD/MapServer/21",
+                "conform": {
+                    "type": "geojson",
+                    "number": "LOPHouseNumber",
+                    "street": [
+                        "LOPPrefixDirectional",
+                        "LOPStreetName",
+                        "LOPStreetSuffix",
+                        "LOPPostDirectional"
+                    ],
+                    "city": "TownshipName"
+                }
+            }
         ],
-        "city": "TownshipName"
+        "buildings": []
     }
 }

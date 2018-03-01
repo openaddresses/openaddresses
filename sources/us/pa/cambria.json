@@ -9,20 +9,27 @@
         "state": "pa",
         "county": "Cambria"
     },
-    "data": "http://gis2.cambriacountypa.gov/georesources/rest/services/Resources/fsSurfaceParcels/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "SITUS_DESC_1",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SITUS_DESC_1",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis2.cambriacountypa.gov/georesources/rest/services/Resources/fsSurfaceParcels/MapServer/2",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "SITUS_DESC_1",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "SITUS_DESC_1",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ],
+        "buildings": []
     }
 }

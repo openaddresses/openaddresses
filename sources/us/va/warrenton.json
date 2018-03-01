@@ -4,15 +4,22 @@
         "state": "va",
         "town": "Warrenton"
     },
-    "data": "https://www.webgis.net/arcgis/rest/services/VA/Warrenton_WebGIS/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": {
-            "function": "remove_prefix",
-            "field": "FULLADDR",
-            "field_to_remove": "ADDRNUM"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/Warrenton_WebGIS/MapServer/2",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADDRNUM",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "FULLADDR",
+                        "field_to_remove": "ADDRNUM"
+                    }
+                }
+            }
+        ],
+        "buildings": []
     }
 }

@@ -9,24 +9,31 @@
         "state": "mi",
         "county": "Muskegon"
     },
-    "data": "http://www.muskegoncountygis.com/arcgis/rest/services/VotingLocation/VotingLocation/MapServer/5",
-    "type": "ESRI",
-    "website": "http://www.muskegoncountygis.com/",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "PROP_COMBINED_ADDRESS",
-            "pattern": "^(\\S+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PROP_COMBINED_ADDRESS",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "PROP_CITY",
-        "region": "PROP_STATE",
-        "postcode": "PROP_ZIP"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://www.muskegoncountygis.com/arcgis/rest/services/VotingLocation/VotingLocation/MapServer/5",
+                "website": "http://www.muskegoncountygis.com/",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "PROP_COMBINED_ADDRESS",
+                        "pattern": "^(\\S+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "PROP_COMBINED_ADDRESS",
+                        "pattern": "^(?:\\S+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": "PROP_CITY",
+                    "region": "PROP_STATE",
+                    "postcode": "PROP_ZIP"
+                }
+            }
+        ],
+        "buildings": []
     }
 }

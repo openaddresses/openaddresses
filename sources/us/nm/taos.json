@@ -9,19 +9,26 @@
         "state": "nm",
         "county": "Taos"
     },
-    "data": "http://services5.arcgis.com/udGSUpHqkA8dJvR0/ArcGIS/rest/services/Taos_County_Online_Address_Data/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADD_NUMBER",
-        "street": [
-            "STR_DIR",
-            "STR_NAME",
-            "STR_TYPE",
-            "STR_POST_DIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://services5.arcgis.com/udGSUpHqkA8dJvR0/ArcGIS/rest/services/Taos_County_Online_Address_Data/FeatureServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADD_NUMBER",
+                    "street": [
+                        "STR_DIR",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "STR_POST_DIR"
+                    ],
+                    "unit": "ADD_SUFFIX",
+                    "city": "COMM_USPS",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": "ADD_SUFFIX",
-        "city": "COMM_USPS",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

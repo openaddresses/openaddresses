@@ -9,24 +9,31 @@
         "state": "ks",
         "county": "Riley"
     },
-    "conform": {
-        "type": "geojson",
-        "id": "SITEADDID",
-        "number": "ADDRNUM",
-        "street": [
-            "ROADPREMOD",
-            "ROADPREDIR",
-            "ROADNAME",
-            "ROADTYPE",
-            "ROADPOSTDIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://services.arcgis.com/6WmEmDp2YlKJjhJt/arcgis/rest/services/AddressPoints/FeatureServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "id": "SITEADDID",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "ROADPREMOD",
+                        "ROADPREDIR",
+                        "ROADNAME",
+                        "ROADTYPE",
+                        "ROADPOSTDIR"
+                    ],
+                    "unit": [
+                        "ALTUNITTYPE",
+                        "ALTUNITID"
+                    ],
+                    "city": "PSTLCITY",
+                    "postcode": "PSTLZIP5"
+                }
+            }
         ],
-        "unit": [
-            "ALTUNITTYPE",
-            "ALTUNITID"
-        ],
-        "city": "PSTLCITY",
-        "postcode": "PSTLZIP5"
-    },
-    "data": "https://services.arcgis.com/6WmEmDp2YlKJjhJt/arcgis/rest/services/AddressPoints/FeatureServer/0",
-    "type": "ESRI"
+        "buildings": []
+    }
 }

@@ -9,25 +9,32 @@
         "state": "nc",
         "county": "Orange"
     },
-    "data": "http://web.co.orange.nc.us/gisdownloads/addresses.zip",
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "year": "",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "housenum",
-        "street": [
-            "DirPrefix",
-            "name",
-            "type",
-            "DirSuffix"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://web.co.orange.nc.us/gisdownloads/addresses.zip",
+                "conform": {
+                    "number": "housenum",
+                    "street": [
+                        "DirPrefix",
+                        "name",
+                        "type",
+                        "DirSuffix"
+                    ],
+                    "unit": "UnitNum",
+                    "type": "shapefile",
+                    "postcode": "zipcode"
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "year": ""
+            }
         ],
-        "unit": "UnitNum",
-        "type": "shapefile",
-        "postcode": "zipcode"
+        "buildings": []
     }
 }

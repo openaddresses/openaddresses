@@ -9,20 +9,27 @@
         "state": "co",
         "county": "Morgan"
     },
-    "data": "https://gisftp02.state.co.us/c.StateLevelAgencies/GOV/OIT/CSO/GIS/CY2017/Parcels/Shapefiles/Public/Morgan.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": {
-            "function": "prefixed_number",
-            "field": "situsAdd"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "situsAdd"
-        },
-        "city": "sitAddCty",
-        "postcode": "sitAddZip"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://gisftp02.state.co.us/c.StateLevelAgencies/GOV/OIT/CSO/GIS/CY2017/Parcels/Shapefiles/Public/Morgan.zip",
+                "conform": {
+                    "type": "shapefile",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "situsAdd"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "situsAdd"
+                    },
+                    "city": "sitAddCty",
+                    "postcode": "sitAddZip"
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
     }
 }

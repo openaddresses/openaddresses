@@ -9,18 +9,25 @@
         "state": "tx",
         "county": "Uvalde"
     },
-    "data": "http://mapsatbis.com/bisgis/rest/services/UvaldeWeb/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": "UvaldeCad.DBO.Accounts.situs_num",
-        "street": [
-            "UvaldeCad.DBO.Accounts.situs_street_prefx",
-            "UvaldeCad.DBO.Accounts.situs_street",
-            "UvaldeCad.DBO.Accounts.situs_street_sufix"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://mapsatbis.com/bisgis/rest/services/UvaldeWeb/MapServer/0",
+                "conform": {
+                    "number": "UvaldeCad.DBO.Accounts.situs_num",
+                    "street": [
+                        "UvaldeCad.DBO.Accounts.situs_street_prefx",
+                        "UvaldeCad.DBO.Accounts.situs_street",
+                        "UvaldeCad.DBO.Accounts.situs_street_sufix"
+                    ],
+                    "city": "UvaldeCad.DBO.Accounts.situs_city",
+                    "region": "UvaldeCad.DBO.Accounts.situs_state",
+                    "postcode": "UvaldeCad.DBO.Accounts.situs_zip",
+                    "type": "geojson"
+                }
+            }
         ],
-        "city": "UvaldeCad.DBO.Accounts.situs_city",
-        "region": "UvaldeCad.DBO.Accounts.situs_state",
-        "postcode": "UvaldeCad.DBO.Accounts.situs_zip",
-        "type": "geojson"
+        "buildings": []
     }
 }

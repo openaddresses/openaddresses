@@ -17,24 +17,31 @@
         "county": "Dekalb",
         "city": "Brookhaven"
     },
-    "data": "http://gis.brookhavenga.gov/arcgis/rest/services/addresses/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRESS_NU",
-        "street": [
-            "PREFIX_DIR",
-            "PREFIX_TYP",
-            "BASE_NAME",
-            "SUFFIX_TYP",
-            "SUFFIX_DIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.brookhavenga.gov/arcgis/rest/services/addresses/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADDRESS_NU",
+                    "street": [
+                        "PREFIX_DIR",
+                        "PREFIX_TYP",
+                        "BASE_NAME",
+                        "SUFFIX_TYP",
+                        "SUFFIX_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT"
-        ],
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

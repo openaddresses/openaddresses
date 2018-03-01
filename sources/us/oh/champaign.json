@@ -9,23 +9,30 @@
         "state": "oh",
         "county": "Champaign"
     },
-    "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/CHP_ADDS.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "HOUSENUM",
-        "street": [
-            "ST_PREFIX",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SUFFIX",
-            "ST_SUFFIX2"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/CHP_ADDS.zip",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX",
+                        "ST_SUFFIX2"
+                    ],
+                    "unit": "UNITNUM",
+                    "city": "MUNI",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                },
+                "compression": "zip"
+            }
         ],
-        "unit": "UNITNUM",
-        "city": "MUNI",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+        "buildings": []
     }
 }

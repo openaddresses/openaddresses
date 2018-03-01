@@ -9,28 +9,38 @@
         "state": "ca",
         "county": "san francisco"
     },
-    "attribution": "City and County of San Francisco",
-    "data": "http://apps.sfgov.org/datafiles/view.php?file=sfgis/eas_addresses_with_units.zip",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "website": "http://www.sfgov.org",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-      "type": "shapefile",
-      "number": {
-        "function": "join",
-        "fields": ["ADDR_NUM", "ADDR_N_SFX"],
-        "separator": ""
-      },
-      "street": [
-          "ST_NAME",
-          "ST_TYPE"
-      ],
-      "unit": "UNIT_NUM",
-      "postcode": "zipcode"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://apps.sfgov.org/datafiles/view.php?file=sfgis/eas_addresses_with_units.zip",
+                "website": "http://www.sfgov.org",
+                "conform": {
+                    "type": "shapefile",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "ADDR_NUM",
+                            "ADDR_N_SFX"
+                        ],
+                        "separator": ""
+                    },
+                    "street": [
+                        "ST_NAME",
+                        "ST_TYPE"
+                    ],
+                    "unit": "UNIT_NUM",
+                    "postcode": "zipcode"
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "attribution": "City and County of San Francisco"
+            }
+        ],
+        "buildings": []
     }
 }

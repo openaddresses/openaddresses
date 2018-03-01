@@ -16,15 +16,22 @@
         "state": "il",
         "city": "Naperville"
     },
-    "type": "ESRI",
-    "data": "http://gis.naperville.il.us/arcgis/rest/services/OpenData/Address_Points/MapServer/0",
-    "conform": {
-        "type": "geojson",
-        "number": "ADD_NUM",
-        "street": [
-            "STREET_NAME",
-            "STREET_SUFFIX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.naperville.il.us/arcgis/rest/services/OpenData/Address_Points/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADD_NUM",
+                    "street": [
+                        "STREET_NAME",
+                        "STREET_SUFFIX"
+                    ],
+                    "city": "CITY"
+                }
+            }
         ],
-        "city": "CITY"
+        "buildings": []
     }
 }

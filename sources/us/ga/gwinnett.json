@@ -9,15 +9,25 @@
         "state": "ga",
         "county": "Gwinnett"
     },
-    "type": "ESRI",
-    "data": "https://gis.gwinnettcounty.com/arcgis/rest/services/GC_Parcel/MapServer/14",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": ["UNITTYPE", "UNITID"],
-        "city": "MUNICIPALITY",
-        "postcode": "ZIP5",
-        "region": "STATE"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://gis.gwinnettcounty.com/arcgis/rest/services/GC_Parcel/MapServer/14",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIP5",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "buildings": []
     }
 }

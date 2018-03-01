@@ -9,20 +9,27 @@
         "state": "ga",
         "county": "Coweta"
     },
-    "data": "http://gis.coweta.ga.us/arcgis/rest/services/AddressPoints/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADD_NUM",
-        "street": [
-            "PREDIR",
-            "ROADNAME",
-            "TYPE",
-            "SUFDIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.coweta.ga.us/arcgis/rest/services/AddressPoints/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADD_NUM",
+                    "street": [
+                        "PREDIR",
+                        "ROADNAME",
+                        "TYPE",
+                        "SUFDIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

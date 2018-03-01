@@ -9,17 +9,24 @@
         "state": "la",
         "county": "Orleans"
     },
-    "data": "https://gis.nola.gov/arcgis/rest/services/Address/SiteAddressPoint/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "SITEADDID",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://gis.nola.gov/arcgis/rest/services/Address/SiteAddressPoint/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "id": "SITEADDID",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY"
+                }
+            }
         ],
-        "city": "MUNICIPALITY"
+        "buildings": []
     }
 }

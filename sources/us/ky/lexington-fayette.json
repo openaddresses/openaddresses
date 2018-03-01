@@ -9,26 +9,33 @@
         "state": "ky",
         "county": "Fayette"
     },
-    "website": "http://data.lexingtonky.gov/dataset/address-points",
-    "data": "https://opendatalex.s3.amazonaws.com/2015-05-04T135556/AddressPoint.csv",
-    "type": "http",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "year": "2015",
-    "conform": {
-        "lon": "XCoord",
-        "lat": "YCoord",
-        "number": "STADD",
-        "street": [
-            "STDIR",
-            "STNAME",
-            "STTYPE"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://opendatalex.s3.amazonaws.com/2015-05-04T135556/AddressPoint.csv",
+                "website": "http://data.lexingtonky.gov/dataset/address-points",
+                "conform": {
+                    "lon": "XCoord",
+                    "lat": "YCoord",
+                    "number": "STADD",
+                    "street": [
+                        "STDIR",
+                        "STNAME",
+                        "STTYPE"
+                    ],
+                    "unit": "UNIT",
+                    "type": "csv"
+                },
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "note": "An additional UNIT column appears to describe sub-address units",
+                "year": "2015"
+            }
         ],
-        "unit": "UNIT",
-        "type": "csv"
-    },
-    "note": "An additional UNIT column appears to describe sub-address units"
+        "buildings": []
+    }
 }

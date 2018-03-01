@@ -9,27 +9,34 @@
         "state": "ca",
         "county": "Ventura"
     },
-    "attribution": "Ventura County",
-    "website": "http://www.ventura.org/gis-mapping/gis-data-downloads-mapping-base",
-    "data": "http://vcportal.ventura.org/GIS/public/mapping_base/MasterAddressPoints.zip",
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "year": "2014",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "ADDRESS",
-        "street": [
-          "STREET_DIR",
-          "STREET_NAM",
-          "STREET_SUF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://vcportal.ventura.org/GIS/public/mapping_base/MasterAddressPoints.zip",
+                "website": "http://www.ventura.org/gis-mapping/gis-data-downloads-mapping-base",
+                "conform": {
+                    "number": "ADDRESS",
+                    "street": [
+                        "STREET_DIR",
+                        "STREET_NAM",
+                        "STREET_SUF"
+                    ],
+                    "unit": "SUITE",
+                    "type": "shapefile",
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "attribution": "Ventura County",
+                "year": "2014"
+            }
         ],
-        "unit": "SUITE",
-        "type": "shapefile",
-        "city": "CITY",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

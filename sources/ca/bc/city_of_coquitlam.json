@@ -11,21 +11,28 @@
             ]
         }
     },
-    "data": "https://s3-us-west-2.amazonaws.com/coquitlam-spatial/Cadastral/SHP/Coquitlam_Cadastral_SHP.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "file": "Addresses.shp",
-        "number": "HOUSE",
-        "street": [
-            "STREET",
-            "STREETTYPE"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://s3-us-west-2.amazonaws.com/coquitlam-spatial/Cadastral/SHP/Coquitlam_Cadastral_SHP.zip",
+                "conform": {
+                    "type": "shapefile",
+                    "file": "Addresses.shp",
+                    "number": "HOUSE",
+                    "street": [
+                        "STREET",
+                        "STREETTYPE"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNIT"
+                    ],
+                    "postcode": "POSTAL"
+                },
+                "compression": "zip"
+            }
         ],
-        "unit": [
-            "UNITTYPE",
-            "UNIT"
-        ],
-        "postcode": "POSTAL"
+        "buildings": []
     }
 }

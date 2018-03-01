@@ -17,19 +17,26 @@
             ]
         }
     },
-    "attribution": "City of Groton",
-    "data": "http://maps.groton-ct.gov/arcgis/rest/services/BaseMap/MapServer/3",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "LOGI_STNUM",
-        "street": [
-            "LOGI_STNAM",
-            "LOGI_STTYP",
-            "LOGI_STSUF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://maps.groton-ct.gov/arcgis/rest/services/BaseMap/MapServer/3",
+                "conform": {
+                    "type": "geojson",
+                    "number": "LOGI_STNUM",
+                    "street": [
+                        "LOGI_STNAM",
+                        "LOGI_STTYP",
+                        "LOGI_STSUF"
+                    ],
+                    "unit": "UNIT",
+                    "city": "LOGI_CITY",
+                    "postcode": "ZIP"
+                },
+                "attribution": "City of Groton"
+            }
         ],
-        "unit": "UNIT",
-        "city": "LOGI_CITY",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

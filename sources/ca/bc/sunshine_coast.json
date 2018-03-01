@@ -11,25 +11,32 @@
             ]
         }
     },
-    "data": "ftp://ftp.scrd.ca/opendata/Shapefiles/Address Points.zip",
-    "website": "http://www.scrd.ca/data-download",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "id": "OBJECT_ID",
-        "number": [
-            "STR_NO_PRE",
-            "STR_NO",
-            "STR_NO_SUF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ftp",
+                "data": "ftp://ftp.scrd.ca/opendata/Shapefiles/Address Points.zip",
+                "website": "http://www.scrd.ca/data-download",
+                "conform": {
+                    "type": "shapefile",
+                    "id": "OBJECT_ID",
+                    "number": [
+                        "STR_NO_PRE",
+                        "STR_NO",
+                        "STR_NO_SUF"
+                    ],
+                    "street": [
+                        "STR_DR_PRE",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "STR_DR_SUF"
+                    ],
+                    "city": "LOCALITY",
+                    "postcode": "POST_CODE"
+                },
+                "compression": "zip"
+            }
         ],
-        "street": [
-            "STR_DR_PRE",
-            "STR_NAME",
-            "STR_TYPE",
-            "STR_DR_SUF"
-        ],
-        "city": "LOCALITY",
-        "postcode": "POST_CODE"
+        "buildings": []
     }
 }

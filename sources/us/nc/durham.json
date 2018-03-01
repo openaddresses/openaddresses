@@ -9,24 +9,31 @@
         "state": "nc",
         "county": "Durham"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/iandees/d2a3f1/durham_address_points.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "id": "ID",
-        "number": [
-            "HOUSENUM",
-            "HOUSENUMSU"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/iandees/d2a3f1/durham_address_points.zip",
+                "conform": {
+                    "type": "shapefile",
+                    "id": "ID",
+                    "number": [
+                        "HOUSENUM",
+                        "HOUSENUMSU"
+                    ],
+                    "unit": "UNIT",
+                    "street": [
+                        "STREETDIR",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "STDIRSUF"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIPCODE"
+                },
+                "compression": "zip"
+            }
         ],
-        "unit": "UNIT",
-        "street": [
-            "STREETDIR",
-            "STREETNAME",
-            "STREETTYPE",
-            "STDIRSUF"
-        ],
-        "city": "CITY",
-        "postcode": "ZIPCODE"
+        "buildings": []
     }
 }

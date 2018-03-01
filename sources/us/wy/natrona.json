@@ -9,13 +9,23 @@
         "state": "wy",
         "county": "Natrona"
     },
-    "data": "https://maps.casperwy.gov/nrgisc/rest/services/Addressing/Addressing/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STREET_NUM",
-        "street": ["StreetName","StreetType"],
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://maps.casperwy.gov/nrgisc/rest/services/Addressing/Addressing/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "STREET_NUM",
+                    "street": [
+                        "StreetName",
+                        "StreetType"
+                    ],
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "buildings": []
     }
 }

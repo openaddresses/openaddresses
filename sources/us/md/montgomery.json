@@ -9,21 +9,28 @@
         "state": "md",
         "county": "Montgomery"
     },
-    "data": "http://mcatlas.org/tiles/00_Shapefiles/AddressesShapefileFeb2015.zip",
-    "website": "http://www.montgomeryplanning.org/gis/data_downloads.shtm",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "ADDR_NUMBE",
-        "street": [
-            "PRE_DIR",
-            "ST_NAME",
-            "ST_TYPE",
-            "SUF_DIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://mcatlas.org/tiles/00_Shapefiles/AddressesShapefileFeb2015.zip",
+                "website": "http://www.montgomeryplanning.org/gis/data_downloads.shtm",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "ADDR_NUMBE",
+                    "street": [
+                        "PRE_DIR",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "postcode": "ZIPCODE"
+                },
+                "compression": "zip"
+            }
         ],
-        "unit": "UNIT",
-        "city": "CITY",
-        "postcode": "ZIPCODE"
+        "buildings": []
     }
 }

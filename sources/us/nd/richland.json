@@ -9,18 +9,25 @@
         "state": "nd",
         "county": "Richland"
     },
-    "type": "http",
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/6b5774/us-nd-richland.geojson.zip",
-    "compression": "zip",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "RICHLAND.DBO.ALL_PARCEL_DATA.Street_Address"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "RICHLAND.DBO.ALL_PARCEL_DATA.Street_Address"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/6b5774/us-nd-richland.geojson.zip",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "RICHLAND.DBO.ALL_PARCEL_DATA.Street_Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "RICHLAND.DBO.ALL_PARCEL_DATA.Street_Address"
+                    }
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
     }
 }

@@ -9,22 +9,29 @@
         "state": "oh",
         "county": "Preble"
     },
-    "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/PRE_ADDS.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "HOUSENUM",
-        "street": [
-          "ST_PREFIX",
-          "ST_NAME",
-          "ST_TYPE",
-          "ST_SUFFIX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/PRE_ADDS.zip",
+                "conform": {
+                    "number": "HOUSENUM",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX"
+                    ],
+                    "unit": "UNITNUM",
+                    "city": "MUNI",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "type": "shapefile",
+                    "postcode": "zipcode"
+                },
+                "compression": "zip"
+            }
         ],
-        "unit": "UNITNUM",
-        "city": "MUNI",
-        "district": "COUNTY",
-        "region": "STATE",
-        "type": "shapefile",
-        "postcode": "zipcode"
+        "buildings": []
     }
 }

@@ -9,21 +9,28 @@
         "state": "fl",
         "county": "Broward"
     },
-    "data": "http://gis.broward.org/GISData/Zipfiles/GISaddresspoints.zip",
-    "compression": "zip",
-    "type": "http",
-    "conform": {
-        "type": "shapefile",
-        "number": "SITUSNUMBE",
-        "unit": "UNITNUMBER",
-        "street": [
-            "STREETDIRE",
-            "STREETTY_1",
-            "STREETNAME",
-            "STREETTYPE",
-            "STREETDI_1"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://gis.broward.org/GISData/Zipfiles/GISaddresspoints.zip",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "SITUSNUMBE",
+                    "unit": "UNITNUMBER",
+                    "street": [
+                        "STREETDIRE",
+                        "STREETTY_1",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "STREETDI_1"
+                    ],
+                    "city": "CITYNAME",
+                    "postcode": "ZIPCODE"
+                },
+                "compression": "zip"
+            }
         ],
-        "city": "CITYNAME",
-        "postcode": "ZIPCODE"
+        "buildings": []
     }
 }

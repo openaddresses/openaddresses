@@ -9,17 +9,24 @@
         "state": "co",
         "county": "Teller"
     },
-    "conform": {
-        "type": "geojson",
-        "number": "Teller_County.SDE.PARCEL.SITUSSTNUM",
-        "street": [
-            "Teller_County.SDE.PARCEL.SITUSSTDIR",
-            "Teller_County.SDE.PARCEL.SITUSSTNAM",
-            "Teller_County.SDE.PARCEL.SITUSSTTYP"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://data.openaddresses.io/cache/us-co-teller_county.geojson",
+                "conform": {
+                    "type": "geojson",
+                    "number": "Teller_County.SDE.PARCEL.SITUSSTNUM",
+                    "street": [
+                        "Teller_County.SDE.PARCEL.SITUSSTDIR",
+                        "Teller_County.SDE.PARCEL.SITUSSTNAM",
+                        "Teller_County.SDE.PARCEL.SITUSSTTYP"
+                    ],
+                    "city": "Teller_County.SDE.PARCEL.SITUSSTCIT",
+                    "postcode": " Teller_County.SDE.PARCEL.SITUSSTZIP"
+                }
+            }
         ],
-        "city": "Teller_County.SDE.PARCEL.SITUSSTCIT",
-        "postcode": " Teller_County.SDE.PARCEL.SITUSSTZIP"
-    },
-    "data": "http://data.openaddresses.io/cache/us-co-teller_county.geojson",
-    "type": "http"
+        "buildings": []
+    }
 }

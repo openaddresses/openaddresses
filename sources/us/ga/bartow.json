@@ -9,17 +9,24 @@
         "state": "ga",
         "county": "Bartow"
     },
-    "data": "http://services.arcgis.com/0tQ9yX5b2VG5RHei/ArcGIS/rest/services/Elections/FeatureServer/6",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "Address"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "Address"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://services.arcgis.com/0tQ9yX5b2VG5RHei/ArcGIS/rest/services/Elections/FeatureServer/6",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Address"
+                    }
+                }
+            }
+        ],
+        "buildings": []
     }
 }

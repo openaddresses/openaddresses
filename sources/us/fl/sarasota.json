@@ -9,34 +9,41 @@
         "state": "fl",
         "county": "Sarasota"
     },
-    "attribution": "Sarasota County",
-    "data": "https://services3.arcgis.com/icrWMv7eBkctFu1f/arcgis/rest/services/AddressPoints_/FeatureServer/0",
-    "website": "https://hub.arcgis.com/datasets/8f17abc4d8664f079cecc944d86c31a1_0",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "AddPointID",
-        "number": "AddNumber",
-        "street": [
-            "StreetPreMod",
-            "StreetPreDir",
-            "StreetPreType",
-            "StreetName",
-            "StreetSuffix",
-            "StreetPostDir",
-            "StreetPostMod"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://services3.arcgis.com/icrWMv7eBkctFu1f/arcgis/rest/services/AddressPoints_/FeatureServer/0",
+                "website": "https://hub.arcgis.com/datasets/8f17abc4d8664f079cecc944d86c31a1_0",
+                "conform": {
+                    "type": "geojson",
+                    "id": "AddPointID",
+                    "number": "AddNumber",
+                    "street": [
+                        "StreetPreMod",
+                        "StreetPreDir",
+                        "StreetPreType",
+                        "StreetName",
+                        "StreetSuffix",
+                        "StreetPostDir",
+                        "StreetPostMod"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "UnitNumber"
+                    ],
+                    "city": "PostalComm",
+                    "region": "State",
+                    "postcode": "ZIP"
+                },
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "attribution": "Sarasota County"
+            }
         ],
-        "unit": [
-          "UnitType",
-          "UnitNumber"
-        ],
-        "city": "PostalComm",
-        "region": "State",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

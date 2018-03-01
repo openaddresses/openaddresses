@@ -16,19 +16,26 @@
         "state": "nv",
         "city": "Las Vegas"
     },
-    "data": "https://mapdata.lasvegasnevada.gov/clvgis/rest/services/AdministrativeBoundaries/Parcels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "STRNO",
-            "STRFRAC"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://mapdata.lasvegasnevada.gov/clvgis/rest/services/AdministrativeBoundaries/Parcels/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "STRNO",
+                        "STRFRAC"
+                    ],
+                    "street": [
+                        "STRDIR",
+                        "STRNAME",
+                        "STRTYPE"
+                    ],
+                    "unit": "STRUNIT"
+                }
+            }
         ],
-        "street": [
-            "STRDIR",
-            "STRNAME",
-            "STRTYPE"
-        ],
-        "unit": "STRUNIT"
+        "buildings": []
     }
 }

@@ -9,15 +9,22 @@
         "state": "nv",
         "county": "Lander"
     },
-    "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/LanderNVFeatures/FeatureServer/3",
-    "type": "ESRI",
-    "conform": {
-        "number": "SiteAddressNumber",
-        "street": [
-            "SiteAddressDirection",
-            "SiteAddressStreet"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/LanderNVFeatures/FeatureServer/3",
+                "conform": {
+                    "number": "SiteAddressNumber",
+                    "street": [
+                        "SiteAddressDirection",
+                        "SiteAddressStreet"
+                    ],
+                    "type": "geojson",
+                    "postcode": "zip"
+                }
+            }
         ],
-        "type": "geojson",
-        "postcode": "zip"
+        "buildings": []
     }
 }

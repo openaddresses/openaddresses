@@ -9,16 +9,23 @@
         "state": "in",
         "county": "Elkhart"
     },
-    "data": "https://elb2.39dn.com/arcgis/rest/services/eGISDynamicServices/ElkhartINDynamic/MapServer/59",
-    "type": "ESRI",
-    "skip": true,
-    "note": "39dn requested that we stop using data obtained from their servers on 2017-05-07",
-    "conform": {
-      "number": "CompleteAddressNumber",
-      "street": "CompleteStreetName",
-      "city": "USPS_PlaceName",
-      "region": "StateName",
-      "postcode": "Zipcode",
-      "type": "geojson"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://elb2.39dn.com/arcgis/rest/services/eGISDynamicServices/ElkhartINDynamic/MapServer/59",
+                "conform": {
+                    "number": "CompleteAddressNumber",
+                    "street": "CompleteStreetName",
+                    "city": "USPS_PlaceName",
+                    "region": "StateName",
+                    "postcode": "Zipcode",
+                    "type": "geojson"
+                },
+                "note": "39dn requested that we stop using data obtained from their servers on 2017-05-07",
+                "skip": true
+            }
+        ],
+        "buildings": []
     }
 }

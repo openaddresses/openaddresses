@@ -9,21 +9,28 @@
         "state": "pa",
         "county": "Lancaster"
     },
-    "data": "https://gis.co.lancaster.pa.us/arcgis/rest/services/LayerServices/AddressPoints/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADRNUM",
-        "street": [
-            "FDPRE",
-            "FNAME",
-            "FTYPE",
-            "FDSUF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://gis.co.lancaster.pa.us/arcgis/rest/services/LayerServices/AddressPoints/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ADRNUM",
+                    "street": [
+                        "FDPRE",
+                        "FNAME",
+                        "FTYPE",
+                        "FDSUF"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITNUM"
+                    ],
+                    "city": "MUNI"
+                }
+            }
         ],
-        "unit": [
-          "UNITTYPE",
-          "UNITNUM"
-        ],
-        "city": "MUNI"
+        "buildings": []
     }
 }

@@ -9,18 +9,25 @@
         "state": "wy",
         "county": "Park"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/nvkelso/5a5bf6/ParkCountyADDRESS_POINTS_point.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": {
-            "function": "prefixed_number",
-            "field": "DLVRY_ADD"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "DLVRY_ADD"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/nvkelso/5a5bf6/ParkCountyADDRESS_POINTS_point.zip",
+                "conform": {
+                    "type": "shapefile",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "DLVRY_ADD"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "DLVRY_ADD"
+                    }
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
     }
 }

@@ -17,21 +17,28 @@
         "county": "Burleigh",
         "city": "Bismarck"
     },
-    "data": "https://services1.arcgis.com/XxHmL09eFqJWI0gE/arcgis/rest/services/Landbase/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-            "PREFIX",
-            "ST_NAME",
-            "ST_TYPE",
-            "SUFFIX"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://services1.arcgis.com/XxHmL09eFqJWI0gE/arcgis/rest/services/Landbase/FeatureServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "SUFFIX"
+                    ],
+                    "unit": "UNIT",
+                    "city": "PCN",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "PCN",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

@@ -9,24 +9,31 @@
         "state": "fl",
         "county": "Collier"
     },
-    "attribution": "Collier County",
-    "data": "https://apps3.colliergov.net/downloads/siteaddresspoint.zip",
-    "website": "http://www.colliergov.net/Index.aspx?page=2713",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-          "UNITTYPE",
-          "UNITID"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "https://apps3.colliergov.net/downloads/siteaddresspoint.zip",
+                "website": "http://www.colliergov.net/Index.aspx?page=2713",
+                "conform": {
+                    "type": "shapefile",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALI"
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "attribution": "Collier County"
+            }
         ],
-        "city": "MUNICIPALI"
+        "buildings": []
     }
 }

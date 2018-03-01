@@ -9,12 +9,19 @@
         "state": "id",
         "county": "Custer"
     },
-    "data": "http://maps.greenwoodmap.com/custer/download/address.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "HOUSE_NUM",
-        "street": "FULL_STR",
-        "type": "shapefile"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://maps.greenwoodmap.com/custer/download/address.zip",
+                "conform": {
+                    "number": "HOUSE_NUM",
+                    "street": "FULL_STR",
+                    "type": "shapefile"
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
     }
 }

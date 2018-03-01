@@ -9,22 +9,29 @@
         "state": "ne",
         "county": "Douglas"
     },
-    "data": "https://gis.dogis.org/arcgis/rest/services/OpenData_layers/MapServer/33",
-    "website": "http://www.dogis.org/",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "PREADDRNUM",
-            "ADDRNUM",
-            "ADDRNUMSUF"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://gis.dogis.org/arcgis/rest/services/OpenData_layers/MapServer/33",
+                "website": "http://www.dogis.org/",
+                "conform": {
+                    "type": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": "FULLNAME",
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "street": "FULLNAME",
-        "city": "MUNICIPALITY",
-        "postcode": "ZIP"
+        "buildings": []
     }
 }

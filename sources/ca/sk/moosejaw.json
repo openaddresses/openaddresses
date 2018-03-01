@@ -11,18 +11,25 @@
             ]
         }
     },
-    "data": "http://gis.moosejaw.ca/arcgis/rest/services/Public/Parcels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "FullAddress"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "FullAddress"
-        },
-        "city": "Municipality"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.moosejaw.ca/arcgis/rest/services/Public/Parcels/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FullAddress"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FullAddress"
+                    },
+                    "city": "Municipality"
+                }
+            }
+        ],
+        "buildings": []
     }
 }

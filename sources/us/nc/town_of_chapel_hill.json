@@ -11,19 +11,26 @@
         "state": "nc",
         "town": "Chapel Hill"
     },
-    "data": "https://gisweb.townofchapelhill.org/arcgis/rest/services/CorporateData/AddressPoints/MapServer/0",
-    "type": "ESRI",
-    "website": "http://gis.townofchapelhill.org/download_data/",
-    "conform": {
-        "type": "geojson",
-        "number": "HouseNum",
-        "street": [
-            "DirPrefix",
-            "Name",
-            "Type",
-            "DirSuffix"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "https://gisweb.townofchapelhill.org/arcgis/rest/services/CorporateData/AddressPoints/MapServer/0",
+                "website": "http://gis.townofchapelhill.org/download_data/",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HouseNum",
+                    "street": [
+                        "DirPrefix",
+                        "Name",
+                        "Type",
+                        "DirSuffix"
+                    ],
+                    "unit": "UnitNum",
+                    "region": "State"
+                }
+            }
         ],
-        "unit": "UnitNum",
-        "region": "State"
+        "buildings": []
     }
 }

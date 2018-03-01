@@ -1,38 +1,51 @@
 {
-    "conform": {
-        "encoding": "EUCKR",
-        "lat": "POINT_Y",
-        "srs": "EPSG:2097",
-        "number": "LNDN_MA_SN",
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        },
-        "type": "csv",
-        "lon": "POINT_X",
-        "skiplines": 2,
-        "headers": 2
-    },
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
-    "compression": "zip",
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
-    "type": "http",
     "coverage": {
         "city": "구로구",
         "country": "kr",
         "state": "seoul",
-        "geometry": { "type": "Point", "coordinates": [126.859, 37.499] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                126.859,
+                37.499
+            ]
+        }
     },
-    "skip": true,
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1072",
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-kurogu.zip"
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-kurogu.zip",
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1072",
+                "conform": {
+                    "encoding": "EUCKR",
+                    "lat": "POINT_Y",
+                    "srs": "EPSG:2097",
+                    "number": "LNDN_MA_SN",
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    },
+                    "type": "csv",
+                    "lon": "POINT_X",
+                    "skiplines": 2,
+                    "headers": 2
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "skip": true
+            }
+        ],
+        "buildings": []
+    }
 }

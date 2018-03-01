@@ -16,15 +16,22 @@
         "state": "tx",
         "city": "Waco"
     },
-    "data": "http://gis.ci.waco.tx.us/arcgis/rest/services/WacoApps/ParcelPublicAccess/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.ci.waco.tx.us/arcgis/rest/services/WacoApps/ParcelPublicAccess/MapServer/2",
+                "conform": {
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "type": "geojson"
+                }
+            }
         ],
-        "type": "geojson"
+        "buildings": []
     }
 }

@@ -9,29 +9,36 @@
         "state": "mn",
         "county": "Big Stone"
     },
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "type": "ESRI",
-    "data": "http://gis.co.big-stone.mn.us/arcgis/rest/services/BigStone_Public/MapServer/0",
-    "website": "http://www.bigstonecounty.org/gis/gis.vbhtml",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.co.big-stone.mn.us/arcgis/rest/services/BigStone_Public/MapServer/0",
+                "website": "http://www.bigstonecounty.org/gis/gis.vbhtml",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                },
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                }
+            }
+        ],
+        "buildings": []
     }
 }

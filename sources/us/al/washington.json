@@ -9,17 +9,24 @@
         "state": "al",
         "county": "Washington"
     },
-    "data": "http://146.148.59.120/arcgis/rest/services/Parcels/Washington/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "PhysAddr"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "PhysAddr"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://146.148.59.120/arcgis/rest/services/Parcels/Washington/MapServer/0",
+                "conform": {
+                    "type": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PhysAddr"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PhysAddr"
+                    }
+                }
+            }
+        ],
+        "buildings": []
     }
 }

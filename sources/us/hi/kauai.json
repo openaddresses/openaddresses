@@ -9,17 +9,24 @@
         "state": "hi",
         "county": "kauai"
     },
-    "data": "http://geodata.hawaii.gov/arcgis/rest/services/KOHA/koha/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ST_NO",
-        "street": [
-            "ST_DIR",
-            "ST_NAME",
-            "ST_TYPE"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://geodata.hawaii.gov/arcgis/rest/services/KOHA/koha/MapServer/1",
+                "conform": {
+                    "type": "geojson",
+                    "number": "ST_NO",
+                    "street": [
+                        "ST_DIR",
+                        "ST_NAME",
+                        "ST_TYPE"
+                    ],
+                    "unit": "UNIT_NO",
+                    "region": "STATE"
+                }
+            }
         ],
-        "unit": "UNIT_NO",
-        "region": "STATE"
+        "buildings": []
     }
 }

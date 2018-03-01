@@ -16,19 +16,26 @@
         "state": "sc",
         "city": "Charleston"
     },
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSEFULL",
-        "street": [
-            "PREDIR",
-            "STNAME",
-            "STTYPE",
-            "SUFDIR"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://gis.charleston-sc.gov/arcgis/rest/services/External/OData_Central/MapServer/0",
+                "website": "http://data.charleston-sc.opendata.arcgis.com/",
+                "conform": {
+                    "type": "geojson",
+                    "number": "HOUSEFULL",
+                    "street": [
+                        "PREDIR",
+                        "STNAME",
+                        "STTYPE",
+                        "SUFDIR"
+                    ],
+                    "city": "CMTYNAME",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "city": "CMTYNAME",
-        "postcode": "ZIPCODE"
-    },
-    "type": "ESRI",
-    "data": "http://gis.charleston-sc.gov/arcgis/rest/services/External/OData_Central/MapServer/0",
-    "website": "http://data.charleston-sc.opendata.arcgis.com/"
+        "buildings": []
+    }
 }

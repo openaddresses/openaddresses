@@ -9,18 +9,25 @@
         "state": "tx",
         "county": "Schleicher"
     },
-    "data": "http://mapsatbis.com/bisgis/rest/services/SchleicherWeb/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": "SchleicherCad.dbo.Accounts.situs_num",
-        "street": [
-            "SchleicherCad.dbo.Accounts.situs_street_prefx",
-            "SchleicherCad.dbo.Accounts.situs_street",
-            "SchleicherCad.dbo.Accounts.situs_street_sufix"
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://mapsatbis.com/bisgis/rest/services/SchleicherWeb/MapServer/0",
+                "conform": {
+                    "number": "SchleicherCad.dbo.Accounts.situs_num",
+                    "street": [
+                        "SchleicherCad.dbo.Accounts.situs_street_prefx",
+                        "SchleicherCad.dbo.Accounts.situs_street",
+                        "SchleicherCad.dbo.Accounts.situs_street_sufix"
+                    ],
+                    "city": "SchleicherCad.dbo.Accounts.situs_city",
+                    "region": "SchleicherCad.dbo.Accounts.situs_state",
+                    "postcode": "SchleicherCad.dbo.Accounts.situs_zip",
+                    "type": "geojson"
+                }
+            }
         ],
-        "city": "SchleicherCad.dbo.Accounts.situs_city",
-        "region": "SchleicherCad.dbo.Accounts.situs_state",
-        "postcode": "SchleicherCad.dbo.Accounts.situs_zip",
-        "type": "geojson"
+        "buildings": []
     }
 }

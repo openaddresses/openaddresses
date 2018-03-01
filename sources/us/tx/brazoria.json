@@ -9,22 +9,29 @@
         "state": "tx",
         "county": "Brazoria"
     },
-    "website": "http://www.brazoriacad.org/gis-downloads.html",
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/PARCELS_W_OWNER.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": {
-          "function": "regexp",
-          "field": "situs_disp",
-          "pattern": "^([0-9]+)"
-        },
-        "street": {
-          "function": "regexp",
-          "field": "situs_disp",
-          "pattern": "^(?:[0-9]+ )(.*)",
-          "replace": "$1"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "http",
+                "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/PARCELS_W_OWNER.zip",
+                "website": "http://www.brazoriacad.org/gis-downloads.html",
+                "conform": {
+                    "type": "shapefile",
+                    "number": {
+                        "function": "regexp",
+                        "field": "situs_disp",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "situs_disp",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                },
+                "compression": "zip"
+            }
+        ],
+        "buildings": []
     }
 }
