@@ -18,45 +18,6 @@
     },
     "conform": {
         "type": "shapefile-polygon",
-        "unit": {
-            "function": "chain",
-            "variable": "unit_wip",
-            "functions": [
-                {
-                    "function": "remove_postfix",
-                    "field": "fulladdres",
-                    "field_to_remove": "postcode"
-                },
-                {
-                    "function": "regexp",
-                    "field": "unit_wip",
-                    "pattern": "^(.*)[ ]+VIC",
-                    "replace": "$1"
-                },
-                {
-                    "function": "remove_postfix",
-                    "field": "unit_wip",
-                    "field_to_remove": "suburb"
-                },
-                {
-                    "function": "regexp",
-                    "field": "unit_wip",
-                    "pattern": "^(.*),",
-                    "replace": "$1"
-                },
-                {
-                    "function": "remove_postfix",
-                    "field": "unit_wip",
-                    "field_to_remove": "street"
-                },
-                {
-                    "function": "regexp",
-                    "field": "unit_wip",
-                    "pattern": "(?:^(.*)\/.*$)|(?:([]).*)",
-                    "replace": "$1"
-                }
-            ]
-        },
         "number": {
             "function": "chain",
             "variable": "number_wip",
