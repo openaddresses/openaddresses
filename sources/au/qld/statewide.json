@@ -12,27 +12,72 @@
         "addresses": [
             {
                 "type": "http",
-                "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/au-queensland.zip",
-                "website": "https://data.qld.gov.au/dataset/property-address-queensland--data-package/resource/544b9d7f-aadd-4eba-b5d2-7a1f1ef0c83f",
+                "data": "https://www.alantgeo.com.au/share/DP_QLD_DCDB_WOS_CUR.zip",
+                "website": "http://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={4091CAF1-50E6-4BC3-B3D4-229AA318231A}",
                 "conform": {
-                    "headers": -1,
-                    "type": "csv",
-                    "lon": "COLUMN21",
+                    "type": "gdb",
+                    "file": "DP_QLD_DCDB_WOS_CUR.gdb",
+                    "layer": "QLD_ADDRESS_QAMF",
+                    "unit": "UNIT_NUMBER",
+                    "number": "STREET_NUMBER",
                     "street": [
-                        "COLUMN14",
-                        "COLUMN15"
+                        "STREET_NAME",
+                        "STREET_TYPE"
                     ],
-                    "csvsplit": "|",
-                    "lat": "COLUMN20",
-                    "file": "DP_PROP_LOCATION_INDEXQLD/WholeOfState_20140530.txt",
-                    "number": "COLUMN10"
+                    "city": "CITY_PLACE",
+                    "region": "STATE",
+                    "postcode": "POSTCODE"
                 },
                 "compression": "zip",
-                "license": "http://dds.information.qld.gov.au/DDS/GetLicenseImage.license?ID=15",
-                "note": "must use web interface & email workflow to download fresh data. cached archive acquired 2014-11-20. License URL has changed; I have contacted the government for confirmation of CC-BY-like provisions.",
-                "attribution": "State of Queensland"
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url" : "http://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "© State of Queensland (Department of Natural Resources, Mines and Energy) 2018",
+                    "share-alike": false
+                },
+                "note": "must use web interface & email workflow to download fresh data."
             }
         ],
-        "buildings": []
+        "buildings": [
+            {
+                "type": "http",
+                "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/andrewharvey-openaddr/444f64/DP_QLD_BUILDING_AREAS.zip",
+                "website": "http://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={BC24B68C-50D2-41E8-B0AE-FF4EB2913FDA}",
+                "conform": {
+                    "type": "shapefile"
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url" : "http://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "© State of Queensland (Department of Natural Resources, Mines and Energy) 2018",
+                    "share-alike": false
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "type": "http",
+                "data": "https://www.alantgeo.com.au/share/DP_QLD_DCDB_WOS_CUR.zip",
+                "website": "http://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={4091CAF1-50E6-4BC3-B3D4-229AA318231A}",
+                "conform": {
+                    "type": "gdb",
+                    "file": "DP_QLD_DCDB_WOS_CUR.gdb",
+                    "layer": "QLD_CADASTRE_DCDB",
+                    "lot": "LOT",
+                    "plan": "PLAN"
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url" : "http://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "© State of Queensland (Department of Natural Resources, Mines and Energy) 2018",
+                    "share-alike": false
+                }
+            }
+        ]
     }
 }
