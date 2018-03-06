@@ -1,5 +1,6 @@
 {
     "coverage": {
+        "AU ASGS LGA": "64010",
         "country": "au",
         "state": "tas",
         "city": "Launceston",
@@ -12,16 +13,46 @@
         "attribution": true,
         "share-alike": false
     },
-    "website": "http://data.gov.au/dataset/launceston-city-council-addresses",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "Address",
-        "street": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "layers": {
+        "addresses": [
+            {
+                "type": "ESRI",
+                "data": "http://mapping.launceston.tas.gov.au/arcgis/rest/services/Public/Addresses/MapServer/0",
+                "website": "http://data.gov.au/dataset/launceston-city-council-addresses",
+                "conform": {
+                    "type": "geojson",
+                    "number": "Address",
+                    "street": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                },
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/3.0/au/deed.en",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "attribution": "City of Launceston"
+            }
+        ],
+        "buildings": [
+            {
+                "type": "ESRI",
+                "data": "http://mapping.launceston.tas.gov.au/arcgis/rest/services/Public/DetailSurvey/MapServer/6",
+                "website": "http://opendata.launceston.tas.gov.au/datasets/building-footprints",
+                "conform": {
+                    "type": "geojson",
+                    "height": "Height_m"
+                },
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/3.0/au/deed.en",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "attribution": "City of Launceston"
+            }
+        ]
     }
 }

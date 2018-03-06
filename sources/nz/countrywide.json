@@ -6,27 +6,69 @@
         },
         "country": "nz"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/andrewharvey-openaddr/11b89a/lds-nz-street-address-SHP.zip",
-    "website": "https://data.linz.govt.nz/layer/53353-nz-street-address/",
-    "license": {
-        "url": "http://creativecommons.org/licenses/by/3.0/nz/",
-        "text": "CC BY 3.0",
-        "attribution": true,
-        "attribution name": "Land Information New Zealand",
-        "share-alike": false
-    },
-    "language": "en",
-    "note": "This data is curated and produced by the Land Information New Zealand (LINZ) Data Service",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "id": "address_id",
-        "unit": "unit_value",
-        "number": "address_nu",
-        "street": "full_road_",
-        "city": "suburb_loc",
-        "district": "town_city",
-        "accuracy": 2,
-        "type": "shapefile"
+    "layers": {
+        "addresses": [
+            {
+                "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/andrewharvey-openaddr/11b89a/lds-nz-street-address-SHP.zip",
+                "website": "https://data.linz.govt.nz/layer/53353-nz-street-address/",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/3.0/nz/",
+                    "text": "CC BY 3.0",
+                    "attribution": true,
+                    "attribution name": "Land Information New Zealand",
+                    "share-alike": false
+                },
+                "language": "en",
+                "note": "This data is curated and produced by the Land Information New Zealand (LINZ) Data Service",
+                "type": "http",
+                "compression": "zip",
+                "conform": {
+                    "id": "address_id",
+                    "unit": "unit_value",
+                    "number": "address_nu",
+                    "street": "full_road_",
+                    "city": "suburb_loc",
+                    "district": "town_city",
+                    "accuracy": 2,
+                    "type": "shapefile"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "type": "http",
+                "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/andrewharvey-openaddr/3e9b7e/lds-nz-building-outlines-pilot-SHP.zip",
+                "website": "https://data.linz.govt.nz/layer/53413-nz-building-outlines-pilot/",
+                "conform": {
+                    "type": "shapefile"
+                },
+                "compression": "zip",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/3.0/nz/",
+                    "text": "CC BY 3.0 NZ",
+                    "attribution": true,
+                    "attribution name": "Land Information New Zealand",
+                    "share-alike": false
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "type": "http",
+                "data": "https://www.alantgeo.com.au/share/lds-nz-primary-parcels-SHP.zip",
+                "website": "https://data.linz.govt.nz/layer/50772-nz-primary-parcels/",
+                "conform": {
+                    "type": "shapefile"
+                },
+                "compression": "zip",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/3.0/nz/",
+                    "text": "CC BY 3.0 NZ",
+                    "attribution": true,
+                    "attribution name": "Land Information New Zealand",
+                    "share-alike": false
+                }
+            }
+        ]
     }
 }
