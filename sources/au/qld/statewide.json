@@ -28,10 +28,16 @@
         "number": "STREET_NUMBER",
         "street": [
             "STREET_NAME",
-            "STREET_TYPE"
+            "STREET_TYPE",
+            "STREET_SUFFIX"
         ],
-        "city": "CITY_PLACE",
+        "city": {
+            "function": "regexp",
+            "field": "CITY_PLACE",
+            "pattern": "^([^,]*)"
+        },
         "region": "STATE",
-        "postcode": "POSTCODE"
+        "postcode": "POSTCODE",
+        "notes": "LOTPLAN"
     }
 }
