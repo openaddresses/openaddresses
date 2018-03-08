@@ -8,18 +8,17 @@
         "state": "ca",
         "city": "Los Angeles"
     },
-    "data": "http://zimas.lacity.org/arcgis/rest/services/D_QUERYLAYERS/MapServer/11",
+    "year": "2018",
+    "website": "https://data.lacity.org/",
+    "data": "http://data.openaddresses.io/cache/uploads/ingalls/us-ca-city_of_los_angeles.zip",
+    "note": "Cached from: https://data.lacity.org/",
     "type": "ESRI",
     "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "Address"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "Address"
-        },
-        "postcode": "Zip"
+        "type": "shapefile",
+        "id": "PIN",
+        "unit": "HSE_FRAC_N",
+        "number": "HSE_NBR",
+        "street": [ "HSE_DIR_CD", "STR_NM", "STR_SFX_CD", "STR_SFX_DI" ],
+        "postcode": "ZIP_CD"
     }
 }
