@@ -1,0 +1,25 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [ -118.2439, 34.0544 ]
+        },
+        "country": "us",
+        "state": "ca",
+        "city": "Los Angeles"
+    },
+    "data": "http://zimas.lacity.org/arcgis/rest/services/D_QUERYLAYERS/MapServer/11",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "Address"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "Address"
+        },
+        "postcode": "Zip"
+    }
+}
