@@ -1,121 +1,88 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "title": "Source",
-    "description": "An OpenAddresses source",
+    "description": "An OpenAddresses Source",
     "type": "object",
-    "required": [
-        "type",
-        "data",
-        "coverage"
-    ],
+    "required": [ "coverage" ],
     "additionalProperties": false,
     "properties": {
-        "type": {
-            "type": "string",
-            "enum": [
-                "http",
-                "ftp",
-                "ESRI"
-            ]
-        },
-        "data": {
-            "type": "string"
-        },
         "coverage": {
-            "$ref": "#/definitions/coverage"
+            "type": "object",
+            "required": [ "country" ],
+            "properties": {
+                "country": { "type": "string" },
+                "province": { "type": "string" },
+                "state": { "type": "string" },
+                "county": { "type": "string" },
+                "city": { "type": "string" },
+                "geometry": { "$ref": "http://json.schemastore.org/geojson#/definitions/geometry" }
+            }
         },
-        "website": {
-            "type": "string"
-        },
-        "email": {
-            "type": "string",
-            "format": "email"
-        },
-        "conform": {
-            "$ref": "#/definitions/conform"
-        },
-        "compression": {
-            "type": "string",
-            "enum": ["zip"]
-        },
-        "license": {
-            "oneOf": [
-                { "type": "string" },
-                { "$ref": "#/definitions/license" }
-            ]
-        },
-        "note": {
-            "oneOf": [
-                { "type": "string" },
-                { "type": "object" }
-            ]
-        },
-        "attribution": {
-            "type": "string"
-        },
-        "language": {
-            "type": "string",
-            "pattern": "^[a-zA-Z]{2,3}$"
-        },
-        "year": {
-            "oneOf": [
-                { "type": "string" },
-                { "type": "integer" }
-            ]
-        },
-        "skip": {
-            "type": "boolean"
-        },
-        "test": {
-            "$ref": "#/definitions/test"
+        "official_website": { "type": "string", "format": "uri" },
+        "official_phone": { "type": "string" },
+        "layers": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [ "addresses", "buildings" ],
+            "properties": {
+                "addresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["data", "type"],
+                        "properties": {
+                            "type": { "type": "string", "enum": [ "http", "ftp", "ESRI" ] },
+                            "data": { "type": "string" },
+                            "website": { "type": "string" },
+                            "email": { "type": "string", "format": "email" },
+                            "conform": { "$ref": "#/definitions/address_conform" },
+                            "compression": { "type": "string", "enum": ["zip"] },
+                            "license": { "oneOf": [ { "type": "string" }, { "$ref": "#/definitions/license" } ] },
+                            "note": { "oneOf": [ { "type": "string" }, { "type": "object" } ] },
+                            "attribution": { "type": "string" },
+                            "language": { "type": "string", "pattern": "^[a-zA-Z]{2,3}$" },
+                            "year": { "oneOf": [ { "type": "string" }, { "type": "integer" } ] },
+                            "skip": { "type": "boolean" },
+                            "test": { "$ref": "#/definitions/test" }
+                        }
+                    }
+                },
+                "buildings": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": ["data", "type"],
+                        "properties": {
+                            "type": { "type": "string", "enum": [ "http", "ftp", "ESRI" ] },
+                            "data": { "type": "string" },
+                            "website": { "type": "string" },
+                            "email": { "type": "string", "format": "email" },
+                            "conform": { "$ref": "#/definitions/building_conform" },
+                            "compression": { "type": "string", "enum": ["zip"] },
+                            "license": { "oneOf": [ { "type": "string" }, { "$ref": "#/definitions/license" } ] },
+                            "note": { "oneOf": [ { "type": "string" }, { "type": "object" } ] },
+                            "attribution": { "type": "string" },
+                            "language": { "type": "string", "pattern": "^[a-zA-Z]{2,3}$" },
+                            "year": { "oneOf": [ { "type": "string" }, { "type": "integer" } ] },
+                            "skip": { "type": "boolean" },
+                            "test": { "$ref": "#/definitions/test" }
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
-        "coverage": {
-            "type": "object",
-            "required": [
-                "country"
-            ],
-            "properties": {
-                "country": {
-                    "type": "string"
-                },
-                "province": {
-                    "type": "string"
-                },
-                "state": {
-                    "type": "string"
-                },
-                "county": {
-                    "type": "string"
-                },
-                "city": {
-                    "type": "string"
-                },
-                "geometry": {
-                    "$ref": "http://json.schemastore.org/geojson#/definitions/geometry"
-                }
-            }
-        },
         "license": {
             "type": "object",
             "properties": {
-                "url": {
-                    "type": "string",
-                    "format": "uri"
-                },
-                "text": {
-                    "type": "string"
-                },
-                "attribution": {
-                    "type": "boolean"
-                },
-                "attribution name": {
-                    "type": "string"
-                },
-                "share-alike": {
-                    "type": "boolean"
-                }
+                "url": { "type": "string", "format": "uri" },
+                "text": { "type": "string" },
+                "attribution": { "type": "boolean" },
+                "attribution name": { "type": "string" },
+                "share-alike": { "type": "boolean" }
             }
         },
         "base_conform_field_value": {
@@ -129,63 +96,23 @@
                 }
             ]
         },
-        "conform": {
-            "description": "top-level conform object definition",
+        "address_conform": {
+            "description": "top-level address conform object definition",
             "type": "object",
             "required": ["number", "street"],
             "additionalProperties": false,
             "properties": {
-                "type": {
-                    "type": "string",
-                    "enum": [
-                        "geojson",
-                        "shapefile",
-                        "shapefile-polygon",
-                        "gdb",
-                        "xml",
-                        "csv"
-                    ]
-                },
-                "addrtype": {
-                    "type": "string"
-                },
-                "accuracy": {
-                    "description": "https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md#accuracy",
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 5
-                },
-                "srs": {
-                    "type": "string",
-                    "pattern": "EPSG:[0-9]+"
-                },
-                "file": {
-                    "type": "string"
-                },
-                "layer": {
-                    "description": "specifies a layer to use in the GDB",
-                    "oneOf": [
-                        { "type": "integer" },
-                        { "type": "string" }
-                    ]
-                },
-                "encoding": {
-                    "type": "string"
-                },
-                "csvsplit": {
-                    "type": "string"
-                },
-                "headers": {
-                    "type": "integer",
-                    "minimum": -1
-                },
-                "skiplines": {
-                    "type": "integer",
-                    "minimum": 1
-                },
-                "notes": {
-                    "type": "string"
-                },
+                "type": { "type": "string", "enum": [ "geojson", "shapefile", "shapefile-polygon", "gdb", "xml", "csv" ] },
+                "addrtype": { "type": "string" },
+                "accuracy": { "description": "https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md#accuracy", "type": "integer", "minimum": 1, "maximum": 5 },
+                "srs": { "type": "string", "pattern": "EPSG:[0-9]+" },
+                "file": { "type": "string" },
+                "layer": { "description": "specifies a layer to use in the GDB", "oneOf": [ { "type": "integer" }, { "type": "string" } ] },
+                "encoding": { "type": "string" },
+                "csvsplit": { "type": "string" },
+                "headers": { "type": "integer", "minimum": -1 },
+                "skiplines": { "type": "integer", "minimum": 1 },
+                "notes": { "type": "string" },
                 "id": {
                     "description": "unique identifier for the address row",
                     "oneOf": [
@@ -299,6 +226,30 @@
                         { "type": "null" },
                         { "type": "string" },
                         { "$ref": "#/definitions/function_regexp" }
+                    ]
+                }
+            }
+        },
+        "building_conform": {
+            "description": "top-level building conform object definition",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": { "type": "string", "enum": [ "geojson", "shapefile", "shapefile-polygon", "gdb" ] },
+                "srs": { "type": "string", "pattern": "EPSG:[0-9]+" },
+                "file": { "type": "string" },
+                "layer": { "description": "specifies a layer to use in the GDB", "oneOf": [ { "type": "integer" }, { "type": "string" } ] },
+                "notes": { "type": "string" },
+                "id": {
+                    "description": "unique identifier for the building",
+                    "oneOf": [
+                        { "$ref": "#/definitions/base_conform_field_value" }
+                    ]
+                },
+                "height": {
+                    "description": "height of the building in meters",
+                    "oneOf": [
+                        { "$ref": "#/definitions/base_conform_field_value" }
                     ]
                 }
             }
