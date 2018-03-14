@@ -28,8 +28,16 @@
         ],
         "city": "SUBURB",
         "postcode": "POSTCODE",
-        "lon": "EASTING",
-        "lat": "NORTHING",
+        "lon": {
+            "function": "regexp",
+            "field": "EASTING",
+            "pattern": "^([^|]*)"
+        },
+        "lat": {
+            "function": "regexp",
+            "field": "NORTHING",
+            "pattern": "^([^|]*)"
+        },
         "notes": "PROPERTY DESCRIPTION"
     }
 }
