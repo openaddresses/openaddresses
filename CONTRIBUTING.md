@@ -191,7 +191,9 @@ Function | Note
 [`remove_postfix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the end of another field value
 [`regexp`](ATTRIBUTE_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field
 
-Sources vary in how they store data so several approaches to conforming attributes may apply.   
+Sources vary in how they store data so several approaches to conforming attributes may apply.
+
+The `lon` and `lat` attribute tags don't support attribute functions.
 
 #### Coverage Object
 
