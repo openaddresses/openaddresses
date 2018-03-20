@@ -7,7 +7,7 @@ gml:
 	rm -rf spain_catastre
 	mkdir spain_catastre
 	rm -f gml_urls.txt
-	cat xml/* | grep -a zip | sed -e "s/^.*http/http/" -e "s/\" type=.*$$//" | grep -a -v "</id" | grep -a -v "<inspire" >> spain_catastre/gml_urls.latin1.txt
+	grep -a zip xml/* | sed -e "s/^.*http/http/" -e "s/\" type=.*$$//" | grep -a -v "</id" | grep -a -v "<inspire" >> spain_catastre/gml_urls.latin1.txt
 	cat spain_catastre/gml_urls.latin1.txt | iconv -f latin1 -t utf8 > spain_catastre/gml_urls.txt
 	rm -f spain_catastre/gm_urls.latin1.txt
 	mkdir spain_catastre/gml
