@@ -10,19 +10,104 @@
         "county": "Dawes"
     },
     "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/CityofChadronMGMT/MapServer/16",
+    "note": "while this layer name suggests it's just a city, it does contain the addresses for the entire county.",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "PROPADDRESS",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "PROPADDRESS"
         },
         "street": {
             "function": "regexp",
             "field": "PROPADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "pattern": "^(?:[0-9]+(?: 1/2)?)?(.+?),"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": ", (.+?),"
+        },
+        "region": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "\\b(NE)\\b"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "PROPADDRESS",
+            "pattern": "\\b(\\d{5})$"
         }
+    },
+    "test": {
+        "enabled": true,
+        "description": "these are the tests that exercise valid inputs for Dawes County, NE, USA",
+        "acceptance-tests": [
+            {
+                "description": "standard address",
+                "inputs": {
+                  "PROPADDRESS": "129 LAKE ST, CHADRON, NE 69337"
+                },
+                "expected": {
+                  "number": "129",
+                  "street": "LAKE ST",
+                  "city": "CHADRON",
+                  "region": "NE",
+                  "postcode": "69337"
+                }
+            },
+            {
+                "description": "fractional street name",
+                "inputs": {
+                  "PROPADDRESS": "12733 HWY 2/71, CRAWFORD, NE 69339"
+                },
+                "expected": {
+                  "number": "12733",
+                  "street": "HWY 2/71",
+                  "city": "CRAWFORD",
+                  "region": "NE",
+                  "postcode": "69339"
+                }
+            },
+            {
+                "description": "fractional house number",
+                "inputs": {
+                  "PROPADDRESS": "175 1/2 KING ST, CHADRON, NE 69337"
+                },
+                "expected": {
+                  "number": "175 1/2",
+                  "street": "KING ST",
+                  "city": "CHADRON",
+                  "region": "NE",
+                  "postcode": "69337"
+                }
+            },
+            {
+                "description": "no house number",
+                "inputs": {
+                  "PROPADDRESS": "WHITNEY LAKE RD, WHITNEY, NE 69367"
+                },
+                "expected": {
+                  "number": "",
+                  "street": "WHITNEY LAKE RD",
+                  "city": "WHITNEY",
+                  "region": "NE",
+                  "postcode": "69367"
+                }
+            },
+            {
+                "description": "no house number, numbered street",
+                "inputs": {
+                  "PROPADDRESS": "HWY 385, CHADRON, NE 69337"
+                },
+                "expected": {
+                  "number": "",
+                  "street": "HWY 385",
+                  "city": "CHADRON",
+                  "region": "NE",
+                  "postcode": "69337"
+                }
+            }
+        ]
     }
 }
