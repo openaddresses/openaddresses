@@ -16,12 +16,39 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "Address",
-        "street": {
+        "unit": {
             "function": "regexp",
-            "field": "Address",
-            "pattern": "^(?:[0-9]+ )(.*)",
+            "field": "houselabel",
+            "pattern": "^([^\\/]+)\\/",
             "replace": "$1"
+        },
+        "number": {
+            "function": "regexp",
+            "field": "houselabel",
+            "pattern": "\/?(.*)$",
+            "replace": "$1"
+        },
+        "street": {
+            "function": "remove_prefix",
+            "field": "address",
+            "field_to_remove": "houselabel"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "\\s([A-Z ]+)\\s(?:\\w*)\\s(?:[0-9]*)$",
+            "replace": "$1"
+        },
+        "region": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "\\s(\\w*)\\s(?:[0-9]*)$",
+            "replace": "$1"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "address",
+            "pattern": "([0-9]*)$"
         }
     }
 }
