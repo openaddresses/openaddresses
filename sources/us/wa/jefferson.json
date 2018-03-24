@@ -10,26 +10,19 @@
         "county": "Jefferson"
     },
     "license": "http://www.co.jefferson.wa.us/idms/mapserver.shtml",
-    "type": "http",
-    "compression": "zip",
-    "note": "parcel polygon shapefile Parcels.shp, address columns: sihse, sistn, Situs_City, silcd (zip5)",
-    "year": "2014",
-    "data": "http://www.co.jefferson.wa.us/idms/shapefiles/Parcels_Public.zip",
-    "website": "http://www.co.jefferson.wa.us/idms/shapefiles.shtml",
+    "type": "ESRI",
+    "note": "previous data was parcel polygons at http://www.co.jefferson.wa.us/idms/shapefiles/Parcels_Public.zip",
+    "data": "https://gisweb.jeffcowa.us/server/rest/services/OpenData/OpenData/MapServer/19",
+    "website": "https://hub.arcgis.com/datasets/b3654c5205da4e05b5e63f3d04b0ebc1_19",
     "conform": {
-        "type": "shapefile-polygon",
-        "number": {
-            "function": "regexp",
-            "field": "Situs_Addr",
-            "pattern": "^(\\S+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Situs_Addr",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "Situs_City",
-        "postcode": "Situs_Zip"
+        "type": "geojson",
+        "number": "Add_Number",
+        "street": [
+            "St_PreDir",
+            "StreetName",
+            "St_PosType",
+        ],
+        "city": "Post_Comm",
+        "postcode": "Post_Code"
     }
 }
