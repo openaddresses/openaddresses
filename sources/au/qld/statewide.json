@@ -1,23 +1,4 @@
 {
-    "compression": "zip",
-    "conform": {
-        "headers": -1,
-        "type": "csv",
-        "lon": "COLUMN21",
-        "street": [
-            "COLUMN14",
-            "COLUMN15"
-        ],
-        "csvsplit": "|",
-        "lat": "COLUMN20",
-        "file": "DP_PROP_LOCATION_INDEXQLD/WholeOfState_20140530.txt",
-        "number": "COLUMN10"
-    },
-    "attribution": "State of Queensland",
-    "website": "https://data.qld.gov.au/dataset/property-address-queensland--data-package/resource/544b9d7f-aadd-4eba-b5d2-7a1f1ef0c83f",
-    "note": "must use web interface & email workflow to download fresh data. cached archive acquired 2014-11-20. License URL has changed; I have contacted the government for confirmation of CC-BY-like provisions.",
-    "type": "http",
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/au-queensland.zip",
     "coverage": {
         "ISO 3166": {
             "alpha2": "AU-QLD",
@@ -27,5 +8,36 @@
         "state": "queensland",
         "country": "au"
     },
-    "license": "http://dds.information.qld.gov.au/DDS/GetLicenseImage.license?ID=15"
+    "type": "http",
+    "data": "https://www.alantgeo.com.au/share/DP_QLD_DCDB_WOS_CUR.zip",
+    "website": "http://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={4091CAF1-50E6-4BC3-B3D4-229AA318231A}",
+    "compression": "zip",
+    "license": {
+        "text": "CC BY 4.0",
+        "url" : "http://creativecommons.org/licenses/by/4.0/",
+        "attribution": true,
+        "attribution name": "© State of Queensland (Department of Natural Resources, Mines and Energy) 2018",
+        "share-alike": false
+    },
+    "note": "must use web interface & email workflow to download fresh data.",
+    "conform": {
+        "type": "gdb",
+        "file": "DP_QLD_DCDB_WOS_CUR.gdb",
+        "layer": "QLD_ADDRESS_QAMF",
+        "unit": "UNIT_NUMBER",
+        "number": "STREET_NUMBER",
+        "street": [
+            "STREET_NAME",
+            "STREET_TYPE",
+            "STREET_SUFFIX"
+        ],
+        "city": {
+            "function": "regexp",
+            "field": "CITY_PLACE",
+            "pattern": "^([^,]*)"
+        },
+        "region": "STATE",
+        "postcode": "POSTCODE",
+        "notes": "LOTPLAN"
+    }
 }
