@@ -1,0 +1,24 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [ -73.454, 41.3948 ]
+        },
+        "country": "us",
+        "state": "ct",
+        "city": "Danbury"
+    },
+    "data": "http://webmap.jws.com/taxmap/proxy.ashx?http://fsgis:6080/arcgis/rest/services/TaxMap/CT_Danbury_public/MapServer/30",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "D_GIS_ADDR_NUM",
+        "street": {
+            "function": "remove_prefix",
+            "field": "D_GIS_SITE_ADDR",
+            "field_to_remove": "D_GIS_ADDR_NUM"
+        },
+        "city": "D_GIS_SITE_CITY",
+        "postcode": "D_GIS_SITE_ZIP"
+    }
+}
