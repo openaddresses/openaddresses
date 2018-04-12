@@ -14,15 +14,17 @@
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "PropertyLocation",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "PropertyLocation"
         },
         "street": {
-            "function": "regexp",
+            "function": "postfixed_street",
             "field": "PropertyLocation",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "may_contain_units": true
+        },
+        "unit": {
+            "function": "postfixed_unit",
+            "field": "PropertyLocation"
         }
     }
 }
