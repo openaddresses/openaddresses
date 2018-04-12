@@ -12,18 +12,24 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
+        "number": "ADDR_HN",
+        "street": [
+            "ADDR_PD",
+            "ADDR_PT",
+            "ADDR_SN",
+            "ADDR_ST",
+            "ADDR_SD"
+        ],
+        "unit": [
+            "UNITTYPE",
+            "UNITID"
+        ],
         "city": "ADD_CITY",
+        "district": {
+            "funciton": "regexp",
+            "field": "ORIGIN",
+            "pattern": "^.+ (?:County)$"
+        },
         "postcode": "ZIPCODE",
         "region": "STATE"
     }
