@@ -1,0 +1,22 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "TW-ILA",
+            "country": "Taiwan"
+        },
+        "country": "tw"
+    },
+    "data": "http://wa.e-land.gov.tw/arcgis/rest/services/Ilan/Address/MapServer/3",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+          "function": "remove_prefix",
+            "field": "ADDRESSALL",
+            "field_to_remove": "ROAD"
+        },
+        "street": "ROAD",
+        "city": "VILLAGENAM",
+        "district": "TOWNNAME"
+    }
+}
