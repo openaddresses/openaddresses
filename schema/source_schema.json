@@ -44,6 +44,9 @@
         { "$ref": "#/definitions/license" }
       ]
     },
+    "contact": {
+      "$ref": "#/definitions/contact"
+    },
     "note": {
       "oneOf": [
         { "type": "string" },
@@ -115,6 +118,33 @@
         },
         "share-alike": {
           "type": "boolean"
+        },
+        "presumed": {
+          "type": "boolean"
+        },
+        "remarks": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
         }
       }
     },
