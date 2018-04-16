@@ -25,10 +25,11 @@
         "lat": "gd2000_ycoord",
         "id": "address_id",
         "unit": "unit_value",
-        "number": [
-            "address_number",
-            "address_number_suffix"
-        ],
+        "number": {
+            "function": "format",
+            "fields": ["address_number", "address_number_suffix", "address_number_high"],
+            "format": "$1$2-$3"
+        },
         "street": "full_road_name",
         "city": "suburb_locality",
         "district": "town_city",
