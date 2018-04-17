@@ -17,13 +17,13 @@
         "unit": {
             "function": "regexp",
             "field": "housenumber",
-            "pattern": "^(.*)/.*$",
+            "pattern": "^(?:(.*)/.*)|()$",
             "replace": "$1"
         },
         "number": {
             "function": "regexp",
             "field": "housenumber",
-            "pattern": "/?(.*)$",
+            "pattern": "^(?:.*/(.*))|(.*)$",
             "replace": "$1"
         },
         "street": {
