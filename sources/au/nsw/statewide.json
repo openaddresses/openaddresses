@@ -1,0 +1,53 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "AU-NSW",
+            "state": "New South Wales",
+            "country": "Australia"
+        },
+        "country": "au",
+        "state": "New South Wales"
+    },
+    "data": "https://tianjara.net/data/NSW_Property.geojson",
+    "website": "http://spatialservices.finance.nsw.gov.au/mapping_and_imagery/lpi_web_services",
+    "attribution": "©Department Finance, Services & Innovation 2018",
+    "type": "http",
+    "conform": {
+        "type": "geojson",
+        "number": "housenumber",
+        "street": {
+            "function": "chain",
+            "variable": "street_wip",
+            "functions": [
+                {
+                    "function": "remove_prefix",
+                    "field": "address",
+                    "field_to_remove": "housenumber"
+                },
+                {
+                    "function": "regexp",
+                    "field": "street_wip",
+                    "pattern": "^(.*) (TWEED HEADS|SYDNEY)$",
+                    "replace": "$1"
+                }
+            ]
+        },
+        "city": {
+            "function": "chain",
+            "variable": "city_wip",
+            "functions": [
+                {
+                    "function": "remove_prefix",
+                    "field": "address",
+                    "field_to_remove": "housenumber"
+                },
+                {
+                    "function": "regexp",
+                    "field": "city_wip",
+                    "pattern": "^(?:.*) (TWEED HEADS|SYDNEY)$",
+                    "replace": "$1"
+                }
+            ]
+        }
+    }
+}
