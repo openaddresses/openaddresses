@@ -11,26 +11,24 @@
     },
     "data": "http://webmap1.co.warren.oh.us/gisdatadownloads/WCGISDownload_Cadastral.zip",
     "license": "http://www.co.warren.oh.us/warrengis/Parcel_Data/Terms_Parcel.aspx",
+    "website": "http://www.co.warren.oh.us/warrengis/",
     "type": "http",
     "compression": "zip",
     "conform": {
         "type": "gdb",
         "file": "WCGISDownload_Cadastral/ParcelsAndRoads.gdb",
-        "layer": "Parcel_Point",
-        "number": "ADDR_NUM",
+        "layer": "Warren_Parcels",
+        "number": [
+             "STREET_NBR",
+             "STREET_FRCTN"
+        ],
         "street": [
-            "PRE_DIR",
-            "PRE_TYPE",
-            "STR_NAME",
-            "STR_TYPE",
-            "SUF_DIR"
+            "STREET_DIR",
+            "STREET_NAME",
+            "STREET_TYPE"
         ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUM"
-        ],
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "city": "MAIL_ADDRESS_3",
+        "region": "TOWNSHIP_NAME",
+        "postcode": "MAIL_ZIP"
     }
 }
