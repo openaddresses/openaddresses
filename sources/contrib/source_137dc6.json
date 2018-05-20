@@ -1,0 +1,39 @@
+{
+    "type": "ESRI",
+    "data": "http://gis2.co.dakota.mn.us/arcgis/rest/services/DCGIS_OL_PropertyInformation/MapServer/3",
+    "coverage": {},
+    "website": {},
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "field": "ADDRESS",
+            "function": "prefixed_number"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "ADDRESS",
+            "may_contain_units": true
+        },
+        "unit": {
+            "function": "join",
+            "fields": [
+                "BLDG_NUM",
+                "CO_CODE"
+            ]
+        }
+    },
+    "compression": {},
+    "license": {
+        "url": "http://opendatacommons.org/licenses/odbl/1.0/",
+        "attribution": true,
+        "attribution name": "Nextzen",
+        "share-alike": true
+    },
+    "contact": "Tester McTesty",
+    "email": "test@test.com",
+    "note": {},
+    "language": {},
+    "year": {},
+    "skip": {},
+    "test": {}
+}
