@@ -25,7 +25,7 @@ There are two functions that are specifically designed to combine two or more fi
 The `join` function combines any number of fields using a delimiter and is useful in cases where, for example, a complex house number is stored as two separate fields in the source data.  An example of this function comes from [Honolulu, HI](https://github.com/openaddresses/openaddresses/blob/master/sources/us/hi/honolulu.json):
 
 ```json
-"street": {
+"number": {
 	"function": "join",
 	"fields": ["HOUSEPRFX", "HOUSENUMBR"],
 	"separator": "-"
