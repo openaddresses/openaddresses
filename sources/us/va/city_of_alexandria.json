@@ -19,15 +19,12 @@
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "FULL_ADDS",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "FULL_ADDS"
         },
         "street": {
-            "function": "regexp",
-            "field": "FULL_ADDS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "function": "postfixed_street",
+            "field": "FULL_ADDS"
         },
         "postcode": "ZIP"
     }
