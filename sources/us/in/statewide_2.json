@@ -7,7 +7,7 @@
         "country": "us",
         "state": "in"
     },
-    "data": "http://maps.indiana.edu/arcgis/rest/services/Infrastructure/Streets_Address_Points_IDHS/MapServer/0",
+    "data": "http://maps.indiana.edu/arcgis/rest/services/Infrastructure/Streets_Address_Points_IGIO/MapServer/0",
     "website": "http://maps.indiana.edu/",
     "type": "ESRI",
     "conform": {
@@ -24,13 +24,9 @@
             "UNITTYPE",
             "UNITID"
         ],
-        "city": "ADD_CITY",
-        "district": {
-            "function": "regexp",
-            "field": "ORIGIN",
-            "pattern": "^.+ (?:County)$"
-        },
-        "postcode": "ZIPCODE",
-        "region": "STATE"
+        "city": "ADDRESS_CITY",
+        "district": "ADDRESS_COUNTY",
+        "postcode": "ADDRESS_ZIP",
+        "region": "STATE_NAME"
     }
 }
