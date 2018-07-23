@@ -1,0 +1,44 @@
+{
+    "type": "http",
+    "data": "http://maps.co.benton.or.us/gisdata/Address/houses.zip",
+    "license": {
+        "url": "http://opendatacommons.org/licenses/odbl/1.0/",
+        "attribution": true,
+        "attribution name": "Benton, OR",
+        "share-alike": true
+    },
+    "contact": {
+        "name": "Julian",
+        "email": "julian@simioni.org"
+    },
+    "note": {
+        "update frequency": "monthly"
+    },
+    "conform": {
+        "type": "shapefile",
+        "number": {
+            "fields": [
+                "STREET"
+            ],
+            "function": "prefixed_number"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "fields": [
+                "STREET"
+            ]
+        },
+        "city": [
+            "CITY"
+        ],
+        "region": [
+            "ST"
+        ],
+        "postcode": [
+            "ZIP"
+        ]
+    },
+    "coverage": {
+        "country": "xx"
+    }
+}
