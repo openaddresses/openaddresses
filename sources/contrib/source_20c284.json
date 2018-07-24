@@ -1,0 +1,42 @@
+{
+    "type": "http",
+    "data": "http://maps.co.benton.or.us/gisdata/Address/houses.zip",
+    "license": {},
+    "contact": {
+        "name": "Julian",
+        "email": "julian@simioni.org"
+    },
+    "note": {
+        "update frequency": "monthly"
+    },
+    "conform": {
+        "type": "shapefile",
+        "number": {
+            "fields": [
+                "STREET"
+            ],
+            "function": "prefixed_number"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "fields": [
+                "STREET"
+            ]
+        },
+        "unit": [
+            "UNITNUM"
+        ],
+        "city": [
+            "CITY"
+        ],
+        "region": [
+            "ST"
+        ],
+        "postcode": [
+            "ZIP"
+        ]
+    },
+    "coverage": {
+        "country": "xx"
+    }
+}
