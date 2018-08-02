@@ -9,18 +9,17 @@
         "state": "tx",
         "county": "Bandera"
     },
-    "data": "http://mapsatbis.com/bisgis/rest/services/BanderaWeb/MapServer/0",
+    "data": "https://webmap.trueautomation.com/arcgis/rest/services/BanderaMapSearch/MapServer/1",
     "type": "ESRI",
     "conform": {
-        "number": "BanderaCad.DBO.TempAccounts.situs_num",
-        "street": [
-            "BanderaCad.DBO.TempAccounts.situs_street_prefx",
-            "BanderaCad.DBO.TempAccounts.situs_street",
-            "BanderaCad.DBO.TempAccounts.situs_street_sufix"
-        ],
-        "city": "TempAccounts.DBO.Accounts.situs_city",
-        "region": "TempAccounts.DBO.Accounts.situs_state",
-        "postcode": "TempAccounts.DBO.Accounts.situs_zip",
+        "number": {
+            "function": "prefixed_number",
+            "field": "Bandera.dbo.web_map_property.situs"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "Bandera.dbo.web_map_property.situs",
+        },
         "type": "geojson"
     }
 }
