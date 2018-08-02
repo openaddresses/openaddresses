@@ -16,24 +16,13 @@
         "state": "ma",
         "city": "Cambridge"
     },
-    "data": "https://raw.githubusercontent.com/cambridgegis/cambridgegis_data/master/Address/Address_Points/Master_Address_Database_with_MapLot_and_BldgID.csv",
+    "data": "https://raw.githubusercontent.com/cambridgegis/cambridgegis_data/master/Address/Address_Points/ADDRESS_AddressPoints.geojson",
     "website": "https://github.com/cambridgegis/cambridgegis_data/",
     "type": "http",
     "conform": {
-        "type": "csv",
+        "type": "geojson",
         "id": "address_id",
-        "number": {
-            "function": "format",
-            "fields": [
-                "street_number",
-                "street_number_suffix"
-            ],
-            "format": "$1-$2"
-        },
-        "street": [
-            "street_name",
-            "street_suffix",
-            "dir_suffix"
-        ]
+        "number": "StNm",
+        "street": "StName"
     }
 }
