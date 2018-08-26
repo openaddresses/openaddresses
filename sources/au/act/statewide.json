@@ -1,30 +1,30 @@
 {
     "coverage": {
-        "country": "AU",
-        "state": "ACT",
-        "city": "Canberra"
+        "ISO 3166": {
+            "alpha2": "AU-ACT"
+        },
+        "country": "au",
+        "state": "Australian Capital Territory"
     },
-    "data": "http://actmapi-actgov.opendata.arcgis.com/datasets/afa1d909a0ae427cb9c1963e0d2e80ca_4.geojson",
-    "website": "http://actmapi-actgov.opendata.arcgis.com/datasets/afa1d909a0ae427cb9c1963e0d2e80ca_4",
+    "data": "http://actmapi.act.gov.au/datadownload/Shapefile/MGA94_55/ACT_data.zip",
+    "website": "http://app.actmapi.act.gov.au/download.html",
     "license": {
         "url": "https://creativecommons.org/licenses/by/4.0/",
         "text": "CC BY 4.0",
         "attribution": true,
-        "attribution name": "ACT Blocks from <a href='http://actmapi.act.gov.au/'>ACTMapi</a> &copy;ACT Government"
+        "attribution name": "ACT Addresses from <a href='http://actmapi.act.gov.au/'>ACTMapi</a> &copy;ACT Government"
     },
     "language": "en",
     "type": "http",
+    "compression": "zip",
     "conform": {
-        "type": "geojson",
-        "accuracy": 2,
-        "number": {
-            "function": "prefixed_number",
-            "field": "ADDRESSES"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "ADDRESSES"
-        },
-        "city": "DIVISION_NAME"
+        "type": "shapefile",
+        "file": "ACT_Address.shp",
+        "unit": "UNIT_TITLE",
+        "number": "STREET_NUM",
+        "notes": "BUILDING_N",
+        "street": ["STREET_NAM", "STREET_TYP"],
+        "city": "DIVISION",
+        "id": "ADDRESS_ID"
     }
 }
