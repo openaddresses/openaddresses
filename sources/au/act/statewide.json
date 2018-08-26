@@ -4,17 +4,27 @@
         "state": "ACT",
         "city": "Canberra"
     },
-    "data": "http://www.actmapi.act.gov.au/actmapi/rest/services/epd_ssl/addresses/MapServer/0",
-    "website": "http://www.actmapi.act.gov.au/html5.html",
-    "attribution": "ACT Government, Australia",
-    "type": "ESRI",
+    "data": "http://actmapi-actgov.opendata.arcgis.com/datasets/afa1d909a0ae427cb9c1963e0d2e80ca_4.geojson",
+    "website": "http://actmapi-actgov.opendata.arcgis.com/datasets/afa1d909a0ae427cb9c1963e0d2e80ca_4",
+    "license": {
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "text": "CC BY 4.0",
+        "attribution": true,
+        "attribution name": "ACT Blocks from <a href='http://actmapi.act.gov.au/'>ACTMapi</a> &copy;ACT Government"
+    },
+    "language": "en",
+    "type": "http",
     "conform": {
         "type": "geojson",
-        "number": "STREET_NUMBER",
-        "street": [
-            "STREET_NAME",
-            "STREET_TYPE"
-        ],
-        "district": "DISTRICT"
+        "accuracy": 2,
+        "number": {
+            "function": "prefixed_number",
+            "field": "ADDRESSES"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "ADDRESSES"
+        },
+        "city": "DIVISION_NAME"
     }
 }
