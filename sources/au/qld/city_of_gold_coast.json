@@ -1,0 +1,31 @@
+{
+    "type": "http",
+    "data": "https://opendata.arcgis.com/datasets/d5709ac526b0496c8bd2593881f8dfb1_0.geojson",
+    "website": "http://data-goldcoast.opendata.arcgis.com/datasets/cadastre",
+    "language": "en",
+    "coverage": {
+        "country": "Australia",
+        "state": "Queensland",
+        "city": "City of Gold Coast"
+    },
+    "license": {
+        "url": "https://creativecommons.org/licenses/by/3.0/au/",
+        "text": "CC BY 3.0 AU",
+        "attribution": true,
+        "attribution name": "City of Gold Coast",
+        "share-alike": false
+    },
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "HOUSE_ADDRESS"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "HOUSE_ADDRESS"
+        },
+        "city": "SUBURB",
+        "postcode": "POST_CODE"
+    }
+}
