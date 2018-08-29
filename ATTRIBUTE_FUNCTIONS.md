@@ -26,9 +26,9 @@ The `join` function combines any number of fields using a delimiter and is usefu
 
 ```json
 "number": {
-	"function": "join",
-	"fields": ["HOUSEPRFX", "HOUSENUMBR"],
-	"separator": "-"
+    "function": "join",
+    "fields": ["HOUSEPRFX", "HOUSENUMBR"],
+    "separator": "-"
 }
 ```
 
@@ -37,8 +37,8 @@ Understandably, the Honolulu County GIS department stores these two fields separ
 
 ```json
 {
-	"HOUSEPRFX": "91",
-	"HOUSENUMBR": "921"
+    "HOUSEPRFX": "91",
+    "HOUSENUMBR": "921"
 }
 ```
 
@@ -60,9 +60,9 @@ An example of the `format` function can be in the [Netherlands](https://github.c
 
 ```json
 "number": {
-	"function": "format",
-	"fields": ["huisnummer", "huisletter", "huisnummertoevoeging"],
-	"format": "$1$2-$3"
+    "function": "format",
+    "fields": ["huisnummer", "huisletter", "huisnummertoevoeging"],
+    "format": "$1$2-$3"
 }
 ```
 
@@ -78,9 +78,9 @@ The Netherlands GIS administration stores these three fields separately but they
 
 ```json
 {
-	"huisnummer": "25",
-	"huisletter": "k",
-	"huisnummertoevoeging": 143
+    "huisnummer": "25",
+    "huisletter": "k",
+    "huisnummertoevoeging": 143
 }
 ```
 
@@ -110,7 +110,7 @@ An example usage of this is in [Asotin County, WA](https://github.com/openaddres
 
 ```json
 "number": {
-	"function": "prefixed_number",
+    "function": "prefixed_number",
     "field": "address"
 },
 "street": {
@@ -123,7 +123,7 @@ This example is very useful where a data source has very plain vanilla single "n
 
 ```json
 {
-	"address": "123 Main Street"
+    "address": "123 Main Street"
 }
 ```
 
@@ -176,7 +176,7 @@ Some data sources contain, for unknown but legitimate reasons, two fields where 
 ```json
 "number": "ADDR_NUM",
 "street": {
-	"function": "remove_prefix",
+    "function": "remove_prefix",
     "field": "FULL_NAME",
     "field_to_remove": "ADDR_NUM"
 }
@@ -188,8 +188,8 @@ Here's an example data source record:
 
 ```json
 {
-	"ADDR_NUM": "2130",
-	"FULL_NAME": "2130 MAPLE AV NE"
+    "ADDR_NUM": "2130",
+    "FULL_NAME": "2130 MAPLE AV NE"
 }
 ```
 
@@ -197,8 +197,8 @@ The usage of `remove_prefix` above would remove the `ADDR_NUM` from the beginnin
 
 ```json
 {
-	"number": "2130",
-	"street": "MAPLE AV NE"
+    "number": "2130",
+    "street": "MAPLE AV NE"
 }
 ```
 
@@ -228,13 +228,13 @@ An example of `regexp` usage can be found in [Yolo County, California](https://g
 "number": {
     "function": "regexp",
     "field": "Address",
-	"pattern": "^([0-9]+)"
+    "pattern": "^([0-9]+)"
 },
 "street": {
     "function": "regexp",
     "field": "Address",
     "pattern": "^(?:[0-9]+ )(.*)",
-	"replace": "$1"
+    "replace": "$1"
 }
 ```
 
@@ -242,7 +242,7 @@ The `pattern` for `number` matches a contiguous block of one or more numbers fro
 
 ```json
 {
-	"Address": "617 TUMBLEWEED TRL"
+    "Address": "617 TUMBLEWEED TRL"
 }
 ```
 
@@ -250,8 +250,8 @@ The application of the `number` and `street` regular expressions would result in
 
 ```json
 {
-	"number": "617",
-	"street": "TUMBLEWEED TRL"
+    "number": "617",
+    "street": "TUMBLEWEED TRL"
 }
 ```
 
