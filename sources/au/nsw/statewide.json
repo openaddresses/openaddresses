@@ -21,7 +21,17 @@
     "type": "http",
     "conform": {
         "type": "geojson",
-        "number": "housenumber",
+        "unit": {
+            "function": "regexp",
+            "field": "housenumber",
+            "pattern": "^(.+)/"
+        },
+        "number": {
+            "function": "regexp",
+            "field": "housenumber",
+            "pattern": "^(?:.*/)(.*)",
+            "replace": "$1"
+        },
         "street": {
             "function": "chain",
             "variable": "street_wip",
