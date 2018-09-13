@@ -10,7 +10,7 @@
         "county": "Garfield"
     },
     "type": "ftp",
-    "data": "http://www.garfield-county.com/geographic-information-systems/documents/parcels/ParcelsSHP.zip",
+    "data": "https://www.garfield-county.com/geographic-information-systems/documents/parcels/ParcelsSHP.zip",
     "website": "http://www.garfield-county.com/geographic-information-systems/index.aspx",
     "compression": "zip",
     "conform": {
@@ -21,6 +21,11 @@
         },
         "street": {
             "function": "postfixed_street",
+            "field": "PHYSADDRES",
+            "may_contain_units": true
+        },
+        "unit": {
+            "function": "postfied_unit",
             "field": "PHYSADDRES"
         },
         "postcode": "PHYSZIP",
