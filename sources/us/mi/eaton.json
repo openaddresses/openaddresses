@@ -9,20 +9,23 @@
         "state": "mi",
         "county": "Eaton"
     },
-    "data": "https://services2.arcgis.com/c9l1e4fKpsCnqD7H/ArcGIS/rest/services/Parcels/FeatureServer/0",
+    "data": "https://services2.arcgis.com/c9l1e4fKpsCnqD7H/arcgis/rest/services/Site_Address_Points_Shapefile/FeatureServer/0",
+    "note": "source is misconfigured according to ESRI addresses layer template, parts of street name are in address fields",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "PSTLADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "PSTLADDRESS"
-        },
-        "city": "PSTLCITY",
-        "region": "PSTLSTATE",
-        "postcode": "PSTLZIP5"
+        "id": "SITEADDID",
+        "number": "ADDRNUM",
+        "street": [
+            "PREADDRNUM",
+            "FULLNAME",
+            "ADDRNUMSUF"
+        ],
+        "unit": [
+            "UNITTYPE",
+            "UNITID"
+        ],
+        "city": "MUNICIPALI",
+        "postcode": "ZIPCODE"
     }
 }
