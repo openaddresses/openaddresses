@@ -1,15 +1,170 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Source",
-    "description": "An OpenAddresses source",
-    "type": "object",
-    "required": [
-        "type",
-        "data",
-        "coverage"
-    ],
-    "additionalProperties": false,
-    "properties": {
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Source",
+  "description": "An OpenAddresses source",
+  "type": "object",
+  "required": [
+    "type",
+    "data",
+    "coverage"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "http",
+        "ftp",
+        "ESRI"
+      ]
+    },
+    "data": {
+      "type": "string"
+    },
+    "coverage": {
+      "$ref": "#/definitions/coverage"
+    },
+    "website": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "conform": {
+      "$ref": "#/definitions/conform"
+    },
+    "compression": {
+      "type": "string",
+      "enum": ["zip"]
+    },
+    "license": {
+      "oneOf": [
+        { "type": "string" },
+        { "$ref": "#/definitions/license" }
+      ]
+    },
+    "contact": {
+      "$ref": "#/definitions/contact"
+    },
+    "note": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "object" }
+      ]
+    },
+    "attribution": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^[a-zA-Z]{2,3}$"
+    },
+    "year": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "integer" }
+      ]
+    },
+    "skip": {
+      "type": "boolean"
+    },
+    "test": {
+      "$ref": "#/definitions/test"
+    }
+  },
+  "definitions": {
+    "coverage": {
+      "type": "object",
+      "required": [
+        "country"
+      ],
+      "properties": {
+        "country": {
+          "type": "string"
+        },
+        "province": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "county": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "geometry": {
+          "$ref": "http://json.schemastore.org/geojson#/definitions/geometry"
+        }
+      }
+    },
+    "license": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "text": {
+          "type": "string"
+        },
+        "attribution": {
+          "type": "boolean"
+        },
+        "attribution name": {
+          "type": "string"
+        },
+        "share-alike": {
+          "type": "boolean"
+        },
+        "presumed": {
+          "type": "boolean"
+        },
+        "remarks": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        }
+      }
+    },
+    "base_conform_field_value": {
+      "description": "convenience definition for one of null, string, or string array",
+      "oneOf": [
+        { "type": "string" },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        }
+      ]
+    },
+    "conform": {
+      "description": "top-level conform object definition",
+      "type": "object",
+      "required": ["number", "street"],
+      "additionalProperties": false,
+      "properties": {
         "type": {
             "type": "string",
             "enum": [

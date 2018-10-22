@@ -3,10 +3,10 @@
         "US Census": {
             "geoid": "34025",
             "name": "Monmouth County",
-            "state": "Nevada"
+            "state": "New Jersey"
         },
         "country": "us",
-        "state": "nv",
+        "state": "nj",
         "county": "Monmouth"
     },
     "data": "http://maps.co.monmouth.nj.us/maps/rest/services/PublicData/Parcels/MapServer/0",
@@ -14,15 +14,17 @@
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "PropertyLocation",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "PropertyLocation"
         },
         "street": {
-            "function": "regexp",
+            "function": "postfixed_street",
             "field": "PropertyLocation",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "may_contain_units": true
+        },
+        "unit": {
+            "function": "postfixed_unit",
+            "field": "PropertyLocation"
         }
     }
 }

@@ -22,7 +22,7 @@ fi
 # read possibly existing credentials...
 source $credentialsFile
 
-echo Credentials for http://egp.gu.gov.si/egp/
+echo Credentials for https://egp.gu.gov.si/egp/
 
 if [ -z "$username" ]; then
     echo -n "	Username: ";
@@ -54,8 +54,9 @@ fi
 wget --quiet \
      --save-cookies cookies.txt \
      --keep-session-cookies \
-     http://egp.gu.gov.si/egp/login.html
-# example login.html content:;
+     --ca-certificate=sigov-ca2.pem \
+     "https://egp.gu.gov.si/egp/login.html"
+# example login.html content:
 # <input type="hidden" name="_csrf" value="089070ed-b40a-4e3c-ab22-422de0daffff" />
 csrftoken="`sed -n 's/.*name="_csrf"\s\+value="\([^"]\+\).*/\1/p' login.html`"
 rm login.html
@@ -69,10 +70,11 @@ loginFormData="username=${username}&password=${password}&_csrf=${csrftoken}"
 wget --quiet --load-cookies cookies.txt \
      --save-cookies cookies.txt \
      --keep-session-cookies \
-     --referer http://egp.gu.gov.si/egp/ \
+     --referer https://egp.gu.gov.si/egp/ \
      --post-data "${loginFormData}" \
      --delete-after \
-     http://egp.gu.gov.si/egp/login.html
+     --ca-certificate=sigov-ca2.pem \
+     "https://egp.gu.gov.si/egp/login.html"
 
 # Now grab the data we care about.
 
@@ -80,19 +82,22 @@ wget --quiet --load-cookies cookies.txt \
 wget --load-cookies cookies.txt \
      --directory-prefix "${dest}" \
      --content-disposition -N \
-     "http://egp.gu.gov.si/egp/download-file.html?id=105&format=10&d96=0"
+     --ca-certificate=sigov-ca2.pem \
+     "https://egp.gu.gov.si/egp/download-file.html?id=105&format=10&d96=0"
 
 #RPE_UL.ZIP
 wget --load-cookies cookies.txt \
      --directory-prefix "${dest}" \
      --content-disposition -N \
-     "http://egp.gu.gov.si/egp/download-file.html?id=106&format=10&d96=0"
+     --ca-certificate=sigov-ca2.pem \
+    "https://egp.gu.gov.si/egp/download-file.html?id=106&format=10&d96=0"
 
 #RPE_HS.ZIP
 wget --load-cookies cookies.txt \
      --directory-prefix "${dest}" \
      --content-disposition -N \
-     "http://egp.gu.gov.si/egp/download-file.html?id=107&format=10&d96=0"
+     --ca-certificate=sigov-ca2.pem \
+     "https://egp.gu.gov.si/egp/download-file.html?id=107&format=10&d96=0"
 
 rm cookies.txt
 rm login.htm*

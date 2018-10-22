@@ -1,0 +1,20 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "on",
+        "county": "Greater Sudbury"
+    },
+    "website": "http://opendata.greatersudbury.ca/datasets/address-points-layer",
+    "data": "https://gis.greatersudbury.ca/arcgis/rest/services/Public/OpenData/MapServer/3",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": "ADDRESSNUMBER",
+        "street": {
+            "function": "remove_prefix",
+            "field": "FULLADDRESSTEXT",
+            "field_to_remove": "ADDRESSNUMBER"
+        },
+        "city": "COMMUNITY"
+    }
+}
