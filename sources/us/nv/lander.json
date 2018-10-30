@@ -12,12 +12,13 @@
     "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/LanderNVFeatures/FeatureServer/3",
     "type": "ESRI",
     "conform": {
-        "number": "SiteAddressNumber",
+        "number": {
+            "function": "prefixed_number",
+            "field": "TSC_Site_Address",
         "street": [
-            "SiteAddressDirection",
-            "SiteAddressStreet"
+            "function": "postfixed_street",
+            "field": "TSC_Site_Address"
         ],
-        "type": "geojson",
-        "postcode": "zip"
+        "type": "geojson"
     }
 }
