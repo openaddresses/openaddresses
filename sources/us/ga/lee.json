@@ -5,25 +5,14 @@
         "state": "ga",
         "county": "Lee"
     },
-    "data": "http://data.openaddresses.io/cache/us-ga-lee_county.csv",
+    "data": "https://www.dropbox.com/s/jxbhf03sbjdes69/AddressPoints.zip?dl=1",
     "type": "http",
     "conform": {
-        "type": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "region": "REGION"
+        "type": "shapefile",
+        "id": "PARCEL_ID",
+        "unit": "UNIT",
+        "number": "HOUSE_NO",
+        "street": "STREET_NAM"
     }
 }
 
