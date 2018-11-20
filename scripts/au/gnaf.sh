@@ -19,8 +19,8 @@ sudo -u postgres psql -c 'CREATE EXTENSION postgis'
 # fetch data/resources, cached from:
 ## https://data.gov.au/dataset/psma-administrative-boundaries
 ## https://data.gov.au/dataset/geocoded-national-address-file-g-naf
-curl -s --retry 10 --location 'https://data.gov.au/dataset/bdcf5b09-89bc-47ec-9281-6b8e9ee147aa/resource/53c24b8e-4f55-4eed-a189-2fc0dcca6381/download/aug18_adminbounds_esrishapefileordbffile_20180827114039.zip' -o $TMP/gnaf-admin.zip &
-curl -s --retry 10 --location 'https://data.gov.au/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/4b084096-65e4-4c8e-abbe-5e54ff85f42f/download/aug18_gnaf_pipeseparatedvalue_20180827115521.zip' -o $TMP/gnaf.zip &
+curl -s --retry 10 --location 'https://data.gov.au/dataset/bdcf5b09-89bc-47ec-9281-6b8e9ee147aa/resource/53c24b8e-4f55-4eed-a189-2fc0dcca6381/download/nov18_adminbounds_esrishapefileordbffile_20181119195325.zip' -o $TMP/gnaf-admin.zip &
+curl -s --retry 10 --location 'https://data.gov.au/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/4b084096-65e4-4c8e-abbe-5e54ff85f42f/download/nov18_gnaf_pipeseparatedvalue_20181119200719.zip' -o $TMP/gnaf.zip &
 wait
 parallel "unzip -d $TMP/{} $TMP/{}.zip" ::: gnaf gnaf-admin
 rm -f $TMP/gnaf.zip $TMP/gnaf-admin.zip
@@ -90,7 +90,7 @@ chmod a+w $TMP/au.csv
 echo "COPY openaddresses TO '$TMP/au.csv' DELIMITER ',' CSV HEADER;" | psql -t -q postgres://gnafun:gnafpw@localhost/gnafdb
 
 mkdir /work/cache
-zip -j /work/cache/au-aug2018.zip $TMP/au.csv
+zip -j /work/cache/au-nov2018.zip $TMP/au.csv
 
 # clean up temporary files
 /etc/init.d/postgresql stop
