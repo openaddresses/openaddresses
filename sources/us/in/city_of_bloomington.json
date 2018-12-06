@@ -4,11 +4,11 @@
         "state": "in",
         "city": "bloomington"
     },
-    "data": "https://bloomington.in.gov/geoserver/publicgis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=publicgis:AddressPointsBloomington&outputFormat=application%2Fjson",
+    "data": "bloomington.in.gov/geoserver/publicgis/ows?service=WFS&version=1.1.0&request=GetFeature&typeName=publicgis:AddressPointsBloomington&outputFormat=shape-zip",
     "type": "http",
+    "compression": "zip",
     "conform": {
-        "type": "geojson",
-        "srs": "EPSG:2966",
+        "type": "shapefile",
         "number": "ST_NUMBER",
         "street": ["ST_DIR", "ST_NAME", "ST_SUFFIX", "POST_DIR"],
         "postcode": "ZIP"
