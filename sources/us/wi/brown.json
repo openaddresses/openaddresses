@@ -9,19 +9,21 @@
         "state": "wi",
         "county": "Brown"
     },
-    "data": "http://maps.gis.co.brown.wi.us/web_documents/LIO/addresses/BrownCountyWI_AddressPoints_20170605.zip",
-    "website": "http://maps.gis.co.brown.wi.us/web_documents/LIO/addresses/",
-    "type": "http",
+    "data": "https://gis.co.brown.wi.us/arcgis/rest/services/Addresses/MapServer/2",
+    "type": "ESRI",
     "conform": {
-        "type": "shapefile",
-        "file": "BrownCountyWI_AddressPoints_20170605.shp",
-        "id": "Address_ID",
-        "number": "AddressNum",
-        "street": {
-            "function": "remove_prefix",
-            "field": "Address",
-            "field_to_remove": "AddressNum"
-        },
-        "city": "MUNI"
+        "type": "geojson",
+        "number": [
+            "AddNum",
+            "AddNumSuffix"
+        ],
+        "street": [
+            "StreetPrefix",
+            "StreetName",
+            "StreetSuffix_BC"
+        ],
+        "unit": "UnitID",
+        "city": "Municipality",
+        "postcode": "ZIPCode"
     }
 }
