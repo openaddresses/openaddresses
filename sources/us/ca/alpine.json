@@ -1,0 +1,25 @@
+{
+    "coverage": {
+        "country": "us",
+        "state": "ca",
+        "county": "Alpine"
+    },
+    "attribution": "Alpine County",
+    "data": "https://gis2.cdfa.ca.gov/server/rest/services/Parcel_DM/MapServer/1",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "id": "PARCELAPN",
+        "number": {
+            "function": "prefixed_number",
+            "field": "SITE_ADDR"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "SITE_ADDR"
+        },
+        "city": "SITE_CITY",
+        "postcode": "SITE_ZIP",
+        "region": "SITE_STATE"
+    }
+}
