@@ -9,22 +9,20 @@
         "state": "id",
         "county": "Bonneville"
     },
-    "data": "http://maps.co.bonneville.id.us/arcgis/rest/services/Parcels/MapServer/0",
+    "data": "https://services2.arcgis.com/Xd5SMhLZ1h9t0F3b/ArcGIS/rest/services/Bonneville_Parcels/FeatureServer/0",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": [
-            "GRM_Main_dbo_WebM_ParcelData_SitusStrNum",
-            "GRM_Main_dbo_WebM_ParcelData_SitusStrNumSub"
-        ],
-        "street": [
-            "GRM_Main_dbo_WebM_ParcelData_SitusStrDir1",
-            "GRM_Main_dbo_WebM_ParcelData_SitusStrName",
-            "GRM_Main_dbo_WebM_ParcelData_SitusStrType",
-            "GRM_Main_dbo_WebM_ParcelData_SitusStrDir2"
-        ],
-        "unit": "GRM_Main_dbo_WebM_ParcelData_SitusUnitNum",
-        "city": "GRM_Main_dbo_WebM_ParcelData_SitusCity",
-        "postcode": "GRM_Main_dbo_WebM_ParcelData_SitusZip"
+        "id": "FID",
+        "number": {
+            "function": "prefixed_number",
+            "field": "ParcelAddr"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "ParcelAddress"
+        },
+        "city": "ParcelCity",
+        "postcode": "ParcelZIPC"
     }
 }
