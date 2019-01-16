@@ -13,16 +13,13 @@
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "number": "N_ADDRESS",
-        "street": [
-            "FEDIRP",
-            "FENAME",
-            "FETYPE",
-            "FEDIRS"
-        ],
-        "unit": "SUBUNIT",
-        "city": "CITY",
-        "region": "ST",
-        "postcode": "ZIP"
+        "number": {
+            "function": "prefixed_number",
+            "field": "SERV_ADD"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "SERV_ADD"
+        }
     }
 }
