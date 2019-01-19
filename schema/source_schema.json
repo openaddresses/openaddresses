@@ -4,23 +4,12 @@
   "description": "An OpenAddresses source",
   "type": "object",
   "required": [
+    "protocol",
     "data",
     "coverage"
   ],
-  "anyOf": [
-    {"required": ["type"]},
-    {"required": ["protocol"]}
-  ],
   "additionalProperties": false,
   "properties": {
-    "type": {
-      "type": "string",
-      "enum": [
-        "http",
-        "ftp",
-        "ESRI"
-      ]
-    },
     "protocol": {
       "type": "string",
       "enum": [
@@ -176,17 +165,6 @@
       "required": ["number", "street"],
       "additionalProperties": false,
       "properties": {
-        "type": {
-          "type": "string",
-          "enum": [
-            "geojson",
-            "shapefile",
-            "shapefile-polygon",
-            "gdb",
-            "xml",
-            "csv"
-          ]
-        },
         "format": {
           "type": "string",
           "enum": [
