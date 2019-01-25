@@ -17,21 +17,21 @@
             ]
         }
     },
-    "data": "http://107.20.209.214/ArcGIS/rest/services/JaffreyNH/JaffreyDynamic/MapServer/1",
-    "website": "http://www.town.jaffrey.nh.us/",
-    "type": "ESRI",
+    "data": "http://35.172.145.31/arcgis/rest/services/JaffreyNH/JaffreyDynamic/MapServer/0",
+    "website": "http://hosting.tighebond.com/jaffreynh_public/",
+    "protocol": "ESRI",
     "conform": {
         "number": {
             "function": "regexp",
-            "field": "Jaff_parcels.Address",
+            "field": "Jaffrey.Location",
             "pattern": "^(\\S+)"
         },
         "street": {
             "function": "regexp",
-            "field": "Jaff_parcels.Address",
+            "field": "Jaffrey.Location",
             "pattern": "^(?:\\S+ )(.*)",
             "replace": "$1"
         },
-        "type": "geojson"
+        "format": "geojson"
     }
 }

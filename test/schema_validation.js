@@ -126,7 +126,7 @@ function testSchemaItself(validate) {
 
         });
 
-        test.test('source without type should fail', (t) => {
+        test.test('source without protocol should fail', (t) => {
             const source = {
                 coverage: {
                     country: 'some country'
@@ -137,7 +137,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'type-less source should fail');
-            t.ok(isMissingPropertyError(validate, '', 'type'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '', '.protocol'), JSON.stringify(validate.errors));
             t.end();
 
         });
