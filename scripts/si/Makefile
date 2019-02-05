@@ -7,15 +7,15 @@ all:
 	./getSource.sh $(TMP)
 
 	# poor-man's git submodule:
-	if [ ! -d "./GeoCoordinateConverter" ];then \
-		git clone https://github.com/mrihtar/GeoCoordinateConverter ; \
-	fi
+	#if [ ! -d "./GeoCoordinateConverter" ];then \
+	#	git clone https://github.com/mrihtar/GeoCoordinateConverter ; \
+	#fi
 
-	cd GeoCoordinateConverter && $(MAKE) -f Makefile.unix gk-shp
+	#cd GeoCoordinateConverter && $(MAKE) -f Makefile.unix gk-shp
 
-	rm -r $(TMP)HS-etrs89 || true
-	mkdir -p $(TMP)HS-etrs89
-	./GeoCoordinateConverter/gk-shp -t 9 -dd $(TMP)HS/SI.GURS.RPE.PUB.HS.shp $(TMP)HS-etrs89/SI.GURS.RPE.PUB.HS-etrs89.shp
+	#rm -r $(TMP)HS-etrs89 || true
+	#mkdir -p $(TMP)HS-etrs89
+	#./GeoCoordinateConverter/gk-shp -t 9 -dd $(TMP)HS/SI.GURS.RPE.PUB.HS.shp $(TMP)HS-etrs89/SI.GURS.RPE.PUB.HS-etrs89.shp
 
 	./makeCSVs.sh $(TMP)
 	python addNames.py $(TMP)
