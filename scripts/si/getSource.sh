@@ -83,21 +83,21 @@ wget --load-cookies cookies.txt \
      --directory-prefix "${dest}" \
      --content-disposition -N \
      --ca-certificate=sigov-ca2.pem \
-     "https://egp.gu.gov.si/egp/download-file.html?id=105&format=10&d96=0"
+     "https://egp.gu.gov.si/egp/download-file.html?id=105&format=10&d96=1"
 
 #RPE_UL.ZIP
 wget --load-cookies cookies.txt \
      --directory-prefix "${dest}" \
      --content-disposition -N \
      --ca-certificate=sigov-ca2.pem \
-    "https://egp.gu.gov.si/egp/download-file.html?id=106&format=10&d96=0"
+    "https://egp.gu.gov.si/egp/download-file.html?id=106&format=10&d96=1"
 
 #RPE_HS.ZIP
 wget --load-cookies cookies.txt \
      --directory-prefix "${dest}" \
      --content-disposition -N \
      --ca-certificate=sigov-ca2.pem \
-     "https://egp.gu.gov.si/egp/download-file.html?id=107&format=10&d96=0"
+     "https://egp.gu.gov.si/egp/download-file.html?id=107&format=10&d96=1"
 
 rm cookies.txt
 rm login.htm*
