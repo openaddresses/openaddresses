@@ -1,38 +1,19 @@
 {
     "coverage": {
-        "geometry": {
-            "type": "Point",
-            "coordinates": [
-                -118.24,
-                33.83
-            ]
-        },
-        "US Census": {
-            "geoid": "0611530",
-            "name": "City of Carson",
-            "state": "California"
-        },
         "country": "us",
         "state": "ca",
         "city": "Carson"
     },
-    "data": "http://www.carsonproperty.info/ArcGIS/rest/services/basemap/MapServer/1",
-    "website": "http://ci.carson.ca.us/",
-    "attribution": "City of Carson",
-    "protocol": "ESRI",
+    "year": "2019",
+    "data": "http://data.openaddresses.io/cache/uploads/ingalls/us-ca-city_of_carson.zip",
+    "note": "Obtained Via FOIA Request",
+    "protocol": "http",
+    "compression": "zip",
     "conform": {
-        "format": "geojson",
-        "number": [
-          "SITENUMBER",
-          "SITEFRAC"
-        ],
-        "street": [
-          "SITEPREF",
-          "STREETNAME",
-          "STREETTYPE"
-        ],
+        "format": "shapefile",
         "unit": "SITEUNIT",
-        "city": "SITECITY",
+        "number": "SITENUMBER",
+        "street": ["SITEPREF", "SITESTREET", "", ""],
         "postcode": "SITEZIP"
     }
 }
