@@ -2,16 +2,31 @@
     "coverage": {
         "country": "AU",
         "state": "QLD",
-        "county": "Logan City"
+        "county": "Logan City Council"
     },
+    "language": "en",
+    "license": {
+        "url": "http://creativecommons.org/licenses/by/3.0",
+        "text": "CC BY 3.0 AU",
+        "attribution": true,
+        "attribution name": "Logan City Council",
+        "share-alike": false
+    },
+    "website": "http://data-logancity.opendata.arcgis.com/datasets/lcc-primary-property-address",
     "data": "https://services5.arcgis.com/ZUCWDRj8F77Xo351/ArcGIS/rest/services/LCC_Primary_Property_Address/FeatureServer/0",
-    "type": "ESRI",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
+        "format": "geojson",
+        "unit": {
+            "function": "regexp",
+            "field": "Start_Unit_Number",
+            "pattern": "^([1-9].*)"
+        },
         "number": "Start_House_Number",
         "street": "Street_Name",
-        "unit": "Start_Unit_Number",
-        "city": "Suburb_Name",
-        "postcode": "PostCode"
+        "city": "Suburb",
+        "region": "State",
+        "postcode": "Postcode",
+        "notes": "Formatted_Parcel_Desc"
     }
 }

@@ -1,0 +1,26 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "06003", "name": "Alpine County", "state": "California"},
+        "country": "us",
+        "state": "ca",
+        "county": "Alpine"
+    },
+    "attribution": "Alpine County",
+    "data": "https://gis2.cdfa.ca.gov/server/rest/services/Parcel_DM/MapServer/1",
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "id": "PARCELAPN",
+        "number": {
+            "function": "prefixed_number",
+            "field": "SITE_ADDR"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "SITE_ADDR"
+        },
+        "city": "SITE_CITY",
+        "postcode": "SITE_ZIP",
+        "region": "SITE_STATE"
+    }
+}

@@ -6,17 +6,11 @@
         "county": "Iron"
     },
     "data": "https://www.semogis.com/arcgis/rest/services/IronCo/IronAssess/MapServer/0",
-    "type": "ESRI",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITE_ADD"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITE_ADD"
-        },
-        "city": "SITE_CITY"
+        "format": "geojson",
+        "number": "HOUSENUM",
+        "street": "ADDRESS",
+        "city": "Site_City"
     }
 }

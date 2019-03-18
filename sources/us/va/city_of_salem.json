@@ -13,13 +13,24 @@
         "state": "va",
         "city": "Salem"
     },
-    "data": "http://gis.salemva.gov/ArcGIS/rest/services/ParcelDataNX/MapServer/19",
-    "type": "ESRI",
+    "data": "https://services7.arcgis.com/RL8aZgZHmJOdyNXk/arcgis/rest/services/Address_points/FeatureServer/0",
+    "protocol": "ESRI",
     "website": "http://gis.salemva.gov/",
     "conform": {
-        "street": "SalemGIS.DBO.RlEstD.street_name",
-        "number": "SalemGIS.DBO.RlEstD.street_number",
-        "type": "geojson",
-        "postcode": "salemgis.dbo.rlestd.zip_code"
+        "format": "geojson",
+        "number": "ADDRESS",
+        "street": [
+            "PRE",
+            "ST_NAME",
+            "SUFFIX",
+            "POST"
+        ],
+        "unit": [
+            "UNIT_TYPE",
+            "UNIT_NUM"
+        ],
+        "city": "CITY",
+        "region": "STATE",
+        "postcode": "ZIP"
     }
 }

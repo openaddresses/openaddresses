@@ -1,20 +1,30 @@
 {
     "coverage": {
-        "country": "AU",
-        "state": "ACT",
-        "city": "Canberra"
+        "ISO 3166": {
+            "alpha2": "AU-ACT"
+        },
+        "country": "au",
+        "state": "Australian Capital Territory"
     },
-    "data": "http://www.actmapi.act.gov.au/actmapi/rest/services/epd_ssl/addresses/MapServer/0",
-    "website": "http://www.actmapi.act.gov.au/html5.html",
-    "attribution": "ACT Government, Australia",
-    "type": "ESRI",
+    "data": "http://actmapi.act.gov.au/datadownload/Shapefile/MGA94_55/ACT_data.zip",
+    "website": "http://app.actmapi.act.gov.au/download.html",
+    "license": {
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "text": "CC BY 4.0",
+        "attribution": true,
+        "attribution name": "ACT Addresses from <a href='http://actmapi.act.gov.au/'>ACTMapi</a> &copy;ACT Government"
+    },
+    "language": "en",
+    "protocol": "http",
+    "compression": "zip",
     "conform": {
-        "type": "geojson",
-        "number": "STREET_NUMBER",
-        "street": [
-            "STREET_NAME",
-            "STREET_TYPE"
-        ],
-        "district": "DISTRICT"
+        "format": "shapefile",
+        "file": "ACT_Address.shp",
+        "unit": "UNIT_TITLE",
+        "number": "STREET_NUM",
+        "notes": "BUILDING_N",
+        "street": ["STREET_NAM", "STREET_TYP"],
+        "city": "DIVISION",
+        "id": "ADDRESS_ID"
     }
 }

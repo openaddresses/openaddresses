@@ -1,0 +1,35 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -75.757308,
+                39.677576
+            ]
+        },
+        "US Census": {
+            "geoid": "1050670",
+            "name": "City of Newark",
+            "state": "Delaware"
+        },
+        "country": "US",
+        "state": "DE",
+        "city": "Dover"
+    },
+    "data": "https://giswa.cityofnewarkde.us/arcgis_public/rest/services/TaxParcels/Newark_Parcels/MapServer/0",
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "FULL_ADDRE"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "FULL_ADDRE"
+        },
+        "city": "CITY",
+        "region": "STATE",
+        "postcode": "ZIP_CODE"
+    }
+}

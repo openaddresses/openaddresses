@@ -9,19 +9,27 @@
         "state": "md",
         "county": "Carroll"
     },
-    "data": "http://ccgovernment.carr.org/ccg/mapserver4/gis/webpage/download/ccg_AddressPoints.zip",
+    "data": "https://services.arcgis.com/Uf0DiYpD9NOFO5YH/arcgis/rest/services/AddressPoints_CarrollCounty/FeatureServer/0",
     "website": "http://ccgovernment.carr.org/ccg/mapserver4/gis/webpage/DigitalData.html",
     "license": {"url": "http://ccgovernment.carr.org/ccg/mapserver4/gis/webpage/TermsOfUse.pdf"},
-    "compression": "zip",
-    "type": "http",
+    "protocol": "ESRI",
     "conform": {
-        "street": ["ST_PREFIX","ST_NAME","ST_TYPE","ST_SUFFIX"],
-        "number": ["ST_NUMBER","ST_NUM_SUF"],
+        "format": "geojson",
+        "id": "OBJECTID",
+        "street": [
+            "ST_PREFIX",
+            "ST_NAME",
+            "ST_TYPE",
+            "ST_SUFFIX"
+        ],
+        "number": [
+            "ST_NUMBER",
+            "ST_NUM_SUF"
+        ],
         "unit": [
             "UNIT_TYPE",
             "UNIT_NUMBE"
         ],
-        "type": "shapefile",
         "district": "County",
         "postcode": "ZIPCODE"
     }

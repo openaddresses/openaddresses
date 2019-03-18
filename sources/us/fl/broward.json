@@ -9,21 +9,22 @@
         "state": "fl",
         "county": "Broward"
     },
-    "data": "http://gis.broward.org/GISData/Zipfiles/GISaddresspoints.zip",
-    "compression": "zip",
-    "type": "http",
+    "data": "https://services.arcgis.com/JMAJrTsHNLrSsWf5/ArcGIS/rest/services/PointAddressesCityApp/FeatureServer/0",
+    "protocol": "ESRI",
     "conform": {
-        "type": "shapefile",
-        "number": "SITUSNUMBE",
-        "unit": "UNITNUMBER",
+        "format": "geojson",
+        "number": "SITUS_HOUSE_NUMBER",
         "street": [
-            "STREETDIRE",
-            "STREETTY_1",
-            "STREETNAME",
-            "STREETTYPE",
-            "STREETDI_1"
+            "SITUS_STREET_PRE_DIRECTION",
+            "SITUS_STREET_PRETYPE",
+            "SITUS_STREET_NAME",
+            "SITUS_STREET_TYPE",
+            "SITUS_STREET_SUFFIX_DIRECTION"
         ],
-        "city": "CITYNAME",
-        "postcode": "ZIPCODE"
+        "unit": "SITUS_UNIT_NUMBER",
+        "city": "CITY_NAME",
+        "district": "COUNTY",
+        "region": "STATE",
+        "postcode": "ZIP_CODE"
     }
 }

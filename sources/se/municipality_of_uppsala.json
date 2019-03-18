@@ -1,0 +1,40 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                17.645,
+                59.858
+            ]
+        },
+        "country": "se",
+        "city": "Uppsala"
+    },
+    "data": "https://dzgisweb01.uppsala.se/ags02/rest/services/iExternaKartan/ByggaBo/MapServer/11",
+    "website": "https://www.uppsala.se/boende-och-trafik/kartor-och-statistik/baskarta/",
+    "license": {
+		"attribution": true,
+		"share-alike": false
+	},
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "Name",
+            "pattern": "^(?:.*?)\\s*([\\d]+\\w*(?:\\-[\\d]+\\w*)?)$"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "Name",
+            "pattern": "^(.*?)\\s*(?:[\\d]+\\w*(?:\\-[\\d]+\\w*)?)$"
+        },
+        "city": "PostCity",
+        "postcode": {
+            "function": "regexp",
+            "field": "PostCode",
+            "pattern": "^([\\d]{3})([\\d]{2})$",
+            "replace": "$1 $2"
+        }
+    }
+}

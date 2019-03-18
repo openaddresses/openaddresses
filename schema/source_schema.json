@@ -4,13 +4,13 @@
   "description": "An OpenAddresses source",
   "type": "object",
   "required": [
-    "type",
+    "protocol",
     "data",
     "coverage"
   ],
   "additionalProperties": false,
   "properties": {
-    "type": {
+    "protocol": {
       "type": "string",
       "enum": [
         "http",
@@ -43,6 +43,9 @@
         { "type": "string" },
         { "$ref": "#/definitions/license" }
       ]
+    },
+    "contact": {
+      "$ref": "#/definitions/contact"
     },
     "note": {
       "oneOf": [
@@ -115,6 +118,33 @@
         },
         "share-alike": {
           "type": "boolean"
+        },
+        "presumed": {
+          "type": "boolean"
+        },
+        "remarks": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
         }
       }
     },
@@ -135,7 +165,7 @@
       "required": ["number", "street"],
       "additionalProperties": false,
       "properties": {
-        "type": {
+        "format": {
           "type": "string",
           "enum": [
             "geojson",

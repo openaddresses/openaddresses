@@ -5,16 +5,14 @@
         "county": "Grande Prairie",
         "geometry": { "type": "Point", "coordinates": [-118.81, 55.18] }
     },
-    "data": "http://data.countygp.ab.ca/data/MunicipalAddresses/address_points.zip",
+    "data": "https://giswebservices.countygp.ab.ca/public/rest/services/Open-Data/Site_Addresses/MapServer/0",
     "website": "http://www.countygp.ab.ca/EN/main/community/maps-gis/open-data/data.html",
     "license": "http://www.countygp.ab.ca/EN/main/community/maps-gis/open-data/open-data-licence.html",
-    "type": "http",
-    "compression": "zip",
+    "protocol": "ESRI",
     "conform": {
-        "number": "HOUSE",
-        "street": "ROAD",
-        "unit": "UNIT",
-        "type": "shapefile"
+        "format": "geojson",
+        "number": ["STRENUMPRE", "STREETNUM"],
+        "street": ["STMODPRE", "STDIRPRE", "STREETTYPEPRE", "STREETTYPE", "STREETNAME", "STREETDIRSUFF", "STMODSUFF"]
     },
     "attribution": "City of Grande Prairie"
 }

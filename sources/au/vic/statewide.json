@@ -1,6 +1,6 @@
 {
-    "type": "http",
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/andrewharvey-openaddr/37107d/VICMAP_ADDRESS.zip",
+    "protocol": "http",
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/andrewharvey-openaddr/9c5cc0/VICMAP_ADDRESS.zip",
     "website": "https://www.data.vic.gov.au/data/dataset/address-vicmap-address",
     "compression": "zip",
     "coverage": {
@@ -12,7 +12,7 @@
         "country": "au",
         "state": "victoria"
     },
-    "note": "data URL expires; must use web interface & email workflow to download fresh data. cached archive acquired 2018-01-30.",
+    "note": "data URL expires; must use web interface & email workflow to download fresh data. cached archive acquired 2018-11-25. shapefiles merged with `ogr2ogr -update -append`",
     "license": {
         "url": "http://creativecommons.org/licenses/by/4.0/",
         "text": "CC BY 4.0",
@@ -22,11 +22,13 @@
     },
     "conform": {
         "file": "ll_gda94/sde_shape/whole/VIC/VMADD/layer/address.shp",
-        "type": "shapefile",
+        "format": "shapefile",
+        "id": "PFI",
         "number": "NUM_ADD",
         "street": [
             "ROAD_NAME",
-            "ROAD_TYPE"
+            "ROAD_TYPE",
+            "RD_SUF"
         ],
         "city": "LOCALITY",
         "postcode": "POSTCODE",
