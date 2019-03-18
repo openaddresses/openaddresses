@@ -2,7 +2,13 @@
     "coverage": {
         "country": "us",
         "state": "ct",
+        "county": "Fairfield",
         "city": "Monroe",
+        "US Census": {
+            "geoid": "0948620",
+            "name": "Town of Monroe",
+            "state": "Connecticut"
+        },
         "geometry": {
             "type": "Point",
             "coordinates": [
@@ -11,26 +17,16 @@
             ]
         }
     },
-    "data": "https://gis.gbrct.org:6443/arcgis/rest/services/Easton/MapServer/1",
+    "data": "https://gis.ctmetro.org/arcgis/rest/services/GBRC/GBRC_Parcels/MapServer/0",
     "website": "http://www.eastonct.gov/",
     "type": "ESRI",
     "conform": {
         "type": "geojson",
-        "street": {
-            "function": "regexp",
-            "field": "CombinedCAMA_CombinedCAMA_SiteAddress",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "number": {
-            "function": "regexp",
-            "field": "CombinedCAMA_CombinedCAMA_SiteAddress",
-            "pattern": "^([0-9]+)"
-        },
-        "city": "CombinedCAMA_CombinedCAMA_SiteCity",
-        "postcode": "CombinedCAMA_CombinedCAMA_SiteZip",
-        "region": "CombinedCAMA_CombinedCAMA_SiteState",
-        "id": "CombinedCAMA_CombinedCAMA_Parcel_ID",
-        "accuracy": 2
+        "number": "Street_Number",
+        "street": "Street_Name",
+        "unit": "Street_Unit",
+        "city": "SITE_CITY",
+        "postcode": "SITE_ZIP",
+        "region": "SITE_STATE"
     }
 }

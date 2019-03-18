@@ -7,23 +7,24 @@
                 32.78126
             ]
         },
+        "US Census": {
+            "geoid": "4513330",
+            "name": "City of Charleston",
+            "state": "South Carolina"
+        },
         "country": "us",
         "state": "sc",
         "city": "Charleston"
     },
     "conform": {
         "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRLABEL",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRLABEL",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
+        "number": "HOUSEFULL",
+        "street": [
+            "PREDIR",
+            "STNAME",
+            "STTYPE",
+            "SUFDIR"
+        ],
         "city": "CMTYNAME",
         "postcode": "ZIPCODE"
     },
