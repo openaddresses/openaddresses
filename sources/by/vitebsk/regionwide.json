@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "BY-VI",
+            "country": "Belarus"
+        },
+        "country": "by"
+    },
+    "data": "http://vitebsk.gismap.by/ArcGIS/rest/services/Vblotsset/MapServer/0",
+    "type": "ESRI",
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:.*?)\\b(?:(?:ул|ал|бул|пер|пл|пр)\\.?\\s*[^,]+)(?:,|\\s+)\\s*(?:д\\.?(?=\\d|\\s)|дом|№)?\\s*([\\d]+\\w?\\b)(?:,?\\s*кв\\.?\\s*[\\d]+)?\\s*$"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:.*?)\\b(?:(?:ул|ал|бул|пер|пл|пр)\\.?\\s*[^,]+)(?:,|\\s+)\\s*(?:д\\.?(?=\\d|\\s)|дом|№)?\\s*(?:[\\d]+\\w?\\b)(?:,?\\s*)(кв\\.?\\s*[\\d]+)\\s*$"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:.*?)\\b((?:ул|ал|бул|пер|пл|пр)\\.?\\s*[^,]+)(?:,|\\s+)\\s*(?:д\\.?(?=\\d|\\s)|дом|№)?\\s*(?:[\\d]+\\w?\\b)(?:,?\\s*кв\\.?\\s*[\\d]+)?\\s*$"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:.*?)\\b((?:(?:г|аг|гп|пгт)(?:\\.|\\s+)|(?:д(?:\\.\\s+|\\.(?=\\w)|\\s+)(?!\\d)))(?:\\s*\\w+(?=[\\s,]|\\-\\d+))+(?:\\-[\\d]+)?)" 
+        }
+    }
+}

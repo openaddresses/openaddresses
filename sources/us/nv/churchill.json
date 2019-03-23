@@ -1,0 +1,54 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "32001",
+            "name": "Churchill County",
+            "state": "Nevada"
+        },
+        "country": "us",
+        "state": "nv",
+        "county": "Churchill"
+    },
+    "note": {
+      "description": "This parcel data sometimes has multiple addresses per line in a shorthand notation.  The street rexexp handles a number of edge cases for multiple addresses and internal notes.  The source has a separate field for predirectional (PLOCDR) but the full street is needed to eliminate the extra addresses and internal notes.",
+      "examples": {
+          "parseable": [
+              "6485 RENO HWY & 6495 RENO HWY",
+              "2837 ELIZABETH PARKWAY",
+              "5517 DILLON RD OR 1977 DAVIS LN",
+              "212 W RICHARDS ST (REALLY 212 1",
+              "602 TIMOTHY WAY THRU 630 (EVE",
+              "833 CALIFORNIA ST (LOTS 1-2-3",
+              "820 DRIFTWOOD LN / 5400 OAKWOO",
+              "3175 AUSTIN HWY AND 3359 AUSTI",
+              "11355 RENO HWY - FULKERSON RD",
+              "750 E STILLWATER AVE #135"
+          ],
+          "unparseable": [
+              "SERPA PL",
+              "27-19-26",
+              "5 & 6-19-30"
+          ]
+      }
+    },
+    "data": "http://www.churchillcounty.org/DocumentCenter/View/8794",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile",
+        "number": {
+            "function": "prefixed_number",
+            "field": "CONCAT"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "CONCAT",
+            "pattern": "^(?:[0-9]+ )([A-Z].+?)(?:\\s+(?:OR|THRU|AND|and|-|#|\\(.*|&|\/)\\s*.*)?$"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "CONCAT",
+            "pattern": "^(?:.*?)(#[0-9]+)$"
+        }
+    }
+}

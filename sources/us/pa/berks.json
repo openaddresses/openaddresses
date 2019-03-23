@@ -14,15 +14,12 @@
     "conform": {
         "type": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "FULLSITEADDRESS",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "FULLSITEADDRESS"
         },
         "street": {
-            "function": "regexp",
-            "field": "FULLSITEADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "function": "postfixed_street",
+            "field": "FULLSITEADDRESS"
         },
         "city": "MUNICIPALNAME"
     }

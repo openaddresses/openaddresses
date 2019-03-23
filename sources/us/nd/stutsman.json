@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "38093",
+            "name": "Stutsman County",
+            "state": "North Dakota"
+        },
+        "country": "us",
+        "state": "nd",
+        "county": "Stutsman"
+    },
+    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/43717f/StutsmanAddressPoints.zip",
+    "type": "http",
+    "compression": "zip",
+    "conform": {
+        "type": "shapefile",
+        "number": {
+            "function": "regexp",
+            "field": "DLVRY_ADD",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "DLVRY_ADD",
+            "pattern": "^(?:[0-9]+)(.*?)( (UNIT|LOT).*|$)",
+            "replace": "$1"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "DLVRY_ADD",
+            "pattern": " ((?:UNIT|LOT) .+)$"
+        }
+    }
+}

@@ -102,6 +102,7 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
 ---------------- | --- | ----
 `type`           | Yes | The type properties stores the format. It can currently be one of `gdb`, `shapefile`, `shapefile-polygon`, `csv`, `geojson`, or `xml` (for GML).
 `srs`            |     | Allows one to set a custom source srs. Currently only supported by `type:shapefile`, `type:shapefile-polygon`, and `type:csv`. Should be in the format of `EPSG:####` and can be any code supported by `ogr2ogr`. Modern shapefiles typically store their project in a `.prj` file. If this file exists, this tag should be omitted.
+`layer`          |     | The `gdb` source type allows multiple layers of geodata in a single input file. Use the `layer` tag to specify which of those layers to use. It can either be the string name of the layer or an integer index of the layer.
 `file`           |     | The majority of zips contain a single shapefile. Sometimes zips will contain multiple files, or the shapefile that is needed is located in a folder hierarchy in the zip. Since the program only supports determining single shapefiles not in a subfolder, file can be used to point the program to an exact file. The proper syntax would be `"file": "addresspoints/address.shp"` if the file was under a single subdirectory called `addresspoints`. Note there is no preceding forward slash.
 `encoding`       |     | A character encoding from which an input file will first be converted (into utf-8). Must be [recognizable by `iconv`](https://www.gnu.org/software/libiconv/).
 `csvsplit`       |     | The character to delimit input CSV’s by. Defaults to comma.
@@ -147,9 +148,13 @@ This list gives a brief summary of what each function does. Examples can be foun
 
 Function | Note
 -------- | -----
-`regexp` | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field
+`prefixed_number` | Allow number to be extracted from the beginning of a single field (extracts `102` from `102 East Maple Street`).
+`postfixed_street` | Allow street to be extracted from the end of a single field (extracts `East Maple Street` from `102 East Maple Street`).
+`regexp` | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field.
 `join`   | Allow multiple fields to be joined with a given delimiter.
 `format` | Allow multiple fields to be formatted into a single string.
+`remove_prefix` | Removes a field value from the beginning of another field value.
+`remove_postfix` | Removes a field value from the end of another field value.
 
 ##### Attribute Tag Examples
 
@@ -183,6 +188,36 @@ _Example_
 "number": "SITUS_NUMBER",
 "street": ["SITUS_STREET_PRE", "SITUS_STREET_NME", "SITUS_STREET_TYP", "SITUS_STREET_POST"]
 ```
+
+###### prefixed_number and postfixed_street functions
+
+The `prefixed_number` and `postfixed_street` functions are used to extract an address number and street from a field.  While the same functionality can be accomplished using the `regexp` function, these convenience functions are meant to reduce copy/pasting of common regexes among various sources.  The standard case for using these two functions is for a source in a country that has number-prefixed address formats, such as Australia, New Zealand, and the United States.  
+
+_Format_
+```JSON
+"{Attribute Tag}": {
+    "function": "prefixed_number",
+    "field": "{Field Name}"
+}
+"{Attribute Tag}": {
+    "function": "postfixed_street",
+    "field": "{Field Name}"
+}
+```
+
+_Example_
+```JSON
+"number": {
+  "function": "prefixed_number",
+  "field": "SITUS_ADDRESS"
+},
+"street": {
+  "function": "postfixed_street",
+  "field": "SITUS_ADDRESS"
+}
+```
+
+Using the above example, if the `SITUS_ADDRESS` field value is `102 East Maple Street`, `prefixed_number` and `postfixed_street` would extract the value `102` and `East Maple Street` for number and street, respectively.
 
 ###### regexp function
 
@@ -221,10 +256,11 @@ _Example_
 }
 ```
 
+The source data should be examined to determine if the shorthand methods `prefixed_number` and `postfixed_street` could be used instead of `regexp`.
+
 ###### join function
 
-The join function allows fields to be merged given an arbitrary delimiter. For delimiting
-by spaces there is a more concise format - see the example for `Merge Fields`
+The join function allows fields to be merged given an arbitrary delimiter. The default value for the optional `separator` parameter is a single space (` `).  See the example for `Merge Fields`.  
 
 _Format_
 ```JSON
@@ -262,7 +298,53 @@ _Example_
 "number": {
     "function": "format",
     "fields": ["number", "letter", "supplement"],
-    "separator": "$1$2-$3"
+    "format": "$1$2-$3"
+}
+```
+
+###### remove_prefix and remove_postfix functions
+
+The `remove_prefix` and `remove_postfix` functions modify a field's value by removing another field's value from the beginning or end.  These convenience functions are meant to reduce the complexity of `regexp` functions that are not aware of other field values.  While not common, this functionality is very handy for sources that have, for example, separate house number and address fields where the former is a prefix of the latter.
+
+_Format_
+```JSON
+"{Attribute Tag}": {
+    "function": "remove_prefix",
+    "field": "{Field1}",
+    "field_to_remove": "{Field2}"
+}
+"{Attribute Tag}": {
+    "function": "remove_postfix",
+    "field": "{Field1}",
+    "field_to_remove": "{Field2}"
+}
+```
+
+_Example_
+```JSON
+"number": "HOUSE_NUMBER",
+"street": {
+  "function": "remove_prefix",
+  "field": "SITUS_ADDRESS",
+  "field_to_remove": "HOUSE_NUMBER"
+}
+```
+
+The above conform example can transform:
+
+```
+{
+  "HOUSE_NUMBER": "102"
+  "SITUS_ADDRESS": "102 East Maple Street",
+}
+```
+
+into:
+
+```
+{
+  "number": "102",
+  "street": "East Maple Street"
 }
 ```
 
@@ -278,17 +360,19 @@ either `city` or `county`, all strings
 If one of the following tags are provided, it will be used to render the source
 to the map at [data.openaddresses.io](http://data.openaddresses.io):
 
-1. **US Census** with `geoid` containing two-digit state or five-digit county
-   [FIPS code](https://www.census.gov/geo/reference/codes/cou.html).
-   See [Alameda County](sources/us/ca/alameda_county.json)
-   and [Virginia](sources/us/va/statewide.json) for examples.
+1. **US Census** with `geoid` containing [FIPS code](https://www.census.gov/geo/reference/codes/cou.html)
+    - 2-digit state, example: [Virginia](sources/us/va/statewide.json)
+    - 5-digit county, example: [Alameda County, California](sources/us/ca/alameda.json)
+    - 7-digit city, example: [Johns Creek, Georgia](sources/us/ga/city_of_johns_creek.json)
 2. **ISO 3166** with `alpha2` containing alphanumeric two-letter
    [ISO-3166-1 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
    or [ISO-3166-2 subdivision code](http://en.wikipedia.org/wiki/ISO_3166-2).
    See [New Zealand](sources/nz/countrywide.json), [Victoria, Australia](sources/au/victoria.json),
    or [Dolnośląskie, Poland](sources/pl/dolnoslaskie.json) for examples.
-3. **geometry** with _Polygon_ or _MultiPolygon_ type unprojected
-   [GeoJSON geometry object](http://geojson.org/geojson-spec.html#geometry-objects).
+3. **geometry** with unprojected [GeoJSON geometry object](http://geojson.org/geojson-spec.html#geometry-objects)
+    - _Polygon_ - for example, [state of Arkansas](sources/us/ar/statewide.json)
+    - _MultiPolygon_ - for example, [state of Tennesse](sources/us/tn/statewide.json)
+    - _Point_ - for example, city of [Johns Creek](sources/us/ga/city_of_johns_creek.json), estimated from another mapping provider or [Who's on First](https://whosonfirst.mapzen.com/spelunker/)
 
 #### Optional Tags
 
@@ -351,4 +435,3 @@ A few notes on formatting:
 
 Although these are read by a machine, they are maintained by us mortals.
 Following the formatting guidelines keeps the rest of us sane!
-
