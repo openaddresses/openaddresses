@@ -16,8 +16,8 @@
         "state": "tx",
         "city": "Austin"
     },
-    "website": "https://data.austintexas.gov/Geodata/Address-Points/bpa2-q2tj",
-    "data": "https://data.austintexas.gov/api/geospatial/bpa2-q2tj?method=export&format=Shapefile",
+    "website": "https://data.austintexas.gov/Locations-and-Maps/Addresses/mkjr-t5r2",
+    "data": "https://data.austintexas.gov/api/geospatial/mkjr-t5r2?method=export&format=Shapefile",
     "license": {
         "text": "Public Domain",
         "attribution": false,
@@ -26,10 +26,32 @@
     "protocol": "http",
     "compression": "zip",
     "conform": {
-        "number": "ADDRESS",
+        "number": {
+            "function": "chain",
+            "variable": "number_wip",
+            "functions": [
+                {
+                    "function": "regexp",
+                    "field": "address",
+                    "pattern": "(\\d+)\\.?",
+                    "replace": "$1"
+                },
+                {
+                    "function": "join",
+                    "fields": [
+                        "number_wip",
+                        "address_fr",
+                        "address_su"
+                    ]
+                }
+            ]
+        },
         "street": [
-            "STREET_NAM",
-            "STREET_TYP"
+            "prefix_dir",
+            "prefix_typ",
+            "street_nam",
+            "street_typ",
+            "suffix_dir"
         ],
         "format": "shapefile"
     }
