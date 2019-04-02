@@ -9,18 +9,17 @@
         "state": "mn",
         "county": "Becker"
     },
-    "data": "http://gis-server.co.becker.mn.us/arcgis/rest/services/BECKER_INTERNAL_101/MapServer/34",
+    "data": "http://gis-server.co.becker.mn.us/arcgis/rest/services/BECKER_INTERNAL_101/MapServer/23",
     "protocol": "ESRI",
     "conform": {
         "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SAAdddress"
-        },
+        "number": "BLD_NUM",
         "street": {
             "function": "postfixed_street",
-            "field": "SAAddress"
+            "field": "ADDRESS"
         },
-        "city": "SACity"
+        "city": "CITY",
+        "postcode": "ZIP",
+        "region": "STATE"
     }
 }
