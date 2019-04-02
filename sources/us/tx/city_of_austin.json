@@ -27,32 +27,13 @@
     "compression": "zip",
     "conform": {
         "number": {
-            "function": "chain",
-            "variable": "number_wip",
-            "functions": [
-                {
-                    "function": "regexp",
-                    "field": "address",
-                    "pattern": "(\\d+)\\.?(.*)",
-                    "replace": "$1"
-                },
-                {
-                    "function": "join",
-                    "fields": [
-                        "number_wip",
-                        "address_fr",
-                        "address_su"
-                    ]
-                }
-            ]
+            "function": "prefixed_number",
+            "field": "full_stree"
         },
-        "street": [
-            "prefix_dir",
-            "prefix_typ",
-            "street_nam",
-            "street_typ",
-            "suffix_dir"
-        ],
+        "street": {
+            "function": "postfixed_street",
+            "field": "full_stree"
+        },
         "format": "shapefile"
     }
 }
