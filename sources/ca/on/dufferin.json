@@ -4,18 +4,11 @@
         "state": "on",
         "county": "dufferin"
     },
-    "data": "http://data.openaddresses.io/cache/ca-on-dufferin.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "note": "Obtained through FOI Request June 2016 by Nicholas Ingalls <nicholas.ingalls@gmail.com>",
+    "data": "https://services5.arcgis.com/C0BEdgagVaXzcw0W/arcgis/rest/services/Dufferin_County_Entrances_July2018/FeatureServer/0",
+    "protocol": "ESRI",
     "conform": {
-        "number": "CIVIC_NO",
-        "street": {
-            "function": "regexp",
-            "field": "FULLADDY",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "format": "shapefile"
+        "format": "geojson",
+        "number": "STNUM",
+        "street": "STREETNAME"
     }
 }
