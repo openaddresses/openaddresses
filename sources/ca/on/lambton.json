@@ -4,20 +4,16 @@
         "state": "on",
         "county": "Lambton"
     },
-    "protocol": "http",
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/fd83c4/ca-on-lambton.geojson.zip",
-    "compression": "zip",
+    "protocol": "ESRI",
+    "data": "https://www.lambtongis.ca/arcgis_adaptor/rest/services/OpenData/AddressPoints/MapServer/0",
     "conform":{
         "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "ADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "ADDRESS"
-        },
+        "number": "STNUM",
+        "street": [
+            "STNAME",
+            "STTYPE",
+            "STDIR"
+        ],
         "city": "MUNICIPALITY"
-    },
-    "note": "Token Required - https://www.lambtongis.ca/sites/?viewer=lcgis"
+    }
 }
