@@ -9,13 +9,18 @@
         "state": "wi",
         "county": "Waushara"
     },
-    "data": "http://gis.co.waushara.wi.us/agsweb/rest/services/WebMerc_ParBasegdb/MapServer/0",
+    "data": "http://ec2-13-59-57-177.us-east-2.compute.amazonaws.com/arcgis/rest/services/TaxParcelViewer_Parcels/MapServer/0",
     "website": "http://gis.co.waushara.wi.us/land_records.htm",
     "protocol": "ESRI",
     "conform": {
         "format": "geojson",
-        "number": "GCSTaxServ.SADRNO",
-        "street": ["GCSTaxServ.SADRP", "GCSTaxServ.SADRRD"],
-        "city": "GCSTaxServ.MUNI"
+        "number": {
+            "function": "prefixed_number",
+            "field": "PROPERTY_ADDRESS"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "PROPERTY_ADDRESS"
+        }
     }
 }
