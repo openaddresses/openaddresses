@@ -4,14 +4,16 @@
         "state": "on",
         "city": "London"
     },
-    "data": "http://data.openaddresses.io/cache/uploads/ingalls/ca-on-city_of_london.zip",
-    "compression": "zip",
-    "protocol": "http",
+    "data": "https://maps.london.ca/arcgisa/rest/services/OpenData/OpenData_Community/MapServer/0",
+    "protocol": "ESRI",
     "conform": {
-        "format": "shapefile",
-        "unit": "Unit",
-        "number": "MunNum",
-        "street": "FullStrNam",
-        "postcode": "PostalCode"
+        "format": "geojson",
+        "number": "FullNumber",
+        "street": [
+            "StreetName",
+            "StreetType",
+            "StreetDirection"
+        ],
+        "unit": "UnitNumber"
     }
 }
