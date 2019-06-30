@@ -1,0 +1,52 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -92.346111,
+                42.4925
+            ]
+        },
+        "US Census": {
+            "geoid": "1982425",
+            "name": "City of Waterloo",
+            "state": "Iowa"
+        },
+        "country": "us",
+        "state": "ia",
+        "county": "Black Hawk",
+        "city": "Waterloo"
+    },
+    "data": "https://maps.cityofwaterlooiowa.com/arcgisserver/rest/services/LandRecords/TaxParcels/MapServer/0",
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "propertyad"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "propertyad"
+        },
+        "unit": {
+            "function": "postfixed_unit",
+            "field": "propertyad"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "property_2",
+            "pattern": "^(.+?),\\s+IA"
+        },
+        "region": {
+            "function": "regexp",
+            "field": "property_2",
+            "pattern": "(IA)"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "property_2",
+            "pattern": ".*,\\s+IA\\s+([0-9]+)$"
+        }
+    }
+}
