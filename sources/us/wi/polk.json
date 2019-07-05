@@ -14,8 +14,14 @@
     "protocol": "http",
     "conform": {
         "format": "gdb",
-        "number": "ALPHA NUMBER",
-        "street": ["PRE DIR","PRE TYPE","STREET NAME","STREET TYPE","SUFFIX DIR"],
+        "number": {
+            "function": "prefixed_number",
+            "field": "ADDRESS"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "ADDRESS"
+        },
         "city": "COMMUNITY",
         "postcode": "ZIP"
     }
