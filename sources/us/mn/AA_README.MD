@@ -1,0 +1,1 @@
+ALL "STUB" FILES in this directory last checked 7/18/2019. Do a file search on "STUB" for those. These files are intended only for my own use and tracking - don't try to merge them via a pull request!

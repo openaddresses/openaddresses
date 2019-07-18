@@ -1,0 +1,32 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27015",
+            "name": "Brown County STUB",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Brown"
+    },
+    "protocol": "ESRI",
+    "data": "TBD",
+    "website": "TBD",
+    "conform": {
+        "format": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "city": "CITY",
+        "region": "STATE",
+        "postcode": "ZIP"
+    }
+}
