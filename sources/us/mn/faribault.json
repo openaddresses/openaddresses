@@ -1,0 +1,26 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27043",
+            "name": "Faribault",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Faribault"
+    },
+    "protocol": "ESRI",
+    "data": "https://services2.arcgis.com/fxB2C8mQfjMb1848/ArcGIS/rest/services/TaxParcels/FeatureServer/0",
+    "website": "https://fcswcd.maps.arcgis.com/home/index.html",
+    "conform": {
+        "format": "geojson",
+        "number": "BLDG_NUM",
+        "street": {
+            "function": "join",
+            "fields": ["STREETNAME", "STREETTYPE", "SUFFIX_DIR"],
+            "separator": " "
+        },
+        "city": "CITY",
+        "postcode": "ZIP"
+    }
+}
