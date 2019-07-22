@@ -12,4 +12,4 @@
 
 # Pre-process download
 
-Use helper script from scripts.
+Use the helper script at [`scripts/au/vic/statewide.sh`](https://github.com/openaddresses/openaddresses/blob/master/scripts/au/vic/statewide.sh).
