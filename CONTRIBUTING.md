@@ -12,7 +12,7 @@ OpenAddresses is a collection of _authoritative data_ for address locations arou
 
 Have a potential source? Fantastic! Follow these steps to help us get it into the project as fast as possible!
 
-- Check `./sources/` to make sure we don't have it already. Sources that overlap are ok as long as they are coming from different providers.
+- Check the [`sources/`](https://github.com/openaddresses/openaddresses/tree/master/sources) directory in the git repo to make sure we don't have it already. Sources that overlap are ok as long as they are coming from different providers.
 - Check the [wiki](https://github.com/openaddresses/openaddresses/wiki) to make sure it isn't listed there.
 
 Still a new source? Awesome!
