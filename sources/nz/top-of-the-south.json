@@ -16,37 +16,15 @@
         "format": "geojson",
         "number": "Number",
         "street": {
-            "function": "chain",
-            "variable": "street_wip",
-            "functions": [
-                {
-                    "function": "remove_prefix",
-                    "field": "Address",
-                    "field_to_remove": "Number"
-                },
-                {
-                    "function": "regexp",
-                    "field": "street_wip",
-                    "pattern": "^([^,]*),"
-                }
-            ]
+            "function": "regexp",
+            "field": "Address",
+            "pattern": "^([0-9][^ ]*)"
         },
         "city": {
-            "function": "chain",
-            "variable": "city_wip",
-            "functions": [
-                {
-                    "function": "remove_prefix",
-                    "field": "Address",
-                    "field_to_remove": "Number"
-                },
-                {
-                    "function": "regexp",
-                    "field": "city_wip",
-                    "pattern": "^([^,]*), (.*)",
-                    "replace": "$2"
-                }
-            ]
+            "function": "regexp",
+            "field": "Address",
+            "pattern": "^([^,]*), (.*)",
+            "replace": "$2"
         }
     }
 }
