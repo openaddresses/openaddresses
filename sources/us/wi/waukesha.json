@@ -9,23 +9,15 @@
         "state": "wi",
         "county": "Waukesha"
     },
-    "data": "https://gis2.waukcogeo.com/server/rest/services/E911/MapServer/10",
+    "data": "https://gis.waukesha-wi.gov/server/rest/services/AddressPoints/MapServer/0",
     "protocol": "ESRI",
     "conform": {
         "format": "geojson",
         "number": "StreetNumber",
-        "street": {
-            "function": "remove_prefix",
-            "field": "Full_Address",
-            "field_to_remove": "StreetNumber"
-        },
-        "unit": "UnitNumber",
+        "street": ["PrefixDir", "RoadName", "RoadType", "SuffixDir"],
+        "unit": ["UnitType", "UnitNumber"],
         "city": "PostOffice",
-        "postcode": {
-            "function": "regexp",
-            "field": "ZipCode",
-            "pattern": "^(\\d+)"
-        },
+        "postcode": "ZipCode",
         "accuracy": 1
     }
 }
