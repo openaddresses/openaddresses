@@ -47,7 +47,7 @@ SELECT
         CASE WHEN number_first IS NOT NULL THEN number_first ||
             CASE WHEN number_last IS NOT NULL THEN '-' || number_last || ' ' ELSE ' ' END
         ELSE
-            NULL
+            CASE WHEN lot_number IS NOT NULL THEN 'LOT ' || lot_number ELSE NULL END
         END
     )
         AS number,
