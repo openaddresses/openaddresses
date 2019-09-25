@@ -16,26 +16,41 @@
     "language": "en",
     "website": "https://gis.utah.gov/data/location/address-data/#AddressPoints",
     "data": "https://opendata.arcgis.com/datasets/3f4f7a8efcd147febeca8bacaea67a14_0.geojson",
+    "type": "http",
+    "note": {
+        "update frequency": "monthly"
+    },
     "license": "https://creativecommons.org/licenses/by/4.0/",
     "protocol": "http",
     "conform": {
         "srs": "EPSG:102100",
-        "format": "geojson",
-        "number": [
-            "AddNum",
-            "AddNumSuffix"
-        ],
-        "street": [
-            "PrefixDir",
-            "StreetName",
-            "StreetType",
-            "SuffixDir"
-        ],
-        "unit": [
-            "UnitType",
-            "UnitID"
-        ],
+        "type": "geojson",
+        "number": {
+            "function": "join",
+            "fields": [
+                "AddNum",
+                "AddNumSuffix"
+            ]
+        },
+        "street": {
+            "function": "join",
+            "fields":[
+                "PrefixDir",
+                "StreetName",
+                "StreetType",
+                "SuffixDir"
+            ]
+        },
+        "unit": {
+            "function": "join",
+            "fields": [
+                "UnitType",
+                "UnitID"
+            ]
+        },
         "city": "City",
+        "district": "CountyID",
+        "region": "State",
         "postcode": "ZipCode",
         "id": "UTAddPtID"
     }
