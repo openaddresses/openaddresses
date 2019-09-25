@@ -1,0 +1,40 @@
+{
+    "type": "http",
+    "data": "https://opendata.arcgis.com/datasets/3f4f7a8efcd147febeca8bacaea67a14_0.geojson",
+    "note": {
+        "update frequency": "monthly"
+    },
+    "license": {
+        "url": "http://opendatacommons.org/licenses/odbl/1.0/",
+        "attribution": false
+    },
+    "contact": {
+        "name": "agrc",
+        "email": "agrc@utah.gov"
+    },
+    "conform": {
+        "type": "geojson",
+        "number": {
+            "function": "join",
+            "fields": [
+                "AddNum",
+                "AddNumSuffix"
+            ]
+        },
+        "street": "StreetName",
+        "unit": {
+            "function": "join",
+            "fields": [
+                "UnitType",
+                "UnitID"
+            ]
+        },
+        "city": "City",
+        "district": "CountyID",
+        "region": "State",
+        "postcode": "ZipCode"
+    },
+    "coverage": {
+        "country": "xx"
+    }
+}
