@@ -12,16 +12,13 @@
     "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_Miami_CO_OH_TaxMap/MapServer/0",
     "protocol": "ESRI",
     "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^([0-9]+)"
+         "number": {
+            "function": "prefixed_number",
+            "field": "Address"
         },
         "street": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "function": "postfixed_street",
+            "field": "Address"
         },
         "format": "geojson"
     }
