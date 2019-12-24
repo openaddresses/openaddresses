@@ -17,17 +17,21 @@
     "compression": "zip",
     "conform": {
         "srs": "EPSG:2180",
-        "id": "id_techniczny_obiektu",
-        "region": "woj_nazwa",
-        "district": {
-            "function": "join",
-            "fields": ["pow_nazwa", "gmi_nazwa"],
-            "separator": ", "
+        "id": "gml_id",
+        "region": {
+            "function": "format",
+            "field": "jednostkaadmnistracyjna",
+            "pattern": "$2"
         },
-        "city": "mjs_nazwa",
-        "postcode": "pad_kod_pocztowy",
-        "street": "ulc_nazwa",
-        "number": "pad_numer_porzadkowy",
+        "district": {
+            "function": "format",
+            "field": "jednostkaadmnistracyjna",
+            "pattern": "$3"
+        },
+        "city": "miejscowosc",
+        "postcode": "kodpocztowy",
+        "street": "ulica",
+        "number": "numerporzadkowy",
         "file": "2019_12_20_07_57_16__32_zachodniopomorskie.xml",
         "format": "xml",
         "headers": 1,
