@@ -1,0 +1,33 @@
+{
+  "coverage": {
+      "ISO 3166": {
+          "alpha2": "FR-01"
+      },
+      "country": "fr"
+  },
+  "website": "https://adresse.data.gouv.fr",
+  "data": "https://adresse.data.gouv.fr/data/ban/adresses/latest/csv/adresses-france.csv.gz",
+  "protocol": "http",
+  "compression": "gzip",
+  "conform": {
+      "format": "csv",
+      "csvsplit": ";",
+      "number": {
+        "function": "join",
+        "fields": ["numero", "rep"],
+        "separator": ""
+      },
+      "street": "nom_voie",
+      "lon": "lon",
+      "lat": "lat",
+      "city": "nom_commune",
+      "postcode": "code_postal"
+  },
+  "email": "adresse@data.gouv.fr",
+  "language": "fr",
+  "attribution": "French addresses database (adresse.data.gouv.fr)",
+  "license": {
+      "url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+      "attribution": true
+  }
+}
