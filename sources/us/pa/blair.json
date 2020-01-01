@@ -9,17 +9,29 @@
         "state": "pa",
         "county": "Blair"
     },
-    "data": "https://github.com/aaronpdennis/pa-county-addresses/raw/master/data/BLAIR/BLAIR_addresses.csv",
-    "type": "http",
-    "note": "Data extracted from 2009 state government collection. Individual county GIS offices may have more recent addresses.",
+    "data": "https://gis.blairco.org/arcgis/rest/services/Assessment/MuniVerificationParcels/MapServer/1",
+    "protocol": "ESRI",
     "conform": {
-        "type": "csv",
-        "number": "SAN",
-        "street": ["PRD","STP","STN","STS","POD"],
-        "city": "MCN",
-        "lon": "X",
-        "lat": "Y",
-        "id": "PIN",
-        "accuracy": 5
+        "format": "geojson",
+        "number": [
+            "HouseNumber",
+            "HouseSuffix"
+        ],
+        "street": [
+            "PreDirectional",
+            "PreType",
+            "StreetName",
+            "PostType",
+            "PostTypeSuffix",
+            "PostDirectional"
+        ],
+        "unit": [
+            "SubAddType",
+            "UNIT"
+        ],
+        "city": "City",
+        "district": "County",
+        "region": "State",
+        "postcode": "ZIP"
     }
 }

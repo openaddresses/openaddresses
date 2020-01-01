@@ -6,8 +6,11 @@ const request = require('request');
 const schema = require('../schema/source_schema.json');
 const schema_v2 = require('../schema/source_schema_v2.json');
 
-const ajv = new Ajv();
-ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'), "http://json-schema.org/draft-04/schema#");
+const ajv = new Ajv({
+    schemaId: 'auto'
+});
+
+ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'));
 ajv.addMetaSchema(require('./geojson.json'), "http://json.schemastore.org/geojson#/definitions/geometry");
 
 const validate = ajv.compile(schema);
@@ -41,5 +44,4 @@ function testAllSources() {
         });
 
     });
-
 }
