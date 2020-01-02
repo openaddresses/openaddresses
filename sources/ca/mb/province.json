@@ -1,17 +1,12 @@
 {
     "coverage": {
-        "ISO 3166": {
-            "alpha2": "CA-MB",
-            "country": "Canada",
-            "subdivision": "Manitoba"
-        },
+        "ISO 3166": {"alpha2": "CA-MB", "country": "Canada", "subdivision": "Manitoba"},
         "country": "ca",
         "state": "mb"
     },
-    "data": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/ROLL_ENTRY/FeatureServer/0",
+    "data": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/ROLL_ENTRY/FeatureServer/0/",
     "protocol": "ESRI",
     "conform": {
-        "format": "geojson",
         "number": {
             "function": "prefixed_number",
             "field": "Property_Address"
@@ -20,10 +15,8 @@
             "function": "postfixed_street",
             "field": "Property_Address"
         },
-        "city": {
-            "function": "regexp",
-            "field": "Muni_Name_With_Typ",
-            "pattern": "^(.+?)\\s+\\("
-        }
-    }
+        "city": "MUNICIPALITY",
+        "format": "geojson"
+    },
+    "note": "Bump hooked"
 }
