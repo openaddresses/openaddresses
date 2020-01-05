@@ -24,7 +24,11 @@
             "replace": "$1"
         },
         "format": "geojson",
-        "city": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
-        "postcode": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ZIP",
+        "city": {
+          "function": "regexp",
+          "field:" "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
+          "pattern": "^([^,]+)"
+        },
+        "postcode": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ZIP"
     }
 }
