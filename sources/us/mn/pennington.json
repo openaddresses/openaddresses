@@ -15,20 +15,20 @@
         "format": "geojson",
         "number": {
             "function": "regexp",
-            "field": "PenningtonTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
+            "field": "PROPERTY_ADDRESS",
             "pattern": "^([0-9]+)"
         },
         "street": {
             "function": "regexp",
-            "field": "PenningtonTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
+            "field": "PROPERTY_ADDRESS",
             "pattern": "^(?:[0-9]+) (.*)",
             "replace": "$1"
         },
         "city": {
             "function": "regexp",
-            "field": "PenningtonTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
+            "field": "PROPERTY_CITY",
             "pattern": "^([^,]+)"
         },
-        "postcode": "PenningtonTaxData.dbo.tblParcelJoin.PROPERTY_ZIP"
+        "postcode": "PROPERTY_ZIP"
     }
 }

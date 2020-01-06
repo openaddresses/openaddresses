@@ -13,8 +13,17 @@
     "protocol": "ESRI",
     "conform": {
         "format": "geojson",
-        "number": "HNUM",
-        "street": "STREET",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
         "postcode": "ZIP",
         "city": "CITY"
     }
