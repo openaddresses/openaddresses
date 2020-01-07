@@ -1,30 +1,29 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "27119",
-            "name": "Polk County",
+            "geoid": "27087",
+            "name": "Mahnomen County",
             "state": "Minnesota"
         },
         "country": "us",
         "state": "mn",
-        "county": "Polk"
+        "county": "Mahnomen"
     },
-    "data": "http://gis.co.polk.mn.us/arcgis/rest/services/PolkALL/MapServer/20",
     "protocol": "ESRI",
+    "data": "https://services8.arcgis.com/eORKbx5CWReJmkoa/arcgis/rest/services/TaxParcels/FeatureServer/0",
     "conform": {
         "format": "geojson",
         "number": {
             "function": "regexp",
-            "field": "ADDRESS",
+            "field": "PROPERTY_ADDRESS",
             "pattern": "^([0-9]+)"
         },
         "street": {
             "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
+            "field": "PROPERTY_ADDRESS",
+            "pattern": "^(?:[0-9]+) (.*)",
             "replace": "$1"
         },
-        "postcode": "ZIP",
-        "city": "CITY"
+        "postcode": "PROPERTY_ZIP"
     }
 }
