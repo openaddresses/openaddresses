@@ -13,20 +13,16 @@
 	"conform": {
 		"format": "geojson",
 		"number": {
-			"function": "regexp",
-			"field": "Address",
-			"pattern": "^([0-9]+)"
+			"function": "prefixed_number",
+			"field": "Address"
 		},
 		"street": {
-			"function": "regexp",
-			"field": "Address",
-			"pattern": "^(?:[0-9]+ )(.*?)(?:\\s(?:\\(?(?:Unit|UNIT)?\\s?#).*(\\)?))",
-			"replace": "$1"
+			"function": "postfixed_street",
+			"field": "Address"
 		},
 		"unit": {
-			"function": "regexp",
-			"field": "Address",
-			"pattern": "\\((?:Unit|UNIT)?\\s?#).*(\\)?"
+			"function": "postfixed_unit",
+			"field": "Address"
 		},
 		"city": "TOWN_NAME"
 	}
