@@ -1,22 +1,38 @@
 {
     "coverage": {
-        "US Census": {"geoid": "48209", "name": "Hays County", "state": "Texas"},
+        "US Census": {
+            "geoid": "48209",
+            "name": "Hays County",
+            "state": "Texas"
+        },
         "country": "us",
         "state": "tx",
         "county": "Hays"
     },
-    "data": "http://mapsatbis.com/bisgis/rest/services/HaysWeb/MapServer/0",
-    "protocol": "ESRI",
+    "data": "https://s3.amazonaws.com/data.tnris.org/117cf9e1-3b1e-48f2-97a3-47020d871035/resources/stratmap19-addresspoints_48209_vector.zip",
+    "website": "https://data.tnris.org/collection/117cf9e1-3b1e-48f2-97a3-47020d871035",
+    "protocol": "http",
+    "compression": "zip",
     "conform": {
-        "number": "HaysCad.dbo.Accounts.situs_num",
-        "street": [
-            "HaysCad.dbo.Accounts.situs_street_prefx",
-            "HaysCad.dbo.Accounts.situs_street",
-            "HaysCad.dbo.Accounts.situs_street_sufix"
+        "format": "shapefile",
+        "file": "shp/stratmap19-addresspoints_48209_hays_201902.shp",
+        "number": [
+            "Add_Number",
+            "AddNum_Suf"
         ],
-        "city": "HaysCad.dbo.Accounts.situs_city",
-        "region": "HaysCad.dbo.Accounts.situs_state",
-        "postcode": "HaysCad.dbo.Accounts.situs_zip",
-        "format": "geojson"
+        "street": [
+            "St_PreMod",
+            "St_PreDir",
+            "St_PreTyp",
+            "St_PreSep",
+            "St_Name",
+            "St_PosTyp",
+            "St_PosDir",
+            "St_PosMod"
+        ],
+        "unit": "Unit",
+        "city": "Post_Comm",
+        "region": "State",
+        "postcode": "Post_Code"
     }
 }

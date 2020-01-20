@@ -9,18 +9,30 @@
         "state": "tx",
         "county": "Gillespie"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/trescube/e5f81a/us-tx-gillespie.geojson.zip",
-    "note": "data originally at http://mapsatbis.com/bisgis/rest/services/GillespieWeb/MapServer/0, city and zip fields don't contain that data",
+    "data": "https://s3.amazonaws.com/data.tnris.org/117cf9e1-3b1e-48f2-97a3-47020d871035/resources/stratmap19-addresspoints_48171_vector.zip",
+    "website": "https://data.tnris.org/collection/117cf9e1-3b1e-48f2-97a3-47020d871035",
     "protocol": "http",
     "compression": "zip",
     "conform": {
-        "format": "geojson",
-        "number": "GillespieCad.dbo.Accounts.situs_num",
-        "street": [
-            "GillespieCad.dbo.Accounts.situs_street_prefx",
-            "GillespieCad.dbo.Accounts.situs_street",
-            "GillespieCad.dbo.Accounts.situs_street_sufix"
+        "format": "shapefile",
+        "file": "shp/stratmap19-addresspoints_48171_gillespie_201906.shp",
+        "number": [
+            "Add_Number",
+            "AddNum_Suf"
         ],
-        "region": "GillespieCad.DBO.Accounts.situs_state"
+        "street": [
+            "St_PreMod",
+            "St_PreDir",
+            "St_PreTyp",
+            "St_PreSep",
+            "St_Name",
+            "St_PosTyp",
+            "St_PosDir",
+            "St_PosMod"
+        ],
+        "unit": "Unit",
+        "city": "Post_Comm",
+        "region": "State",
+        "postcode": "Post_Code"
     }
 }
