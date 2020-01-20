@@ -1,22 +1,38 @@
 {
     "coverage": {
-        "US Census": {"geoid": "48111", "name": "Dallam County", "state": "Texas"},
+        "US Census": {
+            "geoid": "48111",
+            "name": "Dallam County",
+            "state": "Texas"
+        },
         "country": "us",
         "state": "tx",
         "county": "Dallam"
     },
-    "data": "http://mapsatbis.com/bisgis/rest/services/DallamWeb/MapServer/0",
-    "protocol": "ESRI",
+    "data": "https://s3.amazonaws.com/data.tnris.org/117cf9e1-3b1e-48f2-97a3-47020d871035/resources/stratmap19-addresspoints_48111_vector.zip",
+    "website": "https://data.tnris.org/collection/117cf9e1-3b1e-48f2-97a3-47020d871035",
+    "protocol": "http",
+    "compression": "zip",
     "conform": {
-        "number": "DallamCad.DBO.Accounts.situs_num",
-        "street": [
-            "DallamCad.DBO.Accounts.situs_street_prefx",
-            "DallamCad.DBO.Accounts.situs_street",
-            "DallamCad.DBO.Accounts.situs_street_sufix"
+        "format": "shapefile",
+        "file": "shp/stratmap19-addresspoints_48111_dallam_201906.shp",
+        "number": [
+            "Add_Number",
+            "AddNum_Suf"
         ],
-        "city": "DallamCad.DBO.Accounts.situs_city",
-        "region": "DallamCad.DBO.Accounts.situs_state",
-        "postcode": "DallamCad.DBO.Accounts.situs_zip",
-        "format": "geojson"
+        "street": [
+            "St_PreMod",
+            "St_PreDir",
+            "St_PreTyp",
+            "St_PreSep",
+            "St_Name",
+            "St_PosTyp",
+            "St_PosDir",
+            "St_PosMod"
+        ],
+        "unit": "Unit",
+        "city": "Post_Comm",
+        "region": "State",
+        "postcode": "Post_Code"
     }
 }
