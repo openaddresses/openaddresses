@@ -9,28 +9,32 @@
         "state": "ca",
         "county": "san francisco"
     },
-    "attribution": "City and County of San Francisco",
-    "data": "http://apps.sfgov.org/datafiles/view.php?file=sfgis/eas_addresses_with_units.zip",
+    "attribution": "City and County of San Francisco, Enterprise Addressing System",
+    "data": "https://data.sfgov.org/api/geospatial/ramy-di5m?method=export&format=GeoJSON",
     "license": {
-        "text": "Public Domain",
+        "url": "https://www.opendatacommons.org/licenses/pddl/1-0/index.html",
+        "text": "Open Data Commons Public Domain Dedication and License",
         "attribution": false,
         "share-alike": false
     },
-    "website": "http://www.sfgov.org",
+    "website": "https://data.sfgov.org",
     "protocol": "http",
-    "compression": "zip",
     "conform": {
-      "format": "shapefile",
+      "format": "geojson",
+      "accuracy": 2,
       "number": {
         "function": "join",
-        "fields": ["ADDR_NUM", "ADDR_N_SFX"],
+        "fields": ["address_number", "address_number_suffix"],
         "separator": ""
       },
       "street": [
-          "ST_NAME",
-          "ST_TYPE"
+          "street_name",
+          "street_type"
       ],
-      "unit": "UNIT_NUM",
-      "postcode": "zipcode"
+      "city": "San Francisco",
+      "region": "California",
+      "unit": "unit_number",
+      "postcode": "zip_code",
+      "id": "eas_fullid"
     }
 }
