@@ -15,20 +15,25 @@
             "type": "Point"
         }
     },
-    "attribution": "City of Washington",
-    "data": "http://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Location_WebMercator/MapServer/0",
-    "license": "https://dc.gov/page/terms-and-conditions-use-district-data",
-    "protocol": "ESRI",
-    "conform": {
-        "number": ["ADDRNUM","ADDRNUMSUFFIX"],
-        "street": [
-            "STNAME",
-            "STREET_TYPE",
-            "QUADRANT"
-        ],
-        "format": "geojson",
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+    "layers": {
+        "addresses": [{
+            "name": "dcgis",
+            "attribution": "City of Washington",
+            "data": "http://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Location_WebMercator/MapServer/0",
+            "license": "https://dc.gov/page/terms-and-conditions-use-district-data",
+            "type": "ESRI",
+            "conform": {
+                "number": ["ADDRNUM","ADDRNUMSUFFIX"],
+                "street": [
+                    "STNAME",
+                    "STREET_TYPE",
+                    "QUADRANT"
+                ],
+                "type": "geojson",
+                "city": "CITY",
+                "region": "STATE",
+                "postcode": "ZIPCODE"
+            }
+        }]
     }
 }

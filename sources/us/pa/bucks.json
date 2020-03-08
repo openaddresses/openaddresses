@@ -1,4 +1,5 @@
 {
+    "schema": 2,
     "coverage": {
         "US Census": {
             "geoid": "42017",
@@ -9,19 +10,24 @@
         "state": "pa",
         "county": "Bucks"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/iandees/ed482f/bucks.geojson.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "geojson",
-        "number": "SITUS_ADDR_NUM",
-        "street": [
-            "SITUS_FDPRE",
-            "SITUS_FNAME",
-            "SITUS_FTYPE",
-            "SITUS_FDSUF"
-        ],
-        "city": "MUNI",
-        "accuracy": 2
+    "layers": {
+        "addresses": [{
+            "name": "city",
+            "data": "https://data.openaddresses.io/cache/uploads/iandees/ed482f/bucks.geojson.zip",
+            "protocol": "http",
+            "compression": "zip",
+            "conform": {
+                "format": "geojson",
+                "number": "SITUS_ADDR_NUM",
+                "street": [
+                    "SITUS_FDPRE",
+                    "SITUS_FNAME",
+                    "SITUS_FTYPE",
+                    "SITUS_FDSUF"
+                ],
+                "city": "MUNI",
+                "accuracy": 2
+            }
+        }]
     }
 }
