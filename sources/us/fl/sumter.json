@@ -9,21 +9,25 @@
         "state": "fl",
         "county": "Sumter"
     },
-    "data": "https://sumtercountyfl.gov/DocumentCenter/View/19057",
-    "protocol": "http",
-    "compression": "zip",
+    "data": "https://gis.sumtercountyfl.gov/sumtergis/rest/services/Interactive/Addresses/MapServer/0",
+    "protocol": "ESRI",
     "conform": {
-        "number": "NUMBER_",
-        "street": [
-            "PREDIR",
-            "ST_NAME",
-            "STSUFFIX",
-            "POSTDIR"
+        "format": "geojson",
+        "number": "ADD_NUM",
+        "unit": [
+            "UNITTYPE",
+            "UNITNUM"
         ],
-        "unit": "UNIT",
+        "street": [
+            "ST_PREMOD",
+            "ST_PREDIR",
+            "ST_PRETYP",
+            "ST_NAME",
+            "ST_POSTYP",
+            "ST_POSDIR",
+            "ST_POSMOD"
+        ],
         "city": "MAILCITY",
-        "postcode": "ZIP",
-        "format": "shapefile",
-        "file": "Address_Points.shp"
+        "postcode": "ZIP"
     }
 }
