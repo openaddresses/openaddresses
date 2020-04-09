@@ -9,22 +9,25 @@
         "state": "md",
         "county": "anne arundel"
     },
-    "data": "https://gis.aacounty.org/arcgis/rest/services/OpenData/Structure/FeatureServer/0",
+    "data": "https://gis.aacounty.org/arcgis/rest/services/OpenData/Structure_OpenData/MapServer/0",
     "website": "http://www.aacounty.org/departments/planning-and-zoning/research-and-gis/",
     "attribution": "Anne Arundel County",
     "protocol": "ESRI",
     "conform": {
         "format": "geojson",
-        "number": "ST_NUMBER",
+        "number": [
+            "ST_NUMBER",
+            "ST_NUMSUFF"
+        ],
+        "unit": [
+            "UNIT_TYPE",
+            "UNITNUM"
+        ],
         "street": [
             "ST_PREFIXD",
             "ST_NAME",
             "ST_TYPE",
             "ST_SUFFIXD"
-        ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNITNUM"
         ],
         "city": "CITY_NAME",
         "postcode": "ZIPCODE"
