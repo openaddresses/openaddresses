@@ -7,11 +7,14 @@
         "country": "us",
         "state": "nc"
     },
-    "data": "https://services.nconemap.gov/secure/rest/services/NC1Map_Parcels/MapServer/0",
+    "data": "https://dit-cgia-gis-data.s3.amazonaws.com/NCOM-data/parcels/NC_Parcels_fgdb.zip",
     "website": "https://www.nconemap.gov",
-    "protocol": "ESRI",
+    "protocol": "http",
+    "compression": "zip",
     "conform": {
-        "format": "geojson",
+        "format": "gdb",
+        "layer": "nc_parcels_pt",
+        "file": "NC_parcels_all.gdb",
         "number": {
             "function": "prefixed_number",
             "field": "SITEADD"
