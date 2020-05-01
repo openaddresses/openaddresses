@@ -1,0 +1,21 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "35005", "name": "Chaves County", "state": "New Mexico"},
+        "country": "us",
+        "state": "nm",
+        "county": "chaves"
+    },
+    "data": "https://services.arcgis.com/LGtNQDlIZBdntoA9/ArcGIS/rest/services/NM_ChavesCo_assessor_parcels201803/FeatureServer/0",
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "PROP_ADD"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "PROP_ADD"
+        }
+    }
+}
