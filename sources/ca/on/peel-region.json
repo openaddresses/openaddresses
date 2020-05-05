@@ -1,21 +1,31 @@
 {
-    "data": "http://opendata.peelregion.ca/media/38555/addresspoints_csv.zip",
-    "type": "http",
     "coverage": {
         "country": "ca",
         "province": "on",
-        "region": "Peel"
+        "region": "Peel",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -79.737,
+                43.725
+            ]
+        }
     },
+    "data": "https://services6.arcgis.com/ONZht79c8QWuX759/arcgis/rest/services/Address_Points/FeatureServer/0",
+    "website": "https://data.peelregion.ca/",
+    "license": {"url": "https://data.peelregion.ca/pages/license", "attribution": false, "share-alike": false},
+    "language": "en",
+    "protocol": "ESRI",
     "conform": {
-        "type": "csv",
+        "format": "geojson",
         "file": "AddressPoints_csv.csv",
         "id": "ROPADRID",
         "number": "STREETNUM",
-        "unit": "UNIT_IDENT",
-        "street": ["STREETNAME", "STREETTYPE", "STREETDIRE"],
-        "city": "MUNICIPALI",
+        "unit": "UNIT_IDENTIFIER",
+        "street": ["STREETNAME", "STREETTYPE", "STREETDIRECTION"],
+        "city": "MUNICIPALITY",
         "lat": "LATITUDE",
-        "lon": "LONGITUDE"
-    },
-    "compression": "zip"
+        "lon": "LONGITUDE",
+        "accuracy": 1
+    }
 }

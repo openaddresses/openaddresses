@@ -16,24 +16,22 @@
     },
     "compression": "zip",
     "conform": {
-        "srs": "EPSG:2180",
-        "id": "id_techniczny_obiektu",
-        "region": "woj_nazwa",
-        "district": {
-            "function": "join",
-            "fields": ["pow_nazwa", "gmi_nazwa"],
-            "separator": ", "
-        },
-        "city": "mjs_nazwa",
-        "postcode": "pad_kod_pocztowy",
-        "street": "ulc_nazwa",
-        "number": "pad_numer_porzadkowy",
-        "file": "punkty_adr_v2/mazowieckie.gml",
-        "type": "xml",
+        "srs": "EPSG:4326",
+        "id": "ID",
+        "region": "REGION",
+        "district": "DISTRICT",
+        "city": "CITY",
+        "postcode": "POSTCODE",
+        "street": "STREET",
+        "number": "NUMBER",
+        "lat": "LAT",
+        "lon": "LON",
+        "file": "mazowieckie.csv",
+        "format": "csv",
         "headers": 1,
         "skiplines": 1
     },
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/pl-mazowieckie.zip",
-    "type": "http",
-    "note": "original source is ftp://91.223.135.109/prg/punkty_adr.zip but zipfile has unfixable character encoding issues"
+    "data": "https://data.openaddresses.io/cache/uploads/macieg/2f5d9b/pl-mazowieckie.zip",
+    "protocol": "http",
+    "note": "https://opendata.geoportal.gov.pl/prg/adresy/PRG-punkty_adresowe.zip"
 }

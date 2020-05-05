@@ -9,18 +9,29 @@
         "state": "wi",
         "county": "Eau Claire"
     },
-    "data": "http://ags1.wgxtreme.com/ArcGIS/rest/services/EauClaireCoWI/EauClaireCoWIGIWSMain/MapServer/1",
-    "type": "ESRI",
+    "data": "https://services6.arcgis.com/FsBMyO0EKuAe3Kx8/arcgis/rest/services/AddressPoint/FeatureServer/0",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
-        "number": "ADDRESSNUM",
+        "format": "geojson",
+        "number": {
+            "function": "format",
+            "fields": [
+                "PREADDRNUM",
+                "ADDRNUM"
+            ],
+            "format": "$1$2"
+        },
         "street": [
-            "PRE_DIR",
-            "STREET",
-            "TYPE",
-            "SUF_DIR"
+            "ROADPREDIR",
+            "ROADNAME",
+            "ROADTYPE",
+            "ROADSUFFDIR"
+        ],
+        "unit": [
+            "UNITTYPE",
+            "UNITID"
         ],
         "postcode": "ZIP",
-        "city": "COMMUNITY"
+        "city": "MUNICIPALITY"
     }
 }

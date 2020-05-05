@@ -1,0 +1,45 @@
+{
+    "protocol": "http",
+    "data": "http://listdata.thelist.tas.gov.au/opendata/data/LIST_ADDRESS_POINTS_STATEWIDE.zip",
+    "license": {
+        "text": "CC BY 3.0 AU",
+        "url": "http://creativecommons.org/licenses/by/3.0/au/",
+        "attribution name": "Address Points from www.theLIST.tas.gov.au © State of Tasmania",
+        "attribution": true,
+        "share-alike": false
+    },
+    "website": "http://listdata.thelist.tas.gov.au/opendata/index.html#LIST_Address_Points",
+    "language": "en",
+    "conform": {
+        "format": "gdb",
+        "layer": "list_address_points_statewide",
+        "number": {
+            "function": "format",
+            "fields": ["ST_NO_FROM", "NO1_SUFFIX", "ST_NO_TO", "NO2_SUFFIX"],
+            "format": "$1$2-$3$4"
+        },
+        "street": [
+            "STREET",
+            "ST_TYPE",
+            "ST_SUFFIX"
+        ],
+        "unit": [
+            "UNIT_TYPE",
+            "UNIT_NUMB"
+        ],
+        "city": "LOCALITY",
+        "postcode": "POSTCODE",
+        "region": "STATE",
+        "id": "GEOCODE_ID"
+    },
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "AU-TAS",
+            "state": "Tasmania",
+            "country": "Australia"
+        },
+        "state": "tas",
+        "country": "au"
+    },
+    "compression": "zip"
+}

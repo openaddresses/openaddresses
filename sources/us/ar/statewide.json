@@ -5,23 +5,30 @@
         "state": "ar"
     },
     "website": "http://gis.arkansas.gov/?product=situs-address-points",
-    "data": "http://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Location/MapServer/14",
-    "type": "ESRI",
+    "data": "https://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Location/FeatureServer/14",
+    "protocol": "ESRI",
     "attribution": "Arkansas Geographic Information Office",
     "conform": {
-        "type": "geojson",
+        "format": "geojson",
         "number": [
-          "adr_num",
-          "adr_num_suf"
+          "ADR_NUM",
+          "ADR_NUM_SUF"
         ],
-        "street": "pstr_fulnam",
+        "street": [
+            "PRE_DIR",
+            "PRE_TYPE",
+            "PSTR_NAM",
+            "PSTR_TYPE",
+            "PSUF_DIR",
+            "PSTR_MOD"
+        ],
         "unit": [
-          "adr_unit_typ",
-          "adr_unit_id"
+          "ADR_UNIT_TYP",
+          "ADR_UNIT_ID"
         ],
-        "city": "adr_city",
-        "district": "cnty_name",
-        "region": "adr_state",
-        "postcode": "adr_zip5"
+        "city": "ADR_CITY",
+        "district": "CNTY_NAME",
+        "region": "ADR_STATE",
+        "postcode": "ADR_ZIP5"
     }
 }

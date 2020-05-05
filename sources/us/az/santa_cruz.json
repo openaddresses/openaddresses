@@ -1,29 +1,24 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "04023",
-            "name": "Santa Cruz County",
-            "state": "Arizona"
-        },
-        "country": "us",
-        "state": "az",
-        "county": "Santa Cruz"
+  "coverage": {
+    "US Census": {
+      "geoid": "04023",
+      "name": "Santa Cruz County",
+      "state": "Arizona"
     },
-    "data": "https://gis.santacruzcountyaz.gov/arcgis/rest/services/ParcelSearch/Parcels/MapServer/0",
-    "type": "ESRI",
-    "note": "SITEADDR has the city after the road name, so the split is going to be crummy",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "SITEADDR",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SITEADDR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "country": "us",
+    "state": "az",
+    "county": "Santa Cruz"
+  },
+  "data": "https://mapservices.santacruzcountyaz.gov/wagis01/rest/services/Buildings/AddressPoints/MapServer/0",
+  "protocol": "ESRI",
+  "conform": {
+    "format": "geojson",
+    "number": "Add_Number",	
+    "street": "FULLNAME",
+    "unit": "AddNum_Suf",
+    "city": "MSAG_COM",
+    "postcode": "ZIPCODE",
+    "district": "Subdivision",
+    "addrtype": "TYPE"
     }
 }

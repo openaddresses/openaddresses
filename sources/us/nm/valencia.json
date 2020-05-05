@@ -6,15 +6,14 @@
         "county": "Valencia"
     },
     "data": "http://arcgisce.co.valencia.nm.us/arcgis/rest/services/NewTylerMap/MapServer/1",
-    "type": "ESRI",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
+        "format": "geojson",
         "number": "HouseNum",
         "street": {
-            "function": "regexp",
+            "function": "remove_prefix",
             "field": "Situs",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
+            "field_to_remove": "HouseNum"
         }
     }
 }

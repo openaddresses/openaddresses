@@ -9,10 +9,10 @@
         "state": "mn",
         "county": "Pope"
     },
-    "data": "http://gis.co.pope.mn.us/arcgis/rest/services/Test_PopeAll_101/MapServer/4",
-    "type": "ESRI",
+    "data": "http://gis.co.pope.mn.us/arcgis/rest/services/OpenData/OpenData/MapServer/0/",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
+        "format": "geojson",
         "number": "ADDRNUM",
         "street": {
             "function": "regexp",
@@ -20,10 +20,6 @@
             "pattern": "^(?:[0-9]+ )(.*)",
             "replace": "$1"
         },
-        "unit": [
-          "UNITTYPE",
-          "UNITID"
-        ],
         "postcode": "ZIP",
         "city": "MUNICIPALITY",
         "region": "STATE"

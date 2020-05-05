@@ -1,0 +1,34 @@
+{
+  "coverage": {
+    "country": "us",
+    "state": "ct",
+    "county": "Fairfield",
+    "city": "Trumbull",
+    "US Census": {
+      "geoid": "0977200",
+      "name": "Town of Trumbull",
+      "state": "Connecticut"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        -73.196047,
+        41.238698
+      ]
+    }
+  },
+  "data": "https://gis.ctmetro.org/arcgis/rest/services/Trumbull/Trumbull_Parcels_NAD83/MapServer/4",
+  "website": "http://www.trumbull-ct.gov/",
+  "protocol": "ESRI",
+  "conform": {
+    "format": "geojson",
+    "number": "ST_NUM",
+    "street": {
+      "function": "remove_prefix",
+      "field": "Location",
+      "field_to_remove": "ST_NUM"
+    },
+    "id": "Par_ID",
+    "accuracy": 2
+  }
+}

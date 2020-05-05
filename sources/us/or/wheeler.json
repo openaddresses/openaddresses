@@ -9,20 +9,19 @@
         "state": "or",
         "county": "Wheeler"
     },
-    "data": "http://lcmaps.lanecounty.org/arcgis/rest/services/Wheeler/WheelerBaseMap/MapServer/231",
-    "type": "ESRI",
+    "data": "https://services3.arcgis.com/e3KSI9Py4B7m3xu6/ArcGIS/rest/services/Wheeler01_TL/FeatureServer/0",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
-        "number": "ADDR_NUM",
-        "street": [
-            "PREMOD",
-            "PRETYPE",
-            "STNAME",
-            "STTYPE",
-            "SUFDIR"
-        ],
-        "city": "USPS_CITY",
-        "postcode": "ZIP5",
-        "id": "TXACCOUN_1"
+        "format": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "SiteAddNam"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "SiteAddNam"
+        },
+        "city": "SiteAddCty",
+        "postcode": "SiteZip"
     }
 }

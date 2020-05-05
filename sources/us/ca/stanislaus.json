@@ -9,21 +9,20 @@
         "state": "ca",
         "county": "Stanislaus"
     },
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "Situs2",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Situs2",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
-    },
     "attribution": "Stanislaus County",
-    "data": "http://gis.stancounty.com/stangis_map_services/ArcGIS/rest/services/maps/parcels/MapServer/0",
-    "type": "ESRI"
+    "data": "https://gis2.stancounty.com/arcgis/rest/services/Hosted/Addresses/FeatureServer/0",
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "number": "house_num",
+        "unit": "unit",
+        "street": [
+            "pre_dir",
+            "street",
+            "st_sfx",
+            "post_dir"
+        ],
+        "city": "city",
+        "postcode": "zip"
+    }
 }

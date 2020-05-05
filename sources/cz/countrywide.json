@@ -8,9 +8,9 @@
     },
     "website": "http://vdp.cuzk.cz/vdp/ruian/vymennyformat/vyhledej?vf.pu=S&_vf.pu=on&_vf.pu=on&vf.cr=U&vf.up=OB&vf.ds=Z&vf.vu=Z&_vf.vu=on&_vf.vu=on&_vf.vu=on&_vf.vu=on&vf.uo=O&ob.kod=531723&search=Vyhledat",
     "license": "§ 62 of Law 111/2009 Sb - http://www.zakonyprolidi.cz/cs/2009-111#p62",
-    "type": "http",
+    "protocol": "http",
     "compression": "zip",
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/5a3dbe/czech_addresses_wgs84_12092016_MASTER.zip",
+    "data": "https://data.openaddresses.io/cache/uploads/trescube/5a3dbe/czech_addresses_wgs84_12092016_MASTER.zip",
     "note": {
         "address formats": "http://www.upu.int/fileadmin/documentsFiles/activities/addressingUnit/czeEn.pdf",
         "description": "according to format, there are cities w/o streets, just house numbers",
@@ -34,12 +34,12 @@
         "number": {
             "function": "regexp",
             "field": "alternativ",
-            "pattern": ".*?((?:č\\.?(?:p|ev)\\.?)?\\s*\\d+(?:\/\\d+[a-z]?)?)"
+            "pattern": "^[^,]*?\\s*((?:č\\.?(?:p|ev)\\.?)?\\s*\\d+(?:\\s*/\\s*\\d+[a-z]?)?)(?=\\s*,)"
         },
         "street": {
             "function": "regexp",
             "field": "alternativ",
-            "pattern": "(.*?)(?:(?:č\\.?(?:p|ev)\\.?)?\\s*\\d+(?:\\d+[a-z]?)?)"
+            "pattern": "^([^,]*?)\\s*(?:(?:č\\.?(?:p|ev)\\.?)?\\s*\\d+(?:\\s*/\\s*\\d+[a-z]?)?)(?=\\s*,)"
         },
         "city": {
             "function": "regexp",
@@ -52,7 +52,7 @@
             "pattern": "(?:.*),\\s+(\\d+)"
         },
         "file": "czech_addresses_wgs84_12092016_MASTER.csv",
-        "type": "csv",
+        "format": "csv",
         "accuracy": 1
     },
     "test": {
@@ -141,6 +141,42 @@
                     "street": "",
                     "city": "Rozstání",
                     "postcode": "79862"
+                }
+            },
+            {
+                "description": "street name containing initial number",
+                "inputs": {
+                    "alternativ": "28. října 24, 56301 Lanškroun"
+                },
+                "expected": {
+                    "number": "24",
+                    "street": "28. října",
+                    "city": "Lanškroun",
+                    "postcode": "56301"
+                }
+            },
+            {
+                "description": "street name containing initial number with /-delimited house number",
+                "inputs": {
+                    "alternativ": "1. května 683/86, 69201 Mikulov"
+                },
+                "expected": {
+                    "number": "683/86",
+                    "street": "1. května",
+                    "city": "Mikulov",
+                    "postcode": "69201"
+                }
+            },
+            {
+                "description": "street name containing non-initial number",
+                "inputs": {
+                    "alternativ": "třída 5. května 7, 37372 Lišov"
+                },
+                "expected": {
+                    "number": "7",
+                    "street": "třída 5. května",
+                    "city": "Lišov",
+                    "postcode": "37372"
                 }
             }
         ]

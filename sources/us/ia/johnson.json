@@ -9,13 +9,28 @@
         "state": "ia",
         "county": "Johnson"
     },
-    "data": "http://gis.johnson-county.com/arcgis/rest/services/Parcels/MapServer/2",
-    "type": "ESRI",
+    "data": "https://gis.johnson-county.com/arcgis/rest/services/Site_Addresses/MapServer/0",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
-        "number": "HouseNumber",
-        "street": "STREET",
-        "city": "CITY",
-        "postcode": "ZIP"
+        "format": "geojson",
+        "number": [
+            "AddNum_Pre",
+            "Add_Number",
+            "AddNum_Suf"
+        ],
+        "street": [
+            "StN_PreMod",
+            "StN_PreDir",
+            "StN_PreTyp",
+            "StreetName",
+            "StN_PosType",
+            "StN_PosDir",
+            "StN_PosMod"
+        ],
+        "unit": "Unit",
+        "city": "Post_Comm",
+        "district": "County",
+        "region": "State",
+        "postcode": "Post_Code"
     }
 }

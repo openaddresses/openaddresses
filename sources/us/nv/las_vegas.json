@@ -16,20 +16,19 @@
         "state": "nv",
         "city": "Las Vegas"
     },
-    "data": "http://mapdata.lasvegasnevada.gov/clvgis/rest/services/AdministrativeBoundaries/Condo_Parcels/MapServer/0",
-    "type": "ESRI",
+    "data": "https://mapdata.lasvegasnevada.gov/clvgis/rest/services/AdministrativeBoundaries/Parcels/MapServer/0",
+    "protocol": "ESRI",
     "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS1",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS1",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "type": "geojson"
+        "format": "geojson",
+        "number": [
+            "STRNO",
+            "STRFRAC"
+        ],
+        "street": [
+            "STRDIR",
+            "STRNAME",
+            "STRTYPE"
+        ],
+        "unit": "STRUNIT"
     }
 }

@@ -9,20 +9,15 @@
         "state": "sc",
         "county": "Sumter"
     },
-    "data": "http://svr4.sumtercountysc.org/arcgis/rest/services/Parcel_Search/County_Map_PS/MapServer/5",
-    "type": "ESRI",
+    "data": "http://svr4.sumtercountysc.org:6080/arcgis/rest/services/Parcel_Search/County_Map_PS/MapServer/5",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "O_ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
+        "format": "geojson",
+        "number": "FULL_ADDRESS",
         "street": {
-            "function": "regexp",
+            "function": "remove_prefix",
             "field": "O_ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "field_to_remove": "FULL_ADDRESS"
         },
         "city": "COMMUNITY",
         "region": "STATE",

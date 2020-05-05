@@ -9,39 +9,60 @@
         "county": "Galveston"
     },
     "data": "http://services2.arcgis.com/7Zo7vX4Yxo9Z7Vw3/ArcGIS/rest/services/MyMapService/FeatureServer/0",
-    "type": "ESRI",
+    "protocol": "ESRI",
     "conform": {
         "number": "SITUS_NO",
         "street": {
             "function": "regexp",
             "field": "SITUS",
-            "pattern": "^(?:[0-9]+ )?(.*?),(?: )?(|[^,]+),?(?: )(.*?),(?: )(.*)(?: )([0-9]+)$",
-            "replace": "$1"
+            "pattern": "^\\s*(?:[\\d]+(?:[\\s-]\\d\\s*/\\s*\\d)?|\\d+-\\d+|\\d+-?[A-Z])\\s*(.*?)(?=,| (?:UNITS?|TRA?I?LE?RS?|SU?I?TES?|SPA?CE?S?|REAR|LOTS?|FRO?NT|FLO?O?R?S?|BU?I?LDI?N?GS?|APA?R?T?M?E?N?TS?)\\b|(?: (?:TIKI ISLAND|TEXAS CITY|SANTA FE|SAN LEON|PORT BOLIVAR|LEAGUE CITY|LA MARQUE|KEMAH|JAMAICA BEACH|HITCHCOCK|HIGH ISLAND|GILCHRIST|GALVESTON|FRIENDSWOOD|DICKINSON|CRYSTAL BEACH|CLEAR LAKE SHORES|CAPLEN|BOLIVAR PENINSULA|BAYVIEW|BAYOU VISTA|BACLIFF|ALTA LOMA|ALGOA),?\\s*TX\\s*(?:[,\\s]\\s*[0-9]{5}(?:\\-[0-9]{4})?)?$))"
         },
         "unit": {
             "function": "regexp",
             "field": "SITUS",
-            "pattern": "^(?:[0-9]+ )?(.*?),(?: )?(|[^,]+),?(?: )(.*?),(?: )(.*)(?: )([0-9]+)$",
-            "replace": "$2"
+            "pattern": "^(?:.*?),?(?: )?((?:(?:UNITS?|TRA?I?LE?RS?|SU?I?TES?|SPA?CE?S?|LOTS?|FLO?O?R?S?|BU?I?LDI?N?GS?|APA?R?T?M?E?N?TS?)(?:\\s*#|\\s+(?:NUMB?E?R?S?|NOS?\\.?))?\\s*(?:(?:[0-9]+[A-Z]?|[A-Z])(?:[,\\s]\\s*(?:[0-9]+[A-Z]?|[A-Z]))(?![A-Z]))*\\s*(?:&|AND)?\\s*[0-9]*(?:[A-Z](?![A-Z]))?)|(?:REAR|FRO?NT)\\b)(?:.*)$"
         },
         "city": {
             "function": "regexp",
             "field": "SITUS",
-            "pattern": "^(?:[0-9]+ )?(.*?),(?: )?(|[^,]+),?(?: )(.*?),(?: )(.*)(?: )([0-9]+)$",
-            "replace": "$3"
+            "pattern": "^(?:.*?)(?<=[\\s,0-9])(TIKI ISLAND|TEXAS CITY|SANTA FE|SAN LEON|PORT BOLIVAR|LEAGUE CITY|LA MARQUE|KEMAH|JAMAICA BEACH|HITCHCOCK|HIGH ISLAND|GILCHRIST|GALVESTON|FRIENDSWOOD|DICKINSON|CRYSTAL BEACH|CLEAR LAKE SHORES|CAPLEN|BOLIVAR PENINSULA|BAYVIEW|BAYOU VISTA|BACLIFF|ALTA LOMA|ALGOA),?\\s*TX\\s*(?:[,\\s]\\s*[0-9]{5}(?:\\-0-9{4})?)?$"
         },
         "region": {
             "function": "regexp",
             "field": "SITUS",
-            "pattern": "^(?:[0-9]+ )?(.*?),(?: )?(|[^,]+),?(?: )(.*?),(?: )(.*)(?: )([0-9]+)$",
-            "replace": "$4"
+            "pattern": "^.*?,?\\s*(TX)\\s*(?:[,\\s]\\s*[0-9]{5}(?:\\-[0-9]{4})?)?$"
         },
         "postcode": {
             "function": "regexp",
             "field": "SITUS",
-            "pattern": "^(?:[0-9]+ )?(.*?),(?: )?(|[^,]+),?(?: )(.*?),(?: )(.*)(?: )([0-9]+)$",
-            "replace": "$5"
+            "pattern": "^.*?([0-9]{5}(?:\\-[0-9]{4})?)$"
         },
-        "type": "geojson"
+        "format": "geojson"
+    },
+    "test": {
+        "enabled": true,
+        "description": "Galveston SITUS address tests",
+        "acceptance-tests": [
+            {
+                "description": "c50b293-1",
+                "inputs": {"situs": "27030 ESTUARY DR, UNIT #101, GALVESTON, TX  77554", "situs_no": "27030"},
+                "expected": {"number": "27030", "unit": "UNIT #101", "street": "ESTUARY DR", "city": "GALVESTON", "region": "TX", "postcode": "77554"}
+            },
+            {
+                "description": "c50b293-2",
+                "inputs": {"situs": "27130 ESTUARY DR, GALVESTON, TX  77554", "situs_no": "27130"},
+                "expected": {"number": "27130", "unit": "", "street": "ESTUARY DR", "city": "GALVESTON", "region": "TX", "postcode": "77554"}
+            },
+            {
+                "description": "5355d90-1",
+                "inputs": {"situs": "27030 ESTUARY DR UNIT 101GALVESTON, TX 77554", "situs_no": "27030"},
+                "expected": {"number": "27030", "unit": "UNIT 101", "street": "ESTUARY DR", "city": "GALVESTON", "region": "TX", "postcode": "77554"}
+            },
+            {
+                "description": "5355d90-2",
+                "inputs": {"situs": "27130 ESTUARY DR GALVESTON, TX 77554", "situs_no": "27130"},
+                "expected": {"number": "27130", "unit": "", "street": "ESTUARY DR", "city": "GALVESTON", "region": "TX", "postcode": "77554"}
+            }
+        ]
     }
 }

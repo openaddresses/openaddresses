@@ -1,23 +1,32 @@
 {
     "coverage": {
+        "US Census": {
+            "geoid": "3706500",
+            "name": "City of Blowing Rock",
+            "state": "North Carolina"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -81.674693,
+                36.130334
+            ]
+        },
         "country": "us",
         "state": "nc",
         "place": "Blowing Rock"
     },
-    "data": "http://arcgis.webgis.net/arcgis/rest/services/NC/BlowingRock/MapServer/6",
-    "type": "ESRI",
+    "data": "https://services5.arcgis.com/qWbsNTne6eidnUv9/ArcGIS/rest/services/BlowingRock_Parcels_201709/FeatureServer/0",
+    "protocol": "ESRI",
     "conform": {
         "street": {
-            "function": "regexp",
-            "field": "PropAddress",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "function": "postfixed_street",
+            "field": "PROPADDRES"
         },
         "number": {
-            "function": "regexp",
-            "field": "PropAddress",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "PROPADDRES"
         },
-        "type": "geojson"
+        "format": "geojson"
     }
 }

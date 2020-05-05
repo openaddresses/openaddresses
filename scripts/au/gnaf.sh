@@ -10,41 +10,44 @@ mkdir $TMP
 mkdir $TMP/gnaf $TMP/gnaf-admin $TMP/tablespace
 chown postgres:postgres $TMP/tablespace
 
-/etc/init.d/postgresql start
-sudo -u postgres psql -c "CREATE USER gnafun WITH CREATEUSER PASSWORD 'gnafpw'"
+/etc/init.d/postgresql start 
+sudo -u postgres psql -c "CREATE USER gnafun WITH SUPERUSER PASSWORD 'gnafpw'"
 sudo -u postgres psql -c "CREATE TABLESPACE gnafts OWNER gnafun LOCATION '$TMP/tablespace'"
 sudo -u postgres psql -c 'CREATE DATABASE gnafdb OWNER gnafun TABLESPACE gnafts'
 sudo -u postgres psql -c 'CREATE EXTENSION postgis'
 
 # fetch data/resources, cached from:
-# http://data.gov.au/dataset/bdcf5b09-89bc-47ec-9281-6b8e9ee147aa/resource/53c24b8e-4f55-4eed-a189-2fc0dcca6381/download/feb17adminboundsesrishapefileordbffile.zip
-# http://data.gov.au/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/99b44dff-4e84-4cb7-9cbf-a68d3ebf964a/download/feb17-gnaf-pipeseperatedvalue.zip
-curl -s 'http://s3.amazonaws.com/data.openaddresses.io/cache/au/gnaf-admin-feb2017.zip' -o $TMP/gnaf-admin.zip &
-curl -s 'http://s3.amazonaws.com/data.openaddresses.io/cache/au/gnaf-feb2017.zip' -o $TMP/gnaf.zip &
-wait
+## https://data.gov.au/dataset/psma-administrative-boundaries
+## https://data.gov.au/dataset/geocoded-national-address-file-g-naf
+curl --retry 10 --location 'https://data.gov.au/data/dataset/bdcf5b09-89bc-47ec-9281-6b8e9ee147aa/resource/53c24b8e-4f55-4eed-a189-2fc0dcca6381/download/feb20_adminbounds_esrishapefile.zip' -o $TMP/gnaf-admin.zip
+curl --retry 10 --location 'https://data.gov.au/data/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/4b084096-65e4-4c8e-abbe-5e54ff85f42f/download/feb20_gnaf_pipeseparatedvalue.zip' -o $TMP/gnaf.zip
 parallel "unzip -d $TMP/{} $TMP/{}.zip" ::: gnaf gnaf-admin
+rm -f $TMP/gnaf.zip $TMP/gnaf-admin.zip
 
 # find file directories
 GNAF_DIR="$(find $TMP -type d | grep 'G-NAF' | grep 'Authority Code' | xargs -I {} dirname {} | head -n1)"
-BOUNDARY_DIR="$(find $TMP -type d | grep -v 'Administrative Boundaries' | head -n1)"
+BOUNDARY_DIR="$(find $TMP -type d | grep 'Administrative Boundaries' | head -n1 | xargs -I {} dirname {})"
 
 # load data into tables
 python /usr/local/gnaf-loader/load-gnaf.py \
     --pguser gnafun --pgdb gnafdb --pgpassword gnafpw \
-    --no-boundary-tag \
+    --gnaf-schema gnaf \
     --gnaf-tables-path "$GNAF_DIR" \
     --admin-bdys-path "$BOUNDARY_DIR" \
-    --raw-unlogged
+    --raw-unlogged \
+    --no-boundary-tag
 
 # select output from tables
 echo "CREATE TABLE openaddresses AS
 SELECT
 
+    gnaf_pid AS id,
+
     TRIM(
         CASE WHEN number_first IS NOT NULL THEN number_first ||
             CASE WHEN number_last IS NOT NULL THEN '-' || number_last || ' ' ELSE ' ' END
         ELSE
-            NULL
+            CASE WHEN lot_number IS NOT NULL THEN 'LOT ' || lot_number ELSE NULL END
         END
     )
         AS number,
@@ -86,7 +89,7 @@ chmod a+w $TMP/au.csv
 echo "COPY openaddresses TO '$TMP/au.csv' DELIMITER ',' CSV HEADER;" | psql -t -q postgres://gnafun:gnafpw@localhost/gnafdb
 
 mkdir /work/cache
-zip -j /work/cache/au-feb2017.zip $TMP/au.csv
+zip -j /work/cache/au-feb2020.zip $TMP/au.csv
 
 # clean up temporary files
 /etc/init.d/postgresql stop

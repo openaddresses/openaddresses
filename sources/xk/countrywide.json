@@ -1,0 +1,98 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "XK",
+            "country": "Kosovo"
+        },
+        "country": "xk"
+    },
+    "data": "https://www.dropbox.com/s/3vgtlgkkiadkt7d/xk_addr.csv?dl=1",
+    "protocol": "http",
+    "conform": {
+        "format": "csv",
+        "lat": "POINT_Y",
+        "lon": "POINT_X",
+        "number": {
+            "function": "regexp",
+            "field": "ADDR1",
+            "pattern": "^(?:.* )(\\d+), (?:.*), (?:.*?), Kosova$"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDR1",
+            "pattern": "^(.* )(?:\\d+), (?:.*), (?:.*?), Kosova$"
+        },
+        "city": {
+            "function": "regexp",
+            "field": "ADDR1",
+            "pattern": "^(?:.*), (.+), (?:.*?), Kosova$"
+        },
+        "district": {
+            "function": "regexp",
+            "field": "ADDR1",
+            "pattern": "^(?:.*), (?:.*), (.+?), Kosova$"
+        }
+    },
+    "test": {
+        "enabled": true,
+        "description": "these are the tests that exercise valid inputs for Kosovo countrywide",
+        "acceptance-tests": [
+            {
+                "description": "input w/o street/number",
+                "inputs": {
+                    "ADDR1": ", Biti e Epërme, SHTËRPCË, Kosova",
+                    "POINT_X": "21.212121",
+                    "POINT_Y": "12.121212"
+                },
+                "expected": {
+                    "number": "",
+                    "street": "",
+                    "city": "Biti e Epërme",
+                    "district": "SHTËRPCË"
+                }
+            },
+            {
+                "description": "input w/street+number",
+                "inputs": {
+                    "ADDR1": "1 MAJ 10, Mogillë, KLLOKOT, Kosova",
+                    "POINT_X": "21.212121",
+                    "POINT_Y": "12.121212"
+                },
+                "expected": {
+                    "number": "10",
+                    "street": "1 MAJ",
+                    "city": "Mogillë",
+                    "district": "KLLOKOT"
+                }
+            },
+            {
+                "description": "input w/o city",
+                "inputs": {
+                    "ADDR1": "1 MAJI 1999 71, , GJAKOVË, Kosova",
+                    "POINT_X": "21.212121",
+                    "POINT_Y": "12.121212"
+                },
+                "expected": {
+                    "number": "71",
+                    "street": "1 MAJI 1999",
+                    "city": "",
+                    "district": "GJAKOVË"
+                }
+            },
+            {
+                "description": "input w/o street",
+                "inputs": {
+                    "ADDR1": "1, Gjilan, GJILAN, Kosova",
+                    "POINT_X": "21.212121",
+                    "POINT_Y": "12.121212"
+                },
+                "expected": {
+                    "number": "",
+                    "street": "",
+                    "city": "Gjilan",
+                    "district": "GJILAN"
+                }
+            }
+        ]
+    }
+}

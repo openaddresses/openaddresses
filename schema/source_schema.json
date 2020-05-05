@@ -4,13 +4,13 @@
   "description": "An OpenAddresses source",
   "type": "object",
   "required": [
-    "type",
+    "protocol",
     "data",
     "coverage"
   ],
   "additionalProperties": false,
   "properties": {
-    "type": {
+    "protocol": {
       "type": "string",
       "enum": [
         "http",
@@ -43,6 +43,9 @@
         { "type": "string" },
         { "$ref": "#/definitions/license" }
       ]
+    },
+    "contact": {
+      "$ref": "#/definitions/contact"
     },
     "note": {
       "oneOf": [
@@ -115,13 +118,39 @@
         },
         "share-alike": {
           "type": "boolean"
+        },
+        "presumed": {
+          "type": "boolean"
+        },
+        "remarks": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
         }
       }
     },
     "base_conform_field_value": {
       "description": "convenience definition for one of null, string, or string array",
       "oneOf": [
-        { "type": "null" },
         { "type": "string" },
         {
           "type": "array",
@@ -136,7 +165,7 @@
       "required": ["number", "street"],
       "additionalProperties": false,
       "properties": {
-        "type": {
+        "format": {
           "type": "string",
           "enum": [
             "geojson",
@@ -153,13 +182,12 @@
         "accuracy": {
           "description": "https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md#accuracy",
           "type": "integer",
-          "minimum": 0,
-          "maximum": 5,
-          "exclusiveMinimum": true
+          "minimum": 1,
+          "maximum": 5
         },
         "srs": {
           "type": "string",
-          "regex": "EPSG:[0-9]+"
+          "pattern": "EPSG:[0-9]+"
         },
         "file": {
           "type": "string"
@@ -231,6 +259,7 @@
           "oneOf": [
             { "$ref": "#/definitions/base_conform_field_value" },
             { "$ref": "#/definitions/function_regexp" },
+            { "$ref": "#/definitions/function_postfixed_unit" },
             { "$ref": "#/definitions/function_remove_prefix" },
             { "$ref": "#/definitions/function_remove_postfix" },
             { "$ref": "#/definitions/function_join" },
@@ -388,6 +417,24 @@
         },
         "field": {
           "type": "string"
+        },
+        "may_contain_units": {
+          "type": "boolean"
+        }
+      }
+    },
+    "function_postfixed_unit": {
+      "description": "postfixed_unit function definition",
+      "type": "object",
+      "required": ["function", "field"],
+      "additionalProperties": false,
+      "properties": {
+        "function": {
+          "type": "string",
+          "enum": ["postfixed_unit"]
+        },
+        "field": {
+          "type": "string"
         }
       }
     },
@@ -485,13 +532,14 @@
           "minItems": 1,
           "items": {
             "oneOf": [
-              { "$ref": "#/definitions/function_regexp" },
-              { "$ref": "#/definitions/function_prefixed_number" },
-              { "$ref": "#/definitions/function_remove_prefix" },
-              { "$ref": "#/definitions/function_remove_postfix" },
-              { "$ref": "#/definitions/function_join" },
-              { "$ref": "#/definitions/function_format" },
-              { "$ref": "#/definitions/function_chain" }
+                { "$ref": "#/definitions/base_conform_field_value" },
+                { "$ref": "#/definitions/function_regexp" },
+                { "$ref": "#/definitions/function_postfixed_street" },
+                { "$ref": "#/definitions/function_remove_prefix" },
+                { "$ref": "#/definitions/function_remove_postfix" },
+                { "$ref": "#/definitions/function_join" },
+                { "$ref": "#/definitions/function_format" },
+                { "$ref": "#/definitions/function_chain" }
             ]
           }
         }

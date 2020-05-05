@@ -1,0 +1,93 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "35027",
+            "name": "Lincoln",
+            "state": "New Mexico"
+        },
+        "country": "us",
+        "state": "nm",
+        "county": "Lincoln"
+    },
+    "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/LincolnNMFeatures/FeatureServer/0",
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "FULLADDR",
+            "pattern": "(\\d+)[A-Z]?$"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "FULLADDR",
+            "pattern": "^(.+?)\\b(?:\\s*(?:-|=|\\.)\\s*)(?:\\d+[A-Z]?)?$"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "FULLADDR",
+            "pattern": "\\d+([A-Z])$"
+        }
+    },
+    "test": {
+        "enabled": true,
+        "description": "these are the tests that exercise number-suffixed addresses",
+        "acceptance-tests": [
+            {
+                "description": "= delimiter, alphanumeric number",
+                "inputs": {
+                    "FULLADDR": "SAN MIGUEL RD=114A"
+                },
+                "expected": {
+                    "number": "114",
+                    "street": "SAN MIGUEL RD",
+                    "unit": "A"
+                }
+            },
+            {
+                "description": "= delimiter with padding",
+                "inputs": {
+                    "FULLADDR": "LAGUNA VISTA PL = 102"
+                },
+                "expected": {
+                    "number": "102",
+                    "street": "LAGUNA VISTA PL",
+                    "unit": ""
+                }
+            },
+            {
+                "description": "street ends with number",
+                "inputs": {
+                    "FULLADDR": "US HWY 54-11457"
+                },
+                "expected": {
+                    "number": "11457",
+                    "street": "US HWY 54",
+                    "unit": ""
+                }
+            },
+            {
+                "description": ". delimiter",
+                "inputs": {
+                    "FULLADDR": "N. CENTRAL DR.310"
+                },
+                "expected": {
+                    "number": "310",
+                    "street": "N. CENTRAL DR",
+                    "unit": ""
+                }
+            },
+            {
+                "description": "0-length delimiter, doesn't currently work",
+                "inputs": {
+                    "FULLADDR": "HULL RD0405"
+                },
+                "expected": {
+                    "number": "0405",
+                    "street": "",
+                    "unit": ""
+                }
+            }
+        ]
+    }
+}

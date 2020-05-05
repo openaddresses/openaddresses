@@ -7,27 +7,25 @@
         "country": "us",
         "state": "nc"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/2b9f60/us-nc-statewide.geojson.zip",
-    "website": "http://data.nconemap.com/geoportal/catalog/search/resource/details.page?uuid=%7B9E039D56-5202-43E7-8D36-D09414C0DBD6%7D",
-    "note": "The layer name says the data is from 2014 so it may be 3 years out of date.  The FTP site at ftp.nconemap.com/outgoing/vector/ is password-protected.  This data has been sourced from https://services.nconemap.gov/secure/rest/services/NC1Map_Location/MapServer/0",
-    "year": "2014",
-    "type": "http",
+    "data": "https://dit-cgia-gis-data.s3.amazonaws.com/NCOM-data/parcels/NC_Parcels_fgdb.zip",
+    "website": "https://www.nconemap.gov",
+    "protocol": "http",
     "compression": "zip",
     "conform": {
-        "type": "geojson",
-        "number": [
-            "ADDR_HN",
-            "SUB_HN"
-        ],
-        "unit": "APT_UNIT",
-        "street": [
-            "ADDR_PD",
-            "ADDR_SN",
-            "ADDR_ST",
-            "ADDR_SD"
-        ],
-        "city": "COMMUNITY",
-        "postcode": "ZIPCODE",
-        "district": "COUNTY_NAME"
+        "format": "gdb",
+        "layer": "nc_parcels_pt",
+        "file": "NC_parcels_all.gdb",
+        "number": {
+            "function": "prefixed_number",
+            "field": "SITEADD"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "SITEADD"
+        },
+        "unit": "SUNIT",
+        "city": "SCITY",
+        "postcode": "SZIP",
+        "district": "CNTYNAME"
     }
 }

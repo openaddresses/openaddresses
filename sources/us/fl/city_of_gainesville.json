@@ -16,25 +16,21 @@
         "state": "fl",
         "city": "Gainesville"
     },
-    "data": "https://services.arcgis.com/cNo3jpluyt69V8Ek/ArcGIS/rest/services/ACFR_Addressess/FeatureServer/0",
+    "data": "https://services.arcgis.com/cNo3jpluyt69V8Ek/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
     "note": "while there is a UNIT field, it appears to incorrectly contain the same value that's in ROADTYPE.  the FULLADDR field does have the unit appended with a '-'.",
-    "type": "ESRI",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
+        "format": "geojson",
+        "id": "ADDRESSPTID",
+        "number": "ADD_NUMBER",
         "street": [
-            "ROADPREDIR",
-            "ROADNAME",
-            "ROADTYPE"
+            "LST_PREDIR",
+            "LST_NAME",
+            "LST_TYPE"
         ],
-        "unit": {
-            "function": "regexp",
-            "field": "FULLADDR",
-            "pattern": "-\\s+(.+)$"
-        },
-        "city": "CITY",
+        "unit": "UNIT",
+        "city": "MSAGCOMM",
         "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "region": "STATE"
     }
 }

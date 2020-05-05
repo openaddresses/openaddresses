@@ -6,12 +6,12 @@
         },
         "country": "by"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/sergiyprotsiv/5b55c2/by-brest.zip",
+    "data": "https://data.openaddresses.io/cache/uploads/sergiyprotsiv/5b55c2/by-brest.zip",
     "website": "http://brest.gismap.by/arcgisserver/rest/services/Advanced/Poisk/MapServer/2",
-    "type": "http",
+    "protocol": "http",
     "compression":"zip",
     "conform": {
-        "type": "geojson",
+        "format": "geojson",
         "encoding": "CP1251",
         "number": {
             "function": "regexp",
@@ -31,7 +31,7 @@
         "city": {
             "function": "regexp",
             "field": "ADDRESS",
-            "pattern": "^(?:.*?)\\b((?:(?:г|аг|гп|пгт)(?:\\.|\\s+)|(?:д(?:\\.\\s+|\\.(?=\\w)|\\s+)(?!\\d)))(?:\\s*\\w+(?=[\\s,\\-]))+(?:\\-[\\d]+)?)" 
+            "pattern": "^(?:.*?)\\b((?:(?:г|аг|гп|пгт)(?:\\.|\\s+)|(?:д(?:\\.\\s+|\\.(?=\\w)|\\s+)(?!\\d)))(?:\\s*\\w+(?=[\\s,\\-]))+(?:\\-[\\d]+)?)"
         }
     }
 }

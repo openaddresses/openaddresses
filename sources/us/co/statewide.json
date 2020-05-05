@@ -8,14 +8,18 @@
         "state": "co"
     },
     "data": "https://data.colorado.gov/api/views/ge5d-pvi7/rows.csv?accessType=DOWNLOAD",
-    "type": "http",
+    "protocol": "http",
     "conform": {
-        "type": "csv",
+        "format": "csv",
         "lat": "Latitude",
         "lon": "Longitude",
-        "number": "AddrNum",
+        "number": [
+            "AddrNum",
+            "NumSuf"
+        ],
         "street": [
             "PreDir",
+            "PreType",
             "StreetName",
             "PostType",
             "PostDir"

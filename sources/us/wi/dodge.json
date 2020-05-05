@@ -9,16 +9,20 @@
         "state": "wi",
         "county": "Dodge"
     },
-    "data": "https://gis2.msa-ps.com/ArcGIS/rest/services/StreetsAddress/MapServer/47",
-    "type": "ESRI",
+    "data": "https://geo.co.dodge.wi.us/arcgis/rest/services/OpenData/MapServer/1",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "remove_postfix",
-            "field": "Addcomp",
-            "field_to_remove": "ADD4"
-        },
-        "street": "ADD4",
-        "unit": "UNIT_SUITE"
+        "format": "geojson",
+        "number": "ADDFULL",
+        "street": [
+            "PREDIR",
+            "PRETYPE",
+            "STREETNAME",
+            "SUFTYPE",
+            "SUFDIR"
+        ],
+        "unit": "ADDUNIT",
+        "city": "MUNINAME",
+        "postcode": "ZIPCODE"
     }
 }

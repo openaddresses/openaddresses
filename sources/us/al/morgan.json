@@ -1,0 +1,28 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "01103",
+            "name": "Morgan County",
+            "state": "Alabama"
+        },
+        "country": "us",
+        "state": "al",
+        "county": "Morgan"
+    },
+    "data": "https://web3.kcsgis.com/kcsgis/rest/services/Morgan/Public/MapServer/118",
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "PropAddr1"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "PropAddr1"
+        },
+        "city": "PropCity",
+        "postcode": "PropZip",
+        "region": "PropState"
+    }
+}

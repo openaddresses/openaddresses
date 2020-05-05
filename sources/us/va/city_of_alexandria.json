@@ -14,20 +14,17 @@
         "city": "Alexandria"
     },
     "data": "https://maps15.alexandriava.gov/arcgis/rest/services/alxAddressWm/MapServer/0",
-    "type": "ESRI",
+    "protocol": "ESRI",
     "website": "https://www.alexandriava.gov/gis/info/default.aspx?id=7654",
     "conform": {
-        "type": "geojson",
+        "format": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "FULL_ADDS",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "FULL_ADDS"
         },
         "street": {
-            "function": "regexp",
-            "field": "FULL_ADDS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "function": "postfixed_street",
+            "field": "FULL_ADDS"
         },
         "postcode": "ZIP"
     }

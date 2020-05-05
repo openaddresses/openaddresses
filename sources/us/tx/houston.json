@@ -1,34 +1,38 @@
 {
     "coverage": {
-        "US Census": {"geoid": "48201", "name": "Harris County", "state": "Texas"},
-        "geometry": {
-            "type": "Point",
-            "coordinates": [ -95.37506103515625, 29.76199310960153 ]
+        "US Census": {
+            "geoid": "48225",
+            "name": "Houston County",
+            "state": "Texas"
         },
         "country": "us",
         "state": "tx",
-        "county": "Harris",
-        "city": "Houston"
+        "county": "Houston"
     },
-    "data": "http://pdata.hcad.org/GIS/Parcels.exe",
-    "license": "",
-    "year": "",
-    "type": "http",
+    "data": "https://s3.amazonaws.com/data.tnris.org/117cf9e1-3b1e-48f2-97a3-47020d871035/resources/stratmap19-addresspoints_48225_vector.zip",
+    "website": "https://data.tnris.org/collection/117cf9e1-3b1e-48f2-97a3-47020d871035",
+    "protocol": "http",
     "compression": "zip",
-    "note": "Something wrong with the zip 'invalid signature', works with `unzip` though.",
     "conform": {
-        "type": "shapefile-polygon",
-        "number": {
-            "function": "regexp",
-            "field": "LocAddr",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "LocAddr",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "postcode": "zip"
+        "format": "shapefile",
+        "file": "shp/stratmap19-addresspoints_48225_houston_201906.shp",
+        "number": [
+            "Add_Number",
+            "AddNum_Suf"
+        ],
+        "street": [
+            "St_PreMod",
+            "St_PreDir",
+            "St_PreTyp",
+            "St_PreSep",
+            "St_Name",
+            "St_PosTyp",
+            "St_PosDir",
+            "St_PosMod"
+        ],
+        "unit": "Unit",
+        "city": "Post_Comm",
+        "region": "State",
+        "postcode": "Post_Code"
     }
 }

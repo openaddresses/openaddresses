@@ -1,0 +1,31 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "29157",
+            "name": "Perry County",
+            "state": "Missouri"
+        },
+        "country": "us",
+        "state": "mo",
+        "county": "Perry"
+    },
+    "data": "https://www.semogis.com/arcgis/rest/services/PerryCo/PerryAssess/MapServer/0",
+    "protocol": "ESRI",
+    "conform": {
+        "format":"geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "SITE_ADD"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "SITE_ADD",
+            "may_contain_units": true
+        },
+        "unit": {
+            "function": "postfixed_unit",
+            "field": "SITE_ADD"
+        },
+        "city": "CITY"
+    }
+}

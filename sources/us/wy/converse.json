@@ -1,7 +1,7 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "56017",
+            "geoid": "56009",
             "name": "Converse County",
             "state": "Wyoming"
         },
@@ -11,20 +11,16 @@
     },
     "compression": "zip",
     "data": "http://maps.greenwoodmap.com/converse/download/ownership.zip",
-    "type": "http",
+    "protocol": "http",
     "conform": {
-        "type": "shapefile-polygon",
+        "format": "shapefile-polygon",
         "number": {
-            "function": "regexp",
-            "field": "st_address",
-            "pattern": "^([0-9]+)",
-            "replace": "$1"
+            "function": "prefixed_number",
+            "field": "st_address"
         },
         "street": {
-            "function": "regexp",
-            "field": "st_address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "function": "postfixed_street",
+            "field": "st_address"
         },
         "id": "pidn"
     }

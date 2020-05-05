@@ -9,19 +9,20 @@
     },
     "conform":
     {
-        "type": "shapefile",
-        "file": "COB_Shps/COB_land_AddressPoints.shp",
+        "format": "geojson",
         "id": "ADDRESS_ID",
         "number": "ADDR_NUM",
-        "street": "STREET_NAM",
-        "unit": "UNITID",
+        "street": "STREET_NAME",
+        "unit": [
+            "UNITTYPE",
+            "UNITID"
+        ],
         "postcode": "ZIP",
         "city": "MUNICIPALI"
     },
-    "data": "http://www.cob.org/data/gis/SHP_Files/COB_land_shps.zip",
+    "data": "https://www.iqmap.org/arcgis3/rest/services/maps_StatePlane/BaseMap_NightMode/MapServer/0",
     "license": "http://www.cob.org/services/maps/GIS_data/addresspoints.xml",
     "year": "2008",
-    "type": "http",
-    "compression": "zip",
+    "protocol": "ESRI",
     "note": "License appears to be public domain, but I can't find that explicitly stated anywhere. User:Dericke has gotten permission to use this data in OpenStreetMap: http://wiki.openstreetmap.org/wiki/User:Dericke"
 }

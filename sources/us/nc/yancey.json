@@ -11,14 +11,15 @@
     },
     "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Yancey/MapServer/42",
     "note": "STREET_NUMBER can contain non-number info (such as 'LT33') so only use digits-only values",
-    "type": "ESRI",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
+        "format": "geojson",
         "number": {
             "function": "regexp",
-            "field": "STREET_NUMBER",
+            "field": "STREET_NUM",
             "pattern": "^\\s*(\\d+)\\s*$"
         },
-        "street": "STREET_NAME"
+        "street": "STREET_NAM",
+        "unit": "STREET_APT"
     }
 }

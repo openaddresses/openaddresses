@@ -10,21 +10,22 @@
         "county": "Franklin"
     },
     "license": "http://gis.co.franklin.wa.us/datadisclaimer.shtml",
-    "type": "http",
-    "compression": "zip",
-    "note": "point shapefile Geocode_Points.shp, address columns: HOUSENUMBE, DIRPREFIX, FEATURENAM, FEATURETYP, SU_TYPE, SU_NUM, CITY, ZIPCODE",
-    "year": "2014",
-    "data": "http://gis.co.franklin.wa.us/download/Basemap/Address.zip",
-    "website": "http://gis.co.franklin.wa.us/download.asp",
+    "protocol": "ESRI",
+    "year": "2018",
+    "data": "https://services3.arcgis.com/S61OMZovc3AIomN2/arcgis/rest/services/online/FeatureServer/1",
+    "website": "http://franklingis.org/",
     "conform": {
-        "type": "shapefile",
-        "number": "HOUSENUMBE",
+        "format": "geojson",
+        "number": "HouseNumber",
         "street": [
-            "DIRPREFIX",
-            "FEATURENAM",
-            "FEATURETYP",
-            "DIRSUFFIX"
+            "DirPrefix",
+            "FeatureName",
+            "FeatureType",
+            "DirSuffix"
         ],
-        "city": "MUNI"
+        "unit": [
+            "UnitType",
+            "UnitNumber"
+        ]
     }
 }

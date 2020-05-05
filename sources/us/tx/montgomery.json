@@ -9,38 +9,38 @@
         "state": "tx",
         "county": "Montgomery"
     },
-    "data": "http://services1.arcgis.com/PRoAPGnMSUqvTrzq/ArcGIS/rest/services/TaxParcel/FeatureServer/0",
-    "type": "ESRI",
+    "data": "http://services1.arcgis.com/PRoAPGnMSUqvTrzq/ArcGIS/rest/services/Tax_Parcel_Public_View/FeatureServer/0",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
+        "format": "geojson",
         "number": {
             "function": "regexp",
-            "field": "PropertyAd",
+            "field": "PropertyAddress",
             "pattern": "^(\\d+(?:\\s+1/2)?)(?:-\\d+|-?(?:[A-Z]/)*[A-Z])?\\b"
         },
         "street": {
             "function": "regexp",
-            "field": "PropertyAd",
+            "field": "PropertyAddress",
             "pattern": "^(?:\\d+(?:\\s+1/2)?(?:-\\d+|-?(?:[A-Z]/)*[A-Z])?)?\\b(.+?)\\s*,"
         },
         "unit": {
           "function": "regexp",
-          "field": "PropertyAd",
+          "field": "PropertyAddress",
           "pattern": "^(?:\\d+(?:\\s+1/2)?)(-\\d+|-?(?:[A-Z]/)*[A-Z])\\b"
         },
         "city": {
             "function": "regexp",
-            "field": "PropertyAd",
+            "field": "PropertyAddress",
             "pattern": ",\\s*(.+?)\\s*,\\s+(?:TX)\\s+"
         },
         "region": {
             "function": "regexp",
-            "field": "PropertyAd",
+            "field": "PropertyAddress",
             "pattern": "\\b(TX)\\b"
         },
         "postcode": {
             "function": "regexp",
-            "field": "PropertyAd",
+            "field": "PropertyAddress",
             "pattern": "\\s(\\d{5})$"
         }
     },
@@ -51,7 +51,7 @@
             {
                 "description": "empty row",
                 "inputs": {
-                    "PropertyAd": ""
+                    "PropertyAddress": ""
                 },
                 "expected": {
                     "number": "",
@@ -65,7 +65,7 @@
             {
                 "description": "only-numbers house number",
                 "inputs": {
-                    "PropertyAd": "66 MCCLELLAN CIR, HUMBLE, TX  77339"
+                    "PropertyAddress": "66 MCCLELLAN CIR, HUMBLE, TX  77339"
                 },
                 "expected": {
                     "number": "66",
@@ -79,7 +79,7 @@
             {
                 "description": "number is hyphenated",
                 "inputs": {
-                    "PropertyAd": "23207-2 DECKER PRAIRIE ROSEHILL RD, MAGNOLIA, TX  77355"
+                    "PropertyAddress": "23207-2 DECKER PRAIRIE ROSEHILL RD, MAGNOLIA, TX  77355"
                 },
                 "expected": {
                     "number": "23207",
@@ -93,7 +93,7 @@
             {
                 "description": "number is hyphenated w/alpha",
                 "inputs": {
-                    "PropertyAd": "20111-A PLANTATION CREEK DR, PORTER, TX  77365"
+                    "PropertyAddress": "20111-A PLANTATION CREEK DR, PORTER, TX  77365"
                 },
                 "expected": {
                     "number": "20111",
@@ -107,7 +107,7 @@
             {
                 "description": "number is hyphenated w/2 /-delimited alphas",
                 "inputs": {
-                    "PropertyAd": "37019-A/B HICKORY RIDGE RD, MAGNOLIA, TX  77354"
+                    "PropertyAddress": "37019-A/B HICKORY RIDGE RD, MAGNOLIA, TX  77354"
                 },
                 "expected": {
                     "number": "37019",
@@ -121,7 +121,7 @@
             {
                 "description": "number is hyphenated w/3 /-delimited alphas",
                 "inputs": {
-                    "PropertyAd": "410-A/B/C DANIELS ST, WILLIS, TX  77378"
+                    "PropertyAddress": "410-A/B/C DANIELS ST, WILLIS, TX  77378"
                 },
                 "expected": {
                     "number": "410",
@@ -135,7 +135,7 @@
             {
                 "description": "number has alpha and unhyphenated",
                 "inputs": {
-                    "PropertyAd": "24103A SPENCER BLVD, MAGNOLIA, TX  77355"
+                    "PropertyAddress": "24103A SPENCER BLVD, MAGNOLIA, TX  77355"
                 },
                 "expected": {
                     "number": "24103",
@@ -149,7 +149,7 @@
             {
                 "description": "number-less address",
                 "inputs": {
-                    "PropertyAd": "KINGS MANOR DR, HUMBLE, TX  77339"
+                    "PropertyAddress": "KINGS MANOR DR, HUMBLE, TX  77339"
                 },
                 "expected": {
                     "number": "",
@@ -163,7 +163,7 @@
             {
                 "description": "street starts with number",
                 "inputs": {
-                    "PropertyAd": "1ST ST, SPLENDORA, TX  77372"
+                    "PropertyAddress": "1ST ST, SPLENDORA, TX  77372"
                 },
                 "expected": {
                     "number": "",
@@ -177,7 +177,7 @@
             {
                 "description": "street starts with number",
                 "inputs": {
-                    "PropertyAd": "67  1/2 APRIL WIND DR S, MONTGOMERY, TX  77356"
+                    "PropertyAddress": "67  1/2 APRIL WIND DR S, MONTGOMERY, TX  77356"
                 },
                 "expected": {
                     "number": "67  1/2",

@@ -14,23 +14,24 @@
         "attribution": false,
         "share-alike": false
     },
-    "type": "http",
-    "compression": "zip",
-    "data": "http://www.bigstonecounty.org/gis/shapefile/BigStoneTaxParcels-August2015.zip",
+    "protocol": "ESRI",
+    "data": "http://gis.co.big-stone.mn.us/arcgis/rest/services/BigStone_Public/MapServer/0",
     "website": "http://www.bigstonecounty.org/gis/gis.vbhtml",
     "conform": {
-        "type": "shapefile-polygon",
+        "format": "geojson",
         "number": {
             "function": "regexp",
-            "field": "PHYSADDR",
+            "field": "ADDRESS",
             "pattern": "^([0-9]+)"
         },
         "street": {
             "function": "regexp",
-            "field": "PHYSADDR",
+            "field": "ADDRESS",
             "pattern": "^(?:[0-9]+ )(.*)",
             "replace": "$1"
         },
-        "city": "TWPNAME"
+        "city": "CITY",
+        "region": "STATE",
+        "postcode": "ZIP"
     }
 }

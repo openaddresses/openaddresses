@@ -1,0 +1,25 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "08115",
+            "name": "Sedgwick County",
+            "state": "Colorado"
+        },
+        "country": "us",
+        "state": "co"
+    },
+    "data": "http://maps.co.gov/copubgis/rest/services/SedgwickCounty/SedgwickServices1031/MapServer/3",
+    "note": "source contains separated fields but they're unreliably-populated",
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "Situs_Addr"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "Situs_Addr"
+        }
+    }
+}

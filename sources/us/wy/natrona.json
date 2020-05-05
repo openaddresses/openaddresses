@@ -10,16 +10,11 @@
         "county": "Natrona"
     },
     "data": "https://maps.casperwy.gov/nrgisc/rest/services/Addressing/Addressing/MapServer/0",
-    "type": "ESRI",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
+        "format": "geojson",
         "number": "STREET_NUM",
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
+        "street": ["StreetName","StreetType"],
         "region": "STATE",
         "postcode": "ZIPCODE"
     }

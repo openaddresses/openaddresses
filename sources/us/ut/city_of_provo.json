@@ -1,0 +1,37 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -111.645708,
+                40.245705
+            ]
+        },
+        "US Census": {
+            "geoid": "4962470",
+            "name": "City of Provo",
+            "state": "Utah"
+        },
+        "country": "us",
+        "state": "ut",
+        "county": "Utah",
+        "city": "Provo"
+    },
+    "data": "https://gispublicweb.provo.org/arcgis/rest/services/Basemap2/MapServer/1",
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "id": "ADDRESSID",
+        "number": "ADDRESS_NUM",
+        "street": {
+            "function": "remove_prefix",
+            "field": "ADDRESS",
+            "field_to_remove": "ADDRESS_NUM"
+        },
+        "unit": [
+            "UNIT_TYPE",
+            "UNIT_NUM"
+        ],
+        "postcode": "ADDRESS_ZIP"
+    }
+}

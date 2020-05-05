@@ -11,37 +11,15 @@
         "state": "sk",
         "city": "Saskatoon"
     },
-    "data": "http://opendata-saskatoon.cloudapp.net/DataBrowser/DownloadKml?container=SaskatoonOpenDataCatalogueBeta&entitySet=ParcelAddress&filter=NOFILTER",
+    "data": "https://data.openaddresses.io/cache/uploads/andrewharvey-openaddr/783410/Saskatoon.csv",
     "website": "http://opendata-saskatoon.cloudapp.net/",
     "license": "http://www.saskatoon.ca/DEPARTMENTS/Corporate%20Services/Corporate%20Information%20Services/OpenData/Pages/TermsofService.aspx",
-    "type": "http",
-    "compression": "zip",
-    "note": {
-        "file extension": "kml",
-        "examples": [
-            "1102 Spadina Cres W, Saskatoon,  SK CA",
-            "1139 4th St E, Saskatoo, SK CA",
-            "102 Sears Cove, Saskatoon, SK CA",
-            "317B Taylor St E, Saskatoon,  SK CA",
-            "233/235 11th St E, Saskatoon,  SK CA",
-            "304 A 111th St W, Saskatoon, SK CA",
-            "1205 Ave O S, Saskatoon, SK CA",
-            "N/A, Saskatoon,  SK CA",
-            "U OF S, Saskatoon, SK CA"
-        ]
-    },
+    "protocol": "http",
     "conform": {
-        "type": "xml",
-        "file": "ParcelAddress.kml",
-        "number": {
-            "function": "regexp",
-            "field": "Name",
-            "pattern": "^(\\d+(?:[A-Z]|\/\\d+|\\s+[A-DF-MO-RT-VX-Z])?)\\s+"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Name",
-            "pattern": "^(?:\\d+(?:[A-Z]|\/\\d+|\\s+[A-DF-MO-RT-VX-Z])?)\\s+(.*?),"
-        }
+        "format": "csv",
+        "number": "NUMBER",
+        "street": "STREET",
+        "lon": "LON",
+        "lat": "LAT"
     }
 }

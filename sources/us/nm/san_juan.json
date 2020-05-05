@@ -9,23 +9,16 @@
         "state": "nm",
         "county": "San Juan"
     },
-    "data": "http://maps.sjcounty.net/gisdata/AssessorPublicInfo.zip",
-    "type": "http",
-    "compression": "zip",
+    "data": "http://maps.sjcounty.net/arcgis/rest/services/Maps/CounterMap/MapServer/1",
+    "protocol": "ESRI",
+    "note": "source data contains separated street fields but can cause duplicated predirectionals, eg: E E ELM ST",
     "conform": {
-        "file": "AssessorPublicInfo/AssessorPublicInfo.shp",
-        "number": {
-            "function": "regexp",
-            "field": "physaddr",
-            "pattern": "^(\\S+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "physaddr",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
-        },
-        "type": "shapefile-polygon"
-    },
-    "note": "units are embedded in physaddr field, eg - 4760 N Butler Ave #B"
+        "format": "geojson",
+        "number": "NUMBER",
+        "street": "STREET",
+        "unit": "UNIT",
+        "city": "CITY",
+        "region": "STATE",
+        "postcode": "ZIP_CODE_"
+    }
 }

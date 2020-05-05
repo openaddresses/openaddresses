@@ -1,0 +1,130 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17113",
+            "name": "McLean County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "McLean"
+    },
+    "data": "https://www.mcgisweb.org/mcgis/rest/services/ArcGISOpenData/ArcGISOpenData/MapServer/0",
+    "note": "there's an address '100 UNIT DR' that must be accounted for in the 'unit' regexp",
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "ADDRESS"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "^(?:\\d+\\s+)?(.+?)(?:\\s+(?:#|UNIT|APT)\\s+.+)?$"
+        },
+        "unit": {
+            "function": "regexp",
+            "field": "ADDRESS",
+            "pattern": "((?:#|UNIT|APT)\\s+(?!DR$).+)$"
+        },
+        "city": "CITY",
+        "postcode": "ZIP"
+    },
+    "test": {
+        "enabled": true,
+        "description": "McLean county contains units in the ADDRESS field",
+        "acceptance-tests": [
+            {
+                "description": "no unit",
+                "inputs": {
+                    "ADDRESS": "422 N KATHLEEN ST",
+                    "CITY": "STANFORD",
+                    "ZIP": "61774"
+                },
+                "expected": {
+                    "number": "422",
+                    "street": "N KATHLEEN ST",
+                    "unit": "",
+                    "city": "STANFORD",
+                    "postcode": "61774"
+                }
+            },
+            {
+                "description": "# unit designator",
+                "inputs": {
+                    "ADDRESS": "1 BRIARWOOD DR # A",
+                    "CITY": "Danvers",
+                    "ZIP": "61732"
+                },
+                "expected": {
+                    "number": "1",
+                    "street": "BRIARWOOD DR",
+                    "unit": "# A",
+                    "city": "Danvers",
+                    "postcode": "61732"
+                }
+            },
+            {
+                "description": "UNIT unit designator",
+                "inputs": {
+                    "ADDRESS": "105 S MORRIS ST UNIT 1-5",
+                    "CITY": "LEXINGTON",
+                    "ZIP": "61753"
+                },
+                "expected": {
+                    "number": "105",
+                    "street": "S MORRIS ST",
+                    "unit": "UNIT 1-5",
+                    "city": "LEXINGTON",
+                    "postcode": "61753"
+                }
+            },
+            {
+                "description": "APT unit designator",
+                "inputs": {
+                    "ADDRESS": "404 E MAPLE ST APT 429-435",
+                    "CITY": "LEROY",
+                    "ZIP": "61752"
+                },
+                "expected": {
+                    "number": "404",
+                    "street": "E MAPLE ST",
+                    "unit": "APT 429-435",
+                    "city": "LEROY",
+                    "postcode": "61752"
+                }
+            },
+            {
+                "description": "UNIT designator is part of street name",
+                "inputs": {
+                    "ADDRESS": "100 UNIT DR",
+                    "CITY": "NORMAL",
+                    "ZIP": "61761"
+                },
+                "expected": {
+                    "number": "100",
+                    "street": "UNIT DR",
+                    "unit": "",
+                    "city": "NORMAL",
+                    "postcode": "61761"
+                }
+            },
+            {
+                "description": "LOT designator is part of street name",
+                "inputs": {
+                    "ADDRESS": "120 CAMELOT DR",
+                    "CITY": "BLOOMINGTON",
+                    "ZIP": "61704"
+                },
+                "expected": {
+                    "number": "120",
+                    "street": "CAMELOT DR",
+                    "unit": "",
+                    "city": "BLOOMINGTON",
+                    "postcode": "61704"
+                }
+            }
+        ]
+    }
+}

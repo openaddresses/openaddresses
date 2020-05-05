@@ -5,15 +5,26 @@
         "state": "la",
         "county": "East Baton Rouge"
     },
-    "data": "http://maps.brgov.com/gis/rest/services/Map_Reference/Address/MapServer/0",
-    "type": "ESRI",
+    "data": "https://maps.brla.gov/gis/rest/services/Map_Reference/Street_Address/MapServer/0",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
-        "number": "ADDRESS_NO_COMPLETE",
-        "street": ["ST_PREFIX_DIR", "ST_NAME", "ST_SUFFIX_TYPE", "ST_SUFFIX_DIR"],
+        "format": "geojson",
+        "id": "ADDRESS_ID",
+        "number": {
+            "function": "prefixed_number",
+            "field": "FULL_ADDRESS"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "FULL_ADDRESS",
+            "may_contain_units": true
+        },
+        "unit": {
+            "function": "postfixed_unit",
+            "field": "FULL_ADDRESS"
+        },
         "city": "CITY",
         "postcode": "ZIP",
-        "district": "JURISDICTION",
         "region": "STATE"
     }
 }

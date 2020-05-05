@@ -9,10 +9,9 @@
         "state": "mn",
         "county": "Chippewa"
     },
-    "data": "http://www.co.chippewa.mn.us/arcgis/rest/services/internal_LINK/MapServer/2",
-    "type": "ESRI",
+    "data": "https://gis.chippewa.mn/arcgis/rest/services/public_LINK/MapServer/2",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
         "number": {
             "function": "regexp",
             "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
@@ -21,18 +20,14 @@
         "street": {
             "function": "regexp",
             "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
-            "pattern": "^(?:[0-9]+) (.*)",
+            "pattern": "^(?:[0-9]+ )(.*)",
             "replace": "$1"
         },
+        "format": "geojson",
         "city": {
-            "function": "regexp",
-            "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
-            "pattern": "^([^,]+)"
-        },
-        "region": {
-            "function": "regexp",
-            "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
-            "pattern": ", ([A-Z]+)$"
+          "function": "regexp",
+          "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
+          "pattern": "^([^,]+)"
         },
         "postcode": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ZIP"
     }

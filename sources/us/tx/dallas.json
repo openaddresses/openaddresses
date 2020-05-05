@@ -10,18 +10,17 @@
         "county": "Dallas",
         "city": "Dallas"
     },
-    "data": "http://gis4.dfwmaps.com/arcgis/rest/services/ICDallas/Dallasbaselayers_VE/MapServer/4",
-    "type": "ESRI",
+    "data": "https://maps.dcad.org/prdwa/rest/services/Property/ParcelQuery/MapServer/4/",
+    "protocol": "ESRI",
     "conform": {
-        "number": "ST_NUM",
-        "street": [
-            "ST_DIR",
-            "ST_NAME",
-            "ST_TYPE"
-        ],
-        "unit": "UNITID",
-        "city": "CITY",
-        "district": "COUNTY",
-        "type": "geojson"
+        "number": {
+            "function": "prefixed_number",
+            "field": "SITEADDRESS"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "SITEADDRESS"
+        },
+        "format": "geojson"
     }
 }

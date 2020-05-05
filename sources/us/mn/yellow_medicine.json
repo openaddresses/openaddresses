@@ -9,22 +9,22 @@
         "state": "mn",
         "county": "Yellow Medicine"
     },
-    "data": "http://gis.co.ym.mn.gov/arcgis/rest/services/YellowMedicine/YellowMedicine_DataLayers/MapServer/40",
-    "type": "ESRI",
+    "data": "https://gis.co.ym.mn.gov/arcgis/rest/services/Link/DataLayers/MapServer/40",
+    "protocol": "ESRI",
     "note": "polygon",
     "conform": {
         "number": {
             "function": "regexp",
-            "field": "YellowMedicineTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
+            "field": "PROPERTY_ADDRESS",
             "pattern": "^([0-9]+)"
         },
         "street": {
             "function": "regexp",
-            "field": "YellowMedicineTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
+            "field": "PROPERTY_ADDRESS",
             "pattern": "^(?:[0-9]+ )(.*)",
             "replace": "$1"
         },
-        "postcode": "YellowMedicineTaxData.dbo.tblParcelJoin.PROPERTY_ZIP",
-        "type": "geojson"
+        "postcode": "PROPERTY_ZIP",
+        "format": "geojson"
     }
 }

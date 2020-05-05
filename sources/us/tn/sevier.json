@@ -9,20 +9,16 @@
         "state": "tn",
         "county": "Sevier"
     },
-    "data": "http://services1.arcgis.com/Qu4yM4JJvNoC2GKw/ArcGIS/rest/services/AddressPointsJ28/FeatureServer/0",
-    "type": "ESRI",
+    "data": "https://services1.arcgis.com/Qu4yM4JJvNoC2GKw/arcgis/rest/services/Address/FeatureServer/0",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
+        "format": "geojson",
         "number": "HOUSENUM",
         "unit": "UNITNUM",
-        "street": [
-            "ST_PREFIX",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SUFFIX"
-        ],
-        "district": "COUNTY",
-        "region": "STATE",
+        "street": {
+            "function": "postfixed_street",
+            "field": "LSN"
+        },
         "postcode": "ZIP"
     }
 }

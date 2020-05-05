@@ -9,19 +9,16 @@
         "state": "fl",
         "county": "Nassau"
     },
-    "data": "http://arcgis4.roktech.net/arcgis/rest/services/Nassau/Nassau_GoMaps4/MapServer/2",
-    "type": "ESRI",
+    "data": "https://maps.nassauflpa.com/ncflpa_arcgis/rest/services/nassau/TaxMap4_CitrixV2/MapServer/9",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
+        "format": "geojson",
         "number": "ADDRESS",
-        "street": [
-            "PD",
-            "PT",
-            "SN",
-            "ST",
-            "SD"
-        ],
-        "unit": "UNIT",
+        "street": {
+            "function": "remove_prefix",
+            "field": "FULLADDRESS",
+            "field_to_remove": "ADDRESS"
+        },
         "city": "COMMUNITY",
         "postcode": "ZIP"
     }

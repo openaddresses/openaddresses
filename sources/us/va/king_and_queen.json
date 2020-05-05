@@ -9,16 +9,20 @@
         "state": "va",
         "county": "King and Queen"
     },
-    "data": "https://maps2.timmons.com/arcgis/rest/services/WL_KingAndQueen/KingAndQueen_WL_P/MapServer/1",
-    "type": "ESRI",
+    "data": "https://maps2.timmons.com/arcgis/rest/services/WL_KingAndQueen/KingAndQueen_WL_P/MapServer/10",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
-        "number": "ADDR_1",
-        "street": [
-            "ROADNAME",
-            "TYPE"
-        ],
-        "city": "TOWN",
-        "postcode": "ZIP"
+        "format": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "ParcelAddress1",
+            "pattern": "^([0-9]+)"
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ParcelAddress1",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     }
 }

@@ -9,23 +9,27 @@
         "state": "md",
         "county": "anne arundel"
     },
-    "data": "http://www.aacounty.org/county-maps/data-download/aaco_address_points.zip",
-    "website": "http://www.aacounty.org/OIT/GIS/",
+    "data": "https://gis.aacounty.org/arcgis/rest/services/OpenData/Structure_OpenData/MapServer/0",
+    "website": "http://www.aacounty.org/departments/planning-and-zoning/research-and-gis/",
     "attribution": "Anne Arundel County",
-    "type": "http",
-    "compression": "zip",
+    "protocol": "ESRI",
     "conform": {
-        "type": "shapefile",
-        "number": "ST_NUMBER",
+        "format": "geojson",
+        "number": [
+            "ST_NUMBER",
+            "ST_NUMSUFF"
+        ],
+        "unit": [
+            "UNIT_TYPE",
+            "UNITNUM"
+        ],
         "street": [
             "ST_PREFIXD",
             "ST_NAME",
             "ST_TYPE",
             "ST_SUFFIXD"
         ],
-        "unit": "ST_NUMSUFF",
         "city": "CITY_NAME",
-        "postcode": "ZIPCODE",
-        "addrtype": "BLDG_CODE"
+        "postcode": "ZIPCODE"
     }
 }

@@ -9,20 +9,17 @@
         "state": "az",
         "county": "Pinal"
     },
-    "data": "https://gismaps-test.pinalcountyaz.gov/arcgisextdev/rest/services/Base_Webservice/MapServer/69",
-    "type": "ESRI",
+    "data": "https://gismaps.pinalcountyaz.gov/webapps/rest/services/Base_Webservice/MapServer/69",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
+        "format": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "FullAddress",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "FullAddress"
         },
         "street": {
-            "function": "regexp",
-            "field": "FullAddress",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "function": "postfixed_street",
+            "field": "FullAddress"
         }
     }
 }

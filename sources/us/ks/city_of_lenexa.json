@@ -17,15 +17,20 @@
         "city": "Lenexa"
     },
     "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-          "ALTUNITTYPE",
-          "ALTUNITID"
+        "format": "geojson",
+        "number": "NUMBER",
+        "street": [
+            "DIR",
+            "NAME",
+            "TYPE"
         ],
-        "city": "MUNICIPALITY"
+        "unit": [
+          "SUITE_APT",
+          "BUILDING"
+        ],
+        "city": "CITY",
+        "postcode": "ZIP"
     },
-    "data": "http://maps.lenexa.com/arcgis/rest/services/GovernmentServices/SiteAddressPoints_RES_OCC_only/MapServer/0",
-    "type": "ESRI"
+    "data": "https://maps.lenexa.com/arcgis/rest/services/GovernmentServices/SiteAddressPoints_RES_OCC_only/MapServer/0",
+    "protocol": "ESRI"
 }

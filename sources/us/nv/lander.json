@@ -9,21 +9,17 @@
         "state": "nv",
         "county": "Lander"
     },
-    "data": "http://landernv.mygisonline.com/arcgis/rest/services/NV_Lander/LanderNVfeatures/MapServer/0",
-    "type": "ESRI",
+    "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/LanderNVFeatures/FeatureServer/3",
+    "protocol": "ESRI",
     "conform": {
         "number": {
-            "function": "regexp",
-            "field": "mailing",
-            "pattern": "^(\\S+)"
+            "function": "prefixed_number",
+            "field": "TSC_Site_Address"
         },
         "street": {
-            "function": "regexp",
-            "field": "mailing",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
+            "function": "postfixed_street",
+            "field": "TSC_Site_Address"
         },
-        "type": "geojson",
-        "postcode": "zip"
+        "format": "geojson"
     }
 }

@@ -5,25 +5,20 @@
         "state": "ga",
         "county": "Glynn"
     },
-    "data": "http://data.openaddresses.io/cache/us-ga-glynn_county.csv",
-    "type": "http",
+    "data": "https://webadaptor.glynncounty-ga.gov/webadaptor/rest/services/Addresses/Addresses/FeatureServer/0",
+    "protocol": "ESRI",
     "conform": {
-        "type": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
+        "format": "geojson",
+        "number": "PADDR_NUMB",
+        "street": [
+            "PRE_DIR",
+            "STREET",
+            "STREET_TYP",
+            "SUF_DIR"
+        ],
+        "unit": "UNIT_NUM",
+        "city": "CITY",
+        "postcode": "ZIP_POSTAL",
         "region": "REGION"
     }
 }
-

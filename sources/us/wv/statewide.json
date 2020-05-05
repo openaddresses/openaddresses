@@ -7,18 +7,17 @@
         "country": "us",
         "state": "wv"
     },
-    "data": "http://services.wvgis.wvu.edu/arcgis/rest/services/Location/wv_address_labels_WVDHSEM_wm/MapServer/0",
+    "data": "https://services.wvgis.wvu.edu/arcgis/rest/services/Hazards/floodTool_ParcelsAddrLabels/MapServer/5",
     "website": "http://www.dhsem.wv.gov/Operations/Pages/Statewide-Addressing-and-Mapping.aspx",
-    "type": "ESRI",
-    "year": "January 2015",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": {
-            "function": "remove_prefix",
-            "field": "FULLNAME",
-            "field_to_remove": "ADDRNUM"
-        },
+        "format": "geojson",
+        "number": [
+            "PREADDRNUM",
+            "ADDRNUM",
+            "ADDRNUMSUF"
+        ],
+        "street": "FULLNAME",
         "unit": [
             "UNITTYPE",
             "UNITID"

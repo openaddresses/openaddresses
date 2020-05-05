@@ -12,19 +12,17 @@
     "data": "http://maps.matsugov.us/ArcGIS/rest/services/ParcelViewer/MapServer/7",
     "website": "http://www.matsugov.us/",
     "attribution": "Matanuska-Susitna Borough",
-    "type": "ESRI",
+    "protocol": "ESRI",
     "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "type": "geojson"
+        "number": "ADRSNUM",
+        "street": [
+            "P_ROADNME",
+            "ROADNME",
+            "S_ROADNME",
+            "PS_ROADNME"
+        ],
+        "unit": "ADRSNUM_S",
+        "city": "COMMUNITY",
+        "format": "geojson"
     }
 }

@@ -10,21 +10,22 @@
         "county": "Shasta"
     },
     "attribution": "Shasta County",
-    "data": "https://github.com/datadesk/us-ca-shasta_county-ShastaCountySitusPoints-shp/blob/master/ShastaCountySitusPoints.zip?raw=true",
+    "data": "https://services2.arcgis.com/22p1CUjMjjRWlw6O/arcgis/rest/services/AddressPoints/FeatureServer/0",
     "website": "http://www.co.shasta.ca.us/index/gis_index.aspx",
-    "type": "http",
-    "compression": "zip",
+    "protocol": "ESRI",
     "note": "Provided in response to a public records request and uploaded to GitHub for public hosting",
     "conform": {
-        "type": "shapefile",
-        "city": "Community",
-        "number": "Number",
+        "format": "geojson",
+        "number": "AddressNumber",
         "street": [
-            "Street_Pre",
-            "Street_Nam",
-            "Street_Typ",
-            "Street_Suf"
+            "PrefixDir",
+            "PrefixType",
+            "StreetName",
+            "StreetType",
+            "SuffixDir"
         ],
-        "unit": "Space_Apt"
+        "unit": "SpaceApt",
+        "city": "City",
+        "postcode": "StreetZIP"
     }
 }

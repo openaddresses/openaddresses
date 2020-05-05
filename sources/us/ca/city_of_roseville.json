@@ -1,0 +1,113 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -121.302907,
+              	38.765771
+            ]
+        },
+        "US Census": {
+            "geoid": "0662938",
+            "name": "City of Roseville",
+            "state": "California"
+        },
+        "country": "us",
+        "state": "ca",
+        "county": "Placer",
+        "city": "Roseville"
+    },
+    "data": "https://ags.roseville.ca.us/arcgis/rest/services/PublicServices/Address/MapServer/0",
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "id": "ADDRID",
+        "number": {
+            "function": "join",
+            "fields": [
+                "STRNUM",
+                "STRNUMSUF"
+            ],
+            "separator": ""
+        },
+        "street": [
+            "STRPREDIR",
+            "STRNAME",
+            "STRTYPE",
+            "STRSUFDIR"
+        ],
+        "unit": [
+            "UNITTYPE",
+            "UNIT"
+        ],
+        "city": {
+            "function": "regexp",
+            "field": "ADDR2",
+            "pattern": "^(.+?),"
+        },
+        "region": {
+            "function": "regexp",
+            "field": "ADDR2",
+            "pattern": "(CA)"
+        },
+        "postcode": {
+            "function": "regexp",
+            "field": "ADDR2",
+            "pattern": "(\\d+)$"
+        }
+    },
+    "test": {
+        "enabled": true,
+        "description": "regexes that extract the city/region/postcode from a single field",
+        "acceptance-tests": [
+            {
+                "description": "number fields should be concatenated",
+                "inputs": {
+                    "ADDRID": "49",
+                    "STRNUM": "141",
+                    "STRNUMSUF": "C",
+                    "STRPREDIR": "W",
+                    "STRNAME": "DURANTA",
+                    "STRTYPE": "ST",
+                    "STRSUFDIR": "N",
+                    "UNITTYPE": "APT",
+                    "UNIT": "3",
+                    "ADDR2": "ROSEVILLE, CA 95678"
+                },
+                "expected": {
+                    "id": "49",
+                    "number": "141C",
+                    "street": "W DURANTA ST N",
+                    "unit": "APT 3",
+                    "city": "ROSEVILLE",
+                    "region": "CA",
+                    "postcode": "95678"
+                }
+            },
+            {
+                "description": "no number suffix field",
+                "inputs": {
+                    "ADDRID": "10",
+                    "STRNUM": "2800",
+                    "STRNUMSUF": "",
+                    "STRPREDIR": "",
+                    "STRNAME": "BASELINE",
+                    "STRTYPE": "RD",
+                    "STRSUFDIR": "",
+                    "UNITTYPE": "",
+                    "UNIT": "",
+                    "ADDR2": "ROSEVILLE, CA 95747"
+                },
+                "expected": {
+                    "id": "10",
+                    "number": "2800",
+                    "street": "BASELINE RD",
+                    "unit": "",
+                    "city": "ROSEVILLE",
+                    "region": "CA",
+                    "postcode": "95747"
+                }
+            }
+        ]
+    }
+}

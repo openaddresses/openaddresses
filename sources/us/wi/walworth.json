@@ -9,22 +9,13 @@
         "state": "wi",
         "county": "Walworth"
     },
-    "data": "http://gisinfo.co.walworth.wi.us/arcgis/rest/services/WALCOBasemap/MapServer/9",
-    "type": "ESRI",
+    "data": "https://gisinfo.co.walworth.wi.us/arcgis/rest/services/OneView/WALCOBasemap/MapServer/9",
+    "protocol": "ESRI",
     "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "COMMUNITY",
+        "format": "geojson",
+        "number": "NUMBER_",
+        "street": [ "STRPREFIX", "STREET", "STRTYPE" ],
+        "city": "MUNI_NAM",
         "accuracy": 1
     }
 }
