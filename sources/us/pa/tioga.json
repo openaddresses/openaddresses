@@ -9,17 +9,26 @@
         "state": "pa",
         "county": "Tioga"
     },
-    "data": "https://github.com/aaronpdennis/pa-county-addresses/raw/master/data/TIOGA/TIOGA_addresses.csv",
-    "protocol": "http",
-    "note": "Data extracted from 2009 state government collection. Individual county GIS offices may have more recent addresses.",
+    "website": "http://www.tiogacountypa.us/Departments/GIS/Pages/GIS.aspx",
+    "contact": {
+        "name": "Scott Zubek",
+        "title": "GIS Director",
+        "phone": "(570) 723-8253",
+        "email": "szubek@tiogacountypa.us",
+        "address": "118 Main St, Wellsboro, PA 16901"
+    },
+    "data": "https://tiogagis.tiogacountypa.us/arcgis2017/rest/services/Individual_Services/13_Structure_Location_Points_EMS911/MapServer/0",
+    "protocol": "ESRI",
     "conform": {
-        "format": "csv",
-        "number": "SAN",
-        "street": ["PRD","STP","STN","STS","POD"],
-        "city": "MCN",
-        "lon": "X",
-        "lat": "Y",
-        "id": "PIN",
-        "accuracy": 5
+        "format": "geojson",
+        "id": "STRU_NUM",
+        "number": "HSENUMBER",
+        "street": [
+            "PREFIXDIR",
+            "STREETNAME",
+            "STREETSUF",
+            "POSTDIR"      
+        ],        
+        "city": "STRUMUNI"              
     }
 }
