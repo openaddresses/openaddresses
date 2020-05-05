@@ -11,18 +11,17 @@
             ]
         }
     },
-    "data": "http://maps.rdcounty.ca:6080/arcgis/rest/services/RDC_ArcGIS_Base_Map/MapServer/8",
-    "protocol": "ESRI",
+    "data": "https://data.reddeer.ca/datasets/parceladdresses/download/shapefile",
+    "protocol": "http",
+    "compression": "zip",
+    "license": {
+        "url": "https://data.reddeer.ca/About",
+        "attribution": true
+    },
     "conform": {
-        "format": "geojson",
-        "number": "HOUSE_ID",
-        "street": [
-            "DIR_PREF",
-            "NAME_PREF",
-            "MAIN_NAME",
-            "ROAD_TYPE",
-            "DIR_SUFX"
-        ],
-        "unit": "UNIT_NUM"
+        "format": "shapefile",
+        "number": "house_id",
+        "unit": "unit_num",
+        "street": "name"
     }
 }

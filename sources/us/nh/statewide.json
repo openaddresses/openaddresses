@@ -7,26 +7,22 @@
 		"country": "us",
 		"state": "nh"
 	},
-	"data": "http://granitweb.sr.unh.edu:6080/arcgis/rest/services/MapServices/Parcels/MapServer/0",
+	"data": "https://nhgeodata.unh.edu/nhgeodata/rest/services/CAD/ParcelMosiac/MapServer/0",
 	"website": "http://www.granit.unh.edu/data/onlinemapservices/mapservicesoverview.html",
 	"protocol": "ESRI",
 	"conform": {
 		"format": "geojson",
 		"number": {
-			"function": "regexp",
-			"field": "Address",
-			"pattern": "^([0-9]+)"
+			"function": "prefixed_number",
+			"field": "Address"
 		},
 		"street": {
-			"function": "regexp",
-			"field": "Address",
-			"pattern": "^(?:[0-9]+ )(.*?)(?:\\s(?:\\(?(?:Unit|UNIT)?\\s?#).*(\\)?))",
-			"replace": "$1"
+			"function": "postfixed_street",
+			"field": "Address"
 		},
 		"unit": {
-			"function": "regexp",
-			"field": "Address",
-			"pattern": "\\((?:Unit|UNIT)?\\s?#).*(\\)?"
+			"function": "postfixed_unit",
+			"field": "Address"
 		},
 		"city": "TOWN_NAME"
 	}

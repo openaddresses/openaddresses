@@ -2,13 +2,13 @@
 
 
 ### Steps:
-1. Register as user at http://egp.gu.gov.si/egp, wait for the email with the password, login
+1. Register as user at https://egp.gu.gov.si/egp/?lang=en, wait for the email with the password, login
 2. Run GNU `make` in this folder (requires `wget`, gdal `ogr2ogr` and `python`)
 3. When prompted enter your credentials (they can be saved for later reuse)
 4. Wait a minute or two for processing to finish.
 
 ### To manually download the data you should:
-1. Register as user at http://egp.gu.gov.si/egp, wait for the email with the password, login
+1. Register as user at https://egp.gu.gov.si/egp/?lang=en, wait for the email with the password, login
 2. Expand section "9. Register prostorskih enot" / "9. Register of Spatial Units"
 3. Download the data "Prostorske enote" / "Spatial units" -> `RPE_PE.ZIP` and put it in this folder
 4. Download the data "Ulice" / "Streets" -> `RPE_PUL.ZIP` and put it in this folder

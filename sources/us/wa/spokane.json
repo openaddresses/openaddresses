@@ -11,19 +11,25 @@
     },
     "license": "Unknown",
     "protocol": "ESRI",
-    "data": "http://gis.spokanecounty.org/arcgis/rest/services/OpenData/OpenData/MapServer/4",
+    "data": "https://gis.spokanecounty.org/arcgis/rest/services/OpenData/Property/MapServer/12",
     "website": "http://gisdatacatalog.spokanecounty.opendata.arcgis.com/datasets/299aa88f3f334d15975e0a5d2dd30310_4",
     "conform": {
         "format": "geojson",
-        "number": "site_str_nbr",
+        "number": [
+            "ADDRNUM",
+            "ADDRNUMSUF"
+        ],
+        "unit": [
+            "UNITTYPE",
+            "UNITID"
+        ],
         "street": [
-            "site_str_nbr_suf",
-            "site_str_dir",
-            "site_str_name",
-            "site_str_type",
-            "site_str_dir_suf"
-		],
-        "city": "site_city",
-        "postcode": "site_zip"
+            "PrefixDirection",
+            "PrefixType",
+            "StreetName",
+            "StreetType"
+        ],
+        "city": "CITY",
+        "region": "STATE"
     }
 }

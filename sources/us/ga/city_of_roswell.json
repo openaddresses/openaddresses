@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "1367284",
+            "name": "City of Roswell",
+            "state": "Georgia"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -84.351,
+                34.039
+            ]
+        },
+        "country": "us",
+        "state": "ga",
+        "city": "Roswell"
+    },
+    "data": "http://gisweb.ci.roswell.ga.us/arcgis/rest/services/ArcGISHub/ArcGIS_Hub_REST_Services/MapServer/0",
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "FULLADDR"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "FULLADDR"
+        },
+        "city": "MUNICIPALITY",
+        "postcode": "ZIP_"
+    }
+}

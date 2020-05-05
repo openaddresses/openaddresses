@@ -9,17 +9,22 @@
         "state": "pa",
         "county": "Centre"
     },
-    "data": "http://gissites.co.centre.pa.us:6080/arcgis/rest/services/Basic/MapServer/1",
+    "data": "https://gissites4.centrecountypa.gov/arcgis/rest/services/OpenData/MapServer/1",
     "protocol": "ESRI",
     "conform": {
         "format": "geojson",
-        "number": "NUMBER",
+        "number": ["AddNumPre", "Add_Number", "AddNum_Suf"],
+        "unit": "Unit",
         "street": [
-            "PRE_DIR",
-            "STR_NAME",
-            "STR_TYPE",
-            "POST_DIR"
+            "St_PreMod",
+            "St_PreDIR",
+            "St_PreType",
+            "St_PreSep",
+            "St_Name",
+            "St_PosTyp",
+            "St_PosDIR",
+            "St_PosMod"
         ],
-        "unit": "NUMSUF"
+        "region": "State"
     }
 }
