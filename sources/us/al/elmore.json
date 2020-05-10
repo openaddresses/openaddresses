@@ -9,20 +9,17 @@
         "state": "al",
         "county": "Elmore"
     },
-    "data": "http://emapsplus.com/arcgis/rest/services/Alabama/ElmoreEmaps/MapServer/204",
+    "data": "https://web5.kcsgis.com/kcsgis/rest/services/Elmore/Public/MapServer/133",
     "protocol": "ESRI",
     "conform": {
         "format": "geojson",
-        "number": "HN",
-        "street": [
-            "DIR_PREFIX",
-            "STREET",
-            "SUFFIX",
-            "DIR_SUFFIX"
-        ],
-        "unit": "NUMBER_SUF",
-        "city": "COMM",
-        "region": "STATE",
-        "postcode": "ZIP_CODE"
+        "number": {
+            "function": "prefixed_number",
+            "field": "PropertyAddr1"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "PropertyAddr1"
+        }
     }
 }
