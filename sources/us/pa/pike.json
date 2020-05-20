@@ -15,17 +15,20 @@
         "email": "mapping@pikepa.org",
         "address": "506 Broad Street, Milford, PA 18337"
     },
-    "data": "https://github.com/aaronpdennis/pa-county-addresses/raw/master/data/PIKE/PIKE_addresses.csv",
-    "protocol": "http",
-    "note": "Data extracted from 2009 state government collection. Individual county GIS offices may have more recent addresses.",
+    "data": "http://gis.pikepa.org/arcgis/rest/services/PikeCo_AddressPoints/MapServer/1",    
+    "protocol": "ESRI",
     "conform": {
-        "format": "csv",
-        "number": "SAN",
-        "street": ["PRD","STP","STN","STS","POD"],
-        "city": "MCN",
-        "lon": "X",
-        "lat": "Y",
-        "id": "PIN",
-        "accuracy": 5
+        "format": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "PrimaryAddress",
+            "pattern": "^([0-9]+) "
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PrimaryAddress",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
     }
 }
