@@ -21,15 +21,12 @@
     "conform": {
         "format": "geojson",
         "number": {
-            "function": "regexp",
-            "field": "PROPERTY_L",
-            "pattern": "^([0-9]+) "
+            "function": "prefixed_number",
+            "field": "PROPERTY_L"
         },
         "street": {
-            "function": "regexp",
-            "field": "PROPERTY_L",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "function": "postfixed_street",
+            "field": "PROPERTY_L"
         }
     }    
 }
