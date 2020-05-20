@@ -16,17 +16,20 @@
         "email": "mhaas@sullivancounty-pa.us",
         "address": "Sullivan County Planning Office, 245 Muncy Street, P.O. Box 157, Laporte, PA 18626"
     },
-    "data": "https://github.com/aaronpdennis/pa-county-addresses/raw/master/data/SULLIVAN/SULLIVAN_addresses.csv",
-    "protocol": "http",
-    "note": "Data extracted from 2009 state government collection. Individual county GIS offices may have more recent addresses.",
+    "data": "https://services.arcgis.com/v23hD9oBVGlp45Zy/ArcGIS/rest/services/Parcels_3_20/FeatureServer/0",
+    "protocol": "ESRI",
     "conform": {
-        "format": "csv",
-        "number": "SAN",
-        "street": ["PRD","STP","STN","STS","POD"],
-        "city": "MCN",
-        "lon": "X",
-        "lat": "Y",
-        "id": "PIN",
-        "accuracy": 5
-    }
+        "format": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "PROPERTY_L",
+            "pattern": "^([0-9]+) "
+        },
+        "street": {
+            "function": "regexp",
+            "field": "PROPERTY_L",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        }
+    }    
 }
