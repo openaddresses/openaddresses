@@ -3,7 +3,10 @@ const request = require('request');
 const Ajv = require('ajv');
 const schema = require('../schema/source_schema_v2.json');
 
-const ajv = new Ajv();
+const ajv = new Ajv({
+    schemaId: 'id'
+});
+
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'), "http://json-schema.org/draft-04/schema#");
 ajv.addMetaSchema(require('./geojson.json'), "http://json.schemastore.org/geojson#/definitions/geometry");
 testSchemaItself(ajv.compile(schema));
@@ -14,14 +17,6 @@ const nonObjectValues = [null, 17, [], true, 'string'];
 const nonArrayValues = [null, 17, {}, true, 'string'];
 const nonIntegerValues = [null, 17.3, {}, [], true, 'string'];
 const nonStringOrIntegerValues = [null, 17.3, {}, [], true];
-
-// this function instructs Ajv on how to load remote sources
-function loadSchema(uri) {
-    request.json(uri, (err, res, body) => {
-        if (err || res.statusCode >= 400) throw err || new Error(`Loading error: ${res.statusCode}`);
-        return body;
-    });
-}
 
 // convenience function that looks for an additionalProperty error condition
 // anywhere in the errors array
@@ -71,14 +66,16 @@ const isFormatError = isError.bind(null, 'format');
 function testSchemaItself(validate) {
     tape('test schema itself', (test) => {
         test.test('bare minimum source should pass', (t) => {
-            ['http', 'ftp', 'ESRI'].forEach((type) => {
+            ['http', 'ftp', 'ESRI'].forEach((protocol) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: type,
+                            name: 'county',
+                            protocol: protocol,
                             data: 'http://xyz.com/'
                         }],
                         buildings: []
@@ -87,7 +84,8 @@ function testSchemaItself(validate) {
 
                 const valid = validate(source);
 
-                t.ok(valid, `type ${type} should pass`);
+                t.ok(valid, `protocol ${protocol} should pass`);
+                console.error(validate.errors);
 
             });
 
@@ -97,11 +95,13 @@ function testSchemaItself(validate) {
 
         test.test('unknown property should fail', (t) => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
+                        name: 'county',
                         data: 'http://xyz.com/',
                         unknown_property: 'value'
                     }],
@@ -111,21 +111,23 @@ function testSchemaItself(validate) {
 
             const valid = validate(source);
 
-            t.notOk(valid, 'type-less source should fail');
+            t.notOk(valid, 'protocol-less source should fail');
             t.ok(isAdditionalPropertyError(validate, '.layers.addresses[0]', 'unknown_property'), JSON.stringify(validate.errors));
 
             t.end();
 
         });
 
-        test.test('type other than http/ftp/ESRI should fail', (t) => {
+        test.test('protocol other than http/ftp/ESRI should fail', (t) => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'non-http/ftp/ESRI',
+                        name: 'county',
+                        protocol: 'non-http/ftp/ESRI',
                         data: 'http://xyz.com/'
                     }],
                     buildings: []
@@ -134,19 +136,21 @@ function testSchemaItself(validate) {
 
             const valid = validate(source);
 
-            t.notOk(valid, 'non-http/ftp/ESRI type should fail');
-            t.ok(isEnumValueError(validate, '.layers.addresses[0].type'), JSON.stringify(validate.errors));
+            t.notOk(valid, 'non-http/ftp/ESRI protocol should fail');
+            t.ok(isEnumValueError(validate, '.layers.addresses[0].protocol'), JSON.stringify(validate.errors));
             t.end();
 
         });
 
-        test.test('source without type should fail', (t) => {
+        test.test('source without protocol should fail', (t) => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
+                        name: 'county',
                         data: 'http://xyz.com/'
                     }],
                     buildings: []
@@ -155,8 +159,31 @@ function testSchemaItself(validate) {
 
             const valid = validate(source);
 
-            t.notOk(valid, 'type-less source should fail');
-            t.ok(isMissingPropertyError(validate, '.layers.addresses[0]', 'type'), JSON.stringify(validate.errors));
+            t.notOk(valid, 'protocol-less source should fail');
+            t.ok(isMissingPropertyError(validate, '.layers.addresses[0]', 'protocol'), JSON.stringify(validate.errors));
+            t.end();
+
+        });
+
+        test.test('source without name should fail', (t) => {
+            const source = {
+                schema: 2,
+                coverage: {
+                    country: 'some country'
+                },
+                layers: {
+                    addresses: [{
+                        protocol: 'http',
+                        data: 'http://xyz.com/'
+                    }],
+                    buildings: []
+                }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'name-less source should fail');
+            t.ok(isMissingPropertyError(validate, '.layers.addresses[0]', 'name'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -164,12 +191,14 @@ function testSchemaItself(validate) {
         test.test('non-string data value should fail', (t) => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            name: 'county',
+                            protocol: 'http',
                             data: value
                         }],
                         buildings: []
@@ -189,12 +218,14 @@ function testSchemaItself(validate) {
 
         test.test('string data value should not fail', (t) => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        name: 'county',
+                        protocol: 'http',
                         data: 'http://xyz.com/'
                     }],
                     buildings: []
@@ -211,12 +242,14 @@ function testSchemaItself(validate) {
         test.test('non-string website value should fail', (t) => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            name: 'county',
+                            protocol: 'http',
                             data: 'http://xyz.com/',
                             website: value
                         }],
@@ -237,12 +270,14 @@ function testSchemaItself(validate) {
 
         test.test('string website value should not fail', (t) => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         website: 'this is a string'
                     }],
@@ -260,12 +295,14 @@ function testSchemaItself(validate) {
         test.test('non-string email value should fail', (t) => {
             nonStringValues.forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             email: value
                         }],
@@ -285,12 +322,14 @@ function testSchemaItself(validate) {
 
         test.test('non-email-formatted email field should fail', (t) => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         email: 'this is not a valid email address'
                     }],
@@ -308,12 +347,14 @@ function testSchemaItself(validate) {
 
         test.test('email-formatted email field should not fail', (t) => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         email: 'me@example.com'
                     }],
@@ -331,12 +372,14 @@ function testSchemaItself(validate) {
         test.test('non-string compression should fail', (t) => {
             nonStringValues.forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             compression: value
                         }],
@@ -356,12 +399,14 @@ function testSchemaItself(validate) {
 
         test.test('non-"zip" compression value should fail', (t) => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         compression: 'this value is not "zip"'
                     }],
@@ -379,12 +424,14 @@ function testSchemaItself(validate) {
 
         test.test('"zip" compression value should not fail', (t) => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         compression: 'zip'
                     }],
@@ -402,12 +449,14 @@ function testSchemaItself(validate) {
         test.test('non-string attribution should fail', (t) => {
             nonStringValues.forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             attribution: value
                         }],
@@ -428,12 +477,14 @@ function testSchemaItself(validate) {
 
         test.test('string attribution value should not fail', (t) => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         attribution: 'this is a string'
                     }],
@@ -451,12 +502,14 @@ function testSchemaItself(validate) {
         test.test('non-string language should fail', (t) => {
             nonStringValues.forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             language: value
                         }],
@@ -478,12 +531,14 @@ function testSchemaItself(validate) {
         test.test('non-2- or 3-letter string language should fail', (t) => {
             ['a', 'a1', '1a', 'a a', 'aaaa'].forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             language: value
                         }],
@@ -504,12 +559,14 @@ function testSchemaItself(validate) {
         test.test('case-insensitive 2- or 3-letter string language should not fail', (t) => {
             ['aa', 'Aa', 'aA', 'AA', 'aaa', 'en', 'gb', 'lld'].forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             language: value
                         }],
@@ -530,12 +587,14 @@ function testSchemaItself(validate) {
         test.test('non-boolean skip should fail', (t) => {
             nonBooleanValues.forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             skip: value
                         }],
@@ -557,12 +616,14 @@ function testSchemaItself(validate) {
         test.test('boolean skip should not fail', (t) => {
             [true, false].forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             skip: value
                         }],
@@ -583,12 +644,14 @@ function testSchemaItself(validate) {
         test.test('non-string/integer year should fail', (t) => {
             [null, 17.3, {}, [], true].forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             year: value
                         }],
@@ -610,12 +673,14 @@ function testSchemaItself(validate) {
         test.test('string/integer year should not fail', (t) => {
             [17, 'string'].forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             year: value
                         }],
@@ -636,12 +701,14 @@ function testSchemaItself(validate) {
         test.test('non-string/object note should fail', (t) => {
             [null, 17, [], true].forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             note: value
                         }],
@@ -663,12 +730,14 @@ function testSchemaItself(validate) {
         test.test('string/integer note should not fail', (t) => {
             [{}, 'string'].forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             note: value
                         }],
@@ -689,18 +758,20 @@ function testSchemaItself(validate) {
     });
 
     tape('conform tests', test => {
-        test.test('non-string type should fail', t => {
+        test.test('non-string format should fail', t => {
             nonStringValues.forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: value,
+                                format: value,
                                 number: 'number field',
                                 street: 'street field'
                             }
@@ -711,8 +782,8 @@ function testSchemaItself(validate) {
 
                 const valid = validate(source);
 
-                t.notOk(valid, 'non-string type value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.type'), JSON.stringify(validate.errors));
+                t.notOk(valid, 'non-string format value should fail');
+                t.ok(isTypeError(validate, '.layers.addresses[0].conform.format'), JSON.stringify(validate.errors));
 
             });
 
@@ -720,17 +791,19 @@ function testSchemaItself(validate) {
 
         });
 
-        test.test('unsupported type should fail', t => {
+        test.test('unsupported format should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'unsupported type',
+                            format: 'unsupported format',
                             number: 'number field',
                             street: 'street field'
                         }
@@ -742,23 +815,25 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'non-integer note value should fail');
-            t.ok(isEnumValueError(validate, '.layers.addresses[0].conform.type'), JSON.stringify(validate.errors));
+            t.ok(isEnumValueError(validate, '.layers.addresses[0].conform.format'), JSON.stringify(validate.errors));
             t.end();
 
         });
 
-        test.test('supported type values should not fail', t => {
+        test.test('supported format values should not fail', t => {
             ['geojson', 'shapefile', 'shapefile-polygon', 'gdb', 'xml', 'csv'].forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: value,
+                                format: value,
                                 number: 'number field',
                                 street: 'street field'
                             }
@@ -769,7 +844,7 @@ function testSchemaItself(validate) {
 
                 const valid = validate(source);
 
-                t.ok(valid, 'supported conform.type value should not fail');
+                t.ok(valid, 'supported conform.format value should not fail');
 
             });
 
@@ -780,15 +855,17 @@ function testSchemaItself(validate) {
         test.test('non-string addrtype should fail', t => {
             nonStringValues.forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 addrtype: value,
                                 number: 'number field',
                                 street: 'street field'
@@ -812,15 +889,17 @@ function testSchemaItself(validate) {
         test.test('non-integer accuracy should fail', t => {
             nonIntegerValues.forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 accuracy: value,
                                 number: 'number field',
                                 street: 'street field'
@@ -844,15 +923,17 @@ function testSchemaItself(validate) {
         test.test('accuracy less than 1 should fail', t => {
             [-1, 0].forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: 'number field',
                                 street: 'street field',
                                 accuracy: value
@@ -876,15 +957,17 @@ function testSchemaItself(validate) {
         test.test('accuracy greater than 5 should fail', t => {
             [6, 7].forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: 'number field',
                                 street: 'street field',
                                 accuracy: value
@@ -908,15 +991,17 @@ function testSchemaItself(validate) {
         test.test('non-string srs should fail', t => {
             nonStringValues.forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 srs: value,
                                 number: 'number field',
                                 street: 'street field'
@@ -939,15 +1024,17 @@ function testSchemaItself(validate) {
 
         test.test('srs not matching EPSG:# format should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             srs: 'EPSG:abcd',
                             number: 'number field',
                             street: 'street field'
@@ -968,15 +1055,17 @@ function testSchemaItself(validate) {
         test.test('non-string file should fail', t => {
             nonStringValues.forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'csv',
+                                format: 'csv',
                                 file: value,
                                 number: 'number field',
                                 street: 'street field'
@@ -1000,15 +1089,17 @@ function testSchemaItself(validate) {
         test.test('non-string/integer layer should fail', t => {
             nonStringOrIntegerValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'csv',
+                                format: 'csv',
                                 layer: value,
                                 number: 'number field',
                                 street: 'street field'
@@ -1032,15 +1123,17 @@ function testSchemaItself(validate) {
         test.test('non-string encoding should fail', t => {
             nonStringValues.forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'csv',
+                                format: 'csv',
                                 encoding: value,
                                 number: 'number field',
                                 street: 'street field'
@@ -1064,15 +1157,17 @@ function testSchemaItself(validate) {
         test.test('non-string csvsplit should fail', t => {
             nonStringValues.forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'csv',
+                                format: 'csv',
                                 csvsplit: value,
                                 number: 'number field',
                                 street: 'street field'
@@ -1096,15 +1191,17 @@ function testSchemaItself(validate) {
         test.test('non-integer headers should fail', t => {
             nonIntegerValues.forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'csv',
+                                format: 'csv',
                                 headers: value,
                                 number: 'number field',
                                 street: 'street field'
@@ -1127,15 +1224,17 @@ function testSchemaItself(validate) {
 
         test.test('headers less than -1 should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'csv',
+                            format: 'csv',
                             headers: -2,
                             number: 'number field',
                             street: 'street field'
@@ -1157,15 +1256,17 @@ function testSchemaItself(validate) {
         test.test('non-integer skiplines should fail', t => {
             nonIntegerValues.forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'csv',
+                                format: 'csv',
                                 skiplines: value,
                                 number: 'number field',
                                 street: 'street field'
@@ -1189,15 +1290,17 @@ function testSchemaItself(validate) {
         test.test('skiplines less than 1 should fail', t => {
             [-1, 0].forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'csv',
+                                format: 'csv',
                                 skiplines: value,
                                 number: 'number field',
                                 street: 'street field'
@@ -1221,15 +1324,17 @@ function testSchemaItself(validate) {
         test.test('non-string notes should fail', t => {
             nonStringValues.forEach((value) => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 notes: value,
                                 number: 'number field',
                                 street: 'street field'
@@ -1253,15 +1358,17 @@ function testSchemaItself(validate) {
         test.test('non-string/array/object id should fail', t => {
             [null, 17, true].forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 id: value,
                                 number: 'number field',
                                 street: 'street field'
@@ -1285,15 +1392,17 @@ function testSchemaItself(validate) {
         test.test('id array containing non-string elements should fail', t => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 id: ['field1', value, 'field2'],
                                 number: 'number field',
                                 street: 'street field'
@@ -1319,9 +1428,11 @@ function testSchemaItself(validate) {
     tape('coverage tests', test => {
         test.test('missing coverage property should fail', t => {
             const source = {
+                schema: 2,
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                     }],
                     buildings: []
@@ -1339,10 +1450,12 @@ function testSchemaItself(validate) {
         test.test('non-object coverage should fail', t => {
             nonObjectValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: value,
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/'
                         }],
                         buildings: []
@@ -1362,10 +1475,12 @@ function testSchemaItself(validate) {
 
         test.test('missing country should fail', t => {
             const source = {
+                schema: 2,
                 coverage: { },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/'
                     }],
                     buildings: []
@@ -1385,15 +1500,17 @@ function testSchemaItself(validate) {
     tape('prefixed_number function tests', test => {
         test.test('missing field property should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'prefixed_number'
                             },
@@ -1415,15 +1532,17 @@ function testSchemaItself(validate) {
         test.test('non-string field value should fail', t => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: {
                                     function: 'prefixed_number',
                                     field: value
@@ -1448,15 +1567,17 @@ function testSchemaItself(validate) {
 
         test.test('string field value should not fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'prefixed_number',
                                 field: 'number field'
@@ -1477,15 +1598,17 @@ function testSchemaItself(validate) {
 
         test.test('unknown property should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'prefixed_number',
                                 field: 'number field',
@@ -1511,15 +1634,17 @@ function testSchemaItself(validate) {
     tape('postfixed_street function tests', test => {
         test.test('missing field property should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: 'number field',
                             street: {
                                 function: 'postfixed_street'
@@ -1541,15 +1666,17 @@ function testSchemaItself(validate) {
         test.test('non-string field value should fail', t => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: 'number field',
                                 street: {
                                     function: 'postfixed_street',
@@ -1574,15 +1701,17 @@ function testSchemaItself(validate) {
 
         test.test('string field value should not fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: 'number field',
                             street: {
                                 function: 'postfixed_street',
@@ -1604,15 +1733,17 @@ function testSchemaItself(validate) {
         test.test('non-boolean may_contain_units should fail', t => {
             nonBooleanValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: 'number field',
                                 street: {
                                     function: 'postfixed_street',
@@ -1639,15 +1770,17 @@ function testSchemaItself(validate) {
         test.test('boolean may_contain_units should not fail', t => {
             [true, false].forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'http',
+                            protocol: 'http',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: 'number field',
                                 street: {
                                     function: 'postfixed_street',
@@ -1672,15 +1805,17 @@ function testSchemaItself(validate) {
 
         test.test('unknown property should fail', (t) => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: 'number field',
                             street: {
                                 function: 'postfixed_street',
@@ -1706,15 +1841,17 @@ function testSchemaItself(validate) {
     tape('postfixed_unit function tests', test => {
         test.test('missing field property should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: 'number field',
                             street: 'street field',
                             unit: {
@@ -1737,15 +1874,17 @@ function testSchemaItself(validate) {
         test.test('non-string field value should fail', t => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: 'number field',
                                 street: 'street field',
                                 unit: {
@@ -1771,15 +1910,17 @@ function testSchemaItself(validate) {
 
         test.test('string field value should not fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: 'number field',
                             street: 'street field',
                             unit: {
@@ -1801,15 +1942,17 @@ function testSchemaItself(validate) {
 
         test.test('unknown property should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: 'number field',
                             street: 'street field',
                             unit: {
@@ -1836,15 +1979,17 @@ function testSchemaItself(validate) {
     tape('remove_prefix function tests', test => {
         test.test('missing field should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'remove_prefix',
                                 field: 'field value'
@@ -1867,15 +2012,17 @@ function testSchemaItself(validate) {
         test.test('non-string field value should fail', t => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: 'number field',
                                 street: {
                                     function: 'remove_prefix',
@@ -1901,15 +2048,17 @@ function testSchemaItself(validate) {
 
         test.test('missing field_to_remove should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'remove_prefix',
                                 field_to_remove: 'field_to_remove value'
@@ -1932,15 +2081,17 @@ function testSchemaItself(validate) {
         test.test('non-string field_to_remove value should fail', t => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: 'number field',
                                 street: {
                                     function: 'remove_prefix',
@@ -1966,15 +2117,17 @@ function testSchemaItself(validate) {
 
         test.test('string field and field_to_remove values should not fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: 'number field',
                             street: {
                                 function: 'remove_prefix',
@@ -1996,15 +2149,17 @@ function testSchemaItself(validate) {
 
         test.test('unknown property should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: 'number field',
                             street: {
                                 function: 'remove_prefix',
@@ -2030,15 +2185,17 @@ function testSchemaItself(validate) {
     tape('remove_postfix function tests', test => {
         test.test('missing field should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'remove_postfix',
                                 field_to_remove: 'field_to_remove value'
@@ -2061,15 +2218,17 @@ function testSchemaItself(validate) {
         test.test('non-string field value should fail', t => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: 'number field',
                                 street: {
                                     function: 'remove_postfix',
@@ -2095,15 +2254,17 @@ function testSchemaItself(validate) {
 
         test.test('missing field_to_remove should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'remove_postfix',
                                 field: 'field value'
@@ -2126,15 +2287,17 @@ function testSchemaItself(validate) {
         test.test('non-string field_to_remove value should fail', t => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: 'number field',
                                 street: {
                                     function: 'remove_postfix',
@@ -2160,15 +2323,17 @@ function testSchemaItself(validate) {
 
         test.test('string field and field_to_remove values should not fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: 'number field',
                             street: {
                                 function: 'remove_postfix',
@@ -2190,15 +2355,17 @@ function testSchemaItself(validate) {
 
         test.test('unknown property should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: 'number field',
                             street: {
                                 function: 'remove_postfix',
@@ -2224,15 +2391,17 @@ function testSchemaItself(validate) {
     tape('regexp function tests', test => {
         test.test('missing field value should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'regexp',
                                 pattern: 'pattern value'
@@ -2254,15 +2423,17 @@ function testSchemaItself(validate) {
 
         test.test('missing pattern value should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'regexp',
                                 field: 'field value'
@@ -2285,15 +2456,17 @@ function testSchemaItself(validate) {
         test.test('non-string field value should fail', t => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: {
                                     function: 'regexp',
                                     field: value,
@@ -2320,15 +2493,17 @@ function testSchemaItself(validate) {
         test.test('non-string pattern value should fail', t => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: {
                                     function: 'regexp',
                                     field: 'field value',
@@ -2355,15 +2530,17 @@ function testSchemaItself(validate) {
         test.test('non-string replace value should fail', t => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: {
                                     function: 'regexp',
                                     field: 'field value',
@@ -2390,15 +2567,17 @@ function testSchemaItself(validate) {
 
         test.test('string field and pattern w/o replace should not fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'regexp',
                                 field: 'field value',
@@ -2420,15 +2599,17 @@ function testSchemaItself(validate) {
 
         test.test('string field, pattern, and replace should not fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'regexp',
                                 field: 'field value',
@@ -2451,15 +2632,17 @@ function testSchemaItself(validate) {
 
         test.test('unknown property should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'regexp',
                                 field: 'field value',
@@ -2486,15 +2669,17 @@ function testSchemaItself(validate) {
     tape('join function tests', test => {
         test.test('missing fields value should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'join'
                             },
@@ -2517,15 +2702,17 @@ function testSchemaItself(validate) {
         test.test('non-array fields value should fail', t => {
             nonArrayValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: {
                                     function: 'join',
                                     fields: value
@@ -2550,15 +2737,17 @@ function testSchemaItself(validate) {
 
         test.test('empty fields array should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'join',
                                 fields: []
@@ -2581,15 +2770,17 @@ function testSchemaItself(validate) {
         test.test('non-string elements of fields array should fail', t => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: {
                                     function: 'join',
                                     fields: ['field 1', value, 'field 2']
@@ -2615,15 +2806,17 @@ function testSchemaItself(validate) {
         test.test('non-string separator value should fail', t => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: {
                                     function: 'join',
                                     fields: ['field1', 'field2'],
@@ -2649,15 +2842,17 @@ function testSchemaItself(validate) {
 
         test.test('non-empty fields containing only strings should not fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'join',
                                 fields: ['field 1', 'field 2']
@@ -2678,15 +2873,17 @@ function testSchemaItself(validate) {
 
         test.test('non-empty fields containing only strings and string separator value should not fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'join',
                                 fields: ['field 1', 'field 2'],
@@ -2708,15 +2905,17 @@ function testSchemaItself(validate) {
 
         test.test('unknown property should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'join',
                                 fields: ['field 1', 'field 2'],
@@ -2742,15 +2941,17 @@ function testSchemaItself(validate) {
     tape('format function tests', test => {
         test.test('missing fields value should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'format',
                                 format: 'format value'
@@ -2773,15 +2974,17 @@ function testSchemaItself(validate) {
 
         test.test('missing format value should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'format',
                                 fields: ['field 1', 'field 2']
@@ -2805,15 +3008,17 @@ function testSchemaItself(validate) {
         test.test('non-array fields value should fail', t => {
             nonArrayValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: {
                                     function: 'format',
                                     fields: value,
@@ -2839,15 +3044,17 @@ function testSchemaItself(validate) {
 
         test.test('empty fields array should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'ESRI',
+                        protocol: 'ESRI',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'format',
                                 fields: [],
@@ -2871,15 +3078,17 @@ function testSchemaItself(validate) {
         test.test('non-string elements of fields array should fail', t => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: {
                                     function: 'format',
                                     fields: ['field 1', value, 'field 2'],
@@ -2906,15 +3115,17 @@ function testSchemaItself(validate) {
         test.test('non-string format value should fail', t => {
             nonStringValues.forEach(value => {
                 const source = {
+                    schema: 2,
                     coverage: {
                         country: 'some country'
                     },
                     layers: {
                         addresses: [{
-                            type: 'ESRI',
+                            protocol: 'ESRI',
+                            name: 'county',
                             data: 'http://xyz.com/',
                             conform: {
-                                type: 'geojson',
+                                format: 'geojson',
                                 number: {
                                     function: 'format',
                                     fields: ['field1', 'field2'],
@@ -2940,15 +3151,17 @@ function testSchemaItself(validate) {
 
         test.test('non-empty fields containing only strings and string format should not fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'format',
                                 fields: ['field 1', 'field 2'],
@@ -2970,15 +3183,17 @@ function testSchemaItself(validate) {
 
         test.test('unknown property should fail', t => {
             const source = {
+                schema: 2,
                 coverage: {
                     country: 'some country'
                 },
                 layers: {
                     addresses: [{
-                        type: 'http',
+                        protocol: 'http',
+                        name: 'county',
                         data: 'http://xyz.com/',
                         conform: {
-                            type: 'geojson',
+                            format: 'geojson',
                             number: {
                                 function: 'format',
                                 fields: ['field 1', 'field 2'],
@@ -3002,3 +3217,4 @@ function testSchemaItself(validate) {
         });
     });
 }
+
