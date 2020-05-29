@@ -9,19 +9,17 @@
         "state": "il",
         "county": "Stephenson"
     },
-    "data": "http://map.wingis.org/arcgis/rest/services/1_Layers/MapServer/3",
-    "protocol": "ESRI",
+    "data": "https://data.openaddresses.io/cache/uploads/ingalls/ee7b5e/stephenson_il.zip",
+    "protocol": "http",
+    "compression": "zip",
     "conform": {
         "number": {
-            "function": "regexp",
-            "field": "site_addre",
-            "pattern": "^([0-9]+)"
+            "function": "prefixed_number",
+            "field": "site_addre"
         },
         "street": {
-            "function": "regexp",
-            "field": "site_addre",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
+            "function": "postfixed_street",
+            "field": "site_addre"
         },
         "format": "geojson"
     }
