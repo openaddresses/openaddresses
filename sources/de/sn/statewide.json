@@ -22,7 +22,11 @@
     "srs": "EPSG:25833",
     "street": "COLUMN14",
     "postcode": "COLUMN15",
-    "city": "COLUMN16",
+    "city": {
+      "function": "format",
+      "fields": [ "COLUMN16", "COLUMN17" ],
+      "format": "$1 $2"
+    },
     "number": "COLUMN10",
     "unit": "COLUMN11"
   },
