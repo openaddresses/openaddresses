@@ -1,0 +1,38 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "42063",
+            "name": "Indiana County",
+            "state": "Pennsylvania"
+        },
+        "country": "us",
+        "state": "pa",
+        "county": "Indiana"
+    },
+    "website": "https://www.indianacountypa.gov/departments/tax-assessment/",
+    "contact": {
+        "phone": "724-465-3800",
+        "address": "825 Philadelphia St., Indiana, Pa 15701"
+    },
+    "data": "https://maps.pasda.psu.edu/arcgis/rest/services/pasda/IndianaCounty/MapServer/5",
+    "note": "Dataset appears to be from 2019.",
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "ADDRESS_1",
+            "pattern": "^([0-9]+) "
+        },
+        "street": {
+            "function": "regexp",
+            "field": "ADDRESS_1",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "city": "CITY",
+        "postcode": "ZIP",
+        "region": "STATE",
+        "id": "PARCEL_ID"
+    }
+}
