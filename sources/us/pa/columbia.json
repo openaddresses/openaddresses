@@ -9,21 +9,21 @@
         "state": "pa",
         "county": "Columbia"
     },
-    "data": "http://gismaps.columbiapa.org/arcgis/rest/services/Editing/MontourAddresses/MapServer/0",
-    "website": "http://gis.columbiapa.org/mapsonline/default.aspx",
+    "website": "http://gis.columbiapa.org/default.aspx",
+    "contact": {
+        "name": "Tim Murphy",
+        "title": "Director",
+        "phone": "570-387-4930",
+        "email": "gis@columbiapa.org",
+        "address": "26 W First St, P.O. Box 380, Bloomsburg, PA 17815"
+    },
+    "data": "https://gismaps.columbiapa.org/ProxyJS/proxy.ashx?https://gismaps.columbiapa.org/server/rest/services/Overlays/Verizon_and_USPS/MapServer/2",
     "protocol": "ESRI",
     "conform": {
         "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "FULLADDR",
-            "pattern": "^([0-9]+(?:[A-Z]| 1/2)?)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "FULLADDR",
-            "pattern": "^(?:[0-9]+(?:[A-Z]| 1/2)?)(.*)",
-            "replace": "$1"
-        }
+        "number": "ADDRNUM",
+        "street": "FULLNAME",
+        "unit": "UNITID",
+        "city": "MUNICIPALITY"
     }
 }
