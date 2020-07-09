@@ -5,21 +5,24 @@
         "state": "nc",
         "county": "Randolph"
     },
-    "data": "http://data.nconemap.gov/downloads/vector/parcels/Randolph_parcels_2017_07_27.zip",
+    "data": "https://dit-cgia-gis-data.s3.amazonaws.com/NCOM-data/parcels/randolph_parcels.zip",
     "protocol": "http",
     "compression": "zip",
-    "website": "http://data.nconemap.gov/geoportal/catalog/search/resource/details.page?uuid=%7B837C5704-49C8-45A3-B084-AEBF4CD09804%7D",
+    "website": "https://dit-cgia-gis-data.s3.amazonaws.com/NCOM-data/parcels/randolph_parcels.zip",
     "conform": {
         "format": "shapefile",
-        "file": "nc_randolph_parcels_pt_2017_07_27.shp",
+        "file": "nc_randolph_parcels_pt.shp",
         "id": "PARNO",
         "number": {
             "function": "prefixed_number",
-            "field": "SITEADD"
+            "field": "SADDNO"
         },
         "street": {
             "function": "postfixed_street",
-            "field": "SITEADD"
-        }
+            "field": "SADDSTNAME"
+        },
+        "city": "SCITY",
+        "region": "SSTATE",
+        "postcode": "SZIP"
     }
 }
