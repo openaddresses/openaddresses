@@ -3,7 +3,7 @@
 
 Using PSMA Admin Boundaries data obtained with https://github.com/andrewharvey/psma-admin-bdys-data we are able to list all suburb/localities in NSW with:
 
-    ogr2ogr -f CSV -select NAME -where "STATE_PID = '1'" /vsistdout/ Suburbs\ -\ Localities\ NOVEMBER\ 2019.shp | tail -n +2 | sort | uniq | sed ':a;N;$!ba;s/\n/|/g'
+    ogr2ogr -f CSV -select NAME -where "STATE_PID = '1'" /vsistdout/ Suburbs\ -\ Localities\ MAY \ 2020.shp | tail -n +2 | sort | uniq | sed ':a;N;$!ba;s/\n/|/g'
 
 The output of that is used in the regexp for splitting street names and suburb/localities.
 
