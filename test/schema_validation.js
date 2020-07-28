@@ -3,7 +3,10 @@ const request = require('request');
 const Ajv = require('ajv');
 const schema = require('../schema/source_schema.json');
 
-const ajv = new Ajv();
+const ajv = new Ajv({
+    schemaId: 'auto'
+});
+
 ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'), "http://json-schema.org/draft-04/schema#");
 ajv.addMetaSchema(require('./geojson.json'), "http://json.schemastore.org/geojson#/definitions/geometry");
 testSchemaItself(ajv.compile(schema));
