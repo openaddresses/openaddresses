@@ -9,26 +9,28 @@
         "state": "wy",
         "county": "Lincoln"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/trescube/21a007/LincolnCoWyRuralAddresses.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "srs": "EPSG:3857",
-        "format": "shapefile",
-        "number": {
-            "function": "prefixed_number",
-            "field": "ADDRESS"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*?)(UNIT .*|$)",
-            "replace": "$1"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "(UNIT .*)$"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "http://data.openaddresses.io/runs/887008/us/wy/lincoln.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "csv",
+                    "lon": "LON",
+                    "lat": "LAT",
+                    "number": "NUMBER",
+                    "street": "STREET",
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "district": "DISTRICT",
+                    "region": "REGION",
+                    "postcode": "POSTCODE",
+                    "id": "ID"
+                }
+            }
+        ]
     }
 }
