@@ -25,10 +25,12 @@
         "format": "geojson",
         "accuracy": 2,
         "id": "PID",
-        "number": "LOCNUMB",
+        "number": {
+            "function": "regexp",
+            "field": "LOCNUMB",
+            "pattern": "^0*(\\d+)"
+        },
         "street": "LOCNAME",
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "city": "TOWNNAME"
     }
 }
