@@ -1,0 +1,38 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "42075",
+            "name": "Lebanon County",
+            "state": "Pennsylvania"
+        },
+        "country": "us",
+        "state": "pa",
+        "county": "Lebanon"
+    },
+    "website": "http://www.lebcounty.org/depts/GIS/Pages/default.aspx",
+    "contact": {
+        "name": "Cherie Prentice-Brown",
+        "title": "GIS Coordinator",
+        "phone": "(717) 228-4491",
+        "email": "CPrentice-Brown@lebanonauthority.org",
+        "address": "Lebanon City Authority / Lebanon County GIS Department, Room 208, Municipal Building, 400 South 8th Street, Lebanon, PA 17042-6794"
+    },
+    "data": "https://utility.arcgis.com/usrsvcs/servers/7072ca11c43c43feb1ab453851e847b9/rest/services/LandRecords/TaxParcels/MapServer/0",
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "number": {
+            "function": "regexp",
+            "field": "SITUS_ADDR",
+            "pattern": "^([0-9]+) "
+        },
+        "street": {
+            "function": "regexp",
+            "field": "SITUS_ADDR",
+            "pattern": "^(?:[0-9]+ )(.*)",
+            "replace": "$1"
+        },
+        "id": "MAP_NUMBER",
+        "city": "MUNICIPAL1"            
+    }
+}
