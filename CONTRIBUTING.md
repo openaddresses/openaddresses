@@ -1,6 +1,6 @@
-# Contributing to OpenAddresses
+<h1 align=center>Contributing to OpenAddresses</h1>
 
-[![Build Status](https://travis-ci.org/openaddresses/openaddresses.svg?branch=master)](https://travis-ci.org/openaddresses/openaddresses)
+<p align=center>[![Build Status](https://travis-ci.org/openaddresses/openaddresses.svg?branch=master)](https://travis-ci.org/openaddresses/openaddresses)</p>
 
 ## Reporting Sources & Issues
 
@@ -24,7 +24,7 @@ Still a new source? Awesome!
 
 Confused? Not sure where your source fits in?
 [Open an issue](https://github.com/openaddresses/openaddresses/issues/new),
-we’d rather a duplicate than miss it altogether!
+we’d rather a duplicate source, than miss it altogether!
 
 ### Errors & Current Sources
 
@@ -55,15 +55,15 @@ conventions.
 Coverage | Code |
 -------- | ---- |
 Country  | [ISO 3166-1 alpha-2 Country Code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
-Province | [ISO 3166-2 alpha-2 SubRegion Code](http://en.wikipedia.org/wiki/ISO_3166-2)
+Region | [ISO 3166-2 alpha-2 SubRegion Code](http://en.wikipedia.org/wiki/ISO_3166-2)
 
 #### Source
 
 Coverage | Example |
 -------- | ------- |
-State    | us/md/statewide.json |
-County   | us/md/montgomery.json |
-City     | us/md/city_of_baltimore.json |
+State    | `us/md/statewide.json` |
+County   | `us/md/montgomery.json` |
+City     | `us/md/city_of_baltimore.json` |
 
 ### JSON Tags
 
@@ -78,13 +78,42 @@ minimum data required to process a source. If you are not able to provide the re
 tags, [file an issue](https://github.com/openaddresses/openaddresses/issues/new)
 instead of a pull request. We’ll determine if the data is suitable for inclusion.
 
- Tag          | Required? | Note
-------------- | --------- | ----
-`data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal. If there isn't a good URL for the source, members of the OpenAddresses GitHub organization can upload files to https://results.openaddresses.io/upload-cache which provides a cached URL.
-`protocol`    | Yes | A string containing the protocol (One of: `http`, `ftp`, `ESRI`)
-`coverage`    | Yes | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String. [See below for more details](#coverage-object)
-`conform`     |     | Optional Object used to find address information in a source. [See below for more details](#conform-object).
-`compression` |     | Optional string containing the compression type (usually `zip`). Omit if source is not compressed.
+ Tag                  | Required? | Note
+--------------------- | --------- | ----
+`schema`              | Yes | The JSON Schema the source conforms to - currentl always `2`
+`coverage`            | Yes | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String. [See below for more details](#coverage-object)
+`layers`              | Yes | An object containing the data layers for a given source. Valid layers are `addressess`. In the near future `parcels` and `buildings` will be supported
+`layers.{layer}`      | Yes | An array of layer objects for a given layer type
+`{layer}.name`        | Yes | The name of the data provider (AlphaNumeric + Underscores). If unknown, just use the geographic entity, ie: `town`, `city`, `county`
+`{layer}.data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal. If there isn't a good URL for the source, members of the OpenAddresses GitHub organization can upload files to https://results.openaddresses.io/upload-cache which provides a cached URL.
+`{layer}.protocol`    | Yes | A string containing the protocol (One of: `http`, `ftp`, `ESRI`)
+`{layer}.conform`     |     | Optional Object used to find address information in a source. [See below for more details](#conform-object).
+`{layer}.compression` |     | Optional string containing the compression type (usually `zip`). Omit if source is not compressed.
+
+#### Basic Source Example
+
+```JSON
+{
+    "schema": 2,
+    "coverage": {
+        "country": "ca",
+        "state": "nb"
+    },
+    "layers": {
+        "addresses": [{
+            "name": "state",
+            "data": "http://geonb.snb.ca/downloads/gcadb/geonb_gcadb-bdavg_shp.zip",
+            "protocol": "http",
+            "compression": "zip",
+            "conform": {
+                "number": "civic_num",
+                "street": "street_nam",
+                "format": "shapefile",
+            }
+        }]
+    }
+}
+```
 
 #### Conform Object
 
@@ -142,7 +171,7 @@ Attribute tags are functions or field names for mapping the source data into a g
 
 ##### Assembling Attributes
 
-In many sources, attribute values are provided in either single fields or several fields to be merged together.  Often times the `number` attribute is a single field in the source and the `street` attribute is merged together from several fields (see [Alameda County, California](sources/us/ca/alameda.json)).  
+In many sources, attribute values are provided in either single fields or several fields to be merged together.  Often times the `number` attribute is a single field in the source and the `street` attribute is merged together from several fields (see [Alameda County, California](sources/us/ca/alameda.json)).
 
 ###### Single Source Field
 
@@ -178,7 +207,7 @@ _Example_
 ##### Attribute Functions
 
 Some sources do not offer data nicely separated into distinct fields so advanced techniques must be used extract and format values appropriately.  Attribute functions allow basic text manipulation to be performed on any of the given attribute tags.
-This list gives a brief summary of what each function does.  For more information and examples regarding attribute functions, click [here](ATTRIBUTE_FUNCTIONS.md).  
+This list gives a brief summary of what each function does.  For more information and examples regarding attribute functions, click [here](ATTRIBUTE_FUNCTIONS.md).
 
 Function | Note
 -------- | -----
@@ -240,21 +269,27 @@ Additional metadata helps future proof the project!
 
 ```JSON
 {
+    "schema": 2,
     "coverage": {
         "country": "ca",
         "state": "nb"
     },
-    "data": "http://geonb.snb.ca/downloads/gcadb/geonb_gcadb-bdavg_shp.zip",
-    "website": "http://www.snb.ca/geonb1/e/DC/catalogue-E.asp",
-    "license": {"url": "http://geonb.snb.ca/downloads/documents/geonb_license_e.pdf"},
-    "protocol": "http",
-    "compression": "zip",
-    "language": "en",
-    "conform": {
-        "number": "civic_num",
-        "street": "street_nam",
-        "format": "shapefile",
-        "accuracy": 3
+    "layers": {
+        "addresses": [{
+            "name": "country",
+            "data": "http://geonb.snb.ca/downloads/gcadb/geonb_gcadb-bdavg_shp.zip",
+            "website": "http://www.snb.ca/geonb1/e/DC/catalogue-E.asp",
+            "license": {"url": "http://geonb.snb.ca/downloads/documents/geonb_license_e.pdf"},
+            "protocol": "http",
+            "compression": "zip",
+            "language": "en",
+            "conform": {
+                "number": "civic_num",
+                "street": "street_nam",
+                "format": "shapefile",
+                "accuracy": 3
+            }
+        }]
     }
 }
 ```
