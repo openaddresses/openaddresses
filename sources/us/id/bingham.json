@@ -9,16 +9,24 @@
         "state": "id",
         "county": "Bingham"
     },
-    "data": "https://www.co.bingham.id.us/arcgis/rest/services/Basemaps/Address_Points/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NUM",
-        "street": [
-            "HOUSE_DIR",
-            "ROAD_NAME"
-        ],
-        "city": "MAIL_CITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.co.bingham.id.us/arcgis/rest/services/Basemaps/Address_Points/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUM",
+                    "street": [
+                        "HOUSE_DIR",
+                        "ROAD_NAME"
+                    ],
+                    "city": "MAIL_CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

@@ -6,24 +6,32 @@
             "alpha2": "CH-UR"
         }
     },
-    "website": "http://service.lisag.ch/wms?request=getCapabilities",
-    "data": "https://data.openaddresses.io/cache/uploads/sergiyprotsiv/a24c45/ch-ur.csv.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "csv",
-        "file": "ch-ur.csv",
-        "encoding": "utf-8",
-        "id": "gwr_egid",
-        "number": "hausnummer",
-        "street": "strassennamen",
-        "city": {
-            "function": "regexp",
-            "field": "ortschaft",
-            "pattern": "^(.+?)(?:(?<=Seedorf)UR|\\s+UR)?\\s*$"
-        },
-        "postcode": "plz",
-        "lat": "Y",
-        "lon": "X"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "website": "http://service.lisag.ch/wms?request=getCapabilities",
+                "data": "https://data.openaddresses.io/cache/uploads/sergiyprotsiv/a24c45/ch-ur.csv.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "csv",
+                    "file": "ch-ur.csv",
+                    "encoding": "utf-8",
+                    "id": "gwr_egid",
+                    "number": "hausnummer",
+                    "street": "strassennamen",
+                    "city": {
+                        "function": "regexp",
+                        "field": "ortschaft",
+                        "pattern": "^(.+?)(?:(?<=Seedorf)UR|\\s+UR)?\\s*$"
+                    },
+                    "postcode": "plz",
+                    "lat": "Y",
+                    "lon": "X"
+                }
+            }
+        ]
     }
 }

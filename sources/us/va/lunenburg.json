@@ -9,17 +9,25 @@
         "state": "va",
         "county": "Lunenburg"
     },
-    "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Lunenburg/Lunenburg_WL_P/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "ParcelAddress1"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "ParcelAddress1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Lunenburg/Lunenburg_WL_P/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ParcelAddress1"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ParcelAddress1"
+                    }
+                }
+            }
+        ]
     }
 }

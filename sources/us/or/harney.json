@@ -9,18 +9,26 @@
         "state": "or",
         "county": "Harney"
     },
-    "data": "http://navigator.state.or.us/arcgis/rest/services/Projects/County_Harney/MapServer/8",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRESS",
-        "street": [
-            "PREDIR",
-            "STREETNAME",
-            "STREETTYPE",
-            "SUFDIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://navigator.state.or.us/arcgis/rest/services/Projects/County_Harney/MapServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS",
+                    "street": [
+                        "PREDIR",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFDIR"
+                    ]
+                },
+                "skip": true,
+                "note": "Unknown error - http://data.openaddresses.io.s3.amazonaws.com/runs/30068/output.txt"
+            }
         ]
-    },
-    "skip": true,
-    "note": "Unknown error - http://data.openaddresses.io.s3.amazonaws.com/runs/30068/output.txt"
+    }
 }

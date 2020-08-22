@@ -9,24 +9,32 @@
         "state": "nc",
         "county": "Chatham"
     },
-    "data": "ftp://ftp.chathamnc.org/ChathamAddressing/AddressPoints_02Dec17.zip",
-    "note": "this filename appears to change weekly or monthly so it will break unless updated manually",
-    "website": "http://www.chathamnc.org/Index.aspx?page=123",
-    "year": "2017",
-    "protocol": "ftp",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "file": "FTP Site Updates/TemporaryScriptUpdates/ChathamAddressing/AddressPoints/AddressPoints.shp",
-        "number": "ADDR_NUM",
-        "street": [
-            "PRE_DIR",
-            "STREET_NAM",
-            "STREET_TYP",
-            "SUF_DIR"
-        ],
-        "unit": "ADDRESS_SU",
-        "city": "COMMUNITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "ftp://ftp.chathamnc.org/ChathamAddressing/AddressPoints_02Dec17.zip",
+                "note": "this filename appears to change weekly or monthly so it will break unless updated manually",
+                "website": "http://www.chathamnc.org/Index.aspx?page=123",
+                "year": "2017",
+                "protocol": "ftp",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "FTP Site Updates/TemporaryScriptUpdates/ChathamAddressing/AddressPoints/AddressPoints.shp",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "STREET_NAM",
+                        "STREET_TYP",
+                        "SUF_DIR"
+                    ],
+                    "unit": "ADDRESS_SU",
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

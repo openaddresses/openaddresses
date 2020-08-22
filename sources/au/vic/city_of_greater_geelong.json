@@ -1,81 +1,89 @@
 {
-    "protocol": "http",
-    "data": "http://data.gov.au/dataset/33425f27-c064-4fb3-8015-9370b2073409/resource/14392168-9351-4288-ba80-307d82fe9479/download/coggcadasterll.zip",
-    "website": "http://www.geelongaustralia.com.au/data/item/cadastre-land-and-property-boundaries-city-of-greater-geelong.aspx",
-    "compression": "zip",
-    "language": "en",
     "coverage": {
         "country": "au",
         "state": "vic",
         "city": "City of Greater Geelong"
     },
-    "license": {
-        "url": "http://creativecommons.org/licenses/by/3.0/au/",
-        "text": "CC BY 3.0 AU",
-        "attribution": true,
-        "attribution name": "City of Greater Geelong",
-        "share-alike": false
-    },
-    "conform": {
-        "format": "shapefile-polygon",
-        "number": {
-            "function": "chain",
-            "variable": "number_wip",
-            "functions": [
-                {
-                    "function": "remove_postfix",
-                    "field": "fulladdres",
-                    "field_to_remove": "postcode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "http",
+                "data": "http://data.gov.au/dataset/33425f27-c064-4fb3-8015-9370b2073409/resource/14392168-9351-4288-ba80-307d82fe9479/download/coggcadasterll.zip",
+                "website": "http://www.geelongaustralia.com.au/data/item/cadastre-land-and-property-boundaries-city-of-greater-geelong.aspx",
+                "compression": "zip",
+                "language": "en",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/3.0/au/",
+                    "text": "CC BY 3.0 AU",
+                    "attribution": true,
+                    "attribution name": "City of Greater Geelong",
+                    "share-alike": false
                 },
-                {
-                    "function": "regexp",
-                    "field": "number_wip",
-                    "pattern": "^(.*)[ ]+VIC",
-                    "replace": "$1"
-                },
-                {
-                    "function": "remove_postfix",
-                    "field": "number_wip",
-                    "field_to_remove": "suburb"
-                },
-                {
-                    "function": "regexp",
-                    "field": "number_wip",
-                    "pattern": "^(.*),",
-                    "replace": "$1"
-                },
-                {
-                    "function": "remove_postfix",
-                    "field": "number_wip",
-                    "field_to_remove": "street"
-                },
-                {
-                    "function": "regexp",
-                    "field": "number_wip",
-                    "pattern": "^(.*)\/(.*)",
-                    "replace": "$2"
+                "conform": {
+                    "format": "shapefile-polygon",
+                    "number": {
+                        "function": "chain",
+                        "variable": "number_wip",
+                        "functions": [
+                            {
+                                "function": "remove_postfix",
+                                "field": "fulladdres",
+                                "field_to_remove": "postcode"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "number_wip",
+                                "pattern": "^(.*)[ ]+VIC",
+                                "replace": "$1"
+                            },
+                            {
+                                "function": "remove_postfix",
+                                "field": "number_wip",
+                                "field_to_remove": "suburb"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "number_wip",
+                                "pattern": "^(.*),",
+                                "replace": "$1"
+                            },
+                            {
+                                "function": "remove_postfix",
+                                "field": "number_wip",
+                                "field_to_remove": "street"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "number_wip",
+                                "pattern": "^(.*)/(.*)",
+                                "replace": "$2"
+                            }
+                        ]
+                    },
+                    "street": "Street",
+                    "city": "Suburb",
+                    "region": {
+                        "function": "chain",
+                        "variable": "region_wip",
+                        "functions": [
+                            {
+                                "function": "remove_postfix",
+                                "field": "fulladdres",
+                                "field_to_remove": "postcode"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "region_wip",
+                                "pattern": "^.*(VIC).*$",
+                                "replace": "$1"
+                            }
+                        ]
+                    },
+                    "postcode": "PostCode"
                 }
-            ]
-        },
-        "street": "Street",
-        "city": "Suburb",
-        "region": {
-            "function": "chain",
-            "variable": "region_wip",
-            "functions": [
-                {
-                    "function": "remove_postfix",
-                    "field": "fulladdres",
-                    "field_to_remove": "postcode"
-                },
-                {
-                    "function": "regexp",
-                    "field": "region_wip",
-                    "pattern": "^.*(VIC).*$",
-                    "replace": "$1"
-                }
-            ]
-        },
-        "postcode": "PostCode"
+            }
+        ]
     }
 }

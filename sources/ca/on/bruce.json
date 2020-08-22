@@ -4,12 +4,20 @@
         "state": "on",
         "county": "Bruce"
     },
-    "protocol": "ESRI",
-    "data": "http://maps.brucecounty.on.ca/arcgis/rest/services/public/parcels_pub_wa/MapServer/3",
-    "conform":{
-        "format": "geojson",
-        "number": "ADDR_NUM",
-        "street": "RD_NAME",
-        "unit": "UNIT_NUM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "http://maps.brucecounty.on.ca/arcgis/rest/services/public/parcels_pub_wa/MapServer/3",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDR_NUM",
+                    "street": "RD_NAME",
+                    "unit": "UNIT_NUM"
+                }
+            }
+        ]
     }
 }

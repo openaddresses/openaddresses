@@ -9,22 +9,30 @@
         "state": "id",
         "county": "Blaine"
     },
-    "data": "https://maps.co.blaine.id.us/server/rest/services/Parcels_Features/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "Prop_StNum",
-        "street": [
-            "Prop_StNam",
-            "Prop_StSuf_1",
-            "PropPstDir"
-        ],
-        "unit": [
-            "Prop2ndUnt",
-            "Prop2ndNum"
-        ],
-        "city": "Prop_City",
-        "postcode": "Prop_Zip",
-        "region": "Prop_State"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.co.blaine.id.us/server/rest/services/Parcels_Features/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Prop_StNum",
+                    "street": [
+                        "Prop_StNam",
+                        "Prop_StSuf_1",
+                        "PropPstDir"
+                    ],
+                    "unit": [
+                        "Prop2ndUnt",
+                        "Prop2ndNum"
+                    ],
+                    "city": "Prop_City",
+                    "postcode": "Prop_Zip",
+                    "region": "Prop_State"
+                }
+            }
+        ]
     }
 }

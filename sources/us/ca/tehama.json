@@ -9,18 +9,26 @@
         "state": "pa",
         "county": "Tahema"
     },
-    "website": "http://www.tehamacountypublicworks.ca.gov/gis_data.html",
-    "data": "https://services2.arcgis.com/3iNbxbY9zhyxPvde/ArcGIS/rest/services/PublicParcelsAGOL/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "Situs1_1"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "Situs1_1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "http://www.tehamacountypublicworks.ca.gov/gis_data.html",
+                "data": "https://services2.arcgis.com/3iNbxbY9zhyxPvde/ArcGIS/rest/services/PublicParcelsAGOL/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Situs1_1"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Situs1_1"
+                    }
+                }
+            }
+        ]
     }
 }

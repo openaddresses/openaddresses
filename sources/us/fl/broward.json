@@ -9,22 +9,30 @@
         "state": "fl",
         "county": "Broward"
     },
-    "data": "https://services.arcgis.com/JMAJrTsHNLrSsWf5/ArcGIS/rest/services/PointAddressesCityApp/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "SITUS_HOUSE_NUMBER",
-        "street": [
-            "SITUS_STREET_PRE_DIRECTION",
-            "SITUS_STREET_PRETYPE",
-            "SITUS_STREET_NAME",
-            "SITUS_STREET_TYPE",
-            "SITUS_STREET_SUFFIX_DIRECTION"
-        ],
-        "unit": "SITUS_UNIT_NUMBER",
-        "city": "CITY_NAME",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/JMAJrTsHNLrSsWf5/ArcGIS/rest/services/PointAddressesCityApp/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SITUS_HOUSE_NUMBER",
+                    "street": [
+                        "SITUS_STREET_PRE_DIRECTION",
+                        "SITUS_STREET_PRETYPE",
+                        "SITUS_STREET_NAME",
+                        "SITUS_STREET_TYPE",
+                        "SITUS_STREET_SUFFIX_DIRECTION"
+                    ],
+                    "unit": "SITUS_UNIT_NUMBER",
+                    "city": "CITY_NAME",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ]
     }
 }

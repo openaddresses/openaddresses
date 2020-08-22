@@ -1,19 +1,31 @@
 {
     "coverage": {
-        "US Census": {"geoid": "35061", "name": "Valencia County", "state": "New Mexico"},
+        "US Census": {
+            "geoid": "35061",
+            "name": "Valencia County",
+            "state": "New Mexico"
+        },
         "country": "us",
         "state": "nm",
         "county": "Valencia"
     },
-    "data": "http://arcgisce.co.valencia.nm.us/arcgis/rest/services/NewTylerMap/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HouseNum",
-        "street": {
-            "function": "remove_prefix",
-            "field": "Situs",
-            "field_to_remove": "HouseNum"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://arcgisce.co.valencia.nm.us/arcgis/rest/services/NewTylerMap/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNum",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "Situs",
+                        "field_to_remove": "HouseNum"
+                    }
+                }
+            }
+        ]
     }
 }

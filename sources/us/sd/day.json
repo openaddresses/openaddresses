@@ -1,21 +1,33 @@
 {
     "coverage": {
-        "US Census": {"geoid": "46037", "name": "Day County", "state": "South Dakota"},
+        "US Census": {
+            "geoid": "46037",
+            "name": "Day County",
+            "state": "South Dakota"
+        },
         "country": "us",
         "state": "sd",
         "county": "day"
     },
-    "data": "http://ims.districtiii.org/arcgis/rest/services/DAY/MapServer/14",
-    "protocol": "ESRI",
-    "conform": {
-        "number": {
-            "function": "prefixed_number",
-            "field": "CAMA.SITE_ADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "CAMA.SITE_ADDRESS"
-        },
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://ims.districtiii.org/arcgis/rest/services/DAY/MapServer/14",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "CAMA.SITE_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "CAMA.SITE_ADDRESS"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

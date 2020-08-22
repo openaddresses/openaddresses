@@ -3,30 +3,50 @@
         "country": "br",
         "state": "mg",
         "city": "Belo Horizonte",
-        "geometry": { "type": "Point", "coordinates": [-43.96, -19.92] }
-    },
-    "data": "http://bhmapogcbase.pbh.gov.br/bhmapogcbase/ide_bhgeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ide_bhgeo:ENDERECO&outputFormat=application%2Fjson&srsName=EPSG:4326",
-    "website": "https://dados.pbh.gov.br/dataset/portal-bhmap",
-    "license": {
-        "url": "http://opendatacommons.org/licenses/odbl/1.0/",
-        "attribution": true,
-        "attribution text": "Prodabel - Prefeitura de Belo Horizonte",
-        "share-alike": true
-    },
-    "protocol": "http",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "join",
-            "fields": ["NUMERO_IMOVEL", "LETRA_IMOVEL"],
-            "separator": ""
-        },
-        "street": ["SIGLA_TIPO_LOGRADOURO", "NOME_LOGRADOURO"],
-        "postcode": {
-           "function": "regexp",
-           "field": "CEP",
-           "pattern": "^([0-9]{5})([0-9]{3})$",
-           "replace": "$1-$2"
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -43.96,
+                -19.92
+            ]
         }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://bhmapogcbase.pbh.gov.br/bhmapogcbase/ide_bhgeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=ide_bhgeo:ENDERECO&outputFormat=application%2Fjson&srsName=EPSG:4326",
+                "website": "https://dados.pbh.gov.br/dataset/portal-bhmap",
+                "license": {
+                    "url": "http://opendatacommons.org/licenses/odbl/1.0/",
+                    "attribution": true,
+                    "attribution text": "Prodabel - Prefeitura de Belo Horizonte",
+                    "share-alike": true
+                },
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "NUMERO_IMOVEL",
+                            "LETRA_IMOVEL"
+                        ],
+                        "separator": ""
+                    },
+                    "street": [
+                        "SIGLA_TIPO_LOGRADOURO",
+                        "NOME_LOGRADOURO"
+                    ],
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "CEP",
+                        "pattern": "^([0-9]{5})([0-9]{3})$",
+                        "replace": "$1-$2"
+                    }
+                }
+            }
+        ]
     }
 }

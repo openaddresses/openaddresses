@@ -9,21 +9,29 @@
         "state": "co",
         "county": "Park"
     },
-    "conform": {
-        "format": "geojson",
-        "number": "Address",
-        "street": [
-            "PreDir",
-            "USPSPrefix",
-            "Name",
-            "USPSSuffix",
-            "SuffixDir"
-        ],
-        "unit": "UNIT",
-        "postcode": "ZipCode",
-        "city": "MSAG_COMMUNITY",
-        "region": "State"
-    },
-    "data": "http://maps.parkco.us/arcgis/rest/services/basemaps/Parcels/MapServer/7",
-    "protocol": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Address",
+                    "street": [
+                        "PreDir",
+                        "USPSPrefix",
+                        "Name",
+                        "USPSSuffix",
+                        "SuffixDir"
+                    ],
+                    "unit": "UNIT",
+                    "postcode": "ZipCode",
+                    "city": "MSAG_COMMUNITY",
+                    "region": "State"
+                },
+                "data": "http://maps.parkco.us/arcgis/rest/services/basemaps/Parcels/MapServer/7",
+                "protocol": "ESRI"
+            }
+        ]
+    }
 }

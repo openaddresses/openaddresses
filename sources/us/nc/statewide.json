@@ -7,25 +7,33 @@
         "country": "us",
         "state": "nc"
     },
-    "data": "https://dit-cgia-gis-data.s3.amazonaws.com/NCOM-data/parcels/NC_Parcels_fgdb.zip",
-    "website": "https://www.nconemap.gov",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "gdb",
-        "layer": "nc_parcels_pt",
-        "file": "NC_parcels_all.gdb",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITEADD"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITEADD"
-        },
-        "unit": "SUNIT",
-        "city": "SCITY",
-        "postcode": "SZIP",
-        "district": "CNTYNAME"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://dit-cgia-gis-data.s3.amazonaws.com/NCOM-data/parcels/NC_Parcels_fgdb.zip",
+                "website": "https://www.nconemap.gov",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "nc_parcels_pt",
+                    "file": "NC_parcels_all.gdb",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITEADD"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITEADD"
+                    },
+                    "unit": "SUNIT",
+                    "city": "SCITY",
+                    "postcode": "SZIP",
+                    "district": "CNTYNAME"
+                }
+            }
+        ]
     }
 }

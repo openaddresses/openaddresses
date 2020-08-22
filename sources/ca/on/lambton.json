@@ -4,16 +4,24 @@
         "state": "on",
         "county": "Lambton"
     },
-    "protocol": "ESRI",
-    "data": "https://www.lambtongis.ca/arcgis_adaptor/rest/services/OpenData/AddressPoints/MapServer/0",
-    "conform":{
-        "format": "geojson",
-        "number": "STNUM",
-        "street": [
-            "STNAME",
-            "STTYPE",
-            "STDIR"
-        ],
-        "city": "MUNICIPALITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://www.lambtongis.ca/arcgis_adaptor/rest/services/OpenData/AddressPoints/MapServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STNUM",
+                    "street": [
+                        "STNAME",
+                        "STTYPE",
+                        "STDIR"
+                    ],
+                    "city": "MUNICIPALITY"
+                }
+            }
+        ]
     }
 }

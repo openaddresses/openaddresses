@@ -1,21 +1,37 @@
 {
     "coverage": {
-        "US Census": {"geoid": "06003", "name": "Alpine County", "state": "California"},
+        "US Census": {
+            "geoid": "06003",
+            "name": "Alpine County",
+            "state": "California"
+        },
         "country": "us",
         "state": "ca",
         "county": "Alpine"
     },
-    "attribution": "Alpine County",
-    "data": "https://services1.arcgis.com/9z9tEfqo0TExR9C8/ArcGIS/rest/services/Alpine_OperationalLayers_Service/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "APN",
-        "unit": "Situs_Unit_",
-        "number": "Situs_House_",
-        "street": ["Situs_Street", "Situs_Street_Direction", "Situs_Street_Suffix"],
-        "city": "Situs_City",
-        "postcode": "Situs_Zip",
-        "region": "Situs_State"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Alpine County",
+                "data": "https://services1.arcgis.com/9z9tEfqo0TExR9C8/ArcGIS/rest/services/Alpine_OperationalLayers_Service/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "APN",
+                    "unit": "Situs_Unit_",
+                    "number": "Situs_House_",
+                    "street": [
+                        "Situs_Street",
+                        "Situs_Street_Direction",
+                        "Situs_Street_Suffix"
+                    ],
+                    "city": "Situs_City",
+                    "postcode": "Situs_Zip",
+                    "region": "Situs_State"
+                }
+            }
+        ]
     }
 }

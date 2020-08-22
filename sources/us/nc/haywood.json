@@ -9,20 +9,28 @@
         "state": "nc",
         "county": "Haywood"
     },
-    "data": "http://maps.haywoodnc.net/downloads/Addresses.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "website": "http://maps.haywoodnc.net/downloads/default.aspx",
-    "conform": {
-        "street": [
-            "PREDIR",
-            "st_name",
-            "st_type",
-            "POSTDIR"
-        ],
-        "number": "add_num",
-        "unit": "UNIT",
-        "city": "COMMUNITY",
-        "format": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://maps.haywoodnc.net/downloads/Addresses.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "website": "http://maps.haywoodnc.net/downloads/default.aspx",
+                "conform": {
+                    "street": [
+                        "PREDIR",
+                        "st_name",
+                        "st_type",
+                        "POSTDIR"
+                    ],
+                    "number": "add_num",
+                    "unit": "UNIT",
+                    "city": "COMMUNITY",
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

@@ -1,19 +1,31 @@
 {
     "coverage": {
-        "US Census": {"geoid": "20061", "name": "Geary County", "state": "Kansas"},
+        "US Census": {
+            "geoid": "20061",
+            "name": "Geary County",
+            "state": "Kansas"
+        },
         "country": "us",
         "state": "ks",
         "county": "Geary"
     },
-    "conform": {
-        "format": "csv",
-        "number": "NUM",
-        "street": "STR",
-        "city": "CITY",
-        "postcode": "ZIP",
-        "lon": "LON",
-        "lat": "LAT"
-    },
-    "data": "https://data.openaddresses.io/cache/us-ks-geary_county.csv",
-    "protocol": "http"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "csv",
+                    "number": "NUM",
+                    "street": "STR",
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "lon": "LON",
+                    "lat": "LAT"
+                },
+                "data": "https://data.openaddresses.io/cache/us-ks-geary_county.csv",
+                "protocol": "http"
+            }
+        ]
+    }
 }

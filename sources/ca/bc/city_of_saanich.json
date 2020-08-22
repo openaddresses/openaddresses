@@ -6,25 +6,33 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-              	-123.385,
-              	48.496
+                -123.385,
+                48.496
             ]
         }
     },
-    "data": "http://gis.saanich.ca/gisdata/Address/AddressSHP.zip",
-    "website": "http://www.saanich.ca/EN/main/local-government/data-catalogue-1.html",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "file": "CivicAddress.shp",
-        "number": "NUMBER",
-        "street": [
-            "DIRPRE",
-            "NAME",
-            "TYPE",
-            "DIRSUF"
-        ],
-        "unit": "NUMBERSUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis.saanich.ca/gisdata/Address/AddressSHP.zip",
+                "website": "http://www.saanich.ca/EN/main/local-government/data-catalogue-1.html",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "CivicAddress.shp",
+                    "number": "NUMBER",
+                    "street": [
+                        "DIRPRE",
+                        "NAME",
+                        "TYPE",
+                        "DIRSUF"
+                    ],
+                    "unit": "NUMBERSUF"
+                }
+            }
+        ]
     }
 }

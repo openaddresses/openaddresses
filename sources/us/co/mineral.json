@@ -9,20 +9,28 @@
         "state": "co",
         "county": "Mineral"
     },
-    "data": "http://services1.arcgis.com/zH7gQ37AKcpvTX6d/ArcGIS/rest/services/MineralParcels_04112016/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "APADDR",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "APADDR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://services1.arcgis.com/zH7gQ37AKcpvTX6d/ArcGIS/rest/services/MineralParcels_04112016/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "APADDR",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "APADDR",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }

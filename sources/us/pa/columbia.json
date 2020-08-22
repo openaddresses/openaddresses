@@ -9,21 +9,29 @@
         "state": "pa",
         "county": "Columbia"
     },
-    "data": "http://gismaps.columbiapa.org/arcgis/rest/services/Editing/MontourAddresses/MapServer/0",
-    "website": "http://gis.columbiapa.org/mapsonline/default.aspx",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "FULLADDR",
-            "pattern": "^([0-9]+(?:[A-Z]| 1/2)?)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "FULLADDR",
-            "pattern": "^(?:[0-9]+(?:[A-Z]| 1/2)?)(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gismaps.columbiapa.org/arcgis/rest/services/Editing/MontourAddresses/MapServer/0",
+                "website": "http://gis.columbiapa.org/mapsonline/default.aspx",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "FULLADDR",
+                        "pattern": "^([0-9]+(?:[A-Z]| 1/2)?)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "FULLADDR",
+                        "pattern": "^(?:[0-9]+(?:[A-Z]| 1/2)?)(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }

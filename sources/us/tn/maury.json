@@ -1,26 +1,37 @@
 {
     "coverage": {
-        "US Census": {"geoid": "47119", "name": "Maury County", "state": "Tennessee"},
+        "US Census": {
+            "geoid": "47119",
+            "name": "Maury County",
+            "state": "Tennessee"
+        },
         "country": "us",
         "state": "tn",
         "county": "Maury"
     },
-    "data": "http://maps.maurycounty-tn.gov/arcgis/rest/services/TaxParcelQuery/MapServer/0/",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "SITEADDRESS",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SITEADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://maps.maurycounty-tn.gov/arcgis/rest/services/TaxParcelQuery/MapServer/0/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "SITEADDRESS",
+                        "pattern": "^([0-9]+)( .*)",
+                        "replace": "$1"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "SITEADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }
-

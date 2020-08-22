@@ -1,8 +1,4 @@
 {
-    "protocol": "http",
-    "data": "https://www.alantgeo.com.au/share/VICMAP_ADDRESS.zip",
-    "website": "https://www.data.vic.gov.au/data/dataset/address-vicmap-address",
-    "compression": "zip",
     "coverage": {
         "ISO 3166": {
             "alpha2": "AU-VIC",
@@ -12,26 +8,38 @@
         "country": "au",
         "state": "vic"
     },
-    "note": "data URL expires; must use web interface & email workflow to download fresh data. See README.statewide.md",
-    "license": {
-        "url": "http://creativecommons.org/licenses/by/4.0/",
-        "text": "CC BY 4.0",
-        "attribution": true,
-        "attribution name": "Copyright © The State of Victoria, Department of Environment, Land, Water & Planning 2019",
-        "share-alike": false
-    },
-    "conform": {
-        "file": "ll_gda94/sde_shape/whole/VIC/VMADD/layer/address.shp",
-        "format": "shapefile",
-        "id": "PFI",
-        "number": "NUM_ADD",
-        "street": [
-            "ROAD_NAME",
-            "ROAD_TYPE",
-            "RD_SUF"
-        ],
-        "city": "LOCALITY",
-        "postcode": "POSTCODE",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "protocol": "http",
+                "data": "https://www.alantgeo.com.au/share/VICMAP_ADDRESS.zip",
+                "website": "https://www.data.vic.gov.au/data/dataset/address-vicmap-address",
+                "compression": "zip",
+                "note": "data URL expires; must use web interface & email workflow to download fresh data. See README.statewide.md",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Copyright © The State of Victoria, Department of Environment, Land, Water & Planning 2019",
+                    "share-alike": false
+                },
+                "conform": {
+                    "file": "ll_gda94/sde_shape/whole/VIC/VMADD/layer/address.shp",
+                    "format": "shapefile",
+                    "id": "PFI",
+                    "number": "NUM_ADD",
+                    "street": [
+                        "ROAD_NAME",
+                        "ROAD_TYPE",
+                        "RD_SUF"
+                    ],
+                    "city": "LOCALITY",
+                    "postcode": "POSTCODE",
+                    "region": "STATE"
+                }
+            }
+        ]
     }
 }

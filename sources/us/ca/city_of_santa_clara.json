@@ -1,27 +1,10 @@
 {
-    "protocol": "ESRI",
-    "data": "https://map.santaclaraca.gov/maps/rest/services/OPENDATA/CSCAddress_Active/MapServer/0",
-    "note": {
-        "update frequency": "annually"
-    },
-    "license": {
-        "attribution": true,
-        "attribution_text": "unknown"
-    },
-    "contact": {
-        "name": "Marshall",
-        "email": "marshall.ballard@gmail.com"
-    },
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "street": "CSCSTREET",
-        "unit": "ADDRUNIT",
-        "city": "ADDRCITY",
-        "postcode": "ADDRZIP5"
-    },
     "coverage": {
-        "US Census": {"geoid": "06085", "name": "Santa Clara County", "state": "California"},
+        "US Census": {
+            "geoid": "06085",
+            "name": "Santa Clara County",
+            "state": "California"
+        },
         "country": "us",
         "state": "ca",
         "county": "Santa Clara",
@@ -29,8 +12,38 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -121.95, 37.35
+                -121.95,
+                37.35
             ]
         }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://map.santaclaraca.gov/maps/rest/services/OPENDATA/CSCAddress_Active/MapServer/0",
+                "note": {
+                    "update frequency": "annually"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution_text": "unknown"
+                },
+                "contact": {
+                    "name": "Marshall",
+                    "email": "marshall.ballard@gmail.com"
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "CSCSTREET",
+                    "unit": "ADDRUNIT",
+                    "city": "ADDRCITY",
+                    "postcode": "ADDRZIP5"
+                }
+            }
+        ]
     }
 }

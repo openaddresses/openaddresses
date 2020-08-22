@@ -16,24 +16,32 @@
         "state": "az",
         "city": "Flagstaff"
     },
-    "data": "https://services6.arcgis.com/CNNo1rxoi1NqCYkY/arcgis/rest/services/Address/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "ADDRNUM",
-            "ADDRNUMSUF"
-        ],
-        "unit": [
-            "SUITEDESIG",
-            "SUITE"
-        ],
-        "street": [
-            "PREFIXDIR",
-            "STREETNAME",
-            "SUFFIXTYPE",
-            "SUFFIXDIR"
-        ],
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services6.arcgis.com/CNNo1rxoi1NqCYkY/arcgis/rest/services/Address/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "unit": [
+                        "SUITEDESIG",
+                        "SUITE"
+                    ],
+                    "street": [
+                        "PREFIXDIR",
+                        "STREETNAME",
+                        "SUFFIXTYPE",
+                        "SUFFIXDIR"
+                    ],
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

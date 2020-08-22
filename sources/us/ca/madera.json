@@ -9,35 +9,43 @@
         "state": "ca",
         "county": "Madera"
     },
-    "conform": {
-        "format": "shapefile",
-        "number": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "City",
-            "pattern": "^(.*)(?: [0-9\\-]+)"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "City",
-            "pattern": "^(?:.* )([0-9]+(?:\\-[0-9]+)?)",
-            "replace": "$1"
-        }
-    },
-    "data": "https://github.com/datadesk/us-ca-madera_county-situs-shp/blob/master/Asr_Situs.zip?raw=true",
-    "attribution": "Madera County",
-    "website": "http://www.madera-county.com/index.php/assessment-information/261-assessors-maps-cadastral-drafting",
-    "protocol": "http",
-    "compression": "zip",
-    "note": "Provided in response to a public records request in January 2015 and uploaded to GitHub for public hosting."
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "shapefile",
+                    "number": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "City",
+                        "pattern": "^(.*)(?: [0-9\\-]+)"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "City",
+                        "pattern": "^(?:.* )([0-9]+(?:\\-[0-9]+)?)",
+                        "replace": "$1"
+                    }
+                },
+                "data": "https://github.com/datadesk/us-ca-madera_county-situs-shp/blob/master/Asr_Situs.zip?raw=true",
+                "attribution": "Madera County",
+                "website": "http://www.madera-county.com/index.php/assessment-information/261-assessors-maps-cadastral-drafting",
+                "protocol": "http",
+                "compression": "zip",
+                "note": "Provided in response to a public records request in January 2015 and uploaded to GitHub for public hosting."
+            }
+        ]
+    }
 }

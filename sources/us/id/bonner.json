@@ -9,21 +9,29 @@
         "state": "id",
         "county": "Bonner"
     },
-    "data": "https://cloudgis.bonnercountyid.gov/server/rest/services/Map_Services/Addressing/MapServer/0",
-    "website": "https://cloudgis.bonnercountyid.gov/portal/home/index.html",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "preaddrnum",
-            "addrnum",
-            "addrnumsuf"
-        ],
-        "unit": [
-            "unittype",
-            "unitid"
-        ],
-        "street": "fullname",
-        "city": "municipality"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://cloudgis.bonnercountyid.gov/server/rest/services/Map_Services/Addressing/MapServer/0",
+                "website": "https://cloudgis.bonnercountyid.gov/portal/home/index.html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "preaddrnum",
+                        "addrnum",
+                        "addrnumsuf"
+                    ],
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "street": "fullname",
+                    "city": "municipality"
+                }
+            }
+        ]
     }
 }

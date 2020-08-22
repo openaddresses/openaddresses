@@ -9,26 +9,37 @@
         "state": "ca",
         "county": "San Diego"
     },
-    "attribution": "San Diego Geographic Information Source - JPA",
-    "data": "https://gissd.sandag.org/rdw/rest/services/Address/Address/MapServer/0",
-    "license": "http://www.sangis.org/Legal_Notice.htm",
-    "note": "Metadata available at http://rdw.sandag.org/file_store%5CAddress/Address_APN.pdf",
-    "website": "http://rdw.sandag.org/",
-    "year": "",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": ["ADDRNMBR", "ADDRFRAC"],
-        "street": [
-            "ADDRPDIR",
-            "ADDRNAME",
-            "ADDRSFX",
-            "ADDRPOSTD"
-        ],
-        "unit": "ADDRUNIT",
-        "city": "COMMUNITY",
-        "region": "STATE",
-        "postcode": "ADDRZIP",
-        "id": "APN"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "San Diego Geographic Information Source - JPA",
+                "data": "https://gissd.sandag.org/rdw/rest/services/Address/Address/MapServer/0",
+                "license": "http://www.sangis.org/Legal_Notice.htm",
+                "note": "Metadata available at http://rdw.sandag.org/file_store%5CAddress/Address_APN.pdf",
+                "website": "http://rdw.sandag.org/",
+                "year": "",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDRNMBR",
+                        "ADDRFRAC"
+                    ],
+                    "street": [
+                        "ADDRPDIR",
+                        "ADDRNAME",
+                        "ADDRSFX",
+                        "ADDRPOSTD"
+                    ],
+                    "unit": "ADDRUNIT",
+                    "city": "COMMUNITY",
+                    "region": "STATE",
+                    "postcode": "ADDRZIP",
+                    "id": "APN"
+                }
+            }
+        ]
     }
 }

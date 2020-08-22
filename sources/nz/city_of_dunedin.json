@@ -10,16 +10,24 @@
         "country": "nz",
         "city": "Dunedin"
     },
-    "data": "https://apps.dunedin.govt.nz/arcgis/rest/services/Public/Street_Map/MapServer/2",
-    "protocol": "ESRI",
-    "website": "https://www.dunedin.govt.nz/do-it-online/maps-and-photos/street-map",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSENO",
-        "street": [
-            "ROADNAME",
-            "ROADTYPE"
-        ],
-        "city": "LOCALITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://apps.dunedin.govt.nz/arcgis/rest/services/Public/Street_Map/MapServer/2",
+                "protocol": "ESRI",
+                "website": "https://www.dunedin.govt.nz/do-it-online/maps-and-photos/street-map",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENO",
+                    "street": [
+                        "ROADNAME",
+                        "ROADTYPE"
+                    ],
+                    "city": "LOCALITY"
+                }
+            }
+        ]
     }
 }

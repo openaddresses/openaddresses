@@ -9,18 +9,39 @@
         "state": "ca",
         "county": "Los Angeles"
     },
-    "attribution": "Los Angeles County",
-    "data": "http://egis3.lacounty.gov/dataportal/wp-content/uploads/ShapefilePackages/CAMS.zip",
-    "license": "http://egis3.lacounty.gov/dataportal/disclaimer/",
-    "website": "http://egis3.lacounty.gov/dataportal/2012/06/19/la-county-address-points/",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "number": ["NumPrefix", "Number", "NumSuffix"],
-        "street": ["PreMod", "PreDir", "PreType", "STArticle", "StreetName", "PostType", "PostDir", "PostMod" ],
-        "unit": "UnitName",
-        "postcode": "ZipCode",
-        "city": "PostComm1",
-        "format": "gdb"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Los Angeles County",
+                "data": "http://egis3.lacounty.gov/dataportal/wp-content/uploads/ShapefilePackages/CAMS.zip",
+                "license": "http://egis3.lacounty.gov/dataportal/disclaimer/",
+                "website": "http://egis3.lacounty.gov/dataportal/2012/06/19/la-county-address-points/",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": [
+                        "NumPrefix",
+                        "Number",
+                        "NumSuffix"
+                    ],
+                    "street": [
+                        "PreMod",
+                        "PreDir",
+                        "PreType",
+                        "STArticle",
+                        "StreetName",
+                        "PostType",
+                        "PostDir",
+                        "PostMod"
+                    ],
+                    "unit": "UnitName",
+                    "postcode": "ZipCode",
+                    "city": "PostComm1",
+                    "format": "gdb"
+                }
+            }
+        ]
     }
 }

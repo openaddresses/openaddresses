@@ -9,22 +9,30 @@
         "state": "nc",
         "county": "Moore"
     },
-    "data": "http://mooregisweb.moorecountync.gov/gis/Data/address.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "website": "http://www.co.moore.nc.us/index.php/data-download",
-    "conform": {
-        "street": [
-            "PREDIR",
-            "PRETYPE",
-            "streetname",
-            "streettype",
-            "SUFDIR"
-        ],
-        "number": "house",
-        "unit": "UNITNUM",
-        "city": "CITY",
-        "format": "shapefile",
-        "postcode": "zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://mooregisweb.moorecountync.gov/gis/Data/address.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "website": "http://www.co.moore.nc.us/index.php/data-download",
+                "conform": {
+                    "street": [
+                        "PREDIR",
+                        "PRETYPE",
+                        "streetname",
+                        "streettype",
+                        "SUFDIR"
+                    ],
+                    "number": "house",
+                    "unit": "UNITNUM",
+                    "city": "CITY",
+                    "format": "shapefile",
+                    "postcode": "zip"
+                }
+            }
+        ]
     }
 }

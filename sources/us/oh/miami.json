@@ -9,21 +9,29 @@
         "state": "oh",
         "county": "Miami"
     },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_Miami_CO_OH_GISMap/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "HOUSENUM",
-        "street": [
-          "ST_PREFIX",
-          "ST_NAME",
-          "ST_TYPE",
-          "ST_SUFFIX"
-        ],
-        "unit": "UNITNUM",
-        "city": "MUNI",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIPCODE",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_Miami_CO_OH_GISMap/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "HOUSENUM",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX"
+                    ],
+                    "unit": "UNITNUM",
+                    "city": "MUNI",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

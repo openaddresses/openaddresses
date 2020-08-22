@@ -9,19 +9,27 @@
         "state": "mt",
         "county": "Park"
     },
-    "data": "http://gis.parkcounty.org:6080/arcgis/rest/services/Maps/Clerk_Recorder_Web_Map/MapServer/3",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "NUMBER_",
-        "street": [
-            "PREDIR",
-            "STREETNAME",
-            "SUFTYPE",
-            "SUFDIR"
-        ],
-        "unit": "UNIT",
-        "format": "geojson",
-        "city": "COMMUNITY",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.parkcounty.org:6080/arcgis/rest/services/Maps/Clerk_Recorder_Web_Map/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "NUMBER_",
+                    "street": [
+                        "PREDIR",
+                        "STREETNAME",
+                        "SUFTYPE",
+                        "SUFDIR"
+                    ],
+                    "unit": "UNIT",
+                    "format": "geojson",
+                    "city": "COMMUNITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

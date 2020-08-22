@@ -16,19 +16,27 @@
         "state": "tx",
         "city": "Beaumont"
     },
-    "data": "https://311webservreq.cityofbeaumont.com/map/rest/services/CRW/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NUM",
-        "street": [
-            "PREFIX_DIR",
-            "PREFIX_TYPE",
-            "STREET_NAME",
-            "SUFFIX_TYPE",
-            "SUFFIX_DIR"
-        ],
-        "unit": "APT",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://311webservreq.cityofbeaumont.com/map/rest/services/CRW/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUM",
+                    "street": [
+                        "PREFIX_DIR",
+                        "PREFIX_TYPE",
+                        "STREET_NAME",
+                        "SUFFIX_TYPE",
+                        "SUFFIX_DIR"
+                    ],
+                    "unit": "APT",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

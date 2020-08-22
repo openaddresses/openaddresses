@@ -9,24 +9,32 @@
         "state": "ky",
         "county": "Oldham"
     },
-    "data": "http://oldhamgis.org:6080/arcgis/rest/services/LocalData/OLDHAM_BASEMAP/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": [
-            "HOUSENO",
-            "SUFHOUSENO"
-        ],
-        "street": [
-            "PRE_DIR",
-            "STR_NAME",
-            "STREET_TYP",
-            "STREET_DIR"
-        ],
-        "unit": [
-            "UNIT_NAME",
-            "UNIT"
-        ],
-        "format": "geojson",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://oldhamgis.org:6080/arcgis/rest/services/LocalData/OLDHAM_BASEMAP/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": [
+                        "HOUSENO",
+                        "SUFHOUSENO"
+                    ],
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "STREET_TYP",
+                        "STREET_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_NAME",
+                        "UNIT"
+                    ],
+                    "format": "geojson",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

@@ -9,24 +9,32 @@
         "state": "wy",
         "county": "Hot Springs"
     },
-    "license": "http://maps.hscounty.com/mapserver/",
-    "compression": "zip",
-    "data": "http://maps.hscounty.com/download/parcels.zip",
-    "protocol": "http",
-    "conform": {
-        "format": "shapefile-polygon",
-        "number": {
-            "function": "regexp",
-            "field": "st_address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "st_address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "id": "pidn",
-        "accuracy": 2
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "license": "http://maps.hscounty.com/mapserver/",
+                "compression": "zip",
+                "data": "http://maps.hscounty.com/download/parcels.zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile-polygon",
+                    "number": {
+                        "function": "regexp",
+                        "field": "st_address",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "st_address",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "id": "pidn",
+                    "accuracy": 2
+                }
+            }
+        ]
     }
 }

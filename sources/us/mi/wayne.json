@@ -1,26 +1,38 @@
 {
     "coverage": {
-        "US Census": {"geoid": "26163", "name": "Wayne County", "state": "Michigan"},
+        "US Census": {
+            "geoid": "26163",
+            "name": "Wayne County",
+            "state": "Michigan"
+        },
         "country": "us",
         "state": "mi",
         "county": "Wayne"
     },
-    "data": "https://services1.arcgis.com/b6rkZNtCd6Mx2gvB/arcgis/rest/services/Wayne_County_Parcels/FeatureServer/0",
-    "protocol": "ESRI",
-    "website": "http://wayne.maps.arcgis.com/apps/Viewer/index.html?appid=4e75960fbf28455c9acf115e97a3c7c0",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "propstreetcombined"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "propstreetcombined"
-        },
-        "city": "propcity",
-        "region": "propstate",
-        "postcode": "propzip",
-        "id": "packedParcelNumber"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/b6rkZNtCd6Mx2gvB/arcgis/rest/services/Wayne_County_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "http://wayne.maps.arcgis.com/apps/Viewer/index.html?appid=4e75960fbf28455c9acf115e97a3c7c0",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "propstreetcombined"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "propstreetcombined"
+                    },
+                    "city": "propcity",
+                    "region": "propstate",
+                    "postcode": "propzip",
+                    "id": "packedParcelNumber"
+                }
+            }
+        ]
     }
 }

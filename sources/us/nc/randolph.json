@@ -1,28 +1,40 @@
 {
     "coverage": {
-        "US Census": {"geoid": "37151", "name": "Randolph County", "state": "North Carolina"},
+        "US Census": {
+            "geoid": "37151",
+            "name": "Randolph County",
+            "state": "North Carolina"
+        },
         "country": "us",
         "state": "nc",
         "county": "Randolph"
     },
-    "data": "https://dit-cgia-gis-data.s3.amazonaws.com/NCOM-data/parcels/randolph_parcels.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "website": "https://dit-cgia-gis-data.s3.amazonaws.com/NCOM-data/parcels/randolph_parcels.zip",
-    "conform": {
-        "format": "shapefile",
-        "file": "nc_randolph_parcels_pt.shp",
-        "id": "PARNO",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SADDNO"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SADDSTNAME"
-        },
-        "city": "SCITY",
-        "region": "SSTATE",
-        "postcode": "SZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://dit-cgia-gis-data.s3.amazonaws.com/NCOM-data/parcels/randolph_parcels.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "website": "https://dit-cgia-gis-data.s3.amazonaws.com/NCOM-data/parcels/randolph_parcels.zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "nc_randolph_parcels_pt.shp",
+                    "id": "PARNO",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SADDNO"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SADDSTNAME"
+                    },
+                    "city": "SCITY",
+                    "region": "SSTATE",
+                    "postcode": "SZIP"
+                }
+            }
+        ]
     }
 }

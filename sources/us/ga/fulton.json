@@ -9,33 +9,41 @@
         "state": "ga",
         "county": "Fulton"
     },
-    "protocol": "ESRI",
-    "attribution": "Fulton County",
-    "website": "http://share.myfultoncountyga.us:8080/geoportal/catalog/main/home.page",
-    "data": "https://gis.fultoncountyga.gov/arcgis/rest/services/MapServices/AddressQuadrantVerification/MapServer/0",
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "PreAddrNum",
-            "StNumber"
-        ],
-        "street": [
-            "PreMod",
-            "PreDir",
-            "PreType",
-            "Name",
-            "PostType",
-            "PostDir",
-            "PostMod"
-        ],
-        "unit": "UnitActual",
-        "city": "City",
-        "postcode": "Zip",
-        "region": "State"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "attribution": "Fulton County",
+                "website": "http://share.myfultoncountyga.us:8080/geoportal/catalog/main/home.page",
+                "data": "https://gis.fultoncountyga.gov/arcgis/rest/services/MapServices/AddressQuadrantVerification/MapServer/0",
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "PreAddrNum",
+                        "StNumber"
+                    ],
+                    "street": [
+                        "PreMod",
+                        "PreDir",
+                        "PreType",
+                        "Name",
+                        "PostType",
+                        "PostDir",
+                        "PostMod"
+                    ],
+                    "unit": "UnitActual",
+                    "city": "City",
+                    "postcode": "Zip",
+                    "region": "State"
+                }
+            }
+        ]
     }
 }

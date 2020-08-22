@@ -9,19 +9,27 @@
         "state": "or",
         "county": "Wheeler"
     },
-    "data": "https://services3.arcgis.com/e3KSI9Py4B7m3xu6/ArcGIS/rest/services/Wheeler01_TL/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SiteAddNam"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SiteAddNam"
-        },
-        "city": "SiteAddCty",
-        "postcode": "SiteZip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/e3KSI9Py4B7m3xu6/ArcGIS/rest/services/Wheeler01_TL/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SiteAddNam"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SiteAddNam"
+                    },
+                    "city": "SiteAddCty",
+                    "postcode": "SiteZip"
+                }
+            }
+        ]
     }
 }

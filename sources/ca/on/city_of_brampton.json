@@ -11,17 +11,25 @@
             ]
         }
     },
-    "data": "http://maps1.brampton.ca/arcgis/rest/services/COB/Common/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "CIVIC_NUMBER",
-        "unit": "UNIT_NO",
-        "street": [
-            "STREET_NAME",
-            "STREET_TYPE",
-            "STREET_DIRECTION"
-        ],
-        "city": "CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://maps1.brampton.ca/arcgis/rest/services/COB/Common/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "CIVIC_NUMBER",
+                    "unit": "UNIT_NO",
+                    "street": [
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "STREET_DIRECTION"
+                    ],
+                    "city": "CITY"
+                }
+            }
+        ]
     }
 }

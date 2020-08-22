@@ -6,27 +6,35 @@
             "alpha2": "ES-NC"
         }
     },
-    "data": "http://www.navarra.es/appsext/DescargarFichero/default.aspx?codigoAcceso=OpenData&fichero=GestorDireccionesPostales\\OpenAddresses.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "license": {
-        "text": "CC-BY 4.0",
-        "attribution": true,
-        "share-alike": false
-    },
-    "conform": {
-        "format": "csv",
-        "csvsplit": ";",
-        "lat": "lat",
-        "lon": "lon",
-        "srs": "EPSG:25830",
-        "id": "idportal",
-        "number": "number",
-        "unit": "unit",
-        "street": "street",
-        "city": "city",
-        "postcode": "postcode",
-        "region": "region",
-        "district": "district"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "http://www.navarra.es/appsext/DescargarFichero/default.aspx?codigoAcceso=OpenData&fichero=GestorDireccionesPostales\\OpenAddresses.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "text": "CC-BY 4.0",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "csv",
+                    "csvsplit": ";",
+                    "lat": "lat",
+                    "lon": "lon",
+                    "srs": "EPSG:25830",
+                    "id": "idportal",
+                    "number": "number",
+                    "unit": "unit",
+                    "street": "street",
+                    "city": "city",
+                    "postcode": "postcode",
+                    "region": "region",
+                    "district": "district"
+                }
+            }
+        ]
     }
 }

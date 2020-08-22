@@ -4,15 +4,28 @@
         "state": "bc",
         "city": "surrey"
     },
-    "data": "http://cosmos.surrey.ca/geo_ref/Images/OpenDataArchives/addresses_GDB.zip",
-    "website": "http://data.surrey.ca/",
-    "license": "Open Government License",
-    "protocol": "http",
-    "conform": {
-        "format": "gdb",
-        "layer": "Address_Points",
-        "number": "STREET_NUMBER",
-        "street": ["STREET_DIR_PREFIX", "STREET_NAME", "STREET_TYPE", "STREET_DIR_SUFFIX"],
-        "city": "LOCALITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://cosmos.surrey.ca/geo_ref/Images/OpenDataArchives/addresses_GDB.zip",
+                "website": "http://data.surrey.ca/",
+                "license": "Open Government License",
+                "protocol": "http",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Address_Points",
+                    "number": "STREET_NUMBER",
+                    "street": [
+                        "STREET_DIR_PREFIX",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "STREET_DIR_SUFFIX"
+                    ],
+                    "city": "LOCALITY"
+                }
+            }
+        ]
     }
 }

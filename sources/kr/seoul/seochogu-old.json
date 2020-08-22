@@ -1,38 +1,52 @@
 {
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1080",
-    "conform": {
-        "headers": 2,
-        "srs": "EPSG:2097",
-        "encoding": "EUCKR",
-        "number": "LNDN_MA_SN",
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        },
-        "skiplines": 2,
-        "lon": "POINT_X",
-        "lat": "POINT_Y",
-        "format": "csv"
-    },
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
     "coverage": {
         "country": "kr",
         "city": "서초구",
         "state": "seoul",
-        "geometry": { "type": "Point", "coordinates": [127.015, 37.480] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                127.015,
+                37.48
+            ]
+        }
     },
-    "skip": false,
-    "compression": "zip",
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
-    "protocol": "http",
-    "data": "https://data.openaddresses.io/cache/kr-seoul-seochogu.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1080",
+                "conform": {
+                    "headers": 2,
+                    "srs": "EPSG:2097",
+                    "encoding": "EUCKR",
+                    "number": "LNDN_MA_SN",
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    },
+                    "skiplines": 2,
+                    "lon": "POINT_X",
+                    "lat": "POINT_Y",
+                    "format": "csv"
+                },
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "skip": false,
+                "compression": "zip",
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "protocol": "http",
+                "data": "https://data.openaddresses.io/cache/kr-seoul-seochogu.zip"
+            }
+        ]
+    }
 }

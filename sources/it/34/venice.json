@@ -3,21 +3,29 @@
         "country": "it",
         "city": "Venice"
     },
-    "data": "http://sit.comune.venezia.it:6080/arcgis/rest/services/Mappe_base/Cartografia_di_base_a_Colori/MapServer/2",
-    "protocol": "ESRI",
-    "language": "it",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "INDIRIZZO",
-            "pattern": "^(?:.+?)(?:,\\s*(.*?)\\s*)$"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "INDIRIZZO",
-            "pattern": "^(.+?)(?:,.*)?$"
-        },
-        "city": "Venezia"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://sit.comune.venezia.it:6080/arcgis/rest/services/Mappe_base/Cartografia_di_base_a_Colori/MapServer/2",
+                "protocol": "ESRI",
+                "language": "it",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "INDIRIZZO",
+                        "pattern": "^(?:.+?)(?:,\\s*(.*?)\\s*)$"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "INDIRIZZO",
+                        "pattern": "^(.+?)(?:,.*)?$"
+                    },
+                    "city": "Venezia"
+                }
+            }
+        ]
     }
 }

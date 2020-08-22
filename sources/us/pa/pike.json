@@ -9,26 +9,34 @@
         "state": "pa",
         "county": "Pike"
     },
-    "website": "https://www.pikepa.org/gistax",
-    "contact": {        
-        "phone": "570-296-3420",
-        "email": "mapping@pikepa.org",
-        "address": "506 Broad Street, Milford, PA 18337"
-    },
-    "data": "http://gis.pikepa.org/arcgis/rest/services/PikeCo_AddressPoints/MapServer/1",    
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "PrimaryAddress",
-            "pattern": "^([0-9]+) "
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PrimaryAddress",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.pikepa.org/gistax",
+                "contact": {
+                    "phone": "570-296-3420",
+                    "email": "mapping@pikepa.org",
+                    "address": "506 Broad Street, Milford, PA 18337"
+                },
+                "data": "http://gis.pikepa.org/arcgis/rest/services/PikeCo_AddressPoints/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "PrimaryAddress",
+                        "pattern": "^([0-9]+) "
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "PrimaryAddress",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }

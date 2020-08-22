@@ -9,21 +9,29 @@
         "state": "wi",
         "county": "Pierce"
     },
-    "data": "http://www.co.pierce.wi.us/arcgis/rest/services/Pierce_Sheriff_EmergencyServices/MapServer/8",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://www.co.pierce.wi.us/arcgis/rest/services/Pierce_Sheriff_EmergencyServices/MapServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

@@ -16,49 +16,57 @@
         "state": "ri",
         "city": "Providence"
     },
-    "conform": {
-        "format": "shapefile-polygon",
-        "number": {
-            "function": "regexp",
-            "field": "property_a",
-            "pattern": "^(\\d+(?:\\w+|-\\d+|\/2)?)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "property_a",
-            "pattern": "^(?:\\d+(?:\\w+|-\\d+|\/2)?)\\s+(.+?)(?:\\b(?:Unit|Bldg|Apt)\\b(?:\\s+\\w+)?)?$"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "property_a",
-            "pattern": "^(?:\\d+(?:\\w+|-\\d+|\/2)?)\\s+(?:.+?)(\\b(?:Unit|Bldg|Apt)\\b(?:\\s+\\w+)?)$"
-        },
-        "postcode": "zip_postal"
-    },
-    "data": "https://data.providenceri.gov/api/geospatial/29is-vppi?method=export&format=Shapefile",
-    "website": "https://data.providenceri.gov/Neighborhoods/Providence-Parcel-Boundaries-2015/29is-vppi",
-    "license": "",
-    "protocol": "http",
-    "compression": "zip",
-    "year": "2015",
-    "note": {
-        "description": "Full parcel shapefile set (not points); address string is stored in the property_a attribute; current as of 2015",
-        "unit regexp": "There is a 'Unit St' in Providence so the unit regexp has to include the house number non-capturing group",
-        "examples": [
-            "1 Di Mario St",
-            "111 Unit St",
-            "75R Pilsudski St",
-            "148-150 Chad Brown St",
-            "2861/2 Benefit St",
-            "111R2 Waldo St",
-            "196A Waterman St",
-            "219 Early St Unit 219A",
-            "102 Dixon St Unit 04",
-            "337 Morris Ave Bldg 2",
-            "87 Washington St Bldg R202",
-            "75 Eagle St Unit H23G",
-            "4 Esten St Unit 0P10",
-            "48 Sackett St Apt"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "conform": {
+                    "format": "shapefile-polygon",
+                    "number": {
+                        "function": "regexp",
+                        "field": "property_a",
+                        "pattern": "^(\\d+(?:\\w+|-\\d+|/2)?)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "property_a",
+                        "pattern": "^(?:\\d+(?:\\w+|-\\d+|/2)?)\\s+(.+?)(?:\\b(?:Unit|Bldg|Apt)\\b(?:\\s+\\w+)?)?$"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "property_a",
+                        "pattern": "^(?:\\d+(?:\\w+|-\\d+|/2)?)\\s+(?:.+?)(\\b(?:Unit|Bldg|Apt)\\b(?:\\s+\\w+)?)$"
+                    },
+                    "postcode": "zip_postal"
+                },
+                "data": "https://data.providenceri.gov/api/geospatial/29is-vppi?method=export&format=Shapefile",
+                "website": "https://data.providenceri.gov/Neighborhoods/Providence-Parcel-Boundaries-2015/29is-vppi",
+                "license": "",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2015",
+                "note": {
+                    "description": "Full parcel shapefile set (not points); address string is stored in the property_a attribute; current as of 2015",
+                    "unit regexp": "There is a 'Unit St' in Providence so the unit regexp has to include the house number non-capturing group",
+                    "examples": [
+                        "1 Di Mario St",
+                        "111 Unit St",
+                        "75R Pilsudski St",
+                        "148-150 Chad Brown St",
+                        "2861/2 Benefit St",
+                        "111R2 Waldo St",
+                        "196A Waterman St",
+                        "219 Early St Unit 219A",
+                        "102 Dixon St Unit 04",
+                        "337 Morris Ave Bldg 2",
+                        "87 Washington St Bldg R202",
+                        "75 Eagle St Unit H23G",
+                        "4 Esten St Unit 0P10",
+                        "48 Sackett St Apt"
+                    ]
+                }
+            }
         ]
     }
 }

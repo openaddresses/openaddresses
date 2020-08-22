@@ -9,20 +9,28 @@
         "state": "nc",
         "county": "Forsyth"
     },
-    "data": "https://maps.co.forsyth.nc.us/arcgis/rest/services/Addressing/AddressSearch/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "unit": [
-            "UNITTYPE",
-            "UNIT"
-        ],
-        "street": [
-            "STDIR",
-            "STNAME",
-            "STTYPEPO"
-        ],
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.co.forsyth.nc.us/arcgis/rest/services/Addressing/AddressSearch/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNIT"
+                    ],
+                    "street": [
+                        "STDIR",
+                        "STNAME",
+                        "STTYPEPO"
+                    ],
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

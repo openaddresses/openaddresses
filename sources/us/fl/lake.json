@@ -9,28 +9,36 @@
         "state": "fl",
         "county": "Lake"
     },
-    "attribution": "Lake County",
-    "data": "ftp://ftp.co.lake.fl.us/GIS/GisDownloads/Shapefiles/AddressPoints.zip",
-    "website": "http://www.lakecountyfl.gov/departments/information_technology/geographic_information_services/datadownloads.aspx",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "protocol": "ftp",
-    "compression": "zip",
-    "conform": {
-        "number": "addressnum",
-        "street": [
-            "prefixtype",
-            "basestreet",
-            "suffixtype"
-        ],
-        "unit": [
-          "UnitType",
-          "UnitNumber"
-        ],
-        "format": "shapefile",
-        "postcode": "zipcode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Lake County",
+                "data": "ftp://ftp.co.lake.fl.us/GIS/GisDownloads/Shapefiles/AddressPoints.zip",
+                "website": "http://www.lakecountyfl.gov/departments/information_technology/geographic_information_services/datadownloads.aspx",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ftp",
+                "compression": "zip",
+                "conform": {
+                    "number": "addressnum",
+                    "street": [
+                        "prefixtype",
+                        "basestreet",
+                        "suffixtype"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "UnitNumber"
+                    ],
+                    "format": "shapefile",
+                    "postcode": "zipcode"
+                }
+            }
+        ]
     }
 }

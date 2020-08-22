@@ -9,25 +9,33 @@
         "state": "pa",
         "county": "Lehigh"
     },
-    "website": "https://www.lehighcounty.org/Departments/GIS",
-    "contact": {
-        "phone": "(610) 782-3000",
-        "address": "17 South 7th St., Allentown, PA 18101"
-    },
-    "data": "https://gis.lehighcounty.org/arcgis/rest/services/ParcelSDE/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "SITUS_ADDR_NUM",
-        "street": [
-            "SITUS_FDPRE",
-            "SITUS_FNAME",
-            "SITUS_FTYPE",
-            "SITUS_FDSUF"
-        ],
-        "unit": "SITUS_UNIT_NUM",
-        "city": "SITUS_CITY",
-        "postcode": "SITUS_ZIP",
-        "id": "PIN"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.lehighcounty.org/Departments/GIS",
+                "contact": {
+                    "phone": "(610) 782-3000",
+                    "address": "17 South 7th St., Allentown, PA 18101"
+                },
+                "data": "https://gis.lehighcounty.org/arcgis/rest/services/ParcelSDE/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SITUS_ADDR_NUM",
+                    "street": [
+                        "SITUS_FDPRE",
+                        "SITUS_FNAME",
+                        "SITUS_FTYPE",
+                        "SITUS_FDSUF"
+                    ],
+                    "unit": "SITUS_UNIT_NUM",
+                    "city": "SITUS_CITY",
+                    "postcode": "SITUS_ZIP",
+                    "id": "PIN"
+                }
+            }
+        ]
     }
 }

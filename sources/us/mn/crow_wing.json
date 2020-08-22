@@ -9,24 +9,32 @@
         "state": "mn",
         "county": "Crow Wing"
     },
-    "data": "https://gis.crowwing.us/cwcexternal/rest/services/CROWWINGPUBLIC/MapServer/4",
-    "protocol": "ESRI",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "COMMUNITY",
-        "region": "STATE",
-        "format": "geojson",
-        "postcode": "ZIP"
-    },
-    "website": "https://crowwing.us/85/Interactive-Maps"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.crowwing.us/cwcexternal/rest/services/CROWWINGPUBLIC/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": "COMMUNITY",
+                    "region": "STATE",
+                    "format": "geojson",
+                    "postcode": "ZIP"
+                },
+                "website": "https://crowwing.us/85/Interactive-Maps"
+            }
+        ]
+    }
 }

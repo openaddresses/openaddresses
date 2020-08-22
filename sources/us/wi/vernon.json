@@ -9,17 +9,25 @@
         "state": "wi",
         "county": "Vernon"
     },
-    "data": "http://www.vernoncounty.org/arcgis/rest/services/VCGISpriv/VCSO_Address_Pts/MapServer/2",
-    "protocol": "ESRI",
-    "note": "number col contains letter",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDNUM",
-        "street": [
-            "DIRECTION",
-            "STREETNAME",
-            "STREETTYPE",
-            "POSTDIRECT"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://www.vernoncounty.org/arcgis/rest/services/VCGISpriv/VCSO_Address_Pts/MapServer/2",
+                "protocol": "ESRI",
+                "note": "number col contains letter",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDNUM",
+                    "street": [
+                        "DIRECTION",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "POSTDIRECT"
+                    ]
+                }
+            }
         ]
     }
 }
