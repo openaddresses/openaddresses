@@ -14,25 +14,23 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "http://www.tetonwyo.org/GIS/",
+                "website": "https://www.tetoncountywy.gov/958/Geographic-Information-System",
                 "license": {
                     "text": "Indemnification",
                     "attribution": false,
                     "share-alike": false
                 },
                 "compression": "zip",
-                "data": "http://tetonwy.greenwoodmap.com/gis/download/ownership_shp.zip",
+                "data": "https://tetonwy.s3.amazonaws.com/gis/download/ownership_shp.zip",
                 "protocol": "http",
                 "conform": {
                     "format": "shapefile",
-                    "file": "address.shp",
-                    "number": "street_num",
-                    "unit": "st_unit",
-                    "street": [
-                        "st_dir",
-                        "st_name",
-                        "st_type"
-                    ],
+                    "number": "Street_num",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "st_address",
+                        "field_to_remove": "Street_num"
+                    },
                     "id": "pidn",
                     "accuracy": 2
                 }
