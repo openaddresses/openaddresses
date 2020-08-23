@@ -1,8 +1,4 @@
 {
-    "protocol": "http",
-    "data": "https://data.openaddresses.io/cache/uploads/andrewharvey-openaddr/15c57c/au-aug2020.zip",
-    "website": "http://data.gov.au/dataset/geocoded-national-address-file-g-naf",
-    "compression": "zip",
     "coverage": {
         "ISO 3166": {
             "alpha2": "AU",
@@ -10,25 +6,37 @@
         },
         "country": "au"
     },
-    "language": "en",
-    "note": "released quarterly. source must be regenerated using script in this repo's /scripts directory. CC-BY 4.0 with limitations on postal use and Australian privacy law.",
-    "license": {
-        "url": "https://data.gov.au/dataset/geocoded-national-address-file-g-naf/resource/09f74802-08b1-4214-a6ea-3591b2753d30",
-        "attribution": true,
-        "attribution name": "G-NAF ©PSMA Australia Limited licensed by the Commonwealth of Australia under the Open Geo-coded National Address File (G-NAF) End User Licence Agreement.",
-        "share-alike": false
-    },
-    "conform": {
-        "srs": "EPSG:4283",
-        "format": "csv",
-        "id": "id",
-        "number": "number",
-        "street": "street",
-        "unit": "unit",
-        "lon": "lon",
-        "lat": "lat",
-        "city": "city",
-        "postcode": "postcode",
-        "region": "region"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "protocol": "http",
+                "data": "https://data.openaddresses.io/cache/uploads/andrewharvey-openaddr/15c57c/au-aug2020.zip",
+                "website": "http://data.gov.au/dataset/geocoded-national-address-file-g-naf",
+                "compression": "zip",
+                "language": "en",
+                "note": "released quarterly. source must be regenerated using script in this repo's /scripts directory. CC-BY 4.0 with limitations on postal use and Australian privacy law.",
+                "license": {
+                    "url": "https://data.gov.au/dataset/geocoded-national-address-file-g-naf/resource/09f74802-08b1-4214-a6ea-3591b2753d30",
+                    "attribution": true,
+                    "attribution name": "G-NAF ©PSMA Australia Limited licensed by the Commonwealth of Australia under the Open Geo-coded National Address File (G-NAF) End User Licence Agreement.",
+                    "share-alike": false
+                },
+                "conform": {
+                    "srs": "EPSG:4283",
+                    "format": "csv",
+                    "id": "id",
+                    "number": "number",
+                    "street": "street",
+                    "unit": "unit",
+                    "lon": "lon",
+                    "lat": "lat",
+                    "city": "city",
+                    "postcode": "postcode",
+                    "region": "region"
+                }
+            }
+        ]
     }
 }

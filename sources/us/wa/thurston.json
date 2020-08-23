@@ -9,29 +9,37 @@
         "state": "wa",
         "county": "Yakima"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/nvkelso/cd363b/parcels_thurston_county_washington_state.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile-polygon",
-        "file": "Parcels.shp",
-        "number": {
-            "function": "regexp",
-            "field": "SITUS_STRE",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SITUS_STRE",
-            "pattern": "^(?:[0-9]+ )(.*?)(?: (UNIT|APT|BLDG|STE|#).*|$)",
-            "replace": "$1"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "SITUS_STRE",
-            "pattern": " ((?:(?:(?:UNIT|APT|BLDG|STE) )|(?:#)).+)$"
-        },
-        "city": "SITUS_CITY",
-        "postcode": "SITUS_ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.openaddresses.io/cache/uploads/nvkelso/cd363b/parcels_thurston_county_washington_state.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile-polygon",
+                    "file": "Parcels.shp",
+                    "number": {
+                        "function": "regexp",
+                        "field": "SITUS_STRE",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "SITUS_STRE",
+                        "pattern": "^(?:[0-9]+ )(.*?)(?: (UNIT|APT|BLDG|STE|#).*|$)",
+                        "replace": "$1"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "SITUS_STRE",
+                        "pattern": " ((?:(?:(?:UNIT|APT|BLDG|STE) )|(?:#)).+)$"
+                    },
+                    "city": "SITUS_CITY",
+                    "postcode": "SITUS_ZIP"
+                }
+            }
+        ]
     }
 }

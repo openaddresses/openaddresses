@@ -9,18 +9,26 @@
         "state": "id",
         "county": "Lemhi"
     },
-    "data": "http://gis.itd.idaho.gov/arcgisprod/rest/services/D6/D6_Read_Only/MapServer/14",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "PM_PROP_AD"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "PM_PROP_AD"
-        },
-        "postcode": "PM_PROP_ZP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.itd.idaho.gov/arcgisprod/rest/services/D6/D6_Read_Only/MapServer/14",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PM_PROP_AD"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PM_PROP_AD"
+                    },
+                    "postcode": "PM_PROP_ZP"
+                }
+            }
+        ]
     }
 }

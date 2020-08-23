@@ -3,23 +3,37 @@
         "country": "ca",
         "state": "bc",
         "city": "Kamloops",
-        "geometry": { "type": "Point", "coordinates": [-120.36, 50.69] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -120.36,
+                50.69
+            ]
+        }
     },
-    "data": "http://maps.kamloops.ca/opendata/zipfiles/cadastralSHP.zip",
-    "website": "https://www.kamloops.ca/city-services/maps-apps",
-    "license": "https://www.kamloops.ca/node/29807",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "STREETNO",
-        "street": [
-            "name",
-            "nametype",
-            "suffix"
-        ],
-        "unit": "SUITENO",
-        "format": "shapefile",
-        "file": "AddressPoint.shp"
-    },
-    "attribution": "City of Kamloops"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://maps.kamloops.ca/opendata/zipfiles/cadastralSHP.zip",
+                "website": "https://www.kamloops.ca/city-services/maps-apps",
+                "license": "https://www.kamloops.ca/node/29807",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "STREETNO",
+                    "street": [
+                        "name",
+                        "nametype",
+                        "suffix"
+                    ],
+                    "unit": "SUITENO",
+                    "format": "shapefile",
+                    "file": "AddressPoint.shp"
+                },
+                "attribution": "City of Kamloops"
+            }
+        ]
+    }
 }

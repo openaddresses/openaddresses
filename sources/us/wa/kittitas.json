@@ -9,17 +9,25 @@
         "state": "wa",
         "county": "Kittitas"
     },
-    "data": "https://gis.co.kittitas.wa.us/kcgis/rest/services/AGOL/Site_Address_Points/MapServer/0",
-    "website": "https://www.co.kittitas.wa.us/it/gis.aspx",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "city": "MUNICIPALITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.kittitas.wa.us/kcgis/rest/services/AGOL/Site_Address_Points/MapServer/0",
+                "website": "https://www.co.kittitas.wa.us/it/gis.aspx",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY"
+                }
+            }
+        ]
     }
 }

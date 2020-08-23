@@ -4,17 +4,25 @@
         "state": "on",
         "county": "Greater Sudbury"
     },
-    "website": "http://opendata.greatersudbury.ca/datasets/address-points-layer",
-    "data": "https://gis.greatersudbury.ca/arcgis/rest/services/Public/OpenData/MapServer/3",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRESSNUMBER",
-        "street": {
-            "function": "remove_prefix",
-            "field": "FULLADDRESSTEXT",
-            "field_to_remove": "ADDRESSNUMBER"
-        },
-        "city": "COMMUNITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "http://opendata.greatersudbury.ca/datasets/address-points-layer",
+                "data": "https://gis.greatersudbury.ca/arcgis/rest/services/Public/OpenData/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESSNUMBER",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "FULLADDRESSTEXT",
+                        "field_to_remove": "ADDRESSNUMBER"
+                    },
+                    "city": "COMMUNITY"
+                }
+            }
+        ]
     }
 }

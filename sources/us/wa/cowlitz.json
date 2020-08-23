@@ -9,19 +9,27 @@
         "state": "wa",
         "county": "Cowlitz"
     },
-    "data": "http://65.183.210.212:6080/arcgis/rest/services/LiveMaps/AssessorMap/MapServer/0",
-    "website": "http://www.co.cowlitz.wa.us/index.aspx?nid=201",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "SITUS_STREET_NUMBER",
-        "unit": "SITUS_STREET_UNIT",
-        "street": [
-            "SITUS_STREET_DIRECTION",
-            "SITUS_STREET_NAME",
-            "SITUS_STREET_SUFFIX"
-        ],
-        "postcode": "SITUS_ZIP_CODE",
-        "city": "SITUS_CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://65.183.210.212:6080/arcgis/rest/services/LiveMaps/AssessorMap/MapServer/0",
+                "website": "http://www.co.cowlitz.wa.us/index.aspx?nid=201",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SITUS_STREET_NUMBER",
+                    "unit": "SITUS_STREET_UNIT",
+                    "street": [
+                        "SITUS_STREET_DIRECTION",
+                        "SITUS_STREET_NAME",
+                        "SITUS_STREET_SUFFIX"
+                    ],
+                    "postcode": "SITUS_ZIP_CODE",
+                    "city": "SITUS_CITY"
+                }
+            }
+        ]
     }
 }

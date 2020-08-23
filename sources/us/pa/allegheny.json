@@ -9,32 +9,40 @@
         "state": "pa",
         "county": "Allegheny"
     },
-    "data": "https://gisdata.alleghenycounty.us/arcgis/rest/services/Addressing/Addressing_AddressPoints/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "ADDRESS_ID",
-        "number": [
-            "ADDR_NUM_PREFIX",
-            "ADDR_NUM",
-            "ADDR_NUM_SUFFIX"
-        ],
-        "street": [
-            "ST_PREMODIFIER",
-            "ST_PREFIX",
-            "ST_PRETYPE",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SUFFIX",
-            "ST_POSTMODIFIER"
-        ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT"
-        ],
-        "postcode": "ZIP_CODE",
-        "city": "MUNICIPALITY",
-        "district": "COUNTY",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisdata.alleghenycounty.us/arcgis/rest/services/Addressing/Addressing_AddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDRESS_ID",
+                    "number": [
+                        "ADDR_NUM_PREFIX",
+                        "ADDR_NUM",
+                        "ADDR_NUM_SUFFIX"
+                    ],
+                    "street": [
+                        "ST_PREMODIFIER",
+                        "ST_PREFIX",
+                        "ST_PRETYPE",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX",
+                        "ST_POSTMODIFIER"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT"
+                    ],
+                    "postcode": "ZIP_CODE",
+                    "city": "MUNICIPALITY",
+                    "district": "COUNTY",
+                    "region": "STATE"
+                }
+            }
+        ]
     }
 }

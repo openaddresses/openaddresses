@@ -16,21 +16,29 @@
         "state": "ks",
         "city": "Lenexa"
     },
-    "conform": {
-        "format": "geojson",
-        "number": "NUMBER",
-        "street": [
-            "DIR",
-            "NAME",
-            "TYPE"
-        ],
-        "unit": [
-          "SUITE_APT",
-          "BUILDING"
-        ],
-        "city": "CITY",
-        "postcode": "ZIP"
-    },
-    "data": "https://maps.lenexa.com/arcgis/rest/services/GovernmentServices/SiteAddressPoints_RES_OCC_only/MapServer/0",
-    "protocol": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "conform": {
+                    "format": "geojson",
+                    "number": "NUMBER",
+                    "street": [
+                        "DIR",
+                        "NAME",
+                        "TYPE"
+                    ],
+                    "unit": [
+                        "SUITE_APT",
+                        "BUILDING"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                },
+                "data": "https://maps.lenexa.com/arcgis/rest/services/GovernmentServices/SiteAddressPoints_RES_OCC_only/MapServer/0",
+                "protocol": "ESRI"
+            }
+        ]
+    }
 }

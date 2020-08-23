@@ -1,8 +1,4 @@
 {
-    "skip": true,
-    "note": "Replaced by countrywide source for easier maintenance (quarterly URL updates)",
-    "protocol": "http",
-    "data": "https://www.avoindata.fi/data/dataset/cf9208dc-63a9-44a2-9312-bbd2c3952596/resource/77ed5851-1967-4bb6-8c5c-bbcbd006847e/download/07_osoitteet_2018-05-15.opt",
     "coverage": {
         "state": "Kymeenlaakso",
         "country": "fi",
@@ -14,30 +10,45 @@
             "subdivision (en)": "Kymenlaakso"
         }
     },
-    "license": {
-        "url": "https://creativecommons.org/licences/by/4.0/deed.fi",
-        "text": "CC BY 4.0",
-        "attribution": true,
-        "attribution name": "Väestörekisterikeskus"
-    },
-    "website": "https://www.avoindata.fi/data/fi/dataset/rakennusten-osoitetiedot-koko-suomi",
-    "conform": {
-        "srs": "EPSG:3067",
-        "encoding": "ISO-8859-1",
-        "csvsplit": ";",
-        "headers": -1,
-        "street": "COLUMN8",
-        "number": "COLUMN10",
-        "lat": "COLUMN5",
-        "lon": "COLUMN6",
-        "id": {
-            "function": "join",
-            "fields": ["COLUMN1","COLUMN7"],
-            "separator": "-"
-        },
-        "postcode": "COLUMN11",
-        "format": "csv",
-        "accuracy": 1
-    },
-    "language": "fi"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "skip": true,
+                "note": "Replaced by countrywide source for easier maintenance (quarterly URL updates)",
+                "protocol": "http",
+                "data": "https://www.avoindata.fi/data/dataset/cf9208dc-63a9-44a2-9312-bbd2c3952596/resource/77ed5851-1967-4bb6-8c5c-bbcbd006847e/download/07_osoitteet_2018-05-15.opt",
+                "license": {
+                    "url": "https://creativecommons.org/licences/by/4.0/deed.fi",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Väestörekisterikeskus"
+                },
+                "website": "https://www.avoindata.fi/data/fi/dataset/rakennusten-osoitetiedot-koko-suomi",
+                "conform": {
+                    "srs": "EPSG:3067",
+                    "encoding": "ISO-8859-1",
+                    "csvsplit": ";",
+                    "headers": -1,
+                    "street": "COLUMN8",
+                    "number": "COLUMN10",
+                    "lat": "COLUMN5",
+                    "lon": "COLUMN6",
+                    "id": {
+                        "function": "join",
+                        "fields": [
+                            "COLUMN1",
+                            "COLUMN7"
+                        ],
+                        "separator": "-"
+                    },
+                    "postcode": "COLUMN11",
+                    "format": "csv",
+                    "accuracy": 1
+                },
+                "language": "fi"
+            }
+        ]
+    }
 }

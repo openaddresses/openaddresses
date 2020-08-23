@@ -5,22 +5,33 @@
         "county": "Waterloo",
         "geometry": {
             "type": "Point",
-            "coordinates": [-80.582, 43.482]
+            "coordinates": [
+                -80.582,
+                43.482
+            ]
         }
     },
-    "website": "http://www.regionofwaterloo.ca/en/discoveringtheregion/maps.asp",
-    "data": "http://gis.region.waterloo.on.ca/arcgis/rest/services/Basemap/MapServer/4",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "Location"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "Location"
-        },
-        "city": "Municipality"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "http://www.regionofwaterloo.ca/en/discoveringtheregion/maps.asp",
+                "data": "http://gis.region.waterloo.on.ca/arcgis/rest/services/Basemap/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Location"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Location"
+                    },
+                    "city": "Municipality"
+                }
+            }
+        ]
     }
 }

@@ -11,28 +11,34 @@
             ]
         }
     },
-    "data": "https://data.openaddresses.io/cache/uploads/ingalls/ca-mb-city_of_winnipeg.csv",
-    "note": "See original PR for script to convert from open data format to OA CSV",
-    "website": "https://data.winnipeg.ca/City-Planning/Addresses/cam2-ii3u",
-    "protocol": "http",
-    "conform": {
-        "format": "csv",
-        "lat": "Geometry",
-        "number": [
-            "Street Number",
-            "Street Number Suffix"
-        ],
-        "street": [
-            "Street Name",
-            "Street Type",
-            "Street Direction"
-        ],
-        "unit": [
-            "Unit Type",
-            "Unit Number"
-        ],
-        "lat": "X",
-        "lon":"Y"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://data.openaddresses.io/cache/uploads/ingalls/ca-mb-city_of_winnipeg.csv",
+                "note": "See original PR for script to convert from open data format to OA CSV",
+                "website": "https://data.winnipeg.ca/City-Planning/Addresses/cam2-ii3u",
+                "protocol": "http",
+                "conform": {
+                    "format": "csv",
+                    "lat": "X",
+                    "number": [
+                        "Street Number",
+                        "Street Number Suffix"
+                    ],
+                    "street": [
+                        "Street Name",
+                        "Street Type",
+                        "Street Direction"
+                    ],
+                    "unit": [
+                        "Unit Type",
+                        "Unit Number"
+                    ],
+                    "lon": "Y"
+                }
+            }
+        ]
     }
 }
-

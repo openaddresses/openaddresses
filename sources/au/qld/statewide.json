@@ -8,36 +8,44 @@
         "state": "qld",
         "country": "au"
     },
-    "protocol": "http",
-    "data": "https://www.alantgeo.com.au/share/DP_QLD_DCDB_WOS_CUR.zip",
-    "website": "http://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={4091CAF1-50E6-4BC3-B3D4-229AA318231A}",
-    "compression": "zip",
-    "license": {
-        "text": "CC BY 4.0",
-        "url" : "http://creativecommons.org/licenses/by/4.0/",
-        "attribution": true,
-        "attribution name": "© State of Queensland (Department of Natural Resources, Mines and Energy) 2018",
-        "share-alike": false
-    },
-    "note": "must use web interface & email workflow to download fresh data.",
-    "conform": {
-        "format": "gdb",
-        "file": "DP_QLD_DCDB_WOS_CUR.gdb",
-        "layer": "QLD_ADDRESS_QAMF",
-        "unit": "UNIT_NUMBER",
-        "number": "STREET_NUMBER",
-        "street": [
-            "STREET_NAME",
-            "STREET_TYPE",
-            "STREET_SUFFIX"
-        ],
-        "city": {
-            "function": "regexp",
-            "field": "CITY_PLACE",
-            "pattern": "^([^,]*)"
-        },
-        "region": "STATE",
-        "postcode": "POSTCODE",
-        "notes": "LOTPLAN"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "protocol": "http",
+                "data": "https://www.alantgeo.com.au/share/DP_QLD_DCDB_WOS_CUR.zip",
+                "website": "http://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={4091CAF1-50E6-4BC3-B3D4-229AA318231A}",
+                "compression": "zip",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "http://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "© State of Queensland (Department of Natural Resources, Mines and Energy) 2018",
+                    "share-alike": false
+                },
+                "note": "must use web interface & email workflow to download fresh data.",
+                "conform": {
+                    "format": "gdb",
+                    "file": "DP_QLD_DCDB_WOS_CUR.gdb",
+                    "layer": "QLD_ADDRESS_QAMF",
+                    "unit": "UNIT_NUMBER",
+                    "number": "STREET_NUMBER",
+                    "street": [
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "STREET_SUFFIX"
+                    ],
+                    "city": {
+                        "function": "regexp",
+                        "field": "CITY_PLACE",
+                        "pattern": "^([^,]*)"
+                    },
+                    "region": "STATE",
+                    "postcode": "POSTCODE",
+                    "notes": "LOTPLAN"
+                }
+            }
+        ]
     }
 }

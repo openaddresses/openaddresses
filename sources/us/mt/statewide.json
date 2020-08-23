@@ -7,20 +7,28 @@
         "country": "us",
         "state": "mt"
     },
-    "data": "ftp://ftp.geoinfo.msl.mt.gov/Data/Spatial/MSDI/AddressStructures/StructuresFramework_shp.zip",
-    "website": "http://geoinfo.msl.mt.gov/home/msdi/structures_and_addresses.aspx",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "ADDNUM",
-        "street": "FULLRDNAME",
-        "unit": [
-            "SUBADDTYPE",
-            "SUBADD"
-        ],
-        "city": "COMMUNITY",
-        "region": "STATE",
-        "postcode": "ZIPCODE",
-        "format": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "ftp://ftp.geoinfo.msl.mt.gov/Data/Spatial/MSDI/AddressStructures/StructuresFramework_shp.zip",
+                "website": "http://geoinfo.msl.mt.gov/home/msdi/structures_and_addresses.aspx",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "ADDNUM",
+                    "street": "FULLRDNAME",
+                    "unit": [
+                        "SUBADDTYPE",
+                        "SUBADD"
+                    ],
+                    "city": "COMMUNITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE",
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

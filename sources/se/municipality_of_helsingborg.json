@@ -3,38 +3,49 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                12.650,
+                12.65,
                 56.075
             ]
         },
         "country": "se",
         "city": "Helsingborg"
     },
-    "data": "http://geodata.helsingborg.se/arcgis/rest/services/Trafik/Skolskjuts_160914/MapServer/37",
-    "protocol": "ESRI",
-    "note": {
-        "description": "This source looks like it has some sort of street altname appended occasionally.  `remove_postfix` could be used to remove the regex but `number` is composite and the function operates on a single field.  ",
-        "examples": [
-            "Norra Vallåkravägen | Landsbygd",
-            "Stureholmsvägen | Landsbygd",
-            "Ekebyvägen | Bårslöv"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://geodata.helsingborg.se/arcgis/rest/services/Trafik/Skolskjuts_160914/MapServer/37",
+                "protocol": "ESRI",
+                "note": {
+                    "description": "This source looks like it has some sort of street altname appended occasionally.  `remove_postfix` could be used to remove the regex but `number` is composite and the function operates on a single field.  ",
+                    "examples": [
+                        "Norra Vallåkravägen | Landsbygd",
+                        "Stureholmsvägen | Landsbygd",
+                        "Ekebyvägen | Bårslöv"
+                    ]
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ENUMERATOR",
+                        "DESIGNATIONNUMBERLETTER"
+                    ],
+                    "street": {
+                        "function": "regexp",
+                        "field": "STREETNAME",
+                        "pattern": "^(.*?)(?: \\|.+)?$"
+                    },
+                    "city": "CITY",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "POSTCODE",
+                        "pattern": "^([\\d]{3})([\\d]{2})$",
+                        "replace": "$1 $2"
+                    },
+                    "id": "BALID"
+                }
+            }
         ]
-    },
-    "conform": {
-        "format": "geojson",
-        "number": ["ENUMERATOR","DESIGNATIONNUMBERLETTER"],
-        "street": {
-            "function": "regexp",
-            "field": "STREETNAME",
-            "pattern": "^(.*?)(?: \\|.+)?$"
-        },
-        "city": "CITY",
-        "postcode": {
-            "function": "regexp",
-            "field": "POSTCODE",
-            "pattern": "^([\\d]{3})([\\d]{2})$",
-            "replace": "$1 $2"
-        },
-        "id": "BALID"
     }
 }

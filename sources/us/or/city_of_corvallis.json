@@ -16,32 +16,40 @@
         "state": "or",
         "city": "Corvallis"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "gdb",
-        "file": "Delivery/addresses_oregon.gdb",
-        "layer": "_Corvallis",
-        "number": {
-            "function": "join",
-            "fields": [
-                "ST_NUMBR",
-                "ST_NSFX"
-            ],
-            "separator": ""
-        },
-        "street": [
-            "ST_PFX",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SFX"
-        ],
-        "unit": [
-            "UNIT",
-            "UNITNUM"
-        ],
-        "city": "CITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "file": "Delivery/addresses_oregon.gdb",
+                    "layer": "_Corvallis",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "ST_NUMBR",
+                            "ST_NSFX"
+                        ],
+                        "separator": ""
+                    },
+                    "street": [
+                        "ST_PFX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SFX"
+                    ],
+                    "unit": [
+                        "UNIT",
+                        "UNITNUM"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

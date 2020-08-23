@@ -4,7 +4,7 @@
             "type": "Point",
             "coordinates": [
                 -122.468,
-                45.510
+                45.51
             ]
         },
         "US Census": {
@@ -16,16 +16,28 @@
         "state": "or",
         "city": "Gresham"
     },
-    "conform": {
-        "format": "csv",
-        "number": "STREET_NUM",
-        "street": ["STREET_DIR", "STREET_NAME", "STREET_TYPE"],
-        "unit": "UNIT",
-        "city": "CITY",
-        "postcode": "ZIPCODE",
-        "lat": "OA:y",
-        "lon": "OA:x"
-    },
-    "protocol": "ESRI",
-    "data": "http://maps.greshamoregon.gov/arcgis/rest/services/Parcel/AddressPts/MapServer/0"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "conform": {
+                    "format": "csv",
+                    "number": "STREET_NUM",
+                    "street": [
+                        "STREET_DIR",
+                        "STREET_NAME",
+                        "STREET_TYPE"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "postcode": "ZIPCODE",
+                    "lat": "OA:y",
+                    "lon": "OA:x"
+                },
+                "protocol": "ESRI",
+                "data": "http://maps.greshamoregon.gov/arcgis/rest/services/Parcel/AddressPts/MapServer/0"
+            }
+        ]
+    }
 }

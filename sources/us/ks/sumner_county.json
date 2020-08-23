@@ -1,19 +1,31 @@
 {
     "coverage": {
-        "US Census": {"geoid": "20191", "name": "Sumner County", "state": "Kansas"},
+        "US Census": {
+            "geoid": "20191",
+            "name": "Sumner County",
+            "state": "Kansas"
+        },
         "country": "us",
         "state": "ks",
         "county": "Sumner"
     },
-    "conform": {
-        "format": "csv",
-        "number": "NUM",
-        "street": "STR",
-        "city": "CITY",
-        "postcode": "ZIP",
-        "lon": "LON",
-        "lat": "LAT"
-    },
-    "data": "https://data.openaddresses.io/cache/us-ks-sumner_county.csv",
-    "protocol": "http"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "csv",
+                    "number": "NUM",
+                    "street": "STR",
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "lon": "LON",
+                    "lat": "LAT"
+                },
+                "data": "https://data.openaddresses.io/cache/us-ks-sumner_county.csv",
+                "protocol": "http"
+            }
+        ]
+    }
 }

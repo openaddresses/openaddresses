@@ -9,19 +9,27 @@
         "state": "nc",
         "county": "Wake"
     },
-    "website": "http://www.wakegov.com/gis/services/Pages/data.aspx",
-    "data": "https://maps.wakegov.com/arcgis/rest/services/Property/Addresses/MapServer/0",
-    "license": "http://www.wakegov.com/gis/services/Pages/metadata.aspx",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ST_NUM",
-        "street": [
-            "DIR_PREFIX",
-            "ST_NAME",
-            "ST_TYPE",
-            "DIR_SUFFIX"
-        ],
-        "city": "POSTAL_CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "http://www.wakegov.com/gis/services/Pages/data.aspx",
+                "data": "https://maps.wakegov.com/arcgis/rest/services/Property/Addresses/MapServer/0",
+                "license": "http://www.wakegov.com/gis/services/Pages/metadata.aspx",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ST_NUM",
+                    "street": [
+                        "DIR_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "DIR_SUFFIX"
+                    ],
+                    "city": "POSTAL_CITY"
+                }
+            }
+        ]
     }
 }

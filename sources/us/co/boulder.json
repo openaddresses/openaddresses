@@ -9,30 +9,38 @@
         "state": "co",
         "county": "Boulder"
     },
-    "data": "http://maps.bouldercounty.org/arcgis/rest/services/PARCELS/ADDRESS_POINTS/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "STREET_NUMBER_PREFIX",
-            "STREET_NUMBER",
-            "STREET_NUMBER_SUFFIX"
-        ],
-        "street": [
-            "PREFIX",
-            "PRETYPE",
-            "STREETNAME",
-            "STREETTYPE",
-            "SUFFIX",
-            "POSTMODIFIER"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNIT"
-        ],
-        "city": "CITY",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://maps.bouldercounty.org/arcgis/rest/services/PARCELS/ADDRESS_POINTS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "STREET_NUMBER_PREFIX",
+                        "STREET_NUMBER",
+                        "STREET_NUMBER_SUFFIX"
+                    ],
+                    "street": [
+                        "PREFIX",
+                        "PRETYPE",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFFIX",
+                        "POSTMODIFIER"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNIT"
+                    ],
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

@@ -16,25 +16,33 @@
         "state": "co",
         "city": "Commerce City"
     },
-    "data": "https://maps.c3gov.com/arcgis/rest/services/OpenData/Address/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-      "format": "geojson",
-      "number": "COMPLETE_HN",
-      "street": [
-          "ADDR_PD",
-          "ADDR_PT",
-          "ADDR_SN",
-          "ADDR_ST",
-          "ADDR_SD"
-      ],
-      "unit": [
-          "SUBADDR_TYPE",
-          "SUBADDR_UNIT"
-      ],
-      "city": "PLACE",
-      "district": "COUNTY",
-      "region": "STATE",
-      "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.c3gov.com/arcgis/rest/services/OpenData/Address/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "COMPLETE_HN",
+                    "street": [
+                        "ADDR_PD",
+                        "ADDR_PT",
+                        "ADDR_SN",
+                        "ADDR_ST",
+                        "ADDR_SD"
+                    ],
+                    "unit": [
+                        "SUBADDR_TYPE",
+                        "SUBADDR_UNIT"
+                    ],
+                    "city": "PLACE",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

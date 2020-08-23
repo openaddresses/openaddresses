@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -98.524676, 29.472148 ]
+            "coordinates": [
+                -98.524676,
+                29.472148
+            ]
         },
         "US Census": {
             "geoid": "4865000",
@@ -13,16 +16,24 @@
         "state": "tx",
         "city": "San Antonio"
     },
-    "data": "https://services.arcgis.com/g1fRTDLeMgspWrYp/ArcGIS/rest/services/COSA_Address/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "HouseNumber",
-        "street": [
-            "PreDirection",
-            "Name",
-            "AbbrevType",
-            "PostDirection"
-        ],
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/g1fRTDLeMgspWrYp/ArcGIS/rest/services/COSA_Address/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "HouseNumber",
+                    "street": [
+                        "PreDirection",
+                        "Name",
+                        "AbbrevType",
+                        "PostDirection"
+                    ],
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

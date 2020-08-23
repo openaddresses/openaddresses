@@ -9,18 +9,26 @@
         "state": "wa",
         "county": "Yakima"
     },
-    "data": "https://gis.yakimawa.gov/arcgis101/rest/services/Basemaps/NightMode/MapServer/5",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NO",
-        "street": {
-            "function": "regexp",
-            "field": "SITUS_ADDR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "SITUS_CITY",
-        "postcode": "SITUS_ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.yakimawa.gov/arcgis101/rest/services/Basemaps/NightMode/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NO",
+                    "street": {
+                        "function": "regexp",
+                        "field": "SITUS_ADDR",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": "SITUS_CITY",
+                    "postcode": "SITUS_ZIP"
+                }
+            }
+        ]
     }
 }

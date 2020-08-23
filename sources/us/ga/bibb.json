@@ -9,19 +9,27 @@
         "state": "ga",
         "county": "Bibb"
     },
-    "data": "http://bibbgis.co.bibb.ga.us/warcgis/rest/services/TaxAssessor/TaxParcels/MapServer/0",
-    "website": "http://bibbgis.co.bibb.ga.us/mapsandapps/",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITEADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITEADDRESS"
-        },
-        "unit": "UNIT"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://bibbgis.co.bibb.ga.us/warcgis/rest/services/TaxAssessor/TaxParcels/MapServer/0",
+                "website": "http://bibbgis.co.bibb.ga.us/mapsandapps/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITEADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITEADDRESS"
+                    },
+                    "unit": "UNIT"
+                }
+            }
+        ]
     }
 }

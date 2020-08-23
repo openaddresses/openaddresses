@@ -9,20 +9,28 @@
         "state": "fl",
         "county": "St. Johns"
     },
-    "data": "http://www.gis.bocc.co.st-johns.fl.us/GISDataDepot/download.aspx?layer=/GISDataDepot/Library/Address_Site.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "HSNUM",
-        "street": [
-            "PREDIR",
-            "PRETYPE",
-            "ROADNAME",
-            "ROADTYPE",
-            "SUFDIR"
-        ],
-        "city": "COMMUNITY",
-        "postcode": "ZIPCODE",
-        "format": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://www.gis.bocc.co.st-johns.fl.us/GISDataDepot/download.aspx?layer=/GISDataDepot/Library/Address_Site.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "HSNUM",
+                    "street": [
+                        "PREDIR",
+                        "PRETYPE",
+                        "ROADNAME",
+                        "ROADTYPE",
+                        "SUFDIR"
+                    ],
+                    "city": "COMMUNITY",
+                    "postcode": "ZIPCODE",
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

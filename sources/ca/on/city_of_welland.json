@@ -3,27 +3,41 @@
         "country": "ca",
         "state": "on",
         "city": "Welland",
-        "geometry": { "type": "Point", "coordinates": [-79.25, 42.99] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -79.25,
+                42.99
+            ]
+        }
     },
-    "data": "http://www.welland.ca/open/Datasheets/Welland_civic_addresses.zip",
-    "website": "http://www.welland.ca/open/OpendataResp.asp?utitle=Civic%20Addresses",
-    "license": "http://www.welland.ca/open/OpendataTermUse.asp",
-    "year": "2014",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(\\S+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
-        },
-        "format": "shapefile",
-        "srs": "EPSG:26917"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://www.welland.ca/open/Datasheets/Welland_civic_addresses.zip",
+                "website": "http://www.welland.ca/open/OpendataResp.asp?utitle=Civic%20Addresses",
+                "license": "http://www.welland.ca/open/OpendataTermUse.asp",
+                "year": "2014",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "address",
+                        "pattern": "^(\\S+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "address",
+                        "pattern": "^(?:\\S+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "format": "shapefile",
+                    "srs": "EPSG:26917"
+                }
+            }
+        ]
     }
 }

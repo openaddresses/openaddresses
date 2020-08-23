@@ -9,18 +9,26 @@
         "state": "co",
         "county": "Gilpin"
     },
-    "attribution": "Gilpin County",
-    "data": "https://gis.gilpincounty.org/arcgis/rest/services/WebMapServices/PropertyInfo/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "addrnum",
-        "street": "fullname",
-        "unit": [
-          "UNITTYPE",
-          "UNITID"
-        ],
-        "city": "postalcity",
-        "postcode": "postalzip",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Gilpin County",
+                "data": "https://gis.gilpincounty.org/arcgis/rest/services/WebMapServices/PropertyInfo/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "addrnum",
+                    "street": "fullname",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "postalcity",
+                    "postcode": "postalzip",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

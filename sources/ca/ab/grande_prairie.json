@@ -3,16 +3,34 @@
         "country": "ca",
         "state": "ab",
         "county": "Grande Prairie",
-        "geometry": { "type": "Point", "coordinates": [-118.81, 55.18] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -118.81,
+                55.18
+            ]
+        }
     },
-    "data": "https://giswebservices.countygp.ab.ca/arcgis/rest/services/Share/site_addresses/MapServer/1",
-    "website": "http://www.countygp.ab.ca/EN/main/community/maps-gis/open-data/data.html",
-    "license": "http://www.countygp.ab.ca/EN/main/community/maps-gis/open-data/open-data-licence.html",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": ["STRENUMPRE", "STREETNUM", "STREETNUMSUFF"],
-        "street": "FULLSTREETNAME"
-    },
-    "attribution": "County of Grand Prairie No. 1"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://giswebservices.countygp.ab.ca/arcgis/rest/services/Share/site_addresses/MapServer/1",
+                "website": "http://www.countygp.ab.ca/EN/main/community/maps-gis/open-data/data.html",
+                "license": "http://www.countygp.ab.ca/EN/main/community/maps-gis/open-data/open-data-licence.html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "STRENUMPRE",
+                        "STREETNUM",
+                        "STREETNUMSUFF"
+                    ],
+                    "street": "FULLSTREETNAME"
+                },
+                "attribution": "County of Grand Prairie No. 1"
+            }
+        ]
+    }
 }

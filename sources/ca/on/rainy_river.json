@@ -4,20 +4,28 @@
         "state": "on",
         "city": "Rainy River"
     },
-    "protocol": "ESRI",
-    "data": "https://services6.arcgis.com/cAlSc4wxfRSxAFO8/ArcGIS/rest/services/StanjiAssetInventory/FeatureServer/0",
-    "conform":{
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://services6.arcgis.com/cAlSc4wxfRSxAFO8/ArcGIS/rest/services/StanjiAssetInventory/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }

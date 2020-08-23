@@ -17,19 +17,27 @@
         "county": "St. Charles",
         "city": "O'Fallon"
     },
-    "data": "http://gis3.ofallon.mo.us/arcgis/rest/services/Citizenserve/Address_Labels/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "STREET_NUMBER",
-        "street": [
-            "STREET_DIR",
-            "STREET_NAME",
-            "STREET_TYPE"
-        ],
-        "unit": "STREET_APT",
-        "city": "Property_City",
-        "region": "Property_State",
-        "postcode": "ZIP_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis3.ofallon.mo.us/arcgis/rest/services/Citizenserve/Address_Labels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREET_NUMBER",
+                    "street": [
+                        "STREET_DIR",
+                        "STREET_NAME",
+                        "STREET_TYPE"
+                    ],
+                    "unit": "STREET_APT",
+                    "city": "Property_City",
+                    "region": "Property_State",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ]
     }
 }

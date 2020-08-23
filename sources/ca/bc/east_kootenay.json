@@ -7,21 +7,29 @@
             "type": "Point",
             "coordinates": [
                 -115.772,
-                50.680
+                50.68
             ]
         }
     },
-    "data": "https://services1.arcgis.com/SsOSFuyUWJh1AOU5/ArcGIS/rest/services/All_EK_AddressPnt/FeatureServer/0",
-    "website": "https://opendata.arcgis.com/datasets/RDEK::tax-parcels",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "House_",
-        "street": {
-            "function": "postfixed_street",
-            "field": "FullAddres"
-        },
-        "unit": "Unit",
-        "city": "Locality"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/SsOSFuyUWJh1AOU5/ArcGIS/rest/services/All_EK_AddressPnt/FeatureServer/0",
+                "website": "https://opendata.arcgis.com/datasets/RDEK::tax-parcels",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "House_",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FullAddres"
+                    },
+                    "unit": "Unit",
+                    "city": "Locality"
+                }
+            }
+        ]
     }
 }

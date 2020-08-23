@@ -9,26 +9,34 @@
         "state": "mn",
         "county": "Chippewa"
     },
-    "data": "https://gis.chippewa.mn/arcgis/rest/services/public_LINK/MapServer/2",
-    "protocol": "ESRI",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "format": "geojson",
-        "city": {
-          "function": "regexp",
-          "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
-          "pattern": "^([^,]+)"
-        },
-        "postcode": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.chippewa.mn/arcgis/rest/services/public_LINK/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "format": "geojson",
+                    "city": {
+                        "function": "regexp",
+                        "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
+                        "pattern": "^([^,]+)"
+                    },
+                    "postcode": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ZIP"
+                }
+            }
+        ]
     }
 }

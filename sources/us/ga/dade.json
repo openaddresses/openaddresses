@@ -9,16 +9,24 @@
         "state": "ga",
         "county": "Dade"
     },
-    "data": "https://gis.dadecounty-ga.gov/arcgis/rest/services/DADEGIS/Geovfy/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDR_HN",
-        "street": [
-            "ADDR_SN",
-            "ADDR_ST",
-            "ADDR_SD"
-        ],
-        "city": "COMM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.dadecounty-ga.gov/arcgis/rest/services/DADEGIS/Geovfy/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDR_HN",
+                    "street": [
+                        "ADDR_SN",
+                        "ADDR_ST",
+                        "ADDR_SD"
+                    ],
+                    "city": "COMM"
+                }
+            }
+        ]
     }
 }

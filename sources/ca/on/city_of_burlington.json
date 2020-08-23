@@ -3,23 +3,37 @@
         "country": "ca",
         "state": "on",
         "city": "Burlington",
-        "geometry": { "type": "Point", "coordinates": [-79.80, 43.33] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -79.8,
+                43.33
+            ]
+        }
     },
-    "data": "https://mapping.burlington.ca/arcgisweb/rest/services/COB/AddressPoints/MapServer/0",
-    "website": "http://cms.burlington.ca/Page12956.aspx",
-    "license": "http://cms.burlington.ca/AssetFactory.aspx?did=18762",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-            "STREET",
-            "STRTYPE",
-            "STRDIR"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNIT"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://mapping.burlington.ca/arcgisweb/rest/services/COB/AddressPoints/MapServer/0",
+                "website": "http://cms.burlington.ca/Page12956.aspx",
+                "license": "http://cms.burlington.ca/AssetFactory.aspx?did=18762",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "STREET",
+                        "STRTYPE",
+                        "STRDIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNIT"
+                    ]
+                }
+            }
         ]
     }
 }

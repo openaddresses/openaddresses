@@ -1,45 +1,56 @@
 {
-    "data": "https://opendata.bosa.be/download/best/openaddress-bebru.zip",
-    "protocol": "http",
     "coverage": {
-         "ISO 3166": {
-             "alpha2": "BE-BRU",
-             "state": "Brussels-Capital Region",
-             "country": "Belgium"
-         },
-         "country": "be",
-         "state": "brussels-capital region"
-    },
-    "conform": {
-        "format": "csv",
-        "srs": "EPSG:4326",
-        "encoding": "utf-8",
-        "accuracy": 3,
-        "number": "house_number",
-        "street": "streetname_fr",
-        "city":  "municipality_name_fr",
-        "postcode": "postcode",
-        "id": {
-            "function": "join",
-            "fields": ["region_code","address_id"],
-            "separator": ":"
+        "ISO 3166": {
+            "alpha2": "BE-BRU",
+            "state": "Brussels-Capital Region",
+            "country": "Belgium"
         },
-        "unit": "box_number",
-        "lon": "EPSG:4326_lon",
-        "lat": "EPSG:4326_lat"
+        "country": "be",
+        "state": "brussels-capital region"
     },
-    "compression": "zip",
-    "language": "fr",
-    "website": "https://opendata.bosa.be",
-    "license": {
-        "url": "https://cirb.brussels/fr/nos-solutions/urbis-solutions/licence-urbis-open-data",
-        "text": "CIRB licence ouverte",
-        "attribution": true,
-        "attribution name": "CIRB / SPRB"
-    },
-    "contact": {
-        "name": "Federal Public Service Policy and Support" ,
-        "email": "opendata@belgium.be",
-        "address": "Simon Bolivarlaan 30, WTC III, 1000 Brussels, Belgium"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://opendata.bosa.be/download/best/openaddress-bebru.zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "csv",
+                    "srs": "EPSG:4326",
+                    "encoding": "utf-8",
+                    "accuracy": 3,
+                    "number": "house_number",
+                    "street": "streetname_fr",
+                    "city": "municipality_name_fr",
+                    "postcode": "postcode",
+                    "id": {
+                        "function": "join",
+                        "fields": [
+                            "region_code",
+                            "address_id"
+                        ],
+                        "separator": ":"
+                    },
+                    "unit": "box_number",
+                    "lon": "EPSG:4326_lon",
+                    "lat": "EPSG:4326_lat"
+                },
+                "compression": "zip",
+                "language": "fr",
+                "website": "https://opendata.bosa.be",
+                "license": {
+                    "url": "https://cirb.brussels/fr/nos-solutions/urbis-solutions/licence-urbis-open-data",
+                    "text": "CIRB licence ouverte",
+                    "attribution": true,
+                    "attribution name": "CIRB / SPRB"
+                },
+                "contact": {
+                    "name": "Federal Public Service Policy and Support",
+                    "email": "opendata@belgium.be",
+                    "address": "Simon Bolivarlaan 30, WTC III, 1000 Brussels, Belgium"
+                }
+            }
+        ]
     }
 }

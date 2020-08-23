@@ -9,27 +9,35 @@
         "state": "sc",
         "county": "Lexington"
     },
-    "data": "http://maps.lex-co.com/arcgis/rest/services/AddressPts/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": [
-          "STRNUM_SUF",
-          "STREET_NUM"
-        ],
-        "street": [
-            "PRE_DIR",
-            "PRE_TYPE",
-            "STREET_NAME",
-            "STREET_TYPE",
-            "SUF_DIR"
-        ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT"
-        ],
-        "city": "POSTOFFICE",
-        "postcode": "ZIP",
-        "region": "STATE",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://maps.lex-co.com/arcgis/rest/services/AddressPts/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": [
+                        "STRNUM_SUF",
+                        "STREET_NUM"
+                    ],
+                    "street": [
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT"
+                    ],
+                    "city": "POSTOFFICE",
+                    "postcode": "ZIP",
+                    "region": "STATE",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

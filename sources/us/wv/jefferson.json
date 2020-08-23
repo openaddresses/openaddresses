@@ -9,15 +9,23 @@
         "state": "wv",
         "county": "Jefferson"
     },
-    "data": "http://184.12.255.122:6080/arcgis/rest/services/MyGov/Addressing_2/MapServer/0",
-    "note": "the layer name implies the city of Ranson, but the source is more likely all of Jefferson County",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "city": "COMMUNITY",
-        "postcode": "ZIPCODE",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://184.12.255.122:6080/arcgis/rest/services/MyGov/Addressing_2/MapServer/0",
+                "note": "the layer name implies the city of Ranson, but the source is more likely all of Jefferson County",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "city": "COMMUNITY",
+                    "postcode": "ZIPCODE",
+                    "region": "STATE"
+                }
+            }
+        ]
     }
 }

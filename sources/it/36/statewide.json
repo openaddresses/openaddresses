@@ -8,27 +8,41 @@
         "country": "it",
         "state": "36"
     },
-    "data": "http://irdat.regione.fvg.it/Distributore/download?idDset=10221&idFmt=383&type=lcr&path=SIT/Shape/CIVICI_RAFVG_sh.zip",
-    "website": "http://irdat.regione.fvg.it/consultatore-dati-ambientali-territoriali/executeSearch.do?searchDatasets=true&searchServices=true&searchIndicatori=true&testoRicerca=civici&topMap=0&leftMap=0&rightMap=0&bottomMap=0&customSelection=false&place=anywhere&codiciAmbiti=none&boundingBox=&patternSoggetti=&fonteDati=-1&dataDal=&dataAl=&selectedNetwork=&searchType=advanced&avviaRicerca=Search#",
-    "license": {
-        "url": "http://www.dati.gov.it/iodl/2.0/",
-        "attribution": true,
-        "share-alike": false
-        },
-    "protocol": "http",
-    "compression": "zip",
-    "language": "it",
-    "conform": {
-        "number": {
-            "fields": ["num_civ","barrato"],
-            "function": "join",
-            "separator": "/"
-        },
-        "street": ["tipo_strad","nome_strad"],
-        "city": "nome_comun",
-        "region": "Friuli-Venezia Giulia",
-        "id": "id_civ",
-        "format": "shapefile",
-        "accuracy": 3
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "http://irdat.regione.fvg.it/Distributore/download?idDset=10221&idFmt=383&type=lcr&path=SIT/Shape/CIVICI_RAFVG_sh.zip",
+                "website": "http://irdat.regione.fvg.it/consultatore-dati-ambientali-territoriali/executeSearch.do?searchDatasets=true&searchServices=true&searchIndicatori=true&testoRicerca=civici&topMap=0&leftMap=0&rightMap=0&bottomMap=0&customSelection=false&place=anywhere&codiciAmbiti=none&boundingBox=&patternSoggetti=&fonteDati=-1&dataDal=&dataAl=&selectedNetwork=&searchType=advanced&avviaRicerca=Search#",
+                "license": {
+                    "url": "http://www.dati.gov.it/iodl/2.0/",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "language": "it",
+                "conform": {
+                    "number": {
+                        "fields": [
+                            "num_civ",
+                            "barrato"
+                        ],
+                        "function": "join",
+                        "separator": "/"
+                    },
+                    "street": [
+                        "tipo_strad",
+                        "nome_strad"
+                    ],
+                    "city": "nome_comun",
+                    "region": "Friuli-Venezia Giulia",
+                    "id": "id_civ",
+                    "format": "shapefile",
+                    "accuracy": 3
+                }
+            }
+        ]
     }
 }

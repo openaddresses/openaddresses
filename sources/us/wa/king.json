@@ -9,23 +9,31 @@
         "state": "wa",
         "county": "King"
     },
-    "website": "http://www5.kingcounty.gov/gisdataportal/Default.aspx",
-    "protocol": "ESRI",
-    "data": "http://gismaps.kingcounty.gov/arcgis/rest/services/Address/KingCo_AddressPoints/MapServer/0",
-    "license": "http://www5.kingcounty.gov/gisdataportal/",
-    "conform": {
-        "format": "geojson",
-        "id": "SITEID",
-        "number": "ADDR_NUM",
-        "street": [
-            "ADDR_PD",
-            "ADDR_PT",
-            "ADDR_SN",
-            "ADDR_ST",
-            "ADDR_SD"
-        ],
-        "city": "CTYNAME",
-        "postcode": "ZIP5",
-        "district": "COUNTY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "http://www5.kingcounty.gov/gisdataportal/Default.aspx",
+                "protocol": "ESRI",
+                "data": "http://gismaps.kingcounty.gov/arcgis/rest/services/Address/KingCo_AddressPoints/MapServer/0",
+                "license": "http://www5.kingcounty.gov/gisdataportal/",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SITEID",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "ADDR_PD",
+                        "ADDR_PT",
+                        "ADDR_SN",
+                        "ADDR_ST",
+                        "ADDR_SD"
+                    ],
+                    "city": "CTYNAME",
+                    "postcode": "ZIP5",
+                    "district": "COUNTY"
+                }
+            }
+        ]
     }
 }

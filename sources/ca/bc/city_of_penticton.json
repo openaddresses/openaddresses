@@ -1,26 +1,34 @@
 {
-  "coverage": {
-      "country": "ca",
-      "state": "bc",
-      "city": "Penticton",
-      "geometry": {
-          "type": "Point",
-          "coordinates": [
-              -119.569,
-              49.495
-          ]
-      }
-  },
-  "data": "https://gis.penticton.ca/external/rest/services/prd/Cadastral/MapServer/29",
-  "protocol": "ESRI",
-  "conform": {
-      "format": "geojson",
-      "number": "STR_NO",
-      "street": [
-          "STR_NAME",
-          "STR_TYPE",
-          "STR_DR_SUF"
-      ],
-      "city": "LOCALITY"
-  }
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "city": "Penticton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -119.569,
+                49.495
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.penticton.ca/external/rest/services/prd/Cadastral/MapServer/29",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STR_NO",
+                    "street": [
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "STR_DR_SUF"
+                    ],
+                    "city": "LOCALITY"
+                }
+            }
+        ]
+    }
 }

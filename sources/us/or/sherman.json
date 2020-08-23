@@ -9,27 +9,35 @@
         "state": "or",
         "county": "Sherman"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "gdb",
-        "file": "Delivery/addresses_oregon.gdb",
-        "layer": "Sherman",
-        "number": [
-            "ADDR_NUM",
-            "NUM_SUFF"
-        ],
-        "street": [
-            "PREMOD",
-            "PREDIR",
-            "PRETYPE",
-            "STNAME",
-            "STTYPE",
-            "SUFDIR",
-            "POSTMOD"
-        ],
-        "city": "USPS_CITY",
-        "postcode": "ZIP5"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "file": "Delivery/addresses_oregon.gdb",
+                    "layer": "Sherman",
+                    "number": [
+                        "ADDR_NUM",
+                        "NUM_SUFF"
+                    ],
+                    "street": [
+                        "PREMOD",
+                        "PREDIR",
+                        "PRETYPE",
+                        "STNAME",
+                        "STTYPE",
+                        "SUFDIR",
+                        "POSTMOD"
+                    ],
+                    "city": "USPS_CITY",
+                    "postcode": "ZIP5"
+                }
+            }
+        ]
     }
 }

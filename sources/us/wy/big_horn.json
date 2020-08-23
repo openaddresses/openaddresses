@@ -9,19 +9,27 @@
         "state": "wy",
         "county": "Big Horn"
     },
-    "data": "https://maps.greenwoodmap.com/bighorn/mapserver/download/address_points.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "number": "streetno",
-        "unit": "st_unit",
-        "street": [
-            "pre_type",
-            "pre_direct",
-            "streetname",
-            "post_type",
-            "post_direc"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.greenwoodmap.com/bighorn/mapserver/download/address_points.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "streetno",
+                    "unit": "st_unit",
+                    "street": [
+                        "pre_type",
+                        "pre_direct",
+                        "streetname",
+                        "post_type",
+                        "post_direc"
+                    ]
+                }
+            }
         ]
     }
 }

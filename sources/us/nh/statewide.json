@@ -1,29 +1,37 @@
 {
-	"coverage": {
-		"US Census": {
-			"geoid": "33",
-			"state": "New Hampshire"
-		},
-		"country": "us",
-		"state": "nh"
-	},
-	"data": "https://nhgeodata.unh.edu/nhgeodata/rest/services/CAD/ParcelMosiac/MapServer/0",
-	"website": "http://www.granit.unh.edu/data/onlinemapservices/mapservicesoverview.html",
-	"protocol": "ESRI",
-	"conform": {
-		"format": "geojson",
-		"number": {
-			"function": "prefixed_number",
-			"field": "Address"
-		},
-		"street": {
-			"function": "postfixed_street",
-			"field": "Address"
-		},
-		"unit": {
-			"function": "postfixed_unit",
-			"field": "Address"
-		},
-		"city": "TOWN_NAME"
-	}
+    "coverage": {
+        "US Census": {
+            "geoid": "33",
+            "state": "New Hampshire"
+        },
+        "country": "us",
+        "state": "nh"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://nhgeodata.unh.edu/nhgeodata/rest/services/CAD/ParcelMosiac/MapServer/0",
+                "website": "http://www.granit.unh.edu/data/onlinemapservices/mapservicesoverview.html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Address"
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "Address"
+                    },
+                    "city": "TOWN_NAME"
+                }
+            }
+        ]
+    }
 }

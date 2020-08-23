@@ -9,20 +9,28 @@
         "state": "ar",
         "county": "Pulaski"
     },
-    "data": "https://www.pagis.org/arcgis/rest/services/MAPS/BaseMap/MapServer/9",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "BPADD_UNIQ",
-        "number": "HOUSENUM",
-        "street": [
-            "PREFIX",
-            "STREETNAME",
-            "STREETTYPE",
-            "SUFFIX"
-        ],
-        "unit": "UNIT",
-        "city": "CITYNAME",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.pagis.org/arcgis/rest/services/MAPS/BaseMap/MapServer/9",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "BPADD_UNIQ",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "PREFIX",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFFIX"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITYNAME",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

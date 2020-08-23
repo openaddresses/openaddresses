@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -97.22797393798828, 32.930318199070534 ]
+            "coordinates": [
+                -97.22797393798828,
+                32.930318199070534
+            ]
         },
         "US Census": {
             "geoid": "4838632",
@@ -14,14 +17,22 @@
         "county": "Tarrant",
         "city": "Keller"
     },
-    "data": "http://gis.dfwmaps.com/ArcGIS/rest/services/Keller/Keller_All_VE/MapServer/13",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "STREETNUMB",
-        "street": [
-            "STREETNAME",
-            "STREETTYPE"
-        ],
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis.dfwmaps.com/ArcGIS/rest/services/Keller/Keller_All_VE/MapServer/13",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "STREETNUMB",
+                    "street": [
+                        "STREETNAME",
+                        "STREETTYPE"
+                    ],
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

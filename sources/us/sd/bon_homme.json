@@ -1,15 +1,27 @@
 {
     "coverage": {
-        "US Census": {"geoid": "46009", "name": "Bon Homme County", "state": "South Dakota"},
+        "US Census": {
+            "geoid": "46009",
+            "name": "Bon Homme County",
+            "state": "South Dakota"
+        },
         "country": "us",
         "state": "sd",
         "county": "Bon Homme"
     },
-    "data": "http://ims.districtiii.org/arcgis/rest/services/BON_HOMME/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "CAMA_2017.HOUSE",
-        "street": "CAMA_2017.STREET",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://ims.districtiii.org/arcgis/rest/services/BON_HOMME/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "CAMA_2017.HOUSE",
+                    "street": "CAMA_2017.STREET",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

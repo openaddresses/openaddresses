@@ -9,26 +9,34 @@
         "state": "wi",
         "county": "Milwaukee"
     },
-    "data": "http://lio.milwaukeecountywi.gov/arcgis/rest/services/Addressing/Address_Points/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "ADDRESS_ID",
-        "number": "HOUSENO",
-        "street": [
-            "DIR",
-            "STREET",
-            "STTYPE",
-            "PDIR"
-        ],
-        "unit": "UNIT",
-        "city": "MUNI",
-        "postcode": {
-            "function": "regexp",
-            "field": "ZIP_CODE",
-            "pattern": "^([\\d]{5})([\\d]{4})$",
-            "replace": "$1-$2"
-        },
-        "accuracy": 1
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://lio.milwaukeecountywi.gov/arcgis/rest/services/Addressing/Address_Points/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDRESS_ID",
+                    "number": "HOUSENO",
+                    "street": [
+                        "DIR",
+                        "STREET",
+                        "STTYPE",
+                        "PDIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "MUNI",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "ZIP_CODE",
+                        "pattern": "^([\\d]{5})([\\d]{4})$",
+                        "replace": "$1-$2"
+                    },
+                    "accuracy": 1
+                }
+            }
+        ]
     }
 }

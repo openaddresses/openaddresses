@@ -3,17 +3,31 @@
         "country": "ca",
         "state": "on",
         "city": "Toronto",
-        "geometry": { "type": "Point", "coordinates": [-79.40, 43.66] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -79.4,
+                43.66
+            ]
+        }
     },
-    "data": "http://opendata.toronto.ca/gcc/address_points_wgs84.zip",
-    "website": "https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-catalogue/#f71a13c4-fb51-6116-57b7-1f51a8190585",
-    "license": "https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-licence/",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "number": "address",
-        "street": "lfname",
-        "city": "mun_name"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://opendata.toronto.ca/gcc/address_points_wgs84.zip",
+                "website": "https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-catalogue/#f71a13c4-fb51-6116-57b7-1f51a8190585",
+                "license": "https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-licence/",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "address",
+                    "street": "lfname",
+                    "city": "mun_name"
+                }
+            }
+        ]
     }
 }

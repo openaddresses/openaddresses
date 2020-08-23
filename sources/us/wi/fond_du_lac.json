@@ -9,16 +9,24 @@
         "state": "wi",
         "county": "Fond du Lac"
     },
-    "data": "http://gisweb.fdlco.wi.gov/arcgis/rest/services/PropertyCardMap/MapServer/7",
-    "protocol": "ESRI",
-    "note": "Number has letters in it, which is fine for Wisconsin",
-    "conform": {
-        "format": "geojson",
-        "number": "NUMBER",
-        "street": [
-            "DIRECTION",
-            "PRI_NAME",
-            "TYPE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gisweb.fdlco.wi.gov/arcgis/rest/services/PropertyCardMap/MapServer/7",
+                "protocol": "ESRI",
+                "note": "Number has letters in it, which is fine for Wisconsin",
+                "conform": {
+                    "format": "geojson",
+                    "number": "NUMBER",
+                    "street": [
+                        "DIRECTION",
+                        "PRI_NAME",
+                        "TYPE"
+                    ]
+                }
+            }
         ]
     }
 }

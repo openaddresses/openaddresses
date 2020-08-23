@@ -1,20 +1,31 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13193", "name": "Macon-Bibb County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13193",
+            "name": "Macon-Bibb County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Macon-Bibb"
     },
-    "data": "http://gis.maconbibb.us/downloads/shapefiles/addresspoints.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "unit": "UNIT",
-        "number": "ADDR_HN",
-        "street": "FULLNAME",
-        "postcode": "ZIP_1",
-        "city": "City_1"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.maconbibb.us/downloads/shapefiles/addresspoints.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "unit": "UNIT",
+                    "number": "ADDR_HN",
+                    "street": "FULLNAME",
+                    "postcode": "ZIP_1",
+                    "city": "City_1"
+                }
+            }
+        ]
     }
 }
-

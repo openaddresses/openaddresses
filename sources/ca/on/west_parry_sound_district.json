@@ -3,15 +3,29 @@
         "country": "ca",
         "state": "on",
         "city": "West Parry Sound",
-        "geometry": { "type": "Point", "coordinates": [-80.0, 45.8] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -80,
+                45.8
+            ]
+        }
     },
-    "data": "http://www.wpsgn.ca/arcgis/rest/services/WPSGN/WPSGN_Layers/MapServer/6",
-    "website": "http://www.wpsgn.ca/website/seguin.html",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "CivicNumber",
-        "street": "CivicAddress",
-        "city": "Municipality"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://www.wpsgn.ca/arcgis/rest/services/WPSGN/WPSGN_Layers/MapServer/6",
+                "website": "http://www.wpsgn.ca/website/seguin.html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "CivicNumber",
+                    "street": "CivicAddress",
+                    "city": "Municipality"
+                }
+            }
+        ]
     }
 }

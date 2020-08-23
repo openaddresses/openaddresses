@@ -9,16 +9,24 @@
         "state": "wi",
         "county": "La Crosse"
     },
-    "data": "https://gis.lacrossecounty.org/gisserver/rest/services/AGOL/AddressPoints/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSENUMBE",
-        "street": [
-            "STREETNAME",
-            "STREETTYPE",
-            "STREETSUFF"
-        ],
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.lacrossecounty.org/gisserver/rest/services/AGOL/AddressPoints/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUMBE",
+                    "street": [
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "STREETSUFF"
+                    ],
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

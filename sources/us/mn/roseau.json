@@ -9,22 +9,30 @@
         "state": "mn",
         "county": "Roseau"
     },
-    "data": "http://gis.co.roseau.mn.us/arcgis/rest/services/Roseau_Operational_DataJoin_Web_Merc/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "RoseauAS400.dbo.tblParcelJoin.PhysAddr",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "RoseauAS400.dbo.tblParcelJoin.PhysAddr",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "format": "geojson",
-        "city": "RoseauAS400.dbo.tblParcelJoin.PhysCity",
-        "accuracy": 2
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.co.roseau.mn.us/arcgis/rest/services/Roseau_Operational_DataJoin_Web_Merc/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "RoseauAS400.dbo.tblParcelJoin.PhysAddr",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "RoseauAS400.dbo.tblParcelJoin.PhysAddr",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "format": "geojson",
+                    "city": "RoseauAS400.dbo.tblParcelJoin.PhysCity",
+                    "accuracy": 2
+                }
+            }
+        ]
     }
 }

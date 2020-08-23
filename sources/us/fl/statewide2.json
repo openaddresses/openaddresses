@@ -7,27 +7,35 @@
         "country": "us",
         "state": "fl"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/albarrentine/9cb57c/Statewide_2020-01-01.csv.zip",
-    "website": "https://pointmatch.floridarevenue.com/General/AddressFiles.aspx",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "csv",
-        "lat": "LAT",
-        "lon": "LONG",
-        "number": "NUMBER",
-        "street": [
-            "PREDIR",
-            "STNAME",
-            "STSUFFIX",
-            "POSTDIR"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNITNUM"
-        ],
-        "city": "MAILCITY",
-        "district": "COUNTY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://data.openaddresses.io/cache/uploads/albarrentine/9cb57c/Statewide_2020-01-01.csv.zip",
+                "website": "https://pointmatch.floridarevenue.com/General/AddressFiles.aspx",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "csv",
+                    "lat": "LAT",
+                    "lon": "LONG",
+                    "number": "NUMBER",
+                    "street": [
+                        "PREDIR",
+                        "STNAME",
+                        "STSUFFIX",
+                        "POSTDIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITNUM"
+                    ],
+                    "city": "MAILCITY",
+                    "district": "COUNTY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

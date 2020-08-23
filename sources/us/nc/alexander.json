@@ -9,32 +9,40 @@
         "state": "nc",
         "county": "Alexander"
     },
-    "data": "http://maps.co.alexander.nc.us/arcgis/rest/services/Regional_Site/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "NUM_STREET",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "NUM_STREET",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "CITY_STATE",
-            "pattern": "^(.*), (.*)",
-            "replace": "$1"
-        },
-        "region": {
-            "function": "regexp",
-            "field": "CITY_STATE",
-            "pattern": "^(.*), (.*)",
-            "replace": "$2"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://maps.co.alexander.nc.us/arcgis/rest/services/Regional_Site/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "NUM_STREET",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "NUM_STREET",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "CITY_STATE",
+                        "pattern": "^(.*), (.*)",
+                        "replace": "$1"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "CITY_STATE",
+                        "pattern": "^(.*), (.*)",
+                        "replace": "$2"
+                    }
+                }
+            }
+        ]
     }
 }

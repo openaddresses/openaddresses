@@ -1,24 +1,36 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13027", "name": "Brooks County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13027",
+            "name": "Brooks County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Brooks"
     },
-    "data": "http://www.sgrcmaps.com/arcgis/rest/services/Brooks/RoadAddresses/MapServer/0",
-    "note": "While this source does have separate fields for the street components, streets like 'HWY 122' lack the 'HWY' portion in any field, so the concatenated version works best overall.",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "STNUM",
-        "street": "LABEL",
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUM"
-        ],
-        "city": "CITY",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://www.sgrcmaps.com/arcgis/rest/services/Brooks/RoadAddresses/MapServer/0",
+                "note": "While this source does have separate fields for the street components, streets like 'HWY 122' lack the 'HWY' portion in any field, so the concatenated version works best overall.",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STNUM",
+                    "street": "LABEL",
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

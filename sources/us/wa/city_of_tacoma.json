@@ -17,73 +17,81 @@
         "county": "Pierce",
         "city": "Tacoma"
     },
-    "note": {
-      "description": "Embedded units are quite varied so the regexes are pretty complicated",
-      "examples": {
-          "without units": [
-              "123 MAIN ST",
-              "123 MAIN ST E",
-              "123 MAIN ST W",
-              "123 MAIN ST N",
-              "123 MAIN ST S",
-              "123 1/2 MAIN ST"
-          ],
-          "with units": [
-              "123 MAIN ST 80",
-              "123 MAIN ST 80 A",
-              "123 MAIN ST A",
-              "123 MAIN ST 13B",
-              "123 MAIN ST CC302",
-              "123 MAIN ST 401A",
-              "123 MAIN ST A104",
-              "123 MAIN ST A-104",
-              "123 MAIN ST A 104",
-              "123 MAIN ST A1 104",
-              "123 MAIN ST AH 104",
-              "123 MAIN ST PS 104",
-              "123 MAIN ST SCA 104",
-              "123 MAIN ST # 123",
-              "123 MAIN ST #123",
-              "123 MAIN ST # SOME STUFF",
-              "123 MAIN ST UNIT 123",
-              "123 MAIN ST STE 123",
-              "123 MAIN ST STE A",
-              "123 MAIN ST BLDG A",
-              "123 MAIN ST REAR",
-              "123 MAIN ST BSMT",
-              "123 MAIN ST FRNT",
-              "123 MAIN ST A UPPR",
-              "123 MAIN ST N UPPR",
-              "123 MAIN ST UPPR",
-              "123 MAIN ST LOWR",
-              "123 MAIN ST LOWR 1",
-              "123 MAIN ST IRRIG",
-              "123 MAIN ST PUMP STA",
-              "123 MAIN ST OFC",
-              "123 MAIN ST REC",
-              "123 MAIN ST SIGN"
-          ]
-      }
-    },
-    "data": "https://data.openaddresses.io/cache/uploads/trescube/911ca6/us-wa-city-of-tacoma.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "number": {
-            "function": "regexp",
-            "field": "MAPTIP",
-            "pattern": "^(\\d+(?:\\s+1\/2)?)\\s+(?:.+)$"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "MAPTIP",
-            "pattern": "^(?:\\d+(?: 1\/2)?)\\s+(.+?)(?:\\s+(?:#.*|(?:[A-DF-MO-RT-VX-Z]|PS|AH|SCA)(?: \\d+)?|[A-Z]\\d+ \\d+|[A-Z]*-?\\d+|\\d+ ?[A-Z]|(?:UNIT|STE|BLDG)\\s+\\w+|FRNT|BSMT|REAR|LOWR(?: \\d+?)?|(?:[A-DF-MO-RT-VX-Z] )?UPPR|IRRIG|PUMP STA|OFC|REC|SIGN))?$"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "MAPTIP",
-            "pattern": "^(?:.+?)\\s+(#.*|(?:[A-DF-MO-RT-VX-Z]|PS|AH|SCA)(?: \\d+)?|[A-Z]\\d+ \\d+|[A-Z]*-?\\d+|\\d+ ?[A-Z]|(?:UNIT|STE|BLDG)\\s+\\w+|FRNT|BSMT|REAR|LOWR(?: \\d+?)?|(?:[A-DF-MO-RT-VX-Z] )?UPPR|IRRIG|PUMP STA|OFC|REC|SIGN)?$"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "note": {
+                    "description": "Embedded units are quite varied so the regexes are pretty complicated",
+                    "examples": {
+                        "without units": [
+                            "123 MAIN ST",
+                            "123 MAIN ST E",
+                            "123 MAIN ST W",
+                            "123 MAIN ST N",
+                            "123 MAIN ST S",
+                            "123 1/2 MAIN ST"
+                        ],
+                        "with units": [
+                            "123 MAIN ST 80",
+                            "123 MAIN ST 80 A",
+                            "123 MAIN ST A",
+                            "123 MAIN ST 13B",
+                            "123 MAIN ST CC302",
+                            "123 MAIN ST 401A",
+                            "123 MAIN ST A104",
+                            "123 MAIN ST A-104",
+                            "123 MAIN ST A 104",
+                            "123 MAIN ST A1 104",
+                            "123 MAIN ST AH 104",
+                            "123 MAIN ST PS 104",
+                            "123 MAIN ST SCA 104",
+                            "123 MAIN ST # 123",
+                            "123 MAIN ST #123",
+                            "123 MAIN ST # SOME STUFF",
+                            "123 MAIN ST UNIT 123",
+                            "123 MAIN ST STE 123",
+                            "123 MAIN ST STE A",
+                            "123 MAIN ST BLDG A",
+                            "123 MAIN ST REAR",
+                            "123 MAIN ST BSMT",
+                            "123 MAIN ST FRNT",
+                            "123 MAIN ST A UPPR",
+                            "123 MAIN ST N UPPR",
+                            "123 MAIN ST UPPR",
+                            "123 MAIN ST LOWR",
+                            "123 MAIN ST LOWR 1",
+                            "123 MAIN ST IRRIG",
+                            "123 MAIN ST PUMP STA",
+                            "123 MAIN ST OFC",
+                            "123 MAIN ST REC",
+                            "123 MAIN ST SIGN"
+                        ]
+                    }
+                },
+                "data": "https://data.openaddresses.io/cache/uploads/trescube/911ca6/us-wa-city-of-tacoma.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": {
+                        "function": "regexp",
+                        "field": "MAPTIP",
+                        "pattern": "^(\\d+(?:\\s+1/2)?)\\s+(?:.+)$"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "MAPTIP",
+                        "pattern": "^(?:\\d+(?: 1/2)?)\\s+(.+?)(?:\\s+(?:#.*|(?:[A-DF-MO-RT-VX-Z]|PS|AH|SCA)(?: \\d+)?|[A-Z]\\d+ \\d+|[A-Z]*-?\\d+|\\d+ ?[A-Z]|(?:UNIT|STE|BLDG)\\s+\\w+|FRNT|BSMT|REAR|LOWR(?: \\d+?)?|(?:[A-DF-MO-RT-VX-Z] )?UPPR|IRRIG|PUMP STA|OFC|REC|SIGN))?$"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "MAPTIP",
+                        "pattern": "^(?:.+?)\\s+(#.*|(?:[A-DF-MO-RT-VX-Z]|PS|AH|SCA)(?: \\d+)?|[A-Z]\\d+ \\d+|[A-Z]*-?\\d+|\\d+ ?[A-Z]|(?:UNIT|STE|BLDG)\\s+\\w+|FRNT|BSMT|REAR|LOWR(?: \\d+?)?|(?:[A-DF-MO-RT-VX-Z] )?UPPR|IRRIG|PUMP STA|OFC|REC|SIGN)?$"
+                    }
+                }
+            }
+        ]
     }
 }

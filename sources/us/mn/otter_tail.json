@@ -9,16 +9,27 @@
         "state": "mn",
         "county": "Otter Tail"
     },
-    "website": "https://ottertailcountymn.us/content-page/gis-shapefile-downloads/",
-    "data": "https://www.ottertailcounty.us/gisfiles/Addresses.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-      "format": "shapefile",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": ["UNITTYPE","UNITID"],
-        "city": "OTC_POSTCO",
-        "postcode": "OTC_ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://ottertailcountymn.us/content-page/gis-shapefile-downloads/",
+                "data": "https://www.ottertailcounty.us/gisfiles/Addresses.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "OTC_POSTCO",
+                    "postcode": "OTC_ZIP"
+                }
+            }
+        ]
     }
 }

@@ -9,22 +9,30 @@
         "state": "or",
         "county": "Clatsop"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "gdb",
-        "file": "Delivery/addresses_oregon.gdb",
-        "layer": "Clatsop",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITUS_ADDR"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITUS_ADDR"
-        },
-        "city": "SITUS_CITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "file": "Delivery/addresses_oregon.gdb",
+                    "layer": "Clatsop",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUS_ADDR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUS_ADDR"
+                    },
+                    "city": "SITUS_CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

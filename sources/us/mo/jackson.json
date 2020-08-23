@@ -9,25 +9,33 @@
         "state": "mo",
         "county": "Jackson"
     },
-    "data": "https://jcgis.jacksongov.org/arcgis/rest/services/Cadastral/ParcelsAndAddresses/MapServer/3",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "ADDRNUM",
-            "ADDRNUMSUF"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "street": [
-            "Directional_Prefix",
-            "FULLNAME",
-            "Road_type",
-            "Directional_Suffix"
-        ],
-        "postcode": "ZIP",
-        "city": "MUNICIPALITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://jcgis.jacksongov.org/arcgis/rest/services/Cadastral/ParcelsAndAddresses/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": [
+                        "Directional_Prefix",
+                        "FULLNAME",
+                        "Road_type",
+                        "Directional_Suffix"
+                    ],
+                    "postcode": "ZIP",
+                    "city": "MUNICIPALITY"
+                }
+            }
+        ]
     }
 }

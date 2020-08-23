@@ -1,38 +1,52 @@
 {
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
-    "conform": {
-        "lat": "POINT_Y",
-        "headers": 2,
-        "skiplines": 2,
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        },
-        "lon": "POINT_X",
-        "number": "LNDN_MA_SN",
-        "format": "csv",
-        "srs": "EPSG:2097",
-        "encoding": "EUCKR"
-    },
-    "protocol": "http",
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1079",
     "coverage": {
         "city": "서대문구",
         "country": "kr",
         "state": "seoul",
-        "geometry": { "type": "Point", "coordinates": [126.937, 37.580] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                126.937,
+                37.58
+            ]
+        }
     },
-    "skip": false,
-    "compression": "zip",
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
-    "data": "https://data.openaddresses.io/cache/kr-seoul-seodaemungu.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "conform": {
+                    "lat": "POINT_Y",
+                    "headers": 2,
+                    "skiplines": 2,
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    },
+                    "lon": "POINT_X",
+                    "number": "LNDN_MA_SN",
+                    "format": "csv",
+                    "srs": "EPSG:2097",
+                    "encoding": "EUCKR"
+                },
+                "protocol": "http",
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1079",
+                "skip": false,
+                "compression": "zip",
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "data": "https://data.openaddresses.io/cache/kr-seoul-seodaemungu.zip"
+            }
+        ]
+    }
 }

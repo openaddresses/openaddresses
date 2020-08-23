@@ -1,24 +1,36 @@
 {
-	"coverage" : {
-		"US Census" : {
-			"geoid" : "29013",
-			"name" : "Bates County",
-			"state" : "Missouri"
-		},
-		"country" : "us",
-		"state" : "mo",
-		"county" : "Bates"
-	},
-	"website" : "http://www.batescounty.net/maps.php",
-	"data" : "http://data.openaddresses.io/cache/us/mo/bates.zip",
-	"protocol" : "http",
-	"compression" : "zip",
-	"conform" : {
-		"format" : "shapefile",
-		"file" : "Export_Output_2.shp",
-		"number" : "ADDNUM",
-		"street" : ["PREDIR", "STNAME", "STFUFFIX"],
-		"city" : "PSTLCOMM",
-		"postcode" : "ZIPCODE"
-	}
+    "coverage": {
+        "US Census": {
+            "geoid": "29013",
+            "name": "Bates County",
+            "state": "Missouri"
+        },
+        "country": "us",
+        "state": "mo",
+        "county": "Bates"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "http://www.batescounty.net/maps.php",
+                "data": "http://data.openaddresses.io/cache/us/mo/bates.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "Export_Output_2.shp",
+                    "number": "ADDNUM",
+                    "street": [
+                        "PREDIR",
+                        "STNAME",
+                        "STFUFFIX"
+                    ],
+                    "city": "PSTLCOMM",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
+    }
 }

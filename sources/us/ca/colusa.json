@@ -9,18 +9,26 @@
         "state": "ca",
         "county": "Colusa"
     },
-    "data": "https://services5.arcgis.com/RHVBVx0fVmUtvfJV/ArcGIS/rest/services/Parcels_2018_Lite/FeatureServer/0",
-    "website": "http://www.countyofcolusa.org/index.aspx?NID=710",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITUS_1"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITUS_1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/RHVBVx0fVmUtvfJV/ArcGIS/rest/services/Parcels_2018_Lite/FeatureServer/0",
+                "website": "http://www.countyofcolusa.org/index.aspx?NID=710",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUS_1"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUS_1"
+                    }
+                }
+            }
+        ]
     }
 }

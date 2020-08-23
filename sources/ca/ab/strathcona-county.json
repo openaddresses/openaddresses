@@ -3,32 +3,46 @@
         "country": "ca",
         "state": "ab",
         "county": "Strathcona County",
-        "geometry": { "type": "Point", "coordinates": [-113.20, 53.57] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -113.2,
+                53.57
+            ]
+        }
     },
-    "data": "https://data.strathcona.ca/api/geospatial/guuy-s4yx?method=export&format=Shapefile",
-    "license": {
-        "url": "https://data.strathcona.ca/stories/s/bxnd-tfzb",
-        "attribution": true
-    },
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "number": [
-            "house_no",
-            "house_no_s"
-        ],
-        "street": [
-            "pre_dir",
-            "street_nam",
-            "street_typ",
-            "sufdir"
-        ],
-        "postcode": "postal",
-        "city": "city",
-        "district": "county",
-        "region": "prov",
-        "format": "shapefile"
-    },
-    "website": "https://data.strathcona.ca/",
-    "attribution": "City of Strathcona"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.strathcona.ca/api/geospatial/guuy-s4yx?method=export&format=Shapefile",
+                "license": {
+                    "url": "https://data.strathcona.ca/stories/s/bxnd-tfzb",
+                    "attribution": true
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": [
+                        "house_no",
+                        "house_no_s"
+                    ],
+                    "street": [
+                        "pre_dir",
+                        "street_nam",
+                        "street_typ",
+                        "sufdir"
+                    ],
+                    "postcode": "postal",
+                    "city": "city",
+                    "district": "county",
+                    "region": "prov",
+                    "format": "shapefile"
+                },
+                "website": "https://data.strathcona.ca/",
+                "attribution": "City of Strathcona"
+            }
+        ]
+    }
 }

@@ -9,32 +9,40 @@
         "state": "mo",
         "county": "St Louis"
     },
-    "data": "http://maps.stlouisco.com/arcgis/rest/services/OpenData/OpenData/FeatureServer/0",
-    "license": {
-        "text": "CC0",
-        "url": "http://creativecommons.org/about/cc0",
-        "attribution": false,
-        "share-alike": false
-        },
-    "protocol": "ESRI",
-    "note": "Licensed under CC0 as part of St Louis County Open Data Portal. 'Addrtype' is Mailing type followed by Address Type. 'Notes' is the parcel identifier number for the parcel in which the address is located. Contact is blord- castillo@stlouisco.com or mmclean@stlouisco.com.",
-    "conform": {
-        "format": "geojson",
-        "number": "ADRNO",
-        "street": [
-            "ADRDIR",
-            "ADRSTR",
-            "ADRSUF",
-            "ADRSUF2"
-        ],
-        "unit": [
-            "UNITDESC",
-            "UNITNO"
-        ],
-        "city": "MAILINGCITY",
-        "region": "STATE",
-        "postcode": "ZIPCODE",
-        "addrtype": "ADDRTYPE",
-        "notes": "LOCATOR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://maps.stlouisco.com/arcgis/rest/services/OpenData/OpenData/FeatureServer/0",
+                "license": {
+                    "text": "CC0",
+                    "url": "http://creativecommons.org/about/cc0",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "note": "Licensed under CC0 as part of St Louis County Open Data Portal. 'Addrtype' is Mailing type followed by Address Type. 'Notes' is the parcel identifier number for the parcel in which the address is located. Contact is blord- castillo@stlouisco.com or mmclean@stlouisco.com.",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADRNO",
+                    "street": [
+                        "ADRDIR",
+                        "ADRSTR",
+                        "ADRSUF",
+                        "ADRSUF2"
+                    ],
+                    "unit": [
+                        "UNITDESC",
+                        "UNITNO"
+                    ],
+                    "city": "MAILINGCITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE",
+                    "addrtype": "ADDRTYPE",
+                    "notes": "LOCATOR"
+                }
+            }
+        ]
     }
 }

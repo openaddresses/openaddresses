@@ -1,17 +1,34 @@
 {
     "coverage": {
-        "US Census": {"geoid": "21049", "name": "Clark County", "state": "Kentucky"},
+        "US Census": {
+            "geoid": "21049",
+            "name": "Clark County",
+            "state": "Kentucky"
+        },
         "country": "us",
         "state": "ky",
         "county": "Clark"
     },
-    "data": "http://gis.ccgisonline.com:6080/arcgis/rest/services/BASELAYERS/ADDRESSES/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "STRADD",
-        "street": ["PRE_DIR", "STR_NAME", "STREET_TYP", "STREET_DIR"],
-        "unit": "UNIT",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.ccgisonline.com:6080/arcgis/rest/services/BASELAYERS/ADDRESSES/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STRADD",
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "STREET_TYP",
+                        "STREET_DIR"
+                    ],
+                    "unit": "UNIT",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

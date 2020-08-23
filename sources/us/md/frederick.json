@@ -9,28 +9,36 @@
         "state": "md",
         "county": "frederick"
     },
-    "data": "https://maps.frederickcountymd.gov/arcgis/rest/services/Planning/AddressPoints/MapServer/1",
-    "website": "https://gis-fcgmd.opendata.arcgis.com/pages/addressing-road-naming",
-    "attribution": "Frederick County",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "ST_NUM",
-            "ST_NUM_SUFFIX"
-        ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUM"
-        ],
-        "street": [
-            "ST_PREFIX",
-            "ST_NAME",
-            "ST_SUFFIX",
-            "ST_TYPE"
-        ],
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP_ADDR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.frederickcountymd.gov/arcgis/rest/services/Planning/AddressPoints/MapServer/1",
+                "website": "https://gis-fcgmd.opendata.arcgis.com/pages/addressing-road-naming",
+                "attribution": "Frederick County",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ST_NUM",
+                        "ST_NUM_SUFFIX"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_SUFFIX",
+                        "ST_TYPE"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP_ADDR"
+                }
+            }
+        ]
     }
 }

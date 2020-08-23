@@ -9,60 +9,68 @@
         "state": "nv",
         "county": "Nye"
     },
-    "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/NyeNVFeatures/FeatureServer/5",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "Address"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^\\d+\\s+(.+?)(?:\\s+(?:#|UNIT)\\b.+)?$"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "((?:#|UNIT).+)$"
-        }
-    },
-    "test": {
-        "enabled": true,
-        "description": "These are tests for extracting number, street, and unit",
-        "acceptance-tests": [
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "no unit",
-                "inputs": {
-                    "Address": "1795 W AMARGOSA FARM RD"
+                "name": "county",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/NyeNVFeatures/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Address"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^\\d+\\s+(.+?)(?:\\s+(?:#|UNIT)\\b.+)?$"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "((?:#|UNIT).+)$"
+                    }
                 },
-                "expected": {
-                    "number": "1795",
-                    "street": "W AMARGOSA FARM RD",
-                    "unit": ""
-                }
-            },
-            {
-                "description": "has # unit",
-                "inputs": {
-                    "Address": "1701 S PAHRUMP VALLEY BLVD #261 "
-                },
-                "expected": {
-                    "number": "1701",
-                    "street": "S PAHRUMP VALLEY BLVD",
-                    "unit": "#261"
-                }
-            },
-            {
-                "description": "has UNIT unit",
-                "inputs": {
-                    "Address": "2541 E AMBUSH ST UNIT C"
-                },
-                "expected": {
-                    "number": "2541",
-                    "street": "E AMBUSH ST",
-                    "unit": "UNIT C"
+                "test": {
+                    "enabled": true,
+                    "description": "These are tests for extracting number, street, and unit",
+                    "acceptance-tests": [
+                        {
+                            "description": "no unit",
+                            "inputs": {
+                                "Address": "1795 W AMARGOSA FARM RD"
+                            },
+                            "expected": {
+                                "number": "1795",
+                                "street": "W AMARGOSA FARM RD",
+                                "unit": ""
+                            }
+                        },
+                        {
+                            "description": "has # unit",
+                            "inputs": {
+                                "Address": "1701 S PAHRUMP VALLEY BLVD #261 "
+                            },
+                            "expected": {
+                                "number": "1701",
+                                "street": "S PAHRUMP VALLEY BLVD",
+                                "unit": "#261"
+                            }
+                        },
+                        {
+                            "description": "has UNIT unit",
+                            "inputs": {
+                                "Address": "2541 E AMBUSH ST UNIT C"
+                            },
+                            "expected": {
+                                "number": "2541",
+                                "street": "E AMBUSH ST",
+                                "unit": "UNIT C"
+                            }
+                        }
+                    ]
                 }
             }
         ]

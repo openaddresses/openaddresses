@@ -17,20 +17,28 @@
         "state": "ca",
         "city": "Mountain View"
     },
-    "data": "http://gis.sunnyvale.ca.gov/arcgis/rest/services/MasterAddress/AddressPoints_SunGISf/FeatureServer/0",
-    "attribution": "City of Sunnyvale",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "addrid",
-        "number": "addrnum",
-        "street": [
-            "strdirpref",
-            "streetname",
-            "streettype"
-        ],
-        "unit": "addrunit",
-        "city": "city_mailing",
-        "postcode": "zipcode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis.sunnyvale.ca.gov/arcgis/rest/services/MasterAddress/AddressPoints_SunGISf/FeatureServer/0",
+                "attribution": "City of Sunnyvale",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "addrid",
+                    "number": "addrnum",
+                    "street": [
+                        "strdirpref",
+                        "streetname",
+                        "streettype"
+                    ],
+                    "unit": "addrunit",
+                    "city": "city_mailing",
+                    "postcode": "zipcode"
+                }
+            }
+        ]
     }
 }
