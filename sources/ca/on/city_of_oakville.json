@@ -1,4 +1,5 @@
 {
+    "schema": 2,
     "coverage": {
         "country": "ca",
         "state": "on",
@@ -11,22 +12,24 @@
             ]
         }
     },
-    "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "city",
-                "data": "https://opendata.arcgis.com/datasets/f218b2b0a1c747939b179e132e648b8f_15.zip?outSR=%7B%22latestWkid%22%3A26917%2C%22wkid%22%3A26917%7D",
+                "data": "https://maps.oakville.ca/oakgis/rest/services/ArcGISOnline/AGO_Oakville_Misc_Layers/MapServer/15",
                 "license": {
                     "url": "https://www.oakville.ca/data/open_data_licence.html",
                     "text": "Contains information licensed under the Open Government Licence — Town of Oakville",
                     "attribution": true
                 },
-                "protocol": "http",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
+                    "unit": "UNIT",
                     "number": "STREET_NUM",
-                    "street": "SNAME"
+                    "street": "SNAME",
+                    "city": "CITY",
+                    "region": "PROV"
                 }
             }
         ]
