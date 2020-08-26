@@ -14,23 +14,15 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://216.110.207.61/arcgis/rest/services/BaseMap/MapServer/8",
+                "data": "https://public.co.wasco.or.us/gisserver/rest/services/PublicAddresses/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "STRUCTNO",
-                    "street": [
-                        "PREDIR",
-                        "PRETYPE",
-                        "STREETNAME",
-                        "STREETTYPE",
-                        "SUFDIR"
-                    ],
-                    "unit": [
-                        "UNIT_TYPE",
-                        "UNIT_NO"
-                    ],
-                    "id": "STRUCTNO"
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUS_ADDRESS"
+                    }
                 }
             }
         ]
