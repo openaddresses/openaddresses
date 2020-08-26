@@ -12,27 +12,24 @@
         "addresses": [
             {
                 "name": "state",
-                "website": "http://maps.indiana.edu/previewMaps/Infrastructure/Streets_Address_Points_IDHS.html",
-                "data": "http://maps.indiana.edu/download/Infrastructure/Streets_Address_Points_IDHS.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "website": "https://gis-indianamap.opendata.arcgis.com/datasets/streets-address-points-igio",
+                "data": "https://maps.indiana.edu/arcgis/rest/services/Infrastructure/Streets_Address_Points_IGIO/MapServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "gdb",
-                    "number": "NUMBER",
+                    "format": "geojson",
+                    "number": "ADDRESS_NUMBER",
                     "street": [
-                        "PREFIX",
-                        "ADD_NAME",
-                        "ADD_TYPE",
-                        "SUFFIX"
+                        "ADDRESS_PREFIX",
+                        "ADDRESS_NAME",
+                        "ADDRESS_TYPE",
+                        "ADDRESS_SUFFIX"
                     ],
                     "unit": [
                         "UNITTYPE",
                         "UNITID"
                     ],
                     "city": "ADD_CITY",
-                    "postcode": "ZIPCODE",
-                    "district": "COUNTY",
-                    "region": "STATE"
+                    "postcode": "ADDRESS_ZIP"
                 }
             }
         ]
