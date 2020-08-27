@@ -14,23 +14,18 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://geo.co.crook.or.us/server/rest/services/addressing/addressingGroup/MapServer/1",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "gdb",
-                    "file": "Delivery/addresses_oregon.gdb",
-                    "layer": "Coos",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "SITUSSTR"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "SITUSSTR"
-                    },
-                    "city": "SITUSCITY",
-                    "postcode": "SITUSZIP"
+                    "format": "geojson",
+                    "number": "number",
+                    "street": [
+                        "direction",
+                        "street_name",
+                        "street_type"
+                    ],
+                    "city": "city",
+                    "postcode": "zip"
                 }
             }
         ]
