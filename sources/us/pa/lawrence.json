@@ -14,14 +14,18 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.leoc.net/arcgis/rest/services/AssessmentInformation/MapServer/0",
+                "data": "https://gis.leoc.net:6443/arcgis/rest/services/AssessmentInfo/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "SAN",
-                    "street": "STNAME",
-                    "city": "MCN",
-                    "postcode": "ZIP"
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": "FULLNAME",
+                    "city": "ZIPCODE",
+                    "postcode": "ZIPCODE"
                 }
             }
         ]
