@@ -20,13 +20,12 @@
                 "compression": "zip",
                 "conform": {
                     "format": "shapefile-polygon",
-                    "number": "XSTNO",
-                    "street": [
-                        "SDIRPX",
-                        "STNAM",
-                        "STYP",
-                        "SDIRSX"
-                    ]
+                    "number": "STREETNUM",
+                    "street": {
+                        "function": "postfixed_address",
+                        "field": "SITUS"
+                    },
+                    "city": "CITY"
                 }
             }
         ]
