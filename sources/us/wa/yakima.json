@@ -14,19 +14,22 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.yakimawa.gov/arcgis101/rest/services/Basemaps/NightMode/MapServer/5",
+                "data": "https://services3.arcgis.com/9Qz94N8Zml9hnG84/ArcGIS/rest/services/BuildingOutlines/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSE_NO",
-                    "street": {
-                        "function": "regexp",
-                        "field": "SITUS_ADDR",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "city": "SITUS_CITY",
-                    "postcode": "SITUS_ZIP"
+                    "unit": "UNIT",
+                    "number": "HOUSE_NUMBER",
+                    "street": [
+                        "PREDIR",
+                        "PRETYPE",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFDIR"
+                    ],
+                    "city": "City",
+                    "postcode": "ZipCode",
+                    "region": "State"
                 }
             }
         ]
