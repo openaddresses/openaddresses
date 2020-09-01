@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.co.kittitas.wa.us/kcgis/rest/services/AGOL/Site_Address_Points/MapServer/0",
+                "data": "https://gis.co.kittitas.wa.us/kcgis/rest/services/OpenData/Parcels/MapServer/1",
                 "website": "https://www.co.kittitas.wa.us/it/gis.aspx",
                 "protocol": "ESRI",
                 "conform": {
@@ -24,10 +24,18 @@
                         "field": "t2_Situs"
                     },
                     "street": {
-                        "function": "postfixed_street",
-                        "field": "t2_Situs"
+                        "function": "chain",
+                        "variable": "street_wip",
+                        "functions": [{
+                            "function": "postfixed_street",
+                            "field": "t2_Situs"
+                        },{
+                            "function": "remove_postfix",
+                            "field": "street_wip",
+                            "field_to_remove": "t2_SitusCity"
+                        }]
                     },
-                    "city": "t2_Situs",
+                    "city": "t2_SitusCity",
                     "postcode": "t2_SitusZip"
                 }
             }
