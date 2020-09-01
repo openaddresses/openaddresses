@@ -19,13 +19,16 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRNUM",
-                    "street": "FULLNAME",
-                    "unit": [
-                        "UNITTYPE",
-                        "UNITID"
-                    ],
-                    "city": "MUNICIPALITY"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "t2_Situs"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "t2_Situs"
+                    },
+                    "city": "t2_Situs",
+                    "postcode": "t2_SitusZip"
                 }
             }
         ]
