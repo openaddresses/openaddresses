@@ -14,24 +14,22 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.grantcountywa.gov:6443/arcgis/rest/services/EveryoneData/Addresses/MapServer/0",
+                "data": "https://services2.arcgis.com/hQZvdtFxRzJpMtdS/ArcGIS/rest/services/GC_SmartGov_Parcel_Load/FeatureServer/0",
                 "website": "http://grantcountywa.maps.arcgis.com/home/index.html",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRNUM",
-                    "street": [
-                        "PREADDRNUM",
-                        "FULLNAME",
-                        "ADDRNUMSUF"
-                    ],
-                    "unit": [
-                        "UNITTYPE",
-                        "UNITID"
-                    ],
-                    "postcode": "ZIPCODE",
-                    "city": "MUNICIPALITY",
-                    "region": "STATE"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Situs"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Situs"
+                    },
+                    "postcode": "SitusZip",
+                    "city": "SitusCity",
+                    "region": "SitusState"
                 }
             }
         ]
