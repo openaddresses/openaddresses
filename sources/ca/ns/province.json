@@ -13,16 +13,19 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://nsgi.novascotia.ca/WSF_DDS/DDS.svc/DownloadFile?tkey=fhrTtdnDvfytwLz6&id=70",
+                "data": "https://nsgiwa.novascotia.ca/arcgis/rest/services/BASE/BASE_NS_CivicAddress_File_WM84/MapServer/0",
                 "website": "https://data.novascotia.ca/Municipalities/Nova-Scotia-Civic-Address-File-Civic-Points/tntn-er5g",
                 "license": {
                     "url": "https://novascotia.ca/opendata/licence.asp",
                     "attribution": true
                 },
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "number": "civicnum",
+                    "format": "geojson",
+                    "number": [
+                        "CIVICNUM",
+                        "CIVSUFFIX"
+                    ],
                     "street": [
                         "strprefix",
                         "strname",
@@ -31,8 +34,7 @@
                     ],
                     "unit": "unit_num",
                     "city": "comm",
-                    "district": "county",
-                    "format": "shapefile"
+                    "district": "county"
                 }
             }
         ]
