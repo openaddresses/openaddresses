@@ -14,14 +14,17 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://vcgis.co.vilas.wi.us/arcgis2/rest/services/Address/MapServer/1",
+                "website": "https://maps.vilascountywi.gov/",
+                "data": "https://maps.vilascountywi.gov/vilasgis/rest/services/DynamicMaps/Address/MapServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HouseNumber",
-                    "street": "PrimaryName",
-                    "postcode": "Zip",
-                    "city": "ZN"
+                    "number": [
+                        "preaddrnum",
+                        "addrnum",
+                        "addrnumsuf"
+                    ],
+                    "street": "fullname"
                 }
             }
         ]
