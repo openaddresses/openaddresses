@@ -14,14 +14,19 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://ags1.wgxtreme.com/ArcGIS/rest/services/DouglasCoWI/DouglasCoSuperiorWIGIWSMain/MapServer/10",
-                "protocol": "ESRI",
+                "website": "http://www.ci.superior.wi.us/619/Transportation-Addressing",
+                "data": "ftp://maps:CityCounty@216.56.28.54/array1/maps/Web/ADDRPLCS.zip",
+                "protocol": "ftp",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
-                    "number": "FIRE_NO",
+                    "format": "shapefile",
+                    "file": "ADDRPLCS_COSDC_GEOCODED_ADDRESSES.shp",
+                    "number": "ADDR_HN",
                     "street": [
-                        "DIR",
-                        "ROAD_NAME"
+                        "ADDR_PD",
+                        "ADDR_SN",
+                        "ADDR_ST",
+                        "ADDR_SD"
                     ]
                 }
             }
