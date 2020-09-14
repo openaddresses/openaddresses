@@ -1,0 +1,35 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "42025", "name": "Carbon County", "state": "Pennsylvania"},
+        "country": "us",
+        "state": "pa",
+        "county": "Carbon"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.carboncounty.com:6443/arcgis/rest/services/Address_Points_2019/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "HouseNumber",
+                        "HouseSuffix"
+                    ],
+                    "street": [
+                        "PreDirectional",
+                        "PreType",
+                        "StreetName",
+                        "PostType",
+                        "PostTypeSuffix",
+                        "PostDirectional"
+                    ],
+                    "city": "PostalCity",
+                    "postcode": "Zip"
+                }
+            }
+        ]
+    }
+}
