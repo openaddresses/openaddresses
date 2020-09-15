@@ -14,26 +14,29 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://utility.arcgis.com/usrsvcs/servers/c05e1a547c564ef9a2e7fffeb8458efe/rest/services/OpenData/CoconinoCountyOpenData/FeatureServer/0",
+                "data": "https://services1.arcgis.com/Rlvx5g8pKeK13apH/arcgis/rest/services/County_Addresses/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "CURRENTADDRESS",
-                        "pattern": "^([0-9]+(?:-[^ ]+)?)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "CURRENTADDRESS",
-                        "pattern": "^(?:[0-9]+(?:-[^ ]+)? )(.*?)((BUILDING [0-9]+)? (UNIT|APT|BLDG|STE).*|$)",
-                        "replace": "$1"
-                    },
-                    "unit": {
-                        "function": "regexp",
-                        "field": "CURRENTADDRESS",
-                        "pattern": " ((?:BUILDING [0-9]+ )?(?:UNIT|APT|BLDG|STE) .+)$"
-                    }
+                    "number": [
+                        "HOUSENUMBER",
+                        "HOUSENUMBERSUFFIX"
+                    ],
+                    "unit": "Unit",
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "StreetName",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIPCODE",
+                    "region": "State",
+                    "district": "County"
                 }
             }
         ]
