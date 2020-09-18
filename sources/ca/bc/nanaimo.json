@@ -16,22 +16,24 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://nanmap.nanaimo.ca/arcgis/rest/services/NanMap/Polygons/MapServer/15",
-                "website": "https://nanmap.nanaimo.ca",
-                "license": "http://www.nanaimo.ca/EN/main/departments/information-technology/DataCatalogue/Licence.html",
-                "protocol": "ESRI",
-                "conform": {
-                    "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "Address"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "Address"
-                    }
+                "website": "https://www.nanaimo.ca/open-data-catalogue/DataBrowser/nanaimo/Addressing#param=NOFILTER--DataView--Results",
+                "data": "https://www.nanaimo.ca/open-data-catalogue/Download/Index?container=nanaimo&entitySetName=Addressing&downloadID=74",
+                "license": {
+                    "url": "https://www.nanaimo.ca/your-government/maps-data/open-data-catalogue/open-data-catalogue-licence",
+                    "text": "Contains information licenced under the Open Government Licence – Nanaimo",
+                    "attribution name": "City of Nanaimo",
+                    "attribution": true,
+                    "share-alike": false
                 },
-                "attribution": "City of Nanaimo"
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "PARCELS.shp",
+                    "number": "HOUSENUMBE",
+                    "street": "STREETNAME",
+                    "postcode": "POSTALCODE"
+                }
             }
         ]
     }
