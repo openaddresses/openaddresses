@@ -16,12 +16,19 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://services2.arcgis.com/CnkB6jCzAsyli34z/arcgis/rest/services/OpenData_Address/FeatureServer/4",
+                "data": "https://opendata.arcgis.com/datasets/11e68cd901a24c8887ab7af79ddded7b_4.zip?outSR=%7B%22latestWkid%22%3A26910%2C%22wkid%22%3A26910%7D",
                 "website": "https://data-cityofpg.opendata.arcgis.com/datasets/civic-address-points",
-                "license": "http://pgmap.princegeorge.ca/opendata/CityofPrinceGeorge_Open_Government_License_Open_Data.pdf",
-                "protocol": "ESRI",
+                "license": {
+                    "url": "http://pgmap.princegeorge.ca/opendata/CityofPrinceGeorge_Open_Government_License_Open_Data.pdf",
+                    "text": "Contains information licensed under the Open Government License – City of Prince George",
+                    "attribution name": "Open Government License - City of Prince George",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "shapefile",
                     "number": [
                         "AddrPrefix",
                         "AddrNumber",
