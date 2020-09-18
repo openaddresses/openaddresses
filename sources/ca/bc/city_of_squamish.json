@@ -16,15 +16,24 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://services.arcgis.com/YCM10gnCAvCoAhpj/arcgis/rest/services/Addressing/FeatureServer/0",
-                "note": "STREET_NUMBER_PREFIX does indeed contain unit info",
-                "protocol": "ESRI",
+                "data": "https://opendata.arcgis.com/datasets/ae6113adf53540a582defc66dded873a_0.zip?outSR=%7B%22latestWkid%22%3A26910%2C%22wkid%22%3A26910%7D",
+                "website": "https://data.squamish.ca/datasets/addressing/data",
+                "license": {
+                    "url": "https://squamish.ca/discover-squamish/maps-and-data/open-data/",
+                    "text": "Contains information licensed under the Open Government Licence - Squamish.",
+                    "attribution name": "Open Government Licence - Squamish.",
+                    "attribution": true
+                },
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
-                    "number": "STREET_NUMBER",
+                    "format": "shapefile",
+                    "number": "STREET_NUM",
                     "street": "STREET_NAME",
-                    "unit": "STREET_NUMBER_PREFIX",
-                    "city": "Locality"
+                    "unit": "UNIT_NUMBE",
+                    "city": "LOCALITY",
+                    "lat": "LATITUDE",
+                    "lon": "LONGITUDE"
                 }
             }
         ]
