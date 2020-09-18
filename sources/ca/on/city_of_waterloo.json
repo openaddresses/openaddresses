@@ -16,17 +16,23 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://opendata.city-of-waterloo.opendata.arcgis.com/datasets/46d0b87b2aec4d7aad17fd90313ab94b_0.zip",
-                "website": "http://www.waterloo.ca/en/government/opendata.asp",
+                "data": "https://opendata.arcgis.com/datasets/596f091661e84bf19d5585d7e16d679a_1.zip",
+                "website": "https://data.waterloo.ca/datasets/RMW::addresses",
                 "license": {
-                    "url": "http://www.waterloo.ca/en/government/OpenDataUserLicence.asp",
+                    "url": "https://data.waterloo.ca/pages/open-data-licence",
+                    "text": "Contains information provided by the City of Waterloo under licence",
                     "attribution": false
                 },
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "number": "CIVIC_ADDR",
-                    "street": "STREET_NM",
+                    "number": "AddressNum",
+                    "street": "FullStreet",
+                    "unit": [
+                        "UnitNumber",
+                        "UnitType"
+                        ],
+                    "city": "Municipali",
                     "format": "shapefile"
                 },
                 "skip": true,
