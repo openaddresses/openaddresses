@@ -13,15 +13,18 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://nsgiwa.novascotia.ca/arcgis/rest/services/BASE/BASE_NS_CivicAddress_File_WM84/MapServer/0",
+                "data": "https://data.novascotia.ca/api/geospatial/tntn-er5g?method=export&format=Shapefile",
                 "website": "https://data.novascotia.ca/Municipalities/Nova-Scotia-Civic-Address-File-Civic-Points/tntn-er5g",
                 "license": {
                     "url": "https://novascotia.ca/opendata/licence.asp",
-                    "attribution": true
+                    "text": "Contains information licensed under the Open Government Licence – Nova Scotia",
+                    "attribution": true,
+                    "share-alike": false
                 },
-                "protocol": "ESRI",
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "shapefile",
                     "number": [
                         "CIVICNUM",
                         "CIVSUFFIX"
@@ -34,7 +37,9 @@
                     ],
                     "unit": "unit_num",
                     "city": "comm",
-                    "district": "county"
+                    "district": "county",
+                    "lat": "lat",
+                    "lon": "long"
                 }
             }
         ]
