@@ -24,15 +24,12 @@
                 "compression": "zip",
                 "conform": {
                     "number": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^(\\S+)"
+                        "function": "Civic_Addr",
+                        "field": "prefixed_number"
                     },
                     "street": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^(?:\\S+ )(.*)",
-                        "replace": "$1"
+                        "function": "Civic_Addr",
+                        "field": "postfixed_street"
                     },
                     "format": "shapefile",
                     "srs": "EPSG:26917"
