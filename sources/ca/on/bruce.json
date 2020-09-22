@@ -9,7 +9,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://opendata.arcgis.com/datasets/5a246221ca2540e3b5671e6a75029fde_3.zip?outSR=%7B%22latestWkid%22%3A26917%2C%22wkid%22%3A26917%7D",
+                "data": "https://maps.brucecounty.on.ca/arcgis/rest/services/public/bruce_open_data/FeatureServer/3",
                 "website": "https://data-brucecounty.opendata.arcgis.com/datasets/bruce-county-address-points",
                 "license": {
                     "url": "https://bgdisc.ca/sites/default/files/BGDISC%20Data%20License.pdf",
@@ -18,19 +18,13 @@
                     "attribution": true,
                     "share-alike": false
                 },
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "CivicAddre"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "CivicAddre"
-                    },
-                    "city": "Municipali"
+                    "format": "geojson",
+                    "number": "AddrNum",
+                    "street": "RoadName",
+                    "unit": "Unit",
+                    "city": "Municipality"
                 }
             }
         ]
