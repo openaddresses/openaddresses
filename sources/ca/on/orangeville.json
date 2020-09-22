@@ -1,0 +1,44 @@
+{
+     "coverage": {
+         "country": "ca",
+         "state": "on",
+         "city": "Orangeville",
+         "geometry": {
+             "type": "Point",
+             "coordinates": [
+                 -80.0943,
+                 43.9200
+             ]
+         }
+     },
+     "schema": 2,
+     "layers": {
+         "addresses": [
+             {
+                 "name": "city",
+                 "data": "https://opendata.arcgis.com/datasets/e936091d40fe4757885ccd7524f3dc6b_0.zip?outSR=%7B%22latestWkid%22%3A26917%2C%22wkid%22%3A26917%7D",
+                 "website": "https://data-orangeville.opendata.arcgis.com/datasets/site-address?geometry=-80.360%2C43.787%2C-79.765%2C43.960",
+                 "license": {
+                     "url": "https://data.orangeville.ca/opendata.html",
+                     "text": "Contains information licensed under the Open Government Licence – Orangeville",
+                     "attribution name": "Open Government Licence – Orangeville",
+                     "attribution": true,
+                     "share-alike": false
+                 },
+                 "protocol": "http",
+                 "conform": {
+                     "format": "shapefile",
+                     "unit": [
+                         "UNITNUMBER",
+                         "UNITNUMSUF"
+                         ],
+                     "number": "STREETNUM",
+                     "street": {
+                       "function": "postfixed_street",
+                       "field": "FULLADDRESS"
+                     }
+                 }
+             }
+         ]
+     }
+ }
