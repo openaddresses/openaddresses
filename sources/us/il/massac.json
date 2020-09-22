@@ -14,20 +14,16 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_massac_co_il_taxmap/MapServer/0",
+                "data": "https://ags.bhamaps.com/arcgisserver/rest/services/MassacIL/MassacIL_PAT_GIS/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": {
-                        "function": "regexp",
-                        "field": "Address",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "Address",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
+                    "unit": "SUITE",
+                    "number": "NUMBER",
+                    "street": [
+                        "STREET",
+                        "ST_SFX"
+                    ],
+                    "postcode": "ZIP_CODE",
                     "format": "geojson"
                 }
             }

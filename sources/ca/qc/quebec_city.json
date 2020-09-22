@@ -1,0 +1,30 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "qc",
+        "city": "Quebec City"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://www.donneesquebec.ca/recherche/fr/dataset/2567eac8-a3ce-423a-a43d-6b8e74708c1d/resource/a8498bca-518f-4360-810b-24a0e85ea61c/download/vdq-adresse.zip",
+                "website": "https://www.donneesquebec.ca/recherche/fr/dataset/adresses-de-la-ville-de-quebec",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": {
+                      "function": "prefixed_number",
+                      "field": "RECHERCHE"
+                  },
+                "street": {
+                    "function": "postfixed_street",
+                    "field": "RECHERCHE"
+                  }
+                }
+            }
+        ]
+    }
+}
