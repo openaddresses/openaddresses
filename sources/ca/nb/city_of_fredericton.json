@@ -16,17 +16,13 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://opendata.arcgis.com/datasets/c81dabf64d18479bb8e5253f2dfcf308_0.zip",
+                "data": "https://services2.arcgis.com/iLWAxhpxafhOza2U/arcgis/rest/services/Geocoded_Civics/FeatureServer/0",
                 "website": "https://data-fredericton.opendata.arcgis.com/datasets/geocoded-civics",
                 "note": "prefixed_number is used for number since the Nbr and Frac_Nbr fields cannot be combined correctly with a single format function (123A vs 123 1/2)",
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "Address"
-                    },
+                    "format": "geojson",
+                    "number": "Nbr",
                     "street": [
                         "Street_Nam",
                         "St_Type"
