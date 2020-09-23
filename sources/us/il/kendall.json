@@ -14,22 +14,23 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.co.kendall.il.us/arcgis/rest/services/911/Site_Address_pub/MapServer/0",
+                "website": "https://maps.co.kendall.il.us/portal/home/",
+                "data": "https://maps.co.kendall.il.us/server/rest/services/Hosted/Site_Addresses_(Web_Map_View)/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSE_NUMB",
+                    "number": "housenumber",
                     "street": [
-                        "PREFIX_DIR",
-                        "STREET_NAM",
-                        "STREET_SUF",
-                        "POST_DIREC"
+                        "predirectional",
+                        "pretype",
+                        "streetname",
+                        "posttype",
+                        "posttypesuffix",
+                        "postdirectional"
                     ],
                     "unit": "UNIT",
-                    "city": "COMMUNITY1",
-                    "district": "COUNTY",
-                    "region": "STATE",
-                    "postcode": "ZIP_CODE"
+                    "city": "postalcity",
+                    "postcode": "zip"
                 }
             }
         ]

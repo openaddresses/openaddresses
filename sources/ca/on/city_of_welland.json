@@ -16,26 +16,27 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://www.welland.ca/open/Datasheets/Welland_civic_addresses.zip",
+                "data": "https://www.welland.ca/open/Datasheets/Welland_civic_addresses_LatLon.zip",
                 "website": "http://www.welland.ca/open/OpendataResp.asp?utitle=Civic%20Addresses",
-                "license": "http://www.welland.ca/open/OpendataTermUse.asp",
+                "license": {
+                    "url": "http://www.welland.ca/open/OpendataTermUse.asp",
+                    "text": "Contains information licensed under the Open Government Licence – City of Welland",
+                    "attribution": true,
+                    "share-alike": false
+                },
                 "year": "2014",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
                     "number": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^(\\S+)"
+                        "function": "prefixed_number",
+                        "field": "Civic_Addr"
                     },
                     "street": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^(?:\\S+ )(.*)",
-                        "replace": "$1"
+                        "function": "postfixed_street",
+                        "field": "Civic_Addr"
                     },
-                    "format": "shapefile",
-                    "srs": "EPSG:26917"
+                    "format": "shapefile"
                 }
             }
         ]
