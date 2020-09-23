@@ -16,8 +16,8 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://services1.arcgis.com/qAo1OsXi67t7XgmS/arcgis/rest/services/Addresses/FeatureServer/0",
-                "website": "https://rowopendata-rmw.opendata.arcgis.com/datasets/98e0a9aa3f8e447380f27fdc1c170d02_0",
+                "data": "https://gis.region.waterloo.on.ca/arcgis/rest/services/Public/OpenData/FeatureServer/1",
+                "website": "https://data.waterloo.ca/datasets/RMW::addresses",
                 "license": {
                     "url": "https://www.regionofwaterloo.ca/en/regional-government/open-data.aspx",
                     "text": "Contains information provided by the Regional Municipality of Waterloo under licence",
@@ -26,8 +26,15 @@
                 },
                 "protocol": "ESRI",
                 "conform": {
-                    "number": "CIVIC_ADDR",
-                    "street": "STREET_NM",
+                    "number": "AddressNumber",
+                    "street": "FullStreetName",
+                    "unit": [
+                        "UnitNumber",
+                        "UnitType"
+                             ],
+                    "city": "Municipality",
+                    "lat": "Y",
+                    "lon": "X",
                     "format": "geojson"
                 },
                 "skip": true,
