@@ -14,11 +14,15 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.co.saint-croix.wi.us/arcgis/rest/services/LandInformation/AddressPoints/MapServer/0",
+                "data": "https://gis.sccwi.gov/arcgis/rest/services/LandInformation/SiteAddressPoints/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRNUM",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
                     "unit": [
                         "UNITTYPE",
                         "UNITID"
