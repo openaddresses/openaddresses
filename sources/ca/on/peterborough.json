@@ -17,12 +17,24 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://ptbocounty.geocortex.com/arcgis/rest/services/PeterboroughPublic/MapServer/33",
-                "website": "http://www.county.peterborough.on.ca/geographic-information-systems",
+                "data": "https://services1.arcgis.com/JOTjMnANji9YTrZ2/ArcGIS/rest/services/GISOpenDataMap/FeatureServer/4",
+                "website": "http://data-ptbo.opendata.arcgis.com/datasets/address",
+                "license": {
+                    "url": "http://data-ptbo.opendata.arcgis.com/pages/terms-of-use",
+                    "text": "All intellectual property and other rights in and to the Dataset belong to the City of Peterborough.",
+                    "attribution name": "Copyright 2017, The City of Peterborough (All rights reserved.)",
+                    "attribution": true,
+                    "share-alike": true
+                },
                 "conform": {
                     "format": "geojson",
-                    "number": "AddNum",
-                    "street": "StreetName"
+                    "number": "ADDNUM",
+                    "street": [
+                        "STREETNAME",
+                        "STREETTYPE_DESC",
+                        "DIRECTION"
+                        ],
+                    "city": "MUNICIPALITY"
                 }
             }
         ]
