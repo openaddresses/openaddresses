@@ -16,8 +16,7 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://data.openaddresses.io/cache/uploads/ingalls/ca-mb-city_of_winnipeg.csv",
-                "note": "See original PR for script to convert from open data format to OA CSV",
+                "data": "https://data.winnipeg.ca/api/geospatial/cam2-ii3u?method=export&format=Shapefile",
                 "website": "https://data.winnipeg.ca/City-Planning/Addresses/cam2-ii3u",
                 "license": {
                     "url": "https://data.winnipeg.ca/stories/s/Open-Data-Licence/rwzh-4ijx/",
@@ -27,23 +26,22 @@
                     "share-alike": false
                 },
                 "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "csv",
+                    "format": "shapefile",
                     "number": [
-                        "Street Number",
-                        "Street Number Suffix"
+                        "street_num",
+                        "street_n_2"
                     ],
                     "street": [
-                        "Street Name",
-                        "Street Type",
-                        "Street Direction"
+                        "street_nam",
+                        "street_typ",
+                        "street_dir"
                     ],
                     "unit": [
-                        "Unit Type",
-                        "Unit Number"
-                    ],
-                    "lat": "X",
-                    "lon": "Y"
+                        "unit_type",
+                        "unit_numbe"
+                    ]
                 }
             }
         ]
