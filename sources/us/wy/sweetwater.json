@@ -1,0 +1,30 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "56037", "name": "Sweetwater County", "state": "Wyoming"},
+        "country": "us",
+        "state": "wy",
+        "county": "Sweetwater"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.greenwoodmap.com/sweetwater/download/ownership.zip?",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile-polygon",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "st_address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "st_address"
+                    }
+                }
+            }
+        ]
+    }
+}

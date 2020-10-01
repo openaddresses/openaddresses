@@ -1,0 +1,35 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "56003",
+            "name": "Big Horn County",
+            "state": "Wyoming"
+        },
+        "country": "us",
+        "state": "wy",
+        "county": "Big Horn"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.greenwoodmap.com/bighorn/mapserver/download/address_points.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "streetno",
+                    "unit": "st_unit",
+                    "street": [
+                        "pre_type",
+                        "pre_direct",
+                        "streetname",
+                        "post_type",
+                        "post_direc"
+                    ]
+                }
+            }
+        ]
+    }
+}

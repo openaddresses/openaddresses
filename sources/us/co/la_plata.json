@@ -9,13 +9,25 @@
         "state": "co",
         "county": "La Plata"
     },
-    "data": "ftp://ftp.laplata.co.us/shapefiles/AddressPoints.zip",
-    "protocol": "ftp",
-    "conform": {
-        "format": "shapefile",
-        "number": "SITE_NUM",
-        "street": ["SITE_DR", "SITE_ST", "SITE_MD"],
-        "unit": "SITE_UNIT",
-        "id": "APN"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "ftp://ftp.laplata.co.us/shapefiles/AddressPoints.zip",
+                "protocol": "ftp",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "SITE_NUM",
+                    "street": [
+                        "SITE_DR",
+                        "SITE_ST",
+                        "SITE_MD"
+                    ],
+                    "unit": "SITE_UNIT",
+                    "id": "APN"
+                }
+            }
+        ]
     }
 }

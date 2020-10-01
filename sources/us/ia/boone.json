@@ -9,37 +9,39 @@
         "state": "ia",
         "county": "Boone"
     },
-    "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Boone/address_08.zip",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "year": "2012?",
-    "protocol": "ftp",
-    "compression": "zip",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(?:[0-9]+ )(.*)( (Unit|Apt) [0-9])?$",
-            "replace": "$1"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^.* ((Unit|Apt) [0-9A-Za-z])$",
-            "replace": "$1"
-        },
-        "city": "POSTAL_COM",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP_CODE",
-        "format": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.openaddresses.io/cache/uploads/iandees/4dbe69/IOWA_BOONE_AddressPoints.zip",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "year": "2015",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "STREETNU_1",
+                    "unit": "Unit",
+                    "street": [
+                        "StN_PreDir",
+                        "StN_PreSep",
+                        "StN_PreMod",
+                        "STREETNAME",
+                        "StN_PosTyp",
+                        "StN_PosDir",
+                        "StN_PosMod"
+                    ],
+                    "city": "CITY_1",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "Post_Code"
+                }
+            }
+        ]
     }
 }

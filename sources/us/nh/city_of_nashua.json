@@ -16,16 +16,24 @@
         "state": "nh",
         "city": "Nashua"
     },
-    "data": "http://gis.nashuanh.gov/arcgis/rest/services/Project_Services/Addresses/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HNUM",
-        "street": [
-            "PREDIR",
-            "STREET_NAM",
-            "STREET_TYP"
-        ],
-        "city": "CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis.nashuanh.gov/arcgis/rest/services/Project_Services/Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HNUM",
+                    "street": [
+                        "PREDIR",
+                        "STREET_NAM",
+                        "STREET_TYP"
+                    ],
+                    "city": "CITY"
+                }
+            }
+        ]
     }
 }

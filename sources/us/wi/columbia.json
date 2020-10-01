@@ -9,16 +9,20 @@
         "state": "wi",
         "county": "Columbia"
     },
-    "data": "http://lrs.co.columbia.wi.us/arcgis/rest/services/Open_GIS/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRESSNUM",
-        "street": [
-            "ST_PRE_ABBR",
-            "ST_NM",
-            "ST_TY_ABBR",
-            "ST_SFX_ABBR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://lrs.co.columbia.wi.us/server/rest/services/Open_GIS/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "CCGIS_DATA.GISOWNER.Address_Sites.ADDRESSNUM",
+                    "street": "CCGIS_DATA.GISOWNER.RD_INDEX.FULL_NM",
+                    "postcode": "CCGIS_DATA.GISOWNER.Address_Sites.ZIP"
+                }
+            }
         ]
     }
 }

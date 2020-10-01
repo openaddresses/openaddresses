@@ -1,37 +1,48 @@
 {
-  "coverage": {
-      "ISO 3166": {
-          "alpha2": "FR-01"
-      },
-      "country": "fr"
-  },
-  "website": "https://adresse.data.gouv.fr",
-  "data": "https://adresse.data.gouv.fr/data/ban/adresses/latest/csv/adresses-france.csv",
-  "protocol": "http",
-  "conform": {
-      "format": "csv",
-      "csvsplit": ";",
-      "id": "id",
-      "number": {
-        "function": "join",
-        "fields": ["numero", "rep"],
-        "separator": ""
-      },
-      "street": "nom_voie",
-      "lon": "lon",
-      "lat": "lat",
-      "city": "nom_commune",
-      "postcode": "code_postal"
-  },
-  "language": "fr",
-  "license": {
-      "url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
-      "attribution": true,
-      "attribution name": "Base Adresse Nationale (adresse.data.gouv.fr)",
-      "presumed": false,
-      "remarks": "https://www.etalab.gouv.fr/wp-content/uploads/2018/11/open-licence.pdf"
-  },
-  "contact": {
-    "email": "adresse@data.gouv.fr"
-  }
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "FR-01"
+        },
+        "country": "fr"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "website": "https://adresse.data.gouv.fr",
+                "data": "https://adresse.data.gouv.fr/data/ban/adresses/latest/csv/adresses-france.csv",
+                "protocol": "http",
+                "conform": {
+                    "format": "csv",
+                    "csvsplit": ";",
+                    "id": "id",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "numero",
+                            "rep"
+                        ],
+                        "separator": ""
+                    },
+                    "street": "nom_voie",
+                    "lon": "lon",
+                    "lat": "lat",
+                    "city": "nom_commune",
+                    "postcode": "code_postal"
+                },
+                "language": "fr",
+                "license": {
+                    "url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+                    "attribution": true,
+                    "attribution name": "Base Adresse Nationale (adresse.data.gouv.fr)",
+                    "presumed": false,
+                    "remarks": "https://www.etalab.gouv.fr/wp-content/uploads/2018/11/open-licence.pdf"
+                },
+                "contact": {
+                    "email": "adresse@data.gouv.fr"
+                }
+            }
+        ]
+    }
 }

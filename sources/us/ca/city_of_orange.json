@@ -3,8 +3,8 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -117.890,
-                33.810
+                -117.89,
+                33.81
             ]
         },
         "US Census": {
@@ -16,18 +16,26 @@
         "state": "ca",
         "city": "orange"
     },
-    "attribution": "City of Orange",
-    "data": "http://gis.cityoforange.org/orangegis/rest/services/ParcelPublicAccessMI/MapServer/3",
-    "website": "http://cityoforange.org/",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-          "UNITTYPE",
-          "UNITID"
-        ],
-        "city": "MUNICIPALITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "attribution": "City of Orange",
+                "data": "http://gis.cityoforange.org/orangegis/rest/services/ParcelPublicAccessMI/MapServer/3",
+                "website": "http://cityoforange.org/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY"
+                }
+            }
+        ]
     }
 }

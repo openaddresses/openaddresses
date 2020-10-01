@@ -1,20 +1,38 @@
 {
     "coverage": {
-        "US Census": {"geoid": "08123", "name": "Weld County", "state": "Colorado"},
+        "US Census": {
+            "geoid": "08123",
+            "name": "Weld County",
+            "state": "Colorado"
+        },
         "country": "us",
         "state": "co",
         "county": "Weld"
     },
-    "data": "https://services.arcgis.com/ewjSqmSyHJnkfBLL/arcgis/rest/services/Address_Points_open_data/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "HOUSENUM",
-        "street": ["PRE_DIR", "PRETYPE", "STR_NAME", "STR_TYPE", "SUF_DIR"],
-        "unit": "UNIT",
-        "city": "COMMUNITY",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIPCODE",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/ewjSqmSyHJnkfBLL/arcgis/rest/services/Address_Points_open_data/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "HOUSENUM",
+                    "street": [
+                        "PRE_DIR",
+                        "PRETYPE",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "COMMUNITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

@@ -1,30 +1,42 @@
 {
     "coverage": {
-        "US Census": {"geoid": "22033", "name": "East Baton Rouge Parish", "state": "Louisiana"},
+        "US Census": {
+            "geoid": "22033",
+            "name": "East Baton Rouge Parish",
+            "state": "Louisiana"
+        },
         "country": "us",
         "state": "la",
         "county": "East Baton Rouge"
     },
-    "data": "https://maps.brla.gov/gis/rest/services/Map_Reference/Street_Address/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "ADDRESS_ID",
-        "number": {
-            "function": "prefixed_number",
-            "field": "FULL_ADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "FULL_ADDRESS",
-            "may_contain_units": true
-        },
-        "unit": {
-            "function": "postfixed_unit",
-            "field": "FULL_ADDRESS"
-        },
-        "city": "CITY",
-        "postcode": "ZIP",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.brla.gov/gis/rest/services/Map_Reference/Street_Address/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDRESS_ID",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FULL_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FULL_ADDRESS",
+                        "may_contain_units": true
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "FULL_ADDRESS"
+                    },
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "region": "STATE"
+                }
+            }
+        ]
     }
 }

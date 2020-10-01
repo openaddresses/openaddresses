@@ -16,14 +16,26 @@
         "state": "tx",
         "city": "Waco"
     },
-    "data": "https://gis.ci.waco.tx.us/arcgis/rest/services/Parcels/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "situs_num",
-        "street": ["situs_street_prefx", "situs_street", "situs_street_sufix"],
-        "city": "situs_city",
-        "region": "situs_state",
-        "postcode": "situs_zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.ci.waco.tx.us/arcgis/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "situs_num",
+                    "street": [
+                        "situs_street_prefx",
+                        "situs_street",
+                        "situs_street_sufix"
+                    ],
+                    "city": "situs_city",
+                    "region": "situs_state",
+                    "postcode": "situs_zip"
+                }
+            }
+        ]
     }
 }

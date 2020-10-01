@@ -9,13 +9,21 @@
         "state": "or",
         "county": "Lake"
     },
-    "data": "https://lcmaps.lanecounty.org/arcgis/rest/services/Lake/LakeBaseMapWAB2/MapServer/229",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDR_NUM",
-        "street": "STREETNAME",
-        "city": "USPS_CITY",
-        "postcode": "ZIP5"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://lcmaps.lanecounty.org/arcgis/rest/services/PATS/LakePATSBaseMap/MapServer/231",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDR_NUM",
+                    "street": "STREETNAME",
+                    "city": "USPS_CITY",
+                    "postcode": "ZIP5"
+                }
+            }
+        ]
     }
 }

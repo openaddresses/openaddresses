@@ -9,21 +9,28 @@
         "state": "ca",
         "county": "Kern"
     },
-    "attribution": "Kern County",
-    "data": "http://maps.co.kern.ca.us/arcgis/rest/services/Kern_Base/MapServer/187",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-          "ADR_NUM",
-          "ADR_FRAC"
-        ],
-        "unit": "UNIT_ID",
-        "street": [
-          "ADR_PRE",
-          "ADR_NAME",
-          "ADR_TYPE",
-          "ADR_SUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Kern County",
+                "data": "https://services5.arcgis.com/Y8jwjGUWbRjuqpG5/arcgis/rest/services/Address_Point_Base/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "Unit",
+                    "number": [
+                        "HouseNUmbe",
+                        "HouseSuffi"
+                    ],
+                    "street": "FullStreet",
+                    "postcode": "zip",
+                    "city": "PostalCity",
+                    "district": "County",
+                    "region": "State"
+                }
+            }
         ]
     }
 }

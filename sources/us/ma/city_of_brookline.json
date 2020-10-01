@@ -16,24 +16,31 @@
         "state": "ma",
         "city": "Brookline"
     },
-    "data": "http://gisweb.brooklinema.gov/arcgis/rest/services/OpenDataPortal/OpenDataPortal_Address_Building_Parcel/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "ADDRESS_ID",
-        "number": "AddNum",
-        "unit": "UNIT",
-        "street": [
-            "StPreDir",
-            "StPreType",
-            "StName",
-            "StType",
-            "StDir"
-        ],
-        "unit": "Unit",
-        "city": "City",
-        "district": "County",
-        "region": "StateAbbr",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gisweb.brooklinema.gov/arcgis/rest/services/OpenDataPortal/OpenDataPortal_Address_Building_Parcel/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDRESS_ID",
+                    "number": "AddNum",
+                    "unit": "Unit",
+                    "street": [
+                        "StPreDir",
+                        "StPreType",
+                        "StName",
+                        "StType",
+                        "StDir"
+                    ],
+                    "city": "City",
+                    "district": "County",
+                    "region": "StateAbbr",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

@@ -1,29 +1,40 @@
 {
-	"coverage": {
-		"country": "de",
-		"state": "hamburg",
-		"ISO 3166": {
+    "coverage": {
+        "country": "de",
+        "state": "hamburg",
+        "ISO 3166": {
             "alpha2": "DE-HH",
             "country": "Germany",
             "subdivision": "hamburg"
         }
-	},
-	"data": "http://daten-hamburg.de/geographie_geologie_geobasisdaten/ALKIS_Adressen/ALKIS_Adressen_HH_2018-01-02.zip",
-	"website": "http://suche.transparenz.hamburg.de/dataset/alkis-adressen-hamburg6",
-	"protocol": "http",
-	"compression": "zip",
-	"license": {
-		"text": "Datenlizenz Deutschland Namensnennung 2.0",
-		"url": "https://www.govdata.de/dl-de/by-2-0",
-		"attribution": true,
-		"share-alike": false,
-		"attribution name": "Freie und Hansestadt Hamburg, Landesbetrieb Geoinformation und Vermessung"
-	},
-	"conform": {
-		"format": "xml",
-		"srs": "EPSG:25832",
-		"city": "portsname",
-		"street": "strname",
-		"number": ["hausnr", "zusatz"]
-	}
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "http://daten-hamburg.de/geographie_geologie_geobasisdaten/ALKIS_Adressen/ALKIS_Adressen_HH_2018-01-02.zip",
+                "website": "http://suche.transparenz.hamburg.de/dataset/alkis-adressen-hamburg6",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "text": "Datenlizenz Deutschland Namensnennung 2.0",
+                    "url": "https://www.govdata.de/dl-de/by-2-0",
+                    "attribution": true,
+                    "share-alike": false,
+                    "attribution name": "Freie und Hansestadt Hamburg, Landesbetrieb Geoinformation und Vermessung"
+                },
+                "conform": {
+                    "format": "xml",
+                    "srs": "EPSG:25832",
+                    "city": "portsname",
+                    "street": "strname",
+                    "number": [
+                        "hausnr",
+                        "zusatz"
+                    ]
+                }
+            }
+        ]
+    }
 }

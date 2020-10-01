@@ -1,0 +1,43 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "05103",
+            "name": "Ouachita County",
+            "state": "Arkansas"
+        },
+        "country": "us",
+        "state": "ar",
+        "county": "Ouachita"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://www.efsedge.com/arcgis/rest/services/Ouachita_County/Ouachita_Vector/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADR_NUM",
+                        "ADR_NUM_SU"
+                    ],
+                    "street": [
+                        "PRE_DIR",
+                        "PSTR_NAME",
+                        "PSTR_TYPE",
+                        "PSUF_DIR"
+                    ],
+                    "unit": [
+                        "ADR_UNIT_TYP",
+                        "ADR_UNIT_ID"
+                    ],
+                    "city": "ADR_CITY",
+                    "district": "CNTY_NAME",
+                    "region": "ADR_STATE",
+                    "postcode": "ADR_ZIP5"
+                }
+            }
+        ]
+    }
+}

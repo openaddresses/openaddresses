@@ -9,19 +9,25 @@
         "state": "al",
         "county": "Limestone"
     },
-    "data": "https://web3.kcsgis.com/kcsgis/rest/services/Athens_Limestone/Public/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "STR_NUM",
-        "unit": "UNIT_NUM",
-        "street": [
-            "PRE_DIR",
-            "STR_NAME",
-            "STR_TYPE",
-            "POST_DIR"
-        ],
-        "postcode": "ZIP_CODE",
-        "city": "CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://web2.kcsgis.com/kcsgis/rest/services/Limestone/Public/MapServer/103",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PropertyAddr1"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PropertyAddr1"
+                    }
+                }
+            }
+        ]
     }
 }

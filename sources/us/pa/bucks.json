@@ -9,19 +9,42 @@
         "state": "pa",
         "county": "Bucks"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/iandees/ed482f/bucks.geojson.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "geojson",
-        "number": "SITUS_ADDR_NUM",
-        "street": [
-            "SITUS_FDPRE",
-            "SITUS_FNAME",
-            "SITUS_FTYPE",
-            "SITUS_FDSUF"
-        ],
-        "city": "MUNI",
-        "accuracy": 2
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://dataportal-bucksgis.opendata.arcgis.com/",
+                "contact": {
+                    "name": "Andrew G. Heimark",
+                    "title": "Director of GIS Planning",
+                    "phone": "215-345-3423",
+                    "email": "bcpc@buckscounty.org",
+                    "address": "The Almshouse, Neshaminy Manor Center, 1260 Almshouse Road, Doylestown, Pennsylvania 18901"
+                },
+                "data": "https://services3.arcgis.com/SP47Tddf7RK32lBU/ArcGIS/rest/services/Addresspoints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "PARID",
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "MSAGComm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ]
     }
 }

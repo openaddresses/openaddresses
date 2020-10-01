@@ -1,16 +1,33 @@
 {
     "coverage": {
-        "ISO 3166": {"alpha2": "CA-BC", "country": "Canada", "subdivision": "British Columbia"},
+        "ISO 3166": {
+            "alpha2": "CA-BC",
+            "country": "Canada",
+            "subdivision": "British Columbia"
+        },
         "country": "ca",
         "state": "bc"
     },
-    "data": "http://bcspatial.icisociety.ca/webservices/rest/services/AddressBC_Public/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "STREET_NUMBER",
-        "street": [ "STREET_DIR_PREFIX", "STREET_NAME", "STREET_TYPE", "STREET_DIR_SUFFIX"],
-        "city": "LOCALITY",
-        "format": "geojson"
-    },
-    "note": "Bump hooked"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "http://bcspatial.icisociety.ca/webservices/rest/services/AddressBC_Public/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "STREET_NUMBER",
+                    "street": [
+                        "STREET_DIR_PREFIX",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "STREET_DIR_SUFFIX"
+                    ],
+                    "city": "LOCALITY",
+                    "format": "geojson"
+                },
+                "note": "Bump hooked"
+            }
+        ]
+    }
 }

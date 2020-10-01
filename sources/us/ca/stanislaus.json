@@ -9,35 +9,28 @@
         "state": "ca",
         "county": "Stanislaus"
     },
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "Situs2"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "Situs2"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "Situs1",
-            "pattern": "[0-9]{5}$"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "Situs1",
-            "pattern": "(.*)( CA .*)",
-            "replace": "$1"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "Situs2",
-            "pattern": "(.*?)( #[A-Za-z0-9])",
-            "replace": "$2"
-        }
-    },
-    "attribution": "Stanislaus County",
-    "data": "http://gis.stancounty.com/stangis_map_services/ArcGIS/rest/services/maps/parcels/MapServer/0",
-    "protocol": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Stanislaus County",
+                "data": "https://gis2.stancounty.com/arcgis/rest/services/Hosted/Addresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "house_num",
+                    "unit": "unit",
+                    "street": [
+                        "pre_dir",
+                        "street",
+                        "st_sfx",
+                        "post_dir"
+                    ],
+                    "city": "city",
+                    "postcode": "zip"
+                }
+            }
+        ]
+    }
 }

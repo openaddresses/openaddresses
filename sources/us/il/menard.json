@@ -9,21 +9,29 @@
         "state": "il",
         "county": "Menard"
     },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_menard_co_il_taxmap/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "site_address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "site_address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "format": "geojson",
-        "accuracy": 2
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_menard_co_il_taxmap/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "site_address",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "site_address",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "format": "geojson",
+                    "accuracy": 2
+                }
+            }
+        ]
     }
 }

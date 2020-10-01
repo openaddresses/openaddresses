@@ -9,15 +9,23 @@
         "state": "wa",
         "county": "Skagit"
     },
-    "data": "http://www.skagitcounty.net/gispublic/rest/services/Assessor/PropertyMap/MapServer/3",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HouseNumber",
-        "street": "RoadName",
-        "unit": [
-            "UnitType",
-            "UnitNumber"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://www.skagitcounty.net/gispublic/rest/services/Assessor/PropertyMap/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNumber",
+                    "street": "RoadName",
+                    "unit": [
+                        "UnitType",
+                        "UnitNumber"
+                    ]
+                }
+            }
         ]
     }
 }

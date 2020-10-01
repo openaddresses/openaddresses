@@ -9,23 +9,31 @@
         "state": "ut",
         "county": "Box Elder"
     },
-    "protocol": "ESRI",
-    "data": "http://gis.boxeldercounty.org/arcgis/rest/services/Webmap/Cadastral_Layers/MapServer/0",
-    "conform": {
-        "format": "geojson",
-        "number": "HouseNum",
-        "street": [
-            "PreDir",
-            "StreetName",
-            "StreetType",
-            "SufDir"
-        ],
-        "unit": [
-            "UnitType",
-            "UnitNumber"
-        ],
-        "city": "City",
-        "region": "StateAbrv",
-        "postcode": "ZipCode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis.boxeldercounty.org/arcgis/rest/services/Webmap/Cadastral_Layers/MapServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNum",
+                    "street": [
+                        "PreDir",
+                        "StreetName",
+                        "StreetType",
+                        "SufDir"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "UnitNumber"
+                    ],
+                    "city": "City",
+                    "region": "StateAbrv",
+                    "postcode": "ZipCode"
+                }
+            }
+        ]
     }
 }

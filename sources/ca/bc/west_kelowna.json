@@ -3,23 +3,37 @@
         "country": "ca",
         "state": "bc",
         "county": "West Kelowna",
-        "geometry": { "type": "Point", "coordinates": [-119.64, 49.83] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -119.64,
+                49.83
+            ]
+        }
     },
-    "data": "http://www.districtofwestkelowna.ca/DocumentCenter/View/3854",
-    "website": "http://www.districtofwestkelowna.ca/index.aspx?page=683",
-    "license": "http://www.districtofwestkelowna.ca/Modules/ShowDocument.aspx?documentid=7602",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "file": "dwk_cvcpoints/dwk_cvcpoints.shp",
-        "number": "ADDR_NBR",
-        "street": [
-            "PREFIX",
-            "NAME",
-            "TYPE"
-        ],
-        "unit":"UNIT_NBR",
-        "postcode": "POST_CODE",
-        "format": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.westkelownacity.ca/GISFiles/wk_cvcpoints.zip",
+                "website": "https://www.westkelownacity.ca/en/building-business-and-development/open-data.aspx",
+                "license": "https://gis.westkelownacity.ca/GISFiles/disclaimer.pdf",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "file": "wk_cvcpoints/wk_cvcpoints.shp",
+                    "number": "ADDR_NBR",
+                    "street": [
+                        "PREFIX",
+                        "NAME",
+                        "TYPE"
+                    ],
+                    "unit": "UNIT_NBR",
+                    "postcode": "POST_CODE",
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

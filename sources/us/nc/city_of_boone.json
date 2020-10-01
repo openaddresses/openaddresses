@@ -3,8 +3,8 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-              	-81.667,
-                36.210
+                -81.667,
+                36.21
             ]
         },
         "US Census": {
@@ -16,17 +16,25 @@
         "state": "nc",
         "city": "Boone"
     },
-    "data": "https://gisviewer.townofboone.net/arcgis/rest/services/Parcels/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "PROPADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "PROPADDRESS"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gisviewer.townofboone.net/arcgis/rest/services/Parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PROPADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PROPADDRESS"
+                    }
+                }
+            }
+        ]
     }
 }

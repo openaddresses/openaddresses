@@ -16,22 +16,30 @@
         "state": "nm",
         "city": "Santa Fe"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/iandees/d8aa08/AddressPoints.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "number": "ADDRESS_NO",
-        "street": [
-            "PREFIX",
-            "ROAD_NAME",
-            "SUFFIX",
-            "POSTDIR"
-        ],
-        "unit": [
-            "BUILDING",
-            "UNIT"
-        ],
-        "postcode": "ZIP_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://data.openaddresses.io/cache/uploads/iandees/d8aa08/AddressPoints.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "ADDRESS_NO",
+                    "street": [
+                        "PREFIX",
+                        "ROAD_NAME",
+                        "SUFFIX",
+                        "POSTDIR"
+                    ],
+                    "unit": [
+                        "BUILDING",
+                        "UNIT"
+                    ],
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ]
     }
 }

@@ -1,22 +1,40 @@
 {
     "coverage": {
-        "US Census": {"geoid": "39113", "name": "Montgomery County", "state": "Ohio"},
+        "US Census": {
+            "geoid": "39113",
+            "name": "Montgomery County",
+            "state": "Ohio"
+        },
         "country": "us",
         "state": "oh",
         "county": "Montgomery"
     },
-    "data": "https://services6.arcgis.com/zxOMWqh0yAD6mMsJ/arcgis/rest/services/MONTGOMERY_COUNTY_OHIO_ADDRESS_POINTS/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDR_NUM",
-        "street": ["PRE_DIR", "PRE_TYPE", "STR_NAME", "STR_TYPE", "SUF_DIR"],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUM"
-        ],
-        "city": "CITY",
-        "postcode": "ZIP",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/zxOMWqh0yAD6mMsJ/arcgis/rest/services/MONTGOMERY_COUNTY_OHIO_ADDRESS_POINTS/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "region": "STATE"
+                }
+            }
+        ]
     }
 }

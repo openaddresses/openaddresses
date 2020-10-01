@@ -1,18 +1,34 @@
 {
     "coverage": {
-        "US Census": {"geoid": "35001", "name": "Bernalillo County", "state": "New Mexico"},
+        "US Census": {
+            "geoid": "35001",
+            "name": "Bernalillo County",
+            "state": "New Mexico"
+        },
         "country": "us",
         "state": "nm",
         "county": "Bernalillo"
     },
-    "data": "http://amus.bernco.gov/ArcGIS/rest/services/AdvancedPublic/MapServer/45",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "SITUSNUM",
-        "street": ["SITUSSTR", "SITUSSTRTY", "SITUSDIREC"],
-        "city": "SITUSCITY",
-        "postcode": "SITUSZIP",
-        "region": "SITUSSTATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://amus.bernco.gov/ArcGIS/rest/services/AdvancedPublic/MapServer/45",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SITUSNUM",
+                    "street": [
+                        "SITUSSTR",
+                        "SITUSSTRTY",
+                        "SITUSDIREC"
+                    ],
+                    "city": "SITUSCITY",
+                    "postcode": "SITUSZIP",
+                    "region": "SITUSSTATE"
+                }
+            }
+        ]
     }
 }

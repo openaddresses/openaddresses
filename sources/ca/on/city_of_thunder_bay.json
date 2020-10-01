@@ -3,16 +3,30 @@
         "country": "ca",
         "state": "on",
         "city": "Thunder Bay",
-        "geometry": { "type": "Point", "coordinates": [-89.25,48.40] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -89.25,
+                48.4
+            ]
+        }
     },
-    "data": "https://webapps.thunderbay.ca/arcgis/rest/services/Web_Map/Web_Map_GeneralMap/MapServer/9",
-    "website": "http://www.thunderbay.ca/Living/City_Services_and_Info/City_of_Thunder_Bay_Maps.htm",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRESS",
-        "street": "ROOT",
-        "city": "CITY",
-        "postcode": "POSTAL_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://webapps.thunderbay.ca/arcgis/rest/services/Web_Map/Web_Map_GeneralMap/MapServer/9",
+                "website": "http://www.thunderbay.ca/Living/City_Services_and_Info/City_of_Thunder_Bay_Maps.htm",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS",
+                    "street": "ROOT",
+                    "city": "CITY",
+                    "postcode": "POSTAL_CODE"
+                }
+            }
+        ]
     }
 }

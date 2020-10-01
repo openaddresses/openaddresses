@@ -9,29 +9,37 @@
         "state": "oh",
         "county": "summit"
     },
-    "data": "https://scgis.summitoh.net/server/rest/services/Addressing/MapServer/0",
-    "website": "https://hub.arcgis.com/datasets/summitgis::addresses",
-    "protocol": "ESRI",
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "conform": {
-        "format": "geojson",
-        "number": "ADDR_NUM",
-        "street": [
-            "PRE_DIR",
-            "PRE_TYPE",
-            "STR_NAME",
-            "STR_TYPE",
-            "SUF_DIR"
-        ],
-        "unit": [
-            "UNIT_TYPE", 
-            "UNIT_NUM"
-        ],
-        "city": "CITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://scgis.summitoh.net/server/rest/services/Addressing/MapServer/0",
+                "website": "https://hub.arcgis.com/datasets/summitgis::addresses",
+                "protocol": "ESRI",
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

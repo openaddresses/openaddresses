@@ -9,16 +9,40 @@
         "state": "mn",
         "county": "Lake"
     },
-    "data": "ftp://ftp.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_co_lake/loc_address_points/shp_loc_address_points.zip",
-    "protocol": "ftp",
-    "compression": "zip",
-    "website": "https://gisdata.mn.gov/dataset/us-mn-co-lake-loc-address-points",
-    "conform": {
-        "number": ["ANUMBERPRE","ANUMBER","ANUMBERSUF"],
-        "street": ["ST_PRE_MOD","ST_PRE_DIR","ST_PRE_TYP","ST_PRE_SEP", "ST_NAME", "ST_POS_TYP", "ST_PRE_DIR","ST_POS_MOD"],
-        "unit": ["SUB_TYPE1","SUB_ID1"],
-        "city": "POSTCOMM",
-        "postcode": "ZIP",
-        "format": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "ftp://ftp.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_co_lake/loc_address_points/shp_loc_address_points.zip",
+                "protocol": "ftp",
+                "compression": "zip",
+                "website": "https://gisdata.mn.gov/dataset/us-mn-co-lake-loc-address-points",
+                "conform": {
+                    "number": [
+                        "ANUMBERPRE",
+                        "ANUMBER",
+                        "ANUMBERSUF"
+                    ],
+                    "street": [
+                        "ST_PRE_MOD",
+                        "ST_PRE_DIR",
+                        "ST_PRE_TYP",
+                        "ST_PRE_SEP",
+                        "ST_NAME",
+                        "ST_POS_TYP",
+                        "ST_PRE_DIR",
+                        "ST_POS_MOD"
+                    ],
+                    "unit": [
+                        "SUB_TYPE1",
+                        "SUB_ID1"
+                    ],
+                    "city": "POSTCOMM",
+                    "postcode": "ZIP",
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

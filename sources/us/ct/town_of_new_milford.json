@@ -9,21 +9,29 @@
         "state": "ct",
         "county": "Litchfield"
     },
-    "attribution": "Town of New Milford, CT",
-    "data": "http://mapgeo.s3.amazonaws.com/clients/newmilfordct/files/HostedDownloadableData.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "file": "HostedDownloadableData/Parcels.shp",
-        "format": "shapefile-polygon",
-        "number": {
-            "function": "prefixed_number",
-            "field": "StreetAddr"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "StreetAddr"
-        },
-        "id": "Parcel_ID"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Town of New Milford, CT",
+                "data": "http://mapgeo.s3.amazonaws.com/clients/newmilfordct/files/HostedDownloadableData.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "file": "HostedDownloadableData/Parcels.shp",
+                    "format": "shapefile-polygon",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "StreetAddr"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "StreetAddr"
+                    },
+                    "id": "Parcel_ID"
+                }
+            }
+        ]
     }
 }

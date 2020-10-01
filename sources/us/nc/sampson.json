@@ -9,17 +9,25 @@
         "state": "nc",
         "county": "Sampson"
     },
-    "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Sampson2/MapServer/35",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "PARCEL_ADD"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "PARCEL_ADD"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Sampson2/MapServer/35",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PARCEL_ADD"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PARCEL_ADD"
+                    }
+                }
+            }
+        ]
     }
 }

@@ -1,33 +1,51 @@
 {
     "coverage": {
         "country": "ee",
-        "ISO 3166": {"alpha2": "EE", "country": "Estonia"}
+        "ISO 3166": {
+            "alpha2": "EE",
+            "country": "Estonia"
+        }
     },
-    "data": "https://data.openaddresses.io/cache/uploads/iandees/adc2bf/valjavote.zip",
-    "website": "http://xgis.maaamet.ee/adsavalik/ads",
-    "note": "Cache data is dated 2019-09-10. Downloads are under 'VÄLJAVÕTTED', look for 'Jõusolevad aadressiobjektid koos aadressidega'",
-    "attribution": "Estonian Land Board 2019-09-10",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "encoding": "ISO-8859-1",
-        "format": "csv",
-        "csvsplit": ";",
-        "srs": "EPSG:3301",
-        "lon": "VIITEPUNKT_X",
-        "lat": "VIITEPUNKT_Y",
-        "region": "TASE1_NIMETUS_LIIGIGA",
-        "district": "TASE2_NIMETUS_LIIGIGA",
-        "city": {
-            "function": "join",
-            "fields": ["TASE2_NIMETUS_LIIGIGA", "TASE3_NIMETUS_LIIGIGA", "TASE4_NIMETUS_LIIGIGA"],
-            "separator": ","
-        },
-        "number": {
-            "function": "join",
-            "fields": ["TASE6_NIMETUS_LIIGIGA", "TASE7_NIMETUS_LIIGIGA"],
-            "separator": " "
-        },
-        "street": "TASE5_NIMETUS_LIIGIGA"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "http://address.dev.peatus.ee/",
+                "website": "http://xgis.maaamet.ee/adsavalik/ads",
+                "note": "Cache data is dated 2019-09-10. Downloads are under 'VÄLJAVÕTTED', look for 'Jõusolevad aadressiobjektid koos aadressidega'",
+                "attribution": "Estonian Land Board 2019-09-10",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "encoding": "ISO-8859-1",
+                    "format": "csv",
+                    "csvsplit": ";",
+                    "srs": "EPSG:3301",
+                    "lon": "VIITEPUNKT_X",
+                    "lat": "VIITEPUNKT_Y",
+                    "region": "TASE1_NIMETUS_LIIGIGA",
+                    "district": "TASE2_NIMETUS_LIIGIGA",
+                    "city": {
+                        "function": "join",
+                        "fields": [
+                            "TASE2_NIMETUS_LIIGIGA",
+                            "TASE3_NIMETUS_LIIGIGA",
+                            "TASE4_NIMETUS_LIIGIGA"
+                        ],
+                        "separator": ","
+                    },
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "TASE6_NIMETUS_LIIGIGA",
+                            "TASE7_NIMETUS_LIIGIGA"
+                        ],
+                        "separator": " "
+                    },
+                    "street": "TASE5_NIMETUS_LIIGIGA"
+                }
+            }
+        ]
     }
 }

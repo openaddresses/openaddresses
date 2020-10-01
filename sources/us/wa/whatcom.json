@@ -1,0 +1,37 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "53073",
+            "name": "Whatcom County"
+        },
+        "country": "us",
+        "state": "wa",
+        "county": "Whatcom"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.cob.org/services/maps/gis",
+                "license": {
+                    "url": "https://data.cob.org/data/gis/metadata/land_addresspoints.html"
+                },
+                "data": "https://data.cob.org/data/gis/FGDB_Files/COB_Land.gdb.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "note": "Data provider is City of Bellingham, but the dataset contains address points for all of Whatcom County",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "land_AddressPoints",
+                    "file": "COB_Data/COB_Land.gdb",
+                    "number": "ADDR_NUM",
+                    "unit": "UNITID",
+                    "street": "STREET_NAME",
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
+    }
+}

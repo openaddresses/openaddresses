@@ -9,19 +9,25 @@
         "state": "al",
         "county": "Jefferson"
     },
-    "data": "http://jeffcogis.jccal.org/jccarcgis/rest/services/Current/LabelsCurrentNoAnno/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDR_HN",
-        "street": [
-            "ADDR_PD",
-            "ADDR_PT",
-            "ADDR_SN",
-            "ADDR_ST",
-            "ADDR_SD"
-        ],
-        "unit": "APARTMENT",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.jccal.org/arcgis/rest/services/Basemap/JeffersonCountyParcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Bldg_Number",
+                    "street": [
+                        "Street_Name",
+                        "Street_Type",
+                        "Street_Dir"
+                    ],
+                    "unit": "APARTMENT",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

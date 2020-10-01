@@ -8,17 +8,28 @@
         "country": "ru",
         "state": "YAN"
     },
-    "data": "https://karta.yanao.ru/arcgisserver/rest/services/BaseVectors/base_map/MapServer/58",
-    "protocol": "ESRI",
-    "language": "ru",
-    "conform": {
-        "number": {
-            "function": "join",
-            "fields": ["h_nomber","litera"],
-            "separator": ""
-        },
-        "street":  "st_name",
-        "city": "np",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://karta.yanao.ru/arcgisserver/rest/services/BaseVectors/base_map/MapServer/58",
+                "protocol": "ESRI",
+                "language": "ru",
+                "conform": {
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "h_nomber",
+                            "litera"
+                        ],
+                        "separator": ""
+                    },
+                    "street": "st_name",
+                    "city": "np",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

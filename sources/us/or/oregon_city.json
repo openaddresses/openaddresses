@@ -16,20 +16,29 @@
         "state": "or",
         "city": "Oregon City"
     },
-    "protocol": "ESRI",
-    "data": "https://webmaps.orcity.org/arcgis/rest/services/AddressPts/MapServer/0",
-    "conform":{
-        "format":"geojson",
-        "number": {
-            "function": "regexp",
-            "field": "GoldStandard.dbo.ocMap_Address_Pts_Query_as_Table.Situs_Full_Address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "GoldStandard.dbo.ocMap_Address_Pts_Query_as_Table.Situs_Full_Address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://maps.orcity.org/arcgis/rest/services/AddressPts_PUBLIC/MapServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS_Pts.HOUSENUM",
+                    "unit": [
+                        "ADDRESS_Pts.UNIT_TYPE",
+                        "ADDRESS_Pts.UNIT_NO"
+                    ],
+                    "street": [
+                        "ADDRESS_Pts.PRE_DIR",
+                        "ADDRESS_Pts.STR_NAME",
+                        "ADDRESS_Pts.FTYPE"
+                    ],
+                    "city": "ADDRESS_Pts.CITY",
+                    "postcode": "ADDRESS_Pts.ZIP5"
+                }
+            }
+        ]
     }
 }

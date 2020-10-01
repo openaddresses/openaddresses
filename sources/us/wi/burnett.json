@@ -9,15 +9,23 @@
         "state": "wi",
         "county": "Burnett"
     },
-    "data": "http://gis.msa-ps.com/arcgis/rest/services/BurnettCo/BurnettCo_GIS/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HSNUM",
-        "street": {
-            "function": "remove_prefix",
-            "field": "ALISTR",
-            "field_to_remove": "HSNUM"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.msa-ps.com/arcgis/rest/services/BurnettCo/BurnettCo_GIS/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HSNUM",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "ALISTR",
+                        "field_to_remove": "HSNUM"
+                    }
+                }
+            }
+        ]
     }
 }

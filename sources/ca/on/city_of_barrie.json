@@ -11,16 +11,30 @@
             ]
         }
     },
-    "data": "http://gisservices.barrie.ca/arcgis/rest/services/Open_Data/AddressVW/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUMBER",
-        "street": [
-            "SSTRNAME",
-            "SSTRSUFF",
-            "SSTRDIR"
-        ],
-        "unit": "UNITNUMBER"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gisservices.barrie.ca/arcgis/rest/services/Open_Data/AddressVW/MapServer/0",
+                "website": "https://opendata.barrie.ca/datasets/address-points",
+                "license": {
+                    "url": "https://www.barrie.ca/Online%20Services/PublishingImages/OpenData_Images/COB_DataLicense.pdf",
+                    "attribution name": "Barrie",
+                    "text": "Contains information licensed under the Open Government Licence – Barrie."
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUMBER",
+                    "street": [
+                        "SSTRNAME",
+                        "SSTRSUFF",
+                        "SSTRDIR"
+                    ],
+                    "unit": "UNITNUMBER"
+                }
+            }
+        ]
     }
 }

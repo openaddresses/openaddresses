@@ -17,23 +17,31 @@
         "county": "Palm Beach",
         "city": "West Palm Beach"
     },
-    "data": "https://gis.wpb.org/arcgis/rest/services/BaseMap/Site_Addresses/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "SITEADDID",
-        "number": [
-            "PREADDRNUM",
-            "ADDRNUM",
-            "ADDRNUMSUF"
-        ],
-        "street": "FULLNAME",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "city": "MUNICIPALITY",
-        "region": "STATE",
-        "postcode": "ZIP_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.wpb.org/arcgis/rest/services/BaseMap/Site_Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SITEADDID",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "region": "STATE",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ]
     }
 }

@@ -9,22 +9,30 @@
         "state": "tx",
         "county": "Hood"
     },
-    "data": "https://services5.arcgis.com/ufxkOGGtW27pGICf/arcgis/rest/services/Addresses/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "id": "FID",
-        "number": "ADD_NUMBER",
-        "street": [
-            "ADD_PRE",
-            "ADD_NAME",
-            "ADD_TYPE",
-            "ADD_SUF"
-        ],
-        "unit": "ADD_UNIT",
-        "city": "POSTAL_COM",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIPCODE",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/ufxkOGGtW27pGICf/arcgis/rest/services/Addresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "id": "FID",
+                    "number": "ADD_NUMBER",
+                    "street": [
+                        "ADD_PRE",
+                        "ADD_NAME",
+                        "ADD_TYPE",
+                        "ADD_SUF"
+                    ],
+                    "unit": "ADD_UNIT",
+                    "city": "POSTAL_COM",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

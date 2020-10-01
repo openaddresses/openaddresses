@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -76.516457, 37.076064 ]
+            "coordinates": [
+                -76.516457,
+                37.076064
+            ]
         },
         "US Census": {
             "geoid": "5156000",
@@ -13,23 +16,31 @@
         "state": "va",
         "city": "Newport News"
     },
-    "data": "https://maps.nnva.gov/gis/rest/services/Operational/Address/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "SITEADDID",
-        "number": "ADDRNUM",
-        "street": [
-            "ROADPREDIR",
-            "ROADNAME",
-            "ROADTYPE",
-            "ROADPOSTDIR"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "city": "MUNICIPALITY",
-        "postcode": "ZIP5"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.nnva.gov/gis/rest/services/Operational/Address/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SITEADDID",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "ROADPREDIR",
+                        "ROADNAME",
+                        "ROADTYPE",
+                        "ROADPOSTDIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIP5"
+                }
+            }
+        ]
     }
 }

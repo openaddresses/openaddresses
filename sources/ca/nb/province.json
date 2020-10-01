@@ -1,21 +1,40 @@
 {
     "coverage": {
-        "ISO 3166": {"alpha2": "CA-NB", "country": "Canada", "subdivision": "New Brunswick"},
+        "ISO 3166": {
+            "alpha2": "CA-NB",
+            "country": "Canada",
+            "subdivision": "New Brunswick"
+        },
         "country": "ca",
         "state": "nb"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/thatdatabaseguy/ef025b/output.csv",
-    "note": "This data is processed using the Docker file at scripts/ca/nb/*",
-    "website": "http://www.snb.ca/geonb1/e/DC/catalogue-E.asp",
-    "license": {"url": "http://geonb.snb.ca/documents/license/geonb-odl_en.pdf"},
-    "protocol": "http",
-    "conform": {
-        "number": "number",
-        "street": "street",
-        "city": "place",
-        "district": "district",
-        "lon": "x",
-        "lat": "y",
-        "format": "csv"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://gnb.socrata.com/api/geospatial/d5h8-svc8?method=export&format=Shapefile",
+                "note": "This data is processed using the Docker file at scripts/ca/nb/*",
+                "website": "https://gnb.socrata.com/dataset/Civic_Addresses/d5h8-svc8",
+                "license": {
+                    "url": "http://geonb.snb.ca/documents/license/geonb-odl_en.pdf",
+                    "text": "Contains information licenced under the GeoNB Open Data Licence",
+                    "attribution name": "GeoNB Open Data License",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "civic_num",
+                    "street": "st_name_co",
+                    "city": "place",
+                    "district": "district",
+                    "lon": "x_coordina",
+                    "lat": "y_coordina",
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

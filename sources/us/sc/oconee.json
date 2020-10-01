@@ -9,19 +9,27 @@
         "state": "sc",
         "county": "Oconee"
     },
-    "data": "http://arcserver2.oconeesc.com/arcgis/rest/services/AddressExternal/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "street": [
-            "PREFIX",
-            "ROAD",
-            "SUFFIX"
-        ],
-        "unit": "UNIT",
-        "city": "City",
-        "region": "State",
-        "postcode": "Zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://arcserver2.oconeesc.com/arcgis/rest/services/AddressExternal/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "PREFIX",
+                        "ROAD",
+                        "SUFFIX"
+                    ],
+                    "unit": "UNIT",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
+        ]
     }
 }

@@ -9,18 +9,26 @@
         "state": "wi",
         "county": "Kenosha"
     },
-    "data": "http://kc-web-01.kenoshacounty.org/arcgis/rest/services/Interactive_Mapping/AddressPoints/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-            "PREFIX",
-            "NAME",
-            "TYPE",
-            "SUFFIX"
-        ],
-        "city": "Muni",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://kc-web-01.kenoshacounty.org/arcgis/rest/services/Interactive_Mapping/AddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "PREFIX",
+                        "NAME",
+                        "TYPE",
+                        "SUFFIX"
+                    ],
+                    "city": "Muni",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -73.213, 44.465 ]
+            "coordinates": [
+                -73.213,
+                44.465
+            ]
         },
         "US Census": {
             "geoid": "5010675",
@@ -13,16 +16,22 @@
         "state": "vt",
         "city": "burlington"
     },
-    "data": "http://gis.burlingtonvt.gov:6080/arcgis/rest/services/Assessor/Parcel_Map/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "accuracy": 2,
-        "id": "UID",
-        "number": "ST_NUM",
-        "street": [
-            "ST_NAME",
-            "ST_TYPE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.burlingtonvt.gov/arcgis/rest/services/Assessor/Parcels/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ST_NUM",
+                    "street": [
+                        "ST_NAME",
+                        "ST_TYPE"
+                    ]
+                }
+            }
         ]
     }
 }

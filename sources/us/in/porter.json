@@ -9,23 +9,31 @@
         "state": "in",
         "county": "Porter"
     },
-    "data": "http://chavesnm.mygisonline.com/arcgis/rest/services/IN_Porter/PorterINWFS/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "StreetAddress",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "StreetAddress",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "City",
-        "region": "State",
-        "postcode": "Zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://chavesnm.mygisonline.com/arcgis/rest/services/IN_Porter/PorterINWFS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "StreetAddress",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "StreetAddress",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
+        ]
     }
 }

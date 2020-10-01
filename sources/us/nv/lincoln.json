@@ -9,21 +9,29 @@
         "state": "nv",
         "county": "Lincoln"
     },
-    "data": "https://ags.cloudsmartgis.com/arcgis/rest/services/CLIENT_LincolnCounty/LincolnCounty_SiteAddresses/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "street": [
-            "ADDPREDIR",
-            "FULLNAME",
-            "ADDRNUMSUF"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "city": "MUNICIPALITY",
-        "postcode": "ADDZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://ags.cloudsmartgis.com/arcgis/rest/services/CLIENT_LincolnCounty/LincolnCounty_SiteAddresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "ADDPREDIR",
+                        "FULLNAME",
+                        "ADDRNUMSUF"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "postcode": "ADDZIPCODE"
+                }
+            }
+        ]
     }
 }

@@ -9,20 +9,28 @@
         "state": "ne",
         "county": "Deuel"
     },
-    "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/Deuel/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "PROPADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PROPADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/Deuel/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "PROPADDRESS",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "PROPADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }

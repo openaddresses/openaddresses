@@ -1,39 +1,50 @@
 {
-    "protocol": "http",
-    "compression": "zip",
-    "note": "URL of the data changes quarterly and needs to be adjusted, and data converted to .zip form. Find the link to Suomi_osoitteet*.zip on https://www.avoindata.fi/data/dataset/rakennusten-osoitetiedot-koko-suomi",
-    "data": "https://geocoding.blob.core.windows.net/vrk/fi_vrk_addresses.zip",
     "coverage": {
-        "country": "FI",
+        "country": "fi",
         "ISO 3166": {
             "alpha2": "FI",
             "country": "Finland"
         }
     },
-    "license": {
-        "url": "https://creativecommons.org/licences/by/4.0/deed.fi",
-        "text": "CC BY 4.0",
-        "attribution": true,
-        "attribution name": "Väestörekisterikeskus"
-    },
-    "website": "https://www.avoindata.fi/data/fi/dataset/rakennusten-osoitetiedot-koko-suomi",
-    "conform": {
-        "srs": "EPSG:3067",
-        "encoding": "ISO-8859-1",
-        "csvsplit": ";",
-        "headers": -1,
-        "street": "COLUMN8",
-        "number": "COLUMN10",
-        "lat": "COLUMN5",
-        "lon": "COLUMN6",
-        "id": {
-            "function": "join",
-            "fields": ["COLUMN1","COLUMN7"],
-            "separator": "-"
-        },
-        "postcode": "COLUMN11",
-        "format": "csv",
-        "accuracy": 1
-    },
-    "language": "fi"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "protocol": "http",
+                "compression": "zip",
+                "note": "URL of the data changes quarterly and needs to be adjusted, and data converted to .zip form. Find the link to Suomi_osoitteet*.zip on https://www.avoindata.fi/data/dataset/rakennusten-osoitetiedot-koko-suomi",
+                "data": "https://geocoding.blob.core.windows.net/vrk/fi_vrk_addresses.zip",
+                "license": {
+                    "url": "https://creativecommons.org/licences/by/4.0/deed.fi",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Väestörekisterikeskus"
+                },
+                "website": "https://www.avoindata.fi/data/fi/dataset/rakennusten-osoitetiedot-koko-suomi",
+                "conform": {
+                    "srs": "EPSG:3067",
+                    "encoding": "ISO-8859-1",
+                    "csvsplit": ";",
+                    "headers": -1,
+                    "street": "COLUMN8",
+                    "number": "COLUMN10",
+                    "lat": "COLUMN5",
+                    "lon": "COLUMN6",
+                    "id": {
+                        "function": "join",
+                        "fields": [
+                            "COLUMN1",
+                            "COLUMN7"
+                        ],
+                        "separator": "-"
+                    },
+                    "postcode": "COLUMN11",
+                    "format": "csv",
+                    "accuracy": 1
+                },
+                "language": "fi"
+            }
+        ]
+    }
 }

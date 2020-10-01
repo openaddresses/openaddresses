@@ -1,26 +1,43 @@
 {
-  "coverage": {
-      "country": "ca",
-      "state": "bc",
-      "city": "Penticton",
-      "geometry": {
-          "type": "Point",
-          "coordinates": [
-              -119.569,
-              49.495
-          ]
-      }
-  },
-  "data": "https://gis.penticton.ca/external/rest/services/prd/Cadastral/MapServer/29",
-  "protocol": "ESRI",
-  "conform": {
-      "format": "geojson",
-      "number": "STR_NO",
-      "street": [
-          "STR_NAME",
-          "STR_TYPE",
-          "STR_DR_SUF"
-      ],
-      "city": "LOCALITY"
-  }
+    "schema": 2,
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "city": "Penticton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -119.569,
+                49.495
+            ]
+        }
+    },
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://opendata.arcgis.com/datasets/1ce333640d8a451888d93147dd1a251d_29.zip?outSR=%7B%22latestWkid%22%3A2955%2C%22wkid%22%3A2153%7D",
+                "website": "http://open.penticton.ca/datasets/1ce333640d8a451888d93147dd1a251d_29",
+                "license": {
+                    "url": "https://www.penticton.ca/sites/default/files/docs/our-community/maps-gis/2020-07-02-PDF-Open%20Data%20Government%20Licence.pdf",
+                    "text": "Contains information licensed under the Open Government Licence – City of Penticton",
+                    "attribution name": "Open Government Licence - City of Penticton",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "STR_NO",
+                    "street": [
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "STR_DR_SUF"
+                    ],
+                    "city": "LOCALITY"
+                }
+            }
+        ]
+    }
 }

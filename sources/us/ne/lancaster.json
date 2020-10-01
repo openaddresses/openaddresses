@@ -9,16 +9,24 @@
         "state": "ne",
         "county": "Lancaster"
     },
-    "data": "http://ags3.lincoln.ne.gov/arcgis/rest/services/Assessor/Pub_Parcels/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "SIT_ST_NUM",
-        "street": [
-            "SIT_ST_DIR",
-            "SIT_ST_NAME",
-            "SIT_ST_TYPE"
-        ],
-        "unit": "SIT_APT_NUM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://ags3.lincoln.ne.gov/arcgis/rest/services/Assessor/Pub_Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SIT_ST_NUM",
+                    "street": [
+                        "SIT_ST_DIR",
+                        "SIT_ST_NAME",
+                        "SIT_ST_TYPE"
+                    ],
+                    "unit": "SIT_APT_NUM"
+                }
+            }
+        ]
     }
 }

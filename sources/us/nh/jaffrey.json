@@ -17,21 +17,29 @@
             ]
         }
     },
-    "data": "http://35.172.145.31/arcgis/rest/services/JaffreyNH/JaffreyDynamic/MapServer/0",
-    "website": "http://hosting.tighebond.com/jaffreynh_public/",
-    "protocol": "ESRI",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "Jaffrey.Location",
-            "pattern": "^(\\S+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Jaffrey.Location",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
-        },
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://35.172.145.31/arcgis/rest/services/JaffreyNH/JaffreyDynamic/MapServer/0",
+                "website": "http://hosting.tighebond.com/jaffreynh_public/",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "Jaffrey.Location",
+                        "pattern": "^(\\S+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Jaffrey.Location",
+                        "pattern": "^(?:\\S+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

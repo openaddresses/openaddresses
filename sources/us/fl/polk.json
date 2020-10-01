@@ -9,17 +9,26 @@
         "state": "fl",
         "county": "Polk"
     },
-    "data": "http://gisapps.polk-county.net/arcgis/rest/services/streetAndAddress/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "Add_Number",
-        "unit": "Unit",
-        "street": [
-            "St_Name",
-            "St_PosTyp",
-            "St_PosDir"
-        ],
-        "postcode": "Post_Code"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gisapps.polk-county.net/arcgis/rest/services/NewServices/streetAndAddress/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "unit": "Unit",
+                    "street": [
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "city": "MailingCity",
+                    "postcode": "Post_Code"
+                }
+            }
+        ]
     }
 }

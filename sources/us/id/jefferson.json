@@ -9,22 +9,30 @@
         "state": "id",
         "county": "Jefferson"
     },
-    "data": "http://maps.co.jefferson.id.us/arcgis/rest/services/Labels/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NUM",
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "unit": [
-            "SB_UNIT_TP",
-            "SB_UNIT"
-        ],
-        "city": "COMMUNITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://maps.co.jefferson.id.us/arcgis/rest/services/Labels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUM",
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "unit": [
+                        "SB_UNIT_TP",
+                        "SB_UNIT"
+                    ],
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

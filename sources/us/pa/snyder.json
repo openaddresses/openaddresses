@@ -9,19 +9,36 @@
         "state": "pa",
         "county": "Snyder"
     },
-    "data": "http://www.unionco.org/unioncomaps/rest/services/Snyder/Structures/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "House_No",
-        "street": [
-            "PREFIXDIR",
-            "STREETNAME",
-            "STREETSUF",
-            "POSTDIR"
-        ],
-        "unit": "UNITID",
-        "city": "City",
-        "postcode": "Zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.unioncountypa.org/departments/gis/gis-department/page.aspx?id=2741",
+                "contact": {
+                    "name": "Susan Reese, GISP",
+                    "title": "Director",
+                    "phone": "(570) 524-3816",
+                    "email": "gis@unionco.org",
+                    "address": "Union County Government Center, 155 N 15th St, Lewisburg, PA 17837"
+                },
+                "data": "https://www.unionco.org/unioncomaps/rest/services/Snyder/SnyderLandRecords/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SITEADDID",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "St_PreDir",
+                        "StreetName",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "unit": "UNITID",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                }
+            }
+        ]
     }
 }

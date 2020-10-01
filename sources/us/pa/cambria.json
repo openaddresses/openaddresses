@@ -9,20 +9,34 @@
         "state": "pa",
         "county": "Cambria"
     },
-    "data": "http://gis2.cambriacountypa.gov/georesources/rest/services/Resources/fsSurfaceParcels/MapServer/2",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "SITUS_DESC_1",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SITUS_DESC_1",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.cambriacountypa.gov/geographical-information-systems.aspx",
+                "contact": {
+                    "name": "Stephen J. Kocsis",
+                    "phone": "(814) 472-1408",
+                    "address": "401 Candlelight Drive, Suite 211, Ebensburg, PA 15931"
+                },
+                "data": "http://gis2.cambriacountypa.gov/georesources/rest/services/Resources/CambriaCAD/MapServer/93",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SAN",
+                    "street": [
+                        "PRD",
+                        "STN",
+                        "STS",
+                        "POD"
+                    ],
+                    "unit": "UNITNO",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

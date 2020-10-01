@@ -3,17 +3,38 @@
         "country": "ca",
         "state": "ab",
         "city": "Edmonton",
-        "geometry": { "type": "Point", "coordinates": [-113.774, 53.555] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -113.774,
+                53.555
+            ]
+        }
     },
-    "website": "https://data.edmonton.ca/City-Administration/Property-Information-Data/dkk9-cj3x",
-    "data": "https://data.edmonton.ca/api/views/dkk9-cj3x/rows.csv?accessType=DOWNLOAD",
-    "protocol": "http",
-    "conform": {
-        "format": "csv",
-        "lat": "Latitude",
-        "lon": "Longitude",
-        "number": "House Number",
-        "unit": "Suite",
-        "street": "Street Name"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "website": "https://data.edmonton.ca/dataset/Parcel-Addresses/ut27-nrpn",
+                "data": "https://data.edmonton.ca/api/views/ut27-nrpn/rows.csv?accessType=DOWNLOAD",
+                "license": {
+                    "url": "https://data.edmonton.ca/stories/s/City-of-Edmonton-Open-Data-Terms-of-Use/msh8-if28/",
+                    "text": "These datasets are publicly available from the City’s Open Data Portal",
+                    "attribution name": "City of Edmonton Open Data Terms of Use 2.4",
+                    "attribution": true,
+                    "share-alike": true
+                },
+                "protocol": "http",
+                "conform": {
+                    "format": "csv",
+                    "lat": "Latitude",
+                    "lon": "Longitude",
+                    "number": "House Number",
+                    "unit": "Suite",
+                    "street": "Street Name"
+                }
+            }
+        ]
     }
 }

@@ -16,19 +16,27 @@
         "state": "ky",
         "city": "Paducah"
     },
-    "conform": {
-        "format": "geojson",
-        "number": "STNUM",
-        "street": [
-            "STPREFIX",
-            "STNAME",
-            "STTYPE"
-        ],
-        "unit": [
-            "SUB_ADDRESS_TYPE",
-            "SUB_ADDRESS_NUM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STNUM",
+                    "street": [
+                        "STPREFIX",
+                        "STNAME",
+                        "STTYPE"
+                    ],
+                    "unit": [
+                        "SUB_ADDRESS_TYPE",
+                        "SUB_ADDRESS_NUM"
+                    ]
+                },
+                "data": "http://map-gis.paducahky.gov/arcgis/rest/services/EmergencyBaseMap/MapServer/3",
+                "protocol": "ESRI"
+            }
         ]
-    },
-    "data": "http://map-gis.paducahky.gov/arcgis/rest/services/EmergencyBaseMap/MapServer/3",
-    "protocol": "ESRI"
+    }
 }

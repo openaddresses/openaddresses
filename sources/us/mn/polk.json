@@ -9,22 +9,30 @@
         "state": "mn",
         "county": "Polk"
     },
-    "data": "http://gis.co.polk.mn.us/arcgis/rest/services/PolkALL/MapServer/20",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "postcode": "ZIP",
-        "city": "CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.co.polk.mn.us/arcgis/rest/services/PolkALL/MapServer/20",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "postcode": "ZIP",
+                    "city": "CITY"
+                }
+            }
+        ]
     }
 }

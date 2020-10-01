@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -79.44, 37.78 ]
+            "coordinates": [
+                -79.44,
+                37.78
+            ]
         },
         "US Census": {
             "geoid": "51678",
@@ -13,32 +16,40 @@
         "state": "va",
         "city": "Lexington"
     },
-    "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Lexington/Lexington_WL_P/MapServer/2",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "ParcelAddress1"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "ParcelAddress1"
-        },
-        "city": {
-          "function": "regexp",
-          "field": "ParcelAddress2",
-          "pattern": "^(.+?)\\s+VA\\s+"
-        },
-        "region": {
-          "function": "regexp",
-          "field": "ParcelAddress2",
-          "pattern": "\\b(VA)\\b"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "ParcelAddress2",
-            "pattern": "(\\d+)$"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Lexington/Lexington_WL_P/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ParcelAddress1"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ParcelAddress1"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "ParcelAddress2",
+                        "pattern": "^(.+?)\\s+VA\\s+"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "ParcelAddress2",
+                        "pattern": "\\b(VA)\\b"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "ParcelAddress2",
+                        "pattern": "(\\d+)$"
+                    }
+                }
+            }
+        ]
     }
 }

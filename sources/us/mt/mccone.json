@@ -9,21 +9,29 @@
         "state": "mt",
         "county": "McCone"
     },
-    "data": "ftp://ftp.geoinfo.msl.mt.gov/Data/Spatial/MSDI/Cadastral/Parcels/Mccone/McconeOwnerParcel_shp.zip",
-    "protocol": "ftp",
-    "compression": "zip",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "AddressLin",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "AddressLin",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "format": "shapefile-polygon"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "ftp://ftp.geoinfo.msl.mt.gov/Data/Spatial/MSDI/Cadastral/Parcels/Mccone/McconeOwnerParcel_shp.zip",
+                "protocol": "ftp",
+                "compression": "zip",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "AddressLin",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "AddressLin",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "format": "shapefile-polygon"
+                }
+            }
+        ]
     }
 }

@@ -9,17 +9,23 @@
         "state": "wy",
         "county": "Campbell"
     },
-    "note": "This source is county-only addresses. There are two cities inside the county that have their own sources (Wright and Gillette)",
-    "data": "http://gis.ccgov.net/arcgis/rest/services/BaseMapRebuild/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRESS",
-        "unit": "UNIT",
-        "street": [
-            "DIRECTION",
-            "STREET",
-            "SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "note": "This source is county-only addresses. There are two cities inside the county that have their own sources (Wright and Gillette)",
+                "data": "https://gis.ccgov.net/arcgis/rest/services/Campbell_Public/AddressesCountywide/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "unit": "UNITNAME",
+                    "street": "SP_STREET",
+                    "postcode": "ZIP",
+                    "city": "CITY"
+                }
+            }
         ]
     }
 }

@@ -9,14 +9,23 @@
         "state": "nv",
         "county": "Pershing"
     },
-    "data": "http://gisdata.farrwestengineering.com/arcgis/rest/services/PershingCounty_Baselayers/MapServer/6",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "PLOCNUM",
-        "street": [
-            "PLOCDR",
-            "PLOCNM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisdata.farrwestengineering.com/arcgis/rest/services/Pershing_County/PershingCoNV_Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "unit",
+                    "number": "Loc1",
+                    "street": [
+                        "Dir",
+                        "street_name"
+                    ]
+                }
+            }
         ]
     }
 }

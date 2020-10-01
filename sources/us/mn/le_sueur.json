@@ -9,22 +9,30 @@
         "state": "mn",
         "county": "Le Sueur"
     },
-    "data": "https://gis.co.le-sueur.mn.us/server/rest/services/LandRecords/Parcels/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "PROPERTY_ADDRESS_LINE_1",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PROPERTY_ADDRESS_LINE_1",
-            "pattern": "^(?:[0-9]+) (.*)",
-            "replace": "$1"
-        },
-        "city": "PROPERTY_CITY",
-        "postcode": "PROPERTY_ZIP_6"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.le-sueur.mn.us/server/rest/services/LandRecords/Parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "PROPERTY_ADDRESS_LINE_1",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "PROPERTY_ADDRESS_LINE_1",
+                        "pattern": "^(?:[0-9]+) (.*)",
+                        "replace": "$1"
+                    },
+                    "city": "PROPERTY_CITY",
+                    "postcode": "PROPERTY_ZIP_6"
+                }
+            }
+        ]
     }
 }

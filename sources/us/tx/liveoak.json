@@ -1,22 +1,34 @@
 {
     "coverage": {
-        "US Census": {"geoid": "48297", "name": "Live Oak County", "state": "Texas"},
+        "US Census": {
+            "geoid": "48297",
+            "name": "Live Oak County",
+            "state": "Texas"
+        },
         "country": "us",
         "state": "tx",
         "county": "Live Oak"
     },
-    "data": "http://mapsatbis.com/bisgis/rest/services/LiveOakWeb/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "LiveOakCad.dbo.Accounts.situs_num",
-        "street": [
-            "LiveOakCad.dbo.Accounts.situs_street_prefx",
-            "LiveOakCad.dbo.Accounts.situs_street",
-            "LiveOakCad.dbo.Accounts.situs_street_sufix"
-        ],
-        "city": "LiveOakCad.dbo.Accounts.situs_city",
-        "region": "LiveOakCad.dbo.Accounts.situs_state",
-        "postcode": "LiveOakCad.dbo.Accounts.situs_zip",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://mapsatbis.com/bisgis/rest/services/LiveOakWeb/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "LiveOakCad.dbo.Accounts.situs_num",
+                    "street": [
+                        "LiveOakCad.dbo.Accounts.situs_street_prefx",
+                        "LiveOakCad.dbo.Accounts.situs_street",
+                        "LiveOakCad.dbo.Accounts.situs_street_sufix"
+                    ],
+                    "city": "LiveOakCad.dbo.Accounts.situs_city",
+                    "region": "LiveOakCad.dbo.Accounts.situs_state",
+                    "postcode": "LiveOakCad.dbo.Accounts.situs_zip",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

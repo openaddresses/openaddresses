@@ -1,30 +1,47 @@
 {
-	"coverage": {
-		"country": "de",
-		"state": "nw",
-		"city": "Wesel",
-		"geometry": { "type": "Point", "coordinates": [6.62, 51.66] }
-	},
-	"data": "http://data.geoportal-wesel.de/OPENDATA/Adressen/Adressen.csv",
-	"website": "https://www.offenesdatenportal.de/dataset/adressen-von-wesel",
-	"license": {
-		"text": "Datenlizenz Deutschland - Zero - Version 2.0",
-		"url": "https://www.govdata.de/dl-de/zero-2-0",
-		"attribution": false,
-		"share-alike": false,
-		"attribution name": "Stadt Wesel"
-	},
-	"protocol": "http",
-	"conform": {
-		"encoding": "UTF-8",
-		"format": "csv",
-		"csvsplit": ";",
-		"srs": "EPSG:4326",
-		"postcode": "PLZ",
-		"street": "STRASSENNAME",
-		"number": ["HAUSNR", "HAUSNR_ZU"],
-		"district": "STADTTEIL",
-		"lat": "HW",
-		"lon": "RW"
-	}
+    "coverage": {
+        "country": "de",
+        "state": "nw",
+        "city": "Wesel",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                6.62,
+                51.66
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://data.geoportal-wesel.de/OPENDATA/Adressen/Adressen.csv",
+                "website": "https://www.offenesdatenportal.de/dataset/adressen-von-wesel",
+                "license": {
+                    "text": "Datenlizenz Deutschland - Zero - Version 2.0",
+                    "url": "https://www.govdata.de/dl-de/zero-2-0",
+                    "attribution": false,
+                    "share-alike": false,
+                    "attribution name": "Stadt Wesel"
+                },
+                "protocol": "http",
+                "conform": {
+                    "encoding": "UTF-8",
+                    "format": "csv",
+                    "csvsplit": ";",
+                    "srs": "EPSG:4326",
+                    "postcode": "PLZ",
+                    "street": "STRASSENNAME",
+                    "number": [
+                        "HAUSNR",
+                        "HAUSNR_ZU"
+                    ],
+                    "district": "STADTTEIL",
+                    "lat": "HW",
+                    "lon": "RW"
+                }
+            }
+        ]
+    }
 }

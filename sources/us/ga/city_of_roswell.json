@@ -16,19 +16,27 @@
         "state": "ga",
         "city": "Roswell"
     },
-    "data": "http://gisweb.ci.roswell.ga.us/arcgis/rest/services/ArcGISHub/ArcGIS_Hub_REST_Services/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "FULLADDR"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "FULLADDR"
-        },
-        "city": "MUNICIPALITY",
-        "postcode": "ZIP_"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gisweb.ci.roswell.ga.us/arcgis/rest/services/ArcGISHub/ArcGIS_Hub_REST_Services/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FULLADDR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FULLADDR"
+                    },
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIP_"
+                }
+            }
+        ]
     }
 }

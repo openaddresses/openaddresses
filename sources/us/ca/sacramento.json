@@ -9,16 +9,23 @@
         "state": "ca",
         "county": "Sacramento"
     },
-    "attribution": "Secramento County",
-    "data": "http://www.sacgis.org/GISDataPub/Data/SacCounty_PARCELS.zip",
-    "website": "http://www.cityofsacramento.org/gis/data.html",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "id": "APN",
-        "number": "STREET_NBR",
-        "street": "STREET_NAM",
-        "format": "shapefile-polygon",
-        "postcode": "zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Secramento County",
+                "data": "https://services1.arcgis.com/5NARefyPVtAeuJPU/arcgis/rest/services/Parcels/FeatureServer/0",
+                "website": "http://data.saccounty.net/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREET_NBR",
+                    "street": "STREET_NAM",
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

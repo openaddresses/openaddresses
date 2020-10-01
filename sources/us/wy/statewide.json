@@ -7,63 +7,37 @@
         "country": "us",
         "state": "wy"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/iandees/96d690/wyoming_parcels.geojson.zip",
-    "note": "Exported with esri2geojson from http://gis.wyo.gov/arcgis/rest/services/ets/ParcelsSecure/MapServer/0 with login parceluser/Parcels2016 from Nancy von Mayer",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "geojson",
-        "id": "PARCELNO",
-        "number": {
-            "function": "regexp",
-            "field": "LOCATIONADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "LOCATIONADDRESS",
-            "pattern": "^(?:[0-9]+ )(?:.*?)( {2}.*)$"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "LOCATIONADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*?)(?: {2}.*)?$",
-            "replace": "$1"
-        }
-    },
-    "test": {
-        "enabled": true,
-        "description": "Ensure Valid Regex for Unit Numbers",
-        "acceptance-tests": [{
-            "description": "Parse address with no unit",
-            "inputs": {
-                "LOCATIONADDRESS": "100 N 9TH ST"
-            },
-            "expected": {
-                "number": "100",
-                "street": "N 9TH ST",
-                "unit": ""
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://ptd.wyo.gov/parcels/Wyoming_Parcels.zip",
+                "protocol": "http",
+                "website": "https://www.arcgis.com/apps/webappviewer/index.html?id=4bb9a66f7287402b8f650aa9f21d3fa5",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile-polygon",
+                    "srs": "EPSG:4326",
+                    "id": "PARCELNO",
+                    "number": {
+                        "function": "regexp",
+                        "field": "locationad",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "locationad",
+                        "pattern": "^(?:[0-9]+ )(?:.*?)( {2}.*)$"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "locationad",
+                        "pattern": "^(?:[0-9]+ )(.*?)(?: {2}.*)?$",
+                        "replace": "$1"
+                    }
+                }
             }
-        },{
-            "description": "Parse address with unit",
-            "inputs": {
-                "LOCATIONADDRESS": "100 N 7TH ST  A"
-            },
-            "expected": {
-                "number": "100",
-                "street": "N 7TH ST",
-                "unit": "A"
-            }
-        },{
-            "description": "Parse address with unit",
-            "inputs": {
-                "LOCATIONADDRESS": "100 MITCHELL ST  F-6"
-            },
-            "expected": {
-                "number": "100",
-                "street": "MITCHELL ST",
-                "unit": "F-6"
-            }
-        }]
+        ]
     }
 }

@@ -4,13 +4,28 @@
         "state": "on",
         "county": "Newmarket"
     },
-    "website": "http://open.netmarket.ca",
-    "data": "http://open.newmarket.ca/opendata/api/rest/process/job/T00019QN2AB8/output/T00019QN2AB8_newmarket_open_data.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "number": "STREET_NO",
-        "street": "STREET_NAM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "http://open.newmarket.ca/opendata/navigo/show?id=25c43575c8d4b647&disp=D156E60C6F85&shard=open.newmarket.ca%2Fopendata%2Fsolr%2Fv0",
+                "data": "https://maps.newmarket.ca/tonext/rest/services/General/STREET_AGOL_Dynamic/MapServer/0",
+                "license": {
+                    "url": "https://www.newmarket.ca/TownGovernment/Documents/Newmarket_OpenData_Licence.pdf",
+                    "text": "Contains information licensed under the Open Data Licence – Town of Newmarket",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "STREET_UNIT",
+                    "number": "STREET_NO",
+                    "street": "STREET_NAME",
+                    "postcode": "PCODE"
+                }
+            }
+        ]
     }
 }

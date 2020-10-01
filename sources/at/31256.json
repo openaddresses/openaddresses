@@ -1,25 +1,4 @@
 {
-    "website": "http://www.bev.gv.at/portal/page?_pageid=713,1604469&_dad=portal&_schema=PORTAL",
-    "conform": {
-        "srs": "EPSG:31256",
-        "notes": "http://www.bev.gv.at/pls/portal/docs/PAGE/BEV_PORTAL_CONTENT_ALLGEMEIN/0200_PRODUKTE/SCHNITTSTELLENBESCHREIBUNGEN/BEV_S_AD_ADRESSE_RELATIONALE_TABELLEN-STICHTAGSDATEN-CSV_V1.0.PDF",
-        "lon": "RW",
-        "number": {
-            "function": "join",
-            "fields": ["HAUSNRZAHL1", "HAUSNRBUCHSTABE1"],
-            "separator": ""
-        },
-        "street": "STRASSE",
-        "postcode": "PLZ",
-        "file": "at-31256-20181228.csv",
-        "lat": "HW",
-        "format": "csv",
-        "accuracy": 1
-    },
-    "attribution": "\u00a9 Austrian address register, date data from 2018-12-28",
-    "compression": "zip",
-    "license": "http://www.bev.gv.at/portal/page?_pageid=713,2573888&_dad=portal&_schema=PORTAL",
-    "protocol": "http",
     "coverage": {
         "country": "at",
         "ISO 3166": {
@@ -27,5 +6,37 @@
             "country": "Austria"
         }
     },
-    "data": "https://data.openaddresses.io/cache/at-20181228.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "website": "http://www.bev.gv.at/portal/page?_pageid=713,1604469&_dad=portal&_schema=PORTAL",
+                "conform": {
+                    "srs": "EPSG:31256",
+                    "notes": "http://www.bev.gv.at/pls/portal/docs/PAGE/BEV_PORTAL_CONTENT_ALLGEMEIN/0200_PRODUKTE/SCHNITTSTELLENBESCHREIBUNGEN/BEV_S_AD_ADRESSE_RELATIONALE_TABELLEN-STICHTAGSDATEN-CSV_V1.0.PDF",
+                    "lon": "RW",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "HAUSNRZAHL1",
+                            "HAUSNRBUCHSTABE1"
+                        ],
+                        "separator": ""
+                    },
+                    "street": "STRASSE",
+                    "postcode": "PLZ",
+                    "file": "at-31256-20181228.csv",
+                    "lat": "HW",
+                    "format": "csv",
+                    "accuracy": 1
+                },
+                "attribution": "© Austrian address register, date data from 2018-12-28",
+                "compression": "zip",
+                "license": "http://www.bev.gv.at/portal/page?_pageid=713,2573888&_dad=portal&_schema=PORTAL",
+                "protocol": "http",
+                "data": "https://data.openaddresses.io/cache/at-20181228.zip"
+            }
+        ]
+    }
 }

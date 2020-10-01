@@ -9,17 +9,23 @@
         "state": "mi",
         "county": "Ingham"
     },
-    "data": "http://hdgis.ingham.org/arcgis/rest/services/GeneralPurpose/MapServer/2",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "SITEADDID",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "city": "MUNICIPALITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/pNPbgWy7hpfFGWoZ/ArcGIS/rest/services/Tax_Parcel/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": "ADDRNUM",
+                    "street": "ST_NAME",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

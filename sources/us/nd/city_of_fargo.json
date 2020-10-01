@@ -16,23 +16,31 @@
         "state": "nd",
         "city": "Fargo"
     },
-    "data": "http://gisweb.casscountynd.gov/arcgis/rest/services/PublicDynamic/MapServer/21",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "ADDR_NUM",
-            "HALF_NUM"
-        ],
-        "street": [
-            "PRE_TYPE",
-            "PRE_DIR",
-            "ST_NAME",
-            "ST_TYPE",
-            "SUF_DIR"
-        ],
-        "unit": "UNIT",
-        "city": "CITY",
-        "postcode": "ZIP_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gisweb.casscountynd.gov/arcgis/rest/services/PublicDynamic/MapServer/21",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDR_NUM",
+                        "HALF_NUM"
+                    ],
+                    "street": [
+                        "PRE_TYPE",
+                        "PRE_DIR",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ]
     }
 }

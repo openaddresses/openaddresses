@@ -1,13 +1,4 @@
 {
-    "data": "https://gismaps.vita.virginia.gov/arcgis/rest/services/VA_Base_layers/VA_Address_Points/MapServer/0",
-    "website": "http://data.virginia.gov/datasets/virginia-address-points",
-    "license": {
-        "text": "public domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "protocol": "ESRI",
-    "year": 2019,
     "coverage": {
         "US Census": {
             "geoid": "51",
@@ -16,24 +7,41 @@
         "country": "us",
         "state": "va"
     },
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "PREADDRNUM",
-            "ADDRNUM",
-            "ADDRNUMSUF"
-        ],
-        "street": [
-            "STREET_PREMOD",
-            "STREET_PREFIX",
-            "STREET_PRE_TYPE",
-            "STREET_NAME",
-            "STREET_TYPE",
-            "STREET_SUFFIX"
-        ],
-        "city": "PO_NAME",
-        "district": "MUNICIPALITY",
-        "region": "STATE",
-        "postcode": "ZIP_5"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://gismaps.vita.virginia.gov/arcgis/rest/services/VA_Base_layers/VA_Address_Points/MapServer/0",
+                "website": "http://data.virginia.gov/datasets/virginia-address-points",
+                "license": {
+                    "text": "public domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "year": 2019,
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": [
+                        "STREET_PREMOD",
+                        "STREET_PREFIX",
+                        "STREET_PRE_TYPE",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "STREET_SUFFIX"
+                    ],
+                    "city": "PO_NAME",
+                    "district": "MUNICIPALITY",
+                    "region": "STATE",
+                    "postcode": "ZIP_5"
+                }
+            }
+        ]
     }
 }

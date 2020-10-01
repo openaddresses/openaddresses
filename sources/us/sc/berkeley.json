@@ -9,19 +9,27 @@
         "state": "sc",
         "county": "Berkeley"
     },
-    "data": "https://gis.berkeleycountysc.gov/arcgis/rest/services/mobile/mobile_map/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "ADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "ADDRESS"
-        },
-        "city": "CITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.berkeleycountysc.gov/arcgis/rest/services/mobile/mobile_map/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

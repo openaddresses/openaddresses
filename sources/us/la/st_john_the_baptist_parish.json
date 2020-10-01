@@ -1,19 +1,36 @@
 {
     "coverage": {
-        "US Census": {"geoid": "22095", "name": "St. John the Baptist Parish", "state": "Louisiana"},
+        "US Census": {
+            "geoid": "22095",
+            "name": "St. John the Baptist Parish",
+            "state": "Louisiana"
+        },
         "country": "us",
         "state": "la",
         "county": "St. John the Baptist"
     },
-    "data": "http://services.geoportalmaps.com/arcgis/rest/services/StJohn_Public_Services/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "STR_NUM",
-        "street": ["PRE_DIR", "STR_NAME", "STR_TYPE", "POST_DIR"],
-        "unit": "UNIT",
-        "city": "COMMUNITY",
-        "postcode": "ZIP_CODE",
-        "region": "STATE_1"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://services.geoportalmaps.com/arcgis/rest/services/StJohn_Public_Services/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "POST_DIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP_CODE",
+                    "region": "STATE_1"
+                }
+            }
+        ]
     }
 }

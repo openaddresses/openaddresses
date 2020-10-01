@@ -9,23 +9,31 @@
         "state": "va",
         "county": "Augusta"
     },
-    "data": "ftp://www.co.augusta.va.us/GIS/Augusta_Address_Points_080514.zip",
-    "website": "ftp://www.co.augusta.va.us/GIS/",
-    "year": 2014,
-    "protocol": "ftp",
-    "compression": "zip",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(\\S+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
-        },
-        "format": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "ftp://www.co.augusta.va.us/GIS/Augusta_Address_Points_080514.zip",
+                "website": "ftp://www.co.augusta.va.us/GIS/",
+                "year": 2014,
+                "protocol": "ftp",
+                "compression": "zip",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "address",
+                        "pattern": "^(\\S+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "address",
+                        "pattern": "^(?:\\S+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

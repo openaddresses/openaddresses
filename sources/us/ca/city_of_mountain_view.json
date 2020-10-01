@@ -4,7 +4,7 @@
             "type": "Point",
             "coordinates": [
                 -122.15,
-                37.40
+                37.4
             ]
         },
         "US Census": {
@@ -16,22 +16,30 @@
         "state": "ca",
         "city": "Mountain View"
     },
-    "data": "https://maps.mountainview.gov/arcgis/rest/services/Public/SiteAddressPoint/MapServer/0",
-    "attribution": "City of Mountain View",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-          "PREADDRNUM",
-          "ADDRNUM",
-          "ADDRNUMSUF"
-        ],
-        "street": "FULLNAME",
-        "unit": [
-          "UNITTYPE",
-          "UNITID"
-        ],
-        "city": "MUNICIPALITY",
-        "postcode": "ZIP5"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.mountainview.gov/arcgis/rest/services/Public/SiteAddressPoint/MapServer/0",
+                "attribution": "City of Mountain View",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIP5"
+                }
+            }
+        ]
     }
 }

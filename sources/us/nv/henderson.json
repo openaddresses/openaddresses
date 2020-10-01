@@ -16,19 +16,27 @@
         "state": "nv",
         "city": "Henderson"
     },
-    "data": "http://maps.cityofhenderson.com/arcgis/rest/services/public/BaseMap/MapServer/18",
-    "license": "http://www.cityofhenderson.com/gis/disclaimer.php",
-    "protocol": "ESRI",
-    "conform": {
-        "id": "ADDRESSID",
-        "number": "STRNO",
-        "street": [
-            "STRDIR",
-            "STRNAME",
-            "STRTYPE"
-        ],
-        "unit": "STRUNIT",
-        "postcode": "STRZIP",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://maps.cityofhenderson.com/arcgis/rest/services/public/BaseMap/MapServer/18",
+                "license": "http://www.cityofhenderson.com/gis/disclaimer.php",
+                "protocol": "ESRI",
+                "conform": {
+                    "id": "ADDRESSID",
+                    "number": "STRNO",
+                    "street": [
+                        "STRDIR",
+                        "STRNAME",
+                        "STRTYPE"
+                    ],
+                    "unit": "STRUNIT",
+                    "postcode": "STRZIP",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

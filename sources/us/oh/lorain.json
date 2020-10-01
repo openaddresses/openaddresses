@@ -1,33 +1,45 @@
 {
     "coverage": {
-        "US Census": {"geoid": "39093", "name": "Lorain County", "state": "Ohio"},
+        "US Census": {
+            "geoid": "39093",
+            "name": "Lorain County",
+            "state": "Ohio"
+        },
         "country": "us",
         "state": "oh",
         "county": "Lorain"
     },
-    "data": "http://loraincountyauditor.com/arcgis/rest/services/ParcelsLorain/AGS_Lorain_LGIM_Parcel_Report/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "PSTLADDRESS",
-            "pattern": "^([0-9]+)(?: .*)$"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PSTLADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)(?: .*,.*)$"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "PSTLADDRESS",
-            "pattern": "^(?:[0-9]+ )(?:.* )(.*)(?:,.*)$"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "PSTLADDRESS",
-            "pattern": "^(?:.*)([0-9]{5})$"
-        },
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://loraincountyauditor.com/arcgis/rest/services/ParcelsLorain/AGS_Lorain_LGIM_Parcel_Report/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "SITEADDRESS",
+                        "pattern": "^([0-9]+)(?: .*)$"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "SITEADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)(?: .*,.*)$"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "SITEADDRESS",
+                        "pattern": "^(?:[0-9]+ )(?:.* )(.*)(?:,.*)$"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "SITEADDRESS",
+                        "pattern": "^(?:.*)([0-9]{5})$"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

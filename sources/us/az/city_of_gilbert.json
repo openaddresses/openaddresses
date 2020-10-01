@@ -11,22 +11,33 @@
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [-111.78760528564452, 33.353329935481966]
+            "coordinates": [
+                -111.7876,
+                33.3533
+            ]
         }
     },
-    "data": "https://maps.gilbertaz.gov/arcgis/rest/services/GilbertAssetsBase/MapServer/2",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "unit": "Situs_Suite",
-        "number": "Situs_Num",
-        "street": [
-            "Situs_DirPre",
-            "Situs_Street",
-            "Situs_StType",
-            "Situs_Suffix",
-            "Situs_PostDir"
-        ],
-        "postcode": "Situs_Zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.gilbertaz.gov/arcgis/rest/services/GilbertAssetBase/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "Situs_Suite",
+                    "number": "Situs_Num",
+                    "street": [
+                        "Situs_DirPre",
+                        "Situs_Street",
+                        "Situs_StType",
+                        "Situs_Suffix",
+                        "Situs_PostDir"
+                    ],
+                    "postcode": "Situs_Zip"
+                }
+            }
+        ]
     }
 }

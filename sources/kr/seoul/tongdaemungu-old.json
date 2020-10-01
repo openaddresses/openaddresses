@@ -1,38 +1,52 @@
 {
-    "conform": {
-        "lon": "POINT_X",
-        "srs": "EPSG:2097",
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        },
-        "number": "LNDN_MA_SN",
-        "encoding": "EUCKR",
-        "skiplines": 2,
-        "format": "csv",
-        "headers": 2,
-        "lat": "POINT_Y"
-    },
     "coverage": {
         "country": "kr",
         "city": "동대문구",
         "state": "seoul",
-        "geometry": { "type": "Point", "coordinates": [127.055, 37.584] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                127.055,
+                37.584
+            ]
+        }
     },
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
-    "skip": false,
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1076",
-    "protocol": "http",
-    "compression": "zip",
-    "data": "https://data.openaddresses.io/cache/kr-seoul-tongdaemungu.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "conform": {
+                    "lon": "POINT_X",
+                    "srs": "EPSG:2097",
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    },
+                    "number": "LNDN_MA_SN",
+                    "encoding": "EUCKR",
+                    "skiplines": 2,
+                    "format": "csv",
+                    "headers": 2,
+                    "lat": "POINT_Y"
+                },
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "skip": false,
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1076",
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://data.openaddresses.io/cache/kr-seoul-tongdaemungu.zip"
+            }
+        ]
+    }
 }

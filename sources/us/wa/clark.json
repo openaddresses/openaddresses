@@ -9,18 +9,24 @@
         "state": "wa",
         "county": "Clark"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/nvkelso/2806bc/clark_county_vancouver_wa_tax_parcels.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile-polygon",
-        "number": "HSNBR",
-        "street": [
-            "STDIR",
-            "STNAME",
-            "STYPE"
-        ],
-        "postcode": "ZP1",
-        "city": "STCITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/ylxwjFBdCPBzP16d/arcgis/rest/services/SitusAddress/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HsNbr",
+                    "street": [
+                        "StDir",
+                        "StName",
+                        "Stype"
+                    ],
+                    "postcode": "Zp1"
+                }
+            }
+        ]
     }
 }

@@ -9,37 +9,31 @@
         "state": "ia",
         "county": "Pottawattamie"
     },
-    "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Pottawattamie/Address_78.zip",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "year": "2012?",
-    "protocol": "ftp",
-    "compression": "zip",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^.* ((Unit|Apt) [0-9A-Za-z])$",
-            "replace": "$1"
-        },
-        "city": "POSTAL_COM",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP_CODE",
-        "format": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.pottcounty-ia.gov/arcgis/rest/services/Public_Basemap_WGS84/ToggleLayers/MapServer/3",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "House_Number",
+                    "street": [
+                        "Street_Direction",
+                        "Street_Name",
+                        "Street_Direction_Suf",
+                        "Street_Type"
+                    ],
+                    "unit": "UNIT",
+                    "city": "City"
+                }
+            }
+        ]
     }
 }

@@ -9,23 +9,22 @@
         "state": "wa",
         "county": "Island"
     },
-    "license": "http://www.islandcountyassessor.com/about-us/gis-mapping/arcgis-explorer-interactive-mapping-viewer/",
-    "protocol": "ESRI",
-    "data": "https://maps.islandcountywa.gov/arcgis/rest/services/Layers/Parcels/MapServer/0",
-    "website": "http://www.islandcountyassessor.com/about-us/gis-mapping/arcgis-explorer-interactive-mapping-viewer/",
-    "note": "source contains separated fields but combined field is more accurate",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "physical_addr"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "physical_addr"
-        },
-        "city": "physical_addr_city",
-        "region": "physical_addr_state",
-        "postcode": "physical_addr_zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://maps.islandcountywa.gov/arcgis/rest/services/Geocortex/Base/MapServer/5",
+                "website": "https://www.islandcountywa.gov/assessors/Pages/GIS-mapping.aspx",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "city": "NEWCITST",
+                    "postcode": "NEWZIP"
+                }
+            }
+        ]
     }
 }

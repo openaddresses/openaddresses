@@ -9,12 +9,26 @@
         "state": "pa",
         "county": "Tahema"
     },
-    "data": "http://www.tehamacountypublicworks.ca.gov/arcgis/rest/services/LandRecords/TaxParcel/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",  
-        "number": "SITSTNO",
-        "street": "SITSTNM",
-        "postcode": "SITZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "http://www.tehamacountypublicworks.ca.gov/gis_data.html",
+                "data": "https://services2.arcgis.com/3iNbxbY9zhyxPvde/ArcGIS/rest/services/PublicParcelsAGOL/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Situs1_1"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Situs1_1"
+                    }
+                }
+            }
+        ]
     }
 }

@@ -9,18 +9,34 @@
         "state": "pa",
         "county": "Berks"
     },
-    "data": "http://gis.co.berks.pa.us/arcgis/rest/services/Assess/AssessBase/MapServer/4",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "FULLSITEADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "FULLSITEADDRESS"
-        },
-        "city": "MUNICIPALNAME"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.co.berks.pa.us/Dept/GIS/Pages/default.aspx",
+                "contact": {
+                    "name": "Brad Shirey",
+                    "title": "GIS Manager",
+                    "phone": "610-478-6283",
+                    "email": "gis@countyofberks.com",
+                    "address": "Berks County Services Center, 633 Court Street, 12th Floor, Reading, PA 19601"
+                },
+                "data": "http://gis.co.berks.pa.us/arcgis/rest/services/Assess/AssessBase/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FULLSITEADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FULLSITEADDRESS"
+                    },
+                    "city": "MUNICIPALNAME"
+                }
+            }
+        ]
     }
 }

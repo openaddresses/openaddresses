@@ -9,18 +9,29 @@
         "state": "wa",
         "county": "Kitsap"
     },
-    "license": "http://www.kitsapgov.com/county/disclaimer.htm",
-    "protocol": "ftp",
-    "compression": "zip",
-    "note": "point shapefile siteaddr.shp, address columns: FULL_ADDR, CITY, STATE, ZIP_CODE",
-    "year": "2014",
-    "data": "ftp://kcftp2.co.kitsap.wa.us/gis/datacd/arcview/layers/parcel/siteaddr.zip",
-    "website": "http://www.kitsapgov.com/gis/metadata/",
-    "conform": {
-        "format": "shapefile",
-        "number": "HOUSE_NO",
-        "street": ["STREETNAME", "STREETTYPE"],
-        "city": "CITY",
-        "postcode": "ZIP_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "license": "http://www.kitsapgov.com/county/disclaimer.htm",
+                "protocol": "ftp",
+                "compression": "zip",
+                "note": "point shapefile siteaddr.shp, address columns: FULL_ADDR, CITY, STATE, ZIP_CODE",
+                "year": "2014",
+                "data": "ftp://kcftp2.co.kitsap.wa.us/gis/datacd/arcview/layers/parcel/siteaddr.zip",
+                "website": "http://www.kitsapgov.com/gis/metadata/",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "HOUSE_NO",
+                    "street": [
+                        "STREETNAME",
+                        "STREETTYPE"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ]
     }
 }

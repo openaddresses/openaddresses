@@ -9,15 +9,24 @@
         "state": "wi",
         "county": "Adams"
     },
-    "data": "http://gis.msa-ps.com/arcgis/rest/services/AdamsCo/AdamsCo_GIS/MapServer/26",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "prefix",
-            "numb",
-            "suffix"
-        ],
-        "street": "street"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/cmcEK45KcVMmaCd7/ArcGIS/rest/services/Addressing/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "UNIT",
+                    "number": [
+                        "prefix",
+                        "numb",
+                        "suffix"
+                    ],
+                    "street": "street"
+                }
+            }
+        ]
     }
 }

@@ -16,18 +16,26 @@
             ]
         }
     },
-    "data": "http://gis.postfallsidaho.org/arcgis/rest/services/GIS2/Addresses/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NUM",
-        "street": [
-            "PRE_DIR",
-            "ST_NAME",
-            "ST_TYPE"
-        ],
-        "unit": "SUB_UNIT",
-        "city": "CITY",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis.postfallsidaho.org/arcgis/rest/services/GIS2/Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "ST_NAME",
+                        "ST_TYPE"
+                    ],
+                    "unit": "SUB_UNIT",
+                    "city": "CITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

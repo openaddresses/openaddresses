@@ -16,23 +16,30 @@
         "state": "co",
         "city": "Loveland"
     },
-    "attribution": "City of Loveland",
-    "data": "http://logic.ci.loveland.co.us/data/AddressPoint.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "website": "http://www.ci.loveland.co.us/index.aspx?page=436",
-    "conform": {
-      "format": "shapefile",
-      "number": {
-          "function": "regexp",
-          "field": "ADDRESS",
-          "pattern": "^([0-9]+)"
-      },
-      "street": {
-          "function": "regexp",
-          "field": "ADDRESS",
-          "pattern": "^(?:[0-9]+ )(.*) ?(#[0-9A-Z]+|GAR[0-9]+|BLDG?#?[0-9]+|1/2)?$",
-          "replace": "$1"
-      }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "attribution": "City of Loveland",
+                "data": "http://maps.cityofloveland.org/Data/AddressPoint.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "website": "http://www.ci.loveland.co.us/index.aspx?page=436",
+                "conform": {
+                    "format": "shapefile",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*) ?(#[0-9A-Z]+|GAR[0-9]+|BLDG?#?[0-9]+|1/2)?$",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }

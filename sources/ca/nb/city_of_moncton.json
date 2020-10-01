@@ -7,77 +7,93 @@
             "type": "Point",
             "coordinates": [
                 -64.812126,
-              	46.117622
+                46.117622
             ]
         }
     },
-    "data": "https://services1.arcgis.com/E26PuSoie2Y7bbyI/ArcGIS/rest/services/Address/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "UNIQUEID",
-        "number": "CIVIC",
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:\\d+\\s+)(.+?)(?:\\s+\\<.+)?$"
-        },
-        "city": "JURISD",
-        "region": "PROVINCE",
-        "postcode": {
-            "function": "regexp",
-            "field": "POSTCODE",
-            "pattern": "^([A-Z][0-9][A-Z]\\s+[0-9][A-Z][0-9])$"
-        }
-    },
-    "test": {
-        "enabled": true,
-        "description": "these are the tests that exercise valid inputs for city of Moncton, NB, CAN",
-        "acceptance-tests": [
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "address without embedded <Null>",
-                "inputs": {
-                  "UNIQUEID": "23242",
-                  "CIVIC": "311",
-                  "ADDRESS": "311 STOREY RD E",
-                  "JURISD": "MONCTON",
-                  "PROVINCE": "NB",
-                  "POSTCODE": "E1A 2Y4"
+                "name": "city",
+                "data": "https://services1.arcgis.com/E26PuSoie2Y7bbyI/ArcGIS/rest/services/Address/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "http://open.moncton.ca/datasets/address",
+                "license": {
+                    "url": "https://www.arcgis.com/sharing/rest/content/items/3ec310926cbd436cbaa609d8ee9fac15/data",
+                    "text": "These datasets are publicly available from the City under these Terms of Use.",
+                    "attribution name": "City of Moncton Open Data Terms Of Use",
+                    "attribution": true,
+                    "share-alike": false
                 },
-                "expected": {
-                  "number": "311",
-                  "street": "STOREY RD E"
-                }
-            },
-            {
-                "description": "address with embedded <Null>",
-                "inputs": {
-                    "UNIQUEID": "29761",
-                    "CIVIC": "151",
-                    "ADDRESS": "151 FALCON DR <Null>",
-                    "JURISD": "MONCTON",
-                    "PROVINCE": "NB",
-                    "POSTCODE": ""
+                "conform": {
+                    "format": "geojson",
+                    "id": "UNIQUEID",
+                    "number": "CIVIC",
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:\\d+\\s+)(.+?)(?:\\s+\\<.+)?$"
+                    },
+                    "city": "JURISD",
+                    "region": "PROVINCE",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "POSTCODE",
+                        "pattern": "^([A-Z][0-9][A-Z]\\s+[0-9][A-Z][0-9])$"
+                    }
                 },
-                "expected": {
-                    "number": "151",
-                    "street": "FALCON DR"
-                }
-            },
-            {
-                "description": "postcode with embedded <null>",
-                "inputs": {
-                    "UNIQUEID": "27128",
-                    "CIVIC": "88",
-                    "ADDRESS": "88 MONIQUE ST",
-                    "JURISD": "MONCTON",
-                    "PROVINCE": "NB",
-                    "POSTCODE": "<null>"
-                },
-                "expected": {
-                    "number": "88",
-                    "street": "MONIQUE ST",
-                    "postcode": ""
+                "test": {
+                    "enabled": true,
+                    "description": "these are the tests that exercise valid inputs for city of Moncton, NB, CAN",
+                    "acceptance-tests": [
+                        {
+                            "description": "address without embedded <Null>",
+                            "inputs": {
+                                "UNIQUEID": "23242",
+                                "CIVIC": "311",
+                                "ADDRESS": "311 STOREY RD E",
+                                "JURISD": "MONCTON",
+                                "PROVINCE": "NB",
+                                "POSTCODE": "E1A 2Y4"
+                            },
+                            "expected": {
+                                "number": "311",
+                                "street": "STOREY RD E"
+                            }
+                        },
+                        {
+                            "description": "address with embedded <Null>",
+                            "inputs": {
+                                "UNIQUEID": "29761",
+                                "CIVIC": "151",
+                                "ADDRESS": "151 FALCON DR <Null>",
+                                "JURISD": "MONCTON",
+                                "PROVINCE": "NB",
+                                "POSTCODE": ""
+                            },
+                            "expected": {
+                                "number": "151",
+                                "street": "FALCON DR"
+                            }
+                        },
+                        {
+                            "description": "postcode with embedded <null>",
+                            "inputs": {
+                                "UNIQUEID": "27128",
+                                "CIVIC": "88",
+                                "ADDRESS": "88 MONIQUE ST",
+                                "JURISD": "MONCTON",
+                                "PROVINCE": "NB",
+                                "POSTCODE": "<null>"
+                            },
+                            "expected": {
+                                "number": "88",
+                                "street": "MONIQUE ST",
+                                "postcode": ""
+                            }
+                        }
+                    ]
                 }
             }
         ]

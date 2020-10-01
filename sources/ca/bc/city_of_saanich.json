@@ -6,25 +6,44 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-              	-123.385,
-              	48.496
+                -123.385,
+                48.496
             ]
         }
     },
-    "data": "http://gis.saanich.ca/gisdata/Address/AddressSHP.zip",
-    "website": "http://www.saanich.ca/EN/main/local-government/data-catalogue-1.html",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "file": "CivicAddress.shp",
-        "number": "NUMBER",
-        "street": [
-            "DIRPRE",
-            "NAME",
-            "TYPE",
-            "DIRSUF"
-        ],
-        "unit": "NUMBERSUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://map.saanich.ca/gisdata/Address/AddressCSV.zip",
+                "website": "https://www.saanich.ca/EN/main/local-government/data-catalogue-1.html",
+                "license": {
+                  "url": "https://www.saanich.ca/assets/Local~Government/Documents/SaanichDataCatalogueLicence.pdf",
+                  "text": "Contains information licenced under the Open Government Licence – District of Saanich",
+                  "attribution": true,
+                  "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "csv",
+                    "lat": "LATITUDE",
+                    "lon": "LONGITUDE",
+                    "file": "CivicAddress.csv",
+                    "number": [
+                        "STREETNUMBERPREFIX",
+                        "STREETNUMBER",
+                        "STREETNUMBERSUFFIX"
+                    ],
+                    "street": [
+                        "STREETDIRPREFIX",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "STREETDIRSUFFFIX"
+                    ]
+                }
+            }
+        ]
     }
 }

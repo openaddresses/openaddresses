@@ -9,23 +9,31 @@
         "state": "fl",
         "county": "Hernando"
     },
-    "data": "https://www.hernandocountygis-fl.us/arcgis10_3/rest/services/Parcels_Addresses/MapServer/2",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-            "PREFIX",
-            "STREETNAME",
-            "STREETTYPE",
-            "SUFFIX"
-        ],
-        "unit": [
-            "SECLOCTYPE",
-            "SECLOCCODE"
-        ],
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZONE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.hernandocountygis-fl.us/arcgis10_3/rest/services/Parcels_Addresses/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "PREFIX",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFFIX"
+                    ],
+                    "unit": [
+                        "SECLOCTYPE",
+                        "SECLOCCODE"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZONE"
+                }
+            }
+        ]
     }
 }
