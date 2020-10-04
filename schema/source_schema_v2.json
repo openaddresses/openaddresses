@@ -49,6 +49,96 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
+                "parcels": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                            "data",
+                            "protocol",
+                            "name"
+                        ],
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "protocol": {
+                                "type": "string",
+                                "enum": [
+                                    "http",
+                                    "ftp",
+                                    "ESRI"
+                                ]
+                            },
+                            "data": {
+                                "type": "string"
+                            },
+                            "website": {
+                                "type": "string"
+                            },
+                            "email": {
+                                "type": "string",
+                                "format": "email"
+                            },
+                            "conform": {
+                                "$ref": "#/definitions/parcel_conform"
+                            },
+                            "compression": {
+                                "type": "string",
+                                "enum": [
+                                    "zip"
+                                ]
+                            },
+                            "license": {
+                                "oneOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/license"
+                                    }
+                                ]
+                            },
+                            "contact": {
+                                "$ref": "#/definitions/contact"
+                            },
+                            "note": {
+                                "oneOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "object"
+                                    }
+                                ]
+                            },
+                            "attribution": {
+                                "type": "string"
+                            },
+                            "language": {
+                                "type": "string",
+                                "pattern": "^[a-zA-Z]{2,3}$"
+                            },
+                            "year": {
+                                "oneOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "integer"
+                                    }
+                                ]
+                            },
+                            "skip": {
+                                "type": "boolean"
+                            },
+                            "test": {
+                                "$ref": "#/definitions/test"
+                            }
+                        }
+                    }
+                },
                 "addresses": {
                     "type": "array",
                     "items": {
@@ -285,6 +375,85 @@
                     }
                 }
             ]
+        },
+        "parcel_conform": {
+            "description": "top-level parcel conform object definition",
+            "type": "object",
+            "required": [
+                "pid"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "format": {
+                    "type": "string",
+                    "enum": [
+                        "geojson",
+                        "shapefile",
+                        "gdb"
+                    ]
+                },
+                "srs": {
+                    "type": "string",
+                    "pattern": "EPSG:[0-9]+"
+                },
+                "file": {
+                    "type": "string"
+                },
+                "layer": {
+                    "description": "specifies a layer to use in the GDB",
+                    "oneOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "encoding": {
+                    "type": "string"
+                },
+                "csvsplit": {
+                    "type": "string"
+                },
+                "headers": {
+                    "type": "integer",
+                    "minimum": -1
+                },
+                "skiplines": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "pid": {
+                    "description": "unique identifier for the parcel row",
+                    "oneOf": [
+                        {
+                            "$ref": "#/definitions/base_conform_field_value"
+                        },
+                        {
+                            "$ref": "#/definitions/function_regexp"
+                        },
+                        {
+                            "$ref": "#/definitions/function_remove_prefix"
+                        },
+                        {
+                            "$ref": "#/definitions/function_remove_postfix"
+                        },
+                        {
+                            "$ref": "#/definitions/function_join"
+                        },
+                        {
+                            "$ref": "#/definitions/function_format"
+                        },
+                        {
+                            "$ref": "#/definitions/function_chain"
+                        }
+                    ]
+                }
+            }
         },
         "address_conform": {
             "description": "top-level address conform object definition",
