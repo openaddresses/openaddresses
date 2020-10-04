@@ -17,29 +17,39 @@
     },
     "schema": 2,
     "layers": {
-        "addresses": [
-            {
-                "name": "city",
-                "attribution": "City of Washington",
-                "data": "http://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Location_WebMercator/MapServer/0",
-                "license": "https://dc.gov/page/terms-and-conditions-use-district-data",
-                "protocol": "ESRI",
-                "conform": {
-                    "number": [
-                        "ADDRNUM",
-                        "ADDRNUMSUFFIX"
-                    ],
-                    "street": [
-                        "STNAME",
-                        "STREET_TYPE",
-                        "QUADRANT"
-                    ],
-                    "format": "geojson",
-                    "city": "CITY",
-                    "region": "STATE",
-                    "postcode": "ZIPCODE"
-                }
+        "parcels": [{
+            "name": "city",
+            "attribution": "City of Washington",
+            "data": " https://data.openaddresses.io/cache/uploads/ingalls/1061bf/Parcel_Lots-shp.zip ",
+            "license": "https://dc.gov/page/terms-and-conditions-use-district-data",
+            "protocol": "http",
+            "compression": "zip",
+            "conform": {
+                "format": "shapefile",
+                "pid": "OBJECTID"
             }
-        ]
+        }],
+        "addresses": [{
+            "name": "city",
+            "attribution": "City of Washington",
+            "data": "http://maps2.dcgis.dc.gov/dcgis/rest/services/DCGIS_DATA/Location_WebMercator/MapServer/0",
+            "license": "https://dc.gov/page/terms-and-conditions-use-district-data",
+            "protocol": "ESRI",
+            "conform": {
+                "number": [
+                    "ADDRNUM",
+                    "ADDRNUMSUFFIX"
+                ],
+                "street": [
+                    "STNAME",
+                    "STREET_TYPE",
+                    "QUADRANT"
+                ],
+                "format": "geojson",
+                "city": "CITY",
+                "region": "STATE",
+                "postcode": "ZIPCODE"
+            }
+        }]
     }
 }
