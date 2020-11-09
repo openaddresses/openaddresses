@@ -268,6 +268,42 @@ While virtually all modern regular expression flavors share identical basic beha
 | `pattern` | string | a compilable regular expression | none (required)
 | `replace` | string | a string referencing 0 or more captured groups in `pattern` | none (optional)
 
+### `get`
+The `get` function is particularly useful in a situation when a single address record may contain multiple nodes having the same field name.
+
+To make it less vague, let's consider an example of Polish addresses. Below you can see a single address record containing 4 same-named nodes `jednostkaAdministracyjna`, which indicates an administrational unit.  
+
+
+```xml
+    <address>
+        ...
+        <jednostkaAdministracyjna>Polska</jednostkaAdministracyjna>
+        <jednostkaAdministracyjna>kujawsko-pomorskie</jednostkaAdministracyjna>
+        <jednostkaAdministracyjna>brodnicki</jednostkaAdministracyjna>
+        <jednostkaAdministracyjna>Bartniczka</jednostkaAdministracyjna>
+    </address>
+
+```
+
+We want to get information about the district which is located in the fourth node (Bartniczka). In order to do that we can use the `get` method and leverage the `index` parameter. Since we are all programmers, we count starting from 0. So, the fourth field means `index` equals to 3. 
+
+
+```json
+"district": {
+    "function": "get",
+    "field": "jednostkaadmnistracyjna",
+    "index": 3
+}
+```
+
+#### Definition:
+
+| parameter | type | value | default
+| --------- | ---- | ----- | -------
+| `function` | string | `get` |
+| `field` | string | any field name in the data source | none (required)
+| `index` | string | an index of the element in the sequence created by same-named elements | none (required)
+
 ## Compound functions
 
 Sometimes a single conform function is not enough to correctly process a source field, but applying two or more functions would be simpler and more correct than writing a regex.
