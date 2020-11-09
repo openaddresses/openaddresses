@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "42015",
+            "name": "Bradford County",
+            "state": "Pennsylvania"
+        },
+        "country": "us",
+        "state": "pa",
+        "county": "Bradford"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://bcmaps.bradfordco.org/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://bradfordcountypa.org/department/community-planning-and-mapping-services/",
+                "contact": {
+                    "name": "Rich Lasko",
+                    "title": "GIS Coordinator",
+                    "phone": "570-265-1727",
+                    "email": "bcgis@bradfordco.org",
+                    "address": "301 Main Street Towanda, PA 18848"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SAN",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FullAddr"
+                    },
+                    "city": "PO",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
+    }
+}
