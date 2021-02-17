@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
 
-import csv, argparse, sys, locale, re
+import os
+import glob
+import zipfile
 import fiona
+import csv
+import sys
 from shapely.geometry import mapping, shape
 
-parser = argparse.ArgumentParser(description='Convert CNEFE data to CSV format')
-parser.add_argument('region', help='CNEFE region id')
-args = parser.parse_args()
+FACES_SOURCE = '/downloads/faces'
+ADDRESSES_SOURCE = '/downloads/addresses'
+SHP_PATH = '/tmp/shp'
+ADDRESSES_PATH = '/tmp/addresses'
+RESULTS_PATH = '/results'
 
-cnefe_schema = [
-    # see data/Layout_Donwload.xls for details
+# Address files schema
+txt_schema = [
     ('census sector', 1, 15),
     ('sector type', 16, 1),
     ('street type', 17, 20),
@@ -40,105 +46,129 @@ cnefe_schema = [
     ('face', 548, 3),
     ('postal code', 551, 8)
 ]
+csv_headers = [a for (a, b, c) in txt_schema]
+csv_headers.extend(['subdistrict', 'district', 'municipality', 'state'])
 
-def dms_to_decimal(c):
-    [d,m,s,q] = c.split()
-    return (float(d) + float(m)/60 + float(s)/3600) * (-1 if q in ['O', 'S'] else 1)
+# Load faces from shapefile
+def load_faces(filename):
+    coords = {}
 
-def parse_line(l, initial):
-    a = initial.copy()
-    for (field, start, length) in cnefe_schema:
-        a[field] = l[start-1:start-1+length].strip()
+    with fiona.open(filename) as shp:
+        for r in shp:
+            if r['geometry'] and r['properties']['CD_FACE']:
+                cd_geo = r['properties']['CD_SETOR'] + \
+                    r['properties']['CD_QUADRA'] + \
+                    r['properties']['CD_FACE']
+                try:
+                    c = shape(r['geometry']).interpolate(0.5, normalized=True)
+                    coords[cd_geo] = c
+                except Exception as err:
+                    print('Invalid geometry: ' + cd_geo, err, file=sys.stderr)
 
-    # cleanups
+    return coords
+
+# For a given shapefile and its id, parse addresses files
+def parse_area(facesid, faces_shp, address_zips):
+    faces = load_faces(faces_shp);
+
+    # Expand addresses files
+    for address_zip in address_zips[0:1]:
+        with zipfile.ZipFile(address_zip, 'r') as zip_ref:
+            zip_ref.extractall(ADDRESSES_PATH)
+
+    for address_txt in glob.glob(ADDRESSES_PATH + '/*.TXT'):        
+        parse_txt(faces, address_txt)
+
+    # Clean temporary directory
+    files = glob.glob(ADDRESSES_PATH + '/*')
+    for f in files:
+        os.remove(f)        
+
+def parse_txt(faces, txt_file):
+    count=0
+
+    print('Parsing file: ' + txt_file)
+    with open(txt_file, 'r', errors='replace') as lines:
+        for line in lines:
+            parse_line(faces, line)
+            count += 1    
+    
+    print('Addresses found: ' + str(count))
+
+def parse_line(faces, line):
+    a = {}
+    for (field, start, length) in txt_schema:
+        a[field] = line[start-1:start-1+length].strip()
+
+    # Common fixes
     a['census sector'] = a['census sector'].replace(' ', '0')
     a['postal code'] = a['postal code'].zfill(8)
     if a['number'] == '0':
         a['number'] = ''
-        
-    return a
 
-def do_file(region):
+    # Get face id
+    cd_geo = a['census sector'] + a['block'] + a['face']
 
-    count = region.copy()
-    for c in log_fields:
-        count[c] = 0
-
-    coords = {} # a dict of coordinates representing each block face
-
-    try:
-        with fiona.open('data/' + region['id'] + '_face.shp') as source:
-            for x in source:
-                if x['geometry']:
-                    c = shape(x['geometry']).interpolate(0.5, normalized=True)
-                    coords[x['properties']['CD_GEO']] = c
-    except IOError as err:
-        print('Warning:', err, file=sys.stderr)
-
-    with open('data/' + region['id'] + '.TXT', 'r', errors='replace') as cnefe_file:
-    
-        for line in cnefe_file:
-        
-            count['total'] += 1
-
-            a = parse_line(line,region)
-
-            if a['number']:
-                count['has number'] += 1
-                
-            #find coordinates
-            cd_geo = a['census sector'] + a['block'] + a['face']
-
-            if a['lon']:
-                try:
-                    a['lon'] = dms_to_decimal(a['lon'])
-                    a['lat'] = dms_to_decimal(a['lat'])
-                    count['gps'] += 1
-                except Exception as err:
-                    print('Warning:', err, file=sys.stderr)
-                    a['lon'] = ''
-                    a['lat'] = ''
-            elif cd_geo in coords:
-                count['has face'] += 1
-                a['lon'] = str(coords[cd_geo].x)
-                a['lat'] = str(coords[cd_geo].y)
-            else:
-                count['no coords'] += 1
-
-            try:
-                out.writerow(a)
-            except Exception as err:
-                print('Warning:', err, file=sys.stderr)
-
-    for c in ['has number', 'has face', 'gps', 'no coords']:
-        count[c] = '{:.1%}'.format(count[c]/count['total'])
-                
-    log.writerow(count)
-
-manifest_fields = ['state', None, 'municipality', None, 'district',
-                    None, 'subdistrict', 'id']
-log_fields = ['total', 'has number', 'has face', 'gps', 'no coords']
-
-manifest = csv.DictReader(open('data/manifest.csv'), fieldnames = manifest_fields)
-
-if next(manifest) != {None: 'Subdistrito', 'state': 'UF', 'id': 'Arquivo', 'district': 'Nome Distrito', 'subdistrict': 'Nome Subdistrito', 'municipality': 'Nome Município'}:
-    sys.exit("Error: Couldn't understand manifest file")
-
-outfields = [a for (a,b,c) in cnefe_schema]    
-outfields.extend(['subdistrict','district','municipality','state'])
-
-log = csv.DictWriter(open(args.region + '.log', 'w'),
-                     log_fields + ['id', 'municipality','state'],
-                     extrasaction='ignore')
-log.writeheader()
-
-out = csv.DictWriter(sys.stdout, outfields, extrasaction='ignore')
-out.writeheader()
-
-for s in manifest:
-    if s['id'].startswith(args.region):
-        print('Info: processing ' + s['id'], file=sys.stderr)
+    # Get lng/lat, if available
+    if a['lon']:
         try:
-            do_file(s)
-        except IOError as err:
+            a['lon'] = dms_to_decimal(a['lon'])
+            a['lat'] = dms_to_decimal(a['lat'])
+        except Exception as err:
             print('Warning:', err, file=sys.stderr)
+            a['lon'] = ''
+            a['lat'] = ''
+    # Get lng/lat from faces
+    elif cd_geo in faces:
+        a['lon'] = str(faces[cd_geo].x)
+        a['lat'] = str(faces[cd_geo].y)
+    
+    # Write record
+    csv_writer.writerow(a)
+
+# Helper function to convert DMS coordinates to decimal 
+def dms_to_decimal(c):
+    [d, m, s, q] = c.split()
+    return (float(d) + float(m)/60 + float(s)/3600) * (-1 if q in ['O', 'S'] else 1)
+
+# Entry point
+global csv_writer
+states_zip = glob.glob(
+    FACES_SOURCE + '/**/*_faces_de_logradouros_2019.zip', recursive=True)
+for state_zip in states_zip[24:25]:
+    state_id=os.path.basename(state_zip)[0:2]
+
+    # Clear tmp directory
+    tmp_files=glob.glob('/tmp/**/*', recursive=True)
+    for tmp_file in tmp_files:
+        if os.path.isfile(tmp_file):
+            os.remove(tmp_file)
+
+
+    print('Parsing state: ' + state_id)
+
+    # Create CSV write stream
+    with open(RESULTS_PATH + '/' + state_id + '.csv', 'w', newline='') as csvfile:
+        csv_writer = csv.DictWriter(csvfile, csv_headers, extrasaction='ignore')
+        csv_writer.writeheader()
+
+        # Expand state shapefiles
+        with zipfile.ZipFile(state_zip, 'r') as zip_ref:
+            zip_ref.extractall(SHP_PATH)
+
+        # Parse state shapefiles
+        state_faces_shp = glob.glob(SHP_PATH + '/*_faces_de_logradouros_2019.shp')
+        for faces_shp in state_faces_shp:
+            faces_id = os.path.basename(faces_shp)[0:7]
+
+            # Get addresses in shapefile area
+            address_zips = glob.glob(
+                ADDRESSES_SOURCE + '/**/' + faces_id + '*.zip', recursive=True)
+
+            # Parse address file
+            parse_area(faces_id, faces_shp, address_zips);
+
+        # Clean temporary directory
+        files = glob.glob(SHP_PATH + '/*')
+        for f in files:
+            os.remove(f)
