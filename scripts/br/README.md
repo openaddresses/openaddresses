@@ -19,6 +19,11 @@ This command will mirror files available at IBGE FTP in `/downloads/faces` and `
 
 Build and run docker image:
 
-    docker-compose up --build
+    docker-compose run scripts /scripts/parse_cnefe.py
 
 Output files will be available in `/results` folder.
+
+To run container in development mode:
+
+    docker-compose run scripts
+    cd /scripts
