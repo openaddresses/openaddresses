@@ -49,6 +49,21 @@ txt_schema = [
 csv_headers = [a for (a, b, c) in txt_schema]
 csv_headers.extend(['subdistrict', 'district', 'municipality', 'state'])
 
+# Load dictionary of admin areas from 2010 csv file
+admin_areas = {}
+def load_admin_areas():
+    global admin_areas
+    with open('composicao_dos_arquivos_da_Base_de_Faces_de_Logradouros_do_CD2010.csv', newline='') as csvfile:
+        csv_reader = csv.DictReader(csvfile)
+        for row in csv_reader:
+            # Use file id ("Arquivo") as key
+            admin_areas[row['Arquivo']] = {
+                'subdistrict': row['Nome Subdistrito'], 
+                'district': row['Nome Distrito'],
+                'municipality': row['Nome Município'],
+                'state': row['UF']
+            }
+
 # Load faces from shapefile
 def load_faces(filename):
     coords = {}
@@ -85,17 +100,21 @@ def parse_area(facesid, faces_shp, address_zips):
         os.remove(f)        
 
 def parse_txt(faces, txt_file):
+    global admin_areas
     count=0
 
     print('Parsing file: ' + txt_file)
+    file_basename=os.path.basename(txt_file)
+    file_id=os.path.splitext(file_basename)[0]
+    area=admin_areas[file_id]
     with open(txt_file, 'r', errors='replace') as lines:
         for line in lines:
-            parse_line(faces, line)
+            parse_line(faces, line, area)
             count += 1    
     
     print('Addresses found: ' + str(count))
 
-def parse_line(faces, line):
+def parse_line(faces, line, area):
     a = {}
     for (field, start, length) in txt_schema:
         a[field] = line[start-1:start-1+length].strip()
@@ -122,6 +141,9 @@ def parse_line(faces, line):
     elif cd_geo in faces:
         a['lon'] = str(faces[cd_geo].x)
         a['lat'] = str(faces[cd_geo].y)
+
+    # Apply area to record
+    a.update(area)    
     
     # Write record
     csv_writer.writerow(a)
@@ -132,6 +154,7 @@ def dms_to_decimal(c):
     return (float(d) + float(m)/60 + float(s)/3600) * (-1 if q in ['O', 'S'] else 1)
 
 # Entry point
+load_admin_areas()
 global csv_writer
 states_zip = glob.glob(
     FACES_SOURCE + '/**/*_faces_de_logradouros_2019.zip', recursive=True)
@@ -143,7 +166,6 @@ for state_zip in states_zip[24:25]:
     for tmp_file in tmp_files:
         if os.path.isfile(tmp_file):
             os.remove(tmp_file)
-
 
     print('Parsing state: ' + state_id)
 
