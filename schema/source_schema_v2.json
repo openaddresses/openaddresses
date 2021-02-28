@@ -220,20 +220,16 @@
                         "additionalProperties": false,
                         "required": [
                             "data",
-                            "type",
+                            "protocol",
                             "name"
                         ],
                         "properties": {
                             "name": {
                                 "type": "string"
                             },
-                            "type": {
+                            "protocol": {
                                 "type": "string",
-                                "enum": [
-                                    "http",
-                                    "ftp",
-                                    "ESRI"
-                                ]
+                                "enum": [ "http", "ftp", "ESRI" ]
                             },
                             "data": {
                                 "type": "string"
@@ -779,7 +775,7 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "type": {
+                "format": {
                     "type": "string",
                     "enum": [
                         "geojson",
