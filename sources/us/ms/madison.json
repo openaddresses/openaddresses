@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "28089", "name": "Madison County", "state": "Mississippi"},
+        "country": "us",
+        "state": "ms",
+        "county": "Madison"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis3.cmpdd.org/arcgis/rest/services/County/Madison_County_Viewer/MapServer/36",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREET_NUMBER",
+                    "street": "STREET_NAME"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis3.cmpdd.org/arcgis/rest/services/County/Madison_County_Viewer/MapServer/36",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID_"
+                }
+            }
+        ]
+    }
+}
