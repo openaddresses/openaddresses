@@ -15,19 +15,42 @@
             {
                 "name": "county",
                 "attribution": "Bay County",
-                "data": "http://www.baycountyfl.gov/gis/downloads/address.zip",
-                "website": "http://www.baycountyfl.gov/gis/downloads2.php?agreecheck=on",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://gis.baycountyfl.gov/arcgis/rest/services/BayView/BayView/MapServer/0",
+                "website": "https://gis.baycountyfl.gov/bayview/",
+                "protocol": "ESRI",
                 "conform": {
-                    "street": "fullname",
-                    "number": "house",
-                    "unit": [
-                        "UNITTYPE",
-                        "UNIT"
-                    ],
-                    "format": "shapefile",
-                    "postcode": "zip"
+                    "format": "geojson",
+                    "unit": [ "UNITTYPE", "UNIT" ],
+                    "number": "FULLHOUSE",
+                    "street": "FULLNAME",
+                    "city": "CMNTY",
+                    "postcode": "ZIP",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Bay County",
+                "data": "https://gis.baycountyfl.gov/arcgis/rest/services/BayView/BayView/MapServer/2",
+                "website": "https://gis.baycountyfl.gov/bayview/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "A1RENUM"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Bay County",
+                "data": "https://gis.baycountyfl.gov/arcgis/rest/services/BasicLayers/MapServer/21",
+                "website": "https://gis.baycountyfl.gov/bayview/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
