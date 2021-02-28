@@ -15,12 +15,32 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "http://gis.cmpdd.org/arcgis/rest/services/Regional/SimpsonHealth/MapServer/4",
+                "data": "https://gis3.cmpdd.org/arcgis/rest/services/County/Simpson_County/MapServer/3",
                 "conform": {
                     "format": "geojson",
                     "accuracy": 2,
-                    "number": "STREET_NUM",
-                    "street": "STREET"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis3.cmpdd.org/arcgis/rest/services/County/Simpson_County/MapServer/3",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
                 }
             }
         ]
