@@ -20,7 +20,7 @@ Still a new source? Awesome!
 - If the source costs money, please add it to the [Commercial Wiki](https://github.com/openaddresses/openaddresses/wiki/Commercial-sources)
 - If the source is parcel data, please add it to the [Parcel Wiki](https://github.com/openaddresses/openaddresses/wiki/Parcel-Sources)
 - If you have an awesome link/contact but no data, add it to the [Outreach Wiki](https://github.com/openaddresses/openaddresses/wiki/Potential-Outreach)
-- Finally if you have raw data, open a [issue](https://github.com/openaddresses/openaddresses/issues/new) and we'll add it for you or [add it yourself](https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md)
+- Finally, if you have raw data open an [issue](https://github.com/openaddresses/openaddresses/issues/new) and we'll add it for you or [add it yourself](https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md)
 
 Confused? Not sure where your source fits in?
 [Open an issue](https://github.com/openaddresses/openaddresses/issues/new),
@@ -36,7 +36,7 @@ We will do our best to review your issue and either fix or add the feature(s) to
 
 Comfortable with JSON? Feel free to submit a pull request with the data instead of opening an issue. Before asking for a merge, please keep Travis CI happy by making sure you submit well-formed JSON: green is good!
 
-For a first time contributor, getting the JSON right can be a bit of a challenge,
+For a first-time contributor, getting the JSON right can be a bit of a challenge,
 check out other sources in `./sources/` to get an idea of what we are looking for.
 Still confused? [Open an issue](https://github.com/openaddresses/openaddresses/issues/new),
 we’ll be happy to help you out!
@@ -80,11 +80,11 @@ instead of a pull request. We’ll determine if the data is suitable for inclusi
 
  Tag                  | Required? | Note
 --------------------- | --------- | ----
-`schema`              | Yes | The JSON Schema the source conforms to - currentl always `2`
+`schema`              | Yes | The JSON Schema the source conforms to - currently always `2`
 `coverage`            | Yes | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String. [See below for more details](#coverage-object)
 `layers`              | Yes | An object containing the data layers for a given source. Valid layers are `addressess`. In the near future `parcels` and `buildings` will be supported
 `layers.{layer}`      | Yes | An array of layer objects for a given layer type
-`{layer}.name`        | Yes | The name of the data provider (AlphaNumeric + Underscores). If unknown, just use the geographic entity, ie: `town`, `city`, `county`
+`{layer}.name`        | Yes | The name of the data provider (AlphaNumeric + Underscores). If unknown, just use the geographic entity, i.e., `town`, `city`, `county`
 `{layer}.data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal. If there isn't a good URL for the source, members of the OpenAddresses GitHub organization can upload files to https://results.openaddresses.io/upload-cache which provides a cached URL.
 `{layer}.protocol`    | Yes | A string containing the protocol (One of: `http`, `ftp`, `ESRI`)
 `{layer}.conform`     |     | Optional Object used to find address information in a source. [See below for more details](#conform-object).
@@ -158,7 +158,7 @@ Attribute tags are functions or field names for mapping the source data into a g
 ---------- | --- | ----
 `number`   | Yes | The name of the number field. This will either be the name of the field or a function.
 `street`   | Yes | The name of the street field. This will either be the name of the field, an ordered list of fields to merge together, or some other function.
-`unit`     |     | The Unit number. This is an optional attribute and can be used for uniquely identifying addresses where the street number is the same but a "unit" number is specified, i.e. `300 Willow Valley Lakes Drive #3A` where `3A` can be found as a separate attribute in the source.
+`unit`     |     | The Unit number. This is an optional attribute and can be used for uniquely identifying addresses where the street number is the same but a "unit" number is specified, i.e., `300 Willow Valley Lakes Drive #3A` where `3A` can be found as a separate attribute in the source.
 `lon`      |     | The longitude column. This is required for CSV sources and should be omitted for other types.
 `lat`      |     | The latitude field. This is required for CSV sources and should be omitted for other types.
 `city`     |     | Name of the City or Municipality in which the address falls
@@ -191,7 +191,7 @@ _Example_
 ###### Merged Fields
 
 Often times there are multiple fields that should be merged together. An array (`[]`) of field names
-can be used with any attribute tag. The field names will joined with a space (` `).
+can be used with any attribute tag. The field names will be joined with a space (` `).
 
 _Format_
 ```JSON
@@ -218,7 +218,7 @@ Function | Note
 [`postfixed_unit`](ATTRIBUTE_FUNCTIONS.md#prefixed_number-postfixed_street-and-postfixed_street) | Allow unit to be extracted from the end of a single field (extracts `Apt 4A` from `102 East Maple Street Apt 4A`)
 [`remove_prefix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the beginning of another field value
 [`remove_postfix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the end of another field value
-[`regexp`](ATTRIBUTE_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field
+[`regexp`](ATTRIBUTE_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region, etc. when the source has them in a single field
 
 Sources vary in how they store data so several approaches to conforming attributes may apply.
 
@@ -258,8 +258,8 @@ Additional metadata helps future proof the project!
  Tag          | Note
 ------------- | ----
 `website`     | A URL referencing the data portal
-`license`     | An object with license details for the dataset. Supported properties:<br><br>`url`: link to license terms, e.g. “http://creativecommons.org/licenses/by/4.0/”.<br>`text`: short description of license terms, e.g. “CC BY 4.0”.<br>`attribution`: Boolean value for required attribution to copyright holder. Defaults to _true_ if other attribution details are present, otherwise _false_.<br>`attribution name`: name of data copyright holder requiring attribution, e.g. “United Federation of Planets”.<br>`share-alike`: Boolean value for requirement to license derivative works under the same terms or compatible terms as the original work. Defaults to _false_.<br>`presumed`: Boolean value. _true_ if an OpenAddresses community member *interpreted* the license to derive the `share-alike` or `attribution` booleans above. _false_ if the license explicitly includes share-alike or attribution requirements (like CC-BY or CC-BY-SA).<br>`remarks`: A fully qualified URL to a file (PDF or text document) of the full license of the source.<br><br>**Deprecated value:** a URL or string describing the license.
-`contact`     | An object with contact information for the dataset or provider. Supported properties:<br><br>`name`: the name of a specific contact person, e.g. "Mary Smith".<br>`title`: the title for the contact person, e.g. "GIS Coordinator".<br>`phone`: A contact telephone number, e.g. "415-867-5309".<br>`email`: email address for contact person or organization, e.g. "mary@example.com".<br>`address`: A mailing address for the dataset provider, e.g. "500 Main Street, Washington, DC 10001".
+`license`     | An object with license details for the dataset. Supported properties:<br><br>`url`: link to license terms, e.g., “http://creativecommons.org/licenses/by/4.0/”.<br>`text`: short description of license terms, e.g., “CC BY 4.0”.<br>`attribution`: Boolean value for required attribution to copyright holder. Defaults to _true_ if other attribution details are present, otherwise _false_.<br>`attribution name`: name of data copyright holder requiring attribution, e.g. “United Federation of Planets”.<br>`share-alike`: Boolean value for requirement to license derivative works under the same terms or compatible terms as the original work. Defaults to _false_.<br>`presumed`: Boolean value. _true_ if an OpenAddresses community member *interpreted* the license to derive the `share-alike` or `attribution` booleans above. _false_ if the license explicitly includes share-alike or attribution requirements (like CC-BY or CC-BY-SA).<br>`remarks`: A fully qualified URL to a file (PDF or text document) of the full license of the source.<br><br>**Deprecated value:** a URL or string describing the license.
+`contact`     | An object with contact information for the dataset or provider. Supported properties:<br><br>`name`: the name of a specific contact person, e.g., "Mary Smith".<br>`title`: the title for the contact person, e.g., "GIS Coordinator".<br>`phone`: A contact telephone number, e.g., "415-867-5309".<br>`email`: email address for contact person or organization, e.g., "mary@example.com".<br>`address`: A mailing address for the dataset provider, e.g., "500 Main Street, Washington, DC 10001".
 `note`        | A String containing a human readable note.
 `attribution` | **Deprecated:** Where the license requires attribution, add it here. example `CC-BY United Federation of Planets`
 `email`       | This email is used to send automated emails to the data provider if a user changes their data. Do not set unless the data provider wants to receive updates. Distinct from contact email in that the provider might want to send these notifications to a different mailing list than the contact email listed above. Note that this property is not used by any OpenAddresses software at this point.
@@ -298,12 +298,12 @@ Additional metadata helps future proof the project!
 
 Names of places, cities, addresses etc. are often translated to various languages. For example: Munich, Bavaria, Germany
 vs. München, Bayern, Deutschland. The optional `language` tag defines, which language is in use in the metadata entry.
-A data source usually includes addresses in a single language (e.g. Montreal in Canada contains only French names).
+A data source usually includes addresses in a single language (e.g., Montreal in Canada contains only French names).
 Some data sources can define several translations of address components under appropriate csv column labels. For example,
 Brussels in Belgium has both Dutch and French names. Such a bilingual data source can be linked to OpenAddresses
 with two separate metadata entries, one for reading the [French addresses](https://github.com/openaddresses/openaddresses/blob/master/sources/be/wa/brussels-fr.json)
 and one for reading the [Dutch addresses](https://github.com/openaddresses/openaddresses/blob/master/sources/be/wa/brussels-nl.json).
-An application,which uses OpenAddresses and wishes to generate multilingual address entries, can access the data via both metadata entries
+An application, which uses OpenAddresses and wishes to generate multilingual address entries, can access the data via both metadata entries
 and merge the language versions by identifying the address items by their `id` unique identifier tag.
 
 ### Formatting:
