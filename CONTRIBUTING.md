@@ -20,7 +20,7 @@ Still a new source? Awesome!
 - If the source costs money, please add it to the [Commercial Wiki](https://github.com/openaddresses/openaddresses/wiki/Commercial-sources)
 - If the source is parcel data, please add it to the [Parcel Wiki](https://github.com/openaddresses/openaddresses/wiki/Parcel-Sources)
 - If you have an awesome link/contact but no data, add it to the [Outreach Wiki](https://github.com/openaddresses/openaddresses/wiki/Potential-Outreach)
-- Finally if you have raw data, open a [issue](https://github.com/openaddresses/openaddresses/issues/new) and we'll add it for you or [add it yourself](https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md)
+- Finally, if you have raw data open an [issue](https://github.com/openaddresses/openaddresses/issues/new) and we'll add it for you or [add it yourself](https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md)
 
 Confused? Not sure where your source fits in?
 [Open an issue](https://github.com/openaddresses/openaddresses/issues/new),
@@ -36,7 +36,7 @@ We will do our best to review your issue and either fix or add the feature(s) to
 
 Comfortable with JSON? Feel free to submit a pull request with the data instead of opening an issue. Before asking for a merge, please keep Travis CI happy by making sure you submit well-formed JSON: green is good!
 
-For a first time contributor, getting the JSON right can be a bit of a challenge,
+For a first-time contributor, getting the JSON right can be a bit of a challenge,
 check out other sources in `./sources/` to get an idea of what we are looking for.
 Still confused? [Open an issue](https://github.com/openaddresses/openaddresses/issues/new),
 we’ll be happy to help you out!
@@ -80,11 +80,11 @@ instead of a pull request. We’ll determine if the data is suitable for inclusi
 
  Tag                  | Required? | Note
 --------------------- | --------- | ----
-`schema`              | Yes | The JSON Schema the source conforms to - currentl always `2`
+`schema`              | Yes | The JSON Schema the source conforms to - currently always `2`
 `coverage`            | Yes | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String. [See below for more details](#coverage-object)
 `layers`              | Yes | An object containing the data layers for a given source. Valid layers are `addressess`. In the near future `parcels` and `buildings` will be supported
 `layers.{layer}`      | Yes | An array of layer objects for a given layer type
-`{layer}.name`        | Yes | The name of the data provider (AlphaNumeric + Underscores). If unknown, just use the geographic entity, ie: `town`, `city`, `county`
+`{layer}.name`        | Yes | The name of the data provider (AlphaNumeric + Underscores). If unknown, just use the geographic entity, i.e. `town`, `city`, `county`
 `{layer}.data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal. If there isn't a good URL for the source, members of the OpenAddresses GitHub organization can upload files to https://results.openaddresses.io/upload-cache which provides a cached URL.
 `{layer}.protocol`    | Yes | A string containing the protocol (One of: `http`, `ftp`, `ESRI`)
 `{layer}.conform`     |     | Optional Object used to find address information in a source. [See below for more details](#conform-object).
@@ -191,7 +191,7 @@ _Example_
 ###### Merged Fields
 
 Often times there are multiple fields that should be merged together. An array (`[]`) of field names
-can be used with any attribute tag. The field names will joined with a space (` `).
+can be used with any attribute tag. The field names will be joined with a space (` `).
 
 _Format_
 ```JSON
@@ -218,7 +218,7 @@ Function | Note
 [`postfixed_unit`](ATTRIBUTE_FUNCTIONS.md#prefixed_number-postfixed_street-and-postfixed_street) | Allow unit to be extracted from the end of a single field (extracts `Apt 4A` from `102 East Maple Street Apt 4A`)
 [`remove_prefix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the beginning of another field value
 [`remove_postfix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the end of another field value
-[`regexp`](ATTRIBUTE_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field
+[`regexp`](ATTRIBUTE_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region, etc. when the source has them in a single field
 
 Sources vary in how they store data so several approaches to conforming attributes may apply.
 
@@ -303,7 +303,7 @@ Some data sources can define several translations of address components under ap
 Brussels in Belgium has both Dutch and French names. Such a bilingual data source can be linked to OpenAddresses
 with two separate metadata entries, one for reading the [French addresses](https://github.com/openaddresses/openaddresses/blob/master/sources/be/wa/brussels-fr.json)
 and one for reading the [Dutch addresses](https://github.com/openaddresses/openaddresses/blob/master/sources/be/wa/brussels-nl.json).
-An application,which uses OpenAddresses and wishes to generate multilingual address entries, can access the data via both metadata entries
+An application, which uses OpenAddresses and wishes to generate multilingual address entries, can access the data via both metadata entries
 and merge the language versions by identifying the address items by their `id` unique identifier tag.
 
 ### Formatting:
