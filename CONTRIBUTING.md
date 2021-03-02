@@ -84,7 +84,7 @@ instead of a pull request. We’ll determine if the data is suitable for inclusi
 `coverage`            | Yes | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String. [See below for more details](#coverage-object)
 `layers`              | Yes | An object containing the data layers for a given source. Valid layers are `addressess`. In the near future `parcels` and `buildings` will be supported
 `layers.{layer}`      | Yes | An array of layer objects for a given layer type
-`{layer}.name`        | Yes | The name of the data provider (AlphaNumeric + Underscores). If unknown, just use the geographic entity, i.e., `town`, `city`, `county`
+`{layer}.name`        | Yes | The name of the data provider (AlphaNumeric + Underscores). If unknown, just use the geographic entity, i.e. `town`, `city`, `county`
 `{layer}.data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal. If there isn't a good URL for the source, members of the OpenAddresses GitHub organization can upload files to https://results.openaddresses.io/upload-cache which provides a cached URL.
 `{layer}.protocol`    | Yes | A string containing the protocol (One of: `http`, `ftp`, `ESRI`)
 `{layer}.conform`     |     | Optional Object used to find address information in a source. [See below for more details](#conform-object).
@@ -158,7 +158,7 @@ Attribute tags are functions or field names for mapping the source data into a g
 ---------- | --- | ----
 `number`   | Yes | The name of the number field. This will either be the name of the field or a function.
 `street`   | Yes | The name of the street field. This will either be the name of the field, an ordered list of fields to merge together, or some other function.
-`unit`     |     | The Unit number. This is an optional attribute and can be used for uniquely identifying addresses where the street number is the same but a "unit" number is specified, i.e., `300 Willow Valley Lakes Drive #3A` where `3A` can be found as a separate attribute in the source.
+`unit`     |     | The Unit number. This is an optional attribute and can be used for uniquely identifying addresses where the street number is the same but a "unit" number is specified, i.e. `300 Willow Valley Lakes Drive #3A` where `3A` can be found as a separate attribute in the source.
 `lon`      |     | The longitude column. This is required for CSV sources and should be omitted for other types.
 `lat`      |     | The latitude field. This is required for CSV sources and should be omitted for other types.
 `city`     |     | Name of the City or Municipality in which the address falls
