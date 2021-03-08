@@ -1,4 +1,5 @@
 {
+    "schema": 2,
     "coverage": {
         "country": "sg",
         "ISO 3166": {
@@ -6,20 +7,28 @@
             "country": "Singapore"
         }
     },
-    "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "country",
+                "data": "https://github.com/xuancong84/singapore-address-heatmap/raw/master/database.csv.gz",
+                "protocol": "http",
                 "conform": {
-                    "format": "geojson",
-                    "number": "HOUSE_BLK_NO",
-                    "street": "ROAD_NAME"
+                    "format": "csv",
+                    "number": "BLK_NO",
+                    "street": "ROAD_NAME",
+                    "lon": "LONGITUDE",
+                    "lat": "LATITUDE",
+                    "postcode": "POSTAL"
                 },
-                "data": "http://arcgis-whereto-1649028446.ap-southeast-1.elb.amazonaws.com/arcgis/rest/services/SAS/Basemap_3414/MapServer/17",
-                "protocol": "ESRI",
-                "license": "Unknown",
-                "website": "http://whereto.sg"
+                "compression": "gzip",
+                "website": "https://docs.onemap.sg/",
+                "license": {
+                    "url": "https://www.onemap.sg/legal/opendatalicence.html",
+                    "text": "Singapore Open Data License",
+                    "attribution name": "OneMap Singapore"
+                },
+                "language": "en"
             }
         ]
     }
