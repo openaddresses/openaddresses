@@ -1,12 +1,14 @@
 <h1 align=center>Contributing to OpenAddresses</h1>
 
-<p align=center>[![Build Status](https://travis-ci.org/openaddresses/openaddresses.svg?branch=master)](https://travis-ci.org/openaddresses/openaddresses)</p>
+<p align="center">
+  <a href="https://travis-ci.org/openaddresses/openaddresses"><img alt="Build Status" src="https://travis-ci.org/openaddresses/openaddresses.svg?branch=master"/></a>
+</p>
 
 ## Reporting Sources & Issues
 
-We'd love to hear about a new address source, fixes to an old one, or make improvements.
+We'd love to hear about a new address, cadastral parcel or building footprint sources, fixes to an old one, or improvements.
 
-OpenAddresses is a collection of _authoritative data_ for address locations around the world. We collect address data from authoritative sources; we do not create our own data. A source is a location where authoritative address data can be found. Examples might be a downloadable CSV file or live ArcServer feature service hosted by a national postal service, a state GIS department, or a county property parcel database.
+OpenAddresses is a collection of _authoritative data_ for address locations, cadastral parcels and building footprints around the world. We collect this data from authoritative sources; we do not create our own data. A source is a location where authoritative data can be found. Examples might be a downloadable CSV file or live ArcServer feature service hosted by a national postal service, a state GIS department, or a county property parcel database.
 
 ### New Sources
 
@@ -18,7 +20,6 @@ Have a potential source? Fantastic! Follow these steps to help us get it into th
 Still a new source? Awesome!
 - If the source is raster data (images/webmap/not downloadable) please add it to the [Raster Wiki](https://github.com/openaddresses/openaddresses/wiki/Raster-Data-Sources)
 - If the source costs money, please add it to the [Commercial Wiki](https://github.com/openaddresses/openaddresses/wiki/Commercial-sources)
-- If the source is parcel data, please add it to the [Parcel Wiki](https://github.com/openaddresses/openaddresses/wiki/Parcel-Sources)
 - If you have an awesome link/contact but no data, add it to the [Outreach Wiki](https://github.com/openaddresses/openaddresses/wiki/Potential-Outreach)
 - Finally, if you have raw data open an [issue](https://github.com/openaddresses/openaddresses/issues/new) and we'll add it for you or [add it yourself](https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md)
 
@@ -82,7 +83,7 @@ instead of a pull request. We’ll determine if the data is suitable for inclusi
 --------------------- | --------- | ----
 `schema`              | Yes | The JSON Schema the source conforms to - currently always `2`
 `coverage`            | Yes | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String. [See below for more details](#coverage-object)
-`layers`              | Yes | An object containing the data layers for a given source. Valid layers are `addressess`. In the near future `parcels` and `buildings` will be supported
+`layers`              | Yes | An object containing the data layers for a given source. Valid layers are `addressess`, `parcels` and `buildings`.
 `layers.{layer}`      | Yes | An array of layer objects for a given layer type
 `{layer}.name`        | Yes | The name of the data provider (AlphaNumeric + Underscores). If unknown, just use the geographic entity, i.e. `town`, `city`, `county`
 `{layer}.data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal. If there isn't a good URL for the source, members of the OpenAddresses GitHub organization can upload files to https://results.openaddresses.io/upload-cache which provides a cached URL.
@@ -139,7 +140,7 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
 `skiplines`      |     | (`'csv'` format only) May be used in conjunction with `headers` (see above).  For example, if `headers` is 1 but a second header line exists and must be skipped.
 `accuracy`       |     | The accuracy of the data source. See table below. Should never be 0, defaults to 5. If this is not set, address duplicates of higher accuracy will replace the addresses from this source when they are conflated.
 
-###### Accuracy
+###### Accuracy (addresses only)
 
 | ID    | Type           |
 | :---: | -------------- |
@@ -150,7 +151,7 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
 |   4   | Interpolation  |
 |   5   | Unknown        |
 
-##### Attribute Tags
+##### Address Attribute Tags
 
 Attribute tags are functions or field names for mapping the source data into a given format.
 
@@ -168,6 +169,14 @@ Attribute tags are functions or field names for mapping the source data into a g
 `id`       |     | Unique identifier, [such as a parcel APN](https://en.wikipedia.org/wiki/Assessor%27s_parcel_number).
 `addrtype` |     | Type of address. `industrial`, `residential`, etc.
 `notes`    |     | Legal description of address or notes about the property.
+
+##### Parcel Attribute Tags
+
+Attribute tags are functions or field names for mapping the source data into a given format.
+
+ Tag | Required? | Note
+---------- | --- | ----
+`pid`   | Yes | The name of the unique primary id field.
 
 ##### Assembling Attributes
 
@@ -250,7 +259,7 @@ to the map at [data.openaddresses.io](http://data.openaddresses.io):
     - _MultiPolygon_ - for example, [state of Tennesse](sources/us/tn/statewide.json)
     - _Point_ - for example, city of [Johns Creek](sources/us/ga/city_of_johns_creek.json), estimated from another mapping provider or [Who's on First](https://whosonfirst.mapzen.com/spelunker/)
 
-#### Optional Tags
+#### Optional Address Tags
 
 Although these tags are optional, their inclusion is very much appreciated.
 Additional metadata helps future proof the project!
