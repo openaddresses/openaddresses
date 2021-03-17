@@ -10,16 +10,16 @@ import requests
 from tqdm import tqdm
 
 
-def get_onemap_data(pcode):
+def get_onemap_data(postcode):
     results = []
     page = 1
-    url_format = "https://developers.onemap.sg/commonapi/search?searchVal={pcode}&returnGeom=Y&getAddrDetails=Y&pageNum={page}"
+    url_format = "https://developers.onemap.sg/commonapi/search?searchVal={postcode}&returnGeom=Y&getAddrDetails=Y&pageNum={page}"
 
     while True:
         try:
-            response = requests.get(url_format.format(pcode=pcode, page=page)).json()
+            response = requests.get(url_format.format(postcode=postcode, page=page)).json()
         except requests.exceptions.ConnectionError:
-            print(f"Fetching {pcode} failed. Retrying in 2 sec")
+            print(f"Fetching {postcode} failed. Retrying in 2 sec")
             time.sleep(2)
             continue
 
@@ -28,7 +28,7 @@ def get_onemap_data(pcode):
             break
         page = page + 1
 
-    return pcode, results
+    return postcode, results
 
 
 def generate_postcodes(txt_path="sg.txt"):
@@ -44,7 +44,7 @@ def generate_postcodes(txt_path="sg.txt"):
     return postal_codes
 
 
-def json_to_geojson(json_path="sg.json", csv_path="sg.csv", geojson_path="sg.geojson"):
+def jsonl_to_geojson(jsonl_path="sg.jsonl", csv_path="sg.csv", geojson_path="sg.geojson"):
     dtype = {
         "BLK_NO": "str",
         "ROAD_NAME": "str",
@@ -56,7 +56,11 @@ def json_to_geojson(json_path="sg.json", csv_path="sg.csv", geojson_path="sg.geo
         "LATITUDE": "float",
         "LONGITUDE": "float",
     }
-    df = pd.read_json(json_path, dtype=dtype, lines=True)[dtype.keys()].sort_values(["POSTAL", "BUILDING"])
+    df = (
+        pd.read_json(jsonl_path, dtype=dtype, lines=True)[dtype.keys()]
+            .replace("NIL", "")
+            .sort_values(["POSTAL", "BUILDING"])
+    )
     df.to_csv(csv_path, index=False)
     gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df["LATITUDE"], df["LONGITUDE"]))
     gdf.to_file(geojson_path, driver="GeoJSON")
@@ -66,26 +70,27 @@ def json_to_geojson(json_path="sg.json", csv_path="sg.csv", geojson_path="sg.geo
 if __name__ == "__main__":
     fname = "sg"
     txt_path = f"{fname}.txt"
-    json_path = f"{fname}.json"
+    jsonl_path = f"{fname}.jsonl"
     csv_path = f"{fname}.csv"
     geojson_path = f"{fname}.geojson"
+
     postal_codes = generate_postcodes(txt_path)
 
     with tqdm(postal_codes) as pbar, \
-            open(json_path, "a") as f_json, \
+            open(jsonl_path, "a") as f_jsonl, \
             open(txt_path, "a") as f_txt, \
             ThreadPoolExecutor() as executor:
 
-        futures = [executor.submit(get_onemap_data, pcode) for pcode in postal_codes]
+        futures = [executor.submit(get_onemap_data, postcode) for postcode in postal_codes]
 
         for future in as_completed(futures):
             pcode, result = future.result()
 
             for entry in result:
-                f_json.write(json.dumps(entry))
-                f_json.write("\n")
+                f_jsonl.write(json.dumps(entry))
+                f_jsonl.write("\n")
             f_txt.write(pcode)
             f_txt.write("\n")
             pbar.update(1)
 
-    json_to_geojson(json_path, csv_path, geojson_path)
+    jsonl_to_geojson(jsonl_path, csv_path, geojson_path)
