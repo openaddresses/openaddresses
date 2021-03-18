@@ -15,28 +15,34 @@
             {
                 "name": "county",
                 "attribution": "Arapahoe County",
-                "data": "http://gis.arapahoegov.com/DL_Data/Address_Points/WGS/Address_Points_SHAPE_WGS.zip",
-                "license": "Crappy License",
-                "note": "More addresses can be found - http://gis.arapahoegov.com/ArcGIS/rest/services/Beta/ArapaMAP/MapServer/4",
-                "protocol": "http",
-                "compression": "zip",
+                "website": "https://gis.arapahoegov.com/ArapaMAP/",
+                "data": "https://gis.arapahoegov.com/arcgis/rest/services/Background_Map/MapServer/1",
+                "protocol": "ESRI",
                 "conform": {
+                    "format": "geojson",
+                    "unit": "Unit",
                     "number": "Number",
                     "street": [
-                        "Pre_Direct",
-                        "Street_Nam",
-                        "Street_Typ",
-                        "Suffix_Dir"
+                        "Pre_Direction",
+                        "Street_Name",
+                        "Street_Type",
+                        "Street_Type"
                     ],
-                    "unit": "Unit",
-                    "city": {
-                        "function": "regexp",
-                        "field": "City_State",
-                        "pattern": "^(?:.*)( CO)$",
-                        "replace": "$1"
-                    },
-                    "postcode": "Zip",
-                    "format": "shapefile"
+                    "city": "City_State",
+                    "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Arapahoe County",
+                "website": "https://gis.arapahoegov.com/ArapaMAP/",
+                "data": "https://gis.arapahoegov.com/arcgis/rest/services/ArapaMAP_3_9_5/MapServer/278",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
                 }
             }
         ]
