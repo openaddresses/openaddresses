@@ -13,22 +13,28 @@
     "layers": {
         "addresses": [{
             "name": "county",
-            "data": "https://www.dropbox.com/sh/bl9du5wks42tepc/AAB1EZ0zPOIKFgSWDPsvlf5Ua?dl=1",
-            "type": "http",
-            "compression": "zip",
+            "data": "https://gis.hawaiicounty.gov/arcgis/rest/services/COHGIS_Public/COHGIS_Public/MapServer/20",
+            "protocol": "ESRI",
             "conform": {
-                "type": "shapefile",
-                "file": "parcels0416_joined_RPFADDR.shp",
-                "number": {
-                    "function": "regexp",
-                    "field": "TMKGeoAddr",
-                    "pattern": "^(\\d+[A-Z]?-?(?:\\d+[A-Z]?)?) "
-                },
-                "street": {
-                    "function": "regexp",
-                    "field": "TMKGeoAddr",
-                    "pattern": "^(?:\\d+[A-Z]?-?(?:\\d+[A-Z]?)?\\s+)?(.+)$"
-                }
+                "format": "geojson",
+                "number": ["ADDRESSNUM", "ADDRESSSUF"],
+                "street": [
+                    "SDIRPRE",
+                    "SFEANME",
+                    "SFEATYP",
+                    "SDIRSUF"
+                ],
+                "postcode": "ZIPCODE"
+
+            }
+        }],
+        "parcels": [{
+            "name": "county",
+            "data": "https://gis.hawaiicounty.gov/arcgis/rest/services/COHGIS_Public/COHGIS_Public/MapServer/21",
+            "protocol": "ESRI",
+            "conform": {
+                "format": "geojson",
+                "pid": "OBJECTID"
             }
         }]
     }
