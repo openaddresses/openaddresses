@@ -1,4 +1,5 @@
 {
+    "schema": 2,
     "coverage": {
         "US Census": {
             "geoid": "15001",
@@ -9,97 +10,26 @@
         "state": "hi",
         "county": "hawaii"
     },
-    "data": "https://www.dropbox.com/sh/bl9du5wks42tepc/AAB1EZ0zPOIKFgSWDPsvlf5Ua?dl=1",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "file": "parcels0416_joined_RPFADDR.shp",
-        "number": {
-            "function": "regexp",
-            "field": "TMKGeoAddr",
-            "pattern": "^(\\d+[A-Z]?-?(?:\\d+[A-Z]?)?) "
-        },
-        "street": {
-            "function": "regexp",
-            "field": "TMKGeoAddr",
-            "pattern": "^(?:\\d+[A-Z]?-?(?:\\d+[A-Z]?)?\\s+)?(.+)$"
-        }
-    },
-    "test": {
-        "enabled": true,
-        "description": "these are the tests that exercise house number scenarios for Hawaii County, HI",
-        "acceptance-tests": [
-            {
-                "description": "address without number",
-                "inputs": {
-                    "TMKGeoAddr": "S LEILANI BLVD"
+    "layers": {
+        "addresses": [{
+            "name": "county",
+            "data": "https://www.dropbox.com/sh/bl9du5wks42tepc/AAB1EZ0zPOIKFgSWDPsvlf5Ua?dl=1",
+            "type": "http",
+            "compression": "zip",
+            "conform": {
+                "type": "shapefile",
+                "file": "parcels0416_joined_RPFADDR.shp",
+                "number": {
+                    "function": "regexp",
+                    "field": "TMKGeoAddr",
+                    "pattern": "^(\\d+[A-Z]?-?(?:\\d+[A-Z]?)?) "
                 },
-                "expected": {
-                    "number": "",
-                    "street": "S LEILANI BLVD"
-                }
-            },
-            {
-                "description": "address without number and street starts with digit",
-                "inputs": {
-                    "TMKGeoAddr": "27TH AVENUE"
-                },
-                "expected": {
-                    "number": "",
-                    "street": "27TH AVENUE"
-                }
-            },
-            {
-                "description": "non-hyphenated number w/street",
-                "inputs": {
-                    "TMKGeoAddr": "96 KAPUALANI STREET"
-                },
-                "expected": {
-                    "number": "96",
-                    "street": "KAPUALANI STREET"
-                }
-            },
-            {
-                "description": "hyphenated number w/street",
-                "inputs": {
-                    "TMKGeoAddr": "18-2301 KAULANA ROAD"
-                },
-                "expected": {
-                    "number": "18-2301",
-                    "street": "KAULANA ROAD"
-                }
-            },
-            {
-                "description": "non-hyphenated number w/letter w/street",
-                "inputs": {
-                    "TMKGeoAddr": "1055A AHUNA ROAD"
-                },
-                "expected": {
-                    "number": "1055A",
-                    "street": "AHUNA ROAD"
-                }
-            },
-            {
-                "description": "hyphenated number w/o suffix w/street",
-                "inputs": {
-                    "TMKGeoAddr": "39- KUKUI VILLAGE ROAD"
-                },
-                "expected": {
-                    "number": "39-",
-                    "street": "KUKUI VILLAGE ROAD"
-                }
-            },
-            {
-                "description": "hyphenated number w/suffix including alpha w/street",
-                "inputs": {
-                    "TMKGeoAddr": "45-541A LOKELANI STREET"
-                },
-                "expected": {
-                    "number": "45-541A",
-                    "street": "LOKELANI STREET"
+                "street": {
+                    "function": "regexp",
+                    "field": "TMKGeoAddr",
+                    "pattern": "^(?:\\d+[A-Z]?-?(?:\\d+[A-Z]?)?\\s+)?(.+)$"
                 }
             }
-        ]
+        }]
     }
 }
