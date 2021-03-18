@@ -21,20 +21,47 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "ftp://ns2.fcgov.com/download/gis_data/addresses.zip",
+                "data": "https://gisweb.fcgov.com/ArcGIS/rest/services/FCMaps/MapServer/0",
                 "protocol": "ftp",
                 "attribution": "City of Fort Collins",
-                "compression": "zip",
-                "website": "ftp://ns2.fcgov.com/download/gis_data/",
+                "website": "https://www.fcgov.com/gis/",
                 "conform": {
-                    "number": "number",
-                    "street": "strname",
-                    "unit": [
-                        "BUILDING",
-                        "UNIT"
+                    "format": "geojson",
+                    "unit": [ "BUILDING", "UNIT" ],
+                    "number": "NUMBER_",
+                    "street": [
+                        "FDPRE",
+                        "FNAME",
+                        "FTYPE",
+                        "FDSUF"
                     ],
-                    "postcode": "zip",
-                    "format": "shapefile"
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gisweb.fcgov.com/ArcGIS/rest/services/FCMaps/MapServer/3",
+                "protocol": "ftp",
+                "attribution": "City of Fort Collins",
+                "website": "https://www.fcgov.com/gis/",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNO"
+                }
+            }
+        ],
+        "buidlings": [
+            {
+                "name": "city",
+                "data": "https://gisweb.fcgov.com/ArcGIS/rest/services/BuildingFootprints/MapServer/0",
+                "protocol": "ftp",
+                "attribution": "City of Fort Collins",
+                "website": "https://www.fcgov.com/gis/",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
