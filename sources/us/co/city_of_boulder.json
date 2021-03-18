@@ -21,30 +21,48 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://www-static.bouldercolorado.gov/docs/opendata/Boulder_addresses.zip",
-                "protocol": "http",
+                "website": "https://open-data.bouldercolorado.gov/",
+                "data": "https://maps.bouldercolorado.gov/arcgis/rest/services/plan/AddressPoints/MapServer/0",
+                "protocol": "ESRI",
                 "attribution": "City of Boulder",
-                "compression": "zip",
-                "website": "http://data.opencolorado.org/dataset/boulder-addresses/resource/50d86ebc-b489-4791-b63d-2e2da5b5b052",
                 "conform": {
-                    "format": "shapefile",
-                    "number": [
-                        "ADDRESS_NU",
-                        "ADDRESS__1"
-                    ],
-                    "street": {
-                        "function": "regexp",
-                        "field": "ADDRESS",
-                        "pattern": "^(?:[0-9]+ (?:1/2)?)(.*)(?:,.*)?$",
-                        "replace": "$1"
+                    "format": "geojson",
+                    "unit": "UNITID",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FULLADDR"
                     },
-                    "unit": [
-                        "UNIT_TYPE",
-                        "UNIT"
-                    ],
-                    "city": "CITY",
-                    "region": "STATE",
-                    "postcode": "ZIPCODE"
+                    "street": [
+                        "PREDIR",
+                        "STREETNAME",
+                        "STREETSUFFIX",
+                        "POSTDIR"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "website": "https://open-data.bouldercolorado.gov/",
+                "data": "https://maps.bouldercolorado.gov/arcgis/rest/services/plan/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "attribution": "City of Boulder",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNUM"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "website": "https://open-data.bouldercolorado.gov/",
+                "data": "https://maps.bouldercolorado.gov/arcgis/rest/services/general/BuildingFootprints/MapServer/0",
+                "protocol": "ESRI",
+                "attribution": "City of Boulder",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
