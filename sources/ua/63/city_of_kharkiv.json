@@ -20,18 +20,19 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
+                    "srs": "EPSG:28467",
                     "number": {
                         "function": "regexp",
-                        "field": "FULLADDRRU",
+                        "field": "FULLADDRRUA",
                         "pattern": "^(?:[^,]+, )(.+)$",
                         "replace": "$1"
                     },
                     "street": {
                         "function": "regexp",
-                        "field": "FULLADDRRU",
+                        "field": "FULLADDRRUA",
                         "pattern": "^([^,]+)"
                     },
-                    "srs": "EPSG:28467"
+                    "postcode": "POST_CODE"
                 }
             }
         ]
