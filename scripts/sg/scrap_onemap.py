@@ -28,7 +28,7 @@ def get_onemap_data(postcode):
             break
         page = page + 1
 
-    return postcode, results
+    return results
 
 
 def generate_postcodes(txt_path="sg.txt"):
@@ -40,11 +40,11 @@ def generate_postcodes(txt_path="sg.txt"):
         pass
 
     postal_codes = set(f"{p:06d}" for p in range(0, 1000000))
-    postal_codes = sorted(postal_codes - completed)
+    postal_codes = postal_codes - completed
     return postal_codes
 
 
-def jsonl_to_geojson(jsonl_path="sg.jsonl", csv_path="sg.csv", geojson_path="sg.geojson"):
+def jsonlines_to_geojson(json_path="sg.json", csv_path="sg.csv", geojson_path="sg.geojson"):
     dtype = {
         "BLK_NO": "str",
         "ROAD_NAME": "str",
@@ -57,9 +57,10 @@ def jsonl_to_geojson(jsonl_path="sg.jsonl", csv_path="sg.csv", geojson_path="sg.
         "LONGITUDE": "float",
     }
     df = (
-        pd.read_json(jsonl_path, dtype=dtype, lines=True)[dtype.keys()]
+        pd.read_json(json_path, dtype=dtype, lines=True)[dtype.keys()]
             .replace("NIL", "")
-            .sort_values(["POSTAL", "BUILDING"])
+            .sort_values(["POSTAL", "BUILDING"], ignore_index=False)
+            .drop_duplicates(ignore_index=False)
     )
     df.to_csv(csv_path, index=False)
     gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df["LATITUDE"], df["LONGITUDE"]))
@@ -70,27 +71,31 @@ def jsonl_to_geojson(jsonl_path="sg.jsonl", csv_path="sg.csv", geojson_path="sg.
 if __name__ == "__main__":
     fname = "sg"
     txt_path = f"{fname}.txt"
-    jsonl_path = f"{fname}.jsonl"
+    json_path = f"{fname}.json"
     csv_path = f"{fname}.csv"
     geojson_path = f"{fname}.geojson"
 
     postal_codes = generate_postcodes(txt_path)
 
     with tqdm(postal_codes) as pbar, \
-            open(jsonl_path, "a") as f_jsonl, \
+            open(json_path, "a") as f_json, \
             open(txt_path, "a") as f_txt, \
             ThreadPoolExecutor() as executor:
 
-        futures = [executor.submit(get_onemap_data, postcode) for postcode in postal_codes]
+        futures_args = {
+            executor.submit(get_onemap_data, postcode): postcode
+            for postcode in postal_codes
+        }
 
-        for future in as_completed(futures):
-            pcode, result = future.result()
+        for future in as_completed(futures_args):
+            postcode = futures_args[future]
+            results = future.result()
 
-            for entry in result:
-                f_jsonl.write(json.dumps(entry))
-                f_jsonl.write("\n")
-            f_txt.write(pcode)
+            if results:
+                f_json.write("\n".join(json.dumps(entry) for entry in results))
+                f_json.write("\n")
+            f_txt.write(postcode)
             f_txt.write("\n")
-            pbar.update(1)
+            pbar.update()
 
-    jsonl_to_geojson(jsonl_path, csv_path, geojson_path)
+    jsonlines_to_geojson(json_path, csv_path, geojson_path)
