@@ -1,4 +1,5 @@
 {
+    "schema": 2,
     "coverage": {
         "US Census": {
             "geoid": "08047",
@@ -9,7 +10,6 @@
         "state": "co",
         "county": "Gilpin"
     },
-    "schema": 2,
     "layers": {
         "addresses": [
             {
@@ -27,6 +27,29 @@
                     "city": "postalcity",
                     "postcode": "postalzip",
                     "format": "geojson"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Gilpin County",
+                "data": "https://gis.gilpincounty.org/arcgis/rest/services/WebMapServices/PropertyInfo/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Gilpin County",
+                "data": "https://gis.gilpincounty.org/arcgis/rest/services/WebMapServices/PropertyInfo/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcelid"
                 }
             }
         ]
