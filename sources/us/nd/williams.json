@@ -15,22 +15,19 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "http://services1.arcgis.com/D85sDZoJyameepNh/ArcGIS/rest/services/Master_Addresses/FeatureServer/0",
+                "data": "https://services1.arcgis.com/D85sDZoJyameepNh/arcgis/rest/services/ParcelsWeb/FeatureServer/0",
                 "conform": {
                     "format": "geojson",
-                    "number": "STR_NUM",
-                    "street": [
-                        "PRE_DIR",
-                        "STR_NAME",
-                        "STR_TYPE",
-                        "POST_DIR"
-                    ],
-                    "unit": [
-                        "UNIT_TYPE",
-                        "UNIT_NUM"
-                    ],
-                    "city": "city",
-                    "postcode": "Zipcode"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ParcelStreet"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ParcelStreet"
+                    },
+                    "city": "ParcelCity",
+                    "postcode": "ParcelZip"
                 }
             }
         ]
