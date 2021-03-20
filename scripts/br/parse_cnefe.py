@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import subprocess
 import os
 import glob
 import zipfile
@@ -180,14 +181,8 @@ def parse_addresses(state_id, midpoints, admin_areas):
     [address_zipfile] = glob.glob(
         ADDRESSES_SOURCE + '/**/'+state_id+'.zip', recursive=True)
 
-    # Expand zipfile
-    print('Expanding ' + address_zipfile + '...')
-    try:
-        with zipfile.ZipFile(address_zipfile, 'r') as zip_ref:
-            zip_ref.extractall(ADDRESSES_PATH)
-    except:
-        log_error("Error expanding "+ address_zipfile)
-        return file_stats
+    # Expand zipfile with system unzip, zipfile module can't handle large files
+    subprocess.run(["unzip", address_zipfile, "-d", ADDRESSES_PATH])
 
     # Parse textfile
     address_textfile = ADDRESSES_PATH + '/' + state_id + '.txt'

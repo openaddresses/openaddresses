@@ -15,15 +15,19 @@ Download source data:
 
     ./download-sources.sh
 
-This command will mirror files available at IBGE FTP in `/downloads/faces` and `/downloads/addresses` folders. This might take a long time, please check [this repo](https://github.com/vgeorge/cnefe) for alternative p2p download.
+This command will mirror files available at IBGE FTP in `downloads/faces` and `downloads/addresses` folders. This might take a long time, please check [this repo](https://github.com/vgeorge/cnefe) for alternative p2p download.
 
-Build and run docker image:
+Build docker image:
 
-    docker-compose run scripts /scripts/parse_cnefe.py
+    docker-compose build
+
+Run script:
+
+    docker-compose run cnefe-parser /scripts/parse_cnefe.py
 
 Output files will be available in `/results` folder.
 
 To run container in development mode:
 
-    docker-compose run scripts
+    docker-compose run cnefe-parser
     cd /scripts
