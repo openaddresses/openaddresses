@@ -1,4 +1,5 @@
 {
+    "schema": 2,
     "coverage": {
         "geometry": {
             "type": "Point",
@@ -17,13 +18,18 @@
         "county": "Lee",
         "city": "Cape Coral"
     },
-    "data": "https://capeims.capecoral.net/arcgis/rest/services/AGOL/Ownership_Public/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "Street_Number",
-        "street": "Street_Number",
-        "unit": "Site_Unit_Number",
-        "postcode": "SiteZip"
+    "layers": {
+        "addresses": [{
+            "name": "city",
+            "data": "https://capeims.capecoral.net/arcgis/rest/services/AGOL/Ownership_Public/FeatureServer/0",
+            "type": "ESRI",
+            "conform": {
+                "type": "geojson",
+                "number": "Street_Number",
+                "street": "Street_Number",
+                "unit": "Site_Unit_Number",
+                "postcode": "SiteZip"
+            }
+        }]
     }
 }
