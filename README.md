@@ -7,9 +7,9 @@
 
 ## Brief
 
-A global collection of address data sources, open and free to use. Join, download and contribute. We're just getting started.
+A global collection of address, cadastral parcel and building footprint data sources, open and free to use. Join, download and contribute. We're just getting started.
 
-This repository is a collection of references to address data sources.
+This repository is a collection of references to address, cadastral parcel and building footprint data sources.
 
 - See [openaddresses.io](http://openaddresses.io/) for a data download.
 

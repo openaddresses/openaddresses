@@ -1,12 +1,14 @@
 <h1 align=center>Contributing to OpenAddresses</h1>
 
-<p align=center>[![Build Status](https://travis-ci.org/openaddresses/openaddresses.svg?branch=master)](https://travis-ci.org/openaddresses/openaddresses)</p>
+<p align="center">
+  <a href="https://travis-ci.org/openaddresses/openaddresses"><img alt="Build Status" src="https://travis-ci.org/openaddresses/openaddresses.svg?branch=master"/></a>
+</p>
 
 ## Reporting Sources & Issues
 
-We'd love to hear about a new address source, fixes to an old one, or make improvements.
+We'd love to hear about a new address, cadastral parcel or building footprint sources, fixes to an old one, or improvements.
 
-OpenAddresses is a collection of _authoritative data_ for address locations around the world. We collect address data from authoritative sources; we do not create our own data. A source is a location where authoritative address data can be found. Examples might be a downloadable CSV file or live ArcServer feature service hosted by a national postal service, a state GIS department, or a county property parcel database.
+OpenAddresses is a collection of _authoritative data_ for address locations, cadastral parcels and building footprints around the world. We collect this data from authoritative sources; we do not create our own data. A source is a location where authoritative data can be found. Examples might be a downloadable CSV file or live ArcServer feature service hosted by a national postal service, a state GIS department, or a county property parcel database.
 
 ### New Sources
 
@@ -18,9 +20,8 @@ Have a potential source? Fantastic! Follow these steps to help us get it into th
 Still a new source? Awesome!
 - If the source is raster data (images/webmap/not downloadable) please add it to the [Raster Wiki](https://github.com/openaddresses/openaddresses/wiki/Raster-Data-Sources)
 - If the source costs money, please add it to the [Commercial Wiki](https://github.com/openaddresses/openaddresses/wiki/Commercial-sources)
-- If the source is parcel data, please add it to the [Parcel Wiki](https://github.com/openaddresses/openaddresses/wiki/Parcel-Sources)
 - If you have an awesome link/contact but no data, add it to the [Outreach Wiki](https://github.com/openaddresses/openaddresses/wiki/Potential-Outreach)
-- Finally if you have raw data, open a [issue](https://github.com/openaddresses/openaddresses/issues/new) and we'll add it for you or [add it yourself](https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md)
+- Finally, if you have raw data open an [issue](https://github.com/openaddresses/openaddresses/issues/new) and we'll add it for you or [add it yourself](https://github.com/openaddresses/openaddresses/blob/master/CONTRIBUTING.md)
 
 Confused? Not sure where your source fits in?
 [Open an issue](https://github.com/openaddresses/openaddresses/issues/new),
@@ -36,7 +37,7 @@ We will do our best to review your issue and either fix or add the feature(s) to
 
 Comfortable with JSON? Feel free to submit a pull request with the data instead of opening an issue. Before asking for a merge, please keep Travis CI happy by making sure you submit well-formed JSON: green is good!
 
-For a first time contributor, getting the JSON right can be a bit of a challenge,
+For a first-time contributor, getting the JSON right can be a bit of a challenge,
 check out other sources in `./sources/` to get an idea of what we are looking for.
 Still confused? [Open an issue](https://github.com/openaddresses/openaddresses/issues/new),
 we’ll be happy to help you out!
@@ -80,11 +81,11 @@ instead of a pull request. We’ll determine if the data is suitable for inclusi
 
  Tag                  | Required? | Note
 --------------------- | --------- | ----
-`schema`              | Yes | The JSON Schema the source conforms to - currentl always `2`
+`schema`              | Yes | The JSON Schema the source conforms to - currently always `2`
 `coverage`            | Yes | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String. [See below for more details](#coverage-object)
-`layers`              | Yes | An object containing the data layers for a given source. Valid layers are `addressess`. In the near future `parcels` and `buildings` will be supported
+`layers`              | Yes | An object containing the data layers for a given source. Valid layers are `addressess`, `parcels` and `buildings`.
 `layers.{layer}`      | Yes | An array of layer objects for a given layer type
-`{layer}.name`        | Yes | The name of the data provider (AlphaNumeric + Underscores). If unknown, just use the geographic entity, ie: `town`, `city`, `county`
+`{layer}.name`        | Yes | The name of the data provider (AlphaNumeric + Underscores). If unknown, just use the geographic entity, i.e. `town`, `city`, `county`
 `{layer}.data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal. If there isn't a good URL for the source, members of the OpenAddresses GitHub organization can upload files to https://results.openaddresses.io/upload-cache which provides a cached URL.
 `{layer}.protocol`    | Yes | A string containing the protocol (One of: `http`, `ftp`, `ESRI`)
 `{layer}.conform`     |     | Optional Object used to find address information in a source. [See below for more details](#conform-object).
@@ -129,7 +130,7 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
 
  Tag       | Required? | Note
 ---------------- | --- | ----
-`format`         | Yes | The format property stores the format. It can currently be one of `gdb`, `shapefile`, `shapefile-polygon`, `csv`, `geojson`, or `xml` (for GML).
+`format`         | Yes | The format property stores the format. It can currently be one of `gdb`, `shapefile`, `csv`, `geojson`, or `xml` (for GML).
 `srs`            |     | Allows one to set a custom source srs. Currently only supported by `format:shapefile`, `format:shapefile-polygon`, and `format:csv`. Should be in the format of `EPSG:####` and can be any code supported by `ogr2ogr`. Modern shapefiles typically store their projection in a `.prj` file. If this file exists, this tag should be omitted.
 `layer`          |     | The `gdb` source format allows multiple layers of geodata in a single input file. Use the `layer` tag to specify which of those layers to use. It can either be the string name of the layer or an integer index of the layer.
 `file`           |     | The majority of zips contain a single shapefile. Sometimes zips will contain multiple files, or the shapefile that is needed is located in a folder hierarchy in the zip. Since the program only supports determining single shapefiles not in a subfolder, `file` can be used to point the program to an exact file. The proper syntax would be `"file": "addresspoints/address.shp"` if the file was under a single subdirectory called `addresspoints`. Note there is no preceding forward slash.
@@ -139,7 +140,7 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
 `skiplines`      |     | (`'csv'` format only) May be used in conjunction with `headers` (see above).  For example, if `headers` is 1 but a second header line exists and must be skipped.
 `accuracy`       |     | The accuracy of the data source. See table below. Should never be 0, defaults to 5. If this is not set, address duplicates of higher accuracy will replace the addresses from this source when they are conflated.
 
-###### Accuracy
+###### Accuracy (addresses only)
 
 | ID    | Type           |
 | :---: | -------------- |
@@ -150,7 +151,7 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
 |   4   | Interpolation  |
 |   5   | Unknown        |
 
-##### Attribute Tags
+##### Address Attribute Tags
 
 Attribute tags are functions or field names for mapping the source data into a given format.
 
@@ -168,6 +169,14 @@ Attribute tags are functions or field names for mapping the source data into a g
 `id`       |     | Unique identifier, [such as a parcel APN](https://en.wikipedia.org/wiki/Assessor%27s_parcel_number).
 `addrtype` |     | Type of address. `industrial`, `residential`, etc.
 `notes`    |     | Legal description of address or notes about the property.
+
+##### Parcel Attribute Tags
+
+Attribute tags are functions or field names for mapping the source data into a given format.
+
+ Tag | Required? | Note
+---------- | --- | ----
+`pid`   | Yes | The name of the unique primary id field.
 
 ##### Assembling Attributes
 
@@ -191,7 +200,7 @@ _Example_
 ###### Merged Fields
 
 Often times there are multiple fields that should be merged together. An array (`[]`) of field names
-can be used with any attribute tag. The field names will joined with a space (` `).
+can be used with any attribute tag. The field names will be joined with a space (` `).
 
 _Format_
 ```JSON
@@ -218,7 +227,7 @@ Function | Note
 [`postfixed_unit`](ATTRIBUTE_FUNCTIONS.md#prefixed_number-postfixed_street-and-postfixed_street) | Allow unit to be extracted from the end of a single field (extracts `Apt 4A` from `102 East Maple Street Apt 4A`)
 [`remove_prefix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the beginning of another field value
 [`remove_postfix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the end of another field value
-[`regexp`](ATTRIBUTE_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region etc when the source has them in a single field
+[`regexp`](ATTRIBUTE_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region, etc. when the source has them in a single field
 
 Sources vary in how they store data so several approaches to conforming attributes may apply.
 
@@ -250,7 +259,7 @@ to the map at [data.openaddresses.io](http://data.openaddresses.io):
     - _MultiPolygon_ - for example, [state of Tennesse](sources/us/tn/statewide.json)
     - _Point_ - for example, city of [Johns Creek](sources/us/ga/city_of_johns_creek.json), estimated from another mapping provider or [Who's on First](https://whosonfirst.mapzen.com/spelunker/)
 
-#### Optional Tags
+#### Optional Address Tags
 
 Although these tags are optional, their inclusion is very much appreciated.
 Additional metadata helps future proof the project!
@@ -303,7 +312,7 @@ Some data sources can define several translations of address components under ap
 Brussels in Belgium has both Dutch and French names. Such a bilingual data source can be linked to OpenAddresses
 with two separate metadata entries, one for reading the [French addresses](https://github.com/openaddresses/openaddresses/blob/master/sources/be/wa/brussels-fr.json)
 and one for reading the [Dutch addresses](https://github.com/openaddresses/openaddresses/blob/master/sources/be/wa/brussels-nl.json).
-An application,which uses OpenAddresses and wishes to generate multilingual address entries, can access the data via both metadata entries
+An application, which uses OpenAddresses and wishes to generate multilingual address entries, can access the data via both metadata entries
 and merge the language versions by identifying the address items by their `id` unique identifier tag.
 
 ### Formatting:

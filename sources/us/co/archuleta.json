@@ -15,10 +15,11 @@
             {
                 "name": "county",
                 "attribution": "Archuleta County",
-                "data": "http://archuletacounty.org/DocumentCenter/View/1195",
-                "protocol": "http",
-                "compression": "zip",
+                "website": "https://www.archuletacounty.org/209/GIS",
+                "data": "https://services5.arcgis.com/b1fZk1fY2MHCTEXz/ArcGIS/rest/services/Addresses/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
+                    "format": "geojson",
                     "number": "HOUSE_NUM",
                     "street": [
                         "DIR_PREFIX",
@@ -28,8 +29,20 @@
                     "unit": "UNIT_NO",
                     "city": "COMMUNITY",
                     "district": "COUNTY",
-                    "region": "STATE",
-                    "format": "shapefile"
+                    "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Archuleta County",
+                "website": "https://www.archuletacounty.org/209/GIS",
+                "data": "https://services5.arcgis.com/b1fZk1fY2MHCTEXz/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pid"
                 }
             }
         ]
