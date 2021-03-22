@@ -15,19 +15,37 @@
             {
                 "name": "county",
                 "website": "http://www.co.bedford.va.us/GIS/index.asp",
-                "data": "http://bedfordco.dreamhosters.com/SHPFiles/E911Address.zip",
-                "license": {
-                    "text": "Indemnification",
-                    "attribution": false,
-                    "share-alike": false
-                },
-                "year": "2014",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://webgis.bedfordcountyva.gov/arcgis/rest/services/BRWAPrivate/MapServer/1",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
+                    "unit": "APARTMENT",
                     "number": "ADDRESS",
-                    "street": "ROADNAME"
+                    "street": "ROADNAME",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "website": "http://www.co.bedford.va.us/GIS/index.asp",
+                "data": "https://webgis.bedfordcountyva.gov/arcgis/rest/services/BaseMapforWebNew/MapServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "http://www.co.bedford.va.us/GIS/index.asp",
+                "data": "https://webgis.bedfordcountyva.gov/arcgis/rest/services/BRWAPrivate/MapServer/13",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]
