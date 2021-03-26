@@ -21,19 +21,37 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://sagiscloud.thempc.org/arcgis/rest/services/sagis_org/SAGIS1/MapServer/24",
+                "website": "https://www.sagis.org/map/",
+                "data": "https://cloud.sagis.org/arcgis/rest/services/SagisOrg2020/SAGISOrg/MapServer/187",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "STNUM",
-                    "unit": "STUNIT",
-                    "street": [
-                        "STPREFIX",
-                        "STNAME",
-                        "STSUFFIX"
+                    "number": "PropAddress_Num",
+                    "unit": [
+                        "PropAddress_UnitType",
+                        "PropAddress_UnitNum"
                     ],
-                    "postcode": "ZIP_CODE",
-                    "region": "STATE"
+                    "street": [
+                        "PropAddress_PreDir",
+                        "PropAddress_StreetName",
+                        "PropAddress_StreetType",
+                        "PropAddress_PostDir"
+                    ],
+                    "city": "PropAddress_City",
+                    "postcode": "PropAddress_Zip",
+                    "region": "PropAddress_State"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "website": "https://www.sagis.org/map/",
+                "data": "https://cloud.sagis.org/arcgis/rest/services/SagisOrg2020/SAGISOrg/MapServer/124",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]
