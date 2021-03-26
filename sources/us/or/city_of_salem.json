@@ -27,13 +27,18 @@
                 "conform": {
                     "format": "geojson",
                     "id": "OBJECTID",
-                    "number": "ADDR_NUM",
-                    "street": {
-                        "function": "remove_prefix",
-                        "field": "FULL_NAME",
-                        "field_to_remove": "ADDR_NUM"
-                    },
+                    "number": "ADD_NUM",
+                    "street": [
+                        "ST_PREMOD",
+                        "ST_PREDIR",
+                        "ST_PRETYPE",
+                        "ST_NAME",
+                        "ST_POSTYPE",
+                        "ST_POSTDIR",
+                        "ST_POSTMOD"
+                    ],
                     "city": "CITY",
+                    "postcode": "ZIP",
                     "district": "COUNTY"
                 }
             }
