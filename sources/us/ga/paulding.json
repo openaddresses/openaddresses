@@ -18,9 +18,16 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "StructureN",
-                    "street": "E911Street",
-                    "postcode": "ZipCode"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Address"
+                    },
+                    "postcode": "ZipCode",
+                    "city": "City"
                 }
             }
         ]
