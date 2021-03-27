@@ -25,13 +25,31 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "LABEL_1",
-                    "unit": "LABEL_2",
-                    "street": [
-                        "LABEL_3",
-                        "LABEL_4",
-                        "LABEL_5"
-                    ]
+                    "unit": ["SubAddressType", "SubAddress"],
+                    "number": "AddressNumber",
+                    "street": "FullStreet",
+                    "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.auburnalabama.org/public/rest/services/Main/COABasemap/MapServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.auburnalabama.org/public/rest/services/Main/COABasemap/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
