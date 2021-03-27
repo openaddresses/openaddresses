@@ -1,4 +1,5 @@
 {
+    "schema": 2,
     "coverage": {
         "US Census": {
             "geoid": "06101",
@@ -9,9 +10,26 @@
         "state": "ca",
         "county": "Sutter"
     },
-    "schema": 2,
     "layers": {
         "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/rHMUPKWdiOvdGXkw/ArcGIS/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://www.co.sutter.ca.us/doc/government/depts/cs/ps/cs_planning_services",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "Unit",
+                    "number": "AddNum_Concat",
+                    "street": "St_FullNam",
+                    "city": "Post_Comm",
+                    "zip": "Post_Code",
+                    "district": "County",
+                    "region": "State"
+                }
+            }
+        ],
+        "parcels": [
             {
                 "name": "county",
                 "data": "https://services6.arcgis.com/rHMUPKWdiOvdGXkw/ArcGIS/rest/services/Tax_Parcels/FeatureServer/0",
@@ -19,17 +37,7 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "SITUS_ADD",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "SITUS_ADD",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    }
+                    "pid": "APN"
                 }
             }
         ]
