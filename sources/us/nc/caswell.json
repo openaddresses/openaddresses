@@ -14,18 +14,26 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.webgis.net/arcgis/rest/services/NC/Caswell/MapServer/0",
+                "data": "https://www.webgis.net/arcgis/rest/services/NC/Caswell/MapServer/1",
                 "protocol": "ESRI",
                 "conform": {
-                    "street": [
-                        "ST_PREFIX",
-                        "ST_PREFIX_",
-                        "ST_NAME",
-                        "ST_TYPE",
-                        "ST_SUFFIX"
+                    "format": "geojson",
+                    "number": [
+                        "Add_Number",
+                        "AddNum_Suf"
                     ],
-                    "number": "POSTADDRES",
-                    "format": "geojson"
+                    "street": "STFULLNAME"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/NC/Caswell/MapServer/9",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]
