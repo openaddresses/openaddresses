@@ -18,12 +18,27 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "PLOC_",
-                    "street": [
-                        "PLOCDR",
-                        "PLOCNM"
-                    ],
-                    "city": "PTOWN"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PSTLADDRES"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PSTLADDRES"
+                    },
+                    "city": "PSTLCITY",
+                    "postcode": "PSTLZIP5"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/npQRqzUHX9auAwvE/ArcGIS/rest/services/parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
                 }
             }
         ]
