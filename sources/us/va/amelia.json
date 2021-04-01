@@ -18,15 +18,38 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HNUM",
-                    "street": [
-                        "PREDIR",
-                        "ROAD_NAME",
-                        "SUFFIX",
-                        "POSTDIR"
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
                     ],
-                    "unit": "APARTMENT",
-                    "city": "COMMUNITY"
+                    "street": [
+                        "St_Name",
+                        "St_PosTyp"
+                    ],
+                    "unit": "Unit",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Amelia/Amelia_WL_P/MapServer/30",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Amelia/Amelia_WL_P/MapServer/3://maps2.timmons.com/arcgis/rest/services/WL_Amelia/Amelia_WL_P/MapServer/35",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
