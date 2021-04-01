@@ -14,21 +14,24 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://maps.crc.ga.gov/crcarcgis/rest/services/HinesvilleView/HinesvilleView/MapServer/6",
+                "data": "https://gis.libertycountyga.com/arcgis/rest/services/Parcels/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "House_No",
-                    "street": [
-                        "St_PreDir",
-                        "St_Name",
-                        "St_Type",
-                        "St_Suffix"
-                    ],
-                    "unit": "Unit",
-                    "city": "City",
-                    "postcode": "ZIP",
-                    "region": "State"
+                    "street": "Street_Nam",
+                    "unit": "Unit"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.libertycountyga.com/arcgis/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcels_PIN"
                 }
             }
         ]
