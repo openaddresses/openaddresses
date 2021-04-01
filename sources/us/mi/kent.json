@@ -1,32 +1,49 @@
 {
+    "schema": 2,
     "coverage": {
-        "US Census": {
-            "geoid": "26081",
-            "name": "Kent County",
-            "state": "Michigan"
-        },
+        "US Census": {"geoid": "26081", "name": "Kent County", "state": "Michigan"},
         "country": "us",
         "state": "mi",
         "county": "Kent"
     },
-    "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.kentcountymi.gov/prodarcgis/rest/services/External/MapServer/8",
+                "data": "https://gis.kentcountymi.gov/agisprod/rest/services/ParcelsWithCondos/FeatureServer/0",
                 "protocol": "ESRI",
-                "website": "https://www.accesskent.com/Departments/GIS/",
                 "conform": {
                     "format": "geojson",
-                    "number": "AddrNo",
-                    "street": [
-                        "Prefix",
-                        "BaseName",
-                        "Type",
-                        "Suffix"
-                    ],
-                    "unit": "Unit"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PROPERTYADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PROPERTYADDRESS"
+                    },
+                    "city": "PROPADDRESSCITY"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.kentcountymi.gov/agisprod/rest/services/BuildingFootprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.kentcountymi.gov/agisprod/rest/services/FGDBParcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PPN"
                 }
             }
         ]
