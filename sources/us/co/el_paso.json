@@ -14,24 +14,19 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/iandees/b43a21/JM%20EPC%20Lat%20Long%20Location%20Data.zip",
+                "data": "https://assets-admin.elpasoco.com/wp-content/uploads/parcels1foot_public-8.zip",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "format": "csv",
-                    "csvsplit": "\t",
-                    "lat": "Lat",
-                    "lon": "Lon",
-                    "number": "Num",
-                    "street": [
-                        "Dir",
-                        "StreetName",
-                        "StreetType"
-                    ],
-                    "unit": [
-                        "Unit",
-                        "UnitNum"
-                    ]
+                    "format": "shapefile",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PLOC"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PLOC"
+                    }
                 }
             }
         ]
