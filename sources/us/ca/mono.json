@@ -15,20 +15,47 @@
             {
                 "name": "county",
                 "attribution": "Mono County",
-                "data": "https://gis.mono.ca.gov/Downloads/Data/e911/AddressPoints.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://gis.mono.ca.gov/webgis/rest/services/OpenData/e911/MapServer/2",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "number": "Address",
+                    "format": "geojson",
+                    "number": "AddressNum",
                     "street": [
-                        "StreetPref",
-                        "Street",
-                        "StreetSuff"
+                        "PreMod",
+                        "PreDir",
+                        "PreType",
+                        "StreetName",
+                        "PostType",
+                        "PostDir",
+                        "PostMod"
                     ],
                     "unit": "Unit",
                     "city": "Community",
-                    "postcode": "ZipCode"
+                    "postcode": "ZipCode",
+                    "region": "State"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Mono County",
+                "data": "https://gis.mono.ca.gov/webgis/rest/services/OpenData/Cadastral/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PrntAsmtNum"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Mono County",
+                "data": "https://gis.mono.ca.gov/webgis/rest/services/OpenData/e911/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
