@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://linkgis.org/arcgisweb/rest/services/addressPoints/MapServer/3",
+                "data": "https://linkgis.org/arcgisweb/rest/services/addressPoints/MapServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -33,6 +33,27 @@
                         "pattern": "^(?:[0-9]+ )(.*?)(?: (LOT|STE|UNIT|APT|GRGE|CTG).*|$)",
                         "replace": "$1"
                     }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://linkgis.org/arcgisweb/rest/services/Web_Scene_Map_Parcels/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIDN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://linkgis.org/arcgisweb/rest/services/Buildings/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

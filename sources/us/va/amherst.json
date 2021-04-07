@@ -1,4 +1,5 @@
 {
+    "schema": 2,
     "coverage": {
         "US Census": {
             "geoid": "51009",
@@ -9,7 +10,6 @@
         "state": "va",
         "county": "Amherst"
     },
-    "schema": 2,
     "layers": {
         "addresses": [
             {
@@ -21,7 +21,28 @@
                     "format": "geojson",
                     "number": "ADDRESS",
                     "unit": "APARTMENT",
-                    "street": "ROADNAME_1"
+                    "street": "ROADNAME"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Amherst/Amherst_WL_P/MapServer/25",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "GIS_ACCOUNT"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Amherst/Amherst_WL_P/MapServer/24",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

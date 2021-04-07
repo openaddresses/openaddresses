@@ -16,20 +16,23 @@
                 "name": "county",
                 "conform": {
                     "format": "geojson",
-                    "number": "Address",
-                    "street": [
-                        "PreDir",
-                        "USPSPrefix",
-                        "Name",
-                        "USPSSuffix",
-                        "SuffixDir"
-                    ],
-                    "unit": "UNIT",
-                    "postcode": "ZipCode",
-                    "city": "MSAG_COMMUNITY",
-                    "region": "State"
+                    "number": "SAN",
+                    "street": "GeocodeStName",
+                    "postcode": "ZIPCODE",
+                    "city": "MCN"
                 },
                 "data": "http://maps.parkco.us/arcgis/rest/services/basemaps/Parcels/MapServer/7",
+                "protocol": "ESRI"
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ScheduleNumber"
+                },
+                "data": "http://maps.parkco.us/arcgis/rest/services/basemaps/Parcels_Main/MapServer/4",
                 "protocol": "ESRI"
             }
         ]

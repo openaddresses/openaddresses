@@ -14,20 +14,26 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services.arcgis.com/0jRlQ17Qmni5zEMr/ArcGIS/rest/services/AddressPolys/FeatureServer/0",
+                "data": "https://services.arcgis.com/0jRlQ17Qmni5zEMr/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
                 "website": "http://inyocounty.us/gis/GISPage_Data.htm",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "FULL_ADDR"
-                    },
-                    "street": [
-                        "PreDir",
-                        "Name",
-                        "Type"
-                    ]
+                    "number": "ST_NUM",
+                    "street": "STREET",
+                    "city": "TOWN"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/0jRlQ17Qmni5zEMr/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "website": "http://inyocounty.us/gis/GISPage_Data.htm",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
                 }
             }
         ]

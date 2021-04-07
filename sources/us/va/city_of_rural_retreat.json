@@ -21,12 +21,41 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://www.webgis.net/arcgis/rest/services/VA/RuralRetreat_WebGIS/MapServer/3",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/RuralRetreat_WebGIS/MapServer/4",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "Addr_No",
-                    "street": "Street_Nam"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FullAddress"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FullAddress"
+                    },
+                    "city": "City",
+                    "postcode": "ZipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/RuralRetreat_WebGIS/MapServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "SMAPNUM"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/RuralRetreat_WebGIS/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

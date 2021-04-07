@@ -14,14 +14,27 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/trescube/8a6b5f/us-ak-haines.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "website": "https://www.hainesalaska.gov/lands/haines-borough-parcel-viewer",
+                "data": "https://services3.arcgis.com/pMlUMMROURtJLUZt/ArcGIS/rest/services/HainesAddressesOnline/FeatureServer/1",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "number": "Address",
-                    "street": "Full_Road_",
-                    "unit": "SubAddress"
+                    "format": "geojson",
+                    "unit": ["UNIT_NUM", "UNIT_TYPE", "UNIT_APT" ],
+                    "number": ["STNUM", "STNUMSUF"],
+                    "street": ["PREDIR", "NAME", "TYPE"],
+                    "city": "CITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.hainesalaska.gov/lands/haines-borough-parcel-viewer",
+                "data": "https://services3.arcgis.com/pMlUMMROURtJLUZt/ArcGIS/rest/services/HainesAddressesOnline/FeatureServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

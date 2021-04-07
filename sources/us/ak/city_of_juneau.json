@@ -25,18 +25,21 @@
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "format": "shapefile-polygon",
-                    "number": {
-                        "function": "regexp",
-                        "field": "site_addrs",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "site_addrs",
-                        "pattern": "^(?:[0-9]+ )(.*?)(?: (?:[Aa][Pp][Tt]|[Uu][Nn][Ii][Tt]) .*?)?(?:;.*$|$)",
-                        "replace": "$1"
-                    }
+                    "format": "shapefile",
+                    "number": "ADDR",
+                    "street": "ROADNAME"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://ftp.ci.juneau.ak.us/pub/CBJ_GIS_map_layers/juneau_alaska_gis_internet_parcel_layer.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "tax_id"
                 }
             }
         ]
