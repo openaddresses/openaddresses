@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.cccounty.us/arcgis/rest/services/Internet/BASE_DATA_WEB/MapServer/6",
+                "data": "https://ccmap.cccounty.us/arcgis/rest/services/INTERNET/BASE_DATA_WEB/MapServer/0",
                 "website": "http://www.contracosta.ca.gov/1818/GIS",
                 "license": "http://www.ccmap.us/information.asp",
                 "attribution": "Contra Costa County",
@@ -22,18 +22,15 @@
                 "note": "Details for the dataset (eg, projection) can be found here http://www.ccmap.us/Details.asp?Product=134492",
                 "conform": {
                     "format": "geojson",
-                    "number": "street_number",
-                    "street": [
-                        "prefix_type",
-                        "prefix_direction",
-                        "street_name",
-                        "street_type",
-                        "suffix_direction"
-                    ],
-                    "unit": "unit_number",
-                    "city": "city",
-                    "region": "state",
-                    "postcode": "zip_code"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "full_address_search"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "full_address_search"
+                    },
+                    "city": "s_city"
                 }
             }
         ]
