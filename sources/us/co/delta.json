@@ -16,17 +16,32 @@
                 "name": "county",
                 "conform": {
                     "format": "geojson",
-                    "number": "Site_HseNu",
-                    "street": [
-                        "Prefix_Dir",
-                        "Site_St",
-                        "Site_St_Ty"
-                    ],
-                    "city": "Site_City",
-                    "postcode": "Site_Zip",
-                    "region": "Site_State"
+                    "number": "SAN",
+                    "street": "FSN",
+                    "city": "PCN"
                 },
-                "data": "http://maps.deltacounty.com/arcgis/rest/services/Prcl_Base/MapServer/1",
+                "data": "http://maps.deltacounty.com/arcgis/rest/services/AddressesONLY_service/MapServer/0",
+                "protocol": "ESRI"
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson"
+                },
+                "data": "http://maps.deltacounty.com/arcgis/rest/services/Structures/MapServer/0",
+                "protocol": "ESRI"
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TaxPIN"
+                },
+                "data": "http://maps.deltacounty.com/arcgis/rest/services/PARCELSonly/MapServer/0",
                 "protocol": "ESRI"
             }
         ]
