@@ -41,92 +41,18 @@
                         "pattern": ", (CA)$"
                     },
                     "postcode": "ZIPCODE"
-                },
-                "test": {
-                    "enabled": true,
-                    "description": "dafdsf",
-                    "acceptance-tests": [
-                        {
-                            "description": "no unit",
-                            "inputs": {
-                                "STREET_NBR": "1017",
-                                "STREET_DIR": "",
-                                "STREET_NAM": "JOSEPHINE",
-                                "STREET_TYP": "AVE",
-                                "ADDRESS": "1017 JOSEPHINE AVE",
-                                "CITYST": "CORCORAN, CA",
-                                "ZIPCODE": "93212"
-                            },
-                            "expected": {
-                                "number": "1017",
-                                "street": "JOSEPHINE AVE",
-                                "unit": "",
-                                "city": "CORCORAN",
-                                "region": "CA",
-                                "postcode": "93212"
-                            }
-                        },
-                        {
-                            "description": "UNIT unit designator",
-                            "inputs": {
-                                "STREET_NBR": "426",
-                                "STREET_DIR": "E",
-                                "STREET_NAM": "CAMERON",
-                                "STREET_TYP": "ST",
-                                "ADDRESS": "426 E CAMERON ST; UNIT B",
-                                "CITYST": "HANFORD, CA",
-                                "ZIPCODE": "93230"
-                            },
-                            "expected": {
-                                "number": "426",
-                                "street": "E CAMERON ST",
-                                "unit": "UNIT B",
-                                "city": "HANFORD",
-                                "region": "CA",
-                                "postcode": "93230"
-                            }
-                        },
-                        {
-                            "description": "BLDG unit designator",
-                            "inputs": {
-                                "STREET_NBR": "1",
-                                "STREET_DIR": "",
-                                "STREET_NAM": "CONSTELLATION",
-                                "STREET_TYP": "AVE",
-                                "ADDRESS": "1 CONSTELLATION AVE; BLDG 968",
-                                "CITYST": "LEMOORE, CA",
-                                "ZIPCODE": "93245"
-                            },
-                            "expected": {
-                                "number": "1",
-                                "street": "CONSTELLATION AVE",
-                                "unit": "BLDG 968",
-                                "city": "LEMOORE",
-                                "region": "CA",
-                                "postcode": "93245"
-                            }
-                        },
-                        {
-                            "description": "invalid unit designator",
-                            "inputs": {
-                                "STREET_NBR": "428",
-                                "STREET_DIR": "W",
-                                "STREET_NAM": "CENTRAL",
-                                "STREET_TYP": "AVE",
-                                "ADDRESS": "428 W CENTRAL AVE; 2-Jan",
-                                "CITYST": "HANFORD, CA",
-                                "ZIPCODE": "93230"
-                            },
-                            "expected": {
-                                "number": "428",
-                                "street": "W CENTRAL AVE",
-                                "unit": "",
-                                "city": "HANFORD",
-                                "region": "CA",
-                                "postcode": "93230"
-                            }
-                        }
-                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Kings County",
+                "data": "http://kingscountygis.com:6080/arcgis/rest/services/Kings/MapServer/32",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
                 }
             }
         ]
