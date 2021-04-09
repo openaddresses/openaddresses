@@ -14,8 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/trescube/94c52d/us-az-maricopa.geojson.zip",
-                "note": "the source is http://gis.mcassessor.maricopa.gov/arcgis/rest/services/Parcel_Numbers/MapServer/0 but times out several times so this was generated using pyesridump with OBJECTID offsets.",
+                "data": "https://gis.mcassessor.maricopa.gov/arcgis/rest/services/Parcels/MapServer/0",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
@@ -33,6 +32,17 @@
                     ],
                     "postcode": "PHYSICAL_ZIP",
                     "city": "PHYSICAL_CITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.mcassessor.maricopa.gov/arcgis/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
                 }
             }
         ]
