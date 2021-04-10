@@ -14,13 +14,10 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/iandees/bfb7f4/Dev_Address_V.csv.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services6.arcgis.com/Yxem0VOcqSy8T6TE/ArcGIS/rest/services/Dev_Adds_Proc/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "csv",
-                    "lat": "DEC_LAT",
-                    "lon": "DEC_LONG",
+                    "format": "geojson",
                     "number": "HOUSE",
                     "unit": "UNIT",
                     "street": [
@@ -28,8 +25,18 @@
                         "NAME",
                         "SUFFIX"
                     ],
-                    "postcode": "ZIP_CODE",
-                    "city": "LOCALITY"
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/Yxem0VOcqSy8T6TE/ArcGIS/rest/services/Cad_Parcel_TaxInfo/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "apn"
                 }
             }
         ]
