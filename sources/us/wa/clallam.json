@@ -15,8 +15,7 @@
             {
                 "name": "county",
                 "conform": {
-                    "format": "shapefile-polygon",
-                    "id": "PNUM",
+                    "format": "geojson",
                     "number": "SITUS_ADDR",
                     "street": [
                         "SITUS_DIR",
@@ -26,12 +25,22 @@
                     "postcode": "ZIP_CODE"
                 },
                 "license": "http://www.clallam.net/maps/parcels.html",
-                "protocol": "http",
-                "compression": "zip",
-                "note": "parcel polygon shapefile prc_detail_p.shp, address columns: SITUS_ADDR, SITUS_DIR, SITUS_RD, SITUS_EXT, SITUS_CITY",
-                "year": "2014",
-                "data": "http://www.clallam.net/maps/parcel.zip",
+                "protocol": "ESRI",
+                "data": "https://websrv19.clallam.net/arcgis/rest/services/ParcelMap/MapServer/2",
                 "website": "http://www.clallam.net/maps/mapdata.html"
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "license": "http://www.clallam.net/maps/parcels.html",
+                "protocol": "ESRI",
+                "data": "https://websrv19.clallam.net/arcgis/rest/services/ParcelMap/MapServer/2",
+                "website": "http://www.clallam.net/maps/mapdata.html",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PNUM"
+                }
             }
         ]
     }
