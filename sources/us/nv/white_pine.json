@@ -1,0 +1,40 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "32033", "name": "White Pine County", "state": "Nevada"},
+        "country": "us",
+        "state": "nv",
+        "county": "White Pine"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/WhitePineNVFeatures/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "TSC_Site_Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "TSC_Site_Address"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/WhitePineNVFeatures/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "GIS_Parcel_Number"
+                }
+            }
+        ]
+    }
+}
