@@ -14,7 +14,7 @@
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "format": "shapefile-polygon",
+                    "format": "shapefile",
                     "number": {
                         "function": "prefixed_number",
                         "field": "st_address"
@@ -23,6 +23,18 @@
                         "function": "postfixed_street",
                         "field": "st_address"
                     }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.greenwoodmap.com/sweetwater/download/ownership.zip?",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "pidn"
                 }
             }
         ]
