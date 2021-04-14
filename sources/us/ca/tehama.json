@@ -15,18 +15,30 @@
             {
                 "name": "county",
                 "website": "http://www.tehamacountypublicworks.ca.gov/gis_data.html",
-                "data": "https://services2.arcgis.com/3iNbxbY9zhyxPvde/ArcGIS/rest/services/PublicParcelsAGOL/FeatureServer/0",
+                "data": "https://services2.arcgis.com/3iNbxbY9zhyxPvde/ArcGIS/rest/services/AddressPointsAGOL/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": {
                         "function": "prefixed_number",
-                        "field": "Situs1_1"
+                        "field": "FULLADDR"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "Situs1_1"
+                        "field": "FULLADDR"
                     }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "http://www.tehamacountypublicworks.ca.gov/gis_data.html",
+                "data": "https://services2.arcgis.com/3iNbxbY9zhyxPvde/ArcGIS/rest/services/PublicParcelsAGOL/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
                 }
             }
         ]
