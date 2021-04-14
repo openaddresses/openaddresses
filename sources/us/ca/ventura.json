@@ -16,26 +16,40 @@
                 "name": "county",
                 "attribution": "Ventura County",
                 "website": "http://www.ventura.org/gis-mapping/gis-data-downloads-mapping-base",
-                "data": "http://vcportal.ventura.org/GIS/public/mapping_base/MasterAddressPoints.zip",
-                "license": {
-                    "text": "Indemnification",
-                    "attribution": false,
-                    "share-alike": false
-                },
-                "year": "2014",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://maps.ventura.org/arcgis/rest/services/SDs/Parcels/MapServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "number": "ADDRESS",
+                    "format": "geojson",
+                    "unit": "SITUS_UNIT",
+                    "number": "SITUS_NR",
                     "street": [
-                        "STREET_DIR",
-                        "STREET_NAM",
-                        "STREET_SUF"
-                    ],
-                    "unit": "SUITE",
-                    "format": "shapefile",
-                    "city": "CITY",
-                    "postcode": "ZIP"
+                        "SITUS_DIR",
+                        "SITUS_STRE",
+                        "SITUS_TYP"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Ventura County",
+                "data": "https://maps.ventura.org/arcgis/rest/services/SDs/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Ventura County",
+                "data": "https://maps.ventura.org/arcgis/rest/services/SDs/Basemap/MapServer/10",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
