@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "35049", "name": "Santa Fe County", "state": "New Mexico"},
+        "country": "us",
+        "state": "nm",
+        "county": "Santa Fe"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://sfcomaps.santafecountynm.gov/restsvc/rest/services/Transportation/Structures/MapServer/0",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS",
+                    "street": [
+                        "PREFIX",
+                        "NAME",
+                        "SUFFIX",
+                        "POSTDIR"
+                    ],
+                    "unit": "UNITNUM"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://sfcomaps.santafecountynm.gov/restsvc/rest/services/LAND/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_Number"
+                }
+            }
+        ]
+    }
+}
