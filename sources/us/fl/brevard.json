@@ -15,20 +15,32 @@
             {
                 "name": "county",
                 "attribution": "Brevard County",
-                "data": "http://gis.brevardcounty.us/gissrv/rest/services/Accela/AccelaGIS_Layers_WKID2881/MapServer/5",
+                "data": "https://gis.brevardfl.gov/gissrv/rest/services/Base_Map/Parcel_New_WKID102100/MapServer/5",
                 "protocol": "ESRI",
                 "website": "http://www.brevardfl.gov/MapsAndApps",
                 "conform": {
                     "format": "geojson",
-                    "number": "SiteHouseNo",
+                    "number": "STREET_NUMBER",
                     "street": [
-                        "SiteDir",
-                        "SiteStreetname",
-                        "SiteType"
+                        "STREET_DIRECTION_PREFIX",
+                        "STREET_NAME",
+                        "STREET_TYPE"
                     ],
-                    "unit": "SiteAptNo",
-                    "city": "SiteCity",
-                    "postcode": "SiteZip5"
+                    "city": "CITY",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Brevard County",
+                "data": "https://gis.brevardfl.gov/gissrv/rest/services/Base_Map/Parcel_New_WKID102100/MapServer/5",
+                "protocol": "ESRI",
+                "website": "http://www.brevardfl.gov/MapsAndApps",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
                 }
             }
         ]
