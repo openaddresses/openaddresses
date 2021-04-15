@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://bcmaps.bradfordco.org/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "data": "https://bcmaps.bradfordco.org/arcgis/rest/services/Address_Points/MapServer/0",
                 "website": "https://bradfordcountypa.org/department/community-planning-and-mapping-services/",
                 "contact": {
                     "name": "Rich Lasko",
@@ -26,7 +26,10 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "SAN",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FullAddr"
+                    },
                     "street": {
                         "function": "postfixed_street",
                         "field": "FullAddr"
