@@ -15,28 +15,32 @@
             {
                 "name": "county",
                 "attribution": "Santa Barbara County",
-                "data": "http://cosb.countyofsb.org/gis/download/Parcel_layers2011_0210.zip",
-                "license": "http://cosb.countyofsb.org/gis/default.aspx?id=3458",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://maps.santabarbaraca.gov/arcgis/rest/services/AddressPointsMaster/MapServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "id": "APN",
-                    "format": "shapefile-polygon",
-                    "number": [
-                        "SNum",
-                        "SFra"
-                    ],
+                    "format": "geojson",
+                    "unit": "SUnit",
+                    "number": "SNum",
                     "street": [
                         "SDir",
                         "SStreet",
                         "SStreetSuf"
                     ],
-                    "unit": [
-                        "SUnitType",
-                        "SUnitNumb"
-                    ],
                     "city": "SCity",
                     "postcode": "SZip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Santa Barbara County",
+                "data": "https://maps.santabarbaraca.gov/arcgis/rest/services/Parcels/MapServer/0",
+                "license": "http://cosb.countyofsb.org/gis/default.aspx?id=3458",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
                 }
             }
         ]
