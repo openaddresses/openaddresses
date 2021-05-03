@@ -14,24 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://github.com/aaronpdennis/pa-county-addresses/raw/master/data/MCKEAN/MCKEAN_addresses.csv",
-                "protocol": "http",
-                "note": "Data extracted from 2009 state government collection. Individual county GIS offices may have more recent addresses.",
+                "attribution": "McKean County GIS",
+                "data": "https://gismaps.mckeancountypa.org/arcgis/rest/services/Basic_Parcel_Viewer/MapServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "csv",
-                    "number": "SAN",
-                    "street": [
-                        "PRD",
-                        "STP",
-                        "STN",
-                        "STS",
-                        "POD"
+                    "format": "geojson",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
                     ],
-                    "city": "MCN",
-                    "lon": "X",
-                    "lat": "Y",
-                    "id": "PIN",
-                    "accuracy": 2
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Inc_Muni",
+                    "zip": "Post_Code",
+                    "id": "AID"
                 }
             }
         ]
