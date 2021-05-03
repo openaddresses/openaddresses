@@ -20,7 +20,10 @@
                 "conform": {
                     "format": "geojson",
                     "number": "SITENUM",
-                    "street": "SITEADD1",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITEADD1"
+                    },
                     "unit": "SITEADD2",
                     "city": "CITYNAME",
                     "postcode": "SITEZIP",
