@@ -14,12 +14,10 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/trescube/21a007/LincolnCoWyRuralAddresses.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://maps.lcwy.org/arcgis/rest/services/PUBLIC/RuralAdd/MapServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "srs": "EPSG:3857",
-                    "format": "shapefile",
+                    "format": "geojson",
                     "number": {
                         "function": "prefixed_number",
                         "field": "ADDRESS"
@@ -35,6 +33,17 @@
                         "field": "ADDRESS",
                         "pattern": "(UNIT .*)$"
                     }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.lcwy.org/arcgis/rest/services/PUBLIC/ParcelMap/MapServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]
