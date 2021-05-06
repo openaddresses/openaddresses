@@ -14,17 +14,27 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.allegancounty.org/gis/rest/services/ParcelViewer2/PV2Adresses/MapServer/1",
+                "data": "https://gis.allegancounty.org/gis/rest/services/ParcelViewer2/PV2AdressesV2_1/MapServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "id": "Site_ID",
                     "number": "NUMBER",
                     "street": "ROADNAME",
                     "unit": "NUMBERSUP",
                     "city": "CITY",
                     "district": "COUNTY",
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.allegancounty.org/gis/rest/services/ParcelViewer2/PV2Parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MAPPING_ID"
                 }
             }
         ]
