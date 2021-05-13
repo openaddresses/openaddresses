@@ -142,6 +142,7 @@
           "allOf": [
             { "$ref": "#/definitions/coordinates" },
             {
+              "type": "array",
               "items": { "$ref": "#/definitions/position" }
             }
           ]
@@ -171,6 +172,7 @@
           "allOf": [
             { "$ref": "#/definitions/coordinates" },
             {
+              "type": "array",
               "items": { "$ref": "#/definitions/lineStringCoordinates" }
             }
           ]
@@ -200,6 +202,7 @@
           "allOf": [
             { "$ref": "#/definitions/coordinates" },
             {
+              "type": "array",
               "items": { "$ref": "#/definitions/polygonCoordinates" }
             }
           ]
@@ -257,6 +260,7 @@
     "geometry": {
       "title": "Geometry",
       "description": "A geometry is a GeoJSON object where the type member's value is one of the following strings: `Point`, `MultiPoint`, `LineString`, `MultiLineString`, `Polygon`, `MultiPolygon`, or `GeometryCollection`.",
+      "type": "object",
       "properties": {
         "type": {
           "enum": [
@@ -276,7 +280,7 @@
       "title": "Feature",
       "description": "A GeoJSON object with the type `Feature` is a feature object.\n\n* A feature object must have a member with the name `geometry`. The value of the geometry member is a geometry object as defined above or a JSON null value.\n\n* A feature object must have a member with the name `properties`. The value of the properties member is an object (any JSON object or a JSON null value).\n\n* If a feature has a commonly used identifier, that identifier should be included as a member of the feature object with the name `id`.",
       "required": ["geometry", "properties"],
-
+      "type": "object",
       "properties": {
 
         "type": { "enum": ["Feature"] },
@@ -308,6 +312,7 @@
       "allOf": [
         { "$ref": "#/definitions/lineStringCoordinates" },
         {
+          "type": "array",
           "minItems": 4
         }
       ]
@@ -319,6 +324,7 @@
       "allOf": [
         { "$ref": "#/definitions/coordinates" },
         {
+          "type": "array",
           "minLength": 2,
           "items": { "$ref": "#/definitions/position" }
         }
@@ -331,6 +337,7 @@
       "allOf": [
         { "$ref": "#/definitions/coordinates" },
         {
+          "type": "array",
           "items": { "$ref": "#/definitions/linearRingCoordinates" }
         }
       ]
