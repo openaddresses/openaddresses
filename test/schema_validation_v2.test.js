@@ -1249,8 +1249,6 @@ function testSchemaItself(validate) {
             t.notOk(valid, 'value less than 1 should fail');
             t.ok(isMinimumValueError(validate, '/layers/addresses/0/conform/headers'), JSON.stringify(validate.errors));
             t.end();
-
-
         });
 
         test.test('non-integer skiplines should fail', t => {
