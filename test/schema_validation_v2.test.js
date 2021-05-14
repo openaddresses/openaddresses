@@ -1,14 +1,15 @@
 const tape = require('tape');
 const request = require('request');
 const Ajv = require('ajv');
+const addFormats = require("ajv-formats")
 const schema = require('../schema/source_schema_v2.json');
 
 const ajv = new Ajv({
-    schemaId: 'id'
+    allErrors: true
 });
+addFormats(ajv)
+ajv.addMetaSchema(require('../schema/geojson.json'));
 
-ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'), "http://json-schema.org/draft-04/schema#");
-ajv.addMetaSchema(require('./geojson.json'), "http://json.schemastore.org/geojson#/definitions/geometry");
 testSchemaItself(ajv.compile(schema));
 
 const nonStringValues = [null, 17, {}, [], true];
@@ -20,12 +21,12 @@ const nonStringOrIntegerValues = [null, 17.3, {}, [], true];
 
 // convenience function that looks for an additionalProperty error condition
 // anywhere in the errors array
-function isAdditionalPropertyError(validate, dataPath, property) {
+function isAdditionalPropertyError(validate, instancePath, property) {
     if (!validate.errors) return false;
 
     return validate.errors.some(err => {
         return err.keyword === 'additionalProperties' &&
-            err.dataPath === dataPath &&
+            err.instancePath === instancePath &&
             err.params.additionalProperty === property;
     });
 
@@ -33,22 +34,22 @@ function isAdditionalPropertyError(validate, dataPath, property) {
 
 // convenience function that looks for an missingProperty error condition
 // anywhere in the errors array
-function isMissingPropertyError(validate, dataPath, fieldName) {
+function isMissingPropertyError(validate, instancePath, fieldName) {
     if (!validate.errors) return false;
 
     return validate.errors.some(err => {
-        return err.dataPath === dataPath &&
+        return err.instancePath === instancePath &&
             err.params.missingProperty === fieldName
     });
 
 }
 
-function isError(keyword, validate, dataPath) {
+function isError(keyword, validate, instancePath) {
     if (!validate.errors) return false;
 
     return validate.errors.some(err => {
         return err.keyword === keyword &&
-            err.dataPath === dataPath
+            err.instancePath === instancePath
     });
 
 }
@@ -85,7 +86,6 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.ok(valid, `protocol ${protocol} should pass`);
-                console.error(validate.errors);
 
             });
 
@@ -112,7 +112,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'protocol-less source should fail');
-            t.ok(isAdditionalPropertyError(validate, '.layers.addresses[0]', 'unknown_property'), JSON.stringify(validate.errors));
+            t.ok(isAdditionalPropertyError(validate, '/layers/addresses/0', 'unknown_property'), JSON.stringify(validate.errors));
 
             t.end();
 
@@ -137,7 +137,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'non-http/ftp/ESRI protocol should fail');
-            t.ok(isEnumValueError(validate, '.layers.addresses[0].protocol'), JSON.stringify(validate.errors));
+            t.ok(isEnumValueError(validate, '/layers/addresses/0/protocol'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -160,7 +160,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'protocol-less source should fail');
-            t.ok(isMissingPropertyError(validate, '.layers.addresses[0]', 'protocol'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '/layers/addresses/0', 'protocol'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -183,7 +183,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'name-less source should fail');
-            t.ok(isMissingPropertyError(validate, '.layers.addresses[0]', 'name'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '/layers/addresses/0', 'name'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -208,7 +208,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string data value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].data'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/data'), JSON.stringify(validate.errors));
 
             });
 
@@ -260,7 +260,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string website value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].website'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/website'), JSON.stringify(validate.errors));
 
             });
 
@@ -313,7 +313,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string email value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].email'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/email'), JSON.stringify(validate.errors));
 
             });
             t.end();
@@ -340,7 +340,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'non-email email value should fail');
-            t.ok(isFormatError(validate, '.layers.addresses[0].email', JSON.stringify(validate.errors)));
+            t.ok(isFormatError(validate, '/layers/addresses/0/email', JSON.stringify(validate.errors)));
             t.end();
 
         });
@@ -390,7 +390,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string compression value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].compression'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/compression'), JSON.stringify(validate.errors));
             });
 
             t.end();
@@ -417,7 +417,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'non-"zip" compression value should fail');
-            t.ok(isEnumValueError(validate, '.layers.addresses[0].compression'), JSON.stringify(validate.errors));
+            t.ok(isEnumValueError(validate, '/layers/addresses/0/compression'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -467,7 +467,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string attribution value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].attribution'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/attribution'), JSON.stringify(validate.errors));
 
             });
 
@@ -520,7 +520,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string language value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].language'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/language'), JSON.stringify(validate.errors));
 
             });
 
@@ -549,7 +549,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string language value should fail');
-                t.ok(isPatternError(validate, '.layers.addresses[0].language'), JSON.stringify(validate.errors));
+                t.ok(isPatternError(validate, '/layers/addresses/0/language'), JSON.stringify(validate.errors));
             });
 
             t.end();
@@ -605,7 +605,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-boolean skip value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].skip'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/skip'), JSON.stringify(validate.errors));
 
             });
 
@@ -662,7 +662,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string/integer year value should fail');
-                t.ok(isOneOfError(validate, '.layers.addresses[0].year'), JSON.stringify(validate.errors));
+                t.ok(isOneOfError(validate, '/layers/addresses/0/year'), JSON.stringify(validate.errors));
 
             });
 
@@ -719,7 +719,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string/object note value should fail');
-                t.ok(isOneOfError(validate, '.layers.addresses[0].note'), JSON.stringify(validate.errors));
+                t.ok(isOneOfError(validate, '/layers/addresses/0/note'), JSON.stringify(validate.errors));
 
             });
 
@@ -783,7 +783,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string format value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.format'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/format'), JSON.stringify(validate.errors));
 
             });
 
@@ -815,7 +815,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'non-integer note value should fail');
-            t.ok(isEnumValueError(validate, '.layers.addresses[0].conform.format'), JSON.stringify(validate.errors));
+            t.ok(isEnumValueError(validate, '/layers/addresses/0/conform/format'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -878,7 +878,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string addrtype value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.addrtype'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/addrtype'), JSON.stringify(validate.errors));
 
             });
 
@@ -912,7 +912,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-integer accuracy value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.accuracy'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/accuracy'), JSON.stringify(validate.errors));
 
             });
 
@@ -946,7 +946,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'value less than 1 should fail');
-                t.ok(isMinimumValueError(validate, '.layers.addresses[0].conform.accuracy'), JSON.stringify(validate.errors));
+                t.ok(isMinimumValueError(validate, '/layers/addresses/0/conform/accuracy'), JSON.stringify(validate.errors));
 
             });
 
@@ -980,7 +980,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-integer note value should fail');
-                t.ok(isMaximumValueError(validate, '.layers.addresses[0].conform.accuracy'), JSON.stringify(validate.errors));
+                t.ok(isMaximumValueError(validate, '/layers/addresses/0/conform/accuracy'), JSON.stringify(validate.errors));
 
             });
 
@@ -1014,7 +1014,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string srs value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.srs'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/srs'), JSON.stringify(validate.errors));
 
             });
 
@@ -1047,7 +1047,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'srs value not matching pattern should fail');
-            t.ok(isPatternError(validate, '.layers.addresses[0].conform.srs'), JSON.stringify(validate.errors));
+            t.ok(isPatternError(validate, '/layers/addresses/0/conform/srs'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -1078,7 +1078,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-integer/string file value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.file'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/file'), JSON.stringify(validate.errors));
 
             });
 
@@ -1112,7 +1112,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-integer/string layer value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.layer'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/layer'), JSON.stringify(validate.errors));
 
             });
 
@@ -1146,7 +1146,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-integer note value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.encoding'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/encoding'), JSON.stringify(validate.errors));
 
             });
 
@@ -1180,7 +1180,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-integer note value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.csvsplit'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/csvsplit'), JSON.stringify(validate.errors));
 
             });
 
@@ -1214,7 +1214,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-integer note value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.headers'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/headers'), JSON.stringify(validate.errors));
 
             });
 
@@ -1247,7 +1247,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'value less than 1 should fail');
-            t.ok(isMinimumValueError(validate, '.layers.addresses[0].conform.headers'), JSON.stringify(validate.errors));
+            t.ok(isMinimumValueError(validate, '/layers/addresses/0/conform/headers'), JSON.stringify(validate.errors));
             t.end();
         });
 
@@ -1277,7 +1277,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-integer note value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.skiplines'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/skiplines'), JSON.stringify(validate.errors));
 
             });
 
@@ -1311,7 +1311,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'value less than 1 should fail');
-                t.ok(isMinimumValueError(validate, '.layers.addresses[0].conform.skiplines'), JSON.stringify(validate.errors));
+                t.ok(isMinimumValueError(validate, '/layers/addresses/0/conform/skiplines'), JSON.stringify(validate.errors));
 
             });
 
@@ -1345,7 +1345,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string note value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.notes'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/notes'), JSON.stringify(validate.errors));
 
             });
 
@@ -1379,7 +1379,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string/array/object id value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.id'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/id'), JSON.stringify(validate.errors));
 
             });
 
@@ -1413,7 +1413,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string elements in id array should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.id'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/id'), JSON.stringify(validate.errors));
 
             });
 
@@ -1463,7 +1463,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-object coverage should fail');
-                t.ok(isTypeError(validate, '.coverage'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/coverage'), JSON.stringify(validate.errors));
 
             });
 
@@ -1488,7 +1488,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'coverage missing country should fail');
-            t.ok(isMissingPropertyError(validate, '.coverage', 'country'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '/coverage', 'country'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -1522,7 +1522,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'missing field value should fail');
-            t.ok(isMissingPropertyError(validate, '.layers.addresses[0].conform.number', 'field'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '/layers/addresses/0/conform/number', 'field'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -1555,7 +1555,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string field value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.number.field'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/number/field'), JSON.stringify(validate.errors));
 
             });
 
@@ -1622,7 +1622,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'unknown property in prefixed_number should fail');
-            t.ok(isAdditionalPropertyError(validate, '.layers.addresses[0].conform.number', 'unknown_property'), JSON.stringify(validate.errors));
+            t.ok(isAdditionalPropertyError(validate, '/layers/addresses/0/conform/number', 'unknown_property'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -1656,7 +1656,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'missing field value should fail');
-            t.ok(isMissingPropertyError(validate, '.layers.addresses[0].conform.street', 'field'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '/layers/addresses/0/conform/street', 'field'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -1689,7 +1689,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string field value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.street.field'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/street/field'), JSON.stringify(validate.errors));
 
             });
 
@@ -1757,7 +1757,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-boolean may_contain_units value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.street.may_contain_units'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/street/may_contain_units'), JSON.stringify(validate.errors));
 
             });
 
@@ -1829,7 +1829,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'unknown property in postfixed_street should fail');
-            t.ok(isAdditionalPropertyError(validate, '.layers.addresses[0].conform.street', 'unknown_property'), JSON.stringify(validate.errors));
+            t.ok(isAdditionalPropertyError(validate, '/layers/addresses/0/conform/street', 'unknown_property'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -1864,7 +1864,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'missing field value should fail');
-            t.ok(isMissingPropertyError(validate, '.layers.addresses[0].conform.unit', 'field'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '/layers/addresses/0/conform/unit', 'field'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -1898,7 +1898,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string field value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.unit.field'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/unit/field'), JSON.stringify(validate.errors));
 
             });
 
@@ -1967,7 +1967,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'unknown property in postfixed_unit should fail');
-            t.ok(isAdditionalPropertyError(validate, '.layers.addresses[0].conform.unit', 'unknown_property'), JSON.stringify(validate.errors));
+            t.ok(isAdditionalPropertyError(validate, '/layers/addresses/0/conform/unit', 'unknown_property'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -2002,7 +2002,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'missing field_to_remove value should fail');
-            t.ok(isMissingPropertyError(validate, '.layers.addresses[0].conform.number', 'field_to_remove'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '/layers/addresses/0/conform/number', 'field_to_remove'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -2036,7 +2036,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string field value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.street.field'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/street/field'), JSON.stringify(validate.errors));
 
             });
 
@@ -2071,7 +2071,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'missing field value should fail');
-            t.ok(isMissingPropertyError(validate, '.layers.addresses[0].conform.number', 'field'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '/layers/addresses/0/conform/number', 'field'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -2105,7 +2105,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string field value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.street.field_to_remove'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/street/field_to_remove'), JSON.stringify(validate.errors));
 
             });
 
@@ -2173,7 +2173,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'unknown property in postfixed_unit should fail');
-            t.ok(isAdditionalPropertyError(validate, '.layers.addresses[0].conform.street', 'unknown_property'), JSON.stringify(validate.errors));
+            t.ok(isAdditionalPropertyError(validate, '/layers/addresses/0/conform/street', 'unknown_property'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -2208,7 +2208,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'missing field_to_remove value should fail');
-            t.ok(isMissingPropertyError(validate, '.layers.addresses[0].conform.number', 'field'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '/layers/addresses/0/conform/number', 'field'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -2242,7 +2242,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string field value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.street.field'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/street/field'), JSON.stringify(validate.errors));
 
             });
 
@@ -2277,7 +2277,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'missing field value should fail');
-            t.ok(isMissingPropertyError(validate, '.layers.addresses[0].conform.number', 'field_to_remove'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '/layers/addresses/0/conform/number', 'field_to_remove'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -2311,7 +2311,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string field value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.street.field_to_remove'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/street/field_to_remove'), JSON.stringify(validate.errors));
 
             });
 
@@ -2379,7 +2379,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'unknown property in postfixed_unit should fail');
-            t.ok(isAdditionalPropertyError(validate, '.layers.addresses[0].conform.street', 'unknown_property'), JSON.stringify(validate.errors));
+            t.ok(isAdditionalPropertyError(validate, '/layers/addresses/0/conform/street', 'unknown_property'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -2414,7 +2414,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'missing field value should fail');
-            t.ok(isMissingPropertyError(validate, '.layers.addresses[0].conform.number', 'field'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '/layers/addresses/0/conform/number', 'field'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -2446,7 +2446,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'missing pattern value should fail');
-            t.ok(isMissingPropertyError(validate, '.layers.addresses[0].conform.number', 'pattern'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '/layers/addresses/0/conform/number', 'pattern'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -2480,7 +2480,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string field value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.number.field'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/number/field'), JSON.stringify(validate.errors));
 
             });
 
@@ -2517,7 +2517,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string pattern value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.number.pattern'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/number/pattern'), JSON.stringify(validate.errors));
 
             });
 
@@ -2555,7 +2555,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string replace value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.number.replace'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/number/replace'), JSON.stringify(validate.errors));
 
             });
 
@@ -2657,7 +2657,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'unknown property in regexp should fail');
-            t.ok(isAdditionalPropertyError(validate, '.layers.addresses[0].conform.number', 'unknown_property'), JSON.stringify(validate.errors));
+            t.ok(isAdditionalPropertyError(validate, '/layers/addresses/0/conform/number', 'unknown_property'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -2691,7 +2691,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'missing fields value should fail');
-            t.ok(isMissingPropertyError(validate, '.layers.addresses[0].conform.number', 'fields'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '/layers/addresses/0/conform/number', 'fields'), JSON.stringify(validate.errors));
             t.end();
 
 
@@ -2725,7 +2725,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-array fields value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.number.fields'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/number/fields'), JSON.stringify(validate.errors));
 
             });
 
@@ -2760,7 +2760,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'empty fields array should fail');
-            t.ok(isMinItemsError(validate, '.layers.addresses[0].conform.number.fields'), JSON.stringify(validate.errors));
+            t.ok(isMinItemsError(validate, '/layers/addresses/0/conform/number/fields'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -2793,7 +2793,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string elements of fields array should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.number.fields[1]'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/number/fields/1'), JSON.stringify(validate.errors));
 
             });
 
@@ -2830,7 +2830,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string separator value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.number.separator'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/number/separator'), JSON.stringify(validate.errors));
 
             });
 
@@ -2929,7 +2929,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'unknown property in join should fail');
-            t.ok(isAdditionalPropertyError(validate, '.layers.addresses[0].conform.number', 'unknown_property'), JSON.stringify(validate.errors));
+            t.ok(isAdditionalPropertyError(validate, '/layers/addresses/0/conform/number', 'unknown_property'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -2964,7 +2964,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'missing fields value should fail');
-            t.ok(isMissingPropertyError(validate, '.layers.addresses[0].conform.number', 'fields'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '/layers/addresses/0/conform/number', 'fields'), JSON.stringify(validate.errors));
             t.end();
 
 
@@ -2997,7 +2997,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'missing format value should fail');
-            t.ok(isMissingPropertyError(validate, '.layers.addresses[0].conform.number', 'format'), JSON.stringify(validate.errors));
+            t.ok(isMissingPropertyError(validate, '/layers/addresses/0/conform/number', 'format'), JSON.stringify(validate.errors));
             t.end();
 
 
@@ -3032,7 +3032,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-array fields value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.number.fields'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/number/fields'), JSON.stringify(validate.errors));
 
             });
 
@@ -3068,7 +3068,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'empty fields array should fail');
-            t.ok(isMinItemsError(validate, '.layers.addresses[0].conform.number.fields'), JSON.stringify(validate.errors));
+            t.ok(isMinItemsError(validate, '/layers/addresses/0/conform/number/fields'), JSON.stringify(validate.errors));
             t.end();
 
         });
@@ -3102,7 +3102,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string elements of fields array should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.number.fields[1]'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/number/fields/1'), JSON.stringify(validate.errors));
 
             });
 
@@ -3139,7 +3139,7 @@ function testSchemaItself(validate) {
                 const valid = validate(source);
 
                 t.notOk(valid, 'non-string format value should fail');
-                t.ok(isTypeError(validate, '.layers.addresses[0].conform.number.format'), JSON.stringify(validate.errors));
+                t.ok(isTypeError(validate, '/layers/addresses/0/conform/number/format'), JSON.stringify(validate.errors));
 
             });
 
@@ -3209,7 +3209,7 @@ function testSchemaItself(validate) {
             const valid = validate(source);
 
             t.notOk(valid, 'unknown property in format should fail');
-            t.ok(isAdditionalPropertyError(validate, '.layers.addresses[0].conform.number', 'unknown_property'), JSON.stringify(validate.errors));
+            t.ok(isAdditionalPropertyError(validate, '/layers/addresses/0/conform/number', 'unknown_property'), JSON.stringify(validate.errors));
             t.end();
 
         });

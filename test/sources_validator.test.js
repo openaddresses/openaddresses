@@ -4,12 +4,11 @@ const fs = require('fs');
 const Ajv = require('ajv');
 const request = require('request');
 const schema_v2 = require('../schema/source_schema_v2.json');
+const addFormats = require("ajv-formats")
 
-const ajv = new Ajv({
-    schemaId: 'auto'
-});
-ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-04.json'), "http://json-schema.org/draft-04/schema#");
-ajv.addMetaSchema(require('./geojson.json'), "http://json.schemastore.org/geojson#/definitions/geometry");
+const ajv = new Ajv();
+addFormats(ajv)
+ajv.addMetaSchema(require('../schema/geojson.json'));
 
 const validate_v2 = ajv.compile(schema_v2);
 
