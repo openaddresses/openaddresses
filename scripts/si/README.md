@@ -18,12 +18,12 @@
 ### Technical info:
 Encoding in source shapefiles is Windows-1250 (`CP1250`), result is UTF8
 
-Source shapefile structure is described in [RPE_struktura.pdf](http://www.e-prostor.gov.si/fileadmin/struktura/RPE_struktura.pdf) (only in Slovenian so far)
+Source shapefile structure is described in [RPE_struktura.pdf](https://www.e-prostor.gov.si/fileadmin/struktura/RPE_struktura.pdf) (only in Slovenian so far)
 
 ### Dataset source
-Data can be obtained from Geodetska  uprava  Republike  Slovenije - http://egp.gu.gov.si/egp/ under CreativeCommons attribution license - [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), attribution details in  [General_terms.pdf](http://www.e-prostor.gov.si/fileadmin/struktura/ANG/General_terms.pdf) (or slovene [preberi_me.pdf](http://www.e-prostor.gov.si/fileadmin/struktura/preberi_me.pdf)).
+Data can be obtained from Geodetska  uprava  Republike  Slovenije - https://egp.gu.gov.si/egp/ under CreativeCommons attribution license - [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), attribution details in  [General_terms.pdf](https://www.e-prostor.gov.si/fileadmin/struktura/ANG/General_terms.pdf) (or slovene [preberi_me.pdf](https://www.e-prostor.gov.si/fileadmin/struktura/preberi_me.pdf)).
 
 ### Dependancies
 1. GNU Make, bash, wget... (normal linux stuff)
-2. `ogr2ogr` (part of [gdal suite](http://www.gdal.org/))
+2. `ogr2ogr` (part of [gdal suite](https://gdal.org/))
 3. Python 2
