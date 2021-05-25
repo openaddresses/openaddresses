@@ -14,14 +14,25 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis2.co.grand-traverse.mi.us/arcgis/rest/services/GIS/vGTCD_RoadAddress/FeatureServer/0",
+                "data": "https://gis.grandtraverse.org/arcgis/rest/services/Public_Services/AddressPoints_Public/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "ADDNUMB",
                     "street": "FULLNAME",
-                    "city": "VENUE",
+                    "city": "MUNICIPALITY",
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.grandtraverse.org/arcgis/rest/services/Public_Services/Tax_Parcel_Public/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
                 }
             }
         ]
