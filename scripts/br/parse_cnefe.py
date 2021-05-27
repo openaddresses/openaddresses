@@ -2,6 +2,8 @@
 
 import subprocess
 import os
+from pathlib import Path
+import shutil
 import glob
 import zipfile
 import fiona
@@ -87,15 +89,11 @@ def load_admin_areas():
     return result
 
 # Helper function to convert DMS coordinates to decimal
-
-
 def dms_to_decimal(c):
     [d, m, s, q] = c.split()
     return (float(d) + float(m)/60 + float(s)/3600) * (-1 if q in ['O', 'S'] else 1)
 
 # Get dictionary of faces from a state zipfile
-
-
 def load_faces_midpoints(state_code, state_zip):
     midpoints = {}
     missing_shapefiles=set()
@@ -177,82 +175,91 @@ def parse_addresses(state_id, midpoints, admin_areas):
     missing_faces = set()
     missing_areas = set()
 
-    # Get first result from glob, each state contains only one zip
-    [address_zipfile] = glob.glob(
-        ADDRESSES_SOURCE + '/**/'+state_id+'.zip', recursive=True)
+    # Create CSV file
+    with open(RESULTS_PATH + '/' + state_id + '.csv', 'w', newline='') as csvfile:
+        # Write header
+        csv_writer = csv.DictWriter(
+            csvfile, csv_headers, extrasaction='ignore')
+        csv_writer.writeheader()
 
-    # Expand zipfile with system unzip, zipfile module can't handle large files
-    subprocess.run(["unzip", address_zipfile, "-d", ADDRESSES_PATH])
+        # Get zipfiles to this state
+        address_zipfiles = glob.glob(ADDRESSES_SOURCE + '/**/'+state_id+'*.zip', recursive=True);
 
-    # Parse textfile
-    address_textfile = ADDRESSES_PATH + '/' + state_id + '.txt'
-    print('Parsing ' + address_textfile + '...')
-    with open(address_textfile, 'r', errors='replace') as lines:
+        for address_zipfile in address_zipfiles:
 
-        with open(RESULTS_PATH + '/' + state_id + '.csv', 'w', newline='') as csvfile:
-            csv_writer = csv.DictWriter(
-                csvfile, csv_headers, extrasaction='ignore')
-            csv_writer.writeheader()
+            # Clear tmp address path
+            shutil.rmtree(ADDRESSES_PATH)
 
-            for line in lines:
-                file_stats['total'] += 1
-                addr = {}
-                for (field, start, length) in txt_schema:
-                    addr[field] = line[start-1:start-1+length].strip()
+            # Expand zipfile with system unzip, zipfile module can't handle large files
+            subprocess.run(["unzip", address_zipfile, "-d", ADDRESSES_PATH])
+        
+            # Parse textfile, assume zipfile has only one file
+            # address_textfile = ADDRESSES_PATH + '/' + Path(address_zipfile).stem + '.txt'
+            [address_textfile] = glob.glob(ADDRESSES_PATH + '/*')
 
-                # Common fixes
-                addr['census sector'] = addr['census sector'].replace(' ', '0')
-                addr['postal code'] = addr['postal code'].zfill(8)
-                if addr['number'] == '0':
-                    addr['number'] = ''
+            print('Parsing ' + address_textfile + '...')
+            with open(address_textfile, 'r', errors='replace') as lines:
 
-                # Get face id
-                cd_geo = addr['census sector'] + addr['block'] + addr['face']
+                # Parse lines
+                for line in lines:
+                    file_stats['total'] += 1
+                    addr = {}
+                    for (field, start, length) in txt_schema:
+                        addr[field] = line[start-1:start-1+length].strip()
 
-                # Get lng/lat, if available
-                if addr['lon']:
-                    try:
-                        addr['lon'] = dms_to_decimal(addr['lon'])
-                        addr['lat'] = dms_to_decimal(addr['lat'])
-                        file_stats['has_own_coords'] += 1
-                    except Exception as err:
-                        print('Warning:', err, file=sys.stderr)
+                    # Common fixes
+                    addr['census sector'] = addr['census sector'].replace(' ', '0')
+                    addr['postal code'] = addr['postal code'].zfill(8)
+                    if addr['number'] == '0':
+                        addr['number'] = ''
+
+                    # Get face id
+                    cd_geo = addr['census sector'] + addr['block'] + addr['face']
+
+                    # Get lng/lat, if available
+                    if addr['lon']:
+                        try:
+                            addr['lon'] = dms_to_decimal(addr['lon'])
+                            addr['lat'] = dms_to_decimal(addr['lat'])
+                            file_stats['has_own_coords'] += 1
+                        except Exception as err:
+                            print('Warning:', err, file=sys.stderr)
+                            addr['lon'] = ''
+                            addr['lat'] = ''
+                    # Get lng/lat from faces
+                    elif cd_geo in midpoints:
+                        addr['lon'] = midpoints[cd_geo][0]
+                        addr['lat'] = midpoints[cd_geo][1]
+                        file_stats['has_face_coords'] += 1
+                    else:
                         addr['lon'] = ''
-                        addr['lat'] = ''
-                # Get lng/lat from faces
-                elif cd_geo in midpoints:
-                    addr['lon'] = midpoints[cd_geo][0]
-                    addr['lat'] = midpoints[cd_geo][1]
-                    file_stats['has_face_coords'] += 1
-                else:
-                    addr['lon'] = ''
-                    file_stats['missing_coords'] += 1
-                    missing_faces.add(cd_geo)
+                        file_stats['missing_coords'] += 1
+                        missing_faces.add(cd_geo)
 
-                # If coords available
-                if addr['lon'] != '':
-                    # Apply area to record
-                    subdistrict_id = addr['census sector'][0:11]
-                    if (subdistrict_id) in admin_areas['subdistrict']:
-                        addr.update(admin_areas['subdistrict'][subdistrict_id])
-                    else:
-                        # Fallback to district
-                        district_id = addr['census sector'][0:9]
-                        if (district_id) in admin_areas['district']:
-                            addr.update(admin_areas['district'][district_id])
+                    # If coords available
+                    if addr['lon'] != '':
+                        # Apply area to record
+                        subdistrict_id = addr['census sector'][0:11]
+                        if (subdistrict_id) in admin_areas['subdistrict']:
+                            addr.update(admin_areas['subdistrict'][subdistrict_id])
                         else:
-                            # Fallback to municipality
-                            file_stats['missing_municipality'] += 1
-                            municipality_id = addr['census sector'][0:7]
-                            if (municipality_id) in admin_areas['municipality']:
-                                addr.update(admin_areas['municipality'][municipality_id])
+                            # Fallback to district
+                            district_id = addr['census sector'][0:9]
+                            if (district_id) in admin_areas['district']:
+                                addr.update(admin_areas['district'][district_id])
+                            else:
+                                # Fallback to municipality
+                                file_stats['missing_municipality'] += 1
+                                municipality_id = addr['census sector'][0:7]
+                                if (municipality_id) in admin_areas['municipality']:
+                                    addr.update(admin_areas['municipality'][municipality_id])
 
-                    # Check if state is present to confirm area was found
-                    if 'state' in addr:
-                        csv_writer.writerow(addr)
-                    else:
-                        file_stats['missing_areas'] += 1
-                        missing_areas.add(addr['census sector'])
+                        # Check if state is present to confirm area was found
+                        if 'state' in addr:
+                            csv_writer.writerow(addr)
+                        else:
+                            file_stats['missing_areas'] += 1
+                            missing_areas.add(addr['census sector'])
                     
 
     with open(RESULTS_PATH + '/'+state_id+'-missing_faces.csv', 'w') as missing_faces_file:
