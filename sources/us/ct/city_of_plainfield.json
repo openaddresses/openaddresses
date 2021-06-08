@@ -1,0 +1,42 @@
+{
+    "coverage": {
+        "country": "us",
+        "state": "ct",
+        "county": "Windham",
+        "city": "Plainfield",
+        "US Census": {
+            "geoid": "0901559980",
+            "name": "Plainfield",
+            "state": "Connecticut"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -71.91563,
+                41.67529
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://hostingdata3.tighebond.com/arcgis/rest/services/PlainfieldCT/PlainfieldCTDynamic/MapServer/0",
+                "website": "https://www.plainfieldct.org",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "LOCATION"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "LOCATION"
+                    }
+                }
+            }
+        ]
+    }
+}
