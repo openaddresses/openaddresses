@@ -22,26 +22,21 @@
             {
                 "name": "city",
                 "attribution": "City of Arvada",
-                "data": "http://maps.arvada.org/ArcGIS/rest/services/Address/Master_Address_Join/MapServer/0",
+                "data": "https://services1.arcgis.com/eQyVgDz2cjhzbzN7/arcgis/rest/services/AddressPoints/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "ADDRESS",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "ADDRESS",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
+                    "number": "STREET_NUM",
+                    "street": [
+                        "STREET_PRE",
+                        "STREET_NAM",
+                        "STREET_TYP",
+                        "STREET_SUF"
+                    ],
                     "unit": "UNIT_NUM",
-                    "city": "MAILING_CITY",
-                    "district": "JURISD_COUNTY",
+                    "city": "CITY",
                     "region": "STATE",
-                    "postcode": "ZIP_5"
+                    "postcode": "ZIP"
                 }
             }
         ]
