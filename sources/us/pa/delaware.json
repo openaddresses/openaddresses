@@ -27,12 +27,15 @@
                 "conform": {
                     "format": "geojson",
                     "number": {
-                        "function": "prefixed_number",
-                        "field": "site_addre"
+                        "function": "regexp",
+                        "field": "site_addre",
+                        "pattern": "^([0-9]+)"
                     },
                     "street": {
-                        "function": "postfixed_street",
-                        "field": "site_addre"
+                        "function": "regexp",
+                        "field": "site_addre",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
                     },
                     "id": "pin"
                 }
