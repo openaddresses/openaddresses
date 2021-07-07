@@ -15,19 +15,25 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "http://wallawallagis.com/adaptor/rest/services/Basemaps/Identify/MapServer/18",
+                "data": "https://services8.arcgis.com/COL6rRPkF9w28VGX/ArcGIS/rest/services/Addresses_View/FeatureServer/0",
+                "website": "https://wallawallacountygis-wwcgis.hub.arcgis.com/datasets/ac8cb1eac01649ad8adc36dcb4a5b7d1_0",
                 "conform": {
                     "format": "geojson",
-                    "number": "GISDATA.DBO.SITES.HSNUM",
-                    "street": [
-                        "GISDATA.DBO.SITES.PD",
-                        "GISDATA.DBO.SITES.PT",
-                        "GISDATA.DBO.SITES.SN",
-                        "GISDATA.DBO.SITES.ST",
-                        "GISDATA.DBO.SITES.SD"
-                    ],
-                    "city": "GISDATA.DBO.SITES.NEWCITST",
-                    "postcode": "GISDATA.DBO.SITES.NEWZIP"
+                    "unit": [ "unittype", "unit" ],
+                    "number": "housenumber",
+                    "street": "primaryname",
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services8.arcgis.com/COL6rRPkF9w28VGX/ArcGIS/rest/services/Tax_Parcels_View/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "prop_id"
                 }
             }
         ]
