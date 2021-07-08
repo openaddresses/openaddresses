@@ -1,0 +1,32 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "qc",
+        "city": "sainte-marthe-sur-le-lac",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -74.29504394531249,
+                45.40616374516014
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://sigweb.ville.sainte-marthe-sur-le-lac.qc.ca/arcgis/rest/services/Rin%C3%A7age/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUMBER",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "COMPLET"
+                    }
+                }
+            }
+        ]
+    }
+}
