@@ -11,17 +11,20 @@
         "addresses": [
             {
                 "name": "country",
+                "year": "2021",
                 "data": "https://data.openaddresses.io/cache/no.zip",
-                "website": "http://data.kartverket.no/download/content/elveg-utm-33-hele-landet",
+                "website": "https://kartkatalog.geonorge.no/metadata/cadastre--address/f7df7a18-b30f-4745-bd64-d0863812350c",
+                "note": [
+                    "Only GML is currently supported",
+                    "ogr2ogr -f 'GeoJSONSeq' no.geojson Basisdata_0000_Norge_3035_MatrikkelenAdresse_GML.gml Vegadresse"
+                ],
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "lon": "x",
-                    "lat": "y",
+                    "format": "geojson",
                     "number": "HUSNR",
                     "street": "GATENAVN",
-                    "postcode": "POSTNR",
-                    "format": "csv"
+                    "postcode": "POSTNR"
                 }
             }
         ]
