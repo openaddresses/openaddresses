@@ -15,23 +15,24 @@
             {
                 "name": "county",
                 "attribution": "Pubelo County",
-                "data": "https://services1.arcgis.com/IL17xsvNU5Bmw3RY/ArcGIS/rest/services/AddressesMarch2020/FeatureServer/0",
+                "data": "http://maps.co.pueblo.co.us/outside/rest/services/internal_map_services/planning_countywide_data/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": [
                         "ADDRNUM",
-                        "ADDRFRAC"
+                        "ADDRNUM_SFX"
                     ],
-                    "unit": "APT",
+                    "unit": "APT_UNIT",
                     "street": [
                         "STPREDIR",
+                        "STPRETYPE",
                         "STNAME",
                         "STTYPE",
                         "STDIR"
                     ],
-                    "postcode": "ZIPCODE",
-                    "city": "CITY_NAME",
+                    "postcode": "ZIP",
+                    "city": "CITY",
                     "region": "STATE",
                     "accuracy": 1
                 }
@@ -41,11 +42,22 @@
             {
                 "name": "county",
                 "attribution": "Pubelo County",
-                "data": "https://services1.arcgis.com/IL17xsvNU5Bmw3RY/ArcGIS/rest/services/OG_Parcels_NoAddresses/FeatureServer/0",
+                "data": "http://maps.co.pueblo.co.us/outside/rest/services/pueblo_county_parcels_bld_footprints/MapServer/2",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "par_num"
+                    "pid": "PAR_NUM"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Pubelo County",
+                "data": "http://maps.co.pueblo.co.us/outside/rest/services/pueblo_county_parcels_bld_footprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
