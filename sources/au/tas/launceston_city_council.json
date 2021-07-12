@@ -3236,7 +3236,7 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://mapping.launceston.tas.gov.au/arcgis/rest/services/Public/Addresses/MapServer/0",
+                "data": "https://opendata.arcgis.com/api/v3/datasets/abfa4a48e2fc450fa62ef50562a62916_0/downloads/data?format=geojson&spatialRefId=4326",
                 "license": {
                     "url": "http://creativecommons.org/licenses/by/3.0/au/deed.en",
                     "text": "CC BY 3.0 AU",
@@ -3244,17 +3244,14 @@
                     "attribution name": "City of Launceston",
                     "share-alike": false
                 },
-                "website": "https://data.gov.au/dataset/addresses",
-                "protocol": "ESRI",
+                "website": "https://opendata.launceston.tas.gov.au/datasets/launceston::addresses/about",
+                "protocol": "http",
                 "conform": {
                     "format": "geojson",
-                    "number": "Address",
-                    "street": {
-                        "function": "regexp",
-                        "field": "Address",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    }
+                    "number": "houselabel",
+                    "street": "street",
+                    "city": "locality",
+                    "postcode": "postcode"
                 }
             }
         ],
