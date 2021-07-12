@@ -3248,7 +3248,17 @@
                 "protocol": "http",
                 "conform": {
                     "format": "geojson",
-                    "number": "houselabel",
+                    "unit": {
+                        "function": "regexp",
+                        "field": "houselabel",
+                        "pattern": "^(.+)/"
+                    },
+                    "number": {
+                        "function": "regexp",
+                        "field": "houselabel",
+                        "pattern": "^(?:.*/)(.*)",
+                        "replace": "$1"
+                    },
                     "street": "street",
                     "city": "locality",
                     "postcode": "postcode"
