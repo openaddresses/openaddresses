@@ -1,0 +1,36 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "37",
+            "state": "North Carolina"
+        },
+        "country": "us",
+        "state": "nc"
+    },
+    "data": "https://s3.amazonaws.com/dl.ncsbe.gov/ShapeFiles/address_points_sboe.zip",
+    "website": "https://www.ncsbe.gov",
+    "protocol": "http",
+    "language": "en",
+    "compression": "zip",
+    "conform": {
+        "file": "Shapefiles/Address_pts/address/address_points_sboe.txt",
+        "format": "csv",
+        "csvsplit": "\t",
+        "headers": -1,
+        "lon": "COLUMN16",
+        "lat": "COLUMN15",
+        "srs": "EPSG:4326",
+        "number": "COLUMN7",
+        "id": "COLUMN1",
+        "street": {
+            "function": "remove_prefix",
+            "field": "COLUMN4",
+            "field_to_remove": "COLUMN7"
+        },
+        "city": "COLUMN5",
+        "postcode": "COLUMN6",
+        "district": "COLUMN3",
+        "accuracy": 1
+    }
+}
+
