@@ -14,21 +14,34 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gisftp02.state.co.us/c.StateLevelAgencies/GOV/OIT/CSO/GIS/CY2017/Parcels/Shapefiles/Public/Morgan.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services6.arcgis.com/iSzqv8eal4TO2oVb/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "situsAdd"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "situsAdd"
-                    },
-                    "city": "sitAddCty",
-                    "postcode": "sitAddZip"
+                    "format": "geojson",
+                    "number": "STREETNO",
+                    "street": "STREETNAME",
+                    "city": "LOCCITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/iSzqv8eal4TO2oVb/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNB"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/iSzqv8eal4TO2oVb/ArcGIS/rest/services/Parcel_Footprints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
