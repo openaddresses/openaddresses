@@ -4,7 +4,7 @@ folder="${1}"
 echo -n "START:	"
 date -u +"%Y-%m-%dT%H:%M:%SZ"
 echo Making CSVs from shapefiles within ${folder}:
-
+export SHAPE_ENCODING=CP1250
 rm ${folder}*.csv
 
 stat -c '%y' ${folder}HS/HS.shp  | cut -d' ' -f1 > ${folder}timestamp.txt
@@ -47,13 +47,6 @@ ogr2ogr -f CSV ${folder}post-codes.csv ${folder}PT/ -lco SEPARATOR=SEMICOLON -di
 # spatial unit
 ogr2ogr -f CSV ${folder}spatial-unit-region-mapping.csv ${folder}PO/ -lco SEPARATOR=SEMICOLON -dialect sqlite \
  -sql "SELECT PO_MID, SR_MID FROM 'PO'"
-
-# convert them all to UTF8 for further processing
-for file in ${folder}*.csv
-do
-    iconv -f CP1250 -t UTF8 "$file" -o "$file.tmp" &&
-    mv -f "$file.tmp" "$file"
-done
 
 file ${folder}*.csv
 ls -la ${folder}*.csv
