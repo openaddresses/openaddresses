@@ -25,8 +25,23 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "PHYSADDNUM",
-                    "street": "PHYSDDSTR"
+                    "number": "Address_Number",
+                    "street": "STREET_NAME_COMPLETE",
+                    "city": "Municipal_Jurisdiction_Town",
+                    "postcode": "ZIP",
+                    "district": "County_Name",
+                    "region": "State_Name"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "http://gis.biloxi.ms.us:6080/arcgis/rest/services/Geoportal/Property_Lines/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
                 }
             }
         ]
