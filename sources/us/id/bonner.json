@@ -19,17 +19,27 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": [
-                        "preaddrnum",
-                        "addrnum",
-                        "addrnumsuf"
-                    ],
-                    "unit": [
-                        "unittype",
-                        "unitid"
-                    ],
-                    "street": "fullname",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "fulladdr"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "fulladdr"
+                    },
                     "city": "municipality"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://cloudgis.bonnercountyid.gov/server/rest/services/Map_Services/Cadastral_Public/MapServer/0",
+                "website": "https://cloudgis.bonnercountyid.gov/portal/home/index.html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pin"
                 }
             }
         ]
