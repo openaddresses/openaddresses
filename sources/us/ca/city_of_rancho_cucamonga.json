@@ -26,13 +26,25 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ST_NUMBER",
+                    "number": "ST_NUM",
                     "street": [
                         "ST_NAME",
                         "ST_SUFF"
                     ],
-                    "unit": "UNITS",
+                    "unit": "UNIT",
+                    "city": "CITY",
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services1.arcgis.com/bF44QtfoYZDGo7TK/ArcGIS/rest/services/Parcels_Public_View/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN_TEXT"
                 }
             }
         ]
