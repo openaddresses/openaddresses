@@ -18,17 +18,28 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "PRIMNO",
-                    "street": [
-                        "PREDIR",
-                        "STNAME",
-                        "SUFFIX",
-                        "POSTDIR"
-                    ],
-                    "unit": "UNITNO",
-                    "city": "CITY",
-                    "postcode": "ZIP",
-                    "region": "STATE"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Address"
+                    },
+                    "city": "City",
+                    "postcode": "Zip",
+                    "region": "State"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.adamscountyarcserver.com/adamscountyarcserver/rest/services/Adams_County_Basemap_Complete/MapServer/13",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]
