@@ -15,24 +15,29 @@
             {
                 "name": "county",
                 "attribution": "Collier County",
-                "data": "https://services2.arcgis.com/UJQ7Q9uboSWRAzxj/ArcGIS/rest/services/ParcelViewer/FeatureServer/2",
-                "website": "http://www.colliergov.net/Index.aspx?page=2713",
+                "data": " https://v2.openaddresses.io/batch-prod/upload/1/fameizexvqd/Site_Address_PointsShape(2).zip",
+                "year": 2021,
+                "website": "https://hub-collierbcc.opendata.arcgis.com/",
                 "license": {
                     "text": "Public Domain",
                     "attribution": false,
                     "share-alike": false
                 },
-                "protocol": "ESRI",
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "Address"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "Address"
-                    }
+                    "format": "shapefile",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": "FULLNAME",
+                    "city": "MUNICIPALI"
                 }
             }
         ],
