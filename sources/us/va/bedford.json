@@ -19,10 +19,11 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "unit": "APARTMENT",
                     "number": "ADDRESS",
-                    "street": "ROADNAME",
-                    "postcode": "ZIPCODE"
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PROP_LOCAT"
+                    }
                 }
             }
         ],
