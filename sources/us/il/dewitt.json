@@ -1,0 +1,40 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "17039", "name": "DeWitt County", "state": "Illinois"},
+        "country": "us",
+        "state": "il",
+        "county": "DeWitt"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/arcgis/rest/services/DeWittILFeatures/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "TSC_Site_Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "TSC_Site_Address"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/arcgis/rest/services/DeWittILFeatures/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TSC_Parcel_Number"
+                }
+            }
+        ]
+    }
+}
