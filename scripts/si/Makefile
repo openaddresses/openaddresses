@@ -20,5 +20,7 @@ all:
 	cp $(TMP)si-addresses-$(TS).csv /osm/raba/raba.openstreetmap.si/openaddresses/si-addresses-latest.csv
 	#bash -c "aws s3 cp $(TMP)si-addresses-$(TS).zip s3://data.openaddresses.io/cache/si-addresses-$(TS).zip"
 
+	cp $(TMP)KS_SLO_SHP_G.zip /osm/raba/raba.openstreetmap.si/openaddresses/si-buildings-GURS-KS_SLO_SHP_G-latest.zip
+
 	# update json:
 	sed "s/%YYYY-MM-DD%/$(TS)/g" countrywide-template.json | sed "s/%YYYY%/$(TSYYYY)/g" > ../../sources/si/countrywide.json 

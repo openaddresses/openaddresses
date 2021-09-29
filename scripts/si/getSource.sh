@@ -99,6 +99,13 @@ wget --load-cookies cookies.txt \
      --ca-certificate=sigov-ca2.pem \
      "https://egp.gu.gov.si/egp/download-file.html?id=107&format=10&d96=1"
 
+#KS_SLO_SHP_G.zip
+wget --load-cookies cookies.txt \
+     --directory-prefix "${dest}" \
+     --content-disposition -N \
+     --ca-certificate=sigov-ca2.pem \
+     "https://egp.gu.gov.si/egp/download-file.html?id=191&format=10&d96=1"
+
 rm cookies.txt
 rm login.htm*
 
