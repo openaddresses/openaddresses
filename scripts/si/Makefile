@@ -2,6 +2,8 @@ TMP = /tmp/openaddresses-si/
 TS = $$(cat $(TMP)timestamp.txt)
 TSYYYY = $$(cat $(TMP)timestamp.txt | cut -b 1-4)
 
+TSBLDG=$$(stat -c '%y' $(TMP)KS_SLO_SHP_G/KS_SLO_TLORISI_*.shp  | cut -d' ' -f1)
+
 all:
 	mkdir -p $(TMP) || true
 	./getSource.sh $(TMP)
@@ -20,9 +22,9 @@ all:
 	cp $(TMP)si-addresses-$(TS).csv /osm/raba/raba.openstreetmap.si/openaddresses/si-addresses-latest.csv
 	#bash -c "aws s3 cp $(TMP)si-addresses-$(TS).zip s3://data.openaddresses.io/cache/si-addresses-$(TS).zip"
 
-	zip -9 -j $(TMP)si-buildings-$(TS).zip $(TMP)KS_SLO_SHP_G/KS_SLO_TLORISI_*
-	mv $(TMP)si-buildings-$(TS).zip /osm/raba/raba.openstreetmap.si/openaddresses/
-	ln -sf si-buildings-$(TS).zip /osm/raba/raba.openstreetmap.si/openaddresses/si-buildings-latest.zip
+	zip -9 -j $(TMP)si-buildings-$(TSBLDG).zip $(TMP)KS_SLO_SHP_G/KS_SLO_TLORISI_*
+	mv $(TMP)si-buildings-$(TSBLDG).zip /osm/raba/raba.openstreetmap.si/openaddresses/
+	ln -sf si-buildings-$(TSBLDG).zip /osm/raba/raba.openstreetmap.si/openaddresses/si-buildings-latest.zip
 
 	# update json:
 	sed "s/%YYYY-MM-DD%/$(TS)/g" countrywide-template.json | sed "s/%YYYY%/$(TSYYYY)/g" > ../../sources/si/countrywide.json 
