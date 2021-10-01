@@ -31,8 +31,10 @@
                         "field": "site_addrs"
                     },
                     "street": {
-                        "function": "postfixed_street",
-                        "field": "site_addrs"
+                        "function": "regexp",
+                        "field": "site_addrs",
+                        "pattern": "^(?:[0-9]+ )(.*?)(?: (?:[Aa][Pp][Tt]|[Uu][Nn][Ii][Tt]) .*?)?(?:;.*$|$)",
+                        "replace": "$1"
                     }
                 }
             }
