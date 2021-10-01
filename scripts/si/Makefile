@@ -22,7 +22,9 @@ all:
 	cp $(TMP)si-addresses-$(TS).csv /osm/raba/raba.openstreetmap.si/openaddresses/si-addresses-latest.csv
 	#bash -c "aws s3 cp $(TMP)si-addresses-$(TS).zip s3://data.openaddresses.io/cache/si-addresses-$(TS).zip"
 
-	zip -9 -j $(TMP)si-buildings-$(TSBLDG).zip $(TMP)KS_SLO_SHP_G/KS_SLO_TLORISI_*
+	# buildings
+	sed "s/%YYYY-MM-DD%/$(TSBLDG)/g" LICENSE-buildings-template.txt > $(TMP)LICENSE-buildings.txt
+	zip -9 -j $(TMP)si-buildings-$(TSBLDG).zip $(TMP)KS_SLO_SHP_G/KS_SLO_TLORISI_* $(TMP)LICENSE-buildings.txt
 	mv $(TMP)si-buildings-$(TSBLDG).zip /osm/raba/raba.openstreetmap.si/openaddresses/
 	ln -sf si-buildings-$(TSBLDG).zip /osm/raba/raba.openstreetmap.si/openaddresses/si-buildings-latest.zip
 
