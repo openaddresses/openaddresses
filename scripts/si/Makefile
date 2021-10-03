@@ -5,10 +5,13 @@ TSYYYY = $$(cat $(TMP)timestamp.txt | cut -b 1-4)
 
 TSBLDG=$$(stat -c '%y' $(TMP)KS_SLO_SHP_G/KS_SLO_TLORISI_*.shp  | cut -d' ' -f1)
 
-all:
+all: addresses buildings
+
+download:
 	mkdir -p $(TMP) || true
 	./getSource.sh $(TMP)
 
+addresses: download
 	./makeCSVs.sh $(TMP)
 	python addNames.py $(TMP)
 	wc -l $(TMP)si-addresses-$(TS).csv
@@ -23,7 +26,7 @@ all:
 	cp $(TMP)si-addresses-$(TS).csv $(PUBDIR)si-addresses-latest.csv
 	#bash -c "aws s3 cp $(TMP)si-addresses-$(TS).zip s3://data.openaddresses.io/cache/si-addresses-$(TS).zip"
 
-	# buildings
+buildings: download
 	sed "s/%YYYY-MM-DD%/$(TSBLDG)/g" LICENSE-buildings-template.txt > $(TMP)LICENSE-buildings.txt
 	zip -9 -j $(TMP)si-buildings-$(TSBLDG).zip $(TMP)KS_SLO_SHP_G/KS_SLO_TLORISI_* $(TMP)LICENSE-buildings.txt
 	mv $(TMP)si-buildings-$(TSBLDG).zip $(PUBDIR)
