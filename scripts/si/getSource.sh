@@ -105,9 +105,9 @@ wget --load-cookies cookies.txt \
 rm cookies.txt
 
 #----- extract: -------
-for file in "${dest}"RPE_*.ZIP; do extdir=$(basename "$file" .ZIP); echo "$extdir"; unzip -o -d "${dest}$extdir" "$file"; done
+for file in "${dest}"RPE_*.ZIP; do extdir=$(basename "$file" .ZIP); echo "$extdir"; rm -rf "${dest}${extdir}"; unzip -o -d "${dest}$extdir" "$file"; done
 for file in "${dest}"RPE_*/*.zip; do unzip -o -d "${dest}" "$file"; done
 
-for file in "${dest}"KS_SLO_*.zip; do extdir=$(basename "$file" .zip); echo "$extdir"; unzip -o -d "${dest}$extdir" "$file"; done
+for file in "${dest}"KS_SLO_*.zip; do extdir=$(basename "$file" .zip); echo "$extdir"; rm -rf "${dest}${extdir}"; unzip -o -d "${dest}$extdir" "$file"; done
 
 echo getSource finished.
