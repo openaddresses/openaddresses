@@ -20,21 +20,40 @@
                     "phone": "(814) 472-1408",
                     "address": "401 Candlelight Drive, Suite 211, Ebensburg, PA 15931"
                 },
-                "data": "http://gis2.cambriacountypa.gov/georesources/rest/services/Resources/CambriaCAD/MapServer/93",
+                "data": "https://services1.arcgis.com/Fw15y9AZK02r2ZNA/ArcGIS/rest/services/GIS_Layers/FeatureServer/2",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "SAN",
-                    "street": [
-                        "PRD",
-                        "STN",
-                        "STS",
-                        "POD"
+                    "number": [
+                        "ADDRNUMSUF",
+                        "ADDRNUM",
+                        "PREADDRNUM"
                     ],
-                    "unit": "UNITNO",
-                    "city": "CITY",
-                    "region": "STATE",
+                    "street": "FULLNAME",
+                    "unit": [ "UNITTYPE", "UNITID" ],
+                    "city": "MUNICIPALITY",
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/Fw15y9AZK02r2ZNA/ArcGIS/rest/services/GIS_Layers/FeatureServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "CONTROL_NUMBER"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/Fw15y9AZK02r2ZNA/ArcGIS/rest/services/GIS_Layers/FeatureServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
