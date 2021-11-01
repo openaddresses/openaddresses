@@ -15,7 +15,7 @@
             {
                 "name": "county",
                 "compression": "zip",
-                "data": "http://maps.greenwoodmap.com/fremontid/download/ownership.zip",
+                "data": "https://gwmap.s3.amazonaws.com/fremontid/download/ownership.zip",
                 "protocol": "http",
                 "conform": {
                     "format": "shapefile",
@@ -31,6 +31,18 @@
                         "replace": "$1"
                     },
                     "id": "pidn"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "compression": "zip",
+                "data": "https://gwmap.s3.amazonaws.com/fremontid/download/ownership.zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "pidn"
                 }
             }
         ]
