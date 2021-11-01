@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.co.nezperce.id.us/gis/rest/services/NPCGIS/npc_structures/MapServer/0",
+                "data": "https://gis.co.nezperce.id.us/arcgis/rest/services/Public/PropertyMap/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -27,17 +27,21 @@
                         "PRUNITTYPE",
                         "PRUNITID"
                     ],
-                    "street": [
-                        "RDRPREMOD",
-                        "RDRPREDIR",
-                        "RDRPREFIX",
-                        "RDNAME",
-                        "RDSUFFIX",
-                        "RDPOSTDIR",
-                        "RDPOSTMOD"
-                    ],
+                    "street": "ROADNM",
+                    "city": "COMMNAME",
                     "region": "STATE",
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.nezperce.id.us/arcgis/rest/services/Public/PropertyMap/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "NUMBER"
                 }
             }
         ]
