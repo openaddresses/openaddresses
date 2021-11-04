@@ -14,9 +14,8 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/ASH_ADDS.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://ags.bhamaps.com/arcgisserver/rest/services/AshlandOH/AshlandOH_PAT_GISMap/MapServer/1",
+                "protocol": "ESRI",
                 "conform": {
                     "number": "HOUSENUM",
                     "street": [
@@ -31,6 +30,17 @@
                     "region": "STATE",
                     "format": "shapefile",
                     "postcode": "zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://ags.bhamaps.com/arcgisserver/rest/services/AshlandOH/AshlandOH_PAT_TaxMap/MapServer/63",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Name"
                 }
             }
         ]
