@@ -14,14 +14,9 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://scgis.summitoh.net/server/rest/services/Addressing/MapServer/0",
-                "website": "https://hub.arcgis.com/datasets/summitgis::addresses",
+                "data": "https://services3.arcgis.com/3Ukh5HzAdI6WZ3KP/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://data-summitgis.opendata.arcgis.com/datasets/address-points/",
                 "protocol": "ESRI",
-                "license": {
-                    "text": "Indemnification",
-                    "attribution": false,
-                    "share-alike": false
-                },
                 "conform": {
                     "format": "geojson",
                     "number": "ADDR_NUM",
@@ -38,6 +33,29 @@
                     ],
                     "city": "CITY",
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://scgis.summitoh.net/hosted/rest/services/Building_Footprints/MapServer/0",
+                "website": "https://data-summitgis.opendata.arcgis.com/datasets/building-footprints/",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services3.arcgis.com/3Ukh5HzAdI6WZ3KP/arcgis/rest/services/TaxParcels_public/FeatureServer/0",
+                "website": "https://data-summitgis.opendata.arcgis.com/datasets/taxparcels/",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
                 }
             }
         ]
