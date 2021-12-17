@@ -10,11 +10,15 @@ mkdir $TMP
 mkdir $TMP/gnaf $TMP/gnaf-admin $TMP/tablespace
 chown postgres:postgres $TMP/tablespace
 
+echo "local	all	all			trust" > /etc/postgresql/13/main/pg_hba.conf
+echo "host	all	all	127.0.0.1/32	trust" >> /etc/postgresql/13/main/pg_hba.conf
+echo "host	all	all	::1/128		trust" >> /etc/postgresql/13/main/pg_hba.conf
+
 /etc/init.d/postgresql start 
 sudo -u postgres psql -c "CREATE USER gnafun WITH SUPERUSER PASSWORD 'gnafpw'"
 sudo -u postgres psql -c "CREATE TABLESPACE gnafts OWNER gnafun LOCATION '$TMP/tablespace'"
 sudo -u postgres psql -c 'CREATE DATABASE gnafdb OWNER gnafun TABLESPACE gnafts'
-sudo -u postgres psql -c 'CREATE EXTENSION postgis'
+sudo -u postgres psql -c 'CREATE EXTENSION postgis' -U gnafun gnafdb
 
 # fetch data/resources, cached from:
 ## https://data.gov.au/data/dataset/geoscape-administrative-boundaries
@@ -26,7 +30,7 @@ rm -f $TMP/gnaf.zip $TMP/gnaf-admin.zip
 
 # find file directories
 GNAF_DIR="$(find $TMP -type d | grep 'G-NAF' | grep 'Authority Code' | xargs -I {} dirname {} | head -n1)"
-BOUNDARY_DIR="$(find $TMP -type d | grep 'Administrative Boundaries' | head -n1 | xargs -I {} dirname {})"
+BOUNDARY_DIR="$(find $TMP -type d | grep 'AdminBounds' | head -n1 | xargs -I {} dirname {})"
 
 # load data into tables
 python3 /usr/local/gnaf-loader/load-gnaf.py \
