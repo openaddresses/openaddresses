@@ -1,0 +1,68 @@
+{
+    "description": "top-level parcel conform object definition",
+    "type": "object",
+    "required": [
+        "pid"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "format": {
+            "type": "string",
+            "enum": [
+                "geojson",
+                "shapefile",
+                "gdb"
+            ]
+        },
+        "srs": {
+            "type": "string",
+            "pattern": "EPSG:[0-9]+"
+        },
+        "file": {
+            "type": "string"
+        },
+        "layer": {
+            "description": "specifies a layer to use in the GDB",
+            "oneOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "string"
+                }
+            ]
+        },
+        "encoding": {
+            "type": "string"
+        },
+        "notes": {
+            "type": "string"
+        },
+        "pid": {
+            "description": "unique identifier for the parcel row",
+            "oneOf": [
+                {
+                    "$ref": "#/definitions/base_conform_field_value"
+                },
+                {
+                    "$ref": "#/definitions/function_regexp"
+                },
+                {
+                    "$ref": "#/definitions/function_remove_prefix"
+                },
+                {
+                    "$ref": "#/definitions/function_remove_postfix"
+                },
+                {
+                    "$ref": "#/definitions/function_join"
+                },
+                {
+                    "$ref": "#/definitions/function_format"
+                },
+                {
+                    "$ref": "#/definitions/function_chain"
+                }
+            ]
+        }
+    }
+}

@@ -7,8 +7,7 @@
             "type": "string"
         },
         "protocol": {
-            "type": "string",
-            "enum": [ "http", "ftp", "ESRI" ]
+            "$ref": "../util/protocol.json"
         },
         "data": {
             "type": "string"
@@ -21,7 +20,7 @@
             "format": "email"
         },
         "conform": {
-            "$ref": "#/definitions/parcel_conform"
+            "$ref": "./parcel_conform.json"
         },
         "compression": {
             "type": "string",
@@ -31,25 +30,24 @@
             "oneOf": [{
                 "type": "string"
             },{
-            "$ref": "#/definitions/license"
+                "$ref": "../util/license.json"
             }]
         },
         "contact": {
-            "$ref": "#/definitions/contact"
+            "$ref": "../util/contact.json"
         },
         "note": {
             "oneOf": [{
                 "type": "string"
             },{
-            "type": "object"
+                "type": "object"
             }]
         },
         "attribution": {
             "type": "string"
         },
         "language": {
-            "type": "string",
-            "pattern": "^[a-zA-Z]{2,3}$"
+            "$ref": "../util/language.json"
         },
         "year": {
             "oneOf": [
@@ -65,22 +63,13 @@
             "type": "boolean"
         },
         "frequency": {
-            "type": "string",
-            "description": "Frequency at which this source is re-run",
-            "default": "weekly",
-            "enum": [
-                "once",
-                "weekly",
-                "monthly"
-            ]
+            "$ref": "../util/frequency.json"
         },
         "timeout": {
-            "type": "integer",
-            "description": "Number of hours the source can run before it times out",
-            "default": 6
+            "$ref": "../util/timeout.json"
         },
         "test": {
-            "$ref": "#/definitions/test"
+            "$ref": "../util/test.json"
         }
     }
 }

@@ -11,12 +11,7 @@
             "type": "string"
         },
         "protocol": {
-            "type": "string",
-            "enum": [
-                "http",
-                "ftp",
-                "ESRI"
-            ]
+            "$ref": "../util/protocol.json"
         },
         "data": {
             "type": "string"
@@ -29,7 +24,7 @@
             "format": "email"
         },
         "conform": {
-            "$ref": "#/definitions/address_conform"
+            "$ref": "./address_conform.json"
         },
         "compression": {
             "type": "string",
@@ -64,8 +59,7 @@
             "type": "string"
         },
         "language": {
-            "type": "string",
-            "pattern": "^[a-zA-Z]{2,3}$"
+            "$ref": "../util/language.json"
         },
         "year": {
             "oneOf": [
@@ -81,22 +75,13 @@
             "type": "boolean"
         },
         "frequency": {
-            "type": "string",
-            "description": "Frequency at which this source is re-run",
-            "default": "weekly",
-            "enum": [
-                "once",
-                "weekly",
-                "monthly"
-            ]
+            "$ref": "../util/frequency.json"
         },
         "timeout": {
-            "type": "integer",
-            "description": "Number of hours the source can run before it times out",
-            "default": 6
+            "$ref": "../util/timeout.json"
         },
         "test": {
-            "$ref": "#/definitions/test"
+            "$ref": "../util/test.json"
         }
     }
 }
