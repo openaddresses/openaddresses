@@ -1,5 +1,5 @@
 {
-    "description": "top-level parcel conform object definition",
+    "description": "top-level parcel conform schema",
     "type": "object",
     "required": [
         "pid"
@@ -23,14 +23,11 @@
         },
         "layer": {
             "description": "specifies a layer to use in the GDB",
-            "oneOf": [
-                {
-                    "type": "integer"
-                },
-                {
-                    "type": "string"
-                }
-            ]
+            "oneOf": [{
+                "type": "integer"
+            },{
+                "type": "string"
+            }]
         },
         "encoding": {
             "type": "string"
@@ -40,29 +37,23 @@
         },
         "pid": {
             "description": "unique identifier for the parcel row",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/base_conform_field_value"
-                },
-                {
-                    "$ref": "#/definitions/function_regexp"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_prefix"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_postfix"
-                },
-                {
-                    "$ref": "#/definitions/function_join"
-                },
-                {
-                    "$ref": "#/definitions/function_format"
-                },
-                {
-                    "$ref": "#/definitions/function_chain"
-                }
-            ]
+            "oneOf": [{
+                "$ref": "../util/function/base.json"
+            },{
+                "$ref": "../util/functions/regexp.json"
+            },{
+                "$ref": "../util/functions/remove_prefix.json"
+            },{
+                "$ref": "../util/functions/remove_postfix.json"
+            },{
+                "$ref": "../util/functions/join.json"
+            },{
+                "$ref": "../util/functions/format.json"
+            },{
+                "$ref": "../util/functions/chain.json"
+            },{
+                "$ref": "../util/functions/static.json"
+            }]
         }
     }
 }

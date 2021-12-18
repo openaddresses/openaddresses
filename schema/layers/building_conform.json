@@ -1,5 +1,5 @@
 {
-    "description": "top-level building conform object definition",
+    "description": "top-level building conform schema",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -8,7 +8,6 @@
             "enum": [
                 "geojson",
                 "shapefile",
-                "shapefile-polygon",
                 "gdb"
             ]
         },
@@ -21,33 +20,26 @@
         },
         "layer": {
             "description": "specifies a layer to use in the GDB",
-            "oneOf": [
-                {
-                    "type": "integer"
-                },
-                {
-                    "type": "string"
-                }
-            ]
+            "oneOf": [{
+                "type": "integer"
+            },{
+            "type": "string"
+            }]
         },
         "notes": {
             "type": "string"
         },
         "id": {
             "description": "unique identifier for the building",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/base_conform_field_value"
-                }
-            ]
+            "oneOf": [{
+                "$ref": "../util/functions/base.json"
+            }]
         },
         "height": {
             "description": "height of the building (from the ground) in meters",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/base_conform_field_value"
-                }
-            ]
+            "oneOf": [{
+                "$ref": "../util/functions/base.json"
+            }]
         }
     }
 }

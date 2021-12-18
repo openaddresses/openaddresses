@@ -1,5 +1,5 @@
 {
-    "description": "top-level address conform object definition",
+    "description": "top-level address conform schema",
     "type": "object",
     "required": [
         "number",
@@ -36,14 +36,11 @@
         },
         "layer": {
             "description": "specifies a layer to use in the GDB",
-            "oneOf": [
-                {
-                    "type": "integer"
-                },
-                {
-                    "type": "string"
-                }
-            ]
+            "oneOf": [{
+                "type": "integer"
+            },{
+            "type": "string"
+            }]
         },
         "encoding": {
             "type": "string"
@@ -64,272 +61,199 @@
         },
         "id": {
             "description": "unique identifier for the address row",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/base_conform_field_value"
-                },
-                {
-                    "$ref": "#/definitions/function_regexp"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_prefix"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_postfix"
-                },
-                {
-                    "$ref": "#/definitions/function_join"
-                },
-                {
-                    "$ref": "#/definitions/function_format"
-                },
-                {
-                    "$ref": "#/definitions/function_chain"
-                },
-                {
-                    "$ref": "#/definitions/function_get"
-                }
-            ]
+            "oneOf": [{
+                "$ref": "../util/functions/base.json"
+            },{
+                "$ref": "../util/functions/regexp.json"
+            },{
+                "$ref": "../util/functions/remove_prefix.json"
+            },{
+                "$ref": "../util/functions/remove_postfix.json"
+            },{
+                "$ref": "../util/functions/join.json"
+            },{
+                "$ref": "../util/functions/format.json"
+            },{
+                "$ref": "../util/functions/chain.json"
+            },{
+                "$ref": "../util/functions/get.json"
+            },{
+                "$ref": "../util/functions/static.json"
+            }]
         },
         "number": {
             "description": "the house number for the address row",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/base_conform_field_value"
-                },
-                {
-                    "$ref": "#/definitions/function_regexp"
-                },
-                {
-                    "$ref": "#/definitions/function_prefixed_number"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_prefix"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_postfix"
-                },
-                {
-                    "$ref": "#/definitions/function_join"
-                },
-                {
-                    "$ref": "#/definitions/function_format"
-                },
-                {
-                    "$ref": "#/definitions/function_chain"
-                },
-                {
-                    "$ref": "#/definitions/function_get"
-                }
-            ]
+            "oneOf": [{
+                "$ref": "../util/functions/base.json"
+            },{
+                "$ref": "../util/functions/regexp.json"
+            },{
+                "$ref": "../util/functions/remove_prefix.json"
+            },{
+                "$ref": "../util/functions/remove_postfix.json"
+            },{
+                "$ref": "../util/functions/join.json"
+            },{
+                "$ref": "../util/functions/format.json"
+            },{
+                "$ref": "../util/functions/chain.json"
+            },{
+                "$ref": "../util/functions/get.json"
+            },{
+                "$ref": "../util/functions/static.json"
+            }]
         },
         "street": {
             "description": "the street/road for the address row",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/base_conform_field_value"
-                },
-                {
-                    "$ref": "#/definitions/function_regexp"
-                },
-                {
-                    "$ref": "#/definitions/function_postfixed_street"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_prefix"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_postfix"
-                },
-                {
-                    "$ref": "#/definitions/function_join"
-                },
-                {
-                    "$ref": "#/definitions/function_format"
-                },
-                {
-                    "$ref": "#/definitions/function_chain"
-                },
-                {
-                    "$ref": "#/definitions/function_get"
-                }
-            ]
+            "oneOf": [{
+                "$ref": "../util/functions/base.json"
+            },{
+                "$ref": "../util/functions/regexp.json"
+            },{
+                "$ref": "../util/functions/remove_prefix.json"
+            },{
+                "$ref": "../util/functions/remove_postfix.json"
+            },{
+                "$ref": "../util/functions/join.json"
+            },{
+                "$ref": "../util/functions/format.json"
+            },{
+                "$ref": "../util/functions/chain.json"
+            },{
+                "$ref": "../util/functions/get.json"
+            },{
+                "$ref": "../util/functions/static.json"
+            }]
         },
         "unit": {
             "description": "the suite/unit/apartment for the address row",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/base_conform_field_value"
-                },
-                {
-                    "$ref": "#/definitions/function_regexp"
-                },
-                {
-                    "$ref": "#/definitions/function_postfixed_unit"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_prefix"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_postfix"
-                },
-                {
-                    "$ref": "#/definitions/function_join"
-                },
-                {
-                    "$ref": "#/definitions/function_format"
-                },
-                {
-                    "$ref": "#/definitions/function_chain"
-                },
-                {
-                    "$ref": "#/definitions/function_get"
-                }
-            ]
+            "oneOf": [{
+                "$ref": "../util/functions/base.json"
+            },{
+                "$ref": "../util/functions/regexp.json"
+            },{
+                "$ref": "../util/functions/remove_prefix.json"
+            },{
+                "$ref": "../util/functions/remove_postfix.json"
+            },{
+                "$ref": "../util/functions/join.json"
+            },{
+                "$ref": "../util/functions/format.json"
+            },{
+                "$ref": "../util/functions/chain.json"
+            },{
+                "$ref": "../util/functions/get.json"
+            },{
+                "$ref": "../util/functions/static.json"
+            }]
         },
         "city": {
             "description": "the city/locality for the address row",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/base_conform_field_value"
-                },
-                {
-                    "$ref": "#/definitions/function_regexp"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_prefix"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_postfix"
-                },
-                {
-                    "$ref": "#/definitions/function_join"
-                },
-                {
-                    "$ref": "#/definitions/function_format"
-                },
-                {
-                    "$ref": "#/definitions/function_chain"
-                },
-                {
-                    "$ref": "#/definitions/function_get"
-                }
-            ]
+            "oneOf": [{
+                "$ref": "../util/functions/base.json"
+            },{
+                "$ref": "../util/functions/regexp.json"
+            },{
+                "$ref": "../util/functions/remove_prefix.json"
+            },{
+                "$ref": "../util/functions/remove_postfix.json"
+            },{
+                "$ref": "../util/functions/join.json"
+            },{
+                "$ref": "../util/functions/format.json"
+            },{
+                "$ref": "../util/functions/chain.json"
+            },{
+                "$ref": "../util/functions/get.json"
+            },{
+                "$ref": "../util/functions/static.json"
+            }]
         },
         "district": {
             "description": "the county for the address row",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/base_conform_field_value"
-                },
-                {
-                    "$ref": "#/definitions/function_regexp"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_prefix"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_postfix"
-                },
-                {
-                    "$ref": "#/definitions/function_join"
-                },
-                {
-                    "$ref": "#/definitions/function_format"
-                },
-                {
-                    "$ref": "#/definitions/function_chain"
-                },
-                {
-                    "$ref": "#/definitions/function_get"
-                }
-            ]
+            "oneOf": [{
+                "$ref": "../util/functions/base.json"
+            },{
+                "$ref": "../util/functions/regexp.json"
+            },{
+                "$ref": "../util/functions/remove_prefix.json"
+            },{
+                "$ref": "../util/functions/remove_postfix.json"
+            },{
+                "$ref": "../util/functions/join.json"
+            },{
+                "$ref": "../util/functions/format.json"
+            },{
+                "$ref": "../util/functions/chain.json"
+            },{
+                "$ref": "../util/functions/get.json"
+            },{
+                "$ref": "../util/functions/static.json"
+            }]
         },
         "region": {
             "description": "the state/province for the address row",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/base_conform_field_value"
-                },
-                {
-                    "$ref": "#/definitions/function_regexp"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_prefix"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_postfix"
-                },
-                {
-                    "$ref": "#/definitions/function_join"
-                },
-                {
-                    "$ref": "#/definitions/function_format"
-                },
-                {
-                    "$ref": "#/definitions/function_chain"
-                },
-                {
-                    "$ref": "#/definitions/function_get"
-                }
-            ]
+            "oneOf": [{
+                "$ref": "../util/functions/base.json"
+            },{
+                "$ref": "../util/functions/regexp.json"
+            },{
+                "$ref": "../util/functions/remove_prefix.json"
+            },{
+                "$ref": "../util/functions/remove_postfix.json"
+            },{
+                "$ref": "../util/functions/join.json"
+            },{
+                "$ref": "../util/functions/format.json"
+            },{
+                "$ref": "../util/functions/chain.json"
+            },{
+                "$ref": "../util/functions/get.json"
+            },{
+                "$ref": "../util/functions/static.json"
+            }]
         },
         "postcode": {
             "description": "the postcode for the address row",
-            "oneOf": [
-                {
-                    "$ref": "#/definitions/base_conform_field_value"
-                },
-                {
-                    "$ref": "#/definitions/function_regexp"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_prefix"
-                },
-                {
-                    "$ref": "#/definitions/function_remove_postfix"
-                },
-                {
-                    "$ref": "#/definitions/function_join"
-                },
-                {
-                    "$ref": "#/definitions/function_format"
-                },
-                {
-                    "$ref": "#/definitions/function_chain"
-                },
-                {
-                    "$ref": "#/definitions/function_get"
-                }
-            ]
+            "oneOf": [{
+                "$ref": "../util/functions/base.json"
+            },{
+                "$ref": "../util/functions/regexp.json"
+            },{
+                "$ref": "../util/functions/remove_prefix.json"
+            },{
+                "$ref": "../util/functions/remove_postfix.json"
+            },{
+                "$ref": "../util/functions/join.json"
+            },{
+                "$ref": "../util/functions/format.json"
+            },{
+                "$ref": "../util/functions/chain.json"
+            },{
+                "$ref": "../util/functions/get.json"
+            },{
+                "$ref": "../util/functions/static.json"
+            }]
         },
         "lon": {
             "description": "longitude value for the address row, only applies to CSV sources",
-            "oneOf": [
-                {
-                    "type": "null"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "$ref": "#/definitions/function_regexp"
-                }
-            ]
-        },
-        "lat": {
-            "description": "latitude value for the address row, only applies to CSV sources",
-            "oneOf": [
-                {
-                    "type": "null"
-                },
-                {
-                    "type": "string"
-                },
-                {
-                    "$ref": "#/definitions/function_regexp"
-                }
-            ]
+            "oneOf": [{
+                "type": "null"
+            },{
+                "type": "string"
+            },{
+                "$ref": "../util/function/regexp.json"
+            }]
         }
+    },
+    "lat": {
+        "description": "latitude value for the address row, only applies to CSV sources",
+        "oneOf": [{
+            "type": "null"
+        },{
+            "type": "string"
+        },{
+            "$ref": "../util/function/regexp.json"
+        }]
     }
 }
