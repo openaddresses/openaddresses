@@ -1,0 +1,102 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "data",
+        "protocol",
+        "name"
+    ],
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "protocol": {
+            "type": "string",
+            "enum": [
+                "http",
+                "ftp",
+                "ESRI"
+            ]
+        },
+        "data": {
+            "type": "string"
+        },
+        "website": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string",
+            "format": "email"
+        },
+        "conform": {
+            "$ref": "#/definitions/address_conform"
+        },
+        "compression": {
+            "type": "string",
+            "enum": [
+                "zip"
+            ]
+        },
+        "license": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "$ref": "../util/license.json"
+                }
+            ]
+        },
+        "contact": {
+            "$ref": "../util/contact.json"
+        },
+        "note": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object"
+                }
+            ]
+        },
+        "attribution": {
+            "type": "string"
+        },
+        "language": {
+            "type": "string",
+            "pattern": "^[a-zA-Z]{2,3}$"
+        },
+        "year": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "integer"
+                }
+            ]
+        },
+        "skip": {
+            "type": "boolean"
+        },
+        "frequency": {
+            "type": "string",
+            "description": "Frequency at which this source is re-run",
+            "default": "weekly",
+            "enum": [
+                "once",
+                "weekly",
+                "monthly"
+            ]
+        },
+        "timeout": {
+            "type": "integer",
+            "description": "Number of hours the source can run before it times out",
+            "default": 6
+        },
+        "test": {
+            "$ref": "#/definitions/test"
+        }
+    }
+}
