@@ -3,17 +3,18 @@ const path = require('path');
 const $RefParser = require('json-schema-ref-parser');
 
 const GEOJSON = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../schema/util/geojson.json')));
-const SCHEMA_V2 = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../schema/source_schema_v2.json')));
 
 class OASchema {
     static async compile() {
-        await $RefParser.dereference(path.resolve(path.resolve(__dirname, '../schema/'), 'source_schema_v2.json'));
+        const v2 = await $RefParser.dereference(path.resolve(path.resolve(__dirname, '../schema/'), 'source_schema_v2.json'));
+
+        return {
+            geojson: GEOJSON,
+            schema: {
+                2: v2
+            }
+        }
     }
 }
 
-module.exports = {
-    geojson: GEOJSON,
-    schema: {
-        2: SCHEMA_V2
-    }
-}
+module.exports = OASchema;
