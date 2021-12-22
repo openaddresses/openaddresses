@@ -88,6 +88,8 @@
             },{
                 "$ref": "../util/functions/regexp.json"
             },{
+                "$ref": "../util/functions/prefixed_number.json"
+            },{
                 "$ref": "../util/functions/remove_prefix.json"
             },{
                 "$ref": "../util/functions/remove_postfix.json"
@@ -110,6 +112,8 @@
             },{
                 "$ref": "../util/functions/regexp.json"
             },{
+                "$ref": "../util/functions/postfixed_street.json"
+            },{
                 "$ref": "../util/functions/remove_prefix.json"
             },{
                 "$ref": "../util/functions/remove_postfix.json"
@@ -129,6 +133,8 @@
             "description": "the suite/unit/apartment for the address row",
             "oneOf": [{
                 "$ref": "../util/functions/base.json"
+            },{
+                "$ref": "../util/functions/postfixed_unit.json"
             },{
                 "$ref": "../util/functions/regexp.json"
             },{
@@ -244,16 +250,16 @@
             },{
                 "$ref": "../util/functions/regexp.json"
             }]
+        },
+        "lat": {
+            "description": "latitude value for the address row, only applies to CSV sources",
+            "oneOf": [{
+                "type": "null"
+            },{
+                "type": "string"
+            },{
+                "$ref": "../util/functions/regexp.json"
+            }]
         }
-    },
-    "lat": {
-        "description": "latitude value for the address row, only applies to CSV sources",
-        "oneOf": [{
-            "type": "null"
-        },{
-            "type": "string"
-        },{
-            "$ref": "../util/functions/regexp.json"
-        }]
     }
 }

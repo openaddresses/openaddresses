@@ -1,7 +1,5 @@
 const tape = require('tape');
 const request = require('request');
-const Ajv = require('ajv');
-const addFormats = require("ajv-formats")
 const OASchema = require('./lib');
 
 const nonStringValues = [null, 17, {}, [], true];
@@ -11,18 +9,10 @@ const nonArrayValues = [null, 17, {}, true, 'string'];
 const nonIntegerValues = [null, 17.3, {}, [], true, 'string'];
 const nonStringOrIntegerValues = [null, 17.3, {}, [], true];
 
-const ajv = new Ajv({
-    allErrors: true
-});
-addFormats(ajv)
-
 let validate;
 tape('preflight', async (t) => {
-    const base = await OASchema.compile();
-
-    ajv.addMetaSchema(base.geojson)
-
-    let validate = ajv.compile(base.schema['2']);
+    validate = await OASchema.compile(true);
+    t.end();
 });
 
 // convenience function that looks for an additionalProperty error condition
