@@ -27,6 +27,7 @@ addresses: download
 	#bash -c "aws s3 cp $(TMP)si-addresses-$(TS).zip s3://data.openaddresses.io/cache/si-addresses-$(TS).zip"
 
 buildings: download
+	rm -rf $(TMP)KS_SLO_SHP_G_TLORISI
 	ogr2ogr -s_srs "EPSG:3794" -t_srs "EPSG:4326" \
 		$(TMP)KS_SLO_SHP_G_TLORISI \
 		$(TMP)KS_SLO_SHP_G/KS_SLO_TLORISI_????????.shp \
