@@ -15,17 +15,27 @@
             {
                 "name": "county",
                 "attribution": "Merced County",
-                "data": "https://map.co.merced.ca.us/arcgis/rest/services/internet/basemap_web_fire/MapServer/72",
+                "data": "https://services6.arcgis.com/LYh3hRvKq5ASgAVM/ArcGIS/rest/services/Merced_County_Site_Address_Points/FeatureServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSE_NUM",
-                    "unit": "UNIT",
+                    "number": [
+                        "addnum_pre",
+                        "add_number",
+                        "addnum_suf",
+                    ],
+                    "unit": "unit",
                     "street": [
-                        "ST_DIR",
-                        "ST_NAME",
-                        "ST_TYPE"
-                    ]
+                        "st_premod",
+                        "st_predir",
+                        "st_pretyp",
+                        "st_presep",
+                        "st_name",
+                        "st_postyp",
+                        "st_posdir",
+                        "st_posmod"
+                    ],
+                    "zip": "post_code"
                 }
             }
         ]
