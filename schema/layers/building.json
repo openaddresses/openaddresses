@@ -1,0 +1,84 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "data",
+        "protocol",
+        "name"
+    ],
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "protocol": {
+            "$ref": "../util/protocol.json"
+        },
+        "data": {
+            "type": "string"
+        },
+        "website": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string",
+            "format": "email"
+        },
+        "conform": {
+            "$ref": "./building_conform.json"
+        },
+        "compression": {
+            "type": "string",
+            "enum": [
+                "zip"
+            ]
+        },
+        "license": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "$ref": "../util/license.json"
+                }
+            ]
+        },
+        "note": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object"
+                }
+            ]
+        },
+        "attribution": {
+            "type": "string"
+        },
+        "language": {
+            "$ref": "../util/language.json"
+        },
+        "year": {
+            "oneOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "integer"
+                }
+            ]
+        },
+        "skip": {
+            "type": "boolean"
+        },
+        "frequency": {
+            "$ref": "../util/frequency.json"
+        },
+        "timeout": {
+            "$ref": "../util/timeout.json"
+        },
+        "test": {
+            "$ref": "../util/test.json"
+        }
+    }
+}

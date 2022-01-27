@@ -21,24 +21,43 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://gisweb.casscountynd.gov/arcgis/rest/services/PublicDynamic/MapServer/21",
+                "data": "https://gis.cityoffargo.com/arcgis/rest/services/Basemap/AddressNumbers/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
                     "number": [
-                        "ADDR_NUM",
-                        "HALF_NUM"
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
                     ],
-                    "street": [
-                        "PRE_TYPE",
-                        "PRE_DIR",
-                        "ST_NAME",
-                        "ST_TYPE",
-                        "SUF_DIR"
-                    ],
-                    "unit": "UNIT",
-                    "city": "CITY",
+                    "street": "FULLNAME",
+                    "city": "MUNICIPALITY",
                     "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.cityoffargo.com/arcgis/rest/services/Basemap/FargoParcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNo"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.cityoffargo.com/arcgis/rest/services/Basemap/BuildingFootprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
