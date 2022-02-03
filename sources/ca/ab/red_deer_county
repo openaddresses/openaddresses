@@ -1,0 +1,37 @@
+{
+    "schema": 2,
+    "coverage": {
+        "country": "ca",
+        "state": "ab",
+        "city": "Red Deer County",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -113.785,
+                52.09204
+            ]
+        }
+    },
+    "layers": {
+        "addresses": [
+            {
+                "name": "red_deer_county",
+                "data": "https://gis.rdcounty.ca/arcimagewa/rest/services/RDC_ArcGIS_New_Base_Map/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "shapefile",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "ACCESS_NUM",
+                            "HOUSE_ID"
+                        ],
+                        "separator": ""
+                    },
+                    "unit": "UNIT_NUM",
+                    "street": "ROAD_NAME"
+                }
+            }
+        ]
+    }
+}
