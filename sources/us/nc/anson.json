@@ -14,18 +14,28 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://www.co.anson.nc.us/Portals/2/records/gisdaily.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://ansoncountygis.com/arcgis/rest/services/Vector/MapServer/10",
+                "protocol": "ESRI",
                 "website": "http://www.co.anson.nc.us/PublicRecords/GISDataDownloads.aspx",
                 "conform": {
-                    "file": "911/address.shp",
-                    "srs": "EPSG:3359",
+                    "file": "geojson",
                     "number": "NUMBER",
                     "street": "STREET",
-                    "unit": "APT_NUMBER",
+                    "unit": "Unit",
                     "city": "COMMUNITY",
-                    "format": "shapefile"
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://ansoncountygis.com/arcgis/rest/services/Vector/MapServer/14",
+                "protocol": "ESRI",
+                "website": "http://www.co.anson.nc.us/PublicRecords/GISDataDownloads.aspx",
+                "conform": {
+                    "file": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]
