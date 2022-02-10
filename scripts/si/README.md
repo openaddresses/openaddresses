@@ -18,7 +18,9 @@
 ### Technical info:
 Encoding in source shapefiles is Windows-1250 (`CP1250`), result is UTF8
 
-Source shapefile structure is described in [RPE_struktura.pdf](https://www.e-prostor.gov.si/fileadmin/struktura/RPE_struktura.pdf) (only in Slovenian so far)
+Source shapefile structure is described:
+* Addresses in [RPE_struktura.pdf](https://www.e-prostor.gov.si/fileadmin/struktura/RPE_struktura.pdf) (only in Slovenian so far)
+* Building footprints in [KS_format_15.pdf](https://www.e-prostor.gov.si/fileadmin/struktura/KS_format_15.pdf) (only in Slovenian so far)
 
 ### Dataset source
 Data can be obtained from Geodetska  uprava  Republike  Slovenije - https://egp.gu.gov.si/egp/ under CreativeCommons attribution license - [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/), attribution details in  [General_terms.pdf](https://www.e-prostor.gov.si/fileadmin/struktura/ANG/General_terms.pdf) (or slovene [preberi_me.pdf](https://www.e-prostor.gov.si/fileadmin/struktura/preberi_me.pdf)).
