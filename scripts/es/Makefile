@@ -16,7 +16,7 @@ gml:
 convert:
         mkdir -p build
         rm -f build/es-*.csv
-        find spain_catastre/gml/ | grep zip | grep gml | parallel --gnu  --no-notice -t -j 1 python gml_to_csv.py {} build/
+        find spain_catastre/gml/ | grep zip | grep gml | parallel --no-notice -t -j 1 python gml_to_csv.py {} build/
 
 combine:
         bash ./combine.sh
