@@ -27,17 +27,21 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "id": "PARCELID",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "PSTLADDRESS"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "PSTLADDRESS"
-                    },
-                    "city": "PSTLCITY",
-                    "postcode": "PSTLZIP5"
+                    "number": [
+                        "SNum",
+                        "SFra"
+                    ],
+                    "street": [
+                        "SDir",
+                        "SStreet",
+                        "SStreetSuf",
+                    ],
+                    "unit": [
+                        "SUnitType",
+                        "SUnitNumb"
+                    ],
+                    "city": "SCity",
+                    "postcode": "SZip"
                 }
             }
         ]
