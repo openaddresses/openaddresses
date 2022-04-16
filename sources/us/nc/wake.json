@@ -14,12 +14,13 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "http://www.wakegov.com/gis/services/Pages/data.aspx",
+                "website": "https://www.wakegov.com/departments-government/geographic-information-services-gis",
                 "data": "https://maps.wakegov.com/arcgis/rest/services/Property/Addresses/MapServer/0",
-                "license": "http://www.wakegov.com/gis/services/Pages/metadata.aspx",
+                "license": "https://data.wakegov.com/pages/metadata",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
+                    "accuracy": 2,
                     "number": "ST_NUM",
                     "street": [
                         "DIR_PREFIX",
@@ -28,6 +29,17 @@
                         "DIR_SUFFIX"
                     ],
                     "city": "POSTAL_CITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.wakegov.com/arcgis/rest/services/Property/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN_NUM"
                 }
             }
         ]

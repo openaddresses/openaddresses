@@ -14,12 +14,29 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://146.148.59.120/arcgis/rest/services/Parcels/Houston/MapServer/0",
+                "data": "https://services.arcgis.com/UXN4FGWBfn79LLPC/ArcGIS/rest/services/Houston_County_Parcels/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "STREET_NUM",
-                    "street": "STREET_NAM"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "STREET_ADD"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "STREET_ADD"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/UXN4FGWBfn79LLPC/ArcGIS/rest/services/Houston_County_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
                 }
             }
         ]

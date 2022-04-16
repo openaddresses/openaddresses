@@ -19,8 +19,14 @@
                 "conform": {
                     "format": "geojson",
                     "id": "OBJECTID",
-                    "number": "ADDRNUM",
-                    "street": "ST_NAME",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PROP_ADDR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PROP_ADDR"
+                    },
                     "city": "CITY",
                     "region": "STATE",
                     "postcode": "ZIP"

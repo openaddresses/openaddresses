@@ -1,0 +1,40 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "46109", "name": "Roberts County", "state": "South Dakota"},
+        "country": "us",
+        "state": "sd",
+        "county": "roberts"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.1stdistrict.org/arcgis/rest/services/Roberts/robertsmapnet/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PROPERTY_A"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PROPERTY_A"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.1stdistrict.org/arcgis/rest/services/Roberts/robertsmapnet/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "STR"
+                }
+            }
+        ]
+    }
+}

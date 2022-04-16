@@ -23,11 +23,11 @@
             {
                 "name": "city",
                 "protocol": "ESRI",
-                "data": "https://services9.arcgis.com/hUiJ0kKwHN6Cf0DY/arcgis/rest/services/EnerGov_AddrParcels/FeatureServer/0",
+                "data": "https://services9.arcgis.com/hUiJ0kKwHN6Cf0DY/ArcGIS/rest/services/Snohomish_Addresses/FeatureServer/0",
                 "conform": {
                     "format": "geojson",
                     "id": "UniqueID",
-                    "number": "ADDR_NUM",
+                    "number": ["ADDR_NUM", "ADDR_NUM_S"],
                     "street": "StreetName",
                     "unit": [
                         "UNIT_TYPE",
@@ -35,6 +35,17 @@
                     ],
                     "city": "COMMUNITY",
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://services9.arcgis.com/hUiJ0kKwHN6Cf0DY/ArcGIS/rest/services/Snohomish_Parcels/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
                 }
             }
         ]

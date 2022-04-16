@@ -1,0 +1,23 @@
+{
+    "description": "test schema",
+    "type": "object",
+    "required": [
+        "description"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "enabled": {
+            "type": "boolean"
+        },
+        "description": {
+            "type": "string"
+        },
+        "acceptance-tests": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "$ref": "./acceptance.json"
+            }
+        }
+    }
+}

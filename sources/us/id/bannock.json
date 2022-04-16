@@ -14,16 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.bannockcounty.us/arcgis/rest/services/Addresses/MapServer/0",
+                "data": "https://maps.bannockcounty.us/server/rest/services/Addresses/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
+                    "unit": "APT_NO",
                     "number": "HOUSE_NUM",
                     "street": [
                         "DIRECTION",
                         "STREET"
                     ],
-                    "unit": "APT_NO"
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.bannockcounty.us/server/rest/services/Parcels_Public/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcel_no"
                 }
             }
         ]

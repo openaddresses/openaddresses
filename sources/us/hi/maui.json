@@ -14,21 +14,26 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/migurski/79aab9/Parcels__Maui_County.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services3.arcgis.com/fsrDo0QMPlK9CkZD/ArcGIS/rest/services/Address/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile-polygon",
-                    "number": "ADDRESS",
-                    "street": [
-                        "PREFX",
-                        "STREET",
-                        "STR"
-                    ],
-                    "unit": "SUITE",
+                    "format": "geojson",
+                    "number": ["PREADDRNUM", "HOUSENUMBER", "ADDRNUMSUF" ],
+                    "street": "FULLNAME",
+                    "unit": [ "UNITTYPE", "UNITID" ],
                     "city": "CITY",
-                    "region": "STATE",
-                    "postcode": "ZIP"
+                    "postcode": "POSTALCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/fsrDo0QMPlK9CkZD/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
                 }
             }
         ]

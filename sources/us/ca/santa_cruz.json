@@ -15,19 +15,42 @@
             {
                 "name": "county",
                 "conform": {
-                    "format": "shapefile",
-                    "postcode": "GIS_DBO__6",
-                    "city": "GIS_DBO__5",
-                    "number": "GIS_DBO__2",
-                    "street": "GIS_DBO__3",
-                    "unit": "GIS_DBO__4"
+                    "format": "geojson",
+                    "unit": "SITUNIT",
+                    "number": "SITNUMBER",
+                    "street": "SITSTREET",
+                    "postcode": "SITZIP",
+                    "city": "SITCITY"
                 },
                 "attribution": "Santa Cruz County",
-                "data": "https://github.com/datadesk/us-ca-santa_cruz_county-PointAddress_SC-shp/blob/master/PointAddress_SC.zip?raw=true",
+                "data": "https://gis.santacruzcounty.us/arcserver/rest/services/opendata/MapServer/53",
                 "website": "http://www.co.santa-cruz.ca.us/Departments/GeographicInformationSystems%28GIS%29.aspx",
-                "protocol": "http",
-                "compression": "zip",
-                "note": "File provided in response to a public records request in December 2014 and uploaded to GitHub for public hosting."
+                "protocol": "ESRI"
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Santa Cruz County",
+                "data": "https://gis.santacruzcounty.us/arcserver/rest/services/giswebp/MapServer/25",
+                "website": "http://www.co.santa-cruz.ca.us/Departments/GeographicInformationSystems%28GIS%29.aspx",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Santa Cruz County",
+                "data": "https://gis.santacruzcounty.us/arcserver/rest/services/giswebp/MapServer/23",
+                "website": "http://www.co.santa-cruz.ca.us/Departments/GeographicInformationSystems%28GIS%29.aspx",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
             }
         ]
     }

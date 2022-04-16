@@ -14,18 +14,32 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps.co.goodhue.mn.us/server/rest/services/CountyDataDC/Dodge_Parcels/MapServer/0",
+                "data": "https://maps.co.goodhue.mn.us/server/rest/services/CountyDataDC/DodgeAssessors/MapServer/12",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "C0HSENO1",
-                    "street": [
-                        "C0STRNM",
-                        "C0STRTP",
-                        "C0STRSUFFI"
-                    ],
-                    "postcode": "C0ZIPCD6S",
-                    "city": "C0CITY"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "postcode": "ZIPCODE",
+                    "city": "COMMUNITY",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.co.goodhue.mn.us/server/rest/services/CountyDataDC/DodgeAssessors/MapServer/17",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

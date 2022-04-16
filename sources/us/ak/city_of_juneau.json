@@ -22,12 +22,24 @@
             {
                 "name": "city",
                 "data": "https://ftp.ci.juneau.ak.us/pub/CBJ_GIS_map_layers/juneau_alaska_gis_internet_parcel_layer.zip",
+                "website": "https://juneau.org/community-development/maps",
+                "license": {
+                    "url": "http://epv.juneau.org/"
+                },
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
                     "format": "shapefile",
-                    "number": "ADDR",
-                    "street": "ROADNAME"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "site_addrs"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "site_addrs",
+                        "pattern": "^(?:[0-9]+ )(.*?)(?: (?:[Aa][Pp][Tt]|[Uu][Nn][Ii][Tt]) .*?)?(?:;.*$|$)",
+                        "replace": "$1"
+                    }
                 }
             }
         ],
@@ -35,6 +47,10 @@
             {
                 "name": "city",
                 "data": "https://ftp.ci.juneau.ak.us/pub/CBJ_GIS_map_layers/juneau_alaska_gis_internet_parcel_layer.zip",
+                "website": "https://juneau.org/community-development/maps",
+                "license": {
+                    "url": "http://epv.juneau.org/"
+                },
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
