@@ -1,5 +1,4 @@
 import fs from 'fs';
-import path from 'path';
 import $RefParser from 'json-schema-ref-parser';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
