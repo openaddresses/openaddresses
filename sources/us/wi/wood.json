@@ -21,31 +21,34 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.co.wood.wi.us/gis/rest/services/WAB/LandRecords/MapServer/75",
+                "data": "https://gis.co.wood.wi.us/gis/rest/services/LandRecordsViewer/LandRecordsBasemapV2/MapServer/12",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "format",
-                        "fields": [
-                            "AddNum",
-                            "AddNumSuffix"
-                        ],
-                        "format": "$1$2"
-                    },
-                    "street": [
-                        "Prefix",
-                        "StreetName",
-                        "StreetType",
-                        "Suffix"
+                    "number": [
+                        "AddNumPre",
+                        "AddNum",
+                        "AddNumSuffix"
                     ],
+                    "street": "FullStNm",
                     "unit": [
                         "UnitType",
                         "UnitID"
                     ],
                     "postcode": "ZipCode",
-                    "city": "PlaceName",
-                    "region": "State"
+                    "city": "MuniName",
+                    "region": "StateName"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.wood.wi.us/gis/rest/services/LandRecordsViewer/LandRecordsBasemapV2/MapServer/18",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
                 }
             }
         ]
