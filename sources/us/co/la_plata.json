@@ -14,16 +14,15 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "ftp://ftp.laplata.co.us/shapefiles/AddressPoints.zip",
-                "protocol": "ftp",
+                "data": "https://gis.laplata.co.us/arcgis/rest/services/JS_website/Map_LayersJS_Ent_Run/MapServer/83",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "number": "SITE_NUM",
-                    "street": [
-                        "SITE_DR",
-                        "SITE_ST",
-                        "SITE_MD"
-                    ],
+                    "format": "geojson",
+                    "number": "ADDR_HN",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PROPERTY_A"
+                    },
                     "unit": "SITE_UNIT",
                     "id": "APN"
                 }
@@ -32,10 +31,10 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "ftp://ftp.laplata.co.us/shapefiles/Parcels.zip",
-                "protocol": "ftp",
+                "data": "https://gis.laplata.co.us/arcgis/rest/services/JS_website/Map_LayersJS_Ent_Run/MapServer/79",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "pid": "APN"
                 }
             }
