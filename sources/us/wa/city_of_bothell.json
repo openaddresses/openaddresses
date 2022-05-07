@@ -16,12 +16,10 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "ftp://gisvisitor:mapping$98011@search.ci.bothell.wa.us/GIS_Base_Data/GIS_Data/ESRI 10.X SHP/Cadastre_shp.zip",
-                "protocol": "ftp",
-                "compression": "zip",
+                "data": "https://gisweb.bothellwa.gov/server/rest/services/public/COBMap_Public_Property_Land/MapServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "file": "Cadastre_shp/BothellAddress.shp",
+                    "format": "geojson",
                     "unit": "Unit",
                     "number": "Addr_Num",
                     "street": [
@@ -34,6 +32,27 @@
                     "district": "County",
                     "region": "State",
                     "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gisweb.bothellwa.gov/server/rest/services/public/COBMap_Public_Property_Land/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gisweb.bothellwa.gov/server/rest/services/public/COBMap_Public_Property_Land/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
