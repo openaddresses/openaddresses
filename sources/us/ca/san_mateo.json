@@ -15,27 +15,25 @@
             {
                 "name": "county",
                 "attribution": "San Mateo County",
-                "data": "http://maps.smcgov.org/GIS_data_download/SAN_MATEO_COUNTY_PARCELS.zip",
+                "data": "https://gis.smcgov.org/maps/rest/services/Common/SMC_GIS/MapServer/9",
                 "license": "https://isd.smcgov.org/gis-data-download",
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "file": "SAN MATEO COUNTY PARCELS/ACTIVE_PARCELS_ADDRESS.shp",
-                    "format": "shapefile-polygon",
+                    "format": "geojson",
                     "number": {
-                        "function": "regexp",
-                        "field": "ADDRESS",
-                        "pattern": "^([0-9]+)"
+                        "function": "prefixed_number",
+                        "field": "SITUS_ADD1"
                     },
                     "street": {
-                        "function": "regexp",
-                        "field": "ADDRESS",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
+                        "function": "postfixed_street",
+                        "field": "SITUS_ADD1"
                     },
+                    "city": "SITUS_CITY",
+                    "postcode": "SITUS_ZIPC",
                     "id": "APN"
                 }
             }
         ]
     }
 }
+
