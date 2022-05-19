@@ -22,17 +22,20 @@
                 "conform": {
                     "file": "FME_Workbenches/ISD/DataExport/ACTIVE_PARCELS/SAN_MATEO_COUNTY_ACTIVE_PARCELS_APN.shp",
                     "format": "shapefile",
-                    "number": {
-                        "function": "regexp",
-                        "field": "SITUS_ADDR",
-                        "pattern": "^([0-9]+)"
-                    },
+                    "number": "SITUS_NO1",
                     "street": {
                         "function": "regexp",
                         "field": "SITUS_ADDR",
-                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "pattern": "^(?:[0-9]+ )(.*?)(|#.+),",
                         "replace": "$1"
                     },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "SITUS_ADDR",
+                        "pattern": "^(?:[0-9]+ )(.*?)(|#.+),",
+                        "replace": "$2"
+                    },
+                    "city": "SITUS_CITY",
                     "id": "APN"
                 }
             }
