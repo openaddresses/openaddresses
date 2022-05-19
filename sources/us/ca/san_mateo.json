@@ -26,13 +26,13 @@
                     "street": {
                         "function": "regexp",
                         "field": "SITUS_ADDR",
-                        "pattern": "^(?:[0-9]+ )(.*?),(.*)",
+                        "pattern": "^(?:[0-9]+ )(.*?)(|#?([0-9]+[a-zA-Z]*)),(.*)",
                         "replace": "$1"
                     },
                     "unit": {
                         "function": "regexp",
                         "field": "SITUS_ADDR",
-                        "pattern": "^(?:[0-9]+ )(.*?)(|#?([0-9a-zA-Z]+)),(.*)",
+                        "pattern": "^(?:[0-9]+ )(.*?)(|#?([0-9]+[a-zA-Z]*)),(.*)",
                         "replace": "$3"
                     },
                     "city": "SITUS_CITY",
