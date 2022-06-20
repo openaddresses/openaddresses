@@ -22,7 +22,11 @@
                 "conform": {
                     "format": "shapefile",
                     "srs": "EPSG:26591",
-                    "number": "NUM_CIV",
+                    "number": {
+                        "function": "format",
+                        "fields": ["NUM_CIV", "ESP"],
+                        "format": "$1/$2"
+                    },
                     "street": "NOME_VIA",
                     "postcode": "CAP",
                     "accuracy": 3,
