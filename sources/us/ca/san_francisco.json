@@ -41,7 +41,11 @@
                         "street_typ"
                     ],
                     "unit": "unit_numbe",
-                    "postcode": "zip_code",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "zip_code",
+                        "pattern": "^([0-9]+)"
+                    },
                     "id": "eas_fullid"
                 }
             }
