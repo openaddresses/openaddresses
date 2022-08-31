@@ -15,17 +15,30 @@
             {
                 "name": "county",
                 "attribution": "Solano County",
-                "data": "https://regis.solanocounty.com/server/rest/services/iSolano/Addresses/MapServer/1",
+                "data": "https://solanocountygis.com/server/rest/services/Address/Address_Points/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "id": "APN",
-                    "number": "SITENUM",
-                    "unit": "UNITBLDG",
-                    "street": "SITEROAD",
-                    "postcode": "ZIP",
-                    "city": "CITY",
-                    "region": "STATE"
+                    "id": "apn",
+                    "number": [
+                        "addnum_pre",
+                        "add_number",
+                        "addnum_suf"
+                    ],
+                    "unit": "unit",
+                    "street": [
+                        "st_premod",
+                        "st_predir",
+                        "st_pretyp",
+                        "st_presep",
+                        "st_name",
+                        "st_postyp",
+                        "st_posdir",
+                        "st_posmod"
+                    ],
+                    "postcode": "post_code",
+                    "city": "inc_muni",
+                    "region": "state"
                 }
             }
         ]
