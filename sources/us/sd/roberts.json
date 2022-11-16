@@ -10,27 +10,28 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.1stdistrict.org/arcgis/rest/services/Roberts/robertsmapnet/MapServer/1",
+                "data": "https://www.1stdistrict.org/arcgis/rest/services/Roberts/robertsmapnet/MapServer/2",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
+                    "accuracy": 2,
+                    "number": {                       
                         "function": "prefixed_number",
                         "field": "PROPERTY_A"
-                    },
-                    "street": {
+                    },         
+                    "street": {                        
                         "function": "postfixed_street",
                         "field": "PROPERTY_A"
                     }
                 }
             }
-        ],
+        ],          
         "parcels": [
-            {
-                "name": "county",
-                "data": "https://www.1stdistrict.org/arcgis/rest/services/Roberts/robertsmapnet/MapServer/1",
+            {                    
+                "name": "county",                                                                            
+                "data": "https://www.1stdistrict.org/arcgis/rest/services/Roberts/robertsmapnet/MapServer/2",
                 "protocol": "ESRI",
-                "conform": {
+                "conform": {            
                     "format": "geojson",
                     "pid": "STR"
                 }
