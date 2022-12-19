@@ -1,9 +1,8 @@
 TMP = /tmp/openaddresses-si/
 PUBDIR = /osm/raba/raba.openstreetmap.si/openaddresses/
-TS = $$(cat $(TMP)timestamp.txt)
-TSYYYY = $$(cat $(TMP)timestamp.txt | cut -b 1-4)
 
-TSBLDG=$$(stat -c '%y' $(TMP)KS_SLO_SHP_G/KS_SLO_TLORISI_*.shp  | cut -d' ' -f1)
+TSBLDG=$$(gstat -c '%y' $(TMP)KS_SLO_SHP_G/KS_SLO_TLORISI_*.shp  | cut -d' ' -f1)
+TSYYYY = $$(echo $(TSBLDG) | cut -b 1-4)
 
 all: buildings
 
@@ -24,7 +23,7 @@ buildings: download
 	ln -sf si-buildings-$(TSBLDG).zip $(PUBDIR)si-buildings-latest.zip
 
 	# update json:
-	sed "s/%YYYY-MM-DD%/$(TS)/g" countrywide-template.json | sed "s/%YYYY%/$(TSYYYY)/g" > ../../sources/si/countrywide.json
+	sed "s/%YYYY-MM-DD%/$(TSBLDG)/g" countrywide-template.json | sed "s/%YYYY%/$(TSYYYY)/g" > ../../sources/si/countrywide.json
 
 clean:
 	rm -rf $(TMP)
