@@ -1,7 +1,7 @@
 TMP = /tmp/openaddresses-si/
 PUBDIR = /osm/raba/raba.openstreetmap.si/openaddresses/
 
-TSBLDG=$$(gstat -c '%y' $(TMP)KS_SLO_SHP_G/KS_SLO_TLORISI_*.shp  | cut -d' ' -f1)
+TSBLDG=$$(stat -c '%y' $(TMP)KS_SLO_SHP_G/KS_SLO_TLORISI_*.shp  | cut -d' ' -f1)
 TSYYYY = $$(echo $(TSBLDG) | cut -b 1-4)
 
 all: buildings
