@@ -21,15 +21,21 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://library.oregonmetro.gov/rlisdiscovery/master_address.zip",
+                "data": "https://services2.arcgis.com/McQ0OlIABe29rJJy/ArcGIS/rest/services/Master_Address_File_MAF/FeatureServer/0",
+                "website": "https://rlisdiscovery.oregonmetro.gov/datasets/drcMetro::master-address-file-maf-1/about",
+                "contact": {
+                    "name": "Alicia Wood",
+                    "phone": "503-813-7561",
+                    "email": "alicia.wood@oregonmetro.gov",
+                },
                 "license": {
-                    "url": "http://www.oregonmetro.gov/sites/default/files/Open_Database_and_Content_Licenses.pdf",
+                    "url": "https://www.oregonmetro.gov/sites/default/files/2014/08/01/Open_Database_and_Content_Licenses.pdf",
                     "text": "Open Database License (ODbL) v1.0",
                     "attribution": true,
                     "attribution name": "Oregon Metro",
                     "share-alike": true
                 },
-                "protocol": "http",
+                "protocol": "ESRI",
                 "compression": "zip",
                 "conform": {
                     "number": "HOUSE",
@@ -43,8 +49,63 @@
                         "UNIT_TYPE",
                         "UNIT_NO"
                     ],
+                    "city": "MAIL_CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP",
+                    "file": "Master_Address_File_(MAF)/Master_Adress_File_(MAF).shp",
                     "format": "shapefile",
-                    "postcode": "zip"
+                    "accuracy": 2
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://www.arcgis.com/sharing/rest/content/items/9d3c396ffad44649bc7451465aa300f0/data",
+                "website": "https://rlisdiscovery.oregonmetro.gov/datasets/taxlots-public-download/about",
+                "contact": {
+                    "name": "Christine Rutan",
+                    "phone": "503-797-1669",
+                    "email": "christine.rutan@oregonmetro.gov",
+                },
+                "license": {
+                    "url": "https://www.oregonmetro.gov/sites/default/files/2014/08/01/Open_Database_and_Content_Licenses.pdf",
+                    "text": "Open Database License (ODbL) v1.0",
+                    "attribution": true,
+                    "attribution name": "Oregon Metro",
+                    "share-alike": true
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "pid": "TLID",
+                    "file": "taxlots_public/taxlots_public.shp",
+                    "format": "shapefile"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/McQ0OlIABe29rJJy/ArcGIS/rest/services/Building_Footprint_Database/FeatureServer/0",
+                "website": "https://rlisdiscovery.oregonmetro.gov/datasets/drcMetro::building-footprint-database-1/about",
+                "contact": {
+                    "name": "Christine Rutan",
+                    "phone": "503-797-1669",
+                    "email": "christine.rutan@oregonmetro.gov",
+                },
+                "license": {
+                    "url": "https://www.oregonmetro.gov/sites/default/files/2014/08/01/Open_Database_and_Content_Licenses.pdf",
+                    "text": "Open Database License (ODbL) v1.0",
+                    "attribution": true,
+                    "attribution name": "Oregon Metro",
+                    "share-alike": true
+                },
+                "protocol": "ESRI",
+                "compression": "zip",
+                "conform": {
+                    "file": "Building_Footprint_Database/Building_Footprint_Database.shp",
+                    "format": "shapefile"
                 }
             }
         ]
