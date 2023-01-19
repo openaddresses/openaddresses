@@ -15,16 +15,41 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://services7.arcgis.com/xtfQPw7zwSRPkcfN/ArcGIS/rest/services/AllDataLayers_v5/FeatureServer/1",
+                "data": "https://services7.arcgis.com/xtfQPw7zwSRPkcfN/ArcGIS/rest/services/ADDRESS_POINTS_VIEW_LAYER/FeatureServer/9",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSE_NUMBER",
+                    "number": [
+                        "BLDGNUM",
+                        "HOUSE_SUFF"
+                    ],
                     "street": [
-                        "PREFIX_DIRECTION",
+                        "PRE_DIR",
                         "STREET_NAME",
                         "STREET_TYPE"
                     ],
-                    "unit": "UNIT"
+                    "unit": "UNITNUM",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services7.arcgis.com/xtfQPw7zwSRPkcfN/ArcGIS/rest/services/Taxlots_View/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MAPTAXLOT"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services7.arcgis.com/xtfQPw7zwSRPkcfN/ArcGIS/rest/services/Building_Footprints/FeatureServer/0",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
