@@ -19,7 +19,7 @@
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "format": "shapefile-polygon",
+                    "format": "shapefile",
                     "number": "STREETNUM",
                     "street": [
                         "PRE_DIR",
@@ -43,6 +43,19 @@
                         "field": "SITUSCSZ",
                         "pattern": "\\b(\\d+)$"
                     }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://gis-marioncounty.opendata.arcgis.com/datasets/MarionCounty::marion-county-parcels/about",
+                "data": "http://gis.co.marion.or.us/gisdownload/download/assessors/taxlot.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "TAXLOT"
                 }
             }
         ]
