@@ -1,0 +1,40 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "41021",
+            "name": "Gilliam County",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "county": "Gilliam"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/e3KSI9Py4B7m3xu6/ArcGIS/rest/services/Gilliam03_other/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS_NUMBER",
+                    "street": [
+                        "PRE_MODIFIER",
+                        "PREFIX_DIRECTIONAL",
+                        "PRE_TYPE",
+                        "STREET_NAME",
+                        "POST_TYPE",
+                        "POST_DIRECTIONAL",
+                        "POST_MODIFIER"
+                    ],
+                    "unit": [
+                        "UNIT_NO",
+                        "UNIT_TYPE"
+                    ],
+                    "city": "COMMUNITY"
+                }
+            }
+        ]
+    }
+}
