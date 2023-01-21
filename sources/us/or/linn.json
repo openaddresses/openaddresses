@@ -14,11 +14,10 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://apps.co.linn.or.us/webmap/data/download/address.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://gis.co.linn.or.us/public/rest/services/baselayers/Pub_address/MapServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "number": [
                         "NUMBER",
                         "NUM_FRAC"
@@ -32,6 +31,27 @@
                     "unit": "UNIT",
                     "city": "CITY",
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.linn.or.us/public/rest/services/baselayers/Pub_taxlots/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.co.linn.or.us/public/rest/services/baselayers/Pub_bldgftprint/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
