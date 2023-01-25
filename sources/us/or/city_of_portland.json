@@ -1,0 +1,83 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -122.794,
+                45.542
+            ]
+        },
+        "US Census": {
+            "geoid": "4159000",
+            "name": "City of Portland",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "city": "Portland",
+        "state": "or"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://www.portlandmaps.com/arcgis/rest/services/Public/COP_OpenData_Property/MapServer/47",
+                "website": "https://gis-pdx.opendata.arcgis.com/datasets/PDX::address/about",
+                "license": {
+                    "attribution": true,
+                    "attribution text": "City of Portland, Oregon",
+                    "presumed": true
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADD_NUM",
+                    "street": [
+                        "STR_PREDIR",
+                        "STR_NAME",
+                        "STR_TYPE_C",
+                        "STR_POSTDI"
+                    ],
+                    "unit": "UNIT_VALUE",
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE_ABBR",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://www.portlandmaps.com/arcgis/rest/services/Public/Taxlots/MapServer/0",
+                "website": "https://www.portlandmaps.com/metadata/index.cfm?action=DisplayServiceLayer&ServerLayerID=1778",
+                "license": {
+                    "attribution": true,
+                    "attribution text": "City of Portland, Oregon",
+                    "presumed": true
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TLID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://www.portlandmaps.com/arcgis/rest/services/Public/COP_OpenData_Property/MapServer/48",
+                "website": "https://gis-pdx.opendata.arcgis.com/datasets/building-footprints/about",
+                "license": {
+                    "attribution": true,
+                    "attribution text": "City of Portland, Oregon",
+                    "presumed": true
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

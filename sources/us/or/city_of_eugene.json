@@ -1,0 +1,71 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -123.095,
+                45.051
+            ]
+        },
+        "US Census": {
+            "geoid": "4123850",
+            "name": "City of Eugene",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "city": "Eugene"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services3.arcgis.com/F7NiRLGNbA2hh7gE/arcgis/rest/services/EugAddress/FeatureServer/0",
+                "website": "https://mapping.eugene-or.gov/datasets/Eugene-PWE::eugene-addresses-hub/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "HNUMBER",
+                        "SUFFIX"
+                    ],
+                    "street": [
+                        "DIR",
+                        "STREET",
+                        "TYPE"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNIT"
+                    ],
+                    "city": "MAILCITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services3.arcgis.com/F7NiRLGNbA2hh7gE/arcgis/rest/services/EugTaxlots/FeatureServer/0",
+                "website": "https://mapping.eugene-or.gov/datasets/Eugene-PWE::eugene-taxlots-hub/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "maptaxlot"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services3.arcgis.com/F7NiRLGNbA2hh7gE/arcgis/rest/services/EugBuildings/FeatureServer/0",
+                "website": "https://mapping.eugene-or.gov/datasets/Eugene-PWE::eugene-buildings-hub/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

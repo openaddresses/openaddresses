@@ -1,0 +1,61 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -122.772,
+                44.431
+            ]
+        },
+        "US Census": {
+            "geoid": "4173650",
+            "name": "City of Tigard",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "city": "Tigard"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": " https://svr.tigardmaps.com/arcgis/rest/services/Framework/tig_addresses/MapServer/0",
+                "website": "https://public-tigard.opendata.arcgis.com/datasets/address-layer/about",
+                "license":{
+                    "url": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "text": "CC BY-SA 4.0",
+                    "attribution": true,
+                    "attribution text": "Tigard GIS",
+                    "share-alike": true
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": "UNIQ",
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "STR_TYPE"
+                    ],
+                    "city": "CITY",
+                    "region": "ST",
+                    "postcode": "ZIP5"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://svr.tigardmaps.com/arcgis/rest/services/Framework/tig_taxlots_opt/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TLID"
+                }
+            }
+        ]
+    }
+}
