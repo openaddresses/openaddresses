@@ -21,8 +21,14 @@
                         "field": "siteaddnam"
                     },
                     "street": {
-                        "function": "postfixed_street",
-                        "field": "siteaddnam"
+                        "function": "regexp",
+                        "field": "siteaddnam",
+                        "pattern": "^(?:[0-9]+(?:[A-Z]|[ -]1/2)?\\s+)(?:(?:(?:STE|UNIT|APT|BLDG)\\s+|#)(?:\\d+[A-Z]?|[A-Z]\\d*))?(.+?)(?:(,\\s)?(?:(?:STE|UNIT|APT|BLDG)\\s+|#)(?:\\d+[A-Z]?|[A-Z]\\d*))?$"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "siteaddnam",
+                        "pattern": "^(?:[0-9]+(?:[A-Z]|[ -]1/2)?\\s+)(((STE|UNIT|APT|BLDG)\\s+|#)(\\d+[A-Z]?|[A-Z]\\d*))?(?:.+?)((,\\s)?((STE|UNIT|APT|BLDG)\\s+|#)(\\d+[A-Z]?|[A-Z]\\d*))?$"
                     },
                     "city": "siteaddcty",
                     "postcode": "sitezip",
