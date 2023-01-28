@@ -32,7 +32,16 @@
                         "pattern": "^(?:[0-9]+(?:[A-Z]|[ -]1/2)?\\s+)((#(\\s+)?)(\\d+[A-Z]?|[A-Z]\\d*))?(?:.+?)((,\\s+)?((STE|UNIT|APT|BLDG)\\s+|#|-)(\\d+[A-Z]?|[A-Z]\\d*))?$"
                     },
                     "city": "SITUS_CITY_NM",
-                    "postcode": "SITUS_ZIP_NR"
+                    "region": {
+                        "function": "regexp",
+                        "field": "SITUS_ZIP_NR",
+                        "pattern": "\\b(WA)\\b"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "SITUS_ZIP_NR",
+                        "pattern": "(\\d{5}|\\d{9})"
+                    }
                 }
             }
         ],
