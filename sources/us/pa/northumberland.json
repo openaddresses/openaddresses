@@ -32,6 +32,32 @@
                     "city": "MUNICIPALITY"
                 }
             }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.norrycopa.net/index.php/geographic-information-systems/",
+                "contact": {
+                    "name": "Eric C. Wendt",
+                    "title": "Assistant Director of Information Services & GIS Addressing Coordinator",
+                    "phone": "(570) 988-4294",
+                    "address": "Administration Center, 399 Stadium Dr, Sunbury, PA 17801"
+                },
+                "data": "https://gis.norrycopa.net/arcgis/rest/services/Parcels/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "LOCATION"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "LOCATION"
+                    }
+                }
+            }
         ]
     }
 }
