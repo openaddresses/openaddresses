@@ -26,17 +26,18 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ST_NUM",
-                    "street": [
-                        "PRE_DIR",
-                        "ST_NAME",
-                        "ST_TYPE",
-                        "POST_DIR"
-                    ],
-                    "unit": [
-                        "UNIT_TYPE",
-                        "UNIT_VAL"
-                    ],
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PROP_LOCAT"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PROP_LOCAT"
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "PROP_LOCAT"
+                    },
                     "id": "PARCEL_ID",
                     "city": "COMMUNITY"
                 }
