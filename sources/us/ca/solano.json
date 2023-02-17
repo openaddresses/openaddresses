@@ -15,17 +15,46 @@
             {
                 "name": "county",
                 "attribution": "Solano County",
-                "data": "https://regis.solanocounty.com/server/rest/services/iSolano/Addresses/MapServer/1",
+                "data": "https://solanocountygis.com/server/rest/services/Address/Address_Points/FeatureServer/0",
+                "website": "https://solanocountygis.com/portal/home/item.html?id=e6dda522cedd4544940baf0c98bfa0ca",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "id": "APN",
-                    "number": "SITENUM",
-                    "unit": "UNITBLDG",
-                    "street": "SITEROAD",
-                    "postcode": "ZIP",
-                    "city": "CITY",
-                    "region": "STATE"
+                    "id": "apn",
+                    "number": [
+                        "addnum_pre",
+                        "add_number",
+                        "addnum_suf"
+                    ],
+                    "street": [
+                        "st_premod",
+                        "st_predir",
+                        "st_pretyp",
+                        "st_preSep",
+                        "st_name",
+                        "st_postyp",
+                        "st_posdir",
+                        "st_posmod"
+                    ],
+                    "unit": [
+                        "unit_type",
+                        "unit_num"
+                    ],
+                    "city": "post_comm",
+                    "postcode": "post_code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Solano County",
+                "data": "https://solanocountygis.com/server/rest/services/Cadastral/Parcels_Public/FeatureServer/0",
+                "website": "https://solanocountygis.com/portal/home/item.html?id=2d7acc06437642e2b5e41339fc9e0f5b",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcelid"
                 }
             }
         ]
