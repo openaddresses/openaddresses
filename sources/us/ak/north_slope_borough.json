@@ -1,0 +1,53 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "02068",
+            "name": "Denali Borough",
+            "state": "Alaska"
+        },
+        "country": "us",
+        "state": "ak",
+        "county": "Denali"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis-public.north-slope.org/server/rest/services/NSB_Parcels_Linked/MapServer/35",
+                "website": "https://gis-public.north-slope.org/portal/home/item.html?id=b548d518c8fe42d8b8b0709d95b52508",
+                "protocol": "ESRI",
+                "conform": {
+                    "id": "Parcel_ID",
+                    "format": "geojson",
+                    "number": "Building_Number",
+                    "street": "Street_Name",
+                    "city": "Location_City"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis-public.north-slope.org/server/rest/services/NSB_Parcels_Linked/MapServer/35",
+                "website": "https://gis-public.north-slope.org/portal/home/item.html?id=b548d518c8fe42d8b8b0709d95b52508",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_ID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis-public.north-slope.org/server/rest/services/Enhancements2022/NSB_Buildings_no_r/MapServer/13",
+                "website": "https://gis-public.north-slope.org/portal/home/item.html?id=e0543bd9fe7f4a7cb069ab4326398b41",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}
