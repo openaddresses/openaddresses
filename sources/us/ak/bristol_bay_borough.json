@@ -1,0 +1,50 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "02060",
+            "name": "Bristol Bay Borough",
+            "state": "Alaska"
+        },
+        "country": "us",
+        "state": "ak",
+        "county": "Bristol Bay Borough"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Municipality of Anchorage",
+                "data": "https://services2.arcgis.com/bmtnfSbBQqIXiln2/ArcGIS/rest/services/BBB_Addresses_1227_2022/FeatureServer/0",
+                "website": "https://www.arcgis.com/home/item.html?id=bfe52f1b60dc4512927bcb1971e146c1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "REV_Street"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "REV_Street"
+                    },
+                    "city": "REV_City_1",
+                    "region": "REV_Stat_1",
+                    "postcode": "REV_ZIP_1"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/bmtnfSbBQqIXiln2/ArcGIS/rest/services/NN_MERGE_RALPH/FeatureServer/0",
+                "website": "https://www.arcgis.com/home/item.html?id=6df28562f2d14c5e86b3a4605e0743bd",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "FID"
+                }
+            }
+        ]
+    }
+}
