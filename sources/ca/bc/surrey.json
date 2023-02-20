@@ -9,21 +9,54 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://cosmos.surrey.ca/geo_ref/Images/OpenDataArchives/addresses_GDB.zip",
-                "website": "http://data.surrey.ca/",
-                "license": "Open Government License",
-                "protocol": "http",
+                "data": "https://gisservices.surrey.ca/arcgis/rest/services/OpenData/MapServer/142",
+                "website": "https://data.surrey.ca/dataset/addresses",
+                "license": {
+                    "url": "https://data.surrey.ca/pages/open-government-licence-surrey",
+                    "text": "Open Government License - Surrey 2.0",
+                    "attribution": true,
+                    "attribution name": "City of Surrey"
+                },
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "gdb",
-                    "layer": "Address_Points",
-                    "number": "STREET_NUMBER",
-                    "street": [
-                        "STREET_DIR_PREFIX",
-                        "STREET_NAME",
-                        "STREET_TYPE",
-                        "STREET_DIR_SUFFIX"
-                    ],
-                    "city": "LOCALITY"
+                    "format": "geojson",
+                    "number": "HOUSE_NO",
+                    "street": "GCROADS"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gisservices.surrey.ca/arcgis/rest/services/OpenData/MapServer/152",
+                "website": "https://data.surrey.ca/dataset/lots",
+                "license": {
+                    "url": "https://data.surrey.ca/pages/open-government-licence-surrey",
+                    "text": "Open Government License - Surrey 2.0",
+                    "attribution": true,
+                    "attribution name": "City of Surrey"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "LOT_NO"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gisservices.surrey.ca/arcgis/rest/services/OpenData/MapServer/159",
+                "website": "https://data.surrey.ca/dataset/buildings",
+                "license": {
+                    "url": "https://data.surrey.ca/pages/open-government-licence-surrey",
+                    "text": "Open Government License - Surrey 2.0",
+                    "attribution": true,
+                    "attribution name": "City of Surrey"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
