@@ -41,11 +41,9 @@
                     ],
                     "unit": "unit_numbe",
                     "postcode": {
-                        "function": "join",
-                        "fields": [
-                             "zip_code"
-                        ],
-                        "separator": ""
+                        "function": "regexp",
+                        "field": "zip_code",
+                        "pattern": "^([0-9]+)"
                     },
                     "id": "eas_fullid"
                 }
