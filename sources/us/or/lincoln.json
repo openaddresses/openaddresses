@@ -1,0 +1,56 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "41041",
+            "name": "Lincoln County",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "county": "Lincoln"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://read-my-man.ga/J529WT.zip?key=QXW6V5AwCzuw6mQ",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SiteAddNam"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "SiteAddNam",
+                        "pattern": "(?:\\d+\\s)(.+?)(?:\\s#.+?)?",
+                        "replace": "?1"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "SiteAddNam",
+                        "pattern": "(?:\\d+\\s.+?\\s)(#.+?)",
+                        "replace": "?1"
+                    },
+                    "city": "SiteAddCity",
+                    "postcode": "SiteZip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.co.lincoln.or.us/tax21.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "MapTaxlot"
+                }
+            }
+        ]
+    }
+}
