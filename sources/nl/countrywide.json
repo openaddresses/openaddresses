@@ -11,14 +11,14 @@
         "addresses": [
             {
                 "name": "country",
-                "data": "https://data.nlextract.nl/bag/csv/bag-adressen-laatst.csv.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://basisregistraties.arcgisonline.nl/arcgis/rest/services/BAG/BAGv3/MapServer/0",
+                "license": {
+                    "url": "https://www.esri.nl/nl-nl/legal/voorwaarden/esri-nederland-terms-of-use",
+                    "text": "Indemnification"
+                },
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "csv",
-                    "csvsplit": ";",
-                    "lon": "lon",
-                    "lat": "lat",
+                    "format": "geojson",
                     "number": {
                         "function": "format",
                         "fields": [
@@ -28,10 +28,24 @@
                         ],
                         "format": "$1$2-$3"
                     },
-                    "street": "openbareruimte",
+                    "street": "openbareruimtenaam",
                     "postcode": "postcode",
-                    "city": "woonplaats",
-                    "region": "provincie"
+                    "city": "woonplaatsnaam",
+                    "id": "adresseerbaarobjectid"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "country",
+                "data": "https://basisregistraties.arcgisonline.nl/arcgis/rest/services/BAG/BAGv3/MapServer/4",
+                "license": {
+                    "url": "https://www.esri.nl/nl-nl/legal/voorwaarden/esri-nederland-terms-of-use",
+                    "text": "Indemnification"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
