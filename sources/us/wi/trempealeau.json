@@ -14,13 +14,15 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://www.tremplocounty.com/ArcGIS/rest/services/Public/Landmarks_Addressing/MapServer/2",
+                "data": "https://map.co.trempealeau.wi.us/arcgis/rest/services/Public/Addressing/MapServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "FIRE_NO",
-                    "street": "STREETNAME",
-                    "unit": "UNIT_NO"
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    }
                 }
             }
         ]
