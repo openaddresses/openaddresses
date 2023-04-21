@@ -16,14 +16,55 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "ftp://webftp.vancouver.ca/OpenData/shape/shape_property_information.zip",
-                "protocol": "ftp",
-                "compression": "zip",
+                "data": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/property-addresses/exports/geojson",
+                "website": "https://opendata.vancouver.ca/explore/dataset/property-addresses/",
+                "license": {
+                    "url": "https://opendata.vancouver.ca/pages/licence/",
+                    "text": "Open Government License - Vancouver 1.0",
+                    "attribution": true,
+                    "attribution name": "City of Vancouver"
+                },
+                "protocol": "http",
                 "conform": {
-                    "file": "property_addresses.shp",
-                    "number": "CIVIC_NO",
-                    "street": "STREETNAME",
-                    "format": "shapefile"
+                    "number": "CIVIC_NUMBER",
+                    "street": "STD_STREET",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://opendata.vancouver.ca/api/explore/v2.1/catalog/datasets/property-parcel-polygons/exports/geojson",
+                "website": "https://opendata.vancouver.ca/explore/dataset/property-parcel-polygons/",
+                "license": {
+                    "url": "https://opendata.vancouver.ca/pages/licence/",
+                    "text": "Open Government License - Vancouver 1.0",
+                    "attribution": true,
+                    "attribution name": "City of Vancouver"
+                },
+                "protocol": "http",
+                "conform": {
+                    "pid": "SITE_ID",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://opendata.vancouver.ca/explore/dataset/building-footprints-2015/exports/geojson",
+                "website": "https://opendata.vancouver.ca/explore/dataset/building-footprints-2015/",
+                "license": {
+                    "url": "https://opendata.vancouver.ca/pages/licence/",
+                    "text": "Open Government License - Vancouver 1.0",
+                    "attribution": true,
+                    "attribution name": "City of Vancouver"
+                },
+                "year": "2015",
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
