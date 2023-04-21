@@ -15,18 +15,21 @@
             {
                 "name": "county",
                 "attribution": "Ventura County",
-                "website": "http://www.ventura.org/gis-mapping/gis-data-downloads-mapping-base",
-                "data": "https://maps.ventura.org/arcgis/rest/services/SDs/Parcels/MapServer/0",
+                "website": "https://venturacountydatadownloads-vcitsgis.hub.arcgis.com/datasets/vcitsgis::master-address/about",
+                "data": "https://services2.arcgis.com/XJ5Tb7dTYtAMoyYT/arcgis/rest/services/Master_Address/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "unit": "SITUS_UNIT",
-                    "number": "SITUS_NR",
+                    "unit": "SUITE",
+                    "number": "ADDRESS",
                     "street": [
-                        "SITUS_DIR",
-                        "SITUS_STRE",
-                        "SITUS_TYP"
-                    ]
+                        "STREET_DIR",
+                        "STREET_NAM",
+                        "STREET_SUF"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
                 }
             }
         ],
@@ -34,11 +37,12 @@
             {
                 "name": "county",
                 "attribution": "Ventura County",
-                "data": "https://maps.ventura.org/arcgis/rest/services/SDs/Parcels/MapServer/0",
+                "data": "https://services2.arcgis.com/XJ5Tb7dTYtAMoyYT/arcgis/rest/services/Parcels/FeatureServer/0",
+                "website": "https://venturacountydatadownloads-vcitsgis.hub.arcgis.com/datasets/vcitsgis::parcels-1/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PID"
+                    "pid": "APN"
                 }
             }
         ],
@@ -46,7 +50,8 @@
             {
                 "name": "county",
                 "attribution": "Ventura County",
-                "data": "https://maps.ventura.org/arcgis/rest/services/SDs/Basemap/MapServer/10",
+                "data": "https://services2.arcgis.com/XJ5Tb7dTYtAMoyYT/arcgis/rest/services/BuildingOutlines_gdb/FeatureServer/0",
+                "website": "https://venturacountydatadownloads-vcitsgis.hub.arcgis.com/datasets/vcitsgis::building-outlines-1/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"
