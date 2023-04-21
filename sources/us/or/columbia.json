@@ -1,0 +1,61 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "41009",
+            "name": "Columbia County",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "county": "Columbia"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://github.com/openaddresses/openaddresses/files/10830161/taxlotSitusJoined.zip",
+                "website": "https://www.columbiacountyor.gov/departments/Assessor/CartographyandGeographicInformationSystem",
+                "note": "Situs dbf joined with taxlot shapefile from https://www.columbiacountyor.gov/media/Assessor/GIS%20Data/Tax23/Tax23.zip",
+                "license": {
+                    "url": "https://www.columbiacountyor.gov/media/Assessor/GIS%20Data/Columbia_County_GIS_Data_File_User_License_Agreement.pdf",
+                    "text": "Indemnification"
+                },
+                "conform": {
+                    "format": "shapefile",
+                    "number": "HOUSE_NUMB",
+                    "street": [
+                        "PRE_DIR",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "POST_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis.columbiacountymaps.com/server/rest/services/BaseData/Tax_Map/FeatureServer/0",
+                "website": "https://www.columbiacountyor.gov/departments/Assessor/CartographyandGeographicInformationSystem",
+                "license": {
+                    "url": "https://www.columbiacountyor.gov/media/Assessor/GIS%20Data/Columbia_County_GIS_Data_File_User_License_Agreement.pdf",
+                    "text": "Indemnification"
+                },
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MapTaxlot"
+                }
+            }
+        ]
+    }
+}
