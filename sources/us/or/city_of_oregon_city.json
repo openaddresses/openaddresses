@@ -23,6 +23,11 @@
                 "name": "city",
                 "protocol": "ESRI",
                 "data": "https://maps.orcity.org/arcgis/rest/services/AddressPts_PUBLIC/MapServer/0",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Oregon City GIS",
+                    "presumed": true
+                },
                 "conform": {
                     "format": "geojson",
                     "number": "ADDRESS_Pts.HOUSENUM",
@@ -37,6 +42,37 @@
                     ],
                     "city": "ADDRESS_Pts.CITY",
                     "postcode": "ADDRESS_Pts.ZIP5"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://maps.orcity.org/arcgis/rest/services/Taxlots_PUBLIC/MapServer/0",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Oregon City GIS",
+                    "presumed": true
+                },
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MAPTAXLOT"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://maps.orcity.org/arcgis/rest/services/BuildingOutlines/MapServer/2",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Oregon City GIS",
+                    "presumed": true
+                },
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

@@ -1,8 +1,7 @@
-const tape = require('tape');
-const glob = require('glob');
-const fs = require('fs');
-const request = require('request');
-const OASchema = require('./lib');
+import tape from 'tape';
+import glob from 'glob';
+import fs from 'fs';
+import OASchema from './lib.js';
 
 let validate;
 tape('preflight', async (t) => {

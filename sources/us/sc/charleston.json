@@ -18,17 +18,14 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "FULL_HOUSE_NUM",
-                    "street": [
-                        "PRE_DIR",
-                        "ST_NAME",
-                        "ST_TYPE",
-                        "SUF_DIR"
-                    ],
-                    "unit": [
-                        "UNIT_TYPE",
-                        "UNIT"
-                    ],
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "WHOLE_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "WHOLE_ADDRESS"
+                    },
                     "city": "POSTAL_TOWN",
                     "postcode": "POSTAL_CODE",
                     "region": "POSTAL_STATE"

@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://mtbachelor.co.washington.or.us/arcgiswa2/rest/services/Intermap/Situs_address_WMAS/MapServer/0",
+                "data": "https://gispub.co.washington.or.us/server/rest/services/Intermap/Base_Layers/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -24,9 +24,24 @@
                         "STREET_NAME",
                         "STREET_TYPE"
                     ],
+                    "unit": [
+                        "UNIT_NUMBER",
+                        "UNIT_TYPE"
+                    ],
                     "city": "CITY",
                     "postcode": "ZIP",
                     "id": "TAXLOT"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gispub.co.washington.or.us/server/rest/services/Intermap/Base_Layers/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TLNO"
                 }
             }
         ]

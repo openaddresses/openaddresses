@@ -1,11 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const $RefParser = require('json-schema-ref-parser');
+import fs from 'fs';
+import $RefParser from 'json-schema-ref-parser';
+import Ajv from 'ajv';
+import addFormats from 'ajv-formats';
 
-const Ajv = require('ajv');
-const addFormats = require("ajv-formats")
+const GEOJSON = JSON.parse(fs.readFileSync(new URL('../schema/util/geojson.json', import.meta.url)));
 
-const GEOJSON = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../schema/util/geojson.json')));
 const base = {
     geojson: GEOJSON,
     schema: { }
@@ -16,18 +15,16 @@ const base = {
  *
  * @param {Boolean} [ajv=false] Optionally return AJV instance instead of compiled schema
  */
-class OASchema {
+export default class OASchema {
     static async compile(ajv) {
-        base.schema['2'] = await $RefParser.dereference(path.resolve(path.resolve(__dirname, '../schema/'), 'source_schema_v2.json'));
+        base.schema['2'] = await $RefParser.dereference(String(new URL('../schema/source_schema_v2.json', import.meta.url)));
         if (!ajv) return base;
 
         const ajvi = new Ajv({
             allErrors: true
         });
 
-        addFormats(ajvi)
+        addFormats(ajvi);
         return ajvi.compile(base.schema['2']);
     }
 }
-
-module.exports = OASchema;

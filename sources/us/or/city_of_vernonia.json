@@ -1,0 +1,66 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -122.193,
+                45.859
+            ]
+        },
+        "US Census": {
+            "geoid": "4177250",
+            "name": "City of Vernonia",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "city": "Vernonia"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gisportal.vernonia-or.gov/arcgis/rest/services/LandUse/Addresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "STRUCTNO",
+                        "STRUCTNOSU"
+                    ],
+                    "street": [
+                        "FDPRE",
+                        "FNAME",
+                        "FTYPE",
+                        "FDSUF"
+                    ],
+                    "unit": "UNIT",
+                    "city": "MAIL_CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gisportal.vernonia-or.gov/arcgis/rest/services/LandUse/Tax_Lots/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAXLOT_ID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gisportal.vernonia-or.gov/arcgis/rest/services/LandUse/Building_Footprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

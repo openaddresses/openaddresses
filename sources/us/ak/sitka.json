@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "0270540",
+            "name": "Sitka Borough",
+            "state": "Alaska"
+        },
+        "country": "us",
+        "state": "ak",
+        "county": "Sitka"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/EozEvrS4g3SEhtG3/ArcGIS/rest/services/Parcel_Layer/FeatureServer/0",
+                "website": "https://gis.data.alaska.gov/datasets/SOA-DNR::sitka-parcel-layer/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "id": "MSPARCELID",
+                    "format": "geojson",
+                    "number": "MSADD",
+                    "street": "MSSTREET"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/EozEvrS4g3SEhtG3/ArcGIS/rest/services/Parcel_Layer/FeatureServer/0",
+                "website": "https://gis.data.alaska.gov/datasets/SOA-DNR::sitka-parcel-layer/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MSPARCELID"
+                }
+            }
+        ]
+    }
+}
