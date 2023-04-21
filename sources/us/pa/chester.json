@@ -20,20 +20,28 @@
                     "email": "gis@chesco.org",
                     "address": "313 W. Market St, Suite 5302, West Chester, PA  19380"
                 },
-                "data": "https://services.arcgis.com/G4S1dGvn7PIgYd6Y/arcgis/rest/services/Address_Data_Points/FeatureServer/0",
+                "data": "https://gisprodops.chesco.org/server/rest/services/GIS_Services/CViews_OpLayers_D_GIS/MapServer/174",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ST_NUM",
+                    "number": [
+                        "ADDR_NUM_PREFIX",
+                        "ADDR_NUM",
+                        "ADDR_NUM_SUFFIX"
+                    ],
                     "street": [
-                        "DIR",
-                        "ST_NAME",
-                        "ST_TYPE"
+                        "ROAD_DIR_PREFIX",
+                        "ROAD_NAME",
+                        "ROAD_THORO_TYPE"
                     ],
                     "unit": [
-                        "UNIT",
-                        "UNIT_N"
-                    ]
+                        "UNIT_TYPE",
+                        "UNIT_ID"
+                    ],
+                    "city": "MUNI_NAME",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP_CODE_SITUS"
                 }
             }
         ]
