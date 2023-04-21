@@ -1,0 +1,52 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "41",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://maps.dsl.state.or.us/arcgis/rest/services/Hosted/Taxlots_OregonState_Offline/FeatureServer/0",
+                "website": "https://maps.dsl.state.or.us/portal/home/item.html?id=fb0d0bb0e55e48778343291908c319b3",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "siteaddnam"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "siteaddnam",
+                        "pattern": "^(?:[0-9]+(?:[A-Z]|[ -]1/2)?\\s+)(?:(?:(?:STE|UNIT|APT|BLDG)\\s+|#)(?:\\d+[A-Z]?|[A-Z]\\d*))?(.+?)(?:(,\\s)?(?:(?:STE|UNIT|APT|BLDG)\\s+|#)(?:\\d+[A-Z]?|[A-Z]\\d*))?$"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "siteaddnam",
+                        "pattern": "^(?:[0-9]+(?:[A-Z]|[ -]1/2)?\\s+)(((STE|UNIT|APT|BLDG)\\s+|#)(\\d+[A-Z]?|[A-Z]\\d*))?(?:.+?)((,\\s)?((STE|UNIT|APT|BLDG)\\s+|#)(\\d+[A-Z]?|[A-Z]\\d*))?$"
+                    },
+                    "city": "siteaddcty",
+                    "postcode": "sitezip",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://maps.dsl.state.or.us/arcgis/rest/services/Hosted/Taxlots_OregonState_Offline/FeatureServer/0",
+                "website": "https://maps.dsl.state.or.us/portal/home/item.html?id=fb0d0bb0e55e48778343291908c319b3",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "ortaxlot",
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

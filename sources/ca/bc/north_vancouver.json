@@ -17,22 +17,63 @@
             {
                 "name": "county",
                 "conform": {
-                    "format": "csv",
-                    "file": "BldAddress/BldAddress.csv",
-                    "lat": null,
-                    "lon": null,
+                    "format": "shapefile",
                     "id": "GlobalID",
                     "number": "HOUSE",
                     "street": "STREET",
                     "unit": "UNIT",
                     "city": "CITY",
+                    "region": "PROVINCE",
                     "postcode": "POST_CODE"
                 },
-                "data": "http://geoweb.dnv.org/Products/Data/CSV/BldAddress_CSV.zip",
+                "data": "https://github.com/openaddresses/openaddresses/files/10798027/BldAddress_shp.zip",
                 "website": "http://geoweb.dnv.org/data/",
-                "license": "http://geoweb.dnv.org/data/#legalModal",
-                "skip": true,
-                "note": "No location information included. Click Legal on website to get license.",
+                "license": {
+                    "url": "http://geoweb.dnv.org/data/#legalModal",
+                    "text": "Open Government License - District of North Vancouver 2.0",
+                    "attribution": true,
+                    "attribution name": "District of North Vancouver"
+                },
+                "note": "Address csv joined with building shapefile. Click Legal on website to get license.",
+                "protocol": "http",
+                "compression": "zip"
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "OBJECTID"
+                },
+                "data": "https://geoweb.dnv.org/Products/Data/SHP/CadParcels_shp.zip",
+                "website": "http://geoweb.dnv.org/data/",
+                "license": {
+                    "url": "http://geoweb.dnv.org/data/#legalModal",
+                    "text": "Open Government License - District of North Vancouver 2.0",
+                    "attribution": true,
+                    "attribution name": "District of North Vancouver"
+                },
+                "note": "Click Legal on website to get license.",
+                "protocol": "http",
+                "compression": "zip"
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "shapefile"
+                },
+                "data": "https://geoweb.dnv.org/Products/Data/SHP/BldBuilding_shp.zip",
+                "website": "http://geoweb.dnv.org/data/",
+                "license": {
+                    "url": "http://geoweb.dnv.org/data/#legalModal",
+                    "text": "Open Government License - District of North Vancouver 2.0",
+                    "attribution": true,
+                    "attribution name": "District of North Vancouver"
+                },
+                "note": "Click Legal on website to get license.",
                 "protocol": "http",
                 "compression": "zip"
             }

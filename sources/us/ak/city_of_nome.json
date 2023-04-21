@@ -1,0 +1,51 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "0254920",
+            "name": "City of Nome",
+            "state": "Alaska"
+        },
+        "country": "us",
+        "state": "ak",
+        "city": "Nome"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services9.arcgis.com/Oi9vFzXc8ZcONgM6/arcgis/rest/services/Nome_Street_Addresses/FeatureServer/0",
+                "website": "https://geohub-nome.hub.arcgis.com/datasets/8ce32abd5c454d6e905c1c74ce0d88a8_0/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUMBER",
+                    "street": [
+                        "SNAM_PREMOD",
+                        "SNAM_PREDIR",
+                        "SNAME",
+                        "SNAM_POSTYPE",
+                        "SNAM_POSDIR",
+                        "SNAM_POSMOD"
+                    ],
+                    "unit": [
+                        "SUB_ADD_TYPE",
+                        "SUB_ADD_ID"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services9.arcgis.com/Oi9vFzXc8ZcONgM6/ArcGIS/rest/services/Parcel_Taxroll_Joined/FeatureServer/0",
+                "website": "https://geohub-nome.hub.arcgis.com/datasets/df85add363a1448aba9a9298f45fee61_0/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "OBJECTID"
+                }
+            }
+        ]
+    }
+}
