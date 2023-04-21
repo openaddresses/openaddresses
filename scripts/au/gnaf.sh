@@ -14,7 +14,7 @@ echo "local	all	all			trust" > /etc/postgresql/14/main/pg_hba.conf
 echo "host	all	all	127.0.0.1/32	trust" >> /etc/postgresql/14/main/pg_hba.conf
 echo "host	all	all	::1/128		trust" >> /etc/postgresql/14/main/pg_hba.conf
 
-/etc/init.d/postgresql start 
+/etc/init.d/postgresql start
 sudo -u postgres psql -c "CREATE USER gnafun WITH SUPERUSER PASSWORD 'gnafpw'"
 sudo -u postgres psql -c "CREATE TABLESPACE gnafts OWNER gnafun LOCATION '$TMP/tablespace'"
 sudo -u postgres psql -c 'CREATE DATABASE gnafdb OWNER gnafun TABLESPACE gnafts'
