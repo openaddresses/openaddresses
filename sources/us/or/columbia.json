@@ -14,104 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "protocol": "ESRI",
-                "data": "https://gis.columbiacountymaps.com/server/rest/services/BaseData/Tax_Map/MapServer/5",
-                "conform": {
-                    "format": "geojson",
-                    "number": "PRIMARY_HO",
-                    "street": {
-                        "function": "regexp",
-                        "field": "PRIMARY_SI",
-                        "pattern": "^(?:[0-9]+\\s+)(.+?)(?:\\s+(?:\\d+[A-Z]?|[A-Z]\\d*))?(?:\\s+(?:BIRKENFIELD|CLATSKANIE|COLUMBIA CITY|DEER ISLAND|MIST|PRESCOTT|RAINIER|SCAPOOSSE|ST HELENS|VERNONIA|WARREN))?(?:\\s+OR)?(?:\\s+\\d+)?$"
-                    },
-                    "unit": {
-                        "function": "regexp",
-                        "field": "PRIMARY_SI",
-                        "pattern": "^(?:[0-9]+\\s+)(?:.+?)(?:\\s+(\\d+[A-Z]?|[A-Z]\\d*))?(?:\\s+(?:BIRKENFIELD|CLATSKANIE|COLUMBIA CITY|DEER ISLAND|MIST|PRESCOTT|RAINIER|SCAPOOSSE|ST HELENS|VERNONIA|WARREN))?(?:\\s+OR)?(?:\\s+\\d+)?$"
-                    },
-                    "city": {
-                        "function": "regexp",
-                        "field": "PRIMARY_SI",
-                        "pattern": "(BIRKENFIELD|CLATSKANIE|COLUMBIA CITY|DEER ISLAND|MIST|PRESCOTT|RAINIER|SCAPOOSSE|ST HELENS|VERNONIA|WARREN)\\s+OR\\b"
-                    },
-                    "region": {
-                        "function": "regexp",
-                        "field": "PRIMARY_SI",
-                        "pattern": "\\b(OR)\\b"
-                    },
-                    "postcode": {
-                        "function": "regexp",
-                        "field": "PRIMARY_SI",
-                        "pattern": "\\b(\\d{5}|\\d{9})$"
-                    }
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://github.com/openaddresses/openaddresses/files/10830161/taxlotSitusJoined.zip",
+                "website": "https://www.columbiacountyor.gov/departments/Assessor/CartographyandGeographicInformationSystem",
+                "note": "Situs dbf joined with taxlot shapefile from https://www.columbiacountyor.gov/media/Assessor/GIS%20Data/Tax23/Tax23.zip",
+                "license": {
+                    "url": "https://www.columbiacountyor.gov/media/Assessor/GIS%20Data/Columbia_County_GIS_Data_File_User_License_Agreement.pdf",
+                    "text": "Indemnification"
                 },
-                "test": {
-                    "enabled": true,
-                    "description": "Columbia County addresses are just all fields concatenated without delimiters so the regexes are messy",
-                    "acceptance-tests": [
-                        {
-                            "description": "plain address with number, street, city, region, and postcode",
-                            "inputs": {
-                                "PRIMARY_SI": "1945 THE STRAND COLUMBIA CITY OR 97018"
-                            },
-                            "expected": {
-                                "street": "THE STRAND",
-                                "city": "COLUMBIA CITY",
-                                "region": "OR",
-                                "postcode": "97018"
-                            }
-                        },
-                        {
-                            "description": "plain address with number, street, city, region, and postcode",
-                            "inputs": {
-                                "PRIMARY_SI": "333 B ST VERNONIA OR 97064"
-                            },
-                            "expected": {
-                                "street": "B ST",
-                                "city": "VERNONIA",
-                                "region": "OR",
-                                "postcode": "97064"
-                            }
-                        },
-                        {
-                            "description": "plain address with number, numeric street, city, region, and postcode",
-                            "inputs": {
-                                "PRIMARY_SI": "135 S 1ST ST ST HELENS OR 97051"
-                            },
-                            "expected": {
-                                "street": "S 1ST ST",
-                                "city": "ST HELENS",
-                                "region": "OR",
-                                "postcode": "97051"
-                            }
-                        },
-                        {
-                            "description": "address with number, street, numeric unit, city, region, and postcode",
-                            "inputs": {
-                                "PRIMARY_SI": "209 W A ST 3 RAINIER OR 97048"
-                            },
-                            "expected": {
-                                "street": "W A ST",
-                                "unit": "3",
-                                "city": "RAINIER",
-                                "region": "OR",
-                                "postcode": "97048"
-                            }
-                        },
-                        {
-                            "description": "address with number, street, alpha+numeric unit, city, region, and postcode",
-                            "inputs": {
-                                "PRIMARY_SI": "255 N 18TH ST C6 ST HELENS OR 97051"
-                            },
-                            "expected": {
-                                "street": "N 18TH ST",
-                                "unit": "C6",
-                                "city": "ST HELENS",
-                                "region": "OR",
-                                "postcode": "97051"
-                            }
-                        }
-                    ]
+                "conform": {
+                    "format": "shapefile",
+                    "number": "HOUSE_NUMB",
+                    "street": [
+                        "PRE_DIR",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "POST_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
                 }
             }
         ],
@@ -120,6 +46,11 @@
                 "name": "county",
                 "protocol": "ESRI",
                 "data": "https://gis.columbiacountymaps.com/server/rest/services/BaseData/Tax_Map/FeatureServer/0",
+                "website": "https://www.columbiacountyor.gov/departments/Assessor/CartographyandGeographicInformationSystem",
+                "license": {
+                    "url": "https://www.columbiacountyor.gov/media/Assessor/GIS%20Data/Columbia_County_GIS_Data_File_User_License_Agreement.pdf",
+                    "text": "Indemnification"
+                },
                 "conform": {
                     "format": "geojson",
                     "pid": "MapTaxlot"

@@ -16,24 +16,38 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services1.arcgis.com/SsOSFuyUWJh1AOU5/ArcGIS/rest/services/All_EK_AddressPnt/FeatureServer/0",
-                "website": "https://opendata.arcgis.com/datasets/RDEK::tax-parcels",
+                "data": "https://services1.arcgis.com/SsOSFuyUWJh1AOU5/ArcGIS/rest/services/Civic_Address_Points/FeatureServer/0",
+                "website": "https://data3-ca5c0-rdek.opendata.arcgis.com/datasets/RDEK::civic-address-points/about",
                 "license": {
-                    "url": "https://www.arcgis.com/home/item.html?id=af8e118e05d943ae9b07569f225c2ee9#overview",
-                    "text": "Contains information licensed under the Open Government License – Regional District of East Kootenay",
+                    "text": "Open Government License – Regional District of East Kootenay",
                     "attribution": true,
+                    "attribution name": "Regional District of East Kootenay",
                     "share-alike": false
                 },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "House_",
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "FullAddres"
-                    },
-                    "unit": "Unit",
-                    "city": "Locality"
+                    "number": "TextString",
+                    "street": "STREET",
+                    "unit": "Unit_Number"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/SsOSFuyUWJh1AOU5/arcgis/rest/services/Legal_Parcels/FeatureServer/0",
+                "website": "https://data3-ca5c0-rdek.opendata.arcgis.com/datasets/RDEK::legal-parcels/about",
+                "license": {
+                    "text": "Open Government License – Regional District of East Kootenay",
+                    "attribution": true,
+                    "attribution name": "Regional District of East Kootenay",
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
                 }
             }
         ]
