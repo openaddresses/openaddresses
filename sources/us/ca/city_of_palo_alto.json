@@ -22,18 +22,41 @@
             {
                 "name": "city",
                 "attribution": "City of Palo Alto",
-                "data": "http://openaddresses.s3.amazonaws.com/manual/Palo%20Alto%20Location.csv",
-                "website": "http://www.cityofpaloalto.org/gov/depts/it/open_data/terms_of_use.asp",
-                "protocol": "http",
+                "data": "https://services6.arcgis.com/evmyRZRrsopdeog7/ArcGIS/rest/services/StreetAddressData/FeatureServer/0",
+                "website": "https://opengis.cityofpaloalto.org/OpenGisData/",
+                "protocol": "ESRI",
                 "conform": {
-                    "lon": "LONGITUDE",
-                    "lat": "LATITUDE",
-                    "number": "SNO",
-                    "street": "STREET_NAME",
-                    "postcode": "SZIP",
-                    "format": "csv",
-                    "headers": 2,
-                    "skiplines": 2
+                    "format": "geojson",
+                    "number": "ADDRESSNUMBER",
+                    "unit": "UNITNUMBER",
+                    "street": "STREETID",
+                    "city": "JURISDICTION",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "attribution": "City of Palo Alto",
+                "data": "https://services6.arcgis.com/evmyRZRrsopdeog7/ArcGIS/rest/services/AssessorsParcels/FeatureServer/0",
+                "website": "https://opengis.cityofpaloalto.org/OpenGisData/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "attribution": "City of Palo Alto",
+                "data": "https://services6.arcgis.com/evmyRZRrsopdeog7/ArcGIS/rest/services/BuildingRoofOutLine/FeatureServer/0",
+                "website": "https://opengis.cityofpaloalto.org/OpenGisData/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
