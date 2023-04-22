@@ -22,19 +22,23 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://services1.arcgis.com/bF44QtfoYZDGo7TK/arcgis/rest/services/AddressesPublic/FeatureServer/0",
+                "data": "https://services1.arcgis.com/bF44QtfoYZDGo7TK/ArcGIS/rest/services/Addresses/FeatureServer/0",
                 "website": "https://rcdata-regis.opendata.arcgis.com/datasets/REGIS::addresses-1/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ST_NUM",
-                    "street": [
-                        "ST_NAME",
-                        "ST_SUFF"
+                    "number": [
+                        "StreetNumber",
+                        "StreetNumberFractional"
                     ],
-                    "unit": "UNIT",
-                    "city": "CITY",
-                    "postcode": "ZIP"
+                    "street": [
+                        "StreetName",
+                        "StreetSuffix"
+                    ],
+                    "unit": "Unit",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zipcode"
                 }
             }
         ],
