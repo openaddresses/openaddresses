@@ -1,7 +1,7 @@
 <h1 align="center">OpenAddresses</h1>
 
 <p align="center">
-  <a href="https://circleci.com/gh/openaddresses/openaddresses"><img src="https://circleci.com/gh/openaddresses/openaddresses.svg?style=shield"/></a>
+  <a href="https://results.pre-commit.ci/latest/github/openaddresses/openaddresses/master"><img src="https://results.pre-commit.ci/badge/github/openaddresses/openaddresses/master.svg"/></a>
 </p>
 
 ## Brief
