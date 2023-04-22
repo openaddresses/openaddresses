@@ -9,14 +9,45 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://gis.cityoflagunaniguel.org:6080/arcgis/rest/services/AddressPoints4/MapServer/0",
+                "data": "https://maps.cityoflagunaniguel.org/hosting/rest/services/Hosted/Parcels_Address_Points_View/FeatureServer/1",
+                "license": {
+                    "url": "https://www.cityoflagunaniguel.org/705/Maps"
+                },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "unit": "UNIT",
-                    "number": "STNUM",
-                    "street": "NAMESUFF",
-                    "postcode": "SITEZIP"
+                    "unit": "unit",
+                    "number": "stnum",
+                    "street": {
+                        "function": "chain",
+                        "variable": "street_wip",
+                        "functions": [
+                            {
+                                "function": "postfixed_street",
+                                "field": "siteaddres"
+                            },
+                            {
+                                "function": "remove_postfix",
+                                "field": "street_wip",
+                                "field_to_remove": "unit"
+                            }
+                        ]
+                    },
+                    "postcode": "sitezip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://maps.cityoflagunaniguel.org/hosting/rest/services/Hosted/Parcels_Address_Points_View/FeatureServer/0",
+                "license": {
+                    "url": "https://www.cityoflagunaniguel.org/705/Maps"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcel"
                 }
             }
         ]
