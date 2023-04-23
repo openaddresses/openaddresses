@@ -12,26 +12,62 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://dit-cgia-gis-data.s3.amazonaws.com/NCOM-data/parcels/NC_Parcels_fgdb.zip",
-                "website": "https://www.nconemap.gov",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services.nconemap.gov/secure/rest/services/AddressNC/NC1Map_Addresses/MapServer/1",
+                "website": "https://www.nconemap.gov/datasets/nconemap::nc-onemap-addresses-addressnc/about",
+                "license": {
+                    "url": "https://www.nconemap.gov/pages/terms"
+                },
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "gdb",
-                    "layer": "nc_parcels_pt",
-                    "file": "NC_parcels_all.gdb",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "SITEADD"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "SITEADD"
-                    },
-                    "unit": "SUNIT",
-                    "city": "SCITY",
-                    "postcode": "SZIP",
-                    "district": "CNTYNAME"
+                    "format": "geojson",
+                    "number": [
+                        "add_number",
+                        "addnum_suffix"
+                    ],
+                    "street": [
+                        "st_predir",
+                        "st_premod",
+                        "st_presep",
+                        "st_pretyp",
+                        "st_name",
+                        "st_posdir",
+                        "st_posmod",
+                        "st_postyp"
+                    ],
+                    "unit": "unit",
+                    "city": "post_comm",
+                    "region": "state",
+                    "postcode": "post_code",
+                    "district": "county"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://services.nconemap.gov/secure/rest/services/NC1Map_Parcels/MapServer/1",
+                "website": "https://www.nconemap.gov/datasets/nconemap::north-carolina-parcels-polygons/about",
+                "license": {
+                    "url": "https://www.nconemap.gov/pages/terms"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parno"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "state",
+                "data": "https://services1.arcgis.com/YBWrN5qiESVpqi92/ArcGIS/rest/services/NC_Risk_Building_Footprints/FeatureServer/0",
+                "website": "https://www.nconemap.gov/datasets/NCEM-GIS::nc-buildings-footprints-2010/about",
+                "license": {
+                    "url": "https://www.nconemap.gov/pages/terms"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
