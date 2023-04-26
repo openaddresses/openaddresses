@@ -9,45 +9,45 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://maps.cityoflagunaniguel.org/hosting/rest/services/Hosted/Parcels_Address_Points/FeatureServer/1",
+                "data": "https://gis.cityoflagunaniguel.org:6443/arcgis/rest/services/Parcels_Address_Points/MapServer/1",
                 "license": {
                     "url": "https://www.cityoflagunaniguel.org/705/Maps"
                 },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "unit": "unit",
-                    "number": "stnum",
+                    "unit": "UNIT",
+                    "number": "STNUM",
                     "street": {
                         "function": "chain",
                         "variable": "street_wip",
                         "functions": [
                             {
                                 "function": "postfixed_street",
-                                "field": "siteaddres"
+                                "field": "SITEADDRESS"
                             },
                             {
                                 "function": "remove_postfix",
-                                "field": "oa:street_wip",
-                                "field_to_remove": "unit"
+                                "field": "street_wip",
+                                "field_to_remove": "UNIT"
                             }
                         ]
                     },
-                    "postcode": "sitezip"
+                    "postcode": "SITEZIP"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "city",
-                "data": "https://maps.cityoflagunaniguel.org/hosting/rest/services/Hosted/Parcels_Address_Points/FeatureServer/0",
+                "data": "https://gis.cityoflagunaniguel.org:6443/arcgis/rest/services/Parcels_Address_Points/MapServer/0",
                 "license": {
                     "url": "https://www.cityoflagunaniguel.org/705/Maps"
                 },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "parcel"
+                    "pid": "PARCEL"
                 }
             }
         ]
