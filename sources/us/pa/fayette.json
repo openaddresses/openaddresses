@@ -14,18 +14,18 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://fayettemaps.rba.com:8080/geoserver/fayette/ows?service=WFS&version=1.1.1&request=GetFeature&typename=fayette:ParcelsPolygon&outputFormat=json",
+                "data": "http://fayettemaps.rba.com:8080/geoserver/fayette/ows?service=WFS&version=1.1.1&request=GetFeature&typename=fayette:ParcelsPolygon&outputFormat=shape-zip",
                 "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "shapefile",
                     "accuracy": 2,
                     "number": "ADDR_PHYSI",
                     "street": [
                         "ADDR_PHY_1",
                         "ADDR_PHY_2"
                     ],
-                    "postcode": "ZIP1",
-                    "srs": "EPSG:3857"
+                    "postcode": "ZIP1"
                 }
             }
         ]
