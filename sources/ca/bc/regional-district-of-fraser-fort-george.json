@@ -1,0 +1,56 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "county": "Fraser-Fort George",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -127.57,
+                50.6
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://geo.rdffg.bc.ca/arcgis/rest/services/GEO/combined_operational/MapServer/5",
+                "note": "Includes addresses for Regonial District of Bulkley–Nechako and Regional District of Fraser-Fort George",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": [
+                        "streetno",
+                        "housesuf"
+                    ],
+                    "street": [
+                        "prefix",
+                        "strname",
+                        "strtype",
+                        "suffix"
+                    ],
+                    "unit": [
+                        "suite"
+                    ],
+                    "city": "comm",
+                    "region": "prov"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://geo.rdffg.bc.ca/arcgis/rest/services/GEO/combined_operational/MapServer/9",
+                "note": "Includes parcels for Regonial District of Bulkley–Nechako and Regional District of Fraser-Fort George",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pid"
+                }
+            }
+        ]
+    }
+}
