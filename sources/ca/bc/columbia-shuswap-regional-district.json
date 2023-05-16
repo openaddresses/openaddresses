@@ -1,0 +1,68 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "county": "Columbia-Shuswap",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -117.67,
+                51.42
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/wjH30HL7rqC55zVw/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://data-csrd.opendata.arcgis.com/datasets/CSRD::address-points-2/about",
+                "license": {
+                    "url": "https://web.csrd.bc.ca/docs/Open_Data_Disclaimer_CSRD.pdf",
+                    "text": "Open Government License - Columbia Shuswap Regional District 1.0",
+                    "attribution": true,
+                    "attribution name": "Columbia Shuswap Regional District",
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": [
+                        "Street_Number_Prefix",
+                        "Street_Number",
+                        "Street_Number_Suffix"
+                    ],
+                    "street": [
+                        "Street_Dir_Prefix",
+                        "Street_Name",
+                        "Street_Type",
+                        "Street_Dir_Suffix"
+                    ],
+                    "unit": [
+                        "APT_BAY"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://web.csrd.bc.ca/gis/rest/services/Public/Property/FeatureServer/0",
+                "website": "https://data-csrd.opendata.arcgis.com/datasets/CSRD::property/about",
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC0 1.0",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ]
+    }
+}
