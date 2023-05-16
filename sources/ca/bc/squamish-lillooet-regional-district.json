@@ -1,0 +1,45 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "county": "Squamish-Lillooet",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -123,
+                50.5
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/aF3ZUD9208OCMdvg/ArcGIS/rest/services/SLRD_ADDRESSES/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": "StrNo",
+                    "street": [
+                        "Str_Name",
+                        "Str_Type",
+                        "Str_Type"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/aF3ZUD9208OCMdvg/ArcGIS/rest/services/pmbc_public/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ]
+    }
+}
