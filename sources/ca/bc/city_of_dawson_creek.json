@@ -1,0 +1,53 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "city": "Dawson Creek",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -127.57,
+                50.6
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.dawsoncreek.ca/ags/rest/services/SDE_2017_Web_Map/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": [
+                        "STR_NO_PRE",
+                        "STR_NO",
+                        "STR_NO_SUF"
+                    ],
+                    "street": [
+                        "STR_DR_PRE",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "STR_DR_SUF"
+                    ],
+                    "city": "LOCALITY",
+                    "region": "PROVINCE",
+                    "postcode": "POST_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://maps.dawsoncreek.ca/ags/rest/services/SDE_2017_Web_Map/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ]
+    }
+}
