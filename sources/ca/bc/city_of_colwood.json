@@ -1,0 +1,51 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "city": "Colwood",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -127.57,
+                50.6
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services3.arcgis.com/MLf7r3NQY1Pb8feC/ArcGIS/rest/services/mapAddress/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": [
+                        "STREET_NUMBER_PREFIX",
+                        "STREET_NUMBER",
+                        "STREET_NUMBER_SUFFIX"
+                    ],
+                    "street": [
+                        "STREET_DIR_PREFIX",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "STREET_DIR_SUFFIX"
+                    ],
+                    "city": "LOCALITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services3.arcgis.com/MLf7r3NQY1Pb8feC/ArcGIS/rest/services/mapParcel/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ]
+    }
+}
