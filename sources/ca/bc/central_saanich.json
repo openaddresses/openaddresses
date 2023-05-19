@@ -1,0 +1,53 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "county": "Central Saanich",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -123.38,
+                48.51
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.csaanich.ca/arcgis/rest/services/PublicWebMap_HR/MapServer/9",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "PID",
+                    "number": "HOUSE",
+                    "street": "STREET",
+                    "unit": "UNIT",
+                    "city": "CITY"
+                }
+            }
+        ],
+        "parcels": [
+           {
+               "name": "city",
+               "data": "https://maps.csaanich.ca/arcgis/rest/services/PublicWebMap_HR/MapServer/9",
+               "protocol": "ESRI",
+               "conform": {
+                   "format": "geojson",
+                   "pid": "PID"
+               }
+           }
+       ],
+       "buildings": [
+        {
+            "name": "city",
+            "data": "https://maps.csaanich.ca/arcgis/rest/services/PublicWebMap_HR/MapServer/14",
+            "protocol": "ESRI",
+            "conform": {
+                "format": "geojson"
+            }
+        }
+    ]
+    }
+}
