@@ -15,13 +15,12 @@
             {
                 "name": "county",
                 "attribution": "Citrus County",
-                "data": "http://ftp.citrusbocc.com/GIS/website/data/ADDRESS_POINTS.zip",
+                "data": "https://citrusbocc.sharepoint.com/_layouts/15/download.aspx?SourceUrl=%2FShared%20Documents%2FDataDownloads%2FAddressPoints%2Ezip",
                 "website": "https://gis.citrusbocc.com/data-downloads.html",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
                     "format": "shapefile",
-                    "file": "Address_Point_Export_For_FTP.shp",
                     "number": "STNO",
                     "street": [
                         "PREDIR",
@@ -37,6 +36,20 @@
                         "field": "ZIP",
                         "pattern": "^(\\d+)"
                     }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Citrus County",
+                "data": "https://citrusbocc.sharepoint.com/_layouts/15/download.aspx?SourceUrl=%2FShared%20Documents%2FDataDownloads%2FLots%2Ezip",
+                "website": "https://gis.citrusbocc.com/data-downloads.html",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "LOTID"
                 }
             }
         ]
