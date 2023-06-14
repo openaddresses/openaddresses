@@ -14,26 +14,37 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.okaloosafl.com/gisdata/Property_Appraiser/Shapefiles/parcel.zip",
+                "data": "https://gis.myokaloosa.com/gisdata/Shape%20Files/Transportation/Transportation.zip",
+                "website": "https://myokaloosa.com/gis_data",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "number": {
-                        "field": "HOUSE_NO",
-                        "function": "regexp",
-                        "pattern": "^([0-9]+)",
-                        "replace": "$1"
-                    },
+                    "number": "PAN",
                     "street": [
-                        "STREET",
-                        "ST_MD",
-                        "ST_DIR"
+                        "PREDIR",
+                        "NAME",
+                        "TYPE",
+                        "SUFDIR"
                     ],
                     "unit": "ST_UNIT",
-                    "city": "ST_CITY",
-                    "postcode": "ST_ZIP5",
+                    "city": "ZIP_CITY",
+                    "postcode": "ZIP",
                     "format": "shapefile",
-                    "file": "Public_Data/public.shp"
+                    "file": "rdspt.shp"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.myokaloosa.com/gisdata/Property_Appraiser/Shapefiles/parcel.zip",
+                "website": "https://myokaloosa.com/gis_data",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "public.shp",
+                    "pid": "PIN"
                 }
             }
         ]
