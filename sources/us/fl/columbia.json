@@ -1,0 +1,59 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "12023",
+            "name": "Columbia County",
+            "state": "Florida"
+        },
+        "country": "us",
+        "state": "fl",
+        "county": "Columbia"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Columbia County",
+                "data": "https://gis.columbiacountyfla.com/hosting/rest/services/Addresses/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "house": "HouseNo",
+                    "unit": [
+                        "UnitType",
+                        "UnitID"
+                    ],
+                    "street": "RoadName",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "ZipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Columbia County",
+                "data": "https://gis.columbiacountyfla.com/hosting/rest/services/Parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Collier County",
+                "data": "https://services1.arcgis.com/0iTcFO8FQRNaWoIk/arcgis/rest/services/Buildings_Collier_County_2021/FeatureServer/0",
+                "website": "https://hub-collierbcc.opendata.arcgis.com/datasets/CollierBCC::buildings-collier-county-2021/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}
