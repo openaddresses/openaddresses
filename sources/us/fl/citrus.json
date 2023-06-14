@@ -15,27 +15,30 @@
             {
                 "name": "county",
                 "attribution": "Citrus County",
-                "data": "https://citrusbocc.sharepoint.com/_layouts/15/download.aspx?SourceUrl=%2FShared%20Documents%2FDataDownloads%2FAddressPoints%2Ezip",
+                "data": "https://maps.citrusbocc.com/server/rest/services/PublicData/GeneralParcel/MapServer/41",
                 "website": "https://gis.citrusbocc.com/data-downloads.html",
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "number": "STNO",
+                    "format": "geojson",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
                     "street": [
-                        "PREDIR",
-                        "STNAME",
-                        "SUFFIX",
-                        "POSTDIR"
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
                     ],
                     "unit": "STSUB",
-                    "city": "CITY",
-                    "region": "STATE",
-                    "postcode": {
-                        "function": "regexp",
-                        "field": "ZIP",
-                        "pattern": "^(\\d+)"
-                    }
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "postcode": "Post_Code"
                 }
             }
         ],
@@ -43,12 +46,11 @@
             {
                 "name": "county",
                 "attribution": "Citrus County",
-                "data": "https://citrusbocc.sharepoint.com/_layouts/15/download.aspx?SourceUrl=%2FShared%20Documents%2FDataDownloads%2FLots%2Ezip",
+                "data": "https://maps.citrusbocc.com/server/rest/services/PublicData/GeneralParcel/MapServer/43",
                 "website": "https://gis.citrusbocc.com/data-downloads.html",
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "pid": "LOTID"
                 }
             }
