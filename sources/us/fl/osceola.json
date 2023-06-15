@@ -14,14 +14,27 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/us-fl-osceola.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://gis.osceola.org/hosting/rest/services/Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
                     "number": "NUMB",
                     "street": "STREET",
+                    "unit": "UNIT",
+                    "city": "City",
+                    "region": "State",
                     "postcode": "ZIP",
-                    "format": "shapefile"
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.osceola.org/hosting/rest/services/Parcels/FeatureServer/30",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCELNO",
+                    "format": "geojson"
                 }
             }
         ]
