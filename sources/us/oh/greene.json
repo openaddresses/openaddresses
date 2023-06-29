@@ -9,21 +9,29 @@
         "state": "oh",
         "county": "Greene"
     },
-    "data": "https://gis.co.greene.oh.us/gcags/rest/services/OpenData/OpenData/MapServer/5",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-          "ST_PREFIX",
-          "ST_NAME",
-          "ST_TYPE",
-          "ST_SUFFIX"
-        ],
-        "unit": "UNITNUM",
-        "city": "MUNI",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.greene.oh.us/gcags/rest/services/OpenData/OpenData/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX"
+                    ],
+                    "unit": "UNITNUM",
+                    "city": "MUNI",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

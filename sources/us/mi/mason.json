@@ -1,36 +1,48 @@
 {
     "coverage": {
-        "US Census": {"geoid": "26105", "name": "Mason County", "state": "Michigan"},
+        "US Census": {
+            "geoid": "26105",
+            "name": "Mason County",
+            "state": "Michigan"
+        },
         "country": "us",
         "state": "mi",
         "county": "Mason"
     },
-    "note": "Obtained via FOIA request - ingalls - 2017/11",
-    "data": "https://data.openaddresses.io/cache/uploads/ingalls/us-mi-mason.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile-polygon",
-        "id": "Parcel",
-        "number": {
-            "function": "prefixed_number",
-            "field": "PropStreet"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "PropStreet"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "PropCitySt",
-            "pattern": "(.*),.*",
-            "replace": "$1"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "PropCitySt",
-            "pattern": ".*([0-9]{5})$",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "note": "Obtained via FOIA request - ingalls - 2017/11",
+                "data": "https://data.openaddresses.io/cache/uploads/ingalls/us-mi-mason.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile-polygon",
+                    "id": "Parcel",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PropStreet"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PropStreet"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "PropCitySt",
+                        "pattern": "(.*),.*",
+                        "replace": "$1"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "PropCitySt",
+                        "pattern": ".*([0-9]{5})$",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }

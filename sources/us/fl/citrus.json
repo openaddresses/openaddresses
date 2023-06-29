@@ -9,28 +9,51 @@
         "state": "fl",
         "county": "Citrus"
     },
-    "attribution": "Citrus County",
-    "data": "http://ftp.citrusbocc.com/GIS/website/data/ADDRESS_POINTS.zip",
-    "website": "https://gis.citrusbocc.com/data-downloads.html",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "file": "Address_Point_Export_For_FTP.shp",
-        "number": "STNO",
-        "street": [
-            "PREDIR",
-            "STNAME",
-            "SUFFIX",
-            "POSTDIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Citrus County",
+                "data": "https://maps.citrusbocc.com/server/rest/services/PublicData/GeneralParcel/MapServer/41",
+                "website": "https://gis.citrusbocc.com/data-downloads.html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "STSUB",
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "postcode": "Post_Code"
+                }
+            }
         ],
-        "unit": "STSUB",
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": {
-            "function": "regexp",
-            "field": "ZIP",
-            "pattern": "^(\\d+)"
-        }
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Citrus County",
+                "data": "https://maps.citrusbocc.com/server/rest/services/PublicData/GeneralParcel/MapServer/43",
+                "website": "https://gis.citrusbocc.com/data-downloads.html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "LOTID"
+                }
+            }
+        ]
     }
 }

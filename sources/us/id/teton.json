@@ -9,119 +9,47 @@
         "state": "id",
         "county": "Teton"
     },
-    "data": "http://www.co.teton.id.us/arcgis/rest/services/ADDRESS/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "ADDRESSID",
-        "number": "HOUSENUMBER",
-        "street": {
-            "function": "regexp",
-            "field": "LABELNAME",
-            "pattern": "^(?:[0-9]+ )(.+?)(?:\\s+(?:UNIT\\s+|Unit\\s+|#).+)?$"
-        },
-        "unit": "SUB_UNIT",
-        "city": "COMMUNITY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
-    },
-    "test": {
-        "enabled": true,
-        "description": "these are the tests that extract units from combined street+unit field",
-        "acceptance-tests": [
-          {
-              "description": "no unit number",
-              "inputs": {
-                  "HOUSENUMBER": "10290",
-                  "LABELNAME": "10290 Woolstenhulme Way",
-                  "SUB_UNIT": "",
-                  "COMMUNITY": "Victor",
-                  "STATE": "ID",
-                  "ZIPCODE": "83455"
-              },
-              "expected": {
-                  "number": "10290",
-                  "street": "Woolstenhulme Way",
-                  "unit": "",
-                  "city": "Victor",
-                  "region": "ID",
-                  "postcode": "83455"
-              }
-          },
-          {
-              "description": "# unit number w/alpha-only",
-              "inputs": {
-                  "HOUSENUMBER": "7",
-                  "LABELNAME": "7 S 1st St #C",
-                  "SUB_UNIT": "C",
-                  "COMMUNITY": "Driggs",
-                  "STATE": "ID",
-                  "ZIPCODE": "83422"
-              },
-              "expected": {
-                  "number": "7",
-                  "street": "S 1st St",
-                  "unit": "C",
-                  "city": "Driggs",
-                  "region": "ID",
-                  "postcode": "83422"
-              }
-          },
-          {
-              "description": "# unit number w/alphanum",
-              "inputs": {
-                  "HOUSENUMBER": "253",
-                  "LABELNAME": "253 Warbird Ln  #L-3",
-                  "SUB_UNIT": "L-3",
-                  "COMMUNITY": "Driggs",
-                  "STATE": "ID",
-                  "ZIPCODE": "83422"
-              },
-              "expected": {
-                  "number": "253",
-                  "street": "Warbird Ln",
-                  "unit": "L-3",
-                  "city": "Driggs",
-                  "region": "ID",
-                  "postcode": "83422"
-              }
-          },
-          {
-                "description": "unit w/o #-delimiter ",
-                "inputs": {
-                    "HOUSENUMBER": "9495",
-                    "LABELNAME": "9495 River Rim Ranch Rd  Unit 9",
-                    "SUB_UNIT": "9",
-                    "COMMUNITY": "Tetonia",
-                    "STATE": "ID",
-                    "ZIPCODE": "83452"
-                },
-                "expected": {
-                    "number": "9495",
-                    "street": "River Rim Ranch Rd",
-                    "unit": "9",
-                    "city": "Tetonia",
-                    "region": "ID",
-                    "postcode": "83452"
-                }
-            },
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "embedded unit w/'UNIT' and '#'",
-                "inputs": {
-                    "HOUSENUMBER": "677",
-                    "LABELNAME": "677 Buffalo Junction Lp  UNIT #8",
-                    "SUB_UNIT": "8",
-                    "COMMUNITY": "Driggs",
-                    "STATE": "ID",
-                    "ZIPCODE": "83422"
-                },
-                "expected": {
-                    "number": "677",
-                    "street": "Buffalo Junction Lp",
-                    "unit": "8",
-                    "city": "Driggs",
-                    "region": "ID",
-                    "postcode": "83422"
+                "name": "county",
+                "data": "https://gisserver18.co.teton.id.us/arcgis/rest/services/ADDRESS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDRESSID",
+                    "number": "HOUSENUMBER",
+                    "street": {
+                        "function": "regexp",
+                        "field": "LABELNAME",
+                        "pattern": "^(?:[0-9]+ )(.+?)(?:\\s+(?:UNIT\\s+|Unit\\s+|#).+)?$"
+                    },
+                    "unit": "SUB_UNIT",
+                    "city": "COMMUNITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisserver18.co.teton.id.us/arcgis/rest/services/BUILDING_FOOTPRINTS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisserver18.co.teton.id.us/arcgis/rest/services/PARCELS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

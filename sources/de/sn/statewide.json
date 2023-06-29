@@ -1,35 +1,48 @@
 {
-  "coverage": {
-    "country": "de",
-    "state": "sn",
-    "ISO 3166": { "alpha2": "DE-SN" }
-  },
-  "data": "https://geocloud.landesvermessung.sachsen.de/index.php/s/hKqYp2n29FltMF2/download?path=%2F&files=hk_sn_ascii.zip",
-  "website": "https://www.geodaten.sachsen.de/downloadbereich-hauskoordinaten-4172.html",
-  "protocol": "http",
-  "compression": "zip",
-  "license": {
-    "text": "dl-de/by-2-0",
-    "url": "https://www.govdata.de/dl-de/by-2-0",
-    "attribution": true,
-    "attribution name": "Staatsbetrieb Geobasisinformation und Vermessung Sachsen"
-  },
-  "conform": {
-    "format": "csv",
-    "csvsplit": ";",
-    "headers": -1,
-    "file": "adressen.txt",
-    "srs": "EPSG:25833",
-    "street": "COLUMN14",
-    "postcode": "COLUMN15",
-    "city": {
-      "function": "format",
-      "fields": [ "COLUMN16", "COLUMN17" ],
-      "format": "$1 $2"
+    "coverage": {
+        "country": "de",
+        "state": "sn",
+        "ISO 3166": {
+            "alpha2": "DE-SN"
+        }
     },
-    "number": "COLUMN10",
-    "unit": "COLUMN11",
-    "lat": "COLUMN13",
-    "lon": "COLUMN12"
-  }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://geocloud.landesvermessung.sachsen.de/index.php/s/hKqYp2n29FltMF2/download?path=%2F&files=hk_sn_ascii.zip",
+                "website": "https://www.geodaten.sachsen.de/downloadbereich-hauskoordinaten-4172.html",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "text": "dl-de/by-2-0",
+                    "url": "https://www.govdata.de/dl-de/by-2-0",
+                    "attribution": true,
+                    "attribution name": "Staatsbetrieb Geobasisinformation und Vermessung Sachsen"
+                },
+                "conform": {
+                    "format": "csv",
+                    "csvsplit": ";",
+                    "headers": -1,
+                    "file": "adressen.txt",
+                    "srs": "EPSG:25833",
+                    "street": "COLUMN14",
+                    "postcode": "COLUMN15",
+                    "city": {
+                        "function": "format",
+                        "fields": [
+                            "COLUMN16",
+                            "COLUMN17"
+                        ],
+                        "format": "$1 $2"
+                    },
+                    "number": "COLUMN10",
+                    "unit": "COLUMN11",
+                    "lat": "COLUMN13",
+                    "lon": "COLUMN12"
+                }
+            }
+        ]
+    }
 }

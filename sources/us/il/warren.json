@@ -1,28 +1,40 @@
 {
     "coverage": {
-        "US Census": {"geoid": "17187", "name": "Warren County", "state": "Illinois"},
+        "US Census": {
+            "geoid": "17187",
+            "name": "Warren County",
+            "state": "Illinois"
+        },
         "country": "us",
         "state": "il",
         "county": "Warren"
     },
-    "data": "https://services9.arcgis.com/RIfeUk3WiZQO2Wv1/ArcGIS/rest/services/parcels/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "unit": "SitusUnitNumber",
-        "number": [
-            "SitusStreetNumber",
-            "SitusStreetNumberSuffix"
-        ],
-        "street": [
-            "SitusStreetDirPrefix",
-            "SitusStreetTypePrefix",
-            "SitusStreetName",
-            "SitusStreetTypeSuffix",
-            "SitusStreetDirSuffix"
-        ],
-        "city": "SitusCity",
-        "region": "SitusState",
-        "postcode": "SitusPostalCode",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services9.arcgis.com/RIfeUk3WiZQO2Wv1/ArcGIS/rest/services/parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "unit": "SitusUnitNumber",
+                    "number": [
+                        "SitusStreetNumber",
+                        "SitusStreetNumberSuffix"
+                    ],
+                    "street": [
+                        "SitusStreetDirPrefix",
+                        "SitusStreetTypePrefix",
+                        "SitusStreetName",
+                        "SitusStreetTypeSuffix",
+                        "SitusStreetDirSuffix"
+                    ],
+                    "city": "SitusCity",
+                    "region": "SitusState",
+                    "postcode": "SitusPostalCode",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

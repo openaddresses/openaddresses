@@ -1,0 +1,42 @@
+{
+    "schema": 2,
+    "coverage": {
+        "US Census": {
+            "geoid": "42045",
+            "name": "Delaware County",
+            "state": "Pennsylvania"
+        },
+        "country": "us",
+        "state": "pa",
+        "county": "Delaware"
+    },
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "contact": {
+                    "name": "Linda F. Hill",
+                    "title": "Director",
+                    "phone": "(610) 891-5200",
+                    "email": "planning_department@co.delaware.pa.us",
+                    "address": "1055 E. Baltimore Pike, Media, PA 19063"
+                },
+                "website": "https://www.delcopa.gov/planning/mapping/gisdatalayers.html",
+                "data": "https://dcgis.co.delaware.pa.us/arcgis/rest/services/Hosted/Parcels_Public/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "site_address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "site_address"
+                    },
+                    "id": "pin"
+                }
+            }
+        ]
+    }
+}

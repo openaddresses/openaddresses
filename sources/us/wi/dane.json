@@ -9,23 +9,38 @@
         "state": "wi",
         "county": "Dane"
     },
-    "data": "https://dcimapapps.countyofdane.com/arcgissrv/rest/services/AddressPoints/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": ["HouseNumPrefix", "HouseNum", "HouseNumSuffix"],
-        "unit": ["UnitType", "Unit"],
-        "street": [
-            "PreModifier",
-            "PreDirectional",
-            "PreType",
-            "BaseName",
-            "PostType",
-            "PostDirectional",
-            "PostModifier"
-        ],
-        "city": "FIPsMunicipality",
-        "postcode": "ZIPCode",
-        "accuracy": 1
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://dcimapapps.countyofdane.com/arcgissrv/rest/services/AddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "HouseNumPrefix",
+                        "HouseNum",
+                        "HouseNumSuffix"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "Unit"
+                    ],
+                    "street": [
+                        "PreModifier",
+                        "PreDirectional",
+                        "PreType",
+                        "BaseName",
+                        "PostType",
+                        "PostDirectional",
+                        "PostModifier"
+                    ],
+                    "city": "FIPsMunicipality",
+                    "postcode": "ZIPCode",
+                    "accuracy": 1
+                }
+            }
+        ]
     }
 }

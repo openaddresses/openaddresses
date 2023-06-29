@@ -1,28 +1,40 @@
 {
     "coverage": {
-        "US Census": {"geoid": "42061", "name": "Huntingdon County", "state": "Pennsylvania"},
+        "US Census": {
+            "geoid": "42061",
+            "name": "Huntingdon County",
+            "state": "Pennsylvania"
+        },
         "country": "us",
         "state": "pa",
         "county": "Huntingdon"
     },
-    "website": "http://www.huntingdoncounty.net/Dept/Mapping/Pages/default.aspx",
-    "contact": {
-        "phone": "814-643-2570",
-        "email": "mapping@huntingdoncounty.net",
-        "address": "233 Penn Street, Huntingdon, PA 16652 "
-    },
-    "data": "https://mapping.huntingdoncounty.net/arcgisweb/rest/services/Structures/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HSENUMBER",
-        "street": [
-           "PREFIXDIR",
-           "STREETNAME",
-           "STREETSUF",
-           "POSTDIR"
-        ],
-        "unit": "LOCATION",
-        "city": "MUNI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "http://www.huntingdoncounty.net/Dept/Mapping/Pages/default.aspx",
+                "contact": {
+                    "phone": "814-643-2570",
+                    "email": "mapping@huntingdoncounty.net",
+                    "address": "233 Penn Street, Huntingdon, PA 16652 "
+                },
+                "data": "https://mapping.huntingdoncounty.net/arcgisweb/rest/services/Structures/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HSENUMBER",
+                    "street": [
+                        "PREFIXDIR",
+                        "STREETNAME",
+                        "STREETSUF",
+                        "POSTDIR"
+                    ],
+                    "unit": "LOCATION",
+                    "city": "MUNI"
+                }
+            }
+        ]
     }
 }

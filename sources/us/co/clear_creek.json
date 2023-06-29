@@ -9,20 +9,46 @@
         "state": "co",
         "county": "Clear Creek"
     },
-    "protocol": "http",
-    "data": "https://gisftp02.state.co.us/c.StateLevelAgencies/GOV/OIT/CSO/GIS/CY2016/Parcels/ParcelsByCounty_SHP/ClearCreek.zip",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "number": {
-            "function": "prefixed_number",
-            "field": "situsAdd"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "situsAdd"
-        },
-        "city": "sitAddCity",
-        "postcode": "sitAddZip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "http://map.co.clear-creek.co.us/arcgis2/rest/services/ClearCreek/address/MapServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREET_NUM",
+                    "street": [
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "STREET_DIR"
+                    ],
+                    "city": "City",
+                    "postcode": "Zip_Code"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "http://map.co.clear-creek.co.us/arcgis2/rest/services/ClearCreek/Cadastral/MapServer/26",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "http://map.co.clear-creek.co.us/arcgis2/rest/services/ClearCreek/Cadastral/MapServer/14",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "evans.SDE_LOADER.parcels.PIN"
+                }
+            }
+        ]
     }
 }

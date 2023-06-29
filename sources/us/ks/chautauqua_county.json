@@ -1,19 +1,31 @@
 {
     "coverage": {
-        "US Census": {"geoid": "20019", "name": "Chautauqua County", "state": "Kansas"},
+        "US Census": {
+            "geoid": "20019",
+            "name": "Chautauqua County",
+            "state": "Kansas"
+        },
         "country": "us",
         "state": "ks",
         "county": "Chautauqua"
     },
-    "conform": {
-        "format": "csv",
-        "number": "NUM",
-        "street": "STR",
-        "city": "CITY",
-        "postcode": "ZIP",
-        "lon": "LON",
-        "lat": "LAT"
-    },
-    "data": "https://data.openaddresses.io/cache/us-ks-chautauqua_county.csv",
-    "protocol": "http"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "csv",
+                    "number": "NUM",
+                    "street": "STR",
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "lon": "LON",
+                    "lat": "LAT"
+                },
+                "data": "https://data.openaddresses.io/cache/us-ks-chautauqua_county.csv",
+                "protocol": "http"
+            }
+        ]
+    }
 }

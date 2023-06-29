@@ -9,18 +9,39 @@
         "state": "va",
         "county": "Amelia"
     },
-    "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Amelia/Amelia_WL_P/MapServer/8",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HNUM",
-        "street": [
-            "PREDIR",
-            "ROAD_NAME",
-            "SUFFIX",
-            "POSTDIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/AmeliaCo_WebGIS/MapServer/22",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_Name",
+                        "St_PosTyp"
+                    ],
+                    "unit": "Unit",
+                    "postcode": "Post_Code"
+                }
+            }
         ],
-        "unit": "APARTMENT",
-        "city": "COMMUNITY"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/AmeliaCo_WebGIS/MapServer/37",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelID"
+                }
+            }
+        ]
     }
 }

@@ -17,17 +17,25 @@
         "county": "Lewis and Clark",
         "city": "Helena"
     },
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSENUMBE",
-        "street": [
-            "PREFIX",
-            "BASENAME",
-            "STREETTYPE",
-            "SUFFIX"
-        ],
-        "postcode": "ZIPCODE"
-    },
-    "data": "http://helenamontanamaps.org/arcgisadp/rest/services/HCC/MapServer/0",
-    "protocol": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUMBE",
+                    "street": [
+                        "PREFIX",
+                        "BASENAME",
+                        "STREETTYPE",
+                        "SUFFIX"
+                    ],
+                    "postcode": "ZIPCODE"
+                },
+                "data": "http://helenamontanamaps.org/arcgisadp/rest/services/HCC/MapServer/0",
+                "protocol": "ESRI"
+            }
+        ]
+    }
 }

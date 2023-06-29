@@ -9,25 +9,57 @@
         "state": "co",
         "county": "Pueblo"
     },
-    "attribution": "Pubelo County",
-    "data": "https://services1.arcgis.com/IL17xsvNU5Bmw3RY/arcgis/rest/services/AddressesMarch2020/FeatureServer/21",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "ADDRNUM",
-            "ADDRFRAC"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Pubelo County",
+                "data": "https://maps.co.pueblo.co.us/outside/rest/services/PuebloCounty/PuebloCounty_OpenGovLayers/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDRNUM",
+                        "ADDRNUM_SFX"
+                    ],
+                    "unit": "APT_UNIT",
+                    "street": [
+                        "STPREDIR",
+                        "STPRETYPE",
+                        "STNAME",
+                        "STTYPE",
+                        "STDIR"
+                    ],
+                    "postcode": "ZIP",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "accuracy": 1
+                }
+            }
         ],
-        "unit": "APT",
-        "street": [
-            "STPREDIR",
-            "STNAME",
-            "STTYPE",
-            "STDIR"
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Pubelo County",
+                "data": "https://maps.co.pueblo.co.us/outside/rest/services/PuebloCounty/PuebloCounty_OpenGovLayers/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PAR_NUM"
+                }
+            }
         ],
-        "postcode": "ZIPCODE",
-        "city": "CITY_NAME",
-        "region": "STATE",
-        "accuracy": 1
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Pubelo County",
+                "data": "https://maps.co.pueblo.co.us/outside/rest/services/Landbase/PuebloCounty_BuildingFootprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

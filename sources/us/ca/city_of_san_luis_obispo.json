@@ -16,16 +16,57 @@
         "state": "ca",
         "city": "San Luis Obispo"
     },
-    "data": "https://services.arcgis.com/yygmGNIVQrHqSELP/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "streetNumber",
-        "street": [
-            "streetName",
-            "streetType"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.slocity.org/hosting/rest/services/GISLayers/gisLandManagement/FeatureServer/2",
+                "website": "https://gis-slocity.hub.arcgis.com/datasets/SLOCity::address-points/about",
+                "license": {
+                    "url": "https://gis-slocity.hub.arcgis.com/"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "streetNumber",
+                    "street": [
+                        "streetName",
+                        "streetType"
+                    ],
+                    "unit": "suite",
+                    "postcode": "zipCode"
+                }
+            }
         ],
-        "unit": "suite",
-        "postcode": "zipCode"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://maps.slocity.org/hosting/rest/services/GISLayers/gisLandManagement/FeatureServer/4",
+                "website": "https://gis-slocity.hub.arcgis.com/datasets/SLOCity::parcels-1/about",
+                "license": {
+                    "url": "https://gis-slocity.hub.arcgis.com/"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://maps.slocity.org/hosting/rest/services/GISLayers/gisLandManagement/FeatureServer/3",
+                "website": "https://gis-slocity.hub.arcgis.com/datasets/SLOCity::buildings/about",
+                "license": {
+                    "url": "https://gis-slocity.hub.arcgis.com/"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

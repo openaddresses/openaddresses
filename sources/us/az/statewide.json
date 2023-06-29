@@ -3,17 +3,25 @@
         "country": "us",
         "state": "az"
     },
-    "data": "https://azgeo.az.gov/arcgis/rest/services/asld/Parcels/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "AZ_Address"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "AZ_Address"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://azgeo.az.gov/arcgis/rest/services/TerraSystems/AZParcelFeatures/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "AZ_Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "AZ_Address"
+                    }
+                }
+            }
+        ]
     }
 }

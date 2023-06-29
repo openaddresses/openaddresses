@@ -4,16 +4,42 @@
         "state": "ca",
         "city": "Hermosa Beach"
     },
-    "year": "2019",
-    "data": "https://data.openaddresses.io/cache/uploads/ingalls/us-ca-city_of_hermosa_beach.zip",
-    "note": "Obtained Via FOIA Request",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "unit": "SAUNIT",
-        "number": "SAHOUSENUM",
-        "street": [ "SADIRECTIO", "SASTREETNA" ],
-        "postcode": "SAZIPCDE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/pZpm6pZToD6HSf7k/ArcGIS/rest/services/ArcGIS_Online___Public_Info_Only/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "NUMBER",
+                        "FRACTION"
+                    ],
+                    "street": [
+                        "DIRECTION",
+                        "STREETNAME",
+                        "SUFFIX"
+                    ],
+                    "unit": "UNIT",
+                    "city": "MSAGComm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/pZpm6pZToD6HSf7k/ArcGIS/rest/services/ArcGIS_Online___Public_Info_Only/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
     }
 }

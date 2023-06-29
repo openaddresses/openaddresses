@@ -9,17 +9,29 @@
         "state": "wi",
         "county": "Saint Croix"
     },
-    "data": "https://gis.co.saint-croix.wi.us/arcgis/rest/services/LandInformation/AddressPoints/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "street": "FULLNAME",
-        "city": "COMMUNITY",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.sccwi.gov/arcgis/rest/services/LandInformation/SiteAddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": "FULLNAME",
+                    "city": "COMMUNITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

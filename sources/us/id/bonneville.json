@@ -9,20 +9,37 @@
         "state": "id",
         "county": "Bonneville"
     },
-    "data": "https://services2.arcgis.com/Xd5SMhLZ1h9t0F3b/ArcGIS/rest/services/Bonneville_Parcels/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "FID",
-        "number": {
-            "function": "prefixed_number",
-            "field": "ParcelAddr"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "ParcelAddr"
-        },
-        "city": "ParcelCity",
-        "postcode": "ParcelZIPC"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://bonneville.esriemcs.com/arcgis/rest/services/BC_Address/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "addressnum",
+                    "street": [
+                        "streetpref",
+                        "streetname",
+                        "streetsuff"
+                    ],
+                    "city": "city",
+                    "postcode": "zip",
+                    "region": "state"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://bonneville.esriemcs.com/arcgis/rest/services/ParcelViewer/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "edit_data.editdata.Parcel_Final.textstring"
+                }
+            }
+        ]
     }
 }

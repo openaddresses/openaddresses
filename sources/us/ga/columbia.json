@@ -9,26 +9,34 @@
         "state": "ga",
         "county": "Columbia"
     },
-    "data": "http://mapsonline.columbiacountyga.gov/arcgis/rest/services/Cityworks/MobileMapExtents/MapServer/1001",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "Loc_No",
-            "Suffix"
-        ],
-        "street": [
-            "Pre_Dir",
-            "Name",
-            "Street_Type",
-            "Post_Dir"
-        ],
-        "unit": [
-            "Unit_Type",
-            "Loc_Unit"
-        ],
-        "city": "Municipality",
-        "region": "State",
-        "postcode": "Zip_Code"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://mapsonline.columbiacountyga.gov/arcgis/rest/services/Cityworks/MobileMapExtents/MapServer/1001",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "Loc_No",
+                        "Suffix"
+                    ],
+                    "street": [
+                        "Pre_Dir",
+                        "Name",
+                        "Street_Type",
+                        "Post_Dir"
+                    ],
+                    "unit": [
+                        "Unit_Type",
+                        "Loc_Unit"
+                    ],
+                    "city": "Municipality",
+                    "region": "State",
+                    "postcode": "Zip_Code"
+                }
+            }
+        ]
     }
 }

@@ -1,8 +1,4 @@
 {
-    "protocol": "http",
-    "data": "https://data.openaddresses.io/cache/uploads/sergiyprotsiv/a76ed3/za-countrywide.csv.zip",
-    "website": "https://drive.google.com/open?id=1KpLwbwq9YeYNLVFJDFsGwx8egfw6eeay",
-    "compression": "zip",
     "coverage": {
         "ISO 3166": {
             "alpha2": "ZA",
@@ -10,14 +6,29 @@
         },
         "country": "za"
     },
-    "conform": {
-        "format": "csv",
-        "id": "Unique_ID",
-        "number": "Str_Num",
-        "street": ["Str_Name","Str_Suff"],
-        "lon": "X",
-        "lat": "Y",
-        "city": "M_Place",
-        "region": "Munic"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "protocol": "http",
+                "data": "https://data.openaddresses.io/cache/uploads/sergiyprotsiv/a76ed3/za-countrywide.csv.zip",
+                "website": "https://drive.google.com/open?id=1KpLwbwq9YeYNLVFJDFsGwx8egfw6eeay",
+                "compression": "zip",
+                "conform": {
+                    "format": "csv",
+                    "id": "Unique_ID",
+                    "number": "Str_Num",
+                    "street": [
+                        "Str_Name",
+                        "Str_Suff"
+                    ],
+                    "lon": "X",
+                    "lat": "Y",
+                    "city": "M_Place",
+                    "region": "Munic"
+                }
+            }
+        ]
     }
 }

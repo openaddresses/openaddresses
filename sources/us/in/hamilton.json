@@ -9,22 +9,30 @@
         "state": "in",
         "county": "Hamilton"
     },
-    "data": "ftp://ftp.hamiltoncounty.in.gov/GIS/Data/Address Points/E911_Addresses_web.zip",
-    "protocol": "ftp",
-    "compression": "zip",
-    "conform": {
-        "number": [
-          "LOC_NO",
-          "LOC_NO_SUF"
-        ],
-        "street": [
-            "LOC_PR_DIR",
-            "LOC_ST",
-            "LOC_ST_SUF",
-            "LOC_DIR"
-        ],
-        "city": "LOC_CITY",
-        "format": "shapefile",
-        "postcode": "LOC_ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "ftp://ftp.hamiltoncounty.in.gov/GIS/Data/Address Points/E911_Addresses_web.zip",
+                "protocol": "ftp",
+                "compression": "zip",
+                "conform": {
+                    "number": [
+                        "LOC_NO",
+                        "LOC_NO_SUF"
+                    ],
+                    "street": [
+                        "LOC_PR_DIR",
+                        "LOC_ST",
+                        "LOC_ST_SUF",
+                        "LOC_DIR"
+                    ],
+                    "city": "LOC_CITY",
+                    "format": "shapefile",
+                    "postcode": "LOC_ZIP"
+                }
+            }
+        ]
     }
 }

@@ -9,16 +9,49 @@
         "state": "or",
         "county": "Hood River"
     },
-    "protocol": "ESRI",
-    "data": "http://webmap.co.hood-river.or.us/arcgis/rest/services/AllDataLayers/MapServer/1",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NUMBER",
-        "street": [
-            "PREFIX_DIRECTION",
-            "STREET_NAME",
-            "STREET_TYPE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services7.arcgis.com/xtfQPw7zwSRPkcfN/ArcGIS/rest/services/ADDRESS_POINTS_VIEW_LAYER/FeatureServer/9",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "BLDGNUM",
+                        "HOUSE_SUFF"
+                    ],
+                    "street": [
+                        "PRE_DIR",
+                        "STREET_NAME",
+                        "STREET_TYPE"
+                    ],
+                    "unit": "UNITNUM",
+                    "postcode": "ZIP_CODE"
+                }
+            }
         ],
-        "unit": "UNIT"
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services7.arcgis.com/xtfQPw7zwSRPkcfN/ArcGIS/rest/services/Taxlots_View/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MAPTAXLOT"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services7.arcgis.com/xtfQPw7zwSRPkcfN/ArcGIS/rest/services/Building_Footprints/FeatureServer/0",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

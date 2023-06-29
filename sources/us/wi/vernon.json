@@ -9,17 +9,33 @@
         "state": "wi",
         "county": "Vernon"
     },
-    "data": "http://www.vernoncounty.org/arcgis/rest/services/VCGISpriv/VCSO_Address_Pts/MapServer/2",
-    "protocol": "ESRI",
-    "note": "number col contains letter",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDNUM",
-        "street": [
-            "DIRECTION",
-            "STREETNAME",
-            "STREETTYPE",
-            "POSTDIRECT"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://apps.vernoncounty.org/vcarcgis/rest/services/VCGISpub/Address_WebMap/MapServer/1",
+                "protocol": "ESRI",
+                "website": "https://www.vernoncounty.org/departments/land_and_water_conservation/land_information_office/interactive_gis_map.php",
+                "license": {
+                    "attribution name": "Vernon County, Wisconsin",
+                    "text": "Vernon County assumes no responsibility for direct, indirect, special, consequential, exemplary or other damages. The user is responsible for determining the suitability of the information for their particular end use and understands these conditions."
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDNUM",
+                        "NUMSUFFIX"
+                    ],
+                    "unit": "APT",
+                    "street": [
+                        "DIRECTION",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "POSTDIRECT"
+                    ]
+                }
+            }
         ]
     }
 }

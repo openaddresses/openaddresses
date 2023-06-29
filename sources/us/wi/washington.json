@@ -9,15 +9,23 @@
         "state": "wi",
         "county": "Washington"
     },
-    "data": "http://gisweb.co.washington.wi.us/arcgis/rest/services/public/AddressPt/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSENUMBER",
-        "street": "FULLSTREETNAME",
-        "city": "MUNICIPALITY",
-        "postcode": "ZIPCODE",
-        "id": "ADDPTID",
-        "accuracy": 1
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gisweb.co.washington.wi.us/arcgis/rest/services/public/AddressPt/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUMBER",
+                    "street": "FULLSTREETNAME",
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIPCODE",
+                    "id": "ADDPTID",
+                    "accuracy": 1
+                }
+            }
+        ]
     }
 }

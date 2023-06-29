@@ -9,25 +9,33 @@
         "state": "oh",
         "county": "Delaware"
     },
-    "data": "http://proxy.delco-gis.org/arcgiswebadaptor/rest/services/DelcoGIS_Labels_SQL/MapServer/4",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "ADDRNUM",
-        "street": [
-            "PRE_DIR",
-            "PRE_TYPE",
-            "STR_NAME",
-            "STR_TYPE",
-            "SUF_DIR"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "city": "CITY",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://proxy.delco-gis.org/arcgiswebadaptor/rest/services/DelcoGIS_Labels_SQL/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "ADDRNUM",
+                    "street": [
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

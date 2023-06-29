@@ -11,21 +11,54 @@
             ]
         }
     },
-    "data": "https://services6.arcgis.com/ONZht79c8QWuX759/arcgis/rest/services/Address_Points/FeatureServer/0",
-    "website": "https://data.peelregion.ca/",
-    "license": {"url": "https://data.peelregion.ca/pages/license", "attribution": false, "share-alike": false},
-    "language": "en",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "file": "AddressPoints_csv.csv",
-        "id": "ROPADRID",
-        "number": "STREETNUM",
-        "unit": "UNIT_IDENTIFIER",
-        "street": ["STREETNAME", "STREETTYPE", "STREETDIRECTION"],
-        "city": "MUNICIPALITY",
-        "lat": "LATITUDE",
-        "lon": "LONGITUDE",
-        "accuracy": 1
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "region",
+                "data": "https://services6.arcgis.com/ONZht79c8QWuX759/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://data.peelregion.ca/",
+                "license": {
+                    "url": "https://data.peelregion.ca/pages/license",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "language": "en",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "file": "AddressPoints_csv.csv",
+                    "id": "ROPADRID",
+                    "number": "STREETNUM",
+                    "unit": "UNIT_IDENTIFIER",
+                    "street": [
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "STREETDIRECTION"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "addrtype": "LANDUSE",
+                    "lat": "LATITUDE",
+                    "lon": "LONGITUDE",
+                    "accuracy": 1
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "region",
+                "data": "https://services6.arcgis.com/ONZht79c8QWuX759/arcgis/rest/services/Building_Footprints_Caledon/FeatureServer/0/",
+                "protocol": "ESRI",
+                "website": "https://data.peelregion.ca/",
+                "license": {
+                    "url": "https://data.peelregion.ca/pages/license",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

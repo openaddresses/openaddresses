@@ -9,16 +9,51 @@
         "state": "fl",
         "county": "Gulf"
     },
-    "conform": {
-        "format": "geojson",
-        "number": "HouseNumber",
-        "street": {
-            "function": "remove_prefix",
-            "field": "PrimaryAddress",
-            "field_to_remove": "HouseNumber"
-        }
-    },
-    "data": "http://arcgis4.roktech.net/arcgis/rest/services/gulf/GoMaps4/MapServer/2",
-    "protocol": "ESRI",
-    "website": "http://maps2.roktech.net/GulfGoMaps4/?mapName=GIS"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://github.com/openaddresses/openaddresses/files/11761193/GULF_2023-07-01.zip",
+                "website": "https://pointmatch.floridarevenue.com/General/AddressFiles.aspx",
+                "year": 2023,
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "csv",
+                    "lat": "LAT",
+                    "lon": "LONG",
+                    "number": "NUMBER",
+                    "street": [
+                        "PREDIR",
+                        "STNAME",
+                        "STSUFFIX",
+                        "POSTDIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITNUM"
+                    ],
+                    "city": "MAILCITY",
+                    "district": "COUNTY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Gulf County",
+                "data": "https://floridarevenue.com/property/dataportal/Documents/PTO%20Data%20Portal/Map%20Data/2023F/gulf_2023pin.zip",
+                "website": "https://floridarevenue.com/property/Pages/DataPortal_RequestAssessmentRollGISData.aspx",
+                "year": 2023,
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELNO"
+                }
+            }
+        ]
+    }
 }

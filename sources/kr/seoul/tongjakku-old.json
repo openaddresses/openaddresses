@@ -1,38 +1,52 @@
 {
-    "compression": "zip",
-    "conform": {
-        "format": "csv",
-        "skiplines": 2,
-        "headers": 2,
-        "encoding": "EUCKR",
-        "srs": "EPSG:2097",
-        "lon": "POINT_X",
-        "number": "LNDN_MA_SN",
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        },
-        "lat": "POINT_Y"
-    },
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1077",
     "coverage": {
         "city": "동작구",
         "country": "kr",
         "state": "seoul",
-        "geometry": { "type": "Point", "coordinates": [126.945, 37.502] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                126.945,
+                37.502
+            ]
+        }
     },
-    "skip": false,
-    "protocol": "http",
-    "data": "https://data.openaddresses.io/cache/kr-seoul-tongjakku.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "compression": "zip",
+                "conform": {
+                    "format": "csv",
+                    "skiplines": 2,
+                    "headers": 2,
+                    "encoding": "EUCKR",
+                    "srs": "EPSG:2097",
+                    "lon": "POINT_X",
+                    "number": "LNDN_MA_SN",
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    },
+                    "lat": "POINT_Y"
+                },
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1077",
+                "skip": false,
+                "protocol": "http",
+                "data": "https://data.openaddresses.io/cache/kr-seoul-tongjakku.zip"
+            }
+        ]
+    }
 }

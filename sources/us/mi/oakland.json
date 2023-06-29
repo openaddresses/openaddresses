@@ -9,19 +9,27 @@
         "state": "mi",
         "county": "Oakland"
     },
-    "data": "https://gisservices.oakgov.com/arcgis/rest/services/Enterprise/EnterpriseOpenParcelDataMapService/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "SITESTREETNUMBER",
-        "street": [
-            "SITEPREFIXONE",
-            "SITESTREETNAME",
-            "SITESTREETTYPE",
-            "SITESUFFIXONE"
-        ],
-        "city": "SITECITY",
-        "postcode": "SITEZIPCODE",
-        "region": "SITESTATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisservices.oakgov.com/arcgis/rest/services/Enterprise/EnterpriseOpenParcelDataMapService/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SITESTREETNUMBER",
+                    "street": [
+                        "SITEPREFIXONE",
+                        "SITESTREETNAME",
+                        "SITESTREETTYPE",
+                        "SITESUFFIXONE"
+                    ],
+                    "city": "SITECITY",
+                    "postcode": "SITEZIPCODE",
+                    "region": "SITESTATE"
+                }
+            }
+        ]
     }
 }

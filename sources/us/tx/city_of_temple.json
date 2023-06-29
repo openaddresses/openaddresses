@@ -1,6 +1,12 @@
 {
     "coverage": {
-        "geometry": {"type": "Point", "coordinates": [-97.35, 31.09]},
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -97.35,
+                31.09
+            ]
+        },
         "US Census": {
             "geoid": "4872176",
             "name": "City of Temple",
@@ -11,16 +17,24 @@
         "county": "Bell",
         "city": "Temple"
     },
-    "data": "https://arcgiswap01.ci.temple.tx.us/arcgis/rest/services/Services/Address/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "street": [
-            "LOCSTRDIR",
-            "LOCSTRNAME",
-            "LOCSTRSUF"
-        ],
-        "number": "LOCSTRNUM",
-        "unit": "LOCSTRAPT"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://arcgiswap01.ci.temple.tx.us/arcgis/rest/services/Services/Address/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "street": [
+                        "LOCSTRDIR",
+                        "LOCSTRNAME",
+                        "LOCSTRSUF"
+                    ],
+                    "number": "LOCSTRNUM",
+                    "unit": "LOCSTRAPT"
+                }
+            }
+        ]
     }
 }

@@ -11,23 +11,50 @@
         "state": "ca",
         "city": "Visalia"
     },
-    "attribution": "City of Visalia",
-    "data": "https://www.visalia.city/server/rest/services/OpenData/CurrentAddresses/FeatureServer/8",
-    "website": "http://geodata.visalia.city/",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "PREADDRNUM",
-            "ADDRNUM",
-            "ADDRNUMSUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "attribution": "City of Visalia",
+                "data": "https://services7.arcgis.com/q3SI94vj8qWDxwBr/arcgis/rest/services/Addresses/FeatureServer/0",
+                "website": "https://geodata.visalia.city/datasets/Visalia::addresses/about",
+                "license": {
+                    "url": "http://geodata.visalia.city/"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "postcode": "Zipcode"
+                }
+            }
         ],
-        "street": "FULLNAME",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "city": "MUNICIPALITY",
-        "postcode": "Zipcode"
+        "parcels": [
+            {
+                "name": "city",
+                "attribution": "City of Visalia",
+                "data": "https://services7.arcgis.com/q3SI94vj8qWDxwBr/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "website": "https://geodata.visalia.city/datasets/Visalia::parcels/about",
+                "license": {
+                    "url": "http://geodata.visalia.city/"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN_ID"
+                }
+            }
+        ]
     }
 }

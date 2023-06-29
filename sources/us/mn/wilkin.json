@@ -9,21 +9,29 @@
         "state": "mn",
         "county": "Wilkin"
     },
-    "data": "http://gisweb.co.wilkin.mn.us/arcgis/rest/services/OpenData/OpenData/MapServer/0",
-    "website": "http://share-wilkinco.opendata.arcgis.com/",
-    "protocol": "ESRI",
-    "conform": {
-      "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "ADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "ADDRESS"
-        },
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gisweb.co.wilkin.mn.us/arcgis/rest/services/OpenData/OpenData/MapServer/0",
+                "website": "http://share-wilkinco.opendata.arcgis.com/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

@@ -8,27 +8,38 @@
         "country": "ru",
         "state": "NVS"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/sergiyprotsiv/65f9c7/ru-ns_centr.csv.zip",
-    "website": "http://maps.nso.ru/arcgis/rest/services/BIPD/InfrastructureHiden/MapServer/4",
-    "protocol": "http",
-    "compression": "zip",
-    "language": "ru",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^(?:.*?)(?:, (.+))$"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^(.*?)(?:, (?:.+))$"
-        },
-        "city": ["CityType","CityName"],
-        "id": "FiasCode",
-        "postcode": "Postcode",
-        "format": "csv",
-        "lat": "centroid_lat",
-        "lon": "centroid_lon"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://data.openaddresses.io/cache/uploads/sergiyprotsiv/65f9c7/ru-ns_centr.csv.zip",
+                "website": "http://maps.nso.ru/arcgis/rest/services/BIPD/InfrastructureHiden/MapServer/4",
+                "protocol": "http",
+                "compression": "zip",
+                "language": "ru",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^(?:.*?)(?:, (.+))$"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^(.*?)(?:, (?:.+))$"
+                    },
+                    "city": [
+                        "CityType",
+                        "CityName"
+                    ],
+                    "id": "FiasCode",
+                    "postcode": "Postcode",
+                    "format": "csv",
+                    "lat": "centroid_lat",
+                    "lon": "centroid_lon"
+                }
+            }
+        ]
     }
 }

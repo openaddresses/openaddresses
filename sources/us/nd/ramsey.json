@@ -9,136 +9,144 @@
         "state": "nd",
         "county": "Ramsey"
     },
-    "data": "https://gis.co.ramsey.nd.us/arcgis/rest/services/EM/911_Points/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SUBADDRESS"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SUBADDRESS",
-            "pattern": "^(?:\\d+(?:-1/2)?\\s+)?(.+?)(?:(?:LT#|STE\\s|#|APT\\s|UNIT\\s|LOT\\s).+)?$"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "SUBADDRESS",
-            "pattern": "\\s+((?:LT#|STE\\s|#|APT\\s|UNIT\\s|LOT\\s).+)"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "TOWNRURAL",
-            "pattern": "(\\d+)$"
-        }
-    },
-    "test": {
-        "enabled": true,
-        "description": "Ramsey County has units appended to address field",
-        "acceptance-tests": [
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "no unit",
-                "inputs": {
-                    "SUBADDRESS": "104 PARK AVE",
-                    "TOWNRURAL": "RURAL DEVILS LAKE  58301"
+                "name": "county",
+                "data": "https://gis.co.ramsey.nd.us/arcgis/rest/services/EM/911_Points/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SUBADDRESS"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "SUBADDRESS",
+                        "pattern": "^(?:\\d+(?:-1/2)?\\s+)?(.+?)(?:(?:LT#|STE\\s|#|APT\\s|UNIT\\s|LOT\\s).+)?$"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "SUBADDRESS",
+                        "pattern": "\\s+((?:LT#|STE\\s|#|APT\\s|UNIT\\s|LOT\\s).+)"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "TOWNRURAL",
+                        "pattern": "(\\d+)$"
+                    }
                 },
-                "expected": {
-                    "number": "104",
-                    "street": "PARK AVE",
-                    "unit": "",
-                    "postcode": "58301"
-                }
-            },
-            {
-                "description": "LT unit designator",
-                "inputs": {
-                    "SUBADDRESS": "118 WOODLAND AVE LT# 4",
-                    "TOWNRURAL": "RURAL DEVILS LAKE  58301"
-                },
-                "expected": {
-                    "number": "118",
-                    "street": "WOODLAND AVE",
-                    "unit": "LT# 4",
-                    "postcode": "58301"
-                }
-            },
-            {
-                "description": "STE unit designator",
-                "inputs": {
-                    "SUBADDRESS": "509 5TH ST NE STE 3",
-                    "TOWNRURAL": "DEVILS LAKE  58301"
-                },
-                "expected": {
-                    "number": "509",
-                    "street": "5TH ST NE",
-                    "unit": "STE 3",
-                    "postcode": "58301"
-                }
-            },
-            {
-                "description": "# unit designator, with spaces",
-                "inputs": {
-                    "SUBADDRESS": "704 ELMWOOD RD # 4",
-                    "TOWNRURAL": "RURAL DEVILS LAKE  58301"
-                },
-                "expected": {
-                    "number": "704",
-                    "street": "ELMWOOD RD",
-                    "unit": "# 4",
-                    "postcode": "58301"
-                }
-            },
-            {
-                "description": "# unit designator, no space",
-                "inputs": {
-                    "SUBADDRESS": "313 3RD AVE SE #2",
-                    "TOWNRURAL": "DEVILS LAKE  58301"
-                },
-                "expected": {
-                    "number": "313",
-                    "street": "3RD AVE SE",
-                    "unit": "#2",
-                    "postcode": "58301"
-                }
-            },
-            {
-                "description": "APT unit designator",
-                "inputs": {
-                    "SUBADDRESS": "511 1ST ST APT A",
-                    "TOWNRURAL": "DEVILS LAKE  58301"
-                },
-                "expected": {
-                    "number": "511",
-                    "street": "1ST ST",
-                    "unit": "APT A",
-                    "postcode": "58301"
-                }
-            },
-            {
-                "description": "UNIT unit designator",
-                "inputs": {
-                    "SUBADDRESS": "1001 WASHINGTON ST SE UNIT 2",
-                    "TOWNRURAL": "DEVILS LAKE  58301"
-                },
-                "expected": {
-                    "number": "1001",
-                    "street": "WASHINGTON ST SE",
-                    "unit": "UNIT 2",
-                    "postcode": "58301"
-                }
-            },
-            {
-                "description": "LOT unit designator",
-                "inputs": {
-                    "SUBADDRESS": "4835 87TH AVE NE LOT 6",
-                    "TOWNRURAL": "RURAL DEVILS LAKE  58301"
-                },
-                "expected": {
-                    "number": "4835",
-                    "street": "87TH AVE NE",
-                    "unit": "LOT 6",
-                    "postcode": "58301"
+                "test": {
+                    "enabled": true,
+                    "description": "Ramsey County has units appended to address field",
+                    "acceptance-tests": [
+                        {
+                            "description": "no unit",
+                            "inputs": {
+                                "SUBADDRESS": "104 PARK AVE",
+                                "TOWNRURAL": "RURAL DEVILS LAKE  58301"
+                            },
+                            "expected": {
+                                "number": "104",
+                                "street": "PARK AVE",
+                                "unit": "",
+                                "postcode": "58301"
+                            }
+                        },
+                        {
+                            "description": "LT unit designator",
+                            "inputs": {
+                                "SUBADDRESS": "118 WOODLAND AVE LT# 4",
+                                "TOWNRURAL": "RURAL DEVILS LAKE  58301"
+                            },
+                            "expected": {
+                                "number": "118",
+                                "street": "WOODLAND AVE",
+                                "unit": "LT# 4",
+                                "postcode": "58301"
+                            }
+                        },
+                        {
+                            "description": "STE unit designator",
+                            "inputs": {
+                                "SUBADDRESS": "509 5TH ST NE STE 3",
+                                "TOWNRURAL": "DEVILS LAKE  58301"
+                            },
+                            "expected": {
+                                "number": "509",
+                                "street": "5TH ST NE",
+                                "unit": "STE 3",
+                                "postcode": "58301"
+                            }
+                        },
+                        {
+                            "description": "# unit designator, with spaces",
+                            "inputs": {
+                                "SUBADDRESS": "704 ELMWOOD RD # 4",
+                                "TOWNRURAL": "RURAL DEVILS LAKE  58301"
+                            },
+                            "expected": {
+                                "number": "704",
+                                "street": "ELMWOOD RD",
+                                "unit": "# 4",
+                                "postcode": "58301"
+                            }
+                        },
+                        {
+                            "description": "# unit designator, no space",
+                            "inputs": {
+                                "SUBADDRESS": "313 3RD AVE SE #2",
+                                "TOWNRURAL": "DEVILS LAKE  58301"
+                            },
+                            "expected": {
+                                "number": "313",
+                                "street": "3RD AVE SE",
+                                "unit": "#2",
+                                "postcode": "58301"
+                            }
+                        },
+                        {
+                            "description": "APT unit designator",
+                            "inputs": {
+                                "SUBADDRESS": "511 1ST ST APT A",
+                                "TOWNRURAL": "DEVILS LAKE  58301"
+                            },
+                            "expected": {
+                                "number": "511",
+                                "street": "1ST ST",
+                                "unit": "APT A",
+                                "postcode": "58301"
+                            }
+                        },
+                        {
+                            "description": "UNIT unit designator",
+                            "inputs": {
+                                "SUBADDRESS": "1001 WASHINGTON ST SE UNIT 2",
+                                "TOWNRURAL": "DEVILS LAKE  58301"
+                            },
+                            "expected": {
+                                "number": "1001",
+                                "street": "WASHINGTON ST SE",
+                                "unit": "UNIT 2",
+                                "postcode": "58301"
+                            }
+                        },
+                        {
+                            "description": "LOT unit designator",
+                            "inputs": {
+                                "SUBADDRESS": "4835 87TH AVE NE LOT 6",
+                                "TOWNRURAL": "RURAL DEVILS LAKE  58301"
+                            },
+                            "expected": {
+                                "number": "4835",
+                                "street": "87TH AVE NE",
+                                "unit": "LOT 6",
+                                "postcode": "58301"
+                            }
+                        }
+                    ]
                 }
             }
         ]

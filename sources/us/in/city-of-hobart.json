@@ -1,32 +1,40 @@
 {
     "coverage": {
-      "US Census": {
-          "geoid": "1834114",
-          "name": "City of Hobart",
-          "state": "Indiana"
-      },
-      "country": "us",
-      "state": "in",
-      "city": "Hobart",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -87.25477447099321,
-          41.5319124670729
-        ]
-      }
+        "US Census": {
+            "geoid": "1834114",
+            "name": "City of Hobart",
+            "state": "Indiana"
+        },
+        "country": "us",
+        "state": "in",
+        "city": "Hobart",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -87.25477447099321,
+                41.5319124670729
+            ]
+        }
     },
-    "data": "https://elb2.39dn.com/arcgis/rest/services/eGISDynamicServices/HobartINDynamic/MapServer/83",
-    "protocol": "ESRI",
-    "skip": true,
-    "note": "39dn requested that we stop using data obtained from their servers on 2017-05-07",
-    "conform": {
-      "number": "Address",
-      "street": "Street_Add",
-      "unit": "Apartment",
-      "city": "City",
-      "region": "State",
-      "postcode": "Zipcode",
-      "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://elb2.39dn.com/arcgis/rest/services/eGISDynamicServices/HobartINDynamic/MapServer/83",
+                "protocol": "ESRI",
+                "skip": true,
+                "note": "39dn requested that we stop using data obtained from their servers on 2017-05-07",
+                "conform": {
+                    "number": "Address",
+                    "street": "Street_Add",
+                    "unit": "Apartment",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zipcode",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

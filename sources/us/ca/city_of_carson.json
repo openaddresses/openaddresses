@@ -16,23 +16,58 @@
         "state": "ca",
         "city": "Carson"
     },
-    "data": "http://www.carsonproperty.info/ArcGIS/rest/services/basemap/MapServer/1",
-    "website": "http://ci.carson.ca.us/",
-    "attribution": "City of Carson",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-          "SITENUMBER",
-          "SITEFRAC"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://atlasgis.carson.ca.us/carsonserver/rest/services/Addresses/MapServer/0",
+                "website": "https://gis.carson.ca.us/",
+                "attribution": "City of Carson",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "SITENUMBER",
+                        "SITEFRAC"
+                    ],
+                    "street": [
+                        "SITEPREF",
+                        "STREETNAME",
+                        "STREETTYPE"
+                    ],
+                    "unit": "SITEUNIT",
+                    "city": "City",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "SITEZIP"
+                }
+            }
         ],
-        "street": [
-          "SITEPREF",
-          "STREETNAME",
-          "STREETTYPE"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://atlasgis.carson.ca.us/carsonserver/rest/services/City_of_Carson_Basemap_2021_MIL1/MapServer/28",
+                "website": "https://gis.carson.ca.us/",
+                "attribution": "City of Carson",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
         ],
-        "unit": "SITEUNIT",
-        "city": "SITECITY",
-        "postcode": "SITEZIP"
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://atlasgis.carson.ca.us/carsonserver/rest/services/City_of_Carson_Basemap_2021_MIL1/MapServer/35",
+                "website": "https://gis.carson.ca.us/",
+                "attribution": "City of Carson",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

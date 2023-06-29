@@ -1,25 +1,54 @@
 {
     "coverage": {
-        "US Census": {"geoid": "37143", "name": "Perquimans County", "state": "North Carolina"},
+        "US Census": {
+            "geoid": "37143",
+            "name": "Perquimans County",
+            "state": "North Carolina"
+        },
         "country": "us",
         "state": "nc",
         "county": "Perquimans"
     },
-    "data": "http://data.nconemap.gov/downloads/vector/parcels/Perquimans_parcels_2017_07_21.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "website": "http://data.nconemap.gov/geoportal/catalog/search/resource/details.page?uuid=%7B837C5704-49C8-45A3-B084-AEBF4CD09804%7D",
-    "conform": {
-        "format": "shapefile",
-        "file": "nc_perquimans_parcels_pt_2017_07_21.shp",
-        "id": "PARNO",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITEADD"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITEADD"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/arcgis/rest/services/Perquimans_Service/FeatureServer/10/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "unit",
+                    "number": [
+                        "addnum_pre",
+                        "add_number",
+                        "addnum_suf"
+                    ],
+                    "street": [
+                        "st_premod",
+                        "st_predir",
+                        "st_pretyp",
+                        "st_presep",
+                        "st_name",
+                        "st_postyp",
+                        "st_posdir",
+                        "st_posmod"
+                    ],
+                    "city": "post_comm",
+                    "postcode": "post_code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/Perquimans_Service/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcel_id"
+                }
+            }
+        ]
     }
 }

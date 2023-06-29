@@ -9,17 +9,25 @@
         "state": "il",
         "county": "Henry"
     },
-    "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/HenryILFeatures/FeatureServer/7",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "TSC_Site_Address"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "TSC_Site_Address"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/HenryILFeatures/FeatureServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "TSC_Site_Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "TSC_Site_Address"
+                    }
+                }
+            }
+        ]
     }
 }

@@ -9,13 +9,32 @@
         "state": "tn",
         "county": "Cheatham"
     },
-    "data": "http://gismapper.apsu.edu/arcgis/rest/services/Cheatham/CheathamViewer/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "housenum",
-        "street": "street_nam",
-        "region": "state",
-        "postcode": "zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gismapper.apsu.edu/arcgis/rest/services/Cheatham/CheathamViewer/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "housenum",
+                    "street": "street_nam",
+                    "region": "state",
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.apsu.edu/arcgis/rest/services/Cheatham/Cheat_Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "gislink"
+                }
+            }
+        ]
     }
 }

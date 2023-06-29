@@ -18,4 +18,3 @@ for line in reader:
     city = cities.get(tuple(city_id), '')
     line.append(city)
     writer.writerow(line)
-    

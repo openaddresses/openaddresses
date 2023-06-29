@@ -7,20 +7,50 @@
         "country": "us",
         "state": "mt"
     },
-    "data": "ftp://ftp.geoinfo.msl.mt.gov/Data/Spatial/MSDI/AddressStructures/StructuresFramework_shp.zip",
-    "website": "http://geoinfo.msl.mt.gov/home/msdi/structures_and_addresses.aspx",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "ADDNUM",
-        "street": "FULLRDNAME",
-        "unit": [
-            "SUBADDTYPE",
-            "SUBADD"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://ftpgeoinfo.msl.mt.gov/Data/Spatial/MSDI/AddressStructures/StructuresFramework_shp.zip",
+                "website": "http://geoinfo.msl.mt.gov/home/msdi/structures_and_addresses.aspx",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "SiteStructureAddressPoints.shp",
+                    "unit": "Unit",
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_code"
+                }
+            }
         ],
-        "city": "COMMUNITY",
-        "region": "STATE",
-        "postcode": "ZIPCODE",
-        "format": "shapefile"
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://ftpgeoinfo.msl.mt.gov/Data/Spatial/MSDI/Cadastral/MontanaCadastral_SHP.zip",
+                "website": "https://geoinfo.msl.mt.gov/msdi/cadastral/",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "Montana_Cadastral/OwnerParcel.shp",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
     }
 }

@@ -9,22 +9,41 @@
         "state": "id",
         "county": "Clearwater"
     },
-    "data": "http://gis.clearwatercounty.org/arcgis/rest/services/County/MapServer/1",
-    "note": "don't use HOUSE_NUMB for number, it contains unit info.  don't use ADDRESS for street, it's not as reliable as prop_stree",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "prop_stree"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "prop_stree"
-        },
-        "unit": "DLVRY_APT",
-        "city": "prop_city",
-        "postcode": "prop_zip",
-        "region": "prop_state"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.clearwatercounty.org/arcgis/rest/services/County/MapServer/1",
+                "note": "don't use HOUSE_NUMB for number, it contains unit info.  don't use ADDRESS for street, it's not as reliable as prop_stree",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "prop_stree"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "prop_stree"
+                    },
+                    "unit": "DLVRY_APT",
+                    "city": "prop_city",
+                    "postcode": "prop_zip",
+                    "region": "prop_state"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "http://gis.clearwatercounty.org/arcgis/rest/services/Base/MapServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
     }
 }

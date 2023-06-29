@@ -1,41 +1,74 @@
 {
     "coverage": {
-        "US Census": {"geoid": "06093", "name": "Siskiyou County", "state": "California"},
+        "US Census": {
+            "geoid": "06093",
+            "name": "Siskiyou County",
+            "state": "California"
+        },
         "country": "us",
         "state": "ca",
         "county": "Siskiyou"
     },
-    "note": "Obtained via FOIA request - ingalls - 2017/11, updated by justin - 2018/02",
-    "data": "https://www.dropbox.com/s/mt6jp62lecrcfdh/sisk.csv?dl=1",
-    "protocol": "http",
-    "conform": {
-        "format": "csv",
-        "lat": "POINT_Y",
-        "lon": "POINT_X",
-        "number": {
-            "function": "prefixed_number",
-            "field": "ADDR_1"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "ADDR_1",
-            "may_contain_units": true
-        },
-        "unit": {
-            "function": "postfixed_unit",
-            "field": "ADDR_1"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "ADDR_2",
-            "pattern": "(.*) CA .*$",
-            "replace": "$1"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "ADDR_2",
-            "pattern": ".*([0-9]{5})$",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/ArcGIS/rest/services/TaxParcels_Public/FeatureServer/0",
+                "website": "https://siskiyou.maps.arcgis.com/home/item.html?id=710e1a6aa9c949b0ab110b88b1647bc1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "SITEADDRESS",
+                        "pattern": "^([0-9]+)(?:.+?)$",
+                        "replace": "$1"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "SITEADDRESS",
+                        "pattern": "^(?:[0-9]+\\s+)(.+?)(?:\\s+(?:#)?(?:\\d+[A-Z]?|[A-Z]\\d*)?)?(?:,.+?)$",
+                        "replace": "$1"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "SITEADDRESS",
+                        "pattern": "^(?:[0-9]+\\s+.+?\\s+)((#)?(\\d+[A-Z]?|[A-Z](\\d*)?)?)?(?:,.+?)$",
+                        "replace": "$1"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "SITEADDRESS",
+                        "pattern": "^(?:.+?,)?(.+?)(?:\\sCA\\s\\d{5})$",
+                        "replace": "$1"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "SITEADDRESS",
+                        "pattern": "\\b(CA)\\b",
+                        "replace": "$1"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "SITEADDRESS",
+                        "pattern": ".*([0-9]{5})$",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/arcgis/rest/services/Siskiyou_Parcels_-_Public/FeatureServer/0",
+                "website": "https://open-data-siskiyou.hub.arcgis.com/datasets/siskiyou::tax-parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
     }
 }

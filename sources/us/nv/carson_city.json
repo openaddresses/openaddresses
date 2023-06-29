@@ -9,15 +9,47 @@
         "state": "nv",
         "county": "Carson City"
     },
-    "data": "http://gis.carson.org/arcgis/rest/services/CarsonCity/CarsonCityNV_OpenData/FeatureServer/37",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "StrNumb",
-        "street": [
-            "StrDir",
-            "StrName"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.carson.org/arcgis/rest/services/CarsonCity/CarsonCityNV_OpenData/FeatureServer/37",
+                "website": "https://data-carsoncity.opendata.arcgis.com/datasets/CarsonCity::address-points/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StrNumb",
+                    "street": [
+                        "StrDir",
+                        "StrName"
+                    ],
+                    "unit": "Unit"
+                }
+            }
         ],
-        "unit": "Unit"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "http://gis.carson.org/arcgis/rest/services/CarsonCity/CarsonCityNV_OpenData/FeatureServer/36",
+                "website": "https://data-carsoncity.opendata.arcgis.com/datasets/CarsonCity::parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "http://gis.carson.org/arcgis/rest/services/CarsonCity/CarsonCityNV_OpenData/FeatureServer/41",
+                "website": "https://data-carsoncity.opendata.arcgis.com/datasets/CarsonCity::building-outlines-2019/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

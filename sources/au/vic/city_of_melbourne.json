@@ -1,25 +1,73 @@
 {
-    "protocol": "http",
-    "data": "https://data.melbourne.vic.gov.au/api/geospatial/a7rp-xtya?method=export&format=Shapefile",
-    "website": "https://data.melbourne.vic.gov.au/Property-Planning/Street-addresses/a7rp-xtya/about",
-    "compression": "zip",
-    "language": "en",
     "coverage": {
         "country": "au",
         "state": "vic",
         "city": "City of Melbourne"
     },
-    "license": {
-        "url": "http://creativecommons.org/licenses/by/4.0/legalcode",
-        "text": "CC BY 4.0",
-        "attribution": true,
-        "attribution name": "City of Melbourne, Australia",
-        "share-alike": false
-    },
-    "conform": {
-        "format": "shapefile",
-        "number": "street_no",
-        "street": "str_name",
-        "city": "suburb"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "http",
+                "data": "https://data.melbourne.vic.gov.au/api/geospatial/a7rp-xtya?method=export&format=Shapefile",
+                "website": "https://data.melbourne.vic.gov.au/Property-Planning/Street-addresses/a7rp-xtya/about",
+                "compression": "zip",
+                "language": "en",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/4.0/legalcode",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "City of Melbourne, Australia",
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "shapefile",
+                    "number": "street_no",
+                    "street": "str_name",
+                    "city": "suburb"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "protocol": "http",
+                "data": "https://data.melbourne.vic.gov.au/api/geospatial/e56b-j9mj?method=export&format=Shapefile",
+                "website": "https://data.melbourne.vic.gov.au/Property-Planning/Property-boundaries/e56b-j9mj",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "property_i"
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "http://creativecommons.org/licenses/by/4.0/legalcode",
+                    "attribution name": "City of Melbourne, Australia",
+                    "attribution": true,
+                    "share-alike": false
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "protocol": "http",
+                "data": "https://data.melbourne.vic.gov.au/api/geospatial/pv8y-ihee?method=export&format=Shapefile",
+                "website": "https://data.melbourne.vic.gov.au/Property-Planning/Building-outlines-2015/pv8y-ihee",
+                "conform": {
+                    "format": "shapefile",
+                    "height": "ovlhft_ahd"
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "http://creativecommons.org/licenses/by/4.0/legalcode",
+                    "attribution name": "City of Melbourne, Australia",
+                    "attribution": true,
+                    "share-alike": false
+                }
+            }
+        ]
     }
 }

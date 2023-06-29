@@ -16,22 +16,30 @@
         "state": "oh",
         "city": "Perrysburg"
     },
-    "protocol": "ESRI",
-    "data": "http://maps.ci.perrysburg.oh.us/arcgis/rest/services/Planning_Zoning/Address_Points/MapServer/0",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSENUM",
-        "unit": "UNITNUM",
-        "street": [
-            "ST_PREFIX",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SUFFIX",
-            "ST_SUFFIX2"
-        ],
-        "city": "MUNI",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "http://maps.ci.perrysburg.oh.us/arcgis/rest/services/Planning_Zoning/Address_Points/MapServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "unit": "UNITNUM",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX",
+                        "ST_SUFFIX2"
+                    ],
+                    "city": "MUNI",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

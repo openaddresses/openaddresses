@@ -3,8 +3,8 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -117.890,
-                33.810
+                -117.89,
+                33.81
             ]
         },
         "US Census": {
@@ -16,18 +16,37 @@
         "state": "ca",
         "city": "orange"
     },
-    "attribution": "City of Orange",
-    "data": "http://gis.cityoforange.org/orangegis/rest/services/ParcelPublicAccessMI/MapServer/3",
-    "website": "http://cityoforange.org/",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-          "UNITTYPE",
-          "UNITID"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "attribution": "City of Orange",
+                "data": "https://services5.arcgis.com/HsWup310bJE1lcGa/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://gisdata-cityoforange.hub.arcgis.com/datasets/cityoforange::address-points/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": "UNITID",
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "city": "MUNICIPALITY"
+        "parcels": [
+            {
+                "name": "city",
+                "attribution": "City of Orange",
+                "data": "https://services5.arcgis.com/HsWup310bJE1lcGa/arcgis/rest/services/Assessed_Parcels/FeatureServer/0",
+                "website": "https://gisdata-cityoforange.hub.arcgis.com/datasets/cityoforange::assessed-parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
     }
 }

@@ -4,7 +4,7 @@
             "type": "Point",
             "coordinates": [
                 -122.15,
-                37.40
+                37.4
             ]
         },
         "US Census": {
@@ -16,22 +16,56 @@
         "state": "ca",
         "city": "Mountain View"
     },
-    "data": "https://maps.mountainview.gov/arcgis/rest/services/Public/SiteAddressPoint/MapServer/0",
-    "attribution": "City of Mountain View",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-          "PREADDRNUM",
-          "ADDRNUM",
-          "ADDRNUMSUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.mountainview.gov/arcgis/rest/services/Public/SiteAddressPoint/MapServer/0",
+                "website": "https://data-mountainview.opendata.arcgis.com/datasets/MountainView::address-points/about",
+                "attribution": "City of Mountain View",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIP5"
+                }
+            }
         ],
-        "street": "FULLNAME",
-        "unit": [
-          "UNITTYPE",
-          "UNITID"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://maps.mountainview.gov/arcgis/rest/services/Public/Parcel/MapServer/0",
+                "website": "https://data-mountainview.opendata.arcgis.com/datasets/MountainView::parcel/about",
+                "attribution": "City of Mountain View",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
         ],
-        "city": "MUNICIPALITY",
-        "postcode": "ZIP5"
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://maps.mountainview.gov/arcgis/rest/services/Public/BuildingFootprint/MapServer/0",
+                "website": "https://data-mountainview.opendata.arcgis.com/datasets/MountainView::buildingfootprint/about",
+                "attribution": "City of Mountain View",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

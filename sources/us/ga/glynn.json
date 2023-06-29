@@ -1,24 +1,36 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13127", "name": "Glynn County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13127",
+            "name": "Glynn County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Glynn"
     },
-    "data": "https://webadaptor.glynncounty-ga.gov/webadaptor/rest/services/Addresses/Addresses/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "PADDR_NUMB",
-        "street": [
-            "PRE_DIR",
-            "STREET",
-            "STREET_TYP",
-            "SUF_DIR"
-        ],
-        "unit": "UNIT_NUM",
-        "city": "CITY",
-        "postcode": "ZIP_POSTAL",
-        "region": "REGION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://webadaptor.glynncounty-ga.gov/webadaptor/rest/services/Addresses/Addresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "PADDR_NUMB",
+                    "street": [
+                        "PRE_DIR",
+                        "STREET",
+                        "STREET_TYP",
+                        "SUF_DIR"
+                    ],
+                    "unit": "UNIT_NUM",
+                    "city": "CITY",
+                    "postcode": "ZIP_POSTAL",
+                    "region": "REGION"
+                }
+            }
+        ]
     }
 }

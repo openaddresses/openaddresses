@@ -4,21 +4,29 @@
         "state": "on",
         "county": "Newbury"
     },
-    "website": "https://www.middlesex.ca/departments/mapping#interactive_mapping",
-    "data": "https://maps.middlesex.ca/arcgis/rest/services/Public/NEWB_Address/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "FULLADDRES",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "FULLADDRES",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.middlesex.ca/departments/mapping#interactive_mapping",
+                "data": "https://maps.middlesex.ca/arcgis/rest/services/Public/NEWB_Address/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "FULLADDRES",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "FULLADDRES",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }

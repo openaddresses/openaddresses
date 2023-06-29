@@ -9,20 +9,39 @@
         "state": "ne",
         "county": "Valley"
     },
-    "data": "http://maps6.gisworkshop.com/ArcGIS/rest/services/Valley/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "PROPADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PROPADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://maps6.gisworkshop.com/ArcGIS/rest/services/Valley/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "PROPADDRESS",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "PROPADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis2.gworks.com/arcgis/rest/services/Valley_County_NE_Assessor/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ]
     }
 }

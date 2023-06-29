@@ -1,4 +1,5 @@
 {
+    "schema": 2,
     "coverage": {
         "US Census": {
             "geoid": "32023",
@@ -9,60 +10,33 @@
         "state": "nv",
         "county": "Nye"
     },
-    "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/NyeNVFeatures/FeatureServer/5",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "Address"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^\\d+\\s+(.+?)(?:\\s+(?:#|UNIT)\\b.+)?$"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "((?:#|UNIT).+)$"
-        }
-    },
-    "test": {
-        "enabled": true,
-        "description": "These are tests for extracting number, street, and unit",
-        "acceptance-tests": [
+    "layers": {
+        "addresses": [
             {
-                "description": "no unit",
-                "inputs": {
-                    "Address": "1795 W AMARGOSA FARM RD"
-                },
-                "expected": {
-                    "number": "1795",
-                    "street": "W AMARGOSA FARM RD",
-                    "unit": ""
+                "name": "county",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/NyeNVFeatures/FeatureServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUMBER",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_PRETYPE",
+                        "ST_NAME",
+                        "ST_POSTTYPE",
+                        "ST_POSTDIR"
+                    ]
                 }
-            },
+            }
+        ],
+        "parcels": [
             {
-                "description": "has # unit",
-                "inputs": {
-                    "Address": "1701 S PAHRUMP VALLEY BLVD #261 "
-                },
-                "expected": {
-                    "number": "1701",
-                    "street": "S PAHRUMP VALLEY BLVD",
-                    "unit": "#261"
-                }
-            },
-            {
-                "description": "has UNIT unit",
-                "inputs": {
-                    "Address": "2541 E AMBUSH ST UNIT C"
-                },
-                "expected": {
-                    "number": "2541",
-                    "street": "E AMBUSH ST",
-                    "unit": "UNIT C"
+                "name": "county",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/NyeNVFeatures/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "GIS_Parcel_Number"
                 }
             }
         ]

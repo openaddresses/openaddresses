@@ -9,15 +9,37 @@
         "state": "nv",
         "county": "Eureka"
     },
-    "data": "https://services7.arcgis.com/npQRqzUHX9auAwvE/ArcGIS/rest/services/parcels/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "PLOC_",
-        "street": [
-            "PLOCDR",
-            "PLOCNM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/npQRqzUHX9auAwvE/ArcGIS/rest/services/parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "https://eucogis.maps.arcgis.com/apps/webappviewer/index.html?id=a07b87e8854c4d0997c6876d5ce93a00",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITEADDRES"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITEADDRES"
+                    }
+                }
+            }
         ],
-        "city": "PTOWN"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/npQRqzUHX9auAwvE/ArcGIS/rest/services/parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
     }
 }

@@ -1,22 +1,36 @@
 {
     "coverage": {
-        "US Census": {"geoid": "45019", "name": "Charleston County", "state": "South Carolina"},
+        "US Census": {
+            "geoid": "45019",
+            "name": "Charleston County",
+            "state": "South Carolina"
+        },
         "country": "us",
         "state": "sc",
         "county": "Charleston"
     },
-    "data": "https://gisccapps.charlestoncounty.org/arcgis/rest/services/GIS_VIEWER/Public_Search/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "FULL_HOUSE_NUM",
-        "street": ["PRE_DIR", "ST_NAME", "ST_TYPE", "SUF_DIR"],
-        "unit": [
-          "UNIT_TYPE",
-          "UNIT"
-        ],
-        "city": "POSTAL_TOWN",
-        "postcode": "POSTAL_CODE",
-        "region": "POSTAL_STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisccapps.charlestoncounty.org/arcgis/rest/services/GIS_VIEWER/Public_Search/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "WHOLE_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "WHOLE_ADDRESS"
+                    },
+                    "city": "POSTAL_TOWN",
+                    "postcode": "POSTAL_CODE",
+                    "region": "POSTAL_STATE"
+                }
+            }
+        ]
     }
 }

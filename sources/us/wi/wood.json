@@ -16,30 +16,41 @@
         "state": "wi",
         "county": "Wood"
     },
-    "data": "http://gis.co.wood.wi.us/gis/rest/services/WAB/LandRecords/MapServer/75",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "format",
-            "fields": [
-                "AddNum",
-                "AddNumSuffix"
-            ],
-            "format": "$1$2"
-        },
-        "street": [
-            "Prefix",
-            "StreetName",
-            "StreetType",
-            "Suffix"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.wood.wi.us/gis/rest/services/LandRecordsViewer/LandRecordsBasemapV2/MapServer/12",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNumPre",
+                        "AddNum",
+                        "AddNumSuffix"
+                    ],
+                    "street": "FullStNm",
+                    "unit": [
+                        "UnitType",
+                        "UnitID"
+                    ],
+                    "postcode": "ZipCode",
+                    "city": "MuniName",
+                    "region": "StateName"
+                }
+            }
         ],
-        "unit": [
-            "UnitType",
-            "UnitID"
-        ],
-        "postcode": "ZipCode",
-        "city": "PlaceName",
-        "region": "State"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.wood.wi.us/gis/rest/services/LandRecordsViewer/LandRecordsBasemapV2/MapServer/18",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
     }
 }

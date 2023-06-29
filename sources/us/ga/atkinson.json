@@ -1,28 +1,42 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13003", "name": "Atkinson County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13003",
+            "name": "Atkinson County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Atkinson"
     },
-    "data": "https://data.openaddresses.io/cache/us-ga-atkinson_county.csv",
-    "protocol": "http",
-    "conform": {
-        "format": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "region": "REGION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.sgrcmaps.com/alma/rest/services/Atkinson/Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STNUM",
+                    "street": "LABEL",
+                    "city": "City",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.sgrcmaps.com/alma/rest/services/Atkinson/PropertyInformation/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL"
+                }
+            }
+        ]
     }
 }

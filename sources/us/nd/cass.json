@@ -9,20 +9,36 @@
         "state": "nd",
         "county": "Cass"
     },
-    "data": "http://gisweb.casscountynd.gov/arcgis/rest/services/PublicDynamic/MapServer/22",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDR_NUM",
-        "street": [
-            "PRE_TYPE",
-            "PRE_DIR",
-            "ST_NAME",
-            "ST_TYPE",
-            "SUF_DIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisweb.casscountynd.gov/arcgis/rest/services/OpenData/OpenData/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PropertyAddress"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PropertyAddress"
+                    }
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "CITY",
-        "postcode": "ZIP_CODE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisweb.casscountynd.gov/arcgis/rest/services/OpenData/OpenData/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "GISPIN"
+                }
+            }
+        ]
     }
 }

@@ -9,20 +9,28 @@
         "state": "sc",
         "county": "Florence"
     },
-    "data": "http://arc2000.florenceco.org/arcgis/rest/services/Florence_County_Maps_WebMercator/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "unit": "UNIT",
-        "street": [
-            "STPREDIR",
-            "STPRETYPE",
-            "STNAME",
-            "STTYPE",
-            "STDIR"
-        ],
-        "postcode": "ZIPCODE",
-        "city": "ZIPCOMM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://arc2000.florenceco.org/arcgis/rest/services/Florence_County_Maps_WebMercator/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "unit": "UNIT",
+                    "street": [
+                        "STPREDIR",
+                        "STPRETYPE",
+                        "STNAME",
+                        "STTYPE",
+                        "STDIR"
+                    ],
+                    "postcode": "ZIPCODE",
+                    "city": "ZIPCOMM"
+                }
+            }
+        ]
     }
 }

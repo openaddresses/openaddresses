@@ -9,21 +9,53 @@
         "state": "pa",
         "county": "Mifflin"
     },
-    "data": "http://gis.co.mifflin.pa.us/arcgis/rest/services/parcel_program/MapServer/5",
-    "website": "http://www.co.mifflin.pa.us/dept/GIS/Pages/GIS-Data-Agreement.aspx",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "LOCATION",
-            "pattern": "^([0-9]+) "
-        },
-        "street": {
-            "function": "regexp",
-            "field": "LOCATION",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisportal.co.mifflin.pa.us/arcgis/rest/services/Hosted/parcels_041223/FeatureServer/0",
+                "website": "http://www.co.mifflin.pa.us/dept/GIS/Pages/GIS-Data-Agreement.aspx",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "situs_comb"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "situs_comb"
+                    },
+                    "postcode": "situs_zip",
+                    "region": "situs_stat",
+                    "city": "situs_city",
+                    "accuracy": 2
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisportal.co.mifflin.pa.us/arcgis/rest/services/Hosted/parcels_041223/FeatureServer/0",
+                "website": "http://www.co.mifflin.pa.us/dept/GIS/Pages/GIS-Data-Agreement.aspx",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "fid"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisportal.co.mifflin.pa.us/arcgis/rest/services/Hosted/buildings_041223/FeatureServer/0",
+                "website": "http://www.co.mifflin.pa.us/dept/GIS/Pages/GIS-Data-Agreement.aspx",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

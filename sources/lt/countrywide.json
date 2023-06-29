@@ -1,19 +1,30 @@
 {
+    "schema": 2,
     "coverage": {
         "country": "lt",
-        "ISO 3166": {"alpha2": "LT", "country": "Lithuania"}
+        "ISO 3166": {
+            "alpha2": "LT",
+            "country": "Lithuania"
+        }
     },
-    "data": "http://lakis.lakd.lt/ArcGIS/rest/services/LAKD_lokatorius/MapServer/0",
-    "website": "http://www.lakd.lt/",
-    "attribution": "The Lithuanian Road Administration",
-    "protocol": "ESRI",
-    "skip": true,
-    "conform": {
-        "format": "geojson",
-        "district": "SAV_PAV",
-        "city": "GYV_PAVAD",
-        "number": "NAMO_NR1",
-        "street": "GAT_PAVAD1",
-        "postcode": "pasto_k"
+    "layers": {
+        "addresses": [{
+            "data": "https://v2.openaddresses.io/batch-prod/upload/1/8kz8j24siz5/lt_countrywide.csv.zip",
+            "name": "country",
+            "website": "https://www.registrucentras.lt/p/1202",
+            "year": "2021",
+            "protocol": "http",
+            "compression": "zip",
+            "conform": {
+                "number": "NR",
+                "street": ["tipas", "vardas_k"],
+                "unit": "korpuso_nr",
+                "city": "vardas",
+                "postcode": "pasto_koda",
+                "lat": "n_koord",
+                "lon": "e_koord",
+                "format": "csv"
+            }
+        }]
     }
 }

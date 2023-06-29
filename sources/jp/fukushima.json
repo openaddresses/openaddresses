@@ -1,9 +1,4 @@
 {
-    "protocol": "http",
-    "data": "https://data.openaddresses.io/cache/jp-fukushima.zip",
-    "website": "http://nlftp.mlit.go.jp/isj/index.html",
-    "compression": "zip",
-    "attribution": "Japanese Ministry of Land, Infrastructure and Transport",
     "coverage": {
         "ISO 3166": {
             "alpha2": "JP-07",
@@ -13,25 +8,38 @@
         "country": "jp",
         "state": "福島県"
     },
-    "conform": {
-        "format": "csv",
-        "lat": "緯度",
-        "srs": "EPSG:4612",
-        "number": {
-            "function": "join",
-            "fields": [
-                "街区符号・地番",
-                "座標系番号"
-            ],
-            "separator": "-"
-        },
-        "street": "大字・町丁目名",
-        "lon": "経度",
-        "encoding": "SHIFT_JISX0213"
-    },
-    "license": {
-        "url": "http://nlftp.mlit.go.jp/ksj/other/yakkan.html",
-        "attribution": true,
-        "share-alike": false
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "protocol": "http",
+                "data": "https://data.openaddresses.io/cache/jp-fukushima.zip",
+                "website": "http://nlftp.mlit.go.jp/isj/index.html",
+                "compression": "zip",
+                "attribution": "Japanese Ministry of Land, Infrastructure and Transport",
+                "conform": {
+                    "format": "csv",
+                    "lat": "緯度",
+                    "srs": "EPSG:4612",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "街区符号・地番",
+                            "座標系番号"
+                        ],
+                        "separator": "-"
+                    },
+                    "street": "大字・町丁目名",
+                    "lon": "経度",
+                    "encoding": "SHIFT_JISX0213"
+                },
+                "license": {
+                    "url": "http://nlftp.mlit.go.jp/ksj/other/yakkan.html",
+                    "attribution": true,
+                    "share-alike": false
+                }
+            }
+        ]
     }
 }

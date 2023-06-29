@@ -1,19 +1,69 @@
 {
     "coverage": {
-        "US Census": {"geoid": "06059", "name": "Orange County", "state": "California"},
+        "US Census": {
+            "geoid": "06059",
+            "name": "Orange County",
+            "state": "California"
+        },
         "country": "us",
         "state": "ca",
         "county": "Orange",
         "city": "Newport Beach"
     },
-    "data": "http://nbgis.newportbeachca.gov/gispub/GISDataDownload/Address%20Points/shapefile/Address%20Points.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "id": "PARCEL_NO",
-        "unit": "SUITE",
-        "number": "A_NBR",
-        "street": "ADDR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://nbgis.newportbeachca.gov/gispub/GISDataDownload/Address%20Points/shapefile/Address%20Points.zip",
+                "website": "https://www.newportbeachca.gov/government/departments/city-manager-s-office/information-technology-city-division/gis-mapping/data-catalog",
+                "license": {
+                    "text": "Indemnification",
+                    "url": "https://www.newportbeachca.gov/government/departments/city-manager-s-office/information-technology-city-division/gis-mapping/data-catalog"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "id": "PARCEL_NO",
+                    "unit": "SUITE",
+                    "number": "A_NBR",
+                    "street": "ADDR"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://nbgis.newportbeachca.gov/gispub/GISDataDownload/Parcels/shapefile/Parcels.zip",
+                "website": "https://www.newportbeachca.gov/government/departments/city-manager-s-office/information-technology-city-division/gis-mapping/data-catalog",
+                "license": {
+                    "text": "Indemnification",
+                    "url": "https://www.newportbeachca.gov/government/departments/city-manager-s-office/information-technology-city-division/gis-mapping/data-catalog"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "TAG"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://nbgis.newportbeachca.gov/gispub/GISDataDownload/Building%20Footprints/shapefile/Building%20Footprints.zip",
+                "website": "https://www.newportbeachca.gov/government/departments/city-manager-s-office/information-technology-city-division/gis-mapping/data-catalog",
+                "license": {
+                    "text": "Indemnification",
+                    "url": "https://www.newportbeachca.gov/government/departments/city-manager-s-office/information-technology-city-division/gis-mapping/data-catalog"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

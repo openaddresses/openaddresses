@@ -1,38 +1,52 @@
 {
-    "compression": "zip",
-    "skip": false,
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
-    "protocol": "http",
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1075",
     "coverage": {
         "state": "seoul",
         "country": "kr",
         "city": "도봉구",
-        "geometry": { "type": "Point", "coordinates": [127.030, 37.667] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                127.03,
+                37.667
+            ]
+        }
     },
-    "conform": {
-        "encoding": "EUCKR",
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        },
-        "headers": 2,
-        "srs": "EPSG:2097",
-        "format": "csv",
-        "skiplines": 2,
-        "lat": "POINT_Y",
-        "lon": "POINT_X",
-        "number": "LNDN_MA_SN"
-    },
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
-    "data": "https://data.openaddresses.io/cache/kr-seoul-tobonggu.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "compression": "zip",
+                "skip": false,
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "protocol": "http",
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1075",
+                "conform": {
+                    "encoding": "EUCKR",
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    },
+                    "headers": 2,
+                    "srs": "EPSG:2097",
+                    "format": "csv",
+                    "skiplines": 2,
+                    "lat": "POINT_Y",
+                    "lon": "POINT_X",
+                    "number": "LNDN_MA_SN"
+                },
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "data": "https://data.openaddresses.io/cache/kr-seoul-tobonggu.zip"
+            }
+        ]
+    }
 }

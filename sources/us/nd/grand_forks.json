@@ -9,20 +9,28 @@
         "state": "nd",
         "county": "Grand Forks"
     },
-    "data": "https://www.gfgis.com/arcgis/rest/services/Public_Layers/Labels/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "housenum",
-        "street": [
-            "st_prefix",
-            "st_name",
-            "st_type",
-            "st_suffix"
-        ],
-        "unit": "unitnum",
-        "city": "usps_city",
-        "region": "state",
-        "postcode": "zipcode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.gfgis.com/arcgis/rest/services/Public_Layers/Labels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "housenum",
+                    "street": [
+                        "st_prefix",
+                        "st_name",
+                        "st_type",
+                        "st_suffix"
+                    ],
+                    "unit": "unitnum",
+                    "city": "usps_city",
+                    "region": "state",
+                    "postcode": "zipcode"
+                }
+            }
+        ]
     }
 }

@@ -4,18 +4,53 @@
         "state": "ca",
         "city": "Culver City"
     },
-    "year": "2019",
-    "data": "https://data.openaddresses.io/cache/uploads/ingalls/us-ca-city_of_culver_city.zip",
-    "note": "Obtained Via FOIA Request",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "unit": "UNIT",
-        "number": "Number_",
-        "street": "NAME",
-        "postcode": "ZIPCODE",
-        "city": "CITY",
-        "region": "State"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gisproxy.culvercity.org/arcgis/rest/services/PropInfoData/MapServer/50",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADR_NUM_BS",
+                        "ADR_NUM_SX"
+                    ],
+                    "street": [
+                        "ADR_ST_NM",
+                        "ADR_ST_TP"
+                    ],
+                    "unit": [
+                        "ADR_UN_TP",
+                        "ADR_UNIT"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gisproxy.culvercity.org/arcgis/rest/services/PropInfoData/MapServer/29",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gisproxy.culvercity.org/arcgis/rest/services/PropInfoData/MapServer/32",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

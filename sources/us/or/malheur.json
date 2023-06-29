@@ -9,27 +9,25 @@
         "state": "or",
         "county": "Malheur"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "gdb",
-        "file": "Delivery/addresses_oregon.gdb",
-        "layer": "Malheur",
-        "number": [
-            "ADDR_NUM",
-            "NUM_SUFF"
-        ],
-        "street": [
-            "PREMOD",
-            "PREDIR",
-            "PRETYPE",
-            "STNAME",
-            "STTYPE",
-            "SUFDIR",
-            "POSTMOD"
-        ],
-        "city": "USPS_CITY",
-        "postcode": "ZIP5"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/uUvqNMGPm7axC2dD/ArcGIS/rest/services/TL_Oct2022/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUSADDR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUSADDR"
+                    }
+                }
+            }
+        ]
     }
 }

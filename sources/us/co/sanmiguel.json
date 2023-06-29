@@ -9,21 +9,43 @@
         "state": "co",
         "county": "san miguel"
     },
-    "attribution": "San Miguel County",
-    "data": "https://drive.google.com/uc?export=download&id=0BwY6J3h90ftlbnpyekxpX2dhTmc",
-    "website": "http://www.sanmiguelcountyco.gov/185/MappingGIS",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "STREETNO",
-        "street": [
-          "STREETDIR",
-          "STREETNAME",
-          "STREETSUF",
-          "STREETPOD"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "San Miguel County",
+                "data": "https://services.arcgis.com/aXqye4IXyXsdIpPb/ArcGIS/rest/services/Addresses/FeatureServer/0",
+                "website": "http://www.sanmiguelcountyco.gov/185/MappingGIS",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "SAN",
+                        "SNS"
+                    ],
+                    "street": [
+                        "PRD",
+                        "RD",
+                        "STS"
+                    ],
+                    "unit": "UNIT",
+                    "city": "MCN"
+                }
+            }
         ],
-        "unit": "STREETALP",
-        "city": "LOC_CITY",
-        "format": "shapefile-polygon"
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "San Miguel County",
+                "data": "https://services.arcgis.com/aXqye4IXyXsdIpPb/ArcGIS/rest/services/TaxParcelsPublic/FeatureServer/0",
+                "website": "http://www.sanmiguelcountyco.gov/185/MappingGIS",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

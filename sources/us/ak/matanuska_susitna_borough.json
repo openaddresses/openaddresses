@@ -9,20 +9,47 @@
         "state": "ak",
         "county": "matanuska susitna borough"
     },
-    "data": "http://maps.matsugov.us/ArcGIS/rest/services/ParcelViewer/MapServer/7",
-    "website": "http://www.matsugov.us/",
-    "attribution": "Matanuska-Susitna Borough",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "ADRSNUM",
-        "street": [
-            "P_ROADNME",
-            "ROADNME",
-            "S_ROADNME",
-            "PS_ROADNME"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.matsugov.us/map/rest/services/ParcelViewer/ParcelViewer/MapServer/12",
+                "website": "https://matsugov.us/gis-downloads?highlight=WyJnaXMiXQ==&template=msb_bolide",
+                "license": {
+                    "url": "https://matsugov.us/gis/disclaimer?highlight=WyJnaXMiXQ==&template=msb_bolide"
+                },
+                "attribution": "Matanuska-Susitna Borough",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreDir",
+                        "St_Name",
+                        "St_PosTyp"
+                    ],
+                    "city": "IncMuni",
+                    "district": "County",
+                    "region": "State"
+                }
+            }
         ],
-        "unit": "ADRSNUM_S",
-        "city": "COMMUNITY",
-        "format": "geojson"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.matsugov.us/map/rest/services/ParcelViewer/ParcelViewer/MapServer/14",
+                "website": "https://matsugov.us/gis-downloads?highlight=WyJnaXMiXQ==&template=msb_bolide",
+                "license": {
+                    "url": "https://matsugov.us/gis/disclaimer?highlight=WyJnaXMiXQ==&template=msb_bolide"
+                },
+                "attribution": "Matanuska-Susitna Borough",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "P_ID"
+                }
+            }
+        ]
     }
 }

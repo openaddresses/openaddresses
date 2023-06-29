@@ -1,20 +1,28 @@
 {
-  "name": "oa",
-  "version": "2.0.0",
-  "description": "Manage, test and download a global register of addresses.",
-  "scripts": {
-    "test": "node test/test | tap-dot"
-  },
-  "license": "BSD",
-  "engines": {
-    "node": ">=10.x.x"
-  },
-  "devDependencies": {
-    "ajv": "6.12.x",
-    "glob": "7.1.x",
-    "lodash": "4.17.x",
-    "request": "2.88.x",
-    "tap-dot": "2.0.x",
-    "tape": "5.0.x"
-  }
+    "name": "oa",
+    "version": "5.0.2",
+    "type": "module",
+    "description": "Manage, test and download a global register of addresses.",
+    "main": "test/lib.js",
+    "scripts": {
+        "test": "tape test/**.test.js | tap-dot",
+        "lint": "eslint test/**.js"
+    },
+    "license": "BSD",
+    "engines": {
+        "node": ">=10.x.x"
+    },
+    "devDependencies": {
+        "eslint": "^8.13.0",
+        "eslint-plugin-node": "^11.1.0",
+        "lodash": "4.17.x",
+        "tap-dot": "2.0.x",
+        "tape": "^5.3.0"
+    },
+    "dependencies": {
+        "ajv": "^8.6.0",
+        "ajv-formats": "^2.1.0",
+        "glob": "^8.0.1",
+        "json-schema-ref-parser": "^9.0.9"
+    }
 }

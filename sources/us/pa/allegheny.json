@@ -9,32 +9,70 @@
         "state": "pa",
         "county": "Allegheny"
     },
-    "data": "https://gisdata.alleghenycounty.us/arcgis/rest/services/Addressing/Addressing_AddressPoints/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "ADDRESS_ID",
-        "number": [
-            "ADDR_NUM_PREFIX",
-            "ADDR_NUM",
-            "ADDR_NUM_SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.alleghenycounty.us/gis/index.aspx",
+                "contact": {
+                    "email": "gishelp@alleghenycounty.us"
+                },
+                "data": "https://gisdata.alleghenycounty.us/arcgis/rest/services/EGIS/AC_AddressPointsWithLabels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDRESS_ID",
+                    "number": [
+                        "ADDR_NUM_PREFIX",
+                        "ADDR_NUM",
+                        "ADDR_NUM_SUFFIX"
+                    ],
+                    "street": [
+                        "ST_PREMODIFIER",
+                        "ST_PREFIX",
+                        "ST_PRETYPE",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX",
+                        "ST_POSTMODIFIER"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT"
+                    ],
+                    "postcode": "ZIP_CODE",
+                    "city": "MUNICIPALITY",
+                    "district": "COUNTY",
+                    "region": "STATE"
+                }
+            }
         ],
-        "street": [
-            "ST_PREMODIFIER",
-            "ST_PREFIX",
-            "ST_PRETYPE",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SUFFIX",
-            "ST_POSTMODIFIER"
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.alleghenycounty.us/gis/index.aspx",
+                "contact": {
+                    "email": "gishelp@alleghenycounty.us"
+                },
+                "data": "https://gisdata.alleghenycounty.us/arcgis/rest/services/EGIS/Web_Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
         ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT"
-        ],
-        "postcode": "ZIP_CODE",
-        "city": "MUNICIPALITY",
-        "district": "COUNTY",
-        "region": "STATE"
+        "buildings": [
+            {
+                "name": "county",
+                "website": "https://www.alleghenycounty.us/gis/index.aspx",
+                "data": "https://gisdata.alleghenycounty.us/arcgis/rest/services/EGIS/Buildings/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

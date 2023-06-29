@@ -9,24 +9,31 @@
         "state": "ga",
         "county": "Chatham"
     },
-    "attribution": "City of Savannah",
-    "data": "https://public.sagis.org/arcgis/rest/services/SAGIS/AddressLocator/MapServer/0",
-    "website": "http://sagis.maps.arcgis.com/home/",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "ADD_ID",
-        "number": "STRENUMB",
-        "unit": "UNIT",
-        "street": [
-            "STPRE_TYPE",
-            "STPRE_Q",
-            "STDIR",
-            "STNAME",
-            "STSUFFIX",
-            "STSUF_DIR",
-            "STSUF_Q"
-        ],
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "City of Savannah",
+                "data": "https://public.sagis.org/arcgis/rest/services/BOA/BoaTY_Addresses/MapServer/0",
+                "website": "http://sagis.maps.arcgis.com/home/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STRENUMB",
+                    "unit": "UNIT",
+                    "street": [
+                        "STPRE_TYPE",
+                        "STPRE_Q",
+                        "STDIR",
+                        "STNAME",
+                        "STSUFFIX",
+                        "STSUF_DIR",
+                        "STSUF_Q"
+                    ],
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

@@ -9,27 +9,52 @@
         "state": "fl",
         "county": "Volusia"
     },
-    "attribution": "Volusia County",
-    "data": "http://maps.vcgov.org/gis/download/shpfiles/address.zip",
-    "website": "http://www.volusia.org/services/financial-and-administrative-services/information-technology/geographic-information-services/data-available-in-shapefile-format.stml",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "HOUSE_NUM",
-        "street": [
-            "PRE_DIR",
-            "STREET_NAM",
-            "STREET_TYP",
-            "POST_DIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Volusia County",
+                "data": "https://utility.arcgis.com/usrsvcs/servers/bd9acbe15dbe4d329c8e1914fb278716/rest/services/OpenData/Open_Data_1/FeatureServer/2",
+                "website": "https://opendata-volusiacountyfl.hub.arcgis.com/datasets/VolusiaCountyFL::address-situs/about",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "HOUSE_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "STREET_NAM",
+                        "STREET_TYP",
+                        "POST_DIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITYNAME",
+                    "postcode": "ZIP",
+                    "format": "geojson"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "CITYNAME",
-        "postcode": "ZIP",
-        "format": "shapefile"
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Volusia County",
+                "data": "https://utility.arcgis.com/usrsvcs/servers/89544defaad54ceb95da39e870c980cb/rest/services/OpenData/Open_Data_3/FeatureServer/36",
+                "website": "https://opendata-volusiacountyfl.hub.arcgis.com/datasets/VolusiaCountyFL::parcels-1/about",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PID",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

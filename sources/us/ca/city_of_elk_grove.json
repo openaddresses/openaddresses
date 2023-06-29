@@ -17,24 +17,61 @@
         "county": "Sacramento",
         "city": "Elk Grove"
     },
-    "data": "https://services1.arcgis.com/r6QlyAADl0kfhp1m/ArcGIS/rest/services/Address_Maint_Hosted/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "ADDRESSID",
-        "number": "STREETNUMB",
-        "street": [
-            "PREFIXDIR",
-            "PREFIXTYPE",
-            "STREETNAME",
-            "STREETTYPE",
-            "SUFFIXDIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services1.arcgis.com/r6QlyAADl0kfhp1m/ArcGIS/rest/services/Address_Maint_Hosted/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDRESSID",
+                    "number": "STREETNUMB",
+                    "street": [
+                        "PREFIXDIR",
+                        "PREFIXTYPE",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFFIXDIR"
+                    ],
+                    "unit": [
+                        "UNIT",
+                        "UNITDESIGN"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "unit": [
-            "UNIT",
-            "UNITDESIGN"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://webmaps.elkgrovecity.org/arcgis/rest/services/Open_Data_Portal/EG_PARCELS/MapServer/00",
+                "website": "https://data-elkmap.hub.arcgis.com/datasets/elkmap::city-of-elk-grove-parcels/about",
+                "license": {
+                    "url": "https://www.elkgrovecity.org/departments-and-divisions/geographic-information-systems"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
         ],
-        "city": "CITY",
-        "postcode": "ZIPCODE"
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://webmaps.elkgrovecity.org/arcgis/rest/services/Open_Data_Portal/EG_BUILDING_FOOTPRINTS/MapServer/0",
+                "website": "https://data-elkmap.hub.arcgis.com/datasets/elkmap::city-of-elk-grove-building-footprints/about",
+                "license": {
+                    "url": "https://www.elkgrovecity.org/departments-and-divisions/geographic-information-systems"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

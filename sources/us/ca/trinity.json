@@ -9,17 +9,37 @@
         "state": "ca",
         "county": "Trinity"
     },
-    "data": "http://services2.arcgis.com/32siQkg0O6da8zFF/arcgis/rest/services/Address_Points/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "STREET_NUMBER",
-        "street": [
-            "STREET_NAME",
-            "STREET_TYPE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/32siQkg0O6da8zFF/ArcGIS/rest/services/Address_Locations/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREET_NUMBER",
+                    "street": [
+                        "STREET_NAME",
+                        "STREET_TYPE"
+                    ],
+                    "unit": "UNIT_NUMBER",
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP_CODE"
+                }
+            }
         ],
-        "unit": "UNIT_NUMBER",
-        "city": "COMMUNITY",
-        "postcode": "ZIP_CODE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/32siQkg0O6da8zFF/ArcGIS/rest/services/Parcel_Service/FeatureServer/0",
+                "website": "https://trinity-county-gis-data-portal-trinitycounty.hub.arcgis.com/datasets/b2a15b6b085e42d3b371a0ed23d7986b_0/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL"
+                }
+            }
+        ]
     }
 }

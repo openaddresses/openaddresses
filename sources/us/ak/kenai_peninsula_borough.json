@@ -9,21 +9,47 @@
         "state": "ak",
         "county": "Kenai Peninsula Borough"
     },
-    "attribution": "Copyright © 2015 Kenai Peninsula Borough",
-    "data": "ftp://ftp.borough.kenai.ak.us/GIS/Downloads/Shapefiles/PhysicalAddress.zip",
-    "website": "http://www.kpb.us/gis-dept/kpb-data-downloads/cadastre",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "street": [
-            "STREET_PRE",
-            "STREET_NAM",
-            "STREET_SUF",
-            "STREET_POS"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Copyright © 2021 Kenai Peninsula Borough",
+                "data": "ftp://ftp.borough.kenai.ak.us/GIS/Downloads/Shapefiles/PhysicalAddress.zip",
+                "website": "http://www.kpb.us/gis-dept/kpb-data-downloads/cadastre",
+                "license": {
+                    "url": "https://geohub.kpb.us/datasets/kpb-physical-addresses/explore?location=60.114122%2C-151.278733%2C7.70"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "street": [
+                        "STREET_PRE",
+                        "STREET_NAM",
+                        "STREET_SUF",
+                        "STREET_POS"
+                    ],
+                    "number": "HouseNumbe",
+                    "format": "shapefile",
+                    "postcode": "ZIP_CODE",
+                    "city": "COMM_NAME"
+                }
+            }
         ],
-        "number": "HouseNumbe",
-        "format": "shapefile",
-        "postcode": "ZIP_CODE",
-        "city": "COMM_NAME"
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Copyright © 2021 Kenai Peninsula Borough",
+                "data": "ftp://ftp.borough.kenai.ak.us/GIS/Downloads/Shapefiles/PhysicalAddress.zip",
+                "website": "http://www.kpb.us/gis-dept/kpb-data-downloads/cadastre",
+                "license": "https://geohub.kpb.us/datasets/kpb-redacted-parcels/explore?location=60.023628%2C-151.797461%2C7.53",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
     }
 }

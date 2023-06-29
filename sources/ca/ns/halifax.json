@@ -5,27 +5,73 @@
         "city": "Halifax",
         "geometry": {
             "type": "Point",
-            "coordinates": [-63.692, 44.649]
+            "coordinates": [
+                -63.692,
+                44.649
+            ]
         }
     },
-    "data": "https://services2.arcgis.com/11XBiaBYA9Ep0yNJ/arcgis/rest/services/CivicAddresses/FeatureServer/0",
-    "website": "http://www.halifax.ca/opendata/",
-    "license": {
-        "url": "http://www.halifax.ca/opendata/OD_TermsOfUse.php",
-        "text": "Open Government License - Canada V2.0",
-        "attribution": true,
-        "attribution name": "City of Halifax"
-    },
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "FULL_CIVIC",
-        "street": [
-            "STR_NAME",
-            "STR_TYPE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/11XBiaBYA9Ep0yNJ/arcgis/rest/services/CivicAddresses/FeatureServer/0",
+                "website": "http://www.halifax.ca/opendata/",
+                "license": {
+                    "url": "http://www.halifax.ca/opendata/OD_TermsOfUse.php",
+                    "text": "Open Government License - Canada V2.0",
+                    "attribution": true,
+                    "attribution name": "City of Halifax"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "FULL_CIVIC",
+                    "street": [
+                        "STR_NAME",
+                        "STR_TYPE"
+                    ],
+                    "unit": "UNIT_NUM",
+                    "city": "GSA_NAME",
+                    "postcode": "CIV_POSTAL"
+                }
+            }
         ],
-        "unit": "UNIT_NUM",
-        "city": "GSA_NAME",
-        "postcode": "CIV_POSTAL"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/11XBiaBYA9Ep0yNJ/ArcGIS/rest/services/HRM_Parcel_Polygon_with_Accounts/FeatureServer/0",
+                "website": "http://www.halifax.ca/opendata/",
+                "license": {
+                    "url": "http://www.halifax.ca/opendata/OD_TermsOfUse.php",
+                    "text": "Open Government License - Canada V2.0",
+                    "attribution": true,
+                    "attribution name": "City of Halifax"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/11XBiaBYA9Ep0yNJ/ArcGIS/rest/services/Building/FeatureServer/0",
+                "website": "http://www.halifax.ca/opendata/",
+                "license": {
+                    "url": "http://www.halifax.ca/opendata/OD_TermsOfUse.php",
+                    "text": "Open Government License - Canada V2.0",
+                    "attribution": true,
+                    "attribution name": "City of Halifax"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

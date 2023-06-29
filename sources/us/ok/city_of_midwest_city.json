@@ -1,36 +1,44 @@
 {
-  "coverage": {
-      "geometry": {
-          "type": "Point",
-          "coordinates": [
-              -97.370961,
-              35.463007
-          ]
-      },
-      "US Census": {
-          "geoid": "4048350",
-          "name": "City of Midwest City",
-          "state": "Oklahoma"
-      },
-      "country": "us",
-      "state": "ok",
-      "county": "Oklahoma",
-      "city": "Midwest City"
-  },
-  "data": "https://maps.midwestcityok.org/arcgis/rest/services/OpenData/AddressPoints/MapServer/0",
-  "protocol": "ESRI",
-  "conform": {
-      "format": "geojson",
-      "number": "AddressNumber",
-      "street": [
-          "PreDirection",
-          "StreetName",
-          "StreetType"
-      ],
-      "unit": [
-          "UnitType",
-          "UnitNumber"
-      ],
-      "postcode": "ZipCode"
-  }
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -97.370961,
+                35.463007
+            ]
+        },
+        "US Census": {
+            "geoid": "4048350",
+            "name": "City of Midwest City",
+            "state": "Oklahoma"
+        },
+        "country": "us",
+        "state": "ok",
+        "county": "Oklahoma",
+        "city": "Midwest City"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.midwestcityok.org/arcgis/rest/services/OpenData/AddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "AddressNumber",
+                    "street": [
+                        "PreDirection",
+                        "StreetName",
+                        "StreetType"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "UnitNumber"
+                    ],
+                    "postcode": "ZipCode"
+                }
+            }
+        ]
+    }
 }

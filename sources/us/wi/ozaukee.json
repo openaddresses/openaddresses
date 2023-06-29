@@ -9,18 +9,53 @@
         "state": "wi",
         "county": "Ozaukee"
     },
-    "data": "https://gis.co.ozaukee.wi.us/arcgis/rest/services/Basemap/MapServer/19",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "FromPremise",
-        "street": [
-            "Prefix",
-            "StreetName",
-            "Street_Type",
-            "StreetSuffix"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis2.co.ozaukee.wi.us/arcgis/rest/services/Operational/OZAddress/MapServer/45",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNumPrefix",
+                        "AddNum",
+                        "AddNumSuffix"
+                    ],
+                    "street": [
+                        "PreModifier",
+                        "PreDirectional",
+                        "PreType",
+                        "BaseName",
+                        "PostType",
+                        "PostDirectional"
+                    ],
+                    "postcode": "ZipCode",
+                    "city": "ZipMunicipality"
+                }
+            }
         ],
-        "postcode": "ZIP",
-        "city": "Muni"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis2.co.ozaukee.wi.us/arcgis/rest/services/OZCadastral/MapServer/25",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "par_num"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis2.co.ozaukee.wi.us/arcgis/rest/services/OZCadastral/MapServer/32",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "42063",
+            "name": "Indiana County",
+            "state": "Pennsylvania"
+        },
+        "country": "us",
+        "state": "pa",
+        "county": "Indiana"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.pasda.psu.edu",
+                "data": "https://www.pasda.psu.edu/download/indianacounty/IndianaCountyParcels201912.zip",
+                "note": "Dataset appears to be from 2019.",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "combined_s"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "combined_s"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.pasda.psu.edu",
+                "data": "https://www.pasda.psu.edu/download/indianacounty/IndianaCountyParcels201912.zip",
+                "note": "Dataset appears to be from 2019.",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "parcel_id"
+                }
+            }
+        ]
+    }
+}

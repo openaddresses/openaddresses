@@ -1,0 +1,46 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "county": "Elkford",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -114.92,
+                50.02
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/ACIfmp1uw4LCPgUE/arcgis/rest/services/Address_Points/FeatureServer/1",
+                "website": "https://map-elkford.hub.arcgis.com/datasets/b7ab8e99fea1418cb9e8a1993636f701_1/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "PID",
+                    "number": "St_Num",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Prop_Add"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+           {
+               "name": "county",
+               "data": "https://services5.arcgis.com/ACIfmp1uw4LCPgUE/arcgis/rest/services/Parcels_April2022_Online/FeatureServer/35",
+               "website": "https://map-elkford.hub.arcgis.com/datasets/8a0e0fa0af3441e48ba799067195147b_35/about",
+               "protocol": "ESRI",
+               "conform": {
+                   "format": "geojson",
+                   "pid": "PID"
+               }
+           }
+        ]
+    }
+}

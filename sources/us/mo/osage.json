@@ -9,25 +9,33 @@
         "state": "mo",
         "county": "Osage"
     },
-    "data": "https://www.dropbox.com/s/jv60ueskc3iv18g/Address%20and%20road%20shapefiles.zip?dl=1",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "file": "address.shp",
-        "number": "STRUCTURE_",
-        "street": [
-            "PRE_DIR",
-            "STREET_NAM",
-            "STREET_TYP",
-            "POST_DIR"
-        ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_DESIG",
-            "SUB_UNIT"
-        ],
-        "city": "City",
-        "postcode": "Zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.dropbox.com/s/jv60ueskc3iv18g/Address%20and%20road%20shapefiles.zip?dl=1",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "address.shp",
+                    "number": "STRUCTURE_",
+                    "street": [
+                        "PRE_DIR",
+                        "STREET_NAM",
+                        "STREET_TYP",
+                        "POST_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_DESIG",
+                        "SUB_UNIT"
+                    ],
+                    "city": "City",
+                    "postcode": "Zip"
+                }
+            }
+        ]
     }
 }

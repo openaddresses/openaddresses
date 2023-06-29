@@ -3,17 +3,39 @@
         "country": "ca",
         "state": "on",
         "city": "Toronto",
-        "geometry": { "type": "Point", "coordinates": [-79.40, 43.66] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -79.4,
+                43.66
+            ]
+        }
     },
-    "data": "http://opendata.toronto.ca/gcc/address_points_wgs84.zip",
-    "website": "https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-catalogue/#f71a13c4-fb51-6116-57b7-1f51a8190585",
-    "license": "https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-licence/",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "number": "address",
-        "street": "lfname",
-        "city": "mun_name"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/abedd8bc-e3dd-4d45-8e69-79165a76e4fa/resource/eba07dba-8645-45f8-950c-0381a0dcaa1b/download/Municipal%20address%20points%20(wgs84)%20-%20shapefile.zip",
+                "website": "https://open.toronto.ca/dataset/address-points-municipal-toronto-one-address-repository/",
+                "license": {
+                    "url": "https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-licence/",
+                    "text": "Contains information licensed under the Open Government Licence – Toronto",
+                    "attribution name": "Open Government Licence – Toronto",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "ADDRESS",
+                    "street": "LFNAME",
+                    "city": "MUN_NAME",
+                    "lat": "LATITUDE",
+                    "lon": "LONGITUDE"
+                }
+            }
+        ]
     }
 }

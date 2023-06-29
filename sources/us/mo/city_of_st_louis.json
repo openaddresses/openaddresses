@@ -16,20 +16,30 @@
             ]
         }
     },
-    "data": "http://stlcin.missouri.org/citydata/downloads/pargeocd.zip",
-    "license": "http://stlcin.missouri.org/citydata/downloads/terms.cfm",
-    "protocol": "http",
-    "compression": "zip",
-    "website": "http://stlcin.missouri.org/citydata/downloads/",
-    "conform": {
-        "number": "housenum",
-        "street": [
-            "predir",
-            "streetname",
-            "streettype",
-            "sufdir"
-        ],
-        "unit": "UNITNUM",
-        "format": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps6.stlouis-mo.gov/arcgis/rest/services/CITYWORKS/CW_BASE/FeatureServer/5",
+                "protocol": "ESRI",
+                "website": "https://www.stlouis-mo.gov/data/datasets/distribution.cfm?id=179",
+                "conform": {
+                    "number": [
+                        "LowAddrNum",
+                        "LowAddrSuf"
+                    ],
+                    "street": [
+                        "StPreDir",
+                        "StName",
+                        "StType",
+                        "StSufDir"
+                    ],
+                    "unit": "StdUnitNum",
+                    "postcode": "ZIP",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

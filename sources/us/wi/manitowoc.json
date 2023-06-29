@@ -9,19 +9,38 @@
         "state": "wi",
         "county": "Manitowoc"
     },
-    "data": "https://manitowocmaps.info/arcgis/rest/services/Web_MercParBaseSandBox/MapServer/84",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HNUM",
-        "street": [
-            "PREDIR",
-            "PRE_CNTY",
-            "NAME",
-            "RD_TYPE",
-            "SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://manitowocmaps.info/arcgis/rest/services/AnnotationWork/MapServer/89",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HNUM",
+                    "street": [
+                        "PREDIR",
+                        "PRE_CNTY",
+                        "NAME",
+                        "RD_TYPE",
+                        "SUFFIX"
+                    ],
+                    "postcode": "ZIPCODE",
+                    "city": "PSTL_CITY"
+                }
+            }
         ],
-        "postcode": "ZIPCODE",
-        "city": "PSTL_CITY"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://manitowocmaps.info/arcgis/rest/services/AnnotationWork/MapServer/91",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelsWCities.PIN"
+                }
+            }
+        ]
     }
 }

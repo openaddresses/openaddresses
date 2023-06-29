@@ -9,17 +9,30 @@
         "state": "nd",
         "county": "Williams"
     },
-    "protocol": "ESRI",
-    "data": "http://services1.arcgis.com/D85sDZoJyameepNh/ArcGIS/rest/services/Master_Addresses/FeatureServer/0",
-    "conform": {
-        "format": "geojson",
-        "number": "STR_NUM",
-        "street": ["PRE_DIR", "STR_NAME", "STR_TYPE", "POST_DIR"],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUM"
-        ],
-        "city": "city",
-        "postcode": "Zipcode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "http://services1.arcgis.com/D85sDZoJyameepNh/ArcGIS/rest/services/Master_Addresses/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "POST_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "city",
+                    "postcode": "Zipcode"
+                }
+            }
+        ]
     }
 }

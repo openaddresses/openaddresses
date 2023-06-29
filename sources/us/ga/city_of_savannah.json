@@ -8,26 +8,52 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -81.340,
-                32.040
+                -81.34,
+                32.04
             ]
         },
         "country": "us",
         "state": "ga",
         "city": "Savannah"
     },
-    "data": "http://sagiscloud.thempc.org/arcgis/rest/services/sagis_org/SAGIS1/MapServer/24",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "STNUM",
-        "unit": "STUNIT",
-        "street": [
-            "STPREFIX",
-            "STNAME",
-            "STSUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "website": "https://www.sagis.org/map/",
+                "data": "https://cloud.sagis.org/arcgis/rest/services/SagisOrg2020/SAGISOrg/MapServer/187",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "PropAddress_Num",
+                    "unit": [
+                        "PropAddress_UnitType",
+                        "PropAddress_UnitNum"
+                    ],
+                    "street": [
+                        "PropAddress_PreDir",
+                        "PropAddress_StreetName",
+                        "PropAddress_StreetType",
+                        "PropAddress_PostDir"
+                    ],
+                    "city": "PropAddress_City",
+                    "postcode": "PropAddress_Zip",
+                    "region": "PropAddress_State"
+                }
+            }
         ],
-        "postcode": "ZIP_CODE",
-        "region": "STATE"
+        "parcels": [
+            {
+                "name": "city",
+                "website": "https://www.sagis.org/map/",
+                "data": "https://cloud.sagis.org/arcgis/rest/services/SagisOrg2020/SAGISOrg/MapServer/124",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

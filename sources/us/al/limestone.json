@@ -9,17 +9,46 @@
         "state": "al",
         "county": "Limestone"
     },
-    "data": "https://web2.kcsgis.com/kcsgis/rest/services/Limestone/Public/MapServer/103",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "PropertyAddr1"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "PropertyAddr1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://web2.kcsgis.com/kcsgis/rest/services/Limestone/Public/MapServer/103",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PropertyAddr1"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PropertyAddr1"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://web2.kcsgis.com/kcsgis/rest/services/Limestone/Public/MapServer/103",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://web2.kcsgis.com/kcsgis/rest/services/Limestone/Public/MapServer/100",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

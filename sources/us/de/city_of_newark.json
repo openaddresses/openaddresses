@@ -16,20 +16,28 @@
         "state": "de",
         "city": "Dover"
     },
-    "data": "https://giswa.cityofnewarkde.us/arcgis_public/rest/services/TaxParcels/Newark_Parcels/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "FULL_ADDRE"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "FULL_ADDRE"
-        },
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://giswa.cityofnewarkde.us/arcgis_public/rest/services/TaxParcels/Newark_Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FULL_ADDRE"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FULL_ADDRE"
+                    },
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ]
     }
 }

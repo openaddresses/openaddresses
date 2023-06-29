@@ -6,25 +6,37 @@
         },
         "country": "tw"
     },
-    "data": "http://rain.ntpc.gov.tw/ArcGIS/rest/services/Sewer/Basemap/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number":{
-            "function": "regexp",
-            "field": "NO_CH",
-            "pattern": "^([0-9\uff10-\uff19]+\u865f?)"
-        },
-        "unit":{
-            "function": "regexp",
-            "field": "NO_CH",
-            "pattern": "^(?:[0-9\uff10-\uff19]+\u865f?)(.*)"
-        },
-        "street": {
-            "function": "join",
-            "fields": ["ROADSEC","LANE_C","LONG_C"],
-            "separator": ""
-        },
-        "city": "TOWN_NAME"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "http://rain.ntpc.gov.tw/ArcGIS/rest/services/Sewer/Basemap/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "NO_CH",
+                        "pattern": "^([0-9０-９]+號?)"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "NO_CH",
+                        "pattern": "^(?:[0-9０-９]+號?)(.*)"
+                    },
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "ROADSEC",
+                            "LANE_C",
+                            "LONG_C"
+                        ],
+                        "separator": ""
+                    },
+                    "city": "TOWN_NAME"
+                }
+            }
+        ]
     }
 }

@@ -9,20 +9,28 @@
         "state": "wi",
         "county": "Polk"
     },
-    "website": "https://www.co.polk.wi.us/landinfogisdataportal",
-    "data": "http://www2.co.polk.wi.us/gis/AddressPtsPolkCoWI.zip",
-    "protocol": "http",
-    "conform": {
-        "format": "gdb",
-        "number": {
-            "function": "prefixed_number",
-            "field": "ADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "ADDRESS"
-        },
-        "city": "COMMUNITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.co.polk.wi.us/landinfogisdataportal",
+                "data": "http://www2.co.polk.wi.us/gis/AddressPtsPolkCoWI.zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "gdb",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

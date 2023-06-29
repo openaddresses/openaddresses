@@ -1,17 +1,29 @@
 {
     "coverage": {
-        "US Census": {"geoid": "46015", "name": "Brule County", "state": "South Dakota"},
+        "US Census": {
+            "geoid": "46015",
+            "name": "Brule County",
+            "state": "South Dakota"
+        },
         "country": "us",
         "state": "sd",
         "county": "brule"
     },
-    "data": "http://ims.districtiii.org/arcgis/rest/services/BRULE/MapServer/16",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "CAMA.HOUSENUM",
-        "street": "CAMA.ADDRESS",
-        "city": "CAMA.CITY",
-        "postcode": "CAMA.ZIP",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://ims.districtiii.org/arcgis/rest/services/BRULE/MapServer/16",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "CAMA.HOUSENUM",
+                    "street": "CAMA.ADDRESS",
+                    "city": "CAMA.CITY",
+                    "postcode": "CAMA.ZIP",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

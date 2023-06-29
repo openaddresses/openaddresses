@@ -9,12 +9,41 @@
         "state": "al",
         "county": "Lawrence"
     },
-    "data": "https://web4.kcsgis.com/kcsgis/rest/services/Lawrence/Public/MapServer/49",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "SitusAddNumber",
-        "street": "SitusAddName",
-        "city": "SitusAddCity"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://web4.kcsgis.com/kcsgis/rest/services/Lawrence/Public/MapServer/49",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SitusAddNumber",
+                    "street": "SitusAddName",
+                    "city": "SitusAddCity"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://web4.kcsgis.com/kcsgis/rest/services/Lawrence/Public/MapServer/49",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://web4.kcsgis.com/kcsgis/rest/services/Lawrence/Public/MapServer/46",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

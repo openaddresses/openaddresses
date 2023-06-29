@@ -9,22 +9,28 @@
         "state": "oh",
         "county": "Knox"
     },
-    "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/KNO_ADDS.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "HOUSENUM",
-        "street": [
-          "ST_PREFIX",
-          "ST_NAME",
-          "ST_TYPE",
-          "ST_SUFFIX"
-        ],
-        "unit": "UNITNUM",
-        "city": "MUNI",
-        "district": "COUNTY",
-        "region": "STATE",
-        "format": "shapefile",
-        "postcode": "zipcode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/KNO_ADDS.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "HOUSENUM",
+                    "street": [
+                        "Predir",
+                        "Name",
+                        "Type",
+                        "Dirsuffix"
+                    ],
+                    "unit": "UNITNUM",
+                    "city": "MUNI",
+                    "format": "shapefile",
+                    "postcode": "Zip"
+                }
+            }
+        ]
     }
 }

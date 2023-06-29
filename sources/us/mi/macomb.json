@@ -1,32 +1,43 @@
 {
+    "schema": 2,
     "coverage": {
-        "US Census": {
-            "geoid": "26099",
-            "state": "Michigan",
-            "county": "Macomb"
-        },
+        "US Census": {"geoid": "26099", "name": "Macomb County", "state": "Michigan"},
         "country": "us",
         "state": "mi",
         "county": "Macomb"
     },
-    "data": "http://gis.macombgov.org/arcgis1/rest/services/WEBMAPS/FIRE_CON_STUDY/MapServer/0",
-    "website": "https://gis.macombgov.org/portal1/home/",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NUMBER",
-        "unit": [
-            "UNIT",
-            "UNIT_REF"
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.macombgov.org/arcgis1/rest/services/ACCELA/Parcel_Address/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "UNIT",
+                    "number": "HOUSE_NUMBER",
+                    "street": [
+                        "PREFIX_DIRECTION",
+                        "PREFIX_TYPE",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "SUFFIX_DIRECTION"
+                    ],
+                    "city": "COMMUNITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "street": [
-            "PREFIX_DIRECTION",
-            "PREFIX_TYPE",
-            "STREET_NAME",
-            "STREET_TYPE",
-            "SUFFIX_DIRECTION"
-        ],
-        "postcode": "ZIPCODE",
-        "region": "STATE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.macombgov.org/arcgis1/rest/services/ACCELA/Parcel_Address/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

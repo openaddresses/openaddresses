@@ -1,29 +1,54 @@
 {
-    "protocol": "ESRI",
-    "data": "http://cloud.locate.scc.qld.gov.au/arcgis/rest/services/PlanningCadastre/ParcelInformation_SCRC/MapServer/3",
-    "website": "https://data.sunshinecoast.qld.gov.au/Planning-and-Cadastre/Land-Parcel-Information/wbdm-vdqs",
-    "language": "en",
     "coverage": {
         "country": "qu",
         "state": "qld",
         "city": "Sunshine Coast Council"
     },
-    "license": {
-        "url": "http://creativecommons.org/publicdomain/zero/1.0/legalcode",
-        "text": "CC0",
-        "attribution": false,
-        "attribution name": "Sunshine Coast Council",
-        "share-alike": false
-    },
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "address_short"
-        },
-        "street": "street_name",
-        "city": "locality_name",
-        "postcode": "postcode",
-        "notes": "lotplan"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "http",
+                "data": "https://opendata.arcgis.com/datasets/d496dd342a124d3aa374a0797e54017d_3.geojson",
+                "website": "https://data.sunshinecoast.qld.gov.au/datasets/scrcpublic::land-parcel-boundaries/about",
+                "language": "en",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/3.0/au/deed.en",
+                    "text": "CC BY",
+                    "attribution": true,
+                    "attribution name": "Sunshine Coast Council",
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": "street_number",
+                    "street": "street_name",
+                    "city": "locality_name",
+                    "postcode": "postcode",
+                    "notes": "lotplan"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "protocol": "http",
+                "data": "https://opendata.arcgis.com/datasets/d496dd342a124d3aa374a0797e54017d_3.geojson",
+                "website": "https://data.sunshinecoast.qld.gov.au/datasets/scrcpublic::land-parcel-boundaries/about",
+                "language": "en",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/3.0/au/deed.en",
+                    "text": "CC BY",
+                    "attribution": true,
+                    "attribution name": "Sunshine Coast Council",
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "pid": "lotplan"
+                }
+            }
+        ]
     }
 }

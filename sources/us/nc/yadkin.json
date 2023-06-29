@@ -9,19 +9,27 @@
         "state": "nc",
         "county": "Yadkin"
     },
-    "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Yadkin/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "number",
-        "street": [
-            "PREFIX",
-            "street",
-            "ROADTYPE",
-            "SUFFIX"
-        ],
-        "unit": "unit_apt",
-        "city": "CITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Yadkin/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "number",
+                    "street": [
+                        "PREFIX",
+                        "street",
+                        "ROADTYPE",
+                        "SUFFIX"
+                    ],
+                    "unit": "unit_apt",
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

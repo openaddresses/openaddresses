@@ -9,18 +9,38 @@
         "state": "il",
         "county": "Stephenson"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/ingalls/ee7b5e/stephenson_il.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "number": {
-            "function": "prefixed_number",
-            "field": "site_addre"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "site_addre"
-        },
-        "format": "shapefile-polygon"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://v2.openaddresses.io/batch-prod/upload/1/gr1spkftg2k/stephenson.json",
+                "protocol": "http",
+                "year": "2021",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "site_addre"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "site_addre"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://v2.openaddresses.io/batch-prod/upload/1/gr1spkftg2k/stephenson.json",
+                "protocol": "http",
+                "year": "2021",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

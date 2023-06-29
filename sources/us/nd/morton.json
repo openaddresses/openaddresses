@@ -9,15 +9,23 @@
         "state": "nd",
         "county": "Morton"
     },
-    "data": "https://services2.arcgis.com/KK9EVAUoqJyQSD0q/ArcGIS/rest/services/AddressNoNames/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NUM",
-        "street": {
-            "function": "remove_prefix",
-            "field": "DLVRY_ADD",
-            "field_to_remove": "HOUSE_NUM"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/KK9EVAUoqJyQSD0q/ArcGIS/rest/services/AddressNoNames/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUM",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "DLVRY_ADD",
+                        "field_to_remove": "HOUSE_NUM"
+                    }
+                }
+            }
+        ]
     }
 }

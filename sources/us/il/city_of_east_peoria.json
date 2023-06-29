@@ -1,4 +1,5 @@
 {
+    "schema": 2,
     "coverage": {
         "US Census": {
             "geoid": "1722164",
@@ -16,27 +17,50 @@
             ]
         }
     },
-    "protocol": "ESRI",
-    "data": "http://www.centralilmaps.com/arcgis/rest/services/Citylink_Flex/MapServer/10",
-    "conform": {
-        "format": "geojson",
-        "accuracy": 2,
-        "number": "ADDR_HN",
-        "street": [
-          "ADDR_PD",
-          "ADDR_SN",
-          "ADDR_ST"
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "website": "https://www.cityofeastpeoria.com/301/Geographic-Information-Services-GIS",
+                "data": "https://mapping.cityofeastpeoria.com/epgis/rest/services/Planning/Address_Points/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "accuracy": 2,
+                    "unit": "UNIT",
+                    "number": "ADDR_HN",
+                    "street": [
+                        "ADDR_PD",
+                        "ADDR_SN",
+                        "ADDR_ST"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP_CODE"
+                }
+            }
         ],
-        "city": {
-            "function": "regexp",
-            "field": "CITY_STATE",
-            "pattern": "^(.+?)\\s+IL$"
-        },
-        "region": {
-            "function": "regexp",
-            "field": "CITY_STATE",
-            "pattern": "\\b(IL)\\b"
-        },
-        "postcode": "ZIP_CODE"
+        "parcels": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "website": "https://www.cityofeastpeoria.com/301/Geographic-Information-Services-GIS",
+                "data": "https://mapping.cityofeastpeoria.com/epgis/rest/services/Planning/Parcels/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "website": "https://www.cityofeastpeoria.com/301/Geographic-Information-Services-GIS",
+                "data": "https://mapping.cityofeastpeoria.com/epgis/rest/services/Planning/Building_Footprints/FeatureServer/0",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

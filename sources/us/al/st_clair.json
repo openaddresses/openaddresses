@@ -9,12 +9,40 @@
         "state": "al",
         "county": "St. Clair"
     },
-    "data": "https://map.stclairco.com/arcgis/rest/services/Appraisal/MapServer/150",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "street": "STREET_NAME",
-        "number": "STREET_NUM",
-        "postcode": "ZIPCODE_1"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://map.stclairco.com/arcgis/rest/services/Appraisal/MapServer/150",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "street": "STREET_NAME",
+                    "number": "STREET_NUM"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://map.stclairco.com/arcgis/rest/services/Appraisal/MapServer/150",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://map.stclairco.com/arcgis/rest/services/Appraisal/MapServer/145",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

@@ -9,25 +9,33 @@
         "state": "oh",
         "county": "Licking"
     },
-    "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/LIC_ADDS.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-      "number": "ADDR_NUM",
-      "street": [
-          "PRE_DIR",
-          "STR_NAME",
-          "STR_TYPE",
-          "SUF_DIR"
-      ],
-      "unit": [
-          "UNIT_TYPE",
-          "UNIT_NUM"
-      ],
-      "city": "CITY",
-      "district": "COUNTY",
-      "region": "STATE",
-      "format": "shapefile",
-      "postcode": "zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/LIC_ADDS.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "format": "shapefile",
+                    "postcode": "zip"
+                }
+            }
+        ]
     }
 }

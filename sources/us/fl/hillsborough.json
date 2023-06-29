@@ -9,26 +9,63 @@
         "state": "fl",
         "county": "Hillsborough"
     },
-    "attribution": "Hillsborough County",
-    "data": "https://arcgis.tampagov.net/arcgis/rest/services/Address/AddressPoints/FeatureServer/0",
-    "protocol": "ESRI",
-    "website": "ftp://ftp.hillsboroughcounty.org/",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "ADDRNUM",
-            "ADDRNUMSUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://arcgis.tampagov.net/arcgis/rest/services/Address/AddressPoints/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "https://gis2017-01-10t133755357z-hillsborough.opendata.arcgis.com/datasets/hillsborough::site-address-point/about",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Hillsborough County",
+                    "share-alike": true
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": [
+                        "DIRPRE",
+                        "STREETNAME",
+                        "TYPE",
+                        "DIRSUF"
+                    ],
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Hillsborough County",
+                "data": "https://arcgis.tampagov.net/arcgis/rest/services/Parcels/TaxParcel/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
         ],
-        "street": [
-            "DIRPRE",
-            "STREETNAME",
-            "TYPE",
-            "DIRSUF"
-        ],
-        "postcode": "ZIP"
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Hillsborough County",
+                "data": "https://arcgis.tampagov.net/arcgis/rest/services/BaseMaps/BuildingFootprint/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

@@ -9,24 +9,53 @@
         "state": "ky",
         "county": "Campbell"
     },
-    "data": "http://linkgis.org/arcgisweb/rest/services/addressPoints/MapServer/3",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "field": "NUMADDR",
-            "function": "prefixed_number"
-        },
-        "unit": {
-            "field": "NUMADDR",
-            "function": "regexp",
-            "pattern": "((?:(?:(?:LOT|STE|UNIT|APT|GRGE|CTG) )|(?:#)).+)$"
-        },
-        "street": {
-            "field": "NUMADDR",
-            "function": "regexp",
-            "pattern": "^(?:[0-9]+ )(.*?)(?: (LOT|STE|UNIT|APT|GRGE|CTG).*|$)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://linkgis.org/arcgisweb/rest/services/addressPoints/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "field": "NUMADDR",
+                        "function": "prefixed_number"
+                    },
+                    "unit": {
+                        "field": "NUMADDR",
+                        "function": "regexp",
+                        "pattern": "((?:(?:(?:LOT|STE|UNIT|APT|GRGE|CTG) )|(?:#)).+)$"
+                    },
+                    "street": {
+                        "field": "NUMADDR",
+                        "function": "regexp",
+                        "pattern": "^(?:[0-9]+ )(.*?)(?: (LOT|STE|UNIT|APT|GRGE|CTG).*|$)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://linkgis.org/arcgisweb/rest/services/Web_Scene_Map_Parcels/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIDN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://linkgis.org/arcgisweb/rest/services/Buildings/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

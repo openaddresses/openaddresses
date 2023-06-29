@@ -16,21 +16,29 @@
         "state": "la",
         "city": "New Orleans"
     },
-    "data": "https://gis.nola.gov/arcgis/rest/services/Address/SiteAddressPoint/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "SITEADDID",
-        "number": [
-            "PREADDRNUM",
-            "ADDRNUM",
-            "ADDRNUMSUF"
-        ],
-        "street": "FULLNAME",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "city": "MUNICIPALITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.nola.gov/arcgis/rest/services/Address/SiteAddressPoint/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SITEADDID",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY"
+                }
+            }
+        ]
     }
 }

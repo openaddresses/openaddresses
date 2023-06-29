@@ -9,20 +9,28 @@
         "state": "mn",
         "county": "Isanti"
     },
-    "website": "https://www.co.isanti.mn.us/175/Geographic-Information-Systems-GIS",
-    "data": "https://www.co.isanti.mn.us/DocumentCenter/View/1418/IsantiCounty_Parcels",
-    "compression": "zip",
-    "protocol": "http",
-    "conform": {
-        "format": "shapefile-polygon",
-        "number": {
-            "function": "prefixed_number",
-            "field": "PropertyAd"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "PropertyAd"
-        },
-        "city": "PropertyCi"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.co.isanti.mn.us/175/Geographic-Information-Systems-GIS",
+                "data": "https://www.co.isanti.mn.us/DocumentCenter/View/1418/IsantiCounty_Parcels",
+                "compression": "zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile-polygon",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PropertyAd"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PropertyAd"
+                    },
+                    "city": "PropertyCi"
+                }
+            }
+        ]
     }
 }

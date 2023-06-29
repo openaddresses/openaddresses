@@ -9,16 +9,24 @@
         "state": "sc",
         "county": "Orangeburg"
     },
-    "data": "http://gis2.orangeburgcounty.org/dataportal/rest/services/SiteAddressesView/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADD_STNUM",
-        "street": [
-            "ADD_STREET",
-            "ADD_EXT"
-        ],
-        "city": "ADD_TOWN",
-        "postcode":"ADD_ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis2.orangeburgcounty.org/dataportal/rest/services/SiteAddressesView/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADD_STNUM",
+                    "street": [
+                        "ADD_STREET",
+                        "ADD_EXT"
+                    ],
+                    "city": "ADD_TOWN",
+                    "postcode": "ADD_ZIP"
+                }
+            }
+        ]
     }
 }

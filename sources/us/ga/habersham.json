@@ -9,16 +9,24 @@
         "state": "ga",
         "county": "Habersham"
     },
-    "data": "https://arcgis4.roktech.net/arcgis/rest/services/habersham/habersham_rokmaps/MapServer/1/",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "NUMBER",
-        "street": {
-            "field": "ADDR1",
-            "function": "postfixed_street"
-        },
-        "city": "COMMUNITY",
-        "unit": "APT"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://arcgis4.roktech.net/arcgis/rest/services/habersham/habersham_rokmaps/MapServer/1/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "NUMBER",
+                    "street": {
+                        "field": "ADDR1",
+                        "function": "postfixed_street"
+                    },
+                    "city": "COMMUNITY",
+                    "unit": "APT"
+                }
+            }
+        ]
     }
 }

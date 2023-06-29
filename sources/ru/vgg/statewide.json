@@ -8,20 +8,34 @@
         "country": "ru",
         "state": "VGG"
     },
-    "data": "http://gis-vo.volganet.ru/arcgis/rest/services/OpenData/AdressPlanVOAtlas/MapServer/0",
-    "protocol": "ESRI",
-    "language": "ru",
-    "conform": {
-        "number": {
-            "function": "format",
-            "fields": ["construct", "letter"],
-            "format": "$1$2"
-        },
-        "street": ["street_type_text","street"],
-        "city": "raion",
-        "district": "raion_name",
-        "postcode": "Postcode",
-        "id": "CAD_NUM",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "http://gis-vo.volganet.ru/arcgis/rest/services/OpenData/AdressPlanVOAtlas/MapServer/0",
+                "protocol": "ESRI",
+                "language": "ru",
+                "conform": {
+                    "number": {
+                        "function": "format",
+                        "fields": [
+                            "construct",
+                            "letter"
+                        ],
+                        "format": "$1$2"
+                    },
+                    "street": [
+                        "street_type_text",
+                        "street"
+                    ],
+                    "city": "raion",
+                    "district": "raion_name",
+                    "postcode": "Postcode",
+                    "id": "CAD_NUM",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

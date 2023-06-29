@@ -9,23 +9,54 @@
         "state": "pa",
         "county": "Bedford"
     },
-    "website": "https://www.bedfordcountypa.org/departments/planning/gis_mapping.php",
-    "contact": {
-        "phone": "814-623-4807",
-        "address": "200 South Juliana Street,  Bedford, Pennsylvania 15522"
-    },
-    "data": "https://services2.arcgis.com/tXFMtuwRfEDEFdnG/ArcGIS/rest/services/Bedford_County_Addresses/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HouseNumbe",
-        "street": ["PreDirecti","PreType","StreetName","PostType","PostTypeSu", "PostDirect"],
-        "unit": [
-            "UNIT",
-            "Suite"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.bedfordcountypa.org/departments/planning/gis_mapping.php",
+                "contact": {
+                    "phone": "814-623-4807",
+                    "address": "200 South Juliana Street,  Bedford, Pennsylvania 15522"
+                },
+                "data": "https://services2.arcgis.com/tXFMtuwRfEDEFdnG/ArcGIS/rest/services/Bedford_County_Addresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNumbe",
+                    "street": [
+                        "PreDirecti",
+                        "PreType",
+                        "StreetName",
+                        "PostType",
+                        "PostTypeSu",
+                        "PostDirect"
+                    ],
+                    "unit": [
+                        "UNIT",
+                        "Suite"
+                    ],
+                    "city": "PostalCity",
+                    "postcode": "Zip",
+                    "district": "County"
+                }
+            }
         ],
-        "city": "PostalCity",
-        "postcode": "Zip",
-        "district": "County"
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.bedfordcountypa.org/departments/planning/gis_mapping.php",
+                "contact": {
+                    "phone": "814-623-4807",
+                    "address": "200 South Juliana Street,  Bedford, Pennsylvania 15522"
+                },
+                "data": "https://services2.arcgis.com/tXFMtuwRfEDEFdnG/ArcGIS/rest/services/OnlineParcelViewer_WFL1/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "taxidnum"
+                }
+            }
+        ]
     }
 }

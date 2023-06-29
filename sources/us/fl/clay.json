@@ -9,27 +9,60 @@
         "state": "fl",
         "county": "Clay"
     },
-    "attribution": "Clay County",
-    "data": "https://maps.claycountygov.com:6443/arcgis/rest/services/SiteAddresses/MapServer/0",
-    "website": "http://www.ccpao.com/datadownloadGIS_all.html",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "House",
-            "Half"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Clay County",
+                "data": "https://maps.claycountygov.com:6443/arcgis/rest/services/SiteAddresses/MapServer/0",
+                "website": "https://ccpao.com/certified-data/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "House",
+                        "Half"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "Unit"
+                    ],
+                    "street": [
+                        "PreDir",
+                        "StreetName",
+                        "StreetType",
+                        "SuffixDir"
+                    ],
+                    "city": "Community",
+                    "postcode": "Zip"
+                }
+            }
         ],
-        "unit": [
-            "UnitType",
-            "Unit"
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Clay County",
+                "data": "https://maps.claycountygov.com:6443/arcgis/rest/services/Parcel/MapServer/0",
+                "website": "https://ccpao.com/certified-data/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
         ],
-        "street": [
-            "PreDir",
-            "StreetName",
-            "StreetType",
-            "SuffixDir"
-        ],
-        "city": "Community",
-        "postcode": "Zip"
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Clay County",
+                "data": "https://maps.claycountygov.com:6443/arcgis/rest/services/Parcel/MapServer/0",
+                "website": "https://ccpao.com/certified-data/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

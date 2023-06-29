@@ -1,29 +1,38 @@
 {
     "coverage": {
-        "US Census": {
-            "geoid": "32017",
-            "name": "Lincoln County",
-            "state": "Nevada"
-        },
+        "US Census": {"geoid": "32017", "name": "Lincoln County", "state": "Nevada"},
         "country": "us",
         "state": "nv",
         "county": "Lincoln"
     },
-    "data": "https://ags.cloudsmartgis.com/arcgis/rest/services/CLIENT_LincolnCounty/LincolnCounty_SiteAddresses/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "street": [
-            "ADDPREDIR",
-            "FULLNAME",
-            "ADDRNUMSUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://sei.cloudsmartgis.com/arcgis/rest/services/Public/LincolnCounty_Addressing_Public/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "FULLNAME",
+                        "ADDRNUMSUF"
+                    ],
+                    "city": "MUNICIPALITY"
+                }
+            }
         ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "city": "MUNICIPALITY",
-        "postcode": "ADDZIPCODE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://sei.cloudsmartgis.com/arcgis/rest/services/Public/LincolnCounty_TaxParcels_Public/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "LincolnCounty_EditingLayers.DBO.TaxParcels.APN"
+                }
+            }
+        ]
     }
 }

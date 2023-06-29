@@ -9,24 +9,50 @@
         "state": "pa",
         "county": "Greene"
     },
-    "website": "https://www.co.greene.pa.us/gis",
-    "contact": {
-        "name": "Jeff Rhodes",
-        "phone": "724-852-2911",
-        "email": "jrhodes@co.greene.pa.us",
-        "address": "Greene County Office Building, 93 East High Street, Waynesburg, PA 15370"
-    },
-    "data": "http://54.235.209.242/arcgis/rest/services/GreeneCounty_PA/GreeneCountyWebMap/MapServer/2",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "ADDRESS0"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "ADDRESS0"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.co.greene.pa.us/gis",
+                "contact": {
+                    "name": "Jeff Rhodes",
+                    "phone": "724-852-2911",
+                    "email": "jrhodes@co.greene.pa.us",
+                    "address": "Greene County Office Building, 93 E High St, Waynesburg, PA 15370"
+                },
+                "data": "https://services7.arcgis.com/0JhPFgxDlwicqVHq/arcgis/rest/services/Structures/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FULL_ADDRE"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FULL_ADDRE"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.co.greene.pa.us/gis",
+                "contact": {
+                    "name": "Jeff Rhodes",
+                    "phone": "724-852-2911",
+                    "email": "jrhodes@co.greene.pa.us",
+                    "address": "Greene County Office Building, 93 E High St, Waynesburg, PA 15370"
+                },
+                "data": "https://services7.arcgis.com/0JhPFgxDlwicqVHq/ArcGIS/rest/services/TaxParcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAXIDNUM"
+                }
+            }
+        ]
     }
 }

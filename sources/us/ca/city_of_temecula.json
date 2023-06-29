@@ -17,18 +17,39 @@
         "county": "Riverside",
         "city": "Temecula"
     },
-    "data": "https://gis.temeculaca.gov/arcgis/rest/services/OpenData/FeatureServer/4",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NO",
-        "street": [
-            "STREET",
-            "SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.temeculaca.gov/arcgis/rest/services/OpenData/FeatureServer/4",
+                "website": "https://maps-temecula.opendata.arcgis.com/datasets/temecula::address-points/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NO",
+                    "street": [
+                        "STREET",
+                        "SUFFIX"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.temeculaca.gov/arcgis/rest/services/OpenData/FeatureServer/2",
+                "website": "https://maps-temecula.opendata.arcgis.com/datasets/temecula::parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
     }
 }

@@ -7,23 +7,43 @@
         "country": "us",
         "state": "wv"
     },
-    "data": "https://services.wvgis.wvu.edu/arcgis/rest/services/Hazards/floodTool_ParcelsAddrLabels/MapServer/5",
-    "website": "http://www.dhsem.wv.gov/Operations/Pages/Statewide-Addressing-and-Mapping.aspx",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "PREADDRNUM",
-            "ADDRNUM",
-            "ADDRNUMSUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://services.wvgis.wvu.edu/arcgis/rest/services/Planning_Cadastre/WV_Parcels/MapServer/5",
+                "website": "http://www.dhsem.wv.gov/Operations/Pages/Statewide-Addressing-and-Mapping.aspx",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
         ],
-        "street": "FULLNAME",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "city": "MUNICIPALITY",
-        "region": "State",
-        "postcode": "Zip"
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://services.wvgis.wvu.edu/arcgis/rest/services/Planning_Cadastre/WV_Parcels/MapServer/0",
+                "website": "http://www.dhsem.wv.gov/Operations/Pages/Statewide-Addressing-and-Mapping.aspx",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ROOTID"
+                }
+            }
+        ]
     }
 }

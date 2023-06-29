@@ -9,18 +9,38 @@
         "state": "va",
         "county": "Stafford"
     },
-    "data": "https://services1.arcgis.com/qKiA6JuCrE2l72iL/arcgis/rest/services/Address_Points/FeatureServer/0",
-    "protocol": "ESRI",
-    "website": "http://data-staffordva-gis.opendata.arcgis.com/",
-    "note": "source contains POSTDIR but doesn't seem to reflect reality",
-    "conform": {
-        "format": "geojson",
-        "number": "STNO",
-        "street": [
-            "STNAME",
-            "SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/qKiA6JuCrE2l72iL/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "http://data-staffordva-gis.opendata.arcgis.com/",
+                "note": "source contains POSTDIR but doesn't seem to reflect reality",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STNO",
+                    "street": [
+                        "STNAME",
+                        "SUFFIX"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "city": "CITY",
-        "postcode": "ZIP"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/qKiA6JuCrE2l72iL/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "http://data-staffordva-gis.opendata.arcgis.com/",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PRCLID"
+                }
+            }
+        ]
     }
 }

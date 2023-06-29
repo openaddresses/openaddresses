@@ -9,19 +9,37 @@
         "state": "wa",
         "county": "Cowlitz"
     },
-    "data": "http://65.183.210.212:6080/arcgis/rest/services/LiveMaps/AssessorMap/MapServer/0",
-    "website": "http://www.co.cowlitz.wa.us/index.aspx?nid=201",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "SITUS_STREET_NUMBER",
-        "unit": "SITUS_STREET_UNIT",
-        "street": [
-            "SITUS_STREET_DIRECTION",
-            "SITUS_STREET_NAME",
-            "SITUS_STREET_SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.cowlitzinfo.net/arcgis/rest/services/WSPublic/WSAddressPoints/MapServer/0",
+                "website": "http://www.co.cowlitz.wa.us/index.aspx?nid=201",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "unit": "UNIT",
+                    "street": "SITE_ALL",
+                    "postcode": "Post_Code",
+                    "city": "CITY",
+                    "district": "County",
+                    "region": "State"
+                }
+            }
         ],
-        "postcode": "SITUS_ZIP_CODE",
-        "city": "SITUS_CITY"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.cowlitzinfo.net/arcgis/rest/services/WSPublic/ParcelsDark/MapServer/0",
+                "website": "http://www.co.cowlitz.wa.us/index.aspx?nid=201",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCNO"
+                }
+            }
+        ]
     }
 }

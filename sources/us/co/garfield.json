@@ -9,20 +9,38 @@
         "state": "co",
         "county": "Garfield"
     },
-    "protocol": "ESRI",
-    "data": "https://gis.garfield-county.com/arcgis/rest/services/Development/GC_ParcelsNew/FeatureServer/0",
-    "website": "https://gis.garfield-county.com/LandExplorer/index.html",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "PHYSADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "PHYSADDRESS"
-        },
-        "postcode": "PHYSZIP",
-        "city": "PHYSCITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [{
+            "name": "county",
+            "protocol": "ESRI",
+            "data": "https://maps.garfield-county.com/arcgis/rest/services/webmaps/parcels/MapServer/0",
+            "website": "https://data-garfieldcolorado.opendata.arcgis.com/datasets/garfieldcolorado::garfield-county-parcels",
+            "license": "https://data-garfieldcolorado.opendata.arcgis.com/datasets/garfieldcolorado::garfield-county-parcels",
+            "conform": {
+                "format": "geojson",
+                "number": {
+                    "function": "prefixed_number",
+                    "field": "PHYSADDRESS"
+                },
+                "street": {
+                    "function": "postfixed_street",
+                    "field": "PHYSADDRESS"
+                },
+                "postcode": "PHYSZIP",
+                "city": "PHYSCITY"
+            }
+        }],
+        "parcels": [{
+            "name": "county",
+            "protocol": "ESRI",
+            "data": "https://maps.garfield-county.com/arcgis/rest/services/webmaps/parcels/MapServer/0",
+            "website": "https://data-garfieldcolorado.opendata.arcgis.com/datasets/garfieldcolorado::garfield-county-parcels",
+            "license": "https://data-garfieldcolorado.opendata.arcgis.com/datasets/garfieldcolorado::garfield-county-parcels",
+            "conform": {
+                "format": "geojson",
+                "pid": "PARCELNB"
+            }
+        }]
     }
 }

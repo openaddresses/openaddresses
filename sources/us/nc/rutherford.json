@@ -9,23 +9,46 @@
         "state": "nc",
         "county": "Rutherford"
     },
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "HSENUMBER",
-            "HSENUMSUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/RutherfordCounty/MapServer/16",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": "StreetName",
+                    "postcode": "Post_Code",
+                    "city": "Post_Comm"
+                }
+            }
         ],
-        "street": [
-            "PREDIR",
-            "STR_NAME",
-            "STR_TYPE",
-            "POSTDIR"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/RutherfordCounty/MapServer/45",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
         ],
-        "postcode": "STR_ZIP",
-        "city": "STR_CMNTY",
-        "region": "STATE"
-    },
-    "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/RutherfordCounty/MapServer/16",
-    "note": "included HSENUMSUF because there appear to be some transposition errors in the data",
-    "protocol": "ESRI"
+        "buildings": [
+            {
+                "name": "county",
+                "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/RutherfordCounty/MapServer/60",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
 }

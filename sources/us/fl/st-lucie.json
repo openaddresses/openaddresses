@@ -9,15 +9,43 @@
         "state": "fl",
         "county": "St. Lucie"
     },
-    "data": "http://www.stlucieco.gov/home/showdocument?id=2739",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "StreetNumb",
-        "street": "StreetLabe",
-        "unit": "AptSuite",
-        "postcode": "ZipCode",
-        "format": "shapefile",
-        "file": "AddressMaster.shp"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://slcgis.stlucieco.gov/hosting/rest/services/AddressMaster/MapServer/0",
+                "website": "https://data-slc.opendata.arcgis.com/datasets/slc::addressmaster/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "id": "siteaddid",
+                    "number": [
+                        "preaddrnum",
+                        "addrnum",
+                        "addrnumsuf"
+                    ],
+                    "street": "StreetLabe",
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "postcomm",
+                    "region": "stateabbreviation",
+                    "postcode": "postal",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://slcgis.stlucieco.gov/hosting/rest/services/Property/ParcelsPublic/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "ParcelID",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

@@ -9,22 +9,52 @@
         "state": "pa",
         "county": "Clearfield"
     },
-    "website": "https://clearfieldco.org/gis/",
-    "contact": {
-        "name": "John Kaskan",
-        "title": "Director",
-        "phone": "814.765.2641 Ext: 5001",
-        "email": "ccgis@clearfieldco.org"
-    },
-    "data": "http://gis.clearfieldco.org/arcgis/rest/services/Web_Map/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "BLDGNUMBER",
-        "street": [
-            "PREDIR",
-            "STRNAME",
-            "STRTYPE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://clearfieldco.org/gis/",
+                "contact": {
+                    "name": "John Kaskan",
+                    "title": "Director",
+                    "phone": "814.765.2641 Ext: 5001",
+                    "email": "ccgis@clearfieldco.org"
+                },
+                "data": "https://clearfieldco.org/arcgis/rest/services/PV3/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "BLDGNUMBER",
+                        "NUMSUF"
+                    ],
+                    "street": [
+                        "PREDIR",
+                        "STRNAME",
+                        "STRTYPE",
+                        "POSTDIR"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://clearfieldco.org/gis/",
+                "contact": {
+                    "name": "John Kaskan",
+                    "title": "Director",
+                    "phone": "814.765.2641 Ext: 5001",
+                    "email": "ccgis@clearfieldco.org"
+                },
+                "data": "https://clearfieldco.org/arcgis/rest/services/PV3/MapServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
         ]
     }
 }

@@ -9,13 +9,21 @@
         "state": "sc",
         "county": "Newberry"
     },
-    "data": "http://map.newberrycounty.net/arcgis/rest/services/Basemaps/Dynamic/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "city": "MUNICIPALITY",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://map.newberrycounty.net/arcgis/rest/services/Basemaps/Dynamic/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

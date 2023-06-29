@@ -9,21 +9,29 @@
         "state": "nc",
         "county": "Mecklenburg"
     },
-    "data": "http://cwmapserver.mecklenburgcountync.gov/cwadaptor/rest/services/MAT/MAT/MapServer/0",
-    "website": "http://maps.co.mecklenburg.nc.us/openmapping/data.html",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "objectid",
-        "street": [
-            "cde_street_dir_prfx",
-            "nme_street",
-            "cde_roadway_type",
-            "cde_street_dir_suff"
-        ],
-        "number": "txt_street_number",
-        "unit": "txt_addr_u",
-        "city": "nme_po_city",
-        "postcode": "cde_zip1"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://cwmapserver.mecklenburgcountync.gov/cwadaptor/rest/services/MAT/MAT/MapServer/0",
+                "website": "http://maps.co.mecklenburg.nc.us/openmapping/data.html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "objectid",
+                    "street": [
+                        "cde_street_dir_prfx",
+                        "nme_street",
+                        "cde_roadway_type",
+                        "cde_street_dir_suff"
+                    ],
+                    "number": "txt_street_number",
+                    "unit": "txt_addr_u",
+                    "city": "nme_po_city",
+                    "postcode": "cde_zip1"
+                }
+            }
+        ]
     }
 }

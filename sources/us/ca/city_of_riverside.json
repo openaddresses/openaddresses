@@ -16,14 +16,56 @@
         "state": "ca",
         "city": "Riverside"
     },
-    "data": "https://services.arcgis.com/Fu2oOWg1Aw7azh41/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADPTNUM1",
-        "street": {
-            "function": "postfixed_street",
-            "field": "ADDR"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/Fu2oOWg1Aw7azh41/ArcGIS/rest/services/Riverside_Address_Pt/FeatureServer/5",
+                "website": "https://geodata-cityofriverside.opendata.arcgis.com/datasets/CityOfRiverside::riverside-address-pt/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "AddressID",
+                    "number": "StreetNumber",
+                    "street": [
+                        "PrefixDir",
+                        "StreetName",
+                        "StreetType",
+                        "SuffixDir"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "Unit"
+                    ],
+                    "city": "CitySitus",
+                    "region": "State",
+                    "postcode": "ZipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/Fu2oOWg1Aw7azh41/arcgis/rest/services/City_Parcels/FeatureServer/8",
+                "website": "https://geodata-cityofriverside.opendata.arcgis.com/datasets/CityOfRiverside::city-parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/Fu2oOWg1Aw7azh41/arcgis/rest/services/Buildings_Sphere/FeatureServer/0",
+                "website": "https://geodata-cityofriverside.opendata.arcgis.com/datasets/CityOfRiverside::buildings-sphere/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

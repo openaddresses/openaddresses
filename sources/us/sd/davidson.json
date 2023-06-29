@@ -4,17 +4,25 @@
         "state": "sd",
         "county": "davidson"
     },
-    "data": "http://ims.districtiii.org/arcgis/rest/services/BRULE/MapServer/16",
-    "protocol": "ESRI",
-    "conform": {
-        "number": {
-            "function": "prefixed_number",
-            "field": "CAMA.SITE_ADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "CAMA.SITE_ADDRESS"
-        },
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://ims.districtiii.org/arcgis/rest/services/BRULE/MapServer/16",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "CAMA.SITE_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "CAMA.SITE_ADDRESS"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

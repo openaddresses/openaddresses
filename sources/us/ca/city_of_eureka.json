@@ -4,21 +4,41 @@
         "state": "ca",
         "city": "Eureka"
     },
-    "year": "2019",
-    "data": "https://data.openaddresses.io/cache/uploads/ingalls/us-ca-city_of_eureka.zip",
-    "note": "Obtained Via FOIA Request",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "number": {
-            "function": "prefixed_number",
-            "field": "situsaddre"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "situsaddre"
-        },
-        "postcode": "zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://arcgis-svr.ci.eureka.ca.gov/arcgis/rest/services/ProjectServices/COE_OpenGov_FlagLayers/MapServer/30",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "s_strnum",
+                        "s_frac"
+                    ],
+                    "street": [
+                        "s_dir",
+                        "s_street",
+                        "s_suffix"
+                    ],
+                    "unit": "s_unit",
+                    "city": "s_city",
+                    "region": "s_st",
+                    "postcode": "s_zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://arcgis-svr.ci.eureka.ca.gov/arcgis/rest/services/ProjectServices/COE_OpenGov_FlagLayers/MapServer/30",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "apn"
+                }
+            }
+        ]
     }
 }

@@ -1,33 +1,41 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "39159", 
-            "name": "Union County", 
+            "geoid": "39159",
+            "name": "Union County",
             "state": "Ohio"
         },
         "country": "us",
         "state": "oh",
         "county": "Union"
     },
-    "website": "https://www.co.union.oh.us/gis-mapping",
-    "data": "https://www3.co.union.oh.us/unioncountyohio/rest/services/Address/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HouseNumbe",
-        "street": [
-            "PrefixDire",
-            "PrefixType",
-            "StreetName",
-            "StreetType",
-            "SuffixDire"
-        ],
-        "unit": [
-            "UnitType",
-            "Unit"
-        ],
-        "city": "City",
-        "region": "State",
-        "postcode": "zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.co.union.oh.us/gis-mapping",
+                "data": "https://www3.co.union.oh.us/unioncountyohio/rest/services/Address/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNumbe",
+                    "street": [
+                        "PrefixDire",
+                        "PrefixType",
+                        "StreetName",
+                        "StreetType",
+                        "SuffixDire"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "Unit"
+                    ],
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "zip"
+                }
+            }
+        ]
     }
 }

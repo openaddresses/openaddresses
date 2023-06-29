@@ -4,20 +4,28 @@
         "state": "or",
         "county": "Marion and Polk"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "gdb",
-        "file": "Delivery/addresses_oregon.gdb",
-        "layer": "Marion_Polk",
-        "number": "STREET_NUM",
-        "street": [
-            "PREFIX",
-            "PRE_TYPE",
-            "STREET",
-            "STREET_TYP",
-            "SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "file": "Delivery/addresses_oregon.gdb",
+                    "layer": "Marion_Polk",
+                    "number": "STREET_NUM",
+                    "street": [
+                        "PREFIX",
+                        "PRE_TYPE",
+                        "STREET",
+                        "STREET_TYP",
+                        "SUFFIX"
+                    ]
+                }
+            }
         ]
     }
 }

@@ -9,21 +9,29 @@
         "state": "ga",
         "county": "Muscogee"
     },
-    "attribution": "Muscogee County",
-    "data": "https://gis.columbusga.org/arcgis/rest/services/Base/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "OBJECTID",
-        "number": "AddressNumber",
-        "unit": "Subaddress",
-        "street": [
-            "StreetPrefix",
-            "StreetName",
-            "StreetType",
-            "StreetSuffix"
-        ],
-        "postcode": "ZipCode",
-        "city": "ZipCodeCity"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Muscogee County",
+                "data": "https://gis.columbusga.org/arcgis/rest/services/Base/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": "AddressNumber",
+                    "unit": "Subaddress",
+                    "street": [
+                        "StreetPrefix",
+                        "StreetName",
+                        "StreetType",
+                        "StreetSuffix"
+                    ],
+                    "postcode": "ZipCode",
+                    "city": "ZipCodeCity"
+                }
+            }
+        ]
     }
 }

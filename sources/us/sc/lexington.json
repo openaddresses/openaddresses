@@ -9,27 +9,59 @@
         "state": "sc",
         "county": "Lexington"
     },
-    "data": "http://maps.lex-co.com/arcgis/rest/services/AddressPts/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": [
-          "STRNUM_SUF",
-          "STREET_NUM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://maps-lexco-gis.hub.arcgis.com/",
+                "data": "http://maps.lex-co.com/arcgis/rest/services/AddressPts/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": [
+                        "STRNUM_SUF",
+                        "STREET_NUM"
+                    ],
+                    "street": [
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT"
+                    ],
+                    "city": "POSTOFFICE",
+                    "postcode": "ZIP",
+                    "region": "STATE",
+                    "format": "geojson"
+                }
+            }
         ],
-        "street": [
-            "PRE_DIR",
-            "PRE_TYPE",
-            "STREET_NAME",
-            "STREET_TYPE",
-            "SUF_DIR"
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://maps-lexco-gis.hub.arcgis.com/",
+                "data": "https://maps.lex-co.com/arcgis/rest/services/Property/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TMS"
+                }
+            }
         ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT"
-        ],
-        "city": "POSTOFFICE",
-        "postcode": "ZIP",
-        "region": "STATE",
-        "format": "geojson"
+        "buildings": [
+            {
+                "name": "county",
+                "website": "https://maps-lexco-gis.hub.arcgis.com/",
+                "data": "https://maps.lex-co.com/arcgis/rest/services/BuildingFootprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

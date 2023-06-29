@@ -9,23 +9,38 @@
         "state": "co",
         "county": "El Paso"
     },
-    "data": "https://data.openaddresses.io/cache/uploads/iandees/b43a21/JM%20EPC%20Lat%20Long%20Location%20Data.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "csv",
-        "csvsplit": "\t",
-        "lat": "Lat",
-        "lon": "Lon",
-        "number": "Num",
-        "street": [
-            "Dir",
-            "StreetName",
-            "StreetType"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://assets-admin.elpasoco.com/wp-content/uploads/parcels1foot_public-8.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PLOC"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PLOC"
+                    }
+                }
+            }
         ],
-        "unit": [
-            "Unit",
-            "UnitNum"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://assets-admin.elpasoco.com/wp-content/uploads/parcels1foot_public-8.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCEL"
+                }
+            }
         ]
     }
 }

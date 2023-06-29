@@ -1,26 +1,86 @@
 {
-  "coverage": {
-      "country": "ca",
-      "state": "bc",
-      "city": "Penticton",
-      "geometry": {
-          "type": "Point",
-          "coordinates": [
-              -119.569,
-              49.495
-          ]
-      }
-  },
-  "data": "https://gis.penticton.ca/external/rest/services/prd/Cadastral/MapServer/29",
-  "protocol": "ESRI",
-  "conform": {
-      "format": "geojson",
-      "number": "STR_NO",
-      "street": [
-          "STR_NAME",
-          "STR_TYPE",
-          "STR_DR_SUF"
-      ],
-      "city": "LOCALITY"
-  }
+    "schema": 2,
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "city": "Penticton",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -119.569,
+                49.495
+            ]
+        }
+    },
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.penticton.ca/external/rest/services/prd/Cadastral/MapServer/29",
+                "website": "https://open.penticton.ca/datasets/7aa844df598640f8b6d42c2508670523_29/about",
+                "license": {
+                    "url": "https://www.penticton.ca/sites/default/files/docs/our-community/maps-gis/2020-07-02-PDF-Open%20Data%20Government%20Licence.pdf",
+                    "text": "Open Government Licence – City of Penticton 2.0",
+                    "attribution name": "City of Penticton",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNUm_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreMod",
+                        "St_PreTyp",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.penticton.ca/external/rest/services/prd/Cadastral/MapServer/3",
+                "license": {
+                    "url": "https://www.penticton.ca/sites/default/files/docs/our-community/maps-gis/2020-07-02-PDF-Open%20Data%20Government%20Licence.pdf",
+                    "text": "Open Government Licence – City of Penticton 2.0",
+                    "attribution name": "City of Penticton",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.penticton.ca/external/rest/services/prd/Facilities/MapServer/1302",
+                "website": "https://open.penticton.ca/datasets/03ff30dc2fa6494a80350346b1900db0_1302/about",
+                "license": {
+                    "url": "https://www.penticton.ca/sites/default/files/docs/our-community/maps-gis/2020-07-02-PDF-Open%20Data%20Government%20Licence.pdf",
+                    "text": "Open Government Licence – City of Penticton 2.0",
+                    "attribution name": "City of Penticton",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
 }

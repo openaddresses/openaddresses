@@ -9,17 +9,38 @@
         "state": "co",
         "county": "Teller"
     },
-    "conform": {
-        "format": "geojson",
-        "number": "Teller_County.SDE.PARCEL.SITUSSTNUM",
-        "street": [
-            "Teller_County.SDE.PARCEL.SITUSSTDIR",
-            "Teller_County.SDE.PARCEL.SITUSSTNAM",
-            "Teller_County.SDE.PARCEL.SITUSSTTYP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "Unit",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": "FullStreet",
+                    "city": "Nbhrd_Comm",
+                    "postcode": "Post_Code",
+                    "region": "State"
+                },
+                "data": "https://cdsd.co.teller.co.us/arcgis/rest/services/Property/MapServer/5",
+                "protocol": "ESRI"
+            }
         ],
-        "city": "Teller_County.SDE.PARCEL.SITUSSTCIT",
-        "postcode": " Teller_County.SDE.PARCEL.SITUSSTZIP"
-    },
-    "data": "https://data.openaddresses.io/cache/us-co-teller_county.geojson",
-    "protocol": "http"
+        "parcels": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Teller_County.sde.RWProd_Parcel.ID"
+                },
+                "data": "https://cdsd.co.teller.co.us/arcgis/rest/services/Property/MapServer/6",
+                "protocol": "ESRI"
+            }
+        ]
+    }
 }

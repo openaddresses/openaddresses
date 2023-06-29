@@ -9,26 +9,34 @@
         "state": "tx",
         "county": "Nacogdoches"
     },
-    "data": "http://co.nacogdoches.tx.us/maps/public_geodata_downloads/datasets/AddressPointsSHP.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "number": [
-            "NUMBER_PRE",
-            "NUMBER",
-            "NUMBER_SUF"
-        ],
-        "street": [
-            "PRE_MOD",
-            "PRE_DIR",
-            "PRE_TYPE",
-            "ROAD_NAME",
-            "POST_TYPE",
-            "POST_DIR",
-            "POST_MOD"
-        ],
-        "city": "COMMUNITY",
-        "unit": "SUBADDRESS"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://co.nacogdoches.tx.us/maps/public_geodata_downloads/datasets/AddressPointsSHP.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": [
+                        "NUMBER_PRE",
+                        "NUMBER",
+                        "NUMBER_SUF"
+                    ],
+                    "street": [
+                        "PRE_MOD",
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "ROAD_NAME",
+                        "POST_TYPE",
+                        "POST_DIR",
+                        "POST_MOD"
+                    ],
+                    "city": "COMMUNITY",
+                    "unit": "SUBADDRESS"
+                }
+            }
+        ]
     }
 }

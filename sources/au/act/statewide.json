@@ -6,25 +6,77 @@
         "country": "au",
         "state": "act"
     },
-    "data": "http://actmapi.act.gov.au/datadownload/Shapefile/MGA94_55/ACT_data.zip",
-    "website": "http://app.actmapi.act.gov.au/download.html",
-    "license": {
-        "url": "https://creativecommons.org/licenses/by/4.0/",
-        "text": "CC BY 4.0",
-        "attribution": true,
-        "attribution name": "ACT Addresses from <a href='http://actmapi.act.gov.au/'>ACTMapi</a> &copy;ACT Government"
-    },
-    "language": "en",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "file": "ACT_Address.shp",
-        "unit": "UNIT_TITLE",
-        "number": "STREET_NUM",
-        "notes": "BUILDING_N",
-        "street": ["STREET_NAM", "STREET_TYP"],
-        "city": "DIVISION",
-        "id": "ADDRESS_ID"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "http://actmapi.act.gov.au/datadownload/Shapefile/MGA94_55/ACT_data.zip",
+                "website": "http://app.actmapi.act.gov.au/download.html",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "ACT Addresses from <a href='http://actmapi.act.gov.au/'>ACTMapi</a> &copy;ACT Government"
+                },
+                "language": "en",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "ACT_Address.shp",
+                    "unit": "UNIT_TITLE",
+                    "number": "STREET_NUM",
+                    "notes": "BUILDING_N",
+                    "street": [
+                        "STREET_NAM",
+                        "STREET_TYP"
+                    ],
+                    "city": "DIVISION",
+                    "id": "ADDRESS_ID"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "http://actmapi.act.gov.au/datadownload/Geodatabase/MGA94_55/ACT_data.zip",
+                "website": "http://app.actmapi.act.gov.au/download.html",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "ACT Blocks from <a href='http://actmapi.act.gov.au/'>ACTMapi</a> &copy;ACT Government"
+                },
+                "language": "en",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Blocks",
+                    "pid": "ID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "state",
+                "data": "http://actmapi.act.gov.au/datadownload/Geodatabase/MGA94_55/ACT_data.zip",
+                "website": "http://app.actmapi.act.gov.au/download.html",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "ACT Building Footprints from <a href='http://actmapi.act.gov.au/'>ACTMapi</a> &copy;ACT Government"
+                },
+                "language": "en",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Building_Footprints"
+                }
+            }
+        ]
     }
 }
