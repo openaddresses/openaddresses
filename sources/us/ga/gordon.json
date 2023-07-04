@@ -13,16 +13,53 @@
     "layers": {
         "addresses": [
             {
-                "name": "county",
-                "attribution": "Gordon County",
-                "data": "http://66.110.220.61/arcgis/rest/services/Addresses/MapServer/0",
+                "name": "city",
+                "data": "https://gis.cityofcalhoun-ga.com/arcgis/rest/services/Roads_and_Parcels/MapServer/5",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSE_NO",
-                    "street": "STREET",
-                    "unit": "UNIT",
-                    "city": "COMMUNITY"
+                    "number": "House_No",
+                    "street": [
+                        "Street_Nam",
+                        "Sttype"
+                    ],
+                    "city": {
+                        "function": "regexp",
+                        "field": "City_St_Zip",
+                        "pattern": "^(.+)(?:\\sGA\\s\\d{5})$",
+                        "replace": "$1"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "City_St_Zip",
+                        "pattern": "GA"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "City_St_Zip",
+                        "pattern": "\\d{5}$"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.cityofcalhoun-ga.com/arcgis/rest/services/Roads_and_Parcels/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "CNTY_PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.cityofcalhoun-ga.com/arcgis/rest/services/buildings_public/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
