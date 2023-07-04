@@ -1,0 +1,38 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "13211",
+            "name": "Morgan County",
+            "state": "Georgia"
+        },
+        "country": "us",
+        "state": "ga",
+        "county": "Morgan"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services9.arcgis.com/mr2xH531NAL4tt7e/ArcGIS/rest/services/Parcels_Wingap/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NO",
+                    "street": "STREET_NAM"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services9.arcgis.com/mr2xH531NAL4tt7e/ArcGIS/rest/services/Parcels_Wingap/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_No"
+                }
+            }
+        ]
+    }
+}
