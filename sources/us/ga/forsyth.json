@@ -14,7 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://geo.forsythco.com/gis/rest/services/SiteAddress/FeatureServer/0",
+                "data": "https://geo.forsythco.com/gis/rest/services/Public/Site_Addresses/FeatureServer/2",
+                "website": "https://geo-forsythcoga.opendata.arcgis.com/datasets/forsythcoga::site-addresses/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM"
+                    ],
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://geo.forsythco.com/gis/rest/services/Public/Tax_Parcel/FeatureServer/0",
+                "website": "https://geo-forsythcoga.opendata.arcgis.com/datasets/forsythcoga::tax-parcel/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
