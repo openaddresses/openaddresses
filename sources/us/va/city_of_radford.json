@@ -21,20 +21,47 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://radfordgis.radford.va.us/arcgiscloud/rest/services/Realestate1/MapServer/0",
+                "data": "https://services2.arcgis.com/uBVNRnvxMutOfx4V/ArcGIS/rest/services/Real_Estate_view/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": "ADDRNUM",
-                    "street": [
-                        "STPREFXDIR",
-                        "STNAME",
-                        "STABBRTYPE",
-                        "STSUFFIX"
-                    ],
-                    "unit": "LIVINGUNIT",
                     "format": "geojson",
-                    "city": "CITY",
-                    "postcode": "ADDRZIP"
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/uBVNRnvxMutOfx4V/ArcGIS/rest/services/Real_Estate_view/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/uBVNRnvxMutOfx4V/ArcGIS/rest/services/Real_Estate_view/FeatureServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]
