@@ -1,0 +1,45 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "54017",
+            "name": "Doddridge County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Doddridge"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.landmarkgeospatial.com:8443/arcgis/rest/services/Doddridge/DoddridgeParcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "PARID",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PARCELADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PARCELADDRESS"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.landmarkgeospatial.com:8443/arcgis/rest/services/Doddridge/DoddridgeParcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARID"
+                }
+            }
+        ]
+    }
+}
