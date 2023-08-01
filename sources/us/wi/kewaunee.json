@@ -14,12 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps.ags.ruekert-mielke.com/ags/rest/services/KewauneeCo/KewauneeCoFeature/FeatureServer/2",
-                "protocol": "ESRI",
+                "data": "https://gisdata.wisc.edu/public/KEWAUNEE_ADDRESSES_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/011FDC33-D7AC-49B9-9C3D-CB92C0711CFE",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
                 "conform": {
-                    "format": "geojson",
+                    "format": "gdb",
+                    "layer": "KEWAUNEE_ADDRESSES_2023",
                     "number": "HOUSE_NO",
                     "street": "ROADNAME"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Kewaunee_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/86F5C32D-8F2B-46B5-BE28-A1F9F0657B8B",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELID"
                 }
             }
         ]
