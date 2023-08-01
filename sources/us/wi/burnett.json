@@ -14,16 +14,31 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.msa-ps.com/arcgis/rest/services/BurnettCo/BurnettCo_GIS/MapServer/1",
-                "protocol": "ESRI",
+                "data": "https://gisdata.wisc.edu/public/BURNETT_ADDRESSES_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/789222A0-718D-4FA9-93C2-2A9BD0374BCF",
+                "protocol": "http",
+                "compression": "zip",
+                "year": 2023,
                 "conform": {
-                    "format": "geojson",
+                    "format": "gdb",
                     "number": "HSNUM",
-                    "street": {
-                        "function": "remove_prefix",
-                        "field": "ALISTR",
-                        "field_to_remove": "HSNUM"
-                    }
+                    "street": "STREET",
+                    "city": "NEWCITST",
+                    "postcode": "NEWZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Burnett_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/D0D67B7A-EB46-4A47-9B64-0165C00CC38D",
+                "protocol": "http",
+                "compression": "zip",
+                "year": 2023,
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELID"
                 }
             }
         ]
