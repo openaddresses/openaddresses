@@ -1,0 +1,59 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55127",
+            "name": "Walworth County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Walworth"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.co.washburn.wi.us/images/custom/departments/land-information/gis-data/Address_Points.gdb.zip",
+                "website": "https://www.co.washburn.wi.us/departments/land-info-surveyor-mapping/gis-data",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "buildings",
+                    "number": "ADDR_NUMB",
+                    "street": "ROAD_NAME",
+                    "city": "MCD",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postocde": "ZIP",
+                    "accuracy": 1
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.co.washburn.wi.us/images/custom/departments/land-information/gis-data/Washburn_Parcels.gdb.zip",
+                "website": "https://www.co.washburn.wi.us/departments/land-info-surveyor-mapping/gis-data",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "TaxParcel",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://www.co.washburn.wi.us/images/custom/departments/land-information/gis-data/Building_Footprints.gdb.zip",
+                "website": "https://www.co.washburn.wi.us/departments/land-info-surveyor-mapping/gis-data",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Bldg_Footprints"
+                }
+            }
+        ]
+    }
+}
