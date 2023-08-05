@@ -1,0 +1,53 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                22.45,
+                -33.967
+            ]
+        },
+        "country": "za",
+        "state": "wc",
+        "city": "George"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.george.gov.za/server/rest/services/Street_Addresses/FeatureServer/0",
+                "conform": {
+                    "id": "ERFNO",
+                    "number": "STREET_NUM",
+                    "street": [
+                        "STREET_NAM",
+                        "STREET_SUF"
+                    ],
+                    "city": "TOWN",
+                    "format": "geojson",
+                    "accuracy": 2
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://maps.george.gov.za/server/rest/services/Street_Addresses/FeatureServer/0",
+                "conform": {
+                    "pid": "ERFNO",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://maps.george.gov.za/server/rest/services/Building_Footprints/MapServer/0",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}
