@@ -14,20 +14,56 @@
         "addresses": [
             {
                 "name": "county",
-                "note": "source used to be date stamped .zip and routinely unavailable, eg - http://www.brazoscad.org/data/_uploaded/file/GIS/shp_files_4_24_15.zip",
-                "data": "http://mapsatbis.com/bisgis/rest/services/BrazosWeb/MapServer/0",
-                "protocol": "ESRI",
+                "data": "https://data.tnris.org/94502179-9389-4bfa-b753-5e43f6d477bf/resources/stratmap21-addresspoints_48041_ap.zip",
+                "website": "https://data.tnris.org/collection/?c=94502179-9389-4bfa-b753-5e43f6d477bf",
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC 0"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2021",
                 "conform": {
-                    "number": "BrazosCad.DBO.Accounts.situs_num",
-                    "street": [
-                        "BrazosCad.DBO.Accounts.situs_street_prefx",
-                        "BrazosCad.DBO.Accounts.situs_street",
-                        "BrazosCad.DBO.Accounts.situs_street_sufix"
+                    "format": "gdb",
+                    "file": "fgdb/stratmap21-addresspoints_48041_brazos_202107.gdb",
+                    "layer": "stratmap21-addresspoints_48041_brazos_202107",
+                    "id": "OBJECTID",
+                    "number": [
+                        "Add_Number",
+                        "AddNum_Suf"
                     ],
-                    "city": "BrazosCad.DBO.Accounts.situs_city",
-                    "region": "BrazosCad.DBO.Accounts.situs_state",
-                    "postcode": "BrazosCad.DBO.Accounts.situs_zip",
-                    "format": "geojson"
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://brazoscad.org/wp-content/uploads/2023/04/WEB_PARCEL_BOUNDARY.zip",
+                "website": "https://brazoscad.org/gis/",
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC 0"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "WEB_PARCEL_BOUNDARY.shp",
+                    "pid": "geo_id"
                 }
             }
         ]
