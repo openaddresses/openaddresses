@@ -1,0 +1,49 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "46087",
+            "name": "Marshall County",
+            "state": "South Dakota"
+        },
+        "country": "us",
+        "state": "sd",
+        "county": "Marshall"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/MARSHALL_COUNTY_LAYERS2/MapServer/14",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "HOUSENUMBE",
+                    "street": [
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": "APT_SUITE",
+                    "city": "COMMUNITY",
+                    "district": "COUNTY",
+                    "region": "State",
+                    "postcode": "ZIPCODE",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/MARSHALL_COUNTY_LAYERS2/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCEL_ID",
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}
