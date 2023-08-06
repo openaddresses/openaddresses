@@ -1,0 +1,47 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "46135",
+            "name": "Davison County",
+            "state": "South Dakota"
+        },
+        "country": "us",
+        "state": "sd",
+        "county": "Davison"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/DAVISON_COUNTY_LAYERS3/MapServer/17",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "STR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "POST_DIR"
+                    ],
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP_CODE",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/DAVISON_COUNTY_LAYERS3/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCEL_ID",
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}
