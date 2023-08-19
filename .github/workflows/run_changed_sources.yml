@@ -9,7 +9,7 @@ on:
 
 jobs:
   run-source:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -20,8 +20,8 @@ jobs:
         run: |
           sudo apt-add-repository ppa:ubuntugis/ubuntugis-unstable
           sudo apt-get update
-          sudo apt-get install gdal-bin libgdal-dev
-          pip --quiet install gdal==3.2.3
+          sudo apt-get install gdal-bin=3.6.4 libgdal-dev=3.6.4
+          pip --quiet install gdal==3.6.4
       - name: Install tippecanoe
         run: |
           curl -sL https://github.com/felt/tippecanoe/archive/refs/tags/2.29.0.tar.gz | tar -xz
