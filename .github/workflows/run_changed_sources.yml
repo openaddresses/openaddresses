@@ -18,11 +18,12 @@ jobs:
           python-version: '3.11'
       - name: Install tippecanoe
         run: |
-          git clone https://github.com/felt/tippecanoe.git
-          cd tippecanoe
-          git checkout 2.29.0
+          curl -sL https://github.com/felt/tippecanoe/archive/refs/tags/2.29.0.zip | tar -xz
+          cd tippecanoe-2.29.0
           make -j
           sudo make install
+          cd ..
       - name: Install machine
         run: |
-          pip --quiet install .
+          curl -sL https://github.com/openaddresses/batch-machine/archive/refs/tags/8.1.1.zip | tar -xz
+          pip --quiet install batch-machine-8.1.1
