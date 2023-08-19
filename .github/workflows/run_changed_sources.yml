@@ -21,6 +21,7 @@ jobs:
           sudo apt-add-repository ppa:ubuntugis/ubuntugis-unstable
           sudo apt-get update
           sudo apt-get install gdal-bin libgdal-dev
+          pip --quiet install gdal==3.2.3
       - name: Install tippecanoe
         run: |
           curl -sL https://github.com/felt/tippecanoe/archive/refs/tags/2.29.0.tar.gz | tar -xz
