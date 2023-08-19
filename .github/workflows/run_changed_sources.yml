@@ -27,3 +27,7 @@ jobs:
         run: |
           curl -sL https://github.com/openaddresses/batch-machine/archive/refs/tags/8.1.1.tar.gz | tar -xz
           pip --quiet install ./batch-machine-8.1.1
+      - name: Run machine
+        run: |
+          mkdir output
+          openaddr-process-one sources/us/mn/aitkin.json
