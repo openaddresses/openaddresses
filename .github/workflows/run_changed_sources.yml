@@ -1,0 +1,22 @@
+name: Run Changed Sources in Pull Requests
+
+# Only run on pushes
+on:
+  pull_request:
+    paths:
+      - 'sources/**/*.json'
+      - '.github/workflows/*.yml'
+
+jobs:
+  run-source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pipenv'
+      - name: Install machine
+        run: |
+          pip --quiet install batch-machine
