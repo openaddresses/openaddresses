@@ -29,6 +29,10 @@ jobs:
           make -j
           sudo make install
           cd ..
+      - name: Install cairo
+        run: |
+          sudo apt-get install cairo
+          pip --quiet install cairocffi
       - name: Install machine
         run: |
           curl -sL https://github.com/openaddresses/batch-machine/archive/refs/tags/8.1.1.tar.gz | tar -xz
