@@ -46,3 +46,10 @@ jobs:
                                --mapbox-key="pk.eyJ1IjoiaWFuZGVlcyIsImEiOiJjbGxpcGhwMTkxanVkM2xtbHphNnN0cHA0In0.vI2-u4up38ddKVadUljnYw" \
                                sources/us/mn/aitkin.json \
                                output
+          ls -al output
+      - name: Archive extracted data
+        uses: actions/upload-artifact@v3
+        with:
+          name: output
+          path: |
+            output
