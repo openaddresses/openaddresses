@@ -40,4 +40,9 @@ jobs:
       - name: Run machine
         run: |
           mkdir output
-          openaddr-process-one sources/us/mn/aitkin.json output
+          openaddr-process-one -ln addresses \
+                               -ls county \
+                               --render-preview \
+                               --mapbox-key="pk.eyJ1IjoiaWFuZGVlcyIsImEiOiJjbGxpcGhwMTkxanVkM2xtbHphNnN0cHA0In0.vI2-u4up38ddKVadUljnYw" \
+                               sources/us/mn/aitkin.json \
+                               output
