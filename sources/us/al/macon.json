@@ -1,0 +1,54 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "01087",
+            "name": "Macon County",
+            "state": "Alabama"
+        },
+        "country": "us",
+        "state": "al",
+        "county": "Macon"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Macon/Public/MapServer/48",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PropertyAddr1"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PropertyAddr1"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Macon/Public/MapServer/48",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Macon/Public/MapServer/45",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}
