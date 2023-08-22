@@ -61,11 +61,11 @@ jobs:
           aws_secret_access_key: ${{ secrets.R2_SECRET_ACCESS_KEY}}
           aws_bucket: ${{ secrets.R2_BUCKET }}
           endpoint: ${{ secrets.R2_ENDPOINT }}
-          destination_dir: "v3.openaddresses.io/runs/gh-${{ github.run_id }}"
+          destination_dir: "runs/gh-${{ github.run_id }}"
           source_dir: 'output'
       - name: Get R2 output
         run: |
-          echo "R2 destination: ${{steps.R2.outputs.object_key}}
+          echo "R2 destination: ${{steps.R2.outputs.object_key}}"
       - name: Add Comment
         uses: peter-evans/create-or-update-comment@v2
         with:
