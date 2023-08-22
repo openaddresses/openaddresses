@@ -5,7 +5,7 @@ on:
   pull_request:
     paths:
       - 'sources/**/*.json'
-      - '.github/workflows/*.yml'
+      - '.github/workflows/run_changed_sources.yml'
 
 jobs:
   run-source:
@@ -13,6 +13,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Get Changed Files
+        id: changed-files-yaml
+        uses: tj-actions/changed-files@v37
+        with:
+          files_yaml: |
+            sources:
+              - 'sources/**/*.json'
+      - name: Get Changed Layers
+        uses: actions/github-script@v6
+        with:
+          script: |
+            console.log(context)
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
