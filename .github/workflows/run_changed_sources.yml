@@ -46,7 +46,6 @@ jobs:
                                --mapbox-key="pk.eyJ1IjoiaWFuZGVlcyIsImEiOiJjbGxpcGhwMTkxanVkM2xtbHphNnN0cHA0In0.vI2-u4up38ddKVadUljnYw" \
                                sources/us/mn/aitkin.json \
                                output
-          ls -al output
       - name: Archive extracted data
         uses: actions/upload-artifact@v3
         with:
@@ -68,6 +67,8 @@ jobs:
           echo "R2 destination: ${{steps.R2.outputs.object_key}}"
       - name: Add Comment
         uses: peter-evans/create-or-update-comment@v2
+        env:
+          PR_NUMBER: ${{ github.event.number }}
         with:
           issue-number: ${{ env.PR_NUMBER }}
           body: |-
