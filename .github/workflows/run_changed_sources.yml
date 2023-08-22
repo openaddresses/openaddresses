@@ -53,3 +53,12 @@ jobs:
           name: output
           path: |
             output
+      - name: Upload to R2
+        uses: shallwefootball/s3-upload-action@v1.3.3
+        with:
+          aws_key_id: ${{ secrets.R2_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.R2_SECRET_ACCESS_KEY}}
+          aws_bucket: ${{ secrets.R2_BUCKET }}
+          endpoint: ${{ secrets.R2_ENDPOINT }}
+          destination_dir: "v3.openaddresses.io/runs/gh-$GITHUB_RUN_ID"
+          source_dir: 'output'
