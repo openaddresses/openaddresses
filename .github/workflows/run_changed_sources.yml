@@ -15,9 +15,8 @@ jobs:
       contents: read
       packages: read
     container:
-      image: ghcr.io/${{ github.repository_owner }}/batch-machine:8.1.2
+      image: ghcr.io/openaddresses/batch-machine:latest
       credentials:
-        username: $
         password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout code
