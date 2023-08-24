@@ -13,8 +13,8 @@ jobs:
     container:
       image: "ghcr.io/openaddresses/batch-machine:8.1.2"
       credentials:
-        username: ${{ github.ref }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.ghcr_password }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
