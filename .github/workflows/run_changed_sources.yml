@@ -10,45 +10,14 @@ on:
 jobs:
   run-source:
     runs-on: ubuntu-22.04
+    container:
+      image: "ghcr.io/openaddresses/batch-machine:8.1.2"
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.github_token }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Get Changed Files
-        id: changed-files-yaml
-        uses: tj-actions/changed-files@v37
-        with:
-          files_yaml: |
-            sources:
-              - 'sources/**/*.json'
-      - name: Get Changed Layers
-        uses: actions/github-script@v6
-        with:
-          script: |
-            console.log(context)
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      - name: Install gdal
-        run: |
-          sudo apt-add-repository ppa:ubuntugis/ubuntugis-unstable
-          sudo apt-get update
-          sudo apt-get install gdal-bin=3.6.4+dfsg-1~jammy0 libgdal-dev=3.6.4+dfsg-1~jammy0
-          pip --quiet install gdal==3.6.4
-      - name: Install tippecanoe
-        run: |
-          curl -sL https://github.com/felt/tippecanoe/archive/refs/tags/2.29.0.tar.gz | tar -xz
-          cd tippecanoe-2.29.0
-          make -j
-          sudo make install
-          cd ..
-      - name: Install cairo
-        run: |
-          sudo apt-get install libcairo2-dev
-          pip --quiet install cairocffi
-      - name: Install machine
-        run: |
-          curl -sL https://github.com/openaddresses/batch-machine/archive/refs/tags/8.1.1.tar.gz | tar -xz
-          pip --quiet install ./batch-machine-8.1.1
       - name: Run machine
         run: |
           mkdir output
