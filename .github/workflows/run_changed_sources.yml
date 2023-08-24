@@ -10,11 +10,15 @@ on:
 jobs:
   run-source:
     runs-on: ubuntu-22.04
+    permissions:
+      # These are important to get the batch-machine image
+      contents: read
+      packages: read
     container:
       image: "ghcr.io/openaddresses/batch-machine:8.1.2"
       credentials:
         username: ${{ github.repository_owner }}
-        password: ${{ secrets.ghcr_password }}
+        password: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
