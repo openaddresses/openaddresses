@@ -1,3 +1,4 @@
+import boto3
 import json
 import os
 import requests
@@ -41,6 +42,7 @@ def get_source_at_version(filename, gitref):
 
 def main():
     commit = os.environ.get('GITHUB_SHA')
+    pr_number = os.environ.get('GITHUB_REF').split("/")[2]
 
     # Get the list of changed sources on the PR we're running against
     changed_files = get_changed_files()
@@ -89,6 +91,46 @@ def main():
                   f"--render-preview "
                   f"--mapbox-key {os.environ.get('MAPBOX_KEY')}")
 
+    # Upload the output files to R2
+    s3 = boto3.client(
+        's3',
+        endpoint_url=os.environ.get("R2_ENDPOINT"),
+        aws_access_key_id=os.environ.get("R2_ACCESS_KEY_ID"),
+        aws_secret_access_key=os.environ.get("R2_SECRET_ACCESS_KEY"),
+    )
+
+    bucket_root = f"runs/gh-{commit[:7]}"
+    for root, dirs, files in os.walk("output"):
+        for file in files:
+            s3.upload_file(
+                os.path.join(root, file),
+                os.environ.get("R2_BUCKET"),
+                os.path.join(bucket_root, file),
+            )
+
+    # Build a comment with links to the data in R2
+    comment_body = f"Data for this PR is available at:\n\n"
+    comment_body += "Source |     |    \n"
+    comment_body += "------ | --- | ---\n"
+    for source in sources_to_run:
+        comment_body += f"[{source[1]}/{source[2]}](https://pub-ef300f2557d1441981e249a936132155.r2.dev/{bucket_root}/{source[0]}/{source[1]}/{source[2]}) | "
+        comment_body += f"[Preview](https://pub-ef300f2557d1441981e249a936132155.r2.dev/{bucket_root}/{source[0]}/{source[1]}/{source[2]}/preview.png) | "
+        comment_body += f"[Log](https://pub-ef300f2557d1441981e249a936132155.r2.dev/{bucket_root}/{source[0]}/{source[1]}/{source[2]}/output.txt)\n"
+
+    # Post a comment to the PR with a link to the data in R2
+    pr_url = f"https://api.github.com/repos/openaddresses/openaddresses/pulls/{pr_number}/comments"
+    resp = requests.post(
+        pr_url,
+        timeout=5,
+        headers={
+            "User-Agent": "OpenAddresses CI",
+            "Bearer": os.environ.get("GITHUB_TOKEN"),
+        },
+        json={
+            "body": comment_body,
+        }
+    )
+    resp.raise_for_status()
 
 if __name__ == '__main__':
     main()
