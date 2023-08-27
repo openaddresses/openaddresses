@@ -1,3 +1,5 @@
+import pprint
+
 import boto3
 import json
 import os
@@ -58,6 +60,7 @@ def main():
     commit = os.environ.get('GITHUB_SHA')
     pr_number = os.environ.get('GITHUB_REF').split("/")[2]
     r2_bucket = os.environ.get("R2_BUCKET")
+    pprint.pprint(os.environ)
 
     assert r2_bucket, "R2_BUCKET must be set"
 
