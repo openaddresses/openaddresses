@@ -48,6 +48,10 @@ def main():
     # Check each changed source to see which layers need to be run
     sources_to_run = []
     for changed_file in changed_files:
+        # Skip over files that aren't sources
+        if not changed_file.startswith("sources/"):
+            continue
+
         sources_on_master = {}
         source_on_master = get_source_at_version(changed_file, 'master') or {"layers": {}}
         layers_on_master = source_on_master.get("layers") or {}
