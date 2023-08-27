@@ -80,7 +80,14 @@ def main():
                     sources_to_run.append((changed_file, layer_type, source["name"]))
                     continue
 
-    print("Should run sources:", sources_to_run)
+    # Run each source with openaddr-process-one
+    for source in sources_to_run:
+        print(f"Running {source[0]} {source[1]} {source[2]}")
+        os.system(f"openaddr-process-one {source[0]} output "
+                  f"--layer {source[1]} "
+                  f"--layersource {source[2]} "
+                  f"--render-preview "
+                  f"--mapbox-key {os.environ.get('MAPBOX_KEY')}")
 
 
 if __name__ == '__main__':
