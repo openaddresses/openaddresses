@@ -1,5 +1,3 @@
-import pprint
-
 import boto3
 import json
 import os
@@ -60,7 +58,6 @@ def main():
     commit = os.environ.get('GITHUB_SHA')
     pr_number = os.environ.get('GITHUB_REF').split("/")[2]
     r2_bucket = os.environ.get("R2_BUCKET")
-    pprint.pprint(os.environ)
 
     assert r2_bucket, "R2_BUCKET must be set"
 
@@ -122,7 +119,7 @@ def main():
     bucket_root = f"runs/gh-{commit[:7]}"
     for root, dirs, files in os.walk("output"):
         for file in files:
-            r2_key = os.path.join(bucket_root, os.path.relpath("output", root), file)
+            r2_key = os.path.join(bucket_root, os.path.relpath(root, "output"), file)
             print("Uploading", r2_key)
             s3.upload_file(os.path.join(root, file), r2_bucket, r2_key)
 
