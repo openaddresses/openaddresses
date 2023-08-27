@@ -57,6 +57,9 @@ def get_source_at_version(filename, gitref):
 def main():
     commit = os.environ.get('GITHUB_SHA')
     pr_number = os.environ.get('GITHUB_REF').split("/")[2]
+    r2_bucket = os.environ.get("R2_BUCKET")
+
+    assert r2_bucket, "R2_BUCKET must be set"
 
     # Get the list of changed sources on the PR we're running against
     changed_files = get_changed_files()
@@ -118,7 +121,7 @@ def main():
         for file in files:
             s3.upload_file(
                 os.path.join(root, file),
-                os.environ.get("R2_BUCKET"),
+                r2_bucket,
                 os.path.join(bucket_root, file),
             )
 
