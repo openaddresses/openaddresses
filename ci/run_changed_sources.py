@@ -26,11 +26,15 @@ def get_source_at_version(filename, gitref):
     Use the Github RAW API to get the source code at a specific commit
     :param filename: The filename to get
     :param gitref: The commit to get the file at
-    :return: The parsed JSON from the file
+    :return: The parsed JSON from the file. None if the file doesn't exist.
     """
     url = f"https://raw.githubusercontent.com/openaddresses/openaddresses/{gitref}/{filename}"
     resp = requests.get(url, timeout=5, headers={"User-Agent": "OpenAddresses CI"})
-    resp.raise_for_status()
+
+    if resp.status_code == 404:
+        return None
+    else:
+        resp.raise_for_status()
 
     return resp.json()
 
