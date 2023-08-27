@@ -4,7 +4,21 @@ import requests
 
 
 def get_changed_files() -> []:
-    pass
+    """
+    Get the list of changed files on the current PR.
+    :return: A list of changed file names
+    """
+    pr_number = os.environ.get('GITHUB_REF').split("/")[2]
+
+    url = f"https://api.github.com/repos/openaddresses/openaddresses/pulls/{pr_number}/files"
+    resp = requests.get(url, timeout=5, headers={"User-Agent": "OpenAddresses CI"})
+    resp.raise_for_status()
+
+    changed_files = []
+    for file in resp.json():
+        changed_files.append(file["filename"])
+
+    return changed_files
 
 
 def get_source_at_version(filename, gitref):
