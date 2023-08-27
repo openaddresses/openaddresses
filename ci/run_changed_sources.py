@@ -125,7 +125,7 @@ def main():
             s3.upload_file(
                 os.path.join(root, file),
                 r2_bucket,
-                os.path.join(bucket_root, file),
+                os.path.join(bucket_root, os.path.relpath("output", root), file),
             )
 
     # Build a comment with links to the data in R2
@@ -138,7 +138,7 @@ def main():
         comment_body += f"[Log](https://pub-ef300f2557d1441981e249a936132155.r2.dev/{bucket_root}/{source[0]}/{source[1]}/{source[2]}/output.txt)\n"
 
     # Post a comment to the PR with a link to the data in R2
-    pr_url = f"https://api.github.com/repos/openaddresses/openaddresses/pulls/{pr_number}/comments"
+    pr_url = f"https://api.github.com/repos/openaddresses/openaddresses/issues/{pr_number}/comments"
     resp = requests.post(
         pr_url,
         timeout=5,
