@@ -12,7 +12,14 @@ def get_changed_files() -> []:
     pr_number = os.environ.get('GITHUB_REF').split("/")[2]
 
     url = f"https://api.github.com/repos/openaddresses/openaddresses/pulls/{pr_number}/files"
-    resp = requests.get(url, timeout=5, headers={"User-Agent": "OpenAddresses CI"})
+    resp = requests.get(
+        url,
+        timeout=5,
+        headers={
+            "User-Agent": "OpenAddresses CI",
+            "Bearer": os.environ.get("GITHUB_TOKEN"),
+        },
+    )
     resp.raise_for_status()
 
     changed_files = []
@@ -30,7 +37,14 @@ def get_source_at_version(filename, gitref):
     :return: The parsed JSON from the file. None if the file doesn't exist.
     """
     url = f"https://raw.githubusercontent.com/openaddresses/openaddresses/{gitref}/{filename}"
-    resp = requests.get(url, timeout=5, headers={"User-Agent": "OpenAddresses CI"})
+    resp = requests.get(
+        url,
+        timeout=5,
+        headers={
+            "User-Agent": "OpenAddresses CI",
+            "Bearer": os.environ.get("GITHUB_TOKEN"),
+        },
+    )
 
     if resp.status_code == 404:
         return None
