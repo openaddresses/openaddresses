@@ -4,6 +4,15 @@ import os
 import requests
 
 
+def mkdir_p(path):
+    """
+    Make a directory, including any parent directories that don't exist.
+    :param path: The path to create
+    :return: None
+    """
+    os.makedirs(path, exist_ok=True)
+
+
 def get_changed_files() -> []:
     """
     Get the list of changed files on the current PR.
@@ -102,7 +111,10 @@ def main():
     # Run each source with openaddr-process-one
     for source in sources_to_run:
         print(f"Running {source[0]} {source[1]} {source[2]}")
-        os.system(f"openaddr-process-one {source[0]} output "
+        path_to_source = os.path.split(source[0])[0].replace("sources/", "")
+        output_dir = os.path.join("output", path_to_source)
+        mkdir_p(output_dir)
+        os.system(f"openaddr-process-one {source[0]} {output_dir} "
                   f"--layer {source[1]} "
                   f"--layersource {source[2]} "
                   f"--render-preview "
@@ -119,7 +131,6 @@ def main():
     bucket_root = f"runs/gh-{commit[:7]}"
     for root, dirs, files in os.walk("output"):
         rel_root = os.path.relpath(root, "output")
-        print(root, dirs, rel_root, len(files))
         for file in files:
             r2_key = os.path.join(bucket_root, rel_root, file)
             local_filename = os.path.join(root, file)
