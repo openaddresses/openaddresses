@@ -142,13 +142,14 @@ def main():
             s3.upload_file(local_filename, r2_bucket, r2_key)
 
     # Build a comment with links to the data in R2
-    comment_body = f"Data for this PR is available at:\n\n"
-    comment_body += "Source |     |    \n"
-    comment_body += "------ | --- | ---\n"
+    comment_body = "| Source |     |    |\n"
+    comment_body += "| ------ | --- | --- |\n"
     for source in sources_to_run:
-        comment_body += f"[{source[1]}/{source[2]}](https://pub-ef300f2557d1441981e249a936132155.r2.dev/{bucket_root}/{source[0]}/{source[1]}/{source[2]}) | "
-        comment_body += f"[Preview](https://pub-ef300f2557d1441981e249a936132155.r2.dev/{bucket_root}/{source[0]}/{source[1]}/{source[2]}/preview.png) | "
-        comment_body += f"[Log](https://pub-ef300f2557d1441981e249a936132155.r2.dev/{bucket_root}/{source[0]}/{source[1]}/{source[2]}/output.txt)\n"
+        source_root = source[0].replace('sources/', '').replace('.json', '')
+        url_root = f"https://pub-ef300f2557d1441981e249a936132155.r2.dev/{bucket_root}/{source_root}/{source[1]}"
+        comment_body += f"{source[0]}/{source[1]}/{source[2]} | "
+        comment_body += f"[Preview]({url_root}/preview.png) | "
+        comment_body += f"[Log]({url_root}/output.txt)\n"
 
     # Post a comment to the PR with a link to the data in R2
     pr_url = f"https://api.github.com/repos/openaddresses/openaddresses/issues/{pr_number}/comments"
