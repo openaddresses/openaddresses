@@ -118,8 +118,9 @@ def main():
 
     bucket_root = f"runs/gh-{commit[:7]}"
     for root, dirs, files in os.walk("output"):
+        rel_root = os.path.relpath(root, "output")
         for file in files:
-            r2_key = os.path.join(bucket_root, os.path.relpath(root, "output"), file)
+            r2_key = os.path.join(bucket_root, rel_root, file)
             print("Uploading", r2_key)
             s3.upload_file(os.path.join(root, file), r2_bucket, r2_key)
 
