@@ -119,10 +119,12 @@ def main():
     bucket_root = f"runs/gh-{commit[:7]}"
     for root, dirs, files in os.walk("output"):
         rel_root = os.path.relpath(root, "output")
+        print(root, dirs, rel_root, len(files))
         for file in files:
             r2_key = os.path.join(bucket_root, rel_root, file)
-            print("Uploading", r2_key)
-            s3.upload_file(os.path.join(root, file), r2_bucket, r2_key)
+            local_filename = os.path.join(root, file)
+            print(f"Uploading {local_filename} to r2://{r2_bucket}/{r2_key}")
+            s3.upload_file(local_filename, r2_bucket, r2_key)
 
     # Build a comment with links to the data in R2
     comment_body = f"Data for this PR is available at:\n\n"
