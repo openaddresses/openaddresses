@@ -165,7 +165,8 @@ def main():
             "body": comment_body,
         }
     )
-    resp.raise_for_status()
+    if resp.status_code != 201:
+        print(resp.text)
 
 
 if __name__ == '__main__':
