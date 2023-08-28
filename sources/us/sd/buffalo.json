@@ -1,0 +1,46 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "46017",
+            "name": "Buffalo County",
+            "state": "South Dakota"
+        },
+        "country": "us",
+        "state": "sd",
+        "county": "Buffalo"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/BUFFALO_COUNTY_LAYERS/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "STREETNUM",
+                    "street": [
+                        "PREDIR",
+                        "PRETYPE",
+                        "CORE",
+                        "STTYPE",
+                        "SUFDIR"
+                    ],
+                    "city": "TOWN",
+                    "postcode": "ZIP_CODE",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/BUFFALO_COUNTY_LAYERS/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCEL_ID",
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55111",
+            "name": "Sawyer County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Sawyer"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/SAWYER_ADDRESSES_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/F20718DC-6A27-473B-A60E-05821F8E3151",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "RUSK_ADDRESSES_2023",
+                    "number": "HouseNum",
+                    "street": [
+                        "StreetName",
+                        "StrSufType",
+                        "StrSufDir"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Sawyer_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/13E3803B-30A6-47E9-A2C3-99B403F227AA",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
+    }
+}

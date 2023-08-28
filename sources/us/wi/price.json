@@ -1,0 +1,45 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55099",
+            "name": "Price County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Price"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/PRICE_ADDRESSES_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/779418C5-072C-4EF4-BE51-D3DA7BD0B165",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "PRICE_ADDRESSES_2023",
+                    "number": "PROPNO",
+                    "street": "PROPADDR"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Price_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/9015448F-37DA-4227-B141-0EEDD6FB8617",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
+    }
+}
