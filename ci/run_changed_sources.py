@@ -26,7 +26,9 @@ def get_changed_files() -> []:
         timeout=5,
         headers={
             "User-Agent": "OpenAddresses CI",
-            "Bearer": os.environ.get("GITHUB_TOKEN"),
+            "Accept": "application/vnd.github+json",
+            "Authorization": "Bearer " + os.environ.get("GITHUB_TOKEN"),
+            "X-GitHub-Api-Version": "2022-11-28",
         },
     )
     resp.raise_for_status()
@@ -51,7 +53,9 @@ def get_source_at_version(filename, gitref):
         timeout=5,
         headers={
             "User-Agent": "OpenAddresses CI",
-            "Bearer": os.environ.get("GITHUB_TOKEN"),
+            "Accept": "application/vnd.github+json",
+            "Authorization": "Bearer " + os.environ.get("GITHUB_TOKEN"),
+            "X-GitHub-Api-Version": "2022-11-28",
         },
     )
 
@@ -153,7 +157,9 @@ def main():
         timeout=5,
         headers={
             "User-Agent": "OpenAddresses CI",
-            "Bearer": os.environ.get("GITHUB_TOKEN"),
+            "Accept": "application/vnd.github+json",
+            "Authorization": "Bearer " + os.environ.get("GITHUB_TOKEN"),
+            "X-GitHub-Api-Version": "2022-11-28",
         },
         json={
             "body": comment_body,
