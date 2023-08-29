@@ -35,6 +35,9 @@ def get_changed_files() -> []:
 
     changed_files = []
     for file in resp.json():
+        # skip removed files
+        if file["status"] == "removed":
+            continue
         changed_files.append(file["filename"])
 
     return changed_files
@@ -82,6 +85,10 @@ def main():
     for changed_file in changed_files:
         # Skip over files that aren't sources
         if not changed_file.startswith("sources/"):
+            continue
+
+        # Skip over files that aren't JSON
+        if not changed_file.endsWith(".json"):
             continue
 
         sources_on_master = {}
