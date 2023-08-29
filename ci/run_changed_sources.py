@@ -35,9 +35,6 @@ def get_changed_files() -> []:
 
     changed_files = []
     for file in resp.json():
-        # skip removed files
-        if file["status"] == "removed":
-            continue
         changed_files.append(file["filename"])
 
     return changed_files
