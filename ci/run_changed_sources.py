@@ -85,7 +85,7 @@ def main():
             continue
 
         # Skip over files that aren't JSON
-        if not changed_file.endsWith(".json"):
+        if not changed_file.endswith(".json"):
             continue
 
         sources_on_master = {}
