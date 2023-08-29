@@ -1,13 +1,13 @@
-FROM ubuntu:22.04
+FROM debian:bookworm
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -y && \
     apt-get install -y sudo git curl zip unzip parallel \
-                    postgresql-14 postgresql-14-postgis-3 postgis \
-                    python3 python3-psycopg2
+                    postgresql-15 postgresql-15-postgis-3 postgis \
+                    python3 python3-psycopg
 
 RUN git clone https://github.com/minus34/gnaf-loader.git /usr/local/gnaf-loader && \
-    git --git-dir /usr/local/gnaf-loader/.git --work-tree /usr/local/gnaf-loader checkout -b openaddr 9624b8b
+    git --git-dir /usr/local/gnaf-loader/.git --work-tree /usr/local/gnaf-loader checkout -b openaddr bfd61ad
 
 COPY gnaf.sh /usr/local/bin/run-cache
