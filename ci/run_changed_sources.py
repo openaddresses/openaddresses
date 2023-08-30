@@ -84,6 +84,10 @@ def main():
         if not changed_file.startswith("sources/"):
             continue
 
+        # Skip over files that aren't JSON
+        if not changed_file.endswith(".json"):
+            continue
+
         sources_on_master = {}
         source_on_master = get_source_at_version(changed_file, 'master') or {"layers": {}}
         layers_on_master = source_on_master.get("layers") or {}
