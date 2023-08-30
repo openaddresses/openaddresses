@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "56045",
+            "name": "Weston County",
+            "state": "Wyoming"
+        },
+        "country": "us",
+        "state": "wy",
+        "county": "Weston"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/3vf4sgqBAWcEpmNB/ArcGIS/rest/services/WestonViewer/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "House_Number",
+                    "street": [
+                        "Prefix_Direction",
+                        "Street_Name",
+                        "Road_Type",
+                        "Suffix_Direction"
+                    ],
+                    "postcode": "Zip_code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/3vf4sgqBAWcEpmNB/ArcGIS/rest/services/WestonViewer/FeatureServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIDN"
+                }
+            }
+        ]
+    }
+}
