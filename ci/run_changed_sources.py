@@ -13,23 +13,27 @@ def mkdir_p(path):
     os.makedirs(path, exist_ok=True)
 
 
-def get_changed_files() -> []:
+def get_changed_files(pr_number: int) -> list:
     """
     Get the list of changed files on the current PR.
+    :rtype: list
     :return: A list of changed file names
     """
-    pr_number = os.environ.get('GITHUB_REF').split("/")[2]
-
     url = f"https://api.github.com/repos/openaddresses/openaddresses/pulls/{pr_number}/files"
+
+    headers = {
+        "User-Agent": "OpenAddresses CI",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+
+    if github_token := os.environ.get("GITHUB_TOKEN"):
+        headers["Authorization"] = "Bearer " + github_token
+
     resp = requests.get(
         url,
         timeout=5,
-        headers={
-            "User-Agent": "OpenAddresses CI",
-            "Accept": "application/vnd.github+json",
-            "Authorization": "Bearer " + os.environ.get("GITHUB_TOKEN"),
-            "X-GitHub-Api-Version": "2022-11-28",
-        },
+        headers=headers,
     )
     resp.raise_for_status()
 
@@ -48,15 +52,20 @@ def get_source_at_version(filename, gitref):
     :return: The parsed JSON from the file. None if the file doesn't exist.
     """
     url = f"https://raw.githubusercontent.com/openaddresses/openaddresses/{gitref}/{filename}"
+
+    headers = {
+        "User-Agent": "OpenAddresses CI",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+
+    if github_token := os.environ.get("GITHUB_TOKEN"):
+        headers["Authorization"] = "Bearer " + github_token
+
     resp = requests.get(
         url,
         timeout=5,
-        headers={
-            "User-Agent": "OpenAddresses CI",
-            "Accept": "application/vnd.github+json",
-            "Authorization": "Bearer " + os.environ.get("GITHUB_TOKEN"),
-            "X-GitHub-Api-Version": "2022-11-28",
-        },
+        headers=headers,
     )
 
     if resp.status_code == 404:
@@ -75,46 +84,11 @@ def main():
     assert r2_bucket, "R2_BUCKET must be set"
 
     # Get the list of changed sources on the PR we're running against
-    changed_files = get_changed_files()
+    pr_number = int(os.environ.get('GITHUB_REF').split("/")[2])
+    changed_files = get_changed_files(pr_number)
 
     # Check each changed source to see which layers need to be run
-    sources_to_run = []
-    for changed_file in changed_files:
-        # Skip over files that aren't sources
-        if not changed_file.startswith("sources/"):
-            continue
-
-        # Skip over files that aren't JSON
-        if not changed_file.endswith(".json"):
-            continue
-
-        sources_on_master = {}
-        source_on_master = get_source_at_version(changed_file, 'master') or {"layers": {}}
-        layers_on_master = source_on_master.get("layers") or {}
-        for layer_type, sources in layers_on_master.items():
-            for source in sources:
-                source["_layer"] = layer_type
-                sources_on_master[f"{layer_type}-{source.get('name')}"] = source
-
-        source_on_branch = get_source_at_version(changed_file, commit) or {"layers": {}}
-        layers_on_branch = source_on_branch.get("layers") or {}
-        for layer_type, sources in layers_on_branch.items():
-            for source in sources:
-                source["_layer"] = layer_type
-                source_key = f"{layer_type}-{source.get('name')}"
-
-                # Look for the source in the file from master
-                source_on_master = sources_on_master.get(source_key)
-
-                # If it's not there, then it's new and we should run it
-                if not source_on_master:
-                    sources_to_run.append((changed_file, layer_type, source["name"]))
-                    continue
-
-                # If it's there, only run it if it changed
-                if json.dumps(source, sort_keys=True) != json.dumps(sources_on_master, sort_keys=True):
-                    sources_to_run.append((changed_file, layer_type, source["name"]))
-                    continue
+    sources_to_run = changed_sources(changed_files, commit)
 
     # Run each source with openaddr-process-one
     for source in sources_to_run:
@@ -172,6 +146,55 @@ def main():
     )
     if resp.status_code != 201:
         print(resp.text)
+
+
+def changed_sources(changed_files, commit) -> list[tuple[str, str, str]]:
+    """
+    Given a list of changed files, return a list of sources that need to be run.
+    :param changed_files:
+    :param commit:
+    :return:
+    """
+
+    sources_to_run = []
+    for changed_file in changed_files:
+        # Skip over files that aren't sources
+        if not changed_file.startswith("sources/"):
+            continue
+
+        # Skip over files that aren't JSON
+        if not changed_file.endswith(".json"):
+            continue
+
+        sources_on_master = {}
+        source_on_master = get_source_at_version(changed_file, 'master') or {"layers": {}}
+        layers_on_master = source_on_master.get("layers") or {}
+        for layer_type, sources in layers_on_master.items():
+            for source in sources:
+                source["_layer"] = layer_type
+                sources_on_master[f"{layer_type}-{source.get('name')}"] = source
+
+        source_on_branch = get_source_at_version(changed_file, commit) or {"layers": {}}
+        layers_on_branch = source_on_branch.get("layers") or {}
+        for layer_type, sources in layers_on_branch.items():
+            for source in sources:
+                source["_layer"] = layer_type
+                source_key = f"{layer_type}-{source.get('name')}"
+
+                # Look for the source in the file from master
+                source_on_master = sources_on_master.get(source_key)
+
+                # If it's not there, then it's new and we should run it
+                if not source_on_master:
+                    sources_to_run.append((changed_file, layer_type, source["name"]))
+                    continue
+
+                # If it's there, only run it if it changed
+                if json.dumps(source, sort_keys=True) != json.dumps(source_on_master, sort_keys=True):
+                    sources_to_run.append((changed_file, layer_type, source["name"]))
+                    continue
+
+    return sources_to_run
 
 
 if __name__ == '__main__':
