@@ -10,9 +10,9 @@
     "layers": {
         "addresses": [
             {
-                "name": "state",
-                "data": "http://actmapi.act.gov.au/datadownload/Shapefile/MGA94_55/ACT_data.zip",
-                "website": "http://app.actmapi.act.gov.au/download.html",
+                "name": "ACTGOV Addresses",
+                "data": "https://opendata.arcgis.com/api/v3/datasets/13427dc77da340a29dd6601af4d7484d_0/downloads/data?format=geojson&spatialRefId=4326&where=1%3D1",
+                "website": "https://actmapi-actgov.opendata.arcgis.com/datasets/ACTGOV::actgov-addresses/about",
                 "license": {
                     "url": "https://creativecommons.org/licenses/by/4.0/",
                     "text": "CC BY 4.0",
@@ -21,16 +21,14 @@
                 },
                 "language": "en",
                 "protocol": "http",
-                "compression": "zip",
                 "conform": {
-                    "format": "shapefile",
-                    "file": "ACT_Address.shp",
+                    "format": "geojson",
                     "unit": "UNIT_TITLE",
-                    "number": "STREET_NUM",
-                    "notes": "BUILDING_N",
+                    "number": "STREET_NUMBER",
+                    "notes": "BUILDING_NAME",
                     "street": [
-                        "STREET_NAM",
-                        "STREET_TYP"
+                        "STREET_NAME",
+                        "STREET_TYPE"
                     ],
                     "city": "DIVISION",
                     "id": "ADDRESS_ID"
@@ -39,9 +37,9 @@
         ],
         "parcels": [
             {
-                "name": "state",
-                "data": "http://actmapi.act.gov.au/datadownload/Geodatabase/MGA94_55/ACT_data.zip",
-                "website": "http://app.actmapi.act.gov.au/download.html",
+                "name": "ACTGOV Block Current",
+                "data": "https://opendata.arcgis.com/api/v3/datasets/8fcae22d3967462bb3f8f221adb0e849_0/downloads/data?format=geojson&spatialRefId=4326&where=1%3D1",
+                "website": "https://actmapi-actgov.opendata.arcgis.com/datasets/ACTGOV::actgov-block-current/about",
                 "license": {
                     "url": "https://creativecommons.org/licenses/by/4.0/",
                     "text": "CC BY 4.0",
@@ -50,19 +48,17 @@
                 },
                 "language": "en",
                 "protocol": "http",
-                "compression": "zip",
                 "conform": {
-                    "format": "gdb",
-                    "layer": "Blocks",
+                    "format": "geojson",
                     "pid": "ID"
                 }
             }
         ],
         "buildings": [
             {
-                "name": "state",
-                "data": "http://actmapi.act.gov.au/datadownload/Geodatabase/MGA94_55/ACT_data.zip",
-                "website": "http://app.actmapi.act.gov.au/download.html",
+                "name": "ACTGOV Building Footprints",
+                "data": "https://opendata.arcgis.com/api/v3/datasets/ec6743ed841841ec83dc6c69c9b80dd9_0/downloads/data?format=geojson&spatialRefId=4326&where=1%3D1",
+                "website": "https://actmapi-actgov.opendata.arcgis.com/datasets/ACTGOV::actgov-building-footprints/about",
                 "license": {
                     "url": "https://creativecommons.org/licenses/by/4.0/",
                     "text": "CC BY 4.0",
@@ -71,10 +67,8 @@
                 },
                 "language": "en",
                 "protocol": "http",
-                "compression": "zip",
                 "conform": {
-                    "format": "gdb",
-                    "layer": "Building_Footprints"
+                    "format": "geojson"
                 }
             }
         ]
