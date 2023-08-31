@@ -123,8 +123,8 @@ def main():
         output_dir = os.path.join("output", path_to_source)
         mkdir_p(output_dir)
         os.system(f"openaddr-process-one {source[0]} {output_dir} "
-                  f"--layer {source[1]} "
-                  f"--layersource {source[2]} "
+                  f"--layer \"{source[1]}\" "
+                  f"--layersource \"{source[2]}\" "
                   f"--render-preview "
                   f"--mapbox-key {os.environ.get('MAPBOX_KEY')}")
 
