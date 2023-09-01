@@ -15,23 +15,38 @@
             {
                 "name": "county",
                 "attribution": "City of Savannah",
-                "data": "https://public.sagis.org/arcgis/rest/services/BOA/BoaTY_Addresses/MapServer/0",
+                "data": "https://cloud.sagis.org/arcgis/rest/services/SagisOrg2020/SAGISOrg/MapServer/187",
                 "website": "http://sagis.maps.arcgis.com/home/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "STRENUMB",
-                    "unit": "UNIT",
-                    "street": [
-                        "STPRE_TYPE",
-                        "STPRE_Q",
-                        "STDIR",
-                        "STNAME",
-                        "STSUFFIX",
-                        "STSUF_DIR",
-                        "STSUF_Q"
+                    "number": "PropAddress_Num",
+                    "unit": [
+                        "PropAddress_UnitType",
+                        "PropAddress_UnitNum"
                     ],
-                    "postcode": "ZIP"
+                    "street": [
+                        "PropAddress_PreDir",
+                        "PropAddress_StreetName",
+                        "PropAddress_StreetType",
+                        "PropAddress_PosDir"
+                    ],
+                    "city": "PropAddress_City",
+                    "region": "PropAddress_State",
+                    "postcode": "PropAddress_Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "City of Savannah",
+                "data": "https://cloud.sagis.org/arcgis/rest/services/SagisOrg2020/SAGISOrg/MapServer/124",
+                "website": "http://sagis.maps.arcgis.com/home/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

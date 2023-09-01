@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "01047",
+            "name": "Dallas County",
+            "state": "Alabama"
+        },
+        "country": "us",
+        "state": "al",
+        "county": "Dallas"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/9e1lVZPGgkrztAhh/ArcGIS/rest/services/Dallas_ParcelViewer_Service/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUS_ADDR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUS_ADDR"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/9e1lVZPGgkrztAhh/ArcGIS/rest/services/Dallas_ParcelViewer_Service/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
+    }
+}

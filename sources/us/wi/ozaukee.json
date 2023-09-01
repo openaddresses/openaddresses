@@ -14,19 +14,48 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.co.ozaukee.wi.us/arcgis/rest/services/Basemap/MapServer/19",
+                "data": "https://gis2.co.ozaukee.wi.us/arcgis/rest/services/Operational/OZAddress/MapServer/45",
+                "website": "https://ocgeohub-ozaukee.hub.arcgis.com/datasets/acfea33cc688454790b000ae8b290f6b_0/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "FromPremise",
-                    "street": [
-                        "Prefix",
-                        "StreetName",
-                        "Street_Type",
-                        "StreetSuffix"
+                    "number": [
+                        "AddNumPrefix",
+                        "AddNum",
+                        "AddNumSuffix"
                     ],
-                    "postcode": "ZIP",
-                    "city": "Muni"
+                    "street": [
+                        "PreModifier",
+                        "PreDirectional",
+                        "PreType",
+                        "BaseName",
+                        "PostType",
+                        "PostDirectional"
+                    ],
+                    "postcode": "ZipCode",
+                    "city": "ZipMunicipality"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis2.co.ozaukee.wi.us/arcgis/rest/services/OZCadastral/MapServer/25",
+                "website": "https://ocgeohub-ozaukee.hub.arcgis.com/datasets/f72e8a1160a1424a85164510f7e25085_0/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "par_num"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis2.co.ozaukee.wi.us/arcgis/rest/services/OZCadastral/MapServer/32",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

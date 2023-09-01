@@ -14,25 +14,16 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/us-ga-dooly_county.csv",
-                "protocol": "http",
+                "data": "https://services6.arcgis.com/VKHi8CC6pMIyYUIs/ArcGIS/rest/services/Address_Point_Master_File/FeatureServer/1",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "csv",
-                    "lat": "LAT",
-                    "lon": "LNG",
-                    "number": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^([0-9]+)( .*)",
-                        "replace": "$1"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "region": "REGION"
+                    "format": "geojson",
+                    "number": "AN",
+                    "street": "FullStreet",
+                    "unit": [
+                        "SecUnit",
+                        "SecRange"
+                    ]
                 }
             }
         ]

@@ -14,30 +14,49 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.montgomeryal.gov/server/rest/services/Buildings/MapServer/0",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Montgomery/AL03_GAMAWeb/MapServer/43",
                 "protocol": "ESRI",
-                "website": "http://montgomeryal.gov",
-                "attribution": "City of Montgomery",
                 "conform": {
                     "format": "geojson",
                     "number": [
-                        "ST_NUM",
-                        "NUM_SUFX"
+                        "StNum",
+                        "StNumSuf"
                     ],
                     "street": [
-                        "PRE_DIR",
-                        "PRE_TYPE",
-                        "ST_NAME",
-                        "POST_TYPE",
-                        "POST_DIR"
+                        "StPreDir",
+                        "StPreType",
+                        "StName",
+                        "StPostType",
+                        "StPostDir"
                     ],
                     "unit": [
-                        "SUB_UNIT",
-                        "UNIT_ID"
+                        "BldgAptSte",
+                        "UnitID"
                     ],
-                    "postcode": "ZIPCODE",
-                    "city": "PLACE",
-                    "region": "STATE"
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Montgomery/AL03_GAMAWeb/MapServer/29",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Montgomery/AL03_GAMAWeb/MapServer/36",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
