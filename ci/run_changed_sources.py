@@ -1,6 +1,10 @@
-import boto3
+import csv
 import json
 import os
+import sys
+
+import boto3
+import openaddr.process_one
 import requests
 
 
@@ -80,6 +84,7 @@ def main():
     commit = os.environ.get('GITHUB_SHA')
     pr_number = os.environ.get('GITHUB_REF').split("/")[2]
     r2_bucket = os.environ.get("R2_BUCKET")
+    csv.field_size_limit(sys.maxsize)
 
     assert r2_bucket, "R2_BUCKET must be set"
 
@@ -96,10 +101,17 @@ def main():
         path_to_source = os.path.split(source[0])[0].replace("sources/", "")
         output_dir = os.path.join("output", path_to_source)
         mkdir_p(output_dir)
-        os.system(f"openaddr-process-one {source[0]} {output_dir} "
-                  f"--layer \"{source[1]}\" "
-                  f"--layersource \"{source[2]}\" "
-                  f"--mapbox-key {os.environ.get('MAPBOX_KEY')}")
+        openaddr.process_one.process(
+            source[0],
+            output_dir,
+            layer=source[1],
+            layersource=source[2],
+            do_geojsonld=True,
+            do_preview=True,
+            do_mbtiles=True,
+            do_pmtiles=True,
+            mapbox_key=os.environ.get('MAPBOX_KEY'),
+        )
 
     # Upload the output files to R2
     s3 = boto3.client(
