@@ -1,6 +1,11 @@
-import boto3
+import csv
 import json
+import logging
 import os
+import sys
+
+import boto3
+import openaddr.process_one
 import requests
 
 
@@ -13,23 +18,27 @@ def mkdir_p(path):
     os.makedirs(path, exist_ok=True)
 
 
-def get_changed_files() -> []:
+def get_changed_files(pr_number: int) -> list:
     """
     Get the list of changed files on the current PR.
+    :rtype: list
     :return: A list of changed file names
     """
-    pr_number = os.environ.get('GITHUB_REF').split("/")[2]
-
     url = f"https://api.github.com/repos/openaddresses/openaddresses/pulls/{pr_number}/files"
+
+    headers = {
+        "User-Agent": "OpenAddresses CI",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+
+    if github_token := os.environ.get("GITHUB_TOKEN"):
+        headers["Authorization"] = "Bearer " + github_token
+
     resp = requests.get(
         url,
         timeout=5,
-        headers={
-            "User-Agent": "OpenAddresses CI",
-            "Accept": "application/vnd.github+json",
-            "Authorization": "Bearer " + os.environ.get("GITHUB_TOKEN"),
-            "X-GitHub-Api-Version": "2022-11-28",
-        },
+        headers=headers,
     )
     resp.raise_for_status()
 
@@ -48,15 +57,20 @@ def get_source_at_version(filename, gitref):
     :return: The parsed JSON from the file. None if the file doesn't exist.
     """
     url = f"https://raw.githubusercontent.com/openaddresses/openaddresses/{gitref}/{filename}"
+
+    headers = {
+        "User-Agent": "OpenAddresses CI",
+        "Accept": "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+
+    if github_token := os.environ.get("GITHUB_TOKEN"):
+        headers["Authorization"] = "Bearer " + github_token
+
     resp = requests.get(
         url,
         timeout=5,
-        headers={
-            "User-Agent": "OpenAddresses CI",
-            "Accept": "application/vnd.github+json",
-            "Authorization": "Bearer " + os.environ.get("GITHUB_TOKEN"),
-            "X-GitHub-Api-Version": "2022-11-28",
-        },
+        headers=headers,
     )
 
     if resp.status_code == 404:
@@ -71,13 +85,101 @@ def main():
     commit = os.environ.get('GITHUB_SHA')
     pr_number = os.environ.get('GITHUB_REF').split("/")[2]
     r2_bucket = os.environ.get("R2_BUCKET")
+    csv.field_size_limit(sys.maxsize)
+
+    # Set up logging
+    openaddr_logger = logging.getLogger('openaddr')
+    openaddr_logger.setLevel(logging.DEBUG)
+    handler1 = logging.StreamHandler()
+    handler1.setLevel(logging.DEBUG)
+    log_format = '%(asctime)s %(levelname)07s: %(message)s'
+    handler1.setFormatter(logging.Formatter(log_format))
+    openaddr_logger.addHandler(handler1)
+    _L = openaddr_logger.getChild('ci')
 
     assert r2_bucket, "R2_BUCKET must be set"
 
     # Get the list of changed sources on the PR we're running against
-    changed_files = get_changed_files()
+    pr_number = int(os.environ.get('GITHUB_REF').split("/")[2])
+    changed_files = get_changed_files(pr_number)
 
     # Check each changed source to see which layers need to be run
+    sources_to_run = changed_sources(changed_files, commit)
+
+    # Run each source with openaddr-process-one
+    for source in sources_to_run:
+        _L.info(f"Running {source[0]} {source[1]} {source[2]}")
+        path_to_source = os.path.split(source[0])[0].replace("sources/", "")
+        output_dir = os.path.join("output", path_to_source)
+        mkdir_p(output_dir)
+        openaddr.process_one.process(
+            source[0],
+            output_dir,
+            layer=source[1],
+            layersource=source[2],
+            do_geojsonld=True,
+            do_preview=True,
+            do_mbtiles=True,
+            do_pmtiles=True,
+            mapbox_key=os.environ.get('MAPBOX_KEY'),
+        )
+        _L.info(f"Finished running {source[0]} {source[1]} {source[2]} to {output_dir}")
+
+    # Upload the output files to R2
+    s3 = boto3.client(
+        's3',
+        endpoint_url=os.environ.get("R2_ENDPOINT"),
+        aws_access_key_id=os.environ.get("R2_ACCESS_KEY_ID"),
+        aws_secret_access_key=os.environ.get("R2_SECRET_ACCESS_KEY"),
+    )
+
+    bucket_root = f"runs/gh-{commit[:7]}"
+    for root, dirs, files in os.walk("output"):
+        rel_root = os.path.relpath(root, "output")
+        for file in files:
+            r2_key = os.path.join(bucket_root, rel_root, file)
+            local_filename = os.path.join(root, file)
+            _L.info(f"Uploading {local_filename} to r2://{r2_bucket}/{r2_key}")
+            s3.upload_file(local_filename, r2_bucket, r2_key)
+
+    # Build a comment with links to the data in R2
+    comment_body = "| Source | Preview | Log |\n"
+    comment_body += "| ------ | ------- | --- |\n"
+    for source in sources_to_run:
+        source_root = source[0].replace('sources/', '').replace('.json', '')
+        url_root = f"https://pub-ef300f2557d1441981e249a936132155.r2.dev/{bucket_root}/{source_root}/{source[1]}"
+        comment_body += f"{source[0]}/{source[1]}/{source[2]} | "
+        comment_body += f"[Image]({url_root}/preview.png) "
+        comment_body += f"[Map](https://protomaps.github.io/PMTiles/?url={url_root}/out.pmtiles) |"
+        comment_body += f"[Log]({url_root}/output.txt)\n"
+
+    # Post a comment to the PR with a link to the data in R2
+    pr_url = f"https://api.github.com/repos/openaddresses/openaddresses/issues/{pr_number}/comments"
+    resp = requests.post(
+        pr_url,
+        timeout=5,
+        headers={
+            "User-Agent": "OpenAddresses CI",
+            "Accept": "application/vnd.github+json",
+            "Authorization": "Bearer " + os.environ.get("GITHUB_TOKEN"),
+            "X-GitHub-Api-Version": "2022-11-28",
+        },
+        json={
+            "body": comment_body,
+        }
+    )
+    if resp.status_code != 201:
+        _L.warning(f"Couldn't post comment. Response was: {resp.text}")
+
+
+def changed_sources(changed_files, commit) -> list[tuple[str, str, str]]:
+    """
+    Given a list of changed files, return a list of sources that need to be run.
+    :param changed_files:
+    :param commit:
+    :return:
+    """
+
     sources_to_run = []
     for changed_file in changed_files:
         # Skip over files that aren't sources
@@ -112,66 +214,11 @@ def main():
                     continue
 
                 # If it's there, only run it if it changed
-                if json.dumps(source, sort_keys=True) != json.dumps(sources_on_master, sort_keys=True):
+                if json.dumps(source, sort_keys=True) != json.dumps(source_on_master, sort_keys=True):
                     sources_to_run.append((changed_file, layer_type, source["name"]))
                     continue
 
-    # Run each source with openaddr-process-one
-    for source in sources_to_run:
-        print(f"Running {source[0]} {source[1]} {source[2]}")
-        path_to_source = os.path.split(source[0])[0].replace("sources/", "")
-        output_dir = os.path.join("output", path_to_source)
-        mkdir_p(output_dir)
-        os.system(f"openaddr-process-one {source[0]} {output_dir} "
-                  f"--layer \"{source[1]}\" "
-                  f"--layersource \"{source[2]}\" "
-                  f"--render-preview "
-                  f"--mapbox-key {os.environ.get('MAPBOX_KEY')}")
-
-    # Upload the output files to R2
-    s3 = boto3.client(
-        's3',
-        endpoint_url=os.environ.get("R2_ENDPOINT"),
-        aws_access_key_id=os.environ.get("R2_ACCESS_KEY_ID"),
-        aws_secret_access_key=os.environ.get("R2_SECRET_ACCESS_KEY"),
-    )
-
-    bucket_root = f"runs/gh-{commit[:7]}"
-    for root, dirs, files in os.walk("output"):
-        rel_root = os.path.relpath(root, "output")
-        for file in files:
-            r2_key = os.path.join(bucket_root, rel_root, file)
-            local_filename = os.path.join(root, file)
-            print(f"Uploading {local_filename} to r2://{r2_bucket}/{r2_key}")
-            s3.upload_file(local_filename, r2_bucket, r2_key)
-
-    # Build a comment with links to the data in R2
-    comment_body = "| Source |     |    |\n"
-    comment_body += "| ------ | --- | --- |\n"
-    for source in sources_to_run:
-        source_root = source[0].replace('sources/', '').replace('.json', '')
-        url_root = f"https://pub-ef300f2557d1441981e249a936132155.r2.dev/{bucket_root}/{source_root}/{source[1]}"
-        comment_body += f"{source[0]}/{source[1]}/{source[2]} | "
-        comment_body += f"[Preview]({url_root}/preview.png) | "
-        comment_body += f"[Log]({url_root}/output.txt)\n"
-
-    # Post a comment to the PR with a link to the data in R2
-    pr_url = f"https://api.github.com/repos/openaddresses/openaddresses/issues/{pr_number}/comments"
-    resp = requests.post(
-        pr_url,
-        timeout=5,
-        headers={
-            "User-Agent": "OpenAddresses CI",
-            "Accept": "application/vnd.github+json",
-            "Authorization": "Bearer " + os.environ.get("GITHUB_TOKEN"),
-            "X-GitHub-Api-Version": "2022-11-28",
-        },
-        json={
-            "body": comment_body,
-        }
-    )
-    if resp.status_code != 201:
-        print(resp.text)
+    return sources_to_run
 
 
 if __name__ == '__main__':
