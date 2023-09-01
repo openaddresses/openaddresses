@@ -1,5 +1,6 @@
 import csv
 import json
+import logging
 import os
 import sys
 
@@ -86,6 +87,16 @@ def main():
     r2_bucket = os.environ.get("R2_BUCKET")
     csv.field_size_limit(sys.maxsize)
 
+    # Set up logging
+    openaddr_logger = logging.getLogger('openaddr')
+    openaddr_logger.setLevel(logging.DEBUG)
+    handler1 = logging.StreamHandler()
+    handler1.setLevel(logging.DEBUG)
+    log_format = '%(asctime)s %(levelname)07s: %(message)s'
+    handler1.setFormatter(logging.Formatter(log_format))
+    openaddr_logger.addHandler(handler1)
+    _L = openaddr_logger.getChild('ci')
+
     assert r2_bucket, "R2_BUCKET must be set"
 
     # Get the list of changed sources on the PR we're running against
@@ -97,7 +108,7 @@ def main():
 
     # Run each source with openaddr-process-one
     for source in sources_to_run:
-        print(f"Running {source[0]} {source[1]} {source[2]}")
+        _L.info(f"Running {source[0]} {source[1]} {source[2]}")
         path_to_source = os.path.split(source[0])[0].replace("sources/", "")
         output_dir = os.path.join("output", path_to_source)
         mkdir_p(output_dir)
@@ -112,6 +123,7 @@ def main():
             do_pmtiles=True,
             mapbox_key=os.environ.get('MAPBOX_KEY'),
         )
+        _L.info(f"Finished running {source[0]} {source[1]} {source[2]} to {output_dir}")
 
     # Upload the output files to R2
     s3 = boto3.client(
@@ -127,7 +139,7 @@ def main():
         for file in files:
             r2_key = os.path.join(bucket_root, rel_root, file)
             local_filename = os.path.join(root, file)
-            print(f"Uploading {local_filename} to r2://{r2_bucket}/{r2_key}")
+            _L.info(f"Uploading {local_filename} to r2://{r2_bucket}/{r2_key}")
             s3.upload_file(local_filename, r2_bucket, r2_key)
 
     # Build a comment with links to the data in R2
@@ -157,7 +169,7 @@ def main():
         }
     )
     if resp.status_code != 201:
-        print(resp.text)
+        _L.warning(f"Couldn't post comment. Response was: {resp.text}")
 
 
 def changed_sources(changed_files, commit) -> list[tuple[str, str, str]]:
