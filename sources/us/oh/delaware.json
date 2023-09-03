@@ -14,10 +14,10 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://proxy.delco-gis.org/arcgiswebadaptor/rest/services/DelcoGIS_Labels_SQL/MapServer/4",
+                "data": "https://services2.arcgis.com/ziXVKVy3BiopMCCU/arcgis/rest/services/Address_Point/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": "ADDRNUM",
+                    "number": "ADDR_NUM",
                     "street": [
                         "PRE_DIR",
                         "PRE_TYPE",
@@ -26,14 +26,35 @@
                         "SUF_DIR"
                     ],
                     "unit": [
-                        "UNITTYPE",
-                        "UNITID"
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
                     ],
                     "city": "CITY",
                     "district": "COUNTY",
                     "region": "STATE",
                     "postcode": "ZIP",
                     "format": "geojson"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services2.arcgis.com/ziXVKVy3BiopMCCU/ArcGIS/rest/services/Building_Outline/FeatureServer/0",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services2.arcgis.com/ziXVKVy3BiopMCCU/ArcGIS/rest/services/Parcel/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
                 }
             }
         ]
