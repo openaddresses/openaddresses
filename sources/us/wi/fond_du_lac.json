@@ -14,7 +14,8 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gisweb.fdlco.wi.gov/arcgis/rest/services/PropertyCardMap/MapServer/7",
+                "data": "https://gisweb.fdlco.wi.gov/server/rest/services/Addresses/MapServer/0",
+                "website": "https://gisweb.fdlco.wi.gov/download/Addresses.html",
                 "protocol": "ESRI",
                 "note": "Number has letters in it, which is fine for Wisconsin",
                 "conform": {
@@ -25,6 +26,32 @@
                         "PRI_NAME",
                         "TYPE"
                     ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisweb.fdlco.wi.gov/server/rest/services/Parcels_AllSiteAddr_ViewExport/MapServer/7",
+                "website": "https://gisweb.fdlco.wi.gov/download/Parcels.html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Fond_du_Lac_Buildings_2022.zip",
+                "website": "https://geodata.wisc.edu/catalog/9217B574-19B2-4D0C-8224-950FD9771A73",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2022",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Fond_du_Lac_Buildings_2022"
                 }
             }
         ]

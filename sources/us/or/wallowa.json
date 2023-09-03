@@ -1,32 +1,37 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "41067",
+            "geoid": "41063",
             "state": "Oregon",
-            "name": "Washington County"
+            "name": "Wallowa County"
         },
         "country": "us",
         "state": "or",
-        "county": "Washington"
+        "county": "Wallowa"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "http://mtbachelor.co.washington.or.us/arcgiswa2/rest/services/Intermap/Situs_address_WMAS/MapServer/0",
+                "data": "https://services.arcgis.com/cfmdyB05xBau1dNQ/ArcGIS/rest/services/Wallowa_County_ADDRESS/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSE_NUMBER",
+                    "number": "STRUCTNO",
                     "street": [
-                        "PRE_DIRECTION",
-                        "STREET_NAME",
-                        "STREET_TYPE"
+                        "PREDIR",
+                        "PRETYPE",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFDIR"
                     ],
-                    "city": "CITY",
-                    "postcode": "ZIP",
-                    "id": "TAXLOT"
+                    "unit": [
+                        "UNIT_NO",
+                        "UNIT_TYPE"
+                    ],
+                    "city": "COMMUNITY",
+                    "id": "APN"
                 }
             }
         ]

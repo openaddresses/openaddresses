@@ -12,33 +12,45 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://njgin.state.nj.us/oit/gis/download/Addr_NG911.gdb.zip",
+                "data": "https://geoapps.nj.gov/njgin/address/Addr_NG911.gdb.zip",
                 "website": "https://njogis-newjersey.opendata.arcgis.com/datasets/c4b6cb9caad94a569e40541457fd45f6",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
                     "format": "gdb",
-                    "layer": "addr_addressPoint_NJ",
                     "number": [
-                        "ADDNUM_PRE",
-                        "ADD_NUMBER",
-                        "ADDNUM_SUF"
+                        "addnum_pre",
+                        "add_number",
+                        "addnum_suf"
                     ],
                     "street": [
-                        "ST_PREMOD",
-                        "ST_PREDIR",
-                        "ST_PRETYP",
-                        "ST_PRESEP",
-                        "ST_NAME",
-                        "ST_POSTYP",
-                        "ST_POSDIR",
-                        "ST_POSMOD"
+                        "st_premod",
+                        "st_predir",
+                        "st_pretyp",
+                        "st_presep",
+                        "st_name",
+                        "st_postyp",
+                        "st_posdir",
+                        "st_posmod"
                     ],
                     "unit": "UNIT",
                     "city": "POST_COMM",
                     "postcode": "POST_CODE",
                     "region": "STATE",
                     "id": "OBJECTID"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://geoapps.nj.gov/njgin/parcel/parcelsStatewide.gdb.zip",
+                "website": "https://njogis-newjersey.opendata.arcgis.com/documents/parcels-composite-of-nj-download/about",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "pid": "PAMS_PIN"
                 }
             }
         ]

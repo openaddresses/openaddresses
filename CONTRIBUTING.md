@@ -326,3 +326,7 @@ A few notes on formatting:
 
 Although these are read by a machine, they are maintained by us mortals.
 Following the formatting guidelines keeps the rest of us sane!
+
+### Debugging and local testing
+
+See https://github.com/openaddresses/batch-machine/

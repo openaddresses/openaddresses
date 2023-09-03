@@ -1,0 +1,66 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55017",
+            "name": "Chippewa County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Chippewa"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://filecloud.co.clark.wi.us/core/downloadfile?disposition=attachment&filename=Addr3_23.zip&filepath=%2FSHARED%2Fmorrellc%2FGIS%20Data%2FAddr3_23.zip&redirect=1&checkonly=1",
+                "website": "https://filecloud.co.clark.wi.us/url/CountyGISdata",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "NUMBER_1",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "Address",
+                        "field_to_remove": "ADDRNUM"
+                    },
+                    "unit": "Unit",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://filecloud.co.clark.wi.us/core/downloadfile?disposition=attachment&filename=parcels1_2023.zip&filepath=%2FSHARED%2Fmorrellc%2FGIS%20Data%2Fparcels1_2023.zip&redirect=1&checkonly=1",
+                "website": "https://filecloud.co.clark.wi.us/url/CountyGISdata",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Clark_Buildings_2020.zip",
+                "website": "https://geodata.wisc.edu/catalog/67315C46-0A56-459A-B100-04832CD90826",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2020",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Clark_Buildings_2020"
+                }
+            }
+        ]
+    }
+}

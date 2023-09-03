@@ -14,13 +14,28 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://ims.districtiii.org/arcgis/rest/services/BRULE/MapServer/16",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/BRULE_COUNTY_LAYERS2/MapServer/12",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": "CAMA.HOUSENUM",
-                    "street": "CAMA.ADDRESS",
-                    "city": "CAMA.CITY",
-                    "postcode": "CAMA.ZIP",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "TC_SITE_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "TC_SITE_ADDRESS"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/BRULE_COUNTY_LAYERS2/MapServer/12",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCEL_ID",
                     "format": "geojson"
                 }
             }

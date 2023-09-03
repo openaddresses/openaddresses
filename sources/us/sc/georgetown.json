@@ -14,16 +14,50 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis1.georgetowncountysc.org/webadaptor/rest/services/GeorgetownCountyMapServer/MapServer/8",
+                "data": "https://gis1.georgetowncountysc.org/webadaptor/rest/services/GTGIS/MapServer/7",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSENUM",
-                    "street": {
-                        "function": "remove_prefix",
-                        "field": "ADDRESS",
-                        "field_to_remove": "ADDRESS"
-                    }
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "StN_PreMod",
+                        "StN_PreDir",
+                        "StN_PreTyp",
+                        "StN_PreSep",
+                        "StreetName",
+                        "StN_PosTyp",
+                        "StN_PosDir",
+                        "StN_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "region": "State",
+                    "postcode": "Zip_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis1.georgetowncountysc.org/webadaptor/rest/services/GTGIS/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TMS"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis1.georgetowncountysc.org/webadaptor/rest/services/GTGIS_Buildings/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
