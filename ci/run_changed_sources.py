@@ -1,3 +1,4 @@
+from collections import namedtuple
 import csv
 import json
 import logging
@@ -106,24 +107,36 @@ def main():
     # Check each changed source to see which layers need to be run
     sources_to_run = changed_sources(changed_files, commit)
 
+    # If there aren't any sources to run, then we're done
+    if not sources_to_run:
+        _L.info("No sources to run")
+        return
+
     # Run each source with openaddr-process-one
     for source in sources_to_run:
-        _L.info(f"Running {source[0]} {source[1]} {source[2]}")
-        path_to_source = os.path.split(source[0])[0].replace("sources/", "")
+        _L.info(f"Running {source.filename} {source.layer} {source.name}")
+        path_to_source = os.path.split(source.filename)[0].replace("sources/", "")
         output_dir = os.path.join("output", path_to_source)
         mkdir_p(output_dir)
-        openaddr.process_one.process(
-            source[0],
+        state_path = openaddr.process_one.process(
+            source.filename,
             output_dir,
-            layer=source[1],
-            layersource=source[2],
-            do_geojsonld=True,
+            layer=source.layer,
+            layersource=source.name,
             do_preview=True,
             do_mbtiles=True,
             do_pmtiles=True,
             mapbox_key=os.environ.get('MAPBOX_KEY'),
         )
-        _L.info(f"Finished running {source[0]} {source[1]} {source[2]} to {output_dir}")
+        _L.info(f"Finished running {source.filename} {source.layer} {source.name} to {output_dir}")
+
+        # Don't try to read the state file if process_one failed
+        if not state_path:
+            continue
+
+        # Read the state file so we can show debug info in the PR comment
+        with open(state_path, "r") as f:
+            source.state = json.load(f)
 
     # Upload the output files to R2
     s3 = boto3.client(
@@ -143,14 +156,27 @@ def main():
             s3.upload_file(local_filename, r2_bucket, r2_key)
 
     # Build a comment with links to the data in R2
-    comment_body = "| Source | Preview | Log |\n"
-    comment_body += "| ------ | ------- | --- |\n"
+    comment_body = "| Source | Result | Output |\n"
+    comment_body += "| ------ | ------ | ------ |\n"
     for source in sources_to_run:
-        source_root = source[0].replace('sources/', '').replace('.json', '')
-        url_root = f"https://pub-ef300f2557d1441981e249a936132155.r2.dev/{bucket_root}/{source_root}/{source[1]}"
-        comment_body += f"{source[0]}/{source[1]}/{source[2]} | "
-        comment_body += f"[Image]({url_root}/preview.png) "
-        comment_body += f"[Map](https://protomaps.github.io/PMTiles/?url={url_root}/out.pmtiles) |"
+        source_root = source.filename.replace('sources/', '').replace('.json', '')
+        url_root = f"https://pub-ef300f2557d1441981e249a936132155.r2.dev/{bucket_root}/{source_root}/{source.layer}"
+
+        if not source.state:
+            source_result = ":x: Failed"
+        elif source.state.get("feat count", 0) <= 0:
+            source_result = ":x: No features"
+        elif source.state.get("skipped"):
+            source_result = ":white_check_mark: Skipped"
+        elif source.state.get("source problem"):
+            source_result = ":x: Source problem"
+        else:
+            source_result = f":white_check_mark: {source.state.get('feat count')} features"
+
+        comment_body += f"{source.filename}/{source.layer}/{source.name} | "
+        comment_body += f"{source_result} |"
+        comment_body += f"[Image]({url_root}/preview.png) / "
+        comment_body += f"[Map](https://protomaps.github.io/PMTiles/?url={url_root}/slippymap.pmtiles) / "
         comment_body += f"[Log]({url_root}/output.txt)\n"
 
     # Post a comment to the PR with a link to the data in R2
@@ -172,7 +198,10 @@ def main():
         _L.warning(f"Couldn't post comment. Response was: {resp.text}")
 
 
-def changed_sources(changed_files, commit) -> list[tuple[str, str, str]]:
+SourceData = namedtuple("SourceData", ["filename", "layer", "name", "state"])
+
+
+def changed_sources(changed_files, commit) -> list[SourceData]:
     """
     Given a list of changed files, return a list of sources that need to be run.
     :param changed_files:
@@ -210,7 +239,12 @@ def changed_sources(changed_files, commit) -> list[tuple[str, str, str]]:
 
                 # If it's not there, then it's new and we should run it
                 if not source_on_master:
-                    sources_to_run.append((changed_file, layer_type, source["name"]))
+                    sources_to_run.append(SourceData(
+                        filename=changed_file,
+                        layer=layer_type,
+                        name=source["name"],
+                        state={},
+                    ))
                     continue
 
                 # If it's there, only run it if it changed
