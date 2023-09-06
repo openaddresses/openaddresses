@@ -106,6 +106,11 @@ def main():
     # Check each changed source to see which layers need to be run
     sources_to_run = changed_sources(changed_files, commit)
 
+    # If there aren't any sources to run, then we're done
+    if not sources_to_run:
+        _L.info("No sources to run")
+        return
+
     # Run each source with openaddr-process-one
     for source in sources_to_run:
         _L.info(f"Running {source[0]} {source[1]} {source[2]}")
