@@ -249,7 +249,12 @@ def changed_sources(changed_files, commit) -> list[SourceData]:
 
                 # If it's there, only run it if it changed
                 if json.dumps(source, sort_keys=True) != json.dumps(source_on_master, sort_keys=True):
-                    sources_to_run.append((changed_file, layer_type, source["name"]))
+                    sources_to_run.append(SourceData(
+                        filename=changed_file,
+                        layer=layer_type,
+                        name=source["name"],
+                        state={},
+                    ))
                     continue
 
     return sources_to_run
