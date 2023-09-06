@@ -117,7 +117,6 @@ def main():
             output_dir,
             layer=source[1],
             layersource=source[2],
-            do_geojsonld=True,
             do_preview=True,
             do_mbtiles=True,
             do_pmtiles=True,
