@@ -136,7 +136,7 @@ def main():
 
         # Read the state file so we can show debug info in the PR comment
         with open(state_path, "r") as f:
-            source.state = json.load(f)
+            source.state.update(json.load(f))
 
     # Upload the output files to R2
     s3 = boto3.client(
