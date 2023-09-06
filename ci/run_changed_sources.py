@@ -168,10 +168,10 @@ def main():
             source_result = ":x: Failed"
         elif source.state.get("feat count", 0) <= 0:
             source_result = ":x: No features"
-        elif source.state.get("skipped"):
+        elif source.state.get("skipped") is True:
             source_result = ":white_check_mark: Skipped"
         elif source.state.get("source problem"):
-            source_result = ":x: Source problem"
+            source_result = ":x: " + source.state.get("source problem")
         else:
             source_result = f":white_check_mark: {source.state.get('feat count')} features"
 
