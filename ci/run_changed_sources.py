@@ -150,7 +150,7 @@ def main():
         url_root = f"https://pub-ef300f2557d1441981e249a936132155.r2.dev/{bucket_root}/{source_root}/{source[1]}"
         comment_body += f"{source[0]}/{source[1]}/{source[2]} | "
         comment_body += f"[Image]({url_root}/preview.png) "
-        comment_body += f"[Map](https://protomaps.github.io/PMTiles/?url={url_root}/out.pmtiles) |"
+        comment_body += f"[Map](https://protomaps.github.io/PMTiles/?url={url_root}/slippymap.pmtiles) |"
         comment_body += f"[Log]({url_root}/output.txt)\n"
 
     # Post a comment to the PR with a link to the data in R2
