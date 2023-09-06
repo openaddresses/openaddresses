@@ -136,7 +136,9 @@ def main():
 
         # Read the state file so we can show debug info in the PR comment
         with open(state_path, "r") as f:
-            source.state.update(json.load(f))
+            # The state file is a JSON representation of a CSV file, so zip the headers and rows together
+            state_as_dict = dict(zip(*json.load(f)))
+            source.state.update(state_as_dict)
 
     # Upload the output files to R2
     s3 = boto3.client(
