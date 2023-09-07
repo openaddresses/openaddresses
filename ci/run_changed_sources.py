@@ -164,7 +164,7 @@ def main():
     for source in sources_to_run:
         source_root = source.filename.replace('sources/', '').replace('.json', '')
         url_root = f"https://pub-ef300f2557d1441981e249a936132155.r2.dev/{bucket_root}/{source_root}/{source.layer}"
-        url_root = urllib.parse.quote(url_root)
+        quoted_url_root = urllib.parse.quote(url_root)
 
         if not source.state:
             source_result = ":x: Failed"
@@ -180,7 +180,7 @@ def main():
         comment_body += f"{source.filename}/{source.layer}/{source.name} | "
         comment_body += f"{source_result} |"
         comment_body += f"[Image]({url_root}/preview.png) / "
-        comment_body += f"[Map](https://protomaps.github.io/PMTiles/?url={url_root}/slippymap.pmtiles) / "
+        comment_body += f"[Map](https://protomaps.github.io/PMTiles/?url={quoted_url_root}/slippymap.pmtiles) / "
         comment_body += f"[Log]({url_root}/output.txt)\n"
 
     # Post a comment to the PR with a link to the data in R2
