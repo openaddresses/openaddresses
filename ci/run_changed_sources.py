@@ -4,6 +4,7 @@ import json
 import logging
 import os
 import sys
+import urllib.parse
 
 import boto3
 import openaddr.process_one
@@ -163,6 +164,7 @@ def main():
     for source in sources_to_run:
         source_root = source.filename.replace('sources/', '').replace('.json', '')
         url_root = f"https://pub-ef300f2557d1441981e249a936132155.r2.dev/{bucket_root}/{source_root}/{source.layer}"
+        url_root = urllib.parse.quote(url_root)
 
         if not source.state:
             source_result = ":x: Failed"
@@ -173,7 +175,7 @@ def main():
         elif source.state.get("source problem"):
             source_result = ":x: " + source.state.get("source problem")
         else:
-            source_result = f":white_check_mark: {source.state.get('feat count')} features"
+            source_result = f":white_check_mark: {source.state.get('feat count'):,} features"
 
         comment_body += f"{source.filename}/{source.layer}/{source.name} | "
         comment_body += f"{source_result} |"
