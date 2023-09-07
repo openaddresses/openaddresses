@@ -175,7 +175,7 @@ def main():
         elif source.state.get("source problem"):
             source_result = ":x: " + source.state.get("source problem")
         else:
-            source_result = f":white_check_mark: {source.state.get('feat count')} features"
+            source_result = f":white_check_mark: {source.state.get('feat count'):,} features"
 
         comment_body += f"{source.filename}/{source.layer}/{source.name} | "
         comment_body += f"{source_result} |"
