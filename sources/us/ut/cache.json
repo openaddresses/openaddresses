@@ -1,0 +1,60 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "49005",
+            "name": "Cache County",
+            "state": "Utah"
+        },
+        "country": "us",
+        "state": "ut",
+        "county": "Cache"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.cachecounty.org/arcgis/rest/services/Misc/Master_Address_List/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "addnum",
+                    "street": [
+                        "prefixdir",
+                        "streetname",
+                        "strettype",
+                        "suffixdir"
+                    ],
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "city",
+                    "region": "state",
+                    "postcode": "zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.cachecounty.org/arcgis/rest/services/BaseMap/Parcels_Current/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "tax_id"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.cachecounty.org/arcgis/rest/services/Misc/Master_Address_List/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}
