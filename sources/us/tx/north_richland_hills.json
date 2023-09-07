@@ -21,11 +21,16 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://gis4.dfwmaps.com/arcgis/rest/services/ICNRH/NRH_Baselayers_VE/MapServer/1",
+                "data": "https://nrhmaps.nrhtx.com/arcgis/rest/services/AGOLayers/MapServer/5",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": "STNO",
-                    "street": "STREETNAME",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "POST_DIR"
+                    ],
                     "format": "geojson"
                 }
             }
