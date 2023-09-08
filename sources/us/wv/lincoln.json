@@ -1,0 +1,40 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "54043",
+            "name": "Lincoln County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Lincoln"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/Lincoln_WV_Service/FeatureServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESSNUM",
+                    "street": "STREET",
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/Lincoln_WV_Service/FeatureServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARID"
+                }
+            }
+        ]
+    }
+}

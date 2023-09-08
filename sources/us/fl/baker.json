@@ -1,0 +1,55 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "12003",
+            "name": "Baker County",
+            "state": "Florida"
+        },
+        "country": "us",
+        "state": "fl",
+        "county": "Baker"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/HSWu3dhzHf7nZfIa/ArcGIS/rest/services/911_Addresses_Website2/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "unit": "UNIT",
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "StPosDir",
+                        "St_PosMod"
+                    ],
+                    "postcode": "Post_Code",
+                    "city": "MSAGComm",
+                    "district": "County",
+                    "region": "State"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/HSWu3dhzHf7nZfIa/ArcGIS/rest/services/Parcels_Website2/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
+    }
+}

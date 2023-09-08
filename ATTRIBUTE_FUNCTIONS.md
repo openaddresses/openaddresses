@@ -135,7 +135,7 @@ The implementations of `prefixed_number` and `postfixed_street` are very simple,
 
 A source may not necessarily have to use both functions together in a conform but they commonly are.
 
-It's also common for a single address field to contain a unit designator at the end, as in "123 Maple Street Apt 4A".  In this case, `postfixed_unit` should be used in combination with `postfixed_street` to extract `Apt 4A`.  Because `postfixed_street` considers the street value to be anything after the house number, it's normal to set `may_contain_units` to `true` in `postfixed_street` when using `postfixed_unit`.  
+It's also common for a single address field to contain a unit designator at the end, as in "123 Maple Street Apt 4A".  In this case, `postfixed_unit` should be used in combination with `postfixed_street` to extract `Apt 4A`.  Because `postfixed_street` considers the street value to be anything after the house number, it's normal to set `may_contain_units` to `true` in `postfixed_street` when using `postfixed_unit`.
 
 `postfixed_unit` recognizes the following words as unit designators:
 
@@ -150,7 +150,7 @@ It's also common for a single address field to contain a unit designator at the 
 * #
 
 Any text found after the unit designator is considered part of the unit.  The downside of this is that if a street name legitimately
-contains one of these words, such as "Lindsay Lot Road", which is fortunately a fairly rare occurrence.  
+contains one of these words, such as "Lindsay Lot Road", which is fortunately a fairly rare occurrence.
 
 #### Definition:
 
@@ -271,7 +271,7 @@ While virtually all modern regular expression flavors share identical basic beha
 ### `get`
 The `get` function is particularly useful in a situation when a single address record may contain multiple nodes having the same field name.
 
-To make it less vague, let's consider an example of Polish addresses. Below you can see a single address record containing 4 same-named nodes `jednostkaAdministracyjna`, which indicates an administrational unit.  
+To make it less vague, let's consider an example of Polish addresses. Below you can see a single address record containing 4 same-named nodes `jednostkaAdministracyjna`, which indicates an administrational unit.
 
 
 ```xml
@@ -285,7 +285,7 @@ To make it less vague, let's consider an example of Polish addresses. Below you 
 
 ```
 
-We want to get information about the district which is located in the fourth node (Bartniczka). In order to do that we can use the `get` method and leverage the `index` parameter. Since we are all programmers, we count starting from 0. So, the fourth field means `index` equals to 3. 
+We want to get information about the district which is located in the fourth node (Bartniczka). In order to do that we can use the `get` method and leverage the `index` parameter. Since we are all programmers, we count starting from 0. So, the fourth field means `index` equals to 3.
 
 
 ```json
