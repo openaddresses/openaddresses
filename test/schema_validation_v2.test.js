@@ -1,6 +1,5 @@
-const tape = require('tape');
-const request = require('request');
-const OASchema = require('./lib');
+import tape from 'tape';
+import OASchema from './lib.js';
 
 const nonStringValues = [null, 17, {}, [], true];
 const nonBooleanValues = [null, 17, {}, [], 'string'];
@@ -20,7 +19,7 @@ tape('preflight', async (t) => {
 function isAdditionalPropertyError(validate, instancePath, property) {
     if (!validate.errors) return false;
 
-    return validate.errors.some(err => {
+    return validate.errors.some((err) => {
         return err.keyword === 'additionalProperties' &&
             err.instancePath === instancePath &&
             err.params.additionalProperty === property;
@@ -33,9 +32,9 @@ function isAdditionalPropertyError(validate, instancePath, property) {
 function isMissingPropertyError(validate, instancePath, fieldName) {
     if (!validate.errors) return false;
 
-    return validate.errors.some(err => {
+    return validate.errors.some((err) => {
         return err.instancePath === instancePath &&
-            err.params.missingProperty === fieldName
+            err.params.missingProperty === fieldName;
     });
 
 }
@@ -43,9 +42,9 @@ function isMissingPropertyError(validate, instancePath, fieldName) {
 function isError(keyword, validate, instancePath) {
     if (!validate.errors) return false;
 
-    return validate.errors.some(err => {
+    return validate.errors.some((err) => {
         return err.keyword === keyword &&
-            err.instancePath === instancePath
+            err.instancePath === instancePath;
     });
 
 }
@@ -184,7 +183,7 @@ tape('test schema itself', (test) => {
     });
 
     test.test('non-string data value should fail', (t) => {
-        nonStringValues.forEach(value => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -235,7 +234,7 @@ tape('test schema itself', (test) => {
     });
 
     test.test('non-string website value should fail', (t) => {
-        nonStringValues.forEach(value => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -752,8 +751,8 @@ tape('test schema itself', (test) => {
 
 });
 
-tape('conform tests', test => {
-    test.test('non-string format should fail', t => {
+tape('conform tests', (test) => {
+    test.test('non-string format should fail', (t) => {
         nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
@@ -786,7 +785,7 @@ tape('conform tests', test => {
 
     });
 
-    test.test('unsupported format should fail', t => {
+    test.test('unsupported format should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -815,7 +814,7 @@ tape('conform tests', test => {
 
     });
 
-    test.test('supported format values should not fail', t => {
+    test.test('supported format values should not fail', (t) => {
         ['geojson', 'shapefile', 'shapefile-polygon', 'gdb', 'xml', 'csv'].forEach((value) => {
             const source = {
                 schema: 2,
@@ -847,7 +846,7 @@ tape('conform tests', test => {
 
     });
 
-    test.test('non-string addrtype should fail', t => {
+    test.test('non-string addrtype should fail', (t) => {
         nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
@@ -881,7 +880,7 @@ tape('conform tests', test => {
 
     });
 
-    test.test('non-integer accuracy should fail', t => {
+    test.test('non-integer accuracy should fail', (t) => {
         nonIntegerValues.forEach((value) => {
             const source = {
                 schema: 2,
@@ -915,8 +914,8 @@ tape('conform tests', test => {
 
     });
 
-    test.test('accuracy less than 1 should fail', t => {
-        [-1, 0].forEach(value => {
+    test.test('accuracy less than 1 should fail', (t) => {
+        [-1, 0].forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -949,8 +948,8 @@ tape('conform tests', test => {
 
     });
 
-    test.test('accuracy greater than 5 should fail', t => {
-        [6, 7].forEach(value => {
+    test.test('accuracy greater than 5 should fail', (t) => {
+        [6, 7].forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -983,7 +982,7 @@ tape('conform tests', test => {
 
     });
 
-    test.test('non-string srs should fail', t => {
+    test.test('non-string srs should fail', (t) => {
         nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
@@ -1017,7 +1016,7 @@ tape('conform tests', test => {
 
     });
 
-    test.test('srs not matching EPSG:# format should fail', t => {
+    test.test('srs not matching EPSG:# format should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -1047,7 +1046,7 @@ tape('conform tests', test => {
 
     });
 
-    test.test('non-string file should fail', t => {
+    test.test('non-string file should fail', (t) => {
         nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
@@ -1081,8 +1080,8 @@ tape('conform tests', test => {
 
     });
 
-    test.test('non-string/integer layer should fail', t => {
-        nonStringOrIntegerValues.forEach(value => {
+    test.test('non-string/integer layer should fail', (t) => {
+        nonStringOrIntegerValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -1115,7 +1114,7 @@ tape('conform tests', test => {
 
     });
 
-    test.test('non-string encoding should fail', t => {
+    test.test('non-string encoding should fail', (t) => {
         nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
@@ -1149,7 +1148,7 @@ tape('conform tests', test => {
 
     });
 
-    test.test('non-string csvsplit should fail', t => {
+    test.test('non-string csvsplit should fail', (t) => {
         nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
@@ -1183,7 +1182,7 @@ tape('conform tests', test => {
 
     });
 
-    test.test('non-integer headers should fail', t => {
+    test.test('non-integer headers should fail', (t) => {
         nonIntegerValues.forEach((value) => {
             const source = {
                 schema: 2,
@@ -1217,7 +1216,7 @@ tape('conform tests', test => {
 
     });
 
-    test.test('headers less than -1 should fail', t => {
+    test.test('headers less than -1 should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -1246,7 +1245,7 @@ tape('conform tests', test => {
         t.end();
     });
 
-    test.test('non-integer skiplines should fail', t => {
+    test.test('non-integer skiplines should fail', (t) => {
         nonIntegerValues.forEach((value) => {
             const source = {
                 schema: 2,
@@ -1280,8 +1279,8 @@ tape('conform tests', test => {
 
     });
 
-    test.test('skiplines less than 1 should fail', t => {
-        [-1, 0].forEach(value => {
+    test.test('skiplines less than 1 should fail', (t) => {
+        [-1, 0].forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -1314,7 +1313,7 @@ tape('conform tests', test => {
 
     });
 
-    test.test('non-string notes should fail', t => {
+    test.test('non-string notes should fail', (t) => {
         nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
@@ -1348,8 +1347,8 @@ tape('conform tests', test => {
 
     });
 
-    test.test('non-string/array/object id should fail', t => {
-        [null, 17, true].forEach(value => {
+    test.test('non-string/array/object id should fail', (t) => {
+        [null, 17, true].forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -1382,8 +1381,8 @@ tape('conform tests', test => {
 
     });
 
-    test.test('id array containing non-string elements should fail', t => {
-        nonStringValues.forEach(value => {
+    test.test('id array containing non-string elements should fail', (t) => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -1418,15 +1417,15 @@ tape('conform tests', test => {
 
 });
 
-tape('coverage tests', test => {
-    test.test('missing coverage property should fail', t => {
+tape('coverage tests', (test) => {
+    test.test('missing coverage property should fail', (t) => {
         const source = {
             schema: 2,
             layers: {
                 addresses: [{
                     protocol: 'ESRI',
                     name: 'county',
-                    data: 'http://xyz.com/',
+                    data: 'http://xyz.com/'
                 }],
                 buildings: []
             }
@@ -1440,8 +1439,8 @@ tape('coverage tests', test => {
 
     });
 
-    test.test('non-object coverage should fail', t => {
-        nonObjectValues.forEach(value => {
+    test.test('non-object coverage should fail', (t) => {
+        nonObjectValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: value,
@@ -1466,7 +1465,7 @@ tape('coverage tests', test => {
 
     });
 
-    test.test('missing country should fail', t => {
+    test.test('missing country should fail', (t) => {
         const source = {
             schema: 2,
             coverage: { },
@@ -1490,8 +1489,8 @@ tape('coverage tests', test => {
 
 });
 
-tape('prefixed_number function tests', test => {
-    test.test('missing field property should fail', t => {
+tape('prefixed_number function tests', (test) => {
+    test.test('missing field property should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -1522,8 +1521,8 @@ tape('prefixed_number function tests', test => {
 
     });
 
-    test.test('non-string field value should fail', t => {
-        nonStringValues.forEach(value => {
+    test.test('non-string field value should fail', (t) => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -1558,7 +1557,7 @@ tape('prefixed_number function tests', test => {
 
     });
 
-    test.test('string field value should not fail', t => {
+    test.test('string field value should not fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -1589,7 +1588,7 @@ tape('prefixed_number function tests', test => {
 
     });
 
-    test.test('unknown property should fail', t => {
+    test.test('unknown property should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -1624,8 +1623,8 @@ tape('prefixed_number function tests', test => {
 
 });
 
-tape('postfixed_street function tests', test => {
-    test.test('missing field property should fail', t => {
+tape('postfixed_street function tests', (test) => {
+    test.test('missing field property should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -1656,8 +1655,8 @@ tape('postfixed_street function tests', test => {
 
     });
 
-    test.test('non-string field value should fail', t => {
-        nonStringValues.forEach(value => {
+    test.test('non-string field value should fail', (t) => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -1692,7 +1691,7 @@ tape('postfixed_street function tests', test => {
 
     });
 
-    test.test('string field value should not fail', t => {
+    test.test('string field value should not fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -1723,8 +1722,8 @@ tape('postfixed_street function tests', test => {
 
     });
 
-    test.test('non-boolean may_contain_units should fail', t => {
-        nonBooleanValues.forEach(value => {
+    test.test('non-boolean may_contain_units should fail', (t) => {
+        nonBooleanValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -1760,8 +1759,8 @@ tape('postfixed_street function tests', test => {
 
     });
 
-    test.test('boolean may_contain_units should not fail', t => {
-        [true, false].forEach(value => {
+    test.test('boolean may_contain_units should not fail', (t) => {
+        [true, false].forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -1831,8 +1830,8 @@ tape('postfixed_street function tests', test => {
 
 });
 
-tape('postfixed_unit function tests', test => {
-    test.test('missing field property should fail', t => {
+tape('postfixed_unit function tests', (test) => {
+    test.test('missing field property should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -1864,8 +1863,8 @@ tape('postfixed_unit function tests', test => {
 
     });
 
-    test.test('non-string field value should fail', t => {
-        nonStringValues.forEach(value => {
+    test.test('non-string field value should fail', (t) => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -1901,7 +1900,7 @@ tape('postfixed_unit function tests', test => {
 
     });
 
-    test.test('string field value should not fail', t => {
+    test.test('string field value should not fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -1933,7 +1932,7 @@ tape('postfixed_unit function tests', test => {
 
     });
 
-    test.test('unknown property should fail', t => {
+    test.test('unknown property should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -1969,8 +1968,8 @@ tape('postfixed_unit function tests', test => {
 
 });
 
-tape('remove_prefix function tests', test => {
-    test.test('missing field should fail', t => {
+tape('remove_prefix function tests', (test) => {
+    test.test('missing field should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2002,8 +2001,8 @@ tape('remove_prefix function tests', test => {
 
     });
 
-    test.test('non-string field value should fail', t => {
-        nonStringValues.forEach(value => {
+    test.test('non-string field value should fail', (t) => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -2039,7 +2038,7 @@ tape('remove_prefix function tests', test => {
 
     });
 
-    test.test('missing field_to_remove should fail', t => {
+    test.test('missing field_to_remove should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2071,8 +2070,8 @@ tape('remove_prefix function tests', test => {
 
     });
 
-    test.test('non-string field_to_remove value should fail', t => {
-        nonStringValues.forEach(value => {
+    test.test('non-string field_to_remove value should fail', (t) => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -2108,7 +2107,7 @@ tape('remove_prefix function tests', test => {
 
     });
 
-    test.test('string field and field_to_remove values should not fail', t => {
+    test.test('string field and field_to_remove values should not fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2140,7 +2139,7 @@ tape('remove_prefix function tests', test => {
 
     });
 
-    test.test('unknown property should fail', t => {
+    test.test('unknown property should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2175,8 +2174,8 @@ tape('remove_prefix function tests', test => {
 
 });
 
-tape('remove_postfix function tests', test => {
-    test.test('missing field should fail', t => {
+tape('remove_postfix function tests', (test) => {
+    test.test('missing field should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2208,8 +2207,8 @@ tape('remove_postfix function tests', test => {
 
     });
 
-    test.test('non-string field value should fail', t => {
-        nonStringValues.forEach(value => {
+    test.test('non-string field value should fail', (t) => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -2245,7 +2244,7 @@ tape('remove_postfix function tests', test => {
 
     });
 
-    test.test('missing field_to_remove should fail', t => {
+    test.test('missing field_to_remove should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2277,8 +2276,8 @@ tape('remove_postfix function tests', test => {
 
     });
 
-    test.test('non-string field_to_remove value should fail', t => {
-        nonStringValues.forEach(value => {
+    test.test('non-string field_to_remove value should fail', (t) => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -2314,7 +2313,7 @@ tape('remove_postfix function tests', test => {
 
     });
 
-    test.test('string field and field_to_remove values should not fail', t => {
+    test.test('string field and field_to_remove values should not fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2346,7 +2345,7 @@ tape('remove_postfix function tests', test => {
 
     });
 
-    test.test('unknown property should fail', t => {
+    test.test('unknown property should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2381,8 +2380,8 @@ tape('remove_postfix function tests', test => {
 
 });
 
-tape('regexp function tests', test => {
-    test.test('missing field value should fail', t => {
+tape('regexp function tests', (test) => {
+    test.test('missing field value should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2414,7 +2413,7 @@ tape('regexp function tests', test => {
 
     });
 
-    test.test('missing pattern value should fail', t => {
+    test.test('missing pattern value should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2446,8 +2445,8 @@ tape('regexp function tests', test => {
 
     });
 
-    test.test('non-string field value should fail', t => {
-        nonStringValues.forEach(value => {
+    test.test('non-string field value should fail', (t) => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -2468,7 +2467,7 @@ tape('regexp function tests', test => {
                             street: 'street field'
                         }
                     }],
-                    buildings: [],
+                    buildings: []
                 }
             };
 
@@ -2483,8 +2482,8 @@ tape('regexp function tests', test => {
 
     });
 
-    test.test('non-string pattern value should fail', t => {
-        nonStringValues.forEach(value => {
+    test.test('non-string pattern value should fail', (t) => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -2520,8 +2519,8 @@ tape('regexp function tests', test => {
 
     });
 
-    test.test('non-string replace value should fail', t => {
-        nonStringValues.forEach(value => {
+    test.test('non-string replace value should fail', (t) => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -2558,7 +2557,7 @@ tape('regexp function tests', test => {
 
     });
 
-    test.test('string field and pattern w/o replace should not fail', t => {
+    test.test('string field and pattern w/o replace should not fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2590,7 +2589,7 @@ tape('regexp function tests', test => {
 
     });
 
-    test.test('string field, pattern, and replace should not fail', t => {
+    test.test('string field, pattern, and replace should not fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2623,7 +2622,7 @@ tape('regexp function tests', test => {
 
     });
 
-    test.test('unknown property should fail', t => {
+    test.test('unknown property should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2659,8 +2658,8 @@ tape('regexp function tests', test => {
 
 });
 
-tape('join function tests', test => {
-    test.test('missing fields value should fail', t => {
+tape('join function tests', (test) => {
+    test.test('missing fields value should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2692,8 +2691,8 @@ tape('join function tests', test => {
 
     });
 
-    test.test('non-array fields value should fail', t => {
-        nonArrayValues.forEach(value => {
+    test.test('non-array fields value should fail', (t) => {
+        nonArrayValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -2713,7 +2712,7 @@ tape('join function tests', test => {
                             street: 'street field'
                         }
                     }],
-                    buildings: [],
+                    buildings: []
                 }
             };
 
@@ -2728,7 +2727,7 @@ tape('join function tests', test => {
 
     });
 
-    test.test('empty fields array should fail', t => {
+    test.test('empty fields array should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2748,7 +2747,7 @@ tape('join function tests', test => {
                         street: 'street field'
                     }
                 }],
-                buildings: [],
+                buildings: []
             }
         };
 
@@ -2760,8 +2759,8 @@ tape('join function tests', test => {
 
     });
 
-    test.test('non-string elements of fields array should fail', t => {
-        nonStringValues.forEach(value => {
+    test.test('non-string elements of fields array should fail', (t) => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -2796,8 +2795,8 @@ tape('join function tests', test => {
 
     });
 
-    test.test('non-string separator value should fail', t => {
-        nonStringValues.forEach(value => {
+    test.test('non-string separator value should fail', (t) => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -2818,7 +2817,7 @@ tape('join function tests', test => {
                             street: 'street field'
                         }
                     }],
-                    buildings: [],
+                    buildings: []
                 }
             };
 
@@ -2833,7 +2832,7 @@ tape('join function tests', test => {
 
     });
 
-    test.test('non-empty fields containing only strings should not fail', t => {
+    test.test('non-empty fields containing only strings should not fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2853,7 +2852,7 @@ tape('join function tests', test => {
                         street: 'street field'
                     }
                 }],
-                buildings: [],
+                buildings: []
             }
         };
 
@@ -2864,7 +2863,7 @@ tape('join function tests', test => {
 
     });
 
-    test.test('non-empty fields containing only strings and string separator value should not fail', t => {
+    test.test('non-empty fields containing only strings and string separator value should not fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2885,7 +2884,7 @@ tape('join function tests', test => {
                         street: 'street field'
                     }
                 }],
-                buildings: [],
+                buildings: []
             }
         };
 
@@ -2896,7 +2895,7 @@ tape('join function tests', test => {
 
     });
 
-    test.test('unknown property should fail', t => {
+    test.test('unknown property should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2931,8 +2930,8 @@ tape('join function tests', test => {
 
 });
 
-tape('format function tests', test => {
-    test.test('missing fields value should fail', t => {
+tape('format function tests', (test) => {
+    test.test('missing fields value should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2953,7 +2952,7 @@ tape('format function tests', test => {
                     }
                 }],
                 buildings: []
-        }
+            }
         };
 
         const valid = validate(source);
@@ -2965,7 +2964,7 @@ tape('format function tests', test => {
 
     });
 
-    test.test('missing format value should fail', t => {
+    test.test('missing format value should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -2998,8 +2997,8 @@ tape('format function tests', test => {
 
     });
 
-    test.test('non-array fields value should fail', t => {
-        nonArrayValues.forEach(value => {
+    test.test('non-array fields value should fail', (t) => {
+        nonArrayValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -3020,7 +3019,7 @@ tape('format function tests', test => {
                             street: 'street field'
                         }
                     }],
-                    buildings: [],
+                    buildings: []
                 }
             };
 
@@ -3035,7 +3034,7 @@ tape('format function tests', test => {
 
     });
 
-    test.test('empty fields array should fail', t => {
+    test.test('empty fields array should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -3056,7 +3055,7 @@ tape('format function tests', test => {
                         street: 'street field'
                     }
                 }],
-                buildings: [],
+                buildings: []
             }
         };
 
@@ -3068,8 +3067,8 @@ tape('format function tests', test => {
 
     });
 
-    test.test('non-string elements of fields array should fail', t => {
-        nonStringValues.forEach(value => {
+    test.test('non-string elements of fields array should fail', (t) => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -3105,8 +3104,8 @@ tape('format function tests', test => {
 
     });
 
-    test.test('non-string format value should fail', t => {
-        nonStringValues.forEach(value => {
+    test.test('non-string format value should fail', (t) => {
+        nonStringValues.forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -3142,7 +3141,7 @@ tape('format function tests', test => {
 
     });
 
-    test.test('non-empty fields containing only strings and string format should not fail', t => {
+    test.test('non-empty fields containing only strings and string format should not fail', (t) => {
         const source = {
             schema: 2,
             coverage: {
@@ -3163,7 +3162,7 @@ tape('format function tests', test => {
                         street: 'street field'
                     }
                 }],
-                buildings: [],
+                buildings: []
             }
         };
 
@@ -3174,7 +3173,7 @@ tape('format function tests', test => {
 
     });
 
-    test.test('unknown property should fail', t => {
+    test.test('unknown property should fail', (t) => {
         const source = {
             schema: 2,
             coverage: {

@@ -14,19 +14,43 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://svr4.sumtercountysc.org:6080/arcgis/rest/services/Parcel_Search/County_Map_PS/MapServer/5",
+                "data": "https://gis.sumter-sc.com/server/rest/services/BaseMaps/Sumter_City_County/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "FULL_ADDRESS",
+                    "number": "add_number",
                     "street": {
-                        "function": "remove_prefix",
-                        "field": "O_ADDRESS",
-                        "field_to_remove": "FULL_ADDRESS"
+                        "function": "postfixed_street",
+                        "field": "complete_add"
                     },
-                    "city": "COMMUNITY",
-                    "region": "STATE",
-                    "postcode": "ZIPCODE"
+                    "unit": "unit_num",
+                    "city": {
+                        "function": "regexp",
+                        "field": "FULLADDRESS",
+                        "pattern": "^(?:.+,\\s)(.+)(?:,\\sSC,\\s\\d{5})$",
+                        "replace": "$1"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "FULLADDRESS",
+                        "pattern": "SC"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "FULLADDRESS",
+                        "pattern": "\\d{5}$"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.sumter-sc.com/server/rest/services/BaseMaps/Sumter_City_County/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARID"
                 }
             }
         ]

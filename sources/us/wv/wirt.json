@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "53105",
+            "name": "Wirt County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Wirt"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/WirtService/FeatureServer/4",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "situsaddr"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "situsaddr"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/WirtService/FeatureServer/4",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARID"
+                }
+            }
+        ]
+    }
+}

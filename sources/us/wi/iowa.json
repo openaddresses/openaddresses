@@ -1,0 +1,51 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55049",
+            "name": "Iowa County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Iowa"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/IOWA_ADDRESSES_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/FA5BC2E2-0B41-47B5-BC71-9D5A75A07B5D",
+                "year": "2023",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "IOWA_ADDRESSES_2023",
+                    "number": "HOUSE",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "city": "COMMUNITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Iowa_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/F0D25636-8D32-4A39-B020-882D8DDFFD30",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
+    }
+}

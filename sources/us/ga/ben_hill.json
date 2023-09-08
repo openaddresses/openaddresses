@@ -14,13 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://www.sgrcmaps.com/arcgis/rest/services/BenHill/ProposedProjects/FeatureServer/3",
+                "data": "https://www.sgrcmaps.com/alma/rest/services/BenHill/Property/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "unit": "UNIT",
-                    "number": "HOUSE_NO",
-                    "street": "STREET_NAM"
+                    "unit": "UNIT_NUM",
+                    "number": [
+                        "STNUM",
+                        "STNUMSUF"
+                    ],
+                    "street": "LABEL",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.sgrcmaps.com/alma/rest/services/BenHill/Property/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "SKEY"
                 }
             }
         ]

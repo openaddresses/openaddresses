@@ -1,0 +1,45 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55113",
+            "name": "Shawano County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Shawano"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.co.shawano.wi.us/server/rest/services/Address/MapServer/11",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": "STREETNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNIT"
+                    ],
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.co.shawano.wi.us/server/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ShawanoGIS.SDEDBO.Parcels_1.PIN"
+                }
+            }
+        ]
+    }
+}

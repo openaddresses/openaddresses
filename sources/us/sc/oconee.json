@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://arcserver2.oconeesc.com/arcgis/rest/services/AddressExternal/MapServer/0",
+                "data": "https://arcserver2.oconeesc.com/arcgis/rest/services/AddressExternal/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -28,6 +28,27 @@
                     "city": "City",
                     "region": "State",
                     "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://arcserver2.oconeesc.com/arcgis/rest/services/PARCELDATA_owner_Assr/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TMS_NUMBER"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://arcserver2.oconeesc.com/arcgis/rest/services/BuildingFootPrints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

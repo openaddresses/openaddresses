@@ -14,18 +14,52 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://tlcgisinter.leoncountyfl.gov/arcgis/rest/services/Public/TLC_Inter_OverlayGMapLabel_D_WM/MapServer/351",
+                "data": "https://intervector.leoncountyfl.gov/intervector/rest/services/MapServices/TLC_OverlaySiteAddressPoints_D_WM/MapServer/0",
+                "website": "https://geodata-tlcgis.opendata.arcgis.com/datasets/tlcgis::site-address-points-tallahassee-leon-county/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSENUM",
+                    "id": "ADDRID",
+                    "number": [
+                        "HOUSENUM",
+                        "ST_ADDRHLF"
+                    ],
                     "street": [
                         "PREFIX",
                         "NAME",
                         "TYPE",
                         "SUFFIX"
                     ],
-                    "unit": "ST_APT_STE"
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "POSTAL_TOWN",
+                    "region": "STATE",
+                    "postcode": "ZIPCD"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://intervector.leoncountyfl.gov/intervector/rest/services/MapServices/TLC_OverlayParcel_D_WM/MapServer/0",
+                "website": "https://geodata-tlcgis.opendata.arcgis.com/datasets/tlcgis::parcels-5/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAXID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://intervector.leoncountyfl.gov/intervector/rest/services/MapServices/TLC_OverlayBuildings_D_WM/MapServer/0",
+                "website": "https://geodata-tlcgis.opendata.arcgis.com/datasets/tlcgis::building-footprints/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

@@ -14,13 +14,41 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gisportal.co.calaveras.ca.us/arcserver/rest/services/OpenData/PARCELS_Open_Data/MapServer/0",
-                "website": "https://opendata-calaveras-gis.opendata.arcgis.com/",
+                "data": "https://gisportal.co.calaveras.ca.us/server/rest/services/PARCELS/MapServer/0",
+                "website": "https://opendata-calaveras-gis.opendata.arcgis.com/datasets/CALAVERAS-GIS::parcels-1/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "STRNUM",
-                    "street": "STREET"
+                    "street": "STREET",
+                    "city": {
+                        "function": "regexp",
+                        "field": "SITUS2",
+                        "pattern": "^(.+?)(?:\\s+CA(?:\\s+\\d{5})?)$",
+                        "replace": "$1"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "SITUS2",
+                        "pattern": "\\bCA\\b"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "SITUS2",
+                        "pattern": "\\d{5}$"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisportal.co.calaveras.ca.us/server/rest/services/PARCELS/MapServer/0",
+                "website": "https://opendata-calaveras-gis.opendata.arcgis.com/datasets/CALAVERAS-GIS::parcels-1/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
                 }
             }
         ]

@@ -14,25 +14,28 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/us-ga-evans_county.csv",
-                "protocol": "http",
+                "data": "https://services6.arcgis.com/vgwS5Le2XfU2EPjI/arcgis/rest/services/Evans_911_Addresses/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "csv",
-                    "lat": "LAT",
-                    "lon": "LNG",
-                    "number": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^([0-9]+)( .*)",
-                        "replace": "$1"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "region": "REGION"
+                    "format": "geojson",
+                    "number": "STNUM",
+                    "street": "LABEL",
+                    "unit": "UNIT_NUM",
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/vgwS5Le2XfU2EPjI/ArcGIS/rest/services/Join_Features_to_Evans_County_Parcels_3/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNUM"
                 }
             }
         ]

@@ -1,0 +1,52 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55017",
+            "name": "Chippewa County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Chippewa"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/nMZadKoFzy6dT2f8/ArcGIS/rest/services/Map_WFL1/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNum",
+                    "street": [
+                        "PreDir",
+                        "PreType",
+                        "StreetName",
+                        "StreetType",
+                        "SufDir"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "UnitNumber"
+                    ],
+                    "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Chippewa_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/EB73F63F-49C0-48A2-81F1-2C181FC692F6",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
+    }
+}

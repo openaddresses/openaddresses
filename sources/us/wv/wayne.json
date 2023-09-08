@@ -1,0 +1,40 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "53099",
+            "name": "Wayne County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Wayne"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/WayneWV_Service/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": "addrnum",
+                    "street": "fullname",
+                    "city": "numicipali",
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/WayneWV_Service/FeatureServer/7",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parid"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "54045",
+            "name": "Logan County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Logan"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/LoganAGOL/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "STNUM",
+                        "STNUMSUF"
+                    ],
+                    "street": "LABEL",
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/LoganAGOL/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parid"
+                }
+            }
+        ]
+    }
+}
