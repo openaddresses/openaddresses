@@ -17,8 +17,8 @@
             {
                 "name": "city",
                 "protocol": "http",
-                "data": "https://opendatakingston.cityofkingston.ca/explore/dataset/civic-addresses/download/?format=geojson&timezone=America/New_York&lang=en",
-                "website": "https://opendatakingston.cityofkingston.ca/explore/dataset/civic-addresses/information/?disjunctive.street_type_suffix",
+                "data": "https://opendatakingston.cityofkingston.ca/api/explore/v2.1/catalog/datasets/civic-addresses/exports/csv?lang=en&use_labels=true&delimiter=%2C",
+                "website": "https://opendatakingston.cityofkingston.ca/explore/dataset/civic-addresses/information",
                 "license": {
                     "url": "https://www.cityofkingston.ca/documents/10180/144997/CityofKingston_OpenDataLicense.pdf",
                     "text": "Contains information licensed under the Open Data Licence – City of Kingston",
@@ -26,11 +26,24 @@
                     "share-alike": false
                 },
                 "conform": {
-                    "format": "geojson",
-                    "number": "address_number",
-                    "street": "street",
-                    "unit": "unit",
-                    "postcode": "postal_code"
+                    "format": "csv",
+                    "lat": {
+                        "function": "regexp",
+                        "field": "geo_point_2d",
+                        "pattern": "^(.+)(?:,\\s.+)$",
+                        "replace": "$1"
+                    },
+                    "lon": {
+                        "function": "regexp",
+                        "field": "geo_point_2d",
+                        "pattern": "^(?:.+,\\s)(.+)$",
+                        "replace": "$1"
+                    },
+                    "id": "ADDRESS_ID",
+                    "number": "ADDRESS_NUMBER",
+                    "street": "STREET",
+                    "unit": "UNIT",
+                    "postcode": "POSTAL_CODE"
                 }
             }
         ]
