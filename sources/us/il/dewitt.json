@@ -15,12 +15,34 @@
                 "conform": {
                     "format": "geojson",
                     "number": {
-                        "function": "prefixed_number",
-                        "field": "TSC_Site_Address"
+                        "function": "regexp",
+                        "field": "TSC_Site_Address",
+                        "pattern": "^(\\d+)(?:\\s.+)$",
+                        "replace": "$1"
                     },
                     "street": {
-                        "function": "postfixed_street",
-                        "field": "TSC_Site_Address"
+                        "function": "regexp",
+                        "field": "TSC_Site_Address",
+                        "pattern": "^(?:\\d+\\s)(.+)(?:,.+,.+)$",
+                        "replace": "$1"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "TSC_Site_Address",
+                        "pattern": "^(?:\\d+\\s.+)?(?:,\\s)(.+)(?:\\sIL)(?:,.+)$",
+                        "replace": "$1"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "TSC_Site_Address",
+                        "pattern": "^(?:\\d+\\s.+)?(?:,.+,\\s)(.+)(?:\\s.+)$",
+                        "replace": "$1"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "TSC_Site_Address",
+                        "pattern": "^(?:.+\\s)(\\d{5})$",
+                        "replace": "$1"
                     }
                 }
             }
