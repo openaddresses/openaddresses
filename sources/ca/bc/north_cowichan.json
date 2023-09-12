@@ -3,20 +3,43 @@
         "country": "ca",
         "state": "bc",
         "county": "North Cowichan",
-        "geometry": { "type": "Point", "coordinates": [-123.72, 48.83] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -123.72,
+                48.83
+            ]
+        }
     },
-    "data": "http://data.northcowichan.ca/DataBrowser/DownloadCsv?container=mncowichan&entitySet=PropertyReport&filter=NOFILTER",
-    "website": "http://data.northcowichan.ca/default.aspx",
-    "type": "http",
-    "conform": {
-        "lon": "x",
-        "lat": "y",
-        "number": "HOUSE",
-        "street": "STREET",
-        "city": "CITY",
-        "id": "LEGAL_ID",
-        "postcode": "POSTAL_CODE",
-        "type": "csv"
-    },
-    "attribution": "City of North Cowichan"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://s3-us-west-2.amazonaws.com/openfiles.northcowichan.ca/GIS/Cadastral/Cadastral_SHP.zip",
+                "website": "https://catalogue.data.gov.bc.ca/dataset/17d1b2cf-2f7e-4928-b337-6768e286a852",
+                "license": {
+                    "url": "https://www.northcowichan.ca/EN/footer/open-data-licence.html",
+                    "text": "Contains information licensed under the Open Government License – Municipality of North Cowichan",
+                    "attribution name": "Open Government License - Municipality of North Cowichan 2.0",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "file": "Parcels.shp",
+                    "number": [
+                        "ST_NUM1",
+                        "ST_NUM2"
+                        ],
+                    "street": "ST_NAME",
+                    "city": "LOCALAREA",
+                    "id": "PID",
+                    "format": "shapefile"
+                },
+                "attribution": "City of North Cowichan"
+            }
+        ]
+    }
 }

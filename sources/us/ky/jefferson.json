@@ -9,21 +9,28 @@
         "state": "ky",
         "county": "Jefferson"
     },
-    "data": "https://services1.arcgis.com/79kfd2K6fskCAkyg/ArcGIS/rest/services/AGOLAddress/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENO",
-        "unit": "APT",
-        "street": [
-            "DIR",
-            "STRNAME",
-            "TYPE"
-        ],
-        "unit": "APT",
-        "city": "MUNI_NAME",
-        "postcode": "ZIPCODE"
-    },
-    "website": "ftp://ftp.lojic.org/Pub/federal/",
-    "attribution": "Metro Louisville,  LOJIC partners"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "ftp://ftp.lojic.org/Pub/federal/",
+                "data": "https://services1.arcgis.com/79kfd2K6fskCAkyg/arcgis/rest/services/OpenDataAddresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENO",
+                    "street": [
+                        "DIR",
+                        "STRNAME",
+                        "TYPE"
+                    ],
+                    "unit": "APT",
+                    "city": "MUNI_NAME",
+                    "postcode": "ZIPCODE"
+                },
+                "attribution": "Metro Louisville,  LOJIC partners"
+            }
+        ]
+    }
 }

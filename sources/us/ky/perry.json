@@ -1,0 +1,42 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "21193", "name": "Perry County", "state": "Kentucky"},
+        "country": "us",
+        "state": "ky",
+        "county": "Perry"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/xdw4bqNcVlUgWjU8/ArcGIS/rest/services/Addresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "UNITNUM",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX:"
+                    ],
+                    "postcode": "ZIPCODE",
+                    "city": "USPS_CITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/xdw4bqNcVlUgWjU8/ArcGIS/rest/services/PCEOParcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Name"
+                }
+            }
+        ]
+    }
+}

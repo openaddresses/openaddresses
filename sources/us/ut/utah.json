@@ -1,0 +1,67 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "49049",
+            "name": "Utah County",
+            "state": "Utah"
+        },
+        "country": "us",
+        "state": "ut",
+        "county": "Utah"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.utahcounty.gov/data4export/AddressPoints.zip",
+                "website": "https://utah-county-data-sharing-hub-utahcounty.hub.arcgis.com/",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "id": "ADDRESSID",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "ROADPREDIR",
+                        "ROADNAME",
+                        "ROADTYPE",
+                        "ROADPOSTDI"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.utahcounty.gov/data4export/parcels.zip",
+                "website": "https://utah-county-data-sharing-hub-utahcounty.hub.arcgis.com/",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://maps.utahcounty.gov/data4export/bldgftprint.zip",
+                "website": "https://utah-county-data-sharing-hub-utahcounty.hub.arcgis.com/",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile"
+                }
+            }
+        ]
+    }
+}

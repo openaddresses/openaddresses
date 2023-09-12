@@ -9,14 +9,45 @@
         "state": "wi",
         "county": "Douglas"
     },
-    "data": "http://ags1.wgxtreme.com/ArcGIS/rest/services/DouglasCoWI/DouglasCoSuperiorWIGIWSMain/MapServer/10",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "FIRE_NO",
-        "street": [
-            "DIR",
-            "ROAD_NAME"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://portal.superiordcgis.org/server/rest/services/ADDRESS_POINTS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDR_HN",
+                    "street": [
+                        "ADDR_PD",
+                        "ADDR_SN",
+                        "ADDR_ST",
+                        "ADDR_SD"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://portal.superiordcgis.org/server/rest/services/Hosted/COSDC_Parcels_Owner/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcelno"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://portal.superiordcgis.org/server/rest/services/Admin/DC_BUILDINGS/MapServer/11",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
         ]
     }
 }

@@ -9,20 +9,28 @@
         "state": "nc",
         "county": "Guilford"
     },
-    "data": "http://gis.co.guilford.nc.us/arcgis/rest/services/Data_Download/DataDownload12/MapServer/17",
-    "type": "ESRI",
-    "website": "http://countyweb.co.guilford.nc.us/gis-home",
-    "conform": {
-        "type": "geojson",
-        "number": "PHYADDR_STR_NUM",
-        "street": [
-            "PHYADDR_DIR_PFX",
-            "PHYADDR_STR",
-            "PHYADDR_STR_TYPE",
-            "PHYADDR_STR_SFX"
-        ],
-        "city": "PHYADDR_CITY",
-        "region": "PHYADDR_STATE",
-        "postcode": "PHYADDR_ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.co.guilford.nc.us/arcgis/rest/services/Data_Download/DataDownload12/MapServer/17",
+                "protocol": "ESRI",
+                "website": "http://countyweb.co.guilford.nc.us/gis-home",
+                "conform": {
+                    "format": "geojson",
+                    "number": "PHYADDR_STR_NUM",
+                    "street": [
+                        "PHYADDR_DIR_PFX",
+                        "PHYADDR_STR",
+                        "PHYADDR_STR_TYPE",
+                        "PHYADDR_STR_SFX"
+                    ],
+                    "city": "PHYADDR_CITY",
+                    "region": "PHYADDR_STATE",
+                    "postcode": "PHYADDR_ZIP"
+                }
+            }
+        ]
     }
 }

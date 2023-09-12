@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 
 import json
 import zipfile
@@ -27,22 +27,22 @@ def cache_file_path(url):
 # Returns True if we have a valid (i.e. completely downloaded) file already cached. If a file is damaged it is removed.
 def file_already_cached(url):
 	local_path = cache_file_path(url)
-	
+
 	if not os.path.exists(local_path):
 		return False
-	
+
 	file_ok = True
 	try:
 		with zipfile.ZipFile(local_path, 'r') as zip_file:
 			file_ok = zip_file.testzip() is None
 	except:
 		file_ok = False
-	
+
 	if not file_ok:
 		os.remove(local_path)
-		
+
 	return file_ok
-	
+
 # Downloads a file to cache
 def download_file_to_cache(url, chunk_size):
 	response = requests.get(url, stream=True)
@@ -73,21 +73,21 @@ for link in page.findall('.//ul[@id="attr_2"]//li[@class="dn-attr-v"]'):
 	state_name_norm = 'distrito_federal' if state_name == u'Ciudad de México' else unidecode(state_name).encode('ascii').replace(' ','_')
 	state_link = ref.attrib['href']
 	state_muni_count = int(link.find('span').text[1:-1])
-	
+
 	print "Processing " + state_name + ' (' + str(state_muni_count) + ' municipalities)...'
-	
+
 	for p in range((state_muni_count - 1) / inegi_step_size + 1):
 		page_url = inegi_base_url + state_link + '&num=' + str(inegi_step_size) + '&start=' + str(p * inegi_step_size)
 		s.visit(page_url)
 		page = lxml.html.fromstring(s.body())
-		
+
 		for link in page.findall('.//div[@class="main-results"]/a[@href]'):
 			source_url = link.attrib['href']
 			urban = 'urbana' if 'Urbana' in link.find('span/span').text_content() else 'rural'
 			zip_url = 'http://internet.contenidos.inegi.org.mx/contenidos/Productos/prod_serv/contenidos/espanol/bvinegi/productos/geografia/'+ urban + '/SHP_2/' + state_name_norm + '/' + source_url[-12:] + '_s.zip'
-			relevant_urls.add(zip_url)		
+			relevant_urls.add(zip_url)
 
-print "There are " + str(len(relevant_urls)) + " files to download."  		
+print "There are " + str(len(relevant_urls)) + " files to download."
 
 # Filter out the files that have already been downloaded
 urls_to_download = filter(lambda x: not file_already_cached(x), relevant_urls)
@@ -106,7 +106,7 @@ while len(urls_to_download) > 0:
 		print "Downloading " + os.path.basename(url) + " [" + str(i) + "/" + str(url_count) + "]"
 		download_file_to_cache(url, chunk_size)
 		time.sleep(2)
-	
+
 	chunk_size = max(chunk_size / 2, 1)
 	urls_to_download = filter(lambda x: not file_already_cached(x), urls_to_download)
 	time.sleep(10)
@@ -134,8 +134,8 @@ def extract_shapes_from_zip(zip_path):
 			print shp_name
 			command = 'ogr2ogr -append -f "SQLite" ' + common_db_path + ' -sql "select *, \'' + shp_name[-15:-6] + '\' as loc from \\"' + shp_name[-15:-4] +'\\"" /vsizip/' + os.path.abspath(os.path.join(zip_path, shp_name)) + ' -t_srs EPSG:4326 -nln mexico_ne'
 			os.system(command)
-			
-# Recursively extracts the shapefiles from a zip file and all the other zipfiles within it			
+
+# Recursively extracts the shapefiles from a zip file and all the other zipfiles within it
 def extract_all_relevant_data_from_zip(zip_path):
 	print "Extracting from " + zip_path
 	extract_shapes_from_zip(zip_path)

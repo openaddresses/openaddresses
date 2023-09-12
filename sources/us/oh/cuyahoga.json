@@ -9,24 +9,36 @@
         "state": "oh",
         "county": "Cuyahoga"
     },
-    "data": "http://geo.oit.ohio.gov/arcgis/rest/services/LBRS/Cuyahoga_LBRS/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-            "PRE_DIR",
-            "PRE_TYPE",
-            "STR_NAME",
-            "STR_TYPE",
-            "SUF_DIR"
-        ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUM"
-        ],
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.cuyahogacounty.us/server/rest/services/CUYAHOGA_BASE/ADDRESSING_SITES_STREETS/FeatureServer/0",
+		"website": "https://data-cuyahoga.opendata.arcgis.com/datasets/cuyahoga::address-gc/explore",
+		"license": "https://cuyahoga.maps.arcgis.com/home/index.html",
+                "protocol": "ESRI",
+                "conform": {
+                    "accuracy": 1,
+                    "format": "geojson",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "STR_NAME",
+                        "STR_SUFFIX",
+                        "SUFFIX_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP",
+                    "addrtype": "STRUC_TYPE"
+                }
+            }
+        ]
     }
 }

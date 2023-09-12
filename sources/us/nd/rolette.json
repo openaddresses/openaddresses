@@ -1,102 +1,34 @@
 {
     "coverage": {
-        "US Census": {
-            "geoid": "38079",
-            "name": "Rolette County",
-            "state": "North Dakota"
-        },
+        "US Census": {"geoid": "38079", "name": "Rolette County", "state": "North Dakota"},
         "country": "us",
         "state": "nd",
         "county": "Rolette"
     },
-    "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/RoletteNDFeatures/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "HOUSE",
-            "pattern": "^(\\d+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STREET",
-            "pattern": "^(.+?)(?:\\s+(?:#|\\*|UNIT|SUITE)\\s*.+)?$"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "STREET",
-            "pattern": "((?:\\*|#|UNIT|SUITE)\\b.+)$"
-        },
-        "city": "CITY"
-    },
-    "test": {
-        "enabled": true,
-        "description": "these are the tests that exercise extracting the street from a field that may contain units",
-        "acceptance-tests": [
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "address without unit",
-                "inputs": {
-                    "HOUSE": "",
-                    "STREET": "40TH AVE NE",
-                    "UNIT": "",
-                    "CITY": ""
-                },
-                "expected": {
-                    "street": "40TH AVE NE"
+                "name": "county",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/RoletteNDFeatures/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE",
+                    "street": "STREET",
+                    "unit": "UNIT",
+                    "city": "CITY"
                 }
-            },
+            }
+        ],
+        "parcels": [
             {
-                "description": "address with UNIT unit",
-                "inputs": {
-                    "HOUSE": "",
-                    "STREET": "HWY 281 UNIT 972 (DUNSEITH)",
-                    "UNIT": "",
-                    "CITY": ""
-                },
-                "expected": {
-                    "street": "HWY 281",
-                    "unit": "UNIT 972 (DUNSEITH)"
-                }
-            },
-            {
-                "description": "address with # unit",
-                "inputs": {
-                    "HOUSE": "",
-                    "STREET": "BIA RD 25 #1225 (NORTH SITE)",
-                    "UNIT": "",
-                    "CITY": ""
-                },
-                "expected": {
-                    "street": "BIA RD 25",
-                    "unit": "#1225 (NORTH SITE)"
-                }
-            },
-            {
-                "description": "address with SUITE unit",
-                "inputs": {
-                    "HOUSE": "",
-                    "STREET": "HOSPITAL RD SUITE B",
-                    "UNIT": "",
-                    "CITY": ""
-                },
-                "expected": {
-                    "street": "HOSPITAL RD",
-                    "unit": "SUITE B"
-                }
-            },
-            {
-                "description": "address with unit designator in house number",
-                "inputs": {
-                    "HOUSE": "163-D",
-                    "STREET": "CUTHBERT GRANT WAY",
-                    "UNIT": "",
-                    "CITY": ""
-                },
-                "expected": {
-                    "number": "163",
-                    "street": "CUTHBERT GRANT WAY",
-                    "unit": ""
+                "name": "county",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/RoletteNDFeatures/FeatureServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "GIS_Parcel_Number"
                 }
             }
         ]

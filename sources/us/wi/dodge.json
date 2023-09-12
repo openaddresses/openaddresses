@@ -9,16 +9,52 @@
         "state": "wi",
         "county": "Dodge"
     },
-    "data": "https://gis2.msa-ps.com/ArcGIS/rest/services/StreetsAddress/MapServer/47",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "remove_postfix",
-            "field": "Addcomp",
-            "field_to_remove": "ADD4"
-        },
-        "street": "ADD4",
-        "unit": "UNIT_SUITE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://geo2.co.dodge.wi.us/arcgis/rest/services/Layers/Open_Data/MapServer/1",
+                "website": "https://gis-dodgecounty.opendata.arcgis.com/datasets/address-points/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDFULL",
+                    "street": [
+                        "PREDIR",
+                        "PRETYPE",
+                        "STREETNAME",
+                        "SUFTYPE",
+                        "SUFDIR"
+                    ],
+                    "unit": "ADDUNIT",
+                    "city": "MUNINAME",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://geo2.co.dodge.wi.us/arcgis/rest/services/Layers/Open_Data/MapServer/2",
+                "website": "https://gis-dodgecounty.opendata.arcgis.com/datasets/dodgecounty::tax-parcels-current/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "GISPIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://geo2.co.dodge.wi.us/arcgis/rest/services/Layers/Open_Data/MapServer/4",
+                "website": "https://gis-dodgecounty.opendata.arcgis.com/datasets/dodgecounty::building-footprints/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

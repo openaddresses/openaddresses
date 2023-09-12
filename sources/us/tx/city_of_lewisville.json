@@ -3,8 +3,8 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-              	-96.982927,
-              	33.045199
+                -96.982927,
+                33.045199
             ]
         },
         "US Census": {
@@ -16,19 +16,27 @@
         "state": "tx",
         "city": "Lewisville"
     },
-    "data": "http://adaptergis.cityoflewisville.com/arcgis/rest/services/OpenData/Housing_OpenData/MapServer/6",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "AddressNum",
-        "street": [
-            "PreDirection",
-            "StreetName",
-            "StreetType"
-        ],
-        "unit": "Unit",
-        "city": "City",
-        "region": "State",
-        "postcode": "Zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://adaptergis.cityoflewisville.com/arcgis/rest/services/OpenData/Housing_OpenData/MapServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "AddressNum",
+                    "street": [
+                        "PreDirection",
+                        "StreetName",
+                        "StreetType"
+                    ],
+                    "unit": "Unit",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
+        ]
     }
 }

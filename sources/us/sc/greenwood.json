@@ -9,14 +9,33 @@
         "state": "sc",
         "county": "Greenwood"
     },
-    "data": "http://www.greenwoodsc.gov/arcgis/rest/services/Map_Layers/MapServer/28",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": "STREET",
-        "unit": "UNIT",
-        "city": "CITY",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.greenwoodsc.gov/arcgis1051/rest/services/FeatureLayers/Land_Records/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": "STREET",
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.greenwoodsc.gov/arcgis1051/rest/services/FeatureLayers/Land_Records/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

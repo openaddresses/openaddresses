@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [-117.0486, 46.3382]
+            "coordinates": [
+                -117.0486,
+                46.3382
+            ]
         },
         "US Census": {
             "geoid": "53003",
@@ -13,22 +16,30 @@
         "state": "wa",
         "city": "Asotin"
     },
-    "type": "http",
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/d927c9/asotin.geojson.zip",
-    "website": "http://www.co.asotin.wa.us/public-works-gis/county-road-maps/",
-    "compression": "zip",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "address"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "address"
-        },
-        "city": "city",
-        "region": "state",
-        "postcode": "postalcode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "http",
+                "data": "https://data.openaddresses.io/cache/uploads/trescube/d927c9/asotin.geojson.zip",
+                "website": "http://www.co.asotin.wa.us/public-works-gis/county-road-maps/",
+                "compression": "zip",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "address"
+                    },
+                    "city": "city",
+                    "region": "state",
+                    "postcode": "postalcode"
+                }
+            }
+        ]
     }
 }

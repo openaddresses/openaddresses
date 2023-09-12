@@ -16,24 +16,35 @@
             ]
         }
     },
-    "data": "http://services1.arcgis.com/ejcbAsQEUUGWEyzb/ArcGIS/rest/services/DACAddresses/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "join",
-            "fields": ["ADDRNUM", "ADDRNUMSUF"],
-            "separator": ""
-        },
-        "street": [
-            "PRE_DIR",
-            "STREET",
-            "RD_NAME_TYPE",
-            "SUFFIX"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://services1.arcgis.com/ejcbAsQEUUGWEyzb/ArcGIS/rest/services/DACAddresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "ADDRNUM",
+                            "ADDRNUMSUF"
+                        ],
+                        "separator": ""
+                    },
+                    "street": [
+                        "PRE_DIR",
+                        "STREET",
+                        "RD_NAME_TYPE",
+                        "SUFFIX"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ]
+                }
+            }
         ]
     }
 }

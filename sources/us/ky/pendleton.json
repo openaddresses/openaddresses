@@ -9,14 +9,43 @@
         "state": "ky",
         "county": "Pendleton"
     },
-    "data": "http://linkgis.org/arcgisweb/rest/services/addressPoints/MapServer/4",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "NUMBER_",
-        "street": "STREET",
-        "unit": "APT_NUMBER",
-        "city": "MAIL_COMMUNITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://linkgis.org/arcgisweb/rest/services/addressPoints/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "NUMBER_",
+                    "street": "STREET",
+                    "unit": "APT_NUMBER",
+                    "city": "MAIL_COMMUNITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://linkgis.org/arcgisweb/rest/services/Web_Scene_Map_Parcels/MapServer/18",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://linkgis.org/arcgisweb/rest/services/Buildings/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

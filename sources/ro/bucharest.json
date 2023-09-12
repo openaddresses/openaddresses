@@ -1,26 +1,36 @@
 {
     "coverage": {
-      "geometry": {
-          "type": "Point",
-          "coordinates": [
-              25.955,
-              44.438
-          ]
-      },
-      "country": "ro",
-      "city": "Bucharest"
-    },
-    "type": "ESRI",
-    "data": "http://maps-gisportal.esriro.ro/arcgis/rest/services/SureData/SureData/MapServer/1",
-    "conform": {
-        "type": "geojson",
-        "number": "NRPOSTAL",
-        "street": "TIPNUMESTRADA",
-        "district": {
-            "function": "format",
-            "fields": ["SECTOR"],
-            "format": "Sector $1"
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                25.955,
+                44.438
+            ]
         },
-        "postcode": "CODULPOSTALE"
+        "country": "ro",
+        "city": "Bucharest"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "http://maps-gisportal.esriro.ro/arcgis/rest/services/SureData/SureData/MapServer/1",
+                "conform": {
+                    "format": "geojson",
+                    "number": "NRPOSTAL",
+                    "street": "TIPNUMESTRADA",
+                    "district": {
+                        "function": "format",
+                        "fields": [
+                            "SECTOR"
+                        ],
+                        "format": "Sector $1"
+                    },
+                    "postcode": "CODULPOSTALE"
+                }
+            }
+        ]
     }
 }

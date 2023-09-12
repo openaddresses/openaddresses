@@ -9,19 +9,27 @@
         "state": "az",
         "county": "Gila"
     },
-    "data": "http://gis.gilacountyaz.gov/arcgis/rest/services/Assessor/AddLU/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NUM",
-        "street": [
-            "PREFIX",
-            "ROAD_NAME",
-            "SUFFIX"
-        ],
-        "unit": "UNIT",
-        "postcode": "ZIP",
-        "city": "CITY",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.gilacountyaz.gov/arcgis/rest/services/Assessor/AddLU/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUM",
+                    "street": [
+                        "PREFIX",
+                        "ROAD_NAME",
+                        "SUFFIX"
+                    ],
+                    "unit": "UNIT",
+                    "postcode": "ZIP",
+                    "city": "CITY",
+                    "region": "STATE"
+                }
+            }
+        ]
     }
 }

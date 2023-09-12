@@ -1,15 +1,42 @@
 {
     "coverage": {
         "country": "ca",
-        "geometry": { "type": "Point", "coordinates": [-119.3, 50.5] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -119.3,
+                50.5
+            ]
+        }
     },
-    "data": "http://tnrdmap.tnrd.ca/arcgis/rest/services/Basemap_Detail_Cache/MapServer/3",
-    "website": "https://www.tnrd.ca/content/mapping-services-gis-overview",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "StreetNo",
-        "street": "StreetName",
-        "city": "Community"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://tnrdmap.tnrd.ca/ags/rest/services/DynamicMap/MapServer/84",
+                "website": "https://www.tnrd.ca/planning-development/maps-data/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "SuiteNo",
+                    "number": "StreetNo",
+                    "street": "StreetName",
+                    "city": "Community"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://tnrdmap.tnrd.ca/ags/rest/services/DynamicMap/MapServer/111",
+                "website": "https://www.tnrd.ca/planning-development/maps-data/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ]
     }
 }

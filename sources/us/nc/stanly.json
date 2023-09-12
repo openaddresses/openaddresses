@@ -9,20 +9,28 @@
         "state": "nc",
         "county": "Stanly"
     },
-    "data": "ftp://ftp.stanlygis.net/gisdata/Layer Zip Files/address_points.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "website": "http://www.stanlygis.net/",
-    "conform": {
-        "type": "shapefile",
-        "number": "ADDRNUM",
-        "unit": "Apartment",
-        "street": [
-            "ROAD_PRE",
-            "ROAD_NAME",
-            "ROAD_TYPE",
-            "ROAD_SUF"
-        ],
-        "city": "City"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "ftp://ftp.stanlygis.net/gisdata/Layer Zip Files/address_points.zip",
+                "protocol": "ftp",
+                "compression": "zip",
+                "website": "http://www.stanlygis.net/",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "ADDRNUM",
+                    "unit": "Apartment",
+                    "street": [
+                        "ROAD_PRE",
+                        "ROAD_NAME",
+                        "ROAD_TYPE",
+                        "ROAD_SUF"
+                    ],
+                    "city": "City"
+                }
+            }
+        ]
     }
 }

@@ -9,26 +9,74 @@
         "state": "ca",
         "county": "San Diego"
     },
-    "attribution": "San Diego Geographic Information Source - JPA",
-    "data": "http://sdgis.sandag.org/sdgis/rest/services/RDW/ADDRESS_APN/MapServer/0",
-    "license": "http://www.sangis.org/Legal_Notice.htm",
-    "note": "Metadata available at http://rdw.sandag.org/file_store%5CAddress/Address_APN.pdf",
-    "website": "http://rdw.sandag.org/",
-    "year": "",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": ["ADDRNMBR", "ADDRFRAC"],
-        "street": [
-            "ADDRPDIR",
-            "ADDRNAME",
-            "ADDRSFX",
-            "ADDRPOSTD"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "San Diego Geographic Information Source - JPA",
+                "data": "https://services1.arcgis.com/HG80xaIVT1z1OdO5/arcgis/rest/services/Address_APN/FeatureServer/0",
+                "license": {
+                    "url": "https://gis.sangis.org/sanportal/apps/storymaps/stories/d26146d84e834ff6bcd58e4e620a983a",
+                    "text": "Indemnification"
+                },
+                "note": "Metadata available at http://rdw.sandag.org/file_store%5CAddress/Address_APN.pdf",
+                "website": "https://sdgis-sandag.opendata.arcgis.com/datasets/SANDAG::address-apn-1/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDRNMBR",
+                        "ADDRFRAC"
+                    ],
+                    "street": [
+                        "ADDRPDIR",
+                        "ADDRNAME",
+                        "ADDRSFX",
+                        "ADDRPOSTD"
+                    ],
+                    "unit": "ADDRUNIT",
+                    "city": "COMMUNITY",
+                    "region": "STATE",
+                    "postcode": "ADDRZIP",
+                    "id": "APN"
+                }
+            }
         ],
-        "unit": "ADDRUNIT",
-        "city": "COMMUNITY",
-        "region": "STATE",
-        "postcode": "ADDRZIP",
-        "id": "APN"
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "San Diego Geographic Information Source - JPA",
+                "data": "https://services1.arcgis.com/HG80xaIVT1z1OdO5/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "license": {
+                    "url": "https://gis.sangis.org/sanportal/apps/storymaps/stories/d26146d84e834ff6bcd58e4e620a983a",
+                    "text": "Indemnification"
+                },
+                "note": "Metadata available at https://rdw.sandag.org/file_store/Parcel/Parcels.pdf",
+                "website": "https://sdgis-sandag.opendata.arcgis.com/datasets/SANDAG::parcels-6/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "San Diego Geographic Information Source - JPA",
+                "data": "https://rdw.sandag.org/file_store/Miscellaneous/BUILDING_OUTLINES.zip",
+                "license": {
+                    "url": "https://gis.sangis.org/sanportal/apps/storymaps/stories/d26146d84e834ff6bcd58e4e620a983a",
+                    "text": "Indemnification"
+                },
+                "note": "Metadata available at https://rdw.sandag.org/file_store/Miscellaneous/BUILDING_OUTLINES.pdf",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

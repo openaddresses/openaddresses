@@ -9,21 +9,29 @@
         "state": "nj",
         "county": "Cape May"
     },
-    "data": "http://www.capemaycountyims.net/Downloads/CMC_Addresses.zip",
-    "website": "http://www.capemaycountyims.net/",
-    "compression": "zip",
-    "note": "This source contains ~560 records between a Westwood Mobile Estates and Depot Travel Park that have misaligned fields.  There is no easy way to separate these records from the good records.",
-    "type": "http",
-    "conform": {
-        "type": "shapefile",
-        "number": "STNUMB_1",
-        "street": [
-            "PREFIX_1",
-            "STNAME_1",
-            "STTYPE_1",
-            "SUFFIX_1"
-        ],
-        "city": "MUNICPAL",
-        "accuracy": 2
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://www.capemaycountyims.net/Downloads/CMC_Addresses.zip",
+                "website": "http://www.capemaycountyims.net/",
+                "compression": "zip",
+                "note": "This source contains ~560 records between a Westwood Mobile Estates and Depot Travel Park that have misaligned fields.  There is no easy way to separate these records from the good records.",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "STNUMB_1",
+                    "street": [
+                        "PREFIX_1",
+                        "STNAME_1",
+                        "STTYPE_1",
+                        "SUFFIX_1"
+                    ],
+                    "city": "MUNICPAL",
+                    "accuracy": 2
+                }
+            }
+        ]
     }
 }

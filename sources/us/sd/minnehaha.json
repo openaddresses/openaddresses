@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "46099",
+            "name": "Minnehaha County",
+            "state": "South Dakota"
+        },
+        "country": "us",
+        "state": "sd",
+        "county": "Minnehaha"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.minnehahacounty.org/minnemap/rest/services/Planning/AddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "PR1",
+                        "STNM1",
+                        "TYP1",
+                        "PD1"
+                    ],
+                    "unit": "ADDRESSNUM_SUF",
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIPCODE",
+                    "district": "COUNTY",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.minnehahacounty.org/minnemap/rest/services/OpenData/MinnehahaParcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAG"
+                }
+            }
+        ]
+    }
+}

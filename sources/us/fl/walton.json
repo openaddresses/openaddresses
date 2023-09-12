@@ -9,26 +9,58 @@
         "state": "fl",
         "county": "Walton"
     },
-    "license": {
-        "url": "http://www.co.walton.fl.us/index.aspx?nid=926",
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "data": "http://www.co.walton.fl.us/DocumentCenter/View/29070",
-    "website": "http://www.co.walton.fl.us/index.aspx?NID=926",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "AddrNum",
-        "street": [
-            "RoadPreDir",
-            "RoadName",
-            "RoadType",
-            "RoadPostDi"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "license": {
+                    "url": "http://www.co.walton.fl.us/index.aspx?nid=926",
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "data": "https://services1.arcgis.com/TaXHPwWfIMuzJ7Ov/ArcGIS/rest/services/AddressVerification_Points/FeatureServer/0",
+                "website": "https://www.co.walton.fl.us/910/GIS-Data",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ShortAddress"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ShortAddress"
+                    },
+                    "unit": [
+                        "Unit",
+                        "UnitType"
+                    ],
+                    "city": "Municipality",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "ZipCode"
+                }
+            }
         ],
-        "city": "Municipali",
-        "postcode": "ZipCode"
+        "parcels": [
+            {
+                "name": "county",
+                "license": {
+                    "url": "http://www.co.walton.fl.us/index.aspx?nid=926",
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "data": "https://services1.arcgis.com/TaXHPwWfIMuzJ7Ov/ArcGIS/rest/services/AddressVerification_Points/FeatureServer/2",
+                "website": "https://www.co.walton.fl.us/910/GIS-Data",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNO"
+                }
+            }
+        ]
     }
 }

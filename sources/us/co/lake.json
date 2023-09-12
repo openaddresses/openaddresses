@@ -1,0 +1,36 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "08065", "name": "Lake County", "state": "Colorado"},
+        "country": "us",
+        "state": "co",
+        "county": "Lake"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "UNITNUMBER",
+                    "number": "STREETNO",
+                    "street": "STREETNAME",
+                    "city": "LOCCITY"
+                },
+                "data": "https://services1.arcgis.com/38PTfoP8IjlBsxZN/ArcGIS/rest/services/LCMDParcelInfo/FeatureServer/0",
+                "protocol": "ESRI"
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNumb"
+                },
+                "data": "https://services1.arcgis.com/38PTfoP8IjlBsxZN/ArcGIS/rest/services/LCMDParcelInfo/FeatureServer/0",
+                "protocol": "ESRI"
+            }
+        ]
+    }
+}

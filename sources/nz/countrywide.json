@@ -6,27 +6,89 @@
         },
         "country": "nz"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/andrewharvey-openaddr/11b89a/lds-nz-street-address-SHP.zip",
-    "website": "https://data.linz.govt.nz/layer/53353-nz-street-address/",
-    "license": {
-        "url": "http://creativecommons.org/licenses/by/3.0/nz/",
-        "text": "CC BY 3.0",
-        "attribution": true,
-        "attribution name": "Land Information New Zealand",
-        "share-alike": false
-    },
-    "language": "en",
-    "note": "This data is curated and produced by the Land Information New Zealand (LINZ) Data Service",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "id": "address_id",
-        "unit": "unit_value",
-        "number": "address_nu",
-        "street": "full_road_",
-        "city": "suburb_loc",
-        "district": "town_city",
-        "accuracy": 2,
-        "type": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "https://data.linz.govt.nz/services;key=441c0097257f45ab84d5ea4d24723f23/wfs?service=WFS&request=GetFeature&outputformat=CSV&typeNames=layer-53353",
+                "website": "https://data.linz.govt.nz/layer/53353-nz-street-address/",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Land Information New Zealand",
+                    "share-alike": false
+                },
+                "language": "en",
+                "note": "This data is curated and produced by the Land Information New Zealand (LINZ) Data Service",
+                "protocol": "http",
+                "conform": {
+                    "format": "csv",
+                    "srs": "EPSG:4167",
+                    "lon": "gd2000_xcoord",
+                    "lat": "gd2000_ycoord",
+                    "id": "address_id",
+                    "unit": "unit_value",
+                    "number": {
+                        "function": "format",
+                        "fields": [
+                            "address_number",
+                            "address_number_suffix",
+                            "address_number_high"
+                        ],
+                        "format": "$1$2-$3"
+                    },
+                    "street": "full_road_name",
+                    "city": "suburb_locality",
+                    "district": "town_city",
+                    "accuracy": 2
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "country",
+                "data": "https://data.linz.govt.nz/services;key=441c0097257f45ab84d5ea4d24723f23/wfs?service=WFS&request=GetFeature&outputformat=json&typeNames=layer-50772",
+                "website": "https://data.linz.govt.nz/layer/50772-nz-primary-parcels/",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Land Information New Zealand",
+                    "share-alike": false
+                },
+                "language": "en",
+                "note": "This data is curated and produced by the Land Information New Zealand (LINZ) Data Service",
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson",
+                    "srs": "EPSG:4167",
+                    "pid": "id"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "country",
+                "data": "https://data.linz.govt.nz/services;key=5a20adca1fcc4be08a42ecb9765a227b/wfs?service=WFS&request=GetFeature&outputformat=json&typeNames=layer-101290",
+                "website": "https://data.linz.govt.nz/layer/101290-nz-building-outlines/",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Land Information New Zealand",
+                    "share-alike": false
+                },
+                "language": "en",
+                "note": "This data is curated and produced by the Land Information New Zealand (LINZ) Data Service",
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson",
+                    "srs": "EPSG:2193",
+                    "height": "height_m"
+                }
+            }
+        ]
     }
 }

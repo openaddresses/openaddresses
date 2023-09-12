@@ -9,20 +9,28 @@
         "state": "de",
         "county": "Sussex"
     },
-    "data": "https://maps.sussexcountyde.gov/gis/rest/services/County_Layers/911Addresses/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HouseNumber",
-        "unit": "UNIT",
-        "street": [
-            "PD",
-            "PT",
-            "SN",
-            "ST",
-            "SD"
-        ],
-        "city": "ZipCommunity",
-        "postcode": "Zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.sussexcountyde.gov/gis/rest/services/County_Layers/911Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNumber",
+                    "unit": "UNIT",
+                    "street": [
+                        "PD",
+                        "PT",
+                        "SN",
+                        "ST",
+                        "SD"
+                    ],
+                    "city": "ZipCommunity",
+                    "postcode": "Zip"
+                }
+            }
+        ]
     }
 }

@@ -16,29 +16,71 @@
         "state": "wi",
         "county": "Wood"
     },
-    "data": "http://gis.co.wood.wi.us/gis/rest/services/WAB/LandRecords/MapServer/75",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "format",
-            "fields": [
-                "AddNum",
-                "AddNumSuffix"
-            ],
-            "format": "$1$2"
-        },
-        "street": [
-            "Prefix",
-            "StreetName",
-            "StreetType",
-            "Suffix"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/kTzzDJBaecBOZCjk/arcgis/rest/services/Addresses/FeatureServer/0",
+                "website": "https://opendata.woodcogis.com/datasets/WoodWI::addresses-1/about",
+                "license": {
+                    "text": "CC BY 3.0",
+                    "url": "https://creativecommons.org/licenses/by/3.0",
+                    "attribution": true,
+                    "attribution name": "Wood County, Wisconsin",
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNumPre",
+                        "AddNum",
+                        "AddNumSuffix"
+                    ],
+                    "street": "FullStNm",
+                    "unit": [
+                        "UnitType",
+                        "UnitID"
+                    ],
+                    "postcode": "ZipCode",
+                    "city": "MuniName",
+                    "region": "StateName"
+                }
+            }
         ],
-        "unit": [
-            "UnitType",
-            "UnitId"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://opendata.woodcogis.com/datasets/WoodWI::parcels/about",
+                "website": "https://services2.arcgis.com/kTzzDJBaecBOZCjk/arcgis/rest/services/Parcels/FeatureServer/0",
+                "license": {
+                    "text": "CC BY 3.0",
+                    "url": "https://creativecommons.org/licenses/by/3.0",
+                    "attribution": true,
+                    "attribution name": "Wood County, Wisconsin",
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
         ],
-        "postcode": "ZipCode",
-        "city": "PlaceName"
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/WOOD_BUILDINGS_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/21A1B3B6-DB55-42B7-B966-A3DD568429B5",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "WOOD_BUILDINGS_2023"
+                }
+            }
+        ]
     }
 }

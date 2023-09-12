@@ -1,24 +1,40 @@
 {
-    "conform": {
-        "type": "csv",
-        "lon": "wgs84koordinat_længde",
-        "street": "vejnavn",
-        "lat": "wgs84koordinat_bredde",
-        "number": "husnr",
-        "postcode": "postnr",
-        "unit": {
-            "function": "join",
-            "fields": ["etage", "dør"]
-        }
-    },
-    "attribution": "Contains information from the Danish Ministry of Housing, Urban and Rural Address Web Services (AWS).",
-    "website": "http://download.aws.dk/",
-    "type": "http",
-    "note": "License is disclaimer of liability, allows commercial use & transformation, & has attribution language (unclear if it is a requirement or suggestion)",
-    "data": "http://dawa.aws.dk/adresser?format=csv",
-    "coverage": {        
-        "ISO 3166": {"alpha2": "DK", "country": "Denmark"},
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "DK",
+            "country": "Denmark"
+        },
         "country": "dk"
     },
-    "license": "http://dawa.aws.dk/om"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "conform": {
+                    "format": "csv",
+                    "lon": "wgs84koordinat_længde",
+                    "street": "vejnavn",
+                    "lat": "wgs84koordinat_bredde",
+                    "number": "husnr",
+                    "city": "postnrnavn",
+                    "postcode": "postnr",
+                    "region": "regionsnavn",
+                    "unit": {
+                        "function": "join",
+                        "fields": [
+                            "etage",
+                            "dør"
+                        ]
+                    }
+                },
+                "attribution": "Contains information from the Danish Ministry of Housing, Urban and Rural Address Web Services (AWS).",
+                "website": "https://dawadocs.dataforsyningen.dk/",
+                "protocol": "http",
+                "note": "License is disclaimer of liability, allows commercial use & transformation, & has attribution language (unclear if it is a requirement or suggestion)",
+                "data": "https://api.dataforsyningen.dk/adresser?format=csv",
+                "license": "https://dawadocs.dataforsyningen.dk/dok/om"
+            }
+        ]
+    }
 }

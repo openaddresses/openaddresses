@@ -9,14 +9,22 @@
         "state": "la",
         "county": "Bienville"
     },
-    "data": "http://services.geoportalmaps.com/arcgis/rest/services/BienvilleParcels_SQL/MapServer/8",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": "ROAD_STREE",
-        "unit": "APT_SUITE",
-        "city": "CITY_TOWN",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://services.geoportalmaps.com/arcgis/rest/services/BienvilleParcels_SQL/MapServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": "ROAD_STREE",
+                    "unit": "APT_SUITE",
+                    "city": "CITY_TOWN",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

@@ -9,19 +9,35 @@
         "state": "pa",
         "county": "Crawford"
     },
-    "data": "http://gis.crawfordcountypa.net:6080/arcgis/rest/services/AddressParcelSearch_Advanced/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HSENUMBER",
-        "street": [
-            "PREFIXDIR",
-            "STREETNAME",
-            "STREETSUF",
-            "POSTDIR"
-        ],
-        "city": "MUNI",
-        "district": "COUNTY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.crawfordcountypa.net/GIS/Pages/home.aspx",
+                "contact": {
+                    "name": "Andrew Parkin",
+                    "title": "GIS Manager",
+                    "phone": "814-724-2562",
+                    "email": "gisaddressing@co.crawford.pa.us",
+                    "address": "903 Diamond Park Sq, Meadville, PA 16335"
+                },
+                "data": "https://ccgis.crawfordcountypa.net/arcgis/rest/services/Crawford_Web/AddressPoints_WebUse/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "AD_STRU_NUM",
+                    "number": [
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": "St_FullName",
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "district": "CountyName",
+                    "postcode": "Post_Code"
+                }
+            }
+        ]
     }
 }

@@ -16,18 +16,26 @@
         "state": "ct",
         "city": "Hartford"
     },
-    "attribution": "Ciy of Hartford",
-    "data": "http://gis1.hartford.gov/arcgis/rest/services/GPSBasemapForFlex/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STREETNUM",
-        "street": [
-            "CV_STPREFIX",
-            "CV_STNAME",
-            "CV_STTYPE",
-            "CV_STSUFFIX"
-        ],
-        "unit": "UNITNUM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "attribution": "Ciy of Hartford",
+                "data": "http://gis1.hartford.gov/arcgis/rest/services/GPSBasemapForFlex/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREETNUM",
+                    "street": [
+                        "CV_STPREFIX",
+                        "CV_STNAME",
+                        "CV_STTYPE",
+                        "CV_STSUFFIX"
+                    ],
+                    "unit": "UNITNUM"
+                }
+            }
+        ]
     }
 }

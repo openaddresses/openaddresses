@@ -9,33 +9,41 @@
         "state": "il",
         "county": "Moultrie"
     },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_moultrie_co_il_taxmap3_web_mercator/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "Site_Address",
-            "pattern": "([0-9]+)(.*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Site_Address",
-            "pattern": "([0-9]+)(.*)~(.*), IL ([0-9]+)",
-            "replace": "$2"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "Site_Address",
-            "pattern": "([0-9]+)(.*)~(.*), IL ([0-9]+)",
-            "replace": "$3"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "Site_Address",
-            "pattern": "([0-9]+)(.*)~(.*), IL ([0-9]+)",
-            "replace": "$4"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_moultrie_co_il_taxmap3_web_mercator/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "Site_Address",
+                        "pattern": "([0-9]+)(.*)",
+                        "replace": "$1"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Site_Address",
+                        "pattern": "([0-9]+)(.*)~(.*), IL ([0-9]+)",
+                        "replace": "$2"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "Site_Address",
+                        "pattern": "([0-9]+)(.*)~(.*), IL ([0-9]+)",
+                        "replace": "$3"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "Site_Address",
+                        "pattern": "([0-9]+)(.*)~(.*), IL ([0-9]+)",
+                        "replace": "$4"
+                    }
+                }
+            }
+        ]
     }
 }

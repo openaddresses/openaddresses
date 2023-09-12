@@ -9,21 +9,28 @@
         "state": "ca",
         "county": "Placer"
     },
-    "data": "ftp://ftp1.placer.ca.gov/cdra/GIS/AddressMaster.zip",
-    "attribution": "County of Placer",
-    "license": "http://www.placer.ca.gov/departments/communitydevelopment/gis/gis_download",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "STREETNUM",
-        "street": [
-            "PREFIXDIR",
-            "STREETNAME",
-            "STREETTYPE",
-            "SUFFIXDIR"
-        ],
-        "unit": "UNIT",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/PArfeTGcwA9RGNzN/arcgis/rest/services/AddressPoints/FeatureServer/0",
+                "attribution": "County of Placer",
+                "license": "http://www.placer.ca.gov/departments/communitydevelopment/gis/gis_download",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREETNUM",
+                    "street": [
+                        "PRETYPE",
+                        "PREFIXDIR",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFFIXDIR"
+                    ],
+                    "unit": "UNIT"
+                }
+            }
+        ]
     }
 }

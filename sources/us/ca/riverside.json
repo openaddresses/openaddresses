@@ -9,20 +9,39 @@
         "state": "ca",
         "county": "Riverside"
     },
-    "data": "http://data.openaddresses.io/cache/us-ca-riverside.zip",
-    "website": "http://gis.rivcoit.org/GISData.aspx",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "HOUSE_NUMB",
-        "street": [
-            "DIR",
-            "STREET_NAM",
-            "STREET_TYP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.countyofriverside.us/arcgis_public/rest/services/OpenData/ParcelBasic/MapServer/5",
+                "website": "https://gisopendata-countyofriverside.opendata.arcgis.com/datasets/CountyofRiverside::address-points/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUMBER",
+                    "street": [
+                        "DIR",
+                        "STREET_NAME",
+                        "STREET_TYPE"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "CITY",
-        "postcode": "zip"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.countyofriverside.us/arcgis_public/rest/services/OpenData/ParcelBasic/MapServer/7",
+                "website": "https://gisopendata-countyofriverside.opendata.arcgis.com/datasets/CountyofRiverside::parcels-crest/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
     }
 }

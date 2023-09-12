@@ -1,15 +1,27 @@
 {
     "coverage": {
-        "US Census": {"geoid": "22063", "name": "Livingston Parish", "state": "Louisiana"},
+        "US Census": {
+            "geoid": "22063",
+            "name": "Livingston Parish",
+            "state": "Louisiana"
+        },
         "country": "us",
         "state": "la",
         "county": "Livingston"
     },
-    "data": "http://atlas.geoportalmaps.com/arcgis/rest/services/Livingston_Services/MapServer/9",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRESS_NUMBER",
-        "street": "STREET_NAME"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.geoportalmaps.com/arcgis/rest/services/Livingston_Services/MapServer/9",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Address_Number",
+                    "street": "Street_Name"
+                }
+            }
+        ]
     }
 }

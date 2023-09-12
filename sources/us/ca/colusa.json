@@ -9,18 +9,37 @@
         "state": "ca",
         "county": "Colusa"
     },
-    "data": "http://services5.arcgis.com/RHVBVx0fVmUtvfJV/ArcGIS/rest/services/ColusaCountyTaxParcels2015/FeatureServer/0",
-    "website": "http://www.countyofcolusa.org/index.aspx?NID=710",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITUS_1"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITUS_1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/RHVBVx0fVmUtvfJV/ArcGIS/rest/services/Colusa_County_Tax_Parcels/FeatureServer/0",
+                "website": "http://www.countyofcolusa.org/index.aspx?NID=710",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUS_1"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUS_1"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/RHVBVx0fVmUtvfJV/ArcGIS/rest/services/Colusa_County_Tax_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
     }
 }

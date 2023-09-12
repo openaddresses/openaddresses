@@ -5,17 +5,32 @@
         "county": "Cowichan Valley",
         "geometry": {
             "type": "Point",
-            "coordinates": [-124.745, 48.834] }
+            "coordinates": [
+                -124.745,
+                48.834
+            ]
+        }
     },
-    "data": "ftp://ftp.cvrd.bc.ca/Corporate Services/IT/GIS_Data/Shapefiles/AddressPoint.zip",
-    "license": "ftp://ftp.cvrd.bc.ca/Corporate%20Services/IT/GIS_Data/CVRDGeospatialData_TermsandConditions.pdf",
-    "website": "http://www.cvrd.bc.ca/2024/Geospatial-Data",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "id": "OBJECTID",
-        "number": "ADDR_NUM",
-        "street": "ROADNAME"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.cvrd.bc.ca/downloads/Shapefiles/AddressPoint.zip",
+                "license": {
+                    "url": "https://maps.cvrd.bc.ca/downloads/CVRDGeospatialData_TermsandConditions.pdf",
+                    "text": "Credit: Spatial data is managed by the GIS Section - IT division - corporate services department - Cowichan Valley Regional District",
+                    "attribution": true,
+                    "share-alike": true
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "AddressNum",
+                    "street": "RoadName"
+                }
+            }
+        ]
     }
 }

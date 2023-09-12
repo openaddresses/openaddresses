@@ -1,32 +1,46 @@
 {
-	"coverage": {
+    "coverage": {
         "country": "by",
-	"ISO 3166": {
-		"alpha2": "BY",
-		"country": "Belarus"
-	}
+        "ISO 3166": {
+            "alpha2": "BY",
+            "country": "Belarus"
+        }
     },
-	"data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/sergiyprotsiv/1567f2/by_address_points.csv.zip",
-	"website": "http://map.nca.by/",
-	"type": "http",
-	"compression": "zip",
-	"license": {
-		"url": "http://map.nca.by",
-		"share-alike": false
-	},
-  "conform": {
-	"type": "csv",
-	"city": "obj_name",
-	"street": ["elementtyp", "elementnam"],
-	"number": {
-	      "function": "join",
-	      "fields": ["num_house", "ind_house"],
-	      "separator": ""
-	    },
-    	"unit" : "num_corp",
-    	"district" : "namedistr",
-    	"region": "nameregion",
-	"lat": "POINT_Y",
-	"lon": "POINT_X"
-   }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "https://data.openaddresses.io/cache/uploads/sergiyprotsiv/1567f2/by_address_points.csv.zip",
+                "website": "http://map.nca.by/",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "url": "http://map.nca.by",
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "csv",
+                    "city": "obj_name",
+                    "street": [
+                        "elementtyp",
+                        "elementnam"
+                    ],
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "num_house",
+                            "ind_house"
+                        ],
+                        "separator": ""
+                    },
+                    "unit": "num_corp",
+                    "district": "namedistr",
+                    "region": "nameregion",
+                    "lat": "POINT_Y",
+                    "lon": "POINT_X"
+                }
+            }
+        ]
+    }
 }

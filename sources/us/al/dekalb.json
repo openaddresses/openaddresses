@@ -1,0 +1,49 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "01049",
+            "name": "DeKalb County",
+            "state": "Alabama"
+        },
+        "country": "us",
+        "state": "al",
+        "county": "DeKalb"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://web4.kcsgis.com/kcsgis/rest/services/Dekalb/Public/MapServer/48",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SitusAddNumber",
+                    "street": "SitusAddName",
+                    "city": "SitusCity"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://web4.kcsgis.com/kcsgis/rest/services/Dekalb/Public/MapServer/48",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNUMBER"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://web4.kcsgis.com/kcsgis/rest/services/Dekalb/Public/MapServer/202",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

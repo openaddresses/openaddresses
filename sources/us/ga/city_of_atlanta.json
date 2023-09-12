@@ -17,27 +17,34 @@
         "county": "Fulton,Dekalb",
         "city": "Atlanta"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/716f46/us-ga-atlanta.geojson.zip",
-    "note": "cached with pyesridump since the source has feature count query disabled, source is http://gis.atlantaga.gov/dpcd/rest/services/Land/AddressPointsE911/MapServer/0/1",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "SITE_NUM",
-            "SITE_NUM_S"
-        ],
-        "street": [
-            "PREFIX",
-            "PREFIX_TYP",
-            "NAME",
-            "TYPE",
-            "SUFFIX"
-        ],
-        "unit": "UNIT_NUM",
-        "city": "CITY",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.atlantaga.gov/dpcd/rest/services/OpenDataService/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SITEADDID",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": [
+                        "ADDR_PD",
+                        "ADDR_PT",
+                        "ADDR_SN",
+                        "ADDR_ST",
+                        "ADDR_SD"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ]
+                }
+            }
+        ]
     }
 }

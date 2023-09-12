@@ -1,23 +1,35 @@
 {
     "coverage": {
-        "US Census": {"geoid": "32003", "name": "Clark County", "state": "Nevada"},
+        "US Census": {
+            "geoid": "32003",
+            "name": "Clark County",
+            "state": "Nevada"
+        },
         "country": "us",
         "state": "nv",
         "county": "Clark"
     },
-    "data": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Address/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "number": [
-            "strno",
-            "strfrac"
-        ],
-        "street": [
-            "strdir",
-            "strname",
-            "strtype"
-        ],
-        "unit": "strunit",
-        "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Address/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": [
+                        "strno",
+                        "strfrac"
+                    ],
+                    "street": [
+                        "strdir",
+                        "strname",
+                        "strtype"
+                    ],
+                    "unit": "strunit",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

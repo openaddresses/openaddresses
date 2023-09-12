@@ -9,11 +9,40 @@
         "state": "al",
         "county": "Etowah"
     },
-    "data": "http://web3.kcsgis.com/kcsgis/rest/services/Etowah/Public/MapServer/41",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "SitusStreetNumber",
-        "street": "SitusStreetName"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://web4.kcsgis.com/kcsgis/rest/services/Etowah/Public/MapServer/38",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SitusStreetNumber",
+                    "street": "SitusStreetName"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://web4.kcsgis.com/kcsgis/rest/services/Etowah/Public/MapServer/38",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://web4.kcsgis.com/kcsgis/rest/services/Etowah/Public/MapServer/41",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

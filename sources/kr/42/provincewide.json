@@ -8,34 +8,45 @@
         "country": "kr",
         "state": "42"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/sergiyprotsiv/40a526/korea-feb2017.zip",
-    "website": "http://www.juso.go.kr/addrlink/addressBuildDevNew.do?menu=geodata",
-    "license": {
-        "attribution name": "Ministry of the Interior"
-        },
-    "type": "http",
-    "compression": "zip",
-    "language": "kr",
-    "conform": {
-        "type": "csv",
-        "file": "entrc_gangwon.txt",
-        "headers": -1,
-        "encoding": "CP949",
-        "number": "COLUMN19",
-        "csvsplit" : "|",
-        "street": "COLUMN8",
-        "postcode": "COLUMN13",
-        "district": "COLUMN6",
-        "city": "COLUMN5",
-        "region": "COLUMN4",
-        "addrtype": "COLUMN14",
-        "id": {
-            "fields": ["COLUMN3","COLUMN2"],
-            "function": "join",
-            "separator": "-"
-        },
-        "srs": "EPSG:5179",
-        "lat": "COLUMN18",
-        "lon": "COLUMN17"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://data.openaddresses.io/cache/uploads/sergiyprotsiv/40a526/korea-feb2017.zip",
+                "website": "http://www.juso.go.kr/addrlink/addressBuildDevNew.do?menu=geodata",
+                "license": {
+                    "attribution name": "Ministry of the Interior"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "language": "kr",
+                "conform": {
+                    "format": "csv",
+                    "file": "entrc_gangwon.txt",
+                    "headers": -1,
+                    "encoding": "CP949",
+                    "number": "COLUMN19",
+                    "csvsplit": "|",
+                    "street": "COLUMN8",
+                    "postcode": "COLUMN13",
+                    "district": "COLUMN6",
+                    "city": "COLUMN5",
+                    "region": "COLUMN4",
+                    "addrtype": "COLUMN14",
+                    "id": {
+                        "fields": [
+                            "COLUMN3",
+                            "COLUMN2"
+                        ],
+                        "function": "join",
+                        "separator": "-"
+                    },
+                    "srs": "EPSG:5179",
+                    "lat": "COLUMN18",
+                    "lon": "COLUMN17"
+                }
+            }
+        ]
     }
 }

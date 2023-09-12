@@ -1,33 +1,46 @@
 {
-	"coverage": {
-        	"country": "de",
-        	"state": "th",
-	      	"ISO 3166": { "alpha2": "DE-TH" }
-	},
-	"data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/sergiyprotsiv/d22567/thuringen.txt.zip",
-	"website": "https://onlineshop.thueringen.de/th9/tlvermgeo/geoshop/flure/hauskoordinaten/",
-	"type": "http",
-	"compression": "zip",
-	"license": {
-		"text": "dl-de/by-2-0",
-		"url": "https://www.govdata.de/dl-de/by-2-0",
-		"attribution": true,
-		"attribution name": "Freistaat Thüringen"
-	},
-	"conform": {
-		"type": "csv",
-		"csvsplit": ";",
-		"headers":-1,
-    		"file": "thuringen.txt",
-    		"srs": "EPSG:4647",
-		"street": "COLUMN14",
-		"city": "COLUMN19",
-		"number": {
-            "function": "format",
-            "fields": ["COLUMN10", "COLUMN11"],
-            "format": "$1$2"
-        },
-		"lat": "COLUMN13",
-		"lon": "COLUMN12"
-	}
+    "coverage": {
+        "country": "de",
+        "state": "th",
+        "ISO 3166": {
+            "alpha2": "DE-TH"
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://data.openaddresses.io/cache/uploads/sergiyprotsiv/d22567/thuringen.txt.zip",
+                "website": "https://onlineshop.thueringen.de/th9/tlvermgeo/geoshop/flure/hauskoordinaten/",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "text": "dl-de/by-2-0",
+                    "url": "https://www.govdata.de/dl-de/by-2-0",
+                    "attribution": true,
+                    "attribution name": "Freistaat Thüringen"
+                },
+                "conform": {
+                    "format": "csv",
+                    "csvsplit": ";",
+                    "headers": -1,
+                    "file": "thuringen.txt",
+                    "srs": "EPSG:4647",
+                    "street": "COLUMN14",
+                    "city": "COLUMN19",
+                    "number": {
+                        "function": "format",
+                        "fields": [
+                            "COLUMN10",
+                            "COLUMN11"
+                        ],
+                        "format": "$1$2"
+                    },
+                    "lat": "COLUMN13",
+                    "lon": "COLUMN12"
+                }
+            }
+        ]
+    }
 }

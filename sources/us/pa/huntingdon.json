@@ -1,20 +1,40 @@
 {
     "coverage": {
-        "US Census": {"geoid": "42061", "name": "Huntingdon County", "state": "Pennsylvania"},
+        "US Census": {
+            "geoid": "42061",
+            "name": "Huntingdon County",
+            "state": "Pennsylvania"
+        },
         "country": "us",
         "state": "pa",
         "county": "Huntingdon"
     },
-    "note": "Aquired via FOIA by ingalls 2017/12",
-    "data": "http://data.openaddresses.io/cache/uploads/ingalls/us-pa-huntingdon.zip",
-    "compression": "zip",
-    "type": "http",
-    "conform": {
-        "type": "shapefile",
-        "unit": "ADDEXT",
-        "number": "house_num",
-        "street": "STREET",
-        "city": "post_off",
-        "postcode": "zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "http://www.huntingdoncounty.net/Dept/Mapping/Pages/default.aspx",
+                "contact": {
+                    "phone": "814-643-2570",
+                    "email": "mapping@huntingdoncounty.net",
+                    "address": "233 Penn Street, Huntingdon, PA 16652 "
+                },
+                "data": "https://mapping.huntingdoncounty.net/arcgisweb/rest/services/Structures/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HSENUMBER",
+                    "street": [
+                        "PREFIXDIR",
+                        "STREETNAME",
+                        "STREETSUF",
+                        "POSTDIR"
+                    ],
+                    "unit": "LOCATION",
+                    "city": "MUNI"
+                }
+            }
+        ]
     }
 }

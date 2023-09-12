@@ -9,22 +9,30 @@
         "state": "il",
         "county": "Macon"
     },
-    "data": "http://macongis.co.macon.il.us/arcgis/rest/services/AGOL/Addresses/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NUMBER",
-        "street": [
-            "PRE_DIR",
-            "STREET_NAME",
-            "NENA_STREET_TYP",
-            "SUF_ST_DIR"
-        ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_DESC"
-        ],
-        "city": "CITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://macongis.co.macon.il.us/arcgis/rest/services/AGOL/Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUMBER",
+                    "street": [
+                        "PRE_DIR",
+                        "STREET_NAME",
+                        "NENA_STREET_TYP",
+                        "SUF_ST_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_DESC"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

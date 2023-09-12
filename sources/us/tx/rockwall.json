@@ -9,21 +9,29 @@
         "state": "tx",
         "county": "Rockwall"
     },
-    "data": "http://www.rockwall.com/pz/GIS/data/Address_Points.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "ADD_NUMBER",
-        "unit": "ADD_UNIT",
-        "street": [
-            "ADD_PRE",
-            "ADD_NAME",
-            "ADD_TYPE",
-            "ADD_SUF"
-        ],
-        "postcode": "ZIPCODE",
-        "city": "COMM_NAME",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://www.rockwall.com/pz/GIS/data/Address_Points.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "ADD_NUMBER",
+                    "unit": "ADD_UNIT",
+                    "street": [
+                        "ADD_PRE",
+                        "ADD_NAME",
+                        "ADD_TYPE",
+                        "ADD_SUF"
+                    ],
+                    "postcode": "ZIPCODE",
+                    "city": "COMM_NAME",
+                    "region": "STATE"
+                }
+            }
+        ]
     }
 }

@@ -4,12 +4,20 @@
         "state": "on",
         "county": "Cobourg"
     },
-    "data": "http://gis.cobourg.ca/arcgis/rest/services/BaseMaps/Cobourg_VectorBase/MapServer/57",
-    "website": "http://gis.cobourg.ca/",
-    "type": "ESRI",
-    "conform": {
-        "number": "Address",
-        "street": "STREET_NAM",
-        "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.cobourg.ca/arcgis/rest/services/PublicBase/MapServer/1",
+                "website": "http://gis.cobourg.ca/",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "STREET_NO",
+                    "street": "STREET_NAM",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

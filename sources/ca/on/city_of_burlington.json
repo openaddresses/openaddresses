@@ -3,23 +3,42 @@
         "country": "ca",
         "state": "on",
         "city": "Burlington",
-        "geometry": { "type": "Point", "coordinates": [-79.80, 43.33] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -79.8,
+                43.33
+            ]
+        }
     },
-    "data": "https://mapping.burlington.ca/arcgisweb/rest/services/COB/AddressPoints/MapServer/0",
-    "website": "http://cms.burlington.ca/Page12956.aspx",
-    "license": "http://cms.burlington.ca/AssetFactory.aspx?did=18762",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-            "STREET",
-            "STRTYPE",
-            "STRDIR"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNIT"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://mapping.burlington.ca/arcgisweb/rest/services/COB/AddressPoints/MapServer/0",
+                "website": "https://navburl-burlington.opendata.arcgis.com/datasets/address-points",
+                "license": {
+                    "url": "https://www.burlington.ca/en/services-for-you/resources/Ongoing_Projects/Open_Data/OpenDataBurlingtonTermsOfUseSeptember192011.pdf",
+                    "text": "Datasets are publicly available from the City under these Terms of Use",
+                    "attibrution name": "City of Burlington",
+                    "attribution": true
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "STREET",
+                        "STRTYPE",
+                        "STRDIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNIT"
+                    ]
+                }
+            }
         ]
     }
 }

@@ -9,20 +9,22 @@
         "state": "va",
         "county": "Smyth"
     },
-    "data": "https://www.webgis.net/arcgis/rest/services/VA/Smyth/MapServer/15",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "ADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "ADDRESS"
-        },
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP5"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/SmythCo_WebGIS/MapServer/32",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "unit": "Unit",
+                    "street": "ROADNAME",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                }
+            }
+        ]
     }
 }

@@ -3,7 +3,7 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -90.250,
+                -90.25,
                 35.129
             ]
         },
@@ -17,20 +17,28 @@
         "county": "Shelby",
         "city": "Memphis"
     },
-    "data": "http://mapview.memphistn.gov/arcgis/rest/services/AGO_MapMemphis/MapMemphis_Addresses/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STRTNUM",
-        "unit": "APTNBR",
-        "street": [
-            "STRTDIR",
-            "STRTNAME",
-            "STRTDES",
-            "SUFFDIR"
-        ],
-        "postcode": "ZipCodes",
-        "city": "City",
-        "region": "State"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://mapview.memphistn.gov/arcgis/rest/services/AGO_MapMemphis/MapMemphis_Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STRTNUM",
+                    "unit": "APTNBR",
+                    "street": [
+                        "STRTDIR",
+                        "STRTNAME",
+                        "STRTDES",
+                        "SUFFDIR"
+                    ],
+                    "postcode": "ZipCodes",
+                    "city": "City",
+                    "region": "State"
+                }
+            }
+        ]
     }
 }

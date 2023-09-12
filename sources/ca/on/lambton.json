@@ -4,20 +4,32 @@
         "state": "on",
         "county": "Lambton"
     },
-    "type": "http",
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/fd83c4/ca-on-lambton.geojson.zip",
-    "compression": "zip",
-    "conform":{
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "ADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "ADDRESS"
-        },
-        "city": "MUNICIPALITY"
-    },
-    "note": "Token Required - https://www.lambtongis.ca/sites/?viewer=lcgis"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://www.lambtongis.ca/arcgis_adaptor/rest/services/OpenData/AddressPoints/MapServer/0",
+                "website": "https://county-lambton.opendata.arcgis.com/datasets/address-points",
+                "license": {
+                    "url": "https://county-lambton.opendata.arcgis.com/pages/open-data-license",
+                    "text": "Contains information licensed under the Open Government Licence - County of Lambton",
+                    "attribution name": "Open Government License 2.0 - County of Lambton",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": "STNUM",
+                    "street": [
+                        "STNAME",
+                        "STTYPE",
+                        "STDIR"
+                    ],
+                    "city": "MUNICIPALITY"
+                }
+            }
+        ]
+    }
 }

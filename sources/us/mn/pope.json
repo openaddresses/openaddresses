@@ -9,19 +9,27 @@
         "state": "mn",
         "county": "Pope"
     },
-    "data": "http://gis.co.pope.mn.us/arcgis/rest/services/OpenData/OpenData/MapServer/0/",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": {
-            "function": "regexp",
-            "field": "FULLADDR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "postcode": "ZIP",
-        "city": "MUNICIPALITY",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.co.pope.mn.us/arcgis/rest/services/OpenData/OpenData/MapServer/0/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": {
+                        "function": "regexp",
+                        "field": "FULLADDR",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "postcode": "ZIP",
+                    "city": "MUNICIPALITY",
+                    "region": "STATE"
+                }
+            }
+        ]
     }
 }

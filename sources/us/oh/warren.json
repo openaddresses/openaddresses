@@ -9,26 +9,28 @@
         "state": "oh",
         "county": "Warren"
     },
-    "data": "http://webmap1.co.warren.oh.us/gisdatadownloads/WCGISDownload_Cadastral.zip",
-    "license": "http://www.co.warren.oh.us/warrengis/Parcel_Data/Terms_Parcel.aspx",
-    "website": "http://www.co.warren.oh.us/warrengis/",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "gdb",
-        "file": "WCGISDownload_Cadastral/ParcelsAndRoads.gdb",
-        "layer": "Warren_Parcels",
-        "number": [
-             "STREET_NBR",
-             "STREET_FRCTN"
-        ],
-        "street": [
-            "STREET_DIR",
-            "STREET_NAME",
-            "STREET_TYPE"
-        ],
-        "city": "MAIL_ADDRESS_3",
-        "region": "TOWNSHIP_NAME",
-        "postcode": "MAIL_ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.co.warren.oh.us/arcgis/rest/services/Dynamic/ParcelLabelsAddr/MapServer/0",
+                "license": "http://www.co.warren.oh.us/warrengis/Parcel_Data/Terms_Parcel.aspx",
+                "website": "http://www.co.warren.oh.us/warrengis/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                         "STREET_NBR",
+                         "STREET_FRCTN"
+                    ],
+                    "street": [
+                        "STREET_DIR",
+                        "STREET_NAME",
+                        "STREET_TYPE"
+                    ]
+                }
+            }
+        ]
     }
 }

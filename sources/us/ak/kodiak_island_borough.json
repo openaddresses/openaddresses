@@ -9,13 +9,51 @@
         "state": "ak",
         "county": "Kodiak Island Borough"
     },
-    "data": "http://services1.arcgis.com/R5BNizttyFKxRSMm/arcgis/rest/services/AddressPoints/FeatureServer/0",
-    "website": "http://www.arcgis.com/home/item.html?id=f829e1f3642c4222a807ae5b5b8d46e5",
-    "license": "Unknown",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "NUMBER",
-        "street": ["PREFIX", "NAME", "TYPE"]
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/R5BNizttyFKxRSMm/arcgis/rest/services/KIB_AddressPoints/FeatureServer/0",
+                "website": "http://www.arcgis.com/home/item.html?id=f829e1f3642c4222a807ae5b5b8d46e5",
+                "license": "Unknown",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "NUMBER",
+                    "street": [
+                        "STREET_DIR",
+                        "STREET_NAME",
+                        "STREET_TYPE"
+                    ],
+                    "unit": "UNIT"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.arcgis.com/home/item.html?id=c032e29955d845659772b8d06765cca6",
+                "license": "Unknown",
+                "data": "https://services1.arcgis.com/R5BNizttyFKxRSMm/ArcGIS/rest/services/KIB_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PROP_ID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "website": "https://www.arcgis.com/home/item.html?id=0abf466d84724a33ae451a29f401af35",
+                "license": "Unknown",
+                "data": "https://services1.arcgis.com/R5BNizttyFKxRSMm/ArcGIS/rest/services/Buildings2015/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

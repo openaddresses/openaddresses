@@ -1,17 +1,33 @@
 {
     "coverage": {
-        "US Census": {"geoid": "04027", "name": "Yuma County", "state": "Arizona"},
+        "US Census": {
+            "geoid": "04027",
+            "name": "Yuma County",
+            "state": "Arizona"
+        },
         "country": "us",
         "state": "az",
         "county": "Yuma"
     },
-    "data": "http://gis.yumacountyaz.gov/ArcGIS/rest/services/YumaCounty/MapServer/128",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ST_NUM",
-        "street": ["ST_DIR", "ST_NAME", "ST_DESIG"],
-        "unit": "UNIT",
-        "city": "CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.yumacountyaz.gov/ArcGIS/rest/services/YumaCounty/MapServer/128",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ST_NUM",
+                    "street": [
+                        "ST_DIR",
+                        "ST_NAME",
+                        "ST_DESIG"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY"
+                }
+            }
+        ]
     }
 }

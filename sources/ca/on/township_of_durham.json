@@ -3,24 +3,44 @@
         "country": "ca",
         "state": "on",
         "city": "Durham",
-        "geometry": { "type": "Point", "coordinates": [-79.14,43.85] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -79.14,
+                43.85
+            ]
+        }
     },
-    "data": "https://maps.durham.ca/arcgis/rest/services/Open_Data/Durham_OpenData/MapServer/0",
-    "website": "https://www.durham.ca/corpservices.asp?nr=/departments/corpservices/it/gis/opendata.htm&setFooter=/includes/GISfooter.inc",
-    "license": "https://www.durham.ca/corpservices.asp?nr=/departments/corpservices/it/gis/opendatalicense.htm&setFooter=/includes/GISfooter.inc",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "CIVIC_NUM",
-            "CIVIC_SFX"
-        ],
-        "street": [
-            "ROAD_NAME",
-            "ROAD_TYPE",
-            "ROAD_DIR"
-        ],
-        "unit": "UNIT_NUM",
-        "city": "MUNICIPALITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.durham.ca/arcgis/rest/services/Open_Data/Durham_OpenData/MapServer/0",
+                "website": "https://opendata.durham.ca/datasets/civic-addresses",
+                "license": {
+                    "url": "https://www.durham.ca/en/regional-government/resources/Documents/OpenDataLicenceAgreement.pdf",
+                    "text": "Contains public sector Information made available under The Regional Municipality of Durham's Open Data Licence",
+                    "attribution name": "Region of Durham - Open Data Licence v.1.0",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "CIVIC_NUM",
+                        "CIVIC_SFX"
+                    ],
+                    "street": [
+                        "ROAD_NAME",
+                        "ROAD_TYPE",
+                        "ROAD_DIR"
+                    ],
+                    "unit": "UNIT_NUM",
+                    "city": "MUNICIPALITY"
+                }
+            }
+        ]
     }
 }

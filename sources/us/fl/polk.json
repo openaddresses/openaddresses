@@ -1,0 +1,46 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "12105",
+            "name": "Polk County",
+            "state": "Florida"
+        },
+        "country": "us",
+        "state": "fl",
+        "county": "Polk"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.polk-county.net/hosting/rest/services/Accela/APO_Layer_Map/MapServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "unit": "Unit_Number",
+                    "street": [
+                        "Street_Name",
+                        "Street_Suffix",
+                        "Street_Direction"
+                    ],
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.polk-county.net/hosting/rest/services/Accela/APO_Layer_Map/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
+    }
+}

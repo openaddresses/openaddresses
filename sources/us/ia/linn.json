@@ -9,23 +9,31 @@
         "state": "ia",
         "county": "Linn"
     },
-    "data": "https://gis.linncounty.org/arcgis/rest/services/PublicLayer/lyrRealEstate/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENO",
-        "street": [
-            "PREDIR",
-            "PRETYPE",
-            "NAME",
-            "SUFTYPE",
-            "SUFDIR"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNITNO"
-        ],
-        "postcode": "ZIP",
-        "city": "CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.linncounty.org/arcgis/rest/services/PublicLayer/lyrRealEstate/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENO",
+                    "street": [
+                        "PREDIR",
+                        "PRETYPE",
+                        "NAME",
+                        "SUFTYPE",
+                        "SUFDIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITNO"
+                    ],
+                    "postcode": "ZIP",
+                    "city": "CITY"
+                }
+            }
+        ]
     }
 }

@@ -1,26 +1,37 @@
 {
     "coverage": {
-        "US Census": {"geoid": "47187", "name": "Williamson County", "state": "Tennessee"},
+        "US Census": {
+            "geoid": "47187",
+            "name": "Williamson County",
+            "state": "Tennessee"
+        },
         "country": "us",
         "state": "tn",
         "county": "Williamson"
     },
-    "data": "http://arcgis.williamsoncounty-tn.gov/ArcGIS/rest/services/Williamson/MapServer/3",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://arcgis2.williamsoncounty-tn.gov/arcgis/rest/services/Williamson/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^([0-9]+)( .*)",
+                        "replace": "$1"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }
-

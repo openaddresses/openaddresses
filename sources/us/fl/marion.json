@@ -9,19 +9,39 @@
         "state": "fl",
         "county": "Marion"
     },
-    "data": "https://gis.marioncountyfl.org/arcgis/rest/services/Geocortex/AddressPnts/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NU",
-        "street": [
-            "PREFIX",
-            "STREET_NA",
-            "TYPE",
-            "SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.marionfl.org/public/rest/services/Onemap/AddressPoints_withCF/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NU",
+                    "street": [
+                        "PREFIX",
+                        "STREET_NA",
+                        "TYPE",
+                        "SUFFIX"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP_CODE"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "CITY",
-        "postcode": "ZIP_CODE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.marionfl.org/public/rest/services/Onemap/Parcels_withoutCF/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL"
+                }
+            }
+        ]
     }
 }

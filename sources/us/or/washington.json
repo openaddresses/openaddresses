@@ -9,18 +9,43 @@
         "state": "or",
         "county": "Washington"
     },
-    "data": "http://mtbachelor.co.washington.or.us/arcgiswa2/rest/services/Intermap/Situs_address_WMAS/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NUMBER",
-        "street": [
-            "PRE_DIRECTION",
-            "STREET_NAME",
-            "STREET_TYPE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gispub.co.washington.or.us/server/rest/services/Open_Data/Open_Data_AGOL/MapServer/0",
+                "website": "https://washcoopendata-washco.hub.arcgis.com/datasets/washco::address-points/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUMBER",
+                    "street": [
+                        "PRE_DIRECTION",
+                        "STREET_NAME",
+                        "STREET_TYPE"
+                    ],
+                    "unit": [
+                        "UNIT_NUMBER",
+                        "UNIT_TYPE"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "id": "TAXLOT"
+                }
+            }
         ],
-        "city": "CITY",
-        "postcode": "ZIP",
-        "id": "TAXLOT"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gispub.co.washington.or.us/server/rest/services/Open_Data/Open_Data_AGOL/MapServer/1",
+                "website": "https://washcoopendata-washco.hub.arcgis.com/datasets/washco::tax-lots/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TLNO"
+                }
+            }
+        ]
     }
 }

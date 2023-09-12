@@ -1,0 +1,61 @@
+{
+    "coverage": {
+        "country": "us",
+        "state": "ak",
+        "county": "Wrangell City and Borough"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.wrangell.com/planning/online-parcel-mapping-and-data",
+                "license": {
+                    "url": "https://hub.arcgis.com/datasets/CarlsbadNM::address/explore?location=32.385210%2C-104.211521%2C12.73"
+                },
+                "data": "https://services7.arcgis.com/7cBSaoaaRaH5ojZy/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ST_ADDRES"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ST_ADDRES"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.wrangell.com/planning/online-parcel-mapping-and-data",
+                "license": {
+                    "url": "https://hub.arcgis.com/datasets/1ab11d9f6c2b4ee186743e3da3bd7fab_0/explore"
+                },
+                "data": "https://services7.arcgis.com/7cBSaoaaRaH5ojZy/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNUM"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "website": "https://www.wrangell.com/planning/online-parcel-mapping-and-data",
+                "license": {
+                    "url": "https://hub.arcgis.com/datasets/10c1c59d0b054ad8bf8e750b957bf7d8_0/explore?location=56.396395%2C-132.316157%2C12.00"
+                },
+                "data": "https://services7.arcgis.com/7cBSaoaaRaH5ojZy/ArcGIS/rest/services/BuildingFootprints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

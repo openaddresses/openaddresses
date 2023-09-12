@@ -17,20 +17,28 @@
             ]
         }
     },
-    "type": "ESRI",
-    "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/CityofDickinsonElectric/MapServer/4",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "PROPADDRESS",
-            "pattern": "^(\\S+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PROPADDRESS",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/CityofDickinsonElectric/MapServer/4",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "PROPADDRESS",
+                        "pattern": "^(\\S+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "PROPADDRESS",
+                        "pattern": "^(?:\\S+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }

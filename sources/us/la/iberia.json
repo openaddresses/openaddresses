@@ -9,14 +9,22 @@
         "state": "la",
         "county": "Iberia"
     },
-    "data": "http://services.geoportalmaps.com/arcgis/rest/services/Iberia_Parcels/MapServer/3",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "Address_Nu",
-        "street": [
-            "Street_Dir",
-            "Street_Nam"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://services.geoportalmaps.com/arcgis/rest/services/Iberia_Parcels/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Address_Nu",
+                    "street": [
+                        "Street_Dir",
+                        "Street_Nam"
+                    ]
+                }
+            }
         ]
     }
 }

@@ -9,32 +9,40 @@
             "type": "Point",
             "coordinates": [
                 -116.233,
-                43.600
+                43.6
             ]
         },
         "country": "us",
         "state": "id",
         "city": "Boise"
     },
-    "data": "http://gismaps.cityofboise.org/arcgis/rest/services/Korterra/MapServer/31",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "AddNum",
-        "street": [
-            "StPreMod",
-            "StPreDir",
-            "StPrefix",
-            "StName",
-            "StSuffix",
-            "StPostDir",
-            "StPostMod"
-        ],
-        "unit": [
-          "PrUnitType",
-          "PrUnitID"
-        ],
-        "city": "CommName",
-        "postcode": "Zip4"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gismaps.cityofboise.org/arcgis/rest/services/Korterra/MapServer/31",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "AddNum",
+                    "street": [
+                        "StPreMod",
+                        "StPreDir",
+                        "StPrefix",
+                        "StName",
+                        "StSuffix",
+                        "StPostDir",
+                        "StPostMod"
+                    ],
+                    "unit": [
+                        "PrUnitType",
+                        "PrUnitID"
+                    ],
+                    "city": "CommName",
+                    "postcode": "Zip4"
+                }
+            }
+        ]
     }
 }

@@ -9,12 +9,43 @@
         "state": "va",
         "county": "Madison"
     },
-    "data": "https://www.webgis.net/arcgis/rest/services/VA/MadisonCo_WebGIS1/MapServer/15",
-    "type": "ESRI",
-    "conform": {
-        "street": "ROADNAME",
-        "number": "ADDRESS",
-        "unit": "APARTMENT",
-        "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/MadisonCo_WebGIS1/MapServer/19",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "Unit",
+                    "number": "Add_Number",
+                    "street": "ROADNAME",
+                    "city": "COMMUNITY",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/MadisonCo_WebGIS1/MapServer/20",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/MadisonCo_WebGIS1/MapServer/22",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

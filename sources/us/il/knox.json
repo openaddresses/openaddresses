@@ -9,20 +9,28 @@
         "state": "il",
         "county": "Knox"
     },
-    "data": "http://gis.co.knox.il.us/arcgis/rest/services/Test_1/Parcel_service_V4/MapServer/12",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "GIS_Table.dbo.gis_data.site_addr",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "GIS_Table.dbo.gis_data.site_addr",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.co.knox.il.us/arcgis/rest/services/Test_1/Parcel_service_V4/MapServer/12",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "GIS_Table.dbo.gis_data.site_addr",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "GIS_Table.dbo.gis_data.site_addr",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }

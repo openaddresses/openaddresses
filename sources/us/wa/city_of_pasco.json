@@ -1,0 +1,64 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -119.12799,
+                46.2504
+            ]
+        },
+        "US Census": {
+            "geoid": "5353545",
+            "name": "City of Pasco",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa",
+        "county": "Franklin",
+        "city": "Pasco"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://services5.arcgis.com/Mrjxd32WJFxUIHrM/ArcGIS/rest/services/Addresses/FeatureServer/0",
+                "website": "https://data-cityofpasco.opendata.arcgis.com/datasets/CityofPasco::address/about",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": "COMPLETE_ADDRESS_NUMBER",
+                    "street": "COMPLETE_ST_NAME",
+                    "unit": "COMPLETE_SUBADDRESS",
+                    "city": "PLACE_NAME",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://services5.arcgis.com/Mrjxd32WJFxUIHrM/arcgis/rest/services/Parcel/FeatureServer/0",
+                "website": "https://data-cityofpasco.opendata.arcgis.com/datasets/CityofPasco::parcel/about",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNUMBER"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://services5.arcgis.com/Mrjxd32WJFxUIHrM/arcgis/rest/services/Building/FeatureServer/0",
+                "website": "https://data-cityofpasco.opendata.arcgis.com/datasets/CityofPasco::building/about",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

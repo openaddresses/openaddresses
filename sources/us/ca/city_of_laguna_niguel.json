@@ -1,0 +1,55 @@
+{
+    "coverage": {
+        "country": "us",
+        "state": "ca",
+        "city": "Laguna Niguel"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis.cityoflagunaniguel.org:6080/arcgis/rest/services/Parcels_Address_Points/MapServer/1",
+                "license": {
+                    "url": "https://www.cityoflagunaniguel.org/705/Maps"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "UNIT",
+                    "number": "STNUM",
+                    "street": {
+                        "function": "chain",
+                        "variable": "street_wip",
+                        "functions": [
+                            {
+                                "function": "postfixed_street",
+                                "field": "SITEADDRESS"
+                            },
+                            {
+                                "function": "remove_postfix",
+                                "field": "street_wip",
+                                "field_to_remove": "UNIT"
+                            }
+                        ]
+                    },
+                    "postcode": "SITEZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "http://gis.cityoflagunaniguel.org:6080/arcgis/rest/services/Parcels_Address_Points/MapServer/0",
+                "license": {
+                    "url": "https://www.cityoflagunaniguel.org/705/Maps"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL"
+                }
+            }
+        ]
+    }
+}

@@ -9,26 +9,34 @@
         "state": "va",
         "county": "James City"
     },
-    "website": "https://www.jamescitycountyva.gov/assessments/gis-mapping-layers.html",
-    "data": "ftp://property.jamescitycountyva.gov/GIS/layers/JCC_Address_Points.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "note": {
-        "email": "propertyinfo@jamescitycountyva.gov",
-        "phone": "757-253-6650",
-        "metadata": "ftp://property.jamescitycountyva.gov/GIS/layers/GIS_Metadata.pdf"
-    },
-    "conform": {
-        "type": "shapefile",
-        "number": "ADDR_NUM",
-        "street": [
-            "PRE_DIR",
-            "PLAINST",
-            "STREETTYPE",
-            "SUF_DIR"
-        ],
-        "unit": "APT",
-        "city": "City",
-        "postcode": "Zip_Code"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.jamescitycountyva.gov/assessments/gis-mapping-layers.html",
+                "data": "ftp://property.jamescitycountyva.gov/GIS/layers/JCC_Address_Points.zip",
+                "protocol": "ftp",
+                "compression": "zip",
+                "note": {
+                    "email": "propertyinfo@jamescitycountyva.gov",
+                    "phone": "757-253-6650",
+                    "metadata": "ftp://property.jamescitycountyva.gov/GIS/layers/GIS_Metadata.pdf"
+                },
+                "conform": {
+                    "format": "shapefile",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "PLAINST",
+                        "STREETTYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": "APT",
+                    "city": "City",
+                    "postcode": "Zip_Code"
+                }
+            }
+        ]
     }
 }

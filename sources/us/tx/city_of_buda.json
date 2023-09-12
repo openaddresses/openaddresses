@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -97.84411, 30.085365 ]
+            "coordinates": [
+                -97.84411,
+                30.085365
+            ]
         },
         "US Census": {
             "geoid": "4811080",
@@ -14,23 +17,31 @@
         "county": "Hays",
         "city": "Buda"
     },
-    "data": "https://services6.arcgis.com/vXZW4vAaPRr14z2s/arcgis/rest/services/Address_Point/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": [
-            "ADDR_NUM",
-            "ADDNUM_SUF"
-        ],
-        "street": [
-            "PRE_DIR",
-            "PRE_TYPE",
-            "ST_NAME",
-            "ST_TYPE"
-        ],
-        "city": "POSTAL_COM",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP",
-        "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services6.arcgis.com/vXZW4vAaPRr14z2s/arcgis/rest/services/Address_Point/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": [
+                        "ADDR_NUM",
+                        "ADDNUM_SUF"
+                    ],
+                    "street": [
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "ST_NAME",
+                        "ST_TYPE"
+                    ],
+                    "city": "POSTAL_COM",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

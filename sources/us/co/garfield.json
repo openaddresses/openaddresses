@@ -9,21 +9,38 @@
         "state": "co",
         "county": "Garfield"
     },
-    "type": "ftp",
-    "data": "http://www.garfield-county.com/geographic-information-systems/documents/parcels/ParcelsSHP.zip",
-    "website": "http://www.garfield-county.com/geographic-information-systems/index.aspx",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile-polygon",
-        "number": {
-            "function": "prefixed_number",
-            "field": "PHYSADDRES"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "PHYSADDRES"
-        },
-        "postcode": "PHYSZIP",
-        "city": "PHYSCITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [{
+            "name": "county",
+            "protocol": "ESRI",
+            "data": "https://maps.garfield-county.com/arcgis/rest/services/webmaps/parcels/MapServer/0",
+            "website": "https://data-garfieldcolorado.opendata.arcgis.com/datasets/garfieldcolorado::garfield-county-parcels",
+            "license": "https://data-garfieldcolorado.opendata.arcgis.com/datasets/garfieldcolorado::garfield-county-parcels",
+            "conform": {
+                "format": "geojson",
+                "number": {
+                    "function": "prefixed_number",
+                    "field": "PHYSADDRESS"
+                },
+                "street": {
+                    "function": "postfixed_street",
+                    "field": "PHYSADDRESS"
+                },
+                "postcode": "PHYSZIP",
+                "city": "PHYSCITY"
+            }
+        }],
+        "parcels": [{
+            "name": "county",
+            "protocol": "ESRI",
+            "data": "https://maps.garfield-county.com/arcgis/rest/services/webmaps/parcels/MapServer/0",
+            "website": "https://data-garfieldcolorado.opendata.arcgis.com/datasets/garfieldcolorado::garfield-county-parcels",
+            "license": "https://data-garfieldcolorado.opendata.arcgis.com/datasets/garfieldcolorado::garfield-county-parcels",
+            "conform": {
+                "format": "geojson",
+                "pid": "PARCELNB"
+            }
+        }]
     }
 }

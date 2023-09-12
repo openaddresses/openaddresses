@@ -9,22 +9,61 @@
         "state": "or",
         "county": "Clatsop"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "gdb",
-        "file": "Delivery/addresses_oregon.gdb",
-        "layer": "Clatsop",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITUS_ADDR"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITUS_ADDR"
-        },
-        "city": "SITUS_CITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://delta.co.clatsop.or.us/server/rest/services/Hosted/Address_Points/FeatureServer/0",
+                "website": "https://delta.co.clatsop.or.us/portal/home/item.html?id=b67a684ec29d4f64a85a13033ba5469b",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "addnum",
+                        "addnumsuf"
+                    ],
+                    "street": [
+                        "premod",
+                        "predir",
+                        "pretype",
+                        "pretypesep",
+                        "strname",
+                        "posttype",
+                        "postdir",
+                        "postmod"
+                    ],
+                    "unit": [
+                        "unitdesc",
+                        "unitno"
+                    ],
+                    "city": "postcomm",
+                    "postcode": "zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://delta.co.clatsop.or.us/server/rest/services/Taxlots/FeatureServer/1",
+                "website": "https://delta.co.clatsop.or.us/portal/home/item.html?id=4946b9334ae64e518c081829d53c561e",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAXLOTKEY"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://delta.co.clatsop.or.us/server/rest/services/Hosted/Address_Points/FeatureServer/0",
+                "website": "https://delta.co.clatsop.or.us/portal/home/item.html?id=4fd33ef85e264df290f8a965ad859044",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

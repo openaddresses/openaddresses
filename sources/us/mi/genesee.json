@@ -9,16 +9,24 @@
         "state": "mi",
         "county": "Genesee"
     },
-    "data": "http://services2.arcgis.com/5ckbIY7K9TUKoseK/ArcGIS/rest/services/Parcels/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "PropNum",
-        "street": [
-            "PropDir",
-            "PropStreet"
-        ],
-        "city": "PropCity",
-        "postcode": "PropZip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://services2.arcgis.com/5ckbIY7K9TUKoseK/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "PropNum",
+                    "street": [
+                        "PropDir",
+                        "PropStreet"
+                    ],
+                    "city": "PropCity",
+                    "postcode": "PropZip"
+                }
+            }
+        ]
     }
 }

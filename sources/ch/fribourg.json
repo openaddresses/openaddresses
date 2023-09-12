@@ -6,17 +6,25 @@
             "alpha2": "CH-FR"
         }
     },
-    "data": "http://www.sit.fr.ch/arcgis/rest/services/Coordonnees/Adresses_rues/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "DEINR",
-        "street": "STRNAME1",
-        "city": {
-            "function": "regexp",
-            "pattern": "^(.*?)(?:\\s+FR)?\\s*$",
-            "field" :"LOCALITE"
-        },
-        "postcode": "PLZ4"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "http://www.sit.fr.ch/arcgis/rest/services/Coordonnees/Adresses_rues/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "DEINR",
+                    "street": "STRNAME1",
+                    "city": {
+                        "function": "regexp",
+                        "pattern": "^(.*?)(?:\\s+FR)?\\s*$",
+                        "field": "LOCALITE"
+                    },
+                    "postcode": "PLZ4"
+                }
+            }
+        ]
     }
 }

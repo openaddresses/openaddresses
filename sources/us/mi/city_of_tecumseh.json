@@ -16,17 +16,25 @@
         "state": "mi",
         "city": "Tecumseh"
     },
-    "data": "https://services6.arcgis.com/vseBlcrQsepHsjub/ArcGIS/rest/services/tecumseh_parcel/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "Address"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "Address"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services6.arcgis.com/vseBlcrQsepHsjub/ArcGIS/rest/services/tecumseh_parcel/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Address"
+                    }
+                }
+            }
+        ]
     }
 }

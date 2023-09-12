@@ -1,6 +1,10 @@
 {
     "coverage": {
-        "US Census": {"geoid": "39095", "name": "Lucas County", "state": "Ohio"},
+        "US Census": {
+            "geoid": "39095",
+            "name": "Lucas County",
+            "state": "Ohio"
+        },
         "country": "us",
         "state": "oh",
         "county": "Lucas",
@@ -13,18 +17,26 @@
             ]
         }
     },
-    "data": "http://services1.arcgis.com/JVJnGNgPBDy0lB85/ArcGIS/rest/services/Parcels/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": "ADRNO",
-        "street": [
-            "ADRDIR",
-            "ADRSTR",
-            "ADRSUF"
-        ],
-        "unit": "UNITNO",
-        "city": "CITYNAME",
-        "type": "geojson",
-        "postcode": "ZIP1"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://services1.arcgis.com/JVJnGNgPBDy0lB85/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "ADRNO",
+                    "street": [
+                        "ADRDIR",
+                        "ADRSTR",
+                        "ADRSUF"
+                    ],
+                    "unit": "UNITNO",
+                    "city": "CITYNAME",
+                    "format": "geojson",
+                    "postcode": "ZIP1"
+                }
+            }
+        ]
     }
 }

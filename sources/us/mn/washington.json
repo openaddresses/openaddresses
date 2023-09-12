@@ -9,20 +9,27 @@
         "state": "mn",
         "county": "Washington"
     },
-    "data": "http://maps.co.washington.mn.us/arcgis/rest/services/Public/Public_Parcels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "BLDG_NUM",
-        "street": [
-            "PREFIX_DIR",
-            "PREFIXTYPE",
-            "STREETNAME",
-            "STREETTYPE",
-            "SUFFIX_DIR"
-        ],
-        "unit": "UNIT_INFO",
-        "city": "CITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/3fjYPqJf7qalQMlb/arcgis/rest/services/address_points/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ANUMBER",
+                    "street": "ST_CONCAT",
+                    "unit": [
+                        "SUB_TYPE1",
+                        "SUB_ID1"
+                    ],
+                    "city": "MSAG_C",
+                    "district": "CO_NAME",
+                    "region": "STATE_CODE",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

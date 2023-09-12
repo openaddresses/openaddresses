@@ -9,15 +9,43 @@
         "state": "tx",
         "county": "Denton"
     },
-    "data": "http://services.arcgis.com/9dTWrhPzuDPnUVXr/ArcGIS/rest/services/County_Parcels/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "SITUS_NUM",
-        "street": [
-            "SITUS_PREF",
-            "SITUS_STRE",
-            "SITUS_SUFI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.dentoncounty.gov/arcgis/rest/services/Public_Safety/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": [
+                        "PD",
+                        "PT",
+                        "SN",
+                        "ST",
+                        "SD"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "district": "County",
+                    "region": "State"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.dentoncounty.gov/arcgis/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "prop_id"
+                }
+            }
         ]
     }
 }

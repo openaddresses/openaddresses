@@ -16,18 +16,26 @@
             ]
         }
     },
-    "data": "https://gis.lakelandgov.net/arcgis/rest/services/Services/Lakeland10_Addresses/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "COL_HOUSENUM",
-        "street": [
-            "COL_PREFIX",
-            "COL_STREETNAME",
-            "COL_TYPE",
-            "COL_SUFFIX"
-        ],
-        "unit": "COL_APT",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.lakelandgov.net/arcgis/rest/services/Services/Lakeland10_Addresses/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "COL_HOUSENUM",
+                    "street": [
+                        "COL_PREFIX",
+                        "COL_STREETNAME",
+                        "COL_TYPE",
+                        "COL_SUFFIX"
+                    ],
+                    "unit": "COL_APT",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

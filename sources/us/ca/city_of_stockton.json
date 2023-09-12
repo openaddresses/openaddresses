@@ -1,0 +1,64 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -121.291,
+                37.958
+            ]
+        },
+        "US Census": {
+            "geoid": "0675000",
+            "name": "City of Stockton",
+            "state": "California"
+        },
+        "country": "us",
+        "state": "ca",
+        "city": "Stockton"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://www.stocktonca.gov/files/Addresses.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "AddNumber",
+                    "unit": "Suite",
+                    "street": [
+                        "StrDirect",
+                        "StrName",
+                        "StrType"
+                    ],
+                    "postcode": "Zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "http://www.stocktonca.gov/files/Parcels.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "APN_CHR"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "http://www.stocktonca.gov/files/BuildingFootprints.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile"
+                }
+            }
+        ]
+    }
+}

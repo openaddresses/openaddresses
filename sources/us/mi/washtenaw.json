@@ -9,20 +9,28 @@
         "state": "mi",
         "county": "Washtenaw"
     },
-    "conform": {
-        "type": "geojson",
-        "number": "PROP_STREET_NUM",
-        "street": {
-            "function": "regexp",
-            "field": "PROP_STREET",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "city": "PROP_CITY",
-        "region": "PROP_STATE",
-        "postcode": "PROP_ZIP"
-    },
-    "data": "http://webmaps.ewashtenaw.org/arcgisshared/rest/services/ParcelPublish/MapServer/1",
-    "type": "ESRI",
-    "website": "http://www.ewashtenaw.org/government/departments/gis/MapWashtenaw_Main.htm"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "number": "PROP_STREET_NUM",
+                    "street": {
+                        "function": "regexp",
+                        "field": "PROP_STREET",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": "PROP_CITY",
+                    "region": "PROP_STATE",
+                    "postcode": "PROP_ZIP"
+                },
+                "data": "http://webmaps.ewashtenaw.org/arcgisshared/rest/services/ParcelPublish/MapServer/1",
+                "protocol": "ESRI",
+                "website": "http://www.ewashtenaw.org/government/departments/gis/MapWashtenaw_Main.htm"
+            }
+        ]
+    }
 }

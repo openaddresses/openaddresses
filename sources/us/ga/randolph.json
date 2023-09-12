@@ -1,29 +1,41 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13243", "name": "Randolph County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13243",
+            "name": "Randolph County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Randolph"
     },
-    "data": "http://data.openaddresses.io/cache/us-ga-randolph_county.csv",
-    "type": "http",
-    "conform": {
-        "type": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "region": "REGION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/Ug5xGQbHsD8zuZzM/arcgis/rest/services/RandolphAddresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StNumber",
+                    "street": "Road",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/ISpzx3B5ZsVA6e1Z/ArcGIS/rest/services/Randolph_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ]
     }
 }
-

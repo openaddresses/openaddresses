@@ -11,28 +11,39 @@
             ]
         }
     },
-    "data": "https://data.openaddresses.io/cache/uploads/ingalls/ca-mb-city_of_winnipeg.csv",
-    "note": "See original PR for script to convert from open data format to OA CSV",
-    "website": "https://data.winnipeg.ca/City-Planning/Addresses/cam2-ii3u",
-    "type": "http",
-    "conform": {
-        "type": "csv",
-        "lat": "Geometry",
-        "number": [
-            "Street Number",
-            "Street Number Suffix"
-        ],
-        "street": [
-            "Street Name",
-            "Street Type",
-            "Street Direction"
-        ],
-        "unit": [
-            "Unit Type",
-            "Unit Number"
-        ],
-        "lat": "X",
-        "lon":"Y"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://data.winnipeg.ca/api/geospatial/cam2-ii3u?method=export&format=Shapefile",
+                "website": "https://data.winnipeg.ca/City-Planning/Addresses/cam2-ii3u",
+                "license": {
+                    "url": "https://data.winnipeg.ca/stories/s/Open-Data-Licence/rwzh-4ijx/",
+                    "text": "Contains information licensed under the Open Government Licence - CITY OF WINNIPEG",
+                    "attribution name": "The City of Winnipeg",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": [
+                        "street_num",
+                        "street_n_2"
+                    ],
+                    "street": [
+                        "street_nam",
+                        "street_typ",
+                        "street_dir"
+                    ],
+                    "unit": [
+                        "unit_type",
+                        "unit_numbe"
+                    ]
+                }
+            }
+        ]
     }
 }
-

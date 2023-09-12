@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "country": "us",
+        "state": "ca",
+        "city": "Brea"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gisweb.cityofbrea.net/arcgis/rest/services/Building/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "UNIT",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "ADDR_PD",
+                        "ADDR_SN",
+                        "ADDR_ST"
+                    ],
+                    "city": "CITY",
+                    "postcode": "POSTAL",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gisweb.cityofbrea.net/arcgis/rest/services/Building/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
+    }
+}

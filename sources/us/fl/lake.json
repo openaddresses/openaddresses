@@ -9,28 +9,73 @@
         "state": "fl",
         "county": "Lake"
     },
-    "attribution": "Lake County",
-    "data": "ftp://ftp.co.lake.fl.us/GIS/GisDownloads/Shapefiles/AddressPoints.zip",
-    "website": "http://www.lakecountyfl.gov/departments/information_technology/geographic_information_services/datadownloads.aspx",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "number": "addressnum",
-        "street": [
-            "prefixtype",
-            "basestreet",
-            "suffixtype"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Lake County",
+                "data": "https://gis.lakecountyfl.gov/lakegis/rest/services/InteractiveMap/MapServer/16",
+                "website": "https://gis.lakecountyfl.gov/gisweb/",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "AddressNumber",
+                    "street": [
+                        "PrefixDirection",
+                        "PrefixType",
+                        "BaseStreetName",
+                        "SuffixType"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "UnitNumber"
+                    ],
+                    "city": "PostalCity",
+                    "region": "State",
+                    "postcode": "ZipCode"
+                }
+            }
         ],
-        "unit": [
-          "UnitType",
-          "UnitNumber"
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Lake County",
+                "data": "https://gis.lakecountyfl.gov/lakegis/rest/services/InteractiveMap/MapServer/20",
+                "website": "https://gis.lakecountyfl.gov/gisweb/",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNumber"
+                }
+            }
         ],
-        "type": "shapefile",
-        "postcode": "zipcode"
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Lake County",
+                "data": "https://gis.lakecountyfl.gov/lakegis/rest/services/InteractiveMap/MapServer/66",
+                "website": "https://gis.lakecountyfl.gov/gisweb/",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

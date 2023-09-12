@@ -9,30 +9,40 @@
         "state": "or",
         "county": "Tillamook"
     },
-    "data": "ftp://ftp.lcog.org//lcog/Outgoing/TillamookECD/Tillamook_Deliverable_2017_10_30.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "type": "gdb",
-        "file": "Tillamook_Deliverable.gdb",
-        "layer": "Address_Point",
-        "number": [
-            "stnum",
-            "stnumsuf"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/JnnlTIrcZLzs7d68/ArcGIS/rest/services/Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNumbe",
+                    "street": [
+                        "PreDirecti",
+                        "PreType",
+                        "StreetName",
+                        "PostType",
+                        "PostTypeSu",
+                        "PostDirect"
+                    ],
+                    "unit": "UNIT",
+                    "city": "PostalCity",
+                    "postcode": "Zip"
+                }
+            }
         ],
-        "street": [
-            "predir",
-            "name",
-            "type",
-            "sufdir"
-        ],
-        "unit": [
-            "unit_type",
-            "unit"
-        ],
-        "city": "postcomm",
-        "district": "county",
-        "region": "state",
-        "postcode": "zip"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/JnnlTIrcZLzs7d68/ArcGIS/rest/services/Taxlots/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MapTaxlot"
+                }
+            }
+        ]
     }
 }

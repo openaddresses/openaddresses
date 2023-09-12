@@ -16,23 +16,53 @@
         "state": "ca",
         "city": "Anaheim"
     },
-    "data": "https://gis.anaheim.net/server/rest/services/OpenData/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "ADDR_ID",
-        "number": [
-            "ADDR_ST_NMBR",
-            "ADDR_ST_FRAC"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.anaheim.net/map/rest/services/OpenData/MapServer/1",
+                "website": "https://data-anaheim.opendata.arcgis.com/datasets/anaheim::address-points/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDR_ID",
+                    "number": [
+                        "ADDR_ST_NMBR",
+                        "ADDR_ST_FRAC"
+                    ],
+                    "street": [
+                        "ADDR_ST_PFX",
+                        "ADDR_ST_NAME",
+                        "ADDR_ST_NAME_SFX",
+                        "ADDR_ST_SFX"
+                    ],
+                    "unit": "ADDR_ST_UNIT",
+                    "city": "POSTALCITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "street": [
-            "ADDR_ST_PFX",
-            "ADDR_ST_NAME",
-            "ADDR_ST_NAME_SFX",
-            "ADDR_ST_SFX"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.anaheim.net/map/rest/services/ParcelInfo/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
         ],
-        "unit": "ADDR_ST_UNIT",
-        "city": "POSTALCITY",
-        "postcode": "ZIPCODE"
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.anaheim.net/map/rest/services/OpenData2/FeatureServer/47",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

@@ -9,22 +9,42 @@
         "state": "ak",
         "county": "Ketchikan Gateway"
     },
-    "data": "http://web1.mobile311.com/arcgis/rest/services/Alaska/Ketchikan/MapServer/17",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "LOC_STNO",
-        "street": [
-            "LOC_STNAME",
-            "LOC_SUFFIX",
-            "LOC_POSTDI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.borough.ketchikan.ak.us/196/GIS-Maps",
+                "license": {
+                    "url": "https://portico.mygisonline.com/html5/?viewer=ketchikanak"
+                },
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/KetchikanAKFeatures/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "LOC_UNIT",
+                    "number": "LOC_STNO",
+                    "street": ["LOC_PREDIR", "LOC_STNAME", "LOC_SUFFIX", "LOC_POSTDI"],
+                    "city": "LOC_CITY",
+                    "region": "LOC_STATE",
+                    "postcode": "LOC_ZIP"
+                }
+            }
         ],
-        "unit": [
-            "LOC_UNITTY",
-            "LOC_UNIT"
-        ],
-        "city": "LOC_CITY",
-        "region": "LOC_STATE",
-        "postcode": "LOC_ZIP"
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.borough.ketchikan.ak.us/196/GIS-Maps",
+                "license": {
+                    "url": "https://portico.mygisonline.com/html5/?viewer=ketchikanak"
+                },
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/KetchikanAKFeatures/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNO"
+                }
+            }
+        ]
     }
 }

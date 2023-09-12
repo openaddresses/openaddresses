@@ -1,27 +1,39 @@
 {
     "coverage": {
-        "US Census": {"geoid": "37101", "name": "Johnston County", "state": "North Carolina"},
+        "US Census": {
+            "geoid": "37101",
+            "name": "Johnston County",
+            "state": "North Carolina"
+        },
         "country": "us",
         "state": "nc",
         "county": "Johnston"
     },
-    "data": "http://data.openaddresses.io/cache/uploads/ingalls/us-nc-johnston.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": [
-            "ST_NUMBER",
-            "ST_NUMSUFF"
-        ],
-        "unit": "UNIT",
-        "street": [
-            "ST_PREFIXD",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SFX",
-            "ST_SUFFIXD"
-        ],
-        "city": "COMMUNITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.openaddresses.io/cache/uploads/ingalls/us-nc-johnston.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": [
+                        "ST_NUMBER",
+                        "ST_NUMSUFF"
+                    ],
+                    "unit": "UNIT",
+                    "street": [
+                        "ST_PREFIXD",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SFX",
+                        "ST_SUFFIXD"
+                    ],
+                    "city": "COMMUNITY"
+                }
+            }
+        ]
     }
 }

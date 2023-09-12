@@ -1,29 +1,41 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13271", "name": "Telfair County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13271",
+            "name": "Telfair County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Telfair"
     },
-    "data": "http://data.openaddresses.io/cache/us-ga-telfair_county.csv",
-    "type": "http",
-    "conform": {
-        "type": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "region": "REGION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/ISpzx3B5ZsVA6e1Z/arcgis/rest/services/Telfair_Webmap/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "House_No",
+                    "street": [
+                        "Road",
+                        "Rd_Type"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/ISpzx3B5ZsVA6e1Z/arcgis/rest/services/Telfair_Webmap/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
+                }
+            }
+        ]
     }
 }
-

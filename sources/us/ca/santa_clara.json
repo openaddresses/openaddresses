@@ -9,23 +9,57 @@
         "state": "ca",
         "county": "Santa Clara"
     },
-    "conform": {
-        "type": "shapefile",
-        "postcode": "ZIPCODE",
-        "city": "CITY",
-        "number": "HOUSENUMTE",
-        "street": [
-            "STREETPREF",
-            "STREETNAME",
-            "STREETTYPE",
-            "STREETSUFF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "housenumte",
+                    "unit": "unitnumber",
+                    "street": [
+                        "streetpref",
+                        "streetname",
+                        "streettype",
+                        "streetsuff"
+                    ],
+                    "city": "city",
+                    "postcode": "zipcode"
+                },
+                "attribution": "Santa Clara County",
+                "data": "https://data.sccgov.org/api/geospatial/k4vk-5ggi?method=export&format=Shapefile",
+                "website": "https://data.sccgov.org/Government/AddressPoint/k4vk-5ggi",
+                "protocol": "http",
+                "compression": "zip"
+            }
         ],
-        "unit": "UNITNUMBER"
-    },
-    "attribution": "Santa Clara County",
-    "data": "https://github.com/datadesk/us-ca-santa_clara_county-gis-shp/blob/master/Q4_FY14_Address_Point.zip?raw=true",
-    "website": "https://sftp.sccgov.org/courier/web/1000@/wmLogin.html",
-    "type": "http",
-    "compression": "zip",
-    "note": "File download is behind a registration wall on government site so the zip was downloaded in November 2014 and uploaded to GitHub for public hosting."
+        "parcels": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "APN"
+                },
+                "attribution": "Santa Clara County",
+                "data": "https://data.sccgov.org/api/geospatial/efbr-ze7f?accessType=DOWNLOAD&method=export&format=Shapefile",
+                "website": "https://data.sccgov.org/Government/Parcels/efbr-ze7f",
+                "protocol": "http",
+                "compression": "zip"
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "shapefile"
+                },
+                "attribution": "Santa Clara County",
+                "data": "https://data.sccgov.org/api/geospatial/wrkr-gfvf?accessType=DOWNLOAD&method=export&format=Shapefile",
+                "website": "https://data.sccgov.org/Housing-Development/Buildings-Footprints-2D/wrkr-gfvf",
+                "protocol": "http",
+                "compression": "zip"
+            }
+        ]
+    }
 }

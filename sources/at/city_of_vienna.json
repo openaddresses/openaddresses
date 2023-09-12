@@ -1,24 +1,32 @@
 {
-	"coverage": {
-		"country": "at",
-		"state": "Wien",
-		"ISO 3166": {
-			"alpha2": "AT-9"
-		}
-	},
-	"type": "http",
-	"data": "http://www.wien.gv.at/wohnen/baupolizei/csv/gebadr.csv",
-	"website": "https://www.data.gv.at/katalog/dataset/1d5c2411-9719-4c8f-b99d-57a5f4a4ae41",
-	"license": "https://www.data.gv.at/katalog/dataset/1d5c2411-9719-4c8f-b99d-57a5f4a4ae41",
-	"conform": {
-		"type": "csv",
-		"csvsplit": ";",
-		"encoding": "latin-1",
-		"number": "NAME_ONR",
-		"street": "NAME_STR",
-		"postcode": "PLZ",
-		"lon": "ZUG_X",
-		"lat": "ZUG_Y",
-		"srs": "EPSG:31256"
-	}
+    "coverage": {
+        "country": "at",
+        "state": "Wien",
+        "ISO 3166": {
+            "alpha2": "AT-9"
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "protocol": "http",
+                "data": "http://www.wien.gv.at/wohnen/baupolizei/csv/gebadr.csv",
+                "website": "https://www.data.gv.at/katalog/dataset/1d5c2411-9719-4c8f-b99d-57a5f4a4ae41",
+                "license": "https://www.data.gv.at/katalog/dataset/1d5c2411-9719-4c8f-b99d-57a5f4a4ae41",
+                "conform": {
+                    "format": "csv",
+                    "csvsplit": ";",
+                    "encoding": "latin-1",
+                    "number": "NAME_ONR",
+                    "street": "NAME_STR",
+                    "postcode": "PLZ",
+                    "lon": "ZUG_X",
+                    "lat": "ZUG_Y",
+                    "srs": "EPSG:31256"
+                }
+            }
+        ]
+    }
 }

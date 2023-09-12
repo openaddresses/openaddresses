@@ -9,17 +9,36 @@
         "state": "co",
         "county": "Eagle"
     },
-    "conform": {
-        "type": "geojson",
-        "number": "STREETNO",
-        "street": [
-            "STREETDIR",
-            "STREETNAME",
-            "STREETSUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREETNO",
+                    "street": [
+                        "STREETDIR",
+                        "STREETNAME",
+                        "STREETSUF"
+                    ],
+                    "unit": "STREETALP",
+                    "city": "LOCCITY"
+                },
+                "data": "https://map.eaglecounty.us/arcgiswa/rest/services/FlexApp/Address_ForSearch/MapServer/0",
+                "protocol": "ESRI"
+            }
         ],
-        "unit": "STREETALP",
-        "city": "LOCCITY"
-    },
-    "data": "http://gismap.eaglecounty.us/arcgiswa/rest/services/FlexApp/Address_ForLabel/MapServer/0",
-    "type": "ESRI"
+        "parcels": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NUM"
+                },
+                "data": "https://map.eaglecounty.us/arcgiswa/rest/services/FlexApp/Parcel_Viewer/FeatureServer/0/",
+                "protocol": "ESRI"
+            }
+        ]
+    }
 }

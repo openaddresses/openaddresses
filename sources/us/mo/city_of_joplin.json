@@ -1,0 +1,42 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -94.502058,
+                37.07762
+            ]
+        },
+        "US Census": {
+            "geoid": "2937592",
+            "name": "Joplin",
+            "state": "Missouri"
+        },
+        "country": "us",
+        "state": "mo",
+        "city": "Joplin"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services6.arcgis.com/f6278XvXrNz6PmsX/ArcGIS/rest/services/JoplinAddressPoints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "NUMBER",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SERV_ADD",
+                        "may_contain_units": true
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "SERV_ADD"
+                    }
+                }
+            }
+        ]
+    }
+}

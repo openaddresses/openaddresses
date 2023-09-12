@@ -7,27 +7,74 @@
         "country": "us",
         "state": "nc"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/2b9f60/us-nc-statewide.geojson.zip",
-    "website": "http://data.nconemap.com/geoportal/catalog/search/resource/details.page?uuid=%7B9E039D56-5202-43E7-8D36-D09414C0DBD6%7D",
-    "note": "The layer name says the data is from 2014 so it may be 3 years out of date.  The FTP site at ftp.nconemap.com/outgoing/vector/ is password-protected.  This data has been sourced from https://services.nconemap.gov/secure/rest/services/NC1Map_Location/MapServer/0",
-    "year": "2014",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "ADDR_HN",
-            "SUB_HN"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://s3.amazonaws.com/dit-cgia-gis-data/NCOM-data/addresses/addressnc-addresses-04-14-2023.zip",
+                "website": "https://www.nconemap.gov/datasets/nconemap::nc-onemap-addresses-addressnc/about",
+                "license": {
+                    "url": "https://www.nconemap.gov/pages/terms"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "year": 2023,
+                "conform": {
+                    "format": "gdb",
+                    "number": [
+                        "add_number",
+                        "addnum_suffix"
+                    ],
+                    "street": [
+                        "st_predir",
+                        "st_premod",
+                        "st_presep",
+                        "st_pretyp",
+                        "st_name",
+                        "st_posdir",
+                        "st_posmod",
+                        "st_postyp"
+                    ],
+                    "unit": "unit",
+                    "city": "post_comm",
+                    "district": "county",
+                    "region": "state",
+                    "postcode": "post_code"
+                }
+            }
         ],
-        "unit": "APT_UNIT",
-        "street": [
-            "ADDR_PD",
-            "ADDR_SN",
-            "ADDR_ST",
-            "ADDR_SD"
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://s3.amazonaws.com/dit-cgia-gis-data/NCOM-data/parcels/NC-Parcels-fgdb-04-28-2023.zip",
+                "website": "https://www.nconemap.gov/datasets/nconemap::north-carolina-parcels-polygons/about",
+                "license": {
+                    "url": "https://www.nconemap.gov/pages/terms"
+                },
+                "year": 2023,
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "pid": "parno"
+                }
+            }
         ],
-        "city": "COMMUNITY",
-        "postcode": "ZIPCODE",
-        "district": "COUNTY_NAME"
+        "buildings": [
+            {
+                "name": "state",
+                "data": "https://opendata.arcgis.com/api/v3/datasets/2d07f32b93184a758be29dc1f41344bd_0/downloads/data?format=fgdb&spatialRefId=3857&where=1%3D1",
+                "website": "https://www.nconemap.gov/datasets/NCEM-GIS::nc-buildings-footprints-2010/about",
+                "license": {
+                    "url": "https://www.nconemap.gov/pages/terms"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb"
+                }
+            }
+        ]
     }
 }

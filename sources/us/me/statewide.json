@@ -7,21 +7,29 @@
         "country": "us",
         "state": "me"
     },
-    "data": "https://gis2.maine.gov/arcgis/rest/services/escb/Maine_E911_NG_Addresses_Roads/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRESS_NUMBER",
-        "street": [
-            "PREDIR",
-            "STREETNAME",
-            "SUFFIX",
-            "POSTDIR"
-        ],
-        "unit": "UNIT",
-        "city": "MUNICIPALI",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://gis.maine.gov/arcgis/rest/services/Location/Maine_E911_Addresses_Roads_PSAP/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS_NUMBER",
+                    "street": [
+                        "PREDIR",
+                        "STREETNAME",
+                        "SUFFIX",
+                        "POSTDIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "MUNICIPALITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

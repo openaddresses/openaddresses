@@ -3,25 +3,33 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                12.250,
+                12.25,
                 58.003
             ]
         },
         "country": "se",
         "city": "Alingsås"
     },
-    "data": "http://gisak.alingsas.se/arcgis/rest/services/Administrativt/Adresser/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "AddressPlace",
-        "street": "StreetName",
-        "city": "PostCity",
-        "postcode": {
-            "function": "regexp",
-            "field": "PostCode",
-            "pattern": "^([\\d]{3})([\\d]{2})$",
-            "replace": "$1 $2"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gisak.alingsas.se/arcgis/rest/services/Administrativt/Adresser/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "AddressPlace",
+                    "street": "StreetName",
+                    "city": "PostCity",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "PostCode",
+                        "pattern": "^([\\d]{3})([\\d]{2})$",
+                        "replace": "$1 $2"
+                    }
+                }
+            }
+        ]
     }
 }

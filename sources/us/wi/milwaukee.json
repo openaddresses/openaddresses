@@ -9,26 +9,59 @@
         "state": "wi",
         "county": "Milwaukee"
     },
-    "data": "http://lio.milwaukeecounty.org/arcgis/rest/services/Location/Location/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "ADDRESS_ID",
-        "number": "HOUSENO",
-        "street": [
-            "DIR",
-            "STREET",
-            "STTYPE",
-            "PDIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://lio.milwaukeecountywi.gov/arcgis/rest/services/Addressing/Address_Points/MapServer/0",
+                "website": "https://gis-mclio.opendata.arcgis.com/datasets/MCLIO::address-points/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "Source_OID",
+                    "number": "HouseNo",
+                    "street": [
+                        "Dir",
+                        "Street",
+                        "StType",
+                        "PDir"
+                    ],
+                    "unit": "Unit",
+                    "city": "Muni",
+                    "postcode": "Zip_Code",
+                    "accuracy": 1
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "MUNI",
-        "postcode": {
-            "function": "regexp",
-            "field": "ZIP_CODE",
-            "pattern": "^([\\d]{5})([\\d]{4})$",
-            "replace": "$1-$2"
-        },
-        "accuracy": 1
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://lio.milwaukeecountywi.gov/arcgis/rest/services/PropertyInfo/Parcels/MapServer/4",
+                "website": "https://gis-mclio.opendata.arcgis.com/datasets/MCLIO::parcels-with-property-information/about",
+                "license": {
+                    "attribution name": "Milwaukee County Land Information Office"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MAP_ID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/MILWAUKEE_BUILDINGS_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/D1309335-0EC9-4F16-AED9-6A3FC1E9DBD0",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "MILWAUKEE_BUILDINGS_2023"
+                }
+            }
+        ]
     }
 }

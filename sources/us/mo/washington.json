@@ -1,16 +1,28 @@
 {
     "coverage": {
-        "US Census": {"geoid": "29221", "name": "Washington County", "state": "Missouri"},
+        "US Census": {
+            "geoid": "29221",
+            "name": "Washington County",
+            "state": "Missouri"
+        },
         "country": "us",
         "state": "mo",
         "county": "Washington"
     },
-    "data": "https://www.semogis.com/ArcGIS/rest/services/WashCo/WashAssess/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "id": "PIN",
-        "street": "ADDRESS",
-        "number": "HOUSENUM",
-        "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.semogis.com/ArcGIS/rest/services/WashCo/WashAssess/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "id": "PIN",
+                    "street": "ADDRESS",
+                    "number": "HOUSENUM",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

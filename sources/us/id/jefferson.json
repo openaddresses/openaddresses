@@ -9,22 +9,51 @@
         "state": "id",
         "county": "Jefferson"
     },
-    "data": "http://maps.co.jefferson.id.us/arcgis/rest/services/Labels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NUM",
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "unit": [
-            "SB_UNIT_TP",
-            "SB_UNIT"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://grant.co.jefferson.id.us/arcgis/rest/services/Labels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUM",
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "unit": [
+                        "SB_UNIT_TP",
+                        "SB_UNIT"
+                    ],
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "city": "COMMUNITY",
-        "postcode": "ZIP"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://grant.co.jefferson.id.us/arcgis/rest/services/Cadastre/MapServer/12",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Enterprise.dbo.T_PARCEL.PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://grant.co.jefferson.id.us/arcgis/rest/services/BuildingFootprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

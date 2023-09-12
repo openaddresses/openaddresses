@@ -1,0 +1,49 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55121",
+            "name": "Sawyer County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Sawyer"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/TAYLOR_ADDRESSES_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/979AA68B-42AF-4B8F-8B3F-6C10661A269A",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "RUSK_ADDRESSES_2023",
+                    "number": "ADDR_NUMB",
+                    "street": "ROAD_NAME",
+                    "city": "MCD",
+                    "district": "CO",
+                    "region": "STATE",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Taylor_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/04A810FF-A339-4144-B98E-FE28A50FD309",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
+    }
+}

@@ -16,29 +16,88 @@
         "state": "or",
         "city": "Portland Metro"
     },
-    "data": "http://library.oregonmetro.gov/rlisdiscovery/master_address.zip",
-    "license": {
-        "url": "http://www.oregonmetro.gov/sites/default/files/Open_Database_and_Content_Licenses.pdf",
-        "text": "Open Database License (ODbL) v1.0",
-        "attribution": true,
-        "attribution name": "Oregon Metro",
-        "share-alike": true
-    },
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "HOUSE",
-        "street": [
-            "FDPRE",
-            "FNAME",
-            "FTYPE",
-            "FDSUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/McQ0OlIABe29rJJy/ArcGIS/rest/services/Master_Address_File_MAF/FeatureServer/0",
+                "website": "https://rlisdiscovery.oregonmetro.gov/datasets/drcMetro::master-address-file-maf-1/about",
+                "contact": {
+                    "name": "Alicia Wood",
+                    "phone": "503-813-7561",
+                    "email": "alicia.wood@oregonmetro.gov"
+                },
+                "license": {
+                    "url": "https://rlisdiscovery.oregonmetro.gov/pages/open-database-license",
+                    "text": "RLIS Open Database End User License",
+                    "attribution": true,
+                    "attribution name": "Oregon Metro",
+                    "share-alike": true
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "HOUSE",
+                    "street": [
+                        "FDPRE",
+                        "FNAME",
+                        "FTYPE",
+                        "FDSUF"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NO"
+                    ],
+                    "city": "MAIL_CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP",
+                    "format": "geojson",
+                    "accuracy": 2
+                }
+            }
         ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NO"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://www.arcgis.com/sharing/rest/content/items/9d3c396ffad44649bc7451465aa300f0/data",
+                "website": "https://rlisdiscovery.oregonmetro.gov/datasets/taxlots-public-download/about",
+                "contact": {
+                    "name": "Christine Rutan",
+                    "phone": "503-797-1669",
+                    "email": "christine.rutan@oregonmetro.gov"
+                },
+                "license": {
+                    "url": "https://rlisdiscovery.oregonmetro.gov/pages/open-database-license",
+                    "text": "RLIS Open Database End User License",
+                    "attribution": true,
+                    "attribution name": "Oregon Metro",
+                    "share-alike": true
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "pid": "TLID",
+                    "format": "shapefile"
+                }
+            }
         ],
-        "type": "shapefile",
-        "postcode": "zip"
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/McQ0OlIABe29rJJy/ArcGIS/rest/services/Building_Footprint_Database/FeatureServer/0",
+                "website": "https://rlisdiscovery.oregonmetro.gov/datasets/drcMetro::building-footprint-database-1/about",
+                "license": {
+                    "url": "https://rlisdiscovery.oregonmetro.gov/pages/open-database-license",
+                    "text": "RLIS Open Database End User License",
+                    "attribution": true,
+                    "attribution name": "Oregon Metro",
+                    "share-alike": true
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

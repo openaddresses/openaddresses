@@ -9,22 +9,66 @@
         "state": "fl",
         "county": "Lee"
     },
-    "data": "http://leegis.leegov.com/FTPData/Shapefiles/LandRecords/ParcelCondoAddressPoints.zip",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://www.leegov.com/gis/data",
-    "license": {
-        "text": "Indemnification",
-        "url": "http://www.leegov.com/gis/data/gis-data",
-        "attribution": false,
-        "share-alike": false
-    },
-    "conform": {
-        "type": "shapefile",
-        "number": "SITENUMBER",
-        "street": "SITESTREET",
-        "unit": "SITEUNIT",
-        "city": "SITECITY",
-        "postcode": "SITEZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gismapserver.leegov.com/gisserver910/rest/services/Layers/NG911AddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "website": "https://maps.leegov.com/datasets/ng911-address-points-file-geodatabase/about",
+                "license": {
+                    "text": "Indemnification",
+                    "url": "http://www.leegov.com/gis/data/gis-data",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": "AddressNumber",
+                    "street": "SITESTREET",
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "PostalCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gismapserver.leegov.com/gisserver910/rest/services/Layers/ParcelAddress/MapServer/0",
+                "protocol": "ESRI",
+                "website": "https://maps.leegov.com/datasets/parcels-file-geodatabase/about",
+                "license": {
+                    "text": "Indemnification",
+                    "url": "http://www.leegov.com/gis/data/gis-data",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "pid": "STRAP"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/LvWGAAhHwbCJ2GMP/arcgis/rest/services/Building_Footprints/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "https://maps.leegov.com/datasets/LeeGIS::building-footprints-1/about",
+                "license": {
+                    "text": "Indemnification",
+                    "url": "http://www.leegov.com/gis/data/gis-data",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

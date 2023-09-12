@@ -1,19 +1,31 @@
 {
     "coverage": {
-        "US Census": {"geoid": "20079", "name": "Harvey County", "state": "Kansas"},
+        "US Census": {
+            "geoid": "20079",
+            "name": "Harvey County",
+            "state": "Kansas"
+        },
         "country": "us",
         "state": "ks",
         "county": "Harvey"
     },
-    "conform": {
-        "type": "csv",
-        "number": "NUM",
-        "street": "STR",
-        "city": "CITY",
-        "postcode": "ZIP",
-        "lon": "LON",
-        "lat": "LAT"
-    },
-    "data": "http://data.openaddresses.io/cache/us-ks-harvey_county.csv",
-    "type": "http"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "csv",
+                    "number": "NUM",
+                    "street": "STR",
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "lon": "LON",
+                    "lat": "LAT"
+                },
+                "data": "https://data.openaddresses.io/cache/us-ks-harvey_county.csv",
+                "protocol": "http"
+            }
+        ]
+    }
 }

@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27149",
+            "name": "Stevens County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Stevens"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.stevens.mn.us/arcgis/rest/services/LandRecords/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Prop_Add"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Prop_Add"
+                    },
+                    "postcode": "Prop_Zip"
+                }
+            }
+        ]
+    }
+}

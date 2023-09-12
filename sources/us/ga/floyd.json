@@ -1,0 +1,40 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "13115",
+            "name": "Floyd County",
+            "state": "Georgia"
+        },
+        "country": "us",
+        "state": "ga",
+        "county": "Floyd"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://romefloyd.agdmaps.com/server/rest/services/Hosted/Addresses/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": "st_number",
+                    "street": "road_name",
+                    "city": "city",
+                    "postcode": "zip_code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://romefloyd.agdmaps.com/server/rest/services/Hosted/ParcelViewerData/FeatureServer/4",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcel_no"
+                }
+            }
+        ]
+    }
+}

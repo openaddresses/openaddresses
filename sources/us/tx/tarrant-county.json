@@ -9,21 +9,29 @@
         "state": "tx",
         "county": "Tarrant"
     },
-    "data": "https://mapit.tarrantcounty.com/arcgis/rest/services/Dynamic/TADParcels/MapServer/0",
-    "website": "https://gisit.tarrantcounty.com/publicmapviewer/",
-    "attribution": "",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STREET_NO",
-        "street": [
-            "PREDIR",
-            "STREET_NAM",
-            "STREET_TYP",
-            "POSTDIR"
-        ],
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://mapit.tarrantcounty.com/arcgis/rest/services/Dynamic/TADParcels/MapServer/0",
+                "website": "https://gisit.tarrantcounty.com/publicmapviewer/",
+                "attribution": "",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREET_NO",
+                    "street": [
+                        "PREDIR",
+                        "STREET_NAM",
+                        "STREET_TYP",
+                        "POSTDIR"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

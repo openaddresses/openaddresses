@@ -9,20 +9,28 @@
         "state": "il",
         "county": "Cumberland"
     },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_cumberland_co_il_gismap/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "SITE_ADDRESS",
-            "pattern": "^([0-9]+[A-Z]?)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SITE_ADDRESS",
-            "pattern": "^(?:[0-9]+[A-Z]? +)(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_cumberland_co_il_gismap/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "SITE_ADDRESS",
+                        "pattern": "^([0-9]+[A-Z]?)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "SITE_ADDRESS",
+                        "pattern": "^(?:[0-9]+[A-Z]? +)(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }

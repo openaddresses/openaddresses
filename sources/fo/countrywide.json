@@ -6,13 +6,21 @@
             "country": "Faroe Islands"
         }
     },
-    "data": "http://gis.us.fo/arcgis/rest/services/adressur/adressa/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "husanr",
-        "street": "vegur",
-        "city": "bybygd",
-        "postcode": "postnr"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "https://gis.us.fo/arcgis/rest/services/adressur/us_adr_husanr_litir/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "house_no",
+                    "street": "street_name",
+                    "city": "city",
+                    "postcode": "zip"
+                }
+            }
+        ]
     }
 }

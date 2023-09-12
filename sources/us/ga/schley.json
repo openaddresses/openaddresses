@@ -1,29 +1,42 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13249", "name": "Schley County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13249",
+            "name": "Schley County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Schley"
     },
-    "data": "http://data.openaddresses.io/cache/us-ga-schley_county.csv",
-    "type": "http",
-    "conform": {
-        "type": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "region": "REGION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/Ug5xGQbHsD8zuZzM/arcgis/rest/services/SchleyAddresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "F7",
+                    "street": [
+                        "F11",
+                        "F13"
+                    ],
+                    "postcode": "F17"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/iXA1dC6ldRMKRwra/arcgis/rest/services/Schley_County_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_No"
+                }
+            }
+        ]
     }
 }
-
