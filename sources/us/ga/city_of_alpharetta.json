@@ -17,23 +17,31 @@
         "county": "Fulton",
         "city": "Alpharetta"
     },
-    "data": "http://alphagis.alpharetta.ga.us/arcgis/rest/services/OpenData/AddressPoints_OD/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "StNumber",
-        "street": [
-            "PreMod",
-            "PreDir",
-            "PreType",
-            "Name",
-            "PostType",
-            "PostDir",
-            "PostMod"
-        ],
-        "unit": "UnitActual",
-        "city": "City",
-        "region": "State",
-        "postcode": "Zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://alphagis.alpharetta.ga.us/arcgis/rest/services/OpenData/AddressPoints_OD/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StNumber",
+                    "street": [
+                        "PreMod",
+                        "PreDir",
+                        "PreType",
+                        "Name",
+                        "PostType",
+                        "PostDir",
+                        "PostMod"
+                    ],
+                    "unit": "UnitActual",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
+        ]
     }
 }

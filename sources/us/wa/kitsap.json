@@ -9,18 +9,61 @@
         "state": "wa",
         "county": "Kitsap"
     },
-    "license": "http://www.kitsapgov.com/county/disclaimer.htm",
-    "type": "ftp",
-    "compression": "zip",
-    "note": "point shapefile siteaddr.shp, address columns: FULL_ADDR, CITY, STATE, ZIP_CODE",
-    "year": "2014",
-    "data": "ftp://kcftp2.co.kitsap.wa.us/gis/datacd/arcview/layers/parcel/siteaddr.zip",
-    "website": "http://www.kitsapgov.com/gis/metadata/",
-    "conform": {
-        "type": "shapefile",
-        "number": "HOUSE_NO",
-        "street": ["STREETNAME", "STREETTYPE"],
-        "city": "CITY",
-        "postcode": "ZIP_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "license": {
+                    "url": "https://www.kitsapgov.com/dis/Pages/resources.aspx#disclaimer"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "note": "point shapefile siteaddr.shp, address columns: FULL_ADDR, CITY, STATE, ZIP_CODE",
+                "data": "https://ftp.co.kitsap.wa.us/data/gis/datacd/arcview/layers/parcel/siteaddr.zip",
+                "website": "https://www.kitsapgov.com/dis/Pages/resources.aspx",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "HOUSE_NO",
+                    "street": [
+                        "STREETNAME",
+                        "STREETTYPE"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "license": {
+                    "url": "https://www.kitsapgov.com/dis/Pages/resources.aspx#disclaimer"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://ftp.co.kitsap.wa.us/data/gis/datacd/arcview/layers/parcel/parcels.zip",
+                "website": "https://www.kitsapgov.com/dis/Pages/resources.aspx",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "license": {
+                    "url": "https://www.kitsapgov.com/dis/Pages/resources.aspx#disclaimer"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://ftp.co.kitsap.wa.us/data/gis/datacd/arcview/layers/parcel/footprints.zip",
+                "website": "https://www.kitsapgov.com/dis/Pages/resources.aspx",
+                "conform": {
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

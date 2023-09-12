@@ -3,16 +3,36 @@
         "country": "ca",
         "state": "on",
         "city": "Ottawa",
-        "geometry": { "type": "Point", "coordinates": [-75.70, 45.42] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -75.7,
+                45.42
+            ]
+        }
     },
-    "data": "http://data.ottawa.ca/dataset/9603c5e9-7de6-49b4-b3a1-25c913badc36/resource/8413789d-2a37-4a58-bfc3-c56efe02d29a/download/address-points.shp.zip",
-    "website": "http://data.ottawa.ca/dataset/address-points-main-and-subordinates",
-    "license": "http://ottawa.ca/en/mobile-apps-and-open-data/open-data-terms-use",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "type": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.ottawa.ca/arcgis/rest/services/Municipal_Address/MapServer/0",
+                "website": "https://open.ottawa.ca/datasets/municipal-address-points?geometry=-77.500%2C44.911%2C-74.092%2C45.587",
+                "license": {
+                    "url": "https://ottawa.ca/en/city-hall/get-know-your-city/open-data#open-data-licence-version-2-0",
+                    "text": "Contains information licensed under the Open Government Licence – City of Ottawa",
+                    "attribution name": "Open Government Licence – City of Ottawa",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "UNITID",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME"
+                }
+            }
+        ]
     }
 }

@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "46067",
+            "name": "Hutchinson County",
+            "state": "South Dakota"
+        },
+        "country": "us",
+        "state": "sd",
+        "county": "Hutchinson"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/HUTCHINSON_COUNTY_LAYERS/MapServer/16",
+                "protocol": "ESRI",
+                "conform": {
+                    "id": "UniqueSiteID",
+                    "number": "Z",
+                    "street": [
+                        "D",
+                        "ST"
+                    ],
+                    "city": "COMMUNITY",
+                    "region": "STATE",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/HUTCHINSON_COUNTY_LAYERS/MapServer/14",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCEL_ID",
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

@@ -11,19 +11,27 @@
             ]
         }
     },
-    "data": "https://maps.pickering.ca/arcgisinter/rest/services/public/OpenData/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUMBE",
-        "street": [
-            "STREET",
-            "STREETTYPE"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNITNUMBER"
-        ],
-        "city": "CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.pickering.ca/arcgisinter/rest/services/public/OpenData/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUMBE",
+                    "street": [
+                        "STREET",
+                        "STREETTYPE"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITNUMBER"
+                    ],
+                    "city": "CITY"
+                }
+            }
+        ]
     }
 }

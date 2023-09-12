@@ -9,21 +9,29 @@
         "state": "ks",
         "county": "Dickinson"
     },
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "CRS.dbo.DKBasemap.PropertyAddress",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "CRS.dbo.DKBasemap.PropertyAddress",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "postcode": ""
-    },
-    "data": "http://67.214.197.22/arcgis/rest/services/BasicMap2013/MapServer/7",
-    "type": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "CRS.dbo.DKBasemap.PropertyAddress",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "CRS.dbo.DKBasemap.PropertyAddress",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "postcode": ""
+                },
+                "data": "http://67.214.197.22/arcgis/rest/services/BasicMap2013/MapServer/7",
+                "protocol": "ESRI"
+            }
+        ]
+    }
 }

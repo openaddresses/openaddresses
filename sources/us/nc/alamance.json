@@ -9,31 +9,39 @@
         "state": "nc",
         "county": "Alamance"
     },
-    "data": "http://apps.alamance-nc.com/gisftp/Streets_Addresses_Parcels_CityLimits_ETJ.zip",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://apps.alamance-nc.com/gisftp/",
-    "conform": {
-        "type": "shapefile",
-        "file": "Streets_Addresses_Parcels_CityLimits_ETJ/Address.shp",
-        "id": "ADDRESSID",
-        "number": [
-            "ADDRNUMBER",
-            "ADDRSUFFIX"
-        ],
-        "street": [
-            "DIRECTION",
-            "STREETNAME",
-            "STREETYPE",
-            "STREETSUFF"
-        ],
-        "unit": [
-            "UNITYPE",
-            "UNIT"
-        ],
-        "city": "JURISDICTI",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://apps.alamance-nc.com/gisftp/Addresses_Streets_CityLimits_Parcels_Shapefiles_06122019.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "website": "http://apps.alamance-nc.com/gisftp/",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "Addresses_Streets_CityLimits_Parcels_Shapefiles_06122019/Address.shp",
+                    "id": "ADDRESSID",
+                    "number": [
+                        "ADDRNUMBER",
+                        "ADDRSUFFIX"
+                    ],
+                    "street": [
+                        "DIRECTION",
+                        "STREETNAME",
+                        "STREETYPE",
+                        "STREETSUFF"
+                    ],
+                    "unit": [
+                        "UNITYPE",
+                        "UNIT"
+                    ],
+                    "city": "COMMUNITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

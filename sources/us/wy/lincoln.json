@@ -9,26 +9,43 @@
         "state": "wy",
         "county": "Lincoln"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/21a007/LincolnCoWyRuralAddresses.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "srs": "EPSG:3857",
-        "type": "shapefile",
-        "number": {
-            "function": "prefixed_number",
-            "field": "ADDRESS"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*?)(UNIT .*|$)",
-            "replace": "$1"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "(UNIT .*)$"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.lcwy.org/arcgis/rest/services/PUBLIC/Census/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*?)(UNIT .*|$)",
+                        "replace": "$1"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "(UNIT .*)$"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.lcwy.org/arcgis/rest/services/PUBLIC/Parcels_arcgis/MapServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

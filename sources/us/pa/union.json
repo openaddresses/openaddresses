@@ -9,17 +9,52 @@
         "state": "pa",
         "county": "Union"
     },
-    "data": "https://github.com/aaronpdennis/pa-county-addresses/raw/master/data/UNION/UNION_addresses.csv",
-    "type": "http",
-    "note": "Data extracted from 2009 state government collection. Individual county GIS offices may have more recent addresses.",
-    "conform": {
-        "type": "csv",
-        "number": "SAN",
-        "street": ["PRD","STP","STN","STS","POD"],
-        "city": "MCN",
-        "lon": "X",
-        "lat": "Y",
-        "id": "PIN",
-        "accuracy": 5
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "contact": {
+                    "name": "Susan Reese",
+                    "title": "GIS Director",
+                    "phone": "(570) 524-8739",
+                    "email": "sreese@unionco.org",
+                    "address": "Union County Government Center, 155 N. 15th Street, Lewisburg, PA 17837"
+                },
+                "website": "https://unioncountypa.org/gis/",
+                "data": "https://www.unionco.org/unioncomaps/rest/services/Union/UnionLandRecords/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": "fullname",
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "contact": {
+                    "name": "Susan Reese",
+                    "title": "GIS Director",
+                    "phone": "(570) 524-8739",
+                    "email": "sreese@unionco.org",
+                    "address": "Union County Government Center, 155 N. 15th Street, Lewisburg, PA 17837"
+                },
+                "website": "https://unioncountypa.org/gis/",
+                "data": "https://www.unionco.org/unioncomaps/rest/services/Union/UnionLandRecords/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNumber"
+                }
+            }
+        ]
     }
 }

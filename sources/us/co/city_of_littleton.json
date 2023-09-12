@@ -16,20 +16,49 @@
         "state": "co",
         "city": "Littleton"
     },
-    "data": "https://services6.arcgis.com/lJUBf9F1fZJRB4zT/ArcGIS/rest/services/Site_Address/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "SITEADDID",
-        "number": "SANUMBER",
-        "street": [
-            "SAPREDIR",
-            "SASTNAME",
-            "SASTTYPE",
-            "SASUFDIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services6.arcgis.com/lJUBf9F1fZJRB4zT/ArcGIS/rest/services/Address_Point/FeatureServer/120",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SITEADDID",
+                    "number": "SANUMBER",
+                    "street": [
+                        "SAPREDIR",
+                        "SASTNAME",
+                        "SASTTYPE",
+                        "SASUFDIR"
+                    ],
+                    "unit": "SAUNIT",
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "unit": "SAUNIT",
-        "city": "MUNICIPALITY",
-        "postcode": "ZIPCODE"
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services6.arcgis.com/lJUBf9F1fZJRB4zT/ArcGIS/rest/services/Building_Footprint/FeatureServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services6.arcgis.com/lJUBf9F1fZJRB4zT/ArcGIS/rest/services/Parcel/FeatureServer/14",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
     }
 }

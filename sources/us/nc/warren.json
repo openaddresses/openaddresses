@@ -9,18 +9,26 @@
         "state": "nc",
         "county": "Warren"
     },
-    "data": "http://arcgis4.roktech.net/arcgis/rest/services/Warren/GoMaps4/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADD_NUM",
-        "street": [
-            "PREDIR",
-            "ST_NAME",
-            "ST_TYPE",
-            "POSTDIR"
-        ],
-        "unit": "NEWUNIT",
-        "city": "COMMUN"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://arcgis4.roktech.net/arcgis/rest/services/Warren/GoMaps4/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADD_NUM",
+                    "street": [
+                        "PREDIR",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "POSTDIR"
+                    ],
+                    "unit": "NEWUNIT",
+                    "city": "COMMUN"
+                }
+            }
+        ]
     }
 }

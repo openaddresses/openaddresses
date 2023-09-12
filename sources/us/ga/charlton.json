@@ -1,29 +1,51 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13049", "name": "Charlton County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13049",
+            "name": "Charlton County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Charlton"
     },
-    "data": "http://data.openaddresses.io/cache/us-ga-charlton_county.csv",
-    "type": "http",
-    "conform": {
-        "type": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "region": "REGION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/PYn6bWCjT6bhw1z3/ArcGIS/rest/services/Charlton_GA_Parcel/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SITE_NBR",
+                    "street": [
+                        "SITE_DIR",
+                        "SITE_STR",
+                        "SITE_MODE",
+                        "SITE_QDRT"
+                    ],
+                    "unit": "SITE_UNIT",
+                    "city": "SITE_CITY",
+                    "region": "SITE_STATE",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "SITE_ZIP",
+                        "pattern": "^\\d{5}"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/PYn6bWCjT6bhw1z3/ArcGIS/rest/services/Charlton_GA_Parcel/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
     }
 }
-

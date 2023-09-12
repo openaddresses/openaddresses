@@ -1,26 +1,10 @@
 {
-    "type": "ESRI",
-    "data": "https://map.santaclaraca.gov/maps/rest/services/OPENDATA/CSCAddress_Active/MapServer/0",
-    "note": {
-        "update frequency": "annually"
-    },
-    "license": {
-        "attribution": true,
-        "attribution_text": "unknown"
-    },
-    "contact": {
-        "name": "Marshall",
-        "email": "marshall.ballard@gmail.com"
-    },
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": "CSCSTREET",
-        "unit": "ADDRUNIT",
-        "city": "ADDRCITY",
-        "postcode": "ADDRZIP5"
-    },
     "coverage": {
+        "US Census": {
+            "geoid": "06085",
+            "name": "Santa Clara County",
+            "state": "California"
+        },
         "country": "us",
         "state": "ca",
         "county": "Santa Clara",
@@ -28,8 +12,77 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -121.95, 37.35
+                -121.95,
+                37.35
             ]
         }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://map.santaclaraca.gov/maps/rest/services/OPENDATA/CSCAddress_Active/MapServer/0",
+                "website": "https://public-gis-missioncity.opendata.arcgis.com/datasets/missioncity::city-of-santa-clara-site-address/about",
+                "note": {
+                    "update frequency": "annually"
+                },
+                "license": {
+                    "text": "PDDL",
+                    "url": "https://public-gis-missioncity.opendata.arcgis.com/pages/terms-of-use",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "contact": {
+                    "name": "Marshall",
+                    "email": "marshall.ballard@gmail.com"
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "CSCSTREET",
+                    "unit": "ADDRUNIT",
+                    "city": "ADDRCITY",
+                    "postcode": "ADDRZIP5"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://map.santaclaraca.gov/maps/rest/services/OPENDATA/RegionalBaseOpenData/MapServer/7",
+                "website": "https://public-gis-missioncity.opendata.arcgis.com/datasets/missioncity::city-of-santa-clara-land-parcels/about",
+                "license": {
+                    "text": "PDDL",
+                    "url": "https://public-gis-missioncity.opendata.arcgis.com/pages/terms-of-use",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "year": 2015,
+                "protocol": "ESRI",
+                "data": "https://map.santaclaraca.gov/maps/rest/services/LAYERS/BuildingStructureCache/MapServer/0",
+                "website": "https://public-gis-missioncity.opendata.arcgis.com/datasets/missioncity::city-of-santa-clara-building-structure-2015/about",
+                "license": {
+                    "text": "PDDL",
+                    "url": "https://public-gis-missioncity.opendata.arcgis.com/pages/terms-of-use",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

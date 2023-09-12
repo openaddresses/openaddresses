@@ -12,15 +12,23 @@
             "name": "City of Dover",
             "state": "Delaware"
         },
-        "country": "US",
-        "state": "DE",
+        "country": "us",
+        "state": "de",
         "city": "Dover"
     },
-    "data": "https://gis.dover.de.us/arcgis/rest/services/Address_Labels/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STREET_NUM",
-        "street": "STREET"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.dover.de.us/arcgis/rest/services/Address_Labels/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREET_NUM",
+                    "street": "STREET"
+                }
+            }
+        ]
     }
 }

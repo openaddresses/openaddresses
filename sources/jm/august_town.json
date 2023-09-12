@@ -1,23 +1,37 @@
 {
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/jm/august_town.geojson",
-    "type": "http",
     "coverage": {
-        "country": "Jamaica",
+        "country": "jm",
         "city": "August Town",
-        "geometry": {"type": "Point", "coordinates": [-76.73, 18.01]}
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -76.73,
+                18.01
+            ]
+        }
     },
-    "conform": {
-        "type": "geojson",
-        "id": "@id",
-        "number": "addr:housenumber",
-        "street": "addr:street",
-        "city": "addr:city"
-    },
-    "license": {
-        "url": "http://www.openstreetmap.org/copyright",
-        "text": "ODbL",
-        "attribution": true,
-        "share-alike": true,
-        "attribution name": "OpenStreetMap contributors"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/jm/august_town.geojson",
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson",
+                    "id": "@id",
+                    "number": "addr:housenumber",
+                    "street": "addr:street",
+                    "city": "addr:city"
+                },
+                "license": {
+                    "url": "http://www.openstreetmap.org/copyright",
+                    "text": "ODbL",
+                    "attribution": true,
+                    "share-alike": true,
+                    "attribution name": "OpenStreetMap contributors"
+                }
+            }
+        ]
     }
 }

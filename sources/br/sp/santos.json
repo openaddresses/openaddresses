@@ -3,16 +3,34 @@
         "country": "br",
         "state": "sp",
         "city": "Santos",
-        "geometry": { "type": "Point", "coordinates": [-46.33, -23.96] }
-        },
-    "data": "https://egov1.santos.sp.gov.br/geoserver/santos/ows?service=WFS&version=2.0.0&request=GetFeature&typeName=santos:lotes&outputFormat=application%2Fjson&srsName=EPSG:4326",
-    "website": "https://egov1.santos.sp.gov.br/sigsantosweb20/sigsantoswebsd/",
-    "type": "http",
-    "conform": {
-        "type": "geojson",
-        "number": "numero",
-        "street": "logradouro",
-        "unit": ["andar", "sala", "complemento"],
-        "postcode": "cep"
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -46.33,
+                -23.96
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://egov1.santos.sp.gov.br/geoserver/santos/ows?service=WFS&version=2.0.0&request=GetFeature&typeName=santos:lotes&outputFormat=application%2Fjson&srsName=EPSG:4326",
+                "website": "https://egov1.santos.sp.gov.br/sigsantosweb20/sigsantoswebsd/",
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson",
+                    "number": "numero",
+                    "street": "logradouro",
+                    "unit": [
+                        "andar",
+                        "sala",
+                        "complemento"
+                    ],
+                    "postcode": "cep"
+                }
+            }
+        ]
     }
 }

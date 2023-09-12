@@ -9,22 +9,55 @@
         "state": "ca",
         "county": "Shasta"
     },
-    "attribution": "Shasta County",
-    "data": "https://github.com/datadesk/us-ca-shasta_county-ShastaCountySitusPoints-shp/blob/master/ShastaCountySitusPoints.zip?raw=true",
-    "website": "http://www.co.shasta.ca.us/index/gis_index.aspx",
-    "type": "http",
-    "compression": "zip",
-    "note": "Provided in response to a public records request and uploaded to GitHub for public hosting",
-    "conform": {
-        "type": "shapefile",
-        "city": "Community",
-        "number": "Number",
-        "street": [
-            "Street_Pre",
-            "Street_Nam",
-            "Street_Typ",
-            "Street_Suf"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Shasta County",
+                "data": "https://services2.arcgis.com/22p1CUjMjjRWlw6O/arcgis/rest/services/AddressPoints/FeatureServer/0",
+                "website": "https://data-shasta.opendata.arcgis.com/datasets/Shasta::addresspoints/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "AddressNumber",
+                    "street": [
+                        "PrefixDir",
+                        "PrefixType",
+                        "StreetName",
+                        "StreetType",
+                        "SuffixDir"
+                    ],
+                    "unit": "SpaceApt",
+                    "city": "City",
+                    "postcode": "StreetZIP"
+                }
+            }
         ],
-        "unit": "Space_Apt"
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Shasta County",
+                "data": "https://services2.arcgis.com/22p1CUjMjjRWlw6O/ArcGIS/rest/services/BuildingFootprints/FeatureServer/0",
+                "website": "https://data-shasta.opendata.arcgis.com/datasets/Shasta::buildingfootprints/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Shasta County",
+                "data": "https://services2.arcgis.com/22p1CUjMjjRWlw6O/arcgis/rest/services/Parcels/FeatureServer/0",
+                "website": "https://data-shasta.opendata.arcgis.com/datasets/Shasta::parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
     }
 }

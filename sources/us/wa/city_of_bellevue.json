@@ -16,16 +16,49 @@
         "state": "wa",
         "city": "Bellevue"
     },
-    "type": "ESRI",
-    "data": "http://gisweb.bellevuewa.gov/cobgis/rest/services/Catalog/Catalog_General/MapServer/87",
-    "conform": {
-        "type": "geojson",
-        "number": "HouseNumber",
-        "street": {
-            "function": "remove_prefix",
-            "field": "HouseNumberStreetNameFull",
-            "field_to_remove": "HouseNumber"
-        },
-        "unit": "UnitDetailFull"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "http://gisweb.bellevuewa.gov/cobgis/rest/services/Catalog/Catalog_General/MapServer/87",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNumber",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "HouseNumberStreetNameFull",
+                        "field_to_remove": "HouseNumber"
+                    },
+                    "unit": "UnitDetailFull"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://apps.bellevuewa.gov/gisdownload/Data/Property/SHP/PARCELS.zip",
+                "website": "https://bellevuewa.gov/city-government/departments/ITD/services/maps/g-i-s-data-portal",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "ParcelAFN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://apps.bellevuewa.gov/gisdownload/Data/Planning/SHP/Building.zip",
+                "website": "https://bellevuewa.gov/city-government/departments/ITD/services/maps/g-i-s-data-portal",
+                "conform": {
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

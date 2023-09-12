@@ -1,29 +1,56 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "53053",
-      "name": "Pierce County",
-      "state": "Washington"
+    "coverage": {
+        "US Census": {
+            "geoid": "53053",
+            "name": "Pierce County",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa",
+        "county": "Pierce"
     },
-    "country": "us",
-    "state": "wa",
-    "county": "Pierce"
-  },
-  "data": "https://services2.arcgis.com/1UvBaQ5y1ubjUPmd/arcgis/rest/services/Address_Points/FeatureServer/0",
-  "type": "ESRI",
-  "conform": {
-    "type": "geojson",
-    "number": {
-      "function": "prefixed_number",
-      "field": "Address"
-    },
-    "street": {
-      "function": "postfixed_street",
-      "field": "Address"
-    },
-    "unit": "Mail_Stop",
-    "city": "City",
-    "region": "State",
-    "postcode": "ZipCode"
-  }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/1UvBaQ5y1ubjUPmd/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://gisdata-piercecowa.opendata.arcgis.com/datasets/piercecowa::address-points/about",
+                "license": {
+                    "url": "https://matterhorn.co.pierce.wa.us/Disclaimer/PierceCountyGISDataTermsofUse.pdf"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Address"
+                    },
+                    "unit": "Mail_Stop",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "ZipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/1UvBaQ5y1ubjUPmd/arcgis/rest/services/Tax_Parcels/FeatureServer/0",
+                "website": "https://gisdata-piercecowa.opendata.arcgis.com/datasets/piercecowa::tax-parcels/about",
+                "license": {
+                    "url": "https://matterhorn.co.pierce.wa.us/Disclaimer/PierceCountyGISDataTermsofUse.pdf"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TaxParcelNumber"
+                }
+            }
+        ]
+    }
 }

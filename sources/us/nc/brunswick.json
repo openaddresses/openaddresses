@@ -9,14 +9,22 @@
         "state": "nc",
         "county": "Brunswick"
     },
-    "data": "http://www.brunswickcountync.gov/files/gis/2015/07/Structures.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "ST_NUMB",
-        "street": "ST_NAME",
-        "unit": "UNIT_NO",
-        "city": "POSTAL"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://www.brunswickcountync.gov/files/gis/2015/07/Structures.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "ST_NUMB",
+                    "street": "ST_NAME",
+                    "unit": "UNIT_NO",
+                    "city": "POSTAL"
+                }
+            }
+        ]
     }
 }

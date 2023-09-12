@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -95.63615798950195, 29.618236523949705 ]
+            "coordinates": [
+                -95.63615798950195,
+                29.618236523949705
+            ]
         },
         "US Census": {
             "geoid": "4870808",
@@ -14,13 +17,26 @@
         "county": "Fort Bend",
         "city": "Sugar Land"
     },
-    "data": "http://interactivemaps.sugarlandtx.gov/arcgis/rest/services/Interactive_Map/City_Area_Map/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "number": "SITUSSNO",
-        "street": ["SITUSPRDIR","SITUSSNM","SITUSPODIR","SITUSSTP"],
-        "unit": "SITUSAPT",
-        "city": "MUNICIPALITY",
-        "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://interactivemaps.sugarlandtx.gov/arcgis/rest/services/Interactive_Map/City_Area_Map/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "SITUSSNO",
+                    "street": [
+                        "SITUSPRDIR",
+                        "SITUSSNM",
+                        "SITUSPODIR",
+                        "SITUSSTP"
+                    ],
+                    "unit": "SITUSAPT",
+                    "city": "MUNICIPALITY",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

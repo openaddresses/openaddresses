@@ -1,29 +1,47 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13279", "name": "Toombs County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13279",
+            "name": "Toombs County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Toombs"
     },
-    "data": "http://data.openaddresses.io/cache/us-ga-toombs_county.csv",
-    "type": "http",
-    "conform": {
-        "type": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "region": "REGION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/HHvUPZ2XuLOAJxjR/ArcGIS/rest/services/MontgomeryToombsBoundary/FeatureServer/16",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "house_no",
+                        "extension"
+                    ],
+                    "street": [
+                        "stdirect",
+                        "street_nam",
+                        "sttype"
+                    ],
+                    "unit": "unit",
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/HHvUPZ2XuLOAJxjR/ArcGIS/rest/services/MontgomeryToombsBoundary/FeatureServer/16",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_No"
+                }
+            }
+        ]
     }
 }
-

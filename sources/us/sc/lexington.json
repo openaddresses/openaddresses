@@ -9,25 +9,55 @@
         "state": "sc",
         "county": "Lexington"
     },
-    "data": "http://maps.lex-co.com/arcgis/rest/services/AddressPts/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": [
-          "street_num",
-          "HALF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://maps-lexco-gis.hub.arcgis.com/",
+                "data": "https://maps.lex-co.com/agstserver/rest/services/AddressPts/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "AddNum_Complete",
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code",
+                    "region": "State",
+                    "format": "geojson"
+                }
+            }
         ],
-        "street": [
-            "PRE_DIR",
-            "street_name",
-            "street_type",
-            "suf_dir"
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://maps-lexco-gis.hub.arcgis.com/",
+                "data": "https://maps.lex-co.com/agstserver/rest/services/Property/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TMS"
+                }
+            }
         ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT"
-        ],
-        "city": "postoffice",
-        "postcode": "zip",
-        "type": "geojson"
+        "buildings": [
+            {
+                "name": "county",
+                "website": "https://maps-lexco-gis.hub.arcgis.com/",
+                "data": "https://maps.lex-co.com/agstserver/rest/services/BuildingFootprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

@@ -9,22 +9,39 @@
         "state": "fl",
         "county": "Broward"
     },
-    "data": "https://services.arcgis.com/JMAJrTsHNLrSsWf5/ArcGIS/rest/services/PointAddressesCityApp/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "SITUS_HOUSE_NUMBER",
-        "street": [
-            "SITUS_STREET_PRE_DIRECTION",
-            "SITUS_STREET_PRETYPE",
-            "SITUS_STREET_NAME",
-            "SITUS_STREET_TYPE",
-            "SITUS_STREET_SUFFIX_DIRECTION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://bcgishub.broward.org/server/rest/services/GeoHubDownloads/GISAddressPoints/FeatureServer/0",
+                "website": "https://geohub-bcgis.opendata.arcgis.com/datasets/40a2da92e1fc48a3a86984be0238764f_0/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SITUSNUMBER",
+                    "street": [
+                        "STREETDIRECTION",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "STREETDIRECTIONSUFIX"
+                    ],
+                    "unit": "UNITNUMBER",
+                    "city": "CITYNAME",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "unit": "SITUS_UNIT_NUMBER",
-        "city": "CITY_NAME",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP_CODE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisweb-adapters.bcpa.net/arcgis/rest/services/BCPA_EXTERNAL_JAN23/MapServer/16",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "FOLIO"
+                }
+            }
+        ]
     }
 }

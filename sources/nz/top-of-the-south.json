@@ -1,0 +1,37 @@
+{
+    "coverage": {
+        "country": "nz",
+        "city": "Nelson & Tasman"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "website": "http://help.topofthesouthmaps.co.nz/metadata/property/#addresses",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution name": "Nelson City Council and the Tasman District Council (Top of the South Maps)"
+                },
+                "data": "https://www.topofthesouthmaps.co.nz/arcgis/rest/services/DataProperty/MapServer/0",
+                "protocol": "ESRI",
+                "language": "en",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Number",
+                    "street": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^(?:[0-9][^ ]*)([^,]*)"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "(?:[^,]*,?[ ]*)([^,]*)$"
+                    }
+                }
+            }
+        ]
+    }
+}

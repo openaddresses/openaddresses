@@ -1,26 +1,37 @@
 {
     "coverage": {
-        "US Census": {"geoid": "47125", "name": "Montgomery County", "state": "Tennessee"},
+        "US Census": {
+            "geoid": "47125",
+            "name": "Montgomery County",
+            "state": "Tennessee"
+        },
         "country": "us",
         "state": "tn",
         "county": "Montgomery"
     },
-    "data": "http://gismapper.apsu.edu/arcgis/rest/services/Montgomery/MontgomeryViewer/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "propaddr",
-            "pattern": "^( .* )^([0-9]+)$",
-            "replace": "$2"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "propaddr",
-            "pattern": "^(.*)( [0-9]+)$",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gismapper.apsu.edu/arcgis/rest/services/Montgomery/MontgomeryViewer/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "propaddr",
+                        "pattern": "^( .* )^([0-9]+)$",
+                        "replace": "$2"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "propaddr",
+                        "pattern": "^(.*)( [0-9]+)$",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }
-

@@ -6,27 +6,40 @@
         },
         "country": "tw"
     },
-    "data": "http://dengue.kcg.gov.tw/arcgis/rest/services/KCG/KcgAddress/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number":{
-            "function": "regexp",
-            "field": "NO1",
-            "pattern": "^([0-9\uff10-\uff19]+\u865f?)"
-        },
-        "unit":{
-            "function": "regexp",
-            "field": "NO1",
-            "pattern": "^(?:[0-9\uff10-\uff19]+\u865f?)(.*)"
-        },
-        "street": {
-            "function": "join",
-            "fields": ["ROADNAME","SECT","LAN","LON"],
-            "separator": ""
-        },
-        "city": "VILLAGE",
-        "district": "TOWN",
-        "region": "COUNTY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "http://dengue.kcg.gov.tw/arcgis/rest/services/KCG/KcgAddress/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "NO1",
+                        "pattern": "^([0-9０-９]+號?)"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "NO1",
+                        "pattern": "^(?:[0-9０-９]+號?)(.*)"
+                    },
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "ROADNAME",
+                            "SECT",
+                            "LAN",
+                            "LON"
+                        ],
+                        "separator": ""
+                    },
+                    "city": "VILLAGE",
+                    "district": "TOWN",
+                    "region": "COUNTY"
+                }
+            }
+        ]
     }
 }

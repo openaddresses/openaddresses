@@ -4,11 +4,40 @@
         "state": "gt",
         "city": "Tshwane"
     },
-    "data": "https://e-gis001.tshwane.gov.za/server/rest/services/BaseMaps/BaseMap_WM/MapServer/156",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "physical_address_no",
-        "street": "physical_street_name"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://e-gis001.tshwane.gov.za/server/rest/services/BaseMaps/GeoWeb_Basemap_WM/MapServer/158",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "physical_address_no",
+                    "street": "physical_street_name"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://e-gis001.tshwane.gov.za/server/rest/services/BaseMaps/GeoWeb_Basemap_WM/MapServer/155",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "lis_key"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://e-gis001.tshwane.gov.za/server/rest/services/BaseMaps/GeoWeb_Basemap_WM/MapServer/161",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

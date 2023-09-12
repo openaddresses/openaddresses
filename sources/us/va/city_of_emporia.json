@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -77.54, 36.68 ]
+            "coordinates": [
+                -77.54,
+                36.68
+            ]
         },
         "US Census": {
             "geoid": "51595",
@@ -13,12 +16,20 @@
         "state": "va",
         "city": "Emporia"
     },
-    "data": "http://gis.worldviewsolutions.com/arcgis/rest/services/emporia/main/MapServer/5",
-    "type": "ESRI",
-    "conform": {
-        "number": "HseNum",
-        "street": "StreetName",
-        "postcode": "ZIP",
-        "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis.worldviewsolutions.com/arcgis/rest/services/emporia/main/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "HseNum",
+                    "street": "StreetName",
+                    "postcode": "ZIP",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

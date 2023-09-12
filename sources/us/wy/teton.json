@@ -9,26 +9,54 @@
         "state": "wy",
         "county": "Teton"
     },
-    "website": "http://www.tetonwyo.org/GIS/",
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "compression": "zip",
-    "data": "http://tetonwy.greenwoodmap.com/gis/download/ownership_shp.zip",
-    "type": "http",
-    "conform": {
-        "type": "shapefile",
-        "file": "address.shp",
-        "number": "street_num",
-        "unit": "st_unit",
-        "street": [
-            "st_dir",
-            "st_name",
-            "st_type"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://gis.tetoncountywy.gov/portal/apps/sites/#/teton-county-gis-hub/datasets/687993dd9d494ed9b89203255b948117/about?layer=0",
+                "license": {
+                    "url": "https://www.tetoncountywy.gov/958/Geographic-Information-System",
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "data": "https://gis.tetoncountywy.gov/server/rest/services/Hosted/Ownership_Download/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "street_num",
+                    "street": [
+                        "st_dir",
+                        "st_name",
+                        "st_type"
+                    ],
+                    "unit": "st_unit",
+                    "city": "MSAG_city",
+                    "region": "state",
+                    "postcode": "MSAG_zip",
+                    "id": "pidn",
+                    "accuracy": 2
+                }
+            }
         ],
-        "id": "pidn",
-        "accuracy": 2
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://gis.tetoncountywy.gov/portal/apps/sites/#/teton-county-gis-hub/datasets/687993dd9d494ed9b89203255b948117/about?layer=1",
+                "license": {
+                    "url": "https://www.tetoncountywy.gov/958/Geographic-Information-System",
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "data": "https://gis.tetoncountywy.gov/server/rest/services/Hosted/Ownership_Download/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pidn"
+                }
+            }
+        ]
     }
 }

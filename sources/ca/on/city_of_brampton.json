@@ -2,7 +2,7 @@
     "coverage": {
         "country": "ca",
         "state": "on",
-        "city": "Burlington",
+        "city": "Brampton",
         "geometry": {
             "type": "Point",
             "coordinates": [
@@ -11,17 +11,47 @@
             ]
         }
     },
-    "data": "http://maps1.brampton.ca/arcgis/rest/services/COB/Common/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "CIVIC_NUMBER",
-        "unit": "UNIT_NO",
-        "street": [
-            "STREET_NAME",
-            "STREET_TYPE",
-            "STREET_DIRECTION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps1.brampton.ca/arcgis/rest/services/COB/OpenData_Address_Points/MapServer/14",
+                "protocol": "ESRI",
+                "website": "https://geohub.brampton.ca/datasets/address-points",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC-BY 4.0",
+                    "attribution name": "City of Brampton"
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": "CIVIC_NUMBER",
+                    "unit": "UNIT_NO",
+                    "street": [
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "STREET_DIRECTION"
+                    ],
+                    "city": "CITY"
+                }
+            }
         ],
-        "city": "CITY"
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services3.arcgis.com/rl7ACuZkiFsmDA2g/arcgis/rest/services/Building_Footprints/FeatureServer/0/",
+                "protocol": "ESRI",
+                "website": "https://geohub.brampton.ca/datasets/building-footprints",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC-BY 4.0",
+                    "attribution name": "City of Brampton"
+                },
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

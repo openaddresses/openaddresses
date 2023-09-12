@@ -1,8 +1,4 @@
 {
-    "type": "http",
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/andrewharvey-openaddr/26bab9/VICMAP_ADDRESS.zip",
-    "website": "https://www.data.vic.gov.au/data/dataset/address-vicmap-address",
-    "compression": "zip",
     "coverage": {
         "ISO 3166": {
             "alpha2": "AU-VIC",
@@ -10,28 +6,86 @@
             "country": "Australia"
         },
         "country": "au",
-        "state": "victoria"
+        "state": "vic"
     },
-    "note": "data URL expires; must use web interface & email workflow to download fresh data. cached archive acquired 2018-09-17.",
-    "license": {
-        "url": "http://creativecommons.org/licenses/by/4.0/",
-        "text": "CC BY 4.0",
-        "attribution": true,
-        "attribution name": "Copyright © The State of Victoria, Department of Environment, Land, Water & Planning 2018",
-        "share-alike": false
-    },
-    "conform": {
-        "file": "ll_gda94/sde_shape/whole/VIC/VMADD/layer/address.shp",
-        "type": "shapefile",
-        "id": "PFI",
-        "number": "NUM_ADD",
-        "street": [
-            "ROAD_NAME",
-            "ROAD_TYPE",
-            "RD_SUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "protocol": "http",
+                "data": "https://s3-ap-southeast-2.amazonaws.com/cl-isd-prd-datashare-s3-delivery/Order_BGJ5MV.zip",
+                "note": "data URL provided by a weekly recurring order placed at https://datashare.maps.vic.gov.au/",
+                "website": "https://discover.data.vic.gov.au/dataset/vicmap-address",
+                "compression": "zip",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Copyright © The State of Victoria, Department of Energy, Environment and Climate Action 2023",
+                    "share-alike": false
+                },
+                "conform": {
+                    "file": "ll_gda2020/filegdb/whole_of_dataset/victoria/VICMAP_ADDRESS.gdb",
+                    "format": "gdb",
+                    "layer": "ADDRESS",
+                    "id": "PFI",
+                    "number": "NUM_ADDRESS",
+                    "street": [
+                        "ROAD_NAME",
+                        "ROAD_TYPE",
+                        "ROAD_SUFFIX"
+                    ],
+                    "city": "LOCALITY_NAME",
+                    "postcode": "POSTCODE",
+                    "region": "STATE"
+                }
+            }
         ],
-        "city": "LOCALITY",
-        "postcode": "POSTCODE",
-        "region": "STATE"
+        "parcels": [
+            {
+                "name": "state",
+                "protocol": "http",
+                "data": "https://s3-ap-southeast-2.amazonaws.com/cl-isd-prd-datashare-s3-delivery/Order_OTL5B2.zip",
+                "note": "data URL provided by a weekly recurring order placed at https://datashare.maps.vic.gov.au/",
+                "website": "https://discover.data.vic.gov.au/dataset/property-view-vicmap-property",
+                "conform": {
+                    "format": "gdb",
+                    "file": "ll_gda2020/filegdb/whole_of_dataset/victoria/VMPROP.gdb",
+                    "layer": "PARCEL_VIEW",
+                    "pid": "PFI"
+                },
+                "compression": "zip",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Copyright © The State of Victoria, Department of Energy, Environment and Climate Action 2023",
+                    "share-alike": false
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "state",
+                "protocol": "http",
+                "data": "https://s3-ap-southeast-2.amazonaws.com/cl-isd-prd-datashare-s3-delivery/Order_NDKU90.zip",
+                "note": "data URL provided by a weekly recurring order placed at https://datashare.maps.vic.gov.au/",
+                "website": "https://discover.data.vic.gov.au/dataset/building-polygon",
+                "conform": {
+                    "format": "gdb",
+                    "file": "ll_gda2020/filegdb/whole_of_dataset/victoria/VMFEAT.gdb",
+                    "layer": "BUILDING_POLYGON"
+                },
+                "compression": "zip",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Copyright © The State of Victoria, Department of Energy, Environment and Climate Action 2023",
+                    "share-alike": false
+                }
+            }
+        ]
     }
 }

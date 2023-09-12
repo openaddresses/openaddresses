@@ -1,0 +1,42 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "54051",
+            "name": "Marshall County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Marshall"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/MarshallWV_Service/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "address_nu",
+                    "street": "street_nm",
+                    "unit": "unit",
+                    "city": "community",
+                    "region": "state",
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/MarshallWV_Service/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parid"
+                }
+            }
+        ]
+    }
+}

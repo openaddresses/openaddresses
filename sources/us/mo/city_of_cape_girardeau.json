@@ -16,22 +16,30 @@
         "state": "mo",
         "city": "Cape Girardeau"
     },
-    "data": "http://arcgis.cityofcapegirardeau.org:6080/arcgis/rest/services/Basemap_City_of_Cape/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRESS",
-        "street": [
-            "STREET_PREFIX",
-            "STREET_ONLY",
-            "STREET_SUFFIX"
-        ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUMBER"
-        ],
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://arcgis.cityofcapegirardeau.org:6080/arcgis/rest/services/Basemap_City_of_Cape/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS",
+                    "street": [
+                        "STREET_PREFIX",
+                        "STREET_ONLY",
+                        "STREET_SUFFIX"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUMBER"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

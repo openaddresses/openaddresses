@@ -9,13 +9,36 @@
         "state": "mn",
         "county": "Mille Lacs"
     },
-    "data": "http://136.234.73.7/arcgis/rest/services/MilleLacs_E911/MapServer/3",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "House_Num",
-        "street": "Street",
-        "city": "CITY",
-        "postcode": "ZipCode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.mille-lacs.mn.us/arcgis/rest/services/MilleLacs_E911/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ANUMBERPRE",
+                        "ANUMBER",
+                        "ANUMBERSUF"
+                    ],
+                    "street": "Street",
+                    "city": "CITY",
+                    "postcode": "ZipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.mille-lacs.mn.us/arcgis/rest/services/AGO_Parcels_and_Lots/MapServer/13",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "CDSTRL_Parcels.Name"
+                }
+            }
+        ]
     }
 }

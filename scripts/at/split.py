@@ -30,7 +30,7 @@ def main(address_filename, street_filename):
         template = json.load(f)
     for srs in writers:
         source = copy.deepcopy(template)
-        source['data'] = 'http://data.openaddresses.io/cache/at-{}.zip'.format(timestamp)
+        source['data'] = 'https://data.openaddresses.io/cache/at-{}.zip'.format(timestamp)
         source['conform']['srs'] = 'EPSG:{}'.format(srs)
         source['conform']['file'] = 'at-{}-{}.csv'.format(srs, timestamp)
         source['attribution'] = '© Austrian address register, date data from {}'.format(datetime.datetime.now().isoformat().split('T')[0])

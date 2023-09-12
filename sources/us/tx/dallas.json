@@ -1,26 +1,41 @@
 {
     "coverage": {
-        "US Census": {"geoid": "48113", "name": "Dallas County", "state": "Texas"},
+        "US Census": {
+            "geoid": "48113",
+            "name": "Dallas County",
+            "state": "Texas"
+        },
         "geometry": {
             "type": "Point",
-            "coordinates": [ -96.80465698242188, 32.773419354975175 ]
+            "coordinates": [
+                -96.80465698242188,
+                32.773419354975175
+            ]
         },
         "country": "us",
         "state": "tx",
         "county": "Dallas",
         "city": "Dallas"
     },
-    "data": "https://maps.dcad.org/prdwa/rest/services/Property/ParcelQuery/MapServer/4/",
-    "type": "ESRI",
-    "conform": {
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITEADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITEADDRESS"
-        },
-        "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.dcad.org/prdwa/rest/services/Property/ParcelQuery/MapServer/4/",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITEADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITEADDRESS"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

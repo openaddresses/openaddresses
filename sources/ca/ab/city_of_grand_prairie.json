@@ -1,0 +1,53 @@
+{
+    "schema": 2,
+    "coverage": {
+        "country": "ca",
+        "state": "ab",
+        "city": "Grand Prairie",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [ -118.79, 55.17 ]
+        }
+    },
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "website": "https://opendata-cityofgp.hub.arcgis.com/",
+                "data": "https://services.gpgis.com/server/rest/services/Property/Address_Data/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "UNIT",
+                    "number": "CIVIC",
+                    "street": "STREET",
+                    "city": "MUNICIPALITY",
+                    "postcode": "POSTAL_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "website": "https://opendata-cityofgp.hub.arcgis.com/",
+                "data": "https://services.gpgis.com/server/rest/services/Open_Data/Parcel_Boundaries/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "website": "https://opendata-cityofgp.hub.arcgis.com/",
+                "data": "https://services.gpgis.com/server/rest/services/Open_Data/Building_Footprints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

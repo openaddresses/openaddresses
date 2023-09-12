@@ -9,22 +9,37 @@
         "state": "id",
         "county": "Bonneville"
     },
-    "data": "http://maps.co.bonneville.id.us/arcgis/rest/services/Parcels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "GRM_Main_dbo_WebM_ParcelData_SitusStrNum",
-            "GRM_Main_dbo_WebM_ParcelData_SitusStrNumSub"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://bonneville.esriemcs.com/arcgis/rest/services/BC_Address/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "addressnum",
+                    "street": [
+                        "streetpref",
+                        "streetname",
+                        "streetsuff"
+                    ],
+                    "city": "city",
+                    "postcode": "zip",
+                    "region": "state"
+                }
+            }
         ],
-        "street": [
-            "GRM_Main_dbo_WebM_ParcelData_SitusStrDir1",
-            "GRM_Main_dbo_WebM_ParcelData_SitusStrName",
-            "GRM_Main_dbo_WebM_ParcelData_SitusStrType",
-            "GRM_Main_dbo_WebM_ParcelData_SitusStrDir2"
-        ],
-        "unit": "GRM_Main_dbo_WebM_ParcelData_SitusUnitNum",
-        "city": "GRM_Main_dbo_WebM_ParcelData_SitusCity",
-        "postcode": "GRM_Main_dbo_WebM_ParcelData_SitusZip"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://bonneville.esriemcs.com/arcgis/rest/services/ParcelViewer/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "edit_data.editdata.Parcel_Final.textstring"
+                }
+            }
+        ]
     }
 }

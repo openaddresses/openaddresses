@@ -9,18 +9,35 @@
         "state": "pa",
         "county": "Clinton"
     },
-    "data": "http://maps.clintoncountypa.com/arcgis/rest/services/Testing/STRUCTURES/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HSENUMBER",
-        "street": [
-            "PREFIXDIR",
-            "STREETNAME",
-            "STREETSUF",
-            "POSTDIR"
-        ],
-        "unit": "LOC",
-        "city": "STRUMUNI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "http://www.clintoncountypa.com/departments/geographic_information/mapping_services.php",
+                "contact": {
+                    "name": "Jim Watson",
+                    "title": "GIS Director",
+                    "phone": "(570) 893-4280",
+                    "address": "2 Piper Way, Suite 245, Lock Haven, PA 17745"
+                },
+                "data": "https://maps.clintoncountypa.com/arcgis/rest/services/Testing/STRUCTURES417/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreDir",
+                        "StreetName",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "unit": "Unit",
+                    "city": "Inc_Muni",
+                    "district": "County",
+                    "region": "State"
+                }
+            }
+        ]
     }
 }

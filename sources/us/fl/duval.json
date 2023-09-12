@@ -9,18 +9,38 @@
         "state": "fl",
         "county": "Duval"
     },
-    "data": "http://maps.coj.net/coj/rest/services/DuvalMaps/DuvalCivilPlanning/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STREET_NO",
-        "street": [
-            "STNAME",
-            "TYPEUSPS",
-            "STDIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.coj.net/coj/rest/services/ERAT/EratDashboard_3000/MapServer/42",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDRESS_ID",
+                    "number": "HOUSE_NUMBER",
+                    "street": "FULL_NAME",
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "CITY",
-        "postcode": "ZIPCODE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.coj.net/coj/rest/services/ERAT/EratDashboard_3000/MapServer/43",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "RE"
+                }
+            }
+        ]
     }
 }

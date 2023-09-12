@@ -9,12 +9,38 @@
         "state": "ga",
         "county": "Paulding"
     },
-    "data": "http://arcgis4.roktech.net/arcgis/rest/services/Paulding/TaxMap4/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "StructureN",
-        "street": "E911Street",
-        "postcode": "ZipCode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://arcgis5.roktech.net/arcgis/rest/services/Paulding/TaxMap4/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Address"
+                    },
+                    "postcode": "ZipCode",
+                    "city": "City"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://arcgis5.roktech.net/arcgis/rest/services/Paulding/TaxMap4/MapServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "GPIN"
+                }
+            }
+        ]
     }
 }

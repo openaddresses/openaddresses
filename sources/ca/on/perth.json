@@ -4,13 +4,21 @@
         "state": "on",
         "county": "perth"
     },
-    "data": "http://data.openaddresses.io/cache/ca-on-perth.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "Mun_Num",
-        "street": "Street",
-        "type": "shapefile"
-    },
-    "note": "Obtained June 2016 via FOIA request by @ingalls <nicholas.ingalls@gmail.com>"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.openaddresses.io/cache/ca-on-perth.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "Mun_Num",
+                    "street": "Street",
+                    "format": "shapefile"
+                },
+                "note": "Obtained June 2016 via FOIA request by @ingalls <nicholas.ingalls@gmail.com>"
+            }
+        ]
+    }
 }

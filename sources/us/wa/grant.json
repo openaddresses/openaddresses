@@ -9,23 +9,31 @@
         "state": "wa",
         "county": "Grant"
     },
-    "data": "https://gis.grantcountywa.gov:6443/arcgis/rest/services/EveryoneData/Addresses/MapServer/0",
-    "website": "http://grantcountywa.maps.arcgis.com/home/index.html",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": [
-            "PREADDRNUM",
-            "FULLNAME",
-            "ADDRNUMSUF"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "postcode": "ZIPCODE",
-        "city": "MUNICIPALITY",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.grantcountywa.gov:6443/arcgis/rest/services/EveryoneData/Addresses/MapServer/0",
+                "website": "http://grantcountywa.maps.arcgis.com/home/index.html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "PREADDRNUM",
+                        "FULLNAME",
+                        "ADDRNUMSUF"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "postcode": "ZIPCODE",
+                    "city": "MUNICIPALITY",
+                    "region": "STATE"
+                }
+            }
+        ]
     }
 }

@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "46051",
+            "name": "Grant County",
+            "state": "South Dakota"
+        },
+        "country": "us",
+        "state": "sd",
+        "county": "Grant"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.1stdistrict.org/arcgis/rest/services/Grant/grantmapnet/FeatureServer/19",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "INQ_STREET_NAME"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "INQ_STREET_NAME"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.1stdistrict.org/arcgis/rest/services/Grant/grantmapnet/FeatureServer/19",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCEL",
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

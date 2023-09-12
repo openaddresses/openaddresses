@@ -9,23 +9,31 @@
         "state": "in",
         "county": "Adams"
     },
-    "data": "http://arcgis.co.adams.in.us/arcgis/rest/services/County/Parcels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-      "number": {
-          "function": "regexp",
-          "field": "Street",
-          "pattern": "^([0-9]+)"
-      },
-      "street": {
-          "function": "regexp",
-          "field": "Street",
-          "pattern": "^(?:[0-9]+ )(.*)",
-          "replace": "$1"
-      },
-      "city": "City",
-      "region": "St",
-      "postcode": "Zip",
-      "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://arcgis.co.adams.in.us/arcgis/rest/services/County/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "Street",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Street",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": "City",
+                    "region": "St",
+                    "postcode": "Zip",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

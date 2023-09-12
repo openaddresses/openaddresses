@@ -6,13 +6,21 @@
             "country": "Guernsey"
         }
     },
-    "data": "https://gps.digimap.gg/arcgis/rest/services/AddressPointLabels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "LocationOn",
-        "street": "RoadName",
-        "city": "ParishName",
-        "postcode": "PostCode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "https://gps.digimap.gg/arcgis/rest/services/AddressPointLabels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "LocationOn",
+                    "street": "RoadName",
+                    "city": "ParishName",
+                    "postcode": "PostCode"
+                }
+            }
+        ]
     }
 }

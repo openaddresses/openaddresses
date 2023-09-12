@@ -9,23 +9,43 @@
         "state": "wa",
         "county": "Franklin"
     },
-    "license": "http://gis.co.franklin.wa.us/datadisclaimer.shtml",
-    "type": "ESRI",
-    "year": "2018",
-    "data": "https://services3.arcgis.com/S61OMZovc3AIomN2/arcgis/rest/services/online/FeatureServer/1",
-    "website": "http://franklingis.org/",
-    "conform": {
-        "type": "geojson",
-        "number": "HouseNumber",
-        "street": [
-            "DirPrefix",
-            "FeatureName",
-            "FeatureType",
-            "DirSuffix"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "license": "http://gis.co.franklin.wa.us/datadisclaimer.shtml",
+                "protocol": "ESRI",
+                "data": "https://gisportal.franklin.co.franklin.wa.us/arcgis/rest/services/Address_Points/MapServer/0",
+                "website": "https://gisportal.franklin.co.franklin.wa.us/arcgisportal/home/item.html?id=7485b54ee408498b884380908bc59e07",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNumber",
+                    "street": [
+                        "DirPrefix",
+                        "FeatureName",
+                        "FeatureType",
+                        "DirSuffix"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "UnitNumber"
+                    ]
+                }
+            }
         ],
-        "unit": [
-            "UnitType",
-            "UnitNumber"
+        "parcels": [
+            {
+                "name": "county",
+                "license": "http://gis.co.franklin.wa.us/datadisclaimer.shtml",
+                "protocol": "ESRI",
+                "data": "https://gisportal.franklin.co.franklin.wa.us/arcgis/rest/services/Parcels/MapServer/15",
+                "website": "https://gisportal.franklin.co.franklin.wa.us/arcgisportal/home/item.html?id=90a875f5725441e48565cf7b13f6290e",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
         ]
     }
 }

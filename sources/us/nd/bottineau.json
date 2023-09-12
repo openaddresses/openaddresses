@@ -1,26 +1,42 @@
 {
     "coverage": {
-        "US Census": {
-            "geoid": "38009",
-            "name": "Bottineau County",
-            "state": "North Dakota"
-        },
+        "US Census": {"geoid": "38009", "name": "Bottineau County", "state": "North Dakota"},
         "country": "us",
         "state": "nd",
         "county": "Bottineau"
     },
-    "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/BottineauNDFeatures/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "DLVRY_ADD"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "DLVRY_ADD"
-        },
-        "city": "COMMUNITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/BottineauNDFeatures/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STR_NUM",
+                    "street": [
+                        "PRE_TYPE",
+                        "PRE_DIR",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "city": "PCN",
+                    "postcode": "PC"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/BottineauNDFeatures/FeatureServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "GIS_Parcel_Number"
+                }
+            }
+        ]
     }
 }

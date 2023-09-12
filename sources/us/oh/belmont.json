@@ -9,18 +9,50 @@
         "state": "oh",
         "county": "Belmont"
     },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_Belmont_co_oh_PAT_GIS/MapServer/16",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-            "PRE_DIR",
-            "PRE_TYPE",
-            "ST_NAME",
-            "ST_TYPE",
-            "SUF_DIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/GfbqZj5EAUgRd4ES/ArcGIS/rest/services/Belco_911_Features_View/FeatureServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "housenum",
+                        "hn_suf"
+                    ],
+                    "street": [
+                        "pre_dir",
+                        "pre_type",
+                        "st_name",
+                        "st_type",
+                        "suf_dir"
+                    ],
+                    "city": "city"
+                }
+            }
         ],
-        "city": "CITY"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/GfbqZj5EAUgRd4ES/ArcGIS/rest/services/Parcels_View/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/GfbqZj5EAUgRd4ES/ArcGIS/rest/services/Belco_911_Features_View/FeatureServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

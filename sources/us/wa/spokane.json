@@ -9,21 +9,48 @@
         "state": "wa",
         "county": "Spokane"
     },
-    "license": "Unknown",
-    "type": "ESRI",
-    "data": "http://gis.spokanecounty.org/arcgis/rest/services/OpenData/OpenData/MapServer/4",
-    "website": "http://gisdatacatalog.spokanecounty.opendata.arcgis.com/datasets/299aa88f3f334d15975e0a5d2dd30310_4",
-    "conform": {
-        "type": "geojson",
-        "number": "site_str_nbr",
-        "street": [
-            "site_str_nbr_suf",
-            "site_str_dir",
-            "site_str_name",
-            "site_str_type",
-            "site_str_dir_suf"
-		],
-        "city": "site_city",
-        "postcode": "site_zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "license": "Unknown",
+                "protocol": "ESRI",
+                "data": "https://gismo.spokanecounty.org/arcgis/rest/services/OpenData/Property/MapServer/12",
+                "website": "https://gisdatacatalog-spokanecounty.opendata.arcgis.com/datasets/SpokaneCounty::addresses/about",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": [
+                        "PrefixDirection",
+                        "PrefixType",
+                        "StreetName",
+                        "StreetType"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "license": "Unknown",
+                "protocol": "ESRI",
+                "data": "https://services1.arcgis.com/ozNll27nt9ZtPWOn/arcgis/rest/services/Parcels/FeatureServer/0",
+                "website": "https://gisdatacatalog-spokanecounty.opendata.arcgis.com/datasets/parcels",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID_NUM"
+                }
+            }
+        ]
     }
 }

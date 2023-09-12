@@ -4,22 +4,33 @@
         "state": "mi",
         "county": "Livingston, Macomb, Monroe, Oakland, Saint Clair, Washtenaw, Wayne"
     },
-    "data": "http://arcgisserver.semcog.org/arcgis/rest/services/OpenData/Buildings/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "LOADD1",
-        "street": {
-            "function": "regexp",
-            "field": "STREET1",
-            "pattern": "^(.+?)(?:\\b(?:UNIT|APT|SUITE|BLDG|LOT|#)\\b.*)?$",
-            "replace": "$1"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "STREET1",
-            "pattern": "(\\b(?:UNIT|APT|SUITE|BLDG|LOT|#)\\b.*)$"
-        },
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.arcgis.com/sharing/rest/content/items/bd933a44f945480a84bad873dc29f81d/data",
+                "website": "https://maps-semcog.opendata.arcgis.com/datasets/bd933a44f945480a84bad873dc29f81d",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Buildings",
+                    "number": "LOADD1",
+                    "street": {
+                        "function": "regexp",
+                        "field": "STREET1",
+                        "pattern": "^(.+?)(?:\\b(?:UNIT|APT|SUITE|BLDG|LOT|#)\\b.*)?$",
+                        "replace": "$1"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "STREET1",
+                        "pattern": "(\\b(?:UNIT|APT|SUITE|BLDG|LOT|#)\\b.*)$"
+                    },
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

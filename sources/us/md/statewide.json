@@ -7,24 +7,32 @@
         "country": "us",
         "state": "md"
     },
-    "note": "Does not cover the entire state. Referred to link from https://www.arcgis.com/home/item.html?id=20878dd2c20949a8a14a5a282ab98807. Also note that about 25,000 addresses is incorrectly positioned at -81.5291885,37.5772618 (you might want to filter those out)",
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/mdpvgeoc10.zip",
-    "website": "http://geodata.md.gov/imap/rest/services/PlanningCadastre/MD_PropertyData/MapServer/exts/MDiMapDataDownload/customLayers/0",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "file": "Geocdata/Mdpvgeoc.shp",
-        "number": "STRTNUM",
-        "street": [
-            "STRTDIR",
-            "STRTNAM",
-            "STRTTYP",
-            "STRTSFX"
-        ],
-        "unit": "STRTUNT",
-        "city": "CITY",
-        "postcode": "ZIPCODE",
-        "accuracy": 2
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "note": "Does not cover the entire state. Referred to link from https://www.arcgis.com/home/item.html?id=20878dd2c20949a8a14a5a282ab98807. Also note that about 25,000 addresses is incorrectly positioned at -81.5291885,37.5772618 (you might want to filter those out)",
+                "data": "https://data.openaddresses.io/cache/uploads/migurski/mdpvgeoc10.zip",
+                "website": "http://geodata.md.gov/imap/rest/services/PlanningCadastre/MD_PropertyData/MapServer/exts/MDiMapDataDownload/customLayers/0",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "Geocdata/Mdpvgeoc.shp",
+                    "number": "STRTNUM",
+                    "street": [
+                        "STRTDIR",
+                        "STRTNAM",
+                        "STRTTYP",
+                        "STRTSFX"
+                    ],
+                    "unit": "STRTUNT",
+                    "city": "CITY",
+                    "postcode": "ZIPCODE",
+                    "accuracy": 2
+                }
+            }
+        ]
     }
 }

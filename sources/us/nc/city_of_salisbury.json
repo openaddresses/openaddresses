@@ -17,26 +17,34 @@
         "county": "Rowan",
         "city": "Salisbury"
     },
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "ST_NUM",
-            "HALF"
-        ],
-        "unit": [
-            "APT_TYPE",
-            "APT"
-        ],
-        "street": [
-            "ST_DIR",
-            "STREETNAME",
-            "ST_SUF"
-        ],
-        "postcode": "ZIPCODE",
-        "city": "CITY",
-        "region": "STATE"
-    },
-    "data": "http://gis.salisburync.gov/arcgis/rest/services/AddressPoints/MapServer/0",
-    "type": "ESRI",
-    "note": "convert projection"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ST_NUM",
+                        "HALF"
+                    ],
+                    "unit": [
+                        "APT_TYPE",
+                        "APT"
+                    ],
+                    "street": [
+                        "ST_DIR",
+                        "STREETNAME",
+                        "ST_SUF"
+                    ],
+                    "postcode": "ZIPCODE",
+                    "city": "CITY",
+                    "region": "STATE"
+                },
+                "data": "http://gis.salisburync.gov/arcgis/rest/services/AddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "note": "convert projection"
+            }
+        ]
+    }
 }

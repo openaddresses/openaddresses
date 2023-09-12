@@ -9,13 +9,36 @@
         "state": "ak",
         "county": "Haines"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/8a6b5f/us-ak-haines.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-      "type": "shapefile",
-      "number": "Address",
-      "street": "Full_Road_",
-      "unit": "SubAddress"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.hainesalaska.gov/lands/haines-borough-parcel-viewer",
+                "license": "Unknown",
+                "data": "https://services3.arcgis.com/pMlUMMROURtJLUZt/ArcGIS/rest/services/HainesAddressesOnline/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": ["UNIT_NUM", "UNIT_TYPE", "UNIT_APT" ],
+                    "number": ["STNUM", "STNUMSUF"],
+                    "street": ["PREDIR", "NAME", "TYPE"],
+                    "city": "CITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.hainesalaska.gov/lands/haines-borough-parcel-viewer",
+                "license": "Unknown",
+                "data": "https://services3.arcgis.com/pMlUMMROURtJLUZt/ArcGIS/rest/services/HainesAddressesOnline/FeatureServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

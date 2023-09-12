@@ -9,25 +9,57 @@
         "state": "az",
         "county": "Coconino"
     },
-    "data": "https://utility.arcgis.com/usrsvcs/servers/c05e1a547c564ef9a2e7fffeb8458efe/rest/services/OpenData/CoconinoCountyOpenData/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "CURRENTADDRESS",
-            "pattern": "^([0-9]+(?:-[^ ]+)?)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "CURRENTADDRESS",
-            "pattern": "^(?:[0-9]+(?:-[^ ]+)? )(.*?)((BUILDING [0-9]+)? (UNIT|APT|BLDG|STE).*|$)",
-            "replace": "$1"
-        },
-        "unit": {
-          "function": "regexp",
-          "field": "CURRENTADDRESS",
-          "pattern": " ((?:BUILDING [0-9]+ )?(?:UNIT|APT|BLDG|STE) .+)$"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/Rlvx5g8pKeK13apH/arcgis/rest/services/County_Addresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "HOUSENUMBER",
+                        "HOUSENUMBERSUFFIX"
+                    ],
+                    "unit": "Unit",
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "StreetName",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIPCODE",
+                    "region": "State",
+                    "district": "County"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/Rlvx5g8pKeK13apH/ArcGIS/rest/services/Coconino_County_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/Rlvx5g8pKeK13apH/ArcGIS/rest/services/County_Buildings/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

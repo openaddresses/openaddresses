@@ -9,20 +9,41 @@
         "state": "sc",
         "county": "York"
     },
-    "data": "http://rockhillgis.cityofrockhill.com/arcgis/rest/services/Basemap_ParcelInfo/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "FULL_ADD",
-        "street": [
-            "GSSNAM",
-            "GSSTYP",
-            "GSSSF",
-            "GSSDIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/2AGLxyiJoNiVHKwq/arcgis/rest/services/Addresses/FeatureServer/0",
+                "website": "https://opendata-yorkcosc.hub.arcgis.com/datasets/YorkCoSC::addresses-york-county-sc/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "FULL_HOUSE_ADDRESS",
+                    "street": [
+                        "GSSNAM",
+                        "GSSTYP",
+                        "GSSSF",
+                        "GSSDIR"
+                    ],
+                    "unit": "GSAPT",
+                    "city": "POST_COMM",
+                    "region": "STATE",
+                    "postcode": "POST_CODE"
+                }
+            }
         ],
-        "unit": "GSAPT",
-        "city": "CITY",
-        "region": "GSSTAT",
-        "postcode": "ZIP_1"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/2AGLxyiJoNiVHKwq/arcgis/rest/services/Parcels/FeatureServer/0",
+                "website": "https://opendata-yorkcosc.hub.arcgis.com/datasets/YorkCoSC::parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAXMAPID"
+                }
+            }
+        ]
     }
 }

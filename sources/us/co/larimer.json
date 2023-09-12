@@ -9,22 +9,42 @@
         "state": "co",
         "county": "Larimer"
     },
-    "attribution": "Larimer County",
-    "data": "https://maps1.larimer.org/arcgis/rest/services/MapServices/Parcels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRESSNUM",
-        "street": {
-            "function": "remove_prefix",
-            "field": "FULLADDRESS",
-            "field_to_remove": "ADDRESSNUM"
-        },
-        "city": "CITY",
-        "postcode": {
-            "function": "regexp",
-            "field": "ZIPCODE",
-            "pattern": "^(\\d{5})"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Larimer County",
+                "data": "https://maps1.larimer.org/arcgis/rest/services/MapServices/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESSNUM",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "FULLADDRESS",
+                        "field_to_remove": "ADDRESSNUM"
+                    },
+                    "city": "CITY",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "ZIPCODE",
+                        "pattern": "^(\\d{5})"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Larimer County",
+                "data": "https://maps1.larimer.org/arcgis/rest/services/MapServices/Parcels/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNUM"
+                }
+            }
+        ]
     }
 }

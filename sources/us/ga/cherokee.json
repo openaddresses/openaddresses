@@ -9,27 +9,38 @@
         "state": "ga",
         "county": "Cherokee"
     },
-    "data": "http://gis.cherokeega.com/arcgis/rest/services/Address/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "CompleteAddress",
-            "pattern": "^(\\d+-?(?:[A-Z]|\\d+)?\\b)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "CompleteAddress",
-            "pattern": "^(?:\\d+-?(?:[A-Z]|\\d+)?\\b)(.*?)( (Unit|Apt|Bldg|Ste).*|$)",
-            "replace": "$1"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "CompleteAddress",
-            "pattern": " ((?:Unit|Apt|Bldg|Ste) .+)$"
-        },
-        "postcode": "Zip",
-        "city": "City"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.cherokeega.com/arcgis/rest/services/Address/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StreetNumber",
+                    "street": [
+                        "StreetPre",
+                        "StreetName",
+                        "StreetType",
+                        "StreetSuf"
+                    ],
+                    "unit": "Descriptor",
+                    "city": "City",
+                    "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.cherokeega.com/arcgis/rest/services/Parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

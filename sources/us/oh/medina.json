@@ -1,24 +1,35 @@
 {
     "coverage": {
-        "US Census": {"geoid": "39103", "name": "Medina County", "state": "Ohio"},
+        "US Census": {
+            "geoid": "39103",
+            "name": "Medina County",
+            "state": "Ohio"
+        },
         "country": "us",
         "state": "oh",
         "county": "Medina"
     },
-    "conform": {
-        "type": "shapefile",
-        "file": "addpts/",
-        "number": "ADD__",
-        "street": "ADDRESS_AD",
-        "unit": "ADD_LETT",
-        "postcode": "ZIP",
-        "city": "MUNI"
-    },
-    "data": "http://www.gisdata.co.medina.oh.us/taxmaps/parcel_address_points_nad83_shapefile.zip",
-    "website": "http://www.gisdata.co.medina.oh.us/taxmaps/",
-    "license": "http://www.gisdata.co.medina.oh.us/taxmaps/",
-    "type": "http",
-    "year": "2018",
-    "compression": "zip",
-    "note": "License states it must accompany the data when distributed. License included in shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "addrstdp.shp",
+                    "number": "ADD__",
+                    "street": "ADDRESS_AD",
+                    "unit": "ADD_LETT",
+                    "postcode": "ZIP",
+                    "city": "MUNI"
+                },
+                "data": "http://www.gisdata.co.medina.oh.us/taxmaps/parcel_address_points_nad83_shapefile.zip",
+                "website": "http://www.gisdata.co.medina.oh.us/taxmaps/",
+                "license": "http://www.gisdata.co.medina.oh.us/taxmaps/",
+                "protocol": "http",
+                "compression": "zip",
+                "note": "License states it must accompany the data when distributed. License included in shapefile"
+            }
+        ]
+    }
 }

@@ -9,20 +9,28 @@
         "state": "il",
         "county": "Effingham"
     },
-    "data": "http://propertysearch.co.effingham.il.us/ArcGIS/rest/services/effingham_parcels/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "site_address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "site_address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://propertysearch.co.effingham.il.us/ArcGIS/rest/services/effingham_parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "site_address",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "site_address",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

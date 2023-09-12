@@ -1,0 +1,46 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "46073",
+            "name": "Jerauld County",
+            "state": "South Dakota"
+        },
+        "country": "us",
+        "state": "sd",
+        "county": "Jerauld"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/JERAULD_COUNTY_LAYERS/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "E911_ADD"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "E911_ADD"
+                    },
+                    "city": "CITY",
+                    "postcode": "ZIP_CODE",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/JERAULD_COUNTY_LAYERS/MapServer/9",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCEL_ID",
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

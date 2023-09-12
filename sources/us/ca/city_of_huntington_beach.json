@@ -1,5 +1,10 @@
 {
     "coverage": {
+        "US Census": {
+            "geoid": "06059",
+            "name": "Orange County",
+            "state": "California"
+        },
         "geometry": {
             "type": "Point",
             "coordinates": [
@@ -12,17 +17,51 @@
         "county": "Orange",
         "city": "Huntington Beach"
     },
-    "data": "https://services2.arcgis.com/KaS5yngHhCOBHXdC/arcgis/rest/services/Addresses/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "Address_Nu",
-        "street": [
-            "CnStPrefix",
-            "CnStNm",
-            "CnStSuffix"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.huntingtonbeachca.gov/arcgis/rest/services/WebAddresses/MapServer/47",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "huntington.DBO.AddressesPT.Address_Num",
+                        "huntington.DBO.AddressesPT.Fraction"
+                    ],
+                    "street": [
+                        "huntington.DBO.AddressesPT.CnStPrefix",
+                        "huntington.DBO.AddressesPT.CnStNm",
+                        "huntington.DBO.AddressesPT.CnStSuffix"
+                    ],
+                    "unit": "huntington.DBO.AddressesPT.Unit",
+                    "city": "Huntington.dbo.W2_HB.SITECITY",
+                    "region": "Huntington.dbo.W2_HB.SITESTATE",
+                    "postcode": "huntington.DBO.AddressesPT.ZIP4"
+                }
+            }
         ],
-        "unit": "Unit",
-        "postcode": "Zip4"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.huntingtonbeachca.gov/arcgis/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Huntington.DBO.Parcels.APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.huntingtonbeachca.gov/arcgis/rest/services/Basemap/MapServer/36",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

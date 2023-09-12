@@ -9,23 +9,52 @@
         "state": "fl",
         "county": "Hernando"
     },
-    "data": "https://www.hernandocountygis-fl.us/arcgis10_3/rest/services/Parcels_Addresses/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-            "PREFIX",
-            "STREETNAME",
-            "STREETTYPE",
-            "SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.hernandocountygis-florida.us/arcgis/rest/services/Parcels_Addresses/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "PREFIX",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFFIX"
+                    ],
+                    "unit": [
+                        "SECLOCTYPE",
+                        "SECLOCCODE"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZONE"
+                }
+            }
         ],
-        "unit": [
-            "SECLOCTYPE",
-            "SECLOCCODE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.hernandocountygis-florida.us/arcgis/rest/services/Parcels_Addresses/MapServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_KEY"
+                }
+            }
         ],
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZONE"
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://www.hernandocountygis-florida.us/arcgis/rest/services/Parcels_Addresses/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

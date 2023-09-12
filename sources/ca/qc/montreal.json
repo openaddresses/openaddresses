@@ -3,24 +3,43 @@
         "country": "ca",
         "state": "qc",
         "city": "Montreal",
-        "geometry": { "type": "Point", "coordinates": [-73.63, 45.51] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -73.63,
+                45.51
+            ]
+        }
     },
-    "data": "http://donnees.ville.montreal.qc.ca/dataset/63317d72-426e-41fa-bfef-b0f28bb06ce1/resource/393e5c01-f94b-4190-9a77-fcf9e4b7b394/download/adresse.zip",
-    "website": "http://donnees.ville.montreal.qc.ca/dataset/adresses-ponctuelles",
-    "license": {
-        "url": "http://creativecommons.org/licenses/by/4.0/",
-        "attribution": true,
-        "share-alike": false
-    },
-    "type": "http",
-    "compression": "zip",
-    "note": "Address ranges on points in the text column",
-    "conform": {
-        "number": "TEXTE",
-        "street": [
-            "GENERIQUE",
-            "SPECIFIQUE"
-        ],
-        "type": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://github.com/CSBP-CPSE/LODE-ECDO/raw/master/scripts/Addresses/Montreal.zip",
+                "website": "http://donnees.ville.montreal.qc.ca/dataset/adresses-ponctuelles",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "note": "Preprocessed with https://github.com/CSBP-CPSE/LODE-ECDO/blob/master/scripts/Addresses/process_montreal.py",
+                "conform": {
+                    "number": "NUMBER",
+                    "street": [
+                        "GENERIQUE",
+                        "LIEN",
+                        "SPECIFIQUE",
+                        "ORIENTATION"
+                    ],
+                    "lon": "LON",
+                    "lat": "LAT",
+                    "file": "Montreal.csv",
+                    "format": "csv"
+                }
+            }
+        ]
     }
 }

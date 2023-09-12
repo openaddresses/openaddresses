@@ -1,0 +1,37 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "08091", "name": "Ouray County", "state": "Colorado"},
+        "country": "us",
+        "state": "co",
+        "county": "Ouray"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/pehZWDHjiyZAAcRP/ArcGIS/rest/services/OC_parcel__2_15_21_BASIC/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREETNO",
+                    "street": ["STREETNAME", "DESIGNATIO"],
+                    "unit": "UNITNUMBER",
+                    "city": "CITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/pehZWDHjiyZAAcRP/ArcGIS/rest/services/OC_parcel__2_15_21_BASIC/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNB"
+                }
+            }
+        ]
+    }
+}

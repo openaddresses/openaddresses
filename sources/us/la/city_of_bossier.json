@@ -16,11 +16,19 @@
             ]
         }
     },
-    "data": "http://services.geoportalmaps.com/arcgis/rest/services/Bossier_Internal/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "F911_NUMBER",
-        "street": "name_total"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://services.geoportalmaps.com/arcgis/rest/services/Bossier_Internal/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "F911_NUMBER",
+                    "street": "name_total"
+                }
+            }
+        ]
     }
 }

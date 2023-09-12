@@ -9,29 +9,58 @@
         "state": "wa",
         "county": "Yakima"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/nvkelso/cd363b/parcels_thurston_county_washington_state.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile-polygon",
-        "file": "Parcels.shp",
-        "number": {
-            "function": "regexp",
-            "field": "SITUS_STRE",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SITUS_STRE",
-            "pattern": "^(?:[0-9]+ )(.*?)(?: (UNIT|APT|BLDG|STE|#).*|$)",
-            "replace": "$1"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "SITUS_STRE",
-            "pattern": " ((?:(?:(?:UNIT|APT|BLDG|STE) )|(?:#)).+)$"
-        },
-        "city": "SITUS_CITY",
-        "postcode": "SITUS_ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://map.co.thurston.wa.us/arcgis/rest/services/Thurston/Thurston_AddressPoints_TCOMM/FeatureServer/0",
+                "website": "https://gisdata-thurston.opendata.arcgis.com/datasets/thurston::thurston-address-points-tcomm/about",
+                "license": {
+                    "url": "https://www.geodata.org/disclaimerfordata.html"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "Unit",
+                    "number": [
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": "STREET",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://map.co.thurston.wa.us/arcgis/rest/services/Thurston/Thurston_Parcels/FeatureServer/0",
+                "website": "https://gisdata-thurston.opendata.arcgis.com/datasets/thurston::thurston-parcels/about",
+                "license": {
+                    "url": "https://www.geodata.org/disclaimerfordata.html"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNumber"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://map.co.thurston.wa.us/arcgis/rest/services/Thurston/Thurston_BuildingFootprints2000/FeatureServer/0",
+                "website": "https://gisdata-thurston.opendata.arcgis.com/datasets/thurston::thurston-building-footprints-2000/about",
+                "license": {
+                    "url": "https://www.geodata.org/disclaimerfordata.html"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

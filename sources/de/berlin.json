@@ -1,28 +1,39 @@
 {
-	"coverage": {
-		"country": "de",
-		"state": "berlin",
-		"ISO 3166": {
+    "coverage": {
+        "country": "de",
+        "state": "berlin",
+        "ISO 3166": {
             "alpha2": "DE-BE",
             "country": "Germany",
             "subdivision": "Berlin"
         }
-	},
-  "data": "https://services.arcgis.com/OLiydejKCZTGhvWg/arcgis/rest/services/Berlin%20Hauskoordinaten/FeatureServer/0",
-	"website": "http://fbinter.stadt-berlin.de/fb/berlin/service.jsp?id=a_hauskoordinaten@senstadt&type=FEED",
-	"type": "ESRI",
-	"license": {
-		"text": "Nutzungsbestimmungen Geoportal Berlin",
-		"url": "http://www.stadtentwicklung.berlin.de/geoinformation/download/nutzIII.pdf",
-		"attribution": true,
-		"share-alike": false,
-		"attribution name": "Geoportal Berlin / Hauskoordinaten Berlin"
-	},
-	"conform": {
-		"type": "geojson",
-		"city": "ONM",
-		"postcode": "PLZ",
-		"street": "STN",
-		"number": ["HNR", "ADZ"]
-	}
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://services.arcgis.com/OLiydejKCZTGhvWg/arcgis/rest/services/Berlin%20Hauskoordinaten/FeatureServer/0",
+                "website": "http://fbinter.stadt-berlin.de/fb/berlin/service.jsp?id=a_hauskoordinaten@senstadt&type=FEED",
+                "protocol": "ESRI",
+                "license": {
+                    "text": "Nutzungsbestimmungen Geoportal Berlin",
+                    "url": "http://www.stadtentwicklung.berlin.de/geoinformation/download/nutzIII.pdf",
+                    "attribution": true,
+                    "share-alike": false,
+                    "attribution name": "Geoportal Berlin / Hauskoordinaten Berlin"
+                },
+                "conform": {
+                    "format": "geojson",
+                    "city": "ONM",
+                    "postcode": "PLZ",
+                    "street": "STN",
+                    "number": [
+                        "HNR",
+                        "ADZ"
+                    ]
+                }
+            }
+        ]
+    }
 }

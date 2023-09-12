@@ -9,11 +9,19 @@
         "state": "ms",
         "county": "Pontotoc"
     },
-    "type": "ESRI",
-    "data": "http://services.geoportalmaps.com/arcgis/rest/services/Pontotoc_Services/MapServer/5",
-    "conform": {
-        "type": "geojson",
-        "number": "StreetNumber",
-        "street": "StreetName"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "http://services.geoportalmaps.com/arcgis/rest/services/Pontotoc_Services/MapServer/5",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StreetNumber",
+                    "street": "StreetName"
+                }
+            }
+        ]
     }
 }

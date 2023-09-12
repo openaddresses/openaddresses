@@ -1,38 +1,52 @@
 {
-    "conform": {
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        },
-        "headers": 2,
-        "srs": "EPSG:2097",
-        "lon": "POINT_X",
-        "type": "csv",
-        "skiplines": 2,
-        "lat": "POINT_Y",
-        "number": "LNDN_MA_SN",
-        "encoding": "EUCKR"
-    },
-    "compression": "zip",
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
-    "skip": true,
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1074",
     "coverage": {
         "state": "seoul",
         "city": "노원구",
         "country": "kr",
-        "geometry": { "type": "Point", "coordinates": [127.073, 37.652] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                127.073,
+                37.652
+            ]
+        }
     },
-    "type": "http",
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-noweongu.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "conform": {
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    },
+                    "headers": 2,
+                    "srs": "EPSG:2097",
+                    "lon": "POINT_X",
+                    "format": "csv",
+                    "skiplines": 2,
+                    "lat": "POINT_Y",
+                    "number": "LNDN_MA_SN",
+                    "encoding": "EUCKR"
+                },
+                "compression": "zip",
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "skip": true,
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1074",
+                "protocol": "http",
+                "data": "https://data.openaddresses.io/cache/kr-seoul-noweongu.zip"
+            }
+        ]
+    }
 }

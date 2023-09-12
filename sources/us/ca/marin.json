@@ -9,23 +9,31 @@
         "state": "ca",
         "county": "Marin"
     },
-    "attribution": "Marin County",
-    "data": "http://gis.marinpublic.com/arcgis/rest/services/BaseMap/DistrictService/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": "Number",
-        "street": [
-            "PreDir",
-            "Street",
-            "Suffix",
-            "PostDir"
-        ],
-        "unit": [
-            "UnitCode",
-            "Unit"
-        ],
-        "type": "geojson",
-        "city": "MailCity",
-        "postcode": "ZipCode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Marin County",
+                "data": "http://gis.marinpublic.com/arcgis/rest/services/BaseMap/DistrictService/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "Number",
+                    "street": [
+                        "PreDir",
+                        "Street",
+                        "Suffix",
+                        "PostDir"
+                    ],
+                    "unit": [
+                        "UnitCode",
+                        "Unit"
+                    ],
+                    "format": "geojson",
+                    "city": "MailCity",
+                    "postcode": "ZipCode"
+                }
+            }
+        ]
     }
 }

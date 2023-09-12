@@ -1,5 +1,10 @@
 {
     "coverage": {
+        "US Census": {
+            "geoid": "06059",
+            "name": "Orange County",
+            "state": "California"
+        },
         "geometry": {
             "type": "Point",
             "coordinates": [
@@ -12,21 +17,31 @@
         "county": "Orange",
         "city": "Fulleton"
     },
-    "data": "https://www.cityoffullerton.com/civicax/filebank/blobdload.aspx?BlobID=26053",
-    "attribution": "City of Fullerton",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "ST_NUM",
-        "street": [
-            "ST_PREFIX",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SUFFIX"
-        ],
-        "unit": "UNIT_NUM",
-        "postcode": "ZIP",
-        "city": "CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://www.cityoffullerton.com/home/showpublisheddocument/3928/637471641345470000",
+                "website": "https://www.cityoffullerton.com/about-us/maps-gis",
+                "year": "2019",
+                "attribution": "City of Fullerton",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "ST_NUM",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX"
+                    ],
+                    "unit": "UNIT_NUM",
+                    "postcode": "ZIP",
+                    "city": "CITY"
+                }
+            }
+        ]
     }
 }

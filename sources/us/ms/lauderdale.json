@@ -9,96 +9,104 @@
         "state": "ms",
         "county": "Lauderdale"
     },
-    "data": "https://services7.arcgis.com/deoj2Y8l1tBr7P5X/ArcGIS/rest/services/LauderdaleService/FeatureServer/4",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STREET_NUM",
-        "street": {
-            "function": "regexp",
-            "field": "STREET",
-            "pattern": "(.+?)(?:\\s+[A-DF-MO-RT-VX-Z])?$"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "STREET",
-            "pattern": "\\s+([A-DF-MO-RT-VX-Z])$"
-        }
-    },
-    "test": {
-        "enabled": true,
-        "description": "this source puts the alpha unit designator at the end of the street name",
-        "acceptance-tests": [
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "address with 'W' directional at end should not be considered unit",
-                "inputs": {
-                    "STREET_NUM": "9803",
-                    "STREET": "BARMER LANE W"
+                "name": "county",
+                "data": "https://services7.arcgis.com/deoj2Y8l1tBr7P5X/ArcGIS/rest/services/LauderdaleService/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREET_NUM",
+                    "street": {
+                        "function": "regexp",
+                        "field": "STREET",
+                        "pattern": "(.+?)(?:\\s+[A-DF-MO-RT-VX-Z])?$"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "STREET",
+                        "pattern": "\\s+([A-DF-MO-RT-VX-Z])$"
+                    }
                 },
-                "expected": {
-                    "number": "9803",
-                    "street": "BARMER LANE W",
-                    "unit": ""
-                }
-            },
-            {
-                "description": "address with 'E' directional at end should not be considered unit",
-                "inputs": {
-                    "STREET_NUM": "9803",
-                    "STREET": "BARMER LANE E"
-                },
-                "expected": {
-                    "number": "9803",
-                    "street": "BARMER LANE E",
-                    "unit": ""
-                }
-            },
-            {
-                "description": "address with 'N' directional at end should not be considered unit",
-                "inputs": {
-                    "STREET_NUM": "9803",
-                    "STREET": "BARMER LANE N"
-                },
-                "expected": {
-                    "number": "9803",
-                    "street": "BARMER LANE N",
-                    "unit": ""
-                }
-            },
-            {
-                "description": "address with 'S' directional at end should not be considered unit",
-                "inputs": {
-                    "STREET_NUM": "9803",
-                    "STREET": "BARMER LANE S"
-                },
-                "expected": {
-                    "number": "9803",
-                    "street": "BARMER LANE S",
-                    "unit": ""
-                }
-            },
-            {
-                "description": "address with non-directional at end should be considered unit",
-                "inputs": {
-                    "STREET_NUM": "9803",
-                    "STREET": "BARMER LANE A"
-                },
-                "expected": {
-                    "number": "9803",
-                    "street": "BARMER LANE",
-                    "unit": "A"
-                }
-            },
-            {
-                "description": "address with non-directional at end should be considered unit",
-                "inputs": {
-                    "STREET_NUM": "9803",
-                    "STREET": "BARMER LANE B"
-                },
-                "expected": {
-                    "number": "9803",
-                    "street": "BARMER LANE",
-                    "unit": "B"
+                "test": {
+                    "enabled": true,
+                    "description": "this source puts the alpha unit designator at the end of the street name",
+                    "acceptance-tests": [
+                        {
+                            "description": "address with 'W' directional at end should not be considered unit",
+                            "inputs": {
+                                "STREET_NUM": "9803",
+                                "STREET": "BARMER LANE W"
+                            },
+                            "expected": {
+                                "number": "9803",
+                                "street": "BARMER LANE W",
+                                "unit": ""
+                            }
+                        },
+                        {
+                            "description": "address with 'E' directional at end should not be considered unit",
+                            "inputs": {
+                                "STREET_NUM": "9803",
+                                "STREET": "BARMER LANE E"
+                            },
+                            "expected": {
+                                "number": "9803",
+                                "street": "BARMER LANE E",
+                                "unit": ""
+                            }
+                        },
+                        {
+                            "description": "address with 'N' directional at end should not be considered unit",
+                            "inputs": {
+                                "STREET_NUM": "9803",
+                                "STREET": "BARMER LANE N"
+                            },
+                            "expected": {
+                                "number": "9803",
+                                "street": "BARMER LANE N",
+                                "unit": ""
+                            }
+                        },
+                        {
+                            "description": "address with 'S' directional at end should not be considered unit",
+                            "inputs": {
+                                "STREET_NUM": "9803",
+                                "STREET": "BARMER LANE S"
+                            },
+                            "expected": {
+                                "number": "9803",
+                                "street": "BARMER LANE S",
+                                "unit": ""
+                            }
+                        },
+                        {
+                            "description": "address with non-directional at end should be considered unit",
+                            "inputs": {
+                                "STREET_NUM": "9803",
+                                "STREET": "BARMER LANE A"
+                            },
+                            "expected": {
+                                "number": "9803",
+                                "street": "BARMER LANE",
+                                "unit": "A"
+                            }
+                        },
+                        {
+                            "description": "address with non-directional at end should be considered unit",
+                            "inputs": {
+                                "STREET_NUM": "9803",
+                                "STREET": "BARMER LANE B"
+                            },
+                            "expected": {
+                                "number": "9803",
+                                "street": "BARMER LANE",
+                                "unit": "B"
+                            }
+                        }
+                    ]
                 }
             }
         ]

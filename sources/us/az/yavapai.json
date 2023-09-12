@@ -9,13 +9,46 @@
         "state": "az",
         "county": "Yavapai"
     },
-    "data": "http://gis.yavapai.us/arcgis/rest/services/Property/MapServer/4",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "CIVIC",
-        "street": ["PRE_DIR", "STREET", "SUFFIX"],
-        "unit": "Unit",
-        "city": "COMMUNITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.yavapai.us/arcgis/rest/services/Property/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "CIVIC",
+                    "street": [
+                        "PRE_DIR",
+                        "STREET",
+                        "SUFFIX"
+                    ],
+                    "unit": "Unit",
+                    "city": "COMMUNITY"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.yavapai.us/arcgis/rest/services/Property/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.yavapai.us/arcgis/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
     }
 }

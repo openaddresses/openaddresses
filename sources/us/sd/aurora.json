@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "46003",
+            "name": "Aurora County",
+            "state": "South Dakota"
+        },
+        "country": "us",
+        "state": "sd",
+        "county": "aurora"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/AURORA_COUNTY_LAYERS/MapServer/9",
+                "protocol": "ESRI",
+                "conform": {
+                    "unit": "UNIT_NUM",
+                    "number": "STR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "POST_DIR"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP_CODE",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/AURORA_COUNTY_LAYERS/MapServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCEL_ID",
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

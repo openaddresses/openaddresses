@@ -9,24 +9,32 @@
         "state": "al",
         "county": "Tuscaloosa"
     },
-    "type": "ESRI",
-    "data": "https://services1.arcgis.com/DADyRNMb7tdzKmmq/ArcGIS/rest/services/county_addresses/FeatureServer/0",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "addr_num",
-            "addr_num_suffix"
-        ],
-        "unit": [
-            "unit_type",
-            "unit_id"
-        ],
-        "street": [
-            "street_prefix",
-            "street_name",
-            "street_suffix",
-            "street_direction"
-        ],
-        "postcode": "zip_code"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services1.arcgis.com/DADyRNMb7tdzKmmq/ArcGIS/rest/services/county_addresses/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "addr_num",
+                        "addr_num_suffix"
+                    ],
+                    "unit": [
+                        "unit_type",
+                        "unit_id"
+                    ],
+                    "street": [
+                        "street_prefix",
+                        "street_name",
+                        "street_suffix",
+                        "street_direction"
+                    ],
+                    "postcode": "zip_code"
+                }
+            }
+        ]
     }
 }

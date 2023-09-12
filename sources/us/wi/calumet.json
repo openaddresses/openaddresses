@@ -9,15 +9,75 @@
         "state": "wi",
         "county": "Calumet"
     },
-    "data": "ftp://liouser:l!oguest1@ftp.co.calumet.wi.us/websitedata/CalumetAddressPts.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "file": "AddressPoint.shp",
-        "type": "shapefile",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "city": "MUNICIPALI",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://calmaps.co.calumet.wi.us/server/rest/services/Hosted/Address_Points/FeatureServer/3",
+                "website": "https://gis-calumet.hub.arcgis.com/datasets/1a3692b039074fbfa0a19cfc57adce76_3/about",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0",
+                    "attribution": true,
+                    "attribution name": "Calumet County Wisconsin",
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "siteaddid",
+                    "number": [
+                        "preeaddrnum",
+                        "addrnum",
+                        "addrnumsuf"
+                    ],
+                    "street": "fullname",
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "municipality",
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://calmaps.co.calumet.wi.us/server/rest/services/Hosted/Parcels/FeatureServer/0",
+                "website": "https://gis-calumet.hub.arcgis.com/datasets/fff4a47af31a401e8df67c471d656b65_0/about",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0",
+                    "attribution": true,
+                    "attribution name": "Calumet County Wisconsin",
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pinlink"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://calmaps.co.calumet.wi.us/server/rest/services/Hosted/Building_Footprint/FeatureServer/0",
+                "website": "https://gis-calumet.hub.arcgis.com/datasets/47fc954a09f94f7c9209a1727038fd53_0/about",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0",
+                    "attribution": true,
+                    "attribution name": "Calumet County Wisconsin",
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

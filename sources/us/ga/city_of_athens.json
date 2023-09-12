@@ -17,24 +17,32 @@
         "county": "Clarke",
         "city": "Athens"
     },
-    "data": "https://services2.arcgis.com/xSEULKvB31odt3XQ/arcgis/rest/services/AddressPoint/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "AddressID",
-        "number": "HouseNum",
-        "street": [
-            "PreDir",
-            "StreetName",
-            "StreetType",
-            "PostDir"
-        ],
-        "unit": [
-            "UnitType",
-            "Unit"
-        ],
-        "city": "POSTALCITY",
-        "region": "State",
-        "postcode": "Zipcode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/xSEULKvB31odt3XQ/arcgis/rest/services/AddressPoint/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "AddressID",
+                    "number": "HouseNum",
+                    "street": [
+                        "PreDir",
+                        "StreetName",
+                        "StreetType",
+                        "PostDir"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "Unit"
+                    ],
+                    "city": "POSTALCITY",
+                    "region": "State",
+                    "postcode": "Zipcode"
+                }
+            }
+        ]
     }
 }

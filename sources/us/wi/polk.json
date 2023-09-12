@@ -1,0 +1,51 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55095",
+            "name": "Polk County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Polk"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.polkcountywi.gov/government/divisions_and_departments/environmental_services_division/land_information/gis_data_portal.php",
+                "data": "https://www3.co.polk.wi.us/gis/AddressPtsPolkCoWI.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.polkcountywi.gov/government/divisions_and_departments/environmental_services_division/land_information/gis_data_portal.php",
+                "data": "https://www3.co.polk.wi.us/gis/TaxParcelsPolkCoWI.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "TaxParcelsPolkCoWI",
+                    "pid": "Name"
+                }
+            }
+        ]
+    }
+}

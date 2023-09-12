@@ -9,17 +9,36 @@
         "state": "sc",
         "county": "Darlington"
     },
-    "data": "https://services5.arcgis.com/8FJikaProY6O3ncx/ArcGIS/rest/services/adresspnts/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STNUM",
-        "street": [
-            "DIRECTION",
-            "STREET"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/8FJikaProY6O3ncx/ArcGIS/rest/services/Darco_AddressPnts/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STNUM",
+                    "street": [
+                        "DIRECTION",
+                        "STREET"
+                    ],
+                    "unit": "UNIT",
+                    "city": "COMMUNITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "COMMUNITY",
-        "postcode": "ZIPCODE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/8FJikaProY6O3ncx/ArcGIS/rest/services/PARCELS/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MBP"
+                }
+            }
+        ]
     }
 }

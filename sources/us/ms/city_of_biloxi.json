@@ -16,14 +16,34 @@
             ]
         }
     },
-    "data": "http://gis.biloxi.ms.us:6080/arcgis/rest/services/Geoportal/Property_Lines/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STREET_NUMBER",
-        "street": [
-            "STREET_NAME_DIRECTION",
-            "STREET_NAME_1"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis.biloxi.ms.us:6080/arcgis/rest/services/Geoportal/Property_Lines/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Address_Number",
+                    "street": "STREET_NAME_COMPLETE",
+                    "city": "Municipal_Jurisdiction_Town",
+                    "postcode": "ZIP",
+                    "district": "County_Name",
+                    "region": "State_Name"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "http://gis.biloxi.ms.us:6080/arcgis/rest/services/Geoportal/Property_Lines/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
         ]
     }
 }

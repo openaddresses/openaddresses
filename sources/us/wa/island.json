@@ -9,23 +9,34 @@
         "state": "wa",
         "county": "Island"
     },
-    "license": "http://www.islandcountyassessor.com/about-us/gis-mapping/arcgis-explorer-interactive-mapping-viewer/",
-    "type": "ESRI",
-    "data": "https://maps.islandcountywa.gov/arcgis/rest/services/Layers/Parcels/MapServer/0",
-    "website": "http://www.islandcountyassessor.com/about-us/gis-mapping/arcgis-explorer-interactive-mapping-viewer/",
-    "note": "source contains separated fields but combined field is more accurate",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "physical_addr"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "physical_addr"
-        },
-        "city": "physical_addr_city",
-        "region": "physical_addr_state",
-        "postcode": "physical_addr_zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://maps.islandcountywa.gov/arcgis/rest/services/Geocortex/Base/MapServer/5",
+                "website": "https://islandcountygis.maps.arcgis.com/home/item.html?id=1af9c94fc7614ca6a020e4857610f00f",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "city": "NEWCITST",
+                    "postcode": "NEWZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://maps.islandcountywa.gov/arcgis/rest/services/Geocortex/Base/MapServer/0",
+                "website": "https://islandcountygis.maps.arcgis.com/home/item.html?id=5b5f9b6872894eb093f24ebb5778398d",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ]
     }
 }

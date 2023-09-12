@@ -1,5 +1,10 @@
 {
     "coverage": {
+        "US Census": {
+            "geoid": "06059",
+            "name": "Orange County",
+            "state": "California"
+        },
         "geometry": {
             "type": "Point",
             "coordinates": [
@@ -12,20 +17,53 @@
         "county": "Orange",
         "city": "Garden Grove"
     },
-    "data": "https://www.ci.garden-grove.ca.us/geoserver/gis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=gis:city.public_addresses&outputFormat=csv",
-    "website": "https://ggcity.org/maps/data-portal/",
-    "type": "http",
-    "conform": {
-        "type": "csv",
-        "lat": "latitude",
-        "lon": "longitude",
-        "number": "number",
-        "street": [
-            "name",
-            "suffix"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://www.ci.garden-grove.ca.us/geoserver/gis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=gis:city.public_addresses&outputFormat=csv",
+                "website": "https://ggcity.org/maps/data-portal/",
+                "protocol": "http",
+                "conform": {
+                    "format": "csv",
+                    "lat": "latitude",
+                    "lon": "longitude",
+                    "number": "number",
+                    "street": [
+                        "name",
+                        "suffix"
+                    ],
+                    "unit": "unit",
+                    "city": "city",
+                    "postcode": "zip_code"
+                }
+            }
         ],
-        "unit": "unit",
-        "city": "city",
-        "postcode": "zip_code"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://ggcity.org/geoserver/gis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=gis:city.parcels&outputFormat=SHAPE-ZIP",
+                "website": "https://ggcity.org/maps/data-portal/",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "apn"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://ggcity.org/geoserver/gis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=gis:city.buildings&outputFormat=SHAPE-ZIP",
+                "website": "https://ggcity.org/maps/data-portal/",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

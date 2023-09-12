@@ -9,17 +9,35 @@
         "state": "co",
         "county": "La Plata"
     },
-    "data": "http://lpcgis.laplata.co.us/arcgis/rest/services/Map_LayersJSC/MapServer/75",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDR_HN",
-        "street": {
-            "function": "remove_prefix",
-            "field": "PROPERTY_A",
-            "field_to_remove": "ADDR_HN"
-        },
-        "unit": "SITE_UNIT",
-        "id": "APN"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.laplata.co.us/arcgis/rest/services/JS_website/Map_LayersJS_Ent_Run/MapServer/83",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDR_HN",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PROPERTY_A"
+                    },
+                    "unit": "SITE_UNIT",
+                    "id": "APN"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.laplata.co.us/arcgis/rest/services/JS_website/Map_LayersJS_Ent_Run/MapServer/79",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
     }
 }

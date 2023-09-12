@@ -1,0 +1,53 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "county": "Kootenay Boundary",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -117.05,
+                59.5
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://mapping.rdkb.com/server/rest/services/Planning/BaseLayersExternal/MapServer/261",
+                "website": "https://regional-district-of-north-okanagan-gis-open-data-site-rdnogis.hub.arcgis.com/maps/rdnogis::addresspoints/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID_1",
+                    "number": [
+                        "STREET_NUMBER_PREFIX",
+                        "StreetNumber",
+                        "NumberSuffix"
+                    ],
+                    "street": [
+                        "STREET_DIR_PREFIX",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "STREET_DIR_SUFFIX"
+                    ],
+                    "city": "LOCALITY_NAME_ALIAS",
+                    "postcode": "POSTAL_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://mapping.rdkb.com/server/rest/services/Planning/BaseLayersExternal/MapServer/253",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ]
+    }
+}

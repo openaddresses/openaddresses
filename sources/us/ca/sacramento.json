@@ -9,16 +9,63 @@
         "state": "ca",
         "county": "Sacramento"
     },
-    "attribution": "Secramento County",
-    "data": "http://www.sacgis.org/GISDataPub/Data/SacCounty_PARCELS.zip",
-    "website": "http://www.cityofsacramento.org/gis/data.html",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "id": "APN",
-        "number": "STREET_NBR",
-        "street": "STREET_NAM",
-        "type": "shapefile-polygon",
-        "postcode": "zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/5NARefyPVtAeuJPU/ArcGIS/rest/services/Address/FeatureServer/0",
+                "website": "https://data-sacramentocounty.opendata.arcgis.com/datasets/sacramentocounty::address-1/about",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Sacramento County"
+                },
+                "note": "Technically in the public domain per County of Santa Clara v. CFAC",
+                "protocol": "ESRI",
+                "conform": {
+                    "id": "ADDRESS_ID",
+                    "format": "geojson",
+                    "number": [
+                        "Address_Number",
+                        "Address_Number_Suffix"
+                    ],
+                    "street": [
+                        "Prefix_Type",
+                        "Pre_Directional",
+                        "Street_Name",
+                        "Street_Suffix",
+                        "Post_Directional"
+                    ],
+                    "unit": [
+                        "Unit_Indicator",
+                        "Unit_Number"
+                    ],
+                    "city": "Postal_City",
+                    "region": "State",
+                    "postcode": "Zip_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/5NARefyPVtAeuJPU/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "website": "https://data-sacramentocounty.opendata.arcgis.com/datasets/sacramentocounty::parcels/about",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Sacramento County"
+                },
+                "note": "Technically in the public domain per County of Santa Clara v. CFAC",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "APN",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

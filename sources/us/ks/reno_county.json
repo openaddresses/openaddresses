@@ -9,26 +9,34 @@
         "state": "ks",
         "county": "Reno"
     },
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "Appraiser_Data_Export.PROPADD",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Appraiser_Data_Export.PROPADD",
-            "pattern": "^(?:[0-9]+ )([^,]+),(?:.*)$",
-            "replace": "$1"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "Appraiser_Data_Export.PROPADD",
-            "pattern": "(?:.*?)([0-9]+(?:\\-[0-9]+)?)$",
-            "replace": "$1"
-        }
-    },
-    "data": "http://renogis3.renogov.org/arcgis/rest/services/Test/WebLayers/MapServer/7",
-    "type": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "Appraiser_Data_Export.PROPADD",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Appraiser_Data_Export.PROPADD",
+                        "pattern": "^(?:[0-9]+ )([^,]+),(?:.*)$",
+                        "replace": "$1"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "Appraiser_Data_Export.PROPADD",
+                        "pattern": "(?:.*?)([0-9]+(?:\\-[0-9]+)?)$",
+                        "replace": "$1"
+                    }
+                },
+                "data": "http://renogis3.renogov.org/arcgis/rest/services/Test/WebLayers/MapServer/7",
+                "protocol": "ESRI"
+            }
+        ]
+    }
 }

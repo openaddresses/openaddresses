@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "country": "us",
+        "state": "ca",
+        "city": "Eureka"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://arcgis-svr.ci.eureka.ca.gov/arcgis/rest/services/ProjectServices/COE_OpenGov_FlagLayers/MapServer/30",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "s_strnum",
+                        "s_frac"
+                    ],
+                    "street": [
+                        "s_dir",
+                        "s_street",
+                        "s_suffix"
+                    ],
+                    "unit": "s_unit",
+                    "city": "s_city",
+                    "region": "s_st",
+                    "postcode": "s_zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://arcgis-svr.ci.eureka.ca.gov/arcgis/rest/services/ProjectServices/COE_OpenGov_FlagLayers/MapServer/30",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "apn"
+                }
+            }
+        ]
+    }
+}

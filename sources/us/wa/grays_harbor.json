@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "53027", "name": "Grays Harbor County", "state": "Washington"},
+        "country": "us",
+        "state": "wa",
+        "county": "Grays Harbor"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "http",
+                "compression": "zip",
+                "data": "http://www.co.grays-harbor.wa.us/GIS/Data_Download/Parcels.zip",
+                "website": "http://www.co.grays-harbor.wa.us/departments/central_services/GISDataDownload.php",
+                "conform": {
+                    "format": "shapefile",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUS"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "http",
+                "compression": "zip",
+                "data": "http://www.co.grays-harbor.wa.us/GIS/Data_Download/Parcels.zip",
+                "website": "http://www.co.grays-harbor.wa.us/departments/central_services/GISDataDownload.php",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELATT"
+                }
+            }
+        ]
+    }
+}

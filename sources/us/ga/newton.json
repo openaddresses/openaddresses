@@ -9,22 +9,30 @@
         "state": "ga",
         "county": "Newton"
     },
-    "data": "http://gis.ncboc.com/arcgis/rest/services/NCWSA/parcel_bldg_NCWSA/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "StreetNumber",
-        "street": [
-            "StreetDirection",
-            "StreetName",
-            "StreetType",
-            "StreetExtension"
-        ],
-        "unit": [
-            "UnitType",
-            "Unit"
-        ],
-        "city": "ParcelCity",
-        "postcode": "ParcelZip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.ncboc.com/arcgis/rest/services/Public/Newton_Address_Points/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "AddNum",
+                    "street": [
+                        "StPreDir",
+                        "StPreType",
+                        "StName",
+                        "StType",
+                        "StDir"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "Unit"
+                    ],
+                    "postcode": "ZipCode"
+                }
+            }
+        ]
     }
 }

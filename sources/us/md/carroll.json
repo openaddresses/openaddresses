@@ -9,28 +9,38 @@
         "state": "md",
         "county": "Carroll"
     },
-    "data": "https://services.arcgis.com/Uf0DiYpD9NOFO5YH/arcgis/rest/services/AddressPoints_CarrollCounty/FeatureServer/0",
-    "website": "http://ccgovernment.carr.org/ccg/mapserver4/gis/webpage/DigitalData.html",
-    "license": {"url": "http://ccgovernment.carr.org/ccg/mapserver4/gis/webpage/TermsOfUse.pdf"},
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "OBJECTID",
-        "street": [
-            "ST_PREFIX",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SUFFIX"
-        ],
-        "number": [
-            "ST_NUMBER",
-            "ST_NUM_SUF"
-        ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUMBE"
-        ],
-        "district": "County",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/Uf0DiYpD9NOFO5YH/arcgis/rest/services/AddressPoints_CarrollCounty/FeatureServer/0",
+                "website": "http://ccgovernment.carr.org/ccg/mapserver4/gis/webpage/DigitalData.html",
+                "license": {
+                    "url": "http://ccgovernment.carr.org/ccg/mapserver4/gis/webpage/TermsOfUse.pdf"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX"
+                    ],
+                    "number": [
+                        "ST_NUMBER",
+                        "ST_NUM_SUF"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUMBE"
+                    ],
+                    "district": "County",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

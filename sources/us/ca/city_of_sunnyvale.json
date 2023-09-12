@@ -15,22 +15,56 @@
         },
         "country": "us",
         "state": "ca",
-        "city": "Mountain View"
+        "city": "Sunnyvale"
     },
-    "data": "http://gis.sunnyvale.ca.gov/arcgis/rest/services/MasterAddress/AddressPoints_SunGISf/FeatureServer/0",
-    "attribution": "City of Sunnyvale",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "addrid",
-        "number": "addrnum",
-        "street": [
-            "strdirpref",
-            "streetname",
-            "streettype"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/IBwZaktrBtZuqQmg/ArcGIS/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://sunnyvale-geohub-cityofsunnyvale.hub.arcgis.com/datasets/0975c44d98b645cfb04f3daae9d1e6da_0/about",
+                "attribution": "City of Sunnyvale",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "addrid",
+                    "number": "addrnum",
+                    "street": [
+                        "strdirpref",
+                        "streetname",
+                        "streettype"
+                    ],
+                    "unit": "addrunit",
+                    "city": "city_mailing",
+                    "postcode": "zipcode"
+                }
+            }
         ],
-        "unit": "addrunit",
-        "city": "city_mailing",
-        "postcode": "zipcode"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/IBwZaktrBtZuqQmg/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "website": "https://sunnyvale-geohub-cityofsunnyvale.hub.arcgis.com/datasets/81f57ae1ca49400f8a1a322eae53391c_0/about",
+                "attribution": "City of Sunnyvale",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/IBwZaktrBtZuqQmg/arcgis/rest/services/Building_Footprints/FeatureServer/0",
+                "website": "https://sunnyvale-geohub-cityofsunnyvale.hub.arcgis.com/datasets/86f3b489e2564f10879368054757b41f_0/about",
+                "attribution": "City of Sunnyvale",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

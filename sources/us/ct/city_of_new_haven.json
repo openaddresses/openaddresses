@@ -2,18 +2,29 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -72.92758941, 41.307858155 ]
+            "coordinates": [
+                -72.92758941,
+                41.307858155
+            ]
         },
         "country": "us",
         "state": "ct",
         "city": "new haven"
     },
-    "data": "https://nhgis.newhavenct.gov/server/rest/services/Web_Services/NH_Parcels/MapServer/0",
-    "website": "https://www.newhavenct.gov/",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "street": "Street_Name",
-        "number": "Street_Number"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://nhgis.newhavenct.gov/server/rest/services/Web_Services/NH_Parcels/MapServer/0",
+                "website": "https://www.newhavenct.gov/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "street": "Street_Name",
+                    "number": "Street_Number"
+                }
+            }
+        ]
     }
 }

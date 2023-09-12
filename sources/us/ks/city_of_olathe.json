@@ -16,19 +16,27 @@
         "state": "ks",
         "city": "Olathe"
     },
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": [
-            "PreDir",
-            "StrName",
-            "StrType"
-        ],
-        "unit": [
-            "SecUnitDesc",
-            "SecUnit"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "PreDir",
+                        "StrName",
+                        "StrType"
+                    ],
+                    "unit": [
+                        "SecUnitDesc",
+                        "SecUnit"
+                    ]
+                },
+                "data": "https://ozone.olatheks.org/arcgis/rest/services/govoutreach/olathecc/MapServer/0",
+                "protocol": "ESRI"
+            }
         ]
-    },
-    "data": "https://ozone.olatheks.org/arcgis/rest/services/govoutreach/olathecc/MapServer/0",
-    "type": "ESRI"
+    }
 }

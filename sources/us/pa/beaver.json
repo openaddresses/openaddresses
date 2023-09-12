@@ -9,14 +9,46 @@
         "state": "pa",
         "county": "Beaver"
     },
-    "data": "http://bkrgis.bakerprojects.com/ArcGIS/rest/services/BeaverCounty/BeaverCounty_Addresses/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "ADDR_ID",
-        "number": "SAN",
-        "street": "ST_NAME",
-        "unit": "APT",
-        "city": "MCN"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "http://www.beavercountypa.gov/Depts/Planning/Pages/default.aspx",
+                "contact": {
+                    "name": "Frank Vescio",
+                    "title": "GIS Coordinator",
+                    "email": "fvescio@beavercountypa.gov"
+                },
+                "data": "https://gis.mbakerintl.com/server/rest/services/InfoAtlas/Addresses/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDR_ID",
+                    "number": "SAN",
+                    "street": "ST_NAME",
+                    "unit": ["UNIT_TYPE", "APT"],
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "http://www.beavercountypa.gov/Depts/Planning/Pages/default.aspx",
+                "contact": {
+                    "name": "Frank Vescio",
+                    "title": "GIS Coordinator",
+                    "email": "fvescio@beavercountypa.gov"
+                },
+                "data": "https://gis.mbakerintl.com/server/rest/services/InfoAtlas/Parcels/MapServer/9",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }
