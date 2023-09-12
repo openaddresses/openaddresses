@@ -9,23 +9,35 @@
         "state": "va",
         "county": "Augusta"
     },
-    "data": "ftp://www.co.augusta.va.us/GIS/Augusta_Address_Points_080514.zip",
-    "website": "ftp://www.co.augusta.va.us/GIS/",
-    "year": 2014,
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(\\S+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
-        },
-        "type": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.augusta.va.us/arcgis/rest/services/Address_Test_3/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "unit": "SUITE",
+                    "number": "ADDRESS_NUM",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "postcode": "ZC_NUM",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.augusta.va.us/arcgis/rest/services/Parcel_Test_2/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcels.MAP_NO"
+                }
+            }
+        ]
     }
 }

@@ -1,0 +1,56 @@
+{
+    "coverage": {
+        "country": "us",
+        "state": "ca",
+        "city": "Culver City"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gisproxy.culvercity.org/arcgis/rest/services/PropInfoData/MapServer/50",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADR_NUM_BS",
+                        "ADR_NUM_SX"
+                    ],
+                    "street": [
+                        "ADR_ST_NM",
+                        "ADR_ST_TP"
+                    ],
+                    "unit": [
+                        "ADR_UN_TP",
+                        "ADR_UNIT"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gisproxy.culvercity.org/arcgis/rest/services/PropInfoData/MapServer/29",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gisproxy.culvercity.org/arcgis/rest/services/PropInfoData/MapServer/32",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

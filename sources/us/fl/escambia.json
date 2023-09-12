@@ -9,17 +9,36 @@
         "state": "fl",
         "county": "Escambia"
     },
-    "data": "http://arcgis4.roktech.net/arcgis/rest/services/escambia/escambia_query/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "BLDG_NUM",
-        "street": [
-            "PREFIX_DIR",
-            "STREET_NAME",
-            "SUFFIX",
-            "SUFFIX_DIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://arcgis4.roktech.net/arcgis/rest/services/escambia/escambia_query_new/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "SUITE_UNIT",
+                    "number": "BLDG_NUM",
+                    "street": [
+                        "PREFIX_DIR",
+                        "STREET_NAME",
+                        "SUFFIX",
+                        "SUFFIX_DIR"
+                    ]
+                }
+            }
         ],
-        "unit": "SUITE_UNIT"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "http://arcgis4.roktech.net/arcgis/rest/services/escambia/escambia_query_new/MapServer/13",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "REFNUM"
+                }
+            }
+        ]
     }
 }

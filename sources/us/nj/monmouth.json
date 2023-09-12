@@ -9,22 +9,30 @@
         "state": "nj",
         "county": "Monmouth"
     },
-    "data": "http://maps.co.monmouth.nj.us/maps/rest/services/PublicData/Parcels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "PropertyLocation"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "PropertyLocation",
-            "may_contain_units": true
-        },
-        "unit": {
-            "function": "postfixed_unit",
-            "field": "PropertyLocation"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/PsDtSYIjNsyfjwcX/ArcGIS/rest/services/Parcels_gdb/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PropertyLocation"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PropertyLocation",
+                        "may_contain_units": true
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "PropertyLocation"
+                    }
+                }
+            }
+        ]
     }
 }

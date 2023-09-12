@@ -9,23 +9,49 @@
         "state": "wa",
         "county": "King"
     },
-    "website": "http://www5.kingcounty.gov/gisdataportal/Default.aspx",
-    "type": "ESRI",
-    "data": "http://gismaps.kingcounty.gov/arcgis/rest/services/Address/KingCo_AddressPoints/MapServer/0",
-    "license": "http://www5.kingcounty.gov/gisdataportal/",
-    "conform": {
-        "type": "geojson",
-        "id": "SITEID",
-        "number": "ADDR_NUM",
-        "street": [
-            "ADDR_PD",
-            "ADDR_PT",
-            "ADDR_SN",
-            "ADDR_ST",
-            "ADDR_SD"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://gis-kingcounty.opendata.arcgis.com/datasets/kingcounty::addresses-in-king-county-address-point/about",
+                "protocol": "ESRI",
+                "data": "http://gismaps.kingcounty.gov/arcgis/rest/services/Address/KingCo_AddressPoints/MapServer/0",
+                "license": {
+                    "url": "https://www5.kingcounty.gov/sdc/addl_doc/KCGISCenterTermsAndConditions.pdf"
+                },
+                "conform": {
+                    "format": "geojson",
+                    "id": "SITEID",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "ADDR_PD",
+                        "ADDR_PT",
+                        "ADDR_SN",
+                        "ADDR_ST",
+                        "ADDR_SD"
+                    ],
+                    "unit": "Unit",
+                    "city": "CTYNAME",
+                    "postcode": "ZIP5",
+                    "district": "COUNTY"
+                }
+            }
         ],
-        "city": "CTYNAME",
-        "postcode": "ZIP5",
-        "district": "COUNTY"
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://gis-kingcounty.opendata.arcgis.com/datasets/kingcounty::king-county-parcels-parcel-area/about",
+                "protocol": "ESRI",
+                "data": "https://gismaps.kingcounty.gov/arcgis/rest/services/Property/KingCo_Parcels/MapServer/0",
+                "license": {
+                    "url": "https://www5.kingcounty.gov/sdc/addl_doc/KCGISCenterTermsAndConditions.pdf"
+                },
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

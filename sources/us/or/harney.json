@@ -9,18 +9,40 @@
         "state": "or",
         "county": "Harney"
     },
-    "data": "http://navigator.state.or.us/arcgis/rest/services/Projects/County_Harney/MapServer/8",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRESS",
-        "street": [
-            "PREDIR",
-            "STREETNAME",
-            "STREETTYPE",
-            "SUFDIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/e3KSI9Py4B7m3xu6/arcgis/rest/services/02_arcgis_online_Address_and_Tax_Lots_1/FeatureServer/0",
+                "website": "https://harneycounty.maps.arcgis.com/home/item.html?id=3a52a658d46a4c428140c8c9fc112a1d",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS",
+                    "street": [
+                        "PREDIR",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFDIR"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE5"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/e3KSI9Py4B7m3xu6/ArcGIS/rest/services/02_arcgis_online_Address_and_Tax_Lots_1/FeatureServer/1",
+                "website": "https://harneycounty.maps.arcgis.com/home/item.html?id=3a52a658d46a4c428140c8c9fc112a1d",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MapTaxlot"
+                }
+            }
         ]
-    },
-    "skip": true,
-    "note": "Unknown error - http://data.openaddresses.io.s3.amazonaws.com/runs/30068/output.txt"
+    }
 }

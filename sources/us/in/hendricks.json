@@ -9,22 +9,30 @@
         "state": "in",
         "county": "Hendricks"
     },
-    "data": "https://elb2.39dn.com/arcgis/rest/services/eGISDynamicServices/HendricksINDynamic/MapServer/27",
-    "type": "ESRI",
-    "skip": true,
-    "note": "39dn requested that we stop using data obtained from their servers on 2017-05-07",
-    "conform": {
-      "number": {
-          "function": "regexp",
-          "field": "Property_Street",
-          "pattern": "^([0-9]+)"
-      },
-      "street": {
-          "function": "regexp",
-          "field": "Property_Street",
-          "pattern": "^(?:[0-9]+ )(.*)",
-          "replace": "$1"
-      },
-      "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://elb2.39dn.com/arcgis/rest/services/eGISDynamicServices/HendricksINDynamic/MapServer/27",
+                "protocol": "ESRI",
+                "skip": true,
+                "note": "39dn requested that we stop using data obtained from their servers on 2017-05-07",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "Property_Street",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Property_Street",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

@@ -16,26 +16,45 @@
         "state": "co",
         "city": "Arvada"
     },
-    "attribution": "City of Arvada",
-    "data": "http://maps.arvada.org/ArcGIS/rest/services/Address/Master_Address_Join/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-      "type": "geojson",
-      "number": {
-          "function": "regexp",
-          "field": "ADDRESS",
-          "pattern": "^([0-9]+)"
-      },
-      "street": {
-          "function": "regexp",
-          "field": "ADDRESS",
-          "pattern": "^(?:[0-9]+ )(.*)",
-          "replace": "$1"
-      },
-      "unit": "UNIT_NUM",
-      "city": "MAILING_CITY",
-      "district": "JURISD_COUNTY",
-      "region": "STATE",
-      "postcode": "ZIP_5"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "attribution": "City of Arvada",
+                "license": "CC0",
+                "website": "https://gis-arvada.opendata.arcgis.com/datasets/8f04daa3938b4c40b56325bb218ff0fa_0/about",
+                "data": "https://services1.arcgis.com/eQyVgDz2cjhzbzN7/arcgis/rest/services/AddressPoints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREET_NUM",
+                    "street": [
+                        "STREET_PRE",
+                        "STREET_NAM",
+                        "STREET_TYP",
+                        "STREET_SUF"
+                    ],
+                    "unit": "UNIT_NUM",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "attribution": "City of Arvada",
+                "license": "CC0",
+                "website": "https://gis-arvada.opendata.arcgis.com/datasets/602790b439154d8bac95ae7f3562911f_0/about",
+                "data": "https://services1.arcgis.com/eQyVgDz2cjhzbzN7/arcgis/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "FID"
+                }
+            }
+        ]
     }
 }

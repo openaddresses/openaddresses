@@ -9,21 +9,30 @@
         "state": "mn",
         "county": "Grant"
     },
-    "data": "http://136.234.11.196/arcgis/rest/services/Grant/Grant_Internal_LINK/MapServer/43",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NUM",
-        "street": [
-            "ST_PREFIX",
-            "ST_PRETYPE",
-            "STREETNAME",
-            "ST_TYPE",
-            "ST_SUFFIX"
-        ],
-        "city": "CITY",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.grant.mn.us/arcgis/rest/services/Grant/Grant_Internal_LINK/MapServer/67",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ID",
+                    "number": "HOUSE_NUM",
+                    "street": [
+                        "STREETNAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX"
+                    ],
+                    "addrtype": "PLACE",
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE",
+                    "notes": "NOTES"
+                }
+            }
+        ]
     }
 }

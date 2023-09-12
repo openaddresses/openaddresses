@@ -9,25 +9,45 @@
         "state": "tn",
         "county": "Blount"
     },
-    "data": "http://204.63.176.116/arcgis/rest/services/AddressPoints_WGS84/MapServer/0",
-    "type": "ESRI",
-    "website": "http://www.blountgis.net/blountgis/web-maps/",
-    "conform": {
-        "type": "geojson",
-        "number": "STNUM",
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/NIOS5f3vobGvnGtD/ArcGIS/rest/services/BlountAddressPoints/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "http://www.blountgis.org/",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STNUM",
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "street": [
+                        "PREDIR",
+                        "PRETYPE",
+                        "NAME",
+                        "TYPE",
+                        "SUFDIR"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "street": [
-            "PREDIR",
-            "PRETYPE",
-            "NAME",
-            "TYPE",
-            "SUFDIR"
-        ],
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/NIOS5f3vobGvnGtD/ArcGIS/rest/services/BlountParcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "http://www.blountgis.org/",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "GISLINK"
+                }
+            }
+        ]
     }
 }

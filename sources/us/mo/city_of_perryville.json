@@ -16,16 +16,24 @@
         "state": "mo",
         "city": "Perryville"
     },
-    "data": "http://www.semogis.com/arcgis/rest/services/PerryvilleBase/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "AddNum",
-        "street": [
-            "Prefix",
-            "RoadName",
-            "Suffix"
-        ],
-        "unit": "Unit"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://www.semogis.com/arcgis/rest/services/PerryvilleBase/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "AddNum",
+                    "street": [
+                        "Prefix",
+                        "RoadName",
+                        "Suffix"
+                    ],
+                    "unit": "Unit"
+                }
+            }
+        ]
     }
 }

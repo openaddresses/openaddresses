@@ -9,37 +9,45 @@
         "state": "ia",
         "county": "Marion"
     },
-    "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Marion/Address_63.zip",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "year": "2012?",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^.* ((Unit|Apt) [0-9A-Za-z])$",
-            "replace": "$1"
-        },
-        "city": "POSTAL_COM",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP_CODE",
-        "type": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Marion/Address_63.zip",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "year": "2012?",
+                "protocol": "ftp",
+                "compression": "zip",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "address",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "address",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "address",
+                        "pattern": "^.* ((Unit|Apt) [0-9A-Za-z])$",
+                        "replace": "$1"
+                    },
+                    "city": "POSTAL_COM",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP_CODE",
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

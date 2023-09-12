@@ -9,24 +9,32 @@
         "state": "ks",
         "county": "Cowley"
     },
-    "conform": {
-        "type": "geojson",
-        "number": [
-          "HNO",
-          "HNS"
-        ],
-        "street": [
-            "PRD",
-            "RD",
-            "STS",
-            "POD"
-        ],
-        "unit": "UNIT",
-        "city": "POSTCO",
-        "postcode": "ZIP",
-        "district": "COUNTY",
-        "region": "STATE"
-    },
-    "data": "http://gis.cowleycounty.org/countymap/rest/services/CL_General/Deeds_Map/MapServer/0",
-    "type": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "HNO",
+                        "HNS"
+                    ],
+                    "street": [
+                        "PRD",
+                        "RD",
+                        "STS",
+                        "POD"
+                    ],
+                    "unit": "UNIT",
+                    "city": "POSTCO",
+                    "postcode": "ZIP",
+                    "district": "COUNTY",
+                    "region": "STATE"
+                },
+                "data": "http://gis.cowleycounty.org/countymap/rest/services/CL_General/Deeds_Map/MapServer/0",
+                "protocol": "ESRI"
+            }
+        ]
+    }
 }

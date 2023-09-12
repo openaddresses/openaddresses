@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -97.41,
+                48.416
+            ]
+        },
+        "US Census": {
+            "geoid": "3831820",
+            "name": "Grafton",
+            "state": "North Dakota"
+        },
+        "country": "us",
+        "state": "nd",
+        "county": "Grafton"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/qz25vLPtpIdijprk/ArcGIS/rest/services/GraftonLandownerOnlineMap2018021/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "PropertyAd",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "PropertyAd",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": "COMMUNITY"
+                }
+            }
+        ]
+    }
+}

@@ -9,24 +9,32 @@
         "state": "ca",
         "county": "El Dorado"
     },
-    "attribution": "El Dorando County",
-    "data": "https://github.com/datadesk/us-ca-el_dorado_county-currprcl-shp/blob/master/currprcl.zip?raw=true",
-    "website": "http://www.edcgov.us/Government/Surveyor/FAQs/G_I_S__FAQs.aspx",
-    "type": "http",
-    "compression": "zip",
-    "note": "Parcel polygons that include situs addresses in the metadata. Provided in response to a public records request in December 2014 and uploaded to GitHub for public hosting.",
-    "conform": {
-        "id": "PRCL_ID",
-        "type": "shapefile-polygon",
-        "city": "CITY",
-        "number": "SITUSNUMBR",
-        "street": [
-            "SITUSSTRNM",
-            "SITUSSTRTY"
-        ],
-        "unit": [
-          "UNIT_TYPE",
-          "UNIT_NBR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "El Dorando County",
+                "data": "https://github.com/datadesk/us-ca-el_dorado_county-currprcl-shp/blob/master/currprcl.zip?raw=true",
+                "website": "http://www.edcgov.us/Government/Surveyor/FAQs/G_I_S__FAQs.aspx",
+                "protocol": "http",
+                "compression": "zip",
+                "note": "Parcel polygons that include situs addresses in the metadata. Provided in response to a public records request in December 2014 and uploaded to GitHub for public hosting.",
+                "conform": {
+                    "id": "PRCL_ID",
+                    "format": "shapefile-polygon",
+                    "city": "CITY",
+                    "number": "SITUSNUMBR",
+                    "street": [
+                        "SITUSSTRNM",
+                        "SITUSSTRTY"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NBR"
+                    ]
+                }
+            }
         ]
     }
 }

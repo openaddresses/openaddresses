@@ -9,24 +9,47 @@
         "state": "wy",
         "county": "Hot Springs"
     },
-    "license": "http://maps.hscounty.com/mapserver/",
-    "compression": "zip",
-    "data": "http://maps.hscounty.com/download/parcels.zip",
-    "type": "http",
-    "conform": {
-        "type": "shapefile-polygon",
-        "number": {
-            "function": "regexp",
-            "field": "st_address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "st_address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "id": "pidn",
-        "accuracy": 2
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "license": "https://maps.greenwoodmap.com/hotsprings/mapserver/",
+                "compression": "zip",
+                "data": "https://maps.greenwoodmap.com/hotsprings/download/parcels.zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "srs": "EPSG:3738",
+                    "number": {
+                        "function": "regexp",
+                        "field": "st_address",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "st_address",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "id": "pidn",
+                    "accuracy": 2
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "license": "https://maps.greenwoodmap.com/hotsprings/mapserver/",
+                "compression": "zip",
+                "data": "https://maps.greenwoodmap.com/hotsprings/download/parcels.zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "srs": "EPSG:3738",
+                    "pid": "pidn"
+                }
+            }
+        ]
     }
 }

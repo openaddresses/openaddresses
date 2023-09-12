@@ -7,14 +7,22 @@
         "country": "us",
         "state": "sd"
     },
-    "data": "http://arcgis.sd.gov/arcgis/rest/services/BIT/AddressViewer/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": "HOUSE_NUM",
-        "street": "ADDRESS_ONLY",
-        "unit": "LOCATION",
-        "city": "CITY",
-        "postcode": "ZipCode",
-        "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "http://arcgis.sd.gov/arcgis/rest/services/BIT/AddressViewer/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "HOUSE_NUM",
+                    "street": "ADDRESS_ONLY",
+                    "unit": "LOCATION",
+                    "city": "CITY",
+                    "postcode": "ZipCode",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

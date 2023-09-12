@@ -9,14 +9,36 @@
         "state": "ut",
         "county": "Duchesne"
     },
-    "conform": {
-        "type": "csv",
-        "number": "HOUSE_N",
-        "street": ["PRE_DIR", "S_NAME", "SUF_DIR", "S_TYPE"],
-        "id": "PARCEL_ID",
-        "lon": "OA:x",
-        "lat": "OA:y"
-    },
-    "data": "http://maps.duchesne.utah.gov/arcgis/rest/services/PZB/FeatureServer/0",
-    "type": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://duchesnecountygis.org/arcgis/rest/services/CurrentAddress/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_N",
+                    "street": [
+                        "PRE_DIR",
+                        "S_NAME",
+                        "SUF_DIR",
+                        "S_TYPE"
+                    ],
+                    "id": "PARCEL_ID"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://duchesnecountygis.org/arcgis/rest/services/PUBLIC/Parcels_Viewer/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELS.DBO.CountyParcels.Name"
+                }
+            }
+        ]
+    }
 }

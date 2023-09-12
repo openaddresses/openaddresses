@@ -9,17 +9,25 @@
         "state": "in",
         "county": "Marion"
     },
-    "data": "http://imaps.indy.gov/arcgis/rest/services/MapIndyProperty/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": "STNUM",
-        "street": "FULL_STNAME",
-        "unit": [
-          "UNIT_TYPE",
-          "UNIT"
-        ],
-        "city": "CITY",
-        "postcode": "ZIPCODE",
-        "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://imaps.indy.gov/arcgis/rest/services/MapIndyProperty/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "STNUM",
+                    "street": "FULL_STNAME",
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIPCODE",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

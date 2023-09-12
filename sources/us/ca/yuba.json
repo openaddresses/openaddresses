@@ -9,20 +9,43 @@
         "state": "ca",
         "county": "Yuba"
     },
-    "attribution": "Yuba County",
-    "data": "https://github.com/datadesk/us-ca-yuba_county-AddressPoints-shp/blob/master/AddressPoints.zip?raw=true",
-    "website": "http://gis.co.yuba.ca.us/data.html",
-    "type": "http",
-    "compression": "zip",
-    "note": "File provided in response to a public records request in December 2014 and uploaded to GitHub for public hosting.",
-    "conform": {
-        "type": "shapefile",
-        "city": "Community",
-        "number": "HNUM",
-        "street": [
-            "PDIR",
-            "SNAME",
-            "SFXDIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Yuba County",
+                "data": "https://www.yuba.org/Address_Yuba_CA20220302.zip.txt",
+                "year": "2022",
+                "website": "https://www.yuba.org/departments/information_technology/geographic_information_systems_(gis)/gis_data_catalog.php",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "HNUM",
+                    "street": [
+                        "PDIR",
+                        "SNAME",
+                        "SFXDIR"
+                    ],
+                    "city": "Community"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Yuba County",
+                "data": "https://www.yuba.org/Yuba%20County/Information%20Technology/GIS/DataCat/Yuba_Parcels20220630.zip.txt",
+                "year": "2022",
+                "website": "https://www.yuba.org/departments/information_technology/geographic_information_systems_(gis)/gis_data_catalog.php",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "APN"
+                }
+            }
         ]
     }
 }

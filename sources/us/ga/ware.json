@@ -1,29 +1,49 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13299", "name": "Ware County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13299",
+            "name": "Ware County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Ware"
     },
-    "data": "http://data.openaddresses.io/cache/us-ga-ware_county.csv",
-    "type": "http",
-    "conform": {
-        "type": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "region": "REGION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services9.arcgis.com/XAyIBOsw3fLfDjTY/ArcGIS/rest/services/WareCountyBase_gdb/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUMB",
+                    "street": "STREET",
+                    "city": "COMMUNITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services9.arcgis.com/XAyIBOsw3fLfDjTY/ArcGIS/rest/services/WareCountyBase_gdb/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services9.arcgis.com/XAyIBOsw3fLfDjTY/ArcGIS/rest/services/WareCountyBase_gdb/FeatureServer/12",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }
-

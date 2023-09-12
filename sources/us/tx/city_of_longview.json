@@ -16,16 +16,24 @@
         "state": "tx",
         "city": "Longview"
     },
-    "data": "https://cloud.longviewtexas.gov/arcgis/rest/services/OpenData/OpenData/MapServer/13",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STREET_NUM",
-        "street": [
-            "DIR",
-            "STREET",
-            "TYPE"
-        ],
-        "unit": "SUITE_NO"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://cloud.longviewtexas.gov/arcgis/rest/services/OpenData/OpenData/MapServer/13",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREET_NUM",
+                    "street": [
+                        "DIR",
+                        "STREET",
+                        "TYPE"
+                    ],
+                    "unit": "SUITE_NO"
+                }
+            }
+        ]
     }
 }

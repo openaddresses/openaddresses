@@ -9,20 +9,26 @@
         "state": "mi",
         "county": "Eaton"
     },
-    "data": "https://services2.arcgis.com/c9l1e4fKpsCnqD7H/ArcGIS/rest/services/Parcels/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "PSTLADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "PSTLADDRESS"
-        },
-        "city": "PSTLCITY",
-        "region": "PSTLSTATE",
-        "postcode": "PSTLZIP5"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/c9l1e4fKpsCnqD7H/ArcGIS/rest/services/Eaton_County_Site_Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SITEADDID",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

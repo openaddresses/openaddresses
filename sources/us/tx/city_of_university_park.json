@@ -4,7 +4,7 @@
             "type": "Point",
             "coordinates": [
                 -96.794,
-                32.850
+                32.85
             ]
         },
         "US Census": {
@@ -16,16 +16,24 @@
         "state": "tx",
         "city": "University Park"
     },
-    "data": "http://gis4.dfwmaps.com/arcgis/rest/services/ICUniversityPark/UP_All_VE/MapServer/5",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRESS",
-        "street": [
-            "PREFIX_DIR",
-            "STREET_NAM",
-            "STREET_TYP"
-        ],
-        "unit": "SUITE_BUIL"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis4.dfwmaps.com/arcgis/rest/services/ICUniversityPark/UP_All_VE/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS",
+                    "street": [
+                        "PREFIX_DIR",
+                        "STREET_NAM",
+                        "STREET_TYP"
+                    ],
+                    "unit": "SUITE_BUIL"
+                }
+            }
+        ]
     }
 }

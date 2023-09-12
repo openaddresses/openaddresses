@@ -9,18 +9,38 @@
         "state": "or",
         "county": "Josephine"
     },
-    "type": "ESRI",
-    "data": "http://gis2.co.josephine.or.us/arcgis/rest/services/GIS/SiteAddress/MapServer/0",
-    "conform": {
-        "type": "geojson",
-        "number": "NUMBER",
-        "street": [
-            "PREFIX",
-            "STREETNAME",
-            "TYPE",
-            "SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis.co.josephine.or.us/arcgis/rest/services/Assessor/Taxlot_Points/MapServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ST_NO",
+                    "street": [
+                        "SITUS_PREF",
+                        "ST_NAME",
+                        "SITUS_SUFF"
+                    ],
+                    "city": "SITUS_CITY",
+                    "region": "SITUS_ST",
+                    "postcode": "SITUS_ZIP",
+                    "district": "COUNTY"
+                }
+            }
         ],
-        "city": "CITY",
-        "postcode": "ZIPCODE"
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis.co.josephine.or.us/arcgis/rest/services/Assessor/Assessor_Taxlots/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MNX"
+                }
+            }
+        ]
     }
 }

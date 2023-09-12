@@ -11,25 +11,37 @@
             ]
         }
     },
-    "data": "ftp://ftp.scrd.ca/opendata/Shapefiles/Address Points.zip",
-    "website": "http://www.scrd.ca/data-download",
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "id": "OBJECT_ID",
-        "number": [
-            "STR_NO_PRE",
-            "STR_NO",
-            "STR_NO_SUF"
-        ],
-        "street": [
-            "STR_DR_PRE",
-            "STR_NAME",
-            "STR_TYPE",
-            "STR_DR_SUF"
-        ],
-        "city": "LOCALITY",
-        "postcode": "POST_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://www2.scrd.ca/arcgis/rest/services/OpenData/CivicAddresses_AddressPoints/MapServer/0",
+                "website": "http://data-myscrd.opendata.arcgis.com/datasets/e62379e68ea54dfa8faf2765aae927d1_0",
+                "protocol": "ESRI",
+                "license": {
+                  "url": "https://www.scrd.ca/scrd_disclaimer",
+                    "text": "Contains information licensed under the Open Government Licence - SUNSHINE COAST",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "STR_NO_PRE",
+                        "STR_NO",
+                        "STR_NO_SUF"
+                    ],
+                    "street": [
+                        "STR_DR_PRE",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "STR_DR_SUF"
+                    ],
+                    "city": "LOCALITY",
+                    "postcode": "POST_CODE"
+                }
+            }
+        ]
     }
 }

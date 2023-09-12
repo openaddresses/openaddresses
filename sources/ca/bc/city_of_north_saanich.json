@@ -11,17 +11,25 @@
             ]
         }
     },
-    "data": "https://services1.arcgis.com/CppIoMHWYIrPO1GU/ArcGIS/rest/services/Public_AddressCadastral/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "ADDRESS_ID",
-        "number": "STREET_NUMBER",
-        "street": [
-            "STREET_NAME",
-            "STREET_TYPE",
-            "STREET_DIR_SUFFIX"
-        ],
-        "city": "LOCALITY_NAME_ALIAS"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services1.arcgis.com/CppIoMHWYIrPO1GU/ArcGIS/rest/services/Public_AddressCadastral/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDRESS_ID",
+                    "number": "STREET_NUMBER",
+                    "street": [
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "STREET_DIR_SUFFIX"
+                    ],
+                    "city": "LOCALITY_NAME_ALIAS"
+                }
+            }
+        ]
     }
 }

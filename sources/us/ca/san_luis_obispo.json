@@ -9,24 +9,32 @@
         "state": "ca",
         "county": "San Luis Obispo"
     },
-    "attribution": "San Luis Obispo County",
-    "data": "http://gis.slocounty.ca.gov/arcgis/rest/services/Public/opendata/MapServer/0",
-    "website": "http://gis.slocounty.opendata.arcgis.com/datasets/61f3ddf2074942e6932b8f5084c20ab4_0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "postcode": "Zip",
-        "city": "City",
-        "number": "StNumber",
-        "street": [
-            "StPreDir",
-            "StName",
-            "StType",
-            "StPostDir"
-        ],
-        "unit": [
-            "UnitType",
-            "UnitID"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "San Luis Obispo County",
+                "data": "https://gis.slocounty.ca.gov/arcgis/rest/services/Public/opendata/MapServer/0",
+                "website": "https://opendata.slocounty.ca.gov/datasets/SLOCounty::address-points/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "postcode": "Zip",
+                    "city": "City",
+                    "number": "StNumber",
+                    "street": [
+                        "StPreDir",
+                        "StName",
+                        "StType",
+                        "StPostDir"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "UnitID"
+                    ]
+                }
+            }
         ]
     }
 }

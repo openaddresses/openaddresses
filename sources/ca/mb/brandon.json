@@ -5,17 +5,33 @@
         "city": "Brandon",
         "geometry": {
             "type": "Point",
-            "coordinates": [-99.976, 49.850]
+            "coordinates": [
+                -99.976,
+                49.85
+            ]
         }
     },
-    "data": "http://opengov.brandon.ca/OpenDataService/CIVIC_ADDRESSES.zip",
-    "website": "http://opengov.brandon.ca/OpenDataService/opendata.html",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "CIVIC_ADDR",
-        "street": "STREET",
-        "unit": "UNIT_NUM",
-        "type": "shapefile-polygon"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://opendata.brandon.ca/OpenDataService/CIVIC_ADDRESSES.zip",
+                "website": "http://opengov.brandon.ca/OpenDataService/opendata.html",
+                "license": {
+                    "url": "http://opendata.brandon.ca/terms.aspx",
+                    "attribution name": "City of Brandon",
+                    "text": "Contains public sector Datasets made available under the City of Brandon's Open Data Licence"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "CIVIC_ADDR",
+                    "street": "STREET",
+                    "unit": "UNIT_NUM",
+                    "format": "shapefile-polygon"
+                }
+            }
+        ]
     }
 }

@@ -9,17 +9,55 @@
         "state": "ga",
         "county": "Sumter"
     },
-    "attribution": "Sumter County",
-    "data": "http://web3.kcsgis.com/kcsgis/rest/services/Americus_SumterCo_GA/Public/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-          "UNITTYPE",
-          "UNITID"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Sumter County",
+                "data": "https://web4.kcsgis.com/kcsgis/rest/services/Americus_SumterCo_GA/Public/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SITEADDID",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": "FULLNAME",
+                    "city": "MSAG",
+                    "district": "COUNTY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "postcode": "ZIP"
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Sumter County",
+                "data": "https://web4.kcsgis.com/kcsgis/rest/services/Americus_SumterCo_GA/Public/MapServer/10",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Sumter County",
+                "data": "https://web4.kcsgis.com/kcsgis/rest/services/Americus_SumterCo_GA/Public/MapServer/11",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

@@ -9,22 +9,31 @@
         "state": "nc",
         "county": "Wayne"
     },
-    "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Wayne/MapServer/8",
-    "type": "ESRI",
-    "website": "http://www.waynegov.com/cms/module/selectsurvey/TakeSurvey.aspx?PageNumber=1&SurveyID=154",
-    "conform": {
-        "type": "geojson",
-        "number": "ADD_NUM",
-        "street": [
-            "ADD_PRE",
-            "ADD_NAME",
-            "ADD_TYPE",
-            "ADD_SUF"
-        ],
-        "unit": "ADD_UNIT",
-        "city": "CITY",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.waynegov.com/DocumentCenter/View/4818/Address-Points",
+                "protocol": "http",
+                "compression": "zip",
+                "website": "https://www.waynegov.com/235/GIS-Data-Download",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "ADD_NUM",
+                    "street": [
+                        "ADD_PRE",
+                        "ADD_NAME",
+                        "ADD_TYPE",
+                        "ADD_SUF"
+                    ],
+                    "unit": "ADD_UNIT",
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

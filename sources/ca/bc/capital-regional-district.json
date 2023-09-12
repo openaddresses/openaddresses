@@ -5,28 +5,46 @@
         "county": "Capital",
         "geometry": {
             "type": "Point",
-            "coordinates": [-124.333, 48.660]
+            "coordinates": [
+                -124.333,
+                48.66
+            ]
         }
     },
-    "data": "http://mapservices.crd.bc.ca/arcgis/rest/services/Properties/MapServer/0",
-    "type": "ESRI",
-    "note": "not ideal treatment of number.  source has 3 fields for number: StreetNumberPrefix, StreetNumber, and StreetNumberSuffix.  format is '$1-$2$3'.  current join doesn't handle multiple delimiters and format would hardcode a hyphen.  since there are only 4 records with a StreetPrefix, it's ignored for now.",
-    "conform": {
-        "type": "geojson",
-        "id": "OBJECTID",
-        "number": {
-            "function": "join",
-            "fields": [
-                "StreetNumber",
-                "StreetNumberSuffix"
-            ],
-            "separator": ""
-        },
-        "street": [
-            "StreetName",
-            "StreetType",
-            "StreetDirSuffix"
-        ],
-        "unit": "UnitNumber"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://mapservices.crd.bc.ca/arcgis/rest/services/Properties/MapServer/0",
+                "website": "https://open-sipp.opendata.arcgis.com/datasets/SIPP::crd-properties/about?layer=0",
+                "license": {
+                    "url": "https://www.crd.bc.ca/about/data/geospatial-data",
+                    "text": "Used with permission from the Capital Regional District",
+                    "attribution": true,
+                    "share-alike": true
+                },
+                "protocol": "ESRI",
+                "note": "not ideal treatment of number.  source has 3 fields for number: StreetNumberPrefix, StreetNumber, and StreetNumberSuffix.  format is '$1-$2$3'.  current join doesn't handle multiple delimiters and format would hardcode a hyphen.  since there are only 4 records with a StreetPrefix, it's ignored for now.",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "StreetNumber",
+                            "StreetNumberSuffix"
+                        ],
+                        "separator": ""
+                    },
+                    "street": [
+                        "StreetName",
+                        "StreetType",
+                        "StreetDirSuffix"
+                    ],
+                    "unit": "UnitNumber"
+                }
+            }
+        ]
     }
 }

@@ -9,22 +9,34 @@
         "state": "az",
         "county": "Mohave"
     },
-    "data": "http://mcgis.mohavecounty.us/ArcGIS/rest/services/PARCELS/MapServer/4",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "SITE_ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SITE_ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "postcode": "ZIP",
-        "city": "CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://mcgis2.mohavecounty.us/arcgis/rest/services/PSAP/NENA_911_AddrPts/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "StreetName",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "postcode": "Post_Code",
+                    "city": "Inc_Muni",
+                    "district": "County",
+                    "region": "State"
+                }
+            }
+        ]
     }
 }

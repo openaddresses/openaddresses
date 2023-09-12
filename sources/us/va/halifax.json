@@ -9,16 +9,46 @@
         "state": "va",
         "county": "Halifax"
     },
-    "data": "https://www.webgis.net/arcgis/rest/services/VA/HalifaxCo_WebGIS/MapServer/3",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HNO",
-        "street": [
-            "RD",
-            "STS"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/HalifaxCo_WebGIS/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS",
+                    "street": "STREET_NAME_FULL",
+                    "unit": [
+                        "SUB_ADDRESS_TYPE",
+                        "SUB_ADDRESS_UNIT"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "postcode": "ZIP"
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/HalifaxCo_WebGIS/MapServer/12",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/HalifaxCo_WebGIS/MapServer/11",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PRN"
+                }
+            }
+        ]
     }
 }

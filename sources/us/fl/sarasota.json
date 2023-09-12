@@ -9,34 +9,74 @@
         "state": "fl",
         "county": "Sarasota"
     },
-    "attribution": "Sarasota County",
-    "data": "https://services3.arcgis.com/icrWMv7eBkctFu1f/arcgis/rest/services/AddressPoints_/FeatureServer/0",
-    "website": "https://hub.arcgis.com/datasets/8f17abc4d8664f079cecc944d86c31a1_0",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "AddPointID",
-        "number": "AddNumber",
-        "street": [
-            "StreetPreMod",
-            "StreetPreDir",
-            "StreetPreType",
-            "StreetName",
-            "StreetSuffix",
-            "StreetPostDir",
-            "StreetPostMod"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Sarasota County",
+                "data": "https://ags3.scgov.net/server/rest/services/Hosted/AddressPoint/FeatureServer/0",
+                "website": "https://data-sarco.opendata.arcgis.com/datasets/sarco::addresspoint/about",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "addpointid",
+                    "number": "addnumber",
+                    "street": [
+                        "streetpredir",
+                        "streetname",
+                        "streetsuffix",
+                        "streetpostdir"
+                    ],
+                    "unit": [
+                        "unittype",
+                        "unitnumber"
+                    ],
+                    "city": "postalcomm",
+                    "region": "state",
+                    "postcode": "zip"
+                }
+            }
         ],
-        "unit": [
-          "UnitType",
-          "UnitNumber"
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Sarasota County",
+                "data": "https://services3.arcgis.com/icrWMv7eBkctFu1f/arcgis/rest/services/ParcelHosted/FeatureServer/0",
+                "website": "https://data-sarco.opendata.arcgis.com/datasets/sarco::parcelhosted/about",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ID"
+                }
+            }
         ],
-        "city": "PostalComm",
-        "region": "State",
-        "postcode": "ZIP"
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Sarasota County",
+                "data": "https://ags3.scgov.net/server/rest/services/Hosted/BuildingFootprint/FeatureServer/0",
+                "website": "https://data-sarco.opendata.arcgis.com/datasets/sarco::buildingfootprint/about",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

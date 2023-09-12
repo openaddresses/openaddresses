@@ -7,17 +7,32 @@
             "type": "Point",
             "coordinates": [
                 -80.328,
-              	43.401
+                43.401
             ]
         }
     },
-    "data": "https://maps.cambridge.ca/arcgispub/rest/services/OpenData/MapServer/13",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "ADDRESS_POINT_ID",
-        "number": "HOUSE_NUMBER",
-        "street": "STREET_NAME",
-        "unit": "UNIT_NUMBER"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.cambridge.ca/arcgispub/rest/services/OpenData/MapServer/13",
+                "website": "https://geohub.cambridge.ca/datasets/addresses",
+                "license": {
+                    "url": "https://maps.cambridge.ca/images/opendata/Open%20data%20licence.pdf",
+                    "text": "Contains information licensed under the Open Government Licence – City of Cambridge.",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDRESS_POINT_ID",
+                    "number": "HOUSE_NUMBER",
+                    "street": "STREET_NAME",
+                    "unit": "UNIT_NUMBER"
+                }
+            }
+        ]
     }
 }

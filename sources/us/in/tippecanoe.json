@@ -9,14 +9,22 @@
         "state": "in",
         "county": "Tippecanoe"
     },
-    "data": "http://gis2.tippecanoe.in.gov/arcgis/rest/services/AddressPoints/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": "ROADNAME",
-        "unit": "UNIT",
-        "city": "COMMUNITY",
-        "postcode": "Zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis2.tippecanoe.in.gov/arcgis/rest/services/AddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": "ROADNAME",
+                    "unit": "UNIT",
+                    "city": "COMMUNITY",
+                    "postcode": "Zip"
+                }
+            }
+        ]
     }
 }

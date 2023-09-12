@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -122.078,
+                37.309
+            ]
+        },
+        "US Census": {
+            "geoid": "0617610",
+            "name": "City of Cupertino",
+            "state": "California"
+        },
+        "country": "us",
+        "state": "ca",
+        "city": "Cupertino"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.cupertino.org/cupgis/rest/services/Public/AmazonData/MapServer/1",
+                "website": "https://gis-cupertino.opendata.arcgis.com/datasets/Cupertino::address-points-secondary/about",
+                "attribution": "City of Cupertino",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NO",
+                    "street": [
+                        "PREFIX",
+                        "STREET_NAM",
+                        "SUFFIX",
+                        "SUFFIX_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NO"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "region": "STATE"
+                }
+            }
+        ]
+    }
+}

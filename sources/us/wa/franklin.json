@@ -9,119 +9,41 @@
         "state": "wa",
         "county": "Franklin"
     },
-    "license": "http://gis.co.franklin.wa.us/datadisclaimer.shtml",
-    "type": "http",
-    "compression": "zip",
-    "year": "2014",
-    "data": "http://franklingis.org/data/fe697be8_e7aa_11e5_a549_22000bb3a3a1/download?client_name=franklingis&type=shp",
-    "website": "http://franklingis.org/franklingis/maps",
-    "conform": {
-        "type": "shapefile",
-        "number": {
-            "function": "prefixed_number",
-            "field": "situs"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "situs",
-            "pattern": "^\\d+\\s+(.+?)(?:UNIT|STE|SP#|,|$)"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "situs",
-            "pattern": "((?:UNIT|STE|SP#)\\s+.+?)(?:,|$)"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "situs",
-            "pattern": ",\\s+(.+?)(?:\\s+\\d+)$"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "situs",
-            "pattern": "(\\d{5})$"
-        }
-    },
-    "test": {
-        "enabled": true,
-        "description": "Franklin County has a reliable comma with unit after street",
-        "acceptance-tests": [
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "no unit",
-                "inputs": {
-                    "situs": "7821 ROAD 44, PASCO 99301"
-                },
-                "expected": {
-                    "number": "7821",
-                    "street": "ROAD 44",
-                    "unit": "",
-                    "city": "PASCO",
-                    "postcode": "99301"
+                "name": "county",
+                "license": "http://gis.co.franklin.wa.us/datadisclaimer.shtml",
+                "protocol": "ESRI",
+                "data": "https://gisportal.franklin.co.franklin.wa.us/arcgis/rest/services/Address_Points/MapServer/0",
+                "website": "https://gisportal.franklin.co.franklin.wa.us/arcgisportal/home/item.html?id=7485b54ee408498b884380908bc59e07",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNumber",
+                    "street": [
+                        "DirPrefix",
+                        "FeatureName",
+                        "FeatureType",
+                        "DirSuffix"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "UnitNumber"
+                    ]
                 }
-            },
+            }
+        ],
+        "parcels": [
             {
-                "description": "no unit/city/zip",
-                "inputs": {
-                    "situs": "3608 JANET RD"
-                },
-                "expected": {
-                    "number": "3608",
-                    "street": "JANET RD",
-                    "unit": "",
-                    "city": "",
-                    "postcode": ""
-                }
-            },
-            {
-                "description": "UNIT unit designator",
-                "inputs": {
-                    "situs": "3411 N CAPITOL AVE UNIT A, PASCO 99301"
-                },
-                "expected": {
-                    "number": "3411",
-                    "street": "N CAPITOL AVE",
-                    "unit": "UNIT A",
-                    "city": "PASCO",
-                    "postcode": "99301"
-                }
-            },
-            {
-                "description": "STE unit designator with city/zip",
-                "inputs": {
-                    "situs": "3521 W COURT ST STE B, PASCO 99301"
-                },
-                "expected": {
-                    "number": "3521",
-                    "street": "W COURT ST",
-                    "unit": "STE B",
-                    "city": "PASCO",
-                    "postcode": "99301"
-                }
-            },
-            {
-                "description": "STE unit designator without city/zip",
-                "inputs": {
-                    "situs": "516 W MARGARET ST STE 2"
-                },
-                "expected": {
-                    "number": "516",
-                    "street": "W MARGARET ST",
-                    "unit": "STE 2",
-                    "city": "",
-                    "postcode": ""
-                }
-            },
-            {
-                "description": "# unit designator",
-                "inputs": {
-                    "situs": "925 N ELM AVE SP# 122, PASCO 99301"
-                },
-                "expected": {
-                    "number": "925",
-                    "street": "N ELM AVE",
-                    "unit": "SP# 122",
-                    "city": "PASCO",
-                    "postcode": "99301"
+                "name": "county",
+                "license": "http://gis.co.franklin.wa.us/datadisclaimer.shtml",
+                "protocol": "ESRI",
+                "data": "https://gisportal.franklin.co.franklin.wa.us/arcgis/rest/services/Parcels/MapServer/15",
+                "website": "https://gisportal.franklin.co.franklin.wa.us/arcgisportal/home/item.html?id=90a875f5725441e48565cf7b13f6290e",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
                 }
             }
         ]

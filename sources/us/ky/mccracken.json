@@ -9,19 +9,27 @@
         "state": "ky",
         "county": "McCracken"
     },
-    "data": "http://map-gis.paducahky.gov/arcgis/rest/services/EmergencyBaseMap/MapServer/4",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STNUM",
-        "street": [
-            "STPREFIX",
-            "STNAME",
-            "STTYPE"
-        ],
-        "unit": [
-          "SUB_ADDRESS_TYPE",
-          "SUB_ADDRESS_NUM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://map-gis.paducahky.gov/arcgis/rest/services/EmergencyBaseMap/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STNUM",
+                    "street": [
+                        "STPREFIX",
+                        "STNAME",
+                        "STTYPE"
+                    ],
+                    "unit": [
+                        "SUB_ADDRESS_TYPE",
+                        "SUB_ADDRESS_NUM"
+                    ]
+                }
+            }
         ]
     }
 }

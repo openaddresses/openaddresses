@@ -3,7 +3,7 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -106.360,
+                -106.36,
                 39.638
             ]
         },
@@ -16,15 +16,23 @@
         "state": "co",
         "city": "Vail"
     },
-    "data": "http://maps.vailgov.com/arc/rest/services/FlexApp/AddressPoints/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "StreetNo",
-        "street": [
-            "StreetDir",
-            "StreetName",
-            "StreetSuf"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://maps.vailgov.com/arc/rest/services/FlexApp/AddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StreetNo",
+                    "street": [
+                        "StreetDir",
+                        "StreetName",
+                        "StreetSuf"
+                    ]
+                }
+            }
         ]
     }
 }

@@ -1,0 +1,68 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -75.475542,
+                40.5961
+            ]
+        },
+        "US Census": {
+            "geoid": "4202000",
+            "name": "City of Allentown",
+            "state": "Pennsylvania"
+        },
+        "country": "us",
+        "state": "pa",
+        "county": "Lehigh",
+        "city": "Allentown"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services1.arcgis.com/WUqVDRuvIiIiH2Pl/ArcGIS/rest/services/CityAddresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SITEADDRESSID",
+                    "number": "HOUSE_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services1.arcgis.com/WUqVDRuvIiIiH2Pl/arcgis/rest/services/Tax_Parcels_Assessed_2022/FeatureServer/0",
+                "website": "https://opendata.allentownpa.gov/datasets/AllentownPA::tax-parcels-assessed-2022/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services1.arcgis.com/WUqVDRuvIiIiH2Pl/arcgis/rest/services/CityBuildingFootprints/FeatureServer/0",
+                "website": "https://opendata.allentownpa.gov/datasets/AllentownPA::city-building-footprints/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,67 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "06059",
+            "name": "Orange County",
+            "state": "California"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -118.004150390625,
+                33.68006833869061
+            ]
+        },
+        "country": "us",
+        "state": "ca",
+        "county": "Orange",
+        "city": "Huntington Beach"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.huntingtonbeachca.gov/arcgis/rest/services/WebAddresses/MapServer/47",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "huntington.DBO.AddressesPT.Address_Num",
+                        "huntington.DBO.AddressesPT.Fraction"
+                    ],
+                    "street": [
+                        "huntington.DBO.AddressesPT.CnStPrefix",
+                        "huntington.DBO.AddressesPT.CnStNm",
+                        "huntington.DBO.AddressesPT.CnStSuffix"
+                    ],
+                    "unit": "huntington.DBO.AddressesPT.Unit",
+                    "city": "Huntington.dbo.W2_HB.SITECITY",
+                    "region": "Huntington.dbo.W2_HB.SITESTATE",
+                    "postcode": "huntington.DBO.AddressesPT.ZIP4"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.huntingtonbeachca.gov/arcgis/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Huntington.DBO.Parcels.APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.huntingtonbeachca.gov/arcgis/rest/services/Basemap/MapServer/36",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

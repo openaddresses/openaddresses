@@ -9,18 +9,27 @@
         "state": "ks",
         "county": "Shawnee"
     },
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-            "DIR_PRE",
-            "STRT_NAM",
-            "TYPE_SUF"
-        ],
-        "unit": "UNIT_NUM",
-        "city": "PCITY",
-        "postcode": "ZipCode"
-    },
-    "data": "http://gis.snco.us/arcgis2/rest/services/Basemap_Cached/MapServer/5",
-    "type": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "note": "alternate source (origin unknown): https://services2.arcgis.com/2XE514jeVQMWNKHX/arcgis/rest/services/AddressPoints/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "DIR_PRE",
+                        "STRT_NAM",
+                        "TYPE_SUF"
+                    ],
+                    "unit": "UNIT_NUM",
+                    "city": "PCITY",
+                    "postcode": "ZipCode"
+                },
+                "data": "http://gis.snco.us/arcgis2/rest/services/Basemap_Cached/MapServer/5",
+                "protocol": "ESRI"
+            }
+        ]
+    }
 }

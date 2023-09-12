@@ -16,16 +16,24 @@
         "state": "tx",
         "city": "Carrollton"
     },
-    "data": "http://maps.cityofcarrollton.com/arcgis/rest/services/Webclstr1/BaseMap/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "Address",
-        "street": [
-            "Direction",
-            "StreetName",
-            "StreetType"
-        ],
-        "unit": "AptNo"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://maps.cityofcarrollton.com/arcgis/rest/services/Webclstr1/BaseMap/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Address",
+                    "street": [
+                        "Direction",
+                        "StreetName",
+                        "StreetType"
+                    ],
+                    "unit": "AptNo"
+                }
+            }
+        ]
     }
 }

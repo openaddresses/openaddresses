@@ -9,18 +9,50 @@
         "state": "wi",
         "county": "Outagamie"
     },
-    "data": "https://gis.outagamie.org/arcgis/rest/services/Address/ADDRESSES/MapServer/4",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRESS_NUM",
-        "unit": "UNIT",
-        "street": [
-            "PREFIX",
-            "STREET_NAME",
-            "SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.outagamie.org/arcgis/rest/services/Address/ADDRESSES/MapServer/0",
+                "website": "https://data-ocgis.opendata.arcgis.com/datasets/OCGIS::address/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS_NUM",
+                    "unit": "UNIT",
+                    "street": [
+                        "PREFIX",
+                        "STREET_NAME",
+                        "SUFFIX"
+                    ],
+                    "city": "MA_CITY",
+                    "postcode": "MA_ZIP",
+                    "accuracy": 1
+                }
+            }
         ],
-        "city": "MUNICIPALITY",
-        "postcode": "MA_ZIP"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.outagamie.org/arcgis/rest/services/Basemap/CountyParcel/MapServer/0",
+                "website": "https://data-ocgis.opendata.arcgis.com/datasets/OCGIS::county-tax-parcel/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PINLINK"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.outagamie.org/arcgis/rest/services/BuildingFootprints/BuildingFootprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

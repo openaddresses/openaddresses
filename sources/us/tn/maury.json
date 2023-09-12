@@ -1,26 +1,43 @@
 {
     "coverage": {
-        "US Census": {"geoid": "47119", "name": "Maury County", "state": "Tennessee"},
+        "US Census": {
+            "geoid": "47119",
+            "name": "Maury County",
+            "state": "Tennessee"
+        },
         "country": "us",
         "state": "tn",
         "county": "Maury"
     },
-    "data": "http://maps.maurycounty-tn.gov/arcgis/rest/services/TaxParcelQuery/MapServer/0/",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "SITEADDRESS",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SITEADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/ubRvNDgGwwJuZMcL/arcgis/rest/services/Addresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": ["UNIT_TYPE", "UNIT_NUM"],
+                    "number": ["STNUM", "STNUMSUF"],
+                    "street": ["PREDIR", "PRETYPE",  "NAME", "TYPE", "SUFDIR", "POSTMOD"],
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "district": "COUNTY",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/ubRvNDgGwwJuZMcL/arcgis/rest/services/Parcels/FeatureServer/1/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
     }
 }
-

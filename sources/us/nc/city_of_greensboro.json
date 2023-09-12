@@ -4,7 +4,7 @@
             "type": "Point",
             "coordinates": [
                 -79.827303,
-              	36.095961
+                36.095961
             ]
         },
         "US Census": {
@@ -17,18 +17,26 @@
         "county": "Guilford",
         "city": "Greensboro"
     },
-    "data": "https://gis.greensboro-nc.gov/arcgis/rest/services/OpenGateCity/OpenGateCityLaunch/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "AD_ST_NUM",
-        "street": [
-            "AD_ST_PFX",
-            "AD_ST_NAME",
-            "AD_ST_TYPE",
-            "AD_ST_SFX"
-        ],
-        "unit": "AD_ST_APT",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.greensboro-nc.gov/arcgis/rest/services/OpenGateCity/OpenGateCityLaunch/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "AD_ST_NUM",
+                    "street": [
+                        "AD_ST_PFX",
+                        "AD_ST_NAME",
+                        "AD_ST_TYPE",
+                        "AD_ST_SFX"
+                    ],
+                    "unit": "AD_ST_APT",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

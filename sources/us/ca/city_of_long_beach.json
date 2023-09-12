@@ -4,7 +4,7 @@
             "type": "Point",
             "coordinates": [
                 -118.226,
-                33.800
+                33.8
             ]
         },
         "US Census": {
@@ -16,19 +16,56 @@
         "state": "ca",
         "city": "Long Beach"
     },
-    "data": "http://tsdgis.longbeach.gov/webgis/rest/services/HANSENBLLIC/BLAddrDetail/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "ADDRESS",
-            "FRACTION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://tsdgis.longbeach.gov/webgis/rest/services/HANSENBLLIC/BLAddrDetail/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDRESS",
+                        "FRACTION"
+                    ],
+                    "street": [
+                        "PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "SUFFIX"
+                    ]
+                }
+            }
         ],
-        "street": [
-            "PREFIX",
-            "ST_NAME",
-            "ST_TYPE",
-            "SUFFIX"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services6.arcgis.com/yCArG7wGXGyWLqav/arcgis/rest/services/Assessor_Parcels/FeatureServer/0",
+                "website": "https://maps.longbeach.gov/datasets/LongBeachCA::assessor-parcels/about",
+                "license": {
+                    "url": "https://maps.longbeach.gov/pages/termsofuse"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services6.arcgis.com/yCArG7wGXGyWLqav/arcgis/rest/services/Building_Roofprints/FeatureServer/0",
+                "website": "https://maps.longbeach.gov/datasets/LongBeachCA::building-roofprints/about",
+                "license": {
+                    "url": "https://maps.longbeach.gov/pages/termsofuse"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
         ]
     }
 }

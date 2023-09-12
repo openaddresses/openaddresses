@@ -1,0 +1,43 @@
+{
+    "coverage": {
+        "country": "us",
+        "state": "ca",
+        "city": "Lancaster"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "year": "2019",
+                "data": "https://data.openaddresses.io/cache/uploads/ingalls/us-ca-city_of_lancaster.zip",
+                "note": "Obtained Via FOIA Request",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "unit": "UnitName",
+                    "number": [
+                        "NumPrefix",
+                        "Number",
+                        "NumSuffix"
+                    ],
+                    "street": "FullName",
+                    "postcode": "ZipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services7.arcgis.com/nSZffRgjBDuTMleo/ArcGIS/rest/services/Parcels_Public/FeatureServer/0",
+                "website": "https://opendata-lancasterca.hub.arcgis.com/apps/0dad1680833f41cfb496420fb444a73a/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
+    }
+}

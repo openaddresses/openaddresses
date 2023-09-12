@@ -3,29 +3,64 @@
         "country": "ca",
         "state": "ab",
         "city": "Calgary",
-        "geometry": { "type": "Point", "coordinates": [-114.08, 51.08] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -114.08,
+                51.08
+            ]
+        }
     },
-    "data": "https://data.calgary.ca/api/views/uwj2-d2wc/rows.csv?accessType=DOWNLOAD",
-    "website": "https://data.calgary.ca/",
-    "license": "https://data.calgary.ca/stories/s/u45n-7awa",
-    "type": "http",
-    "conform": {
-        "type": "csv",
-        "lat": "latitude",
-        "lon": "longitude",
-        "number": {
-            "function": "join",
-            "fields": [
-                "HOUSE_NUMBER",
-                "HOUSE_ALPHA"
-            ],
-            "separator": ""
-        },
-        "street": [
-            "STREET_NAME",
-            "STREET_TYPE",
-            "STREET_QUAD"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://data.calgary.ca/api/views/uwj2-d2wc/rows.csv?accessType=DOWNLOAD",
+                "website": "https://data.calgary.ca/",
+                "license": {
+                    "url": "https://data.calgary.ca/stories/s/Open-Calgary-Terms-of-Use/u45n-7awa",
+                    "text": "Contains information licensed under the Open Government Licence – City of Calgary.",
+                    "attribution name": "City of Calgary"
+                },
+                "protocol": "http",
+                "conform": {
+                    "format": "csv",
+                    "lat": "latitude",
+                    "lon": "longitude",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "HOUSE_NUMBER",
+                            "HOUSE_ALPHA"
+                        ],
+                        "separator": ""
+                    },
+                    "street": [
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "STREET_QUAD"
+                    ]
+                },
+                "attribution": "City of Calgary"
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://data.calgary.ca/resource/uc4c-6kbd.geojson",
+                "website": "https://data.calgary.ca/",
+                "license": {
+                    "url": "https://data.calgary.ca/stories/s/Open-Calgary-Terms-of-Use/u45n-7awa",
+                    "text": "Contains information licensed under the Open Government Licence – City of Calgary.",
+                    "attribution name": "City of Calgary"
+                },
+                "attribution": "City of Calgary",
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
         ]
-    },
-    "attribution": "City of Calgary"
+    }
 }

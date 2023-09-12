@@ -16,23 +16,31 @@
         "state": "mo",
         "city": "Kansas City"
     },
-    "type": "http",
-    "data": "https://data.kcmo.org/api/views/3639-4c86/rows.csv?accessType=DOWNLOAD",
-    "conform": {
-        "type": "csv",
-        "lat": "Latitude",
-        "lon": "Longitude",
-        "number": [
-            "Address Number",
-            "Fraction"
-        ],
-        "street": [
-            "Prefix",
-            "Street",
-            "Street Type"
-        ],
-        "unit": "Suite",
-        "city": "City",
-        "region": "State"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "http",
+                "data": "https://data.kcmo.org/api/views/3639-4c86/rows.csv?accessType=DOWNLOAD",
+                "conform": {
+                    "format": "csv",
+                    "lat": "Latitude",
+                    "lon": "Longitude",
+                    "number": [
+                        "Address Number",
+                        "Fraction"
+                    ],
+                    "street": [
+                        "Prefix",
+                        "Street",
+                        "Street Type"
+                    ],
+                    "unit": "Suite",
+                    "city": "City",
+                    "region": "State"
+                }
+            }
+        ]
     }
 }

@@ -3,20 +3,34 @@
         "country": "ca",
         "state": "on",
         "county": "Niagara",
-        "geometry": { "type": "Point", "coordinates": [-79.2, 43.1] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -79.2,
+                43.1
+            ]
+        }
     },
-    "data": "https://www.niagaraopendata.ca//dataset/89185b23-8326-4163-a85b-a949233c3e3c/resource/8bd7aa20-37d7-4760-aed0-17dd285c77f5/download/addresspoints.zip",
-    "website": "https://niagaraopendata.ca/dataset/address-points",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "Full_Stree",
-        "street": [
-            "StreetDir",
-            "StreetName",
-            "StreetType"
-        ],
-        "city": "Municipali",
-        "type": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.niagaraopendata.ca//dataset/89185b23-8326-4163-a85b-a949233c3e3c/resource/8bd7aa20-37d7-4760-aed0-17dd285c77f5/download/addresspoints.zip",
+                "website": "https://niagaraopendata.ca/dataset/address-points",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "Full_Stree",
+                    "street": [
+                        "StreetDir",
+                        "StreetName",
+                        "StreetType"
+                    ],
+                    "city": "Municipali",
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

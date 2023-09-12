@@ -9,20 +9,28 @@
         "state": "or",
         "county": "Baker"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "gdb",
-        "file": "Delivery/addresses_oregon.gdb",
-        "layer": "Baker",
-        "number": "HouseNo",
-        "street": [
-            "Direction",
-            "RoadName",
-            "RoadType"
-        ],
-        "unit": "Extension",
-        "city": "CityCounty"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "file": "Delivery/addresses_oregon.gdb",
+                    "layer": "Baker",
+                    "number": "HouseNo",
+                    "street": [
+                        "Direction",
+                        "RoadName",
+                        "RoadType"
+                    ],
+                    "unit": "Extension",
+                    "city": "CityCounty"
+                }
+            }
+        ]
     }
 }

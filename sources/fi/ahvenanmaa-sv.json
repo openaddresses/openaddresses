@@ -1,9 +1,7 @@
 {
-    "type": "http",
-    "data": "https://www.avoindata.fi/data/dataset/cf9208dc-63a9-44a2-9312-bbd2c3952596/resource/2e212776-5151-443a-91eb-1fdd02d77642/download/19_osoitteet_2018-05-15.opt",
     "coverage": {
         "state": "Ahvenanmaa",
-        "country": "FI",
+        "country": "fi",
         "ISO 3166": {
             "alpha2": "FI-01",
             "country": "Finland",
@@ -11,32 +9,46 @@
             "subdivision (fi)": "Ahvenanmaan maakunta",
             "subdivision (en)": "Åland"
         }
-
     },
-    "license": {
-        "url": "https://creativecommons.org/licences/by/4.0/deed.fi",
-        "text": "CC BY 4.0",
-        "attribution": true,
-        "attribution name": "Väestörekisterikeskus"
-    },
-    "website": "https://www.avoindata.fi/data/fi/dataset/rakennusten-osoitetiedot-koko-suomi",
-    "conform": {
-        "srs": "EPSG:3067",
-        "encoding": "ISO-8859-1",
-        "csvsplit": ";",
-        "headers": -1,
-        "street": "COLUMN9",
-        "number": "COLUMN10",
-        "lat": "COLUMN5",
-        "lon": "COLUMN6",
-        "id": {
-            "function": "join",
-            "fields": ["COLUMN1","COLUMN7"],
-            "separator": "-"
-        },
-        "postcode": "COLUMN11",
-        "type": "csv",
-        "accuracy": 1
-    },
-    "language": "sv"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "skip": true,
+                "note": "Replaced by countrywide source for easier maintenance (quarterly URL updates)",
+                "protocol": "http",
+                "data": "https://www.avoindata.fi/data/dataset/cf9208dc-63a9-44a2-9312-bbd2c3952596/resource/2e212776-5151-443a-91eb-1fdd02d77642/download/19_osoitteet_2018-05-15.opt",
+                "license": {
+                    "url": "https://creativecommons.org/licences/by/4.0/deed.fi",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Väestörekisterikeskus"
+                },
+                "website": "https://www.avoindata.fi/data/fi/dataset/rakennusten-osoitetiedot-koko-suomi",
+                "conform": {
+                    "srs": "EPSG:3067",
+                    "encoding": "ISO-8859-1",
+                    "csvsplit": ";",
+                    "headers": -1,
+                    "street": "COLUMN9",
+                    "number": "COLUMN10",
+                    "lat": "COLUMN5",
+                    "lon": "COLUMN6",
+                    "id": {
+                        "function": "join",
+                        "fields": [
+                            "COLUMN1",
+                            "COLUMN7"
+                        ],
+                        "separator": "-"
+                    },
+                    "postcode": "COLUMN11",
+                    "format": "csv",
+                    "accuracy": 1
+                },
+                "language": "sv"
+            }
+        ]
+    }
 }

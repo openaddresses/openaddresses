@@ -9,19 +9,27 @@
         "state": "ks",
         "county": "Edwards"
     },
-    "conform": {
-        "type": "geojson",
-        "number": "structno",
-        "street": [
-            "predir",
-            "streetname",
-            "streettype",
-            "sufdir"
-        ],
-        "unit": "apartment",
-        "city": "community",
-        "postcode": "zipcode"
-    },
-    "data": "http://72.205.198.131/ArcGIS/rest/services/Edwards/Edwards/MapServer/32",
-    "type": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "number": "structno",
+                    "street": [
+                        "predir",
+                        "streetname",
+                        "streettype",
+                        "sufdir"
+                    ],
+                    "unit": "apartment",
+                    "city": "community",
+                    "postcode": "zipcode"
+                },
+                "data": "http://72.205.198.131/ArcGIS/rest/services/Edwards/Edwards/MapServer/32",
+                "protocol": "ESRI"
+            }
+        ]
+    }
 }

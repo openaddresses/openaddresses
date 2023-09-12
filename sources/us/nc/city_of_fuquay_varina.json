@@ -3,7 +3,7 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -78.800,
+                -78.8,
                 35.611
             ]
         },
@@ -16,17 +16,25 @@
         "state": "nc",
         "city": "Fuquay-Varina"
     },
-    "data": "https://arcgis.fuquay-varina.org/arcgis/rest/services/public/Address_Points/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "Str_Num",
-        "street": [
-            "Str_Dir",
-            "Str_Name",
-            "Str_Type",
-            "Post_Str_D"
-        ],
-        "unit": "Str_Apt_Nu"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://arcgis.fuquay-varina.org/arcgis/rest/services/public/Address_Points/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Str_Num",
+                    "street": [
+                        "Str_Dir",
+                        "Str_Name",
+                        "Str_Type",
+                        "Post_Str_D"
+                    ],
+                    "unit": "Str_Apt_Nu"
+                }
+            }
+        ]
     }
 }

@@ -7,28 +7,36 @@
         "country": "us",
         "state": "wi"
     },
-    "data": "http://openaddresses.s3.amazonaws.com/us-wi-statewide.csv.zip",
-    "website": "http://www.sco.wisc.edu/find-data/addresses.html",
-    "type": "http",
-    "compression": "zip",
-    "note": "This is a CSV extraction of the address points layer in http://psc.wi.gov/utilityInfo/tele/broadband/documents/LinkWISCONSIN_EBM_ParcelAddress_Data.zip",
-    "year": "2014",
-    "conform": {
-        "type": "csv",
-        "lat": "AddressLatitude",
-        "lon": "AddressLongitude",
-        "number": [
-            "AddNumPrefix",
-            "AddNum",
-            "AddNumSuffix"
-        ],
-        "street": [
-            "Prefix",
-            "StreetName",
-            "StreetType",
-            "Suffix"
-        ],
-        "city": "PlaceNameAlternate",
-        "postcode": "ZipCode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "http://openaddresses.s3.amazonaws.com/us-wi-statewide.csv.zip",
+                "website": "http://www.sco.wisc.edu/find-data/addresses.html",
+                "protocol": "http",
+                "compression": "zip",
+                "note": "This is a CSV extraction of the address points layer in http://psc.wi.gov/utilityInfo/tele/broadband/documents/LinkWISCONSIN_EBM_ParcelAddress_Data.zip",
+                "year": "2014",
+                "conform": {
+                    "format": "csv",
+                    "lat": "AddressLatitude",
+                    "lon": "AddressLongitude",
+                    "number": [
+                        "AddNumPrefix",
+                        "AddNum",
+                        "AddNumSuffix"
+                    ],
+                    "street": [
+                        "Prefix",
+                        "StreetName",
+                        "StreetType",
+                        "Suffix"
+                    ],
+                    "city": "PlaceNameAlternate",
+                    "postcode": "ZipCode"
+                }
+            }
+        ]
     }
 }

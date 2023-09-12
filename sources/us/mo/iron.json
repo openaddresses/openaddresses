@@ -1,22 +1,39 @@
 {
     "coverage": {
-        "US Census": {"geoid": "29093", "name": "Iron County", "state": "Missouri"},
+        "US Census": {
+            "geoid": "29093",
+            "name": "Iron County",
+            "state": "Missouri"
+        },
         "country": "us",
         "state": "mo",
         "county": "Iron"
     },
-    "data": "https://www.semogis.com/arcgis/rest/services/IronCo/IronAssess/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITE_ADD"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITE_ADD"
-        },
-        "city": "SITE_CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.semogis.com/arcgis/rest/services/IronCo/IronAssess/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "parcdata.SITE_NO",
+                    "street": "parcdata.SITE_STREE",
+                    "city": "parcdata.SITE_CITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.semogis.com/arcgis/rest/services/IronCo/IronAssess/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel.PIN"
+                }
+            }
+        ]
     }
 }

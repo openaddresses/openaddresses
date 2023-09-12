@@ -1,182 +1,190 @@
 {
     "coverage": {
-      "country": "cz",
-      "ISO 3166": {
-          "alpha2": "CZ",
-          "country": "Czech Republic"
-      }
-    },
-    "website": "http://vdp.cuzk.cz/vdp/ruian/vymennyformat/vyhledej?vf.pu=S&_vf.pu=on&_vf.pu=on&vf.cr=U&vf.up=OB&vf.ds=Z&vf.vu=Z&_vf.vu=on&_vf.vu=on&_vf.vu=on&_vf.vu=on&vf.uo=O&ob.kod=531723&search=Vyhledat",
-    "license": "§ 62 of Law 111/2009 Sb - http://www.zakonyprolidi.cz/cs/2009-111#p62",
-    "type": "http",
-    "compression": "zip",
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/5a3dbe/czech_addresses_wgs84_12092016_MASTER.zip",
-    "note": {
-        "address formats": "http://www.upu.int/fileadmin/documentsFiles/activities/addressingUnit/czeEn.pdf",
-        "description": "according to format, there are cities w/o streets, just house numbers",
-        "examples": {
-            "street+house+neighbourhood+postcode+city": [
-                "Jiřská 9/10, Hradčany, 11900 Praha 1",
-                "Jelení 91/7a, Hradčany, 11800 Praha 1",
-                "Hrad I. nádvoří 1, Hradčany, 11900 Praha 1",
-                "Malá Strana 57, 15000 Praha 1",
-                "Albertov č.ev. 7/3a, Nové Město, 12800 Praha 2"
-            ],
-            "house+postcode+city": [
-              "č.p. 111, 27042 Skryje",
-              "č.ev. 57, 79862 Rozstání"
-            ]
+        "country": "cz",
+        "ISO 3166": {
+            "alpha2": "CZ",
+            "country": "Czech Republic"
         }
     },
-    "conform": {
-        "lat": "POINT_Y",
-        "lon": "POINT_X",
-        "number": {
-            "function": "regexp",
-            "field": "alternativ",
-            "pattern": "^[^,]*?\\s*((?:č\\.?(?:p|ev)\\.?)?\\s*\\d+(?:\\s*/\\s*\\d+[a-z]?)?)(?=\\s*,)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "alternativ",
-            "pattern": "^([^,]*?)\\s*(?:(?:č\\.?(?:p|ev)\\.?)?\\s*\\d+(?:\\s*/\\s*\\d+[a-z]?)?)(?=\\s*,)"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "alternativ",
-            "pattern": "(?:.*),\\s+(?:\\d+\\s+)?(\\w.*)"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "alternativ",
-            "pattern": "(?:.*),\\s+(\\d+)"
-        },
-        "file": "czech_addresses_wgs84_12092016_MASTER.csv",
-        "type": "csv",
-        "accuracy": 1
-    },
-    "test": {
-        "enabled": true,
-        "description": "these are the tests that exercise valid inputs for czech countrywide",
-        "acceptance-tests": [
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "address with /-delimited number",
-                "inputs": {
-                    "alternativ": "Jiřská 9/10, Hradčany, 11900 Praha 1"
+                "name": "country",
+                "website": "http://vdp.cuzk.cz/vdp/ruian/vymennyformat/vyhledej?vf.pu=S&_vf.pu=on&_vf.pu=on&vf.cr=U&vf.up=OB&vf.ds=Z&vf.vu=Z&_vf.vu=on&_vf.vu=on&_vf.vu=on&_vf.vu=on&vf.uo=O&ob.kod=531723&search=Vyhledat",
+                "license": "§ 62 of Law 111/2009 Sb - http://www.zakonyprolidi.cz/cs/2009-111#p62",
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://data.openaddresses.io/cache/uploads/trescube/5a3dbe/czech_addresses_wgs84_12092016_MASTER.zip",
+                "note": {
+                    "address formats": "http://www.upu.int/fileadmin/documentsFiles/activities/addressingUnit/czeEn.pdf",
+                    "description": "according to format, there are cities w/o streets, just house numbers",
+                    "examples": {
+                        "street+house+neighbourhood+postcode+city": [
+                            "Jiřská 9/10, Hradčany, 11900 Praha 1",
+                            "Jelení 91/7a, Hradčany, 11800 Praha 1",
+                            "Hrad I. nádvoří 1, Hradčany, 11900 Praha 1",
+                            "Malá Strana 57, 15000 Praha 1",
+                            "Albertov č.ev. 7/3a, Nové Město, 12800 Praha 2"
+                        ],
+                        "house+postcode+city": [
+                            "č.p. 111, 27042 Skryje",
+                            "č.ev. 57, 79862 Rozstání"
+                        ]
+                    }
                 },
-                "expected": {
-                    "number": "9/10",
-                    "street": "Jiřská",
-                    "city": "Praha 1",
-                    "postcode": "11900"
-                }
-            },
-            {
-                "description": "address with /-delimited number with letter",
-                "inputs": {
-                    "alternativ": "Jelení 91/7a, Hradčany, 11800 Praha 1"
+                "conform": {
+                    "lat": "POINT_Y",
+                    "lon": "POINT_X",
+                    "number": {
+                        "function": "regexp",
+                        "field": "alternativ",
+                        "pattern": "^[^,]*?\\s*((?:č\\.?(?:p|ev)\\.?)?\\s*\\d+(?:\\s*/\\s*\\d+[a-z]?)?)(?=\\s*,)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "alternativ",
+                        "pattern": "^([^,]*?)\\s*(?:(?:č\\.?(?:p|ev)\\.?)?\\s*\\d+(?:\\s*/\\s*\\d+[a-z]?)?)(?=\\s*,)"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "alternativ",
+                        "pattern": "(?:.*),\\s+(?:\\d+\\s+)?(\\w.*)"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "alternativ",
+                        "pattern": "(?:.*),\\s+(\\d+)"
+                    },
+                    "file": "czech_addresses_wgs84_12092016_MASTER.csv",
+                    "format": "csv",
+                    "accuracy": 1
                 },
-                "expected": {
-                    "number": "91/7a",
-                    "street": "Jelení",
-                    "city": "Praha 1",
-                    "postcode": "11800"
-                }
-            },
-            {
-                "description": "address with single digit number and neighbourhood",
-                "inputs": {
-                    "alternativ": "Hrad I. nádvoří 1, Hradčany, 11900 Praha 1"
-                },
-                "expected": {
-                    "number": "1",
-                    "street": "Hrad I. nádvoří",
-                    "city": "Praha 1",
-                    "postcode": "11900"
-                }
-            },
-            {
-                "description": "address with single digit number",
-                "inputs": {
-                    "alternativ": "Malá Strana 57, 15000 Praha 1"
-                },
-                "expected": {
-                    "number": "57",
-                    "street": "Malá Strana",
-                    "city": "Praha 1",
-                    "postcode": "15000"
-                }
-            },
-            {
-                "description": "address with special-case house-only identifier 'č.ev.'",
-                "inputs": {
-                    "alternativ": "Albertov č.ev. 7/3a, Nové Město, 12800 Praha 2"
-                },
-                "expected": {
-                    "number": "č.ev. 7/3a",
-                    "street": "Albertov",
-                    "city": "Praha 2",
-                    "postcode": "12800"
-                }
-            },
-            {
-                "description": "street-less address with house-only identifier 'č.p.'",
-                "inputs": {
-                    "alternativ": "č.p. 111, 27042 Skryje"
-                },
-                "expected": {
-                    "number": "č.p. 111",
-                    "street": "",
-                    "city": "Skryje",
-                    "postcode": "27042"
-                }
-            },
-            {
-                "description": "street-less address with house-only identifier 'č.ev.'",
-                "inputs": {
-                    "alternativ": "č.ev. 57, 79862 Rozstání"
-                },
-                "expected": {
-                    "number": "č.ev. 57",
-                    "street": "",
-                    "city": "Rozstání",
-                    "postcode": "79862"
-                }
-            },
-            {
-                "description": "street name containing initial number",
-                "inputs": {
-                    "alternativ": "28. října 24, 56301 Lanškroun"
-                },
-                "expected": {
-                    "number": "24",
-                    "street": "28. října",
-                    "city": "Lanškroun",
-                    "postcode": "56301"
-                }
-            },
-            {
-                "description": "street name containing initial number with /-delimited house number",
-                "inputs": {
-                    "alternativ": "1. května 683/86, 69201 Mikulov"
-                },
-                "expected": {
-                    "number": "683/86",
-                    "street": "1. května",
-                    "city": "Mikulov",
-                    "postcode": "69201"
-                }
-            },
-            {
-                "description": "street name containing non-initial number",
-                "inputs": {
-                    "alternativ": "třída 5. května 7, 37372 Lišov"
-                },
-                "expected": {
-                    "number": "7",
-                    "street": "třída 5. května",
-                    "city": "Lišov",
-                    "postcode": "37372"
+                "test": {
+                    "enabled": true,
+                    "description": "these are the tests that exercise valid inputs for czech countrywide",
+                    "acceptance-tests": [
+                        {
+                            "description": "address with /-delimited number",
+                            "inputs": {
+                                "alternativ": "Jiřská 9/10, Hradčany, 11900 Praha 1"
+                            },
+                            "expected": {
+                                "number": "9/10",
+                                "street": "Jiřská",
+                                "city": "Praha 1",
+                                "postcode": "11900"
+                            }
+                        },
+                        {
+                            "description": "address with /-delimited number with letter",
+                            "inputs": {
+                                "alternativ": "Jelení 91/7a, Hradčany, 11800 Praha 1"
+                            },
+                            "expected": {
+                                "number": "91/7a",
+                                "street": "Jelení",
+                                "city": "Praha 1",
+                                "postcode": "11800"
+                            }
+                        },
+                        {
+                            "description": "address with single digit number and neighbourhood",
+                            "inputs": {
+                                "alternativ": "Hrad I. nádvoří 1, Hradčany, 11900 Praha 1"
+                            },
+                            "expected": {
+                                "number": "1",
+                                "street": "Hrad I. nádvoří",
+                                "city": "Praha 1",
+                                "postcode": "11900"
+                            }
+                        },
+                        {
+                            "description": "address with single digit number",
+                            "inputs": {
+                                "alternativ": "Malá Strana 57, 15000 Praha 1"
+                            },
+                            "expected": {
+                                "number": "57",
+                                "street": "Malá Strana",
+                                "city": "Praha 1",
+                                "postcode": "15000"
+                            }
+                        },
+                        {
+                            "description": "address with special-case house-only identifier 'č.ev.'",
+                            "inputs": {
+                                "alternativ": "Albertov č.ev. 7/3a, Nové Město, 12800 Praha 2"
+                            },
+                            "expected": {
+                                "number": "č.ev. 7/3a",
+                                "street": "Albertov",
+                                "city": "Praha 2",
+                                "postcode": "12800"
+                            }
+                        },
+                        {
+                            "description": "street-less address with house-only identifier 'č.p.'",
+                            "inputs": {
+                                "alternativ": "č.p. 111, 27042 Skryje"
+                            },
+                            "expected": {
+                                "number": "č.p. 111",
+                                "street": "",
+                                "city": "Skryje",
+                                "postcode": "27042"
+                            }
+                        },
+                        {
+                            "description": "street-less address with house-only identifier 'č.ev.'",
+                            "inputs": {
+                                "alternativ": "č.ev. 57, 79862 Rozstání"
+                            },
+                            "expected": {
+                                "number": "č.ev. 57",
+                                "street": "",
+                                "city": "Rozstání",
+                                "postcode": "79862"
+                            }
+                        },
+                        {
+                            "description": "street name containing initial number",
+                            "inputs": {
+                                "alternativ": "28. října 24, 56301 Lanškroun"
+                            },
+                            "expected": {
+                                "number": "24",
+                                "street": "28. října",
+                                "city": "Lanškroun",
+                                "postcode": "56301"
+                            }
+                        },
+                        {
+                            "description": "street name containing initial number with /-delimited house number",
+                            "inputs": {
+                                "alternativ": "1. května 683/86, 69201 Mikulov"
+                            },
+                            "expected": {
+                                "number": "683/86",
+                                "street": "1. května",
+                                "city": "Mikulov",
+                                "postcode": "69201"
+                            }
+                        },
+                        {
+                            "description": "street name containing non-initial number",
+                            "inputs": {
+                                "alternativ": "třída 5. května 7, 37372 Lišov"
+                            },
+                            "expected": {
+                                "number": "7",
+                                "street": "třída 5. května",
+                                "city": "Lišov",
+                                "postcode": "37372"
+                            }
+                        }
+                    ]
                 }
             }
         ]

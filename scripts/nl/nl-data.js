@@ -42,7 +42,7 @@ if (type) {
             importSTA();
             break;
         case 'VBO': //Accomadations
-            importVBO();   
+            importVBO();
             break;
         case 'SQL': //Skip to SQL
             SQLsetup();
@@ -64,7 +64,7 @@ if (type) {
         download();
     });
 }
-    
+
 function download() {
     console.log("Commencing Download");
     var file = fs.createWriteStream('./tmp/nl-address.zip');
@@ -72,13 +72,13 @@ function download() {
         response.pipe(file);
     });
     request.on('error', function(err) {
-        throw new Error('Failed to Download File');    
+        throw new Error('Failed to Download File');
     });
-    
+
     file.on('error', function(err) {
-        throw new Error('Failed to Save File');    
+        throw new Error('Failed to Save File');
     });
-    
+
     file.on('close', function(err) {
         console.log("Download Complete");
         decompress();
@@ -109,11 +109,11 @@ function decompress() {
 function SQLsetup() {
     pg.connect(connect, function(err, client, done) {
         if (err) throw new Error ("Unable to Connect to postgresql");
-        
+
         console.log("Creating Database");
-        
+
         var queue = [];
-        
+
         queue.push(db.query.bind(client, "CREATE TABLE nlNum (num text, postcode text, id text, placeid text)"));
         queue.push(db.query.bind(client, "CREATE TABLE nlCity (id text, name text)"));
         queue.push(db.query.bind(client, "CREATE TABLE nlStreet (id text, name text, type text, cityid text)"));
@@ -121,16 +121,16 @@ function SQLsetup() {
         queue.push(db.query.bind(client, "CREATE TABLE nlaccom (id text, numid text, buildingid text)"));
         queue.push(db.query.bind(client, "CREATE TABLE nlberth (id text, numid text)"));
         queue.push(db.query.bind(client, "CREATE TABLE nlstand (id text, numid text)"));
-    
+
         queue.push(db.query.bind(client, "SELECT AddGeometryColumn ('nlcity','geom',4326,'POLYGON',2)"));
         queue.push(db.query.bind(client, "SELECT AddGeometryColumn ('nlberth','geom',4326,'POLYGON',2)"));
         queue.push(db.query.bind(client, "SELECT AddGeometryColumn ('nlbuilding','geom',4326,'POLYGON',2)"));
         queue.push(db.query.bind(client, "SELECT AddGeometryColumn ('nlaccom','geom',4326,'POINT',2)"));
         queue.push(db.query.bind(client, "SELECT AddGeometryColumn ('nlstand','geom',4326,'POLYGON',2)"));
-        
+
         queue.push(db.query.bind(client, "SELECT AddGeometryColumn ('nlberth','center',4326,'POINT',2)"));
         queue.push(db.query.bind(client, "SELECT AddGeometryColumn ('nlstand','center',4326,'POINT',2)"));
-        
+
         async.series(queue, function (err, results) {
             if (err) throw new Error("Async Problem: " + err);
             done();
@@ -146,7 +146,7 @@ function importNUM() {
         return value.indexOf('.xml') !== 0;
     });
     numProcess(sources, 0);
-}    
+}
 
 function numProcess(sources, id) {
     if (id == sources.length) {
@@ -164,9 +164,9 @@ function numProcess(sources, id) {
         pg.connect(connect, function(err, client, done) {
             if (err) throw new Error("Could not connect to PostGreSQL");
 
-            var input = fs.readFileSync('./tmp/num/' + source, "UTF-8");      
+            var input = fs.readFileSync('./tmp/num/' + source, "UTF-8");
             input = input.replace(new RegExp('\r?\n','g'), '');
-            
+
             xml = new xmlStream.Parser('UTF-8');
 
             var queue = [];
@@ -205,7 +205,7 @@ function numProcess(sources, id) {
                 } else if (postWatch) {
                     result.postcode = text;
                     postWatch = false;
-                } else if (idWatch) { 
+                } else if (idWatch) {
                     result.ID = text;
                     idWatch = false;
                 } else if (placeIdWatch) {
@@ -215,7 +215,7 @@ function numProcess(sources, id) {
             });
 
             xml.on('endElement', function(item) {
-                if (item === 'bag_LVC:Nummeraanduiding') {   
+                if (item === 'bag_LVC:Nummeraanduiding') {
                     queue.push(db.query.bind(client, "INSERT INTO nlNum(num, postcode, id, placeid) VALUES ('" + result.num + "', '" + result.postcode + "', '" + result.ID + "', '" + result.placeID + "')"));
                 } else if (item === 'xb:BAG-Extract-Deelbestand-LVC') {
                     async.series(queue, function (err, results) {
@@ -248,7 +248,7 @@ function importWPL() {
     var sources = fs.readdirSync('./tmp/wpl/').filter(function(value) {
         return value.indexOf('.xml') !== 0;
     });
-    
+
     wplProcess(sources, 0);
 }
 
@@ -266,17 +266,17 @@ function wplProcess(sources, id) {
 
         pg.connect(connect, function(err, client, done) {
             if (err) throw new Error("Could not connect to PostGreSQL");
-            
+
             var input = fs.readFileSync('./tmp/wpl/' + source, "UTF-8");
-            
+
             input = input.replace(new RegExp('\r?\n','g'), '');
-            
+
             xml = new xmlStream.Parser('UTF-8');
-            
+
             var queue = [];
-            
+
             var result = {};
-            
+
             var idWatch = false,
                 geomWatch = false,
                 nameWatch = false;
@@ -298,7 +298,7 @@ function wplProcess(sources, id) {
                         break;
                 }
             });
-            
+
             xml.on('text', function(text) {
                 if (idWatch) {
                     result.id = text;
@@ -313,24 +313,24 @@ function wplProcess(sources, id) {
                     nameWatch = false;
                 }
             });
-            
+
             xml.on('endElement', function(item) {
                 if (item === 'bag_LVC:Woonplaats') {
                     var regex = new RegExp("'", "g");
                     result.name = result.name.replace(regex, " ");
-                    
+
                     //Setup Geometry
                     var latlon = result.latlon.trim().split(" ");
-                    
+
                     var linestring = latlon[0] + " " + latlon[1];
                     for (var i = 2; i < latlon.length; i=i+2) {
                         linestring = linestring + "," + latlon[i] + " " + latlon[i+1];
                     }
 
-                    
+
                     var geom = "ST_Transform(ST_MakePolygon(ST_GeomFromText('LINESTRING(" + linestring + ")', 28992)), 4326)";
 
-                    queue.push(db.query.bind(client, "INSERT INTO nlCity(id, name, geom) VALUES ('" + result.id + "', '" + result.name + "', " + geom + ")")); 
+                    queue.push(db.query.bind(client, "INSERT INTO nlCity(id, name, geom) VALUES ('" + result.id + "', '" + result.name + "', " + geom + ")"));
                 } else if (item === 'xb:BAG-Extract-Deelbestand-LVC') {
                     console.log("Writing to PSQL");
                     async.series(queue, function (err, results) {
@@ -347,7 +347,7 @@ function wplProcess(sources, id) {
                 console.log("    ERROR! " + message);
                 wplProcess(sources, ++id);
             });
-            
+
             xml.write(input);
         });
     }
@@ -378,9 +378,9 @@ function oprProcess(sources, id) {
             if (err) throw new Error("Could not connect to PostGreSQL");
 
             var input = fs.readFileSync('./tmp/opr/' + source, "UTF-8");
-            
+
             input = input.replace(new RegExp('\r?\n','g'), '');
-            
+
             xml = new xmlStream.Parser('UTF-8');
 
             var queue = [];
@@ -479,9 +479,9 @@ function vboProcess(sources, id) {
             if (err) throw new Error("Could not connect to PostGreSQL");
 
             var input = fs.readFileSync('./tmp/vbo/' + source, "UTF-8");
-            
+
             input = input.replace(new RegExp('\r?\n','g'), '');
-            
+
             xml = new xmlStream.Parser('UTF-8');
 
             var queue = [];
@@ -528,15 +528,15 @@ function vboProcess(sources, id) {
                     numIdWatch = false;
                 }
             });
-            
+
             xml.on('endElement', function(item) {
                 if (item === 'bag_LVC:Verblijfsobject') {
-                    
+
                     //Setup Geometry
-                    
+
                     if (result.latlon) {
-                        var latlon = result.latlon.split(" ");         
-                        if (latlon.length > 2) { 
+                        var latlon = result.latlon.split(" ");
+                        if (latlon.length > 2) {
 
                             var linestring = latlon[0] + "," + latlon[1];
 
@@ -591,9 +591,9 @@ function ligProcess(sources, id) {
             if (err) throw new Error("Could not connect to PostGreSQL");
 
             var input = fs.readFileSync('./tmp/lig/' + source, "UTF-8");
-            
+
             input = input.replace(new RegExp('\r?\n','g'), '');
-            
+
             xml = new xmlStream.Parser('UTF-8');
 
             var queue = [];
@@ -638,19 +638,19 @@ function ligProcess(sources, id) {
                 if (item === 'bag_LVC:Ligplaats') {
                     //Setup Geometry
                     var latlon = result.latlon.split(" ");
-                    
+
                     if (latlon.length >= 6) {
-                    
+
                         var linestring = latlon[0] + " " + latlon[1];
                         for (var i = 3; i < latlon.length; i=i+3) {
                             linestring = linestring + "," + latlon[i] + " " + latlon[i+1];
                         }
 
                         console.log(linestring + "\n");
-                        
+
                         var geom = "ST_Transform(ST_MakePolygon(ST_GeomFromText('LINESTRING(" + linestring + ")', 28992)), 4326)";
                         var center = "ST_Centroid(" + geom + ")";
-                        
+
                         queue.push(db.query.bind(client, "INSERT INTO nlBerth(id, geom, numid, center) VALUES ('" + result.id + "', " + geom + ", '" + result.numid + "', " + center + ")"));
                     }
                 } else if (item === 'xb:BAG-Extract-Deelbestand-LVC') {
@@ -661,8 +661,8 @@ function ligProcess(sources, id) {
                         done();
                         ligProcess(sources, ++id);
                     });
-                }    
-                
+                }
+
             });
 
             xml.on('error', function(message) {
@@ -700,9 +700,9 @@ function staProcess(sources, id) {
             if (err) throw new Error("Could not connect to PostGreSQL");
 
             var input = fs.readFileSync('./tmp/sta/' + source, "UTF-8");
-            
+
             input = input.replace(new RegExp('\r?\n','g'), '');
-            
+
             xml = new xmlStream.Parser('UTF-8');
 
             var queue = [];
@@ -747,9 +747,9 @@ function staProcess(sources, id) {
                 if (item === 'bag_LVC:Standplaats') {
                     //Setup Geometry
                     var latlon = result.latlon.split(" ");
-                    
+
                     if (latlon.length >= 6) {
-                    
+
                         var linestring = latlon[0] + " " + latlon[1];
                         for (var i = 3; i < latlon.length; i=i+3) {
                             linestring = linestring + "," + latlon[i] + " " + latlon[i+1];
@@ -757,10 +757,10 @@ function staProcess(sources, id) {
 
                         var geom = "ST_Transform(ST_MakePolygon(ST_GeomFromText('LINESTRING(" + linestring + ")', 28992)), 4326)";
                         var center = "ST_Centroid(" + geom + ")";
-                        
+
                         queue.push(db.query.bind(client, "INSERT INTO nlStand(id, geom, numid, center) VALUES ('" + result.id + "', " + geom + ", '" + result.numid + "', " + center + ")"));
                     }
-                } else if (item === 'xb:BAG-Extract-Deelbestand-LVC') { 
+                } else if (item === 'xb:BAG-Extract-Deelbestand-LVC') {
                     async.series(queue, function (err, results) {
                         if (err) throw new Error("Async Problem: " + err);
                         var elapsed = new Date() / 1000 - start;
@@ -809,9 +809,9 @@ function pndProcess(sources, id) {
             if (err) throw new Error("Could not connect to PostGreSQL");
 
             var input = fs.readFileSync('./tmp/pnd/' + source, "UTF-8");
-            
+
             input = input.replace(new RegExp('\r?\n','g'), '');
-            
+
             xml = new xmlStream.Parser('UTF-8');
 
             var queue = [];
@@ -854,7 +854,7 @@ function pndProcess(sources, id) {
                         console.log("    Complete: " + elapsed + "s");
                         done();
                         pndProcess(sources, ++id);
-                    });       
+                    });
                 }
             });
 
@@ -871,7 +871,7 @@ function pndProcess(sources, id) {
 
 function makeCSV() {
     pg.connect(connect, function(err, client, done) {
-        if (err) throw new Error("Could not connect to PostGreSQL"); 
+        if (err) throw new Error("Could not connect to PostGreSQL");
         var queue = [];
         queue.push(db.query.bind(client, "COPY (SELECT ST_X(geom) AS LON, ST_Y(geom) AS LAT, num AS NUMBER, name AS STREET, postcode AS POSTCODE FROM nladdress) TO '" + process.argv[3] + "' WITH DELIMITER ',' CSV HEADER"));
         async.series(queue, function (err, results) {
@@ -885,22 +885,22 @@ function makeCSV() {
 function genPoints() {
     pg.connect(connect, function(err, client, done) {
         if (err) throw new Error("Could not connect to PostGreSQL");
-        
+
         var queue = [];
-        
+
         queue.push(db.query.bind(client, "CREATE TABLE nladdresstmp (num text, streetid text, postcode text, id serial)"));
         queue.push(db.query.bind(client, "SELECT AddGeometryColumn ('nladdresstmp','geom',4326,'POINT',2)"));
-        
+
         queue.push(db.query.bind(client, "INSERT INTO nladdresstmp(num, streetid, postcode, geom) (SELECT num.num, num.placeid, num.postcode, ST_Centroid(sta.geom) FROM nlstand AS sta, nlnum as num WHERE sta.numid = num.id)"));
         queue.push(db.query.bind(client, "INSERT INTO nladdresstmp(num, streetid, postcode, geom) (SELECT num.num, num.placeid, num.postcode, ST_Centroid(lig.geom) FROM nlberth AS lig, nlnum as num WHERE lig.numid = num.id)"));
         queue.push(db.query.bind(client, "INSERT INTO nladdresstmp(num, streetid, postcode, geom) (SELECT num.num, num.placeid, num.postcode, vbo.geom FROM nlaccom AS vbo, nlnum as num WHERE vbo.numid = num.id)"));
         queue.push(db.query.bind(client, "CREATE TABLE nladdress AS SELECT adr.num, adr.postcode, adr.id, str.name, adr.geom FROM nladdresstmp AS adr, nlstreet AS str WHERE  adr.streetid = str.id"));
         queue.push(db.query.bind(client, "DROP TABLE nladdresstmp"));
-        
+
         async.series(queue, function (err, results) {
             if (err) throw new Error("Async Problem: " + err);
             done();
         });
-        
+
     });
 }

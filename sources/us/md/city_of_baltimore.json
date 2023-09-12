@@ -3,7 +3,7 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -76.690,
+                -76.69,
                 39.284
             ]
         },
@@ -16,19 +16,27 @@
         "state": "md",
         "city": "baltimore"
     },
-    "data": "https://data.baltimorecity.gov/download/jk3c-vrfy/application/zip",
-    "website": "https://data.baltimorecity.gov/",
-    "attribution": "City of Baltimore",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile-polygon",
-        "number": "bldg_no",
-        "street": [
-            "stdirpre",
-            "st_name",
-            "st_type"
-        ],
-        "unit": "UNIT_NUM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://data.baltimorecity.gov/download/jk3c-vrfy/application/zip",
+                "website": "https://data.baltimorecity.gov/",
+                "attribution": "City of Baltimore",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile-polygon",
+                    "number": "bldg_no",
+                    "street": [
+                        "stdirpre",
+                        "st_name",
+                        "st_type"
+                    ],
+                    "unit": "UNIT_NUM"
+                }
+            }
+        ]
     }
 }

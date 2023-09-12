@@ -17,24 +17,56 @@
             ]
         }
     },
-    "attribution": "City of Honolulu",
-    "data": "http://webserverholis.honolulugis.org/arcgis/rest/services/Public/Cadastral/MapServer/3",
-    "website": "http://gis.hicentral.com/data.html",
-    "type": "ESRI",
-    "note": "Includes full parcel shapefile of the island of Oahu. SRS is EPSG: 2784",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "join",
-            "fields": [
-                "HOUSEPRFX",
-                "HOUSENUMBER"
-            ],
-            "separator": "-"
-        },
-        "street": "STREETNAME",
-        "unit": "HOUSESUFFX",
-        "city": "CITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "attribution": "City of Honolulu",
+                "data": "https://services.arcgis.com/tNJpAOha4mODLkXz/arcgis/rest/services/Cadastral_2020/FeatureServer/3",
+                "website": "https://honolulu-cchnl.opendata.arcgis.com/datasets/cchnl::address-points-1/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "HOUSEPRFX",
+                            "HOUSENUMBER"
+                        ],
+                        "separator": "-"
+                    },
+                    "street": "STREETNAME",
+                    "unit": "HOUSESUFFX",
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "attribution": "City of Honolulu",
+                "data": "https://services.arcgis.com/tNJpAOha4mODLkXz/ArcGIS/rest/services/Cadastral_2020/FeatureServer/1",
+                "website": "https://honolulu-cchnl.opendata.arcgis.com/datasets/cchnl::parcels-tax/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_UID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "attribution": "City of Honolulu",
+                "data": "https://services.arcgis.com/tNJpAOha4mODLkXz/arcgis/rest/services/Structures_Facilities/FeatureServer/0",
+                "website": "https://honolulu-cchnl.opendata.arcgis.com/datasets/cchnl::building-footprints-cch/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

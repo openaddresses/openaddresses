@@ -3,8 +3,8 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-              -82.3796,
-              36.339987
+                -82.3796,
+                36.339987
             ]
         },
         "US Census": {
@@ -17,15 +17,23 @@
         "county": "Washington",
         "city": "Johnson City"
     },
-    "data": "https://gis.johnsoncitytn.org/arcgis/rest/services/Address/SiteAddressPoint/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": "UNITCOMBO",
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.johnsoncitytn.org/arcgis/rest/services/Address/SiteAddressPoint/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": "UNITCOMBO",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

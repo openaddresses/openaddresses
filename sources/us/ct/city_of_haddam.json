@@ -16,49 +16,57 @@
         "state": "ct",
         "city": "haddam"
     },
-    "attribution": "City of Haddam",
-    "data": "http://54.243.125.146/arcgis/rest/services/HaddamCT/HaddamDynamic/MapServer/0",
-    "website": "http://www.haddam.org/",
-    "type": "ESRI",
-    "conform": {
-        "street": {
-            "function": "regexp",
-            "field": "ParcelPolygon.StreetAddr",
-            "pattern": "^(?:[0-9]+\\s+)(.+?)(?:\\s+#.+)?$"
-        },
-        "number": {
-            "function": "prefixed_number",
-            "field": "ParcelPolygon.StreetAddr"
-        },
-        "unit": "CAMA.UnitNum",
-        "type": "geojson"
-    },
-    "test": {
-        "enabled": true,
-        "description": "units are duplicated in street field",
-        "acceptance-tests": [
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "no unit",
-                "inputs": {
-                    "ParcelPolygon.StreetAddr": "40 HICKORY LA",
-                    "CAMA.UnitNum": ""
+                "name": "city",
+                "attribution": "City of Haddam",
+                "data": "http://54.243.125.146/arcgis/rest/services/HaddamCT/HaddamDynamic/MapServer/0",
+                "website": "http://www.haddam.org/",
+                "protocol": "ESRI",
+                "conform": {
+                    "street": {
+                        "function": "regexp",
+                        "field": "ParcelPolygon.StreetAddr",
+                        "pattern": "^(?:[0-9]+\\s+)(.+?)(?:\\s+#.+)?$"
+                    },
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ParcelPolygon.StreetAddr"
+                    },
+                    "unit": "CAMA.UnitNum",
+                    "format": "geojson"
                 },
-                "expected": {
-                    "number": "40",
-                    "street": "HICKORY LA",
-                    "unit": ""
-                }
-            },
-            {
-                "description": "has unit",
-                "inputs": {
-                    "ParcelPolygon.StreetAddr": "124 CAMP BETHEL RD #01",
-                    "CAMA.UnitNum": "1"
-                },
-                "expected": {
-                    "number": "124",
-                    "street": "CAMP BETHEL RD",
-                    "unit": "1"
+                "test": {
+                    "enabled": true,
+                    "description": "units are duplicated in street field",
+                    "acceptance-tests": [
+                        {
+                            "description": "no unit",
+                            "inputs": {
+                                "ParcelPolygon.StreetAddr": "40 HICKORY LA",
+                                "CAMA.UnitNum": ""
+                            },
+                            "expected": {
+                                "number": "40",
+                                "street": "HICKORY LA",
+                                "unit": ""
+                            }
+                        },
+                        {
+                            "description": "has unit",
+                            "inputs": {
+                                "ParcelPolygon.StreetAddr": "124 CAMP BETHEL RD #01",
+                                "CAMA.UnitNum": "1"
+                            },
+                            "expected": {
+                                "number": "124",
+                                "street": "CAMP BETHEL RD",
+                                "unit": "1"
+                            }
+                        }
+                    ]
                 }
             }
         ]

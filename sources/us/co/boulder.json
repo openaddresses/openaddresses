@@ -9,30 +9,68 @@
         "state": "co",
         "county": "Boulder"
     },
-    "data": "http://maps.bouldercounty.org/arcgis/rest/services/PARCELS/ADDRESS_POINTS/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "STREET_NUMBER_PREFIX",
-            "STREET_NUMBER",
-            "STREET_NUMBER_SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://opendata-bouldercounty.hub.arcgis.com",
+                "data": "https://maps.bouldercounty.org/arcgis/rest/services/PARCELS/ADDRESS_POINTS/MapServer/0",
+                "license": "CC BY 4.0",
+                "attribution": "Boulder County, CO",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "STREET_NUMBER_PREFIX",
+                        "STREET_NUMBER",
+                        "STREET_NUMBER_SUFFIX"
+                    ],
+                    "street": [
+                        "PREFIX",
+                        "PRETYPE",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFFIX",
+                        "POSTMODIFIER"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNIT"
+                    ],
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "street": [
-            "PREFIX",
-            "PRETYPE",
-            "STREETNAME",
-            "STREETTYPE",
-            "SUFFIX",
-            "POSTMODIFIER"
+        "buildings": [
+            {
+                "name": "county",
+                "website": "https://opendata-bouldercounty.hub.arcgis.com",
+                "license": "CC BY 4.0",
+                "attribution": "Boulder County, CO",
+                "data": "https://maps.bouldercounty.org/arcgis/rest/services/PARCELS/BUILDINGS_STRUCTURE_FOOTPRINT/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
         ],
-        "unit": [
-            "UNITTYPE",
-            "UNIT"
-        ],
-        "city": "CITY",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+        "parcels": [
+            {
+                "name": "county",
+                "license": "CC BY 4.0",
+                "attribution": "Boulder County, CO",
+                "website": "https://opendata-bouldercounty.hub.arcgis.com",
+                "data": "https://maps.bouldercounty.org/arcgis/rest/services/Emap/BOCO_Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
+                }
+            }
+        ]
     }
 }

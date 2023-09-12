@@ -1,25 +1,37 @@
 {
     "coverage": {
-        "US Census": {"geoid": "37053", "name": "Currituck County", "state": "North Carolina"},
+        "US Census": {
+            "geoid": "37053",
+            "name": "Currituck County",
+            "state": "North Carolina"
+        },
         "country": "us",
         "state": "nc",
         "county": "Currituck"
     },
-    "data": "http://data.nconemap.gov/downloads/vector/parcels/Currituck_parcels_2017_09_11.zip",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://data.nconemap.gov/geoportal/catalog/search/resource/details.page?uuid=%7B837C5704-49C8-45A3-B084-AEBF4CD09804%7D",
-    "conform": {
-        "type": "shapefile",
-        "file": "nc_currituck_parcels_pt_2017_09_11.shp",
-        "id": "PARNO",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITEADD"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITEADD"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://data.nconemap.gov/downloads/vector/parcels/Currituck_parcels_2017_09_11.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "website": "http://data.nconemap.gov/geoportal/catalog/search/resource/details.page?uuid=%7B837C5704-49C8-45A3-B084-AEBF4CD09804%7D",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "nc_currituck_parcels_pt_2017_09_11.shp",
+                    "id": "PARNO",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITEADD"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITEADD"
+                    }
+                }
+            }
+        ]
     }
 }

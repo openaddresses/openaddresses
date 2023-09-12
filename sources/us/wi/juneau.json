@@ -9,12 +9,48 @@
         "state": "wi",
         "county": "Juneau"
     },
-    "data": "https://gis2.msa-ps.com/ArcGIS/rest/services/StreetsAddress/MapServer/2",
-    "type": "ESRI",
-    "note": "Number col contains letters & Needs to be reprojected!",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": "STNAME"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gismap.co.juneau.wi.us/server/rest/services/JuneauCo_PublicGIS/MapServer/7",
+                "protocol": "ESRI",
+                "note": "Number col contains letters & Needs to be reprojected!",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": "STNAME",
+                    "city": "COMMUNITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gismap.co.juneau.wi.us/server/rest/services/JuneauCo_PublicGIS/MapServer/10",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Juneau_Buildings_2018.zip",
+                "website": "https://geodata.wisc.edu/catalog/EF55FF8A-7213-486C-8974-C21C8F289F8C",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2018",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Juneau_Buildings_2018"
+                }
+            }
+        ]
     }
 }

@@ -17,19 +17,25 @@
         "county": "Rockingham",
         "city": "Hampstead"
     },
-    "note": "Processed using scripts/us/nh/hampstead/run",
-    "data": "http://data.openaddresses.io/cache/uploads/ingalls/us-nh-hampstead.geojson",
-    "website": "http://www.hampsteadnh.us/pages/hampsteadnh_assessing/index",
-    "type": "http",
-    "language": "en",
-    "conform": {
-        "type": "geojson",
-        "accuracy": 2,
-        "id": "ParcelNumber",
-        "number": "LOCNUMB",
-        "street": "PropertyStreet",
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "note": "Processed using scripts/us/nh/hampstead/run",
+                "data": "https://data.openaddresses.io/cache/uploads/ingalls/us-nh-hampstead.geojson",
+                "website": "http://www.hampsteadnh.us/pages/hampsteadnh_assessing/index",
+                "protocol": "http",
+                "language": "en",
+                "conform": {
+                    "format": "geojson",
+                    "accuracy": 2,
+                    "id": "ParcelNumber",
+                    "number": "LOCNUMB",
+                    "street": "PropertyStreet",
+                    "city": "TOWNNAME"
+                }
+            }
+        ]
     }
 }

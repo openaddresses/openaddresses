@@ -9,20 +9,28 @@
         "state": "il",
         "county": "Randolph"
     },
-    "data": "https://services5.arcgis.com/pweYHqdOby1TE9DD/ArcGIS/rest/services/TaxParcelsFull/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "site_addre",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "site_addre",
-            "pattern": "^(?:[0-9]+ +)(.*)",
-            "replace": "$1"
-        },
-        "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/pweYHqdOby1TE9DD/ArcGIS/rest/services/TaxParcelsFull/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "site_addre",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "site_addre",
+                        "pattern": "^(?:[0-9]+ +)(.*)",
+                        "replace": "$1"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

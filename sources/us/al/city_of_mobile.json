@@ -16,13 +16,32 @@
         "state": "al",
         "city": "Mobile"
     },
-    "data": "http://maps.cityofmobile.org/arcgis/rest/services/AddressPnt_MS/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HSN",
-        "unit": "UNITNO",
-        "street": "ROADNAME",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.cityofmobile.org/arcgis/rest/services/Address_Points_MS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HSN",
+                    "unit": "UNITNO",
+                    "street": "ROADNAME",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://maps.cityofmobile.org/arcgis/rest/services/Parcel_Details_MS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL"
+                }
+            }
+        ]
     }
 }

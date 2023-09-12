@@ -1,0 +1,51 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "53073",
+            "name": "Whatcom County"
+        },
+        "country": "us",
+        "state": "wa",
+        "county": "Whatcom"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.cob.org/services/maps/gis",
+                "license": {
+                    "url": "https://data.cob.org/data/gis/metadata/land_addresspoints.html"
+                },
+                "data": "https://gis.whatcomcounty.us/arcgis/rest/services/Applications/PACSGIS_Viewer/MapServer/24",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDR_NUM",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": "STREET_NAME",
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.cob.org/services/maps/gis",
+                "license": {
+                    "url": "https://data.cob.org/data/gis/metadata/land_TaxParcelPolys.html"
+                },
+                "data": "https://gis.whatcomcounty.us/arcgis/rest/services/Applications/PACSGIS_Viewer/MapServer/28",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_CODE"
+                }
+            }
+        ]
+    }
+}

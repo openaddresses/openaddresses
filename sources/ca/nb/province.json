@@ -1,21 +1,78 @@
 {
     "coverage": {
-        "ISO 3166": {"alpha2": "CA-NB", "country": "Canada", "subdivision": "New Brunswick"},
+        "ISO 3166": {
+            "alpha2": "CA-NB",
+            "country": "Canada",
+            "subdivision": "New Brunswick"
+        },
         "country": "ca",
         "state": "nb"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/thatdatabaseguy/ef025b/output.csv",
-    "note": "This data is processed using the Docker file at scripts/ca/nb/*",
-    "website": "http://www.snb.ca/geonb1/e/DC/catalogue-E.asp",
-    "license": {"url": "http://geonb.snb.ca/documents/license/geonb-odl_en.pdf"},
-    "type": "http",
-    "conform": {
-        "number": "number",
-        "street": "street",
-        "city": "place",
-        "district": "district",
-        "lon": "x",
-        "lat": "y",
-        "type": "csv"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "http://geonb.snb.ca/downloads/anb/geonb_anb_shp.zip",
+                "website": "http://www.snb.ca/geonb1/e/DC/ANB.asp",
+                "license": {
+                    "url": "http://geonb.snb.ca/documents/license/geonb-odl_en.pdf",
+                    "text": "Contains information licenced under the GeoNB Open Data Licence",
+                    "attribution name": "GeoNB Open Data License",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "civic_num",
+                    "street": [ "STREET", "ST_TYPE_E" ],
+                    "city": "COMMUNITY",
+                    "district": "COUNTY",
+                    "format": "shapefile"
+                }
+            },
+            {
+                "name": "state-french",
+                "data": "http://geonb.snb.ca/downloads/anb/geonb_anb_shp.zip",
+                "website": "http://www.snb.ca/geonb1/e/DC/ANB.asp",
+                "license": {
+                    "url": "http://geonb.snb.ca/documents/license/geonb-odl_en.pdf",
+                    "text": "Contains information licenced under the GeoNB Open Data Licence",
+                    "attribution name": "GeoNB Open Data License",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "civic_num",
+                    "street": [ "ST_TYPE_F", "STREET" ],
+                    "city": "COMMUNITY",
+                    "district": "COUNTY",
+                    "format": "shapefile"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "http://geonb.snb.ca/downloads/pan/geonb_pan-ncb_shp.zip",
+                "website": "http://www.snb.ca/geonb1/e/DC/propmap.asp",
+                "license": {
+                    "url": "http://geonb.snb.ca/documents/license/geonb-odl_en.pdf",
+                    "text": "Contains information licenced under the GeoNB Open Data Licence",
+                    "attribution name": "GeoNB Open Data License",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "Pan"
+                }
+            }
+        ]
     }
 }

@@ -3,7 +3,7 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -80.220,
+                -80.22,
                 26.141
             ]
         },
@@ -16,24 +16,32 @@
         "state": "fl",
         "city": "Fort Lauderdale"
     },
-    "data": "http://gis.fortlauderdale.gov/arcgis/rest/services/PropertyReporter/Interactive/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-            "PREFDIR",
-            "PREFTYPE",
-            "STREETNAME",
-            "SUFFTYPE",
-            "SUFFDIR"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "city": "MUNICIPALITY",
-        "region": "ADDRSTATE",
-        "postcode": "ADDRZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis.fortlauderdale.gov/arcgis/rest/services/PropertyReporter/Interactive/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "PREFDIR",
+                        "PREFTYPE",
+                        "STREETNAME",
+                        "SUFFTYPE",
+                        "SUFFDIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "region": "ADDRSTATE",
+                    "postcode": "ADDRZIP"
+                }
+            }
+        ]
     }
 }

@@ -26,9 +26,9 @@ The `join` function combines any number of fields using a delimiter and is usefu
 
 ```json
 "number": {
-	"function": "join",
-	"fields": ["HOUSEPRFX", "HOUSENUMBR"],
-	"separator": "-"
+    "function": "join",
+    "fields": ["HOUSEPRFX", "HOUSENUMBR"],
+    "separator": "-"
 }
 ```
 
@@ -37,8 +37,8 @@ Understandably, the Honolulu County GIS department stores these two fields separ
 
 ```json
 {
-	"HOUSEPRFX": "91",
-	"HOUSENUMBR": "921"
+    "HOUSEPRFX": "91",
+    "HOUSENUMBR": "921"
 }
 ```
 
@@ -60,9 +60,9 @@ An example of the `format` function can be in the [Netherlands](https://github.c
 
 ```json
 "number": {
-	"function": "format",
-	"fields": ["huisnummer", "huisletter", "huisnummertoevoeging"],
-	"format": "$1$2-$3"
+    "function": "format",
+    "fields": ["huisnummer", "huisletter", "huisnummertoevoeging"],
+    "format": "$1$2-$3"
 }
 ```
 
@@ -78,9 +78,9 @@ The Netherlands GIS administration stores these three fields separately but they
 
 ```json
 {
-	"huisnummer": "25",
-	"huisletter": "k",
-	"huisnummertoevoeging": 143
+    "huisnummer": "25",
+    "huisletter": "k",
+    "huisnummertoevoeging": 143
 }
 ```
 
@@ -110,7 +110,7 @@ An example usage of this is in [Asotin County, WA](https://github.com/openaddres
 
 ```json
 "number": {
-	"function": "prefixed_number",
+    "function": "prefixed_number",
     "field": "address"
 },
 "street": {
@@ -123,7 +123,7 @@ This example is very useful where a data source has very plain vanilla single "n
 
 ```json
 {
-	"address": "123 Main Street"
+    "address": "123 Main Street"
 }
 ```
 
@@ -135,7 +135,7 @@ The implementations of `prefixed_number` and `postfixed_street` are very simple,
 
 A source may not necessarily have to use both functions together in a conform but they commonly are.
 
-It's also common for a single address field to contain a unit designator at the end, as in "123 Maple Street Apt 4A".  In this case, `postfixed_unit` should be used in combination with `postfixed_street` to extract `Apt 4A`.  Because `postfixed_street` considers the street value to be anything after the house number, it's normal to set `may_contain_units` to `true` in `postfixed_street` when using `postfixed_unit`.  
+It's also common for a single address field to contain a unit designator at the end, as in "123 Maple Street Apt 4A".  In this case, `postfixed_unit` should be used in combination with `postfixed_street` to extract `Apt 4A`.  Because `postfixed_street` considers the street value to be anything after the house number, it's normal to set `may_contain_units` to `true` in `postfixed_street` when using `postfixed_unit`.
 
 `postfixed_unit` recognizes the following words as unit designators:
 
@@ -150,7 +150,7 @@ It's also common for a single address field to contain a unit designator at the 
 * #
 
 Any text found after the unit designator is considered part of the unit.  The downside of this is that if a street name legitimately
-contains one of these words, such as "Lindsay Lot Road", which is fortunately a fairly rare occurrence.  
+contains one of these words, such as "Lindsay Lot Road", which is fortunately a fairly rare occurrence.
 
 #### Definition:
 
@@ -176,7 +176,7 @@ Some data sources contain, for unknown but legitimate reasons, two fields where 
 ```json
 "number": "ADDR_NUM",
 "street": {
-	"function": "remove_prefix",
+    "function": "remove_prefix",
     "field": "FULL_NAME",
     "field_to_remove": "ADDR_NUM"
 }
@@ -188,8 +188,8 @@ Here's an example data source record:
 
 ```json
 {
-	"ADDR_NUM": "2130",
-	"FULL_NAME": "2130 MAPLE AV NE"
+    "ADDR_NUM": "2130",
+    "FULL_NAME": "2130 MAPLE AV NE"
 }
 ```
 
@@ -197,8 +197,8 @@ The usage of `remove_prefix` above would remove the `ADDR_NUM` from the beginnin
 
 ```json
 {
-	"number": "2130",
-	"street": "MAPLE AV NE"
+    "number": "2130",
+    "street": "MAPLE AV NE"
 }
 ```
 
@@ -228,13 +228,13 @@ An example of `regexp` usage can be found in [Yolo County, California](https://g
 "number": {
     "function": "regexp",
     "field": "Address",
-	"pattern": "^([0-9]+)"
+    "pattern": "^([0-9]+)"
 },
 "street": {
     "function": "regexp",
     "field": "Address",
     "pattern": "^(?:[0-9]+ )(.*)",
-	"replace": "$1"
+    "replace": "$1"
 }
 ```
 
@@ -242,7 +242,7 @@ The `pattern` for `number` matches a contiguous block of one or more numbers fro
 
 ```json
 {
-	"Address": "617 TUMBLEWEED TRL"
+    "Address": "617 TUMBLEWEED TRL"
 }
 ```
 
@@ -250,8 +250,8 @@ The application of the `number` and `street` regular expressions would result in
 
 ```json
 {
-	"number": "617",
-	"street": "TUMBLEWEED TRL"
+    "number": "617",
+    "street": "TUMBLEWEED TRL"
 }
 ```
 
@@ -267,6 +267,42 @@ While virtually all modern regular expression flavors share identical basic beha
 | `field` | string | any field name in the data source | none (required)
 | `pattern` | string | a compilable regular expression | none (required)
 | `replace` | string | a string referencing 0 or more captured groups in `pattern` | none (optional)
+
+### `get`
+The `get` function is particularly useful in a situation when a single address record may contain multiple nodes having the same field name.
+
+To make it less vague, let's consider an example of Polish addresses. Below you can see a single address record containing 4 same-named nodes `jednostkaAdministracyjna`, which indicates an administrational unit.
+
+
+```xml
+    <address>
+        ...
+        <jednostkaAdministracyjna>Polska</jednostkaAdministracyjna>
+        <jednostkaAdministracyjna>kujawsko-pomorskie</jednostkaAdministracyjna>
+        <jednostkaAdministracyjna>brodnicki</jednostkaAdministracyjna>
+        <jednostkaAdministracyjna>Bartniczka</jednostkaAdministracyjna>
+    </address>
+
+```
+
+We want to get information about the district which is located in the fourth node (Bartniczka). In order to do that we can use the `get` method and leverage the `index` parameter. Since we are all programmers, we count starting from 0. So, the fourth field means `index` equals to 3.
+
+
+```json
+"district": {
+    "function": "get",
+    "field": "jednostkaadmnistracyjna",
+    "index": 3
+}
+```
+
+#### Definition:
+
+| parameter | type | value | default
+| --------- | ---- | ----- | -------
+| `function` | string | `get` |
+| `field` | string | any field name in the data source | none (required)
+| `index` | string | an index of the element in the sequence created by same-named elements | none (required)
 
 ## Compound functions
 

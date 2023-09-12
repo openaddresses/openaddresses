@@ -9,18 +9,38 @@
         "state": "or",
         "county": "Crook"
     },
-    "type": "ESRI",
-    "data": "http://eservices.co.crook.or.us/mapping/rest/services/Addressing/AddressingGroup/MapServer/0",
-    "conform": {
-        "type": "geojson",
-        "number": "number",
-        "street": [
-            "direction",
-            "street_name",
-            "street_type"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://geo.co.crook.or.us/server/rest/services/openData/places/MapServer/1",
+                "website": "https://data-crookcounty.opendata.arcgis.com/datasets/crookcounty::address-points/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "number",
+                    "street": [
+                        "direction",
+                        "street_name",
+                        "street_type"
+                    ],
+                    "city": "city",
+                    "postcode": "zip"
+                }
+            }
         ],
-        "unit": "number2",
-        "city": "city",
-        "postcode": "zip"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://geo.co.crook.or.us/server/rest/services/openData/Taxlots_and_Tables/MapServer/0",
+                "website": "https://data-crookcounty.opendata.arcgis.com/datasets/crookcounty::taxlots-1/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MapTaxlot"
+                }
+            }
+        ]
     }
 }

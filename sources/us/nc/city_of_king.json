@@ -16,17 +16,25 @@
         "state": "nc",
         "city": "King"
     },
-    "data": "https://www.webgis.net/arcgis/rest/services/NC/CityOfKing/MapServer/18",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "PHYSICAL_ADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "PHYSICAL_ADDRESS"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://www.webgis.net/arcgis/rest/services/NC/CityOfKing/MapServer/18",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PHYSICAL_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PHYSICAL_ADDRESS"
+                    }
+                }
+            }
+        ]
     }
 }

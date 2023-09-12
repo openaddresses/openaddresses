@@ -9,27 +9,35 @@
         "state": "oh",
         "county": "Henry"
     },
-    "data": "https://services.arcgis.com/osmyvTbXDC07yFxn/arcgis/rest/services/AddressPoints/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-      "type": "geojson",
-      "number": [
-          "STR_NUM",
-          "HALF"
-      ],
-      "street": [
-          "PRE_DIR",
-          "STR_NAME",
-          "STR_TYPE",
-          "SUF_DIR"
-      ],
-      "unit": [
-          "UNIT_TYPE",
-          "UNIT_NUM"
-      ],
-      "city": "CITY",
-      "district": "COUNTY",
-      "region": "STATE",
-      "postcode": "ZIP_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/osmyvTbXDC07yFxn/arcgis/rest/services/AddressPoints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "STR_NUM",
+                        "HALF"
+                    ],
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ]
     }
 }

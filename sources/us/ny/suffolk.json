@@ -1,0 +1,43 @@
+{
+    "coverage": {
+        "country": "us",
+        "state": "ny",
+        "US Census": {
+            "geoid": "36119",
+            "name": "Suffolk County",
+            "state": "New York"
+        },
+        "county": "Suffolk"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisservices2.suffolkcountyny.gov/arcgis/rest/services/Address/MapServer/0",
+                "protocol": "ESRI",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution name": "Suffolk County Dept. of Information Technology - GIS Unit."
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": "FULLADNUM",
+                    "street": [
+                        "PREDIR",
+                        "STREETNAME",
+                        "POSTTYPE",
+                        "POSTDIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
+    }
+}

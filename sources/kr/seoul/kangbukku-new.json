@@ -1,38 +1,52 @@
 {
-    "type": "http",
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
     "coverage": {
         "city": "강북구",
         "country": "kr",
         "state": "seoul",
-        "geometry": { "type": "Point", "coordinates": [127.008, 37.641] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                127.008,
+                37.641
+            ]
+        }
     },
-    "compression": "zip",
-    "skip": true,
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1068",
-    "conform": {
-        "srs": "EPSG:2097",
-        "lon": "POINT_X",
-        "encoding": "EUCKR",
-        "headers": 2,
-        "type": "csv",
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        },
-        "lat": "POINT_Y",
-        "number": "LNDN_MA_SN",
-        "skiplines": 2
-    },
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-kangbukku.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "http",
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "compression": "zip",
+                "skip": true,
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1068",
+                "conform": {
+                    "srs": "EPSG:2097",
+                    "lon": "POINT_X",
+                    "encoding": "EUCKR",
+                    "headers": 2,
+                    "format": "csv",
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    },
+                    "lat": "POINT_Y",
+                    "number": "LNDN_MA_SN",
+                    "skiplines": 2
+                },
+                "data": "https://data.openaddresses.io/cache/kr-seoul-kangbukku.zip"
+            }
+        ]
+    }
 }

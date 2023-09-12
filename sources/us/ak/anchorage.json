@@ -9,27 +9,69 @@
         "state": "ak",
         "county": "Anchorage"
     },
-    "attribution": "Municipality of Anchorage",
-    "data": "http://munimaps.muni.org/ftp_gis/address_shp.zip",
-    "website": "http://www.muni.org/Departments/it/GIS2/Pages/MOAGISData.aspx",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-      "number": [
-        "house_num",
-        "half_add"
-      ],
-      "street": [
-          "pre_dir",
-          "st_name",
-          "st_type",
-          "suf_dir"
-      ],
-      "unit": [
-          "UNIT_TYPE",
-          "UNIT_ID"
-      ],
-      "type": "shapefile",
-      "postcode": "zipcode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Municipality of Anchorage",
+                "data": "https://services2.arcgis.com/Ce3DhLRthdwbHlfF/ArcGIS/rest/services/Addresses_Hosted/FeatureServer/0",
+                "website": "https://moa-muniorg.hub.arcgis.com/pages/data",
+                "license": {
+                    "url": "https://cdn.ancgis.com/documents/legal/GIS_Data_Terms_and_Conditions.pdf"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "HOUSE_NUMBER",
+                        "HALF_ADDRESS"
+                    ],
+                    "street": [
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "SUFFIX_DIRECTIONAL"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_ID"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Municipality of Anchorage",
+                "data": "https://services2.arcgis.com/Ce3DhLRthdwbHlfF/ArcGIS/rest/services/MOA_Parcels_Hosted/FeatureServer/0",
+                "website": "https://moa-muniorg.hub.arcgis.com/pages/data",
+                "license": {
+                    "url": "https://cdn.ancgis.com/documents/legal/GIS_Data_Terms_and_Conditions.pdf"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NUM"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Municipality of Anchorage",
+                "data": "https://services2.arcgis.com/Ce3DhLRthdwbHlfF/ArcGIS/rest/services/Buildings_Hosted/FeatureServer/0",
+                "website": "https://moa-muniorg.hub.arcgis.com/pages/data",
+                "license": {
+                    "url": "https://cdn.ancgis.com/documents/legal/GIS_Data_Terms_and_Conditions.pdf"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

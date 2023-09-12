@@ -9,13 +9,49 @@
         "state": "wi",
         "county": "Walworth"
     },
-    "data": "http://gisinfo.co.walworth.wi.us/arcgis/rest/services/WALCOBasemap/MapServer/9",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "NUMBER_",
-        "street": [ "STRPREFIX", "STREET", "STRTYPE" ],
-        "city": "MUNI_NAM",
-        "accuracy": 1
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/k7zLk7Ef9KUrRdlo/arcgis/rest/services/E911_Addresses/FeatureServer/0",
+                "website": "https://open-walco.opendata.arcgis.com/datasets/walco::e911-addresses/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "NUMBER_",
+                    "street": [
+                        "STRPREFIX",
+                        "STREET",
+                        "STRTYPE"
+                    ],
+                    "city": "MUNI_NAM",
+                    "accuracy": 1
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/k7zLk7Ef9KUrRdlo/arcgis/rest/services/Parcels/FeatureServer/3",
+                "website": "https://open-walco.opendata.arcgis.com/datasets/walco::parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PAR_NUM"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://open-walco.opendata.arcgis.com/datasets/walco::building-footprints-1/about",
+                "website": "https://open-walco.opendata.arcgis.com/datasets/walco::building-footprints-1/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

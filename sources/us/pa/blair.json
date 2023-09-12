@@ -9,17 +9,60 @@
         "state": "pa",
         "county": "Blair"
     },
-    "data": "https://github.com/aaronpdennis/pa-county-addresses/raw/master/data/BLAIR/BLAIR_addresses.csv",
-    "type": "http",
-    "note": "Data extracted from 2009 state government collection. Individual county GIS offices may have more recent addresses.",
-    "conform": {
-        "type": "csv",
-        "number": "SAN",
-        "street": ["PRD","STP","STN","STS","POD"],
-        "city": "MCN",
-        "lon": "X",
-        "lat": "Y",
-        "id": "PIN",
-        "accuracy": 5
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "http://www.blairco.org/Dept/GIS/Pages/default.aspx",
+                "contact": {
+                    "phone": "(814) 693-2535",
+                    "email": "gis@blairco.org",
+                    "address": "Blair County Courthouse, 423 Allegheny St., Suite 011, Hollidaysburg, PA 16648"
+                },
+                "data": "https://gis.blairco.org/arcgis/rest/services/BCWebMap/WebStructures/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": [
+                        "SubAddType",
+                        "SUBADR_NUM"
+                    ],
+                    "id": "PIN",
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "http://www.blairco.org/Dept/GIS/Pages/default.aspx",
+                "contact": {
+                    "phone": "(814) 693-2535",
+                    "email": "gis@blairco.org",
+                    "address": "Blair County Courthouse, 423 Allegheny St., Suite 011, Hollidaysburg, PA 16648"
+                },
+                "data": "https://gis.blairco.org/arcgis/rest/services/BCWebMap/WebParcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PAR_NUM"
+                }
+            }
+        ]
     }
 }

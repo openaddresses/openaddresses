@@ -9,23 +9,31 @@
         "state": "oh",
         "county": "Clinton"
     },
-    "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/CLI_ADDS.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-      "number": "HOUSENUM",
-      "street": [
-          "ST_PREFIX",
-          "ST_NAME",
-          "ST_TYPE",
-          "ST_SUFFIX"
-      ],
-      "unit": "UNITNUM",
-      "city": "MUNI",
-      "district": "COUNTY",
-      "region": "STATE",
-      "type": "shapefile",
-      "file": "CLI_ADDS.shp",
-      "postcode": "zipcode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/CLI_ADDS.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "HOUSENUM",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX"
+                    ],
+                    "unit": "UNITNUM",
+                    "city": "MUNI",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "format": "shapefile",
+                    "file": "CLI_ADDS.shp",
+                    "postcode": "zipcode"
+                }
+            }
+        ]
     }
 }

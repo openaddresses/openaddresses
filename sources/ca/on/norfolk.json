@@ -4,12 +4,31 @@
         "state": "on",
         "county": "Norfolk"
     },
-    "website": "http://norfolk.maps.arcgis.com/apps/webappviewer/index.html",
-    "data": "http://gis2.norfolkcounty.ca/arcgis/rest/services/Services_GIS_Viewer/Parcel_Internal/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STREET_NO",
-        "street": "STREET_NAM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "http://opendata.norfolkcounty.ca/datasets/civic-addresses",
+                "data": "https://services1.arcgis.com/mSGV2hCLXHNsfQqK/arcgis/rest/services/CivicAddresses/FeatureServer/0",
+                "license": {
+                    "url": "http://data-norfolk.opendata.arcgis.com/pages/terms-of-use",
+                    "text": "Contains public sector Information made available under Norfolk County's Open Data Licence",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "NUMBER_",
+                    "street": [
+                        "Bell_Name",
+                        "Bell_Suf",
+                        "Bell_Dir"
+                    ],
+                    "unit": "UnitNumber"
+                }
+            }
+        ]
     }
 }

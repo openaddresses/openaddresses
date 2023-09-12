@@ -11,15 +11,23 @@
             ]
         }
     },
-    "data": "https://maps.vaughan.ca/arcgis/rest/services/PLANitTest/PLANit/MapServer/9",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STREETNUM",
-        "street": [
-            "STREETNAME",
-            "SUFFIX"
-        ],
-        "unit": "UNIT"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.vaughan.ca/arcgis/rest/services/PLANitTest/PLANit/MapServer/9",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREETNUM",
+                    "street": [
+                        "STREETNAME",
+                        "SUFFIX"
+                    ],
+                    "unit": "UNIT"
+                }
+            }
+        ]
     }
 }

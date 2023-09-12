@@ -9,18 +9,26 @@
         "state": "mn",
         "county": "Marshall"
     },
-    "data": "http://gismap.co.marshall.mn.us/arcgis/rest/services/Marshall/Marshall_ParcelData/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "MarshallCountyTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "MarshallCountyTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS"
-        },
-        "postcode": "MarshallCountyTaxData.dbo.tblParcelJoin.PROPERTY_ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gismap.co.marshall.mn.us/arcgis/rest/services/Marshall/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "MarshallCountyTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "MarshallCountyTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS"
+                    },
+                    "postcode": "MarshallCountyTaxData.dbo.tblParcelJoin.PROPERTY_ZIP"
+                }
+            }
+        ]
     }
 }

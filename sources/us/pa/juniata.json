@@ -9,20 +9,65 @@
         "state": "pa",
         "county": "Juniata"
     },
-    "data": "http://gis2.kimballdata.com/arcgis/rest/services/JuniataCounty/JuniataCountyParcelsOpr/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "SAN",
-        "street": [
-            "SAN_SUF",
-            "PRD",
-            "STN",
-            "STS",
-            "POD"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.juniataco.org/departments/gis/",
+                "contact": {
+                    "name": "Michael J. Hower",
+                    "title": "Director",
+                    "phone": "717-436-7764",
+                    "email": "mhower@juniataco.org",
+                    "address": "Juniata County Courthouse, Bridge and Main Streets, Mifflintown, PA 17059"
+                },
+                "data": "https://parcelviewer.geodecisions.com/arcgis/rest/services/Juniata/Public/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SAN",
+                    "street": [
+                        "PRD",
+                        "STN",
+                        "STS",
+                        "POD"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "CITY",
-        "postcode": "ZIP"
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.juniataco.org/departments/gis/",
+                "contact": {
+                    "name": "Michael J. Hower",
+                    "title": "Director",
+                    "phone": "717-436-7764",
+                    "email": "mhower@juniataco.org",
+                    "address": "Juniata County Courthouse, Bridge and Main Streets, Mifflintown, PA 17059"
+                },
+                "data": "https://parcelviewer.geodecisions.com/arcgis/rest/services/Juniata/Public/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "website": "https://www.juniataco.org/departments/gis/",
+                "data": "https://parcelviewer.geodecisions.com/arcgis/rest/services/Juniata/Public/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

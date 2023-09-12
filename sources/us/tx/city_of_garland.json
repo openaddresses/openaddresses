@@ -16,18 +16,26 @@
         "state": "tx",
         "city": "Garland"
     },
-    "data": "https://services2.arcgis.com/g3rbttPStUJTjAz2/ArcGIS/rest/services/Base_Map/FeatureServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STREETNUM",
-        "street": [
-            "STREETPREFIX",
-            "STREETNAME",
-            "STREETTYPE",
-            "STREETSUFFIX"
-        ],
-        "unit": "UNIT",
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/g3rbttPStUJTjAz2/ArcGIS/rest/services/Base_Map/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREETNUM",
+                    "street": [
+                        "STREETPREFIX",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "STREETSUFFIX"
+                    ],
+                    "unit": "UNIT",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

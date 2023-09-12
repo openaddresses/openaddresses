@@ -16,11 +16,19 @@
             ]
         }
     },
-    "data": "http://services.geoportalmaps.com/arcgis/rest/services/Vicksburg_Public/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STNUMBER",
-        "street": "FULLSTNAME"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://services.geoportalmaps.com/arcgis/rest/services/Vicksburg_Public/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STNUMBER",
+                    "street": "FULLSTNAME"
+                }
+            }
+        ]
     }
 }

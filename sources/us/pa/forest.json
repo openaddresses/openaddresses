@@ -9,21 +9,57 @@
         "state": "pa",
         "county": "Forest"
     },
-    "data": "http://web1.mobile311.com/arcgis/rest/services/Pennsylvania/ForestCountyPa/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "srs": "EPSG:2271",
-        "number": [
-            "SAN",
-            "SAN_SUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/3SC5aoxCO7AZDldv/ArcGIS/rest/services/Forest_County_Site_Structure_Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "postcode": "Post_Code"
+                }
+            }
         ],
-        "street": [
-            "PRD",
-            "STN",
-            "STS",
-            "POD"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/3SC5aoxCO7AZDldv/ArcGIS/rest/services/Forest_County_Parcels_01252023/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL"
+                }
+            }
         ],
-        "city": "MCN"
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/3SC5aoxCO7AZDldv/ArcGIS/rest/services/Forest_County_Building_Footprints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

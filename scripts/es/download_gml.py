@@ -6,8 +6,7 @@ with open(sys.argv[1], 'r') as f:
     urls = f.readlines()
     for url in urls:
         url = url.rstrip("\n")
-
-        if len(url) > 0
+        if len(url) > 0:
             filename = sys.argv[2] + url.split('/')[-1]
 
             urllib.urlretrieve(url, filename)

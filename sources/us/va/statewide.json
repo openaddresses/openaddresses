@@ -1,14 +1,4 @@
 {
-    "data": "https://ftp.vgingis.com/Download/VA_SiteAddress.txt.zip",
-    "website": "http://vgin.maps.arcgis.com/home/item.html?id=100e5e12ddc14748a5ec3b8b997af13a",
-    "license": {
-        "text": "public domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "compression": "zip",
-    "type": "http",
-    "year": 2014,
     "coverage": {
         "US Census": {
             "geoid": "51",
@@ -17,21 +7,73 @@
         "country": "us",
         "state": "va"
     },
-    "conform": {
-        "type": "csv",
-        "file": "VA_SiteAddress.txt",
-        "lon": "LONG",
-        "lat": "LAT",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "city": "PO_NAME",
-        "district": "MUNICIPALITY",
-        "region": "STATE",
-        "postcode": {
-          "function": "regexp",
-          "field": "ZIP_5",
-          "pattern": "([0-9]{2}),([0-9]{3})",
-          "replace": "$1$2"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://gismaps.vdem.virginia.gov/arcgis/rest/services/VA_Base_Layers/VA_Address_Points/FeatureServer/0",
+                "website": "https://vgin.vdem.virginia.gov/datasets/virginia-address-points/about",
+                "license": {
+                    "text": "public domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": [
+                        "STREET_PREMOD",
+                        "STREET_PREFIX",
+                        "STREET_PRE_TYPE",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "STREET_SUFFIX"
+                    ],
+                    "city": "PO_NAME",
+                    "district": "MUNICIPALITY",
+                    "region": "STATE",
+                    "postcode": "ZIP_5"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://gismaps.vdem.virginia.gov/arcgis/rest/services/VA_Base_Layers/VA_Parcels/FeatureServer/0",
+                "website": "https://vgin.vdem.virginia.gov/datasets/virginia-parcels/about",
+                "license": {
+                    "text": "public domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "state",
+                "data": "https://gismaps.vdem.virginia.gov/arcgis/rest/services/VA_Base_Layers/VA_Building_Footprints/FeatureServer/0",
+                "website": "https://vgin.vdem.virginia.gov/datasets/virginia-building-footprints/about",
+                "license": {
+                    "text": "public domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

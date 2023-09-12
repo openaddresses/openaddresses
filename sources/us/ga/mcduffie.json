@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "13189",
+            "name": "McDuffie County",
+            "state": "Georgia"
+        },
+        "country": "us",
+        "state": "ga",
+        "county": "McDuffie"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.thomson-mcduffie.net/portal/sharing/servers/e75fa80580074db48b7b3e468993d96b/rest/services/Public/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "GISStreetN",
+                    "street": "GIS_ST_Nam",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.thomson-mcduffie.net/portal/sharing/servers/e75fa80580074db48b7b3e468993d96b/rest/services/Public/MapServer/9",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNo"
+                }
+            }
+        ]
+    }
+}

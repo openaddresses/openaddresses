@@ -1,17 +1,4 @@
 {
-    "conform": {
-        "type": "csv",
-        "lon": "x",
-        "street": "calle_1",
-        "lat": "y",
-        "number": "num",
-        "csvsplit": ";"
-    },
-    "attribution": "SOURCE: Government of the Autonomous City of Buenos Aires, downloaded 23 September 2017.",
-    "website": "https://data.buenosaires.gob.ar/dataset/calles",
-    "type": "https",
-    "note": "License is disclaimer of liability compatible with the Open Definition and CC-BY, allows commercial use & transformation. Attribution must specify date of download.",
-    "data": "https://data.buenosaires.gob.ar/api/files/callejero.csv/download/csv",
     "coverage": {
         "ISO 3166": {
             "alpha2": "AR-C",
@@ -22,5 +9,29 @@
         "state": "c",
         "city": "Buenos Aires"
     },
-    "license": "https://data.buenosaires.gob.ar/tyc"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "conform": {
+                    "format": "csv",
+                    "lon": "X",
+                    "street": "CALLE",
+                    "lat": "Y",
+                    "number": "NUM"
+                },
+                "website": "https://data.buenosaires.gob.ar/dataset/relevamiento-usos-suelo",
+                "protocol": "http",
+                "data": "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/secretaria-de-desarrollo-urbano/relevamiento-usos-suelo/relevamiento-usos-del-suelo-2017.csv",
+                "license": {
+                  "url": "https://creativecommons.org/licenses/by/2.5/ar",
+                  "text": "CC BY 2.5 AR",
+                  "attribution": true,
+                  "attribution name": "Buenos Aires Ciudad"
+                },
+              "year": "2017"
+            }
+        ]
+    }
 }

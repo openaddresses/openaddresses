@@ -1,18 +1,52 @@
 {
     "coverage": {
-        "US Census": {"geoid": "39113", "name": "Montgomery County", "state": "Ohio"},
+        "US Census": {
+            "geoid": "39113",
+            "name": "Montgomery County",
+            "state": "Ohio"
+        },
         "country": "us",
         "state": "oh",
         "county": "Montgomery"
     },
-    "data": "http://www.mcegisohio.org/arcgis/rest/services/AUDGIS_B1/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDR_NUM",
-        "street": ["PRE_DIR", "PRE_TYPE", "STR_NAME", "STR_TYPE", "SUF_DIR"],
-        "city": "CITY",
-        "postcode": "ZIP",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://www.mcauditor.org/downloads/Shape_files/SHAPEFILE_STREETS_ADDRESSPTS_BUILDING.ZIP",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "Address_pts.shp",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "http://www.mcauditor.org/downloads/Shape_files/SHAPEFILE_STREETS_ADDRESSPTS_BUILDING.ZIP",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "Buildings.shp"
+                }
+            }
+        ]
     }
 }

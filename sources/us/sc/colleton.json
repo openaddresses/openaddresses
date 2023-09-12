@@ -9,24 +9,53 @@
         "state": "sc",
         "county": "Colleton"
     },
-    "data": "http://services1.arcgis.com/m0cnLGKdhwao8WvM/ArcGIS/rest/services/Public_Data/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NUMBER",
-        "street": [
-            "PFX_DIR",
-            "PFX_TYPE",
-            "STREET_NAME",
-            "SFX_TYPE",
-            "SFX_DIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/m0cnLGKdhwao8WvM/ArcGIS/rest/services/Public_Data/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "FULLHOUSE",
+                    "street": [
+                        "PFX_DIR",
+                        "PFX_TYPE",
+                        "STREET_NAME",
+                        "SFX_TYPE",
+                        "SFX_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT"
+                    ],
+                    "city": "POSTAL_TOWN",
+                    "postcode": "POSTAL_ZIP",
+                    "region": "POSTAL_STATE"
+                }
+            }
         ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/m0cnLGKdhwao8WvM/ArcGIS/rest/services/Public_Data/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
         ],
-        "city": "POSTAL_TOWN",
-        "postcode": "POSTAL_ZIP",
-        "region": "POSTAL_STATE"
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/m0cnLGKdhwao8WvM/ArcGIS/rest/services/Building_Footprints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

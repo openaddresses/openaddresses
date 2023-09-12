@@ -1,0 +1,50 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "49003",
+            "name": "Box Elder County",
+            "state": "Utah"
+        },
+        "country": "us",
+        "state": "ut",
+        "county": "Box Elder"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis.boxeldercounty.org/arcgis/rest/services/Webmap/Cadastral_Layers/MapServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNum",
+                    "street": [
+                        "PreDir",
+                        "StreetName",
+                        "StreetType",
+                        "SufDir"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "UnitNumber"
+                    ],
+                    "city": "City",
+                    "region": "StateAbrv",
+                    "postcode": "ZipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis.boxeldercounty.org/arcgis/rest/services/Webmap/Cadastral_Layers/MapServer/9",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_Number"
+                }
+            }
+        ]
+    }
+}

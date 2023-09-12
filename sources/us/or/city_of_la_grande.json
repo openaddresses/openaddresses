@@ -1,0 +1,52 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -118.088,
+                45.325
+            ]
+        },
+        "US Census": {
+            "geoid": "4140350",
+            "name": "City of La Grande",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "city": "La Grande"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": " https://services8.arcgis.com/fctQFRCLcuzAFEur/ArcGIS/rest/services/Planning_View/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services8.arcgis.com/fctQFRCLcuzAFEur/ArcGIS/rest/services/Taxlot/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MapTaxlot"
+                }
+            }
+        ]
+    }
+}
