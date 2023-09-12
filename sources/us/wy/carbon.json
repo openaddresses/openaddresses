@@ -26,7 +26,7 @@
                     "street": {
                         "function": "regexp",
                         "field": "st_address",
-                        "pattern": "^(?:[0-9]+ )(.*)(?:\\s(ARLINGTON|BAGGS|BLK\\s\\d+|DIXON|ELK MOUNTAIN|ENCAMPMENT|HANNA|MEDICINE BOW|MUDDY GAP|RAWLINS|RIVERSIDE|RURAL|SARATOGA|SINCLAIR|\\(\\d[5]\\)))?$",
+                        "pattern": "^(?:[0-9]+ )(.*)(?:\\s(ARLINGTON|BAGGS|BLK\\s\\d+|DIXON|ELK MOUNTAIN|ENCAMPMENT|HANNA|MEDICINE BOW|MUDDY GAP|RAWLINS|RIVERSIDE|RURAL|SARATOGA|SINCLAIR|\\(\\d{5}\\)))?$",
                         "replace": "$1"
                     },
                     "city": {
@@ -37,7 +37,7 @@
                     "postcode": {
                         "function": "regexp",
                         "field": "st_address",
-                        "pattern": "(?:\\()(\\d[5])(?:\\))",
+                        "pattern": "(?:\\()(\\d{5})(?:\\))",
                         "replace": "$1"
                     },
                     "format": "shapefile"
