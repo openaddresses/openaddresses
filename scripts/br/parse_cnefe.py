@@ -161,7 +161,7 @@ def load_faces_midpoints(state_code, state_zip):
     if (len(missing_shapefiles) > 0):
         with open(RESULTS_PATH + '/'+state_id+'-missing_shapefiles.csv', 'w') as missing_shapefiles_file:
             missing_shapefiles_file.writelines(
-                "%s\n" % i for i in sorted(missing_shapefiles))            
+                "%s\n" % i for i in sorted(missing_shapefiles))
 
     return [state_id, midpoints]
 
@@ -194,7 +194,7 @@ def parse_addresses(state_id, midpoints, admin_areas):
 
             # Expand zipfile with system unzip, zipfile module can't handle large files
             subprocess.run(["unzip", address_zipfile, "-d", ADDRESSES_PATH])
-        
+
             # Parse textfile, assume zipfile has only one file
             # address_textfile = ADDRESSES_PATH + '/' + Path(address_zipfile).stem + '.txt'
             [address_textfile] = glob.glob(ADDRESSES_PATH + '/*')
@@ -262,7 +262,7 @@ def parse_addresses(state_id, midpoints, admin_areas):
                         else:
                             file_stats['missing_areas'] += 1
                             missing_areas.add(addr['census sector'])
-                    
+
 
     with open(RESULTS_PATH + '/'+state_id+'-missing_faces.csv', 'w') as missing_faces_file:
         missing_faces_file.writelines(
