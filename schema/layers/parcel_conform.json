@@ -1,0 +1,59 @@
+{
+    "description": "top-level parcel conform schema",
+    "type": "object",
+    "required": [
+        "pid"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "format": {
+            "type": "string",
+            "enum": [
+                "geojson",
+                "shapefile",
+                "gdb"
+            ]
+        },
+        "srs": {
+            "type": "string",
+            "pattern": "EPSG:[0-9]+"
+        },
+        "file": {
+            "type": "string"
+        },
+        "layer": {
+            "description": "specifies a layer to use in the GDB",
+            "oneOf": [{
+                "type": "integer"
+            },{
+                "type": "string"
+            }]
+        },
+        "encoding": {
+            "type": "string"
+        },
+        "notes": {
+            "type": "string"
+        },
+        "pid": {
+            "description": "unique identifier for the parcel row",
+            "oneOf": [{
+                "$ref": "../util/functions/base.json"
+            },{
+                "$ref": "../util/functions/regexp.json"
+            },{
+                "$ref": "../util/functions/remove_prefix.json"
+            },{
+                "$ref": "../util/functions/remove_postfix.json"
+            },{
+                "$ref": "../util/functions/join.json"
+            },{
+                "$ref": "../util/functions/format.json"
+            },{
+                "$ref": "../util/functions/chain.json"
+            },{
+                "$ref": "../util/functions/static.json"
+            }]
+        }
+    }
+}

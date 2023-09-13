@@ -14,22 +14,43 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis2.msa-ps.com/ArcGIS/rest/services/StreetsAddress/MapServer/20",
+                "data": "https://gis.co.oneida.wi.us/arcgis/rest/services/Oneview/Parcels/MapServer/12",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "SITEADDNUMBER",
-                    "street": [
-                        "DIRECTION",
-                        "ROADNAME",
-                        "TYPE",
-                        "PostDir"
-                    ],
+                    "id": "Pinadd_key",
+                    "number": "Add_Number",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PropertyAddress"
+                    },
                     "unit": [
                         "UnitType",
-                        "UnitNumber"
+                        "Unit"
                     ],
-                    "city": "Municipality"
+                    "city": "Municipality",
+                    "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.oneida.wi.us/arcgis/rest/services/Oneview/Parcels/MapServer/16",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "GIS_PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.co.oneida.wi.us/arcgis/rest/services/Oneview/Parcels/MapServer/17",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

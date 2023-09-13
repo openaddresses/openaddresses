@@ -22,12 +22,27 @@
                 },
                 "protocol": "ESRI",
                 "conform": {
+                    "format": "geojson",
+                    "number": "ADRS_NUMB",
                     "street": [
-                        "StrName",
-                        "StrType"
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX"
                     ],
-                    "number": "HouseNum",
-                    "format": "geojson"
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/NC/Montgomery/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

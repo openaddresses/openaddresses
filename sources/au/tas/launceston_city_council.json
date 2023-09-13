@@ -3236,7 +3236,7 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://mapping.launceston.tas.gov.au/arcgis/rest/services/Public/Addresses/MapServer/0",
+                "data": "https://mapping.launceston.tas.gov.au/arcgis/rest/services/Public/Addresses/MapServer/0",
                 "license": {
                     "url": "http://creativecommons.org/licenses/by/3.0/au/deed.en",
                     "text": "CC BY 3.0 AU",
@@ -3244,17 +3244,43 @@
                     "attribution name": "City of Launceston",
                     "share-alike": false
                 },
-                "website": "https://data.gov.au/dataset/addresses",
+                "website": "https://opendata.launceston.tas.gov.au/datasets/launceston::addresses/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "Address",
-                    "street": {
+                    "unit": {
                         "function": "regexp",
-                        "field": "Address",
-                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "field": "houselabel",
+                        "pattern": "^(.+)/"
+                    },
+                    "number": {
+                        "function": "regexp",
+                        "field": "houselabel",
+                        "pattern": "^(?:.*/)(.*)",
                         "replace": "$1"
-                    }
+                    },
+                    "street": "street",
+                    "city": "locality",
+                    "postcode": "postcode"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://opendata.arcgis.com/datasets/6e55c56aeb244d0eb0b57e0271cccf7e_6.geojson",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/3.0/au/deed.en",
+                    "text": "CC BY 3.0 AU",
+                    "attribution": true,
+                    "attribution name": "City of Launceston",
+                    "share-alike": false
+                },
+                "website": "https://opendata.launceston.tas.gov.au/datasets/building-footprints",
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson",
+                    "height": "Height_m"
                 }
             }
         ]

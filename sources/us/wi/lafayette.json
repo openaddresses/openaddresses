@@ -1,0 +1,37 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "55065", "name": "Lafayette County", "state": "Wisconsin"},
+        "country": "us",
+        "state": "wi",
+        "county": "Lafayette"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.lafayettecountywi.org/arcgis/rest/services/Services/AddressPoints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "FULL_UNIT",
+                    "number": "ADDR_NUM",
+                    "street": "FULL_STREET",
+                    "city": "CITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.lafayettecountywi.org/arcgis/rest/services/Services/TaxParcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNumber"
+                }
+            }
+        ]
+    }
+}

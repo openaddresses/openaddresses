@@ -20,14 +20,25 @@
                     "format": "geojson",
                     "number": {
                         "function": "prefixed_number",
-                        "field": "situs"
+                        "field": "recorder.dbo.ut_gisinfo.situs"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "situs"
+                        "field": "recorder.dbo.ut_gisinfo.situs"
                     },
-                    "city": "site_community",
-                    "postcode": "site_zip_code"
+                    "city": "recorder.dbo.ut_gisinfo.site_community",
+                    "postcode": "recorder.dbo.ut_gisinfo.site_zip_code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "http://gismaps.co.cerro-gordo.ia.us/arcgis/rest/services/Maps/TaxParcelsCGCo/MapServer/34",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "recorder.dbo.ut_gisinfo.complete_parcel_number"
                 }
             }
         ]

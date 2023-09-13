@@ -131,7 +131,7 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
  Tag       | Required? | Note
 ---------------- | --- | ----
 `format`         | Yes | The format property stores the format. It can currently be one of `gdb`, `shapefile`, `csv`, `geojson`, or `xml` (for GML).
-`srs`            |     | Allows one to set a custom source srs. Currently only supported by `format:shapefile`, `format:shapefile-polygon`, and `format:csv`. Should be in the format of `EPSG:####` and can be any code supported by `ogr2ogr`. Modern shapefiles typically store their projection in a `.prj` file. If this file exists, this tag should be omitted.
+`srs`            |     | Allows one to set a custom source srs. Currently only supported by `format:shapefile`, and `format:csv`. Should be in the format of `EPSG:####` and can be any code supported by `ogr2ogr`. Modern shapefiles typically store their projection in a `.prj` file. If this file exists, this tag should be omitted.
 `layer`          |     | The `gdb` source format allows multiple layers of geodata in a single input file. Use the `layer` tag to specify which of those layers to use. It can either be the string name of the layer or an integer index of the layer.
 `file`           |     | The majority of zips contain a single shapefile. Sometimes zips will contain multiple files, or the shapefile that is needed is located in a folder hierarchy in the zip. Since the program only supports determining single shapefiles not in a subfolder, `file` can be used to point the program to an exact file. The proper syntax would be `"file": "addresspoints/address.shp"` if the file was under a single subdirectory called `addresspoints`. Note there is no preceding forward slash.
 `encoding`       |     | A character encoding from which an input file will first be converted (into utf-8). Must be [recognizable by `iconv`](https://www.gnu.org/software/libiconv/).
@@ -326,3 +326,7 @@ A few notes on formatting:
 
 Although these are read by a machine, they are maintained by us mortals.
 Following the formatting guidelines keeps the rest of us sane!
+
+### Debugging and local testing
+
+See https://github.com/openaddresses/batch-machine/

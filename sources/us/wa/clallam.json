@@ -15,8 +15,7 @@
             {
                 "name": "county",
                 "conform": {
-                    "format": "shapefile-polygon",
-                    "id": "PNUM",
+                    "format": "geojson",
                     "number": "SITUS_ADDR",
                     "street": [
                         "SITUS_DIR",
@@ -25,13 +24,27 @@
                     "city": "SITUS_CITY",
                     "postcode": "ZIP_CODE"
                 },
-                "license": "http://www.clallam.net/maps/parcels.html",
-                "protocol": "http",
-                "compression": "zip",
-                "note": "parcel polygon shapefile prc_detail_p.shp, address columns: SITUS_ADDR, SITUS_DIR, SITUS_RD, SITUS_EXT, SITUS_CITY",
-                "year": "2014",
-                "data": "http://www.clallam.net/maps/parcel.zip",
-                "website": "http://www.clallam.net/maps/mapdata.html"
+                "license": {
+                    "url": "https://clallam-county-portal-clallam.hub.arcgis.com/pages/county-disclaimer"
+                },
+                "protocol": "ESRI",
+                "data": "https://websrv19.clallam.net/arcgis/rest/services/ParcelMap/MapServer/2",
+                "website": "https://clallam-county-portal-clallam.hub.arcgis.com/datasets/clallam::parcels-public/about"
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "license": {
+                    "url": "https://clallam-county-portal-clallam.hub.arcgis.com/pages/county-disclaimer"
+                },
+                "protocol": "ESRI",
+                "data": "https://websrv19.clallam.net/arcgis/rest/services/ParcelMap/MapServer/2",
+                "website": "https://clallam-county-portal-clallam.hub.arcgis.com/datasets/clallam::parcels-public/about",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PNUM"
+                }
             }
         ]
     }

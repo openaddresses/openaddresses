@@ -14,27 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.chippewa.mn/arcgis/rest/services/public_LINK/MapServer/2",
+                "data": "https://gis.chippewa.mn/arcgis/rest/services/OpenData/OpenData/MapServer/20",
                 "protocol": "ESRI",
                 "conform": {
                     "number": {
-                        "function": "regexp",
-                        "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
-                        "pattern": "^([0-9]+)"
+                        "function": "prefixed_number",
+                        "field": "PROPERTY_ADDRESS"
                     },
                     "street": {
-                        "function": "regexp",
-                        "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
+                        "function": "postfixed_street",
+                        "field": "PROPERTY_ADDRESS"
                     },
                     "format": "geojson",
-                    "city": {
-                        "function": "regexp",
-                        "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
-                        "pattern": "^([^,]+)"
-                    },
-                    "postcode": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ZIP"
+                    "postcode": "PROPERTY_ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.chippewa.mn/arcgis/rest/services/OpenData/OpenData/MapServer/20",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

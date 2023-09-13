@@ -9,3 +9,10 @@ To download the data in an automated fashion you can run the following (replacin
 
 You will then recieve an email with the download link.
 
+## Buildings
+
+[Building areas - Queensland](http://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={BC24B68C-50D2-41E8-B0AE-FF4EB2913FDA})
+
+    curl 'https://gisservices2.information.qld.gov.au/arcgis/rest/services/QSC/ClipZipShip/GPServer/ClipZipShip/submitJob?f=json&env%3AoutSR=102100&Layers_to_Clip=%5B%5D&Feature_Format=&Spatial_Reference=&To_Email=USERNAME%40EXAMPLE.com&Prepackaged_Data_URLs=DP_QLD_BUILDING_AREAS.zip%3Aundefined&Output_Title=Extract'
+
+You will then recieve an email with the download link.

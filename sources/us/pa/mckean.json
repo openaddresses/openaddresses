@@ -14,24 +14,66 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://github.com/aaronpdennis/pa-county-addresses/raw/master/data/MCKEAN/MCKEAN_addresses.csv",
-                "protocol": "http",
-                "note": "Data extracted from 2009 state government collection. Individual county GIS offices may have more recent addresses.",
+                "data": "https://gismaps.mckeancountypa.org/arcgis/rest/services/BasicParcelViewer2/MapServer/1",
+                "license" : {
+                    "url": "https://cms6.revize.com/revize/mckeanpa/departments/docs/McKean%20County%20GIS%20Disclaimer.pdf"
+                },
+                "website": "https://www.mckeancountypa.org/departments/gis.php",
+                "contact": {
+                    "name": "Gabby Howard",
+                    "title": "GIS Coordinator",
+                    "phone": "814-887-3108",
+                    "email": "gmhoward@mckeancountypa.org",
+                    "address": "17137 Rte 6, Smethport, PA 16749"
+                },
+		        "protocol": "ESRI",
                 "conform": {
-                    "format": "csv",
-                    "number": "SAN",
-                    "street": [
-                        "PRD",
-                        "STP",
-                        "STN",
-                        "STS",
-                        "POD"
+                    "format": "geojson",
+                    "number": [
+                        "addnum_pre",
+                        "add_number",
+                        "addnum_suf"
                     ],
-                    "city": "MCN",
-                    "lon": "X",
-                    "lat": "Y",
-                    "id": "PIN",
-                    "accuracy": 2
+                    "street": [
+                        "st_premod",
+                        "st_predir",
+                        "st_pretyp",
+                        "st_presep",
+                        "st_name",
+                        "st_postyp",
+                        "st_posdir",
+                        "st_posmod"
+                    ],
+                    "unit": "unit",
+                    "city": "post_comm",
+                    "district": "county",
+                    "region": "state",
+                    "postcode": "post_code",
+                    "id": "aid",
+                    "addrtype": "place_type",
+                    "accuracy": 1
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gismaps.mckeancountypa.org/arcgis/rest/services/BPV2_Parcels/MapServer/0",
+                "license" : {
+                    "url": "https://cms6.revize.com/revize/mckeanpa/departments/docs/McKean%20County%20GIS%20Disclaimer.pdf"
+                },
+                "website": "https://www.mckeancountypa.org/departments/gis.php",
+                "contact": {
+                    "name": "Gabby Howard",
+                    "title": "GIS Coordinator",
+                    "phone": "814-887-3108",
+                    "email": "gmhoward@mckeancountypa.org",
+                    "address": "17137 Rte 6, Smethport, PA 16749"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pin"
                 }
             }
         ]

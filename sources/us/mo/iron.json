@@ -18,9 +18,20 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSENUM",
-                    "street": "ADDRESS",
-                    "city": "Site_City"
+                    "number": "parcdata.SITE_NO",
+                    "street": "parcdata.SITE_STREE",
+                    "city": "parcdata.SITE_CITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.semogis.com/arcgis/rest/services/IronCo/IronAssess/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel.PIN"
                 }
             }
         ]

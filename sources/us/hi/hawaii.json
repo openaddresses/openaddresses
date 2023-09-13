@@ -11,31 +11,37 @@
         "county": "hawaii"
     },
     "layers": {
-        "addresses": [{
-            "name": "county",
-            "data": "https://gis.hawaiicounty.gov/arcgis/rest/services/COHGIS_Public/COHGIS_Public/MapServer/20",
-            "protocol": "ESRI",
-            "conform": {
-                "format": "geojson",
-                "number": ["ADDRESSNUM", "ADDRESSSUF"],
-                "street": [
-                    "SDIRPRE",
-                    "SFEANME",
-                    "SFEATYP",
-                    "SDIRSUF"
-                ],
-                "postcode": "ZIPCODE"
-
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.hawaiicounty.gov/arcgis/rest/services/COHGIS_Public/COHGIS_Public/MapServer/22",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDRESSNUM",
+                        "ADDRESSSUF"
+                    ],
+                    "street": [
+                        "SDIRPRE",
+                        "SFEANME",
+                        "SFEATYP",
+                        "SDIRSUF"
+                    ],
+                    "postcode": "ZIPCODE"
+                }
             }
-        }],
-        "parcels": [{
-            "name": "county",
-            "data": "https://gis.hawaiicounty.gov/arcgis/rest/services/COHGIS_Public/COHGIS_Public/MapServer/21",
-            "protocol": "ESRI",
-            "conform": {
-                "format": "geojson",
-                "pid": "OBJECTID"
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.hawaiicounty.gov/arcgis/rest/services/COHGIS_Public/COHGIS_Public/MapServer/23",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Name"
+                }
             }
-        }]
+        ]
     }
 }

@@ -14,17 +14,27 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://maps.sjcounty.net/arcgis/rest/services/Maps/CounterMap/MapServer/1",
+                "data": "https://webmaps.sjcounty.net/arcgis/rest/services/opendata/BaseMapLayers2/MapServer/11",
                 "protocol": "ESRI",
-                "note": "source data contains separated street fields but can cause duplicated predirectionals, eg: E E ELM ST",
                 "conform": {
                     "format": "geojson",
+                    "unit": "UNIT",
                     "number": "NUMBER",
                     "street": "STREET",
-                    "unit": "UNIT",
                     "city": "CITY",
                     "region": "STATE",
                     "postcode": "ZIP_CODE_"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://webmaps.sjcounty.net/arcgis/rest/services/Maps/ClerksExternal/MapServer/43",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "assessor.GIS.Parcels.PARCELNO"
                 }
             }
         ]

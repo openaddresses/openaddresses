@@ -15,11 +15,13 @@
             {
                 "name": "county",
                 "attribution": "Los Angeles County",
-                "data": "http://egis3.lacounty.gov/dataportal/wp-content/uploads/ShapefilePackages/CAMS.zip",
-                "license": "http://egis3.lacounty.gov/dataportal/disclaimer/",
-                "website": "http://egis3.lacounty.gov/dataportal/2012/06/19/la-county-address-points/",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://arcgis.gis.lacounty.gov/arcgis/rest/services/LACounty_Dynamic/CAMS/MapServer/1",
+                "license": {
+                    "url": "https://cams-lacounty.hub.arcgis.com/pages/cams-disclaimer",
+                    "text": "Indemnification"
+                },
+                "website": "https://data.lacounty.gov/datasets/cams-export-data/about",
+                "protocol": "ESRI",
                 "conform": {
                     "number": [
                         "NumPrefix",
@@ -36,10 +38,45 @@
                         "PostDir",
                         "PostMod"
                     ],
-                    "unit": "UnitName",
-                    "postcode": "ZipCode",
+                    "unit": [
+                        "UnitType",
+                        "UnitName"
+                    ],
+                    "postcode": "Zipcode",
                     "city": "PostComm1",
-                    "format": "gdb"
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://public.gis.lacounty.gov/public/rest/services/LACounty_Cache/LACounty_Parcel/MapServer/0",
+                "website": "https://data.lacounty.gov/documents/lacounty::parcels/about",
+                "license": {
+                    "url": "https://egis-lacounty.hub.arcgis.com/pages/terms-of-use",
+                    "text": "Indemnification"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/RmCCgQtiZLDCtblq/ArcGIS/rest/services/Countywide_Building_Outlines/FeatureServer/1",
+                "website": "https://data.lacounty.gov/datasets/lacounty::lariac4-buildings-2014/about",
+                "license": {
+                    "url": "https://egis-lacounty.hub.arcgis.com/pages/terms-of-use",
+                    "text": "Indemnification"
+                },
+                "year": "2014",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

@@ -134,6 +134,7 @@ def load_faces_midpoints(state_code, state_zip):
         with zipfile.ZipFile(faces_2010_zipfile, 'r') as zip_ref:
             zip_ref.extractall(SHP_PATH)
 
+
         # Get sector id
         file_basename = os.path.basename(faces_2010_zipfile)
         sector_id = os.path.splitext(file_basename)[0]
@@ -141,6 +142,7 @@ def load_faces_midpoints(state_code, state_zip):
         # Get midpoints for sector file
         faces_2010_shapefile = SHP_PATH+'/' + sector_id + '_face.shp'
         print('Loading ' + faces_2010_shapefile + '...')
+
         try:
             with fiona.open(faces_2010_shapefile) as shp:
                 for r in shp:

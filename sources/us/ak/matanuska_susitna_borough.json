@@ -14,34 +14,51 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps.matsugov.us/map/rest/services/ParcelViewer/ParcelViewer/MapServer/12",
-                "website": "http://www.matsugov.us/",
+                "data": "https://maps.matsugov.us/map/rest/services/OpenData/PublicSafety_Addresses/FeatureServer/0",
+                "website": "https://gis.data.alaska.gov/datasets/MSB::public-safety-addresses/about",
                 "attribution": "Matanuska-Susitna Borough",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "Add_Number",
+                    "number": "ADRSNUM",
                     "street": [
-                        "St_PreDir",
-                        "St_Name",
-                        "St_PosTyp"
+                        "P_ROADNME",
+                        "ROADNME",
+                        "S_ROADNME",
+                        "PS_ROADNME"
                     ],
-                    "city": "IncMuni",
-                    "district": "County",
-                    "region": "State"
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "COMMUNITY",
+                    "district": "municipality",
+                    "region": "stateabbreviation"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://maps.matsugov.us/map/rest/services/ParcelViewer/ParcelViewer/MapServer/14",
-                "website": "http://www.matsugov.us/",
+                "data": "https://maps.matsugov.us/map/rest/services/OpenData/Cadastral_Parcels/FeatureServer/0",
+                "website": "https://gis.data.alaska.gov/datasets/MSB::cadastral-parcels/about",
                 "attribution": "Matanuska-Susitna Borough",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "pid": "P_ID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://maps.matsugov.us/map/rest/services/OpenData/Infrastructure_Buildings/FeatureServer/0",
+                "website": "https://gis.data.alaska.gov/datasets/MSB::infrastructure-buildings/about",
+                "attribution": "Matanuska-Susitna Borough",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

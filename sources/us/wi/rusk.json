@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55107",
+            "name": "Rusk County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Rusk"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/RUSK_ADDRESSES_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/244E2909-C6A6-4BE2-A4E4-AE781847D73F",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "RUSK_ADDRESSES_2023",
+                    "number": "HouseNum",
+                    "street": [
+                        "StreetName",
+                        "StreetType"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Rusk_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/AB96AE5A-1EA3-4E10-A74D-EAE889E8D9B2",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
+    }
+}

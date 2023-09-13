@@ -14,21 +14,47 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/migurski/79aab9/Parcels__Maui_County.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services3.arcgis.com/fsrDo0QMPlK9CkZD/ArcGIS/rest/services/Address/FeatureServer/0",
+                "website": "https://mauicounty.maps.arcgis.com/home/item.html?id=8f119b7d0c1948938ff0b4daf93b08dd",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile-polygon",
-                    "number": "ADDRESS",
-                    "street": [
-                        "PREFX",
-                        "STREET",
-                        "STR"
+                    "format": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "HOUSENUMBER",
+                        "ADDRNUMSUF"
                     ],
-                    "unit": "SUITE",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
                     "city": "CITY",
-                    "region": "STATE",
-                    "postcode": "ZIP"
+                    "postcode": "POSTALCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/fsrDo0QMPlK9CkZD/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "website": "https://mauicounty.maps.arcgis.com/home/item.html?id=cfdc5cbeb28c4dd9a13d16d3d6ce0ff7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/fsrDo0QMPlK9CkZD/ArcGIS/rest/services/MauiCountyBuildingFootprints2020/FeatureServer/0",
+                "website": "https://mauicounty.maps.arcgis.com/home/item.html?id=b8d674bd04444453928cb84d287ee8a8",
+                "year": "2020",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

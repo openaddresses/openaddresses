@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "US Census": {"geoid": "32013", "name": "Humboldt County", "state": "Nevada"},
+        "country": "us",
+        "state": "nv",
+        "county": "Humboldt"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/cbx6hozJyAREK9DB/arcgis/rest/services/SiteAddressPoints/FeatureServer/0/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "APT",
+                    "number": "ST_NUM",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_PRETYP",
+                        "ST_NAME",
+                        "ST_POSTTYP",
+                        "ST_POSTDIR"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/cbx6hozJyAREK9DB/ArcGIS/rest/services/HCNV_MasterParcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelID"
+                }
+            }
+        ]
+    }
+}

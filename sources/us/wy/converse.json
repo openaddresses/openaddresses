@@ -18,7 +18,7 @@
                 "data": "http://maps.greenwoodmap.com/converse/download/ownership.zip",
                 "protocol": "http",
                 "conform": {
-                    "format": "shapefile-polygon",
+                    "format": "shapefile",
                     "number": {
                         "function": "prefixed_number",
                         "field": "st_address"
@@ -28,6 +28,18 @@
                         "field": "st_address"
                     },
                     "id": "pidn"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "compression": "zip",
+                "data": "http://maps.greenwoodmap.com/converse/download/ownership.zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "pidn"
                 }
             }
         ]

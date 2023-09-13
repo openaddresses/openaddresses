@@ -15,13 +15,17 @@
             {
                 "name": "county",
                 "attribution": "Sonoma County",
-                "data": "https://github.com/datadesk/us-ca-sonoma-county-sc_base_adr_addresses-shp/blob/master/sc_base_adr_addresses.zip?raw=true",
-                "website": "http://sonomacounty.ca.gov/ISD/Systems-and-Programming/Geographic-Information-Systems/",
-                "protocol": "http",
-                "compression": "zip",
-                "note": "Provided in response to a public records request in December 2014 and uploaded to GitHub for public hosting.",
+                "data": "https://socogis.sonomacounty.ca.gov/map/rest/services/BASEPublic/Addresses_Public/MapServer/0",
+                "website": "https://gis-sonomacounty.hub.arcgis.com/datasets/sonomacounty::addresses/about",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "County of Sonoma"
+                },
+                "note": "Technically in the public domain per County of Santa Clara v. CFAC",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
+                    "unit": "Unit",
                     "number": [
                         "Num",
                         "NumExt"
@@ -32,10 +36,49 @@
                         "Type",
                         "SufDir"
                     ],
-                    "unit": "Unit",
-                    "city": "Mun",
-                    "postcode": "ZipCode",
-                    "accuracy": 2
+                    "city": "City",
+                    "postcode": "ipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Sonoma County",
+                "data": "https://socogis.sonomacounty.ca.gov/map/rest/services/CRAPublic/ParcelsPublic/FeatureServer/0",
+                "website": "http://sonomacounty.ca.gov/ISD/Systems-and-Programming/Geographic-Information-Systems/",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by-sa/3.0/",
+                    "text": "CC BY-SA 3.0",
+                    "attribution": true,
+                    "attribution name": "County of Sonoma",
+                    "share-alike": true
+                },
+                "note": "Technically in the public domain per County of Santa Clara v. CFAC",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Sonoma County",
+                "data": "https://socogis.sonomacounty.ca.gov/map/rest/services/BASEPublic/Buildings/FeatureServer/0",
+                "website": "https://gis-sonomacounty.hub.arcgis.com/datasets/buildings",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by-sa/3.0/",
+                    "text": "CC BY-SA 3.0",
+                    "attribution": true,
+                    "attribution name": "County of Sonoma",
+                    "share-alike": true
+                },
+                "note": "Technically in the public domain per County of Santa Clara v. California First Amendment Coalition",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

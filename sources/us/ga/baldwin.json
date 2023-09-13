@@ -1,0 +1,54 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "13009",
+            "name": "Baldwin County",
+            "state": "Georgia"
+        },
+        "country": "us",
+        "state": "ga",
+        "county": "Baldwin"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/Da8HZMsU25Hzzob3/ArcGIS/rest/services/Address/FeatureServer/0",
+                "website": "https://baldwinboc.maps.arcgis.com/home/item.html?id=9fdd66c723154fb9ba6dddc75f86f1e1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "unit": "UNIT",
+                    "street": [
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/Da8HZMsU25Hzzob3/ArcGIS/rest/services/Parcel_Layer_2021_ViewLayer_GCSU/FeatureServer/0",
+                "website": "https://baldwinboc.maps.arcgis.com/home/item.html?id=5f79eeb120014c30b66a82882079396e",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARID"
+                }
+            }
+        ]
+    }
+}

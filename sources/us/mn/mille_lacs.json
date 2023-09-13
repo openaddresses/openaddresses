@@ -18,16 +18,25 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDR_HN",
-                    "street": [
-                        "ADDR_PD",
-                        "ADDR_PT",
-                        "ADDR_SN",
-                        "ADDR_ST",
-                        "ADDR_SD"
+                    "number": [
+                        "ANUMBERPRE",
+                        "ANUMBER",
+                        "ANUMBERSUF"
                     ],
+                    "street": "Street",
                     "city": "CITY",
                     "postcode": "ZipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.mille-lacs.mn.us/arcgis/rest/services/AGO_Parcels_and_Lots/MapServer/13",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "CDSTRL_Parcels.Name"
                 }
             }
         ]

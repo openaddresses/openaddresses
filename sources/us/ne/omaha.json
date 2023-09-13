@@ -14,20 +14,34 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://gis.dogis.org/arcgis/rest/services/OpenData_layers/MapServer/33",
-                "license": "Imdemnification?",
+                "data": "https://gis.dogis.org/arcgis/rest/services/Labels/MapServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRNUM",
-                    "street": "FULLNAME",
-                    "city": "MUNICIPALITY",
                     "unit": [
                         "UNITTYPE",
                         "UNITID"
                     ],
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": "FULLNAME",
+                    "city": "MUNICIPALITY",
                     "postcode": "ZIP",
                     "accuracy": 1
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://gis.dogis.org/arcgis/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

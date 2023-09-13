@@ -14,12 +14,27 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services3.arcgis.com/oJaBluQKw5aLHpzj/arcgis/rest/services/JasperCountyTaxParcels/FeatureServer/0",
+                "data": "https://services3.arcgis.com/oJaBluQKw5aLHpzj/ArcGIS/rest/services/Address_Points/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "StreetNumb",
-                    "street": "StreetName"
+                    "unit": [ "UNIT_TYPE", "UNIT" ],
+                    "number": "STREET_NUM",
+                    "street": "FULL_STREET",
+                    "city": "COMM",
+                    "region": "STATE",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/oJaBluQKw5aLHpzj/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TaxPIN"
                 }
             }
         ]

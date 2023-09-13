@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "13131",
+            "name": "Grady County",
+            "state": "Georgia"
+        },
+        "country": "us",
+        "state": "ga",
+        "county": "Grady"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services7.arcgis.com/Pf7RRv4QttHB3VbR/arcgis/rest/services/Grady_Site_Addresses_Public/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "preeaddrnum",
+                        "addrnum",
+                        "addrnumsuf"
+                    ],
+                    "street": "fullname",
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "msag",
+                    "region": "stateabbreviation"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services7.arcgis.com/Pf7RRv4QttHB3VbR/ArcGIS/rest/services/WebParcels/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNO"
+                }
+            }
+        ]
+    }
+}

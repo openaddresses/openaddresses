@@ -14,20 +14,33 @@
         "addresses": [
             {
                 "name": "county",
-                "license": "http://www.douglascountywa.net/departments/tls/gis/",
-                "protocol": "ftp",
-                "compression": "zip",
-                "note": "point shapefile dc_address_pts.shp, address columns: FULL_ADDY, CITY, ZIP",
-                "year": "2014",
-                "data": "ftp://ftp.douglascountywa.net/Downloads/GIS_Base/Cadastral/Addressing/dc_address_pts.zip",
-                "website": "http://www.douglascountywa.net/departments/tls/gis/",
+                "license": {
+                    "url": "https://www.douglascountywa.net/630/Geographical-Information-Systems-GIS"
+                },
+                "protocol": "ESRI",
+                "data": "https://gis.douglascountywa.net/server/rest/services/InterActiveWebMap/MapServer/3",
+                "website": "https://www.douglascountywa.net/630/Geographical-Information-Systems-GIS",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "number": "BLDG_NUM",
                     "street": "STREET",
                     "city": "CITY",
-                    "postcode": "ZIP",
-                    "addrtype": "Category"
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "license": {
+                    "url":"https://www.douglascountywa.net/630/Geographical-Information-Systems-GIS"
+                },
+                "protocol": "ESRI",
+                "data": "https://gis.douglascountywa.net/server/rest/services/InterActiveWebMap/MapServer/2",
+                "website": "https://www.douglascountywa.net/630/Geographical-Information-Systems-GIS",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNumb"
                 }
             }
         ]

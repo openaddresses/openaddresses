@@ -14,31 +14,46 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://s3.amazonaws.com/data.tnris.org/117cf9e1-3b1e-48f2-97a3-47020d871035/resources/stratmap19-addresspoints_48213_vector.zip",
-                "website": "https://data.tnris.org/collection/117cf9e1-3b1e-48f2-97a3-47020d871035",
+                "data": "https://data.tnris.org/a6a703ba-df8b-4d1b-8d4c-ece8ae786505/resources/stratmap22-landparcels_48213_lp.zip",
+                "website": "https://data.tnris.org/collection/?c=a6a703ba-df8b-4d1b-8d4c-ece8ae786505",
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC 0"
+                },
                 "protocol": "http",
                 "compression": "zip",
+                "year": "2022",
                 "conform": {
-                    "format": "shapefile",
-                    "file": "shp/stratmap19-addresspoints_48213_henderson_201907.shp",
-                    "number": [
-                        "Add_Number",
-                        "AddNum_Suf"
-                    ],
+                    "format": "gdb",
+                    "file": "fgdb/stratmap22-landparcels_48213_henderson_202202.gdb",
+                    "number": "SITUS_NUM",
                     "street": [
-                        "St_PreMod",
-                        "St_PreDir",
-                        "St_PreTyp",
-                        "St_PreSep",
-                        "St_Name",
-                        "St_PosTyp",
-                        "St_PosDir",
-                        "St_PosMod"
+                        "SITUS_STRE",
+                        "SITUS_ST_1",
+                        "SITUS_ST_2"
                     ],
-                    "unit": "Unit",
-                    "city": "Post_Comm",
-                    "region": "State",
-                    "postcode": "Post_Code"
+                    "city": "SITUS_CITY",
+                    "region": "SITUS_STAT",
+                    "postcode": "SITUS_ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://data.tnris.org/a6a703ba-df8b-4d1b-8d4c-ece8ae786505/resources/stratmap22-landparcels_48213_lp.zip",
+                "website": "https://data.tnris.org/collection/?c=a6a703ba-df8b-4d1b-8d4c-ece8ae786505",
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC 0"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2022",
+                "conform": {
+                    "format": "gdb",
+                    "file": "fgdb/stratmap22-landparcels_48213_henderson_202202.gdb",
+                    "pid": "GEO_ID"
                 }
             }
         ]

@@ -19,13 +19,20 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "STREET_NUM",
-                        "pattern": "^\\s*(\\d+)\\s*$"
-                    },
-                    "street": "STREET_NAM",
-                    "unit": "STREET_APT"
+                    "unit": "STREET_APT",
+                    "number": "STREET_NUM",
+                    "street": "STREET_NAM"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Yancey/MapServer/43",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

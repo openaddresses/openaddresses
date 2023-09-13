@@ -21,19 +21,30 @@
         "addresses": [
             {
                 "name": "city",
-                "website": "http://opendata.arcgis.com/datasets/salem::primary-address-1?geometry=-127.378%2C44.245%2C-118.683%2C45.606",
+                "website": "https://data.cityofsalem.net/datasets/primary-address/about",
                 "data": "https://services.arcgis.com/kIA6yS9KDGqZL7U3/arcgis/rest/services/Primary_Address/FeatureServer/0",
+                "license":{
+                    "url": "https://data.cityofsalem.net/pages/disclaimer",
+                    "attribution": true,
+                    "attribution name": "City of Salem, Oregon",
+                    "presumed": true
+                },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "id": "OBJECTID",
-                    "number": "ADDR_NUM",
-                    "street": {
-                        "function": "remove_prefix",
-                        "field": "FULL_NAME",
-                        "field_to_remove": "ADDR_NUM"
-                    },
+                    "number": "ADD_NUM",
+                    "street": [
+                        "ST_PREMOD",
+                        "ST_PREDIR",
+                        "ST_PRETYPE",
+                        "ST_NAME",
+                        "ST_POSTYPE",
+                        "ST_POSTDIR",
+                        "ST_POSTMOD"
+                    ],
                     "city": "CITY",
+                    "postcode": "ZIP",
                     "district": "COUNTY"
                 }
             }

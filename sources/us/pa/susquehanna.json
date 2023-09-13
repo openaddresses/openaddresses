@@ -14,28 +14,45 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services5.arcgis.com/lmuC4NmaSm4GH9h5/arcgis/rest/services/Addresses/FeatureServer/0",
-                "website": "http://www.susqco.com/Dept/GIS/Pages/default.aspx",
+                "data": "https://services5.arcgis.com/lmuC4NmaSm4GH9h5/arcgis/rest/services/Addresses/FeatureServer/3",
+                "website": "https://susqco.com/departments/gis-mapping",
                 "contact": {
-                    "name": "Michael Borowski",
+                    "name": "Mikyle Fabrizio",
                     "title": "GIS Technician",
                     "phone": "(570) 278-5916",
-                    "address": "31 Lake Avenue (PO Box 218) Montrose, PA 18801"
+                    "address": "31 Lake Ave, PO Box 218, Montrose, PA 18801"
                 },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HSENUMBER",
-                    "street": [
-                        "PREFIXDIR",
-                        "STREETNAME",
-                        "STREETSUF",
-                        "POSTDIR"
-                    ],
-                    "unit": "",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDR2"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDR2"
+                    },
                     "city": "POSTOFFICE",
-                    "postcode": "C_ZIP",
-                    "region": "STATE"
+                    "postcode": "C_ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/lmuC4NmaSm4GH9h5/arcgis/rest/services/Addresses/FeatureServer/3",
+                "website": "https://susqco.com/departments/gis-mapping",
+                "contact": {
+                    "name": "Mikyle Fabrizio",
+                    "title": "GIS Technician",
+                    "phone": "(570) 278-5916",
+                    "address": "31 Lake Ave, PO Box 218, Montrose, PA 18801"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]
