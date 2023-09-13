@@ -1,4 +1,5 @@
 {
+    "schema": 2,
     "coverage": {
         "country": "ca",
         "state": "bc",
@@ -6,22 +7,36 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-              	-122.953,
-              	49.207
+                -122.953,
+                49.207
             ]
         }
     },
-    "data": "http://opendata.newwestcity.ca/downloads/address-points/ADDRESS_PTS.ZIP",
-    "website": "http://opendata.newwestcity.ca/datasets",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "HOUSE",
-        "street": "STREET",
-        "unit": "UNIT",
-        "city": "CITY",
-        "region": "PROVINCE",
-        "postcode": "PC"
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://opendata.newwestcity.ca/downloads/address-points/ADDRESS_PTS.ZIP",
+                "website": "http://opendata.newwestcity.ca/datasets/address-points",
+                "license": {
+                    "url": "http://opendata.newwestcity.ca/licence",
+                    "text": "Contains information licenced - CITY OF NEW WESTMINSTER",
+                    "attribution name": "Open Government Licence - City of New Westminster",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "HOUSE",
+                    "street": "STREET",
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "region": "PROVINCE",
+                    "postcode": "PC"
+                }
+            }
+        ]
     }
 }

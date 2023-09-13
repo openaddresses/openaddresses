@@ -17,17 +17,25 @@
         "county": "Weld",
         "city": "Frederick"
     },
-    "data": "http://gis.frederickco.gov/arcgis/rest/services/Addresses_point/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-            "STR_NAME",
-            "STR_TYPE",
-            "SUF_DIR"
-        ],
-        "unit": "UNIT",
-        "city": "COMMUNITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis.frederickco.gov/arcgis/rest/services/Addresses_point/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "COMMUNITY"
+                }
+            }
+        ]
     }
 }

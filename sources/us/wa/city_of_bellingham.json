@@ -1,0 +1,73 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "53073",
+            "name": "Whatcom County",
+            "state": "Washington"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -122.479,
+                48.755
+            ]
+        },
+        "country": "us",
+        "state": "wa",
+        "county": "Whatcom",
+        "city": "Bellingham"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDRESS_ID",
+                    "number": "ADDR_NUM",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": "STREET_NAME",
+                    "postcode": "ZIPCODE",
+                    "city": "MUNICIPALITY",
+                    "region": "STATE"
+                },
+                "data": "https://maps.cob.org/arcgis4/rest/services/Maps/Grp_Places/MapServer/9",
+                "license": {
+                    "url": "https://data.cob.org/data/gis/metadata/land_addresspoints.html"
+                },
+                "protocol": "ESRI"
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_CODE"
+                },
+                "data": "https://maps.cob.org/arcgis3/rest/services/Maps/Grp_Land/MapServer/5",
+                "license": {
+                    "url": "https://data.cob.org/data/gis/metadata/land_TaxParcelPolys.html"
+                },
+                "protocol": "ESRI"
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "conform": {
+                    "format": "geojson"
+                },
+                "data": "https://maps.cob.org/arcgis4/rest/services/Maps/Grp_Places/MapServer/12",
+                "license": {
+                    "url": "https://data.cob.org/data/gis/metadata/struc_buildings.html"
+                },
+                "protocol": "ESRI"
+            }
+        ]
+    }
+}

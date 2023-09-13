@@ -1,22 +1,53 @@
 {
-	"coverage": {
-		"ISO 3166": {
-			"alpha2": "NL",
-			"country": "Netherlands"
-		},
-		"country": "nl"
-	},
-	"data": "https://basisregistraties.arcgisonline.nl/arcgis/rest/services/BAG/BAG/MapServer/0",
-	"type": "ESRI",
-	"conform": {
-		"type": "geojson",
-		"number": {
-			"function": "format",
-			"fields": ["huisnummer", "huisletter", "huisnummertoevoeging"],
-			"format": "$1$2-$3"
-		},
-		"street": "openbareruimtenaam",
-		"postcode": "postcode",
-		"city": "woonplaatsnaam"
-	}
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "NL",
+            "country": "Netherlands"
+        },
+        "country": "nl"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "https://basisregistraties.arcgisonline.nl/arcgis/rest/services/BAG/BAGv3/MapServer/0",
+                "license": {
+                    "url": "https://www.esri.nl/nl-nl/legal/voorwaarden/esri-nederland-terms-of-use",
+                    "text": "Indemnification"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "format",
+                        "fields": [
+                            "huisnummer",
+                            "huisletter",
+                            "huisnummertoevoeging"
+                        ],
+                        "format": "$1$2-$3"
+                    },
+                    "street": "openbareruimtenaam",
+                    "postcode": "postcode",
+                    "city": "woonplaatsnaam",
+                    "id": "adresseerbaarobjectid"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "country",
+                "data": "https://basisregistraties.arcgisonline.nl/arcgis/rest/services/BAG/BAGv3/MapServer/4",
+                "license": {
+                    "url": "https://www.esri.nl/nl-nl/legal/voorwaarden/esri-nederland-terms-of-use",
+                    "text": "Indemnification"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
 }

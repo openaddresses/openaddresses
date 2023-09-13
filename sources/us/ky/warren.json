@@ -9,14 +9,22 @@
         "state": "ky",
         "county": "Warren"
     },
-    "data": "http://gis.bgky.org/arcgis/rest/services/Parcels911/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "REALSTNO",
-        "unit": "REALAPTNO",
-        "street": "REALSTNAME",
-        "postcode": "NAMZIP",
-        "city": "NAMCITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.bgky.org/arcgis/rest/services/ParcelsWCPW/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "PVA_STREETNUM",
+                    "street": "PVA_STREETNAME",
+                    "postcode": "CCPC_ZIP",
+                    "city": "CCPC_CITY",
+                    "id": "PVA_PARCELNUM"
+                }
+            }
+        ]
     }
 }

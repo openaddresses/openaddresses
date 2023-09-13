@@ -1,18 +1,42 @@
 {
     "coverage": {
-        "ISO 3166": {"alpha2": "CA-NS", "country": "Canada", "subdivision": "Nova Scotia"},
+        "ISO 3166": {
+            "alpha2": "CA-NS",
+            "country": "Canada",
+            "subdivision": "Nova Scotia"
+        },
         "country": "ca",
         "state": "ns"
     },
-    "data": "https://nsgi.novascotia.ca/WSF_DDS/DDS.svc/DownloadFile?tkey=fhrTtdnDvfytwLz6&id=70",
-    "website": "https://data.novascotia.ca/Municipalities/Nova-Scotia-Civic-Address-File-Civic-Points/tntn-er5g",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "civicnum",
-        "street": ["strprefix", "strname", "strdir", "strsuffix"],
-        "city": "comm",
-        "district": "county",
-        "type": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://nsgiwa.novascotia.ca/arcgis/rest/services/BASE/BASE_NS_CivicAddress_File_WM84/MapServer/0",
+                "website": "https://data.novascotia.ca/Municipalities/Nova-Scotia-Civic-Address-File-Civic-Points/tntn-er5g",
+                "license": {
+                    "url": "https://novascotia.ca/opendata/licence.asp",
+                    "attribution": true
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "CIVICNUM",
+                        "CIVSUFFIX"
+                    ],
+                    "street": [
+                        "strprefix",
+                        "strname",
+                        "strdir",
+                        "strsuffix"
+                    ],
+                    "unit": "unit_num",
+                    "city": "comm",
+                    "district": "county"
+                }
+            }
+        ]
     }
 }

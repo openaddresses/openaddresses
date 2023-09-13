@@ -9,83 +9,47 @@
         "state": "wi",
         "county": "Dunn"
     },
-    "data": "http://216.222.161.54/ArcGIS/rest/services/DunnCounty/MapServer/20",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([EN]?\\d+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[EN]?\\d+(?:\\s*#(?:\\d))?)\\s+(.+)"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "#(\\d)"
-        }
-    },
-    "test": {
-        "enabled": true,
-        "description": "Dunn county house numbers can be prepended with a 'E' or 'N'",
-        "acceptance-tests": [
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "house with 'E' directional in number",
-                "inputs": {
-                    "ADDRESS": "E02064 1070TH AV"
-                },
-                "expected": {
-                    "number": "E02064",
-                    "street": "1070TH AV",
-                    "unit": ""
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/DUNN_ADDRESSES_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/B9A647B5-DD12-412F-8EE9-0C6898FC3537",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "DUNN_ADDRESSES_2023",
+                    "number": "Num",
+                    "street": [
+                        "abvPreDirectional",
+                        "StreetName",
+                        "abvPostType",
+                        "abvPostDirectional"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "Unit"
+                    ],
+                    "city": "ZIPMunicipality",
+                    "region": "FIPsState",
+                    "postcode": "ZIPCode"
                 }
-            },
+            }
+        ],
+        "parcels": [
             {
-                "description": "house with 'N' directional in number",
-                "inputs": {
-                    "ADDRESS": "N09596 640TH ST"
-                },
-                "expected": {
-                    "number": "N09596",
-                    "street": "640TH ST",
-                    "unit": ""
-                }
-            },
-            {
-                "description": "plain numbers-only house number",
-                "inputs": {
-                    "ADDRESS": "120 MAIN ST"
-                },
-                "expected": {
-                    "number": "120",
-                    "street": "MAIN ST",
-                    "unit": ""
-                }
-            },
-            {
-                "description": "address with unit, no space",
-                "inputs": {
-                    "ADDRESS": "1120#2 N BROADWAY ST"
-                },
-                "expected": {
-                    "number": "1120",
-                    "street": "N BROADWAY ST",
-                    "unit": "2"
-                }
-            },
-            {
-                "description": "address with unit, with space",
-                "inputs": {
-                    "ADDRESS": "393 #2 RED CEDAR ST NE"
-                },
-                "expected": {
-                    "number": "393",
-                    "street": "RED CEDAR ST NE",
-                    "unit": "2"
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Dunn_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/ED9FF75B-E936-43E4-9894-95B139CEF23C",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELID"
                 }
             }
         ]

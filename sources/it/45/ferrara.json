@@ -11,23 +11,34 @@
         "state": "45",
         "city": "ferrara"
     },
-    "data": "http://www.comune.fe.it/attach/opendata/archive/civici.zip",
-    "website": "http://www.comune.fe.it/index.phtml?id=3513",
-    "license": "http://www.dati.gov.it/iodl/2.0/",
-    "attribution": "Anagrafe Comunale degli Immobili (ACI VESTA)",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "srs": "EPSG:26591",
-        "number": {
-            "fields": ["NUMERO", "ESPONENTE"],
-            "function": "join",
-            "separator": "/"
-        },
-        "street": "VIA_NOME_U",
-        "city": "Ferrara",
-        "district": "Ferrara",
-        "region": "Emilia Romagna"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://www.comune.fe.it/attach/opendata/archive/civici.zip",
+                "website": "http://www.comune.fe.it/index.phtml?id=3513",
+                "license": "http://www.dati.gov.it/iodl/2.0/",
+                "attribution": "Anagrafe Comunale degli Immobili (ACI VESTA)",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "srs": "EPSG:26591",
+                    "number": {
+                        "fields": [
+                            "NUMERO",
+                            "ESPONENTE"
+                        ],
+                        "function": "join",
+                        "separator": "/"
+                    },
+                    "street": "VIA_NOME_U",
+                    "city": "Ferrara",
+                    "district": "Ferrara",
+                    "region": "Emilia Romagna"
+                }
+            }
+        ]
     }
 }

@@ -1,27 +1,44 @@
 {
     "coverage": {
-        "US Census": {"geoid": "06073", "name": "San Diego County", "state": "California"},
+        "US Census": {
+            "geoid": "0666000",
+            "name": "City of San Diego",
+            "state": "California"
+        },
         "country": "us",
         "state": "ca",
         "county": "San Diego",
         "city": "San Diego"
     },
-    "data": "http://seshat.datasd.org/sde/addrapn/addrapn_datasd.zip",
-    "website": "https://data.sandiego.gov/datasets/address-points-apn/",
-    "license": "PD",
-    "compression": "zip",
-    "type": "http",
-    "conform": {
-        "type": "shapefile",
-        "unit": "addrunit",
-        "number": "addrnmbr",
-        "street": [
-            "addrpdir",
-            "addrname",
-            "addrsfx",
-            "addrpostd"
-        ],
-        "postcode": "addrzip",
-        "city": "community"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://seshat.datasd.org/sde/addrapn/addrapn_datasd.zip",
+                "website": "https://data.sandiego.gov/datasets/address-points-apn/",
+                "license": {
+                    "text": "ODC PDDL",
+                    "url": "https://opendefinition.org/licenses/odc-pddl/",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "compression": "zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "unit": "addrunit",
+                    "number": "addrnmbr",
+                    "street": [
+                        "addrpdir",
+                        "addrname",
+                        "addrsfx",
+                        "addrpostd"
+                    ],
+                    "postcode": "addrzip",
+                    "city": "community"
+                }
+            }
+        ]
     }
 }

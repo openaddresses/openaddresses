@@ -9,19 +9,51 @@
         "state": "pa",
         "county": "Chester"
     },
-    "data": "http://services.arcgis.com/G4S1dGvn7PIgYd6Y/ArcGIS/rest/services/Address_Data_Points/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ST_NUM",
-        "street": [
-            "DIR",
-            "ST_NAME",
-            "ST_TYPE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.chesco.org/1187/GIS-Services",
+                "contact": {
+                    "phone": "610-344-6096",
+                    "email": "gis@chesco.org",
+                    "address": "313 W. Market St, Suite 5302, West Chester, PA  19380"
+                },
+                "data": "https://gisprodops.chesco.org/server/rest/services/GIS_Services/CViews_OpLayers_D_GIS/MapServer/174",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDR_NUM_PREFIX",
+                        "ADDR_NUM",
+                        "ADDR_NUM_SUFFIX"
+                    ],
+                    "street": [
+                        "ROAD_DIR_PREFIX",
+                        "ROAD_NAME",
+                        "ROAD_THORO_TYPE"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_ID"
+                    ],
+                    "city": "MUNI_NAME",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP_CODE_SITUS"
+                }
+            }
         ],
-        "unit": [
-          "UNIT",
-          "UNIT_N"
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisprodops.chesco.org/server/rest/services/GIS_Services/CViews_OpLayers_D_GIS/MapServer/120",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
         ]
     }
 }

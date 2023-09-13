@@ -9,12 +9,31 @@
         "state": "wi",
         "county": "Richland"
     },
-    "data": "http://gis.co.richland.wi.us/arcgis/rest/services/RichlandCo_GIS_Public/MapServer/6",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "numb",
-        "street": "street",
-        "city": "twn"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.richland.wi.us/arcgis/rest/services/RichlandCo_GIS_Public/MapServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "numb",
+                    "street": "street",
+                    "city": "twn"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.richland.wi.us/arcgis/rest/services/RichlandCo_GIS_Public/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARNO"
+                }
+            }
+        ]
     }
 }

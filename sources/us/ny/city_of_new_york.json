@@ -16,24 +16,45 @@
             ]
         }
     },
-    "data": "https://data.cityofnewyork.us/api/geospatial/g6pj-hd8k?method=export&format=Shapefile",
-    "website": "https://data.cityofnewyork.us/City-Government/NYC-Address-Points/g6pj-hd8k",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "h_no",
-        "street": [
-            "pre_modifi",
-            "pre_direct",
-            "pre_type",
-            "st_name",
-            "post_type",
-            "post_modif",
-            "post_direc"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://data.cityofnewyork.us/api/geospatial/g6pj-hd8k?method=export&format=Original",
+                "website": "https://data.cityofnewyork.us/City-Government/NYC-Address-Points/g6pj-hd8k",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "h_no",
+                    "street": [
+                        "pre_modifi",
+                        "pre_direct",
+                        "pre_type",
+                        "st_name",
+                        "post_type",
+                        "post_modif",
+                        "post_direc"
+                    ],
+                    "unit": "hno_suffix",
+                    "postcode": "zipcode",
+                    "format": "shapefile",
+                    "id": "address_id"
+                }
+            }
         ],
-        "unit": "hno_suffix",
-        "postcode": "zipcode",
-        "type": "shapefile",
-        "id": "address_id"
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://data.cityofnewyork.us/api/geospatial/nqwf-w8eh?method=export&format=Original",
+                "website": "https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "building.shp"
+                }
+            }
+        ]
     }
 }

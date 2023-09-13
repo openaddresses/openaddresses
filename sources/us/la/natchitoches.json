@@ -9,11 +9,19 @@
         "state": "la",
         "county": "Natchitoches"
     },
-    "data": "http://services.geoportalmaps.com/arcgis/rest/services/Natchitoches_Services/MapServer/15",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "Address_Number",
-        "street": "Street_Name"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://services.geoportalmaps.com/arcgis/rest/services/Natchitoches_Services/MapServer/15",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Address_Number",
+                    "street": "Street_Name"
+                }
+            }
+        ]
     }
 }

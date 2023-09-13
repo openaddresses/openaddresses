@@ -11,20 +11,35 @@
             ]
         }
     },
-    "data": "http://geo.kelowna.ca/arcgis/rest/services/OpenData/MapServer/7",
-    "website": "http://opendata.arcgis.com/datasets/4387ea4c6c56462db4909592cf8c7fd2_7",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "FULL_ADD",
-            "pattern": "^((?:[\\d]+[\\- ])?[\\d]+[A-Z]?).*$"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "FULL_ADD",
-            "pattern": "^(?:(?:[\\d]+[\\- ])?[\\d]+[A-Z]?\\s+)(.*)"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://geo.kelowna.ca/arcgis/rest/services/OpenData/MapServer/7",
+                "website": "https://opendata.kelowna.ca/datasets/address-points",
+                "license": {
+                    "url": "http://apps.kelowna.ca/images/opendata/opengovernmentlicence.pdf",
+                    "text": "Contains information licensed under the Open Government Licence – City of Kelowna",
+                    "attribution name": "Open Government Licence City of Kelowna",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "FULL_ADD",
+                        "pattern": "^((?:[\\d]+[\\- ])?[\\d]+[A-Z]?).*$"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "FULL_ADD",
+                        "pattern": "^(?:(?:[\\d]+[\\- ])?[\\d]+[A-Z]?\\s+)(.*)"
+                    }
+                }
+            }
+        ]
     }
 }

@@ -16,23 +16,31 @@
         "state": "mi",
         "city": "detroit"
     },
-    "data": "https://data.detroitmi.gov/api/geospatial/fxkw-udwf?method=export&format=Original",
-    "website": "https://data.detroitmi.gov/Property-Parcels/2015-Parcel-Map/fxkw-udwf",
-    "license": {
-        "text": "public domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "attribution": "City of Detroit Assessment Division",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile-polygon",
-        "number": "PROPNO",
-        "street": [
-            "PROPDIR",
-            "PROPSTR"
-        ],
-        "postcode": "PROPZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://data.detroitmi.gov/api/geospatial/fxkw-udwf?method=export&format=Original",
+                "website": "https://data.detroitmi.gov/Property-Parcels/2015-Parcel-Map/fxkw-udwf",
+                "license": {
+                    "text": "public domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "attribution": "City of Detroit Assessment Division",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile-polygon",
+                    "number": "PROPNO",
+                    "street": [
+                        "PROPDIR",
+                        "PROPSTR"
+                    ],
+                    "postcode": "PROPZIP"
+                }
+            }
+        ]
     }
 }

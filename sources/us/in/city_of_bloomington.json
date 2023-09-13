@@ -4,13 +4,26 @@
         "state": "in",
         "city": "bloomington"
     },
-    "data": "http://bloomington.in.gov/geoserver/publicgis/ows?service=WFS&version=1.1.0&request=GetFeature&typeName=publicgis:AddressPointsBloomington&outputFormat=shape-zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "ST_NUMBER",
-        "street": ["ST_DIR", "ST_NAME", "ST_SUFFIX", "POST_DIR"],
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://bloomington.in.gov/geoserver/publicgis/ows?service=WFS&version=1.1.0&request=GetFeature&typeName=publicgis:AddressPointsBloomington&outputFormat=shape-zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "ST_NUMBER",
+                    "street": [
+                        "ST_DIR",
+                        "ST_NAME",
+                        "ST_SUFFIX",
+                        "POST_DIR"
+                    ],
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

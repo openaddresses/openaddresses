@@ -9,16 +9,40 @@
         "state": "ga",
         "county": "Bryan"
     },
-    "data": "http://bryangis.bryan-county.org/arcgis/rest/services/PropertyDetails/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_NO",
-        "street": [
-            "STDIRECT",
-            "STREET_N_1",
-            "STTYPE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://bryangis.bryan-county.org/arcgis/rest/services/AddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MSAG",
+                    "id": "SITEADDID"
+                }
+            }
         ],
-        "unit": "UNIT"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://bryangis.bryan-county.org/arcgis/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
+                }
+            }
+        ]
     }
 }

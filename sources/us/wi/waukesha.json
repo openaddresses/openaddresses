@@ -9,23 +9,56 @@
         "state": "wi",
         "county": "Waukesha"
     },
-    "data": "https://gis2.waukcogeo.com/server/rest/services/E911/MapServer/10",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "StreetNumber",
-        "street": {
-            "function": "remove_prefix",
-            "field": "Full_Address",
-            "field_to_remove": "StreetNumber"
-        },
-        "unit": "UnitNumber",
-        "city": "PostOffice",
-        "postcode": {
-            "function": "regexp",
-            "field": "ZipCode",
-            "pattern": "^(\\d+)"
-        },
-        "accuracy": 1
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis2.waukcogeo.com/server/rest/services/E911/MapServer/10",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StreetNumber",
+                    "street": [
+                        "PrefixDir",
+                        "RoadName",
+                        "RoadType",
+                        "SuffixDir"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "UnitNumber"
+                    ],
+                    "city": "PostOffice",
+                    "postcode": "ZipCode",
+                    "accuracy": 1
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis2.waukcogeo.com/server/rest/services/Web_Tax_Parcel/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Waukesha_Buildings_2020.zip",
+                "website": "https://geodata.wisc.edu/catalog/344D97CD-1476-4CAB-91E9-56877ECF8BE3",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2020",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Waukesha_Buildings_2020"
+                }
+            }
+        ]
     }
 }

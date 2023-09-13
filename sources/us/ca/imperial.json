@@ -1,26 +1,50 @@
 {
     "coverage": {
-        "US Census": {"geoid": "06025", "name": "Imperial County", "state": "California"},
+        "US Census": {
+            "geoid": "06025",
+            "name": "Imperial County",
+            "state": "California"
+        },
         "country": "us",
         "state": "ca",
         "county": "Imperial"
     },
-    "attribution": "Imperial County",
-    "data": "https://gis2.cdfa.ca.gov/server/rest/services/Parcel_DM/MapServer/12",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "PARCELAPN",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITE_ADDR"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITE_ADDR"
-        },
-        "city": "SITE_CITY",
-        "postcode": "SITE_ZIP",
-        "region": "SITE_STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Imperial County",
+                "data": "https://gis2.cdfa.ca.gov/server/rest/services/Parcel_DM/MapServer/12",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "PARCELAPN",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITE_ADDR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITE_ADDR"
+                    },
+                    "city": "SITE_CITY",
+                    "postcode": "SITE_ZIP",
+                    "region": "SITE_STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Imperial County",
+                "data": "https://services1.arcgis.com/fwUrSNrE506Uxp7v/ArcGIS/rest/services/Parcels_APN_Only/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
     }
 }

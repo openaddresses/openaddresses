@@ -9,18 +9,26 @@
         "state": "nc",
         "county": "Columbus"
     },
-    "data": "http://www2.columbusco.org/GISDATA/Addresses.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "ADDRESS",
-        "street": {
-            "function": "regexp",
-            "field": "FULLADD",
-            "pattern": "^([0-9]+) (.*)",
-            "replace": "$2"
-        },
-        "unit": "APT"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://www2.columbusco.org/GISDATA/Addresses.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "ADDRESS",
+                    "street": {
+                        "function": "regexp",
+                        "field": "FULLADD",
+                        "pattern": "^([0-9]+) (.*)",
+                        "replace": "$2"
+                    },
+                    "unit": "APT"
+                }
+            }
+        ]
     }
 }

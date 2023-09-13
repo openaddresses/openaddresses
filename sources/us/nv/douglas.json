@@ -9,16 +9,20 @@
         "state": "nv",
         "county": "Douglas"
     },
-    "data": "http://douglasnvgis.info/varcgis/rest/services/DouglasCo/ParcelsWGS84/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "PLOC_",
-        "street": [
-            "PLOCDR",
-            "PLOCNM",
-            "PLOCTP"
-        ],
-        "unit": "PLOCU_"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisservices.douglasnv.us/varcgis/rest/services/Hosted/Addresses_Feature_Service/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "unit",
+                    "number": "numb",
+                    "street": "street"
+                }
+            }
+        ]
     }
 }

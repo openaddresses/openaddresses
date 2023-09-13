@@ -1,26 +1,37 @@
 {
     "coverage": {
-        "US Census": {"geoid": "39055", "name": "Geauga County", "state": "Ohio"},
+        "US Census": {
+            "geoid": "39055",
+            "name": "Geauga County",
+            "state": "Ohio"
+        },
         "country": "us",
         "state": "oh",
         "county": "Geauga"
     },
-    "data": "http://geaugarealink.co.geauga.oh.us/ArcGIS/rest/services/MapService/GeaugaParcelData/MapServer/14",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "LOCATION_A",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "LOCATION_A",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://geaugarealink.co.geauga.oh.us/ArcGIS/rest/services/MapService/GeaugaParcelData/MapServer/14",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "LOCATION_A",
+                        "pattern": "^([0-9]+)( .*)",
+                        "replace": "$1"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "LOCATION_A",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }
-

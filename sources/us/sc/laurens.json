@@ -9,15 +9,35 @@
         "state": "sc",
         "county": "Laurens"
     },
-    "data": "http://www.laurenscountygis.org/ArcGIS/rest/services/TopoBaseMap/MapServer/0",
-    "website": "http://www.laurenscountysc.org/",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "NEW_ADDRES",
-        "street": "NEW_ROAD_N",
-        "city": "TOWN",
-        "postcode": "ZIP_CODE",
-        "region": "ST"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.laurenscountygis.org/arcgis/rest/services/Pebble/LaurensCountyData/MapServer/1",
+                "website": "http://www.laurenscountysc.org/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNumber",
+                    "street": "FullStreetName",
+                    "city": "Municipality",
+                    "postcode": "ZIPCODE",
+                    "region": "State"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.laurenscountygis.org/arcgis/rest/services/Pebble/LaurensCountyData/MapServer/4",
+                "website": "http://www.laurenscountysc.org/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TMS"
+                }
+            }
+        ]
     }
 }

@@ -9,19 +9,30 @@
         "state": "mn",
         "county": "Swift"
     },
-    "data": "http://www.gismidwest.com/arcgis/rest/services/Swift/Transportation/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": ["ANUMBER","ANUMBERSUF"],
-        "street": "LABEL_ST",
-        "unit": [
-            "SUB_TYPE1",
-            "SUB_ID1"
-        ],
-        "city": "POSTCOMM",
-        "district": "CO_NAME",
-        "region": "STATE_CODE",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://www.gismidwest.com/arcgis/rest/services/Swift/Transportation/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ANUMBER",
+                        "ANUMBERSUF"
+                    ],
+                    "street": "LABEL_ST",
+                    "unit": [
+                        "SUB_TYPE1",
+                        "SUB_ID1"
+                    ],
+                    "city": "POSTCOMM",
+                    "district": "CO_NAME",
+                    "region": "STATE_CODE",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

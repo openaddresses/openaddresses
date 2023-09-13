@@ -9,15 +9,51 @@
         "state": "ga",
         "county": "Gwinnett"
     },
-    "type": "ESRI",
-    "data": "https://gis.gwinnettcounty.com/arcgis/rest/services/GC_Parcel/MapServer/14",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": ["UNITTYPE", "UNITID"],
-        "city": "MUNICIPALITY",
-        "postcode": "ZIP5",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gcgis.gwinnettcounty.com/server/rest/services/Hosted/GwinnettTransportation/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "preeaddrnum",
+                        "addrnum",
+                        "addrnumsuf"
+                    ],
+                    "street": "fullname",
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "msag",
+                    "region": "state",
+                    "postcode": "zip5"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gcgis.gwinnettcounty.com/server/rest/services/Hosted/Property_and_Tax/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pin"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gcgis.gwinnettcounty.com/server/rest/services/Hosted/GIS_Basemap/FeatureServer/1",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

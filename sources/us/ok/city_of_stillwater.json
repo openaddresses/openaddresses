@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -97.059059, 36.11458078 ]
+            "coordinates": [
+                -97.059059,
+                36.11458078
+            ]
         },
         "US Census": {
             "geoid": "4070300",
@@ -14,18 +17,26 @@
         "county": "Payne",
         "city": "Stillwater"
     },
-    "data": "http://data.openaddresses.io/cache/uploads/ingalls/us-ok-city_of_stillwater.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": {
-            "function": "prefixed_number",
-            "field": "STFULLNAME"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "STFULLNAME"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://data.openaddresses.io/cache/uploads/ingalls/us-ok-city_of_stillwater.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "STFULLNAME"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "STFULLNAME"
+                    }
+                }
+            }
+        ]
     }
 }

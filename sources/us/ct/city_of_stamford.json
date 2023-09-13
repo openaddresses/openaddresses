@@ -1,23 +1,38 @@
 {
     "coverage": {
-        "US Census": {"geoid": "09001", "name": "Fairfield County", "state": "Connecticut"},
+        "US Census": {
+            "geoid": "09001",
+            "name": "Fairfield County",
+            "state": "Connecticut"
+        },
         "geometry": {
             "type": "Point",
-            "coordinates": [ -73.5387, 41.0534 ]
+            "coordinates": [
+                -73.5387,
+                41.0534
+            ]
         },
         "country": "us",
         "state": "ct",
         "county": "Fairfield",
         "city": "Stamford"
     },
-    "year": 2018,
-    "note": "Their GIS dept is super friendly and sent me over a dump ~ingalls",
-    "data": "http://data.openaddresses.io/cache/uploads/ingalls/us-ct-city_of_stamford.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "Address",
-        "street": "StreetName"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "year": 2018,
+                "note": "Their GIS dept is super friendly and sent me over a dump ~ingalls",
+                "data": "https://data.openaddresses.io/cache/uploads/ingalls/us-ct-city_of_stamford.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "Address",
+                    "street": "StreetName"
+                }
+            }
+        ]
     }
 }

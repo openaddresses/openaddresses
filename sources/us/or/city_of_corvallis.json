@@ -16,32 +16,36 @@
         "state": "or",
         "city": "Corvallis"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "gdb",
-        "file": "Delivery/addresses_oregon.gdb",
-        "layer": "_Corvallis",
-        "number": {
-            "function": "join",
-            "fields": [
-                "ST_NUMBR",
-                "ST_NSFX"
-            ],
-            "separator": ""
-        },
-        "street": [
-            "ST_PFX",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SFX"
-        ],
-        "unit": [
-            "UNIT",
-            "UNITNUM"
-        ],
-        "city": "CITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gispub.corvallisoregon.gov/GISPublic/Dynamic/Shapefile/Structure.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "encoding": "UTF-8",
+                    "file": "AddressCorvallis.shp",
+                    "number": [
+                        "NUMBER_",
+                        "SUB_NUM"
+                    ],
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAM",
+                        "STR_TYPE"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "region": "ST",
+                    "postcode": "ZIP5"
+                }
+            }
+        ]
     }
 }

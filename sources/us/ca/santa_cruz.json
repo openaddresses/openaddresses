@@ -9,18 +9,49 @@
         "state": "ca",
         "county": "Santa Cruz"
     },
-    "conform": {
-        "type": "shapefile",
-        "postcode": "GIS_DBO__6",
-        "city": "GIS_DBO__5",
-        "number": "GIS_DBO__2",
-        "street": "GIS_DBO__3",
-        "unit": "GIS_DBO__4"
-    },
-    "attribution": "Santa Cruz County",
-    "data": "https://github.com/datadesk/us-ca-santa_cruz_county-PointAddress_SC-shp/blob/master/PointAddress_SC.zip?raw=true",
-    "website": "http://www.co.santa-cruz.ca.us/Departments/GeographicInformationSystems%28GIS%29.aspx",
-    "type": "http",
-    "compression": "zip",
-    "note": "File provided in response to a public records request in December 2014 and uploaded to GitHub for public hosting."
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "SITUNIT",
+                    "number": "SITNUMBER",
+                    "street": "SITSTREET",
+                    "postcode": "SITZIP",
+                    "city": "SITCITY"
+                },
+                "attribution": "Santa Cruz County",
+                "data": "https://services1.arcgis.com/jJfZghspGKh8J9Jm/ArcGIS/rest/services/Address_Point/FeatureServer/1",
+                "website": "https://opendata-sccgis.opendata.arcgis.com/datasets/26baf9acc787499686576b5cc2f82fc6_1/about",
+                "protocol": "ESRI"
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Santa Cruz County",
+                "data": "https://services1.arcgis.com/jJfZghspGKh8J9Jm/ArcGIS/rest/services/Assessor_Parcels/FeatureServer/10",
+                "website": "https://opendata-sccgis.opendata.arcgis.com/datasets/bc2db3b0ba8b441b84e38f54e6d441b2_10/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Santa Cruz County",
+                "data": "https://services1.arcgis.com/jJfZghspGKh8J9Jm/arcgis/rest/services/Building_Footprints/FeatureServer/7",
+                "website": "https://opendata-sccgis.opendata.arcgis.com/datasets/0043cbd4368548a1b3be7ad552b5f782_7/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
 }

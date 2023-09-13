@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -95.813583, 29.539347 ]
+            "coordinates": [
+                -95.813583,
+                29.539347
+            ]
         },
         "US Census": {
             "geoid": "4863284",
@@ -14,18 +17,26 @@
         "county": "Fort Bend",
         "city": "Rosenberg"
     },
-    "data": "http://107.1.121.215/wapublic/rest/services/OpenDataLayers/AddressPoints/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "FullAddr"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "FullAddr"
-        },
-        "postcode": "Zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://107.1.121.215/wapublic/rest/services/OpenDataLayers/AddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FullAddr"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FullAddr"
+                    },
+                    "postcode": "Zip"
+                }
+            }
+        ]
     }
 }

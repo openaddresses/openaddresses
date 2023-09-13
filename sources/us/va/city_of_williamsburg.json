@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -76.717, 37.275 ]
+            "coordinates": [
+                -76.717,
+                37.275
+            ]
         },
         "US Census": {
             "geoid": "51830",
@@ -13,18 +16,26 @@
         "state": "va",
         "city": "Williamsburg"
     },
-    "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Williamsburg/Williamsburg_WL_P/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "P_Address"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "P_Address"
-        },
-        "unit": "NUMBSFX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Williamsburg/Williamsburg_WL_P/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "P_Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "P_Address"
+                    },
+                    "unit": "NUMBSFX"
+                }
+            }
+        ]
     }
 }

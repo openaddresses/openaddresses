@@ -1,0 +1,58 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "city": "Fort St. John",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -120.85,
+                56.25
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/uFSCv839a7S1MRb7/ArcGIS/rest/services/Parcels_and_Zoning_Map/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": [
+                        "STRNUM",
+                        "STRNUMSFIX"
+                    ],
+                    "street": [
+                        "STRNAME",
+                        "STRTYPE"
+                    ],
+                    "unit": "UNITNUM"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/uFSCv839a7S1MRb7/ArcGIS/rest/services/Parcels_and_Zoning_Map/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PLID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/uFSCv839a7S1MRb7/ArcGIS/rest/services/2d_footprint/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

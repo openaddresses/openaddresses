@@ -3,19 +3,38 @@
         "country": "ca",
         "state": "on",
         "city": "Hamilton",
-        "geometry": { "type": "Point", "coordinates": [-79.87, 43.26] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -79.87,
+                43.26
+            ]
+        }
     },
-    "data": "https://spatialsolutions.hamilton.ca/webgis/rest/services/OpenData/Spatial_Collection_1/MapServer/1",
-    "license": "http://www.hamilton.ca/NR/rdonlyres/C58984A4-FE11-40B9-A231-8572EB922AAA/0/OpenDataTermsAndConditions_Final.htm",
-    "website": "http://www.hamilton.ca/ProjectsInitiatives/OpenData/",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "NUMBER_COMPLETE",
-        "street": "FULL_STREET_NAME",
-        "unit": "UNIT_NUMBER_COMPLETE",
-        "city": "MUNICIPALITY",
-        "region": "PROVINCE",
-        "postcode": "POSTAL_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://spatialsolutions.hamilton.ca/webgis/rest/services/OpenData/Spatial_Collection_1/MapServer/1",
+                "license": {
+                    "url": "http://www.hamilton.ca/NR/rdonlyres/C58984A4-FE11-40B9-A231-8572EB922AAA/0/OpenDataTermsAndConditions_Final.htm",
+                    "text": "Contains public sector Data made available under the City of Hamilton’s Open Data Licence",
+                    "attribution name": "Open Data Licence Terms and Conditions",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "website": "https://open.hamilton.ca/datasets/ac6fc684043341f6b1d6298c146a0bcf_1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "NUMBER_COMPLETE",
+                    "street": "FULL_STREET_NAME",
+                    "unit": "UNIT_NUMBER_COMPLETE",
+                    "city": "MUNICIPALITY",
+                    "region": "PROVINCE"
+                }
+            }
+        ]
     }
 }

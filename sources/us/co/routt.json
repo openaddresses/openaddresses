@@ -9,19 +9,31 @@
         "state": "co",
         "county": "Routt"
     },
-    "data": "http://maps.co.routt.co.us/arcgis/rest/services/PublicData/AddressPoints/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "CompleteAddress"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "CompleteAddress"
-        },
-        "unit": "CompleteSubaddress",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.routt.co.us/server/rest/services/PublishedAddressing/Addresses_Routt_County/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "UNITFULL",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.routt.co.us/server/rest/services/PublishedMapServices/RouttCoViewpoint/MapServer/155",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

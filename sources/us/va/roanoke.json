@@ -9,18 +9,26 @@
         "state": "va",
         "county": "Roanoke"
     },
-    "data": "http://arcgisweb.roanokecountyva.gov/arcgisweb/rest/services/Layers/addressSearch/MapServer/1",
-    "type": "ESRI",
-    "website": "http://gisre.roanokeva.gov/",
-    "conform": {
-        "type": "geojson",
-        "number": "AddressNumber",
-        "street": [
-            "PrefixDirectional",
-            "Streetname",
-            "StreetSuffix"
-        ],
-        "city": "City",
-        "postcode": "Zipcode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://arcgisweb.roanokecountyva.gov/arcgisweb/rest/services/Layers/addressSearch/MapServer/1",
+                "protocol": "ESRI",
+                "website": "http://gisre.roanokeva.gov/",
+                "conform": {
+                    "format": "geojson",
+                    "number": "AddressNumber",
+                    "street": [
+                        "PrefixDirectional",
+                        "Streetname",
+                        "StreetSuffix"
+                    ],
+                    "city": "City",
+                    "postcode": "Zipcode"
+                }
+            }
+        ]
     }
 }

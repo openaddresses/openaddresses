@@ -8,18 +8,31 @@
         "country": "us",
         "state": "co"
     },
-    "data": "http://maps.co.gov/copubgis/rest/services/SedgwickCounty/SedgwickServices1031/MapServer/3",
-    "note": "source contains separated fields but they're unreliably-populated",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "Situs_Addr"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "Situs_Addr"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://gis.colorado.gov/public/rest/services/OIT/SedgwickCounty/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "UNITNAME",
+                    "number": "STREETNO",
+                    "street": ["PREDIRECTI", "STREETNAME", "STREETTYPE" ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://gis.colorado.gov/public/rest/services/OIT/SedgwickCounty/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNO"
+                }
+            }
+        ]
     }
 }

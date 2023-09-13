@@ -9,16 +9,45 @@
         "state": "al",
         "county": "Bullock"
     },
-    "data": "http://web3.kcsgis.com/kcsgis/rest/services/Bullock/Public/MapServer/32",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "StreetNo",
-        "street": [
-            "StreetName",
-            "StreetDirection",
-            "Address2"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Bullock/Public/MapServer/32",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StreetNo",
+                    "street": [
+                        "StreetName",
+                        "StreetDirection",
+                        "Address2"
+                    ],
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "postcode": "ZIPCODE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Bullock/Public/MapServer/32",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NUM"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Bullock/Public/MapServer/29",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

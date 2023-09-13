@@ -1,38 +1,52 @@
 {
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
     "coverage": {
         "city": "마포구",
         "country": "kr",
         "state": "seoul",
-        "geometry": { "type": "Point", "coordinates": [126.913, 37.560] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                126.913,
+                37.56
+            ]
+        }
     },
-    "type": "http",
-    "conform": {
-        "lat": "POINT_Y",
-        "type": "csv",
-        "lon": "POINT_X",
-        "number": "LNDN_MA_SN",
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        },
-        "skiplines": 2,
-        "srs": "EPSG:2097",
-        "encoding": "EUCKR",
-        "headers": 2
-    },
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
-    "skip": false,
-    "compression": "zip",
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1078",
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-mapogu.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "conform": {
+                    "lat": "POINT_Y",
+                    "format": "csv",
+                    "lon": "POINT_X",
+                    "number": "LNDN_MA_SN",
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    },
+                    "skiplines": 2,
+                    "srs": "EPSG:2097",
+                    "encoding": "EUCKR",
+                    "headers": 2
+                },
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "skip": false,
+                "compression": "zip",
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1078",
+                "data": "https://data.openaddresses.io/cache/kr-seoul-mapogu.zip"
+            }
+        ]
+    }
 }

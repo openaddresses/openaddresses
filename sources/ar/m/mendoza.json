@@ -4,12 +4,23 @@
         "state": "m",
         "city": "Mendoza"
     },
-    "data": "http://www.ciudaddemendoza.gov.ar/ArcGIS/rest/services/Catastro/MapServer/33",
-    "website": "http://www.ciudaddemendoza.gov.ar/mapas-online/",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": ["NUMERO", "NUMERO_EXT"],
-        "street": "CALLE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://www.ciudaddemendoza.gov.ar/ArcGIS/rest/services/Catastro/MapServer/33",
+                "website": "http://www.ciudaddemendoza.gov.ar/mapas-online/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "NUMERO",
+                        "NUMERO_EXT"
+                    ],
+                    "street": "CALLE"
+                }
+            }
+        ]
     }
 }

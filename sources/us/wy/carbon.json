@@ -9,15 +9,52 @@
         "state": "wy",
         "county": "Carbon"
     },
-    "data": "http://arcmobile.co.albany.wy.us/arcgis/rest/services/CarbonCounty/CarbonCntyWebMap/MapServer/4",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STREETNO",
-        "street": [
-            "STREETDIR",
-            "STREETNAME",
-            "STREETSUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.greenwoodmap.com/carbon/download/ownership.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "st_address",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "st_address",
+                        "pattern": "^(?:[0-9]+ )(.*)(?:\\s(ARLINGTON|BAGGS|BLK\\s\\d+|DIXON|ELK MOUNTAIN|ENCAMPMENT|HANNA|MEDICINE BOW|MUDDY GAP|RAWLINS|RIVERSIDE|RURAL|SARATOGA|SINCLAIR|\\(\\d{5}\\)))?$",
+                        "replace": "$1"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "st_address",
+                        "pattern": "(ARLINGTON|BAGGS|DIXON|ELK MOUNTAIN|ENCAMPMENT|HANNA|MEDICINE BOW|MUDDY GAP|RAWLINS|RIVERSIDE|SARATOGA|SINCLAIR)$"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "st_address",
+                        "pattern": "(?:\\()(\\d{5})(?:\\))",
+                        "replace": "$1"
+                    },
+                    "format": "shapefile"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.greenwoodmap.com/carbon/download/ownership.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "pid": "pidn",
+                    "format": "shapefile"
+                }
+            }
         ]
     }
 }

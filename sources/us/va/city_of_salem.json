@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -80.055, 37.293 ]
+            "coordinates": [
+                -80.055,
+                37.293
+            ]
         },
         "US Census": {
             "geoid": "51775",
@@ -13,24 +16,32 @@
         "state": "va",
         "city": "Salem"
     },
-    "data": "https://services7.arcgis.com/RL8aZgZHmJOdyNXk/arcgis/rest/services/Address_points/FeatureServer/0",
-    "type": "ESRI",
-    "website": "http://gis.salemva.gov/",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRESS",
-        "street": [
-            "PRE",
-            "ST_NAME",
-            "SUFFIX",
-            "POST"
-        ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUM"
-        ],
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services7.arcgis.com/RL8aZgZHmJOdyNXk/arcgis/rest/services/Address_points/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "http://gis.salemva.gov/",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS",
+                    "street": [
+                        "PRE",
+                        "ST_NAME",
+                        "SUFFIX",
+                        "POST"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

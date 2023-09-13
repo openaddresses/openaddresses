@@ -16,26 +16,71 @@
         "state": "wa",
         "city": "Spokane"
     },
-    "data": "https://services.arcgis.com/3PDwyTturHqnGCu0/arcgis/rest/services/Address_ODL/FeatureServer/0",
-    "license": {
-        "text": "Indemnification",
-        "url":"https://my.spokanecity.org/opendata/gis/data/#disclaimer",
-        "attribution": false,
-        "share-alike": false
-    },
-    "type": "ESRI",
-    "website": "https://my.spokanecity.org/opendata/gis/data/",
-    "attribution": "City of Spokane",
-    "conform": {
-        "type": "geojson",
-        "id": "AddressID",
-        "number": [
-            "AddrNum",
-            "AddrNumSub"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/3PDwyTturHqnGCu0/arcgis/rest/services/Address_ODL/FeatureServer/0",
+                "license": {
+                    "text": "Indemnification",
+                    "url": "https://my.spokanecity.org/opendata/gis/data/#disclaimer",
+                    "attribution": false,
+                    "attribution name": "City of Spokane",
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "website": "https://data-spokane.opendata.arcgis.com/datasets/spokane::address/about",
+                "conform": {
+                    "format": "geojson",
+                    "id": "AddressID",
+                    "number": [
+                        "AddrNum",
+                        "AddrNumSub"
+                    ],
+                    "street": "FullName",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zipcode"
+                }
+            }
         ],
-        "street": "FullName",
-        "city": "City",
-        "region": "State",
-        "postcode": "Zipcode"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/3PDwyTturHqnGCu0/arcgis/rest/services/Parcel_ODL/FeatureServer/0",
+                "license": {
+                    "text": "Indemnification",
+                    "url": "https://my.spokanecity.org/opendata/gis/data/#disclaimer",
+                    "attribution": false,
+                    "attribution name": "City of Spokane",
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "website": "https://data-spokane.opendata.arcgis.com/datasets/spokane::parcel/about",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcel"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/3PDwyTturHqnGCu0/arcgis/rest/services/Building_ODL/FeatureServer/0",
+                "license": {
+                    "text": "Indemnification",
+                    "url": "https://my.spokanecity.org/opendata/gis/data/#disclaimer",
+                    "attribution": false,
+                    "attribution name": "City of Spokane",
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "website": "https://data-spokane.opendata.arcgis.com/datasets/spokane::building-1/about",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

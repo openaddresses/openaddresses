@@ -1,35 +1,59 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13019", "name": "Berrien County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13019",
+            "name": "Berrien County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Berrien"
     },
-    "data": "http://www.sgrcmaps.com/arcgis/rest/services/Berrien/AddressLocations/MapServer/0",
-    "note": {
-        "description": "street is occasionally an intersection, eg - N FIVE ASH ST AT N ELM ST, the regex uses everything up to 'AT' or '@'.  This doesn't catch everything but it's close.",
-        "problem addresses": [
-            "976 EVERETTE CARTER RD AND WALTON (not easily fixable, 'AND' is legit in some addresses)",
-            "2218 POPLAR SPRINGS CHURCH RD AT168",
-            "2456 MUDD CREEK RD ROBERT HUGHES RD",
-            "6578 MUDD CREEK RD MILLTOWN RD"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.sgrcmaps.com/arcgis/rest/services/Berrien/AddressLocations/MapServer/0",
+                "note": {
+                    "description": "street is occasionally an intersection, eg - N FIVE ASH ST AT N ELM ST, the regex uses everything up to 'AT' or '@'.  This doesn't catch everything but it's close.",
+                    "problem addresses": [
+                        "976 EVERETTE CARTER RD AND WALTON (not easily fixable, 'AND' is legit in some addresses)",
+                        "2218 POPLAR SPRINGS CHURCH RD AT168",
+                        "2456 MUDD CREEK RD ROBERT HUGHES RD",
+                        "6578 MUDD CREEK RD MILLTOWN RD"
+                    ],
+                    "postcode": "postcode is sometimes suffixed with '-'"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "STNUM",
+                        "STNUMSUF"
+                    ],
+                    "street": "LABEL",
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "postcode": "postcode is sometimes suffixed with '-'"
-    },
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "AddNum",
-        "street": {
-            "function": "regexp",
-            "field": "StreetName",
-            "pattern": "^(.+?)(?:\\s+(?:AT|@)\\s+.+)?$"
-        },
-        "city": "City",
-        "postcode": {
-            "function": "regexp",
-            "field": "ZipCode",
-            "pattern": "^(\\d+)(?:.*)$"
-        }
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.sgrcmaps.com/arcgis/rest/services/Berrien/TaxParcelBoundaries/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
+                }
+            }
+        ]
     }
 }

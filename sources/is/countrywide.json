@@ -1,8 +1,4 @@
 {
-    "website": "http://www.skra.is/",
-    "data": "ftp://ftp.skra.is/skra/STADFANG.dsv.zip",
-    "license": "http://www.skra.is/fasteignaskra/nidurhalsthjonusta/stadfangaskra/user-licence/",
-    "type": "ftp",
     "coverage": {
         "ISO 3166": {
             "alpha2": "IS",
@@ -10,15 +6,27 @@
         },
         "country": "is"
     },
-    "compression": "zip",
-    "conform": {
-        "file": "STADFANG.dsv",
-        "type": "csv",
-        "csvsplit": "|",
-        "lon": "LONG_WGS84",
-        "lat": "LAT_WGS84",
-        "number": "HUSNR",
-        "street": "HEITI_NF",
-        "postcode": "POSTNR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "website": "http://www.skra.is/",
+                "data": "ftp://ftp.skra.is/skra/STADFANG.dsv.zip",
+                "license": "http://www.skra.is/fasteignaskra/nidurhalsthjonusta/stadfangaskra/user-licence/",
+                "protocol": "ftp",
+                "compression": "zip",
+                "conform": {
+                    "file": "STADFANG.dsv",
+                    "format": "csv",
+                    "csvsplit": "|",
+                    "lon": "LONG_WGS84",
+                    "lat": "LAT_WGS84",
+                    "number": "HUSNR",
+                    "street": "HEITI_NF",
+                    "postcode": "POSTNR"
+                }
+            }
+        ]
     }
 }

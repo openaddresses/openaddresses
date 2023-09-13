@@ -9,28 +9,36 @@
         "state": "md",
         "county": "Garrett"
     },
-    "website": "https://www.garrettcounty.org/",
-    "data": "https://maps.garrettcounty.org/arcweb/rest/services/P_and_Z/Parcels_and_Zoning/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "STRUCTURE_NUMBER",
-            "STRUCTURE_NUMBER_SUFFIX"
-        ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUMBER"
-        ],
-        "street": [
-            "PREFIX_DIRECTIONAL",
-            "STREET_NAME",
-            "STREET_TYPE",
-            "SUFFIX_DIRECTIONAL"
-        ],
-        "city": "CITY",
-        "postcode": "ZIP_CODE",
-        "region": "STATE",
-        "district": "COUNTY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.garrettcounty.org/",
+                "data": "https://maps.garrettcounty.org/arcweb/rest/services/P_and_Z/Parcels_and_Zoning/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "STRUCTURE_NUMBER",
+                        "STRUCTURE_NUMBER_SUFFIX"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUMBER"
+                    ],
+                    "street": [
+                        "PREFIX_DIRECTIONAL",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "SUFFIX_DIRECTIONAL"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP_CODE",
+                    "region": "STATE",
+                    "district": "COUNTY"
+                }
+            }
+        ]
     }
 }

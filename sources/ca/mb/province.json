@@ -8,22 +8,27 @@
         "country": "ca",
         "state": "mb"
     },
-    "data": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/ROLL_ENTRY/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "Property_Address"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "Property_Address"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "Muni_Name_With_Typ",
-            "pattern": "^(.+?)\\s+\\("
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://services.arcgis.com/mMUesHYPkXjaFGfS/arcgis/rest/services/ROLL_ENTRY/FeatureServer/0/",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Property_Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Property_Address"
+                    },
+                    "city": "Municipality",
+                    "format": "geojson"
+                },
+                "note": "Bump hooked"
+            }
+        ]
     }
 }

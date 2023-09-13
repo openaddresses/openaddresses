@@ -9,26 +9,34 @@
         "state": "ks",
         "county": "Jefferson"
     },
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "NUMBER_",
-            "SUB_NUM"
-        ],
-        "street": [
-            "PRE_DIR",
-            "STR_NAM",
-            "STR_TYPE",
-            "SUF_DIR"
-        ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUM"
-        ],
-        "city": "CITY",
-        "region": "ST",
-        "postcode": "ZIP5"
-    },
-    "data": "http://www.jfksgis.com/arcgis/rest/services/Address911/MapServer/0",
-    "type": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "NUMBER_",
+                        "SUB_NUM"
+                    ],
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAM",
+                        "STR_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "region": "ST",
+                    "postcode": "ZIP5"
+                },
+                "data": "http://www.jfksgis.com/arcgis/rest/services/Address911/MapServer/0",
+                "protocol": "ESRI"
+            }
+        ]
+    }
 }

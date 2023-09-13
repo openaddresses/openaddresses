@@ -1,29 +1,42 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13183", "name": "Long County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13183",
+            "name": "Long County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Long"
     },
-    "data": "http://data.openaddresses.io/cache/us-ga-long_county.csv",
-    "type": "http",
-    "conform": {
-        "type": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "region": "REGION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://portal.segrass.org/crcarcgis/rest/services/Long/Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "complete_addrnum",
+                    "street": "complete_street_name",
+                    "unit": "complete_subaddress",
+                    "city": "usps_city",
+                    "region": "state",
+                    "postcode": "zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://portal.segrass.org/crcarcgis/rest/services/Long/Property_Data/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
+                }
+            }
+        ]
     }
 }
-

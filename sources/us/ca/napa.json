@@ -9,16 +9,24 @@
         "state": "ca",
         "county": "Napa"
     },
-    "type": "http",
-    "compression": "zip",
-    "attribution": "Napa County",
-    "website": "http://gis.napa.ca.gov/giscatalog/catalog_xml.asp",
-    "license": "http://gis.napa.ca.gov/giscatalog/viewXML.asp?Name=MAINGIS.GIS.ADDRESSES_ALL&meta_style=fgdc",
-    "data": "http://gis.napa.ca.gov/data/structure/addresses_all.zip",
-    "note": "Includes official county addresses and points for alternate addresses that use colloquial road names. Status field used to differentiate.",
-    "conform": {
-        "number": "AddressNum",
-        "street": "RoadName",
-        "type": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "http",
+                "compression": "zip",
+                "attribution": "Napa County",
+                "website": "http://gis.napa.ca.gov/giscatalog/catalog_xml.asp",
+                "license": "http://gis.napa.ca.gov/giscatalog/viewXML.asp?Name=MAINGIS.GIS.ADDRESSES_ALL&meta_style=fgdc",
+                "data": "http://gis.napa.ca.gov/data/structure/addresses_all.zip",
+                "note": "Includes official county addresses and points for alternate addresses that use colloquial road names. Status field used to differentiate.",
+                "conform": {
+                    "number": "AddressNum",
+                    "street": "RoadName",
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

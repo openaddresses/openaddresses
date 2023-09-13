@@ -9,23 +9,61 @@
         "state": "or",
         "county": "Benton"
     },
-    "data": "http://maps.co.benton.or.us/gisdata/Address/houses.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "number": "ST_NUMBR",
-        "street": [
-            "ST_PFX",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SFX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.benton.or.us/gisdata/Address/AddressSHPs.zip",
+                "website": "https://www.co.benton.or.us/maps/page/maps-gis-available-gis-data-sets",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "AddressSHPs/houses.shp",
+                    "number": "ST_NUMBR",
+                    "street": [
+                        "ST_PFX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SFX"
+                    ],
+                    "unit": [
+                        "UNIT",
+                        "UNITNUM"
+                    ],
+                    "city": "CITY",
+                    "region": "ST",
+                    "postcode": "ZIP",
+                    "accuracy": 2
+                }
+            }
         ],
-        "unit": [
-            "UNIT",
-            "UNITNUM"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.benton.or.us/gisdata/Assessment/TaxlotOwners.zip",
+                "website": "https://www.co.benton.or.us/maps/page/maps-gis-available-gis-data-sets",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "pid": "MapTaxlot",
+                    "format": "shapefile"
+                }
+            }
         ],
-        "postcode": "ZIP",
-        "city": "CITY"
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.co.benton.or.us/gisdata/Address/AddressSHPs.zip",
+                "website": "https://www.co.benton.or.us/maps/page/maps-gis-available-gis-data-sets",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "AddressSHPs/buildings.shp"
+                }
+            }
+        ]
     }
 }

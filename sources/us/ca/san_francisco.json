@@ -9,28 +9,82 @@
         "state": "ca",
         "county": "san francisco"
     },
-    "attribution": "City and County of San Francisco",
-    "data": "http://apps.sfgov.org/datafiles/view.php?file=sfgis/eas_addresses_with_units.zip",
-    "license": {
-        "text": "Public Domain",
-        "attribution": false,
-        "share-alike": false
-    },
-    "website": "http://www.sfgov.org",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-      "type": "shapefile",
-      "number": {
-        "function": "join",
-        "fields": ["ADDR_NUM", "ADDR_N_SFX"],
-        "separator": ""
-      },
-      "street": [
-          "ST_NAME",
-          "ST_TYPE"
-      ],
-      "unit": "UNIT_NUM",
-      "postcode": "zipcode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.sfgov.org/api/geospatial/ramy-di5m?method=export&format=Shapefile",
+                "license": {
+                    "url": "https://opendatacommons.org/licenses/pddl/1-0/",
+                    "text": "Public Domain Dedication and License (PDDL) v1.0",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "website": "https://data.sfgov.org/Geographic-Locations-and-Boundaries/Addresses-with-Units-Enterprise-Addressing-System/ramy-di5m",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "accuracy": 2,
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "address_nu",
+                            "address__2"
+                        ],
+                        "separator": ""
+                    },
+                    "street": [
+                        "street_nam",
+                        "street_typ"
+                    ],
+                    "unit": "unit_numbe",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "zip_code",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "id": "eas_fullid"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://data.sfgov.org/api/geospatial/acdm-wktn?query=SELECT%20%60active%60%2C%20%60blklot%60%2C%20%60shape%60%0AWHERE%20%60active%60%20%3D%20TRUE%0AORDER%20BY%20%60active%60%20ASC%20NULL%20LAST&fourfour=acdm-wktn&accessType=DOWNLOAD&method=export&format=Shapefile",
+                "license": {
+                    "url": "https://opendatacommons.org/licenses/pddl/1-0/",
+                    "text": "Public Domain Dedication and License (PDDL) v1.0",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "website": "https://data.sfgov.org/Geographic-Locations-and-Boundaries/Parcels-Active-and-Retired/acdm-wktn",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "blklot"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://data.sfgov.org/api/geospatial/ynuv-fyni?accessType=DOWNLOAD&method=export&format=Shapefile",
+                "license": {
+                    "url": "https://opendatacommons.org/licenses/pddl/1-0/",
+                    "text": "Public Domain Dedication and License (PDDL) v1.0",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "website": "https://data.sfgov.org/Geographic-Locations-and-Boundaries/Building-Footprints/ynuv-fyni",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

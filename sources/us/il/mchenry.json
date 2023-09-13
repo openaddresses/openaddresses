@@ -9,21 +9,29 @@
         "state": "il",
         "county": "McHenry"
     },
-    "data": "https://services1.arcgis.com/6iYC5AXXYapRVNzl/arcgis/rest/services/Address_Points/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "Street_Number",
-        "street": [
-            "Prefix_Dir",
-            "Street_Name",
-            "Street_Type",
-            "Suffix_Dir"
-        ],
-        "unit": "AptNumber",
-        "city": "City",
-        "district": "COUNTY",
-        "region": "State",
-        "postcode": "Zip_Code"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/6iYC5AXXYapRVNzl/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Street_Number",
+                    "street": [
+                        "Prefix_Dir",
+                        "Street_Name",
+                        "Street_Type",
+                        "Suffix_Dir"
+                    ],
+                    "unit": "AptNumber",
+                    "city": "City",
+                    "district": "COUNTY",
+                    "region": "State",
+                    "postcode": "Zip_Code"
+                }
+            }
+        ]
     }
 }

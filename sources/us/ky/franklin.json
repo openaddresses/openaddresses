@@ -9,19 +9,27 @@
         "state": "ky",
         "county": "Franklin"
     },
-    "data": "http://agis101.frankfort.ky.gov/arcgis/rest/services/BaseMaps/BaseMap_External/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDR_HN",
-        "unit": "UNIT_NO",
-        "street": [
-            "ADDR_PD",
-            "ADDR_PT",
-            "ADDR_SN",
-            "ADDR_ST",
-            "ADDR_SD"
-        ],
-        "postcode": "Comm_Zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://agis101.frankfort.ky.gov/arcgis/rest/services/BaseMaps/BaseMap_External/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDR_HN",
+                    "unit": "UNIT_NO",
+                    "street": [
+                        "ADDR_PD",
+                        "ADDR_PT",
+                        "ADDR_SN",
+                        "ADDR_ST",
+                        "ADDR_SD"
+                    ],
+                    "postcode": "Comm_Zip"
+                }
+            }
+        ]
     }
 }

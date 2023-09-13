@@ -1,38 +1,52 @@
 {
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1090",
-    "compression": "zip",
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
-    "conform": {
-        "type": "csv",
-        "headers": 2,
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        },
-        "skiplines": 2,
-        "number": "LNDN_MA_SN",
-        "encoding": "EUCKR",
-        "lat": "POINT_Y",
-        "srs": "EPSG:2097",
-        "lon": "POINT_X"
-    },
     "coverage": {
         "country": "kr",
         "state": "seoul",
         "city": "중랑구",
-        "geometry": { "type": "Point", "coordinates": [127.092, 37.598] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                127.092,
+                37.598
+            ]
+        }
     },
-    "type": "http",
-    "skip": false,
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-chungnanggu.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1090",
+                "compression": "zip",
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "csv",
+                    "headers": 2,
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    },
+                    "skiplines": 2,
+                    "number": "LNDN_MA_SN",
+                    "encoding": "EUCKR",
+                    "lat": "POINT_Y",
+                    "srs": "EPSG:2097",
+                    "lon": "POINT_X"
+                },
+                "protocol": "http",
+                "skip": false,
+                "data": "https://data.openaddresses.io/cache/kr-seoul-chungnanggu.zip"
+            }
+        ]
+    }
 }

@@ -4,23 +4,28 @@
         "state": "bc",
         "county": "Regional District of Okanagan-Similkameen"
     },
-    "data": "ftp://rdosftp:Transfer1@ftp.rdos.bc.ca/Outgoing/GISData/parcel_legal_civic_shp.zip",
-    "website": "http://www.rdos.bc.ca/departments/information-services/open-data-downloads/",
-    "license": {
-        "url": "http://www.rdos.bc.ca/departments/information-services/open-data-downloads/terms-of-use/",
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "type": "ftp",
-    "compression": "zip",
-    "conform": {
-        "file": "IS/parcelUpdate/export2FTP/finalExportFolder/parcel_legal_civic_shp_20151007.shp",
-        "number": "civicnum1",
-        "street": "streetnam1",
-        "type": "shapefile-polygon",
-        "id": "PID"
-    },
-    "skip": true,
-    "note": "New data file contains multiple address fields. Unclear if any are physical address"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/U7kxTIxKEKeXs30y/arcgis/rest/services/Cadastral/FeatureServer/0",
+                "website": "http://hub-rdos.opendata.arcgis.com/datasets/cadastral-1?showData=true",
+                "license": {
+                    "url": "http://www.rdos.bc.ca/departments/information-services/open-data-downloads/terms-of-use/",
+                    "text": "Contains information licensed under the Open Government Licence – Regional District Okanagan Similkameen",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "file": "IS/parcelUpdate/export2FTP/finalExportFolder/parcel_legal_civic_shp_20151007.shp",
+                    "number": "civicnum1",
+                    "street": "streetnam1",
+                    "format": "geojson",
+                    "id": "PID"
+                }
+            }
+        ]
+    }
 }

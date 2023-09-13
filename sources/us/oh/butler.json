@@ -9,19 +9,28 @@
         "state": "oh",
         "county": "Butler"
     },
-    "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/BUT_ADDS.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-      "number": "HOUSENUM",
-      "street": {
-          "function": "regexp",
-          "field": "LSN",
-          "pattern": "^(?:[0-9]+ )(.*)",
-          "replace": "$1"
-      },
-      "unit": "UNITNUM",
-      "type": "shapefile",
-      "postcode": "zipcode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis1.oit.ohio.gov/LBRS/_downloads/BUT_ADDS.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "city": "USPS_CITY",
+                    "unit": "UNITNUM",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

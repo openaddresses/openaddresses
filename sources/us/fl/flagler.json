@@ -9,19 +9,44 @@
         "state": "fl",
         "county": "Flagler"
     },
-    "data": "http://gis.flaglercounty.org/arcgis/rest/services/FlaglerGIS_Base/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDR_NUM",
-        "street": [
-            "DIR_PRE",
-            "ST_NAME",
-            "ST_TYPE",
-            "DIR_SUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/hSKL9bYjhP4rHxSD/ArcGIS/rest/services/Flagler_County_Address_Points/FeatureServer/0",
+                "website": "https://data-fcmaps.opendata.arcgis.com/datasets/FCMAPS::flagler-county-address-points/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "DIR_PRE",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "DIR_SUF"
+                    ],
+                    "unit": [
+                        "UNIT_TYP",
+                        "UNIT"
+                    ],
+                    "city": "PO_CITY",
+                    "postcode": "ZIPCODE",
+                    "region": "STATE"
+                }
+            }
         ],
-        "unit": "SUITE_UNIT",
-        "city": "PO_CITY",
-        "postcode": "ZIPCODE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/hSKL9bYjhP4rHxSD/ArcGIS/rest/services/Flagler_County_Parcels/FeatureServer/0",
+                "website": "https://data-fcmaps.opendata.arcgis.com/datasets/FCMAPS::flagler-county-parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNO"
+                }
+            }
+        ]
     }
 }

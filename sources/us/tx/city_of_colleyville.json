@@ -16,104 +16,112 @@
         "state": "tx",
         "city": "Colleyville"
     },
-    "data": "http://gis4.dfwmaps.com/arcgis/rest/services/ICColleyville/Colleyville_BaseLayers_VE/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "Situs_Addr"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Situs_Addr",
-            "pattern": "^\\d+\\s(.+?)(?:\\s+(?:#|STE)\\s+(?:\\d+|[A-Z]|\\d+\\s+\\d+)?)?\\s*$"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "Situs_Addr",
-            "pattern": "^\\d+\\s.+?(\\s+(?:#|STE)\\s+(?:\\d+|[A-Z]|\\d+\\s+\\d+))\\s*$"
-        }
-    },
-    "test": {
-        "enabled": true,
-        "description": "these are the tests that exercise valid inputs for Colleyville, TX (trailing spaces are found in source data)",
-        "acceptance-tests": [
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "address without unit",
-                "inputs": {
-                    "Situs_Addr": "124 TIMBERLINE DR N           "
+                "name": "city",
+                "data": "http://gis4.dfwmaps.com/arcgis/rest/services/ICColleyville/Colleyville_BaseLayers_VE/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Situs_Addr"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Situs_Addr",
+                        "pattern": "^\\d+\\s(.+?)(?:\\s+(?:#|STE)\\s+(?:\\d+|[A-Z]|\\d+\\s+\\d+)?)?\\s*$"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "Situs_Addr",
+                        "pattern": "^\\d+\\s.+?(\\s+(?:#|STE)\\s+(?:\\d+|[A-Z]|\\d+\\s+\\d+))\\s*$"
+                    }
                 },
-                "expected": {
-                    "number": "124",
-                    "street": "TIMBERLINE DR N",
-                    "unit": ""
-                }
-            },
-            {
-                "description": "address with numeric unit",
-                "inputs": {
-                    "Situs_Addr": "4900 COLLEYVILLE BLVD STE 108 "
-                },
-                "expected": {
-                    "number": "4900",
-                    "street": "COLLEYVILLE BLVD",
-                    "unit": "STE 108"
-                }
-            },
-            {
-                "description": "address with alpha unit",
-                "inputs": {
-                    "Situs_Addr": "6228 COLLEYVILLE BLVD STE A   "
-                },
-                "expected": {
-                    "number": "6228",
-                    "street": "COLLEYVILLE BLVD",
-                    "unit": "STE A"
-                }
-            },
-            {
-                "description": "address with numeric # unit",
-                "inputs": {
-                    "Situs_Addr": "53 PIAZZA LN # 112            "
-                },
-                "expected": {
-                    "number": "53",
-                    "street": "PIAZZA LN",
-                    "unit": "# 112"
-                }
-            },
-            {
-                "description": "address with multi-numeric # unit",
-                "inputs": {
-                    "Situs_Addr": "88 VILLAGE LN # 28 610        "
-                },
-                "expected": {
-                    "number": "88",
-                    "street": "VILLAGE LN",
-                    "unit": "# 28 610"
-                }
-            },
-            {
-                "description": "address with hint of unit but no actual unit",
-                "inputs": {
-                    "Situs_Addr": "101 CHEEK SPARGER RD #        "
-                },
-                "expected": {
-                    "number": "101",
-                    "street": "CHEEK SPARGER RD",
-                    "unit": ""
-                }
-            },
-            {
-                "description": "address with alpha # unit",
-                "inputs": {
-                    "Situs_Addr": "1901 JOHN MCCAIN RD # A       "
-                },
-                "expected": {
-                    "number": "1901",
-                    "street": "JOHN MCCAIN RD",
-                    "unit": "# A"
+                "test": {
+                    "enabled": true,
+                    "description": "these are the tests that exercise valid inputs for Colleyville, TX (trailing spaces are found in source data)",
+                    "acceptance-tests": [
+                        {
+                            "description": "address without unit",
+                            "inputs": {
+                                "Situs_Addr": "124 TIMBERLINE DR N           "
+                            },
+                            "expected": {
+                                "number": "124",
+                                "street": "TIMBERLINE DR N",
+                                "unit": ""
+                            }
+                        },
+                        {
+                            "description": "address with numeric unit",
+                            "inputs": {
+                                "Situs_Addr": "4900 COLLEYVILLE BLVD STE 108 "
+                            },
+                            "expected": {
+                                "number": "4900",
+                                "street": "COLLEYVILLE BLVD",
+                                "unit": "STE 108"
+                            }
+                        },
+                        {
+                            "description": "address with alpha unit",
+                            "inputs": {
+                                "Situs_Addr": "6228 COLLEYVILLE BLVD STE A   "
+                            },
+                            "expected": {
+                                "number": "6228",
+                                "street": "COLLEYVILLE BLVD",
+                                "unit": "STE A"
+                            }
+                        },
+                        {
+                            "description": "address with numeric # unit",
+                            "inputs": {
+                                "Situs_Addr": "53 PIAZZA LN # 112            "
+                            },
+                            "expected": {
+                                "number": "53",
+                                "street": "PIAZZA LN",
+                                "unit": "# 112"
+                            }
+                        },
+                        {
+                            "description": "address with multi-numeric # unit",
+                            "inputs": {
+                                "Situs_Addr": "88 VILLAGE LN # 28 610        "
+                            },
+                            "expected": {
+                                "number": "88",
+                                "street": "VILLAGE LN",
+                                "unit": "# 28 610"
+                            }
+                        },
+                        {
+                            "description": "address with hint of unit but no actual unit",
+                            "inputs": {
+                                "Situs_Addr": "101 CHEEK SPARGER RD #        "
+                            },
+                            "expected": {
+                                "number": "101",
+                                "street": "CHEEK SPARGER RD",
+                                "unit": ""
+                            }
+                        },
+                        {
+                            "description": "address with alpha # unit",
+                            "inputs": {
+                                "Situs_Addr": "1901 JOHN MCCAIN RD # A       "
+                            },
+                            "expected": {
+                                "number": "1901",
+                                "street": "JOHN MCCAIN RD",
+                                "unit": "# A"
+                            }
+                        }
+                    ]
                 }
             }
         ]

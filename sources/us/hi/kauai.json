@@ -9,17 +9,50 @@
         "state": "hi",
         "county": "kauai"
     },
-    "data": "http://geodata.hawaii.gov/arcgis/rest/services/KOHA/koha/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ST_NO",
-        "street": [
-            "ST_DIR",
-            "ST_NAME",
-            "ST_TYPE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/0DaVqrPt2eyXUS9g/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
+                "website": "https://kauaigis.maps.arcgis.com/home/item.html?id=f486f2c202974d75b421bc05833c2892",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ST_NUM",
+                    "street": [
+                        "DIRPRE",
+                        "FEANME",
+                        "FEATYP",
+                        "DIRSUF"
+                    ],
+                    "unit": "LV_APT",
+                    "region": "STATE"
+                }
+            }
         ],
-        "unit": "UNIT_NO",
-        "region": "STATE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/0DaVqrPt2eyXUS9g/arcgis/rest/services/ALL_PARCELS_CPRS/FeatureServer/0",
+                "website": "https://kauai-open-data-kauaigis.hub.arcgis.com/datasets/KauaiGIS::parcels-and-cprs-1/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/0DaVqrPt2eyXUS9g/ArcGIS/rest/services/Building_Footprints/FeatureServer/0",
+                "website": "https://kauaigis.maps.arcgis.com/home/item.html?id=a4ed70ad81664542a5e2d4cb2a515aee",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

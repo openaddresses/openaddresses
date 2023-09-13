@@ -3,7 +3,7 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -92.470,
+                -92.47,
                 38.946
             ]
         },
@@ -16,25 +16,33 @@
         "state": "mo",
         "city": "columbia"
     },
-    "note": "Matthew J. Gerike via Jason Warzinik asked us via email on 2016-11-16 to stop using their Esri REST endpoint",
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/iandees/1ffae9/city_of_columbia.geojson.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENO",
-        "street": [
-            "PRE_QUAL",
-            "PRE_DIR",
-            "STREET",
-            "SUFFIX",
-            "POST_DIR"
-        ],
-        "unit": [
-            "POST_QUAL",
-            "APT"
-        ],
-        "postcode": "ZIP",
-        "city": "CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "note": "Matthew J. Gerike via Jason Warzinik asked us via email on 2016-11-16 to stop using their Esri REST endpoint",
+                "data": "https://data.openaddresses.io/cache/uploads/iandees/1ffae9/city_of_columbia.geojson.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENO",
+                    "street": [
+                        "PRE_QUAL",
+                        "PRE_DIR",
+                        "STREET",
+                        "SUFFIX",
+                        "POST_DIR"
+                    ],
+                    "unit": [
+                        "POST_QUAL",
+                        "APT"
+                    ],
+                    "postcode": "ZIP",
+                    "city": "CITY"
+                }
+            }
+        ]
     }
 }

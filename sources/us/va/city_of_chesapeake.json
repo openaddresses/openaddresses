@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -76.24, 36.71 ]
+            "coordinates": [
+                -76.24,
+                36.71
+            ]
         },
         "US Census": {
             "geoid": "51550",
@@ -13,19 +16,48 @@
         "state": "va",
         "city": "Chesapeake"
     },
-    "data": "http://gisdata.cityofchesapeake.net/public/rest/services/A_POL_Basemap/MapServer/8",
-    "type": "ESRI",
-    "conform": {
-        "number": "ST_NUMBER",
-        "street": [
-            "ST_PREFIX",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.cityofchesapeake.net/mapping/rest/services/OpenData/OpenData/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "ST_NUMBER",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX"
+                    ],
+                    "format": "geojson",
+                    "city": "ST_CITY",
+                    "region": "ST_STATE",
+                    "postcode": "ST_ZIPCODE"
+                }
+            }
         ],
-        "type": "geojson",
-        "city": "ST_CITY",
-        "region": "ST_STATE",
-        "postcode": "ST_ZIPCODE"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.cityofchesapeake.net/mapping/rest/services/OpenData/OpenData/MapServer/15",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARNO"
+               }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.cityofchesapeake.net/mapping/rest/services/OpenData/OpenData/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+               }
+            }
+        ]
     }
 }

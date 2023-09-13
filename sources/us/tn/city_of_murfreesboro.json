@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -86.39511108398436, 35.846760876811395 ]
+            "coordinates": [
+                -86.39511108398436,
+                35.846760876811395
+            ]
         },
         "US Census": {
             "geoid": "47141",
@@ -13,19 +16,27 @@
         "state": "tn",
         "city": "Murfreesboro"
     },
-    "data": "http://maps3.murfreesborotn.gov/mboro/rest/services/GIS/PARCELS_NEW/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "city": "MUNICIPALITY",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://maps3.murfreesborotn.gov/mboro/rest/services/GIS/PARCELS_NEW/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

@@ -9,19 +9,27 @@
         "state": "nc",
         "county": "Beaufort"
     },
-    "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Beaufort/MapServer/49",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "Address",
-        "street": [
-            "SPrefix",
-            "Street",
-            "SType",
-            "SSuffix"
-        ],
-        "unit": "Unit",
-        "city": "PostOffice",
-        "postcode": "ZipCode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Beaufort/MapServer/49",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Address",
+                    "street": [
+                        "SPrefix",
+                        "Street",
+                        "SType",
+                        "SSuffix"
+                    ],
+                    "unit": "Unit",
+                    "city": "PostOffice",
+                    "postcode": "ZipCode"
+                }
+            }
+        ]
     }
 }

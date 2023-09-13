@@ -1,24 +1,52 @@
 {
     "coverage": {
-        "US Census": {"geoid": "09001", "name": "Fairfield County", "state": "Connecticut"},
+        "US Census": {
+            "geoid": "09001",
+            "name": "Fairfield County",
+            "state": "Connecticut"
+        },
         "geometry": {
             "type": "Point",
-            "coordinates": [ -73.2048, 41.167 ]
+            "coordinates": [
+                -73.2048,
+                41.167
+            ]
         },
         "country": "us",
         "state": "ct",
         "county": "Fairfield",
         "city": "Bridgeport"
     },
-    "data": "https://gis.ctmetro.org/arcgis/rest/services/Bridgeport/Bridgeport_Parcels_NAD83/MapServer/7",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ST_NUM",
-        "street": {
-            "function": "remove_prefix",
-            "field": "LOCATION",
-            "field_to_remove": "ST_NUM"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "website": "https://metrocog.mapxpress.net/Bridgeport/",
+                "data": "https://maps.ctmetro.org/server/rest/services/Bridgeport/Bridgeport_Parcels_NAD83/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ST_NUM",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "LOCATION",
+                        "field_to_remove": "ST_NUM"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "website": "https://metrocog.mapxpress.net/Bridgeport/",
+                "data": "https://maps.ctmetro.org/server/rest/services/Bridgeport/Bridgeport_Parcels_NAD83/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_ID"
+                }
+            }
+        ]
     }
 }

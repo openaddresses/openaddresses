@@ -16,24 +16,32 @@
         "state": "wi",
         "city": "Milwaukee"
     },
-    "type": "ESRI",
-    "data": "http://maps.milwaukee.gov/ArcGIS/rest/services/LMS/LMS_APO/MapServer/1",
-    "conform": {
-        "type": "geojson",
-        "number": "HSE_NBR",
-        "street": [
-            "DIR",
-            "STREET",
-            "STTYPE"
-        ],
-        "unit": "UNIT_NBR",
-        "postcode": {
-            "function": "regexp",
-            "field": "ZIP_CODE",
-            "pattern": "^([\\d]{5})([\\d]{4})$",
-            "replace": "$1-$2"
-        },
-        "city": "CITY",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://milwaukeemaps.milwaukee.gov/arcgis/rest/services/Accela/AccelaApo/MapServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNumber",
+                    "street": [
+                        "Direction",
+                        "StreetName",
+                        "StreetType"
+                    ],
+                    "unit": "Unit",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "Zip",
+                        "pattern": "^([\\d]{5})([\\d]{4})$",
+                        "replace": "$1-$2"
+                    },
+                    "city": "City",
+                    "region": "State"
+                }
+            }
+        ]
     }
 }

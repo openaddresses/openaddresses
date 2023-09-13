@@ -9,14 +9,34 @@
         "state": "wv",
         "county": "Preston"
     },
-    "data": "http://bkrgis.bakerprojects.com/ArcGIS/rest/services/PrestonCounty/PrestonCounty_Addess/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "Number_",
-        "street": "Street",
-        "city": "Community",
-        "postcode": "ZIP",
-        "accuracy": 1
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/PrestonWV_Service_NEW/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "unit",
+                    "number": "Number_",
+                    "street": "Street",
+                    "city": "community",
+                    "postcode": "zip",
+                    "accuracy": 1
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/PrestonWV_Service_NEW/FeatureServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parid"
+                }
+            }
+        ]
     }
 }

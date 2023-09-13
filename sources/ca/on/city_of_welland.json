@@ -3,27 +3,42 @@
         "country": "ca",
         "state": "on",
         "city": "Welland",
-        "geometry": { "type": "Point", "coordinates": [-79.25, 42.99] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -79.25,
+                42.99
+            ]
+        }
     },
-    "data": "http://www.welland.ca/open/Datasheets/Welland_civic_addresses.zip",
-    "website": "http://www.welland.ca/open/OpendataResp.asp?utitle=Civic%20Addresses",
-    "license": "http://www.welland.ca/open/OpendataTermUse.asp",
-    "year": "2014",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(\\S+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
-        },
-        "type": "shapefile",
-        "srs": "EPSG:26917"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://www.welland.ca/open/Datasheets/Welland_civic_addresses_LatLon.zip",
+                "website": "http://www.welland.ca/open/OpendataResp.asp?utitle=Civic%20Addresses",
+                "license": {
+                    "url": "http://www.welland.ca/open/OpendataTermUse.asp",
+                    "text": "Contains information licensed under the Open Government Licence – City of Welland",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "year": "2014",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Civic_Addr"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Civic_Addr"
+                    },
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

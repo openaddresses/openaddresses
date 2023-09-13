@@ -9,13 +9,41 @@
         "state": "wi",
         "county": "Crawford"
     },
-    "data": "https://gis2.msa-ps.com/ArcGIS/rest/services/StreetsAddress/MapServer/22",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HSENO",
-        "street": "PARCELSTRE",
-        "postcode": "PZIP",
-        "city": "TOWN"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/CRAWFORD_ADDRESSES_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/5C3180A8-ABD5-4DB5-BAB5-96E9A5FF08BA",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "CRAWFORD_ADDRESSES_2023",
+                    "number": "HSENO",
+                    "street": "PARCELSTRE",
+                    "unit": "LOC_EXT",
+                    "region": "PS",
+                    "postcode": "PZIP",
+                    "city": "TOWN"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Crawford_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/AD85144A-767A-4194-9C55-DD97C12D02B6",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
     }
 }

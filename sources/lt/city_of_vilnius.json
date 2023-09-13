@@ -10,24 +10,32 @@
         "country": "lt",
         "city": "Vilnius"
     },
-    "data": "http://zemelapiai.vplanas.lt/arcgis/rest/services/Open_Data/Adresiniai_taskai_OD/MapServer/0",
-    "website": "http://gis.opendata.lt/datasets/b800f4ef613a407fb038aa092c7c36a1_0?geometry=24.131%2C54.568%2C26.108%2C54.806",
-    "note": {
-        "description": "addresses can contain the neighbourhood name in parentheses",
-        "examples": [
-            "Sklandytojų g.(Grigiškės)",
-            "P. Žadeikos g."
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://zemelapiai.vplanas.lt/arcgis/rest/services/Open_Data/Adresiniai_taskai_OD/MapServer/0",
+                "website": "http://gis.opendata.lt/datasets/b800f4ef613a407fb038aa092c7c36a1_0?geometry=24.131%2C54.568%2C26.108%2C54.806",
+                "note": {
+                    "description": "addresses can contain the neighbourhood name in parentheses",
+                    "examples": [
+                        "Sklandytojų g.(Grigiškės)",
+                        "P. Žadeikos g."
+                    ]
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "NAMO_NR",
+                    "street": {
+                        "function": "regexp",
+                        "field": "PAV",
+                        "pattern": "^([^\\(]+)"
+                    },
+                    "unit": "NAMO_R"
+                }
+            }
         ]
-    },
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "NAMO_NR",
-        "street": {
-            "function": "regexp",
-            "field": "PAV",
-            "pattern": "^([^\\(]+)"
-        },
-        "unit": "NAMO_R"
     }
 }

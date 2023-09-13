@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -77.42,37.54 ]
+            "coordinates": [
+                -77.42,
+                37.54
+            ]
         },
         "US Census": {
             "geoid": "51760",
@@ -13,23 +16,29 @@
         "state": "va",
         "city": "Richmond"
     },
-    "data": "ftp://ftp.ci.richmond.va.us/GIS/Shapefiles/Parcels_Addresses/AddressPoints.zip",
-    "type": "ftp",
-    "compression": "zip",
-    "website": "http://www.richmondgov.com/content/GIS/index.aspx",
-    "conform": {
-        "street": {
-            "function": "regexp",
-            "field": "AddressLab",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "number": {
-            "function": "regexp",
-            "field": "AddressLab",
-            "pattern": "^([0-9]+)"
-        },
-        "type": "shapefile",
-        "postcode": "zip5"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services1.arcgis.com/k3vhq11XkBNeeOfM/arcgis/rest/services/Addresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "http://www.richmondgov.com/content/GIS/index.aspx",
+                "conform": {
+                    "format": "geojson",
+                    "number": "BuildingNumber",
+                    "unit": [
+                        "UnitType",
+                        "UnitValue"
+                    ],
+                    "street": [
+                        "StreetDirection",
+                        "StreetName",
+                        "StreetType"
+                    ],
+                    "postcode": "ZipCode"
+                }
+            }
+        ]
     }
 }

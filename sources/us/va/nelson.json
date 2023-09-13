@@ -9,19 +9,27 @@
         "state": "va",
         "county": "Nelson"
     },
-    "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Nelson/Nelson_WL_P/MapServer/3",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "street": [
-            "PREFIX",
-            "ROAD_NAME",
-            "SUFFIX",
-            "POSTDIR"
-        ],
-        "number": "ADDR",
-        "unit": "UNIT",
-        "city": "COMMUNITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Nelson/Nelson_WL_P/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "street": [
+                        "PREFIX",
+                        "ROAD_NAME",
+                        "SUFFIX",
+                        "POSTDIR"
+                    ],
+                    "number": "ADDR",
+                    "unit": "UNIT",
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

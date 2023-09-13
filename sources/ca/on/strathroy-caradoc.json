@@ -4,21 +4,29 @@
         "state": "on",
         "county": "Strathroy-Caradoc"
     },
-    "website": "https://www.middlesex.ca/departments/mapping#interactive_mapping",
-    "data": "https://maps.middlesex.ca/arcgis/rest/services/Public/SC_Address/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "FULLADDRES",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "FULLADDRES",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.middlesex.ca/departments/mapping#interactive_mapping",
+                "data": "https://maps.middlesex.ca/arcgis/rest/services/Public/SC_Address/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "FULLADDRES",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "FULLADDRES",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }

@@ -1,20 +1,43 @@
 {
     "coverage": {
-        "US Census": {"geoid": "06059", "name": "Orange County", "state": "California"},
+        "US Census": {
+            "geoid": "06059",
+            "name": "Orange County",
+            "state": "California"
+        },
         "country": "us",
         "state": "ca",
         "county": "Orange",
         "city": "San Juan Capistrano"
     },
-    "year": 2018,
-    "type": "http",
-    "compression": "zip",
-    "data": "http://data.openaddresses.io/cache/uploads/ingalls/us-ca-city_of_san_juan_capistrano.zip",
-    "note": "FOIA: https://www.muckrock.com/foi/california-52/e911-civic-address-data-62997/#",
-    "conform": {
-        "type": "shapefile",
-        "unit": "UNITID",
-        "number": "ADDRNUM",
-        "street": "FULLNAME"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "year": 2018,
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://data.openaddresses.io/cache/uploads/ingalls/us-ca-city_of_san_juan_capistrano.zip",
+                "note": "FOIA: https://www.muckrock.com/foi/california-52/e911-civic-address-data-62997/#",
+                "conform": {
+                    "format": "shapefile",
+                    "unit": "UNITID",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://services5.arcgis.com/NUp4yl2gULzlAcEm/ArcGIS/rest/services/County_Parcels_Public/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "apn"
+                }
+            }
+        ]
     }
 }

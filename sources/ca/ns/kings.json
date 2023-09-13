@@ -1,0 +1,56 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "ns",
+        "county": "Kings",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -64.614,
+                45.011
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/EKgs6jOgtqEQoqHR/ArcGIS/rest/services/PublicAtlasMapServiceNov/FeatureServer/10",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/EKgs6jOgtqEQoqHR/ArcGIS/rest/services/PublicAtlasMapServiceNov/FeatureServer/9",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/EKgs6jOgtqEQoqHR/ArcGIS/rest/services/PropInfo/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "CIVICNUM",
+                    "street": [
+                        "DIRECTION",
+                        "STREET",
+                        "ST_TYPE"
+                    ],
+                    "unit": "APARTMENT",
+                    "city": "CITY"
+                }
+            }
+    ]
+    }
+}

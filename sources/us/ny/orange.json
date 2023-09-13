@@ -7,180 +7,188 @@
         },
         "country": "us",
         "state": "ny",
-        "county":"Orange"
+        "county": "Orange"
     },
-    "data": "http://ocgis.orangecountygov.com/ArcGIS/rest/services/Dynamic/LandBase/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "StreetAddress"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "StreetAddress",
-            "pattern": "^\\s*(?:\\d+)\\s+(.+?)\\s*(?:\\b(?:(?:Apt|Lot|Suite|Unit|MH\\d*)\\b.*|REAR)\\b)?\\s*$"
-        },
-        "unit": "UnitNumber",
-        "city": {
-            "function": "regexp",
-            "field": "CityStateZip",
-            "pattern": "^([A-Z ]+)\\s+NY\\b"
-        },
-        "region": {
-            "function": "regexp",
-            "field": "CityStateZip",
-            "pattern": "\\b(NY)\\b"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "CityStateZip",
-            "pattern": "\\b([0-9]+)$"
-        }
-    },
-    "test": {
-        "enabled": true,
-        "description": "number/street and city/state/zip need to be parsed from separate field",
-        "acceptance-tests": [
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "standard address",
-                "inputs": {
-                    "StreetAddress": "14 THOMAS JEFFERSON PL",
-                    "CityStateZip": "MIDDLETOWN NY 10940"
+                "name": "county",
+                "data": "http://ocgis.orangecountygov.com/ArcGIS/rest/services/Dynamic/LandBase/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "StreetAddress"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "StreetAddress",
+                        "pattern": "^\\s*(?:\\d+)\\s+(.+?)\\s*(?:\\b(?:(?:Apt|Lot|Suite|Unit|MH\\d*)\\b.*|REAR)\\b)?\\s*$"
+                    },
+                    "unit": "UnitNumber",
+                    "city": {
+                        "function": "regexp",
+                        "field": "CityStateZip",
+                        "pattern": "^([A-Z ]+)\\s+NY\\b"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "CityStateZip",
+                        "pattern": "\\b(NY)\\b"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "CityStateZip",
+                        "pattern": "\\b([0-9]+)$"
+                    }
                 },
-                "expected": {
-                    "number": "14",
-                    "street": "THOMAS JEFFERSON PL",
-                    "city": "MIDDLETOWN",
-                    "region": "NY",
-                    "postcode": "10940"
-                }
-            },
-            {
-                "description": "'Apt' unit designator appended to street name",
-                "inputs": {
-                    "StreetAddress": "41 OLD ST RTE 208 Apt 2",
-                    "CityStateZip": "MONTGOMERY NY 12549"
-                },
-                "expected": {
-                    "number": "41",
-                    "street": "OLD ST RTE 208",
-                    "city": "MONTGOMERY",
-                    "region": "NY",
-                    "postcode": "12549"
-                }
-            },
-            {
-                "description": "Apt with no number",
-                "inputs": {
-                    "StreetAddress": "129 W MAIN ST Apt",
-                    "CityStateZip": "GOSHEN NY 10924"
-                },
-                "expected": {
-                    "number": "129",
-                    "street": "W MAIN ST",
-                    "city": "GOSHEN",
-                    "region": "NY",
-                    "postcode": "10924"
-                }
-            },
-            {
-                "description": "'Lot' unit designator appended to street name",
-                "inputs": {
-                    "StreetAddress": "132 N MONTGOMERY ST Lot C15",
-                    "CityStateZip": "WALDEN NY 12586"
-                },
-                "expected": {
-                    "number": "132",
-                    "street": "N MONTGOMERY ST",
-                    "city": "WALDEN",
-                    "region": "NY",
-                    "postcode": "12586"
-                }
-            },
-            {
-                "description": "'Suite' unit designator appended to street name",
-                "inputs": {
-                    "StreetAddress": "47 N PLANK RD Suite 19",
-                    "CityStateZip": "NEWBURGH NY 12550"
-                },
-                "expected": {
-                    "number": "47",
-                    "street": "N PLANK RD",
-                    "city": "NEWBURGH",
-                    "region": "NY",
-                    "postcode": "12550"
-                }
-            },
-            {
-                "description": "'Unit' unit designator appended to street name",
-                "inputs": {
-                    "StreetAddress": "20 CHEVRON RD Unit 111",
-                    "CityStateZip": "MONROE NY 10950"
-                },
-                "expected": {
-                    "number": "20",
-                    "street": "CHEVRON RD",
-                    "city": "MONROE",
-                    "region": "NY",
-                    "postcode": "10950"
-                }
-            },
-            {
-                "description": "'REAR' unit designator appended to street name with extraneous space",
-                "inputs": {
-                    "StreetAddress": "10 COOLIDGE COURT REAR ",
-                    "CityStateZip": "MIDDLETOWN NY 10940"
-                },
-                "expected": {
-                    "number": "10",
-                    "street": "COOLIDGE COURT",
-                    "city": "MIDDLETOWN",
-                    "region": "NY",
-                    "postcode": "10940"
-                }
-            },
-            {
-                "description": "'MH[0-9]' unit designator appended to street name",
-                "inputs": {
-                    "StreetAddress": "498 RED APPLE CT MH9",
-                    "CityStateZip": "CENTRAL VALLEY NY 10917"
-                },
-                "expected": {
-                    "number": "498",
-                    "street": "RED APPLE CT",
-                    "city": "CENTRAL VALLEY",
-                    "region": "NY",
-                    "postcode": "10917"
-                }
-            },
-            {
-                "description": "city is missing from CityStateZip",
-                "inputs": {
-                    "StreetAddress": "2736 ST RTE 52",
-                    "CityStateZip": "NY 12556"
-                },
-                "expected": {
-                    "number": "2736",
-                    "street": "ST RTE 52",
-                    "city": "",
-                    "region": "NY",
-                    "postcode": "12556"
-                }
-            },
-            {
-                "description": "city/postcode are missing from CityStateZip",
-                "inputs": {
-                    "StreetAddress": "331 MOUNTAIN LODGE RD",
-                    "CityStateZip": "NY"
-                },
-                "expected": {
-                    "number": "331",
-                    "street": "MOUNTAIN LODGE RD",
-                    "city": "",
-                    "region": "NY",
-                    "postcode": ""
+                "test": {
+                    "enabled": true,
+                    "description": "number/street and city/state/zip need to be parsed from separate field",
+                    "acceptance-tests": [
+                        {
+                            "description": "standard address",
+                            "inputs": {
+                                "StreetAddress": "14 THOMAS JEFFERSON PL",
+                                "CityStateZip": "MIDDLETOWN NY 10940"
+                            },
+                            "expected": {
+                                "number": "14",
+                                "street": "THOMAS JEFFERSON PL",
+                                "city": "MIDDLETOWN",
+                                "region": "NY",
+                                "postcode": "10940"
+                            }
+                        },
+                        {
+                            "description": "'Apt' unit designator appended to street name",
+                            "inputs": {
+                                "StreetAddress": "41 OLD ST RTE 208 Apt 2",
+                                "CityStateZip": "MONTGOMERY NY 12549"
+                            },
+                            "expected": {
+                                "number": "41",
+                                "street": "OLD ST RTE 208",
+                                "city": "MONTGOMERY",
+                                "region": "NY",
+                                "postcode": "12549"
+                            }
+                        },
+                        {
+                            "description": "Apt with no number",
+                            "inputs": {
+                                "StreetAddress": "129 W MAIN ST Apt",
+                                "CityStateZip": "GOSHEN NY 10924"
+                            },
+                            "expected": {
+                                "number": "129",
+                                "street": "W MAIN ST",
+                                "city": "GOSHEN",
+                                "region": "NY",
+                                "postcode": "10924"
+                            }
+                        },
+                        {
+                            "description": "'Lot' unit designator appended to street name",
+                            "inputs": {
+                                "StreetAddress": "132 N MONTGOMERY ST Lot C15",
+                                "CityStateZip": "WALDEN NY 12586"
+                            },
+                            "expected": {
+                                "number": "132",
+                                "street": "N MONTGOMERY ST",
+                                "city": "WALDEN",
+                                "region": "NY",
+                                "postcode": "12586"
+                            }
+                        },
+                        {
+                            "description": "'Suite' unit designator appended to street name",
+                            "inputs": {
+                                "StreetAddress": "47 N PLANK RD Suite 19",
+                                "CityStateZip": "NEWBURGH NY 12550"
+                            },
+                            "expected": {
+                                "number": "47",
+                                "street": "N PLANK RD",
+                                "city": "NEWBURGH",
+                                "region": "NY",
+                                "postcode": "12550"
+                            }
+                        },
+                        {
+                            "description": "'Unit' unit designator appended to street name",
+                            "inputs": {
+                                "StreetAddress": "20 CHEVRON RD Unit 111",
+                                "CityStateZip": "MONROE NY 10950"
+                            },
+                            "expected": {
+                                "number": "20",
+                                "street": "CHEVRON RD",
+                                "city": "MONROE",
+                                "region": "NY",
+                                "postcode": "10950"
+                            }
+                        },
+                        {
+                            "description": "'REAR' unit designator appended to street name with extraneous space",
+                            "inputs": {
+                                "StreetAddress": "10 COOLIDGE COURT REAR ",
+                                "CityStateZip": "MIDDLETOWN NY 10940"
+                            },
+                            "expected": {
+                                "number": "10",
+                                "street": "COOLIDGE COURT",
+                                "city": "MIDDLETOWN",
+                                "region": "NY",
+                                "postcode": "10940"
+                            }
+                        },
+                        {
+                            "description": "'MH[0-9]' unit designator appended to street name",
+                            "inputs": {
+                                "StreetAddress": "498 RED APPLE CT MH9",
+                                "CityStateZip": "CENTRAL VALLEY NY 10917"
+                            },
+                            "expected": {
+                                "number": "498",
+                                "street": "RED APPLE CT",
+                                "city": "CENTRAL VALLEY",
+                                "region": "NY",
+                                "postcode": "10917"
+                            }
+                        },
+                        {
+                            "description": "city is missing from CityStateZip",
+                            "inputs": {
+                                "StreetAddress": "2736 ST RTE 52",
+                                "CityStateZip": "NY 12556"
+                            },
+                            "expected": {
+                                "number": "2736",
+                                "street": "ST RTE 52",
+                                "city": "",
+                                "region": "NY",
+                                "postcode": "12556"
+                            }
+                        },
+                        {
+                            "description": "city/postcode are missing from CityStateZip",
+                            "inputs": {
+                                "StreetAddress": "331 MOUNTAIN LODGE RD",
+                                "CityStateZip": "NY"
+                            },
+                            "expected": {
+                                "number": "331",
+                                "street": "MOUNTAIN LODGE RD",
+                                "city": "",
+                                "region": "NY",
+                                "postcode": ""
+                            }
+                        }
+                    ]
                 }
             }
         ]

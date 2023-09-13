@@ -9,23 +9,45 @@
         "state": "co",
         "county": "Gunnison"
     },
-    "attribution": "Gunnison County",
-    "data": "http://www.gunnisoncounty.org/DocumentCenter/View/2475",
-    "type": "http",
-    "compression": "zip",
-    "website": "http://www.gunnisoncounty.org/324/Downloadable-Datasets",
-    "conform": {
-        "number": [
-          "san",
-          "sns"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Gunnison County",
+                "data": "http://www.gunnisoncounty.org/DocumentCenter/View/2475",
+                "protocol": "http",
+                "compression": "zip",
+                "website": "http://www.gunnisoncounty.org/324/Downloadable-Datasets",
+                "conform": {
+                    "number": [
+                        "san",
+                        "sns"
+                    ],
+                    "street": [
+                        "prd",
+                        "rd",
+                        "sts",
+                        "pod"
+                    ],
+                    "unit": "UNIT",
+                    "format": "shapefile"
+                }
+            }
         ],
-        "street": [
-          "prd",
-          "rd",
-          "sts",
-          "pod"
-        ],
-        "unit": "UNIT",
-        "type": "shapefile"
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Gunnison County",
+                "data": "https://www.gunnisoncounty.org/DocumentCenter/View/2489",
+                "protocol": "http",
+                "compression": "zip",
+                "website": "http://www.gunnisoncounty.org/324/Downloadable-Datasets",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "ParcelNumb"
+                }
+            }
+        ]
     }
 }

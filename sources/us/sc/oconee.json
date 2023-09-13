@@ -9,19 +9,48 @@
         "state": "sc",
         "county": "Oconee"
     },
-    "data": "http://arcserver2.oconeesc.com/arcgis/rest/services/AddressExternal/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRNUM",
-        "street": [
-            "PREFIX",
-            "ROAD",
-            "SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://arcserver2.oconeesc.com/arcgis/rest/services/AddressExternal/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "PREFIX",
+                        "ROAD",
+                        "SUFFIX"
+                    ],
+                    "unit": "UNIT",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "City",
-        "region": "State",
-        "postcode": "Zip"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://arcserver2.oconeesc.com/arcgis/rest/services/PARCELDATA_owner_Assr/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TMS_NUMBER"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://arcserver2.oconeesc.com/arcgis/rest/services/BuildingFootPrints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

@@ -16,14 +16,22 @@
         "state": "ms",
         "city": "Pelahatchie"
     },
-    "data": "http://gis.cmpdd.org/arcgis/rest/services/Rankin/Pelahatchie/MapServer/16",
-    "type": "ESRI",
-    "note": "Likely to be owner addresses, not site address",
-    "conform": {
-        "type": "geojson",
-        "number": "STREET_NUM",
-        "street": "STREET",
-        "city": "CITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis.cmpdd.org/arcgis/rest/services/Rankin/Pelahatchie/MapServer/16",
+                "protocol": "ESRI",
+                "note": "Likely to be owner addresses, not site address",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREET_NUM",
+                    "street": "STREET",
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

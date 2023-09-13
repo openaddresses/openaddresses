@@ -9,24 +9,32 @@
         "state": "oh",
         "county": "Carroll"
     },
-    "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/CAR_ADDS.zip",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-      "number": "ADDR_NUM",
-      "street": [
-          "PRE_DIR",
-          "STR_NAME",
-          "STR_TYPE",
-          "SUF_DIR"
-      ],
-      "unit": [
-          "UNIT_TYPE",
-          "UNIT_NUM"
-      ],
-      "city": "CITY",
-      "region": "STATE",
-      "type": "shapefile",
-      "postcode": "zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis1.oit.ohio.gov/LBRS/_downloads/CAR_ADDS.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "HOUSENUM",
+                    "street": [
+                        "ST_PREFIX",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "ST_SUFFIX"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "MUNI",
+                    "region": "STATE",
+                    "format": "shapefile",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

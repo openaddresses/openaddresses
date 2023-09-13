@@ -1,21 +1,33 @@
 {
     "coverage": {
-        "ISO 3166": { "alpha2": "CA-AB", "country": "Canada", "subdivision": "Alberta" },
+        "ISO 3166": {
+            "alpha2": "CA-AB",
+            "country": "Canada",
+            "subdivision": "Alberta"
+        },
         "country": "ca",
         "state": "ab"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/ef7776/ca-ab.zip",
-    "website": "https://amdsp.ca/index.html",
-    "license": "http://216.171.235.254/AMDSP/disclaim.aspx",
-    "attribution": "Contains information licensed under the Open Government Licence – Alberta Municipal Data Sharing Partnership (AMDSP)",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "shapefile",
-        "file": "maddress.shp",
-        "number": "house_id",
-        "street": "road_name",
-        "unit": "unit_num",
-        "city": "civic_id"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://data.openaddresses.io/cache/uploads/trescube/ef7776/ca-ab.zip",
+                "website": "https://amdsp.ca/index.html",
+                "license": "http://216.171.235.254/AMDSP/disclaim.aspx",
+                "attribution": "Contains information licensed under the Open Government Licence – Alberta Municipal Data Sharing Partnership (AMDSP)",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "maddress.shp",
+                    "number": "house_id",
+                    "street": "road_name",
+                    "unit": "unit_num",
+                    "city": "civic_id"
+                }
+            }
+        ]
     }
 }

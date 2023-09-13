@@ -9,17 +9,33 @@
         "state": "tn",
         "county": "Davidson"
     },
-    "data": "http://maps.nashville.gov/MetGIS/rest/services/QueryLayers/AddressPoints/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE",
-        "street": [
-            "PRE_DIR",
-            "STREET_NAM",
-            "STREET_TYP",
-            "SUF_DIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.nashville.gov/arcgis/rest/services/Addressing/AddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "Suite",
+                    "number": "Number",
+                    "street": [ "StreetPrefixCode", "StreetName", "StreetTypeCode", "PostDirectionCode" ],
+                    "postcode": "Zip",
+                    "city": "City"
+                }
+            }
         ],
-        "postcode": "ZIPCODE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.nashville.gov/arcgis/rest/services/Cadastral/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
     }
 }

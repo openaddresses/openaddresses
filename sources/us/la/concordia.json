@@ -9,17 +9,25 @@
         "state": "la",
         "county": "Concordia"
     },
-    "data": "http://services.geoportalmaps.com/arcgis/rest/services/Concordia_Service/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STNUM",
-        "street": "LABEL",
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUM"
-        ],
-        "city": "CITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://services.geoportalmaps.com/arcgis/rest/services/Concordia_Service/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STNUM",
+                    "street": "LABEL",
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

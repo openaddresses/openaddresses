@@ -8,25 +8,54 @@
         "country": "us",
         "state": "co"
     },
-    "data": "https://apps.douglas.co.us/geopendata/rest/services/Parcels/Address/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "ADDRESS_NUMBER",
-            "ADDRESS_NUMBER_SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://apps.douglas.co.us/geopendata/rest/services/Parcels/Address/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDRESS_NUMBER",
+                        "ADDRESS_NUMBER_SUFFIX"
+                    ],
+                    "unit": [
+                        "UNIT_NO",
+                        "BUILDING_NO"
+                    ],
+                    "street": [
+                        "STREET_PREDIRECTION_CODE",
+                        "STREET_NAME",
+                        "STREET_TYPE_CODE",
+                        "STREET_POSTDIRECTION_CODE"
+                    ],
+                    "city": "POSTAL_NAME",
+                    "postcode": "ZIP_CODE"
+                }
+            }
         ],
-        "unit": [
-            "UNIT_NO",
-            "BUILDING_NO"
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://apps.douglas.co.us/geopendata/rest/services/Parcels/Parcel/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_SPN"
+                }
+            }
         ],
-        "street": [
-            "STREET_PREDIRECTION_CODE",
-            "STREET_NAME",
-            "STREET_TYPE_CODE",
-            "STREET_POSTDIRECTION_CODE"
-        ],
-        "city": "POSTAL_NAME",
-        "postcode": "ZIP_CODE"
+        "buildings": [
+            {
+                "name": "state",
+                "data": "https://apps.douglas.co.us/geopendata/rest/services/Planimetrics/Roofprints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

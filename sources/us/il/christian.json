@@ -9,21 +9,29 @@
         "state": "il",
         "county": "Christian"
     },
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "SiteAddres",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SiteAddres",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
-    },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_christian_co_il_taxmap/MapServer/0",
-    "type": "ESRI",
-    "note": "address field is strange enough that this will need custom processing"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "SiteAddres",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "SiteAddres",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                },
+                "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_christian_co_il_taxmap/MapServer/0",
+                "protocol": "ESRI",
+                "note": "address field is strange enough that this will need custom processing"
+            }
+        ]
+    }
 }

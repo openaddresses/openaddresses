@@ -9,15 +9,48 @@
         "state": "wi",
         "county": "Washington"
     },
-    "data": "http://gisweb.co.washington.wi.us/arcgis/rest/services/public/AddressData/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUMBER",
-        "street": "FULLSTREETNAME",
-        "city": "MUNICIPALITY",
-        "postcode": "ZIPCODE",
-        "id": "ADDPTID",
-        "accuracy": 1
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.washcowisco.gov/server/rest/services/Addresses/Address_Point/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Full_House_Number",
+                    "street": "FullStNm",
+                    "unit": [
+                        "UnitType",
+                        "UnitNum"
+                    ],
+                    "city": "ZipMuni",
+                    "postcode": "ZipCode",
+                    "id": "AddPtID",
+                    "accuracy": 1
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.washcowisco.gov/server/rest/services/WashCoGIS/CurrentParcelSearch/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "LRSPARID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://maps.washcowisco.gov/server/rest/services/WashCoGIS/Structure_Footprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

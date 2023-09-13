@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "46083",
+            "name": "Lincoln County",
+            "state": "South Dakota"
+        },
+        "country": "us",
+        "state": "sd",
+        "county": "Lincoln"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.lincolncountysd.org/webmapadaptor/rest/services/Groups/AgTerra/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": [
+                        "ADDRESS",
+                        "AddNumSuf"
+                    ],
+                    "street": [
+                        "PREFIX",
+                        "STREET",
+                        "SUFFIX",
+                        "PostDir"
+                    ],
+                    "unit": "Unit",
+                    "city": "POST_OFFIC",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.lincolncountysd.org/webmapadaptor/rest/services/Groups/AgTerra/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "CountyService.DBO.GIS.Parcel_ID",
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

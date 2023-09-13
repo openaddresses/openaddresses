@@ -9,15 +9,23 @@
         "state": "il",
         "county": "Cook"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/ee477e/us-il-cook.geojson.zip",
-    "note": "All Cook County addresses including the city of Chicago",
-    "type": "http",
-    "compression": "zip",
-    "conform": {
-        "type": "geojson",
-        "number": "addrnocom",
-        "street": "stnamecom",
-        "city": "placename",
-        "postcode": "zip5"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.cookcountyil.gov/traditional/rest/services/addressZipCode/MapServer/0/",
+                "note": "All Cook County addresses including the city of Chicago",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNOCOM",
+                    "street": "STNAMECOM",
+                    "city": "PLACENAME",
+                    "district": "County",
+                    "postcode": "Post_Code"
+                }
+            }
+        ]
     }
 }

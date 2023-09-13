@@ -4,7 +4,7 @@
             "type": "Point",
             "coordinates": [
                 -82.745,
-                27.860
+                27.86
             ]
         },
         "US Census": {
@@ -16,18 +16,26 @@
         "state": "fl",
         "city": "Pinellas Park"
     },
-    "data": "http://arcgis4.roktech.net/arcgis/rest/services/PinellasPark/GoMaps4/MapServer/10",
-    "note": "the layer name implies the city of Pinellas Park but it also appears to contain parts of other cities",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-            "PREFIX",
-            "NAME",
-            "TYPE",
-            "SUFFIX"
-        ],
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://arcgis4.roktech.net/arcgis/rest/services/PinellasPark/GoMaps4/MapServer/10",
+                "note": "the layer name implies the city of Pinellas Park but it also appears to contain parts of other cities",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "PREFIX",
+                        "NAME",
+                        "TYPE",
+                        "SUFFIX"
+                    ],
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

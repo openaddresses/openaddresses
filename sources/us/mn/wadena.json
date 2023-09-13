@@ -9,25 +9,33 @@
         "state": "mn",
         "county": "Wadena"
     },
-    "data": "http://gis.co.wadena.mn.us/arcgis/rest/services/WADENAPUBLIC/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "GISData.dbo.tblParcelJoin.PHYSICAL_ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "GISData.dbo.tblParcelJoin.PHYSICAL_ADDRESS",
-            "pattern": "^(?:[0-9\\-]+ )(.*)(?: [0-9]{5})$",
-            "replace": "$1"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "GISData.dbo.tblParcelJoin.PHYSICAL_ADDRESS",
-            "pattern": "^(?:.* )([0-9]{5})$"
-        },
-        "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.co.wadena.mn.us/arcgis/rest/services/WADENAPUBLIC/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "GISData.dbo.tblParcelJoin.PHYSICAL_ADDRESS",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "GISData.dbo.tblParcelJoin.PHYSICAL_ADDRESS",
+                        "pattern": "^(?:[0-9\\-]+ )(.*)(?: [0-9]{5})$",
+                        "replace": "$1"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "GISData.dbo.tblParcelJoin.PHYSICAL_ADDRESS",
+                        "pattern": "^(?:.* )([0-9]{5})$"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

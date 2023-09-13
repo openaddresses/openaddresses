@@ -9,17 +9,25 @@
         "state": "nc",
         "county": "Surry"
     },
-    "data": "http://gis.surryinfo.net/arcgis/rest/services/Parcels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HouseNumber",
-        "street": [
-            "StreetName",
-            "StreetType",
-            "StreetSuffix"
-        ],
-        "postcode": "ZipCode",
-        "city": "City"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.surryinfo.net/arcgis/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNumber",
+                    "street": [
+                        "StreetName",
+                        "StreetType",
+                        "StreetSuffix"
+                    ],
+                    "postcode": "ZipCode",
+                    "city": "City"
+                }
+            }
+        ]
     }
 }

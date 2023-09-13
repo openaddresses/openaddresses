@@ -9,23 +9,31 @@
         "state": "mn",
         "county": "Traverse"
     },
-    "data": "https://gis.co.traverse.mn.us/arcgis/rest/services/GIS_Data_Layers/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STR_NUM",
-        "street": [
-            "PRE_DIR",
-            "STR_NAME",
-            "STR_TYPE",
-            "POST_DIR"
-        ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUM"
-        ],
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.traverse.mn.us/arcgis/rest/services/GIS_Data_Layers/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "POST_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ]
     }
 }

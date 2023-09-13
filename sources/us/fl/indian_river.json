@@ -9,14 +9,33 @@
         "state": "fl",
         "county": "Indian River"
     },
-    "data": "http://gis.ircgov.com/arcgis/rest/services/IRCGIS/IRC_Address_Points_woLabels/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": "RDLABEL_USPS",
-        "unit": "APT_UNIT",
-        "city": "CITY_USPS",
-        "postcode": "ZIP5"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisportal.ircgov.com/server3/rest/services/Addressing/IRC_Address_Points_woLabels_MS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": "RDLABEL_USPS",
+                    "unit": "APT_UNIT",
+                    "city": "CITY_USPS",
+                    "postcode": "ZIP5"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisportal.ircgov.com/server3/rest/services/IRCPA/Parcels_MS/MapServer/0/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PP_PIN"
+                }
+            }
+        ]
     }
 }

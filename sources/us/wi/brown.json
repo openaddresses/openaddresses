@@ -9,21 +9,50 @@
         "state": "wi",
         "county": "Brown"
     },
-    "data": "https://gis.co.brown.wi.us/arcgis/rest/services/Addresses/MapServer/2",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": [
-            "AddNum",
-            "AddNumSuffix"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.browncountywi.gov/arcgis/rest/services/Addresses/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNum",
+                        "AddNumSuffix"
+                    ],
+                    "street": [
+                        "StreetPrefix",
+                        "StreetName",
+                        "StreetSuffix_BC"
+                    ],
+                    "unit": "UnitID",
+                    "city": "Municipality",
+                    "postcode": "ZIPCode"
+                }
+            }
         ],
-        "street": [
-            "StreetPrefix",
-            "StreetName",
-            "StreetSuffix_BC"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.browncountywi.gov/arcgis/rest/services/ParcelPolygons/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
         ],
-        "unit": "UnitID",
-        "city": "Municipality",
-        "postcode": "ZIPCode"
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.browncountywi.gov/arcgis/rest/services/BaseLayers/MapServer/22",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

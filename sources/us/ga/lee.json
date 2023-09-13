@@ -1,18 +1,50 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13177", "name": "Lee County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13177",
+            "name": "Lee County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Lee"
     },
-    "data": "https://www.dropbox.com/s/jxbhf03sbjdes69/AddressPoints.zip?dl=1",
-    "type": "http",
-    "conform": {
-        "type": "shapefile",
-        "id": "PARCEL_ID",
-        "unit": "UNIT",
-        "number": "HOUSE_NO",
-        "street": "STREET_NAM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/xWHrkwYCAX9v0Owj/ArcGIS/rest/services/Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "PARCEL_ID",
+                    "unit": "Unit",
+                    "number": "HOUSE_NO",
+                    "street": "STREET_NAM"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/xWHrkwYCAX9v0Owj/ArcGIS/rest/services/Parcels/FeatureServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/xWHrkwYCAX9v0Owj/ArcGIS/rest/services/Building_Footprints/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }
-

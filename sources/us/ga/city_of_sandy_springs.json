@@ -16,19 +16,27 @@
         "state": "ga",
         "city": "Sandy Springs"
     },
-    "data": "https://gis.sandyspringsga.gov/arcgis/rest/services/Basemap/CityMap/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "OBJECTID",
-        "number": "Street_Num",
-        "street": [
-            "Street_Dir",
-            "Street_Nam",
-            "Street_Suf",
-            "Post_Stree"
-        ],
-        "unit": "Street_Apa",
-        "postcode": "Zip_Codes"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.sandyspringsga.gov/arcgis/rest/services/Basemap/CityMap/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": "Street_Num",
+                    "street": [
+                        "Street_Dir",
+                        "Street_Nam",
+                        "Street_Suf",
+                        "Post_Stree"
+                    ],
+                    "unit": "Street_Apa",
+                    "postcode": "Zip_Codes"
+                }
+            }
+        ]
     }
 }

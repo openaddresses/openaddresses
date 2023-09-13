@@ -9,22 +9,45 @@
         "state": "or",
         "county": "Wasco"
     },
-    "data": "http://216.110.207.61/arcgis/rest/services/BaseMap/MapServer/8",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "STRUCTNO",
-        "street": [
-            "PREDIR",
-            "PRETYPE",
-            "STREETNAME",
-            "STREETTYPE",
-            "SUFDIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://public.co.wasco.or.us/gisserver/rest/services/PublicAddresses/MapServer/0",
+                "website": "https://public.co.wasco.or.us/gisportal/home/item.html?id=806a51d8d9bb452f93b4134841f1dff2",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Wasco County GIS",
+                    "presumed": true
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STRUCTNO",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUS_ADDRESS"
+                    }
+                }
+            }
         ],
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NO"
-        ],
-        "id": "STRUCTNO"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://public.co.wasco.or.us/gisserver/rest/services/Taxlots/MapServer/0",
+                "website": "https://public.co.wasco.or.us/gisportal/home/item.html?id=979fb5f8c0da498387b55065ebf1f0fd",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Wasco County GIS",
+                    "presumed": true
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MapTaxlot"
+                }
+            }
+        ]
     }
 }

@@ -9,22 +9,42 @@
         "state": "ca",
         "county": "San Bernardino"
     },
-    "conform": {
-        "id": "APN",
-        "type": "shapefile-polygon",
-        "number": "NUMBER",
-        "street": [
-            "PREDIR",
-            "STREETNAME",
-            "STREETTYPE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "id": "APN",
+                    "format": "shapefile",
+                    "number": "NUMBER",
+                    "street": [
+                        "PREDIR",
+                        "STREETNAME",
+                        "STREETTYPE"
+                    ],
+                    "postcode": "ZIP",
+                    "city": "CITY",
+                    "region": "STATE"
+                },
+                "data": "https://www.arcgis.com/sharing/rest/content/items/49323ddf29ef475db75e141f675fac47/data",
+                "website": "https://open.sbcounty.gov/datasets/sbcounty::countywide-parcels/about",
+                "protocol": "http",
+                "compression": "zip"
+            }
         ],
-        "postcode": "ZIP",
-        "city": "CITY",
-        "region": "STATE"
-    },
-    "attribution": "San Bernardino County",
-    "data": "ftp://gisftp:1sbcftp1@gis1.sbcounty.gov/gims/parcel_basemap_data/countywide_parcels_04_03_2018.zip",
-    "website": "http://cms.sbcounty.gov/gis/FTPServices.aspx",
-    "type": "http",
-    "compression": "zip"
+        "parcels": [
+            {
+                "name": "county",
+                "conform": {
+                    "pid": "APN",
+                    "format": "shapefile"
+                },
+                "data": "https://www.arcgis.com/sharing/rest/content/items/49323ddf29ef475db75e141f675fac47/data",
+                "website": "https://open.sbcounty.gov/datasets/sbcounty::countywide-parcels/about",
+                "protocol": "http",
+                "compression": "zip"
+            }
+        ]
+    }
 }

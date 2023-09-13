@@ -1,4 +1,5 @@
 {
+    "schema": 2,
     "coverage": {
         "country": "ca",
         "state": "ab",
@@ -11,18 +12,27 @@
             ]
         }
     },
-    "data": "http://maps.rdcounty.ca:6080/arcgis/rest/services/RDC_ArcGIS_Base_Map/MapServer/8",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSE_ID",
-        "street": [
-            "DIR_PREF",
-            "NAME_PREF",
-            "MAIN_NAME",
-            "ROAD_TYPE",
-            "DIR_SUFX"
-        ],
-        "unit": "UNIT_NUM"
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://data.reddeer.ca/datasets/parceladdresses/download/shapefile",
+                "website": "https://data.reddeer.ca/parceladdresses",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "url": "https://data.reddeer.ca/About",
+                    "text": "Contains information licensed under the Open Government Licence – The City of Red Deer",
+                    "attribution name": "Open Government Licence – The City of Red Deer",
+                    "attribution": true
+                },
+                "conform": {
+                    "format": "shapefile",
+                    "number": "house_id",
+                    "unit": "unit_num",
+                    "street": "name"
+                }
+            }
+        ]
     }
 }

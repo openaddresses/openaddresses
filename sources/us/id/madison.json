@@ -9,16 +9,35 @@
         "state": "id",
         "county": "Madison"
     },
-    "data": "http://jessie.rexburg.org/mrgis/rest/services/Data/Addresses/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "id": "ADDRESSID",
-        "number": "HOUSENUMBER",
-        "street": {
-            "function": "remove_prefix",
-            "field": "AddressLabel",
-            "field_to_remove": "HOUSENUMBER"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://madison.rexburg.org/mrgis/rest/services/Data/Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDRESSID",
+                    "number": "HOUSENUMBER",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "AddressLabel",
+                        "field_to_remove": "HOUSENUMBER"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://madison.rexburg.org/mrgis/rest/services/Data/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
     }
 }

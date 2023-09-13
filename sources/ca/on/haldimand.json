@@ -3,16 +3,41 @@
         "country": "ca",
         "state": "on",
         "county": "Haldimand",
-        "geometry": { "type": "Point", "coordinates": [-80.1, 42.9] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -80.1,
+                42.9
+            ]
+        }
     },
-    "type": "ESRI",
-    "data": "https://maps.haldimandcounty.on.ca/arcgis/rest/services/ParcelsNoOwners/MapServer/0",
-    "website": "http://www.opendata.haldimandcounty.on.ca",
-    "conform":{
-        "type": "geojson",
-        "number": "STREET_NO",
-        "street": "STREET_NAME",
-        "unit": "STREET_UNIT",
-        "city": "ZONE_MUN"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://maps.haldimandcounty.on.ca/arcgis/rest/services/OpenData/MapServer/0",
+                "website": "http://opendata.haldimandcounty.on.ca/datasets/civic-addresses",
+                "license": {
+                    "url": "http://opendata.haldimandcounty.on.ca/",
+                    "text": "Contains information licensed under the Open Government Licence – Haldimand County",
+                    "attribution name": "Open Government Licence - Haldimand County",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "StreetAddress"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "StreetAddress"
+                    }
+                }
+            }
+        ]
     }
 }

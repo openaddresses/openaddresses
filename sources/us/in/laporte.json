@@ -9,22 +9,30 @@
         "state": "in",
         "county": "LaPorte"
     },
-    "data": "https://elb2.39dn.com/arcgis/rest/services/eGISDynamicServices/LaPorteINDynamic/MapServer/5",
-    "type": "ESRI",
-    "skip": true,
-    "note": "39dn requested that we stop using data obtained from their servers on 2017-05-07",
-    "conform": {
-      "number": "SITE_ADD",
-      "street": [
-          "SITE_DIR",
-          "SITE_ST",
-          "SITE_SUF",
-          "SITE_PD"
-      ],
-      "unit": "SITE_UNIT",
-      "city": "SITE_CITY",
-      "region": "SITE_STATE",
-      "postcode": "SITE_ZIP",
-      "type": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://elb2.39dn.com/arcgis/rest/services/eGISDynamicServices/LaPorteINDynamic/MapServer/5",
+                "protocol": "ESRI",
+                "skip": true,
+                "note": "39dn requested that we stop using data obtained from their servers on 2017-05-07",
+                "conform": {
+                    "number": "SITE_ADD",
+                    "street": [
+                        "SITE_DIR",
+                        "SITE_ST",
+                        "SITE_SUF",
+                        "SITE_PD"
+                    ],
+                    "unit": "SITE_UNIT",
+                    "city": "SITE_CITY",
+                    "region": "SITE_STATE",
+                    "postcode": "SITE_ZIP",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

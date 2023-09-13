@@ -1,38 +1,52 @@
 {
-    "conform": {
-        "lon": "POINT_X",
-        "encoding": "EUCKR",
-        "number": "LNDN_MA_SN",
-        "srs": "EPSG:2097",
-        "type": "csv",
-        "headers": 2,
-        "skiplines": 2,
-        "lat": "POINT_Y",
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        }
-    },
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
     "coverage": {
         "city": "강남구",
         "state": "seoul",
         "country": "kr",
-        "geometry": { "type": "Point", "coordinates": [127.051, 37.501] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                127.051,
+                37.501
+            ]
+        }
     },
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1064",
-    "skip": true,
-    "type": "http",
-    "compression": "zip",
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-kangnamgu.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "conform": {
+                    "lon": "POINT_X",
+                    "encoding": "EUCKR",
+                    "number": "LNDN_MA_SN",
+                    "srs": "EPSG:2097",
+                    "format": "csv",
+                    "headers": 2,
+                    "skiplines": 2,
+                    "lat": "POINT_Y",
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    }
+                },
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1064",
+                "skip": true,
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://data.openaddresses.io/cache/kr-seoul-kangnamgu.zip"
+            }
+        ]
+    }
 }

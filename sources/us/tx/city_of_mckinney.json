@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -96.6134262084961, 33.196609461052844 ]
+            "coordinates": [
+                -96.6134262084961,
+                33.196609461052844
+            ]
         },
         "US Census": {
             "geoid": "4845744",
@@ -14,72 +17,80 @@
         "county": "Taylor",
         "city": "McKinney"
     },
-    "data": "http://maps.mckinneytexas.org/mckinney/rest/services/OpenData/Addresses_Boundaries/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SitusAdd"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SitusAdd",
-            "pattern": "^\\d+\\s(.+?)(?:\\s(?:BLDG|STE)\\s+\\w+\\s*)?$"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "SitusAdd",
-            "pattern": "^\\d+\\s.+?(\\s(?:BLDG|STE)\\s+\\w+\\s*)$"
-        },
-        "city": "CITY"
-    },
-    "test": {
-        "enabled": true,
-        "description": "tests that verify that units are being extracted",
-        "acceptance-tests": [
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "address without unit",
-                "inputs": {
-                    "SitusAdd": "1003 W LAMAR ST"
+                "name": "city",
+                "data": "http://maps.mckinneytexas.org/mckinney/rest/services/OpenData/Addresses_Boundaries/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SitusAdd"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "SitusAdd",
+                        "pattern": "^\\d+\\s(.+?)(?:\\s(?:BLDG|STE)\\s+\\w+\\s*)?$"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "SitusAdd",
+                        "pattern": "^\\d+\\s.+?(\\s(?:BLDG|STE)\\s+\\w+\\s*)$"
+                    },
+                    "city": "CITY"
                 },
-                "expected": {
-                    "number": "1003",
-                    "street": "W LAMAR ST",
-                    "unit": ""
-                }
-            },
-            {
-                "description": "address with BLDG numeric-only unit",
-                "inputs": {
-                    "SitusAdd": "900 S TENNESSEE ST BLDG 1"
-                },
-                "expected": {
-                    "number": "900",
-                    "street": "S TENNESSEE ST",
-                    "unit": "BLDG 1"
-                }
-            },
-            {
-                "description": "address with BLDG alpha-numeric unit",
-                "inputs": {
-                    "SitusAdd": "900 S TENNESSEE ST BLDG 11A"
-                },
-                "expected": {
-                    "number": "900",
-                    "street": "S TENNESSEE ST",
-                    "unit": "BLDG 11A"
-                }
-            },
-            {
-                "description": "address with STE numeric-only unit",
-                "inputs": {
-                    "SitusAdd": "5610 N MCDONALD ST STE C"
-                },
-                "expected": {
-                    "number": "5610",
-                    "street": "N MCDONALD ST",
-                    "unit": "STE C"
+                "test": {
+                    "enabled": true,
+                    "description": "tests that verify that units are being extracted",
+                    "acceptance-tests": [
+                        {
+                            "description": "address without unit",
+                            "inputs": {
+                                "SitusAdd": "1003 W LAMAR ST"
+                            },
+                            "expected": {
+                                "number": "1003",
+                                "street": "W LAMAR ST",
+                                "unit": ""
+                            }
+                        },
+                        {
+                            "description": "address with BLDG numeric-only unit",
+                            "inputs": {
+                                "SitusAdd": "900 S TENNESSEE ST BLDG 1"
+                            },
+                            "expected": {
+                                "number": "900",
+                                "street": "S TENNESSEE ST",
+                                "unit": "BLDG 1"
+                            }
+                        },
+                        {
+                            "description": "address with BLDG alpha-numeric unit",
+                            "inputs": {
+                                "SitusAdd": "900 S TENNESSEE ST BLDG 11A"
+                            },
+                            "expected": {
+                                "number": "900",
+                                "street": "S TENNESSEE ST",
+                                "unit": "BLDG 11A"
+                            }
+                        },
+                        {
+                            "description": "address with STE numeric-only unit",
+                            "inputs": {
+                                "SitusAdd": "5610 N MCDONALD ST STE C"
+                            },
+                            "expected": {
+                                "number": "5610",
+                                "street": "N MCDONALD ST",
+                                "unit": "STE C"
+                            }
+                        }
+                    ]
                 }
             }
         ]

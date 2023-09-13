@@ -9,20 +9,68 @@
         "state": "wi",
         "county": "Waupaca"
     },
-    "data": "http://public1.co.waupaca.wi.us/arcgis/rest/services/Public/OpenData/MapServer/24",
-    "website": "http://www.co.waupaca.wi.us/landinformation/Data.aspx",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HSN_W_PRE",
-        "street": [
-            "ROAD_PREFIX",
-            "ROAD_NAME",
-            "ROAD_TYPE",
-            "ROAD_SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://public1.co.waupaca.wi.us/arcgis/rest/services/Public/OpenData/MapServer/24",
+                "website": "https://data2017-04-05t135915451z-waupacacounty.opendata.arcgis.com/datasets/waupacacounty::addresses/about",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0",
+                    "attribution": true,
+                    "attribution name": "Waupaca County, Wisconsin",
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HSN_W_PRE",
+                    "street": [
+                        "ROAD_PREFIX",
+                        "ROAD_NAME",
+                        "ROAD_TYPE",
+                        "ROAD_SUFFIX"
+                    ],
+                    "postcode": "ZIP",
+                    "city": "CITY",
+                    "region": "STATE"
+                }
+            }
         ],
-        "postcode": "ZIP",
-        "city": "CITY",
-        "region": "STATE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "http://public1.co.waupaca.wi.us/arcgis/rest/services/Public/OpenData/MapServer/7",
+                "website": "https://data2017-04-05t135915451z-waupacacounty.opendata.arcgis.com/datasets/waupacacounty::tax-parcels/about",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0",
+                    "attribution": true,
+                    "attribution name": "Waupaca County, Wisconsin",
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Waupaca_Buildings_2022.zip",
+                "website": "https://geodata.wisc.edu/catalog/87091CCC-A5E8-4A47-A845-39837FF06B66",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2022",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Waupaca_Buildings_2022"
+                }
+            }
+        ]
     }
 }

@@ -9,25 +9,26 @@
         "state": "mn",
         "county": "Cook"
     },
-    "data": "http://mapp.co.cook.mn.us/publicgis/rest/services/Public/TaxParcels/FeatureServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "PROPERTYADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PROPERTYADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*?)((UNIT|UNTI|APT|SLIP|#|BLDG).*|$)",
-            "replace": "$1"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "PROPERTYADDRESS",
-            "pattern": "((?:UNIT|UNTI|APT|SLIP|#|BLDG).*)$"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/L3KwVADPEG6iD24f/ArcGIS/rest/services/Tax_Parcel_Polygons_Public_View/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ANUMBER",
+                    "street": [
+                        "ST_PRE_DIR",
+                        "ST_PRE_TYP",
+                        "ST_NAME",
+                        "ST_POS_TYP",
+                        "ST_POS_DIR"
+                    ],
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

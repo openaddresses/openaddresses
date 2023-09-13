@@ -9,18 +9,50 @@
         "state": "wi",
         "county": "Kenosha"
     },
-    "data": "http://kc-web-01.kenoshacounty.org/arcgis/rest/services/Interactive_Mapping/AddressPoints/MapServer/0",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-            "PREFIX",
-            "NAME",
-            "TYPE",
-            "SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://mapping.kenoshacountywi.gov/server/rest/services/Interactive_Mapping/AddressPoints/MapServer/0",
+                "website": "https://dataportal.kenoshacounty.org/datasets/kenoshacounty::addresspoints/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "PREFIX",
+                        "NAME",
+                        "TYPE",
+                        "SUFFIX"
+                    ],
+                    "city": "Muni",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "city": "Muni",
-        "postcode": "ZIPCODE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://mapping.kenoshacountywi.gov/server/rest/services/SpecialAppData/Parcels/FeatureServer/0",
+                "website": "https://dataportal.kenoshacounty.org/datasets/kenoshacounty::parcels-3/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAG"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://mapping.kenoshacountywi.gov/server/rest/services/Interactive_Mapping/Buildings/MapServer/0",
+                "website": "https://dataportal.kenoshacounty.org/datasets/kenoshacounty::building-footprints-1/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

@@ -1,0 +1,57 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55083",
+            "name": "Oconto County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Oconto"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://oc17maps.co.oconto.wi.us/arcgis/rest/services/GeoValidation/ProductionA_MAP/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HouseNum",
+                    "street": [
+                        "PreDir",
+                        "StreetName",
+                        "StreetType"
+                    ],
+                    "unit": "UnitNumber"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://oc17maps.co.oconto.wi.us/arcgis/rest/services/Owner/Owner/MapServer/45",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TaxParcelI"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Oconto_Buildings_2022.zip",
+                "website": "https://geodata.wisc.edu/catalog/E1440413-02B3-41DA-A4FD-9D06477480E0",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2022",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Oconto_Buildings_2022"
+                }
+            }
+        ]
+    }
+}

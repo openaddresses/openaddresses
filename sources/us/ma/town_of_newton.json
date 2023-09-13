@@ -1,7 +1,4 @@
 {
-    "data": "https://github.com/NewtonMAGIS/GISData/raw/master/Addresses/Addresses.geojson",
-    "website": "https://github.com/NewtonMAGIS/GISData/",
-    "type": "http",
     "coverage": {
         "country": "us",
         "state": "ma",
@@ -20,16 +17,27 @@
             ]
         }
     },
-    "conform": {
-        "type": "geojson",
-        "id": "AddressID",
-        "number": "Number",
-        "street": [
-            "StreetName",
-            "PostType"
-        ],
-        "unit": "Unit",
-        "city": "City",
-        "postcode": "ZipCode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://github.com/NewtonMAGIS/GISData/raw/master/Addresses/Addresses.geojson",
+                "website": "https://github.com/NewtonMAGIS/GISData/",
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson",
+                    "id": "AddressID",
+                    "number": "Number",
+                    "street": [
+                        "StreetName",
+                        "PostType"
+                    ],
+                    "unit": "Unit",
+                    "city": "City",
+                    "postcode": "ZipCode"
+                }
+            }
+        ]
     }
 }

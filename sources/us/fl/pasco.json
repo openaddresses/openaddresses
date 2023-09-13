@@ -9,17 +9,36 @@
         "state": "fl",
         "county": "Pasco"
     },
-    "data": "http://pascoview.pascocountyfl.net/gisweb/rest/services/PascoViewBaseMap/MapServer/1",
-    "type": "ESRI",
-    "conform": {
-        "type": "geojson",
-        "number": "ADDRESS_NUMBER",
-        "street": "FULL_STREET_NAME",
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_IDENTIFIER"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://pascogis.pascocountyfl.net/gisweb/rest/services/Accela/PascoAccela/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS_NUMBER",
+                    "street": "FULL_STREET_NAME",
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_IDENTIFIER"
+                    ],
+                    "city": "MAILING_CITY",
+                    "postcode": "ZIP_CODE5"
+                }
+            }
         ],
-        "city": "MAILING_CITY",
-        "postcode": "ZIP_CODE5"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://pascogis.pascocountyfl.net/gisweb/rest/services/Accela/PascoAccela/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "HPARCEL"
+                }
+            }
+        ]
     }
 }
