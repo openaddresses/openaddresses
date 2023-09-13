@@ -14,25 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/us-ga-twiggs_county.csv",
-                "protocol": "http",
+                "data": "https://services1.arcgis.com/YwCV9A7cLN6cgxhP/ArcGIS/rest/services/AMI_Tax_Parcels/FeatureServer/1",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "csv",
-                    "lat": "LAT",
-                    "lon": "LNG",
-                    "number": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^([0-9]+)( .*)",
-                        "replace": "$1"
-                    },
+                    "format": "geojson",
+                    "number": "ADDR_NUMBE",
                     "street": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
+                        "function": "postfixed_street",
+                        "field": "SITUS"
                     },
-                    "region": "REGION"
+                    "city": "SITUS_CITY",
+                    "district": "COUNTY_NAM",
+                    "region": "STATE_ABBR",
+                    "postcode": "SITUS_ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/YwCV9A7cLN6cgxhP/ArcGIS/rest/services/AMI_Tax_Parcels/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
                 }
             }
         ]

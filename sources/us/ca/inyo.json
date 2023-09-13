@@ -19,8 +19,14 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ST_NUM",
-                    "street": "STREET",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FULL_ADDR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FULL_ADDR"
+                    },
                     "city": "TOWN"
                 }
             }

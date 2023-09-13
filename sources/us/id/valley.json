@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "16085",
+            "name": "Valley County",
+            "state": "Idaho"
+        },
+        "country": "us",
+        "state": "id",
+        "county": "Valley"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/ikurHvtarxfN6u3u/ArcGIS/rest/services/Address_Points_Open_Data/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "STR_NUM"
+                    ],
+                    "street": [
+                        "PRE_DIR",
+                        "PREFIX",
+                        "STREET",
+                        "SUFFIX",
+                        "POST_DIR"
+                    ],
+                    "unit": "EXTRA_INFO",
+                    "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/ikurHvtarxfN6u3u/ArcGIS/rest/services/Valley_County_Parcels_Open_Data/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNO"
+                }
+            }
+        ]
+    }
+}

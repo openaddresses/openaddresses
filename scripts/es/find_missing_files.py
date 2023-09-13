@@ -1,5 +1,5 @@
 # finds files that were not successfully converted; when I ran the code,
-# this revealed 14, all of which had misformed URLs. I corrected them 
+# this revealed 14, all of which had misformed URLs. I corrected them
 # manually and re-ran the import
 
 import os

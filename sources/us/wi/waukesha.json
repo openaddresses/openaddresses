@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.waukesha-wi.gov/server/rest/services/AddressPoints/MapServer/0",
+                "data": "https://gis2.waukcogeo.com/server/rest/services/E911/MapServer/10",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -32,6 +32,31 @@
                     "city": "PostOffice",
                     "postcode": "ZipCode",
                     "accuracy": 1
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis2.waukcogeo.com/server/rest/services/Web_Tax_Parcel/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Waukesha_Buildings_2020.zip",
+                "website": "https://geodata.wisc.edu/catalog/344D97CD-1476-4CAB-91E9-56877ECF8BE3",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2020",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Waukesha_Buildings_2020"
                 }
             }
         ]

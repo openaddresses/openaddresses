@@ -21,7 +21,8 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://gis.anaheim.net/server/rest/services/OpenData/MapServer/1",
+                "data": "https://gis.anaheim.net/map/rest/services/OpenData/MapServer/1",
+                "website": "https://data-anaheim.opendata.arcgis.com/datasets/anaheim::address-points/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -39,6 +40,27 @@
                     "unit": "ADDR_ST_UNIT",
                     "city": "POSTALCITY",
                     "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.anaheim.net/map/rest/services/ParcelInfo/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.anaheim.net/map/rest/services/OpenData2/FeatureServer/47",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

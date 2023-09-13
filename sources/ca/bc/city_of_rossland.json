@@ -1,0 +1,59 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "city": "Rossland",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -117.8,
+                49.08
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/MdQGqKoSXWzxRMkz/ArcGIS/rest/services/Civic_Addresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "CIVIC_ID",
+                    "number": [
+                        "STREET_NUMBER",
+                        "STREET_NUMBER_PREFIX"
+                    ],
+                    "street": [
+                        "STREET_DIR_PREFIX",
+                        "STREET_NAME",
+                        "STREET_DIR_SUFFIX"
+                    ],
+                    "city": "LOCALITY"
+                }
+            }
+        ],
+        "parcels": [
+           {
+               "name": "city",
+               "data": "https://services2.arcgis.com/MdQGqKoSXWzxRMkz/ArcGIS/rest/services/Parcel_Viewer_(public)/FeatureServer/19",
+               "protocol": "ESRI",
+               "conform": {
+                   "format": "geojson",
+                   "pid": "PID"
+               }
+           }
+       ],
+       "buildings": [
+        {
+            "name": "city",
+            "data": "https://services2.arcgis.com/MdQGqKoSXWzxRMkz/ArcGIS/rest/services/Buildings_(public)/FeatureServer/33",
+            "protocol": "ESRI",
+            "conform": {
+                "format": "geojson"
+            }
+        }
+    ]
+    }
+}

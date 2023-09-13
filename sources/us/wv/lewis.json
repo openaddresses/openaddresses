@@ -1,0 +1,45 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "54041",
+            "name": "Lewis County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Lewis"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.landmarkgeospatial.com:8443/arcgis/rest/services/Lewis/LewisSites/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS_NUMBER",
+                    "street": "STREET_NAME",
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUMBER"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.landmarkgeospatial.com:8443/arcgis/rest/services/Lewis/LewisParcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARID"
+                }
+            }
+        ]
+    }
+}
