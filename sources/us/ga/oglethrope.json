@@ -1,0 +1,42 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "13221",
+            "name": "Oglethorpe County",
+            "state": "Georgia"
+        },
+        "country": "us",
+        "state": "ga",
+        "county": "Oglethorpe"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/IX9GvidKl201KteW/ArcGIS/rest/services/The_Official_Zoning_Map_of_Oglethorpe_County__Georgia_WFL1/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "house_no",
+                    "street": [
+                        "street_nam",
+                        "sttype"
+                    ],
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/IX9GvidKl201KteW/ArcGIS/rest/services/The_Official_Zoning_Map_of_Oglethorpe_County__Georgia_WFL1/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_No"
+                }
+            }
+        ]
+    }
+}

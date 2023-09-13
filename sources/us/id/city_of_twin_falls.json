@@ -1,0 +1,55 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "1682810",
+            "name": "City of Twin Falls",
+            "state": "Idaho"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -114.46,
+                42.57
+            ]
+        },
+        "country": "us",
+        "state": "id",
+        "city": "Twin Falls"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://tfportal.tfid.org/arcgisserver/rest/services/Address_Data/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "preaddrnum",
+                        "addrnum",
+                        "addrnumsuf"
+                    ],
+                    "street": "fullname",
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "msag",
+                    "region": "stateabbreviation"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://tfportal.tfid.org/arcgisserver/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
+    }
+}

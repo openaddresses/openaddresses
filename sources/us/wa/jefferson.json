@@ -14,11 +14,15 @@
         "addresses": [
             {
                 "name": "county",
-                "license": "http://www.co.jefferson.wa.us/idms/mapserver.shtml",
                 "protocol": "ESRI",
-                "note": "previous data was parcel polygons at http://www.co.jefferson.wa.us/idms/shapefiles/Parcels_Public.zip",
                 "data": "https://gisweb.jeffcowa.us/server/rest/services/OpenData/OpenData/MapServer/19",
-                "website": "https://hub.arcgis.com/datasets/b3654c5205da4e05b5e63f3d04b0ebc1_19",
+                "website": "https://gisdata-jeffcowa.opendata.arcgis.com/datasets/JeffCoWA::site-address-points/about",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Jefferson County GIS"
+                },
                 "conform": {
                     "format": "geojson",
                     "number": "Add_Number",
@@ -29,6 +33,24 @@
                     ],
                     "city": "Post_Comm",
                     "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gisweb.jeffcowa.us/server/rest/services/OpenData/OpenData/MapServer/4",
+                "website": "https://gisdata-jeffcowa.opendata.arcgis.com/datasets/JeffCoWA::public-parcels/about",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Jefferson County GIS"
+                },
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

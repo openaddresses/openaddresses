@@ -15,18 +15,43 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://maps.deschutes.org/arcgis/rest/services/CDDDepartment/Addressing_AGOL/MapServer/4",
+                "data": "https://services1.arcgis.com/znO8Hz1SuVVohYhZ/ArcGIS/rest/services/E911_Address_Points/FeatureServer/0",
+                "website": "https://data.deschutes.org/datasets/deschutes::e911-address-points-2/about",
+                "license": {
+                    "url": "https://www.deschutes.org/administration/page/liability-disclaimer-and-user-agreement",
+                    "text": "Indemnification"
+                },
                 "conform": {
                     "format": "geojson",
-                    "number": "House_Number",
+                    "number": "ADDNUM",
                     "street": [
-                        "Direction",
-                        "Street_Name",
-                        "Street_Type"
+                        "PREFIX",
+                        "NAME",
+                        "SUFFIX"
                     ],
-                    "unit": "Unit_Number",
-                    "city": "City",
-                    "postcode": "Zip"
+                    "unit": [
+                        "SUB_ADD_TYPE",
+                        "SUB_ADD_UNIT"
+                    ],
+                    "city": "POSTAL_COMMUNITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services1.arcgis.com/znO8Hz1SuVVohYhZ/ArcGIS/rest/services/Taxlots/FeatureServer/0",
+                "website": "https://data.deschutes.org/datasets/deschutes::taxlot-1/about",
+                "license": {
+                    "url": "https://www.deschutes.org/administration/page/liability-disclaimer-and-user-agreement",
+                    "text": "Indemnification"
+                },
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAXLOT"
                 }
             }
         ]

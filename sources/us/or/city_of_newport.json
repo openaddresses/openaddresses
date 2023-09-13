@@ -1,0 +1,64 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -124.053,
+                44.637
+            ]
+        },
+        "US Census": {
+            "geoid": "4152450",
+            "name": "City of Newport",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "city": "Newport"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/Nse9mKSgB2fD47Hg/ArcGIS/rest/services/Address_Points_UGB/FeatureServer/0",
+                "website": "https://onp.maps.arcgis.com/home/item.html?id=c0270dbe87f54c91aec85c5769b609a6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADD_NUM",
+                        "ADD_NUMSUF"
+                    ],
+                    "street": [
+                        "ST_PREMOD",
+                        "ST_PREDIR",
+                        "ST_PRETYPE",
+                        "ST_NAME",
+                        "ST_POSTYPE",
+                        "ST_POSTDIR",
+                        "ST_POSTMOD"
+                    ],
+                    "unit": [
+                        "SUB_TYPE",
+                        "SUB_VAL"
+                    ],
+                    "city": "PO_NAME",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/Nse9mKSgB2fD47Hg/ArcGIS/rest/services/taxlots_2000ft_UGB/FeatureServer/0",
+                "website": "https://onp.maps.arcgis.com/home/item.html?id=cb7aed78873a4ed7a4f1790c3c11b8b1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MapTaxlot"
+                }
+            }
+        ]
+    }
+}

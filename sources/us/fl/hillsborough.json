@@ -14,10 +14,16 @@
         "addresses": [
             {
                 "name": "county",
-                "attribution": "Hillsborough County",
                 "data": "https://arcgis.tampagov.net/arcgis/rest/services/Address/AddressPoints/FeatureServer/0",
                 "protocol": "ESRI",
-                "website": "ftp://ftp.hillsboroughcounty.org/",
+                "website": "https://gis2017-01-10t133755357z-hillsborough.opendata.arcgis.com/datasets/hillsborough::site-address-point/about",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Hillsborough County",
+                    "share-alike": true
+                },
                 "conform": {
                     "format": "geojson",
                     "number": [
@@ -35,6 +41,29 @@
                         "DIRSUF"
                     ],
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Hillsborough County",
+                "data": "https://arcgis.tampagov.net/arcgis/rest/services/Parcels/TaxParcel/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Hillsborough County",
+                "data": "https://arcgis.tampagov.net/arcgis/rest/services/BaseMaps/BuildingFootprint/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

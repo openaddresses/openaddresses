@@ -1,0 +1,64 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "41021",
+            "name": "Gilliam County",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "county": "Gilliam"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/e3KSI9Py4B7m3xu6/ArcGIS/rest/services/Gilliam03_other/FeatureServer/2",
+                "website": "https://harneycounty.maps.arcgis.com/home/item.html?id=78a08201ac8a45ca9e5d88b801a936fe",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS_NUMBER",
+                    "street": [
+                        "PRE_MODIFIER",
+                        "PREFIX_DIRECTIONAL",
+                        "PRE_TYPE",
+                        "STREET_NAME",
+                        "POST_TYPE",
+                        "POST_DIRECTIONAL",
+                        "POST_MODIFIER"
+                    ],
+                    "unit": [
+                        "UNIT_NO",
+                        "UNIT_TYPE"
+                    ],
+                    "city": "COMMUNITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/e3KSI9Py4B7m3xu6/ArcGIS/rest/services/Gilliam01_TL/FeatureServer/6",
+                "website": "https://harneycounty.maps.arcgis.com/home/item.html?id=03bb07508b5244448d7881eb5690e084",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MAPTAXLOT"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/e3KSI9Py4B7m3xu6/ArcGIS/rest/services/Gilliam05_Buildingfootprint/FeatureServer/0",
+                "website": "https://harneycounty.maps.arcgis.com/home/item.html?id=5426afaab86e4fada01f40811c447daf",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

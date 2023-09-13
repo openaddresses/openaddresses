@@ -11,34 +11,37 @@
         "addresses": [
             {
                 "name": "country",
-                "website": "https://egp.gu.gov.si/egp/",
-                "data": "https://raba.openstreetmap.si/openaddresses/si-addresses-latest.zip",
-                "note": "Updated periodically. Source must be regenerated using script in this repo's /scripts/si directory.",
+                "website": "https://ipi.eprostor.gov.si/jgp/data",
+                "data": "https://ipi.eprostor.gov.si/jgp-service-api/display-views/groups/121/composite-products/141/file?filterParam=DRZAVA&filterValue=1",
+                "frequency": "weekly",
                 "protocol": "http",
                 "compression": "zip",
                 "license": {
                     "text": "CC BY 4.0",
                     "url": "https://creativecommons.org/licenses/by/4.0/",
                     "attribution": true,
-                    "attribution name": "Geodetska uprava Republike Slovenije / The Surveying and Mapping Authority of the Republic of Slovenia, Register prostorskih enot / Register of Spatial Units, 2022",
+                    "attribution name": "Geodetska uprava Republike Slovenije / The Surveying and Mapping Authority of the Republic of Slovenia, Naslovi hišnih številk / House number addresses, 2023",
                     "share-alike": false
                 },
-                "year": 2022,
+                "year": 2023,
                 "conform": {
                     "encoding": "UTF-8",
-                    "srs": "EPSG:4326",
+                    "srs": "EPSG:3794",
                     "format": "csv",
-                    "csvsplit": ";",
                     "accuracy": 1,
-                    "lon": "lon",
-                    "lat": "lat",
-                    "number": "number",
-                    "street": "street",
-                    "city": "city",
-                    "district": "commune",
-                    "region": "region",
-                    "postcode": "postcode",
-                    "id": "id"
+                    "lon": "E",
+                    "lat": "N",
+                    "number": {
+                        "function": "join",
+                        "fields": ["HS_STEVILKA", "HS_DODATEK"],
+                        "separator": ""
+                    },
+                    "street": "ULICA_NAZIV",
+                    "city": "NASELJE_NAZIV",
+                    "district": "OBCINA_NAZIV",
+                    "region": "STATISTICNA_REGIJA_NAZIV",
+                    "postcode": "POSTNI_OKOLIS_SIFRA",
+                    "id": "EID_HISNA_STEVILKA"
                 }
             }
         ],
@@ -54,10 +57,10 @@
                     "text": "CC BY 4.0",
                     "url": "https://creativecommons.org/licenses/by/4.0/",
                     "attribution": true,
-                    "attribution name": "Geodetska uprava Republike Slovenije / The Surveying and Mapping Authority of the Republic of Slovenia, Kataster stavb / Building Cadastre, 2022",
+                    "attribution name": "Geodetska uprava Republike Slovenije / The Surveying and Mapping Authority of the Republic of Slovenia, Kataster stavb / Building Cadastre, 2023",
                     "share-alike": false
                 },
-                "year": 2022,
+                "year": 2023,
                 "conform": {
                     "file": "KS_SLO_SHP_G_TLORISI.shp",
                     "format": "shapefile",

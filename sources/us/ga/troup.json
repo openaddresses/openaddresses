@@ -14,25 +14,36 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/us-ga-troup_county.csv",
-                "protocol": "http",
+                "data": "https://services.arcgis.com/V4Y8xIvXuYJiVZwF/ArcGIS/rest/services/Address_Parcels/FeatureServer/0",
+                "website": "https://troupcountyga.maps.arcgis.com/home/item.html?id=7fdf6a02bacc49dabce9021f22d506f6&sublayer=0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "csv",
-                    "lat": "LAT",
-                    "lon": "LNG",
-                    "number": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^([0-9]+)( .*)",
-                        "replace": "$1"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "region": "REGION"
+                    "format": "geojson",
+                    "number": "HOUSE_NO",
+                    "street": [
+                        "PRE",
+                        "STREET_NAM",
+                        "STTYPE",
+                        "POST"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "Unit_Number"
+                    ],
+                    "city": "TOWN",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/V4Y8xIvXuYJiVZwF/ArcGIS/rest/services/Address_Parcels/FeatureServer/1",
+                "website": "https://troupcountyga.maps.arcgis.com/home/item.html?id=7fdf6a02bacc49dabce9021f22d506f6&sublayer=1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Tax_Number"
                 }
             }
         ]

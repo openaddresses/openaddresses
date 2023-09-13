@@ -1,0 +1,43 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "54039",
+            "name": "Kanawha County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Kanawha"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://kanawhacountyassessorgis.com/server/rest/services/Address_Points_Nov_2022/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FULLADDR"
+                    },
+                    "street": "ROADNAME",
+                    "city": "POSTAL_COM",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://kanawhacountyassessorgis.com/server/rest/services/parcel_layer_test/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARID"
+                }
+            }
+        ]
+    }
+}

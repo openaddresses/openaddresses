@@ -15,17 +15,30 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://gis.co.josephine.or.us/arcgis/rest/services/Site_Addresses/MapServer/0",
+                "data": "https://gis.co.josephine.or.us/arcgis/rest/services/Assessor/Taxlot_Points/MapServer/0",
                 "conform": {
                     "format": "geojson",
-                    "number": "STNUM",
+                    "number": "ST_NO",
                     "street": [
-                        "NAME",
-                        "TYPE"
+                        "SITUS_PREF",
+                        "ST_NAME",
+                        "SITUS_SUFF"
                     ],
-                    "city": "POSTCOMM",
-                    "postcode": "ZIP",
+                    "city": "SITUS_CITY",
+                    "region": "SITUS_ST",
+                    "postcode": "SITUS_ZIP",
                     "district": "COUNTY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis.co.josephine.or.us/arcgis/rest/services/Assessor/Assessor_Taxlots/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MNX"
                 }
             }
         ]

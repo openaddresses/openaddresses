@@ -1,0 +1,69 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55083",
+            "name": "Monroe County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Monroe"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/MENOMINEE_ADDRESSES_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/E2BD6FF4-E42B-4821-BD52-D6702EF78BC2",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "MENOMINEE_ADDRESSES_2023",
+                    "number": [
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": "FullStName",
+                    "unit": [
+                        "UnitType",
+                        "UnitVal"
+                    ],
+                    "city": "Post_Comm",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Monroe_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/432711B6-7A42-4305-ADAF-02D89B49303D",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/MONROE_BUILDINGS_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/D243ED0B-1B75-4D2E-88F5-32609B45BD22",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "MONROE_BUILDINGS_2023"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "54001",
+            "name": "Barbour County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Barbour"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/BarbourStatic/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "st_number",
+                        "st_numsuffix"
+                    ],
+                    "street": [
+                        "st_prefixdir",
+                        "st_name",
+                        "st_type",
+                        "st_sfx",
+                        "st_suffixdir"
+                    ],
+                    "unit": "unit",
+                    "city": "community",
+                    "postcode": "zip_1"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/BarbourService_/FeatureServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parid"
+                }
+            }
+        ]
+    }
+}

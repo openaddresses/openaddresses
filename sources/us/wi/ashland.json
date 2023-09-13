@@ -1,0 +1,61 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55003",
+            "name": "Ashland County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Ashland"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/QlEvoqmtm2DnG9gw/arcgis/rest/services/AC_Addresses/FeatureServer/0",
+                "website": "https://data-ashlandcountywi.opendata.arcgis.com/datasets/AshlandCountyWI::ac-addresses/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "number": "h_num",
+                    "street": "road_name",
+                    "city": "city",
+                    "region": "state",
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/QlEvoqmtm2DnG9gw/arcgis/rest/services/Tax_Parcels_01042019/FeatureServer/0",
+                "website": "https://data-ashlandcountywi.opendata.arcgis.com/datasets/AshlandCountyWI::ac-tax-parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PlanID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Ashland_Buildings_2020.zip",
+                "website": "https://geodata.wisc.edu/catalog/97C22915-41CA-473A-AB3A-91005E4F1EF5",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2020",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Ashland_Buildings_2020"
+                }
+            }
+        ]
+    }
+}

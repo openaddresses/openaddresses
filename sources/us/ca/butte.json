@@ -15,14 +15,13 @@
             {
                 "name": "county",
                 "attribution": "Butte County",
-                "data": "https://github.com/datadesk/us-ca-butte_county-addresses_parcels_roads-shp/blob/master/address.zip?raw=true",
-                "website": "http://www.buttecounty.net/gis/Home.aspx",
-                "protocol": "http",
-                "compression": "zip",
-                "note": "Received via a public records request filed with county government and uploaded to GitHub for public hosting",
+                "data": "https://gisportal.buttecounty.net/arcgis/rest/services/Base_Layers/FeatureServer/3",
+                "website": "https://gisportal.buttecounty.net/portal/home/item.html?id=9144daa8e8744ebe80e587d859c0a0fe",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "city": "CITY",
+                    "region": "STATE",
                     "postcode": "ZIP",
                     "number": "HOUSE_NUM",
                     "street": [
@@ -32,6 +31,19 @@
                         "SUF_DIR"
                     ],
                     "unit": "UNIT"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Butte County",
+                "data": "https://gisportal.buttecounty.net/arcgis/rest/services/Base_Layers/FeatureServer/2",
+                "website": "https://gisportal.buttecounty.net/portal/home/item.html?id=9144daa8e8744ebe80e587d859c0a0fe",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
                 }
             }
         ]

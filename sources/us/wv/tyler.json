@@ -1,0 +1,50 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "53095",
+            "name": "Tyler County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Tyler"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/Tyler_911/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "id": "siteaddid",
+                    "number": [
+                        "preaddrnum",
+                        "addrnum",
+                        "addrnumsuf"
+                    ],
+                    "street": "fullstname",
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "msag",
+                    "region": "state",
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/TylerCounty_AGOL_Parcels/FeatureServer/4",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parid"
+                }
+            }
+        ]
+    }
+}

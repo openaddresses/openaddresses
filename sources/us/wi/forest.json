@@ -1,0 +1,65 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55041",
+            "name": "Forest County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Forest"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/FOREST_ADDRESSES_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/E3EE340B-2B27-4827-973D-5356B3DEAF57",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "FOREST_ADDRESSES_2023",
+                    "number": "AddNum",
+                    "street": "FullStNm",
+                    "unit": [
+                        "UnitType",
+                        "UnitNum"
+                    ],
+                    "city": "ZIPMuni",
+                    "district": "CntyName",
+                    "region": "StateName",
+                    "postcode": "ZIPCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Forest_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/3AECAA00-6A5E-499C-B940-39554C10C099",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/FOREST_BUILDINGS_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/43000DFE-7052-44B5-96BD-415C4C248FBE",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "FOREST_BUILDINGS_2023"
+                }
+            }
+        ]
+    }
+}

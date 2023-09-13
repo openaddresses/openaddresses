@@ -16,7 +16,7 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://services1.arcgis.com/qAo1OsXi67t7XgmS/arcgis/rest/services/Addresses/FeatureServer/0",
+                "data": "https://opendata.arcgis.com/api/v3/datasets/fb1ce9625c634b2dbe1d2be36d419711_0/downloads/data?format=shp&spatialRefId=4326&where=1%3D1",
                 "website": "https://rowopendata-rmw.opendata.arcgis.com/datasets/98e0a9aa3f8e447380f27fdc1c170d02_0",
                 "license": {
                     "url": "https://www.regionofwaterloo.ca/en/regional-government/open-data.aspx",
@@ -24,14 +24,16 @@
                     "attribution": true,
                     "share-alike": false
                 },
-                "protocol": "ESRI",
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "number": "CIVIC_ADDR",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "CIVIC_ADDR"
+                    },
                     "street": "STREET_NM",
-                    "format": "geojson"
-                },
-                "skip": true,
-                "note": "ESRI open data portal source - file generated dynamically and not consistently cached on demand"
+                    "format": "shapefile"
+                }
             }
         ]
     }

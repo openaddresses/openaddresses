@@ -14,19 +14,48 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "http://gis.co.marion.or.us/GISDownload/gisdownload.aspx",
+                "website": "https://gis-marioncounty.opendata.arcgis.com/datasets/MarionCounty::marion-county-parcels/about",
                 "data": "http://gis.co.marion.or.us/gisdownload/download/assessors/taxlot.zip",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "format": "shapefile-polygon",
-                    "number": "XSTNO",
+                    "format": "shapefile",
+                    "number": "STREETNUM",
                     "street": [
-                        "SDIRPX",
-                        "STNAM",
-                        "STYP",
-                        "SDIRSX"
-                    ]
+                        "PRE_DIR",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "POST_DIR"
+                    ],
+                    "unit": "UNITNUM",
+                    "city": {
+                        "function": "regexp",
+                        "field": "SITUSCSZ",
+                        "pattern": "^(.+?)(?:,|\\d+)"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "SITUSCSZ",
+                        "pattern": "\\b(OR)\\b"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "SITUSCSZ",
+                        "pattern": "\\b(\\d+)$"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://gis-marioncounty.opendata.arcgis.com/datasets/MarionCounty::marion-county-parcels/about",
+                "data": "http://gis.co.marion.or.us/gisdownload/download/assessors/taxlot.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "TAXLOT"
                 }
             }
         ]

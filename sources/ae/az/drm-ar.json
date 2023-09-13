@@ -1,0 +1,37 @@
+{
+    "coverage": {
+        "country": "ae",
+        "city": "Al Dhafrah Region Municipality"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://geoportal.drm.gov.ae/server/rest/services/addressing/addressing/MapServer/0",
+                "protocol": "ESRI",
+                "language": "ar",
+                "conform": {
+                    "id": "AddressID",
+                    "number": "AddressNumber",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Complete_Address"
+                    },
+                    "district": "DistrictNameArabic",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://geoportal.drm.gov.ae/server/rest/services/Makani/DRMPRODBK_BaseMap/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

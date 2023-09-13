@@ -14,25 +14,26 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/us-ga-stewart_county.csv",
-                "protocol": "http",
+                "data": "https://services1.arcgis.com/Ug5xGQbHsD8zuZzM/ArcGIS/rest/services/AddressesEMS/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "csv",
-                    "lat": "LAT",
-                    "lon": "LNG",
-                    "number": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^([0-9]+)( .*)",
-                        "replace": "$1"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "region": "REGION"
+                    "format": "geojson",
+                    "number": "NUMBER",
+                    "street": "ROAD",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/Ug5xGQbHsD8zuZzM/ArcGIS/rest/services/Parcels2022/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_No"
                 }
             }
         ]

@@ -1,0 +1,46 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "54071",
+            "name": "Pendleton County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Pendleton"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/PendletonService2019/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ST_NUMBER",
+                    "street": [
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SFX",
+                        "ST_SUFFIXD"
+                    ],
+                    "unit": "UNIT",
+                    "city": "COMMUNITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/PendletonService2019/FeatureServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parid"
+                }
+            }
+        ]
+    }
+}

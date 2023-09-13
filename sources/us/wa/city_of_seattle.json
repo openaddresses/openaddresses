@@ -1,0 +1,65 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -122.33,
+                47.604
+            ]
+        },
+        "US Census": {
+            "geoid": "5363000",
+            "name": "City of Seattle",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa",
+        "city": "Seattle"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/TRANSPO_MAFDAP_PV/FeatureServer/1",
+                "website": "https://data.seattle.gov/dataset/Addresses-MAF-/y8kz-x5b5",
+                "conform": {
+                    "format": "geojson",
+                    "id": "MAF_ID",
+                    "number": "MAF_HSENUMMOD",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "MAF_ADDRESS"
+                    },
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Zoned_Development_Capacity_Layers_2016/FeatureServer/2",
+                "website": "https://data.seattle.gov/dataset/Parcels/u4im-m88e",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://gisdata.seattle.gov/server/rest/services/COS/COS_Building_Outlines_2015/MapServer/0",
+                "website": "https://data.seattle.gov/dataset/Building-Outlines-2015/myr3-bpjz",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

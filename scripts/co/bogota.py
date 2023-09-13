@@ -38,4 +38,3 @@ except StopIteration:
     outfile.write('\n')
 
 outfile.write(']}')
-

@@ -16,14 +16,17 @@
         "addresses": [
             {
                 "name": "city",
-                "year": "2018",
-                "website": "https://data.lacity.org/",
-                "data": "https://data.openaddresses.io/cache/uploads/ingalls/us-ca-city_of_los_angeles.zip",
-                "note": "Cached from: https://data.lacity.org/",
+                "website": "https://data.lacity.org/City-Infrastructure-Service-Requests/Addresses-in-the-City-of-Los-Angeles/4ca8-mxuh",
+                "data": "https://data.lacity.org/api/views/4ca8-mxuh/rows.csv?accessType=DOWNLOAD",
+                "license": {
+                    "text": "CC0 1.0",
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "attribution": false,
+                    "share-alike": false
+                },
                 "protocol": "http",
-                "compression": "zip",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "csv",
                     "id": "PIN",
                     "unit": "HSE_FRAC_N",
                     "number": "HSE_NBR",
@@ -31,9 +34,30 @@
                         "HSE_DIR_CD",
                         "STR_NM",
                         "STR_SFX_CD",
-                        "STR_SFX_DI"
+                        "STR_SFX_DIR_CD"
                     ],
-                    "postcode": "ZIP_CD"
+                    "postcode": "ZIP_CD",
+                    "lat": "LAT",
+                    "lon": "LON"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "website": "https://data.lacity.org/City-Infrastructure-Service-Requests/Parcels/sa82-xry4",
+                "data": "https://data.lacity.org/api/geospatial/sa82-xry4?method=export&format=Original",
+                "license": {
+                    "text": "CC0 1.0",
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PIN"
                 }
             }
         ]

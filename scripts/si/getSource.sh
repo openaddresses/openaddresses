@@ -6,9 +6,9 @@ maxAge=720
 
 countTooOld=3
 
-if [ -f "${dest}RPE_PE.ZIP" ] && [ -f "${dest}RPE_UL.ZIP" ] && [ -f "${dest}RPE_HS.ZIP" ] ; then
+if [ -f "${dest}KS_SLO_SHP_G.zip" ] ; then
 	#check age of existing files
-	countTooOld=$(find "${dest}RPE_PE.ZIP" "${dest}RPE_UL.ZIP" "${dest}RPE_HS.ZIP" -mmin +${maxAge} | wc -l)
+	countTooOld=$(find "${dest}KS_SLO_SHP_G.zip" -mmin +${maxAge} | wc -l)
 fi
 
 # exit if all are newer than max age
@@ -74,27 +74,6 @@ wget --quiet --load-cookies cookies.txt \
 
 # Now grab the data we care about.
 
-#RPE_PE.ZIP
-wget --load-cookies cookies.txt \
-     --directory-prefix "${dest}" \
-     --content-disposition -N \
-     --ca-certificate=sigov-ca2.pem \
-     "https://egp.gu.gov.si/egp/download-file.html?id=105&format=10&d96=1"
-
-#RPE_UL.ZIP
-wget --load-cookies cookies.txt \
-     --directory-prefix "${dest}" \
-     --content-disposition -N \
-     --ca-certificate=sigov-ca2.pem \
-    "https://egp.gu.gov.si/egp/download-file.html?id=106&format=10&d96=1"
-
-#RPE_HS.ZIP
-wget --load-cookies cookies.txt \
-     --directory-prefix "${dest}" \
-     --content-disposition -N \
-     --ca-certificate=sigov-ca2.pem \
-     "https://egp.gu.gov.si/egp/download-file.html?id=107&format=10&d96=1"
-
 #KS_SLO_SHP_G.zip
 wget --load-cookies cookies.txt \
      --directory-prefix "${dest}" \
@@ -105,8 +84,6 @@ wget --load-cookies cookies.txt \
 rm cookies.txt
 
 #----- extract: -------
-for file in "${dest}"RPE_*.ZIP; do extdir=$(basename "$file" .ZIP); echo "$extdir"; rm -rf "${dest}${extdir}"; unzip -o -d "${dest}$extdir" "$file"; done
-for file in "${dest}"RPE_*/*.zip; do unzip -o -d "${dest}" "$file"; done
 
 for file in "${dest}"KS_SLO_*.zip; do extdir=$(basename "$file" .zip); echo "$extdir"; rm -rf "${dest}${extdir}"; unzip -o -d "${dest}$extdir" "$file"; done
 

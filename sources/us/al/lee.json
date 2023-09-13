@@ -1,0 +1,47 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "01081",
+            "name": "Lee County",
+            "state": "Alabama"
+        },
+        "country": "us",
+        "state": "al",
+        "county": "Lee"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://leeco.maps.arcgis.com/sharing/rest/content/items/fe73fd714ec54e4a9c50a5db6583d6c7/data",
+                "website": "http://www.leeco.us/business/gis/open_data_gis.php",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "NUMBER",
+                    "street": "STREET",
+                    "unit": {
+                        "function": "chain",
+                        "variable": "unit_wip",
+                        "functions": [
+                            {
+                                "function": "remove_prefix",
+                                "field": "ADDR1",
+                                "field_to_remove": "NUMBER"
+                            },
+                            {
+                                "function": "remove_prefix",
+                                "field": "unit_wip",
+                                "field_to_remove": "STREET"
+                            }
+                        ]
+                    },
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
+    }
+}

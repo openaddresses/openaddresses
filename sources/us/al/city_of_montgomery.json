@@ -1,0 +1,65 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -86.279167,
+                32.361667
+            ]
+        },
+        "US Census": {
+            "geoid": "0151000",
+            "name": "City of Montgomery",
+            "state": "Alabama"
+        },
+        "country": "us",
+        "state": "al",
+        "county": "Montgomery",
+        "city": "Montgomery"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis.montgomeryal.gov/server/rest/services/Buildings/MapServer/0",
+                "protocol": "ESRI",
+                "website": "http://montgomeryal.gov",
+                "attribution": "City of Montgomery",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ST_NUM",
+                        "NUM_SUFX"
+                    ],
+                    "street": [
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "ST_NAME",
+                        "POST_TYPE",
+                        "POST_DIR"
+                    ],
+                    "unit": [
+                        "SUB_UNIT",
+                        "UNIT_ID"
+                    ],
+                    "postcode": "ZIPCODE",
+                    "city": "PLACE",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "http://gis.montgomeryal.gov/server/rest/services/Buildings/MapServer/1",
+                "protocol": "ESRI",
+                "website": "http://montgomeryal.gov",
+                "attribution": "City of Montgomery",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

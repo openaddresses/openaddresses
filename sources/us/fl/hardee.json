@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "12049",
+            "name": "Hardee County",
+            "state": "Florida"
+        },
+        "country": "us",
+        "state": "fl",
+        "county": "Hardee"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.hardeecounty.net/arcgis/rest/services/Addressing/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SITEADDID",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": [
+                        "FULLNAME",
+                        "ST_TYPE"
+                    ],
+                    "unit": "UNITID",
+                    "city": "MUNICIPALITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.hardeecounty.net/arcgis/rest/services/Addressing/MapServer/10",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN_DELIM"
+                }
+            }
+        ]
+    }
+}

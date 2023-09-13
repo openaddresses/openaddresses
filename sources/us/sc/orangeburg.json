@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis2.orangeburgcounty.org/dataportal/rest/services/SiteAddressesView/MapServer/0",
+                "data": "https://gis2.orangeburgcounty.org/dataportal/rest/services/SiteAddressesView/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -24,7 +24,29 @@
                         "ADD_EXT"
                     ],
                     "city": "ADD_TOWN",
+                    "region": "ADD_STATE",
                     "postcode": "ADD_ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis2.orangeburgcounty.org/dataportal/rest/services/TaxParcelsAssessor/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MAPBLOLOT"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis2.orangeburgcounty.org/dataportal/rest/services/BuildingFootprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

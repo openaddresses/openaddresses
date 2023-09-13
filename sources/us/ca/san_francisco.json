@@ -14,15 +14,14 @@
         "addresses": [
             {
                 "name": "county",
-                "attribution": "City and County of San Francisco, Enterprise Addressing System",
                 "data": "https://data.sfgov.org/api/geospatial/ramy-di5m?method=export&format=Shapefile",
                 "license": {
-                    "url": "https://www.opendatacommons.org/licenses/pddl/1-0/index.html",
-                    "text": "Open Data Commons Public Domain Dedication and License",
+                    "url": "https://opendatacommons.org/licenses/pddl/1-0/",
+                    "text": "Public Domain Dedication and License (PDDL) v1.0",
                     "attribution": false,
                     "share-alike": false
                 },
-                "website": "https://data.sfgov.org",
+                "website": "https://data.sfgov.org/Geographic-Locations-and-Boundaries/Addresses-with-Units-Enterprise-Addressing-System/ramy-di5m",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
@@ -41,8 +40,49 @@
                         "street_typ"
                     ],
                     "unit": "unit_numbe",
-                    "postcode": "zip_code",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "zip_code",
+                        "pattern": "^([0-9]+)"
+                    },
                     "id": "eas_fullid"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://data.sfgov.org/api/geospatial/acdm-wktn?query=SELECT%20%60active%60%2C%20%60blklot%60%2C%20%60shape%60%0AWHERE%20%60active%60%20%3D%20TRUE%0AORDER%20BY%20%60active%60%20ASC%20NULL%20LAST&fourfour=acdm-wktn&accessType=DOWNLOAD&method=export&format=Shapefile",
+                "license": {
+                    "url": "https://opendatacommons.org/licenses/pddl/1-0/",
+                    "text": "Public Domain Dedication and License (PDDL) v1.0",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "website": "https://data.sfgov.org/Geographic-Locations-and-Boundaries/Parcels-Active-and-Retired/acdm-wktn",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "blklot"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://data.sfgov.org/api/geospatial/ynuv-fyni?accessType=DOWNLOAD&method=export&format=Shapefile",
+                "license": {
+                    "url": "https://opendatacommons.org/licenses/pddl/1-0/",
+                    "text": "Public Domain Dedication and License (PDDL) v1.0",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "website": "https://data.sfgov.org/Geographic-Locations-and-Boundaries/Building-Footprints/ynuv-fyni",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile"
                 }
             }
         ]

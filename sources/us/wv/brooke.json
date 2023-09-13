@@ -1,0 +1,58 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "54009",
+            "name": "Brooke County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Brooke"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/Brooke_Service/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "pin_",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "situsaddr"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "situsaddr"
+                    },
+                    "city": "cityname",
+                    "region": "statecode",
+                    "postcode": "zip1"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/Brooke_Service/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pin_"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/Brooke_Service/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,68 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "county": "Comox Valley",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -125,
+                49.75
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://mapviewer.imaptoo.ca/imap87320977492837458/rest/services/CVRDHouseNumbers/MapServer/50",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": [
+                        "civicN",
+                        "civicNS"
+                    ],
+                    "street": [
+                        "streetDP",
+                        "streetN",
+                        "streetT",
+                        "streetDS",
+                        "streetQ"
+                    ],
+                    "unit": [
+                        "unitD",
+                        "unitN",
+                        "unitNS"
+                    ],
+                    "city": "CP_Community",
+                    "region": "provinceC",
+                    "postcode": "PostalCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://mapviewer.imaptoo.ca/imap87320977492837458/rest/services/CVRD_PropertyInfo/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://mapviewer.imaptoo.ca/imap87320977492837458/rest/services/CVRDPropertyBase/MapServer/487",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

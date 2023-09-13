@@ -14,24 +14,29 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services3.arcgis.com/tNPgIZWOB0Efvm0g/ArcGIS/rest/services/Tax_Lots/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "gdb",
-                    "file": "Delivery/addresses_oregon.gdb",
-                    "layer": "Umatilla",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "Address"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "Address"
-                    },
-                    "city": "City",
-                    "region": "State",
-                    "postcode": "Zip"
+                    "format": "geojson",
+                    "number": "SITUS_HOUS",
+                    "street": [
+                        "SITUS_STRE",
+                        "SITUS_DIRE"
+                    ],
+                    "city": "SITUS_CITY",
+                    "region": "SITUS_STAT",
+                    "postcode": "SITUS_ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/tNPgIZWOB0Efvm0g/ArcGIS/rest/services/Tax_Lots/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TLID"
                 }
             }
         ]

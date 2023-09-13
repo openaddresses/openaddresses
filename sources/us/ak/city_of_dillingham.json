@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "0218950",
+            "name": "City of Dillingham",
+            "state": "Alaska"
+        },
+        "country": "us",
+        "state": "ak",
+        "city": "Dillingham"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services3.arcgis.com/gdLTz4xpy5IxwbSz/arcgis/rest/services/AddressesOnline/FeatureServer/0",
+                "website": "https://city-of-dillingham-dillingham.hub.arcgis.com/datasets/Dillingham::addressesonline/about?layer=0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Address_ID",
+                    "street": [
+                        "Prefix",
+                        "Road_name",
+                        "Suffix"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services3.arcgis.com/gdLTz4xpy5IxwbSz/arcgis/rest/services/ParcelsOnline/FeatureServer/0",
+                "website": "https://city-of-dillingham-dillingham.hub.arcgis.com/datasets/Dillingham::parcelsonline/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelID"
+                }
+            }
+        ]
+    }
+}

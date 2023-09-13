@@ -1,0 +1,40 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "53093",
+            "name": "Tucker County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Tucker"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services9.arcgis.com/TslismvRdSLt6AGq/ArcGIS/rest/services/Improvement_Sites/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDR_LABEL",
+                    "street": "LABEL",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services9.arcgis.com/TslismvRdSLt6AGq/ArcGIS/rest/services/Parcel_Polygons/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARID"
+                }
+            }
+        ]
+    }
+}

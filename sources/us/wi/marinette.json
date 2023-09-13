@@ -1,0 +1,55 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55075",
+            "name": "Marinette County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Marinette"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/MARINETTE_ADDRESSES_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/26A610D6-6CD9-4B16-ADF1-F90DAA2F3A48",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "MARINETTE_ADDRESSES_2023",
+                    "number": [
+                        "ADD_ADDNUM",
+                        "ADD_ADDNUMSUFFIX"
+                    ],
+                    "street": "ADD_STNAMECOMBO",
+                    "unit": [
+                        "ADD_UNITTYPE",
+                        "ADD_UNITID"
+                    ],
+                    "city": "ADD_CITYNAME",
+                    "region": "ADD_STATENAME",
+                    "postcode": "ADD_ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Marinette_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/9F58B320-171D-486D-897D-E7E1AC670D92",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
+    }
+}

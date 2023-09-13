@@ -1,0 +1,69 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55005",
+            "name": "Barron County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Barron"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/BARRON_ADDRESSES_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/8A9B382D-5932-4809-956D-86706A92077F",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "BARRON_ADDRESSES_2023",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "PREDIR",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFDIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNIT"
+                    ],
+                    "city": "COMMUNITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Barron_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/4CABBB58-C549-4B66-9C34-06DEBF3274FA",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Barron_Buildings_2019.zip",
+                "website": "https://geodata.wisc.edu/catalog/F7AB738D-968B-4A6C-B7AF-63E819EFBDDC",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2019",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Barron_Buildings_2019"
+                }
+            }
+        ]
+    }
+}

@@ -21,5 +21,4 @@ convert:
 combine:
         bash ./combine.sh
 
-# NOTE: you may also need to run find_missing.py to locate files that don't convert properly 
-
+# NOTE: you may also need to run find_missing.py to locate files that don't convert properly

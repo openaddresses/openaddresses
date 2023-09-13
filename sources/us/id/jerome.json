@@ -1,0 +1,47 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "16053",
+            "name": "Jerome County",
+            "state": "Idaho"
+        },
+        "country": "us",
+        "state": "id",
+        "county": "Jerome"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/FyZuN5cCe7TGuxAO/arcgis/rest/services/Jerome_County_Parcel_Map_WFL1/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SitusAddre"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SitusAddre"
+                    },
+                    "city": "SitusCity",
+                    "region": "SitusState",
+                    "postcode": "SitusZip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/FyZuN5cCe7TGuxAO/arcgis/rest/services/Jerome_County_Parcel_Map_WFL1/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
+    }
+}

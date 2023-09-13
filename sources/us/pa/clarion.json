@@ -1,0 +1,61 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "42031",
+            "name": "Clarion County",
+            "state": "Pennsylvania"
+        },
+        "country": "us",
+        "state": "pa",
+        "county": "Clarion"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "license": {
+                    "url": "https://gis.co.clarion.pa.us/portal/apps/webappviewer/index.html?id=ac60b6aa9609455190f5e714a1cc251c"
+                },
+                "data": "https://gis.co.clarion.pa.us/hosting/rest/services/SDE_AddressPoint_ClarionCo/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "accuracy": 1,
+                    "format": "geojson",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "license": {
+                    "url": "https://gis.co.clarion.pa.us/portal/apps/webappviewer/index.html?id=ac60b6aa9609455190f5e714a1cc251c"
+                },
+                "data": "https://gis.co.clarion.pa.us/hosting/rest/services/Parcel_CAMA_/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_Number"
+                }
+            }
+        ]
+    }
+}

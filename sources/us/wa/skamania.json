@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "53059",
+            "name": "Skamania County",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa",
+        "county": "Skamania"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/uKh72TYBlxpm42Cm/ArcGIS/rest/services/ParcelNACopWeb20220503/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Situs"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Situs"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/uKh72TYBlxpm42Cm/ArcGIS/rest/services/ParcelNACopWeb20220503/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
+    }
+}

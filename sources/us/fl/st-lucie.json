@@ -14,16 +14,36 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://www.stlucieco.gov/home/showdocument?id=2739",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://slcgis.stlucieco.gov/hosting/rest/services/AddressMaster/MapServer/0",
+                "website": "https://data-slc.opendata.arcgis.com/datasets/slc::addressmaster/about",
+                "protocol": "ESRI",
                 "conform": {
-                    "number": "StreetNumb",
+                    "id": "siteaddid",
+                    "number": [
+                        "preaddrnum",
+                        "addrnum",
+                        "addrnumsuf"
+                    ],
                     "street": "StreetLabe",
-                    "unit": "AptSuite",
-                    "postcode": "ZipCode",
-                    "format": "shapefile",
-                    "file": "AddressMaster.shp"
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "postcomm",
+                    "region": "stateabbreviation",
+                    "postcode": "postal",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://slcgis.stlucieco.gov/hosting/rest/services/Property/ParcelsPublic/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "ParcelID",
+                    "format": "geojson"
                 }
             }
         ]

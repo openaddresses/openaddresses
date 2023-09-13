@@ -55,7 +55,7 @@ def parse_line(l, initial):
     a['postal code'] = a['postal code'].zfill(8)
     if a['number'] == '0':
         a['number'] = ''
-        
+
     return a
 
 def do_file(region):
@@ -76,16 +76,16 @@ def do_file(region):
         print('Warning:', err, file=sys.stderr)
 
     with open('data/' + region['id'] + '.TXT', 'r', errors='replace') as cnefe_file:
-    
+
         for line in cnefe_file:
-        
+
             count['total'] += 1
 
             a = parse_line(line,region)
 
             if a['number']:
                 count['has number'] += 1
-                
+
             #find coordinates
             cd_geo = a['census sector'] + a['block'] + a['face']
 
@@ -112,7 +112,7 @@ def do_file(region):
 
     for c in ['has number', 'has face', 'gps', 'no coords']:
         count[c] = '{:.1%}'.format(count[c]/count['total'])
-                
+
     log.writerow(count)
 
 manifest_fields = ['state', None, 'municipality', None, 'district',
@@ -124,7 +124,7 @@ manifest = csv.DictReader(open('data/manifest.csv'), fieldnames = manifest_field
 if next(manifest) != {None: 'Subdistrito', 'state': 'UF', 'id': 'Arquivo', 'district': 'Nome Distrito', 'subdistrict': 'Nome Subdistrito', 'municipality': 'Nome Município'}:
     sys.exit("Error: Couldn't understand manifest file")
 
-outfields = [a for (a,b,c) in cnefe_schema]    
+outfields = [a for (a,b,c) in cnefe_schema]
 outfields.extend(['subdistrict','district','municipality','state'])
 
 log = csv.DictWriter(open(args.region + '.log', 'w'),

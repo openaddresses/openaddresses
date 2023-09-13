@@ -14,4 +14,4 @@ combine:
 	bash -c "zip cz-\$$(date '+%Y%m%d').zip *.csv"
 
 upload:
-	aws s3 cp cz-*.zip s3://data.openaddresses.io/cache/	
+	aws s3 cp cz-*.zip s3://data.openaddresses.io/cache/

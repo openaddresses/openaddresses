@@ -1,0 +1,46 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "41049",
+            "name": "Morrow County",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "county": "Morrow"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/MQGnkVpUbcAxMorv/ArcGIS/rest/services/Taxlot_W_Ownership/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUSSTR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUSSTR"
+                    },
+                    "city": "SITUSCITY",
+                    "postcode": "SITUSZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/MQGnkVpUbcAxMorv/ArcGIS/rest/services/Taxlot_W_Ownership/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MapTaxlot"
+                }
+            }
+        ]
+    }
+}

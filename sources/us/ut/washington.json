@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://arcgis10.washco.utah.gov/arcgis/rest/services/Addressing/MapServer/0",
+                "data": "https://agisprodvm.washco.utah.gov/arcgis/rest/services/Addressing/MapServer/0",
                 "note": "using FULLNAME for street since there are 2 postdirectional fields which are not reliable",
                 "protocol": "ESRI",
                 "conform": {
@@ -29,6 +29,17 @@
                     "city": "ADDSYSTEM",
                     "region": "STATE",
                     "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://agisprodvm.washco.utah.gov/arcgis/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAX_ID"
                 }
             }
         ]

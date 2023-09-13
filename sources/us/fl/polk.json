@@ -14,19 +14,31 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gisapps.polk-county.net/arcgis/rest/services/NewServices/streetAndAddress/MapServer/0",
+                "data": "https://gis.polk-county.net/hosting/rest/services/Accela/APO_Layer_Map/MapServer/6",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "Add_Number",
-                    "unit": "Unit",
+                    "unit": "Unit_Number",
                     "street": [
-                        "St_Name",
-                        "St_PosTyp",
-                        "St_PosDir"
+                        "Street_Name",
+                        "Street_Suffix",
+                        "Street_Direction"
                     ],
-                    "city": "MailingCity",
-                    "postcode": "Post_Code"
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.polk-county.net/hosting/rest/services/Accela/APO_Layer_Map/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
                 }
             }
         ]

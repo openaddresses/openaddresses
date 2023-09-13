@@ -1,0 +1,56 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "53089",
+            "name": "Summers County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Summers"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/SummersWV_Service/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "STNUM",
+                        "STNUMSUF"
+                    ],
+                    "street": [
+                        "PREDIR",
+                        "PRETYPE",
+                        "NAME",
+                        "TYPE",
+                        "SUFDIR",
+                        "POSTMOD"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/SummersWV_Service/FeatureServer/4",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parid"
+                }
+            }
+        ]
+    }
+}

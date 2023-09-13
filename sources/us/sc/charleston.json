@@ -18,20 +18,38 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "FULL_HOUSE_NUM",
-                    "street": [
-                        "PRE_DIR",
-                        "ST_NAME",
-                        "ST_TYPE",
-                        "SUF_DIR"
-                    ],
-                    "unit": [
-                        "UNIT_TYPE",
-                        "UNIT"
-                    ],
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "WHOLE_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "WHOLE_ADDRESS"
+                    },
                     "city": "POSTAL_TOWN",
                     "postcode": "POSTAL_CODE",
                     "region": "POSTAL_STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisccapps.charlestoncounty.org/arcgis/rest/services/GIS_VIEWER/Public_Search/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "FEATURES.SDE.P_POLY_PARCEL.PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisccapps.charlestoncounty.org/arcgis/rest/services/GIS_VIEWER/Public_Search/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

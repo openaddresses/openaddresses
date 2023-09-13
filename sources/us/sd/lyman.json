@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "46085",
+            "name": "Lyman County",
+            "state": "South Dakota"
+        },
+        "country": "us",
+        "state": "sd",
+        "county": "Lyman"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/LYMAN_COUNTY_LAYERS/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "STREETNUM",
+                    "street": [
+                        "PRE_DIR",
+                        "PRETYPE",
+                        "STREET_NAM",
+                        "STREET_TYP",
+                        "SUFDIR"
+                    ],
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/LYMAN_COUNTY_LAYERS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCEL_NUMBER",
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

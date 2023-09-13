@@ -14,18 +14,38 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.sumtercountyfl.gov/sumtergis/rest/services/Interactive/Addresses/MapServer/0",
+                "data": "https://gis.sumtercountyfl.gov/sumtergis/rest/services/Interactive/Address2/MapServer/0",
+                "website": "https://sumtercountyfl.gov/105/GIS",
+                "license": {"url": "https://www.arcgis.com/apps/webappviewer/index.html?id=0f1f020d62c242bcaeb8689876d99881"},
                 "protocol": "ESRI",
                 "conform": {
+                    "accuracy": 1,
                     "format": "geojson",
                     "number": "ADD_NUM",
                     "unit": [
                         "UNITTYPE",
-                        "UNITNUM"
+                        "UNIT"
                     ],
-                    "street": "FULLSTREET",
+                    "street": [
+                        "ST_NAME",
+                        "ST_POSTYP",
+                        "ST_POSDIR"
+                    ],
                     "city": "CITY",
                     "postcode": "POST_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.sumtercountyfl.gov/sumtergis/rest/services/Interactive/Parcels2/MapServer/0",
+                "website": "https://sumtercountyfl.gov/105/GIS",
+                "license": {"url": "https://www.arcgis.com/apps/webappviewer/index.html?id=0f1f020d62c242bcaeb8689876d99881"},
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

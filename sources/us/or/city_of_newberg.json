@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -122.973,
+                45.3
+            ]
+        },
+        "US Census": {
+            "geoid": "4152100",
+            "name": "City of Newberg",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "city": "Newberg"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services.arcgis.com/LJLnwUl0uTPWJE9B/ArcGIS/rest/services/Addresses/FeatureServer/0",
+                "website": "https://newberg.maps.arcgis.com/home/item.html?id=6fa12aab6cd746d78234d3598f0a9e07",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "stnum",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "fulladd"
+                    },
+                    "unit": "unitnum",
+                    "city": "city",
+                    "postcode": "zip"
+                }
+            }
+        ]
+    }
+}

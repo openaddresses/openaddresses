@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "53109",
+            "name": "Wyoming County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Wyoming"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://www.landmarkgeospatial.com:8443/arcgis/rest/services/Wyoming/WyomingParcels/MapServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PARCELADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PARCELADDRESS"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://www.landmarkgeospatial.com:8443/arcgis/rest/services/Wyoming/WyomingParcels/MapServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARID"
+                }
+            }
+        ]
+    }
+}

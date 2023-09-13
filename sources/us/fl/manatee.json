@@ -14,18 +14,18 @@
         "addresses": [
             {
                 "name": "county",
-                "attribution": "Manatee County",
-                "data": "http://www.mymanatee.org/gisapps/data/shape/ADDRESS.zip",
-                "website": "http://www.mymanatee.org/home/government/departments/information-technology/gis-home/gis-datadownload.html",
+                "data": "https://www.mymanatee.org/gisits/rest/services/opendata/General/MapServer/5",
+                "website": "https://public-manateegis.opendata.arcgis.com/datasets/manateegis::address-points-1/about",
                 "license": {
-                    "text": "Public Domain",
-                    "attribution": false,
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Manatee County",
                     "share-alike": false
                 },
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile-polygon",
+                    "format": "geojson",
                     "number": "ST_NUM",
                     "street": [
                         "SDIRPRE",
@@ -34,10 +34,35 @@
                         "SDIRSUF"
                     ],
                     "unit": "LV_APT",
-                    "city": "POSTAL_COM",
-                    "district": "COUNTY_NAM",
+                    "city": "POSTAL_COMMUNITY",
+                    "district": "COUNTY_NAME",
                     "region": "STATE",
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Manatee County",
+                "data": "https://www.mymanatee.org/gisits/rest/services/opendata/General/MapServer/0",
+                "website": "https://public-manateegis.opendata.arcgis.com/datasets/manateegis::parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Manatee County",
+                "data": "https://www.mymanatee.org/gisits/rest/services/opendata/General/FeatureServer/2",
+                "website": "https://public-manateegis.opendata.arcgis.com/datasets/manateegis::building-footprints-1/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

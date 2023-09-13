@@ -1,0 +1,40 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "46049",
+            "name": "Faulk County",
+            "state": "South Dakota"
+        },
+        "country": "us",
+        "state": "sd",
+        "county": "Faulk"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/FAULK_COUNTY_LAYERS/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "HOUSENUM",
+                    "street": "STREET",
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/FAULK_COUNTY_LAYERS/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCEL_ID",
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

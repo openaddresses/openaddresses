@@ -10,6 +10,5 @@ Usage:
     make fetch
     make unpack
     make by_state
-    
+
 Requirements: Python 3 with Fiona and Shapely, and csvkit
-    

@@ -15,20 +15,39 @@
             {
                 "name": "county",
                 "attribution": "Stanislaus County",
-                "data": "https://gis2.stancounty.com/arcgis/rest/services/Hosted/Addresses/FeatureServer/0",
+                "data": "https://gis2.stancounty.com/arcgis/rest/services/Addresses/FeatureServer/1",
+                "website": "https://gis2.stancounty.com/portal/home/item.html?id=2d32837e108940fca1be9c20993e2d75",
+                "license": {
+                    "url": "https://gis2.stancounty.com/portal/home/item.html?id=2d32837e108940fca1be9c20993e2d75",
+                    "text": "Indemnification"
+                },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "house_num",
-                    "unit": "unit",
+                    "number": "HOUSE_NUM",
+                    "unit": "UNIT",
                     "street": [
-                        "pre_dir",
-                        "street",
-                        "st_sfx",
-                        "post_dir"
+                        "PRE_DIR",
+                        "STREET",
+                        "ST_SFX",
+                        "POST_DIR"
                     ],
-                    "city": "city",
-                    "postcode": "zip"
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Stanislaus County",
+                "data": "https://gis2.stancounty.com/arcgis/rest/services/Addresses/FeatureServer/1",
+                "website": "https://gis2.stancounty.com/arcgis/rest/services/Hosted/Parcels_Tax/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "apn"
                 }
             }
         ]

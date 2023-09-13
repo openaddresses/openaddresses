@@ -14,25 +14,41 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/us-ga-burke_county.csv",
-                "protocol": "http",
+                "data": "https://services1.arcgis.com/YwCV9A7cLN6cgxhP/ArcGIS/rest/services/Base_TaxParcels/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "csv",
-                    "lat": "LAT",
-                    "lon": "LNG",
-                    "number": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^([0-9]+)( .*)",
-                        "replace": "$1"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "region": "REGION"
+                    "format": "geojson",
+                    "number": "Bldg_No",
+                    "street": [
+                        "Direction",
+                        "Street_Name",
+                        "RoadType_Suffix",
+                        "RoadType_Suffix_Ext"
+                    ],
+                    "unit": "Apt_No",
+                    "city": "City",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/YwCV9A7cLN6cgxhP/ArcGIS/rest/services/Base_TaxParcels/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_No"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/YwCV9A7cLN6cgxhP/ArcGIS/rest/services/Base_TaxParcels/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

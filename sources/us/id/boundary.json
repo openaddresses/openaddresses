@@ -1,0 +1,35 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "16021",
+            "name": "Boundary County",
+            "state": "Idaho"
+        },
+        "country": "us",
+        "state": "id",
+        "county": "Boundary"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://www2.boundarycountyid.org/gis/data/Boundary_StructurePnts_CurrentExportSummary.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "house_num",
+                    "street": [
+                        "pre_dir",
+                        "st_name",
+                        "st_type"
+                    ],
+                    "unit": "sub_unit",
+                    "city": "city",
+                    "postcode": "zipcode"
+                }
+            }
+        ]
+    }
+}

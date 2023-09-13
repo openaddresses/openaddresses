@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "45057",
+            "name": "Lancaster County",
+            "state": "South Carolina"
+        },
+        "country": "us",
+        "state": "sc",
+        "county": "Lancaster"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/rJcpRneDUBgTeCT3/ArcGIS/rest/services/LC_Addresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "FULL_HOUSE",
+                    "street": "FULL_STREE",
+                    "city": "POSTAL_TOW",
+                    "region": "POSTAL_STA",
+                    "postcode": "POSTAL_ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/rJcpRneDUBgTeCT3/ArcGIS/rest/services/LC_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
+    }
+}

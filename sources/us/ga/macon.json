@@ -2,28 +2,49 @@
     "coverage": {
         "US Census": {
             "geoid": "13193",
-            "name": "Macon-Bibb County",
+            "name": "Macon County",
             "state": "Georgia"
         },
         "country": "us",
         "state": "ga",
-        "county": "Macon-Bibb"
+        "county": "Macon"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.maconbibb.us/downloads/shapefiles/addresspoints.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services1.arcgis.com/Ug5xGQbHsD8zuZzM/ArcGIS/rest/services/AddressesE911/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "unit": "UNIT",
-                    "number": "ADDR_HN",
-                    "street": "FULLNAME",
-                    "postcode": "ZIP_1",
-                    "city": "City_1"
+                    "format": "geojson",
+                    "number": "AN",
+                    "street": "FullStreet",
+                    "unit": [
+                        "SecUnit",
+                        "SecRange"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/iXA1dC6ldRMKRwra/arcgis/rest/services/Macon_County_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_No"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/Ug5xGQbHsD8zuZzM/ArcGIS/rest/services/Buildings_shp/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

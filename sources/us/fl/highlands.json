@@ -14,18 +14,39 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.hcbcc.org/arcgis/rest/services/OpenData/Addressing/MapServer/0",
-                "website": "http://www.hcbcc.net/departments/office_of_administrative_services/gis/index.php",
+                "data": "https://gis.highlandsfl.gov/server/rest/services/Layers/Site_Addresses/FeatureServer/0",
+                "website": "https://hcbcc.maps.arcgis.com/home/item.html?id=f20fc360487d4b73a55bf5930a988c53",
                 "attribution": "Highlands County, FL",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRNUM",
+                    "id": "SITEADDID",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
                     "street": "FULLNAME",
                     "unit": [
                         "UNITTYPE",
                         "UNITID"
-                    ]
+                    ],
+                    "city": "MSAG",
+                    "district": "County",
+                    "region": "State"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.highlandsfl.gov/server/rest/services/Layers/Tax_Parcels__HCPAO_/FeatureServer/0",
+                "website": "https://hcbcc.maps.arcgis.com/home/item.html?id=f20fc360487d4b73a55bf5930a988c53",
+                "attribution": "Highlands County, FL",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNO"
                 }
             }
         ]

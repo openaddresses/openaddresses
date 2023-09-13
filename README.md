@@ -1,8 +1,7 @@
 <h1 align="center">OpenAddresses</h1>
 
 <p align="center">
-  <a href="https://travis-ci.org/openaddresses/openaddresses"><img src="https://travis-ci.org/openaddresses/openaddresses.png?branch=master"/></a>
-  <a href="https://david-dm.org/openaddresses/openaddresses"><img src="https://david-dm.org/openaddresses/openaddresses.png"/></a>
+  <a href="https://results.pre-commit.ci/latest/github/openaddresses/openaddresses/master"><img src="https://results.pre-commit.ci/badge/github/openaddresses/openaddresses/master.svg"/></a>
 </p>
 
 ## Brief

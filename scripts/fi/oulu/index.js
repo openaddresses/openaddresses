@@ -12,8 +12,8 @@ var streets = {};
 
 http.get('http://kartta.ouka.fi/web/siirto/osoitteet.xml').on('response', function(res) {
   res.setEncoding('utf8');
-  var xml = new XmlStream(res); 
-  
+  var xml = new XmlStream(res);
+
   xml.on('endElement: Address', function(item) {
     addresses.push({
       number: item.AddressNumber,
@@ -22,7 +22,7 @@ http.get('http://kartta.ouka.fi/web/siirto/osoitteet.xml').on('response', functi
       y: item.yVis,
     });
   });
-  
+
   xml.on('endElement: StreetName', function(item) {
     streets[item.IdStreetName] = item.NameLang1
   });

@@ -1,0 +1,61 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "49057",
+            "name": "Weber County",
+            "state": "Utah"
+        },
+        "country": "us",
+        "state": "ut",
+        "county": "Weber"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.co.weber.ut.us/arcgis/rest/services/gis/parcel_labels/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADD_ID",
+                    "number": "ADDR_HN",
+                    "street": [
+                        "ADDR_PD",
+                        "ADDR_PT",
+                        "ADDR_SN",
+                        "ADDR_ST",
+                        "ADDR_SD"
+                    ],
+                    "unit": [
+                        "UNIT",
+                        "UNIT_NUM"
+                    ],
+                    "city": "City_name",
+                    "postcode": "ZipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.co.weber.ut.us/arcgis/rest/services/gis/parcels_geogizmo2/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://maps.co.weber.ut.us/arcgis/rest/services/gis/basemap_cache/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

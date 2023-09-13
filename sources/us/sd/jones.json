@@ -1,0 +1,42 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "46075",
+            "name": "Jones County",
+            "state": "South Dakota"
+        },
+        "country": "us",
+        "state": "sd",
+        "county": "Jones"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/JONES_COUNTY_LAYERS2/MapServer/9",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "HOUSE_NUMBER",
+                    "street": [
+                        "POST_DIR",
+                        "STREET_NAME"
+                    ],
+                    "city": "COMMUNITY",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/arcgis/rest/services/JONES_COUNTY_LAYERS2/MapServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCEL_ID",
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

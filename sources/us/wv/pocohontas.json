@@ -1,0 +1,50 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "54075",
+            "name": "Pocohontas County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Pocohontas"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/BS7xAap9C8CqR5BC/ArcGIS/rest/services/Addresses/FeatureServer/75",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "st_number",
+                        "st_numsuff"
+                    ],
+                    "street": [
+                        "st_prefixd",
+                        "st_name",
+                        "st_type",
+                        "st_sfx",
+                        "st_suffixd"
+                    ],
+                    "unit": "unit",
+                    "city": "community",
+                    "postcode": "zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/BS7xAap9C8CqR5BC/ArcGIS/rest/services/Latest_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARID"
+                }
+            }
+        ]
+    }
+}

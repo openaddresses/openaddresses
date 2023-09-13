@@ -5,8 +5,8 @@
             "name": "Luzerne County",
             "state": "Pennsylvania"
         },
-        "country": "us",
-        "state": "pa",
+        "country": "US",
+        "state": "PA",
         "county": "Luzerne"
     },
     "schema": 2,
@@ -14,20 +14,48 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.luzernecounty.org/arcgis/rest/services/PublicMap/MapServer/8",
-                "website": "https://www.luzernecounty.org/234/GIS-Mapping",
+                "data": "https://services7.arcgis.com/hzCSL69lejmynMEC/ArcGIS/rest/services/Structures_032423/FeatureServer/0",
+                "website": "https://www.luzernecounty.org/234/GISMapping",
                 "contact": {
                     "name": "Dan Reese",
                     "title": "GIS Director",
                     "phone": "570-825-1550",
-                    "address": "200 N River Street, Wilkes-Barre, PA 18711"
+                    "address": "200 N River St, Wilkes-Barre, PA 18711"
                 },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "SAN",
-                    "street": "STNAME",
-                    "city": "MUNICIPALI"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FULL_ADDRE"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FULL_ADDRE"
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "FULL_ADDRE"
+                    },
+                    "city": "MCN"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/hzCSL69lejmynMEC/arcgis/rest/services/Parcels_032223_PUBLIC/FeatureServer/0",
+                "website": "https://www.luzernecounty.org/234/GISMapping",
+                "contact": {
+                    "name": "Dan Reese",
+                    "title": "GIS Director",
+                    "phone": "570-825-1550",
+                    "address": "200 N River St, Wilkes-Barre, PA 18711"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "LONG_PIN"
                 }
             }
         ]

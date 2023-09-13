@@ -1,0 +1,61 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -122.872,
+                42.326
+            ]
+        },
+        "US Census": {
+            "geoid": "4147000",
+            "name": "City of Medford",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "city": "Medford"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.medfordmaps.org/arcgis/rest/services/Public/Taxlots_with_SiteAddresses_Service/FeatureServer/0",
+                "website": "https://medford.maps.arcgis.com/home/item.html?id=9bb96f14853a45fe867ca7960d88e375",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": [
+                        "STREETPREFIX",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "STREETSUFFIX"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.medfordmaps.org/arcgis/rest/services/Public/Taxlots_with_SiteAddresses_Service/FeatureServer/1",
+                "website": "https://medford.maps.arcgis.com/home/item.html?id=9bb96f14853a45fe867ca7960d88e375",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MAPLOT"
+                }
+            }
+        ]
+    }
+}

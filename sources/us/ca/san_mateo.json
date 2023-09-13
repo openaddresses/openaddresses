@@ -14,26 +14,60 @@
         "addresses": [
             {
                 "name": "county",
-                "attribution": "San Mateo County",
-                "data": "https://gis.smcgov.org/maps/rest/services/Common/SMC_GIS/MapServer/9",
-                "license": "https://isd.smcgov.org/gis-data-download",
+                "data": "https://gis.smcgov.org/maps/rest/services/Common/SMC_GIS/FeatureServer/0",
+                "license": {
+                    "url": "https://www.smcgov.org/endorsement-disclaimers",
+                    "text": "Public Domain"
+                },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "SITUS_ADD1"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "SITUS_ADD1"
-                    },
-                    "city": "SITUS_CITY",
-                    "postcode": "SITUS_ZIPC",
+                    "number": [
+                        "HOUSE_NUM",
+                        "FRACTION"
+                    ],
+                    "street": [
+                        "DIRECTION",
+                        "STREET",
+                        "TYPE"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE",
                     "id": "APN"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.smcgov.org/maps/rest/services/Common/ACTIVE_PARCELS_APN/FeatureServer/0",
+                "website": "https://data.smcgov.org/Government/Parcels/nb88-e3ki",
+                "license": {
+                    "url": "https://www.smcgov.org/endorsement-disclaimers",
+                    "text": "Public Domain"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.smcgov.org/maps/rest/services/Common/SMC_GIS/MapServer/2",
+                "website": "https://www.smcgov.org/isd/gis-data-download",
+                "license": {
+                    "url": "https://www.smcgov.org/endorsement-disclaimers",
+                    "text": "Public Domain"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
     }
 }
-

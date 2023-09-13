@@ -1,0 +1,52 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "41053",
+            "name": "Polk County",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "county": "Polk"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.co.polk.or.us/gis/rest/services/PublicWorks/Site_Address/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADD_NUM",
+                        "ADD_NUMSUF"
+                    ],
+                    "street": [
+                        "ST_PREMOD",
+                        "ST_PREDIR",
+                        "ST_PRETYPE",
+                        "ST_NAME",
+                        "ST_POSTYPE",
+                        "ST_POSTDIR",
+                        "ST_POSTMOD"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.co.polk.or.us/gis/rest/services/Assessor/Taxlots/MapServer/11",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TaxlotTemp_MapTaxlot"
+                }
+            }
+        ]
+    }
+}

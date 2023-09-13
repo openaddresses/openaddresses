@@ -1,0 +1,46 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "13031",
+            "name": "Bulloch County",
+            "state": "Georgia"
+        },
+        "country": "us",
+        "state": "ga",
+        "county": "Bulloch"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/XxfLDid4CNOqpdhy/arcgis/rest/services/County_Addresses_01202023/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS_NU",
+                    "street": [
+                        "RD_PREFIX",
+                        "ROAD_NAME",
+                        "RD_TYPE",
+                        "ROAD_SUFFIX"
+                    ],
+                    "unit": "APT_",
+                    "city": "City",
+                    "postcode": "ZipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/XxfLDid4CNOqpdhy/ArcGIS/rest/services/Parcelswithparcelno/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PROP_PIN"
+                }
+            }
+        ]
+    }
+}
