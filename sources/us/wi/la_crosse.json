@@ -9,16 +9,49 @@
         "state": "wi",
         "county": "La Crosse"
     },
-    "data": "http://gis.lacrossecounty.org/arcgis/rest/services/AGOL/AddressPoints/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSENUMBE",
-        "street": [
-            "STREETNAME",
-            "STREETTYPE",
-            "STREETSUFF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.lacrossecounty.org/gisserver/rest/services/AGOL/AddressPoints/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUMBE",
+                    "street": [
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "STREETSUFF"
+                    ],
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "postcode": "ZIP"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.lacrossecounty.org/gisserver/rest/services/AGOL/TaxParcelPub/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TaxParcelNo"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/LaCrosse_Buildings_2018.zip",
+                "website": "https://geodata.wisc.edu/catalog/EFF12EFD-BD43-4E83-AFCC-26E46089DFD3",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2018",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "LaCrosse_Buildings_2018"
+                }
+            }
+        ]
     }
 }

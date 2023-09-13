@@ -9,19 +9,47 @@
         "state": "in",
         "county": "Marion"
     },
-    "data": "https://xmaps.indy.gov/arcgis/rest/services/OpenData/OpenData_Boundaries/MapServer/13",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "STNUM",
-        "street": "FULL_STNAME",
-        "unit": [
-          "UNIT_TYPE",
-          "UNIT"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://xmaps.indy.gov/arcgis/rest/services/OpenData/OpenData_Boundaries/MapServer/5",
+                "website": "https://data.indy.gov/datasets/IndyGIS::buildings-with-addresses/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "STNUM",
+                    "street": "FULL_STNAME",
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE",
+                    "format": "geojson"
+                }
+            }
         ],
-        "city": "CITY",
-        "district": "COUNTY",
-        "postcode": "ZIPCODE",
-        "region": "STATE",
-        "format": "geojson"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://xmaps.indy.gov/arcgis/rest/services/Accela/AGIS_INDIANAPOLIS/MapServer/15",
+                "website": "https://data.indy.gov/datasets/IndyGIS::parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCEL_TAG",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://xmaps.indy.gov/arcgis/rest/services/OpenData/OpenData_Boundaries/MapServer/12",
+                "website": "https://data.indy.gov/datasets/IndyGIS::building-footprints/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

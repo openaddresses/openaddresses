@@ -9,20 +9,28 @@
         "state": "il",
         "county": "Clark"
     },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_clark_co_il_taxmap/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_clark_co_il_taxmap/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "address",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "address",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

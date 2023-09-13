@@ -9,22 +9,30 @@
         "state": "oh",
         "county": "Muskingum"
     },
-    "data": "http://gis3.oit.ohio.gov/LBRS/_downloads/MUS_ADDS.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-      "number": "HOUSENUM",
-      "street": [
-        "ST_PREFIX",
-        "ST_NAME",
-        "ST_TYPE",
-        "ST_SUFFIX"
-      ],
-      "unit": "UNITNUM",
-      "city": "MUNI",
-      "district": "COUNTY",
-      "region": "STATE",
-      "postcode": "zipcode",
-      "format": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis1.oit.ohio.gov/LBRS/_downloads/MUS_ADDS.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "HOUSENUM",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX"
+                    ],
+                    "unit": "UNITNUM",
+                    "city": "MUNI",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "zipcode",
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

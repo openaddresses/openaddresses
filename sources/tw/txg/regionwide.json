@@ -6,26 +6,38 @@
         },
         "country": "tw"
     },
-    "data": "http://ge-lab-212.ceci.com.tw/arcgis/rest/services/05007/TC_Basemap/MapServer/0",
-    "protocol": "ESRI",
-    "skip": true,
-    "conform": {
-        "format": "geojson",
-        "number":{
-            "function": "regexp",
-            "field": "號",
-            "pattern": "^([0-9\uff10-\uff19]+\u865f?)"
-        },
-        "unit":{
-            "function": "regexp",
-            "field": "號",
-            "pattern": "^(?:[0-9\uff10-\uff19]+\u865f?)(.*)"
-        },
-        "street": {
-            "function": "join",
-            "fields": ["路名","巷","弄"],
-            "separator": ""
-        },
-        "city": "TOWN_NAME"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "http://ge-lab-212.ceci.com.tw/arcgis/rest/services/05007/TC_Basemap/MapServer/0",
+                "protocol": "ESRI",
+                "skip": true,
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "號",
+                        "pattern": "^([0-9０-９]+號?)"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "號",
+                        "pattern": "^(?:[0-9０-９]+號?)(.*)"
+                    },
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "路名",
+                            "巷",
+                            "弄"
+                        ],
+                        "separator": ""
+                    },
+                    "city": "TOWN_NAME"
+                }
+            }
+        ]
     }
 }

@@ -1,33 +1,56 @@
 {
     "coverage": {
-        "US Census": {"geoid": "39093", "name": "Lorain County", "state": "Ohio"},
+        "US Census": {
+            "geoid": "39093",
+            "name": "Lorain County",
+            "state": "Ohio"
+        },
         "country": "us",
         "state": "oh",
         "county": "Lorain"
     },
-    "data": "http://loraincountyauditor.com/arcgis/rest/services/ParcelsLorain/AGS_Lorain_LGIM_Parcel_Report/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "PSTLADDRESS",
-            "pattern": "^([0-9]+)(?: .*)$"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PSTLADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)(?: .*,.*)$"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "PSTLADDRESS",
-            "pattern": "^(?:[0-9]+ )(?:.* )(.*)(?:,.*)$"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "PSTLADDRESS",
-            "pattern": "^(?:.*)([0-9]{5})$"
-        },
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://loraincountyauditor.com/arcgis/rest/services/GISData/Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ST_NUM",
+                    "unit": "ST_NUM_SUF",
+                    "street": [
+                        "PRE_DIR",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "PST_DIR"
+                    ],
+                    "city": "POST_CODE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://loraincountyauditor.com/arcgis/rest/services/GISData/Building_Roofprints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "http://loraincountyauditor.com/arcgis/rest/services/ParcelsLorain/AGS_Lorain_LGIM_Parcel_Report/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
     }
 }

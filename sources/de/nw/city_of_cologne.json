@@ -1,25 +1,40 @@
 {
-	"coverage": {
-		"country": "de",
-		"state": "nw",
-		"city": "Köln",
-		"geometry": { "type": "Point", "coordinates": [6.95, 50.94] }
-	},
-	"data": "http://www.offenedaten-koeln.de/sites/default/files/Adresse.zip",
-	"website": "http://www.offenedaten-koeln.de/",
-	"license": {
-		"text": "CC BY 3.0 DE",
-		"url": "https://creativecommons.org/licenses/by/3.0/de/",
-		"attribution": true,
-		"share-alike": false,
-		"attribution name": "Stadt Köln"
-	},
-	"compression": "zip",
-	"protocol": "http",
-	"conform": {
-		"format": "shapefile",
-		"postcode": "PLZ",
-		"street": "STRASSE",
-		"number": "HAUSNR"
-	}
+    "coverage": {
+        "country": "de",
+        "state": "nw",
+        "city": "Köln",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                6.95,
+                50.94
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://www.offenedaten-koeln.de/sites/default/files/Adresse.zip",
+                "website": "http://www.offenedaten-koeln.de/",
+                "license": {
+                    "text": "CC BY 3.0 DE",
+                    "url": "https://creativecommons.org/licenses/by/3.0/de/",
+                    "attribution": true,
+                    "share-alike": false,
+                    "attribution name": "Stadt Köln"
+                },
+                "compression": "zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "postcode": "plz",
+                    "street": "str_amtl",
+                    "number": "hausnr",
+                    "district": "stbezirk"
+                }
+            }
+        ]
+    }
 }

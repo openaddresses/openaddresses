@@ -1,29 +1,39 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13277", "name": "Tift County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13277",
+            "name": "Tift County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Tift"
     },
-    "data": "http://data.openaddresses.io/cache/us-ga-tift_county.csv",
-    "protocol": "http",
-    "conform": {
-        "format": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "region": "REGION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.sgrcmaps.com/alma/rest/services/Tift/Tift_Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "NUMBER",
+                    "street": "STREET",
+                    "city": "COMMUNITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.sgrcmaps.com/alma/rest/services/Tift/Tift_Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNum"
+                }
+            }
+        ]
     }
 }
-

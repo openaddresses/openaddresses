@@ -9,18 +9,50 @@
         "state": "wa",
         "county": "Clark"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/nvkelso/2806bc/clark_county_vancouver_wa_tax_parcels.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile-polygon",
-        "number": "HSNBR",
-        "street": [
-            "STDIR",
-            "STNAME",
-            "STYPE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/ylxwjFBdCPBzP16d/arcgis/rest/services/SitusAddress/FeatureServer/0",
+                "website": "https://hub-clarkcountywa.opendata.arcgis.com/datasets/ClarkCountyWa::situs-addresses/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HsNbr",
+                    "street": [
+                        "StDir",
+                        "StName",
+                        "Stype"
+                    ],
+                    "postcode": "Zp1"
+                }
+            }
         ],
-        "postcode": "ZP1",
-        "city": "STCITY"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/ylxwjFBdCPBzP16d/arcgis/rest/services/SitusAddress/FeatureServer/0",
+                "website": "https://hub-clarkcountywa.opendata.arcgis.com/datasets/ClarkCountyWa::taxlots-for-public-use/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Prop_id"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://www.arcgis.com/sharing/rest/content/items/aac861841b8041b581cda3f05632e016/data",
+                "website": "https://hub-clarkcountywa.opendata.arcgis.com/pages/digital-gis-data-download",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "BuildingFootprints.shp"
+                }
+            }
+        ]
     }
 }

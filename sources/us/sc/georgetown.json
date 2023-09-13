@@ -9,16 +9,57 @@
         "state": "sc",
         "county": "Georgetown"
     },
-    "data": "http://gis1.georgetowncountysc.org:6080/arcgis/rest/services/MapServer2017/MapServer/9",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSENUM",
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis1.georgetowncountysc.org/webadaptor/rest/services/GTGIS/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "StN_PreMod",
+                        "StN_PreDir",
+                        "StN_PreTyp",
+                        "StN_PreSep",
+                        "StreetName",
+                        "StN_PosTyp",
+                        "StN_PosDir",
+                        "StN_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "region": "State",
+                    "postcode": "Zip_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis1.georgetowncountysc.org/webadaptor/rest/services/GTGIS/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TMS"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis1.georgetowncountysc.org/webadaptor/rest/services/GTGIS_Buildings/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

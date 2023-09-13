@@ -11,21 +11,75 @@
             ]
         }
     },
-    "data": "https://s3-us-west-2.amazonaws.com/coquitlam-spatial/Cadastral/SHP/Coquitlam_Cadastral_SHP.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "file": "Addresses.shp",
-        "number": "HOUSE",
-        "street": [
-            "STREET",
-            "STREETTYPE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://s3-us-west-2.amazonaws.com/coquitlam-spatial/Cadastral/SHP/Coquitlam_Cadastral_SHP.zip",
+                "website": "https://coquitlam.maps.arcgis.com/apps/Cascade/index.html?appid=26ed37ee4167495dbb92e2798aa2b968",
+                "license": {
+                    "url": "https://www.coquitlam.ca/894/Open-Government-Licence",
+                    "text": "Open Government License - Coquitlam 1.0",
+                    "attribution": true,
+                    "attribution name": "City of Coquitlam"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "Addresses.shp",
+                    "number": "HOUSE",
+                    "street": [
+                        "STREET",
+                        "STREETTYPE"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNIT"
+                    ],
+                    "postcode": "POSTAL"
+                }
+            }
         ],
-        "unit": [
-            "UNITTYPE",
-            "UNIT"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://s3-us-west-2.amazonaws.com/coquitlam-spatial/Cadastral/SHP/Coquitlam_Cadastral_SHP.zip",
+                "website": "https://coquitlam.maps.arcgis.com/apps/Cascade/index.html?appid=26ed37ee4167495dbb92e2798aa2b968",
+                "license": {
+                    "url": "https://www.coquitlam.ca/894/Open-Government-Licence",
+                    "text": "Open Government License - Coquitlam 1.0",
+                    "attribution": true,
+                    "attribution name": "City of Coquitlam"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "Parcels.shp",
+                    "pid": "GIS_ID"
+                }
+            }
         ],
-        "postcode": "POSTAL"
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://s3-us-west-2.amazonaws.com/coquitlam-spatial/Topography/SHP/Coquitlam_Topo_SHP.zip",
+                "website": "https://coquitlam.maps.arcgis.com/apps/Cascade/index.html?appid=26ed37ee4167495dbb92e2798aa2b968",
+                "license": {
+                    "url": "https://www.coquitlam.ca/894/Open-Government-Licence",
+                    "text": "Open Government License - Coquitlam 1.0",
+                    "attribution": true,
+                    "attribution name": "City of Coquitlam"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "Buildings.shp"
+                }
+            }
+        ]
     }
 }

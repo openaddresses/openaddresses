@@ -9,20 +9,28 @@
         "state": "in",
         "county": "Madison"
     },
-    "data": "http://arcgis01.madisoncty.com/arcgis/rest/services/gisSite/AddressPoints/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "Address_Number",
-        "street": [
-            "Prefix_Directional",
-            "Prefix_Type",
-            "StreetName",
-            "Street_Type",
-            "Street_Suffix"
-        ],
-        "unit": "Add_Number_Suffix",
-        "city": "COMMUNITY",
-        "format": "geojson",
-        "postcode": "Zip_Code"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://arcgis01.madisoncty.com/arcgis/rest/services/gisSite/AddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "Address_Number",
+                    "street": [
+                        "Prefix_Directional",
+                        "Prefix_Type",
+                        "StreetName",
+                        "Street_Type",
+                        "Street_Suffix"
+                    ],
+                    "unit": "Add_Number_Suffix",
+                    "city": "COMMUNITY",
+                    "format": "geojson",
+                    "postcode": "Zip_Code"
+                }
+            }
+        ]
     }
 }

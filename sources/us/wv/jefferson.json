@@ -9,17 +9,43 @@
         "state": "wv",
         "county": "Jefferson"
     },
-    "data": "http://arcgis4.roktech.net/arcgis/rest/services/Ranson/Ranson/MapServer/6",
-    "note": "the layer name implies the city of Ranson, but the source is more likely all of Jefferson County",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://jefferson.wvassessor.com:8443/arcgis/rest/services/MyGov/Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "city": "COMMUNITY",
+                    "postcode": "ZIPCODE",
+                    "region": "STATE"
+                }
+            }
         ],
-        "city": "MUNICIPALI"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://jefferson.wvassessor.com:8443/arcgis/rest/services/Parcels/2022TaxMapsFinal/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "WVgovPid"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://jefferson.wvassessor.com:8443/arcgis/rest/services/Parcels/2022Lines/MapServer/34",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

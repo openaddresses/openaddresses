@@ -9,18 +9,22 @@
         "state": "mn",
         "county": "Goodhue"
     },
-    "data": "https://maps.co.goodhue.mn.us/arcgis/rest/services/Goodhue_Parcels/LabelsGC/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "C0HSENO1",
-        "street": [
-            "C0STRNM",
-            "C0STRTP",
-            "C0STRSUFFI",
-            "C0STRDIR"
-        ],
-        "postcode": "C0ZIPCD6S",
-        "city": "C0CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.co.goodhue.mn.us/server/rest/services/CountyDataGC/CountyLayersInt/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENO",
+                    "street": "STREETALL",
+                    "postcode": "Zip_Code",
+                    "city": "CITY",
+                    "region": "CO_NAME"
+                }
+            }
+        ]
     }
 }

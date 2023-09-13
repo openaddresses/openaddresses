@@ -9,19 +9,52 @@
         "state": "wi",
         "county": "Bayfield"
     },
-    "data": "http://maps.bayfieldcounty.org/arcgis/rest/services/BFLRMapBasic/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "Number",
-        "street": [
-            "PD",
-            "ROADNAME",
-            "TYPE",
-            "SD"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.bayfieldcounty.wi.gov/arcgis/rest/services/refLayersService/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDNUMBER",
+                    "street": [
+                        "PD",
+                        "ROADNAME",
+                        "TYPE",
+                        "SD"
+                    ],
+                    "unit": "Unit",
+                    "city": "PROPCITY",
+                    "postcode": "PROPZIP"
+                }
+            }
         ],
-        "unit": "Unit",
-        "city": "PROPCITY",
-        "postcode": "PROPZIP"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.bayfieldcounty.wi.gov/arcgis/rest/services/refLayersService/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PRPID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/BAYFIELD_BUILDINGS_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/0B8782A3-B87A-4CCC-8D86-CF2767DE24EE",
+                "protocol": "http",
+                "compression": "zip",
+                "year": 2023,
+                "conform": {
+                    "format": "gdb",
+                    "layer": "BAYFIELD_BUILDINGS_2023"
+                }
+            }
+        ]
     }
 }

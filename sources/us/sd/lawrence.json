@@ -1,24 +1,43 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "46031",
+            "geoid": "46081",
             "name": "Lawrence County",
             "state": "South Dakota"
         },
         "country": "us",
         "state": "sd"
     },
-    "data": "http://web1.mobile311.com/arcgis/rest/services/SouthDakota/LawrenceCounty/MapServer/19",
-    "protocol": "ESRI",
-    "conform": {
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITUS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITUS"
-        },
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.1stdistrict.org/arcgis/rest/services/Lawrence/lawrencemapnet/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUS"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.1stdistrict.org/arcgis/rest/services/Lawrence/lawrencemapnet/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCEL_ID",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

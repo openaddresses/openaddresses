@@ -11,14 +11,33 @@
             ]
         }
     },
-    "data": "https://maps.markham.ca/arcgis/rest/services/External/PUB_ANNOTATION_D/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "ADDRPTID",
-        "number": "ADDRESS",
-        "street": "FULL_STREET_NAME",
-        "unit": "UNIT",
-        "city": "MUNICIPALITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://ww8.yorkmaps.ca/arcgis/rest/services/OpenData/Location/MapServer/0",
+                "website": "http://data-markham.opendata.arcgis.com/datasets/york::address-point",
+                "license": {
+                    "url": "http://data-markham.opendata.arcgis.com/datasets/york::york-region-open-data-licence",
+                    "text": "Contains public sector information made available under The Regional Municipality of York's Open Data Licence",
+                    "attribution name": "York Region Open Data Licence",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": [
+                        "ADDRESS_NUMBER",
+                        "ADD_NUM_SUFFIX"
+                        ],
+                    "street": "FULL_STREET_NAME",
+                    "unit": "UNIT",
+                    "city": "MUNICIPALITY"
+                }
+            }
+        ]
     }
 }

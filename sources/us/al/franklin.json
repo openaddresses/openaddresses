@@ -9,11 +9,41 @@
         "state": "al",
         "county": "Franklin"
     },
-    "data": "http://146.148.59.120/arcgis/rest/services/Parcels/Franklin/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "P_HOUSE_",
-        "street": "P_STREET"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Franklin/Public/MapServer/105",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SitusAddNumber",
+                    "street": "SitusAddName",
+                    "city": "SitusAddCity"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Franklin/Public/MapServer/105",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Franklin/Public/MapServer/102",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

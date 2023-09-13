@@ -4,15 +4,30 @@
         "state": "on",
         "city": "muskoka region"
     },
-    "data": "http://data.openaddresses.io/cache/ca-on-muskoka.zip",
-    "website": "http://map.muskoka.on.ca/Exponare/gis_opendata.html",
-    "attribution": "Muskoka Region",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "number": "StreetNumb",
-        "street": "StreetName",
-        "unit": "StreetUnit",
-        "format": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://map.muskoka.on.ca/Exponare/Open_Data/Muskoka_Civic_Address_Shapefile.zip",
+                "website": "https://map.muskoka.on.ca/Exponare/gis_opendata.html",
+                "attribution": "Muskoka Region",
+                "license": {
+                    "url": "http://map.muskoka.on.ca/Exponare/Open_Data/Open%20Government%20Licence_District%20Municipality%20of%20Muskoka%20GIS_2014.pdf",
+                    "text": "Contains information provided by the District Municipality of Muskoka under licence",
+                    "attribution name": "District Municipality of Muskoka – Open Data Licence v.1.0",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": "StreetNumb",
+                    "street": "StreetName",
+                    "unit": "StreetUnit",
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

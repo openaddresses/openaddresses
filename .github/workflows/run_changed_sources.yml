@@ -1,0 +1,39 @@
+name: Run Changed Sources in Pull Requests
+
+# Only run on pushes
+on:
+  pull_request:
+    paths:
+      - 'sources/**/*.json'
+      - '.github/workflows/run_changed_sources.yml'
+
+jobs:
+  run-source:
+    runs-on: ubuntu-22.04
+    permissions:
+      # These are important to get the batch-machine image
+      contents: read
+      packages: write
+      # This is important for commenting on the PR
+      issues: write
+      pull-requests: write
+    container:
+      image: ghcr.io/openaddresses/batch-machine:latest
+      credentials:
+        username: "$"
+        password: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Run machine
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+          MAPBOX_KEY: ${{ secrets.MAPBOX_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir output
+          pip3 install boto3
+          python3 ci/run_changed_sources.py

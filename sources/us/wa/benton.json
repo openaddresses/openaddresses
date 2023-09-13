@@ -1,21 +1,57 @@
 {
     "coverage": {
-        "US Census": {"geoid": "53005", "name": "Benton County", "state": "Washington"},
+        "US Census": {
+            "geoid": "53005",
+            "name": "Benton County",
+            "state": "Washington"
+        },
         "country": "us",
         "state": "wa",
         "county": "benton"
     },
-    "protocol": "http",
-    "data": "http://www.mediafire.com/file/36wb602bpcr6daj/Address.zip",
-    "website": "http://www.co.benton.wa.us/pview.aspx?id=6002&catid=0",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "srs": "EPSG:4326",
-        "id": "PARCEL_NO",
-        "number": "STRT_NUM",
-        "street": ["RWDIR", "STRT_NAM", "RDTYP"],
-        "city": "POSTCOM",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services7.arcgis.com/NURlY7V8UHl6XumF/ArcGIS/rest/services/Addresses/FeatureServer/0",
+                "website": "https://bentonco.maps.arcgis.com/home/item.html?id=c90c040c2f5b4ed4b2b5e8d0997cdc6d",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STRT_NUM",
+                    "street": [
+                        "RWDIR",
+                        "STRT_NAM",
+                        "RdType"
+                    ],
+                    "city": "PostalArea",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services7.arcgis.com/NURlY7V8UHl6XumF/ArcGIS/rest/services/Parcels_and_Assess/FeatureServer/0",
+                "website": "https://bentonco.maps.arcgis.com/home/item.html?id=1bac94b618344043b291b09dc43e17ec",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_ID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services7.arcgis.com/NURlY7V8UHl6XumF/ArcGIS/rest/services/BuildingFootprints/FeatureServer/0",
+                "website": "https://bentonco.maps.arcgis.com/home/item.html?id=36c6f6ce53af4dd7bbc13c73f84e4a15",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

@@ -9,14 +9,38 @@
         "state": "al",
         "county": "Calhoun"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/c1d4e6/us-al-calhoun.geojson.zip",
-    "note": "source times out after 66k records, but originally sourced from http://gis.calhouncounty.org/arcgis2/rest/services/ParcelViewer/MapServer/68",
-    "protocol": "http",
-    "compression": "zip",
-    "attribution": "Calhoun County",
-    "conform": {
-        "format": "geojson",
-        "number": "STREET_NUM",
-        "street": "STREET_NAME"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.calhouncounty.org/arcgis5/rest/services/ParcelViewerWM18/MapServer/155",
+                "protocol": "ESRI",
+                "attribution": "Calhoun County",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "STREET_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "STREET_ADDRESS"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.calhouncounty.org/arcgis5/rest/services/ParcelViewerWM18/MapServer/155",
+                "protocol": "ESRI",
+                "attribution": "Calhoun County",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NUMBER"
+                }
+            }
+        ]
     }
 }

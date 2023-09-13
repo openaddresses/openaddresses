@@ -9,15 +9,31 @@
         "state": "ga",
         "county": "Dekalb"
     },
-    "protocol": "ESRI",
-    "data": "http://maps.dekalbcountyga.gov/arcgis/rest/services/TaxParcels/MapServer/20",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRESS_NUMBER",
-        "street": "FULL_STREET_NAME",
-        "unit": ["UNIT_TYPE", "UNIT"],
-        "city": "CITY",
-        "postcode": "ZIP",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services2.arcgis.com/IxVN2oUE9EYLSnPE/arcgis/rest/services/Site_Address_Points/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SITEADDID",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MSAG",
+                    "postcode": "ZIPCODE",
+                    "region": "STATE"
+                }
+            }
+        ]
     }
 }

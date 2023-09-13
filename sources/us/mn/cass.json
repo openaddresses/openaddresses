@@ -9,11 +9,36 @@
         "state": "mn",
         "county": "Cass"
     },
-    "data": "http://cassweb3.co.cass.mn.us/arcgis/rest/services/Basic_Layers2/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "BLDNUM1",
-        "street": "RD_NAME",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://cassweb3.co.cass.mn.us/arcgis/rest/services/Basic_Layers2/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "http://cassweb3.co.cass.mn.us/arcgis/rest/services/Basic_Layers2/MapServer/13",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APPRCL"
+                }
+            }
+        ]
     }
 }

@@ -9,28 +9,47 @@
         "state": "ca",
         "county": "Alameda"
     },
-    "data": "https://data.acgov.org/api/geospatial/8e4s-7f4v?method=export&format=Original",
-    "license": "http://www.acgov.org/acdata/terms.htm",
-    "attribution": "Alameda County",
-    "year": "",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "srs": "EPSG:3857",
-        "number": "ST_NUM",
-        "street": [
-            "DIRPRE",
-            "FEANME",
-            "FEATYP",
-            "DIRSUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/ROBnTHSNjoZ2Wm1P/ArcGIS/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://data.acgov.org/datasets/4610acbf49364583986d45ee4106cc3f_0/about",
+                "license": "http://www.acgov.org/acdata/terms.htm",
+                "attribution": "Alameda County",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ST_NUM",
+                    "street": [
+                        "DIRPRE",
+                        "FEANME",
+                        "FEATYP",
+                        "DIRSUF"
+                    ],
+                    "unit": [
+                        "UNIT_TYP",
+                        "UNIT"
+                    ],
+                    "postcode": "zipcode",
+                    "city": "CITY",
+                    "id": "APN"
+                }
+            }
         ],
-        "unit": [
-          "UNIT_TYP",
-          "UNIT"
-        ],
-        "postcode": "zipcode",
-        "city": "CITY",
-        "id": "APN"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/ROBnTHSNjoZ2Wm1P/arcgis/rest/services/Parcels/FeatureServer/0/query?outFields=*&where=1%3D1",
+                "website": "https://data.acgov.org/datasets/b55c25ae04fc47fc9c188dbbfcd51192_0/about",
+                "attribution": "Alameda County",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
     }
 }

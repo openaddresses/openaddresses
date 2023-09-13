@@ -1,38 +1,52 @@
 {
-    "compression": "zip",
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
-    "conform": {
-        "srs": "EPSG:2097",
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        },
-        "number": "LNDN_MA_SN",
-        "lat": "POINT_Y",
-        "headers": 2,
-        "encoding": "EUCKR",
-        "skiplines": 2,
-        "lon": "POINT_X",
-        "format": "csv"
-    },
     "coverage": {
         "city": "광진구",
         "state": "seoul",
         "country": "kr",
-        "geometry": { "type": "Point", "coordinates": [127.080, 37.552] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                127.08,
+                37.552
+            ]
+        }
     },
-    "protocol": "http",
-    "skip": false,
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1071",
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-kwangjingu.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "compression": "zip",
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "conform": {
+                    "srs": "EPSG:2097",
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    },
+                    "number": "LNDN_MA_SN",
+                    "lat": "POINT_Y",
+                    "headers": 2,
+                    "encoding": "EUCKR",
+                    "skiplines": 2,
+                    "lon": "POINT_X",
+                    "format": "csv"
+                },
+                "protocol": "http",
+                "skip": false,
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1071",
+                "data": "https://data.openaddresses.io/cache/kr-seoul-kwangjingu.zip"
+            }
+        ]
+    }
 }

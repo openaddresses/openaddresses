@@ -9,15 +9,23 @@
         "state": "nm",
         "county": "Doña Ana"
     },
-    "data": "http://maps.donaanacounty.org/arcgis/rest/services/DAC_AddressPoints/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRESS",
-        "street": [
-            "PREDIR",
-            "STREETNAME",
-            "ST_SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://maps.donaanacounty.org/arcgis/rest/services/DAC_AddressPoints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS",
+                    "street": [
+                        "PREDIR",
+                        "STREETNAME",
+                        "ST_SUFFIX"
+                    ]
+                }
+            }
         ]
     }
 }

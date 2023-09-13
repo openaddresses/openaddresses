@@ -9,17 +9,36 @@
         "state": "pa",
         "county": "Lycoming"
     },
-    "data": "https://github.com/aaronpdennis/pa-county-addresses/raw/master/data/LYCOMING/LYCOMING_addresses.csv",
-    "protocol": "http",
-    "note": "Data extracted from 2009 state government collection. Individual county GIS offices may have more recent addresses.",
-    "conform": {
-        "format": "csv",
-        "number": "SAN",
-        "street": ["PRD","STP","STN","STS","POD"],
-        "city": "MCN",
-        "lon": "X",
-        "lat": "Y",
-        "id": "PIN",
-        "accuracy": 5
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.lyco.org/Departments/Planning-and-Community-Development/GIS-Mapping-and-Data-Services-",
+                "contact": {
+                    "name": "Amy Fry",
+                    "title": "GIS Supervisor",
+                    "phone": "(570) 320-2130",
+                    "email": "afry@lyco.org",
+                    "address": "48 West Third Street, Williamsport, PA 17701"
+                },
+                "data": "http://gis.lyco.org/arcgis/rest/services/BuildingAddresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^([0-9]+) "
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }

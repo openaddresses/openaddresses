@@ -9,15 +9,44 @@
         "state": "sc",
         "county": "Horry"
     },
-    "data": "http://www.horrycounty.org/gisweb/rest/services/Public/AddressPoints/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "StreetNum",
-        "street": "STREETNAME",
-        "unit": "UNIT",
-        "postcode": "ZIPCODE",
-        "city": "CITY",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.horrycounty.org/gisweb/rest/services/Public/AddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StreetNum",
+                    "street": "STREETNAME",
+                    "unit": "UNIT",
+                    "postcode": "ZIPCODE",
+                    "city": "CITY",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.horrycounty.org/gisweb/rest/services/OpenData/Parcel_Geometry/MapServer/07",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://www.horrycounty.org/parcelapp/rest/services/HorryCountyGISApp/MapServer/27",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

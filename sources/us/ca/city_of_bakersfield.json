@@ -16,26 +16,68 @@
         "state": "ca",
         "city": "Bakersfield"
     },
-    "data": "http://maps2.bakersfieldgis.us/arcgis/rest/services/BaseMapLF/MapServer/0",
-    "license": "http://www.bakersfieldcity.us/gov/depts/geographic_information_services/default.htm",
-    "attribution": "City of Bakersfield",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "Uid",
-        "number": [
-            "NUMBER",
-            "FRACTION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.bakersfieldcity.us/webmaps/rest/services/General/Addresses/MapServer/0",
+                "website": "https://bakersfielddatalibrary-cob.opendata.arcgis.com/datasets/cob::addresses/about",
+                "license": {
+                    "url": "https://www.bakersfieldcity.us/958/GIS-Data-Disclaimer"
+                },
+                "attribution": "City of Bakersfield",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "Uid",
+                    "number": [
+                        "NUMBER",
+                        "FRACTION"
+                    ],
+                    "unit": "UNIT",
+                    "street": [
+                        "PREFIX",
+                        "NAME",
+                        "TYPE",
+                        "SUFFIX"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "street": [
-            "PREFIX",
-            "NAME",
-            "TYPE",
-            "SUFFIX"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.bakersfieldcity.us/webmaps/rest/services/General/Cadastre/MapServer/1",
+                "website": "https://bakersfielddatalibrary-cob.opendata.arcgis.com/datasets/cob::parcels/about",
+                "license": {
+                    "url": "https://www.bakersfieldcity.us/958/GIS-Data-Disclaimer"
+                },
+                "attribution": "City of Bakersfield",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "APN_ID",
+                    "format": "geojson"
+                }
+            }
         ],
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.bakersfieldcity.us/webmaps/rest/services/General/Buildings/MapServer/0",
+                "website": "https://bakersfielddatalibrary-cob.opendata.arcgis.com/datasets/cob::buildings/about",
+                "license": {
+                    "url": "https://www.bakersfieldcity.us/958/GIS-Data-Disclaimer"
+                },
+                "attribution": "City of Bakersfield",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

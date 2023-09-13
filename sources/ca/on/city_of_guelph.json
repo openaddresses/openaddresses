@@ -11,24 +11,30 @@
         "state": "on",
         "city": "Guelph"
     },
-    "data": "http://maps.guelph.ca/arcgis/rest/services/Maps/Address_Streets/MapServer/0",
-    "website": "http://openguelph.wpengine.com/dataset/city-of-guelph-addresses/",
-    "license": "http://openguelph.wpengine.com/open-data-guelph/city-of-guelph-open-government-licence/",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "format",
-            "fields": [
-                "STREET_NO",
-                "STREET_QUA"
-            ],
-            "format": "$1$2"
-        },
-        "street": "STREET_NAM",
-        "unit": "UNIT_NO",
-        "city": "MUN",
-        "region": "PROVINCE",
-        "postcode": "POSTCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services5.arcgis.com/k3dd78JyG9GFoZHG/arcgis/rest/services/Addresses/FeatureServer/0",
+                "website": "http://geodatahub-cityofguelph.opendata.arcgis.com/datasets/addresses-1",
+                "license": {
+                    "url": "http://geodatahub-cityofguelph.opendata.arcgis.com/pages/terms-of-use",
+                    "text": "Contains information provided by the City of Guelph under an open government license",
+                    "attribution name": "City of Guelph Open Government Licence",
+                    "attribution": true,
+                    "share-alike": true
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREETNO",
+                    "street": "STREETNAME",
+                    "unit": "UNIT_NO",
+                    "city": "MUN",
+                    "postcode": "POSTCODE"
+                }
+            }
+        ]
     }
 }

@@ -1,32 +1,60 @@
 {
     "coverage": {
-        "country": "AU",
-        "state": "QLD",
+        "country": "au",
+        "state": "qld",
         "county": "Logan City Council"
     },
-    "language": "en",
-    "license": {
-        "url": "http://creativecommons.org/licenses/by/3.0",
-        "text": "CC BY 3.0 AU",
-        "attribution": true,
-        "attribution name": "Logan City Council",
-        "share-alike": false
-    },
-    "website": "http://data-logancity.opendata.arcgis.com/datasets/lcc-primary-property-address",
-    "data": "https://services5.arcgis.com/ZUCWDRj8F77Xo351/ArcGIS/rest/services/LCC_Primary_Property_Address/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "unit": {
-            "function": "regexp",
-            "field": "Start_Unit_Number",
-            "pattern": "^([1-9].*)"
-        },
-        "number": "Start_House_Number",
-        "street": "Street_Name",
-        "city": "Suburb",
-        "region": "State",
-        "postcode": "Postcode",
-        "notes": "Formatted_Parcel_Desc"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "language": "en",
+                "license": {
+                    "url": "http://creativecommons.org/licenses/by/3.0",
+                    "text": "CC BY 3.0 AU",
+                    "attribution": true,
+                    "attribution name": "Logan City Council",
+                    "share-alike": false
+                },
+                "website": "http://data-logancity.opendata.arcgis.com/datasets/lcc-primary-property-address",
+                "data": "https://services5.arcgis.com/ZUCWDRj8F77Xo351/ArcGIS/rest/services/LCC_Primary_Property_Address/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": {
+                        "function": "regexp",
+                        "field": "Start_Unit_Number",
+                        "pattern": "^([1-9].*)"
+                    },
+                    "number": "Start_House_Number",
+                    "street": "Street_Name",
+                    "city": "Suburb",
+                    "region": "State",
+                    "postcode": "Postcode",
+                    "notes": "Formatted_Parcel_Desc"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "http",
+                "data": "https://opendata.arcgis.com/datasets/f065057c46094c9ca4f66d0ad01996e6_66.zip?outSR=%7B%22latestWkid%22%3A28356%2C%22wkid%22%3A28356%7D",
+                "website": "http://data-logancity.opendata.arcgis.com/datasets/parcels-with-a-building-envelope",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "Property_Key"
+                },
+                "compression": "zip",
+                "license": {
+                    "text": "CC BY 3.0",
+                    "url": "http://creativecommons.org/licenses/by/3.0",
+                    "attribution name": "Logan City Council",
+                    "attribution": true,
+                    "share-alike": false
+                }
+            }
+        ]
     }
 }

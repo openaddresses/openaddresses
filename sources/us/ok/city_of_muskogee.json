@@ -4,7 +4,7 @@
             "type": "Point",
             "coordinates": [
                 -95.441,
-                35.730
+                35.73
             ]
         },
         "US Census": {
@@ -16,20 +16,28 @@
         "state": "ok",
         "city": "Muskogee"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/90a143/us-ok-city-of-muskogee.zip",
-    "protocol": "http",
-    "conform": {
-        "format": "shapefile",
-        "id": "LOC_ID",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(\\d+(?:\\s+1\\s*/\\s*2)?)(?:.*)$"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:\\d+(?:\\s+1\\s*/\\s*2)?)\\s*(.*?)\\s*(?:\\b(?:APT|LOT|SU?I?TE|UNIT)\\b.*)?$"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://data.openaddresses.io/cache/uploads/trescube/90a143/us-ok-city-of-muskogee.zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "id": "LOC_ID",
+                    "number": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(\\d+(?:\\s+1\\s*/\\s*2)?)(?:.*)$"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:\\d+(?:\\s+1\\s*/\\s*2)?)\\s*(.*?)\\s*(?:\\b(?:APT|LOT|SU?I?TE|UNIT)\\b.*)?$"
+                    }
+                }
+            }
+        ]
     }
 }

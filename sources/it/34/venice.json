@@ -3,21 +3,38 @@
         "country": "it",
         "city": "Venice"
     },
-    "data": "http://sit.comune.venezia.it:6080/arcgis/rest/services/Mappe_base/Cartografia_di_base_a_Colori/MapServer/2",
-    "protocol": "ESRI",
-    "language": "it",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "INDIRIZZO",
-            "pattern": "^(?:.+?)(?:,\\s*(.*?)\\s*)$"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "INDIRIZZO",
-            "pattern": "^(.+?)(?:,.*)?$"
-        },
-        "city": "Venezia"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://portale.comune.venezia.it/filebrowser/download/3080889",
+                "protocol": "http",
+                "language": "it",
+                "compression": "zip",
+                "license": {
+                    "url": "http://www.dati.gov.it/iodl/2.0/",
+                    "attribution": true,
+                    "attribution name": "Direzione Sviluppo del Territorio e Città Sostenibile - Comune di Venezia",
+                    "share-alike": false
+                },
+                "conform": {
+                    "file": "Tema0301_ToponimiNumeriCivici/CIVICO.shp",
+                    "srs": "EPSG:3004",
+                    "format": "shapefile",
+                    "number": {
+                        "function": "regexp",
+                        "field": "INDIRIZZO",
+                        "pattern": "^(?:.+?)(?:,?\\s*(\\d.*?)\\s*)$"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "INDIRIZZO",
+                        "pattern": "^(.+?)(?:,?\\s*\\d.*)?$"
+                    },
+                    "city": "Venezia"
+                }
+            }
+        ]
     }
 }

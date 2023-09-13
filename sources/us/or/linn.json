@@ -9,25 +9,51 @@
         "state": "or",
         "county": "Linn"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "gdb",
-        "file": "Delivery/addresses_oregon.gdb",
-        "layer": "Linn",
-        "number": [
-            "NUMBER",
-            "NUM_FRAC"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.linn.or.us/public/rest/services/baselayers/Pub_address/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "NUMBER",
+                        "NUM_FRAC"
+                    ],
+                    "street": [
+                        "PRE_DIR",
+                        "STREET",
+                        "SUFFIX",
+                        "POST_DIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "street": [
-            "PRE_DIR",
-            "STREET",
-            "SUFFIX",
-            "POST_DIR"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.linn.or.us/public/rest/services/baselayers/Pub_taxlots/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "CITY",
-        "postcode": "ZIP"
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.co.linn.or.us/public/rest/services/baselayers/Pub_bldgftprint/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

@@ -16,20 +16,28 @@
         "state": "co",
         "city": "Thornton"
     },
-    "data": "http://webmaps.cityofthornton.net/arcgis/rest/services/Addresses/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-      "format": "geojson",
-      "number": "STNO",
-      "street": [
-          "PREDIR",
-          "STNAME",
-          "SUFFIX",
-          "POSTDIR"
-      ],
-      "unit": "UNT",
-      "city": "CITY",
-      "region": "STATE",
-      "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://webmaps.cityofthornton.net/arcgis/rest/services/Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STNO",
+                    "street": [
+                        "PREDIR",
+                        "STNAME",
+                        "SUFFIX",
+                        "POSTDIR"
+                    ],
+                    "unit": "UNT",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

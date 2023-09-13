@@ -9,21 +9,29 @@
         "state": "nc",
         "county": "Wilson"
     },
-    "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/WilsonCounty/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "STNUM",
-        "street": [
-            "PREDIR",
-            "STNAME",
-            "SUFFIX",
-            "POSTDIR"
-        ],
-        "unit": [
-            "POSTQUAL",
-            "APTNUM"
-        ],
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.wilson-co.com/arcgis/rest/services/Base_Layers/County_Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STNUM",
+                    "street": [
+                        "PREDIR",
+                        "STNAME",
+                        "SUFFIX",
+                        "POSTDIR"
+                    ],
+                    "unit": [
+                        "POSTQUAL",
+                        "APTNUM"
+                    ],
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

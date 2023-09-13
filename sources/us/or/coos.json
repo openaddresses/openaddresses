@@ -9,22 +9,48 @@
         "state": "or",
         "county": "Coos"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "gdb",
-        "file": "Delivery/addresses_oregon.gdb",
-        "layer": "Coos",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITUSSTR"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITUSSTR"
-        },
-        "city": "SITUSCITY",
-        "postcode": "SITUSZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/or6I5QjRIBzpPc8G/ArcGIS/rest/services/GIS_Online_February_2023/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUSSTR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUSSTR"
+                    },
+                    "city": "SITUSCITY",
+                    "postcode": "SITUSZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/or6I5QjRIBzpPc8G/ArcGIS/rest/services/GIS_Online_February_2023/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TLID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/or6I5QjRIBzpPc8G/ArcGIS/rest/services/GIS_Online_February_2023/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

@@ -1,19 +1,31 @@
 {
     "coverage": {
-        "US Census": {"geoid": "20131", "name": "Nemaha County", "state": "Kansas"},
+        "US Census": {
+            "geoid": "20131",
+            "name": "Nemaha County",
+            "state": "Kansas"
+        },
         "country": "us",
         "state": "ks",
         "county": "Nemaha"
     },
-    "conform": {
-        "format": "csv",
-        "number": "NUM",
-        "street": "street",
-        "postcode": "",
-        "lon": "x",
-        "lat": "y"
-    },
-    "data": "http://data.openaddresses.io/cache/us-ks-nemaha_county.csv",
-    "website": "http://jade.kgs.ku.edu/orka2/MainPage.aspx",
-    "protocol": "http"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "csv",
+                    "number": "NUM",
+                    "street": "street",
+                    "postcode": "",
+                    "lon": "x",
+                    "lat": "y"
+                },
+                "data": "https://data.openaddresses.io/cache/us-ks-nemaha_county.csv",
+                "website": "http://jade.kgs.ku.edu/orka2/MainPage.aspx",
+                "protocol": "http"
+            }
+        ]
+    }
 }

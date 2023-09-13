@@ -9,17 +9,54 @@
         "state": "ga",
         "county": "Muscogee"
     },
-    "attribution": "Muscogee County",
-    "data": "http://web.columbusga.org/arcgis/rest/services/PublicWorks/MapServer/17",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "Permanent_Identifier",
-        "number": "AddressNum",
-        "street": [
-        "STREET_PRE",
-            "StreetName",
-            "StreetType"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Muscogee County",
+                "data": "https://gis.columbusga.org/arcgis/rest/services/Base/MapServer/0",
+                "website": "https://ccg.maps.arcgis.com/home/item.html?id=d7d30b0d9e7b4be1a0b085a7cdf0cca1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": "AddressNumber",
+                    "unit": "Subaddress",
+                    "street": [
+                        "StreetPrefix",
+                        "StreetName",
+                        "StreetType",
+                        "StreetSuffix"
+                    ],
+                    "postcode": "ZipCode",
+                    "city": "ZipCodeCity"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Muscogee County",
+                "data": "https://gis.columbusga.org/arcgis/rest/services/TaxAssessors/CurrentYear/MapServer/20",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TaxPIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Muscogee County",
+                "data": "https://gis.columbusga.org/arcgis/rest/services/Base/MapServer/1",
+                "website": "https://ccg.maps.arcgis.com/home/item.html?id=53dad35ae2f5489bb13aeffd83bfe560",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
         ]
     }
 }

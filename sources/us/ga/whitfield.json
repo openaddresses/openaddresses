@@ -9,15 +9,31 @@
         "state": "ga",
         "county": "Whitfield"
     },
-    "data": "http://gis.whitfieldcountyga.com/arcgis/rest/services/Addressing/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HNUM",
-        "street": "STREET",
-        "unit": "LOCATION",
-        "city": "M_COMM",
-        "region": "M_STATE",
-        "postcode": "M_ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.whitfieldcountyga.com/server/rest/services/Addressing/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HNUM",
+                    "street": "STREET",
+                    "unit": "LOCATION"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.whitfieldcountyga.com/server/rest/services/Addressing/MapServer/12",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_FUL"
+                }
+            }
+        ]
     }
 }

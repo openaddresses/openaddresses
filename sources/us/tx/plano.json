@@ -1,29 +1,44 @@
 {
     "coverage": {
-        "US Census": {"geoid": "48085", "name": "Collin County", "state": "Texas"},
+        "US Census": {
+            "geoid": "48085",
+            "name": "Collin County",
+            "state": "Texas"
+        },
         "geometry": {
             "type": "Point",
-            "coordinates": [ -96.69290542602539, 33.01168646009434 ]
+            "coordinates": [
+                -96.69290542602539,
+                33.01168646009434
+            ]
         },
         "country": "us",
         "state": "tx",
         "county": "Collin",
         "city": "Plano"
     },
-    "data": "http://www.collincad.org/downloads/finish/16-gis-downloads/82-parcels-shapefile",
-    "website": "http://www.collincad.org/downloads/viewcategory/16-gis-downloads",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile-polygon",
-        "number": "situs_num",
-        "street": [
-            "situs_stre",
-            "situs_st_1",
-            "situs_st_2"
-        ],
-        "city": "situs_city",
-        "region": "situs_stat",
-        "postcode": "situs_zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://www.collincad.org/downloads/finish/16-gis-downloads/82-parcels-shapefile",
+                "website": "http://www.collincad.org/downloads/viewcategory/16-gis-downloads",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "situs_num",
+                    "street": [
+                        "situs_stre",
+                        "situs_st_1",
+                        "situs_st_2"
+                    ],
+                    "city": "situs_city",
+                    "region": "situs_stat",
+                    "postcode": "situs_zip"
+                }
+            }
+        ]
     }
 }

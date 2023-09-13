@@ -9,20 +9,37 @@
         "state": "sc",
         "county": "Saluda"
     },
-    "data": "http://www.saludacountysc.net/arcgis/rest/services/PublicWebsite/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "FullAddress",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "FullAddress",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://saludacountysc.net/arcgis/rest/services/TheAddresser/Address_Working_Pro/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "FullHouse",
+                    "street": "FullStreetName",
+                    "unit": [
+                        "UnitType",
+                        "Apt"
+                    ],
+                    "city": "Postal_Town",
+                    "region": "Postal_State",
+                    "postcode": "Postal_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://saludacountysc.net/arcgis/rest/services/ParcelViewers/PublicWebsite_Pro/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "SDE.DBO.Parcels.TaxMapNumber"
+                }
+            }
+        ]
     }
 }

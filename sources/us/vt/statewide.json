@@ -7,27 +7,47 @@
         "country": "us",
         "state": "vt"
     },
-    "website": "http://vcgi.vermont.gov/warehouse/theme_index",
-    "data": "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_EMERGENCY_SP_NOCACHE_v1/MapServer/29",
-    "license": "http://vcgi.vermont.gov/sites/vcgi/files/warehouse/VCGI_Warranty_Copyright_Notice_2013.pdf",
-    "attribution": "VT Enhanced 911 Board, VCGI",
-    "year": "2013",
-    "protocol": "ESRI",
-    "note": "E911 Site locations including buildings, hydrants, public phones",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NUMBER",
-        "street": [
-            "PD",
-            "PT",
-            "SN",
-            "ST",
-            "SD"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "website": "http://vcgi.vermont.gov/warehouse/theme_index",
+                "data": "http://maps.vcgi.vermont.gov/arcgis/rest/services/EGC_services/OPENDATA_VCGI_EMERGENCY_SP_NOCACHE_v1/MapServer/29",
+                "license": "http://vcgi.vermont.gov/sites/vcgi/files/warehouse/VCGI_Warranty_Copyright_Notice_2013.pdf",
+                "attribution": "VT Enhanced 911 Board, VCGI",
+                "year": "2013",
+                "protocol": "ESRI",
+                "note": "E911 Site locations including buildings, hydrants, public phones",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUMBER",
+                    "street": [
+                        "PD",
+                        "PT",
+                        "SN",
+                        "ST",
+                        "SD"
+                    ],
+                    "city": "TOWNNAME",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP",
+                    "addrtype": "SITETYPE"
+                }
+            }
         ],
-        "city": "TOWNNAME",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIP",
-        "addrtype": "SITETYPE"
+        "buildings": [
+            {
+                "name": "state",
+                "website": "http://vcgi.vermont.gov/warehouse/theme_index",
+                "data": "http://maps.vcgi.vermont.gov/arcgis/rest/services/VCGI_services/ESRICMP_BuildingFootprintsVT_v1/MapServer/2",
+                "license": "http://vcgi.vermont.gov/sites/vcgi/files/warehouse/VCGI_Warranty_Copyright_Notice_2013.pdf",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

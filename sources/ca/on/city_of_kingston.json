@@ -3,25 +3,39 @@
         "country": "ca",
         "state": "on",
         "city": "Kingston",
-        "geometry": { "type": "Point", "coordinates": [-76.48, 44.23] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -76.48,
+                44.23
+            ]
+        }
     },
-    "protocol": "http",
-    "compression": "zip",
-    "data": "https://apps.cityofkingston.ca/data/gis/Civic_Address_SHP.zip",
-    "website": "https://www.cityofkingston.ca/explore/data-catalogue",
-    "conform":{
-        "format": "shapefile",
-        "number": {
-            "function": "format",
-            "fields": [
-                "ADDR_NUM",
-                "A_NUM_SUF"
-            ],
-            "format": "$1$2"
-        },
-        "street": "STREET",
-        "unit": "UNIT",
-        "postcode": "POSTAL_COD",
-        "city": "MUNICIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://apps.cityofkingston.ca/data/gis/Civic_Address_SHP.zip",
+                "website": "https://www.cityofkingston.ca/explore/data-catalogue",
+                "conform": {
+                    "format": "shapefile",
+                    "number": {
+                        "function": "format",
+                        "fields": [
+                            "ADDR_NUM",
+                            "A_NUM_SUF"
+                        ],
+                        "format": "$1$2"
+                    },
+                    "street": "STREET",
+                    "unit": "UNIT",
+                    "postcode": "POSTAL_COD",
+                    "city": "MUNICIP"
+                }
+            }
+        ]
     }
 }

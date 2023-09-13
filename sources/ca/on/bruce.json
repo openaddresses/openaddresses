@@ -4,12 +4,29 @@
         "state": "on",
         "county": "Bruce"
     },
-    "protocol": "ESRI",
-    "data": "http://maps.brucecounty.on.ca/arcgis/rest/services/public/parcels_pub_wa/MapServer/3",
-    "conform":{
-        "format": "geojson",
-        "number": "ADDR_NUM",
-        "street": "RD_NAME",
-        "unit": "UNIT_NUM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.brucecounty.on.ca/arcgis/rest/services/public/bruce_open_data/FeatureServer/3",
+                "website": "https://data-brucecounty.opendata.arcgis.com/datasets/bruce-county-address-points",
+                "license": {
+                    "url": "https://bgdisc.ca/sites/default/files/BGDISC%20Data%20License.pdf",
+                    "text": "Contains information licensed under the BGDISC Open Data Licence.",
+                    "attribution name": "BGDISC Open Data Licence",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "AddrNum",
+                    "street": "RoadName",
+                    "unit": "Unit",
+                    "city": "Municipality"
+                }
+            }
+        ]
     }
 }

@@ -9,12 +9,37 @@
         "state": "wy",
         "county": "Crook"
     },
-    "data": "http://gis.crookcounty.wy.gov/arcgis/rest/services/GrowthAndDevelopment_Data/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDR_NUMB",
-        "street": "ROAD",
-        "city": "Community"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://crookela.centralus.cloudapp.azure.com/server/rest/services/Crook/GrowthAndDevelopmentData/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "city": "Community"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://crookela.centralus.cloudapp.azure.com/server/rest/services/Crook/AssessorData/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIDN"
+                }
+            }
+        ]
     }
 }

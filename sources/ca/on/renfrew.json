@@ -4,14 +4,22 @@
         "state": "on",
         "county": "Renfrew"
     },
-    "protocol": "http",
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/cc2c02/ca-on-renfrew.geojson.zip",
-    "compression": "zip",
-    "conform":{
-        "format": "geojson",
-        "number": "Street_Num",
-        "street": "Street_Name",
-        "unit": "Qualifier"
-    },
-    "note":"Token Required - http://countyofrenfrew.geocortex.com/SilverlightViewer/Viewer.html?Viewer=CountyOfRenfrewPublic"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "http",
+                "data": "https://data.openaddresses.io/cache/uploads/trescube/cc2c02/ca-on-renfrew.geojson.zip",
+                "compression": "zip",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Street_Num",
+                    "street": "Street_Name",
+                    "unit": "Qualifier"
+                },
+                "note": "Token Required - http://countyofrenfrew.geocortex.com/SilverlightViewer/Viewer.html?Viewer=CountyOfRenfrewPublic"
+            }
+        ]
+    }
 }

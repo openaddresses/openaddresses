@@ -9,13 +9,37 @@
         "state": "mn",
         "county": "Sibley"
     },
-    "protocol": "ESRI",
-    "data": "https://services1.arcgis.com/ca9pZxSKQMiPIqAL/ArcGIS/rest/services/Sibley_County_Parcels/FeatureServer/0",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSENBR",
-        "street": ["STREET", "STREETTYPE", "STREETSUFF", "STREETDIR"],
-        "postcode": "ZIP",
-        "city": "CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services1.arcgis.com/ca9pZxSKQMiPIqAL/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ANUMBERPRE",
+                        "ANUMBER",
+                        "ANUMBERSUF"
+                    ],
+                    "unit": [
+                        "SUB_TYPE1",
+                        "SUB_ID1"
+                    ],
+                    "street": [
+                        "ST_PRE_DIR",
+                        "ST_PRE_TYP",
+                        "ST_NAME",
+                        "ST_POS_TYP",
+                        "ST_POS_DIR",
+                        "ST_POS_MOD"
+                    ],
+                    "city": "MSAG_C",
+                    "region": "COUNTY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

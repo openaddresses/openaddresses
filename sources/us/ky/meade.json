@@ -9,20 +9,39 @@
         "state": "ky",
         "county": "Meade"
     },
-    "data": "https://services1.arcgis.com/ufOeQWjwz5JyJXKQ/arcgis/rest/services/Meade_Co_Addresses/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "PARCEL_ID",
-        "number": "STNUM",
-        "unit": "UNIT",
-        "street": [
-            "STRDIR",
-            "STRNAME",
-            "STRTYPE",
-            "SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/ufOeQWjwz5JyJXKQ/ArcGIS/rest/services/Meade_Co_KY_Addresses___Roads/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "PARCEL_ID",
+                    "number": "STNUM",
+                    "unit": "UNIT",
+                    "street": [
+                        "STRDIR",
+                        "STRNAME",
+                        "STRTYPE",
+                        "SUFFIX"
+                    ],
+                    "postcode": "ZIPCODE",
+                    "city": "CITY"
+                }
+            }
         ],
-        "postcode": "ZIPCODE",
-        "city": "CITY"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/ufOeQWjwz5JyJXKQ/ArcGIS/rest/services/Meade_Co_KY_Addresses_Roads_Lot_Lines/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL"
+                }
+            }
+        ]
     }
 }

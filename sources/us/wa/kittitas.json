@@ -9,17 +9,48 @@
         "state": "wa",
         "county": "Kittitas"
     },
-    "data": "https://gis.co.kittitas.wa.us/kcgis/rest/services/AGOL/Site_Address_Points/MapServer/0",
-    "website": "https://www.co.kittitas.wa.us/it/gis.aspx",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/eSnyVpqwqWBADfzp/arcgis/rest/services/Tax_Parcel/FeatureServer/0",
+                "website": "https://data-kitcogis.opendata.arcgis.com/datasets/kitcogis::tax-parcel/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "t2_Situs"
+                    },
+                    "street": {
+                        "function": "chain",
+                        "variable": "street_wip",
+                        "functions": [{
+                            "function": "postfixed_street",
+                            "field": "t2_Situs"
+                        },{
+                            "function": "remove_postfix",
+                            "field": "street_wip",
+                            "field_to_remove": "t2_SitusCity"
+                        }]
+                    },
+                    "city": "t2_SitusCity",
+                    "postcode": "t2_SitusZip"
+                }
+            }
         ],
-        "city": "MUNICIPALITY"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/eSnyVpqwqWBADfzp/arcgis/rest/services/Tax_Parcel/FeatureServer/0",
+                "website": "https://data-kitcogis.opendata.arcgis.com/datasets/kitcogis::tax-parcel/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
     }
 }

@@ -6,25 +6,33 @@
             "alpha2": "CH-SH"
         }
     },
-    "website": "http://gis.sh.ch/GIS_SH/BM3.asp",
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/sergiyprotsiv/88c155/order-sch.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "license": {
-        "attribution": true,
-        "share-alike": false
-    },
-    "conform": {
-        "format": "shapefile",
-        "file": "Ge_Gebaeudeeingang.shp",
-        "number": "HAUSNUMMER",
-        "street": "STRASSE",
-        "city": {
-            "function": "regexp",
-            "field": "ORTSCHAFT",
-            "pattern": "^(.+)(?:\\s+SH)\\s*$"
-        },
-        "postcode": "PLZ",
-        "srs": "EPSG:2056"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "website": "http://gis.sh.ch/GIS_SH/BM3.asp",
+                "data": "https://data.openaddresses.io/cache/uploads/sergiyprotsiv/88c155/order-sch.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "shapefile",
+                    "file": "Ge_Gebaeudeeingang.shp",
+                    "number": "HAUSNUMMER",
+                    "street": "STRASSE",
+                    "city": {
+                        "function": "regexp",
+                        "field": "ORTSCHAFT",
+                        "pattern": "^(.+)(?:\\s+SH)\\s*$"
+                    },
+                    "postcode": "PLZ",
+                    "srs": "EPSG:2056"
+                }
+            }
+        ]
     }
 }

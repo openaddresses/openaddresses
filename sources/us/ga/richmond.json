@@ -2,30 +2,59 @@
     "coverage": {
         "US Census": {
             "geoid": "13245",
-            "name": "Richmond",
+            "name": "Richmond County",
             "state": "ga"
         },
         "country": "us",
         "state": "ga",
         "county": "Richmond"
     },
-    "data": "http://gismap.augustaga.gov/arcgis/rest/services/CityView/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gismap.augustaga.gov/arcgis/rest/services/BasemapGenAGS/MapServer/159",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": [
+                        "ROADDIRPRE",
+                        "ROADNAME",
+                        "ROADTYPE",
+                        "ROADDIRSUFF"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "street": [
-            "ROADDIRPRE",
-            "ROADNAME",
-            "ROADTYPE",
-            "ROADDIRSUFF"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gismap.augustaga.gov/arcgis/rest/services/BasemapGISMap/MapServer/212",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
         ],
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gismap.augustaga.gov/arcgis/rest/services/BasemapGenAGS/MapServer/161",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

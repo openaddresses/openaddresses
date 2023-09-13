@@ -6,24 +6,55 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -119.609,
-                49.860
+                -119.583,
+                49.859
             ]
         }
     },
-    "data": "http://gis.westkelownacity.ca/GISFiles/wk_cvcpoints.zip",
-    "website": "http://www.westkelownacity.ca/471/Open-Data",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "number": "ADDR_NBR",
-        "street": [
-            "PREFIX",
-            "NAME",
-            "TYPE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.westkelownacity.ca/GISFiles/wk_cvcpoints.zip",
+                "website": "https://www.westkelownacity.ca/en/building-business-and-development/open-data.aspx",
+                "license": {
+                    "url": "https://gis.westkelownacity.ca/GISFiles/disclaimer.pdf",
+                    "text": "Indemnification"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "file": "wk_cvcpoints/wk_cvcpoints.shp",
+                    "format": "shapefile",
+                    "number": "ADDR_NBR",
+                    "street": [
+                        "PREFIX",
+                        "NAME",
+                        "TYPE"
+                    ],
+                    "unit": "UNIT_NBR",
+                    "postcode": "POST_CODE"
+                }
+            }
         ],
-        "unit": "UNIT_NBR",
-        "postcode": "POST_CODE"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.westkelownacity.ca/GISFiles/wk_cadastre.zip",
+                "website": "https://www.westkelownacity.ca/en/building-business-and-development/open-data.aspx",
+                "license": {
+                    "url": "https://gis.westkelownacity.ca/GISFiles/disclaimer.pdf",
+                    "text": "Indemnification"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "file": "wk_cadastre/wk_cadastre.shp",
+                    "format": "shapefile",
+                    "pid": "pid"
+                }
+            }
+        ]
     }
 }

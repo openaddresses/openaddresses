@@ -1,27 +1,40 @@
 {
+    "schema": 2,
     "coverage": {
         "country": "ca",
         "state": "yk",
         "city": "Whitehorse",
-        "geometry": { "type": "Point", "coordinates": [-135.06, 60.73] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [ -135.06, 60.73 ]
+        }
     },
-    "data": "http://ww3.whitehorse.ca/features/gis/open_data/Administration/Parcels_Filtered_Address_from_Diamond.zip",
-    "website": "http://data.whitehorse.ca/",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "file": "Parcels_Filtered_Address_from_Diamond/DBO_Parcels_Filtered_Address_from_Diamond.shp",
-        "number": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(\\S+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "address",
-            "pattern": "^(?:\\S+ )(.*)",
-            "replace": "$1"
-        },
-        "format": "shapefile-polygon"
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://ags.whitehorse.ca/agswa/rest/services/Land_Records_v18/MapServer/3",
+                "website": "https://gisext.whitehorse.ca",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "Suite",
+                    "number": "House",
+                    "street": "Street"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://ags.whitehorse.ca/agswa/rest/services/Land_Records_v18/MapServer/150",
+                "website": "https://gisext.whitehorse.ca",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PLANNO"
+                }
+            }
+        ]
     }
 }

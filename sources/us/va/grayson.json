@@ -9,20 +9,28 @@
         "state": "va",
         "county": "Grayson"
     },
-    "data": "https://www.webgis.net/arcgis/rest/services/VA/GraysonCo_WebGIS1/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "FULLADDR"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "FULLADDR"
-        },
-        "unit": "UNIT",
-        "city": "CITY",
-        "postcode": "ZIP_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/GraysonCo_WebGIS1/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FULLADDR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FULLADDR"
+                    },
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ]
     }
 }

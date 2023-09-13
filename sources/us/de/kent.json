@@ -9,14 +9,22 @@
         "state": "de",
         "county": "Kent"
     },
-    "conform": {
-        "format": "geojson",
-        "number": "Address",
-        "street": "Roadname",
-        "unit": "Apartment",
-        "postcode": "Zipcode",
-        "city": "City"
-    },
-    "data": "http://co.kent.de.us/arcgis/rest/services/Structure/MapServer/0",
-    "protocol": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Address",
+                    "street": "Roadname",
+                    "unit": "Apartment",
+                    "postcode": "Zipcode",
+                    "city": "City"
+                },
+                "data": "https://co.kent.de.us/server/rest/services/AddressesAndRoads/MapServer/0",
+                "protocol": "ESRI"
+            }
+        ]
+    }
 }

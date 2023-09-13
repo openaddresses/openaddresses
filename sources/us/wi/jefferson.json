@@ -9,22 +9,51 @@
         "state": "wi",
         "county": "Jefferson"
     },
-    "data": "https://jeffarcgis.jeffersoncountywi.gov/arcgis/rest/services/Public/Property_Ownership/MapServer/24",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "vector.SDE.Address.HSEPRE",
-            "vector.SDE.Address.HSENO",
-            "vector.SDE.Address.HALF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://jeffarcgis.jeffersoncountywi.gov/arcgis/rest/services/Public/Property_Ownership/MapServer/24",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "vector.SDE.Address.HSEPRE",
+                        "vector.SDE.Address.HSENO",
+                        "vector.SDE.Address.HALF"
+                    ],
+                    "street": [
+                        "vector.SDE.Address.PD",
+                        "vector.SDE.Address.STREET"
+                    ],
+                    "unit": "vector.SDE.Address.HSUNT1",
+                    "city": "vector.SDE.Address.PO",
+                    "postcode": "vector.SDE.Address.ZIP",
+                    "id": "vector.SDE.Address.PIN"
+                }
+            }
         ],
-        "street": [
-            "vector.SDE.Address.PD",
-            "vector.SDE.Address.STREET"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://jeffarcgis.jeffersoncountywi.gov/arcgis/rest/services/Public/Property_Ownership/MapServer/27",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "vector.sde.TAXGIS.PIN"
+                }
+            }
         ],
-        "unit": "vector.SDE.Address.HSUNT1",
-        "city": "vector.SDE.Address.PO",
-        "postcode": "vector.SDE.Address.ZIP",
-        "id": "vector.SDE.Address.PIN"
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://jeffarcgis.jeffersoncountywi.gov/arcgis/rest/services/BaseMap/Basemap_Streets_Update/MapServer/69",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

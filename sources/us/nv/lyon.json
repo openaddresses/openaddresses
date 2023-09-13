@@ -9,15 +9,35 @@
         "state": "nv",
         "county": "Lyon"
     },
-    "data": "http://douglasnvgis.info/varcgis/rest/services/LyonCo/ParcelsWGS84/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "PLOCNUM",
-        "street": [
-            "PLOCDR",
-            "PLOCNM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.lyon-county.org/server/rest/services/Landbase/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "PLOCNUM",
+                    "street": [
+                        "PLOCDR",
+                        "PLOCNM"
+                    ],
+                    "unit": "PLOCUNIT",
+                    "city": "PTOWN"
+                }
+            }
         ],
-        "city": "PTOWN"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.lyon-county.org/server/rest/services/Landbase/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
     }
 }

@@ -9,16 +9,35 @@
         "state": "ms",
         "county": "Hinds"
     },
-    "data": "http://gis.cmpdd.org/arcgis/rest/services/County/Hinds_County/MapServer/13",
-    "protocol": "ESRI",
-    "conform": {
-        "street": [
-            "loc_ns",
-            "loc_alpha"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis3.cmpdd.org/arcgis/rest/services/County/Hinds_County_Map_Service/MapServer/13",
+                "protocol": "ESRI",
+                "conform": {
+                    "street": [
+                        "loc_ns",
+                        "loc_alpha"
+                    ],
+                    "number": "loc_num",
+                    "unit": "loc_apt",
+                    "format": "geojson"
+                },
+                "note": "Very poor address coverage"
+            }
         ],
-        "number": "loc_num",
-        "unit": "loc_apt",
-        "format": "geojson"
-    },
-    "note": "Very poor address coverage"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis3.cmpdd.org/arcgis/rest/services/County/Hinds_County_Map_Service/MapServer/13",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcel"
+                }
+            }
+        ]
+    }
 }

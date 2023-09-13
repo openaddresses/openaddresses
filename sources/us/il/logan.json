@@ -9,20 +9,28 @@
         "state": "il",
         "county": "Logan"
     },
-    "data": "http://www.centralilmaps.com/arcgis/rest/services/Logan_Flex_Property/MapServer/4",
-    "protocol": "ESRI",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "site_address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "site_address",
-            "pattern": "^(?:[0-9]+ +)(.*)",
-            "replace": "$1"
-        },
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://www.centralilmaps.com/arcgis/rest/services/Logan_Flex_Property/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "site_address",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "site_address",
+                        "pattern": "^(?:[0-9]+ +)(.*)",
+                        "replace": "$1"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

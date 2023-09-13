@@ -7,27 +7,39 @@
         "country": "us",
         "state": "co"
     },
-    "data": "https://data.colorado.gov/api/views/ge5d-pvi7/rows.csv?accessType=DOWNLOAD",
-    "protocol": "http",
-    "conform": {
-        "format": "csv",
-        "lat": "Latitude",
-        "lon": "Longitude",
-        "number": [
-            "AddrNum",
-            "NumSuf"
-        ],
-        "street": [
-            "PreDir",
-            "StreetName",
-            "PostType",
-            "PostDir"
-        ],
-        "unit": [
-            "UnitType",
-            "UnitNumber"
-        ],
-        "postcode": "Zipcode",
-        "city": "PlaceName"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://gisftp.colorado.gov/State%20Data/OIT-GIS/ColoradoData/Cadastral/2023/PublicAddresses2023/CSAD_Public.zip",
+                "website": "https://data.colorado.gov/Local-Aggregation/Statewide-Aggregate-Addresses-in-Colorado-2023-Pub/5bh8-d7bc",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution name": "Governor's Office of Information Technology",
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "file": "CSAD_Public/CSADPublic.gdb",
+                    "number": [
+                        "AddrNum",
+                        "NumSuf"
+                    ],
+                    "street": [
+                        "PreDir",
+                        "PreType",
+                        "StreetName",
+                        "PostType",
+                        "PostDir"
+                    ],
+                    "unit": "Unit",
+                    "postcode": "Zipcode",
+                    "city": "PlaceName"
+                }
+            }
+        ]
     }
 }

@@ -16,22 +16,55 @@
         "state": "co",
         "city": "Aurora"
     },
-    "data": "https://ags.auroragov.org/aurora/rest/services/OpenData/MapServer/9",
-    "license": "Crappy License",
-    "attribution": "City of Aurora",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRESS_NUMBER",
-        "street": [
-            "STREET_DIRECTION",
-            "STREET_NAME",
-            "STREET_TYPE",
-            "DIRSUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "website": "https://data-auroraco.opendata.arcgis.com/",
+                "data": "https://ags.auroragov.org/aurora/rest/services/OpenData/MapServer/9",
+                "attribution": "City of Aurora",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS_NUMBER",
+                    "street": [
+                        "STREET_DIRECTION",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "DIRSUF"
+                    ],
+                    "unit": "ADDRESS_UNIT",
+                    "city": "CITY",
+                    "postcode": "ZIP_CODE",
+                    "region": "COUNTY"
+                }
+            }
         ],
-        "unit": "ADDRESS_UNIT",
-        "city": "CITY",
-        "postcode": "ZIP_CODE",
-        "region": "COUNTY"
+        "parcels": [
+            {
+                "name": "city",
+                "website": "https://data-auroraco.opendata.arcgis.com/",
+                "data": "https://ags.auroragov.org/aurora/rest/services/OpenData/MapServer/31",
+                "attribution": "City of Aurora",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN_ID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "website": "https://data-auroraco.opendata.arcgis.com/",
+                "data": "https://ags.auroragov.org/aurora/rest/services/OpenData/MapServer/149",
+                "attribution": "City of Aurora",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

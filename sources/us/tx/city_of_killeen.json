@@ -1,6 +1,12 @@
 {
     "coverage": {
-        "geometry": {"type": "Point", "coordinates": [-97.73, 31.08]},
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -97.73,
+                31.08
+            ]
+        },
         "US Census": {
             "geoid": "4839148",
             "name": "City of Killeen",
@@ -11,15 +17,23 @@
         "county": "Bell",
         "city": "Killeen"
     },
-    "data": "http://gisweb.killeentexas.gov:6080/arcgis/rest/services/KilleenBaseLayers/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NUM",
-        "street": [
-            "STREET_DIR",
-            "STREET_NAME",
-            "STREET_TYPE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gisweb.killeentexas.gov:6080/arcgis/rest/services/KilleenBaseLayers/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUM",
+                    "street": [
+                        "STREET_DIR",
+                        "STREET_NAME",
+                        "STREET_TYPE"
+                    ]
+                }
+            }
         ]
     }
 }

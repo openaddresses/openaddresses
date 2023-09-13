@@ -16,18 +16,26 @@
         "state": "tx",
         "city": "Dalhart"
     },
-    "data": "http://arcgis4.roktech.net/arcgis/rest/services/DalhartTX/base/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "StreetNumber",
-        "street": [
-            "ST_DIR",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_POSTDIR"
-        ],
-        "unit": "HSE_NUM_SUF",
-        "city": "COMM_MSAG"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://arcgis4.roktech.net/arcgis/rest/services/DalhartTX/base/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StreetNumber",
+                    "street": [
+                        "ST_DIR",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_POSTDIR"
+                    ],
+                    "unit": "HSE_NUM_SUF",
+                    "city": "COMM_MSAG"
+                }
+            }
+        ]
     }
 }

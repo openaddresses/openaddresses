@@ -1,38 +1,52 @@
 {
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
-    "conform": {
-        "lat": "POINT_Y",
-        "encoding": "EUCKR",
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        },
-        "lon": "POINT_X",
-        "skiplines": 2,
-        "headers": 2,
-        "format": "csv",
-        "number": "LNDN_MA_SN",
-        "srs": "EPSG:2097"
-    },
     "coverage": {
         "country": "kr",
         "city": "관악구",
         "state": "seoul",
-        "geometry": { "type": "Point", "coordinates": [126.948, 37.467] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                126.948,
+                37.467
+            ]
+        }
     },
-    "skip": true,
-    "compression": "zip",
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1070",
-    "protocol": "http",
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-kwanakku.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "conform": {
+                    "lat": "POINT_Y",
+                    "encoding": "EUCKR",
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    },
+                    "lon": "POINT_X",
+                    "skiplines": 2,
+                    "headers": 2,
+                    "format": "csv",
+                    "number": "LNDN_MA_SN",
+                    "srs": "EPSG:2097"
+                },
+                "skip": true,
+                "compression": "zip",
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1070",
+                "protocol": "http",
+                "data": "https://data.openaddresses.io/cache/kr-seoul-kwanakku.zip"
+            }
+        ]
+    }
 }

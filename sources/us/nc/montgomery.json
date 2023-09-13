@@ -9,19 +9,42 @@
         "state": "nc",
         "county": "Montgomery"
     },
-    "data": "https://www.webgis.net/arcgis/rest/services/NC/Montgomery/MapServer/0",
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "protocol": "ESRI",
-    "conform": {
-        "street": [
-            "StrName",
-            "StrType"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/NC/Montgomery/MapServer/0",
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADRS_NUMB",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "number": "HouseNum",
-        "format": "geojson"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/NC/Montgomery/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

@@ -16,14 +16,56 @@
         "state": "tx",
         "city": "Waco"
     },
-    "data": "http://gis.ci.waco.tx.us/arcgis/rest/services/Parcels/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "situs_num",
-        "street": ["situs_street_prefx", "situs_street", "situs_street_sufix"],
-        "city": "situs_city",
-        "region": "situs_state",
-        "postcode": "situs_zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.wacotx.gov/public/rest/services/Waco/waco/MapServer/59",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "StN_PreMod",
+                        "StN_PreDir",
+                        "StN_PreType",
+                        "StreetName",
+                        "StN_PosTyp",
+                        "StN_PosDir",
+                        "StN_PosMod"
+                    ],
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.wacotx.gov/public/rest/services/Waco/waco/MapServer/48",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.wacotx.gov/public/rest/services/Waco/waco/MapServer/46",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

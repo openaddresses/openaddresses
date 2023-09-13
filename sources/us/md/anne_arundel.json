@@ -9,22 +9,35 @@
         "state": "md",
         "county": "anne arundel"
     },
-    "data": "http://gis-world3.aacounty.org/arcgis/rest/services/Public/StreetViewer/MapServer/0",
-    "website": "http://www.aacounty.org/departments/planning-and-zoning/research-and-gis/",
-    "attribution": "Anne Arundel County",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ST_NUMBER",
-        "street": [
-            "ST_PREFIXD",
-            "ST_NAME",
-            "ST_TYPE",
-            "ST_SUFFIXD"
-        ],
-        "unit": "ST_NUMSUFF",
-        "city": "CITY_NAME",
-        "postcode": "ZIPCODE",
-        "addrtype": "BLDG_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.aacounty.org/arcgis/rest/services/OpenData/Structure_OpenData/MapServer/0",
+                "website": "http://www.aacounty.org/departments/planning-and-zoning/research-and-gis/",
+                "attribution": "Anne Arundel County",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ST_NUMBER",
+                        "ST_NUMSUFF"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNITNUM"
+                    ],
+                    "street": [
+                        "ST_PREFIXD",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIXD"
+                    ],
+                    "city": "CITY_NAME",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

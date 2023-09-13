@@ -1,38 +1,52 @@
 {
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1072",
-    "protocol": "http",
-    "skip": false,
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
-    "conform": {
-        "encoding": "EUCKR",
-        "lon": "POINT_X",
-        "format": "csv",
-        "lat": "POINT_Y",
-        "srs": "EPSG:2097",
-        "skiplines": 2,
-        "number": "LNDN_MA_SN",
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        },
-        "headers": 2
-    },
     "coverage": {
         "city": "구로구",
         "state": "seoul",
         "country": "kr",
-        "geometry": { "type": "Point", "coordinates": [126.859, 37.499] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                126.859,
+                37.499
+            ]
+        }
     },
-    "compression": "zip",
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-kurogu.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1072",
+                "protocol": "http",
+                "skip": false,
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "conform": {
+                    "encoding": "EUCKR",
+                    "lon": "POINT_X",
+                    "format": "csv",
+                    "lat": "POINT_Y",
+                    "srs": "EPSG:2097",
+                    "skiplines": 2,
+                    "number": "LNDN_MA_SN",
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    },
+                    "headers": 2
+                },
+                "compression": "zip",
+                "data": "https://data.openaddresses.io/cache/kr-seoul-kurogu.zip"
+            }
+        ]
+    }
 }

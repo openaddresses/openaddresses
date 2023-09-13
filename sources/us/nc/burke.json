@@ -9,24 +9,32 @@
         "state": "nc",
         "county": "Burke"
     },
-    "data": "http://gis.burkenc.org/arcgis/rest/services/PublicAccessMain/MapServer/13",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "street": [
-            "PREDIR",
-            "STREET_NAME",
-            "TYPE",
-            "POSTDIR"
-        ],
-        "number": "STNUM",
-        "unit": [
-            "UNITTYPE",
-            "UNIT"
-        ],
-        "postcode": "ZIPCODE",
-        "city": "CITY",
-        "district": "COUNTY",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.burkenc.org/arcgis/rest/services/PublicAccessMain/MapServer/13",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "street": [
+                        "PREDIR",
+                        "STREET_NAME",
+                        "TYPE",
+                        "POSTDIR"
+                    ],
+                    "number": "STNUM",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNIT"
+                    ],
+                    "postcode": "ZIPCODE",
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE"
+                }
+            }
+        ]
     }
 }

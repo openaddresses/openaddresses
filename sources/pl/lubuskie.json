@@ -8,32 +8,38 @@
         "state": "lubuskie",
         "country": "pl"
     },
-    "license": {
-        "text": "Polish Law on Geodesy and Cartography of 17 May 1989",
-        "url": "https://github.com/openaddresses/openaddresses/issues/187#issuecomment-63327973",
-        "attribution": false,
-        "share-alike": false
-    },
-    "compression": "zip",
-    "conform": {
-        "srs": "EPSG:2180",
-        "id": "id_techniczny_obiektu",
-        "region": "woj_nazwa",
-        "district": {
-            "function": "join",
-            "fields": ["pow_nazwa", "gmi_nazwa"],
-            "separator": ", "
-        },
-        "city": "mjs_nazwa",
-        "postcode": "pad_kod_pocztowy",
-        "street": "ulc_nazwa",
-        "number": "pad_numer_porzadkowy",
-        "file": "punkty_adr_v2/lubuskie.gml",
-        "format": "xml",
-        "headers": 1,
-        "skiplines": 1
-    },
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/pl-lubuskie.zip",
-    "protocol": "http",
-    "note": "original source is ftp://91.223.135.109/prg/punkty_adr.zip but zipfile has unfixable character encoding issues"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "license": {
+                    "text": "Polish Law on Geodesy and Cartography of 17 May 1989",
+                    "url": "https://github.com/openaddresses/openaddresses/issues/187#issuecomment-63327973",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "compression": "zip",
+                "conform": {
+                    "srs": "EPSG:4326",
+                    "id": "ID",
+                    "region": "REGION",
+                    "district": "DISTRICT",
+                    "city": "CITY",
+                    "postcode": "POSTCODE",
+                    "street": "STREET",
+                    "number": "NUMBER",
+                    "lat": "LAT",
+                    "lon": "LON",
+                    "file": "lubuskie.csv",
+                    "format": "csv",
+                    "headers": 1,
+                    "skiplines": 1
+                },
+                "data": "https://data.openaddresses.io/cache/uploads/macieg/790b82/pl-lubuskie.zip",
+                "protocol": "http",
+                "note": "https://opendata.geoportal.gov.pl/prg/adresy/PRG-punkty_adresowe.zip"
+            }
+        ]
+    }
 }

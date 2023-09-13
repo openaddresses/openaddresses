@@ -17,21 +17,29 @@
         "county": "Utah",
         "city": "Provo"
     },
-    "data": "https://gispublicweb.provo.org/arcgis/rest/services/Basemap2/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "ADDRESSID",
-        "number": "ADDRESS_NUM",
-        "street": {
-            "function": "remove_prefix",
-            "field": "ADDRESS",
-            "field_to_remove": "ADDRESS_NUM"
-        },
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUM"
-        ],
-        "postcode": "ADDRESS_ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gispublicweb.provo.org/arcgis/rest/services/Basemap2/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDRESSID",
+                    "number": "ADDRESS_NUM",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "ADDRESS",
+                        "field_to_remove": "ADDRESS_NUM"
+                    },
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "postcode": "ADDRESS_ZIP"
+                }
+            }
+        ]
     }
 }

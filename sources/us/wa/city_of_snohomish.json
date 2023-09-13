@@ -17,18 +17,39 @@
         "county": "Snohomish",
         "city": "Snohomish"
     },
-    "protocol": "ESRI",
-    "data": "https://services9.arcgis.com/hUiJ0kKwHN6Cf0DY/arcgis/rest/services/EnerGov_AddrParcels/FeatureServer/0",
-    "conform": {
-        "format": "geojson",
-        "id": "UniqueID",
-        "number": "ADDR_NUM",
-        "street": "StreetName",
-        "unit": [
-            "UNIT_TYPE",
-            "UNIT_NUM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://services9.arcgis.com/hUiJ0kKwHN6Cf0DY/ArcGIS/rest/services/EnerGov_AddrParcels/FeatureServer/1",
+                "website": "https://snohomish.maps.arcgis.com/home/item.html?id=58a4b210a4c545598654ff3e9c356f06",
+                "conform": {
+                    "format": "geojson",
+                    "id": "UniqueID",
+                    "number": ["ADDR_NUM", "ADDR_NUM_S"],
+                    "street": "StreetName",
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "city": "COMMUNITY",
-        "postcode": "ZIP"
+        "parcels": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://services9.arcgis.com/hUiJ0kKwHN6Cf0DY/ArcGIS/rest/services/EnerGov_AddrParcels/FeatureServer/0",
+                "website": "https://snohomish.maps.arcgis.com/home/item.html?id=58a4b210a4c545598654ff3e9c356f06",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
     }
 }

@@ -9,22 +9,49 @@
         "state": "co",
         "county": "Montezuma"
     },
-    "conform": {
-        "format": "shapefile",
-        "number": "StreetNo",
-        "street": [
-            "StreetDir",
-            "StreetName",
-            "StreetSuf",
-            "StDirSuffx"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis-server.co.montezuma.co.us/arcgis/rest/services/Address_Verification_Viewer/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StreetNo",
+                    "street": [
+                        "StreetDir",
+                        "StreetName",
+                        "StreetSuf",
+                        "StDirSuffx"
+                    ],
+                    "unit": "UnitNo",
+                    "city": "City",
+                    "postcode": "ZipCode",
+                    "region": "State"
+                }
+            }
         ],
-        "unit": "UnitNo",
-        "city": "City",
-        "postcode": "ZIPCODE",
-        "region": "state",
-        "notes": "Updated to reference shapefile instead of Map Service"
-    },
-    "data": "ftp://206.123.215.195/GIS/Addresses.zip",
-    "compression": "zip",
-    "protocol": "ftp"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis-server.co.montezuma.co.us/arcgis/rest/services/AssessorMap/FeatureServer/24",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis-server.co.montezuma.co.us/arcgis/rest/services/Address_Verification_Viewer/MapServer/13",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
 }

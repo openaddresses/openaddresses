@@ -9,22 +9,56 @@
         "state": "co",
         "county": "Mesa"
     },
-    "attribution": "Mesa County",
-    "data": "http://mcmap2.mesacounty.us/arcgis/rest/services/maps/ParcePointQuery/MapServer/0",
-    "protocol": "ESRI",
-    "website": "http://emap.mesacounty.us/metadata/default.aspx?value=Administrative",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NUMBER",
-        "street": [
-          "PREFIX_DIRECTION",
-          "STREET_NAME",
-          "STREET_TYPE",
-          "SUFFIX_DIRECTION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Mesa County",
+                "data": "https://emap.mesacounty.us/datadownload/FileShapeFiles/E911_AddressPoints.zip",
+                "protocol": "http",
+                "website": "https://gis.mesacounty.us",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "HOUSE_NUMB",
+                    "street": [
+                        "PREFIX_DIR",
+                        "PREFIX_TYP",
+                        "STREET_NAM",
+                        "STREET_TYP",
+                        "SUFFIX_DIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": "UNIT",
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Mesa County",
+                "data": "https://mcgis.mesacounty.us/imagery/rest/services/Mosaic_Datasets/Basemap/MapServer/44",
+                "protocol": "ESRI",
+                "website": "https://opendata-mesacounty.hub.arcgis.com/datasets/b7c49d40f21d4f17be9ca8e6f7e12d54_10",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Mesa County",
+                "data": "https://mcgis.mesacounty.us/arcgis/rest/services/maps/ParcelOnly4Query/MapServer/0",
+                "protocol": "ESRI",
+                "website": "https://opendata-mesacounty.hub.arcgis.com/datasets/c3ce16b59ae0403191a50eb22cd9ea93_0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NUM"
+                }
+            }
+        ]
     }
 }

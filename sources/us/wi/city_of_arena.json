@@ -3,7 +3,7 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -89.910,
+                -89.91,
                 43.163
             ]
         },
@@ -17,17 +17,25 @@
         "county": "Iowa",
         "city": "Arena"
     },
-    "protocol": "ESRI",
-    "data": "http://gis.msa-ps.com/arcgis/rest/services/Arena/Arena_GIS/MapServer/0",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE",
-        "street": {
-            "function": "remove_prefix",
-            "field": "ADDRESS",
-            "field_to_remove": "HOUSE"
-        },
-        "city": "COMMUNITY",
-        "district": "COUNTY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "http://gis.msa-ps.com/arcgis/rest/services/Arena/Arena_GIS/MapServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "ADDRESS",
+                        "field_to_remove": "HOUSE"
+                    },
+                    "city": "COMMUNITY",
+                    "district": "COUNTY"
+                }
+            }
+        ]
     }
 }

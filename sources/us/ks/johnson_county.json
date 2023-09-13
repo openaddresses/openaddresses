@@ -9,17 +9,25 @@
         "state": "ks",
         "county": "Johnson"
     },
-    "conform": {
-        "format": "geojson",
-        "number": "BANum",
-        "street": [
-            "BAPreDir",
-            "BAStrName",
-            "BAStrType"
-        ],
-        "city": "BACityName",
-        "postcode": "BAZip"
-    },
-    "data": "https://maps.jocogov.org/arcgis/rest/services/BaseMap_StatePlane/MapServer/87",
-    "protocol": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "number": "BANum",
+                    "street": [
+                        "BAPreDir",
+                        "BAStrName",
+                        "BAStrType"
+                    ],
+                    "city": "BACityName",
+                    "postcode": "BAZip"
+                },
+                "data": "https://maps.jocogov.org/arcgis/rest/services/BaseMap_StatePlane/MapServer/87",
+                "protocol": "ESRI"
+            }
+        ]
+    }
 }

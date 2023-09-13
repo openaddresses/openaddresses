@@ -9,22 +9,30 @@
         "state": "pa",
         "county": "Lackawanna"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/f22622/us-pa-lackawanna.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "number": "HouseNum",
-        "street": [
-            "Prefix",
-            "Street",
-            "Suffix",
-            "PostDir"
-        ],
-        "unit": "AptSuite",
-        "city": "City",
-        "district": "COUNTY",
-        "region": "State",
-        "postcode": "Zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.openaddresses.io/cache/uploads/trescube/f22622/us-pa-lackawanna.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "HouseNum",
+                    "street": [
+                        "Prefix",
+                        "Street",
+                        "Suffix",
+                        "PostDir"
+                    ],
+                    "unit": "AptSuite",
+                    "city": "City",
+                    "district": "COUNTY",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
+        ]
     }
 }

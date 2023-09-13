@@ -9,19 +9,27 @@
         "state": "mn",
         "county": "Otter Tail"
     },
-    "data": "http://www.ottertailcounty.net/arcgiswa/rest/services/Address_Roads/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-      "format": "geojson",
-        "number": "BLD_NUM",
-        "street": [
-            "PRE_DIR",
-            "ST_NAME",
-            "ST_TYPE",
-            "SUF_DIR"
-        ],
-        "unit": "UNIT",
-        "city": "CITY",
-        "postcode": "OTCZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://ottertailcountymn.us/content-page/gis-shapefile-downloads/",
+                "data": "https://www.ottertailcounty.us/gisfiles/Addresses.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "OTC_POSTCO",
+                    "postcode": "OTC_ZIP"
+                }
+            }
+        ]
     }
 }

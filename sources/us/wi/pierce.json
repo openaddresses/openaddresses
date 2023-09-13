@@ -9,21 +9,48 @@
         "state": "wi",
         "county": "Pierce"
     },
-    "data": "http://www.co.pierce.wi.us/arcgis/rest/services/Pierce_Sheriff_EmergencyServices/MapServer/8",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "postcode": "ZIPCODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.pierce.wi.us/arcgis/rest/services/Pierce_Public_BaseData/MapServer/3",
+                "website": "https://piercecounty-wi.maps.arcgis.com/home/item.html?id=08ba7cf586f14431ae82b44e9532f051",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "UNIT",
+                    "number": "ADDR_HN",
+                    "street": "STREET",
+                    "city": "POST_OFF",
+                    "postcode": "ZIPCODE",
+                    "district": "COUNTY",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.pierce.wi.us/arcgis/rest/services/Pierce_Public_ParcelData/MapServer/21",
+                "website": "https://piercecounty-wi.maps.arcgis.com/home/item.html?id=cfd62f274c27452f97b27820010317a5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNUMBER"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.co.pierce.wi.us/arcgis/rest/services/Pierce_Public_ParcelData/MapServer/26",
+                "website": "https://piercecounty-wi.maps.arcgis.com/home/item.html?id=9d451e99abea42a9aa1296269627f6dc",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

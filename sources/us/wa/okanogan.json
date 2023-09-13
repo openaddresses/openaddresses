@@ -9,16 +9,24 @@
         "state": "wa",
         "county": "Okanogan"
     },
-    "license": "http://okanogancounty.org/planning/data.htm",
-    "protocol": "ftp",
-    "compression": "zip",
-    "year": "2015",
-    "data": "ftp://71.94.164.146/ASSESSOR/2015-12-16_Parcels.zip",
-    "website": "http://okanogancounty.org/planning/data.htm",
-    "conform":{
-        "format": "shapefile-polygon",
-        "number": "E911_ADD",
-        "street": "E911_ROAD",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ftp",
+                "compression": "zip",
+                "year": "2023",
+                "data": "ftp://okgis.ddns.net/DISPATCH/2023-01-10_address_points.zip",
+                "website": "https://okanogancounty.org/departments/planning/gis_mapping/available_digital_data.php",
+                "conform": {
+                    "format": "shapefile",
+                    "unit": "e911_unit",
+                    "number": "e911_add",
+                    "street": "dis_road",
+                    "city": "city"
+                }
+            }
+        ]
     }
 }

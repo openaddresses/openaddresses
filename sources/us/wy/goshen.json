@@ -9,17 +9,35 @@
         "state": "wy",
         "county": "Goshen"
     },
-    "data": "http://gis.goshencounty.org/webadaptor/rest/services/GoshenWAB/MapServer/4",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "StreetNo",
-        "street": [
-            "StreetDire",
-            "StreetName",
-            "StreetSuff"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/HGQgPu4V7Rwvw86U/arcgis/rest/services/GoshenWAB_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StreetNo",
+                    "street": [
+                        "StreetDire",
+                        "StreetName",
+                        "StreetSuff"
+                    ],
+                    "city": "StreetCity"
+                }
+            }
         ],
-        "city": "StreetCity",
-        "postcode": "ZIP"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/HGQgPu4V7Rwvw86U/arcgis/rest/services/GoshenWAB_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIDN"
+                }
+            }
+        ]
     }
 }

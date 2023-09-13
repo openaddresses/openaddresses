@@ -9,27 +9,55 @@
         "state": "oh",
         "county": "summit"
     },
-    "conform": {
-        "format": "shapefile",
-        "number": {
-            "function": "regexp",
-            "field": "addr",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "addr",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        }
-    },
-    "data": "https://fiscaloffice.summitoh.net/gis/downloads/parcels/Parcels.zip",
-    "website": "https://fiscaloffice.summitoh.net/index.php/documents-a-forms/viewcategory/40-gis-data-downloads",
-    "protocol": "http",
-    "compression": "zip",
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/3Ukh5HzAdI6WZ3KP/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://data-summitgis.opendata.arcgis.com/datasets/address-points/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://scgis.summitoh.net/hosted/rest/services/Building_Footprints/MapServer/0",
+                "website": "https://data-summitgis.opendata.arcgis.com/datasets/building-footprints/",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services3.arcgis.com/3Ukh5HzAdI6WZ3KP/arcgis/rest/services/TaxParcels_public/FeatureServer/0",
+                "website": "https://data-summitgis.opendata.arcgis.com/datasets/taxparcels/",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
     }
 }

@@ -1,0 +1,50 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Source",
+    "description": "An OpenAddresses Source",
+    "type": "object",
+    "required": [
+        "schema",
+        "coverage"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "schema": {
+            "type": "number"
+        },
+        "coverage": {
+            "$ref": "./util/coverage.json"
+        },
+        "official_website": {
+            "type": "string",
+            "format": "uri"
+        },
+        "official_phone": {
+            "type": "string"
+        },
+        "layers": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "parcels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "./layers/parcel.json"
+                    }
+                },
+                "addresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "./layers/address.json"
+                    }
+                },
+                "buildings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "./layers/building.json"
+                    }
+                }
+            }
+        }
+    }
+}

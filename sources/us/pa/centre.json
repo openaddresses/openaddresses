@@ -9,17 +9,42 @@
         "state": "pa",
         "county": "Centre"
     },
-    "data": "http://gissites.co.centre.pa.us:6080/arcgis/rest/services/Basic/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "NUMBER",
-        "street": [
-            "PRE_DIR",
-            "STR_NAME",
-            "STR_TYPE",
-            "POST_DIR"
-        ],
-        "unit": "NUMSUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://centrecountypa.gov/202/GIS",
+                "contact": {
+                    "name": "Nicholas J. Barger",
+                    "title": "GIS Director",
+                    "phone": "(814) 355-8733",
+                    "email": "njbarger@centrecountypa.gov",
+                    "address": "Willowbank Office Building, 420 Holmes Street (Suite 301), Bellefonte, PA 16823"
+                },
+                "data": "https://gissites4.centrecountypa.gov/arcgis/rest/services/OpenData/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNumPre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "unit": "Unit",
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDIR",
+                        "St_PreType",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDIR",
+                        "St_PosMod"
+                    ],
+                    "region": "State"
+                }
+            }
+        ]
     }
 }

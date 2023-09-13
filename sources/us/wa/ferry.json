@@ -1,32 +1,56 @@
 {
-	"coverage": {
-		"US Census": {
-			"geoid": "53019",
-			"name": "Ferry County",
-			"state": "Washington"
-		},
-		"country": "us",
-		"state": "wa",
-		"county": "Ferry"
-	},
-	"license": "Unknown",
-	"protocol": "http",
-	"compression": "zip",
-	"data": "http://www.ferry-county.com/Assessor_Pages/Misc%20Files/FerryParcelLayer-2015-03.zip",
-	"website": "http://www.ferry-county.com/",
-	"conform": {
-		"format": "shapefile-polygon",
-		"number": {
-			"function": "regexp",
-			"field": "Address_1",
-			"pattern": "^([0-9]+)"
-		},
-		"street": {
-			"function": "regexp",
-			"field": "Address_1",
-			"pattern": "^(?:[0-9]+ )(.*)",
-			"replace": "$1"
-		}
-
-	}
+    "coverage": {
+        "US Census": {
+            "geoid": "53019",
+            "name": "Ferry County",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa",
+        "county": "Ferry"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services8.arcgis.com/BBejpmYP0j5q6NLc/ArcGIS/rest/services/RoadsAddresses052219/FeatureServer/0",
+                "website": "http://www.ferry-county.com/",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "Unit",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street":[
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "ST_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services8.arcgis.com/BBejpmYP0j5q6NLc/ArcGIS/rest/services/OwnerLayer/FeatureServer/0",
+                "website": "http://www.ferry-county.com/",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
+    }
 }

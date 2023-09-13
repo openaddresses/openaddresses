@@ -9,19 +9,36 @@
         "state": "co",
         "county": "Conejos"
     },
-    "data": "https://services1.arcgis.com/zH7gQ37AKcpvTX6d/ArcGIS/rest/services/ConejosParcels_04122017/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "SITUS_1",
-            "pattern": "\\s+0*(\\d+)$"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SITUS_1",
-            "pattern": "^(.+?)\\s+\\d+$"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/zH7gQ37AKcpvTX6d/ArcGIS/rest/services/ConejosParcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUS"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/zH7gQ37AKcpvTX6d/ArcGIS/rest/services/ConejosParcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel"
+                }
+            }
+        ]
     }
 }

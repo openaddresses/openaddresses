@@ -9,18 +9,26 @@
         "state": "mn",
         "county": "Waseca"
     },
-    "data": "http://gis.co.waseca.mn.us/arcgis/rest/services/PublicLayers/MapServer/2",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ANUMBER",
-        "street": [
-            "ST_NAME",
-            "ST_POS_TYP",
-            "ST_POS_DIR"
-        ],
-        "unit": "ANUMBERSUF",
-        "city": "POSTCOMM",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.waseca.mn.us/arcgis/rest/services/CountyServices/Waseca_Internal_GIS/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ANUMBER",
+                    "street": [
+                        "ST_NAME",
+                        "ST_POS_TYP",
+                        "ST_POS_DIR"
+                    ],
+                    "unit": "ANUMBERSUF",
+                    "city": "POSTCOMM",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

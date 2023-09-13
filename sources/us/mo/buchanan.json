@@ -1,29 +1,36 @@
 {
-  "coverage": {
-    "US Census": {
-      "geoid": "29021",
-      "name": "Buchanan County",
-      "state": "Missouri"
+    "coverage": {
+        "US Census": {
+            "geoid": "29021",
+            "name": "Buchanan County",
+            "state": "Missouri"
+        },
+        "country": "us",
+        "state": "mo",
+        "county": "Buchanan"
     },
-    "country": "us",
-    "state": "mo",
-    "county": "Buchanan"
-  },
-  "data": "http://gis.co.buchanan.mo.us/arcgis/rest/services/ParcelsTaxData/MapServer/0",
-  "protocol": "ESRI",
-  "conform": {
-    "format": "geojson",
-    "number": {
-      "function": "prefixed_number",
-      "field": "SITUSADDRESS"
-    },
-    "street": {
-      "function": "postfixed_street",
-      "field": "SITUSADDRESS"
-    },
-    "city": "SITUS_CITY",
-    "region": "SITUS_STATE",
-    "postcode": "SITE_ZIP"
-
-  }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.co.buchanan.mo.us/arcgis/rest/services/ParcelsTaxData/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUSADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUSADDRESS"
+                    },
+                    "city": "SITUS_CITY",
+                    "region": "SITUS_STATE",
+                    "postcode": "SITE_ZIP"
+                }
+            }
+        ]
+    }
 }

@@ -9,25 +9,40 @@
         "state": "fl",
         "county": "Okaloosa"
     },
-    "data": "http://gis.okaloosafl.com/gisdata/Property_Appraiser/Shapefiles/parcel.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "number": {
-            "field": "HOUSE_NO",
-            "function": "regexp",
-            "pattern": "^([0-9]+)",
-            "replace": "$1"
-        },
-        "street": [
-            "STREET",
-            "ST_MD",
-            "ST_DIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://ags.myokaloosa.com/arcgis/rest/services/internet_webgis/MapServer/1",
+                "website": "https://myokaloosa.com/gis_data",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "PAN",
+                    "street": [
+                        "PREDIR",
+                        "NAME",
+                        "TYPE",
+                        "SUFDIR"
+                    ],
+                    "unit": "ST_UNIT",
+                    "city": "ZIP_CITY",
+                    "postcode": "ZIP",
+                    "format": "geojson"
+                }
+            }
         ],
-        "unit": "ST_UNIT",
-        "city": "ST_CITY",
-        "postcode": "ST_ZIP5",
-        "format": "shapefile",
-        "file": "Public_Data/public.shp"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://ags.myokaloosa.com/arcgis/rest/services/internet_webgis/MapServer/17",
+                "website": "https://myokaloosa.com/gis_data",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PATPCL_PIN"
+                }
+            }
+        ]
     }
 }

@@ -4,14 +4,32 @@
         "state": "on",
         "city": "London"
     },
-    "data": "http://data.openaddresses.io/cache/uploads/ingalls/ca-on-city_of_london.zip",
-    "compression": "zip",
-    "protocol": "http",
-    "conform": {
-        "format": "shapefile",
-        "unit": "Unit",
-        "number": "MunNum",
-        "street": "FullStrNam",
-        "postcode": "PostalCode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.london.ca/arcgisa/rest/services/OpenData/OpenData_Community/MapServer/0",
+                "website": "https://opendata.london.ca/datasets/24b16712d14c42d7ac1e679c8c89bf47_0",
+                "license": {
+                    "url": "https://www.london.ca/city-hall/open-data/Pages/OpenData-TermsofUse.aspx",
+                    "text": "These data sets are publicly available from the City under these Terms of Use.",
+                    "attribution name": "Terms of Use – City of London Open Data",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "FullNumber",
+                    "street": [
+                        "StreetName",
+                        "StreetType",
+                        "StreetDirection"
+                    ],
+                    "unit": "UnitNumber"
+                }
+            }
+        ]
     }
 }

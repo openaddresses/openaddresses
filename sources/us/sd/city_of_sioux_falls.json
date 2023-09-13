@@ -16,20 +16,49 @@
         "state": "sd",
         "city": "Sioux Falls"
     },
-    "protocol": "ESRI",
-    "data": "https://gis.siouxfalls.org/arcgis/rest/services/Data/Property/MapServer/0",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSENUM",
-        "street": [
-            "PR1",
-            "STNM1",
-            "TYP1",
-            "PD1"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://gis.siouxfalls.org/arcgis/rest/services/Data/Property/MapServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "PR1",
+                        "STNM1",
+                        "TYP1",
+                        "PD1"
+                    ],
+                    "unit": "ADDRESSNUM_SUF",
+                    "city": "MUNICIPALITY",
+                    "district": "COUNTY",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "unit": "ADDRESSNUM_SUF",
-        "city": "MUNICIPALITY",
-        "district": "COUNTY",
-        "postcode": "ZIPCODE"
+        "parcels": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://gis.siouxfalls.org/arcgis/rest/services/Data/Property/MapServer/1",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAG"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://gis.siouxfalls.org/arcgis/rest/services/Data/Property/MapServer/5",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

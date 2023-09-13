@@ -11,22 +11,59 @@
         "state": "wc",
         "city": "Cape Town"
     },
-    "data": "http://www.capetown.gov.za/_layouts/OpenDataPortalHandler/DownloadHandler.ashx?DocumentName=Street+addresses+2016.zip&DatasetDocument=http%3a%2f%2fcityapps.capetown.gov.za%2fsites%2fopendatacatalog%2fDocuments%2fStreet%2520addresses%2fStreet%2520addresses%25202016.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "website": "https://web1.capetown.gov.za/web1/OpenDataPortal/DatasetDetail?DatasetName=Street%20addresses",
-    "attribution": "City of Cape Town",
-    "conform": {
-        "number": [
-            "ADR_NO_PRF",
-            "ADR_NO",
-            "ADR_NO_SFX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://citymaps.capetown.gov.za/agsext1/rest/services/Theme_Based/Open_Data_Service/FeatureServer/56",
+                "protocol": "ESRI",
+                "website": "https://odp-cctegis.opendata.arcgis.com/datasets/cctegis::land-parcels/about",
+                "license": {
+                    "url": "https://www.capetown.gov.za/General/Terms-of-use-open-data"
+                },
+                "conform": {
+                    "number": [
+                        "ADR_NO",
+                        "ADR_NO_SFX"
+                    ],
+                    "street": [
+                        "STR_NAME",
+                        "LU_STR_NAME_TYPE"
+                    ],
+                    "format": "geojson",
+                    "accuracy": 2
+                }
+            }
         ],
-        "street": [
-            "STR_NAME",
-            "LU_STR_NAM"
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://citymaps.capetown.gov.za/agsext1/rest/services/Theme_Based/Open_Data_Service/FeatureServer/56",
+                "protocol": "ESRI",
+                "website": "https://odp-cctegis.opendata.arcgis.com/datasets/cctegis::land-parcels/about",
+                "license": {
+                    "url": "https://www.capetown.gov.za/General/Terms-of-use-open-data"
+                },
+                "conform": {
+                    "pid": "SG26_CODE",
+                    "format": "geojson"
+                }
+            }
         ],
-        "format": "shapefile",
-        "accuracy": 2
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://citymaps.capetown.gov.za/agsext1/rest/services/Theme_Based/Open_Data_Service/FeatureServer/86",
+                "protocol": "ESRI",
+                "website": "https://odp-cctegis.opendata.arcgis.com/datasets/cctegis::2d-basic-building-footprints/about",
+                "license": {
+                    "url": "https://www.capetown.gov.za/General/Terms-of-use-open-data"
+                },
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

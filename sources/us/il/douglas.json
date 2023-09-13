@@ -9,20 +9,28 @@
         "state": "il",
         "county": "Douglas"
     },
-    "data": "https://douglasil.com/arcgis/rest/services/Parcels/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "site_addre",
-            "pattern": "^([0-9]+[A-Z]?)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "site_addre",
-            "pattern": "^(?:[0-9]+[A-Z]? +)(.*)",
-            "replace": "$1"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://douglasil.com/arcgis/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "site_addre",
+                        "pattern": "^([0-9]+[A-Z]?)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "site_addre",
+                        "pattern": "^(?:[0-9]+[A-Z]? +)(.*)",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ]
     }
 }

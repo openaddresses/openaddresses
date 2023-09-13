@@ -9,20 +9,28 @@
         "state": "il",
         "county": "Macoupin"
     },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_macoupin_co_il_taxmap/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_macoupin_co_il_taxmap/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

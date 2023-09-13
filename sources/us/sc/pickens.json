@@ -9,12 +9,47 @@
         "state": "sc",
         "county": "Pickens"
     },
-    "data": "https://services1.arcgis.com/59960rq18IxUcAVI/arcgis/rest/services/Pickens_Open_data/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSENUM",
-        "street": "STREET",
-        "city": "COMMUNITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/59960rq18IxUcAVI/arcgis/rest/services/Pickens_Open_data/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "DIR",
+                        "STREET",
+                        "TYPE"
+                    ],
+                    "city": "COMMUNITY",
+                    "region": "State",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/59960rq18IxUcAVI/ArcGIS/rest/services/Pickens_Open_data/FeatureServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/59960rq18IxUcAVI/ArcGIS/rest/services/Pickens_Open_data/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

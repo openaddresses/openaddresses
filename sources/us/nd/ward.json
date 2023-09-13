@@ -1,30 +1,34 @@
 {
-  "website": "http://gis.wardnd.opendata.arcgis.com/datasets/282c195dff504e9282bbe58e56a91cc7_0",
-  "data": "http://54.213.14.253/arcgis/rest/services/Parcels/WCParcels/FeatureServer/0",
-  "protocol": "ESRI",
-  "coverage": {
-    "US Census": {
-      "geoid": "38101",
-      "name": "Ward County",
-      "state": "North Dakota"
+    "coverage": {
+        "US Census": {
+            "geoid": "38101",
+            "name": "Ward County",
+            "state": "North Dakota"
+        },
+        "country": "us",
+        "state": "nd",
+        "county": "Ward"
     },
-    "country": "us",
-    "state": "nd",
-    "county": "Ward"
-  },
-  "license": {
-    "share-alike": false,
-    "attribution": false
-  },
-  "conform": {
-    "format": "geojson",
-    "number": {
-      "function": "prefixed_number",
-      "field": "ADDRESS"
-    },
-    "street": {
-      "function": "postfixed_street",
-      "field": "ADDRESS"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://wardnd.maps.arcgis.com/home/index.html",
+                "data": "https://maps.wardnd.com/arcgis/rest/services/Parcels/WCParcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    }
+                }
+            }
+        ]
     }
-  }
 }

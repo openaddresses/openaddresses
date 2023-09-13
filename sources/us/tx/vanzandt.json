@@ -9,18 +9,26 @@
         "state": "tx",
         "county": "Van Zandt"
     },
-    "data": "http://mapsatbis.com/bisgis/rest/services/VanZandtWeb/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "VanZandtCad.dbo.Accounts.situs_num",
-        "street": [
-            "VanZandtCad.dbo.Accounts.situs_street_prefx",
-            "VanZandtCad.dbo.Accounts.situs_street",
-            "VanZandtCad.dbo.Accounts.situs_street_sufix"
-        ],
-        "city": "VanZandtCad.dbo.Accounts.situs_city",
-        "region": "VanZandtCad.dbo.Accounts.situs_state",
-        "postcode": "VanZandtCad.dbo.Accounts.situs_zip",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://mapsatbis.com/bisgis/rest/services/VanZandtWeb/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "VanZandtCad.dbo.Accounts.situs_num",
+                    "street": [
+                        "VanZandtCad.dbo.Accounts.situs_street_prefx",
+                        "VanZandtCad.dbo.Accounts.situs_street",
+                        "VanZandtCad.dbo.Accounts.situs_street_sufix"
+                    ],
+                    "city": "VanZandtCad.dbo.Accounts.situs_city",
+                    "region": "VanZandtCad.dbo.Accounts.situs_state",
+                    "postcode": "VanZandtCad.dbo.Accounts.situs_zip",
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

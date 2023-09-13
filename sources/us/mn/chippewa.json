@@ -9,31 +9,37 @@
         "state": "mn",
         "county": "Chippewa"
     },
-    "data": "http://www.co.chippewa.mn.us/arcgis/rest/services/internal_LINK/MapServer/2",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
-            "pattern": "^(?:[0-9]+) (.*)",
-            "replace": "$1"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
-            "pattern": "^([^,]+)"
-        },
-        "region": {
-            "function": "regexp",
-            "field": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
-            "pattern": ", ([A-Z]+)$"
-        },
-        "postcode": "ChippewaTaxData.dbo.tblParcelJoin.PROPERTY_ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.chippewa.mn/arcgis/rest/services/OpenData/OpenData/MapServer/20",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PROPERTY_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PROPERTY_ADDRESS"
+                    },
+                    "format": "geojson",
+                    "postcode": "PROPERTY_ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.chippewa.mn/arcgis/rest/services/OpenData/OpenData/MapServer/20",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

@@ -9,13 +9,42 @@
         "state": "va",
         "county": "Alleghany"
     },
-    "data": "http://gis.worldviewsolutions.com/arcgis/rest/services/alleghany/Public/MapServer/4",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NUM",
-        "street": "STREET",
-        "city": "POSTAL_COMM",
-        "postcode": "POSTAL_CODE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://parcelviewer.geodecisions.com/arcgis/rest/services/Alleghany/Public/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUM",
+                    "street": "STREET",
+                    "city": "POSTAL_COMM",
+                    "postcode": "POSTAL_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://parcelviewer.geodecisions.com/arcgis/rest/services/Alleghany/Public/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MAP_PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://parcelviewer.geodecisions.com/arcgis/rest/services/Alleghany/Public/MapServer/17",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

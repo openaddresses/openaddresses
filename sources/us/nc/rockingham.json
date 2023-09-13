@@ -9,22 +9,51 @@
         "state": "nc",
         "county": "Rockingham"
     },
-    "data": "https://www.webgis.net/arcgis/rest/services/NC/Rockingham/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRESS_NU",
-        "street": [
-            "ROAD_PRE",
-            "STREET_NAM",
-            "STREET_TYP",
-            "ROAD_SUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/NC/Rockingham/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRESS_NU",
+                    "street": [
+                        "ROAD_PRE",
+                        "STREET_NAM",
+                        "STREET_TYP",
+                        "ROAD_SUF"
+                    ],
+                    "unit": [
+                        "BUILDING_N",
+                        "APARTMENT"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": [
-            "BUILDING_N",
-            "APARTMENT"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/NC/Rockingham/MapServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
         ],
-        "city": "CITY",
-        "postcode": "ZIP"
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://www.webgis.net/arcgis/rest/services/NC/Rockingham/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

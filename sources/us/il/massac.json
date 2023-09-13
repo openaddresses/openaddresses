@@ -9,20 +9,35 @@
         "state": "il",
         "county": "Massac"
     },
-    "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_massac_co_il_taxmap/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "Address",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://ags.bhamaps.com/arcgisserver/rest/services/MassacIL/MassacIL_PAT_GIS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "unit": "SUITE",
+                    "number": "NUMBER",
+                    "street": [
+                        "STREET",
+                        "ST_SFX"
+                    ],
+                    "postcode": "ZIP_CODE",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://ags.bhamaps.com/arcgisserver/rest/services/MassacIL/MassacIL_PAT_TaxMap/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_Number"
+                }
+            }
+        ]
     }
 }

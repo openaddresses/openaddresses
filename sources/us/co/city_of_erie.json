@@ -16,21 +16,40 @@
         "state": "co",
         "city": "Erie"
     },
-    "protocol": "ESRI",
-    "data": "http://eags.erieco.gov/arcgis/rest/services/AddressPts/MapServer/0",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NUM",
-        "unit": "UNIT",
-        "street": [
-            "PRE_DIR",
-            "CC_ST_NAME",
-            "ST_TYPE",
-            "SUF_DIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://eags.erieco.gov/arcgis/rest/services/OpenData/MapServer/3",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUM",
+                    "unit": "UNIT",
+                    "street": [
+                        "PRE_DIR",
+                        "CC_ST_NAME",
+                        "ST_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "city": "JURIS",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "city": "JURIS",
-        "district": "COUNTY",
-        "region": "STATE",
-        "postcode": "ZIPCODE"
+        "parcels": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://eags.erieco.gov/arcgis/rest/services/OpenData/MapServer/10",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel"
+                }
+            }
+        ]
     }
 }

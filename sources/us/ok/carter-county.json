@@ -1,19 +1,41 @@
 {
     "coverage": {
-        "US Census": {"geoid": "40019", "name": "Carter County", "state": "Oklahoma"},
+        "US Census": {
+            "geoid": "40019",
+            "name": "Carter County",
+            "state": "Oklahoma"
+        },
         "country": "us",
         "state": "ok",
         "county": "Carter"
     },
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRESS",
-        "street": "ROADNAME",
-        "unit": "APARTMENT",
-        "postcode": "ZIPCODE",
-        "city": "COMMUNITY"
-    },
-    "attribution": "Kern, Cleveland, Canadian, Logan Counties",
-    "data": "http://ardmoregis.ardmorecity.org/arcgis/rest/services/ARDMORE_GIS/ARD_ADDRESS_PARCEL/MapServer/0",
-    "protocol": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://ardmoregis.ardmorecity.org/arcgis/rest/services/ArdGIS/ArdCarterAddress/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddPre",
+                        "Address",
+                        "AddSuf"
+                    ],
+                    "street": [
+                        "PreMod",
+                        "PreDir",
+                        "PreType",
+                        "STREET",
+                        "StreetType",
+                        "SufDir"
+                    ],
+                    "unit": "UnitNum",
+                    "postcode": "ZIPCODE",
+                    "city": "COMMUNITY"
+                }
+            }
+        ]
+    }
 }

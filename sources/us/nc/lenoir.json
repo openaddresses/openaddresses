@@ -9,17 +9,25 @@
         "state": "nc",
         "county": "Lenoir"
     },
-    "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Lenoir/MapServer/8",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "PhysStrAdd"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "PhysStrAdd"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Lenoir/MapServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PhysStrAdd"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PhysStrAdd"
+                    }
+                }
+            }
+        ]
     }
 }

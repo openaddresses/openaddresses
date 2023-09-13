@@ -9,26 +9,34 @@
         "state": "mn",
         "county": "Pennington"
     },
-    "data": "http://gismap.co.pennington.mn.us/arcgis/rest/services/Pennington/Pennington_Internal/MapServer/30",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "PenningtonTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "PenningtonTaxData.dbo.tblParcelJoin.PROPERTY_ADDRESS",
-            "pattern": "^(?:[0-9]+) (.*)",
-            "replace": "$1"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "PenningtonTaxData.dbo.tblParcelJoin.PROPERTY_CITY",
-            "pattern": "^([^,]+)"
-        },
-        "postcode": "PenningtonTaxData.dbo.tblParcelJoin.PROPERTY_ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gismap.co.pennington.mn.us/arcgis/rest/services/Pennington/Pennington_Internal/MapServer/29",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "PROPERTY_ADDRESS",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "PROPERTY_ADDRESS",
+                        "pattern": "^(?:[0-9]+) (.*)",
+                        "replace": "$1"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "PROPERTY_CITY",
+                        "pattern": "^([^,]+)"
+                    },
+                    "postcode": "PROPERTY_ZIP"
+                }
+            }
+        ]
     }
 }

@@ -9,19 +9,60 @@
         "state": "wi",
         "county": "Iron"
     },
-    "data": "http://maps.ironcountywi.org:6080/arcgis/rest/services/addresses/MapServer/0",
-    "protocol": "ESRI",
-    "note": "Number contains letters",
-    "conform": {
-        "format": "geojson",
-        "number": "FIRENUMBER",
-        "street": [
-            "PRE_DIR",
-            "STREETNAME",
-            "SUFFIX",
-            "POST_DIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Iron_Addresses_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/F1879F2F-0E80-459A-9369-0651C193936C",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "note": "Number contains letters",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Iron_Addresses_2023",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "unit": "UNIT",
+                    "city": "TOWN",
+                    "postcode": "ZIPCODE"
+                }
+            }
         ],
-        "city": "TOWN",
-        "postcode": "ZIPCODE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Iron_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/35FCAC9B-E7F8-4C9B-BD0E-32D41D6F2E5F",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Iron_Buildings_2015.zip",
+                "website": "https://geodata.wisc.edu/catalog/0F1437BE-BEA1-402B-978A-CFB257468A41",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2015",
+                "conform": {
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

@@ -9,21 +9,29 @@
         "state": "ne",
         "county": "Sarpy"
     },
-    "data": "http://geodata.sarpy.com/arcgis/rest/services/Cadastral/LandRecordsDynamic/MapServer/2",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "SITEADDID",
-        "number": [
-            "PREADDRNUM",
-            "ADDRNUM",
-            "ADDRNUMSUF"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "street": "FULLNAME",
-        "city": "MUNICIPALITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://geodata.sarpy.com/arcgis/rest/services/Cadastral/LandRecordsDynamic/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SITEADDID",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": "FULLNAME",
+                    "city": "MUNICIPALITY"
+                }
+            }
+        ]
     }
 }

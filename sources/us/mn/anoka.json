@@ -9,20 +9,39 @@
         "state": "mn",
         "county": "Anoka"
     },
-    "data": "http://gis.msa-ps.com/arcgis/rest/services/AnokaCoMN/AnokaCoMN_GIS/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "LOC_NUMB",
-        "street": [
-            "LOC_PREFIX",
-            "LOC_NAME",
-            "LOC_TYPE",
-            "LOC_SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gisservices.co.anoka.mn.us/anoka_gis/rest/services/Address_Pts_Edit/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "LOC_NUMB",
+                    "street": [
+                        "LOC_PREFIX",
+                        "LOC_NAME",
+                        "LOC_TYPE",
+                        "LOC_SUFFIX"
+                    ],
+                    "unit": "LOC_UNIT",
+                    "city": "LOC_CITY",
+                    "region": "LOC_STATE",
+                    "postcode": "LOC_ZIP"
+                }
+            }
         ],
-        "unit": "LOC_UNIT",
-        "city": "LOC_CITY",
-        "region": "LOC_STATE",
-        "format": "geojson",
-        "postcode": "LOC_ZIP"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "http://gisservices.co.anoka.mn.us/anoka_gis/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

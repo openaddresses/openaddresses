@@ -8,43 +8,57 @@
         "country": "br",
         "state": "mg"
     },
-    "website": "http://www.censo2010.ibge.gov.br/cnefe/",
-    "license": {
-        "attribution": true,
-        "attribution name": "Instituto Brasileiro de Geografia e Estatística"
-    },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/astoff/c9bda1/br-31.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "csv",
-        "lat": "lat",
-        "lon": "lon",
-        "number": [
-            "number",
-            "number suffix"
-        ],
-        "street": [
-            "street type",
-            "street title",
-            "street name"
-        ],
-        "unit": [
-            "unit k1", "unit v1",
-            "unit k2", "unit v2",
-            "unit k3", "unit v3",
-            "unit k4", "unit v4",
-            "unit k5", "unit v5",
-            "unit k6", "unit v6"
-        ],
-        "city": "municipality",
-        "region": "state",
-        "postcode": {
-            "function": "regexp",
-            "field": "postal code",
-            "pattern": "^([0-9]{5})([0-9]{3})$",
-            "replace": "$1-$2"
-        },
-        "accuracy": 5
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "website": "http://www.censo2010.ibge.gov.br/cnefe/",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Instituto Brasileiro de Geografia e Estatística"
+                },
+                "data": "https://data.openaddresses.io/cache/uploads/astoff/c9bda1/br-31.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "csv",
+                    "lat": "lat",
+                    "lon": "lon",
+                    "number": [
+                        "number",
+                        "number suffix"
+                    ],
+                    "street": [
+                        "street type",
+                        "street title",
+                        "street name"
+                    ],
+                    "unit": [
+                        "unit k1",
+                        "unit v1",
+                        "unit k2",
+                        "unit v2",
+                        "unit k3",
+                        "unit v3",
+                        "unit k4",
+                        "unit v4",
+                        "unit k5",
+                        "unit v5",
+                        "unit k6",
+                        "unit v6"
+                    ],
+                    "city": "municipality",
+                    "region": "state",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "postal code",
+                        "pattern": "^([0-9]{5})([0-9]{3})$",
+                        "replace": "$1-$2"
+                    },
+                    "accuracy": 5
+                }
+            }
+        ]
     }
 }

@@ -1,29 +1,45 @@
 {
-	"coverage": {
-		"country": "de",
-		"state": "nw",
-		"county": "Viersen",
-		"geometry": { "type": "Point", "coordinates": [6.40, 51.26] }
-	},
-	"data": "https://www.offenesdatenportal.de/dataset/cd06d2ff-e0cd-42aa-bfd2-a83b09324a58/resource/4a1c942c-6d44-4cc6-9408-c70bb2f6c280/download/2017-12-01-hausnummernkml.zip",
-	"website": "https://www.offenesdatenportal.de/dataset/hausnummern-im-kreis-viersen",
-	"license": {
-		"text": "CC BY 4.0",
-		"url": "http://creativecommons.org/licenses/by/4.0/",
-		"attribution": true,
-		"share-alike": false,
-		"attribution name": "Kreis Viersen"
-	},
-	"compression": "zip",
-	"protocol": "http",
-	"conform": {
-		"format": "xml",
-		"file": "2017-12-01 Hausnummern.kml",
-		"layer": "NAVI_GEB_ohne_0000",
-		"postcode": "POSTLEITZAHL",
-		"street": "STRASSENNAME",
-		"number": ["HAUS_NR", "HAUS_NR_ZUSATZ"],
-		"city": "KOMMUNE",
-		"district": "ORTSBEZEICHNUNG"
-	}
+    "coverage": {
+        "country": "de",
+        "state": "nw",
+        "county": "Viersen",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                6.4,
+                51.26
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://geoportal-niederrhein.de/files/opendatagis/Kreis_Viersen/Navi_Geb/Adressen_Kreis_Viersen_KML.zip",
+                "website": "https://www.offenesdatenportal.de/dataset/hausnummern-im-kreis-viersen",
+                "license": {
+                    "text": "Data licence Germany – attribution – version 2.0",
+                    "url": "https://www.govdata.de/dl-de/by-2-0",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "compression": "zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "xml",
+                    "file": "Adressen_Kreis_Viersen_KML.kml",
+                    "layer": "KRZN_NAVI_GEB",
+                    "postcode": "POSTLEITZAHL",
+                    "street": "STRASSENNAME",
+                    "number": [
+                        "HAUS_NR",
+                        "HAUS_NR_ZUSATZ"
+                    ],
+                    "city": "KOMMUNE",
+                    "district": "ORTSBEZEICHNUNG"
+                }
+            }
+        ]
+    }
 }

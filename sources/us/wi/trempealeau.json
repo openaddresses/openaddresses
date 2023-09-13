@@ -9,12 +9,48 @@
         "state": "wi",
         "county": "Trempealeau"
     },
-    "data": "http://www.tremplocounty.com/ArcGIS/rest/services/Public/Landmarks_Addressing/MapServer/2",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "FIRE_NO",
-        "street": "STREETNAME",
-        "unit": "UNIT_NO"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://map.co.trempealeau.wi.us/arcgis/rest/services/Public/Addressing/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "FIRE_NO",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "ADDRESS",
+                        "field_to_remove": "FIRE_NO"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://map.co.trempealeau.wi.us/arcgis/rest/services/Public/Parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/TREMPEALEAU_BUILDINGS_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/6255ABA8-6247-4868-B18A-0EFAB804280E",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "TREMPEALEAU_BUILDINGS_2023"
+                }
+            }
+        ]
     }
 }

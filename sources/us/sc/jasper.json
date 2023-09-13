@@ -9,26 +9,34 @@
         "state": "sc",
         "county": "Jasper"
     },
-    "data": "http://arcserver.jaspercountysc.gov:3280/arcgis/rest/services/Parcel_Search/Jasper_Base/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "STREET_NUM",
-            "HALF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/oJaBluQKw5aLHpzj/ArcGIS/rest/services/Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": [ "UNIT_TYPE", "UNIT" ],
+                    "number": "STREET_NUM",
+                    "street": "FULL_STREET",
+                    "city": "COMM",
+                    "region": "STATE",
+                    "postcode": "ZIP_CODE"
+                }
+            }
         ],
-        "street": [
-            "STREET_PRE",
-            "STREET_NAM",
-            "STREET_TYP",
-            "STREET_POS"
-        ],
-        "unit": [
-          "UNIT_TYPE",
-          "UNIT"
-        ],
-        "city": "COMM",
-        "region": "STATE",
-        "postcode": "ZIP_CODE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/oJaBluQKw5aLHpzj/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TaxPIN"
+                }
+            }
+        ]
     }
 }

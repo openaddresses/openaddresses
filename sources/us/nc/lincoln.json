@@ -9,20 +9,33 @@
         "state": "nc",
         "county": "Lincoln"
     },
-    "data": "http://207.4.172.206/shpfiles/address.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "website": "http://www.co.lincoln.nc.us/index.aspx?NID=470",
-    "conform": {
-        "street": [
-            "PRE_DIR",
-            "rdname",
-            "rdtype",
-            "POST_DIR"
-        ],
-        "number": "hsenumber",
-        "unit": "HSENUMSUF",
-        "postcode": "STR_ZIP",
-        "format": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://arcgisserver.lincolncounty.org/arcgis/rest/services/Events/MapServer/0",
+                "protocol": "ESRI",
+                "website": "http://www.co.lincoln.nc.us/index.aspx?NID=470",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": [
+                        "FULLNAME",
+                        "RDTYPE",
+                        "POST_DIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

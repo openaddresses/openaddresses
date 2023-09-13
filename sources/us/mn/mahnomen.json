@@ -1,0 +1,37 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27087",
+            "name": "Mahnomen County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Mahnomen"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services8.arcgis.com/eORKbx5CWReJmkoa/arcgis/rest/services/TaxParcels/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "PROPERTY_ADDRESS",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "PROPERTY_ADDRESS",
+                        "pattern": "^(?:[0-9]+) (.*)",
+                        "replace": "$1"
+                    },
+                    "postcode": "PROPERTY_ZIP"
+                }
+            }
+        ]
+    }
+}

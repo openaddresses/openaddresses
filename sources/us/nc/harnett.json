@@ -9,20 +9,28 @@
         "state": "nc",
         "county": "Harnett"
     },
-    "data": "http://gis.harnett.org/arcgis/rest/services/Addressing/Addressing/MapServer/0",
-    "website": "http://gis.harnett.org/GISViewer/",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "AddressID",
-        "number": "AddressNumber",
-        "street": "Road",
-        "unit": [
-            "SubAddressType",
-            "SubAddress"
-        ],
-        "city": "City",
-        "region": "State",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://gis.harnett.org/arcgis/rest/services/Addressing/Addressing/MapServer/0",
+                "website": "http://gis.harnett.org/GISViewer/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "AddressID",
+                    "number": "AddressNumber",
+                    "street": "Road",
+                    "unit": [
+                        "SubAddressType",
+                        "SubAddress"
+                    ],
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

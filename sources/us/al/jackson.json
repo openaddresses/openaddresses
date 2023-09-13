@@ -9,13 +9,46 @@
         "state": "al",
         "county": "Jackson"
     },
-    "data": "https://web2.kcsgis.com/kcsgis/rest/services/Jackson/Public2/MapServer/140",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "SitusAddID",
-        "number": "SitusAddNumber",
-        "street": "SitusAddName",
-        "city": "SitusAddCity"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://web2.kcsgis.com/kcsgis/rest/services/Jackson/Public2/MapServer/134",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "PARCELNUMB",
+                    "number": "STREET_NUM",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "ADDRESS",
+                        "field_to_remove": "STREET_NUM"
+                    },
+                    "district": "COUNTY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://web2.kcsgis.com/kcsgis/rest/services/Jackson/Public2/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PRODNO"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://web2.kcsgis.com/kcsgis/rest/services/Jackson/Public2/MapServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

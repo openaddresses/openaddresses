@@ -1,33 +1,49 @@
 {
-	"coverage": {
-		"US Census": {
-			"geoid": "33",
-			"state": "New Hampshire"
-		},
-		"country": "us",
-		"state": "nh"
-	},
-	"data": "http://granitweb.sr.unh.edu:6080/arcgis/rest/services/MapServices/Parcels/MapServer/0",
-	"website": "http://www.granit.unh.edu/data/onlinemapservices/mapservicesoverview.html",
-	"protocol": "ESRI",
-	"conform": {
-		"format": "geojson",
-		"number": {
-			"function": "regexp",
-			"field": "Address",
-			"pattern": "^([0-9]+)"
-		},
-		"street": {
-			"function": "regexp",
-			"field": "Address",
-			"pattern": "^(?:[0-9]+ )(.*?)(?:\\s(?:\\(?(?:Unit|UNIT)?\\s?#).*(\\)?))",
-			"replace": "$1"
-		},
-		"unit": {
-			"function": "regexp",
-			"field": "Address",
-			"pattern": "\\((?:Unit|UNIT)?\\s?#).*(\\)?"
-		},
-		"city": "TOWN_NAME"
-	}
+    "coverage": {
+        "US Census": {
+            "geoid": "33",
+            "state": "New Hampshire"
+        },
+        "country": "us",
+        "state": "nh"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://nhgeodata.unh.edu/nhgeodata/rest/services/CAD/ParcelMosiac/MapServer/0",
+                "website": "https://new-hampshire-geodata-portal-1-nhgranit.hub.arcgis.com/datasets/NHGRANIT::parcel-points/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Address"
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "Address"
+                    },
+                    "city": "TOWN_NAME"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://nhgeodata.unh.edu/nhgeodata/rest/services/CAD/ParcelMosiac/MapServer/1",
+                "website": "https://new-hampshire-geodata-portal-1-nhgranit.hub.arcgis.com/datasets/NHGRANIT::parcels-1/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelOID"
+                }
+            }
+        ]
+    }
 }

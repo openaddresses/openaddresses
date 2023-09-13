@@ -9,15 +9,39 @@
         "state": "ca",
         "county": "San Benito"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/nvkelso/49c92f/SBCAddress.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "id": "APN",
-        "number": "ADDRESS",
-        "street": "STNA_FULL",
-        "postcode": "ZIPCODE",
-        "unit": "UNIT"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/NjMFCzThTMQy3AJa/ArcGIS/rest/services/ArcOnline_Addresses/FeatureServer/0",
+                "website": "https://cosb.maps.arcgis.com/home/item.html?id=f7dd7210ee114965aeeac18e9886daec",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "APN",
+                    "number": "ADDRESS",
+                    "street": [
+                        "PREDIR",
+                        "STNAME",
+                        "TYPE"
+                    ],
+                    "postcode": "ZIPCODE",
+                    "unit": "UNIT"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/NjMFCzThTMQy3AJa/arcgis/rest/services/Open_Data_Parcels/FeatureServer/0",
+                "website": "https://opendata2-cosb.opendata.arcgis.com/datasets/COSB::parcels-open-data/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
     }
 }

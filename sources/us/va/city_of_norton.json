@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -82.631,36.934 ]
+            "coordinates": [
+                -82.631,
+                36.934
+            ]
         },
         "US Census": {
             "geoid": "51720",
@@ -13,15 +16,23 @@
         "state": "va",
         "city": "Norton"
     },
-    "data": "http://gis.worldviewsolutions.com/arcgis/rest/services/norton/real_estate/MapServer/21",
-    "protocol": "ESRI",
-    "conform": {
-        "street": "ROADNAME",
-        "number": "ADDR_NO",
-        "unit": "UNIT",
-        "format": "geojson",
-        "city": "CITY",
-        "region": "STATE",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis.worldviewsolutions.com/arcgis/rest/services/norton/real_estate/MapServer/21",
+                "protocol": "ESRI",
+                "conform": {
+                    "street": "ROADNAME",
+                    "number": "ADDR_NO",
+                    "unit": "UNIT",
+                    "format": "geojson",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

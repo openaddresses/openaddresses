@@ -17,25 +17,33 @@
             ]
         }
     },
-    "data": "https://maps.fmtn.org/wa/rest/services/FeatureClasses/AddressData/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "SITEADDID",
-        "number": "ADDRNUM",
-        "street": [
-            "ROADPREMOD",
-            "ROADPREDIR",
-            "ROADNAME",
-            "ROADTYPE",
-            "ROADPOSTDIR",
-            "ROADPOSTMOD"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "city": "MUNICIPALITY",
-        "postcode": "ZipCode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.fmtn.org/arcgis/rest/services/FeatureClass/Address_Points/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SITEADDID",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "ROADPREMOD",
+                        "ROADPREDIR",
+                        "ROADNAME",
+                        "ROADTYPE",
+                        "ROADPOSTDIR",
+                        "ROADPOSTMOD"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZipCode"
+                }
+            }
+        ]
     }
 }

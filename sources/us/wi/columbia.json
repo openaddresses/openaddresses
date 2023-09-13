@@ -9,16 +9,47 @@
         "state": "wi",
         "county": "Columbia"
     },
-    "data": "http://lrs.co.columbia.wi.us/arcgis/rest/services/Open_GIS/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRESSNUM",
-        "street": [
-            "ST_PRE_ABBR",
-            "ST_NM",
-            "ST_TY_ABBR",
-            "ST_SFX_ABBR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://lrs.co.columbia.wi.us/server/rest/services/Open_GIS/MapServer/1",
+                "website": "https://opendata-cclid.opendata.arcgis.com/datasets/cclid::address-points/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "CCGIS_DATA.GISOWNER.Address_Sites.ADDRESSNUM",
+                    "street": "CCGIS_DATA.GISOWNER.RD_INDEX.FULL_NM",
+                    "postcode": "CCGIS_DATA.GISOWNER.Address_Sites.ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://lrs.co.columbia.wi.us/server/rest/services/Open_GIS/MapServer/2",
+                "website": "https://opendata-cclid.opendata.arcgis.com/datasets/cclid::tax-parcels-current/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "CCGIS_DATA.GISOWNER.TaxParcels_Parcels.GIS_PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Columbia_Buildings_2022.zip",
+                "website": "https://geodata.wisc.edu/catalog/4F3B9B88-793F-411C-9BF7-C2BA644BAF89",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2022",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Columbia_Buildings_2022"
+                }
+            }
         ]
     }
 }

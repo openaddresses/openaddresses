@@ -9,20 +9,62 @@
         "state": "tx",
         "county": "Williamson"
     },
-    "website": "http://www.williamson-county.org/CountyDepartments/GIS/Data/tabid/532/language/en-US/Default.aspx",
-    "data": "https://gis.wilco.org/arcgis/rest/services/AGOL/gisedit_addressing_basemap/MapServer/1",
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "year": "2012",
-    "protocol": "ESRI",
-    "conform": {
-        "street": "RD_FULLNAME",
-        "number": "ADDR_NUMBER",
-        "postcode": "ZIP",
-        "unit": "ADDR_UNIT",
-        "format": "geojson"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.wilcotx.gov/gis",
+                "data": "https://gis.wilco.org/arcgis/rest/services/public/county_address_units/MapServer/0",
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "street": "RD_FULLNAME",
+                    "number": "ADDR_NUMBER",
+                    "city": "POSTAL_COMM",
+                    "district": "COUNTY",
+                    "postcode": "ZIP",
+                    "unit": "ADDR_UNIT",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.wilcotx.gov/gis",
+                "data": "https://gis.wilco.org/arcgis/rest/services/public/county_wcad_parcels/MapServer/0",
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCELID",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "website": "https://www.wilcotx.gov/gis",
+                "data": "https://gis.wilco.org/arcgis/rest/services/public/county_building_footprints/MapServer/1",
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

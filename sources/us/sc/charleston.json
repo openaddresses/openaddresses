@@ -1,22 +1,57 @@
 {
     "coverage": {
-        "US Census": {"geoid": "45019", "name": "Charleston County", "state": "South Carolina"},
+        "US Census": {
+            "geoid": "45019",
+            "name": "Charleston County",
+            "state": "South Carolina"
+        },
         "country": "us",
         "state": "sc",
         "county": "Charleston"
     },
-    "data": "http://ccgisapps.charlestoncounty.org/arcgis/rest/services/Public_Search/Public_Search/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NUMBER",
-        "street": ["PRE_DIR", "ST_NAME", "ST_TYPE", "SUF_DIR"],
-        "unit": [
-          "UNIT_TYPE",
-          "UNIT"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisccapps.charlestoncounty.org/arcgis/rest/services/GIS_VIEWER/Public_Search/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "WHOLE_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "WHOLE_ADDRESS"
+                    },
+                    "city": "POSTAL_TOWN",
+                    "postcode": "POSTAL_CODE",
+                    "region": "POSTAL_STATE"
+                }
+            }
         ],
-        "city": "POSTAL_TOWN",
-        "postcode": "POSTAL_CODE",
-        "region": "POSTAL_STATE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisccapps.charlestoncounty.org/arcgis/rest/services/GIS_VIEWER/Public_Search/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "FEATURES.SDE.P_POLY_PARCEL.PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisccapps.charlestoncounty.org/arcgis/rest/services/GIS_VIEWER/Public_Search/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

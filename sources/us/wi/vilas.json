@@ -9,13 +9,51 @@
         "state": "wi",
         "county": "Vilas"
     },
-    "data": "http://vcgis.co.vilas.wi.us/arcgis2/rest/services/Address/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HouseNumber",
-        "street": "PrimaryName",
-        "postcode": "Zip",
-        "city": "ZN"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.vilascountywi.gov/vilasgis/rest/services/V4/SiteAddress/MapServer/0",
+                "website": "https://data-vilas.opendata.arcgis.com/datasets/vilas::site-address/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "addrnum",
+                    "street": "FullStNm",
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "msag",
+                    "district": "county",
+                    "region": "state",
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.vilascountywi.gov/vilasgis/rest/services/V4/TaxParcels/MapServer/0",
+                "website": "https://data-vilas.opendata.arcgis.com/datasets/vilas::tax-parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pin"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://maps.vilascountywi.gov/vilasgis/rest/services/V4/Buildings/MapServer/0",
+                "website": "https://data-vilas.opendata.arcgis.com/datasets/vilas::buildings/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

@@ -1,19 +1,45 @@
 {
     "coverage": {
-        "US Census": {"geoid": "16005", "name": "Bannock County", "state": "Idaho"},
+        "US Census": {
+            "geoid": "16005",
+            "name": "Bannock County",
+            "state": "Idaho"
+        },
         "country": "us",
         "state": "id",
         "county": "Bannock"
     },
-    "data": "http://gis.bannockcounty.us/arcgis/rest/services/Addresses/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NUM",
-        "street": [
-            "DIRECTION",
-            "STREET"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.bannockcounty.us/server/rest/services/Addresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "APT_NO",
+                    "number": "HOUSE_NUM",
+                    "street": [
+                        "DIRECTION",
+                        "STREET"
+                    ],
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
         ],
-        "unit": "APT_NO"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.bannockcounty.us/server/rest/services/Parcels_Public/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcel_no"
+                }
+            }
+        ]
     }
 }

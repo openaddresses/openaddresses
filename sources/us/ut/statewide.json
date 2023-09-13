@@ -7,27 +7,78 @@
         "country": "us",
         "state": "ut"
     },
-    "data": "https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/UtahAddressPoints/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "AddNum",
-            "AddNumSuff"],
-        "street": [
-            "PrefixDir",
-            "StreetName",
-            "StreetType",
-            "SuffixDir"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "contact": {
+                    "name": "AGRC",
+                    "title": "Office Email",
+                    "phone": "801-538-3665",
+                    "email": "agrc@utah.gov"
+                },
+                "language": "en",
+                "website": "https://opendata.gis.utah.gov/datasets/utah::utah-address-points/about",
+                "data": "https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/UtahAddressPoints/FeatureServer/0",
+                "note": {
+                    "update frequency": "monthly"
+                },
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "Utah UGRC"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNum",
+                        "AddNumSuffix"
+                    ],
+                    "street": [
+                        "PrefixDir",
+                        "StreetName",
+                        "StreetType",
+                        "SuffixDir"
+                    ],
+                    "unit": [
+                        "UnitType",
+                        "UnitID"
+                    ],
+                    "city": "City",
+                    "district": "CountyID",
+                    "region": "State",
+                    "postcode": "ZipCode",
+                    "id": "UTAddPtID"
+                }
+            }
         ],
-        "unit": [
-            "UnitType",
-            "UnitID"
-        ],
-        "city": "City",
-        "postcode": "ZipCode",
-        "region": "State",
-        "id": "ParcelID"
-
+        "parcels": [
+            {
+                "name": "state",
+                "contact": {
+                    "name": "AGRC",
+                    "title": "Office Email",
+                    "phone": "801-538-3665",
+                    "email": "agrc@utah.gov"
+                },
+                "language": "en",
+                "website": "https://opendata.gis.utah.gov/datasets/utah::utah-statewide-parcels/about",
+                "data": "https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/UtahStatewideParcels/FeatureServer/0",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "Utah UGRC"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
     }
 }

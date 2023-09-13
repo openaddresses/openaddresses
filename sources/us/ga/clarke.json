@@ -9,88 +9,69 @@
         "state": "ga",
         "county": "Clarke"
     },
-    "data": "https://enigma.athensclarkecounty.com/arcgis/rest/services/GIS_Viewer/MapServer/13",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "regexp",
-            "field": "FullAdd",
-            "pattern": "^(\\d+(?: 1/2|[A-Z])?)\\s"
-        },
-        "street": [
-            "PreDir",
-            "StreetName",
-            "StreetType",
-            "PostDir"
-        ],
-        "unit": [
-            "UnitType",
-            "Unit"
-        ],
-        "city": "POSTALCITY",
-        "region": "State",
-        "postcode": "Zipcode"
-    },
-    "test": {
-        "enabled": true,
-        "description": "house numbers can be digits-only, digits+alpha, or digits+1/2",
-        "acceptance-tests": [
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "address with digits-only house number",
-                "inputs": {
-                    "FullAdd": "260 HOLMAN AVE",
-                    "PreDir": "",
-                    "StreetName": "HOLMAN",
-                    "StreetType": "AVE",
-                    "PostDir": "",
-                    "UnitType": "",
-                    "Unit": "",
-                    "PostalCity": "",
-                    "State": "",
-                    "Zipcode": ""
+                "name": "county",
+                "data": "https://enigma.accgov.com/server/rest/services/ACC_Address_Point/FeatureServer/0",
+                "website": "https://data-athensclarke.opendata.arcgis.com/datasets/AthensClarke::acc-address-point/about",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Athens-Clarke County GIS",
+                    "share-alike": false
                 },
-                "expected": {
-                    "number": "260",
-                    "street": "HOLMAN AVE"
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "FullHouseNum",
+                    "street": "FullStreetName",
+                    "unit": [
+                        "UnitType",
+                        "Unit"
+                    ],
+                    "city": "POSTALCITY",
+                    "region": "State",
+                    "postcode": "Zipcode"
                 }
-            },
+            }
+        ],
+        "parcels": [
             {
-                "description": "address with digits+alpha house number",
-                "inputs": {
-                    "FullAdd": "705A SPRING VALLEY RD",
-                    "PreDir": "",
-                    "StreetName": "SPRING VALLEY",
-                    "StreetType": "RD",
-                    "PostDir": "",
-                    "UnitType": "",
-                    "Unit": "",
-                    "PostalCity": "",
-                    "State": "",
-                    "Zipcode": ""
+                "name": "county",
+                "data": "https://enigma.accgov.com/server/rest/services/ACC_Parcels/FeatureServer/0",
+                "website": "https://data-athensclarke.opendata.arcgis.com/datasets/AthensClarke::acc-parcels/about",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Athens-Clarke County GIS",
+                    "share-alike": false
                 },
-                "expected": {
-                    "number": "705A",
-                    "street": "SPRING VALLEY RD"
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
                 }
-            },
+            }
+        ],
+        "buildings": [
             {
-                "description": "address with digits+fraction house number",
-                "inputs": {
-                    "FullAdd": "1737 1/2 S LUMPKIN ST",
-                    "PreDir": "S",
-                    "StreetName": "LUMPKIN",
-                    "StreetType": "ST",
-                    "PostDir": "",
-                    "UnitType": "",
-                    "Unit": "",
-                    "PostalCity": "",
-                    "State": "",
-                    "Zipcode": ""
+                "name": "county",
+                "data": "https://enigma.accgov.com/server/rest/services/ACC_Buildings/FeatureServer/0",
+                "website": "https://data-athensclarke.opendata.arcgis.com/datasets/AthensClarke::acc-buildings/about",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Athens-Clarke County GIS",
+                    "share-alike": false
                 },
-                "expected": {
-                    "number": "1737 1/2",
-                    "street": "S LUMPKIN ST"
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

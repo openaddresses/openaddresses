@@ -1,19 +1,31 @@
 {
     "coverage": {
-        "US Census": {"geoid": "20165", "name": "Rush County", "state": "Kansas"},
+        "US Census": {
+            "geoid": "20165",
+            "name": "Rush County",
+            "state": "Kansas"
+        },
         "country": "us",
         "state": "ks",
         "county": "Rush"
     },
-    "conform": {
-        "format": "csv",
-        "number": "NUM",
-        "street": "STR",
-        "city": "CITY",
-        "postcode": "ZIP",
-        "lon": "LON",
-        "lat": "LAT"
-    },
-    "data": "http://data.openaddresses.io/cache/us-ks-rush_county.csv",
-    "protocol": "http"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "csv",
+                    "number": "NUM",
+                    "street": "STR",
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "lon": "LON",
+                    "lat": "LAT"
+                },
+                "data": "https://data.openaddresses.io/cache/us-ks-rush_county.csv",
+                "protocol": "http"
+            }
+        ]
+    }
 }

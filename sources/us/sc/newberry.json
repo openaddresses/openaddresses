@@ -9,19 +9,36 @@
         "state": "sc",
         "county": "Newberry"
     },
-    "data": "http://68.156.95.45/arcgis/rest/services/Basemaps/Dynamic/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "street": [
-          "ROADPREDIR",
-          "ROADNAME",
-          "ROADTYPE",
-          "ROADPOSTDIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://map.newberrycounty.net/gis/rest/services/PropertyParcel/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Property_Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Property_Address"
+                    }
+                }
+            }
         ],
-        "unit": "APARTMENT",
-        "city": "MUNICIPALITY",
-        "postcode": "Zip"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://map.newberrycounty.net/gis/rest/services/PropertyParcel/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TMS"
+                }
+            }
+        ]
     }
 }

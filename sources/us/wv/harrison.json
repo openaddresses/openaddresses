@@ -9,13 +9,28 @@
         "state": "wv",
         "county": "Harrison"
     },
-    "data": "https://psportal.harrisoncountywv.com/server/rest/services/ftrAddress/MapServer/2",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": ["PREADDRNUM", "ADDRNUM", "ADDRNUMSUF"],
-        "unit": ["UNITTYPE", "UNITID"],
-        "street": "FULLNAME",
-        "city": "MUNICIPALITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://psmapgis.harrisoncountywv.com/arcgis/rest/services/features/ftrSiteAddressPointsRaw/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": "FULLNAME",
+                    "city": "MUNICIPALITY"
+                }
+            }
+        ]
     }
 }

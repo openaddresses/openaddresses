@@ -9,24 +9,53 @@
         "state": "or",
         "county": "Lane"
     },
-    "data": "http://lcmaps.lanecounty.org/arcgis/rest/services/LaneCountyMaps/AddressParcel/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "house_nbr",
-            "house_suffix_code"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://lcmaps.lanecounty.org/arcgis/rest/services/LaneCountyMaps/AddressParcel/MapServer/0",
+                "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Lane County GIS",
+                    "presumed": true
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "house_nbr",
+                        "house_suffix_code"
+                    ],
+                    "street": [
+                        "pre_direction_code",
+                        "street_name",
+                        "street_type_code"
+                    ],
+                    "unit": [
+                        "unit_type_code",
+                        "unit_id"
+                    ],
+                    "city": "city_name",
+                    "postcode": "five_digit_zip_code"
+                }
+            }
         ],
-        "street": [
-            "pre_direction_code",
-            "street_name",
-            "street_type_code"
-        ],
-        "unit": [
-            "unit_type_code",
-            "unit_id"
-        ],
-        "city": "city_name",
-        "postcode": "five_digit_zip_code"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "http://lcmaps.lanecounty.org/arcgis/rest/services/LaneCountyMaps/AddressParcel/MapServer/2",
+                "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Lane County GIS",
+                    "presumed": true
+                },
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MAPTAXLOT"
+                }
+            }
+        ]
     }
 }

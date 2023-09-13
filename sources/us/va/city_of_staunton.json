@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -79.072, 38.154 ]
+            "coordinates": [
+                -79.072,
+                38.154
+            ]
         },
         "US Census": {
             "geoid": "51790",
@@ -13,22 +16,30 @@
         "state": "va",
         "city": "Staunton"
     },
-    "data": "http://gis.ci.staunton.va.us:8087/stagis/rest/services/Services/Parcels/FeatureServer/0",
-    "protocol": "ESRI",
-    "website": "http://gis.ci.staunton.va",
-    "conform": {
-        "format": "geojson",
-        "street": {
-            "function": "regexp",
-            "field": "P_ADDRESS",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "number": {
-            "function": "regexp",
-            "field": "P_ADDRESS",
-            "pattern": "^([0-9]+)"
-        },
-        "accuracy": 2
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://gis.ci.staunton.va.us:8087/stagis/rest/services/Services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "http://gis.ci.staunton.va",
+                "conform": {
+                    "format": "geojson",
+                    "street": {
+                        "function": "regexp",
+                        "field": "P_ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "number": {
+                        "function": "regexp",
+                        "field": "P_ADDRESS",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "accuracy": 2
+                }
+            }
+        ]
     }
 }

@@ -3,15 +3,37 @@
         "country": "ca",
         "state": "ab",
         "city": "Chestermere",
-        "geometry": { "type": "Point", "coordinates": [-113.853, 51.030] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -113.853,
+                51.03
+            ]
+        }
     },
-    "data": "https://services3.arcgis.com/8FWoKvthx3zWyrPO/ArcGIS/rest/services/Chestermere_Address_Points/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "id": "FID",
-        "number": "ADDRESS_HO",
-        "unit": "ADDRESS_AP",
-        "street": "ADDRESS_ST"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services5.arcgis.com/xPoG9m86qjKWAzys/arcgis/rest/services/ADDRESS_POINTS/FeatureServer/0",
+                "website": "http://data-chestermere.opendata.arcgis.com/datasets/address-points?showData=true",
+                "license": {
+                    "url": "https://www.chestermere.ca/DocumentCenter/View/13563/OPEN-DATA-LICENCE",
+                    "text": "Contains information licensed under the Open Data License – City of Chestermere.",
+                    "attribution name": "OPEN DATA LICENCE - City of Chestermere",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": "ADDRESS_HO",
+                    "unit": "ADDRESS_AP",
+                    "street": "ADDRESS_ST"
+                }
+            }
+        ]
     }
 }

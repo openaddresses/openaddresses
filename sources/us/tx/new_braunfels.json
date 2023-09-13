@@ -4,7 +4,7 @@
             "type": "Point",
             "coordinates": [
                 -98.12,
-                29.70
+                29.7
             ]
         },
         "US Census": {
@@ -16,24 +16,32 @@
         "state": "tx",
         "city": "New Braunfels"
     },
-    "website": "http://www.nbtexas.org/index.aspx?NID=1246",
-    "data": "http://gis.nbtexas.org/arcgis/rest/services/CacheMaps/GeneralPurpose/MapServer/5",
-    "license": {
-        "text": "Indemnification",
-        "attribution": false,
-        "share-alike": false
-    },
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "ADDRNUM",
-            "ADDRNUMSUF"
-        ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
-        ],
-        "street": "FULLNAME"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "website": "https://open-data-newbraunfels.hub.arcgis.com/datasets/newbraunfels::addresses/about",
+                "data": "https://gismaps.newbraunfels.gov/arcserverwa22/rest/services/OpenData/AddressesBoundaries/MapServer/0",
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "street": "FULLNAME"
+                }
+            }
+        ]
     }
 }

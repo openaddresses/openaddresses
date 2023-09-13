@@ -1,22 +1,61 @@
 {
     "coverage": {
-        "US Census": {"geoid": "48227", "name": "Howard County", "state": "Texas"},
+        "US Census": {
+            "geoid": "48227",
+            "name": "Howard County",
+            "state": "Texas"
+        },
         "country": "us",
         "state": "tx",
         "county": "Howard"
     },
-    "data": "http://mapsatbis.com/bisgis/rest/services/HowardWeb/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "number": "HowardCad.DBO.Accounts.situs_num",
-        "street": [
-            "HowardCad.DBO.Accounts.situs_street_prefx",
-            "HowardCad.DBO.Accounts.situs_street",
-            "HowardCad.DBO.Accounts.situs_street_sufix"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.tnris.org/a6a703ba-df8b-4d1b-8d4c-ece8ae786505/resources/stratmap22-landparcels_48227_lp.zip",
+                "website": "https://data.tnris.org/collection/?c=a6a703ba-df8b-4d1b-8d4c-ece8ae786505",
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC 0"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2022",
+                "conform": {
+                    "format": "gdb",
+                    "file": "fgdb/stratmap22-landparcels_48227_howard_202202.gdb",
+                    "number": "SITUS_NUM",
+                    "street": [
+                        "SITUS_STRE",
+                        "SITUS_ST_1",
+                        "SITUS_ST_2"
+                    ],
+                    "city": "SITUS_CITY",
+                    "region": "SITUS_STAT",
+                    "postcode": "SITUS_ZIP"
+                }
+            }
         ],
-        "city": "HowardCad.DBO.Accounts.situs_city",
-        "region": "HowardCad.DBO.Accounts.situs_state",
-        "postcode": "HowardCad.DBO.Accounts.situs_zip",
-        "format": "geojson"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://data.tnris.org/a6a703ba-df8b-4d1b-8d4c-ece8ae786505/resources/stratmap22-landparcels_48227_lp.zip",
+                "website": "https://data.tnris.org/collection/?c=a6a703ba-df8b-4d1b-8d4c-ece8ae786505",
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC 0"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2022",
+                "conform": {
+                    "format": "gdb",
+                    "file": "fgdb/stratmap22-landparcels_48227_howard_202202.gdb",
+                    "pid": "GEO_ID"
+                }
+            }
+        ]
     }
 }

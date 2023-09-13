@@ -9,19 +9,45 @@
         "state": "pa",
         "county": "Franklin"
     },
-    "data": "http://54.235.209.242/arcgis/rest/services/FranklinCounty_PA/FranklinCountyWebMap/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "REM_PRCL_L",
-        "street": [
-            "REM_PRCL_1",
-            "REM_PRCL_2",
-            "REM_PRCL_3",
-            "REM_PRCL_4",
-            "REM_PRCL_5"
-        ],
-        "city": "REM_PRCL_9",
-        "postcode": "REM_PRC_10"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "contact": {
+                    "name": "Kara Shindle",
+                    "title": "GIS Coordinator",
+                    "phone": "(717) 261-3149",
+                    "email": "klshindle@franklincountypa.gov",
+                    "address": "Administration Annex, 218 N 2nd St, Chambersburg, PA 17201"
+                },
+                "website": "https://franklincountypa.gov/index.php?section=GIS_Online_GIS_Mapping_Portal",
+                "data": "https://gis.franklincountypa.gov/esriarcgiswebadapter/rest/services/FranklinHostedGIS/FC_AddressPoints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": [
+                        "PREDIRECTIONAL",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "POSTDIRECTIONAL",
+                        "STREETSUF"
+                    ],
+                    "unit": [
+                        "SECUNITTYPE",
+                        "SECUNITNUM"
+                    ],
+                    "city": "POSTALCITY",
+                    "district": "COUNTY",
+                    "postcode": "ZIPCODE",
+                    "region": "STATE",
+                    "addrtype": "ADDRCLASS"
+                }
+            }
+        ]
     }
 }

@@ -9,13 +9,22 @@
         "state": "ga",
         "county": "Jackson"
     },
-    "data": "http://gis.jacksoncountygov.com/arcgis/rest/services/parcels/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "Jackson_SDE.DBO.REALPROP2010.HOUSE_NO",
-        "street": "Jackson_SDE.DBO.REALPROP2010.STREET_NAM",
-        "unit": "Jackson_SDE.DBO.REALPROP2010.UNIT",
-        "postcode": "Jackson_SDE.DBO.REALPROP2010.ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/bcbi4lYRFOsss0F5/ArcGIS/rest/services/jackson_baselayers/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "NUMBER_",
+                    "street": "ROAD",
+                    "unit": "Unit",
+                    "city": "COMMUNITY",
+                    "postcode": "ZipCode"
+                }
+            }
+        ]
     }
 }

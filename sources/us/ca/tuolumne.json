@@ -9,13 +9,39 @@
         "state": "ca",
         "county": "Tuolumne"
     },
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE_NUM",
-        "street": "STREET_NAME",
-        "postcode": "zip_code"
-    },
-    "attribution": "Tuolumne County",
-    "data": "http://gis.co.tuolumne.ca.us:8093/arcgis/rest/services/Address_Parcels/MapServer/0",
-    "protocol": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Tuolumne County",
+                "data": "https://services3.arcgis.com/afQpMaliVrwHS7Ud/ArcGIS/rest/services/Parcels_WithSiteAddress_View/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SitusStreetNum",
+                    "unit": "SitusSpaceApt",
+                    "street": [
+                        "SitusStreetName",
+                        "SitusStreetType",
+                        "SitusStreetDirection"
+                    ],
+                    "city": "SitusStreetCommunity",
+                    "postcode": "SitusStreetZip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Tuolumne County",
+                "data": "https://services3.arcgis.com/afQpMaliVrwHS7Ud/ArcGIS/rest/services/Parcels_WithSiteAddress_View/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ]
+    }
 }

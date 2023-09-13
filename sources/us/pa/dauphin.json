@@ -1,4 +1,5 @@
 {
+    "schema": 2,
     "coverage": {
         "US Census": {
             "geoid": "42027",
@@ -9,18 +10,51 @@
         "state": "pa",
         "county": "Dauphin"
     },
-    "data": "https://gis.dauphincounty.org/arcgis/rest/services/Municipal/Muni_Basemap/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ST_NUM",
-        "street": [
-            "DIRPRE",
-            "FEANME",
-            "FEATYP",
-            "DIRSUF"
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "contact": {
+                    "name": "Megan Birch",
+                    "title": "GIS Coordinator",
+                    "phone": "(717) 780-6262",
+                    "email": "MBirch@dauphinc.org",
+                    "address": "2 S 2nd St, Harrisburg, PA 17101-1295"
+                },
+                "website": "https://data-dauphinco.opendata.arcgis.com/",
+                "data": "https://gis.dauphincounty.org/arcgis/rest/services/Parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "house_number",
+                    "street": [
+                        "prefix_directional",
+                        "street_name",
+                        "street_suffix"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "id": "PID"
+                }
+            }
         ],
-        "unit": "LV_APT",
-        "postcode": "ZIP"
+        "parcels": [
+            {
+                "name": "county",
+                "contact": {
+                    "name": "Megan Birch",
+                    "title": "GIS Coordinator",
+                    "phone": "(717) 780-6262",
+                    "email": "MBirch@dauphinc.org",
+                    "address": "2 S 2nd St, Harrisburg, PA 17101-1295"
+                },
+                "website": "https://data-dauphinco.opendata.arcgis.com/",
+                "data": "https://gis.dauphincounty.org/arcgis/rest/services/Parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ]
     }
 }

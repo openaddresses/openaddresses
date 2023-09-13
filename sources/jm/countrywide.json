@@ -6,22 +6,30 @@
             "country": "Jamaica"
         }
     },
-    "protocol": "http",
-    "compression": "zip",
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/936e31/jamaica.geojson.zip",
-    "conform": {
-        "format": "geojson",
-        "number": "STREET_",
-        "street": {
-            "function": "remove_prefix",
-            "field": "STREET_ADDRESS",
-            "field_to_remove": "street_"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "LOCATION",
-            "pattern": "^(?:C\\s*/\\s*O\\s*)?(.*?)\\s*(?:(?:P(?:\\.|\\s*)\\s*(?:[OA0]\\.?|A\\.O\\.?|OP|O O)(?:\\s+(?:NO\\.?|#))?\\s*[\\d]*[\\s\\.]*)|(?:\\s+P\\s+OP?\\s+.*)|(?:\\s*(?:NO\\.?|#)\\s*[\\d]*\\s*)|(?:\\sP\\s*))?$"
-        },
-        "region": "PARISH"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://data.openaddresses.io/cache/uploads/trescube/936e31/jamaica.geojson.zip",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREET_",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "STREET_ADDRESS",
+                        "field_to_remove": "street_"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "LOCATION",
+                        "pattern": "^(?:C\\s*/\\s*O\\s*)?(.*?)\\s*(?:(?:P(?:\\.|\\s*)\\s*(?:[OA0]\\.?|A\\.O\\.?|OP|O O)(?:\\s+(?:NO\\.?|#))?\\s*[\\d]*[\\s\\.]*)|(?:\\s+P\\s+OP?\\s+.*)|(?:\\s*(?:NO\\.?|#)\\s*[\\d]*\\s*)|(?:\\sP\\s*))?$"
+                    },
+                    "region": "PARISH"
+                }
+            }
+        ]
     }
 }

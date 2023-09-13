@@ -3,20 +3,27 @@
         "country": "ch",
         "city": "Zurich"
     },
-    "data": "https://data.stadt-zuerich.ch/dataset/adressen/resource/2f3e80d8-646d-4247-8542-37837b6ed3db/download/adressen.zip",
-    "website": "https://data.stadt-zuerich.ch/dataset/adressen",
-    "license": {
-        "text": "CC 0",
-        "attribution": false,
-        "share-alike": false
-    },
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "encoding": "utf-8",
-        "number": "HAUSNUMMER",
-        "street": "LOKALISATI",
-        "postcode": "PLZ"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Adressen_Stadt_Zuerich?SERVICE=WFS&VERSION=1.1.0&request=GetFeature&typeName=adrstzh_adressen_stzh_p&outputFormat=application%2Fjson&srsName=EPSG:4326",
+                "website": "https://data.stadt-zuerich.ch/dataset/geo_adressen_stadt_zuerich",
+                "license": {
+                    "text": "CC 0",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson",
+                    "encoding": "utf-8",
+                    "number": "hausnummer",
+                    "street": "lokalisationsname",
+                    "postcode": "plz"
+                }
+            }
+        ]
     }
 }

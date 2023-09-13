@@ -1,38 +1,52 @@
 {
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
-    "conform": {
-        "format": "csv",
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        },
-        "skiplines": 2,
-        "lon": "POINT_X",
-        "number": "LNDN_MA_SN",
-        "lat": "POINT_Y",
-        "encoding": "EUCKR",
-        "headers": 2,
-        "srs": "EPSG:2097"
-    },
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1088",
     "coverage": {
         "country": "kr",
         "state": "seoul",
         "city": "종로구",
-        "geometry": { "type": "Point", "coordinates": [126.982, 37.581] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                126.982,
+                37.581
+            ]
+        }
     },
-    "protocol": "http",
-    "compression": "zip",
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
-    "skip": true,
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-chongnogu.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "csv",
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    },
+                    "skiplines": 2,
+                    "lon": "POINT_X",
+                    "number": "LNDN_MA_SN",
+                    "lat": "POINT_Y",
+                    "encoding": "EUCKR",
+                    "headers": 2,
+                    "srs": "EPSG:2097"
+                },
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1088",
+                "protocol": "http",
+                "compression": "zip",
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "skip": true,
+                "data": "https://data.openaddresses.io/cache/kr-seoul-chongnogu.zip"
+            }
+        ]
+    }
 }

@@ -9,20 +9,28 @@
         "state": "oh",
         "county": "Scioto"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/283809/us-oh-scioto.geojson.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "geojson",
-        "number": "LocStrNo",
-        "street": [
-            "LocStrDir",
-            "LocStrName",
-            "LocStrSuffix"
-        ],
-        "unit": "LocStrNo2",
-        "city": "LocCity",
-        "region": "LocState",
-        "postcode": "LocZipCode"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.openaddresses.io/cache/uploads/trescube/283809/us-oh-scioto.geojson.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "geojson",
+                    "number": "LocStrNo",
+                    "street": [
+                        "LocStrDir",
+                        "LocStrName",
+                        "LocStrSuffix"
+                    ],
+                    "unit": "LocStrNo2",
+                    "city": "LocCity",
+                    "region": "LocState",
+                    "postcode": "LocZipCode"
+                }
+            }
+        ]
     }
 }

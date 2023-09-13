@@ -7,17 +7,33 @@
         "country": "us",
         "state": "nm"
     },
-    "data": "http://data.openaddresses.io/cache/uploads/ingalls/us-nm.zip",
-    "protocol": "http",
-    "website": "http://rgis-data.unm.edu/rgis/ApolloPro.aspx",
-    "compression": "zip",
-    "conform": {
-        "number": [
-            "ADD_NUMBER",
-            "ADD_SUFFIX"
-        ],
-        "street": "ROAD_LABEL",
-        "city": "MSAG_COM",
-        "format": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://gstore.unm.edu/apps/rgis/datasets/cef558f9-9312-45b4-8e84-93450b38278e/NM911_Address_202303.original.zip",
+                "protocol": "http",
+                "year": "2023",
+                "website": "http://rgis.unm.edu/rgis6/",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": [
+                        "ADD_NUMBER",
+                        "ADD_SUFFIX"
+                    ],
+                    "street": [
+                        "STR_DIR",
+                        "STR_PRETYP",
+                        "STR_NAME",
+                        "STR_SUFFIX",
+                        "POST_DIR"
+                    ],
+                    "city": "MSAG_COM",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
     }
 }

@@ -4,17 +4,25 @@
         "state": "on",
         "county": "North Glengarry"
     },
-    "protocol": "http",
-    "compression": "zip",
-    "data": "http://data.openaddresses.io/cache/ca-on-north_glengarry.zip",
-    "note": "Obtained via FOI Request June 2016 by nicholas ingalls <nicholas.ingalls@gmail.com>",
-    "conform":{
-        "number": {
-            "function": "regexp",
-            "field": "LOCATION",
-            "pattern": "^([0-9]+(?:\\-[0-9]+)?)(?: .*)"
-        },
-        "street": "STREETNAME",
-        "format": "shapefile"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://data.openaddresses.io/cache/ca-on-north_glengarry.zip",
+                "note": "Obtained via FOI Request June 2016 by nicholas ingalls <nicholas.ingalls@gmail.com>",
+                "conform": {
+                    "number": {
+                        "function": "regexp",
+                        "field": "LOCATION",
+                        "pattern": "^([0-9]+(?:\\-[0-9]+)?)(?: .*)"
+                    },
+                    "street": "STREETNAME",
+                    "format": "shapefile"
+                }
+            }
+        ]
     }
 }

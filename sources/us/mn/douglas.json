@@ -9,18 +9,34 @@
         "state": "mn",
         "county": "Douglas"
     },
-    "data": "http://dc-web.co.douglas.mn.us/arcgis/rest/services/AGOL/Data_Layers/MapServer/43",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HNUM_HALF",
-        "street": {
-            "function": "remove_prefix",
-            "field": "ADDRESS",
-            "field_to_remove": "HNUM_HALF"
-        },
-        "postcode": "ZIP_CODE",
-        "city": "CITY",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://dc-web-2.co.douglas.mn.us/server/rest/services/NEW_SERVICES/Public_Map_Data_Layers/MapServer/68",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HNUM",
+                    "street": "STREET",
+                    "postcode": "ZIP_CODE",
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://dc-web-2.co.douglas.mn.us/server/rest/services/NEW_SERVICES/Public_Map_Data_Layers/MapServer/51",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

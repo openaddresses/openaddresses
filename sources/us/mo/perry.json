@@ -9,23 +9,33 @@
         "state": "mo",
         "county": "Perry"
     },
-    "data": "https://www.semogis.com/arcgis/rest/services/PerryCo/PerryAssess/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format":"geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITE_ADD"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITE_ADD",
-            "may_contain_units": true
-        },
-        "unit": {
-            "function": "postfixed_unit",
-            "field": "SITE_ADD"
-        },
-        "city": "CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.semogis.com/arcgis/rest/services/PerryCo/Perry911Address/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": [ "UNIT_TYPE", "UNIT_DESIG" ],
+                    "number": "STRUCTURE_NUM",
+                    "street": "COMP_STR_NAME",
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.semogis.com/arcgis/rest/services/PerryCo/PerryAssess/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

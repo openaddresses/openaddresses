@@ -9,64 +9,72 @@
         "state": "il",
         "county": "White"
     },
-    "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/WhiteILFeatures/FeatureServer/3",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "TSC_Site_Address"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "TSC_Site_Address"
-        },
-        "city": {
-            "function": "regexp",
-            "field": "TSC_Site_CityStateZip",
-            "pattern": "^(.+?)\\s+IL"
-        },
-        "region": {
-            "function": "regexp",
-            "field": "TSC_Site_CityStateZip",
-            "pattern": "\\b(IL)\\b"
-        },
-        "postcode": {
-            "function": "regexp",
-            "field": "TSC_Site_CityStateZip",
-            "pattern": "(\\d+)$"
-        }
-    },
-    "test": {
-        "enabled": true,
-        "description": "these are the tests that exercise valid inputs for czech countrywide",
-        "acceptance-tests": [
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "has city/state/zip",
-                "inputs": {
-                    "TSC_Site_Address": "216 E COMMERCE ST",
-                    "TSC_Site_CityStateZip": "GRAYVILLE IL 62844"
+                "name": "county",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/WhiteILFeatures/FeatureServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "TSC_Site_Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "TSC_Site_Address"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "TSC_Site_CityStateZip",
+                        "pattern": "^(.+?)\\s+IL"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "TSC_Site_CityStateZip",
+                        "pattern": "\\b(IL)\\b"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "TSC_Site_CityStateZip",
+                        "pattern": "(\\d+)$"
+                    }
                 },
-                "expected": {
-                    "number": "216",
-                    "street": "E COMMERCE ST",
-                    "city": "GRAYVILLE",
-                    "region": "IL",
-                    "postcode": "62844"
-                }
-            },
-            {
-                "description": "has city/state, no zip",
-                "inputs": {
-                    "TSC_Site_Address": "220 E COMMERCE ST",
-                    "TSC_Site_CityStateZip": "GRAYVILLE IL"
-                },
-                "expected": {
-                    "number": "220",
-                    "street": "E COMMERCE ST",
-                    "city": "GRAYVILLE",
-                    "region": "IL",
-                    "postcode": ""
+                "test": {
+                    "enabled": true,
+                    "description": "these are the tests that exercise valid inputs for czech countrywide",
+                    "acceptance-tests": [
+                        {
+                            "description": "has city/state/zip",
+                            "inputs": {
+                                "TSC_Site_Address": "216 E COMMERCE ST",
+                                "TSC_Site_CityStateZip": "GRAYVILLE IL 62844"
+                            },
+                            "expected": {
+                                "number": "216",
+                                "street": "E COMMERCE ST",
+                                "city": "GRAYVILLE",
+                                "region": "IL",
+                                "postcode": "62844"
+                            }
+                        },
+                        {
+                            "description": "has city/state, no zip",
+                            "inputs": {
+                                "TSC_Site_Address": "220 E COMMERCE ST",
+                                "TSC_Site_CityStateZip": "GRAYVILLE IL"
+                            },
+                            "expected": {
+                                "number": "220",
+                                "street": "E COMMERCE ST",
+                                "city": "GRAYVILLE",
+                                "region": "IL",
+                                "postcode": ""
+                            }
+                        }
+                    ]
                 }
             }
         ]

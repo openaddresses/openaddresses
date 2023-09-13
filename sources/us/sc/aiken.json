@@ -9,23 +9,39 @@
         "state": "sc",
         "county": "Aiken"
     },
-    "data": "http://acms1.aikencountysc.gov/arcgis/rest/services/TheAddresser/TheAddresser_ACGISDB_FS_Child/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "PADDNUMBER",
-        "street": [
-            "PADDPREFIX",
-            "PADDSTREET",
-            "PADDTYPE",
-            "PADDSUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://smpesri.scdot.org/arcgis/rest/services/GISMapping/SC_Parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "LocationAddress"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "LocationAddress"
+                    },
+                    "city": "LocationCity",
+                    "region": "LocationState",
+                    "postcode": "LocationZip"
+                }
+            }
         ],
-        "unit": [
-          "PADDUNITTYPE",
-          "PADDAPT"
-        ],
-        "city": "PADDCITY",
-        "region": "PADDSTATE",
-        "postcode": "PADDZIP"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://smpesri.scdot.org/arcgis/rest/services/GISMapping/SC_Parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
+                }
+            }
+        ]
     }
 }

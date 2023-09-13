@@ -1,38 +1,52 @@
 {
-    "skip": true,
-    "license": {
-        "text": "CCBY",
-        "attribution": true,
-        "share-alike": false
-    },
-    "compression": "zip",
     "coverage": {
         "state": "seoul",
         "country": "kr",
         "city": "강서구",
-        "geometry": { "type": "Point", "coordinates": [126.833, 37.559] }
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                126.833,
+                37.559
+            ]
+        }
     },
-    "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
-    "conform": {
-        "srs": "EPSG:2097",
-        "format": "csv",
-        "street": {
-            "function": "join",
-            "fields": [
-                "RD_NM",
-                "BD_NM",
-                "DET_BD_NM"
-            ],
-            "separator": " "
-        },
-        "encoding": "EUCKR",
-        "skiplines": 2,
-        "headers": 2,
-        "lon": "POINT_X",
-        "lat": "POINT_Y",
-        "number": "LNDN_MA_SN"
-    },
-    "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1069",
-    "protocol": "http",
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/kr-seoul-kangseogu.zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "skip": true,
+                "license": {
+                    "text": "CCBY",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "compression": "zip",
+                "note": "TOS acceptance means files must be manually downloaded. Proof of license present in expandable section near top of dataset webpage.",
+                "conform": {
+                    "srs": "EPSG:2097",
+                    "format": "csv",
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "RD_NM",
+                            "BD_NM",
+                            "DET_BD_NM"
+                        ],
+                        "separator": " "
+                    },
+                    "encoding": "EUCKR",
+                    "skiplines": 2,
+                    "headers": 2,
+                    "lon": "POINT_X",
+                    "lat": "POINT_Y",
+                    "number": "LNDN_MA_SN"
+                },
+                "website": "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1069",
+                "protocol": "http",
+                "data": "https://data.openaddresses.io/cache/kr-seoul-kangseogu.zip"
+            }
+        ]
+    }
 }

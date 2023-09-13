@@ -9,16 +9,46 @@
         "state": "ca",
         "county": "Lake"
     },
-    "attribution": "Lake County",
-    "data": "https://github.com/datadesk/us-ca-lake_county-situs_parcels-shp/blob/master/situs_parcels.zip?raw=true",
-    "website": "http://gis.co.lake.ca.us/",
-    "protocol": "http",
-    "compression": "zip",
-    "note": "Parcel polygons that include situs addresses in the metadata. Provided in response to a public records request in December 2014 and uploaded to GitHub for public hosting. A situs address dbf was provided separately from the parcels shapefile, which were then joined together in QGIS using an 'APN' according to instructions provided a county official.",
-    "conform": {
-        "id": "PARCEL",
-        "format": "shapefile-polygon",
-        "number": "SITUS_SITU",
-        "street": "SITUS_SI_1"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Lake County",
+                "data": "https://gispublic.co.lake.ca.us/server/rest/services/ParcelsFV/Mapserver/0",
+                "website": "http://gis.co.lake.ca.us/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SITUSNUM",
+                    "street": "SITUSSTR"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Lake County",
+                "data": "https://gispublic.co.lake.ca.us/server/rest/services/ParcelsFV/Mapserver/0",
+                "website": "http://gis.co.lake.ca.us/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Lake County",
+                "data": "https://gispublic.co.lake.ca.us/server/rest/services/Misc/buildings/MapServer/0",
+                "website": "http://gis.co.lake.ca.us/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

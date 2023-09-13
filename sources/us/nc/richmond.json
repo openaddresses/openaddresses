@@ -1,25 +1,44 @@
 {
     "coverage": {
-        "US Census": {"geoid": "37153", "name": "Richmond County", "state": "North Carolina"},
+        "US Census": {
+            "geoid": "37153",
+            "name": "Richmond County",
+            "state": "North Carolina"
+        },
         "country": "us",
         "state": "nc",
         "county": "Richmond"
     },
-    "data": "http://data.nconemap.gov/downloads/vector/parcels/Richmond_parcels_2017_10_05.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "website": "http://data.nconemap.gov/geoportal/catalog/search/resource/details.page?uuid=%7B837C5704-49C8-45A3-B084-AEBF4CD09804%7D",
-    "conform": {
-        "format": "shapefile",
-        "file": "nc_richmond_parcels_pt_2017_10_05.shp",
-        "id": "PARNO",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITEADD"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITEADD"
-        }
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis3.richmondnc.com/portal/sharing/rest/content/items/3351280ce7804736886e5f486c17c1dd/data",
+                "protocol": "http",
+                "compression": "zip",
+                "website": "https://gis3.richmondnc.com/portal/apps/sites/#/richmond-county-open-data-portal",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "addrnum",
+                    "street": "fullstreet",
+                    "city": "postalcom",
+                    "postcode": "postalzip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis3.richmondnc.com/portal/sharing/rest/content/items/3f99be4a704b4aaaa941f74e82d3112e/data",
+                "protocol": "http",
+                "compression": "zip",
+                "website": "https://gis3.richmondnc.com/portal/apps/sites/#/richmond-county-open-data-portal",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "pin"
+                }
+            }
+        ]
     }
 }

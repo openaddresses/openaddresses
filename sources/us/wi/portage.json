@@ -9,14 +9,47 @@
         "state": "wi",
         "county": "Portage"
     },
-    "data": "https://gisinfo.co.portage.wi.us/gis/rest/services/webGIS/LandRecords2/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "street": "FullName",
-        "unit": "UNITID",
-        "postcode": "Zipcode",
-        "city": "City"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisinfo.co.portage.wi.us/gis/rest/services/webGIS/LandRecords2/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FullName",
+                    "unit": "UNITID",
+                    "postcode": "Zipcode",
+                    "city": "City"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisinfo.co.portage.wi.us/gis/rest/services/webGIS/LandRecords2/MapServer/277",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/PORTAGE_BUILDINGS_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/5306FB97-A9D7-437C-92AA-FE228BC48C3A",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "PORTAGE_BUILDINGS_2023"
+                }
+            }
+        ]
     }
 }

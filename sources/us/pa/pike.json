@@ -9,17 +9,42 @@
         "state": "pa",
         "county": "Pike"
     },
-    "data": "https://github.com/aaronpdennis/pa-county-addresses/raw/master/data/PIKE/PIKE_addresses.csv",
-    "protocol": "http",
-    "note": "Data extracted from 2009 state government collection. Individual county GIS offices may have more recent addresses.",
-    "conform": {
-        "format": "csv",
-        "number": "SAN",
-        "street": ["PRD","STP","STN","STS","POD"],
-        "city": "MCN",
-        "lon": "X",
-        "lat": "Y",
-        "id": "PIN",
-        "accuracy": 5
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.pikepa.org/gistax",
+                "contact": {
+                    "phone": "570-296-3420",
+                    "email": "mapping@pikepa.org",
+                    "address": "506 Broad Street, Milford, PA 18337"
+                },
+                "data": "https://gis.pikepa.org/arcgis/rest/services/PikeCo_AddressPoints/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "street": "LegacyFullStreet"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.pikepa.org/gistax",
+                "contact": {
+                    "phone": "570-296-3420",
+                    "email": "mapping@pikepa.org",
+                    "address": "506 Broad Street, Milford, PA 18337"
+                },
+                "data": "https://gis.pikepa.org/arcgis/rest/services/PikeCo_Parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MAP_JOIN"
+                }
+            }
+        ]
     }
 }

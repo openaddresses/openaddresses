@@ -7,26 +7,63 @@
         "country": "us",
         "state": "in"
     },
-    "website": "http://maps.indiana.edu/previewMaps/Infrastructure/Streets_Address_Points_IDHS.html",
-    "data": "http://maps.indiana.edu/download/Infrastructure/Streets_Address_Points_IDHS.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "gdb",
-        "number": "NUMBER",
-        "street": [
-            "PREFIX",
-            "ADD_NAME",
-            "ADD_TYPE",
-            "SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "website": "https://www.indianamap.org/datasets/address-points-of-indiana-current/about",
+                "data": "https://opendata.arcgis.com/api/v3/datasets/9b222d07cc164eb384a24742cbf1d274_62/downloads/data?format=geojson&spatialRefId=4326&where=1%3D1",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "addnum_pre",
+                        "add_number",
+                        "addnum_suf"
+                    ],
+                    "street": [
+                        "st_premod",
+                        "st_predir",
+                        "st_pretyp",
+                        "st_presep",
+                        "st_name",
+                        "st_postyp",
+                        "st_posdir",
+                        "st_posmod"
+                    ],
+                    "unit": "unit",
+                    "city": "post_comm",
+                    "postcode": "post_code",
+                    "district": "geocounty",
+                    "region": "geostate"
+                }
+            }
         ],
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
+        "parcels": [
+            {
+                "name": "state",
+                "website": "https://www.indianamap.org/datasets/INMap::parcel-boundaries-of-indiana-current/about",
+                "data": "https://opendata.arcgis.com/api/v3/datasets/70565d886f1e4528a43a86be6ce5c2f3_0/downloads/data?format=geojson&spatialRefId=4326&where=1%3D1",
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "STATE_PARCEL_ID"
+                }
+            }
         ],
-        "city": "ADD_CITY",
-        "postcode": "ZIPCODE",
-        "district": "COUNTY",
-        "region": "STATE"
+        "buildings": [
+            {
+                "name": "state",
+                "website": "https://www.indianamap.org/maps/384f2d5041a14c34bd9e807c568784da/about",
+                "data": "https://opendata.arcgis.com/api/v3/datasets/384f2d5041a14c34bd9e807c568784da_0/downloads/data?format=fgdb&spatialRefId=4326&where=1%3D1",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb"
+                }
+            }
+        ]
     }
 }

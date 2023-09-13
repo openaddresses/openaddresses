@@ -16,25 +16,33 @@
         "state": "tn",
         "city": "Nashville"
     },
-    "attribution": "City of Nashville",
-    "note": "Esri server is at https://maps.nashville.gov/arcgis/rest/services/Addressing/AddressPoints/MapServer/0 but times out a lot so the cache should be refresh periodically",
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/trescube/1a6f9f/us-tn-nashville.geojson.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "geojson",
-        "number": [
-            "Number",
-            "Fraction"
-        ],
-        "street": [
-            "StreetPrefixCode",
-            "StreetName",
-            "StreetTypeCode",
-            "PostDirectionCode"
-        ],
-        "unit": "Suite",
-        "city": "City",
-        "postcode": "Zip"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "attribution": "City of Nashville",
+                "note": "Esri server is at https://maps.nashville.gov/arcgis/rest/services/Addressing/AddressPoints/MapServer/0 but times out a lot so the cache should be refresh periodically",
+                "data": "https://data.openaddresses.io/cache/uploads/trescube/1a6f9f/us-tn-nashville.geojson.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "Number",
+                        "Fraction"
+                    ],
+                    "street": [
+                        "StreetPrefixCode",
+                        "StreetName",
+                        "StreetTypeCode",
+                        "PostDirectionCode"
+                    ],
+                    "unit": "Suite",
+                    "city": "City",
+                    "postcode": "Zip"
+                }
+            }
+        ]
     }
 }

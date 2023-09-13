@@ -9,20 +9,28 @@
         "state": "la",
         "county": "Ascension"
     },
-    "data": "http://geo.apgov.us/apgarc/rest/services/MyPermitNow/Addresses/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "street": [
-            "PREDIR",
-            "PRETYPE",
-            "ROADNAME",
-            "ROADTYPE",
-            "POSTDIR"
-        ],
-        "unit": "QUALIFIER",
-        "city": "CITY",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "http://geo.apgov.us/apgarc/rest/services/MyPermitNow/Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "PREDIR",
+                        "PRETYPE",
+                        "ROADNAME",
+                        "ROADTYPE",
+                        "POSTDIR"
+                    ],
+                    "unit": "QUALIFIER",
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }

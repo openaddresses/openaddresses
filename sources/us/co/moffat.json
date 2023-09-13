@@ -9,13 +9,32 @@
         "state": "co",
         "county": "Moffat"
     },
-    "conform": {
-        "format": "geojson",
-        "number": "STREETNO",
-        "street": "STREETNAME",
-        "city": "CITY",
-        "postcode": "ZIPCODE"
-    },
-    "data": "http://gisweb.co.rio-blanco.co.us/arcgis/rest/services/MoffatCOfeatures/MapServer/22",
-    "protocol": "ESRI"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREETNO",
+                    "street": "STREETNAME",
+                    "city": "CITY",
+                    "postcode": "ZIPCODE"
+                },
+                "data": "http://gisweb.co.rio-blanco.co.us/arcgis/rest/services/MoffatCOfeatures/MapServer/22",
+                "protocol": "ESRI"
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "GIS_Parcel_Number"
+                },
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/MoffatCOFeatures/FeatureServer/4",
+                "protocol": "ESRI"
+            }
+        ]
+    }
 }

@@ -16,12 +16,42 @@
             ]
         }
     },
-    "data": "http://services.geoportalmaps.com/arcgis/rest/services/Diberville_Services/MapServer/2",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "SIT_NO",
-        "street": "SIT_NAME",
-        "city": "CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://services.geoportalmaps.com/arcgis/rest/services/Diberville_Services/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "UNIT",
+                    "number": "ADDR_NUM",
+                    "street": "NAME_COMPL",
+                    "city": "COMMUNITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "http://services.geoportalmaps.com/arcgis/rest/services/Diberville_Services/MapServer/18",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PPIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "http://services.geoportalmaps.com/arcgis/rest/services/Diberville_Services/MapServer/10",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

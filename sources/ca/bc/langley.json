@@ -2,22 +2,59 @@
     "coverage": {
         "country": "ca",
         "state": "bc",
-        "city": "Langley",
-        "geometry": { "type": "Point", "coordinates": [-122.66, 49.11] }
+        "county": "Langley Township",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -122.66,
+                49.12
+            ]
+        }
     },
-    "data": "https://services5.arcgis.com/frpHL0Fv8koQRVWY/ArcGIS/rest/services/Parcels/FeatureServer/0",
-    "website": "http://www.tol.ca/Services-Contact/Open-Data/Open-Data-Catalogue",
-    "license": {
-        "url": "http://opendatacommons.org/licenses/pddl/1.0/",
-        "attribution": false,
-        "share-alike": false
-    },
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "HOUSE",
-        "street": "STREET",
-        "city": "CITY"
-    },
-    "attribution": "City of Langley"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/frpHL0Fv8koQRVWY/arcgis/rest/services/Parcels/FeatureServer/0",
+                "website": "https://data-tol.opendata.arcgis.com/datasets/TOL::parcels/about",
+                "license": {
+                    "url": "https://www.tol.ca/en/connect/open-data-licence.aspx",
+                    "text": "Open Government License – Township of Langley 2.0",
+                    "attribution name": "Township of Langley",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "id": "PID",
+                    "format": "geojson",
+                    "number": "HOUSE",
+                    "street": "STREET",
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "postcode": "POSTAL_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/frpHL0Fv8koQRVWY/arcgis/rest/services/Parcels/FeatureServer/0",
+                "website": "https://data-tol.opendata.arcgis.com/datasets/TOL::parcels/about",
+                "license": {
+                    "url": "https://www.tol.ca/en/connect/open-data-licence.aspx",
+                    "text": "Open Government License – Township of Langley 2.0",
+                    "attribution name": "Township of Langley",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ]
+    }
 }

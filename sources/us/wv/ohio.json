@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "54069",
+            "name": "Ohio County",
+            "state": "West Virginia"
+        },
+        "country": "us",
+        "state": "wv",
+        "county": "Ohio"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/OhioService/FeatureServer/10",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "address_nu",
+                    "street": "road_name",
+                    "city": "community",
+                    "region": "state",
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/OhioService/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parid"
+                }
+            }
+        ]
+    }
+}

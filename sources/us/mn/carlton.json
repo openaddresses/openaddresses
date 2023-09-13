@@ -9,19 +9,42 @@
         "state": "mn",
         "county": "Carlton"
     },
-    "data": "https://gis.co.carlton.mn.us/arcgis/rest/services/Addressing/Addressing_ActivePoints/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDNUM",
-        "unit": "Unit",
-        "street": [
-            "Pre_Dir",
-            "Street_Name",
-            "Suf_Type",
-            "Suf_Dir"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.co.carlton.mn.us/arcgis/rest/services/OpenData/AddressPoints_CarltonCountyMN/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ANUMBER",
+                    "street": [
+                        "ST_PRE_MOD",
+                        "ST_PRE_DIR",
+                        "ST_PRE_TYP",
+                        "ST_PRE_SEP",
+                        "ST_NAME",
+                        "ST_POS_TYP",
+                        "ST_POS_MOD"
+                    ],
+                    "city": "POSTCOMM",
+                    "district": "CO_NAME",
+                    "region": "STATE_CODE",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "city": "USPS_City",
-        "postcode": "Zip5"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.carlton.mn.us/arcgis/rest/services/OpenData/Parcels_CarltonCountyMN/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
     }
 }

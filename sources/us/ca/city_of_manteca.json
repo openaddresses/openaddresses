@@ -17,25 +17,75 @@
         "county": "San Joaquin",
         "city": "Manteca"
     },
-    "data": "https://gisweb.ci.manteca.ca.us/arcgis/rest/services/layers/ParcelAddresses/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": {
-            "function": "prefixed_number",
-            "field": "SITUS_ADDRESS"
-        },
-        "street": {
-            "function": "postfixed_street",
-            "field": "SITUS_ADDRESS",
-            "may_contain_units": true
-        },
-        "unit": {
-            "function": "postfixed_unit",
-            "field": "SITUS_ADDRESS"
-        },
-        "city": "LOC_CITY",
-        "region": "LOC_ST",
-        "postcode": "LOC_ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services5.arcgis.com/apvcu8kifKuj4Ua8/arcgis/rest/services/Parcels/FeatureServer/21",
+                "website": "https://data-manteca.opendata.arcgis.com/datasets/acc9d3bebd83446a995487287976cfdb_21/about",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "City of Manteca"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUSADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUSADDRESS",
+                        "may_contain_units": true
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "SITUSADDRESS"
+                    },
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services5.arcgis.com/apvcu8kifKuj4Ua8/arcgis/rest/services/Parcels/FeatureServer/21",
+                "website": "https://data-manteca.opendata.arcgis.com/datasets/acc9d3bebd83446a995487287976cfdb_21/about",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "City of Manteca"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services5.arcgis.com/apvcu8kifKuj4Ua8/ArcGIS/rest/services/Buildings/FeatureServer/5",
+                "website": "https://data-manteca.opendata.arcgis.com/datasets/788c993546e54b72af9a350ca5ac9bef_5/about",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "City of Manteca"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

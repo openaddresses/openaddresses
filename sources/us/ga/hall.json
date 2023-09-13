@@ -9,63 +9,43 @@
         "state": "ga",
         "county": "Hall"
     },
-    "data": "http://maps.hallcounty.org/public/rest/services/AddressPoints/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDR_ST_NMBR",
-        "street": {
-            "function": "remove_prefix",
-            "field": "SITE_LOCATION_ABRV",
-            "field_to_remove": "ADDR_ST_NMBR"
-        },
-        "unit": {
-            "function": "regexp",
-            "field": "STNO_UNIT",
-            "pattern": "-(.+)"
-        }
-    },
-    "test": {
-        "enabled": true,
-        "description": "units are appended to number w/hyphen",
-        "acceptance-tests": [
+    "schema": 2,
+    "layers": {
+        "addresses": [
             {
-                "description": "address without unit",
-                "inputs": {
-                    "ADDR_ST_NMBR": "950",
-                    "SITE_LOCATION_ABRV": "950 INDUSTRIAL BLVD",
-                    "STNO_UNIT": "950"
-                },
-                "expected": {
-                    "number": "950",
-                    "street": "INDUSTRIAL BLVD",
-                    "unit": ""
+                "name": "county",
+                "data": "https://webmap.hallcounty.org/server/rest/services/Accela_APO/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDR_ID",
+                    "number": "ADDR_ST_NMBR",
+                    "street": "ST_FULL_NAME",
+                    "unit": "ADDR_UNIT",
+                    "city": "ADDR_CITYNAME",
+                    "region": "ADDR_STATE",
+                    "postcode": "ADDR_ZIP"
                 }
-            },
+            }
+        ],
+        "parcels": [
             {
-                "description": "address with unit",
-                "inputs": {
-                    "ADDR_ST_NMBR": "1400",
-                    "SITE_LOCATION_ABRV": "1400 MARLER ST",
-                    "STNO_UNIT": "1400-1"
-                },
-                "expected": {
-                    "number": "1400",
-                    "street": "MARLER ST",
-                    "unit": "1"
+                "name": "county",
+                "data": "https://webmap.hallcounty.org/server/rest/services/Accela_APO/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
-            },
+            }
+        ],
+        "buildings": [
             {
-                "description": "address with alpha unit",
-                "inputs": {
-                    "ADDR_ST_NMBR": "4",
-                    "SITE_LOCATION_ABRV": "4 STALLWORTH ST",
-                    "STNO_UNIT": "4-C1/2"
-                },
-                "expected": {
-                    "number": "4",
-                    "street": "STALLWORTH ST",
-                    "unit": "C1/2"
+                "name": "county",
+                "data": "https://webmap.hallcounty.org/server/rest/services/Accela_APO/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

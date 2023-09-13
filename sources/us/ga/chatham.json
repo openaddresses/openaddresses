@@ -9,19 +9,46 @@
         "state": "ga",
         "county": "Chatham"
     },
-    "attribution": "City of Savannah",
-    "data": "http://sagisservices.thempc.org/saint/rest/services/OpenData/Address_pts/MapServer/0",
-    "website": "http://sagis.maps.arcgis.com/home/",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "STRENUMB",
-        "unit": "UNIT",
-        "street": [
-            "STDIR",
-            "STNAME",
-            "STSUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "City of Savannah",
+                "data": "https://cloud.sagis.org/arcgis/rest/services/SagisOrg2020/SAGISOrg/MapServer/187",
+                "website": "http://sagis.maps.arcgis.com/home/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "PropAddress_Num",
+                    "unit": [
+                        "PropAddress_UnitType",
+                        "PropAddress_UnitNum"
+                    ],
+                    "street": [
+                        "PropAddress_PreDir",
+                        "PropAddress_StreetName",
+                        "PropAddress_StreetType",
+                        "PropAddress_PosDir"
+                    ],
+                    "city": "PropAddress_City",
+                    "region": "PropAddress_State",
+                    "postcode": "PropAddress_Zip"
+                }
+            }
         ],
-        "postcode": "ZIP"
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "City of Savannah",
+                "data": "https://cloud.sagis.org/arcgis/rest/services/SagisOrg2020/SAGISOrg/MapServer/124",
+                "website": "http://sagis.maps.arcgis.com/home/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
     }
 }

@@ -1,29 +1,44 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13039", "name": "Camden County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13039",
+            "name": "Camden County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Camden"
     },
-    "data": "http://data.openaddresses.io/cache/us-ga-camden_county.csv",
-    "protocol": "http",
-    "conform": {
-        "format": "csv",
-        "lat": "LAT",
-        "lon": "LNG",
-        "number": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^([0-9]+)( .*)",
-            "replace": "$1"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "STR",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "region": "REGION"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.crc.ga.gov/crcarcgis/rest/services/Camden/Cam911/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NO",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNIT"
+                    ],
+                    "city": "MSAG",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.crc.ga.gov/crcarcgis/rest/services/Camden/Camden_Parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_No"
+                }
+            }
+        ]
     }
 }
-

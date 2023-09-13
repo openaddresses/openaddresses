@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "46077",
+            "name": "Kingsbury County",
+            "state": "South Dakota"
+        },
+        "country": "us",
+        "state": "sd",
+        "county": "Kingsbury"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.1stdistrict.org/arcgis/rest/services/Kingsbury/kingsburymapnet/FeatureServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PROP_STREE"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PROP_STREE"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.1stdistrict.org/arcgis/rest/services/Kingsbury/kingsburymapnet/FeatureServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "RECORD",
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

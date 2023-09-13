@@ -9,24 +9,52 @@
         "state": "wa",
         "county": "Snohomish"
     },
-    "data": "ftp://ftp.snoco.org/Assessor/shapefiles/parcelcent.zip",
-    "license": "Unknown",
-    "year": "2013",
-    "protocol": "ftp",
-    "compression": "zip",
-    "conform": {
-        "number": {
-            "function": "regexp",
-            "field": "SITUSLINE1",
-            "pattern": "^([0-9]+)"
-        },
-        "street": {
-            "function": "regexp",
-            "field": "SITUSLINE1",
-            "pattern": "^(?:[0-9]+ )(.*)",
-            "replace": "$1"
-        },
-        "format": "shapefile",
-        "postcode": "SITUSZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/z6WYi9VRHfgwgtyW/arcgis/rest/services/Building_Address_Points/FeatureServer/0",
+                "website": "https://snohomish-county-open-data-portal-snoco-gis.hub.arcgis.com/datasets/snoco-gis::building-address-points/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": [
+                        "UNITTYP",
+                        "UNITNUM"
+                    ],
+                    "city": "Post_Comm",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/z6WYi9VRHfgwgtyW/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "website": "https://snohomish-county-open-data-portal-snoco-gis.hub.arcgis.com/datasets/snoco-gis::parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
     }
 }

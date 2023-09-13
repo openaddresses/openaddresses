@@ -9,23 +9,38 @@
         "state": "sc",
         "county": "Berkeley"
     },
-    "data": "http://gis.berkeleycountysc.gov/arcgis/rest/services/mobile/mobile_base_v4/MapServer/3",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "NUM",
-        "street": [
-            "ADDR_PD",
-            "ADDR_PT",
-            "ADDR_SN",
-            "ADDR_ST",
-            "ADDR_SD"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.berkeleycountysc.gov/arcgis/rest/services/mobile/mobile_map/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
         ],
-        "unit": [
-          "UNIT_TYPE",
-          "UNIT"
-        ],
-        "city": "CITY",
-        "postcode": "ZIP"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.berkeleycountysc.gov/arcgis/rest/services/mobile/mobile_map/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelID"
+                }
+            }
+        ]
     }
 }

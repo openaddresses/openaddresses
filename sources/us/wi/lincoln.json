@@ -9,15 +9,49 @@
         "state": "wi",
         "county": "Lincoln"
     },
-    "data": "https://gis2.msa-ps.com/ArcGIS/rest/services/StreetsAddress/MapServer/49",
-    "protocol": "ESRI",
-    "note": "Number col contains letters",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNO",
-        "street": "FULLROADNM",
-        "unit": "APTSUITE",
-        "postcode": "ZIP5",
-        "city": "CITY"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://maps.co.lincoln.wi.us/arcgis/rest/services/WebMerc_ParBase/MapServer/1",
+                "protocol": "ESRI",
+                "note": "Number col contains letters",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDADDNUMRNO",
+                    "street": "FULLRDNAME",
+                    "unit": "APTSUITE",
+                    "postcode": "ZIP5",
+                    "city": "MAILCITY",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.co.lincoln.wi.us/arcgis/rest/services/WebMerc_ParBase/MapServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Lincoln_Buildings_2017.zip",
+                "website": "https://geodata.wisc.edu/catalog/AE03CA21-3739-4ABE-9DF9-C094A20F91F5",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2017",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Lincoln_Buildings_2017"
+                }
+            }
+        ]
     }
 }

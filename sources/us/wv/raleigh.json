@@ -1,7 +1,7 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "53031",
+            "geoid": "53081",
             "name": "Raleigh County",
             "state": "West Virginia"
         },
@@ -9,13 +9,32 @@
         "state": "wv",
         "county": "Raleigh"
     },
-    "protocol": "ESRI",
-    "data": "http://services.arcgis.com/7qDWTH3pTiLOFaZS/arcgis/rest/services/Raleigh_Co_EOC_Address_Sites/FeatureServer/0",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDR_LABEL",
-        "street": "SA_STREET",
-        "city": "TOWN",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/RaleighWV_Service/FeatureServer/1",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDR_LABEL",
+                    "street": "SA_STREET",
+                    "city": "TOWN",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services3.arcgis.com/nJbIFHiSnaX0z0hS/ArcGIS/rest/services/RaleighWV_Service/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parid"
+                }
+            }
+        ]
     }
 }

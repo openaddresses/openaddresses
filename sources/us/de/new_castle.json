@@ -9,21 +9,29 @@
         "state": "de",
         "county": "New Castle"
     },
-    "data": "https://gis.nccde.org/agsserver/rest/services/BaseMaps/Addresses/MapServer/1",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDR_NUM",
-        "street": [
-            "ADDR_PD",
-            "ADDR_PT",
-            "ADDR_SN",
-            "ADDR_ST",
-            "ADDR_SD"
-        ],
-        "unit": "STSUB2",
-        "postcode": "ZIPCODE",
-        "city": "CITY",
-        "region": "STATE"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.nccde.org/agsserver/rest/services/BaseMaps/Addresses/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "ADDR_PD",
+                        "ADDR_PT",
+                        "ADDR_SN",
+                        "ADDR_ST",
+                        "ADDR_SD"
+                    ],
+                    "unit": "STSUB2",
+                    "postcode": "ZIPCODE",
+                    "city": "CITY",
+                    "region": "STATE"
+                }
+            }
+        ]
     }
 }

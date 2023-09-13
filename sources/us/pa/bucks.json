@@ -9,19 +9,67 @@
         "state": "pa",
         "county": "Bucks"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/iandees/ed482f/bucks.geojson.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "geojson",
-        "number": "SITUS_ADDR_NUM",
-        "street": [
-            "SITUS_FDPRE",
-            "SITUS_FNAME",
-            "SITUS_FTYPE",
-            "SITUS_FDSUF"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://dataportal-bucksgis.opendata.arcgis.com/",
+                "contact": {
+                    "name": "Andrew G. Heimark",
+                    "title": "Director of GIS Planning",
+                    "phone": "215-345-3423",
+                    "email": "bcpc@buckscounty.org",
+                    "address": "The Almshouse, Neshaminy Manor Center, 1260 Almshouse Road, Doylestown, Pennsylvania 18901"
+                },
+                "license" : {"text": "Not for commercial use or resale. The User shall save Bucks County harmless from any suits, claims or actions arising out of the use of the data files or accompanying documentation, or arising out of any defect in the data files or accompanying documentation.  Bucks County excludes any and all implied warranties and makes no warranty or representation with respect to the data files or accompanying documentation, including quality, performance, merchantability, or fitness for a particular purpose.  These data files and documentation are provided AS IS and the User assumes the entire risk as to their quality and performance.  Those parties involved with the development and distribution of this data will not be liable for any direct, indirect, special, incidental, or consequential damages arising out of the use or inability to use the FILES or any accompanying documentation."},
+                "data": "https://services3.arcgis.com/SP47Tddf7RK32lBU/ArcGIS/rest/services/Addresspoints/FeatureServer/9",
+                "note": "Unit info no longer present aside from the suffix of Full_Addr. Post_Comm null.",
+                "protocol": "ESRI",
+                "conform": {
+                    "accuracy": 1,
+                    "format": "geojson",
+                    "id": "ParcelID",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "city": "MSAGComm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
         ],
-        "city": "MUNI",
-        "accuracy": 2
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://dataportal-bucksgis.opendata.arcgis.com/",
+                "contact": {
+                    "name": "Andrew G. Heimark",
+                    "title": "Director of GIS Planning",
+                    "phone": "215-345-3423",
+                    "email": "bcpc@buckscounty.org",
+                    "address": "The Almshouse, Neshaminy Manor Center, 1260 Almshouse Road, Doylestown, Pennsylvania 18901"
+                },
+                "data": "https://services3.arcgis.com/SP47Tddf7RK32lBU/ArcGIS/rest/services/Parcels10plusac/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NUM"
+                }
+            }
+        ]
     }
 }

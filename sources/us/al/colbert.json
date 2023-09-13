@@ -9,11 +9,30 @@
         "state": "al",
         "county": "Colbert"
     },
-    "data": "http://web3.kcsgis.com/kcsgis/rest/services/Colbert/Public/MapServer/43",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "street": "Situs_Street_Name",
-        "number": "Situs_House_No"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Colbert/Public/MapServer/43",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "street": "Situs_Street_Name",
+                    "number": "Situs_House_No"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Colbert/Public/MapServer/43",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
+                }
+            }
+        ]
     }
 }

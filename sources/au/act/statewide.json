@@ -4,27 +4,73 @@
             "alpha2": "AU-ACT"
         },
         "country": "au",
-        "state": "Australian Capital Territory"
+        "state": "act"
     },
-    "data": "http://actmapi.act.gov.au/datadownload/Shapefile/MGA94_55/ACT_data.zip",
-    "website": "http://app.actmapi.act.gov.au/download.html",
-    "license": {
-        "url": "https://creativecommons.org/licenses/by/4.0/",
-        "text": "CC BY 4.0",
-        "attribution": true,
-        "attribution name": "ACT Addresses from <a href='http://actmapi.act.gov.au/'>ACTMapi</a> &copy;ACT Government"
-    },
-    "language": "en",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "shapefile",
-        "file": "ACT_Address.shp",
-        "unit": "UNIT_TITLE",
-        "number": "STREET_NUM",
-        "notes": "BUILDING_N",
-        "street": ["STREET_NAM", "STREET_TYP"],
-        "city": "DIVISION",
-        "id": "ADDRESS_ID"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "ACTGOV Addresses",
+                "data": "https://services1.arcgis.com/E5n4f1VY84i0xSjy/arcgis/rest/services/ACTGOV_ADDRESSES/FeatureServer/0",
+                "website": "https://actmapi-actgov.opendata.arcgis.com/datasets/ACTGOV::actgov-addresses/about",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "ACT Addresses from <a href='http://actmapi.act.gov.au/'>ACTMapi</a> &copy;ACT Government"
+                },
+                "language": "en",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "UNIT_TITLE",
+                    "number": "STREET_NUMBER",
+                    "notes": "BUILDING_NAME",
+                    "street": [
+                        "STREET_NAME",
+                        "STREET_TYPE"
+                    ],
+                    "city": "DIVISION",
+                    "id": "ADDRESS_ID"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "ACTGOV Block Current",
+                "data": "https://services1.arcgis.com/E5n4f1VY84i0xSjy/arcgis/rest/services/ACTGOV_BLOCK_CURRENT/FeatureServer/0",
+                "website": "https://actmapi-actgov.opendata.arcgis.com/datasets/ACTGOV::actgov-block-current/about",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "ACT Blocks from <a href='http://actmapi.act.gov.au/'>ACTMapi</a> &copy;ACT Government"
+                },
+                "language": "en",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "ACTGOV Building Footprints",
+                "data": "https://services1.arcgis.com/E5n4f1VY84i0xSjy/arcgis/rest/services/ACTGOV_BUILDING_FOOTPRINTS/FeatureServer/0",
+                "website": "https://actmapi-actgov.opendata.arcgis.com/datasets/ACTGOV::actgov-building-footprints/about",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "ACT Building Footprints from <a href='http://actmapi.act.gov.au/'>ACTMapi</a> &copy;ACT Government"
+                },
+                "language": "en",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

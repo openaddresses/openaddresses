@@ -6,25 +6,33 @@
         },
         "country": "it"
     },
-    "data": "http://s3.amazonaws.com/data.openaddresses.io/cache/uploads/migurski/civici_italia20160807.zip",
-    "website": "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/wfs/Numeri_Civici_2012.map&service=wfs&request=getCapabilities",
-    "license": {
-        "url": "https://creativecommons.org/licenses/by-sa/3.0/",
-        "attribution": true,
-        "share-alike": true
-        },
-    "protocol": "http",
-    "compression": "zip",
-    "language": "it",
-    "conform": {
-        "number": "CIVICO",
-        "street": "NOME",
-        "city": "COMUNE",
-        "postcode": "CAP",
-        "district": "PROVINCIA",
-        "region": "REGIONE",
-        "id": "ID",
-        "format": "shapefile",
-        "accuracy": 4
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "https://data.openaddresses.io/cache/uploads/migurski/civici_italia20160807.zip",
+                "website": "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/wfs/Numeri_Civici_2012.map&service=wfs&request=getCapabilities",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by-sa/3.0/",
+                    "attribution": true,
+                    "share-alike": true
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "language": "it",
+                "conform": {
+                    "number": "CIVICO",
+                    "street": "NOME",
+                    "city": "COMUNE",
+                    "postcode": "CAP",
+                    "district": "PROVINCIA",
+                    "region": "REGIONE",
+                    "id": "ID",
+                    "format": "shapefile",
+                    "accuracy": 4
+                }
+            }
+        ]
     }
 }

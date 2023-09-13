@@ -9,21 +9,36 @@
         "state": "az",
         "county": "Cochise"
     },
-    "data": "https://s3.amazonaws.com/data.openaddresses.io/cache/uploads/iandees/bfb7f4/Dev_Address_V.csv.zip",
-    "protocol": "http",
-    "compression": "zip",
-    "conform": {
-        "format": "csv",
-        "lat": "DEC_LAT",
-        "lon": "DEC_LONG",
-        "number": "HOUSE",
-        "unit": "UNIT",
-        "street": [
-            "PREFIX",
-            "NAME",
-            "SUFFIX"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/Yxem0VOcqSy8T6TE/ArcGIS/rest/services/Dev_Adds_Proc/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE",
+                    "unit": "UNIT",
+                    "street": [
+                        "PREFIX",
+                        "NAME",
+                        "SUFFIX"
+                    ],
+                    "postcode": "ZIP_CODE"
+                }
+            }
         ],
-        "postcode": "ZIP_CODE",
-        "city": "LOCALITY"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/Yxem0VOcqSy8T6TE/ArcGIS/rest/services/Cad_Parcel_TaxInfo/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "apn"
+                }
+            }
+        ]
     }
 }

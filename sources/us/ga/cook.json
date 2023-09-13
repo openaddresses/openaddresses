@@ -1,16 +1,39 @@
 {
     "coverage": {
-        "US Census": {"geoid": "13075", "name": "Cook County", "state": "Georgia"},
+        "US Census": {
+            "geoid": "13075",
+            "name": "Cook County",
+            "state": "Georgia"
+        },
         "country": "us",
         "state": "ga",
         "county": "Cook"
     },
-    "data": "http://www.sgrcmaps.com/arcgis/rest/services/Cook/CookParcels/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADD_NUM",
-        "street": "ST_NAME",
-        "city": "Community"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.sgrcmaps.com/alma/rest/services/Cook/Cook_Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADD_NUM",
+                    "street": "ST_NAME",
+                    "city": "Community"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.sgrcmaps.com/alma/rest/services/Cook/Cook_Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_No"
+                }
+            }
+        ]
     }
 }

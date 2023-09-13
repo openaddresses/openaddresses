@@ -9,22 +9,39 @@
         "state": "id",
         "county": "Bonner"
     },
-    "data": "http://maps.bonnercounty.us/bcgis/rest/services/Apps/RNB/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "FINAL_ADD",
-        "street": [
-            "PRE_DIR",
-            "ST_NAME",
-            "ST_TYPE",
-            "POST_DIR"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://cloudgis.bonnercountyid.gov/server/rest/services/Map_Services/Addressing/MapServer/0",
+                "website": "https://cloudgis.bonnercountyid.gov/portal/home/index.html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "fulladdr"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "fulladdr"
+                    },
+                    "city": "municipality"
+                }
+            }
         ],
-        "unit": [
-          "SUB_TYPE",
-          "SUB_NUM"
-        ],
-        "city": "COMMUNITY",
-        "postcode": "ZIPCODE"
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://cloudgis.bonnercountyid.gov/server/rest/services/Map_Services/Cadastral_Public/MapServer/0",
+                "website": "https://cloudgis.bonnercountyid.gov/portal/home/index.html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pin"
+                }
+            }
+        ]
     }
 }

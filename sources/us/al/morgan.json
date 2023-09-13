@@ -9,11 +9,49 @@
         "state": "al",
         "county": "Morgan"
     },
-    "data": "http://146.148.59.120/arcgis/rest/services/Parcels/Morgan/MapServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "STREET_NUM",
-        "street": "STREET_NAM"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Morgan/Public/MapServer/118",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PropAddr1"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PropAddr1"
+                    },
+                    "city": "PropCity",
+                    "postcode": "PropZip",
+                    "region": "PropState"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Morgan/Public/MapServer/118",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Morgan/Public/MapServer/120",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
     }
 }

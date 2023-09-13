@@ -7,21 +7,50 @@
         },
         "country": "us",
         "state": "ny",
-        "county":"Sullivan"
+        "county": "Sullivan"
     },
-    "data": "https://services7.arcgis.com/bx3OlIPqiDclwaja/ArcGIS/rest/services/SCGISO_911_Data_Update/FeatureServer/0",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "ADDRNUM",
-        "street": "FULLNAME",
-        "unit": [
-            "UNITTYPE",
-            "UNITID"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://secure.scgnet.us/arcgis/rest/services/911_Addressing_Data/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "PSTLCITY",
+                    "district": "CountyName",
+                    "region": "STATE",
+                    "postcode": "ZIPCode"
+                }
+            }
         ],
-        "city": "PSTLCITY",
-        "district": "CountyName",
-        "region": "STATE",
-        "postcode": "ZIPCode"
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://secure.scgnet.us/arcgis/rest/services/Building_Footprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://secure.scgnet.us/arcgis/rest/services/Parcel_Dataset/FeatureServer/139",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNumber"
+                }
+            }
+        ]
     }
 }

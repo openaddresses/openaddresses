@@ -2,7 +2,10 @@
     "coverage": {
         "geometry": {
             "type": "Point",
-            "coordinates": [ -86.9264030456543, 35.75166700744353 ]
+            "coordinates": [
+                -86.9264030456543,
+                35.75166700744353
+            ]
         },
         "US Census": {
             "geoid": "4770580",
@@ -13,18 +16,26 @@
         "state": "tn",
         "city": "Spring Hill"
     },
-    "data": "http://arcgis4.roktech.net/arcgis/rest/services/SpringHillTN/enerGov/MapServer/5",
-    "protocol": "ESRI",
-    "conform": {
-        "format": "geojson",
-        "number": "PROP_NUM",
-        "street": [
-            "ADDR_SN",
-            "ADDR_ST",
-            "ADDR_SD"
-        ],
-        "city": "CITY",
-        "region": "State",
-        "postcode": "ZIP"
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "http://arcgis4.roktech.net/arcgis/rest/services/SpringHillTN/enerGov/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "PROP_NUM",
+                    "street": [
+                        "ADDR_SN",
+                        "ADDR_ST",
+                        "ADDR_SD"
+                    ],
+                    "city": "CITY",
+                    "region": "State",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
     }
 }
