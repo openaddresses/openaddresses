@@ -1,0 +1,69 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "51121",
+            "name": "Montgomery County",
+            "state": "Virginia"
+        },
+        "country": "us",
+        "state": "va",
+        "county": "Montgomery"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/IZ8QFYP84iubFqmi/arcgis/rest/services/NRVPSAP_AP_RCL/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "https://data-montva-gis.opendata.arcgis.com/datasets/MontVA-GIS::site-address-points/about",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/IZ8QFYP84iubFqmi/arcgis/rest/services/Parcels_Open_Data/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "https://data-montva-gis.opendata.arcgis.com/datasets/MontVA-GIS::parcels-open-data-1/about",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://maps.montva.com/server/rest/services/Land/Parcels_Public/MapServer/2",
+                "protocol": "ESRI",
+                "website": "https://data-montva-gis.opendata.arcgis.com/datasets/MontVA-GIS::building-footprints/about",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}
