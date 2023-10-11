@@ -125,7 +125,6 @@ def main():
             layer=source.layer,
             layersource=source.name,
             do_preview=True,
-            do_mbtiles=True,
             do_pmtiles=True,
             mapbox_key=os.environ.get('MAPBOX_KEY'),
         )
