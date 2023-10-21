@@ -1,5 +1,9 @@
 {
     "coverage": {
+        "US Census": {
+            "geoid": "04",
+            "state": "Alaska"
+        },
         "country": "us",
         "state": "az"
     },
@@ -8,18 +12,45 @@
         "addresses": [
             {
                 "name": "state",
+                "data": "https://www.arcgis.com/sharing/rest/content/items/eab3c6c60d604781a2ac186586dd2604/data",
+                "website": "https://azgeo-open-data-agic.hub.arcgis.com/datasets/azgeo::address-point-ng911-downloadable-dataset/about",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "AZ911_AddressPoints",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
                 "data": "https://azgeo.az.gov/arcgis/rest/services/TerraSystems/AZParcelFeatures/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "AZ_Address"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "AZ_Address"
-                    }
+                    "layer": "AZ911_AddressPoints",
+                    "pid": "AZ_APN"
                 }
             }
         ]
