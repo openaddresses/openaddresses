@@ -22,10 +22,11 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://gis.abilenetx.com/arcgis/rest/services/Address_Points/MapServer/0",
+                "data": "https://services6.arcgis.com/iBFmWI3dYPQqS1KF/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "number": [
+                        "PREADDRNUM",
                         "ADDRNUM",
                         "ADDRNUMSUF"
                     ],
@@ -35,6 +36,17 @@
                         "UNITID"
                     ],
                     "city": "MUNICIPALITY",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services6.arcgis.com/iBFmWI3dYPQqS1KF/ArcGIS/rest/services/CourierParcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PID",
                     "format": "geojson"
                 }
             }
