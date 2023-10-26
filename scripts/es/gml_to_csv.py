@@ -1,6 +1,6 @@
 import subprocess, sys, os, tempfile, shutil, re, zipfile
 import xml.sax
-import unicodecsv as csv
+import csv
 
 lookup = {}
 
@@ -118,7 +118,7 @@ class LookupBuilder(xml.sax.ContentHandler):
             self.lookup[self.lookup['_type']][self.lookup['_next']] += content
 
 def process_zipfile(in_filename, out_dir):
-    print 'converting %s, placing output into %s' % (in_filename, out_dir)
+    print('converting %s, placing output into %s' % (in_filename, out_dir))
 
     temp_dir = tempfile.mkdtemp()
 
@@ -131,14 +131,14 @@ def process_zipfile(in_filename, out_dir):
 
     # build thoroughfare/postcode lookup
     lookup = LookupBuilder()
-    with open(filename, 'r') as gml:
+    with open(filename, 'r', encoding='ISO-8859-1') as gml:
         parser = xml.sax.make_parser()
         parser.setContentHandler(lookup)
         parser.parse(gml)
 
     # generate complete CSV
     csv_builder = CSVBuilder(out_dir, lookup)
-    with open(filename, 'r') as gml:
+    with open(filename, 'r', encoding='ISO-8859-1') as gml:
         parser = xml.sax.make_parser()
         parser.setContentHandler(csv_builder)
         parser.parse(gml)
