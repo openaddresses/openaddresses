@@ -41,7 +41,7 @@ class CSVBuilder(xml.sax.ContentHandler):
             lookup_key = self.strip_hash.sub('', attrs['xlink:href'])
 
             if self.lookup['thoroughfare'].get(lookup_key) is not None:
-                self.object['street'] = self.lookup['thoroughfare'].get(lookup_key)
+                self.object['street'] = self.lookup['thoroughfare'].get(lookup_key).strip()
             elif self.lookup['admin'].get(lookup_key) is not None:
                 self.object['admin'] = self.lookup['admin'].get(lookup_key)
             elif self.lookup['postal'].get(lookup_key) is not None:
