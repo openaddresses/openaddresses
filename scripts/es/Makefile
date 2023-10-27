@@ -20,7 +20,7 @@ spain_catastre/gml: xml
 build: spain_catastre/gml
 	mkdir -p build
 	rm -f build/es-*.csv
-	find spain_catastre/gml/ | grep zip | grep gml | parallel --no-notice -t -j 1 python gml_to_csv.py {} build/
+	find spain_catastre/gml/ | grep zip | grep gml | xargs -I {} -n 1 python gml_to_csv.py {} build/
 
 es.csv: build
 	bash ./combine.sh
