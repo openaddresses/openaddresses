@@ -54,7 +54,6 @@ class CSVBuilder(xml.sax.ContentHandler):
                 self.srs = self.srs.split(':')[-1]
                 if not self.srs in self.writers:
                     self.writers[self.srs] = csv.DictWriter(open(self.out_dir + 'es-%s.csv' % self.srs, 'a'), ('lon', 'lat', 'number', 'street', 'postcode', 'admin'))
-                    self.writers[self.srs].writeheader()
 
     def characters(self, content):
         if self.collect_pos:
