@@ -21,7 +21,7 @@ build: spain_catastre/gml
 	mkdir -p build
 	rm -f build/es-*.csv
 	find spain_catastre/gml/ | grep zip | grep gml | xargs -I {} -n 1 python gml_to_csv.py {} build/
-	for csv in build/*.csv; do sed -i "1i\\lon,lat,number,street,postcode,admin" "$csv"; done
+	for csv in build/*.csv; do sed -i "1i\\lon,lat,number,street,postcode,admin" "$$csv"; done
 
 es.csv: build
 	bash ./combine.sh
