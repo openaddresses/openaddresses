@@ -17,23 +17,33 @@
             {
                 "name": "city",
                 "protocol": "http",
-                "compression": "zip",
-                "data": "https://apps.cityofkingston.ca/data/gis/Civic_Address_SHP.zip",
-                "website": "https://www.cityofkingston.ca/explore/data-catalogue",
+                "data": "https://opendatakingston.cityofkingston.ca/api/explore/v2.1/catalog/datasets/civic-addresses/exports/csv?lang=en&use_labels=true&delimiter=%2C",
+                "website": "https://opendatakingston.cityofkingston.ca/explore/dataset/civic-addresses/information",
+                "license": {
+                    "url": "https://www.cityofkingston.ca/documents/10180/144997/CityofKingston_OpenDataLicense.pdf",
+                    "text": "Contains information licensed under the Open Data Licence – City of Kingston",
+                    "attribution": true,
+                    "share-alike": false
+                },
                 "conform": {
-                    "format": "shapefile",
-                    "number": {
-                        "function": "format",
-                        "fields": [
-                            "ADDR_NUM",
-                            "A_NUM_SUF"
-                        ],
-                        "format": "$1$2"
+                    "format": "csv",
+                    "lat": {
+                        "function": "regexp",
+                        "field": "geo_point_2d",
+                        "pattern": "^(.+)(?:,\\s.+)$",
+                        "replace": "$1"
                     },
+                    "lon": {
+                        "function": "regexp",
+                        "field": "geo_point_2d",
+                        "pattern": "^(?:.+,\\s)(.+)$",
+                        "replace": "$1"
+                    },
+                    "id": "ADDRESS_ID",
+                    "number": "ADDRESS_NUMBER",
                     "street": "STREET",
                     "unit": "UNIT",
-                    "postcode": "POSTAL_COD",
-                    "city": "MUNICIP"
+                    "postcode": "POSTAL_CODE"
                 }
             }
         ]
