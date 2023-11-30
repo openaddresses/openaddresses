@@ -14,25 +14,20 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.co.eau-claire.wi.us/agsserver/rest/services/BaseLayers/Address_Point/FeatureServer/0",
-                "website": "https://hub-eccounty.hub.arcgis.com/datasets/f07d8c2cc1314fe48cf2d83a62b965ab_0/about",
+                "data": "https://gis.co.eau-claire.wi.us/agsserver/rest/services/BaseLayers/Address_Points/MapServer/0",
+                "website": "https://hub-eccounty.hub.arcgis.com/datasets/4ac1e59055254f6891aa70b7e623cb5c_0/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": {
                         "function": "format",
                         "fields": [
-                            "PREADDRNUM",
-                            "ADDRNUM"
+                            "addnum_pre",
+                            "add_number"
                         ],
                         "format": "$1$2"
                     },
-                    "street": [
-                        "ROADPREDIR",
-                        "ROADNAME",
-                        "ROADTYPE",
-                        "ROADSUFFDIR"
-                    ],
+                    "street": "FullStNm",
                     "unit": [
                         "UNITTYPE",
                         "UNITID"
