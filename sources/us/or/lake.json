@@ -14,25 +14,37 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://lcmaps.lanecounty.org/arcgis/rest/services/PATS/LakePATSBaseMap/MapServer/231",
+                "data": "https://services3.arcgis.com/e3KSI9Py4B7m3xu6/arcgis/rest/services/Lake01_TL_Addresspoints/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDR_NUM",
-                    "street": "STREETNAME",
-                    "city": "USPS_CITY",
-                    "postcode": "ZIP5"
+                    "number": [
+                        "STRUCTNO",
+                        "STRUCTSU"
+                    ],
+                    "street": [
+                        "PREDIR",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFDIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITNO"
+                    ],
+                    "city": "COMMUNITY",
+                    "district": "COUNTYTAG"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "http://lcmaps.lanecounty.org/arcgis/rest/services/PATS/LakePATSBaseMap/MapServer/237",
+                "data": "https://services3.arcgis.com/e3KSI9Py4B7m3xu6/arcgis/rest/services/Lake01_TL_Addresspoints/FeatureServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "Taxlot_MapTaxlot"
+                    "pid": "MapTaxlot"
                 }
             }
         ]
