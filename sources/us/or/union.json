@@ -1,0 +1,59 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "41061",
+            "name": "Union County",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "county": "Union"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://github.com/openaddresses/openaddresses/files/13802231/UnionCounty.gdb.zip",
+                "website": "https://union-county.org/gis-down/",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "file": "GIS/Helion/data/SERVER/Base/UnionCounty.gdb",
+                    "layer": "Accounts",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUS_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUS_ADDRESS",
+                        "may_contain_units": true
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "SITUS_ADDRESS"
+                    },
+                    "city": "SITUS_CITY",
+                    "region": "SITUS_STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://github.com/openaddresses/openaddresses/files/13802231/UnionCounty.gdb.zip",
+                "website": "https://union-county.org/gis-down/",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "file": "GIS/Helion/data/SERVER/Base/UnionCounty.gdb",
+                    "layer": "Accounts",
+                    "pid": "MAP_TAX_LOT"
+                }
+            }
+        ]
+    }
+}
