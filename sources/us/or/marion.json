@@ -14,35 +14,29 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "https://gis-marioncounty.opendata.arcgis.com/datasets/MarionCounty::marion-county-parcels/about",
-                "data": "http://gis.co.marion.or.us/gisdownload/download/assessors/taxlot.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services1.arcgis.com/sYGZnQPdJ0azuLyn/ArcGIS/rest/services/Primary_Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "number": "STREETNUM",
-                    "street": [
-                        "PRE_DIR",
-                        "STREETNAME",
-                        "STREETTYPE",
-                        "POST_DIR"
+                    "format": "geojson",
+                    "number": [
+                        "ADD_NUM",
+                        "ADD_NUMSUF"
                     ],
-                    "unit": "UNITNUM",
-                    "city": {
-                        "function": "regexp",
-                        "field": "SITUSCSZ",
-                        "pattern": "^(.+?)(?:,|\\d+)"
-                    },
-                    "region": {
-                        "function": "regexp",
-                        "field": "SITUSCSZ",
-                        "pattern": "\\b(OR)\\b"
-                    },
-                    "postcode": {
-                        "function": "regexp",
-                        "field": "SITUSCSZ",
-                        "pattern": "\\b(\\d+)$"
-                    }
+                    "street": [
+                        "ST_PREMOD",
+                        "ST_PREDIR",
+                        "ST_PRETYPE",
+                        "ST_NAME",
+                        "ST_POSTYPE",
+                        "ST_POSTDIR",
+                        "ST_POSMOD"
+                    ],
+                    "unit": [
+                        "SUB_TYPE",
+                        "SUB_VAL"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP"
                 }
             }
         ],
