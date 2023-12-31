@@ -21,23 +21,49 @@
         "addresses": [
             {
                 "name": "city",
-                "protocol": "http",
-                "data": "https://data.openaddresses.io/cache/uploads/trescube/d927c9/asotin.geojson.zip",
-                "website": "http://www.co.asotin.wa.us/public-works-gis/county-road-maps/",
-                "compression": "zip",
+                "data": "https://services6.arcgis.com/VsJGTl1jmCYBc0EX/ArcGIS/rest/services/Parcels/FeatureServer/1",
+                "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": {
                         "function": "prefixed_number",
-                        "field": "address"
+                        "field": "PA2"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "address"
+                        "field": "PA2",
+                        "may_contain_units": true
                     },
-                    "city": "city",
-                    "region": "state",
-                    "postcode": "postalcode"
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "PA2"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "PA3",
+                        "pattern": "^(.+?)(?:\\s+(?:WA|\\d+))"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "PA3",
+                        "pattern": "\\b(WA)\\b"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "PA3",
+                        "pattern": "\\b(\\d+)$"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services6.arcgis.com/VsJGTl1jmCYBc0EX/ArcGIS/rest/services/Parcels/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
                 }
             }
         ]
