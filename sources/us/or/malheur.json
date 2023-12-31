@@ -14,18 +14,32 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services.arcgis.com/uUvqNMGPm7axC2dD/ArcGIS/rest/services/TL_Oct2022/FeatureServer/0",
+                "data": "https://services.arcgis.com/uUvqNMGPm7axC2dD/arcgis/rest/services/AddressPoints_12770/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "SITUSADDR"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "SITUSADDR"
-                    }
+                    "id": "FID",
+                    "number": "HouseNumbe",
+                    "street": [
+                        "PreDir",
+                        "StreetName",
+                        "StreetType",
+                        "SufDir"
+                    ],
+                    "unit": "UnitNumber",
+                    "city": "CITY",
+                    "postcode": "ZipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/uUvqNMGPm7axC2dD/ArcGIS/rest/services/TL_Dec2023/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MapTaxlot"
                 }
             }
         ]
