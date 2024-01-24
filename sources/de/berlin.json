@@ -13,24 +13,28 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://services.arcgis.com/OLiydejKCZTGhvWg/arcgis/rest/services/Berlin%20Hauskoordinaten/FeatureServer/0",
-                "website": "http://fbinter.stadt-berlin.de/fb/berlin/service.jsp?id=a_hauskoordinaten@senstadt&type=FEED",
-                "protocol": "ESRI",
+                "data": "https://github.com/openaddresses/openaddresses/files/14034783/Berlin.gdb.zip",
+                "website": "https://daten.berlin.de/tags/amtlichen-hauskoordinaten",
+                "protocol": "http",
+                "compression": "zip",
                 "license": {
-                    "text": "Nutzungsbestimmungen Geoportal Berlin",
-                    "url": "http://www.stadtentwicklung.berlin.de/geoinformation/download/nutzIII.pdf",
+                    "text": "DL-DE->BY-2.0",
+                    "url": "https://www.govdata.de/dl-de/by-2-0",
                     "attribution": true,
                     "share-alike": false,
                     "attribution name": "Geoportal Berlin / Hauskoordinaten Berlin"
                 },
+                "year": "2024",
                 "conform": {
-                    "format": "geojson",
-                    "city": "ONM",
-                    "postcode": "PLZ",
-                    "street": "STN",
+                    "format": "gdb",
+                    "layer": "adressen_berlin__fiss_wfs_adressenberlin",
+                    "city": "ort_name",
+                    "district": "bez_name",
+                    "postcode": "plz",
+                    "street": "str_name",
                     "number": [
-                        "HNR",
-                        "ADZ"
+                        "hnr",
+                        "hnr_zusatz"
                     ]
                 }
             }
