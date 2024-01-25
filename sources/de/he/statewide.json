@@ -1,0 +1,43 @@
+{
+    "coverage": {
+        "country": "de",
+        "state": "he",
+        "ISO 3166": {
+            "alpha2": "DE-HE"
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://gds.hessen.de/downloadcenter/20240126/Liegenschaftskataster/Hauskoordinaten%20ohne%20Postalische%20Angaben%20(txt)/Hauskoordinaten%20ohne%20Postalische%20Angaben-2023-02.zip",
+                "website": "https://gds.hessen.de/INTERSHOP/web/WFS/HLBG-Geodaten-Site/de_DE/-/EUR/ViewDownloadcenter-Start?path=Liegenschaftskataster/Hauskoordinaten%20ohne%20Postalische%20Angaben%20(txt)",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "text": "DL-DE->Zero-2.0",
+                    "url": "https://www.govdata.de/dl-de/zero-2-0",
+                },
+                "conform": {
+                    "format": "csv",
+                    "csvsplit": ";",
+                    "file": "HK_oPost_mit_Zone-sdressem-HE-20231208.txt",
+                    "srs": "EPSG:25832",
+                    "street": "Str",
+                    "city": "gmd",
+                    "number": {
+                        "function": "format",
+                        "fields": [
+                            "hnr",
+                            "adz"
+                        ],
+                        "format": "$1$2"
+                    },
+                    "lat": "nordwert",
+                    "lon": "ostwert"
+                }
+            }
+        ]
+    }
+}
