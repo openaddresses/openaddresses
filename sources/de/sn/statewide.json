@@ -11,7 +11,7 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://geocloud.landesvermessung.sachsen.de/index.php/s/hKqYp2n29FltMF2/download?path=%2F&files=hk_sn_ascii.zip",
+                "data": "https://geocloud.landesvermessung.sachsen.de/index.php/s/R8Fm0cbDW2jw5LR/download?path=%2F&files=hk_sn_ascii.zip",
                 "website": "https://www.geodaten.sachsen.de/downloadbereich-hauskoordinaten-4172.html",
                 "protocol": "http",
                 "compression": "zip",
@@ -24,23 +24,22 @@
                 "conform": {
                     "format": "csv",
                     "csvsplit": ";",
-                    "headers": -1,
-                    "file": "adressen.txt",
+                    "file": "hk_sn_adressen_20231123.txt",
                     "srs": "EPSG:25833",
-                    "street": "COLUMN14",
-                    "postcode": "COLUMN15",
-                    "city": {
+                    "id": "oid",
+                    "street": "str",
+                    "number": {
                         "function": "format",
                         "fields": [
-                            "COLUMN16",
-                            "COLUMN17"
+                            "hnr",
+                            "adz"
                         ],
-                        "format": "$1 $2"
+                        "format": "$1$2"
                     },
-                    "number": "COLUMN10",
-                    "unit": "COLUMN11",
-                    "lat": "COLUMN13",
-                    "lon": "COLUMN12"
+                    "postcode": "postplz",
+                    "city": "ott",
+                    "lat": "nordwert",
+                    "lon": "ostwert"
                 }
             }
         ]
