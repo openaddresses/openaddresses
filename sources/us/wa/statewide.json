@@ -12,36 +12,29 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://services.arcgis.com/jsIt88o09Q0r1j8h/arcgis/rest/services/Current_Parcels/FeatureServer/0",
-                "website": "https://geo.wa.gov/datasets/wa-geoservices::current-parcels/about",
-                "protocol": "ESRI",
+                "data": "https://files.slack.com/files-pri/T029HV94T-F06GLTZQ1U6/download/site_address_points_oct2023.zip?pub_secret=ad47d7aa18",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
                 "conform": {
-                    "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "SITUS_ADDRSS"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "SITUS_ADDRESS",
-                        "pattern": "^(?:[0-9]+(?:[A-Z]|[ -]1/2)?\\s+)(?:(?:#(\\s+)?)(?:\\d+[A-Z]?|[A-Z]\\d*))?(.+?)(?:(,\\s+)?(?:(?:STE|UNIT|APT|BLDG)\\s+|#|-)(?:\\d+[A-Z]?|[A-Z]\\d*))?$"
-                    },
-                    "unit": {
-                        "function": "regexp",
-                        "field": "SITUS_ADDRESS",
-                        "pattern": "^(?:[0-9]+(?:[A-Z]|[ -]1/2)?\\s+)((#(\\s+)?)(\\d+[A-Z]?|[A-Z]\\d*))?(?:.+?)((,\\s+)?((STE|UNIT|APT|BLDG)\\s+|#|-)(\\d+[A-Z]?|[A-Z]\\d*))?$"
-                    },
-                    "city": "SITUS_CITY_NM",
-                    "region": {
-                        "function": "regexp",
-                        "field": "SITUS_ZIP_NR",
-                        "pattern": "\\b(WA)\\b"
-                    },
-                    "postcode": {
-                        "function": "regexp",
-                        "field": "SITUS_ZIP_NR",
-                        "pattern": "(\\d{5}|\\d{9})"
-                    }
+                    "format": "gdb",
+                    "layer": "Site_Address_Points",
+                    "number": [
+                        "addnum_pre",
+                        "add_number",
+                        "addnum_suf"
+                    ],
+                    "street": [
+                        "lst_predir",
+                        "lst_name",
+                        "lst_type",
+                        "lstposdir"
+                    ],
+                    "unit": "unit",
+                    "city": "post_comm",
+                    "district": "County",
+                    "region": "state",
+                    "postcode": "post_code"
                 }
             }
         ],
