@@ -14,19 +14,28 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services6.arcgis.com/uerdHeHVy5oVT2hm/ArcGIS/rest/services/Tax_Lots_Public_View/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "gdb",
-                    "file": "Delivery/addresses_oregon.gdb",
-                    "layer": "Grant",
-                    "number": "ADDRESS",
+                    "format": "geojson",
+                    "number": "TNUM",
                     "street": [
-                        "ROAD_NAME",
-                        "ROAD_SUFFI"
+                        "TDIR",
+                        "TROAD",
+                        "TLANE"
                     ],
-                    "postcode": "ZIP"
+                    "city": "TCITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/uerdHeHVy5oVT2hm/ArcGIS/rest/services/Tax_Lots_Public_View/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MapTaxlot"
                 }
             }
         ]
