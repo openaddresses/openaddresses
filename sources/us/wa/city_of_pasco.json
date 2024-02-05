@@ -23,16 +23,23 @@
             {
                 "name": "city",
                 "protocol": "ESRI",
-                "data": "https://services5.arcgis.com/Mrjxd32WJFxUIHrM/ArcGIS/rest/services/Addresses/FeatureServer/0",
-                "website": "https://data-cityofpasco.opendata.arcgis.com/datasets/CityofPasco::address/about",
+                "data": "https://gis.pasco-wa.gov/gs/rest/services/Features_Viewer/Site_Address_Point/FeatureServer/0",
+                "website": "https://data-cityofpasco.opendata.arcgis.com/datasets/CityofPasco::addressing/about",
                 "conform": {
                     "format": "geojson",
-                    "id": "OBJECTID",
-                    "number": "COMPLETE_ADDRESS_NUMBER",
-                    "street": "COMPLETE_ST_NAME",
-                    "unit": "COMPLETE_SUBADDRESS",
-                    "city": "PLACE_NAME",
-                    "region": "STATE",
+                    "id": "addressptid",
+                    "number": [
+                        "preaddrnum",
+                        "addrnum",
+                        "addrnumsuf"
+                    ],
+                    "street": "fullname",
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "CityName",
+                    "region": "stateabbreviation",
                     "postcode": "ZIP"
                 }
             }
@@ -53,8 +60,8 @@
             {
                 "name": "city",
                 "protocol": "ESRI",
-                "data": "https://services5.arcgis.com/Mrjxd32WJFxUIHrM/arcgis/rest/services/Building/FeatureServer/0",
-                "website": "https://data-cityofpasco.opendata.arcgis.com/datasets/CityofPasco::building/about",
+                "data": "https://gis.pasco-wa.gov/gs/rest/services/Features_Viewer/Building_Footprints/FeatureServer/0",
+                "website": "https://data-cityofpasco.opendata.arcgis.com/datasets/CityofPasco::building-footprints/about",
                 "conform": {
                     "format": "geojson"
                 }
