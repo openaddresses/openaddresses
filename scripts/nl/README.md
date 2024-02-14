@@ -1,8 +1,8 @@
-The other files (nl-data.js, package.json, and run.sh) in this directory appear to be deprecated since the data is pulled from an ArcGIS server.  
+The other files (nl-data.js, package.json, and run.sh) in this directory appear to be deprecated since the data is pulled from an ArcGIS server.
 
 # Country-wide Netherlands
 
-The sheer number of address points and buildings in this source (~9.7m and 11m, respectively) can cause request timeouts during machine processing, so these instructions are for periodically caching datasets by scraping the entire data with [pyesridump](https://github.com/openaddresses/pyesridump) and trimming for required properties.  
+The sheer number of address points and buildings in this source (~9.7m and 11m, respectively) can cause request timeouts during machine processing, so these instructions are for periodically caching datasets by scraping the entire data with [pyesridump](https://github.com/openaddresses/pyesridump) and trimming for required properties.
 
 Using [pyesridump](https://github.com/openaddresses/pyesridump), run:
 
@@ -16,7 +16,7 @@ This source is ~9.7m records, so if it times out, pick back up where it left off
 tail -1 netherlands_addresses.geojson | jq '.properties.objectid'
 ```
 
-Then run `esri2geojson` again to pick back up where it left off: 
+Then run `esri2geojson` again to pick back up where it left off:
 
 ```bash
 esri2geojson -p "WHERE=objectid > <# from above>" https://basisregistraties.arcgisonline.nl/arcgis/rest/services/BAG/BAGv3/MapServer/0 netherlands_addresses.geojson.2
@@ -36,4 +36,4 @@ Next, zip with:
 zip nl-countrywide.addresses.geojson.zip netherlands_addresses.geojson.final
 ```
 
-Finally, contact someone on the OpenAddreses admin team to upload this file to s3.  
+Finally, contact someone on the OpenAddreses admin team to upload this file to s3.
