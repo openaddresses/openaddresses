@@ -1,0 +1,48 @@
+
+{
+    "coverage": {
+        "country": "de",
+        "state": "bb",
+        "ISO 3166": {
+            "alpha2": "DE-BB"
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://data.openaddresses.io/cache/uploads/StephanGeorg/8eded0/hk-bb.zip",
+                "website": "https://geobasis-bb.de/lgb/de/geodaten/liegenschaftskataster/georeferenzierte-adresse/",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "text": "DL-DE->BY-2.0",
+                    "url": "https://www.govdata.de/dl-de/by-2-0",
+                    "attribution": true,
+                    "attribution name": "GeoBasis-DE/LGB"
+                },
+                "conform": {
+                    "format": "csv",
+                    "csvsplit": ";",
+                    "file": "geoadr.txt",
+                    "srs": "EPSG:25833",
+                    "id": "OI",
+                    "street": "STN",
+                    "postcode": "PLZ",
+                    "city": "ONM",
+                    "number": {
+                        "function": "format",
+                        "fields": [
+                            "HNR",
+                            "ADZ"
+                        ],
+                        "format": "$1$2"
+                    },
+                    "lat": "NNNNNNN_NNN",
+                    "lon": "EEEEEE_EEE"
+                }
+            }
+        ]
+    }
+}
