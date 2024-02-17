@@ -1,0 +1,27 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il"
+    },
+    "data": "https://apps.gisconsortium.org/arcgis/rest/services/AGOL_AddressNotification_Project/MapServer/0",
+    "protocol": "ESRI",
+    "conform": {
+        "format": "geojson",
+        "number": {
+            "function": "prefixed_number",
+            "field": "PHYSICALADDRESS"
+        },
+        "street": {
+            "function": "postfixed_street",
+            "field": "PHYSICALADDRESS"
+        },
+        "city": "COMMUNITYNAME",
+        "district": "COUNTY",
+        "region": "STATE",
+        "postcode": "ZIPCODE"
+    }
+}
