@@ -15,28 +15,36 @@
             {
                 "name": "county",
                 "attribution": "Santa Barbara County",
-                "data": "http://cosb.countyofsb.org/gis/download/Parcel_layers2011_0210.zip",
-                "license": "http://cosb.countyofsb.org/gis/default.aspx?id=3458",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services8.arcgis.com/s7n9cRiugyMCsR0U/ArcGIS/rest/services/Parcel_layers_ArcGISonline_LUZO/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
                     "id": "APN",
-                    "format": "shapefile-polygon",
-                    "number": [
-                        "SNum",
-                        "SFra"
-                    ],
-                    "street": [
-                        "SDir",
-                        "SStreet",
-                        "SStreetSuf"
-                    ],
-                    "unit": [
-                        "SUnitType",
-                        "SUnitNumb"
-                    ],
-                    "city": "SCity",
-                    "postcode": "SZip"
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Situs1"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Situs1",
+                        "may_contain_units": true
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "Situs1"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Santa Barbara County",
+                "data": "https://services8.arcgis.com/s7n9cRiugyMCsR0U/ArcGIS/rest/services/Parcel_layers_ArcGISonline_LUZO/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "APN",
+                    "format": "geojson"
                 }
             }
         ]
