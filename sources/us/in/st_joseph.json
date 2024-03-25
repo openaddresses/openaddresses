@@ -14,30 +14,35 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.southbendin.gov/api/geospatial/puej-rcqm?method=export&format=Shapefile",
-                "website": "https://data.southbendin.gov/Geographic-Boundaries/Boundaries-St-Joseph-County-Parcels/puej-rcqm",
-                "license": {
-                    "text": "Public domain",
-                    "attribution": false,
-                    "share-alike": false
-                },
-                "protocol": "http",
-                "compression": "zip",
-                "year": "2014",
-                "note": "Full parcel shapefile set (not points)",
+                "website": "https://sjcgis-stjocogis.hub.arcgis.com/datasets/d0b95019cb834cfc85862a87cb0e6610_0",
+                "data": "https://services.arcgis.com/OjftlhRHkAABcyiF/arcgis/rest/services/Address/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
+                    "format": "geojson",
                     "number": {
-                        "function": "regexp",
-                        "field": "prop_addr",
-                        "pattern": "^([0-9]+)"
+                        "function": "prefixed_number",
+                        "field": "FullStreet"
                     },
                     "street": {
-                        "function": "regexp",
-                        "field": "prop_addr",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
+                        "function": "postfixed_street",
+                        "field": "FullStreet"
                     },
-                    "format": "shapefile-polygon"
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "FullStreet"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://sjcgis-stjocogis.hub.arcgis.com/datasets/9c904f790a884313a0cebfafc3a7bca1_0",
+                "data": "https://services.arcgis.com/OjftlhRHkAABcyiF/arcgis/rest/services/parcel_boundaries/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
                 }
             }
         ]
