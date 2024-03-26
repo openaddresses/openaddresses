@@ -20,10 +20,9 @@
                     "text": "CC BY 4.0",
                     "url": "https://creativecommons.org/licenses/by/4.0/",
                     "attribution": true,
-                    "attribution name": "Geodetska uprava Republike Slovenije / The Surveying and Mapping Authority of the Republic of Slovenia, Naslovi hišnih številk / House number addresses, 2023",
+                    "attribution name": "Geodetska uprava Republike Slovenije / Surveying and Mapping Authority of the Republic of Slovenia, Register naslovov / Register of addresses, 2024",
                     "share-alike": false
                 },
-                "year": 2023,
                 "conform": {
                     "encoding": "UTF-8",
                     "srs": "EPSG:3794",
@@ -36,7 +35,10 @@
                         "fields": ["HS_STEVILKA", "HS_DODATEK"],
                         "separator": ""
                     },
-                    "street": "ULICA_NAZIV",
+                    "street": {
+                        "function": "first_non_empty",
+                        "fields": ["ULICA_NAZIV", "NASELJE_NAZIV"]
+                    },
                     "city": "NASELJE_NAZIV",
                     "district": "OBCINA_NAZIV",
                     "region": "STATISTICNA_REGIJA_NAZIV",
@@ -57,10 +59,10 @@
                     "text": "CC BY 4.0",
                     "url": "https://creativecommons.org/licenses/by/4.0/",
                     "attribution": true,
-                    "attribution name": "Geodetska uprava Republike Slovenije / The Surveying and Mapping Authority of the Republic of Slovenia, Kataster stavb / Building Cadastre, 2023",
+                    "attribution name": "Geodetska uprava Republike Slovenije / Surveying and Mapping Authority of the Republic of Slovenia, Kataster stavb / Building Cadastre, 2022",
                     "share-alike": false
                 },
-                "year": 2023,
+                "year": 2022,
                 "conform": {
                     "file": "KS_SLO_SHP_G_TLORISI.shp",
                     "format": "shapefile",
