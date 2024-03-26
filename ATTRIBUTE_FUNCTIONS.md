@@ -18,6 +18,22 @@ One note, however, is that functions cannot be combined at this time.  That is, 
 
 ## Formatting Functions
 
+## Index
+
+* [`join`](#join)
+* [`format`](#format)
+* [`prefixed_number`](#prefixed_number-postfixed_street-and-postfixed_unit)
+* [`postfixed_street`](#prefixed_number-postfixed_street-and-postfixed_unit)
+* [`postfixed_unit`](#prefixed_number-postfixed_street-and-postfixed_unit)
+* [`remove_prefix`](#remove_prefix-and-remove_postfix)
+* [`remove_postfix`](#remove_prefix-and-remove_postfix)
+* [`regexp`](#regexp)
+* [`first_non_empty`](#first_non_empty)
+* [`get`](#get)
+* [`chain`](#chain)
+
+## Combining Functions
+
 There are two functions that are specifically designed to combine two or more fields into one.
 
 ### `join`
@@ -267,6 +283,10 @@ While virtually all modern regular expression flavors share identical basic beha
 | `field` | string | any field name in the data source | none (required)
 | `pattern` | string | a compilable regular expression | none (required)
 | `replace` | string | a string referencing 0 or more captured groups in `pattern` | none (optional)
+
+### `first_non_empty`
+
+The `first_non_empty` function is used to extract the first non-empty value from a list of fields. This function is particularly useful when a single record contains multiple columns for a particular output column.
 
 ### `get`
 The `get` function is particularly useful in a situation when a single address record may contain multiple nodes having the same field name.
