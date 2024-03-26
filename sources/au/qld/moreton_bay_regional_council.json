@@ -1,0 +1,47 @@
+{
+    "coverage": {
+        "country": "au",
+        "state": "qld",
+        "city": "Moreton Bay Regional Council"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "http",
+                "data": "https://opendata.arcgis.com/api/v3/datasets/be1d48c1e8764baea256186b6eb28274_0/downloads/data?format=geojson&spatialRefId=4326",
+                "website": "https://datahub.moretonbay.qld.gov.au/datasets/moretonbay::mbrc-property-boundaries/about",
+                "language": "en",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Moreton Bay Regional Council",
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NO",
+                    "street": {
+                      "function": "chain",
+                      "variable": "street_wip",
+                      "functions": [
+                        {
+                          "function": "remove_prefix",
+                          "field": "ADDRESS",
+                          "field_to_remove": "HOUSE_NO"
+                        },
+                        {
+                          "function": "remove_postfix",
+                          "field": "street_wip",
+                          "field_to_remove": "LOCALITY"
+                        }
+                      ]
+                    },
+                    "city": "LOCALITY"
+                }
+            }
+        ]
+    }
+}
