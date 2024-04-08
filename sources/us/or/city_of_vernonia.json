@@ -21,44 +21,32 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://gisportal.vernonia-or.gov/arcgis/rest/services/LandUse/Addresses/FeatureServer/0",
+                "data": "https://gis.vernonia-or.gov/server/rest/services/LandUse/Land_Use/MapServer/5",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": [
-                        "STRUCTNO",
-                        "STRUCTNOSU"
-                    ],
+                    "number": "HouseNum",
                     "street": [
-                        "FDPRE",
-                        "FNAME",
-                        "FTYPE",
-                        "FDSUF"
+                        "DirectionPrefix",
+                        "StreetName",
+                        "StreetType",
+                        "DirectionSuffix"
                     ],
-                    "unit": "UNIT",
-                    "city": "MAIL_CITY",
-                    "postcode": "ZIP"
+                    "unit": "HouseNumUnit",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "ZipCode"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "city",
-                "data": "https://gisportal.vernonia-or.gov/arcgis/rest/services/LandUse/Tax_Lots/FeatureServer/0",
+                "data": "https://gis.vernonia-or.gov/server/rest/services/LandUse/Land_Use/MapServer/40",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "pid": "TAXLOT_ID"
-                }
-            }
-        ],
-        "buildings": [
-            {
-                "name": "city",
-                "data": "https://gisportal.vernonia-or.gov/arcgis/rest/services/LandUse/Building_Footprints/MapServer/0",
-                "protocol": "ESRI",
-                "conform": {
-                    "format": "geojson"
                 }
             }
         ]
