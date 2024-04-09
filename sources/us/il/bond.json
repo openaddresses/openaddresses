@@ -1,0 +1,42 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17005",
+            "name": "Bond County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Bond"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/VbP0KHITyLTMBTy3/ArcGIS/rest/services/WTH_911AddressPoints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "House",
+                    "street": [
+                        "Dir",
+                        "Street"
+                    ],
+                    "city": "Community"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/VbP0KHITyLTMBTy3/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Name"
+                }
+            }
+        ]
+    }
+}
