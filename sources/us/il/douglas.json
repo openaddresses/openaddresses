@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://douglasil.com/arcgis/rest/services/Parcels/MapServer/0",
+                "data": "https://services3.arcgis.com/HXjsHxkFFcZquC8P/ArcGIS/rest/services/Parcels/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -27,6 +27,24 @@
                         "function": "regexp",
                         "field": "site_addre",
                         "pattern": "^(?:[0-9]+[A-Z]? +)(.*)",
+                        "replace": "$1"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "site_csz",
+                        "pattern": "^(.*)(?:\\sIL\\s\\d{5})$",
+                        "replace": "$1"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "site_csz",
+                        "pattern": "(IL)",
+                        "replace": "$1"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "ite_csz",
+                        "pattern": "(\\d{5})",
                         "replace": "$1"
                     }
                 }
