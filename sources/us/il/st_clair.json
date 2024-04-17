@@ -14,21 +14,32 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://publicmap.co.st-clair.il.us/gissvr7/rest/services/parcel_viewer/MapServer/36",
+                "data": "https://arcgispublicmap.co.st-clair.il.us/server/rest/services/SCC_parcel_map_data/MapServer/29",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "SITENUM",
+                    "number": "sitenum",
                     "street": [
-                        "SITEPREF",
-                        "SITENAME",
-                        "SITETYPE",
-                        "SITESUFF"
+                        "sitepref",
+                        "sitename",
+                        "sitetype",
+                        "sitesuff"
                     ],
-                    "unit": "SITEUNIT",
-                    "city": "SITECITY",
-                    "postcode": "SITEZIP",
-                    "region": "SITEST"
+                    "unit": "siteunit",
+                    "city": "sitecity",
+                    "postcode": "sitezip",
+                    "region": "sitest"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://arcgispublicmap.co.st-clair.il.us/server/rest/services/SCC_parcel_map_data/MapServer/29",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcel_number"
                 }
             }
         ]

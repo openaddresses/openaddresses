@@ -14,67 +14,34 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://services.arcgis.com/l0M0OC6J9QAHCiGx/ArcGIS/rest/services/TaxParcelQuery/FeatureServer/0",
+                "data": "https://services.arcgis.com/l0M0OC6J9QAHCiGx/ArcGIS/rest/services/Addresses_Only/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "SITEADDRESS"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "SITEADDRESS"
-                    },
-                    "city": {
-                        "function": "regexp",
-                        "field": "SITEADDRESS2",
-                        "pattern": "^(.+?)\\s+IL\\s+"
-                    },
-                    "region": {
-                        "function": "regexp",
-                        "field": "SITEADDRESS2",
-                        "pattern": "\\b(IL)\\b"
-                    },
-                    "postcode": {
-                        "function": "regexp",
-                        "field": "SITEADDRESS2",
-                        "pattern": "(\\d+)$"
-                    }
-                },
-                "test": {
-                    "enabled": true,
-                    "description": "city/region/postcode are concatenated into 1 field",
-                    "acceptance-tests": [
-                        {
-                            "description": "city/region/postcode are available",
-                            "inputs": {
-                                "SITEADDRESS": "9989 PRAIRIE CENTER RD",
-                                "SITEADDRESS2": "MORRISON IL 61270"
-                            },
-                            "expected": {
-                                "number": "9989",
-                                "street": "PRAIRIE CENTER RD",
-                                "city": "MORRISON",
-                                "region": "IL",
-                                "postcode": "61270"
-                            }
-                        },
-                        {
-                            "description": "just region",
-                            "inputs": {
-                                "SITEADDRESS": "9976 MERIDOSIA RD",
-                                "SITEADDRESS2": "IL"
-                            },
-                            "expected": {
-                                "number": "9976",
-                                "street": "MERIDOSIA RD",
-                                "city": "",
-                                "region": "IL",
-                                "postcode": ""
-                            }
-                        }
-                    ]
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUMNEW",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MSAG",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/l0M0OC6J9QAHCiGx/ArcGIS/rest/services/Tax_Parcels_Ver_2_Parcels_Only/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
                 }
             }
         ]
