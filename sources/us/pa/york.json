@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "http://yorkcountypa.maps.arcgis.com/home/index.html",
+                "website": "https://york-county-pa-gis-portal-yorkcountypa.hub.arcgis.com/datasets/265146c5b73d4637b2ac02c70282e198_0/explore",
                 "contact": {
                     "name": "Tanya Wall",
                     "title": "Chief of Information Systems",
@@ -22,24 +22,30 @@
                     "email": "twall@ycpc.org",
                     "address": "28 E Market Street, 3rd Floor, York, PA 17401"
                 },
-                "data": "https://arcweb.ycpc.org/arcgis/rest/services/Emergency_Services/Address_Pts/MapServer/0",
+                "data": "https://arcweb1.ycpc.org/server/rest/services/OPEN_DATA/AddressPts/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "H_NUMBER",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
                     "street": [
-                        "ST_DIR",
-                        "STREET_NAME",
-                        "ST_TYPE",
-                        "ST_SUFFIX"
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "StreetName",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
                     ],
-                    "unit": [
-                        "UNITTYPE",
-                        "UNIT_NUMBER"
-                    ],
-                    "postcode": "ZIPCODE",
-                    "addrtype": "CLASS",
-                    "id": "PIDN"
+                    "unit": "Unit",
+                    "city": "MSAGComm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
                 }
             }
         ]
