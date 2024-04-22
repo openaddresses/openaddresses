@@ -11,7 +11,8 @@
       {
         "name": "city",
         "protocol": "http",
-        "data": "https://opendata.arcgis.com/api/v3/datasets/be1d48c1e8764baea256186b6eb28274_0/downloads/data?format=geojson&spatialRefId=4326",
+        "compression": "zip",
+        "data": "https://www.alantgeo.com.au/share/moreton_bay.geojson.zip",
         "website": "https://datahub.moretonbay.qld.gov.au/datasets/moretonbay::mbrc-property-boundaries/about",
         "language": "en",
         "license": {
@@ -24,22 +25,7 @@
         "conform": {
           "format": "geojson",
           "number": "HOUSE_NO",
-          "street": {
-            "function": "chain",
-            "variable": "street_wip",
-            "functions": [
-              {
-                "function": "remove_prefix",
-                "field": "ADDRESS",
-                "field_to_remove": "HOUSE_NO"
-              },
-              {
-                "function": "remove_postfix",
-                "field": "street_wip",
-                "field_to_remove": "LOCALITY"
-              }
-            ]
-          },
+          "street": "STREET",
           "city": "LOCALITY"
         }
       }
