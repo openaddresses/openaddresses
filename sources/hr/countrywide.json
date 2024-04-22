@@ -1,0 +1,59 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "HR",
+            "country": "Croatia"
+        },
+        "country": "hr"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "website": "https://inspire-geoportal.ec.europa.eu/srv/eng/catalog.search#/datasetdetails?country=hr&view=themeOverview&theme=none&resourceId=d3104048-688a-4305-9471-77288cc6e350",
+                "data": "https://geoportal.dgu.hr/services/atom/INSPIRE_Addresses_(AD).zip",
+                "frequency": "weekly",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "text": "no limitations to public access",
+                    "url": "https://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations"
+                },
+                "conform": {
+                    "encoding": "UTF-8",
+                    "format": "xml",
+                    "file": "Address.gml",
+                    "accuracy": 1,
+                    "id": "localId",
+                    "unit": "alternativeIdentifier",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "alternativeIdentifier",
+                        "pattern": "(?:\\S )([0-9]{5})(?: \\S)"
+                    },
+                    "district": {
+                        "function": "regexp",
+                        "field": "alternativeIdentifier",
+                        "pattern": "(?:\\S [0-9]{5} )(.*)$"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "alternativeIdentifier",
+                        "pattern": "(?: [0-9][^ ]* )(.*)(?: [0-9]{5} \\S)"
+                    },
+                    "number": {
+                        "function": "regexp",
+                        "field": "alternativeIdentifier",
+                        "pattern": "(?:\\S )([0-9][^ ]*)(?: .* [0-9]{5} \\S)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "alternativeIdentifier",
+                        "pattern": "^(.*)(?: [0-9][^ ]* .* [0-9]{5} \\S)"
+                    }
+                }
+            }
+        ]
+    }
+}
