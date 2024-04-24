@@ -6,6 +6,56 @@
         "country": "au"
     },
     "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "http",
+                "data": "https://s3.ap-southeast-2.amazonaws.com/dmzweb.adelaidecitycouncil.com/OpenData/Property_Boundaries/PropertyBoundaries.zip",
+                "website": "https://data.sa.gov.au/data/dataset/d8ceffe5-0528-46ec-8506-970c09325881",
+                "language": "en",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "http://creativecommons.org/licenses/by/4.0",
+                    "attribution name": "City of Adelaide",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": {
+                      "function": "regexp",
+                      "field": "ADDRESS",
+                      "pattern": "(?<description>[^\n]*)\n(?<number>\d+-?\d*) +(?<street>[\w ]+)\n(?<city>[\w ]*) +(?<state>\w*) +(?<postcode>[0-9]{4})$",
+                      "replace": "$number"
+                    },
+                    "street": {
+                      "function": "regexp",
+                      "field": "ADDRESS",
+                      "pattern": "(?<description>[^\n]*)\n(?<number>\d+-?\d*) +(?<street>[\w ]+)\n(?<city>[\w ]*) +(?<state>\w*) +(?<postcode>[0-9]{4})$",
+                      "replace": "$street"
+                    },
+                    "city": {
+                      "function": "regexp",
+                      "field": "ADDRESS",
+                      "pattern": "(?<description>[^\n]*)\n(?<number>\d+-?\d*) +(?<street>[\w ]+)\n(?<city>[\w ]*) +(?<state>\w*) +(?<postcode>[0-9]{4})$",
+                      "replace": "$city"
+                    },
+                    "region": {
+                      "function": "regexp",
+                      "field": "ADDRESS",
+                      "pattern": "(?<description>[^\n]*)\n(?<number>\d+-?\d*) +(?<street>[\w ]+)\n(?<city>[\w ]*) +(?<state>\w*) +(?<postcode>[0-9]{4})$",
+                      "replace": "$state"
+                    },
+                    "postcode": {
+                      "function": "regexp",
+                      "field": "ADDRESS",
+                      "pattern": "(?<description>[^\n]*)\n(?<number>\d+-?\d*) +(?<street>[\w ]+)\n(?<city>[\w ]*) +(?<state>\w*) +(?<postcode>[0-9]{4})$",
+                      "replace": "$postcode"
+                    }
+                }
+            }
+        ],
         "parcels": [
             {
                 "name": "city",
@@ -18,7 +68,6 @@
                 },
                 "compression": "zip",
                 "license": {
-
                     "text": "CC BY 4.0",
                     "url": "http://creativecommons.org/licenses/by/4.0",
                     "attribution name": "City of Adelaide",
