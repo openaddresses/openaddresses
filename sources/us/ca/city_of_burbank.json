@@ -16,19 +16,42 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://gis.burbankca.gov/webgis/rest/services/address_points/MapServer/0",
+                "data": "https://mobilegis.burbankca.gov/burgis/rest/services/Land/Core_GEMS2_Landbase_GIS3/MapServer/31",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "id": "apn",
-                    "number": "str_no",
+                    "number": "parsedrang",
                     "street": [
-                        "pre_dir",
-                        "str_name",
-                        "str_type"
+                        "parsedpred",
+                        "parsedname",
+                        "parsedsuff",
+                        "parsedsu_1"
                     ],
+                    "unit": "suite",
                     "postcode": "zip",
+                    "region": "state",
                     "city": "city"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://mobilegis.burbankca.gov/burgis/rest/services/Land/Core_GEMS2_Landbase_GIS3/MapServer/17",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "apn_string"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://mobilegis.burbankca.gov/burgis/rest/services/Land/Core_GEMS2_Landbase_GIS3/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
