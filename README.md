@@ -51,6 +51,8 @@ Support this project with your organization. Your logo will show up here with a 
 <a href="https://opencollective.com/openaddresses/organization/7/website"><img src="https://opencollective.com/openaddresses/organization/7/avatar.svg"></a>
 <a href="https://opencollective.com/openaddresses/organization/8/website"><img src="https://opencollective.com/openaddresses/organization/8/avatar.svg"></a>
 <a href="https://opencollective.com/openaddresses/organization/9/website"><img src="https://opencollective.com/openaddresses/organization/9/avatar.svg"></a>
+<a href="https://opencollective.com/openaddresses/organization/10/website"><img src="https://opencollective.com/openaddresses/organization/10/avatar.svg"></a>
+<a href="https://opencollective.com/openaddresses/organization/11/website"><img src="https://opencollective.com/openaddresses/organization/11/avatar.svg"></a>
 
 ## License
 
