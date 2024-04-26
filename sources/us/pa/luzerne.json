@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services7.arcgis.com/hzCSL69lejmynMEC/ArcGIS/rest/services/Structures_032423/FeatureServer/0",
+                "data": "https://gis.luzernecounty.org/server/rest/services/PublicStreetsStructures/MapServer/0",
                 "website": "https://www.luzernecounty.org/234/GISMapping",
                 "contact": {
                     "name": "Dan Reese",
@@ -25,18 +25,20 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "FULL_ADDRE"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "FULL_ADDRE"
-                    },
-                    "unit": {
-                        "function": "postfixed_unit",
-                        "field": "FULL_ADDRE"
-                    },
+                    "number": [
+                        "SAN",
+                        "SAN_SUF"
+                    ],
+                    "street": [
+                        "PRD",
+                        "STN",
+                        "STS",
+                        "POD"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITNO"
+                    ],
                     "city": "MCN"
                 }
             }
