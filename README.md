@@ -56,4 +56,6 @@ Support this project with your organization. Your logo will show up here with a 
 
 ## License
 
-Code is available under BSD, the data collection (sources/) is public domain. See respective LICENSE files in project root for code and under sources/ for the data collection.
+The data produced by the OpenAddresses processing pipeline (available on [batch.openaddresses.io](https://batch.openaddresses.io/)) is not relicensed from the original sources. Individual sources will have their own licenses. The OpenAddresses team does its best to summarize the source licenses in the source JSON for each source. For example, the source JSON for the [County of San Francisco](https://github.com/openaddresses/openaddresses/blob/b0c2e564c7d42ea1a73c7f8c700d5972fa4b6c1b/sources/us/ca/san_francisco.json#L18-L23) contains a link to the County of San Francisco's open data license.
+
+The source JSON in this repo (in the `sources/` directory) is licensed under the [CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/) as described in the [license file there](sources/LICENSE). The rest of the repository is licensed under the [BSD 3-Clause License](LICENSE).
