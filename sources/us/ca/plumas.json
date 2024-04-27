@@ -14,12 +14,13 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/nvkelso/e8ef1c/plumas_california_usa_kmz_csv_results.csv",
+                "data": "https://github.com/openaddresses/openaddresses/files/15136186/parcel_address_points_202308301037427256__parcel_address_point.gdb.zip",
                 "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "csv",
-                    "lat": "lat",
-                    "lon": "lon",
+                    "format": "gdb",
+                    "file": "parcel_address_points_202308301037427256__parcel_address_point.gdb",
+                    "layer": "parcel_address_points_202308301037427256__parcel_address_point",
                     "number": "RDNUM",
                     "street": [
                         "RDPREDIR",
@@ -29,6 +30,20 @@
                         "RDPOSTDIR"
                     ],
                     "city": "COMMUNITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://github.com/openaddresses/openaddresses/files/15136187/plumas_county_parcels_202308301038075926__plumas_county_parcels.gdb.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "file": "plumas_county_parcels_202308301038075926__plumas_county_parcels.gdb",
+                    "layer": "plumas_county_parcels_202308301038075926__plumas_county_parcels",
+                    "pid": "APN"
                 }
             }
         ]

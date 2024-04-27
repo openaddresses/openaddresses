@@ -15,24 +15,35 @@
             {
                 "name": "county",
                 "attribution": "El Dorando County",
-                "data": "https://github.com/datadesk/us-ca-el_dorado_county-currprcl-shp/blob/master/currprcl.zip?raw=true",
+                "data": "https://see-eldorado.edcgov.us/arcgis/rest/services/uGOTNETandEXTRACTS/address/MapServer/0",
                 "website": "http://www.edcgov.us/Government/Surveyor/FAQs/G_I_S__FAQs.aspx",
-                "protocol": "http",
-                "compression": "zip",
-                "note": "Parcel polygons that include situs addresses in the metadata. Provided in response to a public records request in December 2014 and uploaded to GitHub for public hosting.",
+                "protocol": "ESRI",
                 "conform": {
                     "id": "PRCL_ID",
-                    "format": "shapefile-polygon",
+                    "format": "geojson",
                     "city": "CITY",
-                    "number": "SITUSNUMBR",
+                    "number": "ADDR_NBR",
                     "street": [
-                        "SITUSSTRNM",
-                        "SITUSSTRTY"
+                        "ADDR_STR_NAME",
+                        "ADDR_STR_TYPE"
                     ],
                     "unit": [
-                        "UNIT_TYPE",
-                        "UNIT_NBR"
+                        "ADR_UNIT_TYPE",
+                        "ADDR_UNIT_NBR"
                     ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "El Dorando County",
+                "data": "https://see-eldorado.edcgov.us/arcgis/rest/services/uGOTNETandEXTRACTS/address/MapServer/0",
+                "website": "http://www.edcgov.us/Government/Surveyor/FAQs/G_I_S__FAQs.aspx",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PRCL_ID",
+                    "format": "geojson"
                 }
             }
         ]
