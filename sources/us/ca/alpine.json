@@ -25,8 +25,16 @@
                         "field": "Situs"
                     },
                     "street": {
-                        "function": "postfixed_street",
-                        "field": "Situs"
+                        "function": "regexp",
+                        "field": "Situs",
+                        "pattern": "(?:\\d+\\s)(\\w+(\\s\\w+)*)",
+                        "replace": "$1"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "Situs",
+                        "patern": "(?:##\\s)(.+)",
+                        "replace": "$1"
                     },
                     "city": {
                         "function": "regexp",
