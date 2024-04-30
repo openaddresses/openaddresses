@@ -15,21 +15,37 @@
             {
                 "name": "county",
                 "attribution": "Alpine County",
-                "data": "https://services1.arcgis.com/9z9tEfqo0TExR9C8/ArcGIS/rest/services/Alpine_OperationalLayers_Service/FeatureServer/0",
+                "data": "https://services1.arcgis.com/9z9tEfqo0TExR9C8/ArcGIS/rest/services/AlpineCountyParcels_22_23_PublicUpdate/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "id": "APN",
-                    "unit": "Situs_Unit_",
-                    "number": "Situs_House_",
-                    "street": [
-                        "Situs_Street",
-                        "Situs_Street_Direction",
-                        "Situs_Street_Suffix"
-                    ],
-                    "city": "Situs_City",
-                    "postcode": "Situs_Zip",
-                    "region": "Situs_State"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Situs"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Situs"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "Situs_City",
+                        "pattern": "(.+)(?:\\sCA)",
+                        "replace": "$1"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "Situs_City",
+                        "pattern": "(\\d{5})",
+                        "replace": "$1"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "Situs_City",
+                        "pattern": "(CA)",
+                        "replace": "$1"
+                    }
                 }
             }
         ],
@@ -37,7 +53,7 @@
             {
                 "name": "county",
                 "attribution": "Alpine County",
-                "data": "https://services1.arcgis.com/9z9tEfqo0TExR9C8/ArcGIS/rest/services/Alpine_OperationalLayers_Service/FeatureServer/0",
+                "data": "https://services1.arcgis.com/9z9tEfqo0TExR9C8/ArcGIS/rest/services/AlpineCountyParcels_22_23_PublicUpdate/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
