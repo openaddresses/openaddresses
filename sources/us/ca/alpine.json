@@ -27,14 +27,14 @@
                     "street": {
                         "function": "regexp",
                         "field": "Situs",
-                        "pattern": "(?:\\d+\\s)(\\w+(\\s\\w+)*)",
+                        "pattern": "^(?:\\d+\\s)(\\w+(\\s\\w+)*)(?:\\s##\\s\\d+)?$",
                         "replace": "$1"
                     },
                     "unit": {
                         "function": "regexp",
                         "field": "Situs",
-                        "pattern": "(?:##\\s)(.+)",
-                        "replace": "$1"
+                        "pattern": "^(?:\\d+\\s\\w+(\\s\\w+)*)((?:\\s##\\s)(\\d+))?$",
+                        "replace": "$3"
                     },
                     "city": {
                         "function": "regexp",
