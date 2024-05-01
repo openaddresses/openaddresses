@@ -27,14 +27,14 @@
                     "street": {
                         "function": "regexp",
                         "field": "Situs",
-                        "pattern": "^(?:\\d+\\s)(\\w+(\\s\\w+)*)(?:\\s##\\s\\d+)?$",
+                        "pattern": "^(?:\\d+\\s)(\\w+(\\s\\w+)*)(?:\\s#(#)?(\\s)?.+)?$",
                         "replace": "$1"
                     },
                     "unit": {
                         "function": "regexp",
                         "field": "Situs",
-                        "pattern": "^(?:\\d+\\s\\w+(\\s\\w+)*)((?:\\s##\\s)(\\d+))?$",
-                        "replace": "$3"
+                        "pattern": "^(?:\\d+\\s\\w+(\\s\\w+)*)((?:\\s#(#)?(\\s)?)(.+))?$",
+                        "replace": "$5"
                     },
                     "city": {
                         "function": "regexp",
@@ -45,14 +45,14 @@
                     "postcode": {
                         "function": "regexp",
                         "field": "SITUSCITY",
-                        "pattern": "(\\d{5})",
-                        "replace": "$1"
+                        "pattern": "^(?:\\w+(\\s\\w+)*\\sCA)((?:\\s)(\\d{5}))?$",
+                        "replace": "$3"
                     },
                     "region": {
                         "function": "regexp",
                         "field": "SITUSCITY",
-                        "pattern": "(CA)",
-                        "replace": "$1"
+                        "pattern": "^(?:\\w+(\\s\\w+)*\\s)(CA)",
+                        "replace": "$2"
                     }
                 }
             }
