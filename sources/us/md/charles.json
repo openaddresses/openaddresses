@@ -1,0 +1,40 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "24017",
+            "name": "Charles",
+            "state": "Maryland"
+        },
+        "country": "us",
+        "state": "md",
+        "county": "Charles"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://charlesco.maps.arcgis.com/apps/webappviewer/index.html?id=879eece989054d72aa9766211348b1f7",
+                "data": "https://services7.arcgis.com/3BMWkdyrt45RNCrq/ArcGIS/rest/services/CharlesCountyAddresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "format",
+                        "fields": ["NUMBER_", "House_No_S"],
+                        "format": "$1$2"
+                    },
+                    "street": [
+                        "Street_Pre",
+                        "Street_Nam",
+                        "Street_typ",
+                        "Street_Suf"
+                    ],
+                    "unit": "Unit",
+                    "city": "NEWCITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
+    }
+}
