@@ -1,0 +1,38 @@
+{
+    "coverage": {
+        "country": "de",
+        "state": "sh",
+        "ISO 3166": {
+            "alpha2": "DE-SH"
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://services2.arcgis.com/jUpNdisbWqRpMo35/arcgis/rest/services/Adressen_Schleswig_Holstein/FeatureServer/0",
+                "website": "https://hub.arcgis.com/datasets/esri-de-content::adressen-schleswig-holstein",
+                "protocol": "ESRI",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "",
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "format",
+                        "fields": ["HNR", "ADZ"],
+                        "format": "$1$2"
+                    },
+                    "street": "STN",
+                    "postcode": "PLZ",
+                    "city": "ONM"
+                }
+            }
+        ]
+    }
+}
