@@ -14,10 +14,13 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://ags.myokaloosa.com/arcgis/rest/services/internet_webgis/MapServer/1",
+                "data": "https://gis.myokaloosa.com/gisdata/Shape%20Files/Transportation/Transportation.zip",
                 "website": "https://myokaloosa.com/gis_data",
-                "protocol": "ESRI",
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
+                    "format": "shapefile",
+                    "file": "rdspt.shp",
                     "number": "PAN",
                     "street": [
                         "PREDIR",
@@ -25,22 +28,26 @@
                         "TYPE",
                         "SUFDIR"
                     ],
-                    "unit": "ST_UNIT",
+                    "unit": [
+                        "SAD",
+                        "SAN"
+                    ],
                     "city": "ZIP_CITY",
-                    "postcode": "ZIP",
-                    "format": "geojson"
+                    "postcode": "ZIP"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://ags.myokaloosa.com/arcgis/rest/services/internet_webgis/MapServer/17",
+                "data": "https://gis.myokaloosa.com/gisdata/Property_Appraiser/Shapefiles/parcel.zip",
                 "website": "https://myokaloosa.com/gis_data",
-                "protocol": "ESRI",
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
-                    "pid": "PATPCL_PIN"
+                    "format": "shapefile",
+                    "file": "Public_Data/public.shp",
+                    "pid": "PIN"
                 }
             }
         ]

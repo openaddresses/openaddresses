@@ -1,0 +1,52 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17035",
+            "name": "Cumberland County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Cumberland"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/hEXJrPwm89CLXBYe/ArcGIS/rest/services/AddrPoints/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADR_NBR",
+                    "street": "xSTREET",
+                    "unit": "UNIT",
+                    "city": "xNEWCITST",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/hEXJrPwm89CLXBYe/ArcGIS/rest/services/DeKalbIL_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_Number"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/hEXJrPwm89CLXBYe/ArcGIS/rest/services/DeKalbIL_Buildings/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

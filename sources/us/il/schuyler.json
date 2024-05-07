@@ -14,20 +14,49 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_schuyler_co_il_taxmap/MapServer/0",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/SchuylerILFeatures/FeatureServer/5",
                 "protocol": "ESRI",
                 "conform": {
                     "number": {
                         "function": "regexp",
-                        "field": "site_address",
+                        "field": "GIS_Site_Address",
                         "pattern": "^([0-9]+)"
                     },
                     "street": {
                         "function": "regexp",
-                        "field": "site_address",
+                        "field": "GIS_Site_Address",
                         "pattern": "^(?:[0-9]+ )(.*)",
                         "replace": "$1"
                     },
+                    "city": {
+                        "function": "regexp",
+                        "field": "site_csz",
+                        "pattern": "^(.*)(?:\\sIL\\s\\d{5})$",
+                        "replace": "$1"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "site_csz",
+                        "pattern": "(IL)",
+                        "replace": "$1"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "site_csz",
+                        "pattern": "(\\d{5})",
+                        "replace": "$1"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/SchuylerILFeatures/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PIN",
                     "format": "geojson"
                 }
             }

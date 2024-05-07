@@ -14,20 +14,31 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_williamson_co_il_taxmap/MapServer/0",
+                "data": "https://ags.bhamaps.com/arcgisserver/rest/services/WilliamsonIL/WilliamsonIL_PAT_Taxmap/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "number": {
                         "function": "regexp",
-                        "field": "ADDRESS",
+                        "field": "address",
                         "pattern": "^([0-9]+)"
                     },
                     "street": {
                         "function": "regexp",
-                        "field": "ADDRESS",
+                        "field": "address",
                         "pattern": "^(?:[0-9]+ )(.*)",
                         "replace": "$1"
                     },
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://ags.bhamaps.com/arcgisserver/rest/services/WilliamsonIL/WilliamsonIL_PAT_Taxmap/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PIN",
                     "format": "geojson"
                 }
             }

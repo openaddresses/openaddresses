@@ -12,4 +12,4 @@ if __name__ == '__main__':
         if parts[-1] == 'zip':
             csv_filename = ('.'.join(parts[:-1])) + '.csv'
             if not os.path.exists('./build/' + csv_filename):
-                print '%s/%s' % (GML_PATH, f)
+                print('%s/%s' % (GML_PATH, f))

@@ -14,20 +14,38 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services5.arcgis.com/pweYHqdOby1TE9DD/ArcGIS/rest/services/TaxParcelsFull/FeatureServer/0",
+                "data": "https://services5.arcgis.com/pweYHqdOby1TE9DD/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": {
-                        "function": "regexp",
-                        "field": "site_addre",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "site_addre",
-                        "pattern": "^(?:[0-9]+ +)(.*)",
-                        "replace": "$1"
-                    },
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "city": "Post_Comm",
+                    "region": "State",
+                    "postcode": "Post_Code",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/pweYHqdOby1TE9DD/ArcGIS/rest/services/PublishedFabric/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "ParcelNumb",
                     "format": "geojson"
                 }
             }

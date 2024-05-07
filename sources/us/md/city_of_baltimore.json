@@ -21,20 +21,28 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://data.baltimorecity.gov/download/jk3c-vrfy/application/zip",
-                "website": "https://data.baltimorecity.gov/",
+                "data": "https://opendata.arcgis.com/api/v3/datasets/d86a3d76c0984ee7a8d97d9604975bcf_0/downloads/data?format=shp&spatialRefId=2248&where=1%3D1",
+                "website": "https://data.baltimorecity.gov/datasets/d86a3d76c0984ee7a8d97d9604975bcf_0/explore",
                 "attribution": "City of Baltimore",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "format": "shapefile-polygon",
-                    "number": "bldg_no",
-                    "street": [
-                        "stdirpre",
-                        "st_name",
-                        "st_type"
+                    "format": "shapefile",
+                    "number": [
+                        "addr_numbe",
+                        "addr_frac"
                     ],
-                    "unit": "UNIT_NUM"
+                    "street": [
+                        "st_dir",
+                        "st_name",
+                        "st_type",
+                        "dirsuf"
+                    ],
+                    "unit": "unit",
+                    "postcode": "zip_code",
+                    "city": "inc_muni",
+                    "district": "county",
+                    "region": "state"
                 }
             }
         ]

@@ -11,8 +11,8 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://data.openaddresses.io/cache/uploads/sergiyprotsiv/d22567/thuringen.txt.zip",
-                "website": "https://onlineshop.thueringen.de/th9/tlvermgeo/geoshop/flure/hauskoordinaten/",
+                "data": "https://geoportal.geoportal-th.de/hausko_umr/HK-TH.zip",
+                "website": "https://geoportal.thueringen.de/gdi-th/download-offene-geodaten",
                 "protocol": "http",
                 "compression": "zip",
                 "license": {
@@ -24,21 +24,23 @@
                 "conform": {
                     "format": "csv",
                     "csvsplit": ";",
-                    "headers": -1,
-                    "file": "thuringen.txt",
-                    "srs": "EPSG:4647",
-                    "street": "COLUMN14",
-                    "city": "COLUMN19",
+                    "file": "adressen-th.txt",
+                    "srs": "EPSG:25832",
+                    "id": "oid",
+                    "street": "str",
+                    "city": "gmd",
+                    "district": "kreis",
+                    "postcode": "postplz",
                     "number": {
                         "function": "format",
                         "fields": [
-                            "COLUMN10",
-                            "COLUMN11"
+                            "hnr",
+                            "adz"
                         ],
                         "format": "$1$2"
                     },
-                    "lat": "COLUMN13",
-                    "lon": "COLUMN12"
+                    "lat": "nordwert",
+                    "lon": "ostwert"
                 }
             }
         ]

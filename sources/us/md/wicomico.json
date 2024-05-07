@@ -1,0 +1,37 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "24045",
+            "name": "Wicomico",
+            "state": "Maryland"
+        },
+        "country": "us",
+        "state": "md",
+        "county": "Wicomico"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.wicomicocounty.org/536/Map-Room",
+                "data": "https://gisapps.wicomicocounty.org/server/rest/services/BaseMap/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STRTNUM",
+                    "street": [
+                        "STRTDIR",
+                        "STRTNAM",
+                        "STRTTYP",
+                        "STRTSFX"
+                    ],
+                    "unit": "STRTUNT",
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ]
+    }
+}

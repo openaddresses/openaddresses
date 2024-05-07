@@ -14,18 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://map.wingis.org/arcgis/rest/services/NPPWD/MapServer/21",
+                "data": "https://maps.wingis.org/public/rest/services/NG911/MapServer/9",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "LOPHouseNumber",
-                    "street": [
-                        "LOPPrefixDirectional",
-                        "LOPStreetName",
-                        "LOPStreetSuffix",
-                        "LOPPostDirectional"
+                    "number": "STNO",
+                    "street": "STNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "SUITE"
                     ],
-                    "city": "TownshipName"
+                    "city": "MSAGComm",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.wingis.org/public/rest/services/NG911/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

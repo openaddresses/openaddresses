@@ -14,12 +14,9 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://www.co.amador.ca.us/home/showdocument?id=7972",
-                "website": "http://www.co.amador.ca.us/departments/information-technology/gis/gis-data",
+                "data": "https://services9.arcgis.com/Z65sx307Hunxj6eq/ArcGIS/rest/services/Assessor_Parcels/FeatureServer/0",
                 "attribution": "Amador County",
-                "protocol": "http",
-                "year": 2012,
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
                     "id": "APN",
                     "number": "ADDRNUM",
@@ -30,8 +27,32 @@
                         "ADDRSUFFIX"
                     ],
                     "city": "ADDRCITY",
+                    "region": "ADDRSTATE",
                     "postcode": "ADDRZIP",
-                    "format": "shapefile-polygon"
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services9.arcgis.com/Z65sx307Hunxj6eq/ArcGIS/rest/services/Assessor_Parcels/FeatureServer/0",
+                "attribution": "Amador County",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "APN",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services9.arcgis.com/Z65sx307Hunxj6eq/ArcGIS/rest/services/BuildingFootprints/FeatureServer/0",
+                "attribution": "Amador County",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
