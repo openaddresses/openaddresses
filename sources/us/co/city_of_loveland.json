@@ -22,22 +22,22 @@
             {
                 "name": "city",
                 "attribution": "City of Loveland",
-                "data": "http://maps.cityofloveland.org/Data/AddressPoint.zip",
-                "protocol": "http",
-                "compression": "zip",
-                "website": "http://www.ci.loveland.co.us/index.aspx?page=436",
+                "data": "https://mapserv.cityofloveland.org/arcgis/rest/services/layers/Addresses_Public/MapServer/0",
+                "protocol": "ESRI",
+                "website": "https://loveland-gis-thelogicsystem.hub.arcgis.com/datasets/799bd22058a24c35a43450914e8352ff_0/explore",
                 "conform": {
-                    "format": "shapefile",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "ADDRESS"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "ADDRESS",
-                        "pattern": "^(?:[0-9]+ )(.*) ?(#[0-9A-Z]+|GAR[0-9]+|BLDG?#?[0-9]+|1/2)?$",
-                        "replace": "$1"
-                    }
+                    "format": "geojson",
+                    "id": "LOCID",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "STPRE",
+                        "STNAME",
+                        "STTYPE",
+                        "STSUF"
+                    ],
+                    "unit": "APT",
+                    "city": "CITY",
+                    "postcode": "ZIPCODE"
                 }
             }
         ]
