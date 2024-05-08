@@ -1,0 +1,40 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "24018",
+            "name": "Dorchester",
+            "state": "Maryland"
+        },
+        "country": "us",
+        "state": "md",
+        "county": "Dorchester"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://dorchestercountymd.com/",
+                "data": "https://services7.arcgis.com/yqhlYKSnzjiOzQig/ArcGIS/rest/services/Addressing_2023/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "format",
+                        "fields": ["NUMBER_", "House_No_S"],
+                        "format": "$1$2"
+                    },
+                    "street": [
+                        "Street_Pre",
+                        "Street_Nam",
+                        "Street_typ",
+                        "Street_Suf"
+                    ],
+                    "unit": "Unit",
+                    "city": "NEWCITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ]
+    }
+}
