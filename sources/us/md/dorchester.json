@@ -19,20 +19,17 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "format",
-                        "fields": ["NUMBER_", "House_No_S"],
-                        "format": "$1$2"
-                    },
+                    "number": "add_number",
                     "street": [
-                        "Street_Pre",
-                        "Street_Nam",
-                        "Street_typ",
-                        "Street_Suf"
+                        "strtdir",
+                        "strtnam",
+                        "strttyp",
+                        "strtsfx"
                     ],
-                    "unit": "Unit",
-                    "city": "NEWCITY",
-                    "postcode": "ZIPCODE"
+                    "unit": "strtunt",
+                    "city": "uninc_comm",
+                    "district": "county",
+                    "postcode": "zipcode"
                 }
             }
         ]
