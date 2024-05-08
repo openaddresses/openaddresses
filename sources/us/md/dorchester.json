@@ -1,0 +1,37 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "24019",
+            "name": "Dorchester",
+            "state": "Maryland"
+        },
+        "country": "us",
+        "state": "md",
+        "county": "Dorchester"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://dorchestercountymd.com/planning-zoning/maps-gis-data/",
+                "data": "https://services7.arcgis.com/yqhlYKSnzjiOzQig/ArcGIS/rest/services/Addressing_2023/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "add_number",
+                    "street": [
+                        "strtdir",
+                        "strtnam",
+                        "strttyp",
+                        "strtsfx"
+                    ],
+                    "unit": "strtunt",
+                    "city": "uninc_comm",
+                    "district": "county",
+                    "postcode": "zipcode"
+                }
+            }
+        ]
+    }
+}
