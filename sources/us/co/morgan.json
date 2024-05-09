@@ -14,21 +14,31 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gisftp02.state.co.us/c.StateLevelAgencies/GOV/OIT/CSO/GIS/CY2017/Parcels/Shapefiles/Public/Morgan.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services6.arcgis.com/iSzqv8eal4TO2oVb/ArcGIS/rest/services/ParcelAddress/FeatureServer/0",
+                "website": "https://morgancountyco.maps.arcgis.com/apps/Solutions/s2.html?appid=98b97c7f37e2453f85938d547d2b7f11",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "situsAdd"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "situsAdd"
-                    },
-                    "city": "sitAddCty",
-                    "postcode": "sitAddZip"
+                    "format": "geojson",
+                    "number": "StreetNumber",
+                    "street": [
+                        "StreetDirection",
+                        "StreetName",
+                        "StreetType"
+                    ],
+                    "city": "City",
+                    "postcode": "Postal"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/iSzqv8eal4TO2oVb/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "website": "https://morgancountyco.maps.arcgis.com/apps/Solutions/s2.html?appid=98b97c7f37e2453f85938d547d2b7f11",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "FID"
                 }
             }
         ]
