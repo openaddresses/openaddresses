@@ -1,0 +1,45 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "CA",
+            "country": "Canada"
+        },
+        "country": "ca"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "protocol": "http",
+                "data": "https://data.openaddresses.io/cache/uploads/iandees/e651b8/canada-nar-combined.csv.zip",
+                "website": "https://www150.statcan.gc.ca/n1/pub/46-26-0002/462600022022001-eng.htm",
+                "compression": "zip",
+                "language": "en",
+                "license": {
+                    "url": "https://www.statcan.gc.ca/en/reference/licence",
+                    "attribution": true,
+                    "attribution name": "Adapted from Statistics Canada, National Address Register, 2024-05-11. This does not constitute an endorsement by Statistics Canada of this product.",
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "csv",
+                    "number": [
+                        "CIVIC_NO",
+                        "CIVIC_NO_SUFFIX"
+                    ],
+                    "unit": "APT_NO_LABEL",
+                    "street": [
+                        "OFFICIAL_STREET_NAME",
+                        "OFFICIAL_STREET_TYPE",
+                        "OFFICIAL_STREET_DIR"
+                    ],
+                    "region": "MAIL_PROV_ABVN",
+                    "postcode": "MAIL_POSTAL_CODE",
+                    "lat": "REPPOINT_LATITUDE",
+                    "lon": "REPPOINT_LONGITUDE"
+                }
+            }
+        ]
+    }
+}
