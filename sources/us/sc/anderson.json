@@ -14,132 +14,35 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://propertyviewer.andersoncountysc.org/arcgis/rest/services/Address_Viewer/MapServer/0",
+                "data": "http://propertyviewer.andersoncountysc.org/arcgis/rest/services/QueryMap/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "HOUSE_NUMB",
-                        "pattern": "^(\\d+)"
-                    },
-                    "street": "RDNAME",
-                    "unit": {
-                        "function": "regexp",
-                        "field": "HOUSE_NUMB",
-                        "pattern": "^\\d+\\s+(.+)$"
-                    },
-                    "city": "PO_NAME",
-                    "postcode": "ZIP"
-                },
-                "test": {
-                    "enabled": true,
-                    "description": "these are tests that extract optional unit from number",
-                    "acceptance-tests": [
-                        {
-                            "description": "address without unit",
-                            "inputs": {
-                                "HOUSE_NUMB": "106",
-                                "RDNAME": "J MAYNARD DR",
-                                "PO_NAME": "WILLIAMSTON",
-                                "ZIP": "29697"
-                            },
-                            "expected": {
-                                "number": "106",
-                                "street": "J MAYNARD DR",
-                                "unit": "",
-                                "city": "WILLIAMSTON",
-                                "postcode": "29697"
-                            }
-                        },
-                        {
-                            "description": "non-digits house number",
-                            "inputs": {
-                                "HOUSE_NUMB": "UKN",
-                                "RDNAME": "COX LAKE RD",
-                                "PO_NAME": "BELTON",
-                                "ZIP": "29627"
-                            },
-                            "expected": {
-                                "number": "",
-                                "street": "COX LAKE RD",
-                                "unit": "",
-                                "city": "BELTON",
-                                "postcode": "29627"
-                            }
-                        },
-                        {
-                            "description": "address with alpha unit",
-                            "inputs": {
-                                "HOUSE_NUMB": "321 A",
-                                "RDNAME": "CLUB RD",
-                                "PO_NAME": "WILLIAMSTON",
-                                "ZIP": "29697"
-                            },
-                            "expected": {
-                                "number": "321",
-                                "street": "CLUB RD",
-                                "unit": "A",
-                                "city": "WILLIAMSTON",
-                                "postcode": "29697"
-                            }
-                        },
-                        {
-                            "description": "address with numeric unit",
-                            "inputs": {
-                                "HOUSE_NUMB": "126 5",
-                                "RDNAME": "LODGE RD",
-                                "PO_NAME": "PENDLETON",
-                                "ZIP": "29670"
-                            },
-                            "expected": {
-                                "number": "126",
-                                "street": "LODGE RD",
-                                "unit": "5",
-                                "city": "PENDLETON",
-                                "postcode": "29670"
-                            }
-                        },
-                        {
-                            "description": "address with numeric+alpha unit",
-                            "inputs": {
-                                "HOUSE_NUMB": "4023 35A",
-                                "RDNAME": "WHITEHALL RD",
-                                "PO_NAME": "ANDERSON",
-                                "ZIP": "29626"
-                            },
-                            "expected": {
-                                "number": "4023",
-                                "street": "WHITEHALL RD",
-                                "unit": "35A",
-                                "city": "ANDERSON",
-                                "postcode": "29626"
-                            }
-                        },
-                        {
-                            "description": "address with alpha+numeric unit",
-                            "inputs": {
-                                "HOUSE_NUMB": "4115 B9",
-                                "RDNAME": "LIBERTY HWY",
-                                "PO_NAME": "ANDERSON",
-                                "ZIP": "29621"
-                            },
-                            "expected": {
-                                "number": "4115",
-                                "street": "LIBERTY HWY",
-                                "unit": "B9",
-                                "city": "ANDERSON",
-                                "postcode": "29621"
-                            }
-                        }
-                    ]
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://propertyviewer.andersoncountysc.org/arcgis/rest/services/Address_Viewer/MapServer/5",
+                "data": "https://propertyviewer.andersoncountysc.org/arcgis/rest/services/Address_Viewer/MapServer/4",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
