@@ -29,20 +29,19 @@
                     "format": "gdb",
                     "file": "DP_QLD_DCDB_WOS_CUR.gdb",
                     "layer": "QLD_LOCATION_ADDRESS",
-                    "unit": "UNIT_NUMBER",
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUMBER",
+                        "UNIT_SUFFIX"
+                    ],
                     "number": "STREET_NUMBER",
                     "street": [
                         "STREET_NAME",
                         "STREET_TYPE",
                         "STREET_SUFFIX"
                     ],
-                    "city": {
-                        "function": "regexp",
-                        "field": "CITY_PLACE",
-                        "pattern": "^([^,]*)"
-                    },
+                    "city": "LOCALITY",
                     "region": "STATE",
-                    "postcode": "POSTCODE",
                     "notes": "LOTPLAN"
                 }
             }
