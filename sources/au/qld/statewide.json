@@ -21,28 +21,27 @@
                     "text": "CC BY 4.0",
                     "url": "http://creativecommons.org/licenses/by/4.0/",
                     "attribution": true,
-                    "attribution name": "© State of Queensland (Department of Natural Resources, Mines and Energy) 2021",
+                    "attribution name": "© State of Queensland (Department of Resources) 2024",
                     "share-alike": false
                 },
                 "note": "must use web interface & email workflow to download fresh data.",
                 "conform": {
                     "format": "gdb",
                     "file": "DP_QLD_DCDB_WOS_CUR.gdb",
-                    "layer": "QLD_ADDRESS_QAMF",
-                    "unit": "UNIT_NUMBER",
+                    "layer": "QLD_LOCATION_ADDRESS",
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUMBER",
+                        "UNIT_SUFFIX"
+                    ],
                     "number": "STREET_NUMBER",
                     "street": [
                         "STREET_NAME",
                         "STREET_TYPE",
                         "STREET_SUFFIX"
                     ],
-                    "city": {
-                        "function": "regexp",
-                        "field": "CITY_PLACE",
-                        "pattern": "^([^,]*)"
-                    },
+                    "city": "LOCALITY",
                     "region": "STATE",
-                    "postcode": "POSTCODE",
                     "notes": "LOTPLAN"
                 }
             }
@@ -64,7 +63,7 @@
                     "text": "CC BY 4.0",
                     "url" : "http://creativecommons.org/licenses/by/4.0/",
                     "attribution": true,
-                    "attribution name": "© State of Queensland (Department of Natural Resources, Mines and Energy) 2021",
+                    "attribution name": "© State of Queensland (Department of Resources) 2024",
                     "share-alike": false
                 }
             }
@@ -83,7 +82,7 @@
                     "text": "CC BY 4.0",
                     "url" : "http://creativecommons.org/licenses/by/4.0/",
                     "attribution": true,
-                    "attribution name": "© State of Queensland (Department of Natural Resources, Mines and Energy) 2021",
+                    "attribution name": "© State of Queensland (Department of Resources) 2024",
                     "share-alike": false
                 }
             }
