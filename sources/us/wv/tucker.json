@@ -15,13 +15,22 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://services9.arcgis.com/TslismvRdSLt6AGq/ArcGIS/rest/services/Improvement_Sites/FeatureServer/0",
+                "data": "https://services9.arcgis.com/TslismvRdSLt6AGq/ArcGIS/rest/services/Tucker_AGOL_Current/FeatureServer/0",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDR_LABEL",
-                    "street": "LABEL",
-                    "region": "STATE",
-                    "postcode": "ZIP"
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALI",
+                    "region": "State",
+                    "postcode": "Zip"
                 }
             }
         ],
@@ -29,10 +38,10 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://services9.arcgis.com/TslismvRdSLt6AGq/ArcGIS/rest/services/Parcel_Polygons/FeatureServer/0",
+                "data": "https://services9.arcgis.com/TslismvRdSLt6AGq/ArcGIS/rest/services/Tucker_AGOL_Current/FeatureServer/3",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PARID"
+                    "pid": "pid"
                 }
             }
         ]
