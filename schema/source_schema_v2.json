@@ -12,6 +12,17 @@
         "schema": {
             "type": "number"
         },
+        "runner": {
+            "type": "object",
+            "properties": {
+                "instance": {
+                    "type": "string",
+                    "enum": ["regular", "large"],
+                    "default": "regular",
+                    "description": "The Instance Size to run the ETL on - 99% of the time leave this field unpopulated"
+                }
+            }
+        },
         "coverage": {
             "$ref": "./util/coverage.json"
         },
