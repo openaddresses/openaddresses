@@ -31,13 +31,9 @@
                     "id": "address_id",
                     "unit": "unit_value",
                     "number": {
-                        "function": "format",
-                        "fields": [
-                            "address_number",
-                            "address_number_suffix",
-                            "address_number_high"
-                        ],
-                        "format": "$1$2-$3"
+                        "function": "remove_prefix",
+                        "field": "full_address_number",
+                        "field_to_remove": "unit_value"
                     },
                     "street": "full_road_name",
                     "city": "suburb_locality",
