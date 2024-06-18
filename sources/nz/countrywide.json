@@ -31,9 +31,10 @@
                     "id": "address_id",
                     "unit": "unit_value",
                     "number": {
-                        "function": "remove_prefix",
+                        "function": "regexp",
                         "field": "full_address_number",
-                        "field_to_remove": "unit_value"
+                        "pattern": "^(?:.*/)(.*)",
+                        "replace": "$1"
                     },
                     "street": "full_road_name",
                     "city": "suburb_locality",
