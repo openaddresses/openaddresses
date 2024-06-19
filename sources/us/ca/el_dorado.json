@@ -22,7 +22,10 @@
                     "id": "PRCL_ID",
                     "format": "geojson",
                     "city": "CITY",
-                    "number": "ADDR_NBR",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PRCL_ADDR"
+                    },
                     "street": [
                         "ADDR_STR_NAME",
                         "ADDR_STR_TYPE"
