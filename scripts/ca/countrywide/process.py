@@ -8,7 +8,7 @@ addresses.
 
 This script reads all CSVs for both the Addresses and Locations, joins them on the LOC_GUID,
 and saves out the addresses with new fields REPPOINT_LATITUDE and REPPOINT_LONGITUDE leaving
-all other address fields in place. It also converts to UTF8 in the process from ISO-8859-1.
+all other address fields in place.
 
 This assumes you've downloaded the data from the path above and are running it in the unzipped
 directory.
@@ -38,12 +38,12 @@ def read_csvs(z, prefix, **kwargs):
             continue
         logging.info(f"Loading {info.filename}")
         with z.open(info.filename) as f:
-            dfs.append(pd.read_csv(f, encoding="ISO-8859-1", **kwargs))
+            dfs.append(pd.read_csv(f, encoding="UTF-8", **kwargs))
     return pd.concat(dfs)
 
 
 def main():
-    with zipfile.ZipFile("2023.zip") as z:
+    with zipfile.ZipFile("2024.zip") as z:
         logging.info("Loading addresses")
         addresses = read_csvs(z, "Addresses")
 
