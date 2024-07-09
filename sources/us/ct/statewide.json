@@ -13,19 +13,41 @@
             {
                 "name": "state",
                 "conform": {
-                    "format": "geojson",
-                    "number": "CompleteAddressNumber",
-                    "street": "CompleteStreetName",
-                    "unit": [
-                        "Subaddress1Type",
-                        "Subaddress1Identifier"
+                    "format": "gdb",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
                     ],
-                    "postcode": "ZipCode",
-                    "city": "Municipal_PlaceName",
-                    "district": "County_PlaceName",
-                    "region": "StateName"
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "postcode": "Post_Code",
+                    "city": "MSAGComm",
+                    "district": "County",
+                    "region": "State"
                 },
-                "data": "https://www.ctgismaps2.ct.gov/arcgis/rest/services/CT_Open_Maps/Address_Points/MapServer/0",
+                "data": "https://data.ct.gov/api/views/m6xx-nb28/files/db1ae814-2127-4d16-b6eb-feb0857aeb6e?filename=CT911_CTData.gdb.zip",
+                "protocol": "http",
+                "compression": "zip"
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Link"
+                },
+                "data": "https://services3.arcgis.com/3FL1kr7L4LvwA2Kb/arcgis/rest/services/Connecticut_State_Parcel_Layer_2023/FeatureServer/0",
                 "protocol": "ESRI"
             }
         ]
