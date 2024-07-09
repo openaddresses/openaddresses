@@ -14,23 +14,32 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/StarkAuditor/MapServer/0",
+                "data": "https://services3.arcgis.com/BxhhNw1m7gGPYn2v/ArcGIS/rest/services/Stark_County_Address_Points_public/FeatureServer/1",
+                "website": "https://community-hub-starkcountynd.hub.arcgis.com/datasets/c9e427ddeecf48a08811ecea97d03936_1/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "PROPADDRESS",
-                        "pattern": "^([0-9]+)"
-                    },
+                    "number": "HOUSENUM",
                     "street": {
-                        "function": "regexp",
-                        "field": "PROPADDRESS",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    }
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "unit": "APT_NAME",
+                    "city": "CITY"
                 }
             }
-        ]
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/BxhhNw1m7gGPYn2v/ArcGIS/rest/services/Tax_Parcels_Public_View/FeatureServer/0",
+                "website": "https://community-hub-starkcountynd.hub.arcgis.com/datasets/162eed8e20a04272b27f5b103241aa21/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ] 
     }
 }
