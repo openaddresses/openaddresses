@@ -1,25 +1,36 @@
 {
     "coverage": {
-        "country": "uy",
         "ISO 3166": {
-            "alpha2": "UY",
-            "country": "Uruguay"
-        }
+            "country": "Uruguay",
+            "alpha2": "UY"
+        },
+        "country": "uy"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "country",
+                "data": "https://dl.digital-guard.org/out/a4a_uy_geoaddress_85800000202101_csv.zip",
+                "website": "https://github.com/digital-guard/preserv-UY/tree/main/data/_pk0002.02",
+                "license": {
+                    "text": " IDE Spatial Data Infrastructure (Infraestructura de Datos Espaciales – Presidencia de la republica)",
+                    "url": "https://dl.digital-guard.org/e40a8eae6ab287564b7eddb6f56ed7ba84678e2960320565e2371f3d3ffcdaee.pdf",
+                    "attribution": true,
+                    "attribution name": "Infraestructura de Datos Espaciales",
+                    "share-alike": false
+                },
                 "protocol": "http",
                 "compression": "zip",
-                "data": "https://data.openaddresses.io/cache/uploads/trescube/bf749a/uy.zip",
+                "language": "es",
                 "conform": {
-                    "format": "shapefile",
-                    "id": "id",
-                    "number": "numero",
-                    "street": "nombre",
-                    "postcode": "cp"
+                    "format": "csv",
+                    "srs": "EPSG:4326",
+                    "number": "hnum",
+                    "street": "via",
+                    "id": "gid",
+                    "lat": "latitude",
+                    "lon": "longitude"
                 }
             }
         ]
