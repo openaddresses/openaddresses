@@ -31,14 +31,13 @@
                         "field": "SitusAdd"
                     },
                     "street": {
-                        "function": "regexp",
+                        "function": "postfixed_street",
                         "field": "SitusAdd",
-                        "pattern": "^\\d+\\s(.+?)(?:\\s(?:BLDG|STE)\\s+\\w+\\s*)?$"
+                        "may_contain_units": true
                     },
                     "unit": {
-                        "function": "regexp",
-                        "field": "SitusAdd",
-                        "pattern": "^\\d+\\s.+?(\\s(?:BLDG|STE)\\s+\\w+\\s*)$"
+                        "function": "postfixed_unit",
+                        "field": "SitusAdd"
                     },
                     "city": "CITY"
                 },
