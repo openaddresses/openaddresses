@@ -14,32 +14,28 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://bibbgis.co.bibb.ga.us/warcgis/rest/services/TaxAssessor/TaxParcels/MapServer/0",
-                "website": "http://bibbgis.co.bibb.ga.us/mapsandapps/",
+                "data": "https://services2.arcgis.com/zPFLSOZ5HzUzzTQb/arcgis/rest/services/AddressPoint/FeatureServer/0",
+                "website": "https://macon-bibb-county-open-data-maconbibb.hub.arcgis.com/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "SITEADDRESS"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "SITEADDRESS"
-                    },
-                    "unit": "UNIT"
+                    "number": "ADDR_HN",
+                    "street": "FULLNAME",
+                    "unit": "UNIT",
+                    "postcode": "ZIP_1",
+                    "city": "City_1"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "http://bibbgis.co.bibb.ga.us/warcgis/rest/services/TaxAssessor/TaxParcels/MapServer/0",
-                "website": "http://bibbgis.co.bibb.ga.us/mapsandapps/",
+                "data": "https://services2.arcgis.com/zPFLSOZ5HzUzzTQb/arcgis/rest/services/Parcel_CAMA2022/FeatureServer/0",
+                "website": "https://macon-bibb-county-open-data-maconbibb.hub.arcgis.com/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PARCELID"
+                    "pid": "PARCEL_NO"
                 }
             }
         ]
