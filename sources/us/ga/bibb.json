@@ -14,23 +14,39 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services2.arcgis.com/zPFLSOZ5HzUzzTQb/arcgis/rest/services/AddressPoint/FeatureServer/0",
+                "data": "https://services2.arcgis.com/zPFLSOZ5HzUzzTQb/ArcGIS/rest/services/SiteAddressPoints_MaconBibb/FeatureServer/0",
                 "website": "https://macon-bibb-county-open-data-maconbibb.hub.arcgis.com/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDR_HN",
-                    "street": "FULLNAME",
-                    "unit": "UNIT",
-                    "postcode": "ZIP_1",
-                    "city": "City_1"
+                    "number": [
+                        "addressnumberprefix",
+                        "addressnumber",
+                        "addressnumbersuffix"
+                    ],
+                    "street": [
+                        "streetnamepremodifier",
+                        "streetnamepredirectional",
+                        "streetnamepretype",
+                        "streetname",
+                        "streetnameposttype",
+                        "streetnamepostdirectional",
+                        "streetnamepostmodifier"
+                    ],
+                    "unit": [
+                        "subaddresstype1",
+                        "subaddressidentifier1"
+                    ],
+                    "city": "placename",
+                    "region": "statename",
+                    "postcode": "zipcode"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://services2.arcgis.com/zPFLSOZ5HzUzzTQb/arcgis/rest/services/Parcel_CAMA2022/FeatureServer/0",
+                "data": "https://services2.arcgis.com/zPFLSOZ5HzUzzTQb/ArcGIS/rest/services/ParcelCamaJune2024/FeatureServer/0",
                 "website": "https://macon-bibb-county-open-data-maconbibb.hub.arcgis.com/",
                 "protocol": "ESRI",
                 "conform": {
