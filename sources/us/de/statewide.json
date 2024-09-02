@@ -1,0 +1,47 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "10",
+            "state": "Delaware"
+        },
+        "country": "us",
+        "state": "de"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://enterprise.firstmaptest.delaware.gov/arcgis/rest/services/Location/County_Roads_and_Addresses/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUMBNER",
+                    "street": [
+                        "PREFIXDIRECTION",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFFIXDIRECTION"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://enterprise.firstmaptest.delaware.gov/arcgis/rest/services/PlanningCadastre/DE_StateParcels/FeatureServer/0",
+                "website": "https://de-firstmap-delaware.hub.arcgis.com/datasets/delaware::state-parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
+    }
+}
