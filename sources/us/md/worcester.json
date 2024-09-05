@@ -1,0 +1,69 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "24047",
+            "name": "Worcester County",
+            "state": "Maryland"
+        },
+        "country": "us",
+        "state": "md",
+        "county": "Worcester"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://wcg-gisweb.co.worcester.md.us/arcgis/rest/services/Worcester_Data/Worcester_Addresses_WGS84/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "addnum_pre",
+                        "add_number",
+                        "addnum_suf"
+                    ],
+                    "street": [
+                        "st_premod",
+                        "st_predir",
+                        "st_pretyp",
+                        "st_presep",
+                        "st_name",
+                        "st_postyp",
+                        "st_posdir",
+                        "st_posmod"
+                    ],
+                    "unit": [
+                        "unit_type",
+                        "unit_number"
+                    ],
+                    "city": "Community",
+                    "district": "county",
+                    "region": "state",
+                    "postcode": "zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://wcg-gisweb.co.worcester.md.us/arcgis/rest/services/Worcester_Data/Worcester_County_Parcel_Boundaries/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ACCTID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://wcg-gisweb.co.worcester.md.us/arcgis/rest/services/VESTA/VESTA_MAP/MapServer/29",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}
