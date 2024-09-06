@@ -1,29 +1,33 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "26005",
-            "name": "Allegan County",
+            "geoid": "26001",
+            "name": "Alcona County",
             "state": "Michigan"
         },
         "country": "us",
         "state": "mi",
-        "county": "Allegan"
+        "county": "Alcona"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.allegancounty.org/server/rest/services/Hosted/addresses_20240708/FeatureServer/44",
+                "data": "https://services.arcgis.com/R0IGaIgf2sox9aCY/ArcGIS/rest/services/MI_AlconaCo_March2024_Public/FeatureServer/46",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "NUMBER",
-                    "street": "ROADNAME",
-                    "unit": "NUMBERSUP",
-                    "city": "CITY",
-                    "district": "COUNTY",
-                    "postcode": "ZIP"
+                    "number": "Address__1",
+                    "street": "Full_Stree",
+                    "unit": [
+                        "Unit_Type",
+                        "Unit"
+                    ],
+                    "city": "MSAG_Commu",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Postal_Cod"
                 }
             }
         ],
@@ -31,7 +35,6 @@
             {
                 "name": "county",
                 "data": "https://gis.allegancounty.org/server/rest/services/Hosted/Current_Parcels_Sept/FeatureServer/0",
-                "website": "https://gis.allegancounty.org/portal/apps/sites/#/allegan-county-gis-services/datasets/5d8a97f7274944aab7a5bc6e8548a02f/about?layer=0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
