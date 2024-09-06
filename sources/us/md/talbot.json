@@ -1,34 +1,30 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "24045",
-            "name": "Wicomico",
+            "geoid": "24041",
+            "name": "Talbot County",
             "state": "Maryland"
         },
         "country": "us",
         "state": "md",
-        "county": "Wicomico"
+        "county": "Talbot"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "website": "https://www.wicomicocounty.org/536/Map-Room",
-                "data": "https://gisapps.wicomicocounty.org/server/rest/services/BaseMap/MapServer/5",
+                "data": "https://geodata.md.gov/appdata/rest/services/Addressing/MD_Addressing/MapServer/23",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "STRTNUM",
-                    "street": [
-                        "STRTDIR",
-                        "STRTNAM",
-                        "STRTTYP",
-                        "STRTSFX"
-                    ],
-                    "unit": "STRTUNT",
+                    "id": "ADDID",
+                    "number": "ADDNUMCPLT",
+                    "street": "NAMECPLT",
+                    "unit": "SUBBADDCPLT",
                     "city": "CITY",
                     "district": "COUNTY",
+                    "region": "STATE",
                     "postcode": "ZIPCODE"
                 }
             }
@@ -36,8 +32,7 @@
         "parcels": [
             {
                 "name": "county",
-                "website": "https://www.wicomicocounty.org/536/Map-Room",
-                "data": "https://gisapps.wicomicocounty.org/server/rest/services/BaseMap/MapServer/3",
+                "data": "https://gis.talbotdes.org/hosting/rest/services/Address_Mail_Parcels/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -48,8 +43,7 @@
         "buildings": [
             {
                 "name": "county",
-                "website": "https://www.wicomicocounty.org/536/Map-Room",
-                "data": "https://gisapps.wicomicocounty.org/server/rest/services/BuildingFootPrints2023/MapServer/1",
+                "data": "https://gis.talbotdes.org/hosting/rest/services/NewFolder/Buildings/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"

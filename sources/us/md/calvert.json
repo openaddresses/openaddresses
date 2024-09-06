@@ -1,0 +1,55 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "24009",
+            "name": "Calvert County",
+            "state": "Maryland"
+        },
+        "country": "us",
+        "state": "md",
+        "county": "Calvert"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.calvertcountymd.gov/server/rest/services/Public_Safety/Addresses_public/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": "PREMSNUM",
+                    "street": [
+                        "PREMSDIR",
+                        "PREMSDIR",
+                        "PREMSTYP"
+                    ],
+                    "city": "PREMSCITY",
+                    "postcode": "PREMZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.calvertcountymd.gov/server/rest/services/Countywide/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PRCLID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.calvertcountymd.gov/server/rest/services/Basemaps/Topographic_Basemap_2023/MapServer/9",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}
