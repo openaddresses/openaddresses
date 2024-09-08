@@ -1,0 +1,35 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "38",
+            "state": "North Dakota"
+        },
+        "country": "us",
+        "state": "nd"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://services1.arcgis.com/GOcSXpzwBHyk2nog/arcgis/rest/services/NDGISHUB_Parcels/FeatureServer/1",
+                "website": "https://gishubdata-ndgov.hub.arcgis.com/apps/8683ecae023c43d1a85343397b9490e6/explore",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PROPERTY_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PROPERTY_ADDRESS"
+                    },
+                    "city": "PROPERTY_CITY",
+                    "postcode": "PROPERTY_ZIP",
+                    "id": "PARCEL"
+                }
+            }
+        ]
+    }
+}
