@@ -12,22 +12,30 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://services1.arcgis.com/GOcSXpzwBHyk2nog/arcgis/rest/services/NDGISHUB_Parcels/FeatureServer/1",
+                "data": "https://files.slack.com/files-pri/T029HV94T-F07L92JNY06/download/ndparcels.gdb.zip?pub_secret=c72ff0aa97",
                 "website": "https://gishubdata-ndgov.hub.arcgis.com/apps/8683ecae023c43d1a85343397b9490e6/explore",
-                "protocol": "ESRI",
+                "contact": {
+                    "name": "Bob Nutsch",
+                    "phone": "701-328-3212",
+                    "email": "bnutsch@nd.gov"
+                },
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "gdb",
+                    "layer": "ndparcels",
                     "number": {
                         "function": "prefixed_number",
-                        "field": "PROPERTY_ADDRESS"
+                        "field": "PropertyAddress"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "PROPERTY_ADDRESS"
+                        "field": "PropertyAddress"
                     },
-                    "city": "PROPERTY_CITY",
-                    "postcode": "PROPERTY_ZIP",
-                    "id": "PARCEL"
+                    "city": "PropertyCity",
+                    "postcode": "PropertyZip",
+                    "id": "ParcelID",
+                    "accuracy": 2
                 }
             }
         ]
