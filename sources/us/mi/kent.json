@@ -22,7 +22,17 @@
                         "function": "postfixed_street",
                         "field": "PROPERTYADDRESS"
                     },
-                    "city": "PROPADDRESSCITY"
+                    "city": "PROPADDRESSCITY",
+                    "region": {
+                        "function": "regexp",
+                        "field": "PROPADDRESSSTATE_ZIPCODE",
+                        "pattern": "^([A-Z]{2})"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "PROPADDRESSSTATE_ZIPCODE",
+                        "pattern": "([0-9]{5})$"
+                    }
                 }
             }
         ],
