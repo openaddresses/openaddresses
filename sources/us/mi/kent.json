@@ -26,12 +26,14 @@
                     "region": {
                         "function": "regexp",
                         "field": "PROPADDRESSSTATE_ZIPCODE",
-                        "pattern": "^([A-Z]{2})"
+                        "pattern": "^([A-Z]{2})([0-9]{5})",
+                        "replace": "$1"
                     },
                     "postcode": {
                         "function": "regexp",
                         "field": "PROPADDRESSSTATE_ZIPCODE",
-                        "pattern": "([0-9]{5})$"
+                        "pattern": "^([A-Z]{2})([0-9]{5})",
+                        "replace": "$2"
                     }
                 }
             }
