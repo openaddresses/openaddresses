@@ -16,22 +16,25 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://services.arcgis.com/OLiydejKCZTGhvWg/arcgis/rest/services/Frankfurt_am_Main_Hauskoordinaten/FeatureServer/0",
-                "website": "http://www.offenedaten.frankfurt.de/",
+                "data": "https://offenedaten.frankfurt.de/dataset/9c902fd2-dd17-40cc-9fab-52c9c28aea3c/resource/59eae6ec-8788-4347-8760-257f50aaced7/download/adressen.csv",
+                "website": "https://www.offenedaten.frankfurt.de/",
                 "license": {
-                    "url": "http://www.govdata.de/dl-de/by-2-0",
+                    "url": "https://www.govdata.de/dl-de/by-1-0",
                     "text": "Datenlizenz Deutschland Namensnennung",
                     "attribution": true,
                     "share-alike": false,
                     "attribution name": "Stadtvermessungsamt Frankfurt am Main"
                 },
-                "protocol": "ESRI",
                 "conform": {
-                    "format": "geojson",
+                    "format": "csv",
+                    "csvsplit": ";",
+                    "srs": "EPSG:10288",
                     "city": "Field16",
                     "street": "Field14",
                     "number": "Field10",
-                    "postcode": "Field15"
+                    "postcode": "Field15",
+                    "lat": "Field13",
+                    "lon": "Field12"
                 }
             }
         ]
