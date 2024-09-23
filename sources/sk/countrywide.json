@@ -11,35 +11,35 @@
         "addresses": [
             {
                 "name": "country",
-                "data": "http://epsilon.sk/sk-countrywide.zip",
+                "data": "https://data.slovensko.sk/download?id=2b327c4f-f082-4686-8451-62fd1bcabc6a",
                 "attribution": "Ministerstvo vnútra Slovenskej republiky / Ministry of Interior of the Slovak Republic",
                 "website": "https://data.gov.sk/dataset/register-adries-register-vchodov",
                 "license": {
-                    "text": "CC BY 4.0",
-                    "url": "http://www.opendefinition.org/licenses/cc-by",
-                    "attribution": true,
+                    "text": "CC0 1.0",
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "attribution": false,
                     "attribution name": "Ministerstvo vnútra Slovenskej republiky / Ministry of Interior of the Slovak Republic",
                     "share-alike": false
                 },
                 "protocol": "http",
-                "compression": "zip",
+                "compression": "rar",
                 "conform": {
-                    "street": "street",
+                    "street": "ULICA",
                     "number": {
                         "function": "join",
                         "fields": [
-                            "constriptionnumber",
-                            "number"
+                            "SUPISNE_CISLO",
+                            "ORIENTACNE_CISLO_CELE"
                         ],
                         "separator": "/"
                     },
                     "format": "csv",
                     "csvsplit": ";",
-                    "file": "sk/countrywide.csv",
-                    "lat": "lat",
-                    "lon": "lon",
-                    "city": "city",
-                    "postcode": "postcode"
+                    "lat": "ADRBOD_Y",
+                    "lon": "ADRBOD_X",
+                    "city": "OKRES",
+                    "region": "KRAJ",
+                    "postcode": "PSC"
                 },
                 "test": {
                     "enabled": true,
