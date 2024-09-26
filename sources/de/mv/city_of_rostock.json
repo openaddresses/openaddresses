@@ -9,16 +9,30 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://www.opendata-hro.de/dataset/adressenliste/resource/65bba11e-6f8d-41e0-b539-7883edd61fe1",
+                "data": "https://geo.sv.rostock.de/download/opendata/adressenliste/adressenliste.csv",
                 "website": "http://www.opendata-hro.de/",
                 "license": {
-                    "url": "http://opendatacommons.org/licenses/by/1.0/",
-                    "attribution": true,
+                    "text": "CC0 1.0",
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "attribution": false,
                     "share-alike": false
                 },
                 "protocol": "http",
-                "year": "2014"
+                "conform": {
+                    "format": "csv",
+                    "srs": "EPSG:4326",
+                    "lat": "latitude",
+                    "lon": "longitude",
+                    "postcode": "postleitzahl",
+                    "city": "kreis_name",
+                    "street": "strasse_name",
+                    "number": [
+                        "hausnummer",
+                        "hausnummer_zusatz"
+                    ]
+                }
             }
+           
         ]
     }
 }
