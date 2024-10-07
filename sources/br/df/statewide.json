@@ -13,29 +13,51 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "http://www.geoservicos.segeth.df.gov.br/ArcGIS/rest/services/Operational/LOTE/MapServer/0",
-                "website": "http://www.geoportal.segeth.df.gov.br/",
-                "protocol": "ESRI",
+                "website": "https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Instituto Brasileiro de Geografia e Estatística"
+                },
+                "language": "pt",
+                "data": "https://data.openaddresses.io/cache/uploads/iandees/3a0edc/53_DF.zip",
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
-                    "accuracy": 2,
-                    "number": "lote",
-                    "street": [
-                        "setor",
-                        "quadra",
-                        "conjunto"
+                    "format": "csv",
+                    "id": "unique id",
+                    "lat": "lat",
+                    "lon": "lon",
+                    "number": [
+                        "number prefix",
+                        "number"
                     ],
-                    "city": {
-                        "function": "regexp",
-                        "field": "end_comp",
-                        "pattern": "^(Plano Piloto|Gama|Taguatinga|Brazlândia|Sobradinho|Planaltina|Paranoá|Núcleo Bandeirante|Ceilândia|Guará|Cruzeiro|Samambaia|Santa Maria|São Sebastião|Recanto das Emas|Lago Sul|Riacho Fundo|Lago Norte|Candangolândia|Águas Claras|Riacho Fundo II|Sudoeste e Octogonal|Varjão|Park Way|SCIA|Sobradinho II|Jardim Botânico|Itapoã|SIA|Vicente Pires|Fercal|)"
-                    },
+                    "street": [
+                        "street type",
+                        "street title",
+                        "street name"
+                    ],
+                    "unit": [
+                        "unit k1",
+                        "unit v1",
+                        "unit k2",
+                        "unit v2",
+                        "unit k3",
+                        "unit v3",
+                        "unit k4",
+                        "unit v4",
+                        "unit k5",
+                        "unit v5"
+                    ],
+                    "city": "municipality",
+                    "region": "state",
                     "postcode": {
                         "function": "regexp",
-                        "field": "cep",
+                        "field": "postal code",
                         "pattern": "^([0-9]{5})([0-9]{3})$",
                         "replace": "$1-$2"
-                    }
+                    },
+                    "notes": "note",
+                    "accuracy": 1
                 }
             }
         ]
