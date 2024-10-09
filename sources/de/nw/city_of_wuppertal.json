@@ -24,8 +24,17 @@
                     "srs": "EPSG:3857",
                     "format": "shapefile",
                     "street": "STR_NAME",
-                    "number": "HAUSNR",
-                    "unit": "ADR_ZUSATZ"
+                    "city": {
+                        "function": "constant",
+                        "value": "Wuppertal"
+                    },
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "HAUSNR",
+                            "ADR_ZUSATZ"
+                        ]
+                    }
                 }
             }
         ]

@@ -11,12 +11,12 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://gds.hessen.de/downloadcenter/20240927/Liegenschaftskataster/Hauskoordinaten%20ohne%20Postalische%20Angaben%20(txt)/Hauskoordinaten%20ohne%20Postalische%20Angaben-2023-02.zip",
+                "data": "https://gds.hessen.de/downloadcenter/20241014/Liegenschaftskataster/Hauskoordinaten%20ohne%20Postalische%20Angaben%20(txt)/Hauskoordinaten%20ohne%20Postalische%20Angaben-2023-02.zip",
                 "website": "https://gds.hessen.de/INTERSHOP/web/WFS/HLBG-Geodaten-Site/de_DE/-/EUR/ViewDownloadcenter-Start?path=Liegenschaftskataster/Hauskoordinaten%20ohne%20Postalische%20Angaben%20(txt)",
                 "protocol": "http",
                 "compression": "zip",
                 "license": {
-                    "text": "DL-DE->Zero-2.0",
+                    "text": "dl-de/zero-2-0",
                     "url": "https://www.govdata.de/dl-de/zero-2-0"
                 },
                 "conform": {
@@ -29,16 +29,36 @@
                     "city": "gmd",
                     "district": "kreis",
                     "number": {
-                        "function": "format",
+                        "function": "join",
                         "fields": [
                             "hnr",
                             "adz"
-                        ],
-                        "format": "$1$2"
+                        ]
                     },
                     "lat": "nordwert",
                     "lon": "ostwert"
-                }
+                },
+                "frequency": "once"
+            }
+        ],
+        "buildings": [
+            {
+                "name": "state",
+                "data": "https://gds.hessen.de/downloadcenter/20241014/Liegenschaftskataster/Hausumringe%20(shape)/Hausumringe%20Hessen.zip",
+                "website": "https://gds.hessen.de/INTERSHOP/web/WFS/HLBG-Geodaten-Site/de_DE/-/EUR/ViewDownloadcenter-Start?path=Liegenschaftskataster/Hausumringe%20(shape)",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "text": "dl-de/zero-2-0",
+                    "url": "https://www.govdata.de/dl-de/zero-2-0"
+                },
+                "conform": {
+                    "format": "shapefile",
+                    "file": "gebaeude-he.shp",
+                    "srs": "EPSG:25832",
+                    "id": "oi"
+                },
+                "frequency": "once"
             }
         ]
     }
