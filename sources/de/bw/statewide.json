@@ -1,0 +1,69 @@
+{
+    "coverage": {
+        "country": "de",
+        "state": "bw",
+        "ISO 3166": {
+            "alpha2": "DE-BW",
+            "country": "Germany",
+            "state": "Baden-Württemberg"
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "protocol": "http",
+                "data": "https://opengeodata.lgl-bw.de/data/hk/hk_bw.zip",
+                "website": "https://www.lgl-bw.de/Produkte/Liegenschaftskataster/Hauskoordinaten/",
+                "conform": {
+                    "format": "csv",
+                    "accuracy": 1,
+                    "srs": "EPSG:25832",
+                    "file": "adressen-bw.txt",
+                    "csvsplit": ";",
+                    "headers": -1,
+                    "id": "COLUMN2",
+                    "number": "COLUMN16",
+                    "street": "COLUMN15",
+                    "city": "COLUMN11",
+                    "region": "COLUMN5",
+                    "lon": "COLUMN19",
+                    "lat": "COLUMN20"
+                },
+                "compression": "zip",
+                "license": {
+                    "url": "https://www.govdata.de/dl-de/by-2-0",
+                    "text": "DL-DE->BY-2.0",
+                    "attribution": true,
+                    "attribution name": "LGL, www.lgl-bw.de, dl-de/by-2-0"
+                },
+                "language": "de",
+                "frequency": "monthly"
+            }
+        ],
+        "buildings": [
+            {
+                "name": "state",
+                "protocol": "http",
+                "data": "https://opengeodata.lgl-bw.de/data/hu/hu_bw.zip",
+                "website": "https://www.lgl-bw.de/Produkte/Liegenschaftskataster/Hausumringe/",
+                "conform": {
+                    "format": "shapefile",
+                    "srs": "EPSG:25832",
+                    "file": "gebaeude-bw.shp",
+                    "id": "OI"
+                },
+                "compression": "zip",
+                "license": {
+                    "url": "https://www.govdata.de/dl-de/by-2-0",
+                    "text": "DL-DE->BY-2.0",
+                    "attribution": true,
+                    "attribution name": "LGL, www.lgl-bw.de, dl-de/by-2-0"
+                },
+                "language": "de",
+                "frequency": "monthly"
+            }
+        ]
+    }
+}
