@@ -1,0 +1,25 @@
+{
+    "type": "object",
+    "required": [
+        "function",
+        "field",
+        "index"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "function": {
+            "type": "string",
+            "enum": [
+                "get"
+            ]
+        },
+        "field": {
+            "type": "string",
+            "pattern": "^.+$"
+        },
+        "index": {
+            "type": "integer",
+            "minimum": 0
+        }
+    }
+}
