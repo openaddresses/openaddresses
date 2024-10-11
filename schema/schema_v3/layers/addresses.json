@@ -1,0 +1,388 @@
+{
+    "type": "object",
+    "required": [
+        "conform"
+    ],
+    "properties": {
+        "conform": {
+            "type": "object",
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "format": {
+                                "const": "csv"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "lon",
+                            "lat"
+                        ]
+                    },
+                    "else": {
+                        "not": {
+                            "required": [
+                                "lon",
+                                "lat",
+                                "csvsplit",
+                                "headers",
+                                "skiplines"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "format": {
+                                "const": "gdb"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "layer"
+                        ]
+                    },
+                    "else": {
+                        "not": {
+                            "required": [
+                                "layer"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "additionalProperties": false,
+            "required": [
+                "format",
+                "number",
+                "street"
+            ],
+            "properties": {
+                "format": {
+                    "type": "string",
+                    "enum": [
+                        "geojson",
+                        "shapefile",
+                        "shapefile-polygon",
+                        "gdb",
+                        "xml",
+                        "csv"
+                    ]
+                },
+                "addrtype": {
+                    "type": "string",
+                    "description": "industrial, residential, etc.",
+                    "minLength": 1
+                },
+                "accuracy": {
+                    "type": "integer",
+                    "description": "0=User Corrected, 1=Rooftop, 2=On Parcel, 3=Driveway, 4=Interpolation, 5=Unknown",
+                    "minimum": 1,
+                    "maximum": 5,
+                    "default": 5
+                },
+                "srs": {
+                    "type": "string",
+                    "pattern": "EPSG:[0-9]+"
+                },
+                "file": {
+                    "type": "string",
+                    "pattern": "^(?![.\\\/])[^\\\\]*$"
+                },
+                "layer": {
+                    "description": "The layer to use in the GDB",
+                    "oneOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    ]
+                },
+                "encoding": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "csvsplit": {
+                    "type": "string",
+                    "minLength": 1,
+                    "default": ","
+                },
+                "headers": {
+                    "type": "integer",
+                    "minimum": -1
+                },
+                "skiplines": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "notes": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "id": {
+                    "description": "The unique identifier",
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        {
+                            "$ref": "../functions/regexp.json"
+                        },
+                        {
+                            "$ref": "../functions/first_non_empty.json"
+                        },
+                        {
+                            "$ref": "../functions/remove_prefix.json"
+                        },
+                        {
+                            "$ref": "../functions/remove_postfix.json"
+                        },
+                        {
+                            "$ref": "../functions/join.json"
+                        },
+                        {
+                            "$ref": "../functions/format.json"
+                        },
+                        {
+                            "$ref": "../functions/chain.json"
+                        },
+                        {
+                            "$ref": "../functions/get.json"
+                        },
+                        {
+                            "$ref": "../functions/constant.json"
+                        }
+                    ]
+                },
+                "street": {
+                    "description": "The street/road name",
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        {
+                            "$ref": "../functions/regexp.json"
+                        },
+                        {
+                            "$ref": "../functions/first_non_empty.json"
+                        },
+                        {
+                            "$ref": "../functions/postfixed_street.json"
+                        },
+                        {
+                            "$ref": "../functions/remove_prefix.json"
+                        },
+                        {
+                            "$ref": "../functions/remove_postfix.json"
+                        },
+                        {
+                            "$ref": "../functions/join.json"
+                        },
+                        {
+                            "$ref": "../functions/format.json"
+                        },
+                        {
+                            "$ref": "../functions/chain.json"
+                        },
+                        {
+                            "$ref": "../functions/get.json"
+                        },
+                        {
+                            "$ref": "../functions/constant.json"
+                        }
+                    ]
+                },
+                "number": {
+                    "description": "The house number",
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        {
+                            "$ref": "../functions/regexp.json"
+                        },
+                        {
+                            "$ref": "../functions/first_non_empty.json"
+                        },
+                        {
+                            "$ref": "../functions/prefixed_number.json"
+                        },
+                        {
+                            "$ref": "../functions/remove_prefix.json"
+                        },
+                        {
+                            "$ref": "../functions/remove_postfix.json"
+                        },
+                        {
+                            "$ref": "../functions/join.json"
+                        },
+                        {
+                            "$ref": "../functions/format.json"
+                        },
+                        {
+                            "$ref": "../functions/chain.json"
+                        },
+                        {
+                            "$ref": "../functions/get.json"
+                        },
+                        {
+                            "$ref": "../functions/constant.json"
+                        }
+                    ]
+                },
+                "unit": {
+                    "description": "The suite/unit/apartment/floor number. Values such as \"74B\", \"189 1/2\", \"208.5\" are common as the number part of an address and they are not part of the \"unit\" for the address.",
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        {
+                            "$ref": "../functions/postfixed_unit.json"
+                        },
+                        {
+                            "$ref": "../functions/regexp.json"
+                        },
+                        {
+                            "$ref": "../functions/first_non_empty.json"
+                        },
+                        {
+                            "$ref": "../functions/remove_prefix.json"
+                        },
+                        {
+                            "$ref": "../functions/remove_postfix.json"
+                        },
+                        {
+                            "$ref": "../functions/join.json"
+                        },
+                        {
+                            "$ref": "../functions/format.json"
+                        },
+                        {
+                            "$ref": "../functions/chain.json"
+                        },
+                        {
+                            "$ref": "../functions/get.json"
+                        },
+                        {
+                            "$ref": "../functions/constant.json"
+                        }
+                    ]
+                },
+                "postcode": {
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        {
+                            "$ref": "../functions/regexp.json"
+                        },
+                        {
+                            "$ref": "../functions/first_non_empty.json"
+                        },
+                        {
+                            "$ref": "../functions/remove_prefix.json"
+                        },
+                        {
+                            "$ref": "../functions/remove_postfix.json"
+                        },
+                        {
+                            "$ref": "../functions/join.json"
+                        },
+                        {
+                            "$ref": "../functions/format.json"
+                        },
+                        {
+                            "$ref": "../functions/chain.json"
+                        },
+                        {
+                            "$ref": "../functions/get.json"
+                        },
+                        {
+                            "$ref": "../functions/constant.json"
+                        }
+                    ]
+                },
+                "address_levels": {
+                    "type": "array",
+                    "description": "The administrative levels present in an address. The number of values in this list and their meaning is country-dependent. For example, in the United States we expect two values: the state and the municipality, in that order. In other countries there might be only one. Other countries could have three or more. The array is ordered with the highest levels first.",
+                    "maxItems": 5,
+                    "items": {
+                        "oneOf": [
+                            {
+                                "type": "string",
+                                "minLength": 1
+                            },
+                            {
+                                "type": "null",
+                                "description": "Acts as a placeholder when there is no value for this address level, but a value exists at a lower level. The array should therefore not end with null."
+                            },
+                            {
+                                "$ref": "../functions/regexp.json"
+                            },
+                            {
+                                "$ref": "../functions/first_non_empty.json"
+                            },
+                            {
+                                "$ref": "../functions/remove_prefix.json"
+                            },
+                            {
+                                "$ref": "../functions/remove_postfix.json"
+                            },
+                            {
+                                "$ref": "../functions/join.json"
+                            },
+                            {
+                                "$ref": "../functions/format.json"
+                            },
+                            {
+                                "$ref": "../functions/chain.json"
+                            },
+                            {
+                                "$ref": "../functions/get.json"
+                            },
+                            {
+                                "$ref": "../functions/constant.json"
+                            }
+                        ]
+                    }
+                },
+                "lon": {
+                    "description": "The longitude value for the address.",
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        {
+                            "$ref": "../functions/regexp.json"
+                        }
+                    ]
+                },
+                "lat": {
+                    "description": "The latitude value for the address.",
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        {
+                            "$ref": "../functions/regexp.json"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

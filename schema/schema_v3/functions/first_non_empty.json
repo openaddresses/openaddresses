@@ -1,0 +1,24 @@
+{
+    "type": "object",
+    "required": [
+        "function",
+        "fields"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "function": {
+            "type": "string",
+            "enum": [
+                "first_non_empty"
+            ]
+        },
+        "fields": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+                "type": "string",
+                "pattern": "^.+$"
+            }
+        }
+    }
+}

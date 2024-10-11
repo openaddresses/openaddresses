@@ -1,0 +1,71 @@
+{
+    "type": "object",
+    "required": [
+        "conform"
+    ],
+    "properties": {
+        "conform": {
+            "type": "object",
+            "if": {
+                "properties": {
+                    "format": {
+                        "const": "gdb"
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "layer"
+                ]
+            },
+            "else": {
+                "not": {
+                    "required": [
+                        "layer"
+                    ]
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "format": {
+                    "type": "string",
+                    "enum": [
+                        "geojson",
+                        "shapefile",
+                        "gdb"
+                    ]
+                },
+                "srs": {
+                    "type": "string",
+                    "pattern": "EPSG:[0-9]+"
+                },
+                "file": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "layer": {
+                    "description": "The layer to use in the GDB",
+                    "oneOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    ]
+                },
+                "id": {
+                    "description": "The unique identifier",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "height": {
+                    "description": "The height from the ground in meters",
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        }
+    }
+}

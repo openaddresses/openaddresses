@@ -1,0 +1,98 @@
+{
+    "type": "object",
+    "required": [
+        "conform"
+    ],
+    "properties": {
+        "conform": {
+            "type": "object",
+            "if": {
+                "properties": {
+                    "format": {
+                        "const": "gdb"
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "layer"
+                ]
+            },
+            "else": {
+                "not": {
+                    "required": [
+                        "layer"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "format": {
+                    "type": "string",
+                    "enum": [
+                        "geojson",
+                        "shapefile",
+                        "gdb"
+                    ]
+                },
+                "srs": {
+                    "type": "string",
+                    "pattern": "EPSG:[0-9]+"
+                },
+                "file": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "layer": {
+                    "description": "The layer to use in the GDB",
+                    "oneOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    ]
+                },
+                "encoding": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "id": {
+                    "description": "The unique identifier",
+                    "oneOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1
+                        },
+                        {
+                            "$ref": "../functions/regexp.json"
+                        },
+                        {
+                            "$ref": "../functions/remove_prefix.json"
+                        },
+                        {
+                            "$ref": "../functions/remove_postfix.json"
+                        },
+                        {
+                            "$ref": "../functions/join.json"
+                        },
+                        {
+                            "$ref": "../functions/format.json"
+                        },
+                        {
+                            "$ref": "../functions/chain.json"
+                        },
+                        {
+                            "$ref": "../functions/constant.json"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

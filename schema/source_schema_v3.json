@@ -1,0 +1,154 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "oa-source",
+    "title": "OpenAddresses Source",
+    "type": "object",
+    "required": [
+        "schema",
+        "coverage",
+        "layers"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "schema": {
+            "type": "number",
+            "enum": [
+                3
+            ]
+        },
+        "coverage": {
+            "type": "object",
+            "if": {
+                "properties": {
+                    "country": {
+                        "type": "object",
+                        "properties": {
+                            "code": {
+                                "const": "US"
+                            }
+                        }
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "us-census-geoid"
+                ]
+            },
+            "else": {
+                "not": {
+                    "required": [
+                        "us-census-geoid"
+                    ]
+                }
+            },
+            "required": [
+                "country"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "country": {
+                    "type": "object",
+                    "required": [
+                        "code",
+                        "name"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "code": {
+                            "type": "string",
+                            "description": "ISO 3166-1 alpha-2 country code",
+                            "pattern": "^[A-Z]{2}$"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Country name in English",
+                            "pattern": "^.+$"
+                        }
+                    }
+                },
+                "subdivision": {
+                    "type": "object",
+                    "required": [
+                        "code",
+                        "name"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "code": {
+                            "type": "string",
+                            "description": "ISO 3166-2 country subdivision code",
+                            "pattern": "^[A-Z]{2}-[A-Z0-9]{1,3}$"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The English (otherwise local) name of the subdivision.",
+                            "pattern": "^.+$"
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The English (otherwise local) name of the covered area, if it is smaller than the country or subdivision. Examples: \"Bond County\", \"City of Sioux Falls\"",
+                    "pattern": "^.+$"
+                },
+                "us-census-geoid": {
+                    "type": "string",
+                    "pattern": "^\\d{2}$|^\\d{5}$|^\\d{7}$"
+                },
+                "geometry": {
+                    "$ref": "schema_v3/geojson.json#/definitions/geometry"
+                }
+            }
+        },
+        "runner": {
+            "type": "string",
+            "default": "regular",
+            "enum": [
+                "regular",
+                "large"
+            ],
+            "description": "The instance size to run the ETL on - 99% of the time leave this field unpopulated."
+        },
+        "layers": {
+            "type": "object",
+            "additionalProperties": false,
+            "minProperties": 1,
+            "properties": {
+                "addresses": {
+                    "type": "object",
+                    "allOf": [
+                        {
+                            "$ref": "schema_v3/base.json"
+                        },
+                        {
+                            "$ref": "schema_v3/layers/addresses.json"
+                        }
+                    ]
+                },
+                "buildings": {
+                    "type": "object",
+                    "allOf": [
+                        {
+                            "$ref": "schema_v3/base.json"
+                        },
+                        {
+                            "$ref": "schema_v3/layers/buildings.json"
+                        }
+                    ]
+                },
+                "parcels": {
+                    "type": "object",
+                    "allOf": [
+                        {
+                            "$ref": "schema_v3/base.json"
+                        },
+                        {
+                            "$ref": "schema_v3/layers/parcels.json"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
