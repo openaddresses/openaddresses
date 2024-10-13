@@ -14,16 +14,24 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gisdata.wisc.edu/public/KEWAUNEE_ADDRESSES_2023.zip",
-                "website": "https://geodata.wisc.edu/catalog/011FDC33-D7AC-49B9-9C3D-CB92C0711CFE",
-                "protocol": "http",
-                "compression": "zip",
-                "year": "2023",
+                "data": "https://services6.arcgis.com/OVykjebCTL9ZTdn8/arcgis/rest/services/Address_Points/FeatureServer/2",
+                "website": "https://www.kewauneeco.org/departments/land-information/gis/",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "gdb",
-                    "layer": "KEWAUNEE_ADDRESSES_2023",
-                    "number": "HOUSE_NO",
-                    "street": "ROADNAME"
+                    "format": "geojson",
+                    "number": [
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreDir",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "city": "Inc_Muni",
+                    "district": "County",
+                    "postcode": "Post_Code"
                 }
             }
         ],
