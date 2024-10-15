@@ -14,19 +14,24 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.co.grant.wi.gov/gis/rest/services/Public/SiteAddressPoints_Public/MapServer/0",
+                "data": "https://gcarcgis.co.grant.wi.gov/server/rest/services/Address_Numbers/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRNUM",
-                    "street": "FULLNAME"
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": "FULLNAME",
+                    "id": "GlobalID"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.co.grant.wi.gov/gis/rest/services/Public/TaxParcels/MapServer/0",
+                "data": "https://gcarcgis.co.grant.wi.gov/server/rest/services/TaxParcel_13Oct23/MapServer/17",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
