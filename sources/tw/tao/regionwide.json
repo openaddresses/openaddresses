@@ -10,36 +10,48 @@
     "layers": {
         "addresses": [
             {
-                "name": "country",
-                "data": "http://gener.tycg.gov.tw/arcgis/rest/services/map/MapServer/18",
+                "name": "state",
+                "website": "https://data.gov.tw/dataset/157689",
+                "data": "https://jeffu.dev/data/taoyan_addresses_2024_08.csv",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://data.gov.tw/license",
+                    "attribution": true,
+                    "attribution name": "Tainan City Government Civil Affairs Bureau",
+                    "share-alike": false
+                },
                 "protocol": "ESRI",
                 "conform": {
-                    "format": "geojson",
+                    "format": "csv",
+                    "srs": "EPSG:102443",
                     "number": {
                         "function": "regexp",
-                        "field": "HOUSE_NO",
+                        "field": "號",
                         "pattern": "^([0-9０-９]+號?)"
                     },
                     "unit": {
                         "function": "regexp",
-                        "field": "HOUSE_NO",
+                        "field": "號",
                         "pattern": "^(?:[0-9０-９]+號?)(.*)"
                     },
                     "street": {
                         "function": "join",
                         "fields": [
-                            "STREET",
-                            "SECT",
-                            "LANE",
-                            "ALLEY"
+                            "街、路段",
+                            "地區",                        
+                            "巷",
+                            "弄"
                         ],
                         "separator": ""
                     },
-                    "city": "TOWNNAME",
-                    "district": "LI",
-                    "region": "COUNTY"
+                    "city": "村里",
+                    "district": "鄉鎮市區名稱",
+                    "region": "省市縣市名稱",
+                    "lat": "縱座標",
+                    "lon": "橫座標"
                 }
             }
         ]
     }
 }
+

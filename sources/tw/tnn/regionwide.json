@@ -10,32 +10,45 @@
     "layers": {
         "addresses": [
             {
-                "name": "country",
-                "data": "http://water.tainan.gov.tw/tnwrbarcgis/rest/services/TNRW/Address/MapServer/0",
+                "name": "state",
+                "website": "https://data.gov.tw/dataset/120044",
+                "data": "https://jeffu.dev/data/tainan_addresses_2023.csv",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://data.gov.tw/license",
+                    "attribution": true,
+                    "attribution name": "Tainan City Government Civil Affairs Bureau",
+                    "share-alike": false
+                },
                 "protocol": "ESRI",
                 "conform": {
-                    "format": "geojson",
+                    "format": "csv",
+                    "srs": "EPSG:102443",
                     "number": {
                         "function": "regexp",
-                        "field": "NO",
+                        "field": "號",
                         "pattern": "^([0-9０-９]+號?)"
                     },
                     "unit": {
                         "function": "regexp",
-                        "field": "NO",
+                        "field": "號",
                         "pattern": "^(?:[0-9０-９]+號?)(.*)"
                     },
                     "street": {
                         "function": "join",
                         "fields": [
-                            "ROADNAME",
-                            "LANE"
+                            "街、路段",
+                            "地區",                        
+                            "巷",
+                            "弄"
                         ],
                         "separator": ""
                     },
-                    "city": "VILLAGE",
-                    "district": "DISTRICT",
-                    "region": "COUNTY"
+                    "city": "村里",
+                    "district": "鄉鎮市區名稱",
+                    "region": "省市縣市名稱",
+                    "lat": "WGS84緯度",
+                    "lon": "WGS84經度"
                 }
             }
         ]

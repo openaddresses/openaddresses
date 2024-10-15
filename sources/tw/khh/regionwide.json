@@ -10,34 +10,45 @@
     "layers": {
         "addresses": [
             {
-                "name": "country",
-                "data": "http://dengue.kcg.gov.tw/arcgis/rest/services/KCG/KcgAddress/MapServer/0",
-                "protocol": "ESRI",
+                "name": "state",
+                "website": "https://data.gov.tw/dataset/167131",
+                "data": "https://jeffu.dev/data/kaohsiung_addresses_2024_10.csv",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://data.gov.tw/license",
+                    "attribution": true,
+                    "attribution name": "Kaohsiung City Government Civil Affairs Bureau",
+                    "share-alike": false
+                },
+                "protocol": "http",
                 "conform": {
-                    "format": "geojson",
+                    "format": "csv",
+                    "srs": "EPSG:102443",
                     "number": {
                         "function": "regexp",
-                        "field": "NO1",
+                        "field": "號",
                         "pattern": "^([0-9０-９]+號?)"
                     },
                     "unit": {
                         "function": "regexp",
-                        "field": "NO1",
+                        "field": "號",
                         "pattern": "^(?:[0-9０-９]+號?)(.*)"
                     },
                     "street": {
                         "function": "join",
                         "fields": [
-                            "ROADNAME",
-                            "SECT",
-                            "LAN",
-                            "LON"
+                            "街路段",
+                            "地區",
+                            "巷",
+                            "弄"
                         ],
                         "separator": ""
                     },
-                    "city": "VILLAGE",
-                    "district": "TOWN",
-                    "region": "COUNTY"
+                    "city": "村里",
+                    "district": "鄉鎮市區名稱",
+                    "region": "省市縣市名稱",
+                    "lat": "縱座標",
+                    "lon": "橫座標"
                 }
             }
         ]
