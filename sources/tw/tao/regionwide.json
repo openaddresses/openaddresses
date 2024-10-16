@@ -24,32 +24,32 @@
                 "compression": "zip",
                 "conform": {
                     "format": "csv",
-                    "srs": "EPSG:102443",
+                    "srs": "ESRI:102443",
                     "number": {
                         "function": "regexp",
-                        "field": "號",
+                        "field": "number",
                         "pattern": "^([0-9０-９]+號?)"
                     },
                     "unit": {
                         "function": "regexp",
-                        "field": "號",
+                        "field": "number",
                         "pattern": "^(?:[0-9０-９]+號?)(.*)"
                     },
                     "street": {
                         "function": "join",
                         "fields": [
-                            "街、路段",
-                            "地區",
-                            "巷",
-                            "弄"
+                            "street",
+                            "area",
+                            "lane",
+                            "alley"
                         ],
                         "separator": ""
                     },
-                    "city": "村里",
-                    "district": "鄉鎮市區名稱",
-                    "region": "省市縣市名稱",
-                    "lat": "縱座標",
-                    "lon": "橫座標"
+                    "city": "village",
+                    "district": "town",
+                    "region": "county",
+                    "lat": "y",
+                    "lon": "x"
                 }
             }
         ]
