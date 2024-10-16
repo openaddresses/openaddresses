@@ -10,33 +10,46 @@
     "layers": {
         "addresses": [
             {
-                "name": "country",
-                "data": "http://ja.miaoli.gov.tw/arcgis/rest/services/Miaoli/miaoliDpDynamic_B/FeatureServer/1",
-                "protocol": "ESRI",
-                "language": "zh",
+                "name": "state",
+                "website": "https://opendata.miaoli.gov.tw/OpenDataDetail.aspx?n=9404&sms=0&s=1550",
+                "data": "https://jeffu.dev/data/miaoli_addresses_2024.csv.zip",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://data.gov.tw/license",
+                    "attribution": true,
+                    "attribution name": "Miaoli Civil Affairs Office",
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "csv",
+                    "srs": "EPSG:4326",
                     "number": {
                         "function": "regexp",
-                        "field": "NUM",
+                        "field": "number",
                         "pattern": "^([0-9０-９]+號?)"
                     },
                     "unit": {
                         "function": "regexp",
-                        "field": "NUM",
+                        "field": "number",
                         "pattern": "^(?:[0-9０-９]+號?)(.*)"
                     },
                     "street": {
                         "function": "join",
                         "fields": [
-                            "ROAD",
-                            "LANE",
-                            "ALLEY"
+                            "street",
+                            "area",
+                            "lane",
+                            "alley"
                         ],
                         "separator": ""
                     },
-                    "city": "VILLAGE",
-                    "district": "TOWN"
+                    "city": "village",
+                    "district": "town",
+                    "region": "county",
+                    "lat": "Y",
+                    "lon": "X"
                 }
             }
         ]
