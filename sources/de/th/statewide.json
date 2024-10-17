@@ -19,7 +19,7 @@
                     "text": "dl-de/by-2-0",
                     "url": "https://www.govdata.de/dl-de/by-2-0",
                     "attribution": true,
-                    "attribution name": "Freistaat Thüringen"
+                    "attribution name": "© GDI-Th"
                 },
                 "conform": {
                     "format": "csv",
@@ -32,15 +32,35 @@
                     "district": "kreis",
                     "postcode": "postplz",
                     "number": {
-                        "function": "format",
+                        "function": "join",
                         "fields": [
                             "hnr",
                             "adz"
-                        ],
-                        "format": "$1$2"
+                        ]
                     },
                     "lat": "nordwert",
                     "lon": "ostwert"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "state",
+                "data": "https://geoportal.geoportal-th.de/hausko_umr/HU-TH.zip",
+                "website": "https://geoportal.thueringen.de/gdi-th/download-offene-geodaten",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "text": "dl-de/by-2-0",
+                    "url": "https://www.govdata.de/dl-de/by-2-0",
+                    "attribution": true,
+                    "attribution name": "© GDI-Th"
+                },
+                "conform": {
+                    "format": "shapefile",
+                    "file": "gebaeude-th.shp",
+                    "srs": "EPSG:25832",
+                    "id": "OI"
                 }
             }
         ]

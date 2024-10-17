@@ -16,7 +16,7 @@
                 "protocol": "http",
                 "compression": "zip",
                 "license": {
-                     "text": "DL-DE->Zero-2.0",
+                    "text": "dl-de/zero-2-0",
                     "url": "https://www.govdata.de/dl-de/zero-2-0"
                 },
                 "conform": {
@@ -28,15 +28,33 @@
                     "city": "COLUMN11",
                     "street": "COLUMN15",
                     "number": {
-                        "function": "format",
+                        "function": "join",
                         "fields": [
                             "COLUMN16",
                             "COLUMN17"
-                        ],
-                        "format": "$1$2"
+                        ]
                     },
                     "lat": "COLUMN20",
                     "lon": "COLUMN19"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "state",
+                "data": "https://www.opengeodata.nrw.de/produkte/geobasis/lk/akt/hu_shp/hu_EPSG25832_Shape.zip",
+                "website": "https://www.opengeodata.nrw.de/produkte/geobasis/lk/akt/hu_shp/",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "text": "dl-de/zero-2-0",
+                    "url": "https://www.govdata.de/dl-de/zero-2-0"
+                },
+                "conform": {
+                    "format": "shapefile",
+                    "file": "hu_shp.shp",
+                    "srs": "EPSG:25832",
+                    "id": "OI"
                 }
             }
         ]
