@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "ES",
+            "country": "Spain"
+        },
+        "country": "es"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "https://jeffu.dev/data/spain_addresses.csv.zip",
+                "website": "https://centrodedescargas.cnig.es/CentroDescargas/buscadorCatalogo.do",
+                "note": "Addresses comes in 52 regional packages in gpkg format combined with some parcel and municipal data. This was procssed by trimming the data down to addresses, merging into one layer, and converting to CSV.",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "http://www.ign.es/resources/licencia/Condiciones_licenciaUso_IGN.pdf",
+                    "attribution": true,
+                    "share-alike": false,
+                    "attribution name": "scne.es"
+
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "lon": "X",
+                    "lat": "Y",
+                    "number": "numero",
+                    "unit": "extension",
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "tipo vial",
+                            "nombre via"
+                        ],
+                        "separator": " "
+                    },
+                    "postcode": "codigo_postal",
+                    "city": "poblacion",
+                    "format": "csv",
+                    "srs": "EPSG:4259"
+                }
+            }
+        ]
+    }
+}
