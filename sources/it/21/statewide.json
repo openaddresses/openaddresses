@@ -13,17 +13,18 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://data.openaddresses.io/cache/uploads/sergiyprotsiv/b43504/piemonte20160804.zip",
-                "website": "http://geomap.reteunitaria.piemonte.it/ws/taims/rp-01/taimsbasewms/wms_sfondo_cart_rif_bn?request=getcapabilities&service=WMS",
+                "data": "https://geoservices.csi.it/ms/wfs/taims/rp-01/taimswfs/bdtre_viab?service=WFS&version=1.1.0&request=GetFeature&typename=acc_pc&outputformat=json&count=5000000",
+                "website": "https://www.geoportale.piemonte.it/geonetwork/srv/ita/catalog.search#/metadata/r_piemon:294c64e5-5888-43c4-9bb7-e3636721230e",
                 "license": {
-                    "url": "https://creativecommons.org/licenses/by/2.5/it/",
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
                     "attribution": true,
                     "share-alike": false
                 },
                 "protocol": "http",
-                "compression": "zip",
                 "language": "it",
                 "conform": {
+                    "format": "json",
+                    "srs": "EPSG:32632",
                     "number": [
                         "civico_num",
                         "civico_sub"
@@ -31,7 +32,6 @@
                     "street": "tp_str_nom",
                     "city": "tp_str_loc",
                     "id": "uuid",
-                    "format": "shapefile",
                     "accuracy": 1
                 }
             }
