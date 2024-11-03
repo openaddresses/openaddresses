@@ -1,0 +1,62 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "LV",
+            "country": "Latvia"
+        },
+        "country": "lv"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "https://grafws.kadastrs.lv/atom/ad/20241028/Address.gml.zip",
+                "note": "URL updates every monday to that date. Adjust to refresh data.",
+                "website": "https://data.gov.lv/dati/eng/dataset/adreses-inspire/resource/22e0163f-b107-4f5b-9588-26a065f01c45",
+                "frequency": "weekly",
+                "license": {
+                    "text": "CC-BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "Valsts digitālās attīstības aģentūra",
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "encoding": "UTF-8",
+                    "format": "xml",
+                    "file": "Address.gml",
+                    "id": "gml_id",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "description",
+                        "pattern": "(LV-[0-9]*)"
+                    },
+                    "number": "designator",
+                    "street": {
+                        "function": "regexp",
+                        "field": "text",
+                        "pattern": "^(?!\".*\")(.*)(?:\\s\\d+.*)$"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "description",
+                        "pattern": "(?:.*,\\s)(.*)(?:,.*)(?:,.*)(?:,.*)"
+                    },
+                    "district": {
+                        "function": "regexp",
+                        "field": "description",
+                        "pattern": "(?:.*,\\s)(.*)(?:,.*)(?:,.*)"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "description",
+                        "pattern": "(?:.*,\\s)(.*)(?:,.*)"
+                    }
+                }
+            }
+        ]
+    }
+}
