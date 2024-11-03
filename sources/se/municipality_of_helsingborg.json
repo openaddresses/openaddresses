@@ -15,8 +15,15 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://geodata.helsingborg.se/arcgis/rest/services/Trafik/Skolskjuts_160914/MapServer/37",
-                "protocol": "ESRI",
+                "data": "https://oppnadata.helsingborg.se/sbf/regioner_och_stader/adresser/adresser.geojson",
+                "protocol": "http",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "http://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "share-alike": false,
+                    "attribution name": "Helsingborgs stad"
+                },
                 "note": {
                     "description": "This source looks like it has some sort of street altname appended occasionally.  `remove_postfix` could be used to remove the regex but `number` is composite and the function operates on a single field.  ",
                     "examples": [
@@ -28,22 +35,22 @@
                 "conform": {
                     "format": "geojson",
                     "number": [
-                        "ENUMERATOR",
-                        "DESIGNATIONNUMBERLETTER"
+                        "Nummer",
+                        "Bokstavstillägg"
                     ],
                     "street": {
                         "function": "regexp",
-                        "field": "STREETNAME",
+                        "field": "Gatunamn",
                         "pattern": "^(.*?)(?: \\|.+)?$"
                     },
-                    "city": "CITY",
+                    "city": "Stad",
                     "postcode": {
                         "function": "regexp",
-                        "field": "POSTCODE",
+                        "field": "Postnummer",
                         "pattern": "^([\\d]{3})([\\d]{2})$",
                         "replace": "$1 $2"
                     },
-                    "id": "BALID"
+                    "id": "Realproperty_UUID"
                 }
             }
         ]
