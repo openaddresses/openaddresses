@@ -10,14 +10,46 @@
     "layers": {
         "addresses": [
             {
-                "name": "country",
-                "data": "http://heogis.tcg.gov.tw/arcgis/rest/services/drn/drnBusLayer/MapServer/29",
-                "protocol": "ESRI",
+                "name": "state",
+                "website": "https://data.gov.tw/dataset/155472",
+                "data": "https://data.openaddresses.io/cache/uploads/iandees/af53d6/taipei_city_addresses_2024_10_02.csv.zip",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://data.gov.tw/license",
+                    "attribution": true,
+                    "attribution name": "Taipei City Government Civil Affairs Bureau",
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
-                    "number": "HOUSE_NO",
-                    "street": "ROADNAME",
-                    "city": "TOWNNAME"
+                    "format": "csv",
+                    "srs": "EPSG:4326",
+                    "number": {
+                        "function": "regexp",
+                        "field": "number",
+                        "pattern": "^([0-9０-９]+號?)"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "number",
+                        "pattern": "^(?:[0-9０-９]+號?)(.*)"
+                    },
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "street",
+                            "area",
+                            "lane",
+                            "alley"
+                        ],
+                        "separator": ""
+                    },
+                    "city": "village",
+                    "district": "town",
+                    "region": "county",
+                    "lat": "Y",
+                    "lon": "X"
                 }
             }
         ]
