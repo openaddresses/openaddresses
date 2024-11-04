@@ -25,18 +25,25 @@
                         "field": "Situs"
                     },
                     "street": {
-                        "function": "postfixed_street",
-                        "field": "Situs"
+                        "function": "regexp",
+                        "field": "Situs",
+                        "pattern": "[0-9]+ ([A-Za-z0-9/\\- ]*)(?: +##? *(?:.*))?$"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "Situs",
+                        "pattern": "[0-9]+ ([A-Za-z0-9/\\- ]*)( +##? *(.*))?$",
+                        "replace": "$3"
                     },
                     "city": {
                         "function": "regexp",
                         "field": "SITUSCITY",
-                        "pattern": "^([a-zA-Z ]+) [A-Z]{2}$"
+                        "pattern": "^([a-zA-Z ]+) [A-Z]{2}\\s?$"
                     },
                     "region": {
                         "function": "regexp",
                         "field": "SITUSCITY",
-                        "pattern": " ([A-Z]{2})$"
+                        "pattern": " ([A-Z]{2})\\s?$"
                     }
                 }
             }
