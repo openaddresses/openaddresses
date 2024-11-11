@@ -10,4 +10,4 @@ for i in {1..134}; do
 done
 
 ogrmerge -single -f csv -lco GEOMETRY=AS_XY -o Saarland.csv Saarland/*.xml
-zip Saarland.zip Saarland.csv 
+zip Saarland.zip Saarland.csv
