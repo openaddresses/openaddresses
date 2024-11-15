@@ -21,18 +21,16 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://maps.cityofboston.gov/ArcGIS/rest/services/Live_SAM_Addr_BKP/MapServer/0",
+                "data": "https://gisportal.boston.gov/arcgis/rest/services/SAM/Live_SAM_Address/FeatureServer/4",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "STREET_NUM",
+                    "number": "STREET_NUMBER",
                     "unit": "UNIT",
-                    "street": [
-                        "STREET_PRE",
-                        "STREET_BOD",
-                        "STREET_FUL"
-                    ],
-                    "postcode": "ZIP_CODE"
+                    "street": "FULL_STREET_NAME",
+                    "postcode": "ZIP_CODE",
+                    "city": "CITY",
+                    "region": "STATE"
                 }
             }
         ]
