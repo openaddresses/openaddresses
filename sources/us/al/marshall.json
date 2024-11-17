@@ -14,13 +14,22 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://web2.kcsgis.com/kcsgis/rest/services/Marshall/Public/MapServer/37",
+                "data": "https://web2.kcsgis.com/kcsgis/rest/services/Marshall/AL50_VAM_FS/MapServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "SitusAddNumber",
-                    "street": "SitusAddName",
-                    "city": "SitusAddCity"
+                    "lon": "LON",
+                    "lat": "LAT",
+                    "number": "StNum",
+                    "street": [
+                        "StPre",
+                        "StName",
+                        "StType",
+                        "StPost"
+                    ],
+                    "unit": "StUnit",
+                    "city": "City",
+                    "postcode": "ZipCode"
                 }
             }
         ],
