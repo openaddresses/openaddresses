@@ -14,25 +14,36 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/trescube/94c52d/us-az-maricopa.geojson.zip",
-                "note": "the source is http://gis.mcassessor.maricopa.gov/arcgis/rest/services/Parcel_Numbers/MapServer/0 but times out several times so this was generated using pyesridump with OBJECTID offsets.",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services.arcgis.com/ykpntM6e3tHvzKRJ/arcgis/rest/services/Maricopa_County_Address_Points/FeatureServer/0",
+                "website": "https://data-maricopa.opendata.arcgis.com/datasets/Maricopa::maricopa-county-address-points-all/about",
+                "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "PHYSICAL_STREET_NUM",
+                    "number": [
+                        "HSENO",
+                        "HseNoSufx"
+                    ],
                     "street": [
-                        "PHYSICAL_STREET_DIR",
-                        "PHYSICAL_STREET_NAME",
-                        "PHYSICAL_STREET_TYPE",
-                        "PHYSICAL_STREET_POSTDIR"
+                        "STDIR",
+                        "STNAME",
+                        "STTYPE",
+                        "STSUFX"
                     ],
-                    "unit": [
-                        "PHYSICAL_SUITE",
-                        "PHYSICAL_STREET_SUFFIX"
-                    ],
-                    "postcode": "PHYSICAL_ZIP",
-                    "city": "PHYSICAL_CITY"
+                    "unit": "UnitNo",
+                    "postcode": "ZIP",
+                    "city": "USPSCityAlias"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/ykpntM6e3tHvzKRJ/ArcGIS/rest/services/Parcels_view/FeatureServer/0",
+                "website": "https://data-maricopa.opendata.arcgis.com/datasets/c937f17330f64e64abd41976fc8bb17f/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
                 }
             }
         ]

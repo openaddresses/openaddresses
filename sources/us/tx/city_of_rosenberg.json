@@ -22,19 +22,33 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://107.1.121.215/wapublic/rest/services/OpenDataLayers/AddressPoints/MapServer/0",
+                "data": "https://maps.rosenbergtx.gov/server/rest/services/AGOL/AGOL_INDV_AddrPoints/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "FullAddr"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "FullAddr"
-                    },
+                    "id": "Ad_ID",
+                    "number": [
+                        "AddrPrefix",
+                        "Addr",
+                        "AddrSuffix"
+                    ],
+                    "street": "StName",
+                    "unit": [
+                        "UnitType",
+                        "Unit"
+                    ],
                     "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://maps.rosenbergtx.gov/server/rest/services/AGOL/AGOL_INDV_Parcels/MapServer/63",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Par_ID"
                 }
             }
         ]

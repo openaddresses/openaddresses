@@ -1,0 +1,59 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -97.22797393798828,
+                32.930318199070534
+            ]
+        },
+        "US Census": {
+            "geoid": "4838632",
+            "name": "City of Keller",
+            "state": "Texas"
+        },
+        "country": "us",
+        "state": "tx",
+        "county": "Tarrant",
+        "city": "Keller"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://arcgis.cityofkeller.com/arcgis/rest/services/TylerEPL/TylerEPL2/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "HOUSE_NUM",
+                    "street": "ROADNAME",
+                    "unit": "UNIT",
+                    "city": "COMM_NAME",
+                    "postcode": "ZIP_CODE",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://arcgis.cityofkeller.com/arcgis/rest/services/TylerEPL/TylerEPL2/FeatureServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "GIS_LINK",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://arcgis.cityofkeller.com/arcgis/rest/services/TylerEPL/TylerEPL2/FeatureServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}
