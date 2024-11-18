@@ -1,0 +1,46 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "28013",
+            "name": "Calhoun County",
+            "state": "Mississippi"
+        },
+        "country": "us",
+        "state": "ms",
+        "county": "Calhoun"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/7N4GmWKq7bTZvjri/ArcGIS/rest/services/addresspoiints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Address",
+                    "street": "FullName",
+                    "unit": [
+                        "BldgUnit",
+                        "Room"
+                    ],
+                    "city": "City",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/7N4GmWKq7bTZvjri/ArcGIS/rest/services/Calhoun_Service/FeatureServer/13",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
+    }
+}

@@ -14,29 +14,41 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://openaddresses.s3.amazonaws.com/us-md-harford.csv.zip",
-                "note": "Exported to CSV from http://www.harfordcountymd.gov/gis/HarfordAddress.zip",
-                "website": "http://www.harfordcountymd.gov/gis/Index.cfm",
-                "license": "http://www.harfordcountymd.gov/gis/LicenseAgreement.pdf",
-                "compression": "zip",
-                "protocol": "http",
-                "year": "2013",
+                "data": "https://geodata.md.gov/appdata/rest/services/Addressing/MD_Addressing/MapServer/13",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "csv",
-                    "lat": "Y",
-                    "lon": "X",
-                    "id": "FEATURE",
-                    "number": [
-                        "P_ST_NO",
-                        "P_ST_SUF"
-                    ],
-                    "street": [
-                        "P_ST_DIREC",
-                        "P_ST_NAME",
-                        "P_ST_TYPE"
-                    ],
-                    "city": "P_CITY",
-                    "postcode": "P_Z_1"
+                    "format": "geojson",
+                    "id": "ADDID",
+                    "number": "ADDNUMCPLT",
+                    "street": "NAMECPLT",
+                    "unit": "SUBBADDCPLT",
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/q8r0H9SbF6PzNpYE/arcgis/rest/services/Cadastral/FeatureServer/0",
+                "website": "https://harford-county-gis-hub-harfordgis.hub.arcgis.com/datasets/HarfordGIS::cadastral/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "FEATURE"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/q8r0H9SbF6PzNpYE/arcgis/rest/services/Buildings/FeatureServer/0",
+                "website": "https://harford-county-gis-hub-harfordgis.hub.arcgis.com/datasets/fc38ab456a964181a0295d974ca53934_0/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
