@@ -14,15 +14,27 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://services.geoportalmaps.com/arcgis/rest/services/BienvilleParcels_SQL/MapServer/8",
+                "data": "https://services.arcgis.com/mq0BGE5kHpm8mHFz/ArcGIS/rest/services/Address_Points/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSENUM",
-                    "street": "ROAD_STREE",
-                    "unit": "APT_SUITE",
-                    "city": "CITY_TOWN",
-                    "postcode": "ZIP"
+                    "number": "Add_Number",
+                    "street": "gcFullName",
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/mq0BGE5kHpm8mHFz/ArcGIS/rest/services/Bienville_Parish_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNumb"
                 }
             }
         ]

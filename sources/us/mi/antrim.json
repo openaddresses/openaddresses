@@ -1,0 +1,42 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "26009",
+            "name": "Antrim County",
+            "state": "Michigan"
+        },
+        "country": "us",
+        "state": "mi",
+        "county": "Antrim"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/ZcCP0G3kEnUDVego/ArcGIS/rest/services/AllParcels_shp/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "P_ADDRESS",
+                    "street": "P_STREET",
+                    "unit": "P_APT",
+                    "city": "P_CITY",
+                    "region": "P_STATE",
+                    "postcode": "P_ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/ZcCP0G3kEnUDVego/ArcGIS/rest/services/AllParcels_shp/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
+                }
+            }
+        ]
+    }
+}

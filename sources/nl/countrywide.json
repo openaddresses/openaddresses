@@ -30,7 +30,12 @@
                         "format": "$1$2-$3"
                     },
                     "street": "openbareruimtenaam",
-                    "postcode": "postcode",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "postcode",
+                        "pattern": "^([0-9]{4})[ ]?([A-Z]{2})$",
+                        "replace": "$1 $2"
+                    },
                     "city": "woonplaatsnaam",
                     "id": "adresseerbaarobjectid"
                 }

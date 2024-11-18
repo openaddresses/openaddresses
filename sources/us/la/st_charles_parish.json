@@ -14,18 +14,32 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://www.scpgis.com/arcgis/rest/services/SCPGIS/WEBGIS/MapServer/54",
+                "data": "https://services7.arcgis.com/Nj65ZtNghtksKPeG/ArcGIS/rest/services/Addresses/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "FULLADNUM",
-                    "street": "STREETNAME",
+                    "id": "SITEADDID",
+                    "number": "fulladnum",
+                    "street": "streetname",
                     "unit": [
-                        "UNIT_TYPE",
-                        "STE"
+                        "unittype",
+                        "unitid1",
+                        "unitid2"
                     ],
-                    "city": "MUNICIPALI",
-                    "postcode": "ZIP"
+                    "city": "municipali",
+                    "region": "state",
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/Nj65ZtNghtksKPeG/ArcGIS/rest/services/Parcel/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pi_code"
                 }
             }
         ]
