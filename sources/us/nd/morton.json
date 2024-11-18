@@ -14,16 +14,29 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services2.arcgis.com/KK9EVAUoqJyQSD0q/ArcGIS/rest/services/AddressNoNames/FeatureServer/0",
+                "data": "https://services2.arcgis.com/KK9EVAUoqJyQSD0q/ArcGIS/rest/services/MASTER_Addresses/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSE_NUM",
+                    "number": "Add_Number",
                     "street": {
-                        "function": "remove_prefix",
-                        "field": "DLVRY_ADD",
-                        "field_to_remove": "HOUSE_NUM"
-                    }
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "unit": "Unit",
+                    "city": "MSAGComm",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/KK9EVAUoqJyQSD0q/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

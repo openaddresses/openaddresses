@@ -17,19 +17,21 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
+                    "accuracy": 2,
                     "number": {
                         "function": "prefixed_number",
-                        "field": "Address"
+                        "field": "StreetAddress"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "Address"
+                        "field": "StreetAddress",
+                        "may_contain_units": true
                     },
                     "unit": {
                         "function": "postfixed_unit",
-                        "field": "Address"
+                        "field": "StreetAddress"
                     },
-                    "city": "TOWN_NAME"
+                    "city": "Town"
                 }
             }
         ],

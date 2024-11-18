@@ -10,32 +10,46 @@
     "layers": {
         "addresses": [
             {
-                "name": "country",
-                "data": "http://ge-lab-212.ceci.com.tw/arcgis/rest/services/05007/TC_Basemap/MapServer/0",
-                "protocol": "ESRI",
-                "skip": true,
+                "name": "state",
+                "website": "https://data.gov.tw/dataset/169806",
+                "data": "https://data.openaddresses.io/cache/uploads/iandees/a682ba/taichung_addresses_2024_06.csv.zip",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://data.gov.tw/license",
+                    "attribution": true,
+                    "attribution name": "Taichung City Government Civil Affairs Bureau, 2024",
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "csv",
+                    "srs": "EPSG:4326",
                     "number": {
                         "function": "regexp",
-                        "field": "號",
+                        "field": "number",
                         "pattern": "^([0-9０-９]+號?)"
                     },
                     "unit": {
                         "function": "regexp",
-                        "field": "號",
+                        "field": "number",
                         "pattern": "^(?:[0-9０-９]+號?)(.*)"
                     },
                     "street": {
                         "function": "join",
                         "fields": [
-                            "路名",
-                            "巷",
-                            "弄"
+                            "street",
+                            "area",
+                            "lane",
+                            "alley"
                         ],
                         "separator": ""
                     },
-                    "city": "TOWN_NAME"
+                    "city": "village",
+                    "district": "town",
+                    "region": "county",
+                    "lat": "Y",
+                    "lon": "X"
                 }
             }
         ]

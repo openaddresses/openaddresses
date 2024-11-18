@@ -16,11 +16,32 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://gisservice.cityofmesquite.com/arcgis/rest/services/cached_services/parcels/MapServer/1",
+                "data": "https://gisservice.cityofmesquite.com/arcgis/rest/services/cached_services/buildings_addresses/MapServer/1",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": "STREET_NUM",
-                    "street": "FULL_STREET_NAME",
+                    "number": "ST_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "ST_NAME",
+                        "ST_SUFF",
+                        "SUFF_DIR"
+                    ],
+                    "unit": "ST_SUITE",
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ST_ZIP",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gisservice.cityofmesquite.com/arcgis/rest/services/cached_services/buildings_addresses/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
                     "format": "geojson"
                 }
             }
