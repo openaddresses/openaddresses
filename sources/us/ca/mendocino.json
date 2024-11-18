@@ -14,19 +14,34 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/nvkelso/d84a43/mendocino_california_Parcels_10_15_U.zip",
+                "data": "https://gis.mendocinocounty.org/server/rest/services/Parcels_sde_pub/MapServer/6",
                 "attribution": "Mendocino County",
-                "website": "http://www.co.mendocino.ca.us/econdev/gis/index.htm",
-                "protocol": "http",
-                "compression": "zip",
+                "website": "https://gis.mendocinocounty.org/",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "number": "SITUS_1",
+                    "format": "geojson",
+                    "number": "SITUS_NO",
                     "street": [
                         "SITUS_DIR",
-                        "SITUS_2"
+                        "SITUS_ST",
+                        "ST_TYPE"
                     ],
-                    "unit": "APT_"
+                    "unit": "APT",
+                    "city": "SITUS_CTY",
+                    "postcode": "SITUS_ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.mendocinocounty.org/server/rest/services/Parcels_sde_pub/MapServer/6",
+                "attribution": "Mendocino County",
+                "website": "https://gis.mendocinocounty.org/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
                 }
             }
         ]

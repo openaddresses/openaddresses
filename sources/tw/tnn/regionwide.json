@@ -10,32 +10,46 @@
     "layers": {
         "addresses": [
             {
-                "name": "country",
-                "data": "http://water.tainan.gov.tw/tnwrbarcgis/rest/services/TNRW/Address/MapServer/0",
-                "protocol": "ESRI",
+                "name": "state",
+                "website": "https://data.gov.tw/dataset/120044",
+                "data": "https://data.openaddresses.io/cache/uploads/iandees/6ff385/tainan_addresses_2023.csv.zip",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://data.gov.tw/license",
+                    "attribution": true,
+                    "attribution name": "Tainan City Government Civil Affairs Bureau",
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "csv",
+                    "srs": "EPSG:4326",
                     "number": {
                         "function": "regexp",
-                        "field": "NO",
+                        "field": "number",
                         "pattern": "^([0-9０-９]+號?)"
                     },
                     "unit": {
                         "function": "regexp",
-                        "field": "NO",
+                        "field": "number",
                         "pattern": "^(?:[0-9０-９]+號?)(.*)"
                     },
                     "street": {
                         "function": "join",
                         "fields": [
-                            "ROADNAME",
-                            "LANE"
+                            "street",
+                            "area",
+                            "lane",
+                            "alley"
                         ],
                         "separator": ""
                     },
-                    "city": "VILLAGE",
-                    "district": "DISTRICT",
-                    "region": "COUNTY"
+                    "city": "village",
+                    "district": "town",
+                    "region": "county",
+                    "lat": "Y",
+                    "lon": "X"
                 }
             }
         ]

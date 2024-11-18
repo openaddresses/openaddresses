@@ -13,10 +13,11 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "http://irdat.regione.fvg.it/Distributore/download?idDset=10221&idFmt=383&type=lcr&path=SIT/Shape/CIVICI_RAFVG_sh.zip",
-                "website": "http://irdat.regione.fvg.it/consultatore-dati-ambientali-territoriali/executeSearch.do?searchDatasets=true&searchServices=true&searchIndicatori=true&testoRicerca=civici&topMap=0&leftMap=0&rightMap=0&bottomMap=0&customSelection=false&place=anywhere&codiciAmbiti=none&boundingBox=&patternSoggetti=&fonteDati=-1&dataDal=&dataAl=&selectedNetwork=&searchType=advanced&avviaRicerca=Search#",
+                "data": "https://data.openaddresses.io/cache/uploads/stepps00/2024-11-04-rofou/IT-36.csv.zip",
+                "website": "https://www.dati.friuliveneziagiulia.it/Regioni-e-citt-/Numeri-Civici-Ascot/fcre-uegn/about_data",
                 "license": {
                     "url": "http://www.dati.gov.it/iodl/2.0/",
+                    "text": "IODL 2.0",
                     "attribution": true,
                     "share-alike": false
                 },
@@ -26,21 +27,19 @@
                 "conform": {
                     "number": {
                         "fields": [
-                            "num_civ",
-                            "barrato"
+                            "NUM_CIVICO",
+                            "ESP_BARRATO"
                         ],
                         "function": "join",
                         "separator": "/"
                     },
-                    "street": [
-                        "tipo_strad",
-                        "nome_strad"
-                    ],
-                    "city": "nome_comun",
+                    "street": "DEN_STRADA_COMP",
+                    "city": "DEN_COMUNE",
                     "region": "Friuli-Venezia Giulia",
-                    "id": "id_civ",
-                    "format": "shapefile",
-                    "accuracy": 3
+                    "id": "COD_ASCOT",
+                    "format": "csv",
+                    "lat": "y",
+                    "lon":"x"
                 }
             }
         ]

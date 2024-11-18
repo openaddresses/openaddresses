@@ -14,15 +14,16 @@
         "addresses": [
             {
                 "name": "county",
-                "note": "This source is county-only addresses. There are two cities inside the county that have their own sources (Wright and Gillette)",
-                "data": "https://www.arcgis.com/sharing/rest/content/items/f3ee6d92b68d46c3b67b5a2f6b9f6e00/data",
-                "website": "https://data-portal-ccgiscoop.hub.arcgis.com/datasets/f3ee6d92b68d46c3b67b5a2f6b9f6e00/about",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://gis.campbellcountywy.gov/arcgis/rest/services/Campbell_Public/AddressesCountywide/MapServer/0",
+                "website": "https://ccgiscoop.maps.arcgis.com/apps/webappviewer/index.html?id=560eced8fd2a48a8880bf9774305b275",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "number": "ADDRNUM",
-                    "unit": "UNITNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITNAME"
+                    ],
                     "street": "SP_STREET",
                     "postcode": "ZIP",
                     "city": "CITY"
@@ -32,12 +33,11 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://www.arcgis.com/sharing/rest/content/items/2e42c7d7feea4c9fa6ed481894fbed8b/data",
-                "website": "https://data-portal-ccgiscoop.hub.arcgis.com/datasets/2e42c7d7feea4c9fa6ed481894fbed8b/about",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://gis.campbellcountywy.gov/arcgis/rest/services/Campbell_Public/TaxParcels_ForWebApplications/MapServer/0",
+                "website": "https://ccgiscoop.maps.arcgis.com/apps/webappviewer/index.html?id=560eced8fd2a48a8880bf9774305b275",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "pid": "PIN"
                 }
             }

@@ -14,20 +14,50 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services.arcgis.com/iPiPjILCMYxPZWTc/ArcGIS/rest/services/Addresses/FeatureServer/0",
+                "data": "https://services.arcgis.com/iPiPjILCMYxPZWTc/ArcGIS/rest/services/E_911_Addresses/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "accuracy": 2,
-                    "number": "HOUSE_",
-                    "street": [
-                        "DIR",
-                        "STREET",
-                        "HSESFX"
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
                     ],
-                    "city": "CITY",
-                    "region": "STATE",
-                    "postcode": "PZIP"
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/iPiPjILCMYxPZWTc/ArcGIS/rest/services/Tax_Parcels/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/iPiPjILCMYxPZWTc/ArcGIS/rest/services/Building_Outlines/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

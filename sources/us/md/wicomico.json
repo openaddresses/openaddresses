@@ -1,0 +1,60 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "24045",
+            "name": "Wicomico",
+            "state": "Maryland"
+        },
+        "country": "us",
+        "state": "md",
+        "county": "Wicomico"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://www.wicomicocounty.org/536/Map-Room",
+                "data": "https://gisapps.wicomicocounty.org/server/rest/services/BaseMap/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STRTNUM",
+                    "street": [
+                        "STRTDIR",
+                        "STRTNAM",
+                        "STRTTYP",
+                        "STRTSFX"
+                    ],
+                    "unit": "STRTUNT",
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.wicomicocounty.org/536/Map-Room",
+                "data": "https://gisapps.wicomicocounty.org/server/rest/services/BaseMap/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ACCTID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "website": "https://www.wicomicocounty.org/536/Map-Room",
+                "data": "https://gisapps.wicomicocounty.org/server/rest/services/BuildingFootPrints2023/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

@@ -14,13 +14,16 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services6.arcgis.com/PArfeTGcwA9RGNzN/arcgis/rest/services/AddressPoints/FeatureServer/0",
+                "data": "https://services6.arcgis.com/PArfeTGcwA9RGNzN/ArcGIS/rest/services/Address_Points/FeatureServer/0",
                 "attribution": "County of Placer",
                 "license": "http://www.placer.ca.gov/departments/communitydevelopment/gis/gis_download",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "STREETNUM",
+                    "number": [
+                        "STREETNUM",
+                        "FRACTIONAL"
+                    ],
                     "street": [
                         "PRETYPE",
                         "PREFIXDIR",
@@ -28,7 +31,10 @@
                         "STREETTYPE",
                         "SUFFIXDIR"
                     ],
-                    "unit": "UNIT"
+                    "unit": "UNIT",
+                    "city": "CITYNAME",
+                    "region": "STATE",
+                    "postcode": "ZONE_"
                 }
             }
         ]

@@ -1,0 +1,56 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "16",
+            "state": "Idaho"
+        },
+        "country": "us",
+        "state": "id"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://services1.arcgis.com/CNPdEkvnGl65jCX8/ArcGIS/rest/services/Address_Points_From_Footprints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "BUILD_ID",
+                    "number": {
+                        "function": "regexp",
+                        "field": "REV_LongLabel",
+                        "pattern": "^(?:.+\\s)?(\\d+(-\\d+)?)(?:\\s.+,.+,\\s(?:OR|ID|WA),\\s.+)$",
+                        "replace": "$1"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "REV_LongLabel",
+                        "pattern": "^(?:(?:.+\\s)?\\d+(?:-\\d+)?\\s)?([A-z].+)(?:,.+,\\s(?:OR|ID|WA),.+)$",
+                        "replace": "$1"
+                    },
+                    "district": "NAME",
+                    "city": "REV_City",
+                    "region": {
+                        "function": "regexp",
+                        "field": "REV_LongLabel",
+                        "pattern": "^(?:.+,\\s)(OR|ID|WA)(?:,.+)$",
+                        "replace": "$1"
+                    },
+                    "postcode": "REV_Postal"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://gis.idwr.idaho.gov/hosting/rest/services/Reference/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
+    }
+}

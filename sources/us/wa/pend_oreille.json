@@ -14,32 +14,44 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.pendoreilleco.org/arcgis/rest/services/Pend_Oreille_Co_Parcels/MapServer/0",
-                "website": "https://gis.pendoreilleco.org/POCGISWeb/",
+                "data": "https://services1.arcgis.com/o3wuEYcU5N00WpI1/arcgis/rest/services/Address_Points___Open_Data/FeatureServer/1",
+                "website": "https://pend-oreille-county-open-data-pendoreilleco.hub.arcgis.com/datasets/PendOreilleCo::address-points-open-data/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "SITUS_NUM",
+                    "number": "add_number",
                     "street": [
-                        "SITUS_PREF",
-                        "SITUS_ST",
-                        "SITUS_SUFI"
+                        "st_predir",
+                        "st_name",
+                        "st_type"
                     ],
-                    "city": "SITUS_CITY",
-                    "postcode": "SITUS_ZIP",
-                    "region": "SITUS_STAT"
+                    "unit": "unit",
+                    "city": "post_comm",
+                    "region": "state",
+                    "postcode": "post_code"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.pendoreilleco.org/arcgis/rest/services/Pend_Oreille_Co_Parcels/MapServer/0",
-                "website": "https://gis.pendoreilleco.org/POCGISWeb/",
+                "data": "https://services1.arcgis.com/o3wuEYcU5N00WpI1/arcgis/rest/services/Parcels_OpenData/FeatureServer/0",
+                "website": "https://pend-oreille-county-open-data-pendoreilleco.hub.arcgis.com/datasets/PendOreilleCo::parcels-opendata/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "pno_1"
+                    "pid": "geo_id"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/o3wuEYcU5N00WpI1/arcgis/rest/services/Building_Footprints_OpenData/FeatureServer/0",
+                "website": "https://pend-oreille-county-open-data-pendoreilleco.hub.arcgis.com/datasets/PendOreilleCo::building-footprints-open-data/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

@@ -14,19 +14,33 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/migurski/d5add2/oregon_state_addresses.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services3.arcgis.com/e3KSI9Py4B7m3xu6/ArcGIS/rest/services/Grant03_address/FeatureServer/0",
+                "website": "https://harneycounty.maps.arcgis.com/home/item.html?id=d0b84951aa004405a6a27cd655533f5c",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "gdb",
-                    "file": "Delivery/addresses_oregon.gdb",
-                    "layer": "Grant",
-                    "number": "ADDRESS",
-                    "street": [
-                        "ROAD_NAME",
-                        "ROAD_SUFFI"
+                    "format": "geojson",
+                    "number": [
+                        "addNum",
+                        "addNumSuf"
                     ],
-                    "postcode": "ZIP"
+                    "street": "srcFullNam",
+                    "unit": "unit",
+                    "city": "postComm",
+                    "district": "county",
+                    "region": "state",
+                    "postcode": "zipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/e3KSI9Py4B7m3xu6/ArcGIS/rest/services/Grant01/FeatureServer/0",
+                "website": "https://harneycounty.maps.arcgis.com/home/item.html?id=6d2cebc3c0bb440cba16375bfb6d7555",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MapTaxlot"
                 }
             }
         ]

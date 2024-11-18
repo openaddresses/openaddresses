@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.co.mille-lacs.mn.us/arcgis/rest/services/MilleLacs_E911/MapServer/4",
+                "data": "https://gis.co.mille-lacs.mn.us/arcgis/rest/services/MilleLacs_E911/MapServer/6",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -23,16 +23,22 @@
                         "ANUMBER",
                         "ANUMBERSUF"
                     ],
-                    "street": "Street",
-                    "city": "CITY",
-                    "postcode": "ZipCode"
+                    "street": [
+                        "LST_PREDIR",
+                        "LST_NAME",
+                        "LST_TYPE",
+                        "LST_POSDIR"
+                    ],
+                    "city": "POSTCOMM",
+                    "region": "STATE_CODE",
+                    "postcode": "ZIP"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.co.mille-lacs.mn.us/arcgis/rest/services/AGO_Parcels_and_Lots/MapServer/13",
+                "data": "https://gis.co.mille-lacs.mn.us/arcgis/rest/services/AGO_Parcels_and_Lots/MapServer/3",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",

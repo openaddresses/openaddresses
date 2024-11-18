@@ -16,19 +16,19 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://www.citywindsor.ca/opendata/Lists/OpenData/Attachments/20/Land_Parcels_LL84.zip",
-                "website": "http://www.citywindsor.ca/opendata/pages/open-data-catalogue.aspx",
+                "data": "https://mappmycity.ca/arcgis/rest/services/MappMyCity/AllUniqueAddresses_Parcels/MapServer/1",
+                "website": "https://mapp-my-city-citywindsor.hub.arcgis.com/",
                 "license": "http://www.citywindsor.ca/opendata/Documents/OpenDataTermsofUse.pdf",
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "number": "ADD_NUMBER",
+                    "number": "street_address",
                     "street": [
-                        "STREET",
-                        "SUFFIX",
-                        "DIRECTION"
+                        "street_name",
+                        "street_suffix",
+                        "street_direction"
                     ],
-                    "format": "shapefile-polygon"
+                    "unit": "unit_number",
+                    "format": "geojson"
                 }
             }
         ]
