@@ -14,12 +14,12 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps.sussexcountyde.gov/gis/rest/services/County_Layers/911Addresses/MapServer/0",
+                "data": "https://map.sussexcountyde.gov/trdserver/rest/services/Geographic_Information_Office/Addresses/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "HouseNumber",
-                    "unit": "UNIT",
+                    "unit": "Unit",
                     "street": [
                         "PD",
                         "PT",
@@ -28,7 +28,29 @@
                         "SD"
                     ],
                     "city": "ZipCommunity",
+                    "region": "StateCode",
                     "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://map.sussexcountyde.gov/trdserver/rest/services/Geographic_Information_Office/Parcels_PIN_With_Assessment_Unit/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Name"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://map.sussexcountyde.gov/trdserver/rest/services/Geographic_Information_Office/Building_Footprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

@@ -1,0 +1,43 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "38",
+            "state": "North Dakota"
+        },
+        "country": "us",
+        "state": "nd"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://files.slack.com/files-pri/T029HV94T-F07L92JNY06/download/ndparcels.gdb.zip?pub_secret=c72ff0aa97",
+                "website": "https://gishubdata-ndgov.hub.arcgis.com/apps/8683ecae023c43d1a85343397b9490e6/explore",
+                "contact": {
+                    "name": "Bob Nutsch",
+                    "phone": "701-328-3212",
+                    "email": "bnutsch@nd.gov"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "ndparcels",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PropertyAddress"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PropertyAddress"
+                    },
+                    "city": "PropertyCity",
+                    "postcode": "PropertyZip",
+                    "id": "ParcelID",
+                    "accuracy": 2
+                }
+            }
+        ]
+    }
+}

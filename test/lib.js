@@ -1,5 +1,5 @@
 import fs from 'fs';
-import $RefParser from 'json-schema-ref-parser';
+import $RefParser from '@apidevtools/json-schema-ref-parser';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 
