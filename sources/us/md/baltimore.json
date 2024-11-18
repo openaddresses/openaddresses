@@ -14,32 +14,64 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "ftp://gispublic:public@ftp.baltimorecountymd.gov/Shapefile/AddressPoints.zip",
-                "website": "http://www.baltimorecountymd.gov/Agencies/infotech/GIS/datadownload.html",
+                "data": "https://bcgisdata.baltimorecountymd.gov/arcgis/rest/services/Facilities/Address/MapServer/1",
+                "website": "https://opendata.baltimorecountymd.gov/datasets/BC-GIS::address-units/about",
                 "license": {
                     "text": "Public Domain",
                     "attribution": false,
                     "share-alike": false
                 },
-                "compression": "zip",
-                "protocol": "ftp",
-                "year": 2013,
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
+                    "id": "ADDRPT_ID",
                     "number": "ST_NUMBER",
                     "street": [
                         "ST_PREMOD",
-                        "ST_PREFIXD",
-                        "ST_PREFIXT",
+                        "ST_PREFIXDIR",
+                        "ST_PREFIXTYPE",
                         "ST_NAME",
                         "ST_TYPE",
-                        "ST_SUFFIXD",
+                        "ST_SUFFIXDIR",
                         "ST_POSTMOD"
                     ],
                     "unit": "ST_NUMSUFF",
-                    "city": "CITY_POSTA",
+                    "city": "CITY_POSTAL",
                     "postcode": "ZIP",
                     "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://bcgisdata.baltimorecountymd.gov/arcgis/rest/services/Property/Property/MapServer/1",
+                "website": "https://opendata.baltimorecountymd.gov/datasets/BC-GIS::parcels/about",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAXPIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://bcgisdata.baltimorecountymd.gov/arcgis/rest/services/Facilities/Buildings/MapServer/2",
+                "website": "https://opendata.baltimorecountymd.gov/datasets/BC-GIS::building-footprints/about",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

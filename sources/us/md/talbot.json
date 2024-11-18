@@ -1,0 +1,54 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "24041",
+            "name": "Talbot County",
+            "state": "Maryland"
+        },
+        "country": "us",
+        "state": "md",
+        "county": "Talbot"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://geodata.md.gov/appdata/rest/services/Addressing/MD_Addressing/MapServer/23",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDID",
+                    "number": "ADDNUMCPLT",
+                    "street": "NAMECPLT",
+                    "unit": "SUBBADDCPLT",
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.talbotdes.org/hosting/rest/services/Address_Mail_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ACCTID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.talbotdes.org/hosting/rest/services/NewFolder/Buildings/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

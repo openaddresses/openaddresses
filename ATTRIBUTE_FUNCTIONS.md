@@ -31,6 +31,7 @@ One note, however, is that functions cannot be combined at this time.  That is, 
 * [`first_non_empty`](#first_non_empty)
 * [`get`](#get)
 * [`chain`](#chain)
+* [`constant`](#constant)
 
 ## Combining Functions
 
@@ -383,6 +384,28 @@ Applying the above conform results in the following:
 | `function` | `chain` |
 | `variable` | a temporary field name to store intermediate results | none (required)
 | ` functions` | a list of conform function definitions (which can also be `chain`) | none (required)
+
+
+### `constant`
+
+The `constant` function allows for defining a specific value for an entire column. Useful when there is only one static value for a field in the entire dataset, and that field is not provided by the source. Only applicable at a higher address level such as region/county/district/city/postcode.
+
+```json
+"number": "ADDR_NUM",
+"street": "STRT_NAM",
+"city": {
+    "function": "constant",
+    "value": "Berlin"
+}
+```
+
+#### Definition:
+
+| parameter | value | default
+| --------- | ----- | -------
+| `function` | `constant` |
+| `value` | the constant value for the field | none (required)
+
 
 ## Acceptance Testing
 

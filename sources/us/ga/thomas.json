@@ -14,25 +14,32 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/us-ga-thomas_county.csv",
-                "protocol": "http",
+                "data": "https://www.thomascountymaps.org/arcgis/rest/services/parcels_addresses/MapServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "csv",
-                    "lat": "LAT",
-                    "lon": "LNG",
-                    "number": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^([0-9]+)( .*)",
-                        "replace": "$1"
-                    },
+                    "format": "geojson",
+                    "number": [
+                        "HouseNumbe",
+                        "HouseSuffi"
+                    ],
                     "street": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
+                        "function": "postfixed_street",
+                        "field": "ADDR1"
                     },
-                    "region": "REGION"
+                    "unit": "UNIT",
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.thomascountymaps.org/arcgis/rest/services/parcels_addresses/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
                 }
             }
         ]

@@ -1,0 +1,43 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "28027",
+            "name": "Coahoma County",
+            "state": "Mississippi"
+        },
+        "country": "us",
+        "state": "ms",
+        "county": "Coahoma"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.mississippi.edu/server/rest/services/CountyPointAddresses/Coahoma_PointAddresses_2022/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Label",
+                    "street": "FullName",
+                    "unit": "BldgUnit",
+                    "city": "City",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/5G7jKR52EkSIM2EV/ArcGIS/rest/services/Coahoma_Service/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
+    }
+}

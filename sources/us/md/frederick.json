@@ -14,12 +14,13 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps.frederickcountymd.gov/arcgis/rest/services/Planning/AddressPoints/MapServer/1",
-                "website": "https://gis-fcgmd.opendata.arcgis.com/pages/addressing-road-naming",
+                "data": "https://fcgis.frederickcountymd.gov/server_pub/rest/services/Basemap/Addresses/MapServer/1",
+                "website": "https://gis-fcgmd.opendata.arcgis.com/datasets/5e9209e3eef5401e9d56de8986931c52_1/about",
                 "attribution": "Frederick County",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
+                    "id": "ADDRESSPT_ID",
                     "number": [
                         "ST_NUM",
                         "ST_NUM_SUFFIX"
@@ -37,6 +38,31 @@
                     "city": "CITY",
                     "region": "STATE",
                     "postcode": "ZIP_ADDR"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://fcgis.frederickcountymd.gov/server_pub/rest/services/Basemap/Parcels/MapServer/0",
+                "website": "https://gis-fcgmd.opendata.arcgis.com/datasets/fcgmd::parcels-2/about",
+                "attribution": "Frederick County",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAX_ACCT"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://fcgis.frederickcountymd.gov/server_pub/rest/services/Basemap/BuildingFootprints/MapServer/0",
+                "website": "https://gis-fcgmd.opendata.arcgis.com/datasets/fcgmd::buildings/about",
+                "attribution": "Frederick County",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
