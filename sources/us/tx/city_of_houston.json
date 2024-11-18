@@ -21,24 +21,30 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://cohegis.houstontx.gov/cohgispub/rest/services/PD/Planning_And_Development_wm/MapServer/30",
+                "data": "https://mycity2.houstontx.gov/pubgis02/rest/services/HoustonMap/Planning_and_Development/MapServer/33",
+                "website": "https://cohgis-mycity.opendata.arcgis.com/datasets/341d9a73b80941dbb514c5ce6051d55f_33/explore",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "id": "ADDR_ID",
+                    "id": "siteaddid",
                     "number": [
-                        "STREET_NUM",
-                        "FRACTION"
+                        "addrnum",
+                        "fraction"
                     ],
                     "street": [
-                        "PREFIX",
-                        "STREET_NAME",
-                        "SUFFIX",
-                        "STREET_TYPE"
+                        "prefix",
+                        "roadname",
+                        "roadtype",
+                        "suffix"
                     ],
-                    "city": "CITY",
-                    "region": "STATE",
-                    "postcode": "ZIPCODE"
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "municipality",
+                    "district": "county",
+                    "region": "state",
+                    "postcode": "zipcode"
                 }
             }
         ]

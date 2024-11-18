@@ -14,28 +14,28 @@
         },
         "country": "us",
         "state": "de",
-        "city": "Dover"
+        "county": "New Castle",
+        "city": "Newark"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "city",
-                "data": "https://giswa.cityofnewarkde.us/arcgis_public/rest/services/TaxParcels/Newark_Parcels/MapServer/0",
+                "data": "https://services.arcgis.com/nQgBxn6WXyRCKVUz/ArcGIS/rest/services/AGO_NewarkParcels_Labeled_MS/FeatureServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "FULL_ADDRE"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "FULL_ADDRE"
-                    },
-                    "city": "CITY",
-                    "region": "STATE",
-                    "postcode": "ZIP_CODE"
+                    "number": "STNO",
+                    "street": [
+                        "PREDIR",
+                        "STNAME",
+                        "SUFFIX",
+                        "POSTDIR"
+                    ],
+                    "city": "PROPCITY",
+                    "region": "PROPSTATE",
+                    "postcode": "PROPZIP"
                 }
             }
         ]

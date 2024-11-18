@@ -14,14 +14,11 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://www.ccgov.org/home/showdocument?id=11855",
-                "website": "http://www.ccgov.org/dept_planning/gis/avdata.cfm",
-                "license": "http://www.ccgov.org/dept_planning/gis/orthos/licenseagreement_4_6_07.pdf",
-                "compression": "zip",
-                "protocol": "http",
-                "year": 2016,
+                "data": "https://cecilmaps.org/arcgis/rest/services/ConsolidatedWebService/MapServer/1",
+                "website": "https://www.ccgov.org/government/land-use-development-services/gis/available-gis-data",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "number": "STRT_ADD",
                     "street": [
                         "STRT_PFX",
@@ -30,7 +27,31 @@
                         "STRT_SUF"
                     ],
                     "unit": "UNIT",
-                    "city": "COMMUNITY"
+                    "city": "COMMUNITY",
+                    "region": "State"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://cecilmaps.org/arcgis/rest/services/ConsolidatedWebService/MapServer/60",
+                "website": "https://www.ccgov.org/government/land-use-development-services/gis/available-gis-data",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ACCTID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://cecilmaps.org/arcgis/rest/services/ConsolidatedWebService/MapServer/5",
+                "website": "https://www.ccgov.org/government/land-use-development-services/gis/available-gis-data",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

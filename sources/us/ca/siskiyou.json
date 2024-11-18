@@ -14,47 +14,24 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/ArcGIS/rest/services/TaxParcels_Public/FeatureServer/0",
+                "data": "https://services3.arcgis.com/JmPiYilyU1x5zuxM/ArcGIS/rest/services/AddressPointNew/FeatureServer/9",
                 "website": "https://siskiyou.maps.arcgis.com/home/item.html?id=710e1a6aa9c949b0ab110b88b1647bc1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "SITEADDRESS",
-                        "pattern": "^([0-9]+)(?:.+?)$",
-                        "replace": "$1"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "SITEADDRESS",
-                        "pattern": "^(?:[0-9]+\\s+)(.+?)(?:\\s+(?:#)?(?:\\d+[A-Z]?|[A-Z]\\d*)?)?(?:,.+?)$",
-                        "replace": "$1"
-                    },
-                    "unit": {
-                        "function": "regexp",
-                        "field": "SITEADDRESS",
-                        "pattern": "^(?:[0-9]+\\s+.+?\\s+)((#)?(\\d+[A-Z]?|[A-Z](\\d*)?)?)?(?:,.+?)$",
-                        "replace": "$1"
-                    },
-                    "city": {
-                        "function": "regexp",
-                        "field": "SITEADDRESS",
-                        "pattern": "^(?:.+?,)?(.+?)(?:\\sCA\\s\\d{5})$",
-                        "replace": "$1"
-                    },
-                    "region": {
-                        "function": "regexp",
-                        "field": "SITEADDRESS",
-                        "pattern": "\\b(CA)\\b",
-                        "replace": "$1"
-                    },
-                    "postcode": {
-                        "function": "regexp",
-                        "field": "SITEADDRESS",
-                        "pattern": ".*([0-9]{5})$",
-                        "replace": "$1"
-                    }
+                    "number": "FullAddNum",
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "city": "MSAGComm",
+                    "postcode": "Post_Code"
                 }
             }
         ],

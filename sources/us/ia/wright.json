@@ -14,38 +14,45 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Wright/Address_99.zip",
+                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/WrightCountyIA_WFS/MapServer/2",
                 "license": {
                     "text": "Public Domain",
                     "attribution": false,
                     "share-alike": false
                 },
-                "year": "2012?",
-                "protocol": "ftp",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
                     "number": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^([0-9]+)"
+                        "function": "prefixed_number",
+                        "field": "PropertyAddress"
                     },
                     "street": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
+                        "function": "postfixed_street",
+                        "field": "PropertyAddress",
+                        "may_contain_units": true
                     },
                     "unit": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^.* ((Unit|Apt) [0-9A-Za-z])$",
-                        "replace": "$1"
+                        "function": "postfixed_unit",
+                        "field": "PropertyAddress"
                     },
-                    "city": "POSTAL_COM",
-                    "district": "COUNTY",
-                    "region": "STATE",
-                    "postcode": "ZIP_CODE",
-                    "format": "shapefile"
+                    "city": "PROPERTYCITY",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/WrightCountyIA_WFS/MapServer/2",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PIN",
+                    "format": "geojson"
                 }
             }
         ]

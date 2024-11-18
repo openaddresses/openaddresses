@@ -14,22 +14,25 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.sccwi.gov/arcgis/rest/services/LandInformation/SiteAddressPoints/MapServer/0",
-                "protocol": "ESRI",
+                "data": "https://gisdata.wisc.edu/public/ST_CROIX_ADDRESSES_2024.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2024",
                 "conform": {
-                    "format": "geojson",
+                    "format": "gdb",
+                    "layer": "ST_CROIX_ADDRESSES_2024",
+                    "id": "OBJECTID",
                     "number": [
-                        "PREADDRNUM",
-                        "ADDRNUM",
-                        "ADDRNUMSUF"
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
                     ],
-                    "unit": [
-                        "UNITTYPE",
-                        "UNITID"
-                    ],
-                    "street": "FULLNAME",
-                    "city": "COMMUNITY",
-                    "postcode": "ZIPCODE"
+                    "unit": "Unit",
+                    "street": "FullStNm",
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
                 }
             }
         ],
@@ -40,21 +43,21 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "Parcel Number"
+                    "pid": "ParcelNumber"
                 }
             }
         ],
         "buildings": [
             {
                 "name": "county",
-                "data": "https://gisdata.wisc.edu/public/St_Croix_Buildings_2017.zip",
-                "website": "https://geodata.wisc.edu/catalog/1645C83E-FA1C-472E-9257-4D53B0A838D0",
+                "data": "https://gisdata.wisc.edu/public/ST_CROIX_BUILDINGS_2024.zip",
+                "website": "https://geodata.wisc.edu/catalog/DE3CF010-24F0-44C3-BD53-EFCF9A1CAC62",
                 "protocol": "http",
                 "compression": "zip",
-                "year": "2017",
+                "year": "2024",
                 "conform": {
                     "format": "gdb",
-                    "layer": "St_Croix_Buildings_2017"
+                    "layer": "ST_CROIX_BUILDINGS_2024"
                 }
             }
         ]

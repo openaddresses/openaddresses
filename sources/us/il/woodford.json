@@ -14,18 +14,40 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://www.centralilmaps.com/arcgis/rest/services/Woodford/WoodfordGIS_Flex_New_20160509/MapServer/1",
+                "data": "https://www.centralilmaps.com/arcgis/rest/services/Woodford/WoodfordGIS_ParcelsWithAddresses/MapServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDR_HN",
-                    "street": [
-                        "ADDR_PD",
-                        "ADDR_PT",
-                        "ADDR_ST_NA",
-                        "ADDR_ST"
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
                     ],
-                    "unit": "Unit_Name"
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "MSAGComm",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.centralilmaps.com/arcgis/rest/services/Woodford/WoodfordGIS_ParcelsWithAddresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]
