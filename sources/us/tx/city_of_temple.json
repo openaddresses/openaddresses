@@ -22,7 +22,7 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://arcgiswap01.ci.temple.tx.us/arcgis/rest/services/Services/Address/FeatureServer/0",
+                "data": "https://arcgiswap02.ci.temple.tx.us/arcgiswap02/rest/services/Base/AddressPoints/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -32,7 +32,19 @@
                         "LOCSTRSUF"
                     ],
                     "number": "LOCSTRNUM",
-                    "unit": "LOCSTRAPT"
+                    "unit": "LOCSTRAPT",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://arcgiswap02.ci.temple.tx.us/arcgiswap02/rest/services/Base/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PROP_ID"
                 }
             }
         ]

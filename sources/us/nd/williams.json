@@ -15,22 +15,38 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "http://services1.arcgis.com/D85sDZoJyameepNh/ArcGIS/rest/services/Master_Addresses/FeatureServer/0",
+                "data": "https://services1.arcgis.com/D85sDZoJyameepNh/ArcGIS/rest/services/Master_Addresses/FeatureServer/0",
                 "conform": {
                     "format": "geojson",
-                    "number": "STR_NUM",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
                     "street": [
-                        "PRE_DIR",
-                        "STR_NAME",
-                        "STR_TYPE",
-                        "POST_DIR"
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDri",
+                        "St_PosMod"
                     ],
-                    "unit": [
-                        "UNIT_TYPE",
-                        "UNIT_NUM"
-                    ],
-                    "city": "city",
-                    "postcode": "Zipcode"
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services1.arcgis.com/D85sDZoJyameepNh/ArcGIS/rest/services/ParcelsWeb/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "p_ParcelID"
                 }
             }
         ]
