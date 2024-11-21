@@ -1,0 +1,65 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -96.314,
+                30.6
+            ]
+        },
+        "US Census": {
+            "geoid": "4815976",
+            "name": "City of College Station",
+            "state": "Texas"
+        },
+        "country": "us",
+        "state": "tx",
+        "county": "College Station",
+        "city": "Bryan"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.cstx.gov/csgis/rest/services/_OpenData/OpenData_FDS/FeatureServer/0",
+                "website": "https://data-cstx.opendata.arcgis.com/datasets/CSTX::structures/about",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0",
+                    "attribution": true,
+                    "attribution name": "City of College Station"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FULL_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FULL_ADDRESS"
+                    },
+                    "format": "geojson"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.cstx.gov/csgis/rest/services/_OpenData/OpenData_FDS/FeatureServer/0",
+                "website": "https://data-cstx.opendata.arcgis.com/datasets/CSTX::structures/about",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0",
+                    "attribution": true,
+                    "attribution name": "City of College Station"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

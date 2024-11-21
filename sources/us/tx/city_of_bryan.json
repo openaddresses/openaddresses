@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -96.37,
+                30.674
+            ]
+        },
+        "US Census": {
+            "geoid": "4810912",
+            "name": "City of Bryan",
+            "state": "Texas"
+        },
+        "country": "us",
+        "state": "tx",
+        "county": "Brazos",
+        "city": "Bryan"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.bryantx.gov/server/rest/services/Address/ADDRESS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": [
+                        "SITUSNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": [
+                        "PREDIR",
+                        "PRETYPE",
+                        "SITUSST",
+                        "SFX",
+                        "SFXDIR"
+                    ],
+                    "unit": "UNIT_NO",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP",
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

@@ -86,7 +86,7 @@ instead of a pull request. We’ll determine if the data is suitable for inclusi
 `layers`              | Yes | An object containing the data layers for a given source. Valid layers are `addressess`, `parcels` and `buildings`.
 `layers.{layer}`      | Yes | An array of layer objects for a given layer type
 `{layer}.name`        | Yes | The name of the data provider (AlphaNumeric + Underscores). If unknown, just use the geographic entity, i.e. `town`, `city`, `county`
-`{layer}.data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal. If there isn't a good URL for the source, members of the OpenAddresses GitHub organization can upload files to https://results.openaddresses.io/upload-cache which provides a cached URL.
+`{layer}.data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal. If there isn't a good URL for the source, you can upload files to [https://batch.openaddresses.io/upload](https://batch.openaddresses.io/upload) which provides a cached URL.
 `{layer}.protocol`    | Yes | A string containing the protocol (One of: `http`, `ftp`, `ESRI`)
 `{layer}.conform`     |     | Optional Object used to find address information in a source. [See below for more details](#conform-object).
 `{layer}.compression` |     | Optional string containing the compression type (usually `zip`). Omit if source is not compressed.

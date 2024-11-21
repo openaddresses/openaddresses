@@ -14,23 +14,40 @@
         "addresses": [
             {
                 "name": "county",
+                "data": "https://gis.cccounty.us/Downloads/General%20County%20Data/CCC_AddressData.zip",
+                "website": "http://www.contracosta.ca.gov/1818/GIS",
+                "license": "https://gis.cccounty.us/Downloads/General%20County%20Data/Data%20Disclaimer.pdf",
+                "attribution": "Contra Costa County",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "street_num",
+                    "street": [
+                        "prefix_typ",
+                        "prefix_dir",
+                        "street_nam",
+                        "street_typ",
+                        "suffix_dir"
+                    ],
+                    "unit": "unit_numbe",
+                    "city": "city",
+                    "region": "state",
+                    "postcode": "zip_code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
                 "data": "https://ccmap.cccounty.us/arcgis/rest/services/CCMAP/CCMAP/MapServer/0",
                 "website": "http://www.contracosta.ca.gov/1818/GIS",
-                "license": "http://www.ccmap.us/information.asp",
+                "license": "https://gis.cccounty.us/Downloads/General%20County%20Data/Data%20Disclaimer.pdf",
                 "attribution": "Contra Costa County",
                 "protocol": "ESRI",
-                "note": "Details for the dataset (eg, projection) can be found here http://www.ccmap.us/Details.asp?Product=134492",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "cccGIS_Assessor.ASSRADMIN.Parcel_DOIT_WEB.full_address_search"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "cccGIS_Assessor.ASSRADMIN.Parcel_DOIT_WEB.full_address_search"
-                    },
-                    "city": "cccGIS_Assessor.ASSRADMIN.Parcel_DOIT_WEB.s_city"
+                    "pid": "cccGIS_Assessor.ASSRADMIN.Parcel_DOIT_WEB.APN"
                 }
             }
         ]

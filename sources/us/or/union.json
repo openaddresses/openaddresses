@@ -1,0 +1,57 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "41061",
+            "name": "Union County",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "county": "Union"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://github.com/user-attachments/files/16757201/Accounts.zip",
+                "website": "https://union-county.org/gis-down/",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2024",
+                "conform": {
+                    "format": "shapefile",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUS_ADDR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUS_ADDR",
+                        "may_contain_units": true
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "SITUS_ADDR"
+                    },
+                    "city": "SITUS_CITY",
+                    "region": "SITUS_STAT"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://github.com/user-attachments/files/16757201/Accounts.zip",
+                "website": "https://union-county.org/gis-down/",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2024",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "MAP_TAX_LO"
+                }
+            }
+        ]
+    }
+}

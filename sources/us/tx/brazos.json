@@ -2,67 +2,53 @@
     "coverage": {
         "US Census": {
             "geoid": "48041",
-            "name": "BrazosCad County",
+            "name": "Brazos County",
             "state": "Texas"
         },
         "country": "us",
         "state": "tx",
-        "county": "BrazosCad"
+        "county": "Brazos"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.tnris.org/94502179-9389-4bfa-b753-5e43f6d477bf/resources/stratmap21-addresspoints_48041_ap.zip",
-                "website": "https://data.tnris.org/collection/?c=94502179-9389-4bfa-b753-5e43f6d477bf",
+                "data": "https://services6.arcgis.com/j94FvPaik4etwHFk/ArcGIS/rest/services/BrazosCADWebService/FeatureServer/0",
+                "website": "https://brazoscad.org/gis/",
                 "license": {
                     "url": "https://creativecommons.org/publicdomain/zero/1.0/",
                     "text": "CC 0"
                 },
-                "protocol": "http",
-                "compression": "zip",
-                "year": "2021",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "gdb",
-                    "file": "fgdb/stratmap21-addresspoints_48041_brazos_202107.gdb",
-                    "id": "OBJECTID",
-                    "number": [
-                        "Add_Number",
-                        "AddNum_Suf"
-                    ],
+                    "format": "geojson",
+                    "number": "situs_num",
                     "street": [
-                        "St_PreMod",
-                        "St_PreDir",
-                        "St_PreTyp",
-                        "St_PreSep",
-                        "St_Name",
-                        "St_PosTyp",
-                        "St_PosDir",
-                        "St_PosMod"
+                        "situs_street_prefx",
+                        "situs_street",
+                        "situs_street_sufix"
                     ],
-                    "unit": "Unit",
-                    "city": "Post_Comm",
-                    "postcode": "Post_Code"
+                    "city": "situs_city",
+                    "region": "situs_state",
+                    "postcode": "situs_zip",
+                    "id": "geo_id"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://brazoscad.org/wp-content/uploads/2023/04/WEB_PARCEL_BOUNDARY.zip",
+                "data": "https://services6.arcgis.com/j94FvPaik4etwHFk/ArcGIS/rest/services/BrazosCADWebService/FeatureServer/0",
                 "website": "https://brazoscad.org/gis/",
                 "license": {
                     "url": "https://creativecommons.org/publicdomain/zero/1.0/",
                     "text": "CC 0"
                 },
-                "protocol": "http",
-                "compression": "zip",
-                "year": "2023",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "file": "WEB_PARCEL_BOUNDARY.shp",
-                    "pid": "geo_id"
+                    "format": "geojson",
+                    "pid": "prop_id"
                 }
             }
         ]

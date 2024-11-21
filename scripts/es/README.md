@@ -9,6 +9,15 @@ This code follows these steps:
 4. For each zipped GML file, uncompress, build an index of XLINK targets (admin boundary, postcode, street name) then traverse the GML, composing an openaddresses-like CSV of the result
 5. strip headers from CSVs and combine into a single country-wide CSV
 
-This final CSV is what now lives in the https://data.openaddresses.io/cache/es.zip file. OpenAddresses' `es.json` source processes and reprojects it as usual.
+This final CSV is what now lives in the https://data.openaddresses.io/cache/es-*.zip file. OpenAddresses' `es-*.json` source processes and reprojects it as usual.
 
 This Makefile was written as work was being done in the terminal. It is intended as a guide for a developer wishing to update Spanish data or replicate the process. It is not guaranteed to run flawlessly -- indeed, some manual correction of malformed URLs in the source ATOM is likely to be necessary. It should get you most of the way there, however.
+
+
+# How to run
+
+```
+make xml
+make spain_catastre/gml
+make build
+```

@@ -14,22 +14,41 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services1.arcgis.com/6iYC5AXXYapRVNzl/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "data": "https://www.mchenrycountygis.org/arcgis/rest/services/AddressPoints/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "Street_Number",
-                    "street": [
-                        "Prefix_Dir",
-                        "Street_Name",
-                        "Street_Type",
-                        "Suffix_Dir"
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
                     ],
-                    "unit": "AptNumber",
-                    "city": "City",
-                    "district": "COUNTY",
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "district": "County",
                     "region": "State",
-                    "postcode": "Zip_Code"
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.mchenrycountygis.org/arcgis/rest/services/parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNumber"
                 }
             }
         ]

@@ -14,12 +14,18 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps2.tucsonaz.gov/arcgis/rest/services/CityManager/cmStreetcarDevOpp_AddressParcels/MapServer/0",
+                "data": "https://gisdata.pima.gov/arcgis1/rest/services/GISOpenData/Addresses/MapServer/4",
+                "website": "https://gisopendata.pima.gov/datasets/PimaMaps::pima-county-official-address-points/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "STREET_NO",
-                    "street": "STREET",
+                    "street": [
+                        "STREET_DIR",
+                        "AD_STREET",
+                        "AD_SUFFIX",
+                        "SUFFIX_DIR"
+                    ],
                     "postcode": "ZIPCODE",
                     "city": "ZIPCITY"
                 }
@@ -28,7 +34,8 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://maps2.tucsonaz.gov/arcgis/rest/services/CityManager/cmStreetcarDevOpp_AddressParcels/MapServer/1",
+                "data": "https://gisdata.pima.gov/arcgis1/rest/services/GISOpenData/LandRecords/MapServer/12",
+                "website": "https://gisopendata.pima.gov/datasets/PimaMaps::parcels-regional/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",

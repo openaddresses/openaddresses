@@ -22,9 +22,11 @@
             {
                 "name": "city",
                 "attribution": "City of Westminster",
-                "data": "http://maps.cityofwestminster.us/arcgis/rest/services/Addresses/MapServer/0",
+                "data": "https://maps.cityofwestminster.us/server/rest/services/Base_Data/Addresses/MapServer/0/",
+                "website": "https://opendata-westminster.hub.arcgis.com/datasets/addresses/explore",
                 "protocol": "ESRI",
                 "conform": {
+                    "format": "geojson",
                     "number": "ADDRNUM",
                     "street": [
                         "STREETDIR",
@@ -32,9 +34,33 @@
                         "STREETTYPE"
                     ],
                     "unit": "UNITNUM",
-                    "format": "geojson",
                     "postcode": "ZIPCODE",
                     "district": "COUNTY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://maps.cityofwestminster.us/server/rest/services/Base_Data/Parcels/MapServer/0",
+                "website": "https://opendata-westminster.hub.arcgis.com/datasets/parcels/explore",
+                "protocol": "ESRI",
+                "attribution": "City of Westminster",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://maps.cityofwestminster.us/server/rest/services/Base_Data/Buildings/MapServer/0",
+                "website": "https://opendata-westminster.hub.arcgis.com/",
+                "protocol": "ESRI",
+                "attribution": "City of Westminster",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

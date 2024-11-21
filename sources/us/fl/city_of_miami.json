@@ -1,0 +1,40 @@
+{
+    "schema": 2,
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -80.21,
+                25.78
+            ]
+        },
+        "US Census": {
+            "geoid": "1245000",
+            "name": "Miami",
+            "state": "Florida"
+        },
+        "country": "us",
+        "state": "fl",
+        "county": "Miami-Dade",
+        "city": "Miami"
+    },
+    "layers": {
+        "addresses": [{
+            "name": "city",
+            "data": "https://gis.miamigov.com/gis/rest/services/Maps/AllAddresses/MapServer/0",
+            "website": "https://gis.miamigov.com/miamizoning/index.html",
+            "protocol": "ESRI",
+            "conform": {
+                "format": "geojson",
+                "number": "STNUMBER",
+                "street": [
+                    "STQUAD",
+                    "STNAME",
+                    "STTYPE"
+                ],
+                "unit": "SUITE",
+                "postcode": "ZIPCODE"
+            }
+        }]
+    }
+}

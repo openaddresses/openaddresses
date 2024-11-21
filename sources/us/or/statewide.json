@@ -12,27 +12,37 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://maps.dsl.state.or.us/arcgis/rest/services/Hosted/Taxlots_OregonState_Offline/FeatureServer/0",
-                "website": "https://maps.dsl.state.or.us/portal/home/item.html?id=fb0d0bb0e55e48778343291908c319b3",
-                "protocol": "ESRI",
+                "data": "https://files.slack.com/files-pri/T029HV94T-F065SQKD4G2/download/nad_r8_oregon.gdb.zip?pub_secret=b2f4b8ded5",
+                "website": "https://nationaladdressdata.s3.amazonaws.com/",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2020",
                 "conform": {
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "siteaddnam"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "siteaddnam",
-                        "pattern": "^(?:[0-9]+(?:[A-Z]|[ -]1/2)?\\s+)(?:(?:(?:STE|UNIT|APT|BLDG)\\s+|#)(?:\\d+[A-Z]?|[A-Z]\\d*))?(.+?)(?:(,\\s)?(?:(?:STE|UNIT|APT|BLDG)\\s+|#)(?:\\d+[A-Z]?|[A-Z]\\d*))?$"
-                    },
-                    "unit": {
-                        "function": "regexp",
-                        "field": "siteaddnam",
-                        "pattern": "^(?:[0-9]+(?:[A-Z]|[ -]1/2)?\\s+)(((STE|UNIT|APT|BLDG)\\s+|#)(\\d+[A-Z]?|[A-Z]\\d*))?(?:.+?)((,\\s)?((STE|UNIT|APT|BLDG)\\s+|#)(\\d+[A-Z]?|[A-Z]\\d*))?$"
-                    },
-                    "city": "siteaddcty",
-                    "postcode": "sitezip",
-                    "format": "geojson"
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "StN_PreMod",
+                        "StN_PreDir",
+                        "StN_PreTyp",
+                        "StN_PreSep",
+                        "StreetName",
+                        "StN_PosTyp",
+                        "StN_PosDir",
+                        "StN_PosMod"
+                    ],
+                    "unit": [
+                        "Addtl_Loc",
+                        "Unit"
+                    ],
+                    "city": "Inc_Muni",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Zip_Code",
+                    "format": "gdb",
+                    "layer": "NAD_r8_Oregon"
                 }
             }
         ],
@@ -44,6 +54,17 @@
                 "protocol": "ESRI",
                 "conform": {
                     "pid": "ortaxlot",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "state",
+                "data": "https://services8.arcgis.com/8PAo5HGmvRMlF2eU/arcgis/rest/services/Building_Footprints/FeatureServer/0",
+                "website": "https://geohub.oregon.gov/datasets/5dfc198ecaf64711a9e77057de2b6af1_0/about",
+                "protocol": "ESRI",
+                "conform": {
                     "format": "geojson"
                 }
             }

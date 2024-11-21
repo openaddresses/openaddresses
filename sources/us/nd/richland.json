@@ -15,19 +15,47 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://c39gisserver.co.richland.nd.us/arcgis/rest/services/Addressing/Addresses/MapServer/362",
+                "data": "https://gis.co.richland.nd.us/arcgis/rest/services/Addressing/Address_Points/MapServer/0",
                 "conform": {
                     "format": "geojson",
-                    "number": "house_num",
-                    "street": [
-                        "street",
-                        "st_suffix",
-                        "st_postdir"
+                    "number": [
+                        "Add_Number",
+                        "AddNum_Suf"
                     ],
-                    "unit": "house_num_suf",
-                    "city": "postal_comm",
-                    "region": "state",
-                    "postcode": "zip_code"
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis.co.richland.nd.us/arcgis/rest/services/Hosted/Richland_County_ND_Parcels/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pin_num"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis.co.richland.nd.us/arcgis/rest/services/Building_Footprints/MapServer/0",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

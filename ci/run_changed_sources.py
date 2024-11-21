@@ -125,7 +125,6 @@ def main():
             layer=source.layer,
             layersource=source.name,
             do_preview=True,
-            do_mbtiles=True,
             do_pmtiles=True,
             mapbox_key=os.environ.get('MAPBOX_KEY'),
         )
@@ -168,7 +167,7 @@ def main():
 
         if not source.state:
             source_result = ":x: Failed"
-        elif source.state.get("feat count", 0) <= 0:
+        elif (source.state.get("feat count") or 0) <= 0:
             source_result = ":x: No features"
         elif source.state.get("skipped") is True:
             source_result = ":white_check_mark: Skipped"

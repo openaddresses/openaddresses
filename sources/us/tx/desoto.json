@@ -21,19 +21,42 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://gis4.dfwmaps.com/arcgis/rest/services/ICDesoto/Desoto_Baselayers_VE10/MapServer/2",
+                "data": "https://services8.arcgis.com/QHqdbIhWBJLlMbGN/ArcGIS/rest/services/AddressPoint_DeSoto_view/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSE_NUM",
-                    "street": [
-                        "PREFIX",
-                        "PRETYPE",
-                        "STREET",
-                        "TYPE",
-                        "SUFFIX"
+                    "id": "SITEADDID",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
                     ],
-                    "city": "CITY"
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services8.arcgis.com/QHqdbIhWBJLlMbGN/ArcGIS/rest/services/Parcel_DeSoto_public/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "GIS_PARCEL_ID"
                 }
             }
         ]

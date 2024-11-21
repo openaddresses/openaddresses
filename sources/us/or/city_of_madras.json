@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "4145250",
+            "name": "City of Madras",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "county": "Jefferson",
+        "city": "Madras"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.jeffco.net/server/rest/services/data/Madras_Taxlots/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "house_numb",
+                    "street": [
+                        "pre_direct",
+                        "street_nam",
+                        "street_typ",
+                        "direction"
+                    ],
+                    "unit": "unit_numbe",
+                    "city": "city",
+                    "region": "state",
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.jeffco.net/server/rest/services/data/Madras_Taxlots/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "maptaxlot"
+                }
+            }
+        ]
+    }
+}

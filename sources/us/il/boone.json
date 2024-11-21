@@ -14,19 +14,39 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://maps.boonecountyil.org/arcgis/rest/services/Ownership_Parcels/MapServer/0",
+                "data": "https://maps.boonecountyil.org/arcgis/rest/services/Address_Points/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "add_num",
-                    "street": [
-                        "add_prefix",
-                        "add_strt",
-                        "add_type",
-                        "add_sdir"
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
                     ],
-                    "city": "add_munic",
-                    "postcode": "add_zip"
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "Street_Name_other",
+                        "St_PosTyp_Other",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.boonecountyil.org/arcgis/rest/services/Ownership_Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pin"
                 }
             }
         ]
