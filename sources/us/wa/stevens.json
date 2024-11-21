@@ -1,0 +1,54 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "52065",
+            "name": "Stevens County",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa",
+        "county": "Stevens"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.stevenscountywa.gov/server/rest/services/NG911datashare/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "unit": "unit",
+                    "number": [
+                        "addnum_pre",
+                        "add_number",
+                        "addnum_suf"
+                    ],
+                    "street": [
+                        "st_premod",
+                        "st_predir",
+                        "st_pretyp",
+                        "st_presep",
+                        "st_name",
+                        "st_postyp",
+                        "st_posdir",
+                        "st_posmod"
+                    ],
+                    "city": "post_comm",
+                    "postcode": "post_code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.stevenscountywa.gov/server/rest/services/Externalparcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELN"
+                }
+            }
+        ]
+    }
+}

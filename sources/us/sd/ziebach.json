@@ -1,0 +1,38 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "46137",
+            "name": "Ziebach County",
+            "state": "South Dakota"
+        },
+        "country": "us",
+        "state": "sd",
+        "county": "Ziebach"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/server/rest/services/ZIEBACH_WEB_LAYERS/MapServer/24",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "LABEL",
+                    "street": "DLVRY_ADD"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.districtiii.org/server/rest/services/ZIEBACH_WEB_LAYERS/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
+    }
+}

@@ -16,22 +16,41 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://dati.comune.bologna.it/download/file/fid/921",
-                "website": "http://dati.comune.bologna.it/node/167",
-                "license": "CC By 3.0 EN",
-                "attribution": "Dipartimento Riqualificazione Urbana di Bologna",
+                "data": "https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rifter_civici_pt/exports/geojson",
+                "website": "https://opendata.comune.bologna.it/explore/dataset/rifter_civici_pt/information",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution name": "Dipartimento Riqualificazione Urbana di Bologna",
+                    "attribution": true,
+                    "share-alike": false
+                },
                 "protocol": "http",
-                "compression": "zip",
-                "note": "GDAL error with .Shp file extension",
                 "conform": {
-                    "format": "shapefile",
-                    "file": "civici.Shp",
-                    "srs": "EPSG:23032",
-                    "number": "NCIVSUB",
-                    "street": "DENOMINAZI",
-                    "city": "LOC11_NOME",
-                    "district": "QUARTIERE",
-                    "postcode": "CAP"
+                    "format": "geojson",
+                    "number": "ncivsub",
+                    "street": "denominazi",
+                    "city": "zona_nome",
+                    "district": "quartiere",
+                    "postcode": "cap"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rifter_edif_pl/exports/geojson?lang=it&timezone=America%2FLos_Angeles",
+                "website": "https://opendata.comune.bologna.it/explore/dataset/rifter_civici_pt/information",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution name": "Dipartimento Riqualificazione Urbana di Bologna",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

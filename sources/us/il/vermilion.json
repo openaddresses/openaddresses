@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_vermilion_co_il_taxmap/MapServer/0",
+                "data": "https://ags.bhamaps.com/arcgisserver/rest/services/VermilionIL/VermilionIL_PAT_Parcel_Taxmap/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "number": {
@@ -28,6 +28,17 @@
                         "pattern": "^(?:[0-9]+ )(.*)",
                         "replace": "$1"
                     },
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://ags.bhamaps.com/arcgisserver/rest/services/VermilionIL/VermilionIL_PAT_Parcel_Taxmap/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PIN",
                     "format": "geojson"
                 }
             }

@@ -13,20 +13,35 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://mapservices.gov.yk.ca/arcgis/rest/services/GeoYukon/GY_LandTenure/MapServer/42",
-                "protocol": "ESRI",
+                "data": "https://map-data.service.yukon.ca/GeoYukon/People_and_Structures/Civic_Address_Point/Civic_Address_Point.shp.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "text": "Open Government Licence - Yukon",
+                    "attribution": true,
+                    "share-alike": false,
+                    "url": "https://open.yukon.ca/open-government-licence-yukon",
+                    "attribution name": "Contains information licensed under the Open Government Licence – Yukon"
+                },
                 "conform": {
-                    "format": "geojson",
-                    "unit": [
-                        "UNIT_NUMBER",
-                        "UNIT_TYPE_CODE"
+                    "format": "shapefile",
+                    "unit": "ADDNUM_SUF",
+                    "number": [
+                        "ADDNUM_PRE",
+                        "ADD_NUMBER"
                     ],
-                    "number": "STREET_NUMBER",
                     "street": [
-                        "STREET_NAME",
-                        "STREET_TYPE_CODE"
+                        "ST_NAME",
+                        "ST_POSTYPE",
+                        "ST_POSDIR"
                     ],
-                    "city": "COMMUNITY"
+                    "city": [
+                        "INC_MUNI",
+                        "UNINC_COMM"
+                    ],
+                    "region": "STATE",
+                    "postcode": "POST_CODE"
+
                 }
             }
         ]

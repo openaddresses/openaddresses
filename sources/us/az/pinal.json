@@ -14,18 +14,31 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gismaps.pinalcountyaz.gov/webapps/rest/services/Base_Webservice/MapServer/69",
+                "data": "https://gis.pinal.gov/mapping/rest/services/SiteAddressPoint/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "FullAddress"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "FullAddress"
-                    }
+                    "number": "addrnum",
+                    "street": "fullname",
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "municipality",
+                    "district": "county",
+                    "region": "stateabbreviation",
+                    "postcode": "zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.pinal.gov/mapping/rest/services/TaxParcels/FeatureServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
                 }
             }
         ]

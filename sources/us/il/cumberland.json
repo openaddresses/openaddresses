@@ -14,21 +14,47 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://services2.bhamaps.com/arcgis/rest/services/AGS_cumberland_co_il_gismap/MapServer/0",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/Parcels_Cumberland/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": {
-                        "function": "regexp",
-                        "field": "SITE_ADDRESS",
-                        "pattern": "^([0-9]+[A-Z]?)"
+                        "function": "prefixed_number",
+                        "field": "TSC_site_address"
                     },
                     "street": {
+                        "function": "postfixed_street",
+                        "field": "TSC_site_address"
+                    },
+                    "city": {
                         "function": "regexp",
-                        "field": "SITE_ADDRESS",
-                        "pattern": "^(?:[0-9]+[A-Z]? +)(.*)",
+                        "field": "TSC_site_csz",
+                        "pattern": "^(.*)(?:\\sIL\\s\\d{5})$",
+                        "replace": "$1"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "TSC_site_csz",
+                        "pattern": "(IL)",
+                        "replace": "$1"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "TSC_site_csz",
+                        "pattern": "(\\d{5})",
                         "replace": "$1"
                     }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/Parcels_Cumberland/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "GIS_Parcel_Number"
                 }
             }
         ]

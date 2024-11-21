@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17175",
+            "name": "Stark County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Stark"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/IMZwRRU1qL5MDxBH/ArcGIS/rest/services/Address_points_ViewOnly/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "House",
+                    "street": "Street",
+                    "unit": "UNIT",
+                    "city": "Community",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/IMZwRRU1qL5MDxBH/ArcGIS/rest/services/LandParcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
+    }
+}

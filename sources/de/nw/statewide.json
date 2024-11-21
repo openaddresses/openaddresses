@@ -11,23 +11,32 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://data.openaddresses.io/cache/uploads/sergiyprotsiv/41443f/de-nrw.csv.zip",
-                "website": "https://www.opengeodata.nrw.de/produkte/geobasis/lika/alkis_sek/",
+                "data": "https://www.opengeodata.nrw.de/produkte/geobasis/lk/akt/gebref_txt/gebref_EPSG25832_ASCII.zip",
+                "website": "https://www.opengeodata.nrw.de/produkte/geobasis/lk/akt/gebref_txt/",
                 "protocol": "http",
                 "compression": "zip",
                 "license": {
-                    "text": "Datenlizenz Deutschland - Namensnennung - Version 2.0",
-                    "url": "https://www.govdata.de/dl-de/by-2-0",
-                    "attribution": true,
-                    "share-alike": false
+                     "text": "DL-DE->Zero-2.0",
+                    "url": "https://www.govdata.de/dl-de/zero-2-0"
                 },
                 "conform": {
                     "format": "csv",
-                    "city": "gebref_schluessel_field_6",
-                    "street": "Straßenname",
-                    "number": "Hausnummer",
-                    "lat": "Y",
-                    "lon": "X"
+                    "csvsplit": ";",
+                    "headers": -1,
+                    "file": "gebref.txt",
+                    "srs": "EPSG:25832",
+                    "city": "COLUMN11",
+                    "street": "COLUMN15",
+                    "number": {
+                        "function": "format",
+                        "fields": [
+                            "COLUMN16",
+                            "COLUMN17"
+                        ],
+                        "format": "$1$2"
+                    },
+                    "lat": "COLUMN20",
+                    "lon": "COLUMN19"
                 }
             }
         ]

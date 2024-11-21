@@ -14,27 +14,17 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services.arcgis.com/eSnyVpqwqWBADfzp/arcgis/rest/services/Tax_Parcel/FeatureServer/0",
-                "website": "https://data-kitcogis.opendata.arcgis.com/datasets/kitcogis::tax-parcel/about",
+                "data": "https://services.arcgis.com/eSnyVpqwqWBADfzp/ArcGIS/rest/services/Address_Points_for_Hazus/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
+                    "id": "SITEADDID",
                     "number": {
                         "function": "prefixed_number",
-                        "field": "t2_Situs"
+                        "field": "FULLADDR"
                     },
-                    "street": {
-                        "function": "chain",
-                        "variable": "street_wip",
-                        "functions": [{
-                            "function": "postfixed_street",
-                            "field": "t2_Situs"
-                        },{
-                            "function": "remove_postfix",
-                            "field": "street_wip",
-                            "field_to_remove": "t2_SitusCity"
-                        }]
-                    },
+                    "street": "FULLNAME",
+                    "unit": "UNITDSGNTR",
                     "city": "t2_SitusCity",
                     "postcode": "t2_SitusZip"
                 }
