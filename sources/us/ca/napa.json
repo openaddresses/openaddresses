@@ -17,7 +17,13 @@
                 "protocol": "ESRI",
                 "attribution": "Napa County",
                 "website": "https://gisdata.countyofnapa.org/datasets/napacounty::addresses-all/about",
-                "license": "https://opendatacommons.org/licenses/pddl/summary/",
+                "license": {
+                    "url": "https://opendatacommons.org/licenses/pddl/1-0/",
+                    "text": "Public Domain Dedication and License (PDDL) v1.0",
+                    "attribution": false,
+                    "share-alike": false,
+                    "attribution name": "Napa County"
+                },
                 "data": "https://services1.arcgis.com/Ko5rxt00spOfjMqj/arcgis/rest/services/Addresses_All/FeatureServer/0",
                 "conform": {
                     "number": "addressnum",
@@ -30,6 +36,10 @@
                     ],
                     "unit": "unitid",
                     "city": "postalarea",
+                    "region": {
+                        "function": "constant",
+                        "value": "CA"
+                    },
                     "postcode": "zip",
                     "format": "geojson"
                 }
