@@ -14,15 +14,32 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://douglasnvgis.info/varcgis/rest/services/StoreyCo/ParcelsWGS84/MapServer/0",
+                "data": "https://services6.arcgis.com/uqDdpZNvJheIun5o/ArcGIS/rest/services/Address_Points/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "PLOC_",
+                    "number": "STR_NUMB",
                     "street": [
-                        "PLOCDR",
-                        "PLOCNM"
-                    ]
+                        "STR_PREFIX",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "STR_SUFFIX"
+                    ],
+                    "unit": "STR_UNIT",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/uqDdpZNvJheIun5o/ArcGIS/rest/services/StoreyCo_Pictometry/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN_TOTAL"
                 }
             }
         ]

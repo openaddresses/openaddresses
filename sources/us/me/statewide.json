@@ -12,11 +12,15 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://gis.maine.gov/arcgis/rest/services/Location/Maine_E911_Addresses_Roads_PSAP/MapServer/1",
+                "data": "https://services1.arcgis.com/RbMX0mRVOFNTdLzd/arcgis/rest/services/Maine_E911_Addresses/FeatureServer/0",
+                "website": "https://maine.hub.arcgis.com/datasets/c1de8b6877114e109980972b4250a883_0/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRESS_NUMBER",
+                    "number": [
+                        "ADDRESS_NUMBER",
+                        "ADDNUMSUF"
+                    ],
                     "street": [
                         "PREDIR",
                         "STREETNAME",
@@ -24,10 +28,23 @@
                         "POSTDIR"
                     ],
                     "unit": "UNIT",
-                    "city": "MUNICIPALITY",
+                    "city": "TOWN",
                     "district": "COUNTY",
                     "region": "STATE",
                     "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "state",
+                "data": "https://www.arcgis.com/sharing/rest/content/items/b5dc9906157e4b55a661a5c8ec5f04f9/data",
+                "website": "https://maine.hub.arcgis.com/datasets/b5dc9906157e4b55a661a5c8ec5f04f9/about",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "NG_FOOTPRINTS"
                 }
             }
         ]

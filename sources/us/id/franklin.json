@@ -1,0 +1,53 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "16041",
+            "name": "Franklin County",
+            "state": "Idaho"
+        },
+        "country": "us",
+        "state": "id",
+        "county": "Franklin"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services9.arcgis.com/pf67TISFO3iTjgFX/ArcGIS/rest/services/fr_parcels_093022/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PropStr"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "PropStr",
+                        "pattern": "^(?:\\d+\\s)(.+?)(?:\\s#\\d)?$"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "PropStr",
+                        "pattern": "(#\\d)$"
+                    },
+                    "city": "PropCity",
+                    "region": "PropSt",
+                    "postcode": "PropZip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services9.arcgis.com/pf67TISFO3iTjgFX/ArcGIS/rest/services/fr_parcels_093022/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
+    }
+}

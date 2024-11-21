@@ -15,11 +15,24 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://romefloyd.agdmaps.com/arcgis/rest/services/AddressPoints/FeatureServer/0",
+                "data": "https://romefloyd.agdmaps.com/server/rest/services/Hosted/Addresses/FeatureServer/0",
                 "conform": {
                     "format": "geojson",
                     "number": "st_number",
-                    "street": "road_name"
+                    "street": "road_name",
+                    "city": "city",
+                    "postcode": "zip_code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://romefloyd.agdmaps.com/server/rest/services/Hosted/ParcelViewerData/FeatureServer/4",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcel_no"
                 }
             }
         ]

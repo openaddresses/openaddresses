@@ -14,21 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.tazewell.com/maps/rest/services/AGS_tazewell_co_il_taxmap_view_no_owner2/MapServer/0/",
+                "data": "https://gis.tazewell.com/arcgis/rest/services/ETSB/ETSBData/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "site_address",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "site_address",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    }
+                    "number": "House",
+                    "street": [
+                        "Dir",
+                        "Street",
+                        "Suffix",
+                        "Post_Dir"
+                    ],
+                    "unit": "AptNum",
+                    "city": "Community"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.tazewell.com/arcgis/rest/services/AGS_tazewell_co_il_taxmap_view_noowner2/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

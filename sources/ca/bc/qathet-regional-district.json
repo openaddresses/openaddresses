@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "county": "qathet",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -124.5,
+                50
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://qrd.imaptoo.ca/imap87320977492837458/rest/services/HouseNumbers/MapServer/18",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": [
+                        "STREET_NUMBER",
+                        "STREET_NUMBER_SUFFIX"
+                    ],
+                    "street": [
+                        "STREET_NAME",
+                        "STREET_TYPE"
+                    ],
+                    "city": "CITY_NAME"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://qrd.imaptoo.ca/imap87320977492837458/rest/services/DynamicLayers/MapServer/13",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
+    }
+}

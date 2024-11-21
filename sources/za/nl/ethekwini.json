@@ -9,20 +9,42 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://gis.durban.gov.za/NonstrategicData/Street_Address.zip",
-                "website": "http://gis.durban.gov.za/gis_Website/intranetsite/",
-                "license": "http://citymaps.durban.gov.za/GISMetaData/Files/Metadata/Cadastral/Approved_Cadastre/addresspoint.htm",
-                "skip": false,
-                "year": "2018",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services3.arcgis.com/HO0zfySJshlD6Twu/arcgis/rest/services/Street_Address/FeatureServer/0",
+                "website": "https://gis-ethekwini.opendata.arcgis.com/datasets/f13dd468a2da45c081819f6b9662092d_0/about",
+                "license": "https://www.arcgis.com/sharing/rest/content/items/f13dd468a2da45c081819f6b9662092d/info/metadata/metadata.xml?format=default&output=html",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "number": "strnum",
+                    "format": "geojson",
+                    "number": "STRNUM",
                     "street": [
-                        "strname",
-                        "strtype"
+                        "STRNAME",
+                        "STRTYPE"
                     ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services3.arcgis.com/HO0zfySJshlD6Twu/ArcGIS/rest/services/Approved_Parcels/FeatureServer/0",
+                "website": "https://gis-ethekwini.opendata.arcgis.com/datasets/852e1088601f47bf8e72d467c193038a_0/about",
+                "license": "https://www.arcgis.com/sharing/rest/content/items/852e1088601f47bf8e72d467c193038a/info/metadata/metadata.xml?format=default&output=html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PROPKEY"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services3.arcgis.com/HO0zfySJshlD6Twu/ArcGIS/rest/services/Building_Footprints/FeatureServer/0",
+                "website": "https://gis-ethekwini.opendata.arcgis.com/datasets/7b5b229c9a0247cd8627798dec652ae1_0/about",
+                "license": "https://www.arcgis.com/sharing/rest/content/items/7b5b229c9a0247cd8627798dec652ae1/info/metadata/metadata.xml?format=default&output=html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

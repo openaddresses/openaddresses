@@ -1,0 +1,46 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55101",
+            "name": "Racine County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Racine"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://arcgis.racinecounty.com/arcgis/rest/services/Mapbook/Mapbook/MapServer/0",
+                "website": "https://data-racinecounty.opendata.arcgis.com/datasets/racinecounty::racine-county-parcels-gcs-wgs-1984/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITEADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITEADDRESS"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://arcgis.racinecounty.com/arcgis/rest/services/Mapbook/Mapbook/MapServer/0",
+                "website": "https://data-racinecounty.opendata.arcgis.com/datasets/racinecounty::racine-county-parcels-gcs-wgs-1984/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
+    }
+}

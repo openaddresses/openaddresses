@@ -14,17 +14,19 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.jccal.org/arcgis/rest/services/Basemap/JeffersonCountyParcelAddressPts/MapServer/0",
+                "data": "https://jccgis.jccal.org/server/rest/services/Basemap/Address_Points/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "Bldg_Num",
+                    "number": "BLDG_NUM",
                     "street": [
-                        "Street_Name",
-                        "Street_Type",
-                        "Street_Dir"
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "STREET_DIR"
                     ],
                     "unit": "APARTMENT",
+                    "city": "NAME",
+                    "region": "State",
                     "postcode": "ZIP"
                 }
             }
@@ -32,11 +34,21 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.jccal.org/arcgis/rest/services/Basemap/JeffersonCountyParcels/MapServer/0",
+                "data": "https://jccgis.jccal.org/server/rest/services/Basemap/Parcels/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "pid": "PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.jccal.org/arcgis/rest/services/PlanimetricFeatures/BuildingFootprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

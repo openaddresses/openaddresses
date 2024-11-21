@@ -14,25 +14,34 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/us-ga-laurens_county.csv",
-                "protocol": "http",
+                "data": "https://services8.arcgis.com/XxLBcrikqFM0vkoy/ArcGIS/rest/services/Address/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "csv",
-                    "lat": "LAT",
-                    "lon": "LNG",
-                    "number": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^([0-9]+)( .*)",
-                        "replace": "$1"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "region": "REGION"
+                    "format": "geojson",
+                    "number": [
+                        "HOUSE_NUMB",
+                        "ADR_FRAC"
+                    ],
+                    "street": [
+                        "PREFIX_DIR",
+                        "STREET_NAM",
+                        "STREET_TYP",
+                        "SUFFIX_DIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "ZONE_VENUE",
+                    "region": "ST",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/XxLBcrikqFM0vkoy/ArcGIS/rest/services/Buildings/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

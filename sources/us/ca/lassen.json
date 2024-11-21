@@ -15,15 +15,33 @@
             {
                 "name": "county",
                 "attribution": "Lassen County",
-                "data": "https://github.com/datadesk/us-ca-lassen_county-situs_parcels-shp/blob/master/situs_parcels.zip?raw=true",
+                "data": "https://services.arcgis.com/q3Zg9ERurv23iysr/ArcGIS/rest/services/Lassen_Parcel_Final_Schema1/FeatureServer/0",
                 "website": "http://lassencounty.org/govt/dept/assessor/default.asp",
-                "protocol": "http",
-                "compression": "zip",
-                "note": "Parcel polygons that include situs addresses in the metadata. Provided in response to a public records request in December 2014 and uploaded to GitHub for public hosting. A situs address dbf was provided separately from the parcels shapefile, which were then joined together in QGIS using an 'APN' according to instructions provided a county official.",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile-polygon",
-                    "number": "situs_STNU",
-                    "street": "situs_STNA"
+                    "format": "geojson",
+                    "number": "HOUSE_NUM",
+                    "street": [
+                        "PREFIX_DIR",
+                        "ST_NAME",
+                        "ST_TYPE"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Lassen County",
+                "data": "https://services.arcgis.com/q3Zg9ERurv23iysr/ArcGIS/rest/services/Lassen_Parcel_Final_Schema1/FeatureServer/0",
+                "website": "http://lassencounty.org/govt/dept/assessor/default.asp",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
                 }
             }
         ]

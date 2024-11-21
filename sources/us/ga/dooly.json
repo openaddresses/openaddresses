@@ -21,16 +21,12 @@
                     "lat": "LAT",
                     "lon": "LNG",
                     "number": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^([0-9]+)( .*)",
-                        "replace": "$1"
+                        "function": "prefixed_number",
+                        "field": "STR"
                     },
                     "street": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
+                        "function": "postfixed_street",
+                        "field": "STR"
                     },
                     "region": "REGION"
                 }

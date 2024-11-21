@@ -15,22 +15,47 @@
             {
                 "name": "county",
                 "conform": {
-                    "format": "shapefile",
-                    "postcode": "situs_zip_",
-                    "city": "situs_city",
-                    "number": "situs_hous",
+                    "format": "geojson",
+                    "number": "HOUSENUMTEXT",
+                    "unit": "UNITNUMBER",
                     "street": [
-                        "situs_stre",
-                        "situs_st_2",
-                        "situs_st_3"
+                        "STREETPREFIX",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "STREETSUFFIX"
                     ],
-                    "unit": "situs_unit"
+                    "city": "CITY",
+                    "postcode": "ZIPCODE"
                 },
                 "attribution": "Santa Clara County",
-                "data": "https://data.sccgov.org/api/geospatial/6p99-rtwk?method=export&format=Shapefile",
-                "website": "https://data.sccgov.org/Government/Parcels/6p99-rtwk",
-                "protocol": "http",
-                "compression": "zip"
+                "data": "https://mapservices.sccgov.org/arcgis/rest/services/opendata/SCCGISHUB/MapServer/8",
+                "website": "https://data.sccgov.org/Government/AddressPoint/k4vk-5ggi",
+                "protocol": "ESRI"
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
+                },
+                "attribution": "Santa Clara County",
+                "data": "https://mapservices.sccgov.org/arcgis/rest/services/opendata/SCCGISHUB/MapServer/112",
+                "website": "https://data.sccgov.org/Government/Parcels/2bmn-3ayc",
+                "protocol": "ESRI"
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "conform": {
+                    "format": "geojson"
+                },
+                "attribution": "Santa Clara County",
+                "data": "https://mapservices.sccgov.org/arcgis/rest/services/opendata/SCCGISHUB/MapServer/121",
+                "website": "https://data.sccgov.org/dataset/Buildings-Footprints-2D/8729-jdun",
+                "protocol": "ESRI"
             }
         ]
     }

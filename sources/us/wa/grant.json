@@ -14,24 +14,39 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.grantcountywa.gov:6443/arcgis/rest/services/EveryoneData/Addresses/MapServer/0",
+                "data": "https://services2.arcgis.com/hQZvdtFxRzJpMtdS/ArcGIS/rest/services/Site_address/FeatureServer/0",
                 "website": "http://grantcountywa.maps.arcgis.com/home/index.html",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRNUM",
-                    "street": [
-                        "PREADDRNUM",
-                        "FULLNAME",
-                        "ADDRNUMSUF"
-                    ],
-                    "unit": [
-                        "UNITTYPE",
-                        "UNITID"
-                    ],
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FULLADDR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FULLADDR",
+                        "may_contain_units": true
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "FULLADDR"
+                    },
                     "postcode": "ZIPCODE",
                     "city": "MUNICIPALITY",
                     "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/hQZvdtFxRzJpMtdS/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "website": "https://data-grantcountywa.opendata.arcgis.com/datasets/GrantCountyWA::parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL"
                 }
             }
         ]

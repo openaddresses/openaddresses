@@ -14,341 +14,61 @@
         "addresses": [
             {
                 "name": "county",
-                "attribution": "Orange County",
-                "data": "https://github.com/datadesk/us-ca-orange_county-situs_parcels-shp/blob/master/situs_parcels.zip?raw=true",
-                "website": "http://ocpublicworks.com/survey/services/gis",
-                "protocol": "http",
-                "compression": "zip",
-                "note": "Parcel polygons that include situs addresses in the metadata. Provided in response to a public records request in January 2015 and uploaded to GitHub for public hosting. A situs address dbf was provided separately from the parcels shapefile, which were then joined together in QGIS using an intermediary file's 'APN' value according to instructions provided by a county official.",
-                "conform": {
-                    "id": "ParcelAttr",
-                    "format": "shapefile-polygon",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "ParcelAt_2"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "ParcelAt_2",
-                        "pattern": "^(?:[0-9]+(?:[A-Z]|[ -]1/2)?\\s+)(.+?)(?:(?:(?:STE|UNIT|APT|BLDG)\\s+|#)(?:\\d+[A-Z]?|[A-Z]\\d*))?(?:\\s+(?:ANAHEIM|ALISO VIEJO|MISSION VIEJO|BREA|BUENA PARK|CAPISTRANO BEACH|CORONA DEL MAR|COSTA MESA|COTO DE CAZA|COWAN HEIGHTS|CYPRESS|DANA POINT|DOVE CANYON|EL TORO|FOOTHILL RANCH|FOUNTAIN VALLEY|FOUNTAIN VLY|FULLERTON|GARDEN GROVE|HUNTINGTON BEACH|IRVINE|LA HABRA|LA PALMA|LA HABRA HEIGHTS|LADERA RANCH|LAGUNA BEACH|LAGUNA HILLS|LAGUNA WOODS|LAGUNA NIGUEL|LAKE FOREST|LOS ALAMITOS|MIDWAY CITY|MODJESKA|NEWPORT COAST|NEWPORT BEACH|ORANGE|ORANGE COUNTY|PLACENTIA|SAN JUAN CAPISTRANO|SAN CLEMENTE|RCHO STA MARGARITA|SANTA ANA|SANTA MARGARITA|SEAL BEACH|SILVERADO|SOUTH LAGUNA|STANTON|SUNSET BEACH|TRABUCO CANYON|TUSTIN|VILLA PARK|WESTMINSTER|YORBA LINDA))?(?:\\s+CA)?(?:\\s+\\d+)?$"
-                    },
-                    "unit": {
-                        "function": "regexp",
-                        "field": "ParcelAt_2",
-                        "pattern": "\\s((?:(?:STE|UNIT|APT|BLDG)\\s+|#)(?:\\d+[A-Z]?|[A-Z]\\d*))\\b"
-                    },
-                    "city": {
-                        "function": "regexp",
-                        "field": "ParcelAt_2",
-                        "pattern": "(ANAHEIM|ALISO VIEJO|MISSION VIEJO|BREA|BUENA PARK|CAPISTRANO BEACH|CORONA DEL MAR|COSTA MESA|COTO DE CAZA|COWAN HEIGHTS|CYPRESS|DANA POINT|DOVE CANYON|EL TORO|FOOTHILL RANCH|FOUNTAIN VALLEY|FOUNTAIN VLY|FULLERTON|GARDEN GROVE|HUNTINGTON BEACH|IRVINE|LA HABRA|LA PALMA|LA HABRA HEIGHTS|LADERA RANCH|LAGUNA BEACH|LAGUNA HILLS|LAGUNA WOODS|LAGUNA NIGUEL|LAKE FOREST|LOS ALAMITOS|MIDWAY CITY|MODJESKA|NEWPORT COAST|NEWPORT BEACH|ORANGE|ORANGE COUNTY|PLACENTIA|SAN JUAN CAPISTRANO|SAN CLEMENTE|RCHO STA MARGARITA|SANTA ANA|SANTA MARGARITA|SEAL BEACH|SILVERADO|SOUTH LAGUNA|STANTON|SUNSET BEACH|TRABUCO CANYON|TUSTIN|VILLA PARK|WESTMINSTER|YORBA LINDA)\\s+CA\\b"
-                    },
-                    "region": {
-                        "function": "regexp",
-                        "field": "ParcelAt_2",
-                        "pattern": "\\b(CA)\\b"
-                    },
-                    "postcode": {
-                        "function": "regexp",
-                        "field": "ParcelAt_2",
-                        "pattern": "\\b(\\d{5}|\\d{9})$"
-                    }
+                "data": "https://www.ocgis.com/arcpub/rest/services/Map_Layers/Address_Point_Final_Planning_Addressing/FeatureServer/0",
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC0 1.0"
                 },
-                "test": {
-                    "enabled": true,
-                    "description": "Orange County addresses are just all fields concatenated without delimiters so the regexes are messy",
-                    "acceptance-tests": [
-                        {
-                            "description": "plain address with number, street, city, and region",
-                            "inputs": {
-                                "ParcelAt_2": "2846 OCEAN FRONT LAGUNA BEACH CA"
-                            },
-                            "expected": {
-                                "number": "2846",
-                                "street": "OCEAN FRONT",
-                                "city": "LAGUNA BEACH",
-                                "region": "CA"
-                            }
-                        },
-                        {
-                            "description": "plain address with number, street, city, and region",
-                            "inputs": {
-                                "ParcelAt_2": "6331 NEWPORT RIDGE DRIVE NEWPORT BEACH CA"
-                            },
-                            "expected": {
-                                "number": "6331",
-                                "street": "NEWPORT RIDGE DRIVE",
-                                "city": "NEWPORT BEACH",
-                                "region": "CA"
-                            }
-                        },
-                        {
-                            "description": "plain address with number, numeric street, city, and region",
-                            "inputs": {
-                                "ParcelAt_2": "186 23RD ST COSTA MESA CA"
-                            },
-                            "expected": {
-                                "number": "186",
-                                "street": "23RD ST",
-                                "city": "COSTA MESA",
-                                "region": "CA"
-                            }
-                        },
-                        {
-                            "description": "address with number+alpha, numeric street, city, and region",
-                            "inputs": {
-                                "ParcelAt_2": "5117B W 16TH ST SANTA ANA CA"
-                            },
-                            "expected": {
-                                "number": "5117B",
-                                "street": "W 16TH ST",
-                                "city": "SANTA ANA",
-                                "region": "CA"
-                            }
-                        },
-                        {
-                            "description": "address with number+alpha, numeric street, city, and region",
-                            "inputs": {
-                                "ParcelAt_2": "10842A KATELLA AV GARDEN GROVE CA"
-                            },
-                            "expected": {
-                                "number": "10842A",
-                                "street": "KATELLA AV",
-                                "city": "GARDEN GROVE",
-                                "region": "CA"
-                            }
-                        },
-                        {
-                            "description": "address with number, street, numeric suite, city, region, and postcode",
-                            "inputs": {
-                                "ParcelAt_2": "1101 DOVE ST STE 100 NEWPORT BEACH CA 926602802"
-                            },
-                            "expected": {
-                                "number": "1101",
-                                "street": "DOVE ST",
-                                "unit": "STE 100",
-                                "city": "NEWPORT BEACH",
-                                "region": "CA",
-                                "postcode": "926602802"
-                            }
-                        },
-                        {
-                            "description": "address with number, street, alpha suite, city, region, and postcode",
-                            "inputs": {
-                                "ParcelAt_2": "16811 HALE AVE STE A"
-                            },
-                            "expected": {
-                                "number": "16811",
-                                "street": "HALE AVE",
-                                "unit": "STE A",
-                                "city": "",
-                                "region": "",
-                                "postcode": ""
-                            }
-                        },
-                        {
-                            "description": "address with number, street, numeric unit, city, region, and postcode",
-                            "inputs": {
-                                "ParcelAt_2": "25712 LE PARC UNIT 14"
-                            },
-                            "expected": {
-                                "number": "25712",
-                                "street": "LE PARC",
-                                "unit": "UNIT 14",
-                                "city": "",
-                                "region": "",
-                                "postcode": ""
-                            }
-                        },
-                        {
-                            "description": "address with number, street, alpha unit, city, region, and postcode",
-                            "inputs": {
-                                "ParcelAt_2": "123 AVENIDA FLORENCIA UNIT A SAN CLEMENTE CA 926724921"
-                            },
-                            "expected": {
-                                "number": "123",
-                                "street": "AVENIDA FLORENCIA",
-                                "unit": "UNIT A",
-                                "city": "SAN CLEMENTE",
-                                "region": "CA",
-                                "postcode": "926724921"
-                            }
-                        },
-                        {
-                            "description": "address with number, street, numeric+alpha unit, city, region, and postcode",
-                            "inputs": {
-                                "ParcelAt_2": "25652 RIMGATE DR UNIT 14H"
-                            },
-                            "expected": {
-                                "number": "25652",
-                                "street": "RIMGATE DR",
-                                "unit": "UNIT 14H",
-                                "city": "",
-                                "region": "",
-                                "postcode": ""
-                            }
-                        },
-                        {
-                            "description": "address with number, street, numeric apt, city, region, and postcode",
-                            "inputs": {
-                                "ParcelAt_2": "520 CLIFF DR APT 302"
-                            },
-                            "expected": {
-                                "number": "520",
-                                "street": "CLIFF DR",
-                                "unit": "APT 302",
-                                "city": "",
-                                "region": "",
-                                "postcode": ""
-                            }
-                        },
-                        {
-                            "description": "address with number, street, alpha apt, city, region, and postcode",
-                            "inputs": {
-                                "ParcelAt_2": "25072 LEUCADIA ST APT H"
-                            },
-                            "expected": {
-                                "number": "25072",
-                                "street": "LEUCADIA ST",
-                                "unit": "APT H",
-                                "city": "",
-                                "region": "",
-                                "postcode": ""
-                            }
-                        },
-                        {
-                            "description": "address with number, street, numeric+alpha apt, city, region, and postcode",
-                            "inputs": {
-                                "ParcelAt_2": "12200 MONTECITO RD APT H201"
-                            },
-                            "expected": {
-                                "number": "12200",
-                                "street": "MONTECITO RD",
-                                "unit": "APT H201",
-                                "city": "",
-                                "region": "",
-                                "postcode": ""
-                            }
-                        },
-                        {
-                            "description": "address with number, street, and '#' numeric unit",
-                            "inputs": {
-                                "ParcelAt_2": "484 CLIFF DR #19"
-                            },
-                            "expected": {
-                                "number": "484",
-                                "street": "CLIFF DR",
-                                "unit": "#19",
-                                "city": "",
-                                "region": ""
-                            }
-                        },
-                        {
-                            "description": "address with number, street, numeric apt, city, region, and postcode",
-                            "inputs": {
-                                "ParcelAt_2": "26041 ACERO BLDG 7 MISSION VIEJO CA"
-                            },
-                            "expected": {
-                                "number": "26041",
-                                "street": "ACERO",
-                                "unit": "BLDG 7",
-                                "city": "MISSION VIEJO",
-                                "region": "CA",
-                                "postcode": ""
-                            }
-                        },
-                        {
-                            "description": "address with number, street, '#' alpha unit, city, and region",
-                            "inputs": {
-                                "ParcelAt_2": "14584 HOLT AVE #B TUSTIN CA"
-                            },
-                            "expected": {
-                                "number": "14584",
-                                "street": "HOLT AVE",
-                                "unit": "#B",
-                                "city": "TUSTIN",
-                                "region": "CA"
-                            }
-                        },
-                        {
-                            "description": "address with number, street, and '#' alpha unit",
-                            "inputs": {
-                                "ParcelAt_2": "706 FERNLEAF AVE #A"
-                            },
-                            "expected": {
-                                "number": "706",
-                                "street": "FERNLEAF AVE",
-                                "unit": "#A",
-                                "city": "",
-                                "region": ""
-                            }
-                        },
-                        {
-                            "description": "address with just number and street",
-                            "inputs": {
-                                "ParcelAt_2": "309 MARGUERITE AVE"
-                            },
-                            "expected": {
-                                "number": "309",
-                                "street": "MARGUERITE AVE",
-                                "unit": "",
-                                "city": "",
-                                "region": "",
-                                "postcode": ""
-                            }
-                        },
-                        {
-                            "description": "address with fractional number and street",
-                            "inputs": {
-                                "ParcelAt_2": "15 1/2 PELICAN HILL CI NEWPORT COAST CA"
-                            },
-                            "expected": {
-                                "number": "15 1/2",
-                                "street": "PELICAN HILL CI",
-                                "unit": "",
-                                "city": "NEWPORT COAST",
-                                "region": "CA",
-                                "postcode": ""
-                            }
-                        },
-                        {
-                            "description": "address with fractional number and street",
-                            "inputs": {
-                                "ParcelAt_2": "219-1/2 33RD ST"
-                            },
-                            "expected": {
-                                "number": "219-1/2",
-                                "street": "33RD ST",
-                                "unit": "",
-                                "city": "",
-                                "region": "",
-                                "postcode": ""
-                            }
-                        },
-                        {
-                            "description": "just city and region",
-                            "inputs": {
-                                "ParcelAt_2": "LAGUNA BEACH CA"
-                            },
-                            "expected": {
-                                "number": "",
-                                "street": "",
-                                "city": "LAGUNA BEACH",
-                                "region": "CA"
-                            }
-                        },
-                        {
-                            "description": "just region",
-                            "inputs": {
-                                "ParcelAt_2": "CA"
-                            },
-                            "expected": {
-                                "number": "",
-                                "street": "",
-                                "city": "",
-                                "region": "CA"
-                            }
-                        }
-                    ]
+                "protocol": "ESRI",
+                "conform": {
+                    "id": "AddressPtID",
+                    "format": "geojson",
+                    "number": [
+                        "AddressNumber",
+                        "Fractional"
+                    ],
+                    "street": [
+                        "StreetName"
+                    ],
+                    "unit": [
+                        "SubAddressFlag",
+                        "Unit"
+                    ],
+                    "city": "City",
+                    "district": "County",
+                    "region": "StateAbbr",
+                    "postcode": "ZipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.ocgis.com/arcpub/rest/services/Map_Layers/Parcels/FeatureServer/0",
+                "website": "https://data-ocpw.opendata.arcgis.com/documents/OCPW::parcel-polygons/about",
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC0 1.0"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ASSESSMENT_NO"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://www.ocgis.com/arcpub/rest/services/Map_Layers/Building_Footprints/FeatureServer/0",
+                "website": "https://data-ocpw.opendata.arcgis.com/datasets/OCPW::building-footprints-1/about",
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC0 1.0"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

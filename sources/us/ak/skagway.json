@@ -1,0 +1,58 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "0270760",
+            "name": "Skagway Borough",
+            "state": "Alaska"
+        },
+        "country": "us",
+        "state": "ak",
+        "county": "Skagway"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/cUHUWk42bzkg9QL1/ArcGIS/rest/services/Addresses_View/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "addNum",
+                        "addNumSuf"
+                    ],
+                    "street": [
+                        "preMod",
+                        "preDir",
+                        "preType",
+                        "preTypeSep",
+                        "strName",
+                        "postType",
+                        "postDir",
+                        "postMod"
+                    ],
+                    "unit": [
+                        "unitDesc",
+                        "unitNo"
+                    ],
+                    "city": "postComm",
+                    "district": "county",
+                    "region": "state",
+                    "postcode": "zipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/cUHUWk42bzkg9QL1/ArcGIS/rest/services/Lots_view/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ID"
+                }
+            }
+        ]
+    }
+}

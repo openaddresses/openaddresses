@@ -14,19 +14,23 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://web1.mobile311.com/arcgis/rest/services/SouthCarolina/UnionCountySC_M311/MapServer/0",
+                "data": "https://smpesri.scdot.org/arcgis/rest/services/GISMapping/SC_Parcels/MapServer/43",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "STR_NUM",
-                    "street": [
-                        "DIR",
-                        "ROAD_NAME",
-                        "TYPE"
-                    ],
-                    "city": "Community",
-                    "region": "STATE",
-                    "postcode": "Zip"
+                    "number": "STREET_NUM",
+                    "street": "STREET_NAM"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://smpesri.scdot.org/arcgis/rest/services/GISMapping/SC_Parcels/MapServer/43",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelID"
                 }
             }
         ]

@@ -1,0 +1,52 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "city": "Sechelt",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -123.75,
+                49.47
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.sechelt.ca/arcgis/rest/services/Property_Parcel/FeatureServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SiteAddresID",
+                    "number": "SiteAddressNumber",
+                    "street": "SiteAddressRoad",
+                    "unit": "SiteAddressUnit"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.sechelt.ca/arcgis/rest/services/Property_Parcel/FeatureServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.sechelt.ca/arcgis/rest/services/Building_Footprints/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

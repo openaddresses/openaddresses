@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://www.sgrcmaps.com/arcgis/rest/services/Berrien/AddressLocations/MapServer/0",
+                "data": "https://www.sgrcmaps.com/arcgis/rest/services/Berrien/AddressLocations/MapServer/0",
                 "note": {
                     "description": "street is occasionally an intersection, eg - N FIVE ASH ST AT N ELM ST, the regex uses everything up to 'AT' or '@'.  This doesn't catch everything but it's close.",
                     "problem addresses": [
@@ -28,18 +28,30 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "AddNum",
-                    "street": {
-                        "function": "regexp",
-                        "field": "StreetName",
-                        "pattern": "^(.+?)(?:\\s+(?:AT|@)\\s+.+)?$"
-                    },
-                    "city": "City",
-                    "postcode": {
-                        "function": "regexp",
-                        "field": "ZipCode",
-                        "pattern": "^(\\d+)(?:.*)$"
-                    }
+                    "number": [
+                        "STNUM",
+                        "STNUMSUF"
+                    ],
+                    "street": "LABEL",
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "CITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://www.sgrcmaps.com/arcgis/rest/services/Berrien/TaxParcelBoundaries/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
                 }
             }
         ]

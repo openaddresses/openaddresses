@@ -1,0 +1,45 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "13247",
+            "name": "Rockdale County",
+            "state": "ga"
+        },
+        "country": "us",
+        "state": "ga",
+        "county": "Rockdale"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/Tbke9ca9DhtF4VIx/arcgis/rest/services/Rockdale_County_Parcels/FeatureServer/38",
+                "website": "https://gisdatahub-rockdalega.opendata.arcgis.com/datasets/RockdaleGA::rockdale-county-parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Address",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "BOA_Addres"
+                    },
+                    "city": "Parcel_Cit",
+                    "postcode": "ZiipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/Tbke9ca9DhtF4VIx/arcgis/rest/services/Rockdale_County_Parcels/FeatureServer/382",
+                "website": "https://gisdatahub-rockdalega.opendata.arcgis.com/datasets/RockdaleGA::rockdale-county-parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
+                }
+            }
+        ]
+    }
+}

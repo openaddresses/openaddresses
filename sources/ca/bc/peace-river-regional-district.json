@@ -1,0 +1,51 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "county": "Peace River",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -122.75,
+                56.7
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://webmap.prrd.bc.ca/ags/rest/services/Geocortex/PRRD_Public/MapServer/9",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "NI911_ID",
+                    "number": [
+                        "STREET_NUMBER_PREFIX",
+                        "STREET_NUMBER",
+                        "STREET_NUMBER_SUFFIX"
+                    ],
+                    "street": [
+                        "STREET_DIR_PREFIX",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "STREET_DIR_SUFFIX"
+                    ],
+                    "city": "LOCALITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://webmap.prrd.bc.ca/ags/rest/services/Geocortex/PRRD_Public/MapServer/13",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ]
+    }
+}

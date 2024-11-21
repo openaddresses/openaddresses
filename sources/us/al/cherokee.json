@@ -1,0 +1,63 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "01019",
+            "name": "Cherokee County",
+            "state": "Alabama"
+        },
+        "country": "us",
+        "state": "al",
+        "county": "Cherokee"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Cherokee/Cherokee_Pictometry/MapServer/117",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "LSt_PreDir",
+                        "LSt_PreTyp",
+                        "LSt_Name",
+                        "LSt_Type",
+                        "LSt_PosDir",
+                        "LSt_PosMod"
+                    ],
+                    "unit": "Unit_Apt",
+                    "city": "MSAGComm",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://web5.kcsgis.com/kcsgis/rest/services/Cherokee/Cherokee_Pictometry/MapServer/116",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://web3.kcsgis.com/kcsgis/rest/services/Cherokee/Public/MapServer/55",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

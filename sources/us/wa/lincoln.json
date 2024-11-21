@@ -1,0 +1,54 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "53043",
+            "name": "Lincoln County",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa",
+        "county": "Lincoln"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/caAn57sZq4ktyly4/arcgis/rest/services/AddressPoints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "StreetName",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_ID"
+                    ],
+                    "city": "Post_Comm",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/caAn57sZq4ktyly4/ArcGIS/rest/services/Parcel/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNum"
+                }
+            }
+        ]
+    }
+}

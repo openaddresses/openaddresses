@@ -12,18 +12,19 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://data.colorado.gov/api/views/ge5d-pvi7/rows.csv?accessType=DOWNLOAD",
-                "website": "https://data.colorado.gov/State/Statewide-Aggregate-Addresses-in-Colorado-2020-Pub/n7je-akky",
+                "data": "https://www.arcgis.com/sharing/rest/content/items/b6e244650e7c472ba53667f19ee01181/data",
+                "website": "https://geodata.colorado.gov/datasets/b6e244650e7c472ba53667f19ee01181/about",
                 "license": {
                     "text": "Public Domain",
                     "attribution name": "Governor's Office of Information Technology",
                     "share-alike": false
                 },
+                "year": "2024",
                 "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "csv",
-                    "lat": "Latitude",
-                    "lon": "Longitude",
+                    "format": "gdb",
+                    "layer": "Colorado_Public_Address_Composite",
                     "number": [
                         "AddrNum",
                         "NumSuf"
@@ -35,12 +36,29 @@
                         "PostType",
                         "PostDir"
                     ],
-                    "unit": [
-                        "UnitType",
-                        "UnitNumber"
-                    ],
+                    "unit": "Unit",
                     "postcode": "Zipcode",
                     "city": "PlaceName"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://www.arcgis.com/sharing/rest/content/items/3245c94414124882b331e35c14bb23a4/data",
+                "website": "https://geodata.colorado.gov/datasets/COOIT::colorado-public-parcels/about",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution name": "Governor's Office of Information Technology",
+                    "share-alike": false
+                },
+                "year": "2024",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Colorado_Public_Parcel_Composite",
+                    "pid": "parcel_id"
                 }
             }
         ]

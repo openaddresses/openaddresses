@@ -1,0 +1,59 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -106.9589,
+                44.7967
+            ]
+        },
+        "US Census": {
+            "geoid": "5669845",
+            "name": "City of Sheridan",
+            "county": "Sheridan",
+            "state": "Wyoming"
+        },
+        "country": "us",
+        "state": "wy",
+        "county": "Sheridan",
+        "city": "Sheridan"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gismaps.sheridanwy.net/arcgis/rest/services/UtilityViewer/Addresses/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HSENO",
+                    "street": [
+                        "PREDIR",
+                        "NAME",
+                        "TYPE",
+                        "POSDIR"
+                    ],
+                    "unit": [
+                        "PREUNIT",
+                        "UNIT"
+                    ],
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP5"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gismaps.sheridanwy.net/arcgis/rest/services/UtilityViewer/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
+    }
+}

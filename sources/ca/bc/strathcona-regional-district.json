@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "county": "Strathcona",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -125.5,
+                50.3
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/Uj11SaUIGBo5JYFY/ArcGIS/rest/services/SRD_Data/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": [
+                        "CivAddress",
+                        "SUFFIX"
+                    ],
+                    "street": "Street"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/Uj11SaUIGBo5JYFY/ArcGIS/rest/services/SRD_Data/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PROPERTY_ID_NUMBER"
+                }
+            }
+        ]
+    }
+}

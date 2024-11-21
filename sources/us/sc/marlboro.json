@@ -1,0 +1,42 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "45067",
+            "name": "Marlboro County",
+            "state": "South Carolina"
+        },
+        "country": "us",
+        "state": "sc",
+        "county": "Marlboro"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://smpesri.scdot.org/arcgis/rest/services/GISMapping/SC_Parcels/MapServer/33",
+                "protocol": "ESRI",
+                "conform": {
+                    "number": "Street_Num",
+                    "street": [
+                        "Street_Nam",
+                        "Suffix",
+                        "Dir"
+                    ],
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://smpesri.scdot.org/arcgis/rest/services/GISMapping/SC_Parcels/MapServer/33",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "CAMA_PIN"
+                }
+            }
+        ]
+    }
+}

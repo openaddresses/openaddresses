@@ -15,26 +15,32 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "http://arcgis4.roktech.net/arcgis/rest/services/FayetteCountyGA/dynamicLocal/MapServer/17",
+                "data": "https://services5.arcgis.com/Hg5aLg4LtSINzVWa/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://fayettecounty.maps.arcgis.com/home/item.html?id=857591f697524dd1b00cfbef7d00a8e2",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "pattern": "^(\\d+[A-Z]?)(?:.*)$",
-                        "field": "FullAddr"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "pattern": "^(?:\\d+[A-Z]?)\\s*(.*?)(?:\\s*#.*?)?$",
-                        "field": "FullAddr"
-                    },
+                    "id": "SITEADDID",
+                    "number": "AddNum",
+                    "street": "FullStreet",
                     "unit": [
                         "UnitType",
                         "Unit"
                     ],
-                    "city": "City",
+                    "city": "d_City",
                     "postcode": "ZipCode",
                     "region": "State"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services5.arcgis.com/Hg5aLg4LtSINzVWa/ArcGIS/rest/services/Parcels_Data_SAGES/FeatureServer/0",
+                "website": "https://fayettecounty.maps.arcgis.com/home/item.html?id=e0890e8e37a14937b7017ef7d93b2c27",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
                 }
             }
         ]

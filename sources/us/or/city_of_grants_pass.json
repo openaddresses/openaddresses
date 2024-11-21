@@ -1,0 +1,64 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -123.327,
+                42.439
+            ]
+        },
+        "US Census": {
+            "geoid": "4130550",
+            "name": "City of Grants Pass",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "city": "Grants Pass"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gisserver.grantspassoregon.gov/server/rest/services/GeneralRefferenceData/Addresses_and_Buildings/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "ROADPREDIR",
+                        "ROADNAME",
+                        "ROADTYPE",
+                        "ROADPOSTDIR"
+                    ],
+                    "unit": "APARTMENT",
+                    "city": "MUNICIPALITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gisserver.grantspassoregon.gov/server/rest/services/GeneralRefferenceData/Addresses_and_Buildings/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MNX"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gisserver.grantspassoregon.gov/server/rest/services/GeneralRefferenceData/Tax_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

@@ -14,20 +14,39 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "http://www.ci.superior.wi.us/619/Transportation-Addressing",
-                "data": "ftp://maps:CityCounty@216.56.28.54/array1/maps/Web/ADDRPLCS.zip",
-                "protocol": "ftp",
-                "compression": "zip",
+                "data": "https://portal.superiordcgis.org/server/rest/services/ADDRESS_POINTS/MapServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "file": "zipfolder/ADDRPLCS_COSDC_GEOCODED_ADDRESSES.shp",
+                    "format": "geojson",
                     "number": "ADDR_HN",
                     "street": [
                         "ADDR_PD",
                         "ADDR_SN",
                         "ADDR_ST",
                         "ADDR_SD"
-                    ]
+                    ],
+                    "postcode": "OBJECTID_12"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://portal.superiordcgis.org/server/rest/services/cadastral/COSDC_PARCELS_LOTS/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNO"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://portal.superiordcgis.org/server/rest/services/Admin/DC_BUILDINGS/MapServer/11",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

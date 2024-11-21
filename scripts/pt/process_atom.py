@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 
 import lxml.html
 import os.path
@@ -21,22 +21,22 @@ def cache_file_path(url):
 # Returns True if we have a valid (i.e. completely downloaded) file already cached. If a file is damaged it is removed.
 def file_already_cached(url):
 	local_path = cache_file_path(url)
-	
+
 	if not os.path.exists(local_path):
 		return False
-	
+
 	file_ok = True
 	try:
 		with zipfile.ZipFile(local_path, 'r') as zip_file:
 			file_ok = zip_file.testzip() is None
 	except:
 		file_ok = False
-	
+
 	if not file_ok:
 		os.remove(local_path)
-		
+
 	return file_ok
-	
+
 # Downloads a file to cache
 def download_file_to_cache(url, chunk_size):
 	response = requests.get(url, stream=True)
@@ -67,7 +67,7 @@ for nuts_link in base_page.findall('.//entry/link'):
 				if not file_already_cached(file_url):
 					download_file_to_cache(file_url,512)
 
-print 'All files cached, will begin parsing'		
+print 'All files cached, will begin parsing'
 
 csvfile = open(out_path, 'w')
 fieldnames = ['id','street','house','postcode','city','lon','lat']
@@ -78,35 +78,35 @@ for cached_file in [ fi for fi in os.listdir(cache_dir) if fi.endswith(".zip")]:
 	print 'Parsing ' + cached_file
 	postdescriptors = {}
 	thoroughfarenames = {}
-	
+
 	with zipfile.ZipFile(cache_file_path(cached_file), 'r') as zip_file:
 		zip_page = lxml.html.fromstring(zip_file.read(zip_file.namelist()[0]))
 		for pc in zip_page.findall('.//member/postaldescriptor', namespaces={'wfs':'http://schemas.opengis.net/wfs/2.0/wfs.xsd'}):
 			pc_id = pc.attrib['gml:id']
 			pc_locality = pc.findall('.//text')[0].text
 			pc_postcode = pc.find('postcode').text
-				
+
 			postdescriptors[pc_id] = {'pc_locality':pc_locality,'pc_postcode':pc_postcode}
-			
+
 		for tf in zip_page.findall('.//member/thoroughfarename', namespaces={'wfs':'http://schemas.opengis.net/wfs/2.0/wfs.xsd'}):
 			tf_id = tf.attrib['gml:id']
 			tf_name = tf.findall('.//text')[0].text
 			thoroughfarenames[tf_id] = tf_name
-		
+
 		count = 0
-		
+
 		for ad in zip_page.findall('.//member/address', namespaces={'wfs':'http://schemas.opengis.net/wfs/2.0/wfs.xsd'}):
 			ad_id = ad.attrib['gml:id']
 			ad_pos = ad.findall('.//pos')[0].text.split()
-			
+
 			ad_num = None
 			ad_pc = None
 			ad_tf = None
-			
+
 			for loc in ad.findall('.//locator//locatordesignator'):
 				if ad_num is None and loc.find('type').attrib['xlink:href'] == 'http://inspire.ec.europa.eu/codelist/LocatorDesignatorTypeValue/buildingIdentifier':
 					ad_num = loc.find('designator').text
-			
+
 			for comp in ad.findall('.//component'):
 				comp_ref = comp.attrib['xlink:href'][1:]
 				pc_ref = postdescriptors.get(comp_ref)
@@ -115,10 +115,10 @@ for cached_file in [ fi for fi in os.listdir(cache_dir) if fi.endswith(".zip")]:
 				tf_ref = thoroughfarenames.get(comp_ref)
 				if tf_ref is not None and ad_tf is None:
 					ad_tf = tf_ref
-			
-			count = count + 1	
+
+			count = count + 1
 			writer.writerow({'id':ad_id,'street':ad_tf,'house':ad_num,'postcode':ad_pc['pc_postcode'],'city':ad_pc['pc_locality'],'lon':ad_pos[1],'lat':ad_pos[0]})
-		
+
 		print 'Parsed ' + str(count) + ' rows'
 
 

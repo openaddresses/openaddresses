@@ -1,0 +1,54 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -122.468,
+                45.51
+            ]
+        },
+        "US Census": {
+            "geoid": "4131250",
+            "name": "City of Gresham",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "city": "Gresham"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://portal.greshamoregon.gov/server/rest/services/common/AddressPts/MapServer/0",
+                "website": "https://portal.greshamoregon.gov/portal/home/item.html?id=011ba981726945629899e5babc01762b",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREET_NUM",
+                    "street": [
+                        "STREET_DIR",
+                        "STREET_NAME",
+                        "STREET_TYPE"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://portal.greshamoregon.gov/server/rest/services/common/ParcelLines/MapServer/0",
+                "website": "https://portal.greshamoregon.gov/portal/home/item.html?id=c3e3f456db6740928f0a806f96f1640d",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "STATEID"
+                }
+            }
+        ]
+    }
+}

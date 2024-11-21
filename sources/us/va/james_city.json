@@ -14,17 +14,16 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "https://www.jamescitycountyva.gov/assessments/gis-mapping-layers.html",
-                "data": "ftp://property.jamescitycountyva.gov/GIS/layers/JCC_Address_Points.zip",
-                "protocol": "ftp",
-                "compression": "zip",
+                "data": "https://property.jamescitycountyva.gov/arcgis/rest/services/JCC_GIS_Data/GIS_Data_Property/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "https://opendata-jcc.opendata.arcgis.com/datasets/3126bc3cdc914957a6e0d1a278bf6674_0",
                 "note": {
                     "email": "propertyinfo@jamescitycountyva.gov",
                     "phone": "757-253-6650",
                     "metadata": "ftp://property.jamescitycountyva.gov/GIS/layers/GIS_Metadata.pdf"
                 },
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "number": "ADDR_NUM",
                     "street": [
                         "PRE_DIR",
@@ -35,6 +34,18 @@
                     "unit": "APT",
                     "city": "City",
                     "postcode": "Zip_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://property.jamescitycountyva.gov/arcgis/rest/services/JCC_GIS_Data/GIS_Data_Property/FeatureServer/1",
+                "protocol": "ESRI",
+                "website": "https://opendata-jcc.opendata.arcgis.com/datasets/a0dfa59d3c4a442c9ebe3719762a407d_17",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

@@ -1,0 +1,43 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "13181",
+            "name": "Crisp County",
+            "state": "Georgia"
+        },
+        "country": "us",
+        "state": "ga",
+        "county": "Crisp"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/Ug5xGQbHsD8zuZzM/ArcGIS/rest/services/PSAP_Crisp_Dooly_WFL1/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "FullAddNum",
+                    "street": "FullStNm",
+                    "unit": "Unit",
+                    "city": "PoSt_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "PoSt_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/WOTxat30mFfjG9Am/arcgis/rest/services/Crisp_WinGAP_Analysis_Online/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_No"
+                }
+            }
+        ]
+    }
+}

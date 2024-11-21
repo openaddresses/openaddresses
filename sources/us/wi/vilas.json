@@ -14,17 +14,44 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "https://maps.vilascountywi.gov/",
-                "data": "https://maps.vilascountywi.gov/vilasgis/rest/services/DynamicMaps/Address/MapServer/1",
+                "data": "https://maps.vilascountywi.gov/vilasgis/rest/services/V4/SiteAddress/MapServer/0",
+                "website": "https://data-vilas.opendata.arcgis.com/datasets/vilas::site-address/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": [
-                        "preaddrnum",
-                        "addrnum",
-                        "addrnumsuf"
+                    "number": "addrnum",
+                    "street": "FullStNm",
+                    "unit": [
+                        "unittype",
+                        "unitid"
                     ],
-                    "street": "fullname"
+                    "city": "msag",
+                    "district": "county",
+                    "region": "state",
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.vilascountywi.gov/vilasgis/rest/services/V4/TaxParcels/MapServer/0",
+                "website": "https://data-vilas.opendata.arcgis.com/datasets/vilas::tax-parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pin"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://maps.vilascountywi.gov/vilasgis/rest/services/V4/Buildings/MapServer/0",
+                "website": "https://data-vilas.opendata.arcgis.com/datasets/vilas::buildings/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

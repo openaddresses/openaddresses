@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "0280770",
+            "name": "City of Unalaska",
+            "state": "Alaska"
+        },
+        "country": "us",
+        "state": "ak",
+        "city": "Unalaska"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services7.arcgis.com/XYRnCwZ037YZHYH0/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://unalaska.maps.arcgis.com/home/item.html?id=471ee2fc6464419aa246051a6f67863e",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "PREADDRNUM",
+                        "FULLNAME",
+                        "STREET_TYPE_"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services7.arcgis.com/XYRnCwZ037YZHYH0/ArcGIS/rest/services/Parcels/FeatureServer/1",
+                "website": "https://unalaska.maps.arcgis.com/home/item.html?id=12f2747c10944cdcb71ccd6c385cd165",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ]
+    }
+}

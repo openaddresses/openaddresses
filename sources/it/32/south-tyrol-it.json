@@ -1892,7 +1892,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://geoservices.buergernetz.bz.it/geoserver/p_bz-gnames/ows?SERVICE=WFS&VERSION=1.0.0&REQUEST=GetFeature&TYPENAME=p_bz-gnames:Addresses&SRSNAME=EPSG:25832&outputFormat=CSV",
+                "data": "http://geoservices3.civis.bz.it/geoserver/gvcc-Address/ows?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=gvcc-Address:Addresses&SRSNAME=EPSG:4326&outputFormat=JSON",
                 "protocol": "http",
                 "website": "http://geoportal.buergernetz.bz.it/",
                 "license": {
@@ -1904,16 +1904,16 @@
                 "language": "it",
                 "conform": {
                     "accuracy": 1,
-                    "format": "csv",
-                    "encoding": "ISO-8859-15",
-                    "srs": "EPSG:25832",
-                    "lat": "Y",
-                    "lon": "X",
-                    "number": "NUM",
+                    "format": "geojson",
+                    "encoding": "UTF-8",
+                    "number": "HOUSENUMBER",
                     "street": "STRT_IT",
-                    "postcode": "PLZ",
-                    "city": "GEM_IT",
-                    "district": "FRAC_IT"
+                    "city": {
+                        "function": "regexp",
+                        "field": "MUNI_IT",
+                        "pattern": "^Comune di (.*)",
+                        "replace": "$1"
+                    }
                 }
             }
         ]

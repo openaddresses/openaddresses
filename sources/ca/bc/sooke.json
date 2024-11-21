@@ -1,0 +1,47 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "city": "Sooke",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -123.74,
+                48.38
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.sooke.ca/arcgis/rest/services/MapService/LandInformation/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.sooke.ca/arcgis/rest/services/MapCache/LandBasemap/MapServer/11",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ]
+    }
+}

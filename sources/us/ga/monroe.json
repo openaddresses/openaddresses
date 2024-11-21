@@ -1,0 +1,45 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "13207",
+            "name": "Monroe County",
+            "state": "Georgia"
+        },
+        "country": "us",
+        "state": "ga",
+        "county": "Monroe"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://www.mgrcmaps.org/arcgis/rest/services/MonroeCounty/TaxParcelQuery/MapServer/0",
+                "note": "Link is dead, new source (used for parcels below) has the directory disabled so I can't find the data if it's even there.",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITEADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITEADDRESS"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://utility.arcgis.com/usrsvcs/servers/436f4e3a3f934d7899d9bab394217d38/rest/services/MonroeCounty/MonroeCountyZoningMap/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
+    }
+}

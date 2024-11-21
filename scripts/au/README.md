@@ -27,12 +27,12 @@ with `apt-get install docker.io`.
     mkdir /tmp/work
     chgrp docker /tmp/work
     chmod ugo+rwxt /tmp/work
-    
+
     # build docker image
     docker build -t au-gnaf .
-    
+
     # run cache, leaving data in work directory
     docker run --volume /tmp/work:/work au-gnaf /usr/local/bin/run-cache
-    
+
     # upload contents of cache directory to S3
     aws s3 sync --acl public-read /tmp/work/cache s3://data.openaddresses.io/cache

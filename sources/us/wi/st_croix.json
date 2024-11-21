@@ -1,7 +1,7 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "55109",
+            "geoid": "55119",
             "name": "Saint Croix County",
             "state": "Wisconsin"
         },
@@ -14,22 +14,50 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.sccwi.gov/arcgis/rest/services/LandInformation/SiteAddressPoints/MapServer/0",
+                "data": "https://gisdata.wisc.edu/public/ST_CROIX_ADDRESSES_2024.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2024",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "ST_CROIX_ADDRESSES_2024",
+                    "id": "OBJECTID",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "unit": "Unit",
+                    "street": "FullStNm",
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.sccwi.gov/arcgis/rest/services/LandInformation/SCParcelFabric/MapServer/24",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": [
-                        "PREADDRNUM",
-                        "ADDRNUM",
-                        "ADDRNUMSUF"
-                    ],
-                    "unit": [
-                        "UNITTYPE",
-                        "UNITID"
-                    ],
-                    "street": "FULLNAME",
-                    "city": "COMMUNITY",
-                    "postcode": "ZIPCODE"
+                    "pid": "ParcelNumber"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/ST_CROIX_BUILDINGS_2024.zip",
+                "website": "https://geodata.wisc.edu/catalog/DE3CF010-24F0-44C3-BD53-EFCF9A1CAC62",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2024",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "ST_CROIX_BUILDINGS_2024"
                 }
             }
         ]

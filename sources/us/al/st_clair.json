@@ -14,19 +14,27 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://map.stclairco.com/arcgis/rest/services/Appraisal/MapServer/150",
+                "data": "https://map.stclairco.com/arcgis/rest/services/NG_Address/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "street": "STREET_NAME",
-                    "number": "STREET_NUM"
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": "LFull_St_Name",
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://map.stclairco.com/arcgis/rest/services/Appraisal/MapServer/150",
+                "data": "https://map.stclairco.com/arcgis/rest/services/PublicParcelViewerStPln/MapServer/57",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -37,7 +45,7 @@
         "buildings": [
             {
                 "name": "county",
-                "data": "https://map.stclairco.com/arcgis/rest/services/Appraisal/MapServer/145",
+                "data": "https://map.stclairco.com/arcgis/rest/services/PublicParcelViewerStPln/MapServer/61",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"

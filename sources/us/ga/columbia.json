@@ -14,27 +14,38 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://mapsonline.columbiacountyga.gov/arcgis/rest/services/Cityworks/MobileMapExtents/MapServer/1001",
+                "data": "https://gis.columbiacountyga.gov/host/rest/services/MapsOnline/LandData/FeatureServer/1054",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": [
-                        "Loc_No",
-                        "Suffix"
+                        "ADDRESSNUM",
+                        "SUFFIX"
                     ],
                     "street": [
-                        "Pre_Dir",
-                        "Name",
-                        "Street_Type",
-                        "Post_Dir"
+                        "PREDIR",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "POSTDIR"
                     ],
                     "unit": [
-                        "Unit_Type",
-                        "Loc_Unit"
+                        "UNITTYPE",
+                        "UNITADDRESS"
                     ],
-                    "city": "Municipality",
-                    "region": "State",
-                    "postcode": "Zip_Code"
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.columbiacountyga.gov/host/rest/services/MapsOnline/LandData/FeatureServer/1003",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelID"
                 }
             }
         ]

@@ -1,0 +1,52 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "53075",
+            "name": "Whitman County",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa",
+        "county": "Whitman"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/eoLFybJXLOtInQXJ/ArcGIS/rest/services/Flo_Analytics_Parcel_Data_TaxSifter_Web_Map_20221029_WFL1/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Match_addr"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Match_addr",
+                        "pattern": "^(?:\\d+\\s(?:\\d+\\s)?)(.+?)(?:(?:\\s)?,)"
+                    },
+                    "city": "City",
+                    "region": {
+                        "function": "regexp",
+                        "field": "Match_addr",
+                        "pattern": "\\b(WA)\\b"
+                    },
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/eoLFybJXLOtInQXJ/ArcGIS/rest/services/Flo_Analytics_Parcel_Data_TaxSifter_Web_Map_20221029_WFL1/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelID"
+                }
+            }
+        ]
+    }
+}

@@ -15,20 +15,32 @@
             {
                 "name": "county",
                 "website": "http://alleganygis.allconet.org/",
-                "data": "http://alleganygis.allconet.org/allcogis/rest/services/Parcels/MapServer/0",
+                "data": "https://alleganygis.allconet.org/allcogis/rest/services/AddressPoints/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "strtnum",
-                    "street": [
-                        "strtdir",
-                        "strtnam",
-                        "strttyp",
-                        "strtsfx"
+                    "number": "addrnum",
+                    "street": "fullname",
+                    "unit": [
+                        "unittype",
+                        "unitid"
                     ],
-                    "unit": "strtunt",
-                    "city": "city",
-                    "postcode": "zipcode"
+                    "city": "msag",
+                    "district": "county",
+                    "region": "state",
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "http://alleganygis.allconet.org/",
+                "data": "https://alleganygis.allconet.org/allcogis/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "acctid"
                 }
             }
         ]

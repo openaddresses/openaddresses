@@ -14,12 +14,23 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://web2.kcsgis.com/kcsgis/rest/services/Cullman/Public/MapServer/107",
+                "data": "https://web2.kcsgis.com/kcsgis/rest/services/Cullman/VAM_Cullman_FS/FeatureServer/4",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "SitusAddNumber",
-                    "street": "SitusAddName"
+                    "lon": "LON",
+                    "lat": "LAT",
+                    "number": "StNum",
+                    "street": [
+                        "StPre",
+                        "STNAME",
+                        "StType",
+                        "StPost"
+                    ],
+                    "unit": "StUnit",
+                    "city": "City",
+                    "postcode": "ZipCode",
+                    "addrtype": "LocationType"
                 }
             }
         ],

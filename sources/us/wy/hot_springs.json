@@ -14,14 +14,13 @@
         "addresses": [
             {
                 "name": "county",
-                "license": "http://maps.hscounty.com/mapserver/",
+                "license": "https://maps.greenwoodmap.com/hotsprings/mapserver/",
                 "compression": "zip",
-                "data": "http://maps.hscounty.com/download/parcels.zip",
+                "data": "https://maps.greenwoodmap.com/hotsprings/download/parcels.zip",
                 "protocol": "http",
                 "conform": {
-                    "format": "shapefile-polygon",
+                    "format": "shapefile",
                     "srs": "EPSG:3738",
-                    "file": "export/parcels.shp",
                     "number": {
                         "function": "regexp",
                         "field": "st_address",
@@ -35,6 +34,20 @@
                     },
                     "id": "pidn",
                     "accuracy": 2
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "license": "https://maps.greenwoodmap.com/hotsprings/mapserver/",
+                "compression": "zip",
+                "data": "https://maps.greenwoodmap.com/hotsprings/download/parcels.zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "srs": "EPSG:3738",
+                    "pid": "pidn"
                 }
             }
         ]

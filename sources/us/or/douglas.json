@@ -14,11 +14,11 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/nvkelso/f56dce/douglas-co-oregon-address-points.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://gis.co.douglas.or.us/server/rest/services/Common/DouglasCountyCommonMappingBase/MapServer/1",
+                "website": "https://gis.co.douglas.or.us/portal/home/item.html?id=3669ec71741f47e0a8463706ccc8d3c6",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "number": "ST_NUM",
                     "street": [
                         "ST_DIR",
@@ -28,6 +28,29 @@
                     "unit": "UNIT",
                     "city": "CITY",
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.douglas.or.us/server/rest/services/Common/DouglasCountyCommonMappingBase/MapServer/7",
+                "website": "https://gis.co.douglas.or.us/portal/home/item.html?id=3669ec71741f47e0a8463706ccc8d3c6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAXID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.co.douglas.or.us/server/rest/services/WaysidesBuildingsOther/MapServer/7",
+                "website": "https://gis.co.douglas.or.us/portal/home/item.html?id=f76f7ea538394acfa08e3f10b7ee1b5d",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

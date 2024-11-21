@@ -15,18 +15,44 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "http://maps.dekalbcountyga.gov/arcgis/rest/services/TaxParcels/MapServer/20",
+                "data": "https://services2.arcgis.com/IxVN2oUE9EYLSnPE/arcgis/rest/services/Address/FeatureServer/0",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRESS_NUMBER",
-                    "street": "FULL_STREET_NAME",
-                    "unit": [
-                        "UNIT_TYPE",
-                        "UNIT"
+                    "id": "SITEADDID",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
                     ],
-                    "city": "CITY",
-                    "postcode": "ZIP",
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "POSTAL_CIT",
+                    "postcode": "ZIPCODE",
                     "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services2.arcgis.com/IxVN2oUE9EYLSnPE/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis.dekalbcountyga.gov/arcgis/rest/services/BuildingFootprint/MapServer/0",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

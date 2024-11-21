@@ -1,0 +1,79 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "12086",
+            "name": "Miami-Dade County",
+            "state": "Florida"
+        },
+        "country": "us",
+        "state": "fl",
+        "county": "Miami-Dade"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Miami-Dade County",
+                "data": "https://services.arcgis.com/8Pc9XBTAsYuxx9Ny/ArcGIS/rest/services/GeoAddressWCondo_gdb/FeatureServer/0",
+                "website": "https://gis-mdc.opendata.arcgis.com/datasets/MDC::address-1/about",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ADDRESSID",
+                    "number": "HSE_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "MAILING_MUNIC",
+                    "region": "State",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Miami-Dade County",
+                "data": "https://services.arcgis.com/8Pc9XBTAsYuxx9Ny/arcgis/rest/services/Parcelpoly_gdb/FeatureServer/0",
+                "website": "https://gis-mdc.opendata.arcgis.com/datasets/MDC::parcel/about",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Miami-Dade County",
+                "data": "https://services.arcgis.com/8Pc9XBTAsYuxx9Ny/arcgis/rest/services/BuildingFootprint2D_gdb/FeatureServer/0",
+                "website": "https://gis-mdc.opendata.arcgis.com/datasets/MDC::building-footprint-2d/about",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

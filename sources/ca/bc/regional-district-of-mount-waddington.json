@@ -1,0 +1,67 @@
+{
+    "coverage": {
+        "country": "ca",
+        "state": "bc",
+        "county": "Mount Waddington",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -127.57,
+                50.6
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://mapviewer.imaptoo.ca/imap87320977492837458/rest/services/RDMWHouseNumbers/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "number": [
+                        "civicN",
+                        "civicNS"
+                    ],
+                    "street": [
+                        "streetDP",
+                        "streetN",
+                        "streetT",
+                        "streetDS",
+                        "streetQ"
+                    ],
+                    "unit": [
+                        "unitD",
+                        "unitN",
+                        "unitNS"
+                    ],
+                    "city": "localityN",
+                    "region": "provinceC"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://mapviewer.imaptoo.ca/imap87320977492837458/rest/services/RDMWPropertyBase/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://mapviewer.imaptoo.ca/imap87320977492837458/rest/services/RDMWExternal/MapServer/55",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

@@ -1,3 +1,4 @@
+
 {
     "coverage": {
         "US Census": {
@@ -14,17 +15,245 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gisweb.fdlco.wi.gov/arcgis/rest/services/PropertyCardMap/MapServer/7",
-                "protocol": "ESRI",
+                "data": "https://gisweb.fdlco.wi.gov/download/Addresses.gdb.zip",
+                "website": "https://www.fdlco.wi.gov/departments/departments-f-m/land-information/data-download",
+                "protocol": "http",
+                "compression": "zip",
                 "note": "Number has letters in it, which is fine for Wisconsin",
                 "conform": {
-                    "format": "geojson",
+                    "format": "gdb",
+                    "layer": "AddressPoints",
                     "number": "NUMBER",
-                    "street": [
-                        "DIRECTION",
-                        "PRI_NAME",
-                        "TYPE"
-                    ]
+                    "street": {
+                        "function": "chain",
+                        "variable": "street",
+                        "functions": [
+                            {
+                                "function": "regexp",
+                                "field": "PRI_NAME",
+                                "pattern": "^STH (.+)",
+                                "replace": "State Highway $1"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "street",
+                                "pattern": "^USH (.+)",
+                                "replace": "US Highway $1"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "street",
+                                "pattern": "^CTH (.+)",
+                                "replace": "County Highway $1"
+                            },
+                            {
+                                "function": "join",
+                                "fields": ["DIRECTION", "street", "TYPE"],
+                                "separator": " "
+                            }
+                        ]
+                    },
+                    "city": {
+                        "function": "chain",
+                        "variable": "c",
+                        "functions": [
+                            {
+                                "function": "regexp",
+                                "field": "JURISDICTI",
+                                "pattern": "^OA$",
+                                "replace": "Oakfield"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^KE$",
+                                "replace": "Kewaskum"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^ED$",
+                                "replace": "Eden"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^MC$",
+                                "replace": "Mt. Calvary"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^TA$",
+                                "replace": "Taycheedah"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^(WA|CH)$",
+                                "replace": "Waupun"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^FA$",
+                                "replace": "Fairwater"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^BY$",
+                                "replace": "Byron"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^EL$",
+                                "replace": "Eldorado"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^LA$",
+                                "replace": "Lamartine"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^CA$",
+                                "replace": "Calumet"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^FT$",
+                                "replace": "Forest"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^AU$",
+                                "replace": "Auburn"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^OS$",
+                                "replace": "Osceola"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^MA$",
+                                "replace": "Marshfield"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^SC$",
+                                "replace": "St. Cloud"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^AL$",
+                                "replace": "Alto"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^RO$",
+                                "replace": "Rosendale"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^FR$",
+                                "replace": "Friendship"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^(FO|FD)$",
+                                "replace": "Fond du Lac"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^NF$",
+                                "replace": "North Fond du Lac"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^CA$",
+                                "replace": "Campbellsport"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^AS$",
+                                "replace": "Ashford"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^(RP|RI)$",
+                                "replace": "Ripon"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^SP$",
+                                "replace": "Springvale"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^ME$",
+                                "replace": "Metomen"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^BR$",
+                                "replace": "Brandon"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "c",
+                                "pattern": "^EM$",
+                                "replace": "Empire"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisweb.fdlco.wi.gov/download/Parcels.zip",
+                "website": "https://www.fdlco.wi.gov/departments/departments-f-m/land-information/data-download",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Fond_du_Lac_Buildings_2022.zip",
+                "website": "https://geodata.wisc.edu/catalog/9217B574-19B2-4D0C-8224-950FD9771A73",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2022",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Fond_du_Lac_Buildings_2022"
                 }
             }
         ]

@@ -14,19 +14,45 @@
         "addresses": [
             {
                 "name": "county",
+                "website": "https://gcgis-gwinnettcountyga.hub.arcgis.com/",
                 "protocol": "ESRI",
-                "data": "https://gis.gwinnettcounty.com/arcgis/rest/services/GC_Parcel/MapServer/14",
+                "data": "https://gis3.gwinnettcounty.com/dataserver/rest/services/Hosted/GwinnettTransportation/FeatureServer/0",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRNUM",
-                    "street": "FULLNAME",
-                    "unit": [
-                        "UNITTYPE",
-                        "UNITID"
+                    "number": [
+                        "preeaddrnum",
+                        "addrnum",
+                        "addrnumsuf"
                     ],
-                    "city": "MUNICIPALITY",
-                    "postcode": "ZIP5",
-                    "region": "STATE"
+                    "street": "fullname",
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "municipality",
+                    "region": "state",
+                    "postcode": "zip5"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis3.gwinnettcounty.com/dataserver/rest/services/Hosted/Property_and_Tax/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pin"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis3.gwinnettcounty.com/dataserver/rest/services/Hosted/GIS_Basemap/FeatureServer/1",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

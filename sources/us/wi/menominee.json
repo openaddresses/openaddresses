@@ -1,0 +1,66 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55079",
+            "name": "Menominee County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Menominee"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/MENOMINEE_ADDRESSES_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/E2BD6FF4-E42B-4821-BD52-D6702EF78BC2",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "MENOMINEE_ADDRESSES_2023",
+                    "number": "add_number",
+                    "street": "fullstnm",
+                    "unit": [
+                        "ADD_UNITTYPE",
+                        "ADD_UNITID"
+                    ],
+                    "city": "msagcomm",
+                    "region": "state",
+                    "postcode": "post_code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Menominee_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/634B2A9C-54E0-4EA8-9FFF-7A5368E2B1F0",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Menominee_Buildings_2022.zip",
+                "website": "https://geodata.wisc.edu/catalog/478D08FF-B7FB-4195-8AF0-8942F4B27C4F",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2022",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Menominee_Buildings_2022"
+                }
+            }
+        ]
+    }
+}

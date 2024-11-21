@@ -13,23 +13,37 @@
             {
                 "name": "state",
                 "data": "https://nhgeodata.unh.edu/nhgeodata/rest/services/CAD/ParcelMosiac/MapServer/0",
-                "website": "http://www.granit.unh.edu/data/onlinemapservices/mapservicesoverview.html",
+                "website": "https://new-hampshire-geodata-portal-1-nhgranit.hub.arcgis.com/datasets/NHGRANIT::parcel-points/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
+                    "accuracy": 2,
                     "number": {
                         "function": "prefixed_number",
-                        "field": "Address"
+                        "field": "StreetAddress"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "Address"
+                        "field": "StreetAddress",
+                        "may_contain_units": true
                     },
                     "unit": {
                         "function": "postfixed_unit",
-                        "field": "Address"
+                        "field": "StreetAddress"
                     },
-                    "city": "TOWN_NAME"
+                    "city": "Town"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://nhgeodata.unh.edu/nhgeodata/rest/services/CAD/ParcelMosiac/MapServer/1",
+                "website": "https://new-hampshire-geodata-portal-1-nhgranit.hub.arcgis.com/datasets/NHGRANIT::parcels-1/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelOID"
                 }
             }
         ]

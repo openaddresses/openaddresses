@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "0282200",
+            "name": "City of Valdez",
+            "state": "Alaska"
+        },
+        "country": "us",
+        "state": "ak",
+        "city": "Valdez"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services5.arcgis.com/pDiwEHErgACQrcA3/ArcGIS/rest/services/Address/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StreetNumb",
+                    "street": [
+                        "StreetName",
+                        "StreetType"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services5.arcgis.com/pDiwEHErgACQrcA3/ArcGIS/rest/services/PUB_PARCELS/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIDN"
+                }
+            }
+        ]
+    }
+}

@@ -11,14 +11,15 @@
         "addresses": [
             {
                 "name": "country",
-                "data": "https://data.nlextract.nl/bag/csv/bag-adressen-laatst.csv.zip",
                 "protocol": "http",
                 "compression": "zip",
+                "data": "https://data.openaddresses.io/cache/uploads/trescube/56cb2a/nl-countrywide.addresses.geojson.zip",
+                "license": {
+                    "url": "https://www.esri.nl/nl-nl/legal/voorwaarden/esri-nederland-terms-of-use",
+                    "text": "Indemnification"
+                },
                 "conform": {
-                    "format": "csv",
-                    "csvsplit": ";",
-                    "lon": "lon",
-                    "lat": "lat",
+                    "format": "geojson",
                     "number": {
                         "function": "format",
                         "fields": [
@@ -28,10 +29,15 @@
                         ],
                         "format": "$1$2-$3"
                     },
-                    "street": "openbareruimte",
-                    "postcode": "postcode",
-                    "city": "woonplaats",
-                    "region": "provincie"
+                    "street": "openbareruimtenaam",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "postcode",
+                        "pattern": "^([0-9]{4})[ ]?([A-Z]{2})$",
+                        "replace": "$1 $2"
+                    },
+                    "city": "woonplaatsnaam",
+                    "id": "adresseerbaarobjectid"
                 }
             }
         ]

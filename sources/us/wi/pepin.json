@@ -1,0 +1,52 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "55091",
+            "name": "Pepin County",
+            "state": "Wisconsin"
+        },
+        "country": "us",
+        "state": "wi",
+        "county": "Pepin"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/PEPIN_ADDRESSES_2023.zip",
+                "website": "https://geodata.wisc.edu/catalog/3414FBF1-E091-444E-85D8-1ADB6CF14442",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "PEPIN_ADDRESSES_2023",
+                    "number": [
+                        "Add_Number",
+                        "ADDRNUM_SUF"
+                    ],
+                    "street": "FullStNm",
+                    "unit": [
+                        "UnitType",
+                        "UnitVal"
+                    ],
+                    "city": "POST_COMM",
+                    "region": "State"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.pepin.wi.us/arcgis/rest/services/ArcGISOnline/Parcels/MapServer/0",
+                "website": "https://communityhub-pepinco.hub.arcgis.com/datasets/PepinCo::tax-parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
+    }
+}

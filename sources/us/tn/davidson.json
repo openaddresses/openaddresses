@@ -14,18 +14,26 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://maps.nashville.gov/MetGIS/rest/services/QueryLayers/AddressPoints/MapServer/1",
+                "data": "https://maps.nashville.gov/arcgis/rest/services/Addressing/AddressPoints/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSE",
-                    "street": [
-                        "PRE_DIR",
-                        "STREET_NAM",
-                        "STREET_TYP",
-                        "SUF_DIR"
-                    ],
-                    "postcode": "ZIPCODE"
+                    "unit": "Suite",
+                    "number": "Number",
+                    "street": [ "StreetPrefixCode", "StreetName", "StreetTypeCode", "PostDirectionCode" ],
+                    "postcode": "Zip",
+                    "city": "City"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps.nashville.gov/arcgis/rest/services/Cadastral/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "APN"
                 }
             }
         ]

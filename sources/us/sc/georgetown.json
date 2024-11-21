@@ -14,16 +14,37 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis1.georgetowncountysc.org/webadaptor/rest/services/GeorgetownCountyMapServer/MapServer/8",
+                "data": "https://gis1.georgetowncountysc.org/portal/rest/services/GCGIS_BaseMap/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSENUM",
-                    "street": {
-                        "function": "remove_prefix",
-                        "field": "ADDRESS",
-                        "field_to_remove": "ADDRESS"
-                    }
+                    "number": "Add_Number",
+                    "street": "StreetName",
+                    "unit": "Unit",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zip_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis1.georgetowncountysc.org/portal/rest/services/GCGIS_BaseMap/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TMS"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis1.georgetowncountysc.org/portal/rest/services/GCGIS_Buildings/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

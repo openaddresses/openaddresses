@@ -14,30 +14,49 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services6.arcgis.com/FsBMyO0EKuAe3Kx8/arcgis/rest/services/AddressPoint/FeatureServer/0",
+                "data": "https://gis.co.eau-claire.wi.us/agsserver/rest/services/BaseLayers/Address_Points/MapServer/0",
+                "website": "https://hub-eccounty.hub.arcgis.com/datasets/4ac1e59055254f6891aa70b7e623cb5c_0/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": {
                         "function": "format",
                         "fields": [
-                            "PREADDRNUM",
-                            "ADDRNUM"
+                            "addnum_pre",
+                            "add_number"
                         ],
                         "format": "$1$2"
                     },
-                    "street": [
-                        "ROADPREDIR",
-                        "ROADNAME",
-                        "ROADTYPE",
-                        "ROADSUFFDIR"
-                    ],
+                    "street": "FullStNm",
                     "unit": [
                         "UNITTYPE",
                         "UNITID"
                     ],
                     "postcode": "ZIP",
                     "city": "MUNICIPALITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.eau-claire.wi.us/agsserver/rest/services/BaseLayers/Tax_Parcel/FeatureServer/0",
+                "website": "https://hub-eccounty.hub.arcgis.com/datasets/6331d72454ab480fb363976d03e876c6_0/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.co.eau-claire.wi.us/agsserver/rest/services/BaseLayers/Building_Footprints_2020/FeatureServer/0",
+                "website": "https://hub-eccounty.hub.arcgis.com/datasets/6da9b4a1a4c3451d857ed3195c9ee9fe_0/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

@@ -14,21 +14,36 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gisservices.co.anoka.mn.us/anoka_gis/rest/services/Address_Pts_Edit/MapServer/0",
+                "data": "https://gis.anokacountymn.gov/anoka_gis/rest/services/Address_Pts/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "LOC_NUMB",
-                    "street": [
-                        "LOC_PREFIX",
-                        "LOC_NAME",
-                        "LOC_TYPE",
-                        "LOC_SUFFIX"
-                    ],
-                    "unit": "LOC_UNIT",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "LOC_ADDR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "LOC_ADDR",
+                        "may_contain_units": true
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "LOC_ADDR"
+                    },
                     "city": "LOC_CITY",
-                    "region": "LOC_STATE",
                     "postcode": "LOC_ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.anokacountymn.gov/anoka_gis/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

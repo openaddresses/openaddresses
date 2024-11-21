@@ -18,6 +18,23 @@ One note, however, is that functions cannot be combined at this time.  That is, 
 
 ## Formatting Functions
 
+## Index
+
+* [`join`](#join)
+* [`format`](#format)
+* [`prefixed_number`](#prefixed_number-postfixed_street-and-postfixed_unit)
+* [`postfixed_street`](#prefixed_number-postfixed_street-and-postfixed_unit)
+* [`postfixed_unit`](#prefixed_number-postfixed_street-and-postfixed_unit)
+* [`remove_prefix`](#remove_prefix-and-remove_postfix)
+* [`remove_postfix`](#remove_prefix-and-remove_postfix)
+* [`regexp`](#regexp)
+* [`first_non_empty`](#first_non_empty)
+* [`get`](#get)
+* [`chain`](#chain)
+* [`constant`](#constant)
+
+## Combining Functions
+
 There are two functions that are specifically designed to combine two or more fields into one.
 
 ### `join`
@@ -135,7 +152,7 @@ The implementations of `prefixed_number` and `postfixed_street` are very simple,
 
 A source may not necessarily have to use both functions together in a conform but they commonly are.
 
-It's also common for a single address field to contain a unit designator at the end, as in "123 Maple Street Apt 4A".  In this case, `postfixed_unit` should be used in combination with `postfixed_street` to extract `Apt 4A`.  Because `postfixed_street` considers the street value to be anything after the house number, it's normal to set `may_contain_units` to `true` in `postfixed_street` when using `postfixed_unit`.  
+It's also common for a single address field to contain a unit designator at the end, as in "123 Maple Street Apt 4A".  In this case, `postfixed_unit` should be used in combination with `postfixed_street` to extract `Apt 4A`.  Because `postfixed_street` considers the street value to be anything after the house number, it's normal to set `may_contain_units` to `true` in `postfixed_street` when using `postfixed_unit`.
 
 `postfixed_unit` recognizes the following words as unit designators:
 
@@ -150,7 +167,7 @@ It's also common for a single address field to contain a unit designator at the 
 * #
 
 Any text found after the unit designator is considered part of the unit.  The downside of this is that if a street name legitimately
-contains one of these words, such as "Lindsay Lot Road", which is fortunately a fairly rare occurrence.  
+contains one of these words, such as "Lindsay Lot Road", which is fortunately a fairly rare occurrence.
 
 #### Definition:
 
@@ -268,10 +285,14 @@ While virtually all modern regular expression flavors share identical basic beha
 | `pattern` | string | a compilable regular expression | none (required)
 | `replace` | string | a string referencing 0 or more captured groups in `pattern` | none (optional)
 
+### `first_non_empty`
+
+The `first_non_empty` function is used to extract the first non-empty value from a list of fields. This function is particularly useful when a single record contains multiple columns for a particular output column.
+
 ### `get`
 The `get` function is particularly useful in a situation when a single address record may contain multiple nodes having the same field name.
 
-To make it less vague, let's consider an example of Polish addresses. Below you can see a single address record containing 4 same-named nodes `jednostkaAdministracyjna`, which indicates an administrational unit.  
+To make it less vague, let's consider an example of Polish addresses. Below you can see a single address record containing 4 same-named nodes `jednostkaAdministracyjna`, which indicates an administrational unit.
 
 
 ```xml
@@ -285,7 +306,7 @@ To make it less vague, let's consider an example of Polish addresses. Below you 
 
 ```
 
-We want to get information about the district which is located in the fourth node (Bartniczka). In order to do that we can use the `get` method and leverage the `index` parameter. Since we are all programmers, we count starting from 0. So, the fourth field means `index` equals to 3. 
+We want to get information about the district which is located in the fourth node (Bartniczka). In order to do that we can use the `get` method and leverage the `index` parameter. Since we are all programmers, we count starting from 0. So, the fourth field means `index` equals to 3.
 
 
 ```json
@@ -363,6 +384,28 @@ Applying the above conform results in the following:
 | `function` | `chain` |
 | `variable` | a temporary field name to store intermediate results | none (required)
 | ` functions` | a list of conform function definitions (which can also be `chain`) | none (required)
+
+
+### `constant`
+
+The `constant` function allows for defining a specific value for an entire column. Useful when there is only one static value for a field in the entire dataset, and that field is not provided by the source. Only applicable at a higher address level such as region/county/district/city/postcode.
+
+```json
+"number": "ADDR_NUM",
+"street": "STRT_NAM",
+"city": {
+    "function": "constant",
+    "value": "Berlin"
+}
+```
+
+#### Definition:
+
+| parameter | value | default
+| --------- | ----- | -------
+| `function` | `constant` |
+| `value` | the constant value for the field | none (required)
+
 
 ## Acceptance Testing
 

@@ -14,13 +14,142 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis2.msa-ps.com/ArcGIS/rest/services/StreetsAddress/MapServer/2",
+                "data": "https://gismap.co.juneau.wi.us/server/rest/services/JuneauCo_PublicGIS/MapServer/7",
                 "protocol": "ESRI",
-                "note": "Number col contains letters & Needs to be reprojected!",
+                "note": "ZIPCODE is a USPS town name that only has one ZIP Code. The county has a list of the names and ZIP Codes here: https://gismap.co.juneau.wi.us/server/rest/services/JuneauCo_PublicGIS/MapServer/21/query (I have no idea why they don't just use the ZIP Codes directly)",
                 "conform": {
                     "format": "geojson",
                     "number": "HOUSENUM",
-                    "street": "STNAME"
+                    "street": "STNAME",
+                    "city": "COMMUNITY",
+                    "region": "STATE",
+                    "postcode": {
+                        "function": "chain",
+                        "variable": "zip",
+                        "functions": [
+                            {
+                                "function": "regexp",
+                                "field": "ZIPCODE",
+                                "pattern": "NEKOOSA",
+                                "replace": "54457"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "zip",
+                                "pattern": "WARRENS",
+                                "replace": "54666"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "zip",
+                                "pattern": "BABCOCK",
+                                "replace": "54413"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "zip",
+                                "pattern": "NECEDAH",
+                                "replace": "54646"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "zip",
+                                "pattern": "NEW LISBON",
+                                "replace": "53950"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "zip",
+                                "pattern": "MAUSTON",
+                                "replace": "53948"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "zip",
+                                "pattern": "KENDALL",
+                                "replace": "54638"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "zip",
+                                "pattern": "ELROY",
+                                "replace": "53929"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "zip",
+                                "pattern": "LYNDON STATION",
+                                "replace": "53944"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "zip",
+                                "pattern": "HILLSBORO",
+                                "replace": "54634"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "zip",
+                                "pattern": "WISCONSIN DELLS",
+                                "replace": "53965"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "zip",
+                                "pattern": "LA VALLE",
+                                "replace": "53941"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "zip",
+                                "pattern": "HUSTLER",
+                                "replace": "54637"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "zip",
+                                "pattern": "CAMP DOUGLAS",
+                                "replace": "54618"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "zip",
+                                "pattern": "WONEWOC",
+                                "replace": "53968"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "zip",
+                                "pattern": "UNION CENTER",
+                                "replace": "53962"
+                            }
+                        ]
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gismap.co.juneau.wi.us/server/rest/services/JuneauCo_PublicGIS/MapServer/10",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisdata.wisc.edu/public/Juneau_Buildings_2018.zip",
+                "website": "https://geodata.wisc.edu/catalog/EF55FF8A-7213-486C-8974-C21C8F289F8C",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2018",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Juneau_Buildings_2018"
                 }
             }
         ]

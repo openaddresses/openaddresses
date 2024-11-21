@@ -1,0 +1,51 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "16003",
+            "name": "Adams County",
+            "state": "Idaho"
+        },
+        "country": "us",
+        "state": "id",
+        "county": "Adams"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services9.arcgis.com/ab7oZGsZDc90ZJE2/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PM_PROP_AD"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "PM_PROP_AD",
+                        "pattern": "^(?:\\d+\\s)(?:#\\d+\\s)?(.+?)$"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "PM_PROP_AD",
+                        "pattern": "^(?:\\d+\\s)(#\\d+)(?:\\s)"
+                    },
+                    "postcode": "PM_PROP_ZP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services9.arcgis.com/ab7oZGsZDc90ZJE2/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PM_PAR_NUM"
+                }
+            }
+        ]
+    }
+}

@@ -13,16 +13,47 @@
     "layers": {
         "addresses": [
             {
-                "name": "county",
-                "attribution": "Gordon County",
-                "data": "http://66.110.220.61/arcgis/rest/services/Addresses/MapServer/0",
+                "name": "city",
+                "data": "https://gis.cityofcalhoun-ga.com/arcgis/rest/services/buildings_public/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSE_NO",
-                    "street": "STREET",
-                    "unit": "UNIT",
-                    "city": "COMMUNITY"
+                    "number": [
+                        "housenum",
+                        "House_Number_Suffix"
+                    ],
+                    "street": [
+                        "prefixdir",
+                        "prefixtype",
+                        "streetname",
+                        "streettype",
+                        "suffixdir"
+                    ],
+                    "unit": [
+                        "SubAddr_Type",
+                        "SubAddr_Unit"
+                    ]
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.cityofcalhoun-ga.com/arcgis/rest/services/Roads_and_Parcels/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "CNTY_PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.cityofcalhoun-ga.com/arcgis/rest/services/buildings_public/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

@@ -14,19 +14,38 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://mapsatbis.com/bisgis/rest/services/HowardWeb/MapServer/0",
+                "data": "https://services6.arcgis.com/T3dTslR6IXXsd0JO/ArcGIS/rest/services/HowardCADWebService/FeatureServer/0",
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC 0"
+                },
                 "protocol": "ESRI",
                 "conform": {
-                    "number": "HowardCad.DBO.Accounts.situs_num",
+                    "format": "geojson",
+                    "number": "situs_num",
                     "street": [
-                        "HowardCad.DBO.Accounts.situs_street_prefx",
-                        "HowardCad.DBO.Accounts.situs_street",
-                        "HowardCad.DBO.Accounts.situs_street_sufix"
+                        "situs_street_prefx",
+                        "situs_street",
+                        "situs_street_sufix"
                     ],
-                    "city": "HowardCad.DBO.Accounts.situs_city",
-                    "region": "HowardCad.DBO.Accounts.situs_state",
-                    "postcode": "HowardCad.DBO.Accounts.situs_zip",
-                    "format": "geojson"
+                    "city": "situs_city",
+                    "region": "situs_state",
+                    "postcode": "situs_zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/T3dTslR6IXXsd0JO/ArcGIS/rest/services/HowardCADWebService/FeatureServer/0",
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC 0"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "prop_id"
                 }
             }
         ]

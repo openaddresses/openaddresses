@@ -1,0 +1,56 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                22.45,
+                -33.967
+            ]
+        },
+        "country": "za",
+        "state": "wc",
+        "city": "George"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services3.arcgis.com/ibMYx98GZWvMOYMm/ArcGIS/rest/services/Streets/FeatureServer/63",
+                "protocol": "ESRI",
+                "conform": {
+                    "id": "ERFNO",
+                    "number": "STREET_NUM",
+                    "street": [
+                        "STREET_NAM",
+                        "STREET_SUF"
+                    ],
+                    "city": "TOWN",
+                    "format": "geojson",
+                    "accuracy": 2
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services3.arcgis.com/ibMYx98GZWvMOYMm/ArcGIS/rest/services/Property_Information/FeatureServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "ERFNO",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services3.arcgis.com/ibMYx98GZWvMOYMm/ArcGIS/rest/services/Building_Footprints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

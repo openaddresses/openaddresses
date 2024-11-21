@@ -92,4 +92,3 @@ for path in glob('sources/us/**/*.json'):
 
     with open(path, 'w') as file:
         file.write(new_data)
-

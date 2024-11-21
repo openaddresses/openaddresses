@@ -14,20 +14,44 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://bibbgis.co.bibb.ga.us/warcgis/rest/services/TaxAssessor/TaxParcels/MapServer/0",
-                "website": "http://bibbgis.co.bibb.ga.us/mapsandapps/",
+                "data": "https://services2.arcgis.com/zPFLSOZ5HzUzzTQb/ArcGIS/rest/services/SiteAddressPoints_MaconBibb/FeatureServer/0",
+                "website": "https://macon-bibb-county-open-data-maconbibb.hub.arcgis.com/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "SITEADDRESS"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "SITEADDRESS"
-                    },
-                    "unit": "UNIT"
+                    "number": [
+                        "addressnumberprefix",
+                        "addressnumber",
+                        "addressnumbersuffix"
+                    ],
+                    "street": [
+                        "streetnamepremodifier",
+                        "streetnamepredirectional",
+                        "streetnamepretype",
+                        "streetname",
+                        "streetnameposttype",
+                        "streetnamepostdirectional",
+                        "streetnamepostmodifier"
+                    ],
+                    "unit": [
+                        "subaddresstype1",
+                        "subaddressidentifier1"
+                    ],
+                    "city": "placename",
+                    "region": "statename",
+                    "postcode": "zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/zPFLSOZ5HzUzzTQb/ArcGIS/rest/services/ParcelCamaJune2024/FeatureServer/0",
+                "website": "https://macon-bibb-county-open-data-maconbibb.hub.arcgis.com/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
                 }
             }
         ]

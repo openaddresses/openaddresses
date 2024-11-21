@@ -1,0 +1,69 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -119.12,
+                46.209
+            ]
+        },
+        "US Census": {
+            "geoid": "5335275",
+            "name": "City of Kennewick",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa",
+        "city": "Kennewick"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://maps.ci.kennewick.wa.us/arcgis_public/rest/services/Public/AllGISLayers/MapServer/92",
+                "website": "https://gisdata-kennewick.hub.arcgis.com/datasets/kennewick::surveyaddresspoint/about",
+                "conform": {
+                    "format": "geojson",
+                    "id": "BaseParcelObjectNumber",
+                    "number": [
+                        "StreetNumber",
+                        "StreetFraction"
+                    ],
+                    "street": [
+                        "StreetPrefix",
+                        "StreetName",
+                        "StreetSuffix"
+                    ],
+                    "unit": "StreetUnit",
+                    "city": "City",
+                    "postcode": "ZipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://maps.ci.kennewick.wa.us/arcgis_public/rest/services/Public/AllGISLayers/MapServer/105",
+                "website": "https://gisdata-kennewick.hub.arcgis.com/datasets/kennewick::surveyparcel/about",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "CountyTaxID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://maps.ci.kennewick.wa.us/arcgis_public/rest/services/Public/AllGISLayers/MapServer/75",
+                "website": "https://gisdata-kennewick.hub.arcgis.com/datasets/kennewick::structurebuilding/about",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

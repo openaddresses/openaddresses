@@ -18,14 +18,21 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "Address"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "Address"
-                    }
+                    "number": "HOUSE_NO",
+                    "street": "STREET_NAM",
+                    "unit": "UNIT",
+                    "postcode": "Property_Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/0tQ9yX5b2VG5RHei/ArcGIS/rest/services/Elections/FeatureServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
                 }
             }
         ]

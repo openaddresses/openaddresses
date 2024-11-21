@@ -1,0 +1,56 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "28025",
+            "name": "Clay County",
+            "state": "Mississippi"
+        },
+        "country": "us",
+        "state": "ms",
+        "county": "Clay"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/kQPfxbSKhIDcSFXL/ArcGIS/rest/services/ClayCoMS/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "PHYNUM",
+                    "street": "RD_LABEL",
+                    "city": {
+                        "function": "regexp",
+                        "field": "CITYSTATEZ",
+                        "pattern": "^(.+)(?:, MS)(?: \\d{5})?$",
+                        "replace": "$1"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "CITYSTATEZ",
+                        "pattern": "^(?:.+, )(MS)(?: \\d{5})?$",
+                        "replace": "$1"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "CITYSTATEZ",
+                        "pattern": "^(?:.+, MS)(?: )?(\\d{5})?$",
+                        "replace": "$1"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/kQPfxbSKhIDcSFXL/arcgis/rest/services/ClayCountyParcel/FeatureServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
+    }
+}

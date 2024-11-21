@@ -14,25 +14,32 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/us-ga-montgomery_county.csv",
-                "protocol": "http",
+                "data": "https://services5.arcgis.com/HHvUPZ2XuLOAJxjR/arcgis/rest/services/MontgomeryToombsBoundary/FeatureServer/15",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "csv",
-                    "lat": "LAT",
-                    "lon": "LNG",
-                    "number": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^([0-9]+)( .*)",
-                        "replace": "$1"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "STR",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "region": "REGION"
+                    "format": "geojson",
+                    "number": [
+                        "house_no",
+                        "extension"
+                    ],
+                    "street": [
+                        "stdirect",
+                        "street_nam",
+                        "sttype"
+                    ],
+                    "unit": "unit",
+                    "postcode": "zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/HHvUPZ2XuLOAJxjR/ArcGIS/rest/services/MontgomeryToombsBoundary/FeatureServer/15",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_No"
                 }
             }
         ]

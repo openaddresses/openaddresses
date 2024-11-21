@@ -14,19 +14,42 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "http://gis.co.marion.or.us/GISDownload/gisdownload.aspx",
+                "data": "https://services1.arcgis.com/sYGZnQPdJ0azuLyn/ArcGIS/rest/services/Primary_Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ADD_NUM",
+                        "ADD_NUMSUF"
+                    ],
+                    "street": [
+                        "ST_PREMOD",
+                        "ST_PREDIR",
+                        "ST_PRETYPE",
+                        "ST_NAME",
+                        "ST_POSTYPE",
+                        "ST_POSTDIR",
+                        "ST_POSMOD"
+                    ],
+                    "unit": [
+                        "SUB_TYPE",
+                        "SUB_VAL"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://gis-marioncounty.opendata.arcgis.com/datasets/MarionCounty::marion-county-parcels/about",
                 "data": "http://gis.co.marion.or.us/gisdownload/download/assessors/taxlot.zip",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "format": "shapefile-polygon",
-                    "number": "XSTNO",
-                    "street": [
-                        "SDIRPX",
-                        "STNAM",
-                        "STYP",
-                        "SDIRSX"
-                    ]
+                    "format": "shapefile",
+                    "pid": "TAXLOT"
                 }
             }
         ]

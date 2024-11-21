@@ -1,0 +1,54 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "53",
+            "state": "Washington"
+        },
+        "country": "us",
+        "state": "wa"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://files.slack.com/files-pri/T029HV94T-F06GLTZQ1U6/download/site_address_points_oct2023.zip?pub_secret=ad47d7aa18",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "Site_Address_Points",
+                    "number": [
+                        "addnum_pre",
+                        "add_number",
+                        "addnum_suf"
+                    ],
+                    "street": [
+                        "lst_predir",
+                        "lst_name",
+                        "lst_type",
+                        "lstposdir"
+                    ],
+                    "unit": "unit",
+                    "city": "post_comm",
+                    "district": "County",
+                    "region": "state",
+                    "postcode": "post_code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://services.arcgis.com/jsIt88o09Q0r1j8h/arcgis/rest/services/Current_Parcels/FeatureServer/0",
+                "website": "https://geo.wa.gov/datasets/wa-geoservices::current-parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID_NR"
+                }
+            }
+        ]
+    }
+}
