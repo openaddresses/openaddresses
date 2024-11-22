@@ -41,12 +41,14 @@
                     "lon": "ADR_EASTING",
                     "lat": "ADR_NORTHING",
                     "city": {
-                        "function": "postfixed_street",
-                        "field": "ZIP_LABEL"
+                        "function": "regexp",
+                        "field": "ZIP_LABEL",
+                        "pattern": "(?:[0-9]+\\s)(.*)"
                     },
                     "postcode": {
-                        "function": "prefixed_number",
-                        "field": "ZIP_LABEL"
+                        "function": "regexp",
+                        "field": "ZIP_LABEL",
+                        "pattern": "([0-9]+)"
                     },
                     "region": "COM_CANTON"
                 }
