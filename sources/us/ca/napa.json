@@ -14,20 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "attribution": "Napa County",
-                "website": "http://gis.napa.ca.gov/giscatalog/catalog_xml.asp",
-                "license": "http://gis.napa.ca.gov/giscatalog/viewXML.asp?Name=MAINGIS.GIS.ADDRESSES_ALL&meta_style=fgdc",
-                "data": "https://gis.napa.ca.gov/data/structure/addresses_all.zip",
-                "note": "Includes official county addresses and points for alternate addresses that use colloquial road names. Status field used to differentiate.",
+                "website": "https://gisdata.countyofnapa.org/datasets/napacounty::addresses-all/about",
+                "license": {
+                    "url": "https://opendatacommons.org/licenses/pddl/1-0/",
+                    "text": "Public Domain Dedication and License (PDDL) v1.0",
+                    "attribution": false,
+                    "share-alike": false,
+                    "attribution name": "Napa County"
+                },
+                "data": "https://services1.arcgis.com/Ko5rxt00spOfjMqj/arcgis/rest/services/Addresses_All/FeatureServer/0",
                 "conform": {
-                    "number": "AddressNum",
-                    "street": "RoadName",
-                    "unit": "UNITID",
-                    "city": "PostalArea",
-                    "postcode": "ZIP",
-                    "format": "shapefile"
+                    "number": "addressnum",
+                    "street": [
+                        "pre_dir",
+                        "prest_type",
+                        "streetname",
+                        "st_type",
+                        "post_dir"
+                    ],
+                    "unit": "unitid",
+                    "city": "postalarea",
+                    "postcode": "zip",
+                    "format": "geojson"
                 }
             }
         ]
