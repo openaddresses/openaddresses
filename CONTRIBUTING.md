@@ -89,7 +89,7 @@ instead of a pull request. We’ll determine if the data is suitable for inclusi
 `{layer}.data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal. If there isn't a good URL for the source, you can upload files to [https://batch.openaddresses.io/upload](https://batch.openaddresses.io/upload) which provides a cached URL.
 `{layer}.protocol`    | Yes | A string containing the protocol (One of: `http`, `ftp`, `ESRI`)
 `{layer}.conform`     |     | Optional Object used to find address information in a source. [See below for more details](#conform-object).
-`{layer}.compression` |     | Optional string containing the compression type (usually `zip`). Omit if source is not compressed.
+`{layer}.compression` |     | Optional string containing the compression type (either `zip` or `gzip`). Omit if source is not compressed.
 
 #### Basic Source Example
 
