@@ -11,16 +11,22 @@
         "addresses": [
             {
                 "name": "country",
-                "data": "https://data.openaddresses.io/cache/uploads/sergiyprotsiv/3b8bdb/li_countrywide.zip",
+                "data": "https://service.geo.llv.li/download//getfile.php?theme=officialAdress",
                 "website": "http://geodaten.llv.li/geoportal/gebaeudeidentifikator.html",
+                "license": {
+                    "url": "https://service.geo.llv.li/download//officialAdress/AbiOGDLizenz.pdf",
+                    "attribution": true,
+                    "attribution name": "Liechtensteinische Landesverwaltung",
+                    "share-alike": false
+                },
                 "protocol": "http",
                 "compression": "zip",
                 "language": "de",
                 "conform": {
-                    "number": "hausnummer",
-                    "street": "strassenna",
-                    "city": "ortschaft",
-                    "postcode": "plz",
+                    "number": "ADR_NUMBER",
+                    "street": "STN_NAME",
+                    "city": "ZIP_NAME",
+                    "postcode": "ZIP_ZIP4",
                     "format": "shapefile",
                     "accuracy": 1,
                     "srs": "EPSG:2056"
