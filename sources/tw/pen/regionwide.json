@@ -1,0 +1,57 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "TW-PEN",
+            "country": "Taiwan"
+        },
+        "country": "tw"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "website": "https://data.gov.tw/dataset/170852",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2025-01-08-g1zpm/penghu_county.csv.zip",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://data.gov.tw/license",
+                    "attribution": true,
+                    "attribution name": "Penghu County Government",
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "csv",
+                    "srs": "EPSG:4326",
+                    "number": {
+                        "function": "regexp",
+                        "field": "number",
+                        "pattern": "^([0-9０-９]+號?)"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "number",
+                        "pattern": "^(?:[0-9０-９]+號?)(.*)"
+                    },
+                    "street": {
+                        "function": "join",
+                        "fields": [
+                            "street",
+                            "area",
+                            "lane",
+                            "alley"
+                        ],
+                        "separator": ""
+                    },
+                    "city": "village",
+                    "district": "town",
+                    "region": "county",
+                    "lat": "Y",
+                    "lon": "X"
+                }
+            }
+        ]
+    }
+}
