@@ -11,8 +11,17 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "AddressNum",
-                    "street": "FullStName",
+                    "number": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^\\d+(?:-\\d+)?"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^\\d+(?:-\\d+)? (.*)",
+                        "replace": "$1"
+                    },
                     "city": "City",
                     "region": "Island"
                 }
