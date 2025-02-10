@@ -13,6 +13,7 @@ all other address fields in place.
 This assumes you've downloaded the data from the path above and are running it in the unzipped
 directory.
 """
+
 import glob
 import logging
 import zipfile
@@ -43,12 +44,16 @@ def read_csvs(z, prefix, **kwargs):
 
 
 def main():
-    with zipfile.ZipFile("2024.zip") as z:
+    with zipfile.ZipFile("202412.zip") as z:
         logging.info("Loading addresses")
         addresses = read_csvs(z, "Addresses")
 
         logging.info("Loading locations")
-        locations = read_csvs(z, "Locations", usecols=["LOC_GUID", "REPPOINT_LATITUDE", "REPPOINT_LONGITUDE"])
+        locations = read_csvs(
+            z,
+            "Locations",
+            usecols=["LOC_GUID", "REPPOINT_LATITUDE", "REPPOINT_LONGITUDE"],
+        )
 
     logging.info("Merging addresses and locations")
     combined = pd.merge(addresses, locations, on="LOC_GUID", how="inner")

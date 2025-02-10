@@ -14,23 +14,34 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.co.roseau.mn.us/arcgis/rest/services/Roseau_Operational_DataJoin_Web_Merc/MapServer/0",
+                "data": "https://gis.co.roseau.mn.us/arcgis/rest/services/Public_Data_Layers/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "number": {
                         "function": "regexp",
-                        "field": "RoseauAS400.dbo.tblParcelJoin.PhysAddr",
+                        "field": "PhysAddr",
                         "pattern": "^([0-9]+)"
                     },
                     "street": {
                         "function": "regexp",
-                        "field": "RoseauAS400.dbo.tblParcelJoin.PhysAddr",
+                        "field": "PhysAddr",
                         "pattern": "^(?:[0-9]+ )(.*)",
                         "replace": "$1"
                     },
                     "format": "geojson",
-                    "city": "RoseauAS400.dbo.tblParcelJoin.PhysCity",
+                    "city": "PhysCity",
                     "accuracy": 2
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.roseau.mn.us/arcgis/rest/services/Public_Data_Layers/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]
