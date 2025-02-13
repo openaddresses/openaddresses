@@ -1,18 +1,34 @@
 {
     "coverage": {
-        "country": "bs"
+        "ISO 3166": {
+            "alpha2": "BS-FP",
+            "country": "Bahamas",
+            "subdivision": "City of Freeport"
+        },
+        "country": "bs",
+        "state": "fp",
+        "city": "Freeport"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
-                "name": "country",
+                "name": "city",
                 "data": "https://services5.arcgis.com/2A67EqGJx1Goyk7B/ArcGIS/rest/services/Address_points_Freeport_WGS84_LatLong/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "AddressNum",
-                    "street": "FullStName",
+                    "number": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^(\\d+(?:-\\d+)?)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Address",
+                        "pattern": "^\\d+(?:-\\d+)? (.*)",
+                        "replace": "$1"
+                    },
                     "city": "City",
                     "region": "Island"
                 }
