@@ -26,12 +26,20 @@
                     "csvsplit": ";",
                     "file": "HAUSKOORDINATEN_RP_hk.csv",
                     "srs": "EPSG:25832",
+                    "id": "oid",
                     "street": "str",
-                    "number": "hnr",
-                    "unit": "adz",
+                    "number": {
+                        "function": "format",
+                        "fields": [
+                            "hnr",
+                            "adz"
+                        ],
+                        "format": "$1$2"
+                    },
                     "city": "gmd",
                     "district": "kreis",
-                    "region": "land",
+                    "region": "regbez",
+                    "postcode": "postplz",
                     "lat": "nordwert",
                     "lon": "ostwert"
                 }
