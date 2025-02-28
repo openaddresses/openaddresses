@@ -32,18 +32,18 @@
                     "unit": {
                         "function": "regexp",
                         "field": "Situs",
-                        "pattern": "[0-9]+ ([A-Za-z0-9/\\- ]*)( +##? *(.*))?$",
+                        "pattern": "([A-Za-z0-9/\\- ]*)( +##? *(.*))?$",
                         "replace": "$3"
                     },
                     "city": {
                         "function": "regexp",
                         "field": "SITUSCITY",
-                        "pattern": "^([a-zA-Z ]+) [A-Z]{2}\\s?$"
+                        "pattern": "^([a-zA-Z ]+) [A-Z]{2}(?:\\s[0-9]+)?\\s?$"
                     },
                     "region": {
                         "function": "regexp",
                         "field": "SITUSCITY",
-                        "pattern": " ([A-Z]{2})\\s?$"
+                        "pattern": " ([A-Z]{2})(?:\\s[0-9]+)?\\s?$"
                     }
                 }
             }
