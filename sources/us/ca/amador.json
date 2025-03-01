@@ -35,20 +35,17 @@
                     "city": {
                         "function": "regexp",
                         "field": "FormattedSitus2",
-                        "pattern": "^(.+)(?: CA)(?: \\d{5})?$",
-                        "replace": "$1"
+                        "pattern": "^(.+)(?: CA)(?: \\d{5})?\\s?$"
                     },
                     "region": {
                         "function": "regexp",
                         "field": "FormattedSitus2",
-                        "pattern": "^(?:.+ )(CA)(?: \\d{5})?$",
-                        "replace": "$1"
+                        "pattern": "^(?:.+ )(CA)(?: \\d{5})?\\s?$"
                     },
                     "postcode": {
                         "function": "regexp",
                         "field": "FormattedSitus2",
-                        "pattern": "^(?:.+ CA)(?: )?(\\d{5})?$",
-                        "replace": "$1"
+                        "pattern": "^(?:.+ CA)(?: )?(\\d{5})$"
                     },
                     "format": "geojson"
                 }
