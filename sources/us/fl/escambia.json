@@ -14,18 +14,29 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://arcgis4.roktech.net/arcgis/rest/services/escambia/escambia_query_new/MapServer/1",
-                "protocol": "ESRI",
+                "data": "https://data.openaddresses.io/cache/uploads/stepps00/2025-03-06-7dssb/ESCAMBIA_2025-01-01.csv.zip",
+                "website": "https://pointmatch.floridarevenue.com/General/AddressFiles.aspx",
+                "year": 2025,
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
-                    "unit": "SUITE_UNIT",
-                    "number": "BLDG_NUM",
+                    "format": "csv",
+                    "lat": "LAT",
+                    "lon": "LONG",
+                    "number": "NUMBER",
                     "street": [
-                        "PREFIX_DIR",
-                        "STREET_NAME",
-                        "SUFFIX",
-                        "SUFFIX_DIR"
-                    ]
+                        "PREDIR",
+                        "STNAME",
+                        "STSUFFIX",
+                        "POSTDIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITNUM"
+                    ],
+                    "city": "MAILCITY",
+                    "district": "COUNTY",
+                    "postcode": "ZIP"
                 }
             }
         ],
