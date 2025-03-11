@@ -14,21 +14,29 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.marionfl.org/public/rest/services/Onemap/AddressPoints_withCF/MapServer/0",
-                "protocol": "ESRI",
+                "data": "https://data.openaddresses.io/cache/uploads/stepps00/2025-03-06-vygr9/MARION_2025-01-01.csv.zip",
+                "website": "https://pointmatch.floridarevenue.com/General/AddressFiles.aspx",
+                "year": 2025,
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
-                    "number": "HOUSE_NU",
+                    "format": "csv",
+                    "lat": "LAT",
+                    "lon": "LONG",
+                    "number": "NUMBER",
                     "street": [
-                        "PREFIX",
-                        "STREET_NA",
-                        "TYPE",
-                        "SUFFIX"
+                        "PREDIR",
+                        "STNAME",
+                        "STSUFFIX",
+                        "POSTDIR"
                     ],
-                    "unit": "UNIT",
-                    "city": "CITY",
-                    "region": "STATE",
-                    "postcode": "ZIP_CODE"
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITNUM"
+                    ],
+                    "city": "MAILCITY",
+                    "district": "COUNTY",
+                    "postcode": "ZIP"
                 }
             }
         ],
