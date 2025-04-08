@@ -1,0 +1,59 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17045",
+            "name": "Edgar County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "👋TODO👋"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://ags.bhamaps.com/arcgisserver/rest/services/EdgarIL/EdgarIL_PAT_Taxmap/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                      "function": "prefixed_number",
+                      "field": "PropertyAddress1"
+                    },
+                    "street": {
+                      "function": "postfixed_street",
+                      "field": "PropertyAddress1"
+                    },
+                    "city": {
+                      "function": "regexp",
+                      "field": "PropertyAddress2",
+                      "pattern": "^.+(?=, IL)"
+                    },
+                    "region": {
+                        "function": "constant",
+                        "value": "IL"
+                    },
+                    "postcode": {
+                      "function": "regexp",
+                      "field": "PropertyAddress2",
+                      "pattern": "\\d{5}(-\\d{4})?$"
+                    }
+                },
+                "accuracy": 2
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://ags.bhamaps.com/arcgisserver/rest/services/EdgarIL/EdgarIL_PAT_Taxmap/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
+    }
+}
