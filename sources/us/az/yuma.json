@@ -14,18 +14,34 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.yumacountyaz.gov/ArcGIS/rest/services/YumaCounty/MapServer/128",
+                "website": "https://geo-viewer.yumacountyaz.gov/Html5Viewer/index.html?viewer=YumaCountyPublicApplication",
+                "data": "https://gis.ci.yuma.az.us/server/rest/services/saf/Site_Structure_Address_Points/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ST_NUM",
+                    "number": "Address_Number_Full",
                     "street": [
-                        "ST_DIR",
-                        "ST_NAME",
-                        "ST_DESIG"
+                        "LSt_PreDir",
+                        "LSt_name",
+                        "LSt_Type",
+                        "LStPostDir"
                     ],
-                    "unit": "UNIT",
-                    "city": "CITY"
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://geo-viewer.yumacountyaz.gov/Html5Viewer/index.html?viewer=YumaCountyPublicApplication",
+                "data": "https://arcgis.yumacountyaz.gov/webgis/rest/services/Basemap/MapServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIDNUM"
                 }
             }
         ]

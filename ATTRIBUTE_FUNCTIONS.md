@@ -18,6 +18,23 @@ One note, however, is that functions cannot be combined at this time.  That is, 
 
 ## Formatting Functions
 
+## Index
+
+* [`join`](#join)
+* [`format`](#format)
+* [`prefixed_number`](#prefixed_number-postfixed_street-and-postfixed_unit)
+* [`postfixed_street`](#prefixed_number-postfixed_street-and-postfixed_unit)
+* [`postfixed_unit`](#prefixed_number-postfixed_street-and-postfixed_unit)
+* [`remove_prefix`](#remove_prefix-and-remove_postfix)
+* [`remove_postfix`](#remove_prefix-and-remove_postfix)
+* [`regexp`](#regexp)
+* [`first_non_empty`](#first_non_empty)
+* [`get`](#get)
+* [`chain`](#chain)
+* [`constant`](#constant)
+
+## Combining Functions
+
 There are two functions that are specifically designed to combine two or more fields into one.
 
 ### `join`
@@ -268,6 +285,10 @@ While virtually all modern regular expression flavors share identical basic beha
 | `pattern` | string | a compilable regular expression | none (required)
 | `replace` | string | a string referencing 0 or more captured groups in `pattern` | none (optional)
 
+### `first_non_empty`
+
+The `first_non_empty` function is used to extract the first non-empty value from a list of fields. This function is particularly useful when a single record contains multiple columns for a particular output column.
+
 ### `get`
 The `get` function is particularly useful in a situation when a single address record may contain multiple nodes having the same field name.
 
@@ -363,6 +384,28 @@ Applying the above conform results in the following:
 | `function` | `chain` |
 | `variable` | a temporary field name to store intermediate results | none (required)
 | ` functions` | a list of conform function definitions (which can also be `chain`) | none (required)
+
+
+### `constant`
+
+The `constant` function allows for defining a specific value for an entire column. Useful when there is only one static value for a field in the entire dataset, and that field is not provided by the source. Only applicable at a higher address level such as region/county/district/city/postcode.
+
+```json
+"number": "ADDR_NUM",
+"street": "STRT_NAM",
+"city": {
+    "function": "constant",
+    "value": "Berlin"
+}
+```
+
+#### Definition:
+
+| parameter | value | default
+| --------- | ----- | -------
+| `function` | `constant` |
+| `value` | the constant value for the field | none (required)
+
 
 ## Acceptance Testing
 

@@ -18,17 +18,14 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDR_NUM",
-                    "street": [
-                        "PRE_TYPE",
-                        "ST_NAME",
-                        "STREET_TYP",
-                        "SUF_DIR"
-                    ],
-                    "unit": "UNIT",
-                    "city": "CITY",
-                    "region": "STATE",
-                    "postcode": "ZIP_CODE"
+                    "number": "ANUMBER",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "LST_ADDRESS"
+                    },
+                    "city": "POSTCOMM",
+                    "region": "STATE_CODE",
+                    "postcode": "ZIP"
                 }
             }
         ]

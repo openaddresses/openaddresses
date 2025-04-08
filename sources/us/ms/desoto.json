@@ -14,14 +14,33 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://maps.desotocountyms.gov/arcgis/rest/services/Layers/MapServer/85",
+                "data": "https://services6.arcgis.com/4Zxj9BGpFPVGgwpo/arcgis/rest/services/Addresses/FeatureServer/0",
+                "website": "https://desotocounty-dcms-gis.hub.arcgis.com/datasets/DCMS-GIS::addresses/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "NUMBER",
                     "street": "ADDR",
+                    "unit": [
+                        "BLDG_NO",
+                        "BLDG_UNITS"
+                    ],
                     "city": "COMMUNITY",
+                    "district": "COUNTY",
+                    "region": "STATE",
                     "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/4Zxj9BGpFPVGgwpo/ArcGIS/rest/services/Landroll_Parcels_2023/FeatureServer/24",
+                "website": "https://desotocounty-dcms-gis.hub.arcgis.com/datasets/DCMS-GIS::landroll-parcels-2023/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

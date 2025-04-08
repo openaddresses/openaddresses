@@ -21,13 +21,18 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://orfmaps.norfolk.gov/orfgis/rest/services/OpenData/Property_Information/MapServer/0",
-                "website": "http://data.orf.opendata.arcgis.com/datasets/e452982670d3460eaaa64e3874c283ca_0",
-                "protocol": "ESRI",
+                "data": "https://data.norfolk.gov/api/views/jagz-9a37/rows.csv?fourfour=jagz-9a37&cacheBust=1722594915&date=20240802&accessType=DOWNLOAD",
+                "website": "https://data.norfolk.gov/Real-Estate/Norfolk-Master-Address-List/jagz-9a37/about_data",
+                "protocol": "http",
                 "conform": {
-                    "format": "geojson",
-                    "number": "HSE_NUM",
-                    "street": "STREET"
+                    "format": "csv",
+                    "headers": 1,
+                    "skiplines": 1,
+                    "lon": "X_Coord",
+                    "lat": "Y_Coord",
+                    "number": "House Number",
+                    "street": "Full Street Name",
+                    "postcode": "Zip Code"
                 }
             }
         ]

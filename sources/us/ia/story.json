@@ -14,38 +14,36 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Story/Address_85.zip",
+                "data": "https://gis.cityofames.org/arcgis/rest/services/MasterAddress/Master_Address_Edit/FeatureServer/0",
                 "license": {
                     "text": "Public Domain",
                     "attribution": false,
                     "share-alike": false
                 },
-                "year": "2012?",
-                "protocol": "ftp",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "number": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "unit": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^.* ((Unit|Apt) [0-9A-Za-z])$",
-                        "replace": "$1"
-                    },
-                    "city": " POSTAL_COM",
-                    "district": "COUNTY",
-                    "region": "STATE",
-                    "postcode": "ZIP_CODE",
-                    "format": "shapefile"
+                    "number": "CompHseNum",
+                    "street": "CompStName",
+                    "unit": "CompUnit",
+                    "city": "CommunityCode",
+                    "postcode": "ZIPCode",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://apps.storycounty.com/arcgis/rest/services/parcels/MapServer/0",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCELID",
+                    "format": "geojson"
                 }
             }
         ]

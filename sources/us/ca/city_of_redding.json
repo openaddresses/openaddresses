@@ -1,0 +1,69 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -122.391667,
+                40.586389
+            ]
+        },
+        "US Census": {
+            "geoid": "0659920",
+            "name": "City of Redding",
+            "state": "California"
+        },
+        "country": "us",
+        "state": "ca",
+        "county": "Shasta",
+        "city": "Redding"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/3cLBYFivUvlzVu0H/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
+                "website": "https://data-redding.opendata.arcgis.com/datasets/redding::address-points/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "AddressNumber",
+                    "street": [
+                        "PrefixDir",
+                        "PrefixType",
+                        "StreetName",
+                        "StreetType",
+                        "SuffixDir"
+                    ],
+                    "unit": "SpaceApt",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "StreetZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/3cLBYFivUvlzVu0H/arcgis/rest/services/Parcels/FeatureServer/0",
+                "website": "https://data-redding.opendata.arcgis.com/datasets/redding::parcels/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/3cLBYFivUvlzVu0H/arcgis/rest/services/BuildingFootprint/FeatureServer/0",
+                "website": "https://data-redding.opendata.arcgis.com/datasets/redding::buildingfootprint/about",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

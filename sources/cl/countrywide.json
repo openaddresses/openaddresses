@@ -1,8 +1,8 @@
 {
     "coverage": {
         "ISO 3166": {
-            "alpha2": "CL",
-            "country": "Chile"
+            "country": "Chile",
+            "alpha2": "CL"
         },
         "country": "cl"
     },
@@ -11,17 +11,28 @@
         "addresses": [
             {
                 "name": "country",
-                "data": "http://www.ide.cl/descargas/capas/economia/DIRECCIONES_CEDIZ.zip",
-                "website": "http://www.ide.cl/descarga/capas/item/direcciones-2015.html",
+                "data": "https://dl.digital-guard.org/out/a4a_cl_geoaddress_15200000402101_csv.zip",
+                "website": "https://github.com/digital-guard/preserv-CL/tree/main/data/_pk0004.02",
+                "license": {
+                    "text": "CHILE GOVERMENT TRANSPARENCY LAW",
+                    "url": "https://dl.digital-guard.org/2495c4130d0f7cfb6ff50a9d3512542426e593103fa4b477b4aa0a81fa86c9b4.pdf",
+                    "attribution": true,
+                    "attribution name": "Instituto Nacional de Estadísticas - https://www.ine.gob.cl/",
+                    "share-alike": false
+                },
                 "protocol": "http",
                 "compression": "zip",
+                "language": "es",
                 "conform": {
-                    "format": "gdb",
-                    "number": "NUMERO",
-                    "street": "CALLE",
-                    "unit": "COMPLEMENTO",
-                    "city": "DIRECCIONESNOM_COMUNA",
-                    "region": "DIRECCIONESNOM_REG"
+                    "format": "csv",
+                    "srs": "EPSG:4326",
+                    "number": "hnum",
+                    "street": "via",
+                    "region":"region",
+                    "city":"nombre_comuna",
+                    "id": "gid",
+                    "lat": "latitude",
+                    "lon": "longitude"
                 }
             }
         ]

@@ -10,34 +10,46 @@
     "layers": {
         "addresses": [
             {
-                "name": "country",
-                "data": "http://dengue.kcg.gov.tw/arcgis/rest/services/KCG/KcgAddress/MapServer/0",
-                "protocol": "ESRI",
+                "name": "state",
+                "website": "https://data.gov.tw/dataset/167131",
+                "data": "https://data.openaddresses.io/cache/uploads/iandees/71cacd/kaohsiung_addresses_2024_10.csv.zip",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://data.gov.tw/license",
+                    "attribution": true,
+                    "attribution name": "Kaohsiung City Government Civil Affairs Bureau",
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "csv",
+                    "srs": "EPSG:4326",
                     "number": {
                         "function": "regexp",
-                        "field": "NO1",
+                        "field": "number",
                         "pattern": "^([0-9０-９]+號?)"
                     },
                     "unit": {
                         "function": "regexp",
-                        "field": "NO1",
+                        "field": "number",
                         "pattern": "^(?:[0-9０-９]+號?)(.*)"
                     },
                     "street": {
                         "function": "join",
                         "fields": [
-                            "ROADNAME",
-                            "SECT",
-                            "LAN",
-                            "LON"
+                            "street",
+                            "area",
+                            "lane",
+                            "alley"
                         ],
                         "separator": ""
                     },
-                    "city": "VILLAGE",
-                    "district": "TOWN",
-                    "region": "COUNTY"
+                    "city": "village",
+                    "district": "town",
+                    "region": "county",
+                    "lat": "Y",
+                    "lon": "X"
                 }
             }
         ]

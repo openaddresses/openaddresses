@@ -22,7 +22,7 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://maps.mckinneytexas.org/mckinney/rest/services/OpenData/Addresses_Boundaries/MapServer/0",
+                "data": "https://maps.mckinneytexas.org/mckinney/rest/services/OpenData/Addresses_Boundaries/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -31,16 +31,15 @@
                         "field": "SitusAdd"
                     },
                     "street": {
-                        "function": "regexp",
+                        "function": "postfixed_street",
                         "field": "SitusAdd",
-                        "pattern": "^\\d+\\s(.+?)(?:\\s(?:BLDG|STE)\\s+\\w+\\s*)?$"
+                        "may_contain_units": true
                     },
                     "unit": {
-                        "function": "regexp",
-                        "field": "SitusAdd",
-                        "pattern": "^\\d+\\s.+?(\\s(?:BLDG|STE)\\s+\\w+\\s*)$"
+                        "function": "postfixed_unit",
+                        "field": "SitusAdd"
                     },
-                    "city": "CITY"
+                    "city": "City"
                 },
                 "test": {
                     "enabled": true,

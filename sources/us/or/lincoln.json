@@ -14,9 +14,11 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/iandees/f75ee2/taxlotaddress.zip",
+                "data": "https://github.com/user-attachments/files/16756867/TaxSitus23.zip",
+                "website": "https://gisdata.co.lincoln.or.us/",
                 "protocol": "http",
                 "compression": "zip",
+                "year": "2023",
                 "conform": {
                     "format": "shapefile",
                     "number": {
@@ -24,19 +26,14 @@
                         "field": "SiteAddNam"
                     },
                     "street": {
-                        "function": "regexp",
+                        "function": "postfixed_street",
                         "field": "SiteAddNam",
-                        "pattern": "(?:\\d+\\s)(.+?)(?:\\s#.+?)?",
-                        "replace": "?1"
+                        "may_contain_units": true
                     },
                     "unit": {
-                        "function": "regexp",
-                        "field": "SiteAddNam",
-                        "pattern": "(?:\\d+\\s.+?\\s)(#.+?)",
-                        "replace": "?1"
-                    },
-                    "city": "SiteAddCity",
-                    "postcode": "SiteZip"
+                        "function": "postfixed_unit",
+                        "field": "SiteAddNam"
+                    }
                 }
             }
         ],

@@ -14,38 +14,40 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.sfgov.org/api/geospatial/ramy-di5m?method=export&format=Shapefile",
+                "data": "https://data.sfgov.org/api/views/ramy-di5m/rows.csv?accessType=DOWNLOAD&api_foundry=true",
                 "license": {
                     "url": "https://opendatacommons.org/licenses/pddl/1-0/",
                     "text": "Public Domain Dedication and License (PDDL) v1.0",
                     "attribution": false,
-                    "share-alike": false
+                    "share-alike": false,
+                    "attribution name": "City and County of San Francisco"
                 },
                 "website": "https://data.sfgov.org/Geographic-Locations-and-Boundaries/Addresses-with-Units-Enterprise-Addressing-System/ramy-di5m",
                 "protocol": "http",
-                "compression": "zip",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "csv",
                     "accuracy": 2,
-                    "number": {
-                        "function": "join",
-                        "fields": [
-                            "address_nu",
-                            "address__2"
+                    "number":[
+                            "Address Number",
+                            "Address Number Suffix"
                         ],
-                        "separator": ""
-                    },
                     "street": [
-                        "street_nam",
-                        "street_typ"
+                        "Street Name",
+                        "Street Type"
                     ],
-                    "unit": "unit_numbe",
-                    "postcode": {
-                        "function": "regexp",
-                        "field": "zip_code",
-                        "pattern": "^([0-9]+)"
+                    "unit": "Unit Number",
+                    "postcode": "ZIP Code",
+                    "city": {
+                        "function": "constant",
+                        "value": "San Francisco"
                     },
-                    "id": "eas_fullid"
+                    "region": {
+                        "function": "constant",
+                        "value": "CA"
+                    },
+                    "id": "EAS FullID",
+                    "lon": "Longitude",
+                    "lat": "Latitude"
                 }
             }
         ],

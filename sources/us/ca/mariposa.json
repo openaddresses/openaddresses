@@ -15,17 +15,30 @@
             {
                 "name": "county",
                 "attribution": "Mariposa County",
+                "data": "https://services2.arcgis.com/wEula7SYiezXcdRv/ArcGIS/rest/services/Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StreetNum",
+                    "street": [
+                        "StreetDirection",
+                        "Street",
+                        "StreetType"
+                    ],
+                    "postcode": "Zip",
+                    "city": "Community"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Mariposa County",
                 "data": "https://services2.arcgis.com/wEula7SYiezXcdRv/ArcGIS/rest/services/ParcelMap_Public/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ST_NO",
-                    "street": [
-                        "ST_DIR",
-                        "ST_NAME",
-                        "ST_SUFFIX"
-                    ],
-                    "postcode": "SITE_ZIP"
+                    "pid": "APN"
                 }
             }
         ]

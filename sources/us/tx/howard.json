@@ -14,27 +14,38 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.tnris.org/55eb0be8-6d05-4536-bf75-45f1dd31dd94/resources/stratmap23-landparcels_48227_lp.zip",
-                "website": "https://data.tnris.org/collection/?c=55eb0be8-6d05-4536-bf75-45f1dd31dd94",
+                "data": "https://services6.arcgis.com/T3dTslR6IXXsd0JO/ArcGIS/rest/services/HowardCADWebService/FeatureServer/0",
                 "license": {
                     "url": "https://creativecommons.org/publicdomain/zero/1.0/",
                     "text": "CC 0"
                 },
-                "protocol": "http",
-                "compression": "zip",
-                "year": "2023",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "gdb",
-                    "file": "fgdb/stratmap23-landparcels_48227_howard_202301.gdb",
-                    "number": "SITUS_NUM",
+                    "format": "geojson",
+                    "number": "situs_num",
                     "street": [
-                        "SITUS_STRE",
-                        "SITUS_ST_1",
-                        "SITUS_ST_2"
+                        "situs_street_prefx",
+                        "situs_street",
+                        "situs_street_sufix"
                     ],
-                    "city": "SITUS_CITY",
-                    "region": "SITUS_STAT",
-                    "postcode": "SITUS_ZIP"
+                    "city": "situs_city",
+                    "region": "situs_state",
+                    "postcode": "situs_zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/T3dTslR6IXXsd0JO/ArcGIS/rest/services/HowardCADWebService/FeatureServer/0",
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC 0"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "prop_id"
                 }
             }
         ]
