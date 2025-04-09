@@ -1,0 +1,59 @@
+{
+  "coverage": {
+      "US Census": {
+          "geoid": "17047",
+          "name": "Edwards County",
+          "state": "Illinois"
+      },
+      "country": "us",
+      "state": "il",
+      "county": "Edwards"
+  },
+  "schema": 2,
+  "layers": {
+      "addresses": [
+          {
+              "name": "county",
+              "data": "https://ags.bhamaps.com/arcgisserver/rest/services/EdwardsIL/EdwardsIL_PAT_ReportService/MapServer/0",
+              "protocol": "ESRI",
+              "conform": {
+                  "format": "geojson",
+                  "accuracy": 2,
+                  "number": {
+                      "function": "prefixed_number",
+                      "field": "site_address"
+                    },
+                    "street": {
+                      "function": "postfixed_street",
+                      "field": "site_address"
+                    },
+                    "city": {
+                      "function": "regexp",
+                      "field": "site_csz",
+                      "pattern": "^.+(?= IL)"
+                    },
+                    "region": {
+                        "function": "constant",
+                        "value": "IL"
+                    },
+                    "postcode": {
+                      "function": "regexp",
+                      "field": "site_csz",
+                      "pattern": "\\d{5}(-\\d{4})?$"
+                    }
+              }
+          }
+      ],
+      "parcels": [
+            {
+                "name": "county",
+                "data": "https://ags.bhamaps.com/arcgisserver/rest/services/EdwardsIL/EdwardsIL_PAT_ReportService/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcel_number"
+                }
+            }
+        ]
+  }
+}
