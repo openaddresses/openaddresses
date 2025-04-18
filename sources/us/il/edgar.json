@@ -18,12 +18,12 @@
                 "conform": {
                     "format": "geojson",
                     "number": {
-                      "function": "prefixed_number",
-                      "field": "PropertyAddress1"
+                        "function": "prefixed_number",
+                        "field": "PropertyAddress1"
                     },
                     "street": {
-                      "function": "postfixed_street",
-                      "field": "PropertyAddress1"
+                        "function": "postfixed_street",
+                        "field": "PropertyAddress1"
                     },
                     "city": {
                         "function": "regexp",
@@ -35,9 +35,9 @@
                         "value": "IL"
                     },
                     "postcode": {
-                      "function": "regexp",
-                      "field": "PropertyAddress2",
-                      "pattern": "\\d{5}(-\\d{4})?$"
+                        "function": "regexp",
+                        "field": "PropertyAddress2",
+                        "pattern": "^(\\d{5}(?:-\\d{4})?)$"
                     }
                 }
             }
