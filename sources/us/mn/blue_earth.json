@@ -1,0 +1,58 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27013",
+            "name": "Blue Earth County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Blue Earth"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis.blueearthcountymn.gov/arcgis/rest/services/Basemaps/BECBasemap/MapServer/2",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ANUMBER",
+                        "ANUMBERSUF"
+                    ],
+                    "street": [
+                        "ST_PRE_MOD",
+                        "ST_PRE_DIR",
+                        "ST_PRE_TYP",
+                        "ST_PRE_SEP",
+                        "ST_NAME",
+                        "ST_POS_TYP",
+                        "ST_POS_DIR",
+                        "ST_POS_MOD"
+                    ],
+                    "unit": [
+                        "SUB_TYPE1",
+                        "SUBID1"
+                    ],
+                    "city": "CITY",
+                    "district": "CO_NAME",
+                    "region": "STATE_CODE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis.blueearthcountymn.gov/arcgis/rest/services/Basemaps/BECBasemap/MapServer/5",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
+    }
+}
