@@ -39,21 +39,21 @@ with zipfile.ZipFile(zip_bytes) as zf:
 csv_output_path = "IT_countrywide.csv"
 query = f"""
 COPY (
-    SELECT 
+    SELECT
         st_x(a.geometry) as lon,
         st_y(a.geometry) as lat,
-        a.*, 
+        a.*,
         "Denominazione in italiano" as COMUNE,
-        "Denominazione dell'Unità territoriale sovracomunale 
+        "Denominazione dell'Unità territoriale sovracomunale
 (valida a fini statistici)" as PROVINCIA,
         "Denominazione Regione" as REGIONE,
-    FROM 
+    FROM
         read_parquet('https://github.com/ivandorte/anncsu_dump/raw/refs/heads/main/geodati/INDIR_ITA_20250128_GEO.parquet') a
-    JOIN 
-        istat_units 
-    ON 
+    JOIN
+        istat_units
+    ON
         "Codice Comune formato alfanumerico" = CODICE_ISTAT
-) 
+)
 TO '{csv_output_path}';
 """
 
