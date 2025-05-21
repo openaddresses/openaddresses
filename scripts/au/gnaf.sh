@@ -10,9 +10,10 @@ mkdir $TMP
 mkdir $TMP/gnaf $TMP/gnaf-admin $TMP/tablespace
 chown postgres:postgres $TMP/tablespace
 
-echo "local	all	all			trust" > /etc/postgresql/15/main/pg_hba.conf
-echo "host	all	all	127.0.0.1/32	trust" >> /etc/postgresql/15/main/pg_hba.conf
-echo "host	all	all	::1/128		trust" >> /etc/postgresql/15/main/pg_hba.conf
+echo "local	all	all			trust" > /etc/postgresql/17/main/pg_hba.conf
+echo "host	all	all	127.0.0.1/32	trust" >> /etc/postgresql/17/main/pg_hba.conf
+echo "host	all	all	::1/128		trust" >> /etc/postgresql/17/main/pg_hba.conf
+echo "fsync = off" >> /etc/postgresql/17/main/postgresql.conf
 
 /etc/init.d/postgresql start
 sudo -u postgres psql -c "CREATE USER gnafun WITH SUPERUSER PASSWORD 'gnafpw'"
@@ -23,8 +24,8 @@ sudo -u postgres psql -c 'CREATE EXTENSION postgis' -U gnafun gnafdb
 # fetch data/resources, cached from:
 ## https://data.gov.au/data/dataset/geoscape-administrative-boundaries
 ## https://data.gov.au/data/dataset/geocoded-national-address-file-g-naf
-curl --retry 10 --location 'https://data.gov.au/data/dataset/bdcf5b09-89bc-47ec-9281-6b8e9ee147aa/resource/7388a17c-1e64-4490-b274-68d260ec2458/download/feb25_adminbounds_gda_94_shp.zip' -o $TMP/gnaf-admin.zip
-curl --retry 10 --location 'https://data.gov.au/data/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/c11b5bcb-d6e7-4721-a177-c30cd1d3c78a/download/g-naf_feb25_allstates_gda94_psv_1018.zip' -o $TMP/gnaf.zip
+curl --retry 10 --location 'https://data.gov.au/data/dataset/bdcf5b09-89bc-47ec-9281-6b8e9ee147aa/resource/dda11a8b-1742-4f14-9b5a-18a7de81f73e/download/may25_adminbounds_gda_94_shp.zip' -o $TMP/gnaf-admin.zip
+curl --retry 10 --location 'https://data.gov.au/data/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/7a2dcd76-452d-4fd3-928a-c1d428bfdbf6/download/g-naf_may25_allstates_gda94_psv_1019.zip' -o $TMP/gnaf.zip
 parallel "unzip -d $TMP/{} $TMP/{}.zip" ::: gnaf gnaf-admin
 rm -f $TMP/gnaf.zip $TMP/gnaf-admin.zip
 
@@ -103,6 +104,6 @@ rm -rf $TMP/tablespace
 
 # zip CSV
 mkdir /work/cache
-zip -j /work/cache/au-feb2025.zip $TMP/au.csv
+zip -j /work/cache/au-may2025.zip $TMP/au.csv
 
 rm -rf $TMP
