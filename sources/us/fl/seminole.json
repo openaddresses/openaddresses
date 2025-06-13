@@ -33,7 +33,11 @@
                     ],
                     "unit": "ADDRESS2",
                     "city": "CITY",
-                    "postcode": "ZIP",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "ZIP",
+                        "pattern": "(.*)(?:\\.\\d+$)"
+                    },
                     "id": "PARCEL"
                 }
             }
