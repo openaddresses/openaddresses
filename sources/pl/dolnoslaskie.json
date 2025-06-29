@@ -21,24 +21,29 @@
                 },
                 "compression": "zip",
                 "conform": {
-                    "srs": "EPSG:4326",
-                    "id": "ID",
-                    "region": "REGION",
-                    "district": "DISTRICT",
-                    "city": "CITY",
-                    "postcode": "POSTCODE",
-                    "street": "STREET",
-                    "number": "NUMBER",
-                    "lat": "LAT",
-                    "lon": "LON",
-                    "file": "dolnoslaskie.csv",
-                    "format": "csv",
+                    "srs": "EPSG:2180",
+                    "id": "gml_id",
+                    "region": {
+                        "function": "get",
+                        "field": "jednostkaadmnistracyjna",
+                        "index": 2
+                    },
+                    "district": {
+                        "function": "get",
+                        "field": "jednostkaadmnistracyjna",
+                        "index": 3
+                    },
+                    "city": "miejscowosc",
+                    "postcode": "kodpocztowy",
+                    "street": "ulica",
+                    "number": "numerporzadkowy",
+                    "file": "dolnoslaskie.xml",
+                    "format": "xml",
                     "headers": 1,
                     "skiplines": 1
                 },
-                "data": "https://data.openaddresses.io/cache/uploads/macieg/e3aa19/pl-dolnoslaskie.zip",
-                "protocol": "http",
-                "note": "https://opendata.geoportal.gov.pl/prg/adresy/PRG-punkty_adresowe.zip"
+                "data": "https://data.openaddresses.io/cache/uploads/macieg/8a440b/dolnoslaskie.zip",
+                "protocol": "http"
             }
         ]
     }
