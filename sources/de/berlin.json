@@ -13,28 +13,34 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://github.com/openaddresses/openaddresses/files/14034783/Berlin.gdb.zip",
+                "data": "https://fbinter.stadt-berlin.de/fb/atom/Hauskoordinaten/HKO_EPSG25833.zip",
                 "website": "https://daten.berlin.de/tags/amtlichen-hauskoordinaten",
                 "protocol": "http",
                 "compression": "zip",
                 "license": {
-                    "text": "DL-DE->BY-2.0",
-                    "url": "https://www.govdata.de/dl-de/by-2-0",
-                    "attribution": true,
+                    "text": "DL-DE->Zero-2.0",
+                    "url": "https://www.govdata.de/dl-de/zero-2-0",
+                    "attribution": false,
                     "share-alike": false,
                     "attribution name": "Geoportal Berlin / Hauskoordinaten Berlin"
                 },
                 "year": "2024",
                 "conform": {
-                    "format": "gdb",
-                    "layer": "adressen_berlin__fiss_wfs_adressenberlin",
-                    "city": "ort_name",
-                    "district": "bez_name",
-                    "postcode": "plz",
-                    "street": "str_name",
+                    "srs": "EPSG:25833",
+                    "lon": "COLUMN19",
+                    "lat": "COLUMN20",
+                    "csvsplit": ";",
+                    "headers": -1,
+                    "file": "adressen-be_mitPLZ.txt",
+                    "format": "csv",
+                    "city": "COLUMN13",
+                    "district": "COLUMN11",
+                    "region": "COLUMN5",
+                    "postcode": "COLUMN21",
+                    "street": "COLUMN15",
                     "number": [
-                        "hnr",
-                        "hnr_zusatz"
+                        "COLUMN16",
+                        "COLUMN17"
                     ]
                 }
             }
