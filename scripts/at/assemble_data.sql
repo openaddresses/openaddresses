@@ -6,7 +6,7 @@
 LOAD spatial;
 
 CREATE temp TABLE addresses AS FROM (
-  SELECT 
+  SELECT
     a.ADRCD
     , a.HNR_ADR_ZUSAMMEN
     , a.HAUSNRTEXT
@@ -28,7 +28,7 @@ CREATE temp TABLE addresses AS FROM (
     , ST_Point(a.HW::double, a.RW::double) AS "geometry"
     , 0.0::double AS "lat"
     , 0.0::double AS "lon"
-  FROM 
+  FROM
     'ADRESSE.csv' a
     LEFT JOIN  'STRASSE.csv' s ON a.SKZ = s.SKZ
     LEFT JOIN 'ORTSCHAFT.csv' o ON a.OKZ = o.OKZ
