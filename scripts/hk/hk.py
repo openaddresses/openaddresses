@@ -7,7 +7,7 @@ import pandas as pd
 
 # URL of the ZIP file. This may need to be updated for new versions.
 # Location of data is https://portal.csdi.gov.hk/geoportal/#metadataInfoPanel
-zip_url = "https://p1static.csdi.gov.hk/csdi-webpage/download/open/629ea2e16bea32539fe5e5d9998f88fc9dd9cdec7c777c2ac0142393a7f73ba1"
+zip_url = "https://res.data.gov.hk/api/get-download-file?name=https%3A%2F%2Fwww.als.gov.hk%2Fdata%2FALS-GeoJSON.zip"
 
 # Directory to extract files
 extract_dir = "geojson_files"
