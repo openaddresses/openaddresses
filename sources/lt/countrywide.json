@@ -9,21 +9,28 @@
     },
     "layers": {
         "addresses": [{
-            "data": "https://v2.openaddresses.io/batch-prod/upload/1/8kz8j24siz5/lt_countrywide.csv.zip",
+            "data": "https://www.geoportal.lt/download/opendata/RC/RC_adresai_atviri_duomenys.zip",
             "name": "country",
             "website": "https://www.registrucentras.lt/p/1202",
-            "year": "2021",
+            "license": {
+                "text": "CC BY 4.0",
+                "url": "https://creativecommons.org/licenses/by/4.0/deed.lt",
+                "attribution name": "Registrų centras",
+                "attribution": true,
+                "share-alike": false
+            },
             "protocol": "http",
             "compression": "zip",
             "conform": {
                 "number": "NR",
-                "street": ["tipas", "vardas_k"],
-                "unit": "korpuso_nr",
-                "city": "vardas",
-                "postcode": "pasto_koda",
-                "lat": "n_koord",
-                "lon": "e_koord",
-                "format": "csv"
+                "street": "GAT_PAV",
+                "unit": "KORPUSA_NR",
+                "city": "GYV_PAV",
+                "district": "SAV_PAV",
+                "region": "APS_PAV",
+                "postcode": "PASTO_KODAS",
+                "format": "gdb",
+                "layer": "adresai"
             }
         }]
     }
