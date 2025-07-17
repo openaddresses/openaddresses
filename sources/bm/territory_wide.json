@@ -16,10 +16,14 @@
                 "conform": {
                     "format": "geojson",
                     "id": "ADDRESSID",
-                    "number": [
-                        "CIVICNUMBER",
-                        "EXTENSION"
-                    ],
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "CIVICNUMBER",
+                            "EXTENSION"
+                        ],
+                        "separator": ""
+                    },
                     "street": "FULLSTREETNAME",
                     "district": "PARISHNAME",
                     "postcode": "POSTALCODE"
