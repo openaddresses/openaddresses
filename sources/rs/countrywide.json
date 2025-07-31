@@ -1,0 +1,46 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "RS",
+            "country": "Serbia"
+        },
+        "country": "rs"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "https://data.openaddresses.io/cache/uploads/bogdanbebic/2025-07-31-cpixr/kucni_br_csv-2025-07-31.zip",
+                "website": "https://data.gov.rs/sl/datasets/adresni-registar/",
+                "language": "sr",
+                "note": "Source data maintains an IP geoblock. Use a Serbian IP to access the data.",
+                "frequency": "weekly",
+                "protocol": "http",
+                "compression": "zip",
+                "licence": {
+                    "url": "https://data.gov.rs/sr/terms/"
+                },
+                "conform": {
+                    "encoding": "UTF-8",
+                    "format": "csv",
+                    "srs": "EPSG:25834",
+                    "lon": {
+                        "function": "regexp",
+                        "field": "wkt",
+                        "pattern": "POINT\\(([-0-9\\.]+) [-0-9\\.]+\\)"
+                    },
+                    "lat": {
+                        "function": "regexp",
+                        "field": "wkt",
+                        "pattern": "POINT\\([-0-9\\.]+ ([-0-9\\.]+)\\)"
+                    },
+                    "number": "kucni_broj_lat",
+                    "street": "ulica_ime_lat",
+                    "district": "kat_opstina_ime_lat",
+                    "id": "kucni_broj_id"
+                }
+            }
+        ]
+    }
+}
