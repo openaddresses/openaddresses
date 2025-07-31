@@ -14,25 +14,19 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.muskegoncountygis.com/arcgis/rest/services/VotingLocation/VotingLocation/MapServer/5",
+                "data": "https://maps.muskegoncountygis.com/arcgis/rest/services/PropertyViewer/MapServer/23",
                 "protocol": "ESRI",
                 "website": "https://www.muskegoncountygis.com/",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "PROP_COMBINED_ADDRESS",
-                        "pattern": "^(\\S+)"
-                    },
+                    "number": "Property_Address_Num",
                     "street": {
-                        "function": "regexp",
-                        "field": "PROP_COMBINED_ADDRESS",
-                        "pattern": "^(?:\\S+ )(.*)",
-                        "replace": "$1"
+                        "function": "postfixed_street",
+                        "field": "Property_Address_Combined"
                     },
-                    "city": "PROP_CITY",
-                    "region": "PROP_STATE",
-                    "postcode": "PROP_ZIP"
+                    "city": "Property_Address_City",
+                    "region": "Property_Address_State",
+                    "postcode": "Property_Address_ZipCode"
                 }
             }
         ]
