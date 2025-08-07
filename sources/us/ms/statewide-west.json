@@ -1,0 +1,34 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "28",
+            "state": "Mississippi"
+        },
+        "country": "us",
+        "state": "ms"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://gis.mississippi.edu/server/rest/services/Cadastral/MS_Parcels_August_2023/MapServer/0",
+                "website": "",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "postcode": "SZIP",
+                    "city": "SCITY",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITEADD"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITEADD"
+                    }
+                }
+            }
+        ]
+    }
+}
