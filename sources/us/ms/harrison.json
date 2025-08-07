@@ -14,25 +14,15 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services3.geopowered.com/arcgis/rest/services/ATGEO/HarrisonMS_parcels/MapServer/0",
-                "website": "https://harrisonms.geopowered.com/propertysearch/",
+                "data": "https://gis.mississippi.edu/server/rest/services/CountyPointAddresses/Harrrison_PointAddresses_Oct2022/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "addCalc",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "addCalc",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "city": "SITUS_CITY",
-                    "postcode": "SITUS_ZIP",
-                    "region": "SITUS_STAT"
+                    "number": "ADDR_NUM",
+                    "street": "NAME_COMPL",
+                    "unit": "UNIT",
+                    "city": "COMMUNITY",
+                    "postcode": "ZCTA5CE10"
                 }
             }
         ]
