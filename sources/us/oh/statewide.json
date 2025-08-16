@@ -1,23 +1,22 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "39077",
-            "name": "Huron County",
+            "geoid": "39",
             "state": "Ohio"
         },
         "country": "us",
-        "state": "oh",
-        "county": "Huron"
+        "state": "oh"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
-                "name": "county",
-                "data": "https://gis1.oit.ohio.gov/LBRS/_downloads/HUR_ADDS.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "name": "state",
+                "data": "https://services2.arcgis.com/MlJ0G8iWUyC7jAmu/ArcGIS/rest/services/Statewide_LBRS_Address_Points/FeatureServer/0",
+                "website": "https://geohio.maps.arcgis.com/home/item.html?id=c1991902e44941a0a2535e86d6e43021",
+                "protocol": "ESRI",
                 "conform": {
+                    "format": "geojson",
                     "number": "HOUSENUM",
                     "street": [
                         "ST_PREFIX",
@@ -26,11 +25,10 @@
                         "ST_SUFFIX"
                     ],
                     "unit": "UNITNUM",
-                    "city": "MUNI",
+                    "city": "USPS_CITY",
                     "district": "COUNTY",
                     "region": "STATE",
-                    "format": "shapefile",
-                    "postcode": "zipcode"
+                    "postcode": "ZIPCODE"
                 }
             }
         ]
