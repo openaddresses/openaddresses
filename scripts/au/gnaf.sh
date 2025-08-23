@@ -24,8 +24,8 @@ sudo -u postgres psql -c 'CREATE EXTENSION postgis' -U gnafun gnafdb
 # fetch data/resources, cached from:
 ## https://data.gov.au/data/dataset/geoscape-administrative-boundaries
 ## https://data.gov.au/data/dataset/geocoded-national-address-file-g-naf
-curl --retry 10 --location 'https://data.gov.au/data/dataset/bdcf5b09-89bc-47ec-9281-6b8e9ee147aa/resource/dda11a8b-1742-4f14-9b5a-18a7de81f73e/download/may25_adminbounds_gda_94_shp.zip' -o $TMP/gnaf-admin.zip
-curl --retry 10 --location 'https://data.gov.au/data/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/7a2dcd76-452d-4fd3-928a-c1d428bfdbf6/download/g-naf_may25_allstates_gda94_psv_1019.zip' -o $TMP/gnaf.zip
+curl --retry 10 --location 'https://data.gov.au/data/dataset/bdcf5b09-89bc-47ec-9281-6b8e9ee147aa/resource/927e0ef4-31ce-418a-988a-31988ba7fa01/download/aug25_adminbounds_gda_94_shp.zip' -o $TMP/gnaf-admin.zip
+curl --retry 10 --location 'https://data.gov.au/data/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/d93d995d-ae32-4cac-8e30-081a18bb2173/download/g-naf_aug25_allstates_gda94_psv_1020.zip' -o $TMP/gnaf.zip
 parallel "unzip -d $TMP/{} $TMP/{}.zip" ::: gnaf gnaf-admin
 rm -f $TMP/gnaf.zip $TMP/gnaf-admin.zip
 
@@ -104,6 +104,6 @@ rm -rf $TMP/tablespace
 
 # zip CSV
 mkdir /work/cache
-zip -j /work/cache/au-may2025.zip $TMP/au.csv
+zip -j /work/cache/au-aug2025.zip $TMP/au.csv
 
 rm -rf $TMP
