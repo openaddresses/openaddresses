@@ -19,11 +19,17 @@ To inspect the available fields:
    https://services2.arcgis.com/i52vmcFqzIWK9plW/arcgis/rest/services/OpenDataHub/FeatureServer/1/query?where=1%3D1&outFields=*&resultRecordCount=1&f=json
    ```
 
-The current conform section uses common Esri field name patterns:
-- `number`: `ADDNUM` - May also be named `ADDRNUM`, `AddNum`, `HOUSENUMBER`, etc.
-- `street`: `STREETNAME` - May also be named `STREET`, `ROAD_NAME`, `StreetName`, etc.
-- `city`: `CITY` - May also be named `CITYNAME`, `MUNICIPALITY`, etc.
-- `postcode`: `ZIP` - May also be named `ZIPCODE`, `ZIP5`, `POSTCODE`, etc.
+The current conform section uses standard Esri field name patterns based on similar modern services:
+- `number`: `ADDRNUM` - Standard field for address number
+- `street`: `FULLNAME` - Standard field for complete street name (including prefix direction, street name, type, suffix direction)
+- `city`: `CITY` - Standard field for city/municipality name
+- `postcode`: `ZIP` - Standard field for ZIP code (may also be `ZIPCODE` in some services)
+
+**Note**: These field names follow the NENA (National Emergency Number Association) addressing standard commonly used in modern Esri services. If the service uses a different schema, the field names may vary:
+- Address number alternatives: `AddNum`, `HOUSENUMBER`, `NUMBER_`
+- Street name alternatives: `STREETNAME`, `STREET`, `ROAD_NAME` (if separate components, look for `PREDIR`, `STREETNAME`, `STREETTYPE`, `POSTDIR`)
+- City alternatives: `CITYNAME`, `MUNICIPALITY`, `TOWN`
+- Postcode alternatives: `ZIPCODE`, `ZIP5`, `POSTCODE`
 
 ## Updating the Field Names
 
