@@ -20,21 +20,40 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": [
-                        "STREETNUM",
-                        "FRACTIONAL"
-                    ],
-                    "street": [
-                        "PRETYPE",
-                        "PREFIXDIR",
-                        "STREETNAME",
-                        "STREETTYPE",
-                        "SUFFIXDIR"
-                    ],
+                    "number": {
+                        "function": "format",
+                        "fields": [
+                            "STREETNUM",
+                            "FRACTIONAL",
+                            "HouseNumber"
+                        ],
+                        "format": "$1 $2$3"
+                    },
+                    "street": {
+                        "function": "format",
+                        "fields": [
+                            "PRETYPE",
+                            "PREFIXDIR",
+                            "PreDirectional",
+                            "STREETNAME",
+                            "STREETTYPE",
+                            "SUFFIXDIR",
+                            "PostDirectional",
+                            "PostType",
+                            "PostTypeSuffix"
+                        ],
+                        "format": "$1 $2 $3 $4 $5 $6 $7 $8 $9"             
+                    },
                     "unit": "UNIT",
-                    "city": "CITYNAME",
+                    "city": {
+                        "function": "first_non_empty",
+                        "fields": ["CITYNAME","PostalCity"]
+                    },
                     "region": "STATE",
-                    "postcode": "ZONE_"
+                    "postcode": {
+                        "function": "first_non_empty",
+                        "fields": ["ZONE_","Zip"]
+                    }
                 }
             }
         ]
