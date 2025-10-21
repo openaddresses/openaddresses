@@ -23,28 +23,16 @@
                     "unit": {
                         "function": "regexp",
                         "field": "Situs_Address",
-                        "pattern": "(?i)((?:(?:UNIT|APARTMENT|APT\\.?|SUITE|STE\\.?|BUILDING|BLDG\\.?|LOT)\\s+|#)[^,]+)(?:,.*)?$"
+                        "pattern": "(?i)(?:^|\\s)((?:(?:UNIT|APARTMENT|APT\\.?|SUITE|STE\\.?|BUILDING|BLDG\\.?|LOT)\\s+|#\\s*)[^,]+)(?:,.*)?$"
                     },
                     "number": {
                         "function": "prefixed_number",
                         "field": "Situs_Address"
                     },
                     "street": {
-                        "function": "chain",
-                        "variable": "street_wip",
-                        "functions": [
-                            {
-                                "function": "regexp",
-                                "field": "Situs_Address",
-                                "pattern": "^(.*)(,.*)$",
-                                "replace": "$1"
-                            },
-                            {
-                                "function": "postfixed_street",
-                                "field": "street_wip",
-                                "may_contain_units": true
-                            }
-                        ]
+                        "function": "regexp",
+                        "field": "Situs_Address",
+                        "pattern": "(?i)^(?:\\s*(?:\\d+(?:[ -]\\d/\\d)?|\\d+-\\d+|\\d+-?[A-Z])\\s+)?(.+?)(?:\\s+(?:(?:UNIT|APARTMENT|APT\\.?|SUITE|STE\\.?|BUILDING|BLDG\\.?|LOT)\\s+|#).+)?(?:,\\s*[^,]+)?$"
                     },
                     "city": {
                         "function": "regexp",
