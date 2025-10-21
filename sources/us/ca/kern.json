@@ -20,20 +20,48 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "unit": [
-                        "UNTYP_SITE",
-                        "UNIT_SITE"
-                    ],
-                    "number": [
-                        "STNUM_SITE",
-                        "STFRA_SITE"
-                    ],
-                    "street": [
-                        "STDIR_SITE",
-                        "STNAM_SITE",
-                        "STSUF_SITE"
-                    ],
-                    "city": "CITY_SITE"
+                    "unit": {
+                        "function": "chain",
+                        "variable": "unit_wip",
+                        "functions": [
+                            {
+                                "function": "regexp",
+                                "field": "Situs_Address",
+                                "pattern": "^(.*)(,.*)$",
+                                "replace": "$1"
+                            },
+                            {
+                                "function": "postfixed_unit",
+                                "field": "oa:unit_wip"
+                            }
+                        ]
+                    },
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Situs_Address"
+                    },
+                    "street": {
+                        "function": "chain",
+                        "variable": "street_wip",
+                        "functions": [
+                            {
+                                "function": "regexp",
+                                "field": "Situs_Address",
+                                "pattern": "^(.*)(,.*)$",
+                                "replace": "$1"
+                            },
+                            {
+                                "function": "postfixed_street",
+                                "field": "oa:street_wip",
+                                "may_contain_units": true
+                            }
+                        ]
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "Situs_Address",
+                        "pattern": ",\\s*([^,]+)$"
+                    }
                 }
             }
         ],
