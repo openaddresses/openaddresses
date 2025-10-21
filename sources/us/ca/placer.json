@@ -20,21 +20,48 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": [
-                        "STREETNUM",
-                        "FRACTIONAL"
-                    ],
-                    "street": [
-                        "PRETYPE",
-                        "PREFIXDIR",
-                        "STREETNAME",
-                        "STREETTYPE",
-                        "SUFFIXDIR"
-                    ],
+                    "number": {
+                        "function": "format",
+                        "fields": [
+                            "STREETNUM",
+                            "FRACTIONAL",
+                            "HouseNumber"
+                        ],
+                        "format": "$1 $2$3"
+                    },
+                    "street": {
+                        "function": "format",
+                        "fields": [
+                            "PRETYPE",
+                            "PREFIXDIR",
+                            "PreDirectional",
+                            "STREETNAME",
+                            "STREETTYPE",
+                            "SUFFIXDIR",
+                            "PostDirectional",
+                            "PostType",
+                            "PostTypeSuffix"
+                        ],
+                        "format": "$1 $2 $3 $4 $5 $6 $7 $8 $9"
+                    },
                     "unit": "UNIT",
-                    "city": "CITYNAME",
+                    "city": {
+                        "function": "format",
+                        "fields": [
+                            "CITYNAME",
+                            "PostalCity"
+                        ],
+                        "format": "$1 $2"
+                    },
                     "region": "STATE",
-                    "postcode": "ZONE_"
+                    "postcode": {
+                        "function": "format",
+                        "fields": [
+                            "ZONE_",
+                            "Zip"
+                        ],
+                        "format": "$1 $2"
+                    }
                 }
             }
         ]
