@@ -21,20 +21,9 @@
                 "conform": {
                     "format": "geojson",
                     "unit": {
-                        "function": "chain",
-                        "variable": "unit_wip",
-                        "functions": [
-                            {
-                                "function": "regexp",
-                                "field": "Situs_Address",
-                                "pattern": "^(.*)(,.*)$",
-                                "replace": "$1"
-                            },
-                            {
-                                "function": "postfixed_unit",
-                                "field": "unit_wip"
-                            }
-                        ]
+                        "function": "regexp",
+                        "field": "Situs_Address",
+                        "pattern": "(?i)((?:(?:UNIT|APARTMENT|APT\\.?|SUITE|STE\\.?|BUILDING|BLDG\\.?|LOT)\\s+|#)[^,]+)(?:,.*)?$"
                     },
                     "number": {
                         "function": "prefixed_number",
