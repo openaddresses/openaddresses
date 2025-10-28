@@ -15,24 +15,23 @@
             {
                 "name": "county",
                 "attribution": "Santa Barbara County",
-                "data": "https://services8.arcgis.com/s7n9cRiugyMCsR0U/ArcGIS/rest/services/Parcel_layers_ArcGISonline_LUZO/FeatureServer/0",
+                "data": "https://services.arcgis.com/KkJhFbLnXVqahKz2/ArcGIS/rest/services/Address_Points/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
-                    "id": "APN",
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "Situs1"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "Situs1",
-                        "may_contain_units": true
-                    },
-                    "unit": {
-                        "function": "postfixed_unit",
-                        "field": "Situs1"
-                    }
+                    "id": "parcelIdentifier",
+                    "number": "fullAddress",
+                    "street": [
+                        "streetDirection",
+                        "streetPrefix",
+                        "streetName",
+                        "streetSuffix",
+                        "streetSuffixdirection"
+                    ],
+                    "unit": "unitEnd",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "Zip",
                 }
             }
         ],
@@ -40,7 +39,7 @@
             {
                 "name": "county",
                 "attribution": "Santa Barbara County",
-                "data": "https://services8.arcgis.com/s7n9cRiugyMCsR0U/ArcGIS/rest/services/Parcel_layers_ArcGISonline_LUZO/FeatureServer/0",
+                "data": "https://services.arcgis.com/KkJhFbLnXVqahKz2/arcgis/rest/services/Assessor_Parcels_Public1/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "pid": "APN",
