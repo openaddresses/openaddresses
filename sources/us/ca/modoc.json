@@ -15,21 +15,18 @@
             {
                 "name": "county",
                 "attribution": "Modoc County",
-                "data": "https://gis2.cdfa.ca.gov/server/rest/services/Parcel_DM/MapServer/24/",
+                "data": "https://services6.arcgis.com/MIuDOWgDqUpHjCEg/arcgis/rest/services/REACH_Parcels/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "SITE_ADDR"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "SITE_ADDR"
-                    },
+                    "number": "StreetNum",
+                    "street": [
+                        "StreetDirection",
+                        "Street",
+                        "StreetType"
+                    ],
                     "format": "geojson",
-                    "city": "SITE_CITY",
-                    "postcode": "SITE_ZIP",
-                    "region": "SITE_STATE"
+                    "city": "Community",
+                    "postcode": "Zip"
                 }
             }
         ]
