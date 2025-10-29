@@ -14,16 +14,26 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.1stdistrict.org/arcgis/rest/services/Grant/grantmapnet/FeatureServer/19",
+                "data": "https://www.1stdistrict.org/arcgis/rest/services/Grant/grantmapnet/FeatureServer/2",
                 "protocol": "ESRI",
                 "conform": {
                     "number": {
                         "function": "prefixed_number",
-                        "field": "INQ_STREET_NAME"
+                        "field": "ADDRESS"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "INQ_STREET_NAME"
+                        "field": "ADDRESS"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "ZIPLABEL",
+                        "pattern": "^([A-Za-z ]), .*"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "ZIPLABEL",
+                        "pattern": "([0-9]{5})$"
                     },
                     "format": "geojson"
                 }
@@ -32,7 +42,7 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://www.1stdistrict.org/arcgis/rest/services/Grant/grantmapnet/FeatureServer/19",
+                "data": "https://www.1stdistrict.org/arcgis/rest/services/Grant/grantmapnet/FeatureServer/17",
                 "protocol": "ESRI",
                 "conform": {
                     "pid": "PARCEL",
