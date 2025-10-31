@@ -14,17 +14,23 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.1stdistrict.org/arcgis/rest/services/Miner/minermapnet/FeatureServer/2",
+                "data": "https://www.1stdistrict.org/arcgis/rest/services/Miner/minermapnet/FeatureServer/15",
                 "protocol": "ESRI",
                 "conform": {
                     "number": {
                         "function": "prefixed_number",
-                        "field": "PROP_STREE"
+                        "field": "ADDRESS"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "PROP_STREE"
+                        "field": "ADDRESS"
                     },
+                    "unit": "APT_SUITE",
+                    "city": "COMMUNITY",
+                    "district": "COUNTY",
+                    "region": "State",
+                    "postcode": "ZIPCODE",
+                    "id": "STATEID",
                     "format": "geojson"
                 }
             }
@@ -32,7 +38,7 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://www.1stdistrict.org/arcgis/rest/services/Miner/minermapnet/FeatureServer/2",
+                "data": "https://www.1stdistrict.org/arcgis/rest/services/Miner/minermapnet/FeatureServer/3",
                 "protocol": "ESRI",
                 "conform": {
                     "pid": "RECORD",
@@ -43,7 +49,7 @@
         "buildings": [
             {
                 "name": "county",
-                "data": "https://www.1stdistrict.org/arcgis/rest/services/Miner/minermapnet/FeatureServer/1",
+                "data": "https://www.1stdistrict.org/arcgis/rest/services/Miner/minermapnet/FeatureServer/2",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"
