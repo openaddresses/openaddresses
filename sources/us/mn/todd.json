@@ -18,18 +18,24 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "BLDGNUM",
-                    "street": [
-                        "PRE_DIR",
-                        "PRE_TYPE",
-                        "ST_NAME",
-                        "ST_TYPE",
-                        "POST_DIR"
-                    ],
+                    "number": "ANUMBER",
+                    "street": "RD_NAME",
                     "unit": "SECUNIT",
-                    "city": "ZIPNAME",
-                    "district": "MCN",
+                    "city": "POSTCOMM",
+                    "district": "CO_NAME",
+                    "region": "STATE_CODE",
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.mytoddcounty.com/toddcounty/rest/services/PZ_Parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "par_id"
                 }
             }
         ]

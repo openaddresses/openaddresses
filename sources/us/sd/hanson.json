@@ -14,13 +14,21 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.districtiii.org/server/rest/services/HANSON_COUNTY_WEB_LAYERS/MapServer/4",
+                "data": "https://gis.districtiii.org/server/rest/services/HANSON_COUNTY_WEB_LAYERS/MapServer/32",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": "HOUSE_NUMBER",
-                    "street": "STREET",
+                    "number": "STR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "POST_DIR"
+                    ],
                     "city": "CITY",
-                    "postcode": "POSTAL_CODE",
+                    "postcode": "ZIP_CODE",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "id": "UNIQUE_ID",
                     "format": "geojson"
                 }
             }

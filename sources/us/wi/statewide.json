@@ -12,29 +12,31 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://openaddresses.s3.amazonaws.com/us-wi-statewide.csv.zip",
-                "website": "https://www.sco.wisc.edu/find-data/addresses.html",
+                "data": "https://web.s3.wisc.edu/parcels/v11_parcels/V11.0.0_Wisconsin_Parcels_2025_10.3_Uncompressed.zip",
+                "website": "https://www.sco.wisc.edu/parcels/data/",
+                "license": {
+                    "text": "No restrictions",
+                    "attribution": false,
+                    "share-alike": false,
+                    "attribution name": "The Wisconsin State Cartographer's Office"
+                },
                 "protocol": "http",
                 "compression": "zip",
-                "note": "This is a CSV extraction of the address points layer in https://psc.wi.gov/utilityInfo/tele/broadband/documents/LinkWISCONSIN_EBM_ParcelAddress_Data.zip",
-                "year": "2014",
                 "conform": {
-                    "format": "csv",
-                    "lat": "AddressLatitude",
-                    "lon": "AddressLongitude",
+                    "format": "gdb",
                     "number": [
-                        "AddNumPrefix",
-                        "AddNum",
-                        "AddNumSuffix"
+                        "ADDNUMPREFIX",
+                        "ADDNUM",
+                        "ADDNUMSUFFIX"
                     ],
                     "street": [
-                        "Prefix",
-                        "StreetName",
-                        "StreetType",
-                        "Suffix"
+                        "PREFIX",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFFIX"
                     ],
-                    "city": "PlaceNameAlternate",
-                    "postcode": "ZipCode"
+                    "city": "PLACENAME",
+                    "postcode": "ZIPCODE"
                 }
             }
         ]

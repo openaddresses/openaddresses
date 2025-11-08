@@ -14,34 +14,33 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/LoganCOAccelaFeatures/FeatureServer/2",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/TaxParcel_public_LoganCO/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADD_NO",
-                    "street": [
-                        "DIR_PRE",
-                        "ST_NAME",
-                        "ST_TYPE",
-                        "DIR_SUF"
-                    ],
-                    "unit": [
-                        "UNIT",
-                        "UNIT_NO"
-                    ],
-                    "city": "CITY",
-                    "postcode": "ZIP"
+                    "id": "parcelid",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "pstladdress"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "pstladdress"
+                    },
+                    "city": "pstlcity",
+                    "region": "pstlstate",
+                    "postcode": "pstlzip5"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/LoganCOAccelaFeatures/FeatureServer/2",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/TaxParcel_public_LoganCO/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PARCELID"
+                    "pid": "parcelid"
                 }
             }
         ]
