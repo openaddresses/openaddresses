@@ -14,9 +14,9 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://arcgis.tampagov.net/arcgis/rest/services/Address/AddressPoints/FeatureServer/0",
+                "data": "https://services.arcgis.com/apTfC6SUmnNfnxuF/arcgis/rest/services/Site_Address_Point/FeatureServer/0",
                 "protocol": "ESRI",
-                "website": "https://gis2017-01-10t133755357z-hillsborough.opendata.arcgis.com/datasets/hillsborough::siteaddresspoint/about",
+                "website": "https://gis2017-01-10t133755357z-hillsborough.opendata.arcgis.com/datasets/hillsborough::site-address-points/about",
                 "license": {
                     "url": "https://creativecommons.org/licenses/by/4.0/",
                     "text": "CC BY 4.0",
@@ -26,22 +26,14 @@
                 },
                 "conform": {
                     "format": "geojson",
-                    "number": [
-                        "ADDRNUM",
-                        "ADDRNUMSUF"
-                    ],
-                    "unit": [
-                        "UNITTYPE",
-                        "UNITID"
-                    ],
-                    "street": [
-                        "DIRPRE",
-                        "STREETNAME",
-                        "TYPE",
-                        "DIRSUF"
-                    ],
+                    "number": "ADDRNUM",
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "FULLADDRUNIT"
+                    },
+                    "street": "FULLNAME",
                     "postcode": "ZIP",
-                    "city": "MSAG"
+                    "city": "POSTALCOMM"
                 }
             }
         ],

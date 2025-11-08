@@ -14,20 +14,17 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.gcppwa.net/arcgis/rest/services/Districts/GCDistricts/MapServer/0",
+                "data": "https://services3.arcgis.com/GUHJKBhKMcD5JjTe/ArcGIS/rest/services/Zoning_Finder/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": {
-                        "function": "regexp",
-                        "field": "SITEADDRESS",
-                        "pattern": "^([0-9]+)"
+                        "function": "prefixed_number",
+                        "field": "SITEADDRESS"
                     },
                     "street": {
-                        "function": "regexp",
-                        "field": "SITEADDRESS",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
+                        "function": "postfixed_street",
+                        "field": "SITEADDRESS"
                     }
                 }
             }

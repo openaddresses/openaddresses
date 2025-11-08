@@ -11,15 +11,24 @@
         "addresses": [
             {
                 "name": "country",
-                "conform": {
-                    "format": "geojson",
-                    "number": "HOUSE_BLK_NO",
-                    "street": "ROAD_NAME"
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2025-05-05-lp445/sg_countrywide.csv.zip",
+                "protocol": "http",
+                "website": "https://www.onemap.gov.sg/",
+                "license": {
+                    "url": "https://www.onemap.gov.sg/legal/opendatalicence.html",
+                    "attribution": true,
+                    "attribution name": "Singapore Land Authority",
+                    "share alike": false
                 },
-                "data": "https://arcgis-whereto-1649028446.ap-southeast-1.elb.amazonaws.com/arcgis/rest/services/SAS/Basemap_3414/MapServer/17",
-                "protocol": "ESRI",
-                "license": "Unknown",
-                "website": "https://whereto.sg"
+                "compression": "zip",
+                "conform": {
+                    "format": "csv",
+                    "number": "BLK_NO",
+                    "street": "ROAD_NAME",
+                    "postcode": "POSTAL",
+                    "lat": "LATITUDE",
+                    "lon": "LONGITUDE"
+                }
             }
         ]
     }

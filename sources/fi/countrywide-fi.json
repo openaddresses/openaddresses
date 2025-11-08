@@ -13,35 +13,27 @@
                 "name": "country",
                 "protocol": "http",
                 "compression": "zip",
-                "year": "2024",
-                "note": "URL of the data changes quarterly and needs to be adjusted, and data converted to .zip form. Find the link to Suomi_osoitteet*.zip on https://www.avoindata.fi/data/dataset/rakennusten-osoitetiedot-koko-suomi",
-                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2024-11-22-npnie/Suomi_osoitteet_2024-11-14.OPT.zip",
+                "year": "2025",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2025-09-03-ytu36/open_address.csv.zip",
                 "license": {
                     "url": "https://creativecommons.org/licences/by/4.0/deed.fi",
                     "text": "CC BY 4.0",
                     "attribution": true,
-                    "attribution name": "Väestörekisterikeskus"
+                    "attribution name": "Syke"
                 },
-                "website": "https://www.avoindata.fi/data/fi/dataset/rakennusten-osoitetiedot-koko-suomi",
+                "website": "https://www.syke.fi/en/environmental-data/open-web-services/web-map-services#addresses",
                 "conform": {
-                    "srs": "EPSG:3067",
-                    "encoding": "ISO-8859-1",
-                    "csvsplit": ";",
-                    "headers": -1,
-                    "street": "COLUMN8",
-                    "number": "COLUMN10",
-                    "lat": "COLUMN5",
-                    "lon": "COLUMN6",
-                    "id": {
-                        "function": "join",
-                        "fields": [
-                            "COLUMN1",
-                            "COLUMN7"
-                        ],
-                        "separator": "-"
+                    "street": "address_name_fin",
+                    "lat": "y",
+                    "lon": "x",
+                    "number": {
+                        "function": "remove_prefix",
+                        "field": "address_fin",
+                        "field_to_remove": "address_name_fin"
                     },
-                    "city": "COLUMN13",
-                    "postcode": "COLUMN11",
+                    "id": "address_key",
+                    "city": "postal_office_fin",
+                    "postcode": "postal_code",
                     "format": "csv",
                     "accuracy": 1
                 },

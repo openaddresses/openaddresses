@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.apps.seminolecountyfl.gov/is/gis/GISData/Addresses.zip",
+                "data": "https://apps.seminolecountyfl.gov:8443/is/gis/GISData/addresses.gdb.zip",
                 "protocol": "http",
                 "compression": "zip",
                 "website": "https://www.seminolecountyfl.gov/departments-services/information-services/gis-geographic-information-systems/gis-data.stml",
@@ -24,7 +24,7 @@
                     "share-alike": false
                 },
                 "conform": {
-                    "format": "shapefile",
+                    "format": "gdb",
                     "number": "PAD_NUM",
                     "street": [
                         "PAD_DIR",
@@ -33,7 +33,11 @@
                     ],
                     "unit": "ADDRESS2",
                     "city": "CITY",
-                    "postcode": "ZIP",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "ZIP",
+                        "pattern": "(.*)(?:\\.\\d+$)"
+                    },
                     "id": "PARCEL"
                 }
             }
@@ -41,7 +45,7 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://www.apps.seminolecountyfl.gov/is/gis/GISData/Parcels.zip",
+                "data": "https://apps.seminolecountyfl.gov:8443/is/gis/GISData/Parcels.gdb.zip",
                 "protocol": "http",
                 "compression": "zip",
                 "website": "https://www.seminolecountyfl.gov/departments-services/information-services/gis-geographic-information-systems/gis-data.stml",
@@ -51,7 +55,7 @@
                     "share-alike": false
                 },
                 "conform": {
-                    "format": "shapefile",
+                    "format": "gdb",
                     "pid": "PARCEL"
                 }
             }
