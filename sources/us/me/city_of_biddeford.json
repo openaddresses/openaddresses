@@ -1,0 +1,51 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "2305800",
+            "name": "Biddeford",
+            "state": "Maine"
+        },
+        "country": "us",
+        "state": "me",
+        "city": "Biddeford"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services5.arcgis.com/QWn8PC1cSwbsBBh6/arcgis/rest/services/Vision_Endpoint/FeatureServer/5",
+                "website": "https://www.biddefordmaine.org/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "Property_Location",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Property_Location",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "unit": "Unit",
+                    "id": "MBLU"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services5.arcgis.com/QWn8PC1cSwbsBBh6/arcgis/rest/services/Vision_Endpoint/FeatureServer/5",
+                "website": "https://www.biddefordmaine.org/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "MBLU"
+                }
+            }
+        ]
+    }
+}
