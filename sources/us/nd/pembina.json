@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "38067",
+            "name": "Pembina County",
+            "state": "North Dakota"
+        },
+        "country": "us",
+        "state": "nd",
+        "county": "Pembina"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://files.slack.com/files-pri/T029HV94T-F07L92JNY06/download/ndparcels.gdb.zip?pub_secret=c72ff0aa97",
+                "website": "https://gishubdata-ndgov.hub.arcgis.com/apps/8683ecae023c43d1a85343397b9490e6/explore",
+                "note": "Statewide North Dakota parcel data includes Pembina County. County does not have a separate GIS REST service available.",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "ndparcels",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PropertyAddress"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PropertyAddress"
+                    },
+                    "city": "PropertyCity",
+                    "postcode": "PropertyZip",
+                    "id": "ParcelID",
+                    "accuracy": 2
+                }
+            }
+        ]
+    }
+}
