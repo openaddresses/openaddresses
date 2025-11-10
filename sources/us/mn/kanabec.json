@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27065",
+            "name": "Kanabec County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Kanabec"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/KanabecCountyMN_WFS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SiteAddress"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SiteAddress"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/KanabecCountyMN_WFS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
+    }
+}
