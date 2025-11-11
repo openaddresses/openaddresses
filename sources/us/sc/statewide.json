@@ -1,0 +1,64 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "45",
+            "state": "South Carolina"
+        },
+        "country": "us",
+        "state": "sc"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2025-11-11-05ekg/SC.zip",
+                "license": {
+                  "text": "Please note that such records used for commercial purposes is prohibited by SC Code Ann. ß 30-2-50(B)"
+                },
+                "compression": "zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "gdb",
+                    "file": "SC/StatewideAddresses.gdb",
+                    "layer": "StatewideAddresses",
+                    "id": "NGUID",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "City",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2025-11-11-05ekg/SC.zip",
+                "compression": "zip",
+                "protocol": "http",
+                "conform": {
+                    "pid": "T_Map_Number",
+                    "format": "gdb",
+                    "file": "SC/StatewideParcels.gdb",
+                    "layer": "StatewideParcels"
+                }
+            }
+        ]
+    }
+}
