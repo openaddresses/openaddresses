@@ -26,20 +26,19 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "Street Number",
-                    "street": [
-                        "Street Pre-Direction",
-                        "Street Name",
-                        "Street Suffix"
-                    ],
-                    "unit": [
-                        "Unit #",
-                        "Unit # Low",
-                        "Unit # High"
-                    ],
+                    "number": "StreetNumber",
+                    "street": "FullStNm",
+                    "unit": {
+                        "function": "join",
+                        "fields": [
+                            "UnitLow",
+                            "UnitHigh"
+                        ],
+                        "separator": " to "
+                    },
                     "city": "City",
                     "region": "State",
-                    "postcode": "Zip Code"
+                    "postcode": "Zip"
                 }
             }
         ]
