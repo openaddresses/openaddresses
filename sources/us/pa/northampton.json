@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "https://www.northamptoncounty.org/FISAFF/GIS/Pages/About-Us.aspx",
+                "website": "https://www.norcopa.gov/gis",
                 "contact": {
                     "name": "Joseph Laky",
                     "title": "GIS Analyst",
@@ -22,20 +22,30 @@
                     "email": "jlaky@northamptoncounty.org",
                     "address": "669 Washington Street, 2nd Floor Room, Easton, PA, 18042-7477"
                 },
-                "data": "https://gis.northamptoncounty.org/arcgisweb/rest/services/Assessment_Services/Land_Records_LGM/MapServer/3",
+                "data": "https://gis.northamptoncounty.org/arcgisweb/rest/services/Assessment_Services/Land_Records_LGM/MapServer/6",
+                "note": "There are 30 addresses where the HouseNumber field doesn't match the AddrNum. AddrNum seems to be the better one, some of the HouseNumbers don't exist and some have apartment numbers in them.",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HouseNumber",
-                    "street": [
-                        "PreDirectional",
-                        "StreetName",
-                        "PostType",
-                        "PostDirectional"
+                    "number": "AddrNum",
+                    "street": "FullName",
+                    "unit": [
+                        "UnitType",
+                        "Unit"
                     ],
-                    "unit": "Unit",
-                    "city": "Muni",
-                    "postcode": "Zip"
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.northamptoncounty.org/arcgisweb/rest/services/Assessment_Services/Land_Records_LGM/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
                 }
             }
         ]
