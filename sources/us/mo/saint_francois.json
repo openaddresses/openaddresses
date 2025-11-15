@@ -15,18 +15,25 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://www.semogis.com/arcgis/rest/services/StFranCo/StFranAssessMap/MapServer/6",
+                "data": "https://maps.semogis.com/server/rest/services/StFrancois_CO/StFrancoisCo_911/MapServer/0",
                 "conform": {
                     "format": "geojson",
-                    "id": "REALGISDATA__PID",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "REALGISDATA__SITUS_LOCATION"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "REALGISDATA__SITUS_LOCATION"
-                    }
+                    "number": "NEW_ADD",
+                    "street": "RDNAME",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://maps.semogis.com/server/rest/services/StFrancois_CO/StFrancoisCo_Assessment/MapServer/5",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NUM"
                 }
             }
         ]
