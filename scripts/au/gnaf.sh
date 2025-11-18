@@ -10,10 +10,12 @@ mkdir $TMP
 mkdir $TMP/gnaf $TMP/gnaf-admin $TMP/tablespace
 chown postgres:postgres $TMP/tablespace
 
-echo "local	all	all			trust" > /etc/postgresql/17/main/pg_hba.conf
-echo "host	all	all	127.0.0.1/32	trust" >> /etc/postgresql/17/main/pg_hba.conf
-echo "host	all	all	::1/128		trust" >> /etc/postgresql/17/main/pg_hba.conf
-echo "fsync = off" >> /etc/postgresql/17/main/postgresql.conf
+echo "local	all	all			trust" > /etc/postgresql/18/main/pg_hba.conf
+echo "host	all	all	127.0.0.1/32	trust" >> /etc/postgresql/18/main/pg_hba.conf
+echo "host	all	all	::1/128		trust" >> /etc/postgresql/18/main/pg_hba.conf
+echo "fsync = off" >> /etc/postgresql/18/main/postgresql.conf
+echo "synchronous_commit = off" >> /etc/postgresql/18/main/postgresql.conf
+echo "full_page_writes = off" >> /etc/postgresql/18/main/postgresql.conf
 
 /etc/init.d/postgresql start
 sudo -u postgres psql -c "CREATE USER gnafun WITH SUPERUSER PASSWORD 'gnafpw'"
@@ -47,7 +49,11 @@ python3 /usr/local/gnaf-loader/load-gnaf.py \
 
 rm -rf $TMP/gnaf $TMP/gnaf-admin
 
+# preview distinct geocode_type
+echo "SELECT DISTINCT geocode_type FROM gnaf.addresses;" | psql postgres://gnafun:gnafpw@localhost/gnafdb
+
 # select output from tables
+# geocode_type documented at https://docs.geoscape.com.au/projects/gnaf_desc/en/stable/appendix_c.html#id23
 echo "CREATE TABLE openaddresses AS
 SELECT
 
@@ -77,15 +83,24 @@ SELECT
     state AS region,
 
     (
-        CASE geocode_type WHEN 'BUILDING CENTROID' THEN 1 -- rooftop
-                          WHEN 'FRONTAGE CENTRE SETBACK' THEN 2 -- interpolation
-                          WHEN 'GAP GEOCODE' THEN 4 -- interpolation
-                          WHEN 'LOCALITY' THEN 4 -- interpolation
+        CASE geocode_type WHEN 'BUILDING ACCESS POINT'         THEN 1 -- rooftop
+                          WHEN 'BUILDING CENTROID'             THEN 1 -- rooftop
+                          WHEN 'BUILDING CENTROID MANUAL'      THEN 1 -- rooftop
+                          WHEN 'CENTRE-LINE DROPPED FRONTAGE'  THEN 2 -- interpolation
+                          WHEN 'DRIVEWAY FRONTAGE'             THEN 3 -- driveway
+                          WHEN 'FRONT DOOR ACCESS'             THEN 1 -- rooftop
+                          WHEN 'FRONTAGE CENTRE'               THEN 2 -- interpolation
+                          WHEN 'FRONTAGE CENTRE SETBACK'       THEN 2 -- interpolation
+                          WHEN 'PROPERTY ACCESS POINT'         THEN 3 -- driveway
                           WHEN 'PROPERTY ACCESS POINT SETBACK' THEN 3 -- driveway
-                          WHEN 'PROPERTY CENTROID' THEN 2 -- parcel
-                          WHEN 'PROPERTY CENTROID MANUAL' THEN 2 -- parcel
-                          WHEN 'STREET LOCALITY' THEN 4 -- interpolation
-                          ELSE 5 -- unknown
+                          WHEN 'PROPERTY CENTROID'             THEN 2 -- parcel
+                          WHEN 'PROPERTY CENTROID MANUAL'      THEN 2 -- parcel
+                          WHEN 'UNIT CENTROID'                 THEN 2 -- parcel
+                          WHEN 'UNIT CENTROID MANUAL'          THEN 2 -- parcel
+                          WHEN 'GAP GEOCODE'                   THEN 4 -- interpolation
+                          WHEN 'STREET LOCALITY'               THEN 4 -- interpolation
+                          WHEN 'LOCALITY'                      THEN 4 -- interpolation
+                                                               ELSE 5 -- unknown
         END
     )
     AS accuracy
@@ -104,6 +119,6 @@ rm -rf $TMP/tablespace
 
 # zip CSV
 mkdir /work/cache
-zip -j /work/cache/au-oct2025.zip $TMP/au.csv
+zip -j /work/cache/au-nov2025.zip $TMP/au.csv
 
 rm -rf $TMP
