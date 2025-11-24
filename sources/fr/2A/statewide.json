@@ -1,0 +1,96 @@
+{
+  "coverage": {
+    "ISO 3166": {
+      "alpha2": "FR-2A",
+      "country": "France",
+      "subdivision": "Corse-du-Sud"
+    },
+    "state": "2A",
+    "country": "fr"
+  },
+  "schema": 2,
+  "layers": {
+    "addresses": [
+      {
+        "name": "state",
+        "website": "https://adresse.data.gouv.fr",
+        "data": "https://adresse.data.gouv.fr/data/ban/adresses/latest/csv/adresses-2A.csv.gz",
+        "protocol": "http",
+        "compression": "gzip",
+        "conform": {
+          "format": "csv",
+          "csvsplit": ";",
+          "id": "id",
+          "number": {
+            "function": "join",
+            "fields": ["numero", "rep"],
+            "separator": ""
+          },
+          "street": "nom_voie",
+          "lon": "lon",
+          "lat": "lat",
+          "city": "nom_commune",
+          "postcode": "code_postal"
+        },
+        "language": "fr",
+        "license": {
+          "url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence/",
+          "attribution": true,
+          "attribution name": "Base Adresse Nationale (adresse.data.gouv.fr)",
+          "presumed": false,
+          "remarks": "https://www.etalab.gouv.fr/wp-content/uploads/2018/11/open-licence.pdf"
+        },
+        "contact": {
+          "email": "adresse@data.gouv.fr"
+        }
+      }
+    ],
+    "parcels": [
+      {
+        "name": "state",
+        "website": "https://cadastre.data.gouv.fr/datasets/cadastre-etalab",
+        "data": "https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/departements/2A/cadastre-2A-parcelles.json.gz",
+        "protocol": "http",
+        "compression": "gzip",
+        "language": "fr",
+        "conform": {
+          "format": "geojson",
+          "pid": "id"
+        },
+        "license": {
+          "url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+          "attribution": true,
+          "attribution name": "Cadastre Etalab (cadastre.data.gouv.fr)",
+          "presumed": false,
+          "remarks": "https://www.etalab.gouv.fr/wp-content/uploads/2018/11/open-licence.pdf"
+        },
+        "contact": {
+          "email": "cadastre@data.gouv.fr"
+        }
+      }
+    ],
+    "buildings": [
+      {
+        "name": "state",
+        "website": "https://cadastre.data.gouv.fr/datasets/cadastre-etalab",
+        "data": "https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/departements/2A/cadastre-2A-batiments.json.gz",
+        "protocol": "http",
+        "compression": "gzip",
+        "language": "fr",
+        "conform": {
+          "format": "geojson"
+        },
+        "license": {
+          "url": "https://www.etalab.gouv.fr/licence-ouverte-open-licence",
+          "attribution": true,
+          "attribution name": "Cadastre Etalab (cadastre.data.gouv.fr)",
+          "presumed": false,
+          "remarks": "https://www.etalab.gouv.fr/wp-content/uploads/2018/11/open-licence.pdf"
+        },
+        "contact": {
+          "email": "cadastre@data.gouv.fr"
+        }
+      }
+    ]
+  }
+}
