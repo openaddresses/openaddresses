@@ -7,7 +7,6 @@
   "required": ["type"],
 
   "properties": {
-
     "type": {
       "title": "Type",
       "type": "string",
@@ -51,10 +50,9 @@
 
       "not": {
         "anyOf": [
-
           {
             "properties": {
-              "type": { "enum": ["name"] },
+              "type": { "const": "name" },
               "properties": {
                 "not": {
                   "required": ["name"],
@@ -71,14 +69,13 @@
 
           {
             "properties": {
-              "type": { "enum": ["link"] },
+              "type": { "const": "link" },
               "properties": {
                 "not": {
                   "title": "Link Object",
                   "type": "object",
                   "required": ["href"],
                   "properties": {
-
                     "href": {
                       "title": "href",
                       "type": "string",
@@ -90,16 +87,13 @@
                       "type": "string",
                       "description": "The value of the optional `type` member must be a string that hints at the format used to represent CRS parameters at the provided URI. Suggested values are: `proj4`, `ogcwkt`, `esriwkt`, but others can be used."
                     }
-
                   }
                 }
               }
             }
           }
-
         ]
       }
-
     },
 
     "bbox": {
@@ -111,17 +105,15 @@
         "type": "number"
       }
     }
-
   },
 
   "oneOf": [
-
     {
       "title": "Point",
       "description": "For type `Point`, the `coordinates` member must be a single position.",
       "required": ["coordinates"],
       "properties": {
-        "type": { "enum": ["Point"] },
+        "type": { "const": "Point" },
         "coordinates": {
           "allOf": [
             { "$ref": "#/definitions/coordinates" },
@@ -137,7 +129,7 @@
       "description": "For type `MultiPoint`, the `coordinates` member must be an array of positions.",
       "required": ["coordinates"],
       "properties": {
-        "type": { "enum": ["MultiPoint"] },
+        "type": { "const": "MultiPoint" },
         "coordinates": {
           "allOf": [
             { "$ref": "#/definitions/coordinates" },
@@ -156,7 +148,7 @@
       "description": "For type `LineString`, the `coordinates` member must be an array of two or more positions.\n\nA LinearRing is closed LineString with 4 or more positions. The first and last positions are equivalent (they represent equivalent points). Though a LinearRing is not explicitly represented as a GeoJSON geometry type, it is referred to in the Polygon geometry type definition.",
       "required": ["coordinates"],
       "properties": {
-        "type": { "enum": ["LineString"] },
+        "type": { "const": "LineString" },
         "coordinates": { "$ref": "#/definitions/lineStringCoordinates" }
       },
       "allOf": [{ "$ref": "#/definitions/geometry" }]
@@ -167,7 +159,7 @@
       "description": "For type `MultiLineString`, the `coordinates` member must be an array of LineString coordinate arrays.",
       "required": ["coordinates"],
       "properties": {
-        "type": { "enum": ["MultiLineString"] },
+        "type": { "const": "MultiLineString" },
         "coordinates": {
           "allOf": [
             { "$ref": "#/definitions/coordinates" },
@@ -186,7 +178,7 @@
       "description": "For type `Polygon`, the `coordinates` member must be an array of LinearRing coordinate arrays. For Polygons with multiple rings, the first must be the exterior ring and any others must be interior rings or holes.",
       "required": ["coordinates"],
       "properties": {
-        "type": { "enum": ["Polygon"] },
+        "type": { "const": "Polygon" },
         "coordinates": { "$ref": "#/definitions/polygonCoordinates" }
       },
       "allOf": [{ "$ref": "#/definitions/geometry" }]
@@ -197,7 +189,7 @@
       "description": "For type `MultiPolygon`, the `coordinates` member must be an array of Polygon coordinate arrays.",
       "required": ["coordinates"],
       "properties": {
-        "type": { "enum": ["MultiPolygon"] },
+        "type": { "const": "MultiPolygon" },
         "coordinates": {
           "allOf": [
             { "$ref": "#/definitions/coordinates" },
@@ -216,7 +208,7 @@
       "description": "A GeoJSON object with type `GeometryCollection` is a geometry object which represents a collection of geometry objects.\n\nA geometry collection must have a member with the name `geometries`. The value corresponding to `geometries` is an array. Each element in this array is a GeoJSON geometry object.",
       "required": ["geometries"],
       "properties": {
-        "type": { "enum": ["GeometryCollection"] },
+        "type": { "const": "GeometryCollection" },
         "geometries": {
           "title": "Geometries",
           "type": "array",
@@ -233,7 +225,7 @@
       "description": "A GeoJSON object with the type `FeatureCollection` is a feature collection object.\n\nAn object of type `FeatureCollection` must have a member with the name `features`. The value corresponding to `features` is an array. Each element in the array is a feature object as defined above.",
       "required": ["features"],
       "properties": {
-        "type": { "enum": ["FeatureCollection"] },
+        "type": { "const": "FeatureCollection" },
         "features": {
           "title": "Features",
           "type": "array",
@@ -241,19 +233,14 @@
         }
       }
     }
-
   ],
 
   "definitions": {
-
     "coordinates": {
       "title": "Coordinates",
       "type": "array",
       "items": {
-        "oneOf": [
-          { "type": "array" },
-          { "type": "number" }
-        ]
+        "oneOf": [{ "type": "array" }, { "type": "number" }]
       }
     },
 
@@ -282,27 +269,19 @@
       "required": ["geometry", "properties"],
       "type": "object",
       "properties": {
-
-        "type": { "enum": ["Feature"] },
+        "type": { "const": "Feature" },
 
         "geometry": {
           "title": "Geometry",
-          "oneOf": [
-            { "$ref": "#/definitions/geometry" },
-            { "type": "null" }
-          ]
+          "oneOf": [{ "$ref": "#/definitions/geometry" }, { "type": "null" }]
         },
 
         "properties": {
           "title": "Properties",
-          "oneOf": [
-            { "type": "object" },
-            { "type": "null" }
-          ]
+          "oneOf": [{ "type": "object" }, { "type": "null" }]
         },
 
         "id": {}
-
       }
     },
 
@@ -352,7 +331,5 @@
         "type": "number"
       }
     }
-
   }
-
 }
