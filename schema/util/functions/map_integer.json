@@ -1,0 +1,15 @@
+{
+  "description": "map function definition",
+  "type": "object",
+  "required": ["function", "field", "mapping", "else"],
+  "additionalProperties": false,
+  "properties": {
+    "function": { "type": "string", "const": "map" },
+    "field": { "type": "string" },
+    "mapping": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 1, "maximum": 5 }
+    },
+    "else": { "type": "integer", "minimum": 1, "maximum": 5 }
+  }
+}
