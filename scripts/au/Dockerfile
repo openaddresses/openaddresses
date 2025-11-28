@@ -1,10 +1,10 @@
-FROM debian:trixie
+FROM debian:forky
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -y && \
     apt-get install -y sudo git curl zip unzip parallel \
-                    postgresql-17 postgresql-17-postgis-3 postgis \
+                    postgresql-18 postgresql-18-postgis-3 postgis \
                     python3 python3-psycopg
 
 RUN git clone https://github.com/minus34/gnaf-loader.git /usr/local/gnaf-loader && \
