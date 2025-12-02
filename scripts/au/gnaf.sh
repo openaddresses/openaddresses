@@ -10,10 +10,12 @@ mkdir $TMP
 mkdir $TMP/gnaf $TMP/gnaf-admin $TMP/tablespace
 chown postgres:postgres $TMP/tablespace
 
-echo "local	all	all			trust" > /etc/postgresql/17/main/pg_hba.conf
-echo "host	all	all	127.0.0.1/32	trust" >> /etc/postgresql/17/main/pg_hba.conf
-echo "host	all	all	::1/128		trust" >> /etc/postgresql/17/main/pg_hba.conf
-echo "fsync = off" >> /etc/postgresql/17/main/postgresql.conf
+echo "local	all	all			trust" > /etc/postgresql/18/main/pg_hba.conf
+echo "host	all	all	127.0.0.1/32	trust" >> /etc/postgresql/18/main/pg_hba.conf
+echo "host	all	all	::1/128		trust" >> /etc/postgresql/18/main/pg_hba.conf
+echo "fsync = off" >> /etc/postgresql/18/main/postgresql.conf
+echo "synchronous_commit = off" >> /etc/postgresql/18/main/postgresql.conf
+echo "full_page_writes = off" >> /etc/postgresql/18/main/postgresql.conf
 
 /etc/init.d/postgresql start
 sudo -u postgres psql -c "CREATE USER gnafun WITH SUPERUSER PASSWORD 'gnafpw'"
@@ -24,8 +26,8 @@ sudo -u postgres psql -c 'CREATE EXTENSION postgis' -U gnafun gnafdb
 # fetch data/resources, cached from:
 ## https://data.gov.au/data/dataset/geoscape-administrative-boundaries
 ## https://data.gov.au/data/dataset/geocoded-national-address-file-g-naf
-curl --retry 10 --location 'https://data.gov.au/data/dataset/bdcf5b09-89bc-47ec-9281-6b8e9ee147aa/resource/927e0ef4-31ce-418a-988a-31988ba7fa01/download/aug25_adminbounds_gda_94_shp.zip' -o $TMP/gnaf-admin.zip
-curl --retry 10 --location 'https://data.gov.au/data/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/d93d995d-ae32-4cac-8e30-081a18bb2173/download/g-naf_aug25_allstates_gda94_psv_1020.zip' -o $TMP/gnaf.zip
+curl --retry 10 --location 'https://data.gov.au/data/dataset/bdcf5b09-89bc-47ec-9281-6b8e9ee147aa/resource/6dbee333-3fc5-48b9-afa6-25f5fa6bafb9/download/nov25_adminbounds_gda_94_shp.zip' -o $TMP/gnaf-admin.zip
+curl --retry 10 --location 'https://data.gov.au/data/dataset/19432f89-dc3a-4ef3-b943-5326ef1dbecc/resource/b1b2b4c3-aeed-4570-a2fd-27b53e07bf2f/download/g-naf_nov25_allstates_gda94_psv_1021.zip' -o $TMP/gnaf.zip
 parallel "unzip -d $TMP/{} $TMP/{}.zip" ::: gnaf gnaf-admin
 rm -f $TMP/gnaf.zip $TMP/gnaf-admin.zip
 
@@ -47,7 +49,11 @@ python3 /usr/local/gnaf-loader/load-gnaf.py \
 
 rm -rf $TMP/gnaf $TMP/gnaf-admin
 
+# preview distinct geocode_type
+echo "SELECT DISTINCT geocode_type FROM gnaf.addresses;" | psql postgres://gnafun:gnafpw@localhost/gnafdb
+
 # select output from tables
+# geocode_type documented at https://docs.geoscape.com.au/projects/gnaf_desc/en/stable/appendix_c.html#id23
 echo "CREATE TABLE openaddresses AS
 SELECT
 
@@ -77,15 +83,24 @@ SELECT
     state AS region,
 
     (
-        CASE geocode_type WHEN 'BUILDING CENTROID' THEN 1 -- rooftop
-                          WHEN 'FRONTAGE CENTRE SETBACK' THEN 2 -- interpolation
-                          WHEN 'GAP GEOCODE' THEN 4 -- interpolation
-                          WHEN 'LOCALITY' THEN 4 -- interpolation
+        CASE geocode_type WHEN 'BUILDING ACCESS POINT'         THEN 1 -- rooftop
+                          WHEN 'BUILDING CENTROID'             THEN 1 -- rooftop
+                          WHEN 'BUILDING CENTROID MANUAL'      THEN 1 -- rooftop
+                          WHEN 'CENTRE-LINE DROPPED FRONTAGE'  THEN 2 -- interpolation
+                          WHEN 'DRIVEWAY FRONTAGE'             THEN 3 -- driveway
+                          WHEN 'FRONT DOOR ACCESS'             THEN 1 -- rooftop
+                          WHEN 'FRONTAGE CENTRE'               THEN 2 -- interpolation
+                          WHEN 'FRONTAGE CENTRE SETBACK'       THEN 2 -- interpolation
+                          WHEN 'PROPERTY ACCESS POINT'         THEN 3 -- driveway
                           WHEN 'PROPERTY ACCESS POINT SETBACK' THEN 3 -- driveway
-                          WHEN 'PROPERTY CENTROID' THEN 2 -- parcel
-                          WHEN 'PROPERTY CENTROID MANUAL' THEN 2 -- parcel
-                          WHEN 'STREET LOCALITY' THEN 4 -- interpolation
-                          ELSE 5 -- unknown
+                          WHEN 'PROPERTY CENTROID'             THEN 2 -- parcel
+                          WHEN 'PROPERTY CENTROID MANUAL'      THEN 2 -- parcel
+                          WHEN 'UNIT CENTROID'                 THEN 2 -- parcel
+                          WHEN 'UNIT CENTROID MANUAL'          THEN 2 -- parcel
+                          WHEN 'GAP GEOCODE'                   THEN 4 -- interpolation
+                          WHEN 'STREET LOCALITY'               THEN 4 -- interpolation
+                          WHEN 'LOCALITY'                      THEN 4 -- interpolation
+                                                               ELSE 5 -- unknown
         END
     )
     AS accuracy
@@ -104,6 +119,6 @@ rm -rf $TMP/tablespace
 
 # zip CSV
 mkdir /work/cache
-zip -j /work/cache/au-aug2025.zip $TMP/au.csv
+zip -j /work/cache/au-nov2025.zip $TMP/au.csv
 
 rm -rf $TMP

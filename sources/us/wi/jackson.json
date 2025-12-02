@@ -14,33 +14,36 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gisdata.wisc.edu/public/JACKSON_ADDRESSES_2023.zip",
-                "website": "https://geodata.wisc.edu/catalog/FF6F743D-006A-445D-9D0B-0F577C063625",
-                "protocol": "http",
-                "compression": "zip",
-                "year": "2023",
+                "data": "https://services9.arcgis.com/G9tkBzRKbAqaotWr/arcgis/rest/services/StructureAddressPoints_publicTest/FeatureServer/1",
+                "website": "https://www.co.jackson.wi.us/index.asp?SEC=B9791FE9-B3F9-4DAA-A318-BBCF558C8DE0",
+                "protocol": "ESRI",
                 "note": "Number contains letters",
                 "conform": {
-                    "format": "gdb",
-                    "layer": "JACKSON_ADDRESSES_2023",
-                    "number": "Address",
-                    "street": "Street",
+                    "format": "geojson",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "AddNum_Pre",
+                            "Add_Number"
+                        ],
+                        "separator": ""
+                    },
+                    "street": "FullStNm",
                     "unit": "Unit",
                     "city": "Post_Comm",
-                    "postcode": "Post_Code"
+                    "postcode": "Post_Code",
+                    "district": "County",
+                    "region": "State"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gisdata.wisc.edu/public/Jackson_Parcels_2023_SHP.zip",
-                "website": "https://geodata.wisc.edu/catalog/2916311B-BBD7-42F8-8B83-B8991B167B49",
-                "protocol": "http",
-                "compression": "zip",
-                "year": "2023",
+                "data": "https://services9.arcgis.com/G9tkBzRKbAqaotWr/ArcGIS/rest/services/CountyParcels_public/FeatureServer/31",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "pid": "PARCELID"
                 }
             }
@@ -48,14 +51,10 @@
         "buildings": [
             {
                 "name": "county",
-                "data": "https://gisdata.wisc.edu/public/JACKSON_BUILDINGS_2023.zip",
-                "website": "https://geodata.wisc.edu/catalog/58596A86-C929-436A-A83D-16095EF7C7D4",
-                "protocol": "http",
-                "compression": "zip",
-                "year": "2023",
+                "data": "https://services9.arcgis.com/G9tkBzRKbAqaotWr/ArcGIS/rest/services/BuildingFootprints_publicTest/FeatureServer/2",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "gdb",
-                    "layer": "JACKSON_BUILDINGS_2023"
+                    "format": "geojson"
                 }
             }
         ]

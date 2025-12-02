@@ -13,7 +13,7 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://www.gov.pe.ca/photos/original/civic_coor.SHP.zip",
+                "data": "https://gis.princeedwardisland.ca/server/rest/services/civic_addresses/FeatureServer/0",
                 "website": "https://www.gov.pe.ca/gis/index.php3?number=77553&lang=E",
                 "license": {
                     "url": "https://www.princeedwardisland.ca/en/information/finance/open-government-licence-prince-edward-island",
@@ -21,17 +21,25 @@
                     "attribution": true,
                     "share-alike": false
                 },
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
                     "number": "STREET_NO",
                     "street": "STREET_NM",
                     "unit": "APT_NO",
                     "city": "COMM_NM",
                     "district": "COUNTY",
-                    "lon": "X_COORD",
-                    "lat": "Y_COORD",
-                    "format": "shapefile"
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "data": "https://gis.princeedwardisland.ca/server/rest/services/property_parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PID",
+                    "format": "geojson"
                 }
             }
         ]
