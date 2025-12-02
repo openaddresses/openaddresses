@@ -11,20 +11,23 @@
             {
                 "name": "city",
                 "protocol": "http",
-                "data": "https://www.alantgeo.com.au/share/brisbane.csv.zip",
                 "compression": "zip",
-                "website": "https://www.data.brisbane.qld.gov.au/data/dataset/property-address-data",
+                "data": "https://www.alantgeo.com.au/share/brisbane.csv.zip",
+                "website": "https://data.brisbane.qld.gov.au/explore/dataset/property-address-locations/information/",
                 "language": "en",
                 "license": {
                     "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
                     "text": "CC BY 4.0",
                     "attribution": true,
-                    "attribution name": "© Brisbane City Council 2024",
+                    "attribution name": "© Brisbane City Council 2025",
                     "share-alike": false
                 },
+                "note": "script used to handle pipe within NORTHING,EASTING",
                 "conform": {
                     "format": "csv",
                     "srs": "EPSG:28356",
+                    "accuracy": 2,
+                    "id": "PROPERTY ID",
                     "unit": "UNIT NUMBER",
                     "number": "HOUSE NUMBER",
                     "street": [
@@ -37,6 +40,27 @@
                     "lon": "X",
                     "lat": "Y",
                     "notes": "PROPERTY DESCRIPTION"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "protocol": "http",
+                "data": "https://data.brisbane.qld.gov.au/api/explore/v2.1/catalog/datasets/property-boundaries-parcel/exports/geojson?lang=en",
+                "website": "https://data.brisbane.qld.gov.au/explore/dataset/property-boundaries-parcel/information/",
+                "language": "en",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "© Brisbane City Council 2025 © State of Queensland (Department of Resources) 2025.",
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "srs": "EPSG:4326",
+                    "pid": "LOT_ID"
                 }
             }
         ]

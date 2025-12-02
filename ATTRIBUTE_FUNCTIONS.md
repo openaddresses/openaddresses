@@ -348,7 +348,7 @@ The `chain` function allows for combining any number of conform functions as a s
         },
         {
             "function": "remove_postfix",
-            "field": "street_wip",
+            "field": "oa:street_wip",
             "field_to_remove": "Prop_Addr_Unit"
         }
     ]
@@ -356,7 +356,7 @@ The `chain` function allows for combining any number of conform functions as a s
 "unit": "Prop_Addr_Unit"
 ```
 
-The `variable` parameter in a `chain` function is a user-defined field which stores the intermediate results of the chain. In the first step in the `street` field example above, `postfixed_street` removes the house number, but the result of that computation is stored in the temporary field `street_wip` instead of an output field. In step 2, `street_wip` is referenced as the input field instead of the source field `Prop_Addr`. A `chain` function can contain any number of steps and the user-defined variable will accumulate the results of each step. The only requirement for user-specified variable names is that they should not conflict with the source fields or the standard output field names used in OpenAddresses conforms e.g. `street`, `number`, etc.
+The `variable` parameter in a `chain` function is a user-defined field which stores the intermediate results of the chain. In the first step in the `street` field example above, `postfixed_street` removes the house number, but the result of that computation is stored in the temporary field `street_wip` instead of an output field. In step 2, `oa:street_wip` is referenced as the input field instead of the source field `Prop_Addr`. A `chain` function can contain any number of steps and the user-defined variable will accumulate the results of each step. The only requirement for user-specified variable names is that they should not conflict with the source fields or the standard output field names used in OpenAddresses conforms e.g. `street`, `number`, etc.
 
 Given the following source record:
 
