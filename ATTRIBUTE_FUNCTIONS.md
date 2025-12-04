@@ -32,6 +32,7 @@ One note, however, is that functions cannot be combined at this time.  That is, 
 * [`get`](#get)
 * [`chain`](#chain)
 * [`constant`](#constant)
+* [`map`](#map)
 
 ## Combining Functions
 
@@ -405,6 +406,35 @@ The `constant` function allows for defining a specific value for an entire colum
 | --------- | ----- | -------
 | `function` | `constant` |
 | `value` | the constant value for the field | none (required)
+
+
+### `map`
+
+The `map` function allows for defining a mapping or lookup from a source value to a target value. Useful when the source values need to be transformed.
+w
+
+```json
+"accuracy": {
+    "function": "map",
+    "field": "GEOCODE_TYPE",
+    "mapping": {
+        "BUILDING": 1,
+        "PARCEL": 2,
+        "DRIVEWAY" 3,
+        "INTERPOLATION": 4
+    },
+    "else": 5
+}
+```
+
+#### Definition:
+
+| parameter | value | default
+| --------- | ----- | -------
+| `function` | `map` |
+| `field` | the source column field | none (required)
+| `mapping` | the lookup of source values to target values | none (required)
+| `else` | the default value to assign if not found in the mapping | none (required)
 
 
 ## Acceptance Testing
