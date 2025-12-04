@@ -11,14 +11,42 @@
         "addresses": [
             {
                 "name": "country",
-                "data": "https://carto10.gouv.nc/public/rest/services/toponymes_adresses/MapServer/20",
-                "protocol": "ESRI",
+                "protocol": "http",
+                "data": "https://data.gouv.nc/api/explore/v2.1/catalog/datasets/adresses_nouvelle_caledonie/exports/geojson",
+                "website": "https://data.gouv.nc/explore/dataset/adresses_nouvelle_caledonie/",
+                "language": "fr",
+                "license": {
+                    "url": "https://www.etalab.gouv.fr/wp-content/uploads/2018/11/open-licence.pdf",
+                    "text": "Licence Ouverte v2.0",
+                    "attribution": true,
+                    "attribution name": "Gouvernement de la Nouvelle-Calédonie",
+                    "share-alike": false
+                },
                 "conform": {
                     "format": "geojson",
-                    "number": "NUMERO",
-                    "unit": "COMP_NUM",
-                    "street": "LIBELLE",
-                    "city": "APPARTEN"
+                    "number": "num_graf",
+                    "street": "libvoie",
+                    "city": "apparten"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "country",
+                "protocol": "http",
+                "data": "https://data.gouv.nc/api/explore/v2.1/catalog/datasets/parcelles-cadastrales-nc/exports/geojson",
+                "website": "https://data.gouv.nc/explore/dataset/parcelles-cadastrales-nc/",
+                "language": "fr",
+                "license": {
+                    "url": "https://www.etalab.gouv.fr/wp-content/uploads/2018/11/open-licence.pdf",
+                    "text": "Licence Ouverte v2.0",
+                    "attribution": true,
+                    "attribution name": "Direction des Infrastructures, de la Topographie et des Transports Terrestres (DITTT)",
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "pid": "NIC"
                 }
             }
         ]
