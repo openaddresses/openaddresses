@@ -9,9 +9,9 @@
         "addresses": [
             {
                 "name": "city",
-                "protocol": "http",
-                "data": "https://opendata.arcgis.com/datasets/284f198a7cab470dbbf607ea6e5440a4_0.geojson",
-                "website": "https://data.gov.au/dataset/d1e688f4-9203-4a98-bb2f-3b3aebbbc1ee",
+                "protocol": "ESRI",
+                "data": "https://services6.arcgis.com/3VCE6mezZtwKJeIR/arcgis/rest/services/TCC_Properties_GDA2020/FeatureServer/0",
+                "website": "https://data-tsvcitycouncil.opendata.arcgis.com/datasets/TsvCityCouncil::tcc-properties-gda2020/about",
                 "language": "en",
                 "license": {
                     "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
@@ -23,20 +23,53 @@
                 "conform": {
                     "format": "geojson",
                     "id": "PROPERTYNO",
-                    "number": "HOUSE_TEXT",
-                    "street": "STREETNAME",
-                    "city": "LOCALITY",
-                    "postcode": "POST_CODE",
-                    "notes": "PROPERTYNAME"
+                    "unit": {
+                      "function": "chain",
+                      "variable": "unit_wip",
+                      "functions": [
+                        {
+                          "function": "regexp",
+                          "field": "unitno",
+                          "pattern": "^(?:0|(.*))$",
+                          "replace": "$1"
+                        },
+                        {
+                          "function": "join",
+                          "fields": ["oa:unit_wip", "unitnosuffix"],
+                          "separator": ""
+                        }
+                      ]
+                    },
+                    "number": {
+                      "function": "chain",
+                      "variable": "number_wip",
+                      "functions": [
+                        {
+                          "function": "regexp",
+                          "field": "HOUSE NUMBER TO",
+                          "pattern": "^(?:0|(.*))$",
+                          "replace": "-$1"
+                        },
+                        {
+                          "function": "format",
+                          "fields": ["HOUSE NO", "HOUSE NUMBER SUFFIX", "oa:number_wip"],
+                          "format": "$1$2-$3"
+                        }
+                      ]
+                    },
+                    "street": "STREET NAME",
+                    "city": "SUBURB",
+                    "postcode": "postcode",
+                    "notes": "PROPERTY NAME"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "city",
-                "protocol": "http",
-                "data": "https://opendata.arcgis.com/datasets/284f198a7cab470dbbf607ea6e5440a4_0.geojson",
-                "website": "https://data.gov.au/dataset/d1e688f4-9203-4a98-bb2f-3b3aebbbc1ee",
+                "protocol": "ESRI",
+                "data": "https://services6.arcgis.com/3VCE6mezZtwKJeIR/arcgis/rest/services/TCC_Land_Parcels_GDA2020/FeatureServer/0",
+                "website": "https://data-tsvcitycouncil.opendata.arcgis.com/datasets/TsvCityCouncil::tcc-land-parcels-gda2020/about",
                 "language": "en",
                 "license": {
                     "url": "https://creativecommons.org/licenses/by/4.0/legalcode",
@@ -47,7 +80,7 @@
                 },
                 "conform": {
                     "format": "geojson",
-                    "pid": "PROPERTYNO"
+                    "pid": "PROPERTY ID"
                 }
             }
         ]
