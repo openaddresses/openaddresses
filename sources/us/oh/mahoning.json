@@ -14,25 +14,23 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis1.oit.ohio.gov/LBRS/_downloads/MAH_ADDS.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://gisapp.mahoningcountyoh.gov/arcgis/rest/services/PUBLIC_WEBSITE_ADDRESS/MapServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "number": "ADDR_NUM",
+                    "format": "geojson",
+                    "number": "add_number",
                     "street": [
-                        "PRE_DIR",
-                        "STR_NAME",
-                        "STR_TYPE",
-                        "SUF_DIR"
+                        "st_predir",
+                        "st_name",
+                        "st_postyp",
+                        "st_posdir"
                     ],
                     "unit": [
-                        "UNIT_TYPE",
-                        "UNIT_NUM"
+                        "unit_type",
+                        "unit"
                     ],
-                    "city": "CITY",
-                    "region": "STATE",
-                    "format": "shapefile",
-                    "postcode": "zip"
+                    "city": "city",
+                    "postcode": "zipcode"
                 }
             }
         ],
