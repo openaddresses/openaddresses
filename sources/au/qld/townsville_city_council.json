@@ -22,7 +22,7 @@
                 },
                 "conform": {
                     "format": "geojson",
-                    "id": "PROPERTYNO",
+                    "id": "propertyno",
                     "unit": {
                       "function": "chain",
                       "variable": "unit_wip",
@@ -46,21 +46,21 @@
                       "functions": [
                         {
                           "function": "regexp",
-                          "field": "HOUSE NUMBER TO",
+                          "field": "housenoto",
                           "pattern": "^(?:0|(.*))$",
                           "replace": "-$1"
                         },
                         {
                           "function": "format",
-                          "fields": ["HOUSE NO", "HOUSE NUMBER SUFFIX", "oa:number_wip"],
+                          "fields": ["houseno", "housenosuffix", "oa:number_wip"],
                           "format": "$1$2-$3"
                         }
                       ]
                     },
-                    "street": "STREET NAME",
-                    "city": "SUBURB",
+                    "street": "streetname",
+                    "city": "locality",
                     "postcode": "postcode",
-                    "notes": "PROPERTY NAME"
+                    "notes": "propertyname"
                 }
             }
         ],
