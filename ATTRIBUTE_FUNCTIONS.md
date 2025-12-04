@@ -32,6 +32,7 @@ One note, however, is that functions cannot be combined at this time.  That is, 
 * [`get`](#get)
 * [`chain`](#chain)
 * [`constant`](#constant)
+* [`map`](#map)
 
 ## Combining Functions
 
@@ -348,7 +349,7 @@ The `chain` function allows for combining any number of conform functions as a s
         },
         {
             "function": "remove_postfix",
-            "field": "street_wip",
+            "field": "oa:street_wip",
             "field_to_remove": "Prop_Addr_Unit"
         }
     ]
@@ -356,7 +357,7 @@ The `chain` function allows for combining any number of conform functions as a s
 "unit": "Prop_Addr_Unit"
 ```
 
-The `variable` parameter in a `chain` function is a user-defined field which stores the intermediate results of the chain. In the first step in the `street` field example above, `postfixed_street` removes the house number, but the result of that computation is stored in the temporary field `street_wip` instead of an output field. In step 2, `street_wip` is referenced as the input field instead of the source field `Prop_Addr`. A `chain` function can contain any number of steps and the user-defined variable will accumulate the results of each step. The only requirement for user-specified variable names is that they should not conflict with the source fields or the standard output field names used in OpenAddresses conforms e.g. `street`, `number`, etc.
+The `variable` parameter in a `chain` function is a user-defined field which stores the intermediate results of the chain. In the first step in the `street` field example above, `postfixed_street` removes the house number, but the result of that computation is stored in the temporary field `street_wip` instead of an output field. In step 2, `oa:street_wip` is referenced as the input field instead of the source field `Prop_Addr`. A `chain` function can contain any number of steps and the user-defined variable will accumulate the results of each step. The only requirement for user-specified variable names is that they should not conflict with the source fields or the standard output field names used in OpenAddresses conforms e.g. `street`, `number`, etc.
 
 Given the following source record:
 
@@ -405,6 +406,35 @@ The `constant` function allows for defining a specific value for an entire colum
 | --------- | ----- | -------
 | `function` | `constant` |
 | `value` | the constant value for the field | none (required)
+
+
+### `map`
+
+The `map` function allows for defining a mapping or lookup from a source value to a target value. Useful when the source values need to be transformed.
+w
+
+```json
+"accuracy": {
+    "function": "map",
+    "field": "GEOCODE_TYPE",
+    "mapping": {
+        "BUILDING": 1,
+        "PARCEL": 2,
+        "DRIVEWAY" 3,
+        "INTERPOLATION": 4
+    },
+    "else": 5
+}
+```
+
+#### Definition:
+
+| parameter | value | default
+| --------- | ----- | -------
+| `function` | `map` |
+| `field` | the source column field | none (required)
+| `mapping` | the lookup of source values to target values | none (required)
+| `else` | the default value to assign if not found in the mapping | none (required)
 
 
 ## Acceptance Testing
