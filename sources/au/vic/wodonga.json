@@ -1,0 +1,43 @@
+{
+    "coverage": {
+        "country": "au",
+        "state": "vic",
+        "city": "Wodonga Council"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "protocol": "ESRI",
+                "data": "https://services-ap1.arcgis.com/w6r4LlwgJu8O0neQ/arcgis/rest/services/address_open_data/FeatureServer/0",
+                "website": "https://maps.wodonga.vic.gov.au/datasets/f5b93670c9f34a31bdb91d6e4c2c5e32_0/about",
+                "language": "en",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Wodonga Council",
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "unit": {
+                      "function": "format",
+                      "fields": ["blg_unit_prefix_1", "blg_unit_id_1", "blg_unit_suffix_1", "blg_unit_prefix_2", "blg_unit_id_2", "blg_unit_suffix_2"],
+                      "format": "$1$2$3-$4$5$6"
+                    },
+                    "number": {
+                      "function": "format",
+                      "fields": ["house_prefix_1", "house_number_1", "house_suffix_1", "house_prefix_2", "house_number_2", "house_suffix_2"],
+                      "format": "$1$2$3-$4$5$6"
+                    },
+                    "street": ["road_name", "road_type", "road_suffix"],
+                    "city": "locality_name",
+                    "region": "state",
+                    "postcode": "postcode"
+                }
+            }
+        ]
+    }
+}
