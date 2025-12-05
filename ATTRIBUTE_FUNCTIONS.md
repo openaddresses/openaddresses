@@ -411,7 +411,6 @@ The `constant` function allows for defining a specific value for an entire colum
 ### `map`
 
 The `map` function allows for defining a mapping or lookup from a source value to a target value. Useful when the source values need to be transformed.
-w
 
 ```json
 "accuracy": {
