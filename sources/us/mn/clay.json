@@ -14,15 +14,18 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://arcgis.claycountymn.gov/arcgis/rest/services/OpenDataPortal/Open_Data_Portal_Layers/MapServer/3",
+                "data": "https://map.claycountymn.gov/arcgis/rest/services/CLAY_LINK_PUBLIC_ONLY/MapServer/7",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "ANUMBER",
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "LST_ADDRESS"
-                    },
+                    "street": [
+                        "ST_PRE_DIR",
+                        "ST_NAME",
+                        "ST_POS_TYP",
+                        "ST_POS_DIR"
+                    ],
+                    "unit": "SUB_ID1",
                     "city": "POSTCOMM",
                     "region": "STATE_CODE",
                     "postcode": "ZIP"
