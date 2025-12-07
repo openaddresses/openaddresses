@@ -1,27 +1,12 @@
 {
-    "description": "regexp function definition",
-    "type": "object",
-    "required": [
-        "function",
-        "field",
-        "pattern"
-    ],
-    "additionalProperties": false,
-    "properties": {
-        "function": {
-            "type": "string",
-            "enum": [
-                "regexp"
-            ]
-        },
-        "field": {
-            "type": "string"
-        },
-        "pattern": {
-            "type": "string"
-        },
-        "replace": {
-            "type": "string"
-        }
-    }
+  "description": "regexp function definition",
+  "type": "object",
+  "required": ["function", "field", "pattern"],
+  "additionalProperties": false,
+  "properties": {
+    "function": { "type": "string", "const": "regexp" },
+    "field": { "type": "string" },
+    "pattern": { "type": "string" },
+    "replace": { "type": "string" }
+  }
 }
