@@ -1,0 +1,97 @@
+{
+  "coverage": {
+    "country": "pf",
+    "ISO 3166": {
+      "alpha2": "PF",
+      "country": "French Polynesia"
+    }
+  },
+  "schema": 2,
+  "layers": {
+    "addresses": [
+      {
+        "name": "country",
+        "protocol": "http",
+        "data": "https://services.arcgis.com/L4H4rU26VyhEF588/arcgis/rest/services/Adressage_en_Polynésie_française_WFL1/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson",
+        "website": "https://www.tefenua.data.gov.pf/datasets/80277e532b6c4628ac9e36e1bbbce28a_0/",
+        "language": "fr",
+        "license": {
+          "url": "https://alliance.numerique.gouv.fr/licence-ouverte-open-licence/",
+          "text": "Licence Ouverte Etalab 2.0",
+          "attribution": true,
+          "attribution name": "Gouvernement de la Polynésie Française",
+          "share-alike": false,
+          "remarks": "https://www.etalab.gouv.fr/wp-content/uploads/2018/11/open-licence.pdf"
+        },
+        "conform": {
+          "format": "geojson",
+          "number": {
+            "function": "join",
+            "fields": ["numero", "rep"],
+            "separator": ""
+          },
+          "street": "nom_voie",
+          "city": "nom_commune",
+          "postcode": "code_postal",
+          "accuracy": {
+            "function": "map",
+            "field": "type_position",
+            "mapping": {
+              "bâtiment": 1,
+              "cage d’escalier": 2,
+              "délivrance postale": 3,
+              "entrée": 2,
+              "logement": 2,
+              "parcelle": 2,
+              "segment": 3,
+              "service technique": 5
+            },
+            "else": 5
+          }
+        }
+      }
+    ],
+    "parcels": [
+      {
+        "name": "country",
+        "protocol": "http",
+        "data": "https://services.arcgis.com/L4H4rU26VyhEF588/arcgis/rest/services/CAD_parcelles_open/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson",
+        "website": "https://www.tefenua.data.gov.pf/datasets/8fe5ef1c506244edacac5cc922a4ec20_0/",
+        "language": "fr",
+        "license": {
+          "url": "https://alliance.numerique.gouv.fr/licence-ouverte-open-licence/",
+          "text": "Licence Ouverte Etalab 2.0",
+          "attribution": true,
+          "attribution name": "Gouvernement de la Polynésie Française",
+          "share-alike": false,
+          "remarks": "https://www.etalab.gouv.fr/wp-content/uploads/2018/11/open-licence.pdf"
+        },
+        "conform": {
+          "format": "geojson",
+          "pid": "iu_parcelle"
+        }
+      }
+    ],
+    "buildings": [
+      {
+        "name": "country",
+        "protocol": "http",
+        "data": "https://services.arcgis.com/L4H4rU26VyhEF588/arcgis/rest/services/Bâtiment_BD_TOPO_Edification/FeatureServer/17/query?outFields=*&where=1%3D1&f=geojson",
+        "website": "https://www.tefenua.data.gov.pf/datasets/8fe5ef1c506244edacac5cc922a4ec20_0/",
+        "language": "fr",
+        "license": {
+          "url": "https://alliance.numerique.gouv.fr/licence-ouverte-open-licence/",
+          "text": "Licence Ouverte Etalab 2.0",
+          "attribution": true,
+          "attribution name": "Gouvernement de la Polynésie Française",
+          "share-alike": false,
+          "remarks": "https://www.etalab.gouv.fr/wp-content/uploads/2018/11/open-licence.pdf"
+        },
+        "conform": {
+          "format": "geojson",
+          "height": "hauteur_bati"
+        }
+      }
+    ]
+  }
+}
