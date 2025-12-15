@@ -49,7 +49,19 @@
                     "city": "LOCALITY",
                     "postcode": "POSTCODE",
                     "region": "STATE",
-                    "id": "GEOCODE_ID"
+                    "id": "GEOCODE_ID",
+                    "accuracy": {
+                      "function": "map",
+                      "field": "GEO_TYPE",
+                      "mapping": {
+                        "Building Centroid": 1,
+                        "Parent Property Centroid": 2,
+                        "Property Access Point": 3,
+                        "Rural Centroid": 2,
+                        "Urban Centroid": 2
+                      },
+                      "else": 5
+                    }
                 },
                 "compression": "zip"
             }
