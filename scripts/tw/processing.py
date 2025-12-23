@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import pandas as pd
 import argparse
 import os
@@ -66,9 +67,17 @@ def main(address_csv, output_csv, code_table_csv, reproject):
         print(f"🔁 Renaming English column headers: {renamed_cols}")
         address_df.rename(columns=renamed_cols, inplace=True)
 
-    for variant in ["街_路段", "街、路段"]:
-        if variant in address_df.columns and "街路段" not in address_df.columns:
-            address_df.rename(columns={variant: "街路段"}, inplace=True)
+    alias_map = {
+        "TWD97橫坐標": "橫座標",
+        "TWD97縱坐標": "縱座標",
+        "WGS84經度": "x_4326",
+        "WGS84緯度": "y_4326",
+        "街_路段": "街路段",
+        "街、路段": "街路段",
+    }
+    for src, dest in alias_map.items():
+        if src in address_df.columns and dest not in address_df.columns:
+            address_df.rename(columns={src: dest}, inplace=True)
 
     if "地區" not in address_df.columns:
         print("⚠️  '地區' column is missing from input. Filling with null values.")
@@ -143,63 +152,54 @@ def main(address_csv, output_csv, code_table_csv, reproject):
 
     if not reproject:
         print("🚫 Skipping reprojection. Copying original coords to x_4326/y_4326.")
-        address_df["x_4326"] = address_df["橫座標"]
-        address_df["y_4326"] = address_df["縱座標"]
+        if "x_4326" not in address_df.columns:
+            address_df["x_4326"] = address_df["橫座標"]
+        if "y_4326" not in address_df.columns:
+            address_df["y_4326"] = address_df["縱座標"]
         address_df["x_3826"] = pd.NA
         address_df["y_3826"] = pd.NA
     else:
         print("🔄 Reprojecting coordinates from EPSG:3826 to EPSG:4326...")
-        address_df["x_3826"] = address_df["橫座標"]
-        address_df["y_3826"] = address_df["縱座標"]
+        if "x_3826" not in address_df.columns:
+            address_df["x_3826"] = address_df["橫座標"]
+        if "y_3826" not in address_df.columns:
+            address_df["y_3826"] = address_df["縱座標"]
 
-        transformer = Transformer.from_crs("EPSG:3826", "EPSG:4326", always_xy=True)
+        if "x_4326" in address_df.columns and "y_4326" in address_df.columns:
+            print("✅ Using provided WGS84 coordinates.")
+        else:
+            transformer = Transformer.from_crs("EPSG:3826", "EPSG:4326", always_xy=True)
 
-        def safe_transform(x, y):
-            try:
-                lon, lat = transformer.transform(float(x), float(y))
-                return pd.Series({"x_4326": lon, "y_4326": lat})
-            except Exception:
-                return pd.Series({"x_4326": pd.NA, "y_4326": pd.NA})
+            def safe_transform(x, y):
+                try:
+                    lon, lat = transformer.transform(float(x), float(y))
+                    return pd.Series({"x_4326": lon, "y_4326": lat})
+                except Exception:
+                    return pd.Series({"x_4326": pd.NA, "y_4326": pd.NA})
 
-        address_df[["x_4326", "y_4326"]] = address_df[["x_3826", "y_3826"]].apply(
-            lambda row: safe_transform(row["x_3826"], row["y_3826"]), axis=1
-        )
+            address_df[["x_4326", "y_4326"]] = address_df[["x_3826", "y_3826"]].apply(
+                lambda row: safe_transform(row["x_3826"], row["y_3826"]), axis=1
+            )
 
-    final_columns = [
-        "省市縣市代碼",
-        "鄉鎮市區代碼",
-        "村里",
-        "鄰",
-        "街路段",
-        "地區",
-        "巷",
-        "弄",
-        "號",
-        "x_3826",
-        "y_3826",
-        "x_4326",
-        "y_4326",
-        "county",
-        "town",
+    column_pairs = [
+        ("省市縣市代碼", "countycode"),
+        ("鄉鎮市區代碼", "areacode"),
+        ("村里", "village"),
+        ("鄰", "neighbor"),
+        ("街路段", "street"),
+        ("地區", "area"),
+        ("巷", "lane"),
+        ("弄", "alley"),
+        ("號", "number"),
+        ("x_3826", "x_3826"),
+        ("y_3826", "y_3826"),
+        ("x_4326", "x_4326"),
+        ("y_4326", "y_4326"),
+        ("county", "county"),
+        ("town", "town"),
     ]
-    address_df = address_df[final_columns]
-    address_df.columns = [
-        "countycode",
-        "areacode",
-        "village",
-        "neighbor",
-        "street",
-        "area",
-        "lane",
-        "alley",
-        "number",
-        "x_3826",
-        "y_3826",
-        "x_4326",
-        "y_4326",
-        "county",
-        "town",
-    ]
+    address_df = address_df[[col for col, _ in column_pairs]]
+    address_df.rename(columns=dict(column_pairs), inplace=True)
 
     address_df.to_csv(output_csv, index=False, encoding="utf-8-sig")
     print(f"📄 CSV saved to: {output_csv}")
@@ -218,7 +218,7 @@ if __name__ == "__main__":
     parser.add_argument("output_csv", help="Path to save the output CSV file")
     parser.add_argument(
         "--code_table",
-        default="Taiwan_county_district_codes.csv",
+        default=os.path.join(os.path.dirname(__file__), "Taiwan_county_district_codes.csv"),
         help="Optional path to county/district code table (default: ./Taiwan_county_district_codes.csv)",
     )
     parser.add_argument(
