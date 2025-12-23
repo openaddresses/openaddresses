@@ -83,72 +83,87 @@ def main(address_csv, output_csv, code_table_csv, reproject):
         print("⚠️  '地區' column is missing from input. Filling with null values.")
         address_df["地區"] = pd.NA
 
-    address_df["省市縣市代碼"] = address_df["省市縣市代碼"].str.zfill(5)
-    address_df["鄉鎮市區代碼"] = address_df["鄉鎮市區代碼"].apply(normalize_areacode)
-
-    if (
-        not address_df["省市縣市代碼"].str.isnumeric().all()
-        or not address_df["鄉鎮市區代碼"].str.isnumeric().all()
-    ):
-        print(
-            "⚠️  Non-numeric values detected in '省市縣市代碼' or '鄉鎮市區代碼'. Skipping join — using them directly for 'county' and 'town'."
-        )
-        address_df["county"] = address_df["省市縣市代碼"]
-        address_df["town"] = address_df["鄉鎮市區代碼"]
+    has_code_columns = (
+        "省市縣市代碼" in address_df.columns and "鄉鎮市區代碼" in address_df.columns
+    )
+    if not has_code_columns:
+        if "縣市" in address_df.columns and "鄉鎮市區" in address_df.columns:
+            print("ℹ️  Using '縣市'/'鄉鎮市區' columns for county/town; skipping code join.")
+            address_df["county"] = address_df["縣市"]
+            address_df["town"] = address_df["鄉鎮市區"]
+            address_df["省市縣市代碼"] = pd.NA
+            address_df["鄉鎮市區代碼"] = pd.NA
+        else:
+            raise KeyError("Missing required code columns or county/town name columns.")
     else:
-        code_df = (
-            pd.read_csv(code_table_csv, dtype=str)
-            .rename(columns={"區里代碼": "鄉鎮市區代碼"})
-            .drop_duplicates(subset=["鄉鎮市區代碼"], keep="first")
-        )
+        address_df["省市縣市代碼"] = address_df["省市縣市代碼"].str.zfill(5)
+        address_df["鄉鎮市區代碼"] = address_df["鄉鎮市區代碼"].apply(normalize_areacode)
 
-        merged_df = pd.merge(
-            address_df, code_df, on="鄉鎮市區代碼", how="left", indicator=True
-        )
-        total_rows = len(merged_df)
-        unmatched_rows = merged_df["_merge"] != "both"
-        num_unmatched = unmatched_rows.sum()
-
-        if num_unmatched > 0:
+    if has_code_columns:
+        if (
+            not address_df["省市縣市代碼"].str.isnumeric().all()
+            or not address_df["鄉鎮市區代碼"].str.isnumeric().all()
+        ):
             print(
-                f"⚠️  {num_unmatched} out of {total_rows} rows did not join initially. Attempting fallback transformation..."
+                "⚠️  Non-numeric values detected in '省市縣市代碼' or '鄉鎮市區代碼'. Skipping join — using them directly for 'county' and 'town'."
+            )
+            address_df["county"] = address_df["省市縣市代碼"]
+            address_df["town"] = address_df["鄉鎮市區代碼"]
+            has_code_columns = False
+        else:
+            code_df = (
+                pd.read_csv(code_table_csv, dtype=str)
+                .rename(columns={"區里代碼": "鄉鎮市區代碼"})
+                .drop_duplicates(subset=["鄉鎮市區代碼"], keep="first")
             )
 
-            def fallback_transform(code):
-                if isinstance(code, str) and len(code) == 7:
-                    prefix = code[:2]
-                    middle = code[2:-2]
-                    return prefix + "00" + middle
-                return code
-
-            address_df.loc[unmatched_rows, "鄉鎮市區代碼"] = address_df.loc[
-                unmatched_rows, "鄉鎮市區代碼"
-            ].apply(fallback_transform)
-            merged_df_retry = pd.merge(
+            merged_df = pd.merge(
                 address_df, code_df, on="鄉鎮市區代碼", how="left", indicator=True
             )
-            unmatched_retry = merged_df_retry["_merge"] != "both"
-            recovered = num_unmatched - unmatched_retry.sum()
+            total_rows = len(merged_df)
+            unmatched_rows = merged_df["_merge"] != "both"
+            num_unmatched = unmatched_rows.sum()
 
-            if recovered > 0:
+            if num_unmatched > 0:
                 print(
-                    f"✅ Fallback transformation matched {recovered} previously unmatched rows."
+                    f"⚠️  {num_unmatched} out of {total_rows} rows did not join initially. Attempting fallback transformation..."
                 )
+
+                def fallback_transform(code):
+                    if isinstance(code, str) and len(code) == 7:
+                        prefix = code[:2]
+                        middle = code[2:-2]
+                        return prefix + "00" + middle
+                    return code
+
+                address_df.loc[unmatched_rows, "鄉鎮市區代碼"] = address_df.loc[
+                    unmatched_rows, "鄉鎮市區代碼"
+                ].apply(fallback_transform)
+                merged_df_retry = pd.merge(
+                    address_df, code_df, on="鄉鎮市區代碼", how="left", indicator=True
+                )
+                unmatched_retry = merged_df_retry["_merge"] != "both"
+                recovered = num_unmatched - unmatched_retry.sum()
+
+                if recovered > 0:
+                    print(
+                        f"✅ Fallback transformation matched {recovered} previously unmatched rows."
+                    )
+                else:
+                    print(f"⚠️  Fallback transformation did not recover any rows.")
+
+                merged_df = merged_df_retry
+
+            final_unmatched = merged_df["_merge"] != "both"
+            if not final_unmatched.any():
+                print(f"✅ All {total_rows} rows successfully joined.")
             else:
-                print(f"⚠️  Fallback transformation did not recover any rows.")
+                print(
+                    f"⚠️  {final_unmatched.sum()} rows still failed to join after fallback."
+                )
 
-            merged_df = merged_df_retry
-
-        final_unmatched = merged_df["_merge"] != "both"
-        if not final_unmatched.any():
-            print(f"✅ All {total_rows} rows successfully joined.")
-        else:
-            print(
-                f"⚠️  {final_unmatched.sum()} rows still failed to join after fallback."
-            )
-
-        address_df["county"] = merged_df["縣市名稱"]
-        address_df["town"] = merged_df["區鄉鎮名稱"]
+            address_df["county"] = merged_df["縣市名稱"]
+            address_df["town"] = merged_df["區鄉鎮名稱"]
 
     if not reproject:
         print("🚫 Skipping reprojection. Copying original coords to x_4326/y_4326.")
