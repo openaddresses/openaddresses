@@ -165,7 +165,7 @@ def write_csv(out_csv: Path, header: List[str], ndjson_files: List[Path]) -> int
 
 def main():
     ap = argparse.ArgumentParser(
-        description="Parallel OGC API Features downloader (GeoServer) → merged CSV with x,y."
+        description="Parallel OGC API Features downloader (GeoServer) -> merged CSV with x,y."
     )
     ap.add_argument(
         "-u", "--url", default=BASE_ITEMS_URL, help="Items endpoint (no query params)."
@@ -175,6 +175,18 @@ def main():
     )
     ap.add_argument(
         "-l", "--limit", type=int, default=5000, help="Page size (default: 5000)."
+    )
+    ap.add_argument(
+        "--start-page",
+        type=int,
+        default=0,
+        help="Start page index (0-based) for partial runs.",
+    )
+    ap.add_argument(
+        "--max-pages",
+        type=int,
+        default=0,
+        help="Max pages to download (0 = all). Useful for testing.",
     )
     ap.add_argument(
         "--workers", type=int, default=8, help="Concurrent page downloads (default: 8)."
@@ -205,7 +217,7 @@ def main():
         number_matched = get_number_matched(args.url, timeout=args.timeout)
         if number_matched < 0:
             print(
-                "⚠️  Server did not report numberMatched; cannot pre-compute pages for parallel mode.",
+                "WARN:  Server did not report numberMatched; cannot pre-compute pages for parallel mode.",
                 file=sys.stderr,
             )
             print(
@@ -215,9 +227,28 @@ def main():
             sys.exit(2)
 
         page_count = math.ceil(number_matched / args.limit)
+        if args.start_page < 0:
+            print("??  --start-page must be >= 0.", file=sys.stderr)
+            sys.exit(2)
+        if args.start_page >= page_count:
+            print(
+                f"??  --start-page {args.start_page} is >= page count {page_count}.",
+                file=sys.stderr,
+            )
+            sys.exit(2)
+
+        end_page = page_count
+        if args.max_pages and args.max_pages > 0:
+            end_page = min(page_count, args.start_page + args.max_pages)
+        run_pages = end_page - args.start_page
+
         print(
             f"numberMatched: {number_matched}  |  pages: {page_count}  |  limit: {args.limit}"
         )
+        if run_pages != page_count:
+            print(
+                f"Partial run: pages {args.start_page}..{end_page - 1} ({run_pages} pages)."
+            )
 
         with tempfile.TemporaryDirectory(prefix="ogc_csv_") as tdir:
             tmpdir = Path(tdir)
@@ -225,7 +256,7 @@ def main():
             # Schedule workers
             jobs = []
             with cf.ThreadPoolExecutor(max_workers=args.workers) as ex:
-                for page_idx in range(page_count):
+                for page_idx in range(args.start_page, end_page):
                     start_index = page_idx * args.limit
                     jobs.append(
                         ex.submit(
@@ -259,7 +290,7 @@ def main():
 
             # Write CSV
             total = write_csv(out_csv, header, page_files)
-            print(f"✅ Done (parallel). Wrote {total} rows to {out_csv}")
+            print(f"Done (parallel). Wrote {total} rows to {out_csv}")
 
             if args.zip:
                 zip_path = str(out_csv) + ".zip"
@@ -267,10 +298,10 @@ def main():
                     zip_path, "w", compression=zipfile.ZIP_DEFLATED
                 ) as zf:
                     zf.write(out_csv, arcname=out_csv.name)
-                print(f"📦 Compressed CSV to {zip_path}")
+                print(f"Compressed CSV to {zip_path}")
 
     except Exception as e:
-        print(f"❌ Error: {e}", file=sys.stderr)
+        print(f"Error Error: {e}", file=sys.stderr)
         sys.exit(1)
 
 
