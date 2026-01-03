@@ -44,7 +44,7 @@ def read_csvs(z, prefix, **kwargs):
 
 
 def main():
-    with zipfile.ZipFile("202412.zip") as z:
+    with zipfile.ZipFile("202512.zip") as z:
         logging.info("Loading addresses")
         addresses = read_csvs(z, "Addresses")
 
@@ -52,7 +52,7 @@ def main():
         locations = read_csvs(
             z,
             "Locations",
-            usecols=["LOC_GUID", "REPPOINT_LATITUDE", "REPPOINT_LONGITUDE"],
+            usecols=["LOC_GUID", "BG_LATITUDE", "BG_LONGITUDE"],
         )
 
     logging.info("Merging addresses and locations")
