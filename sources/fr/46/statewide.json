@@ -1,0 +1,114 @@
+{
+  "coverage": {
+    "ISO 3166": {
+      "alpha2": "FR-46",
+      "country": "France",
+      "subdivision": "Lot"
+    },
+    "state": "46",
+    "country": "fr"
+  },
+  "schema": 2,
+  "layers": {
+    "addresses": [
+      {
+        "name": "state",
+        "website": "https://adresse.data.gouv.fr",
+        "data": "https://adresse.data.gouv.fr/data/ban/adresses/latest/csv/adresses-46.csv.gz",
+        "protocol": "http",
+        "compression": "gzip",
+        "conform": {
+          "format": "csv",
+          "csvsplit": ";",
+          "id": "id",
+          "number": {
+            "function": "join",
+            "fields": ["numero", "rep"],
+            "separator": ""
+          },
+          "street": "nom_voie",
+          "lon": "lon",
+          "lat": "lat",
+          "city": "nom_commune",
+          "postcode": "code_postal",
+          "accuracy": {
+            "function": "map",
+            "field": "type_position",
+            "mapping": {
+              "bâtiment": 1,
+              "cage d’escalier": 2,
+              "délivrance postale": 3,
+              "entrée": 2,
+              "logement": 2,
+              "parcelle": 2,
+              "segment": 3,
+              "service technique": 5
+            },
+            "else": 5
+          }
+        },
+        "language": "fr",
+        "license": {
+          "url": "https://alliance.numerique.gouv.fr/licence-ouverte-open-licence/",
+          "text": "Licence Ouverte Etalab 2.0",
+          "attribution": true,
+          "attribution name": "Base Adresse Nationale (adresse.data.gouv.fr)",
+          "share-alike": false,
+          "remarks": "https://www.etalab.gouv.fr/wp-content/uploads/2018/11/open-licence.pdf"
+        },
+        "contact": {
+          "email": "adresse@data.gouv.fr"
+        }
+      }
+    ],
+    "parcels": [
+      {
+        "name": "state",
+        "website": "https://cadastre.data.gouv.fr/datasets/cadastre-etalab",
+        "data": "https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/departements/46/cadastre-46-parcelles.json.gz",
+        "protocol": "http",
+        "compression": "gzip",
+        "language": "fr",
+        "conform": {
+          "format": "geojson",
+          "pid": "id"
+        },
+        "license": {
+          "url": "https://alliance.numerique.gouv.fr/licence-ouverte-open-licence/",
+          "text": "Licence Ouverte Etalab 2.0",
+          "attribution": true,
+          "attribution name": "Cadastre Etalab (cadastre.data.gouv.fr)",
+          "share-alike": false,
+          "remarks": "https://www.etalab.gouv.fr/wp-content/uploads/2018/11/open-licence.pdf"
+        },
+        "contact": {
+          "email": "cadastre@data.gouv.fr"
+        }
+      }
+    ],
+    "buildings": [
+      {
+        "name": "state",
+        "website": "https://cadastre.data.gouv.fr/datasets/cadastre-etalab",
+        "data": "https://cadastre.data.gouv.fr/data/etalab-cadastre/latest/geojson/departements/46/cadastre-46-batiments.json.gz",
+        "protocol": "http",
+        "compression": "gzip",
+        "language": "fr",
+        "conform": {
+          "format": "geojson"
+        },
+        "license": {
+          "url": "https://alliance.numerique.gouv.fr/licence-ouverte-open-licence/",
+          "text": "Licence Ouverte Etalab 2.0",
+          "attribution": true,
+          "attribution name": "Cadastre Etalab (cadastre.data.gouv.fr)",
+          "share-alike": false,
+          "remarks": "https://www.etalab.gouv.fr/wp-content/uploads/2018/11/open-licence.pdf"
+        },
+        "contact": {
+          "email": "cadastre@data.gouv.fr"
+        }
+      }
+    ]
+  }
+}
