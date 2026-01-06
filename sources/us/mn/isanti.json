@@ -13,22 +13,38 @@
     "layers": {
         "addresses": [
             {
-                "name": "county",
-                "website": "https://www.co.isanti.mn.us/175/Geographic-Information-Systems-GIS",
-                "data": "https://www.co.isanti.mn.us/DocumentCenter/View/1418/IsantiCounty_Parcels",
-                "compression": "zip",
-                "protocol": "http",
+                "name": "address_points",
+                "website": "https://gis.co.isanti.mn.us/arcgis/rest/services/Addressing/AddressPoints_Public/FeatureServer",
+                "data": "https://gis.co.isanti.mn.us/arcgis/rest/services/Addressing/AddressPoints_Public/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile-polygon",
+                    "format": "geojson",
+                    "number": "ANUMBER",
+                    "street": "FULL_STREET",
+                    "unit": "SUB_ID1",
+                    "city": "POSTCOMM",
+                    "postcode": "ZIP",
+                    "id": "ADD_ID"
+                }
+            },
+            {
+                "name": "parcels",
+                "website": "https://gis.co.isanti.mn.us/arcgis/rest/services/LandRecords/TaxParcels_PublicBuildingNum/FeatureServer",
+                "data": "https://gis.co.isanti.mn.us/arcgis/rest/services/LandRecords/TaxParcels_PublicBuildingNum/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
                     "number": {
                         "function": "prefixed_number",
-                        "field": "PropertyAd"
+                        "field": "SITEADDRESS"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "PropertyAd"
+                        "field": "SITEADDRESS"
                     },
-                    "city": "PropertyCi"
+                    "city": "PSTLCITY",
+                    "postcode": "PSTLZIP5",
+                    "id": "PARCELID"
                 }
             }
         ]
