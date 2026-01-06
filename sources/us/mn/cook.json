@@ -19,7 +19,11 @@
                 "conform": {
                     "format": "geojson",
                     "number": "ADDRNUM",
-                    "street": "FULLADDR"
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "FULLADDR",
+                        "field_to_remove": "ADDRNUM"
+                    }
                 }
             }
         ]
