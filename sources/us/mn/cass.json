@@ -14,17 +14,20 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://cassweb3.co.cass.mn.us/arcgis/rest/services/Basic_Layers2/MapServer/3",
+                "data": "https://cassweb.casscountymn.gov/arcgis/rest/services/Basic_Layers2/MapServer/3",
                 "protocol": "ESRI",
                 "conform": {
                     "number": {
                         "function": "prefixed_number",
-                        "field": "ADDRESS"
+                        "field": "PHYSADDR"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "ADDRESS"
+                        "field": "PHYSADDR"
                     },
+                    "city": "POSTCOMM",
+                    "postcode": "ZIP",
+                    "unit": "UNIT",
                     "format": "geojson"
                 }
             }
@@ -32,7 +35,7 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://cassweb3.co.cass.mn.us/arcgis/rest/services/Basic_Layers2/MapServer/13",
+                "data": "https://cassweb.casscountymn.gov/arcgis/rest/services/Basic_Layers2/MapServer/13",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
