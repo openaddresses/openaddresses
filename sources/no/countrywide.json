@@ -11,8 +11,8 @@
         "addresses": [
             {
                 "name": "country",
-                "data": "https://nedlasting.geonorge.no/geonorge/Basisdata/MatrikkelenVegadresse/CSV/Basisdata_0000_Norge_25833_MatrikkelenVegadresse_CSV.zip",
-                "website": "https://kartkatalog.geonorge.no/metadata/cadastre--address-apartment-level/365b0591-b536-42a6-a20d-22e404fbfe55",
+                "data": "https://nedlasting.geonorge.no/geonorge/Basisdata/MatrikkelenAdresseLeilighetsniva/CSV/Basisdata_0000_Norge_25833_MatrikkelenAdresseLeilighetsniva_CSV.zip",
+                "website": "https://kartkatalog.geonorge.no/metadata/matrikkelen-adresse-leilighetsnivaa/365b0591-b536-42a6-a20d-22e404fbfe55",
                 "protocol": "http",
                 "compression": "zip",
                 "license": {
@@ -22,6 +22,12 @@
                     "attribution name": "Kartverket",
                     "share-alike": false
                 },
+                "contact": {
+                    "name": "Kartverket",
+                    "email": "kundesenter@kartverket.no",
+                    "address": "Kartverksveien 21, 3511 Hønefoss, Norway",
+                    "phone": "+47 32 11 80 00"
+                },
                 "conform": {
                     "format": "csv",
                     "csvsplit": ";",
@@ -29,11 +35,19 @@
                     "lat": "Nord",
                     "lon": "Øst",
                     "id": "adresseId",
-                    "number": "nummer",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "nummer",
+                            "bokstav"
+                        ],
+                        "separator": ""
+                    },
+                    "unit": "bruksenhetsnummerTekst",
                     "street": "adressenavn",
-                    "unit": "bokstav",
                     "city": "poststed",
-                    "postcode": "postnummer"
+                    "postcode": "postnummer",
+                    "region": "kommunenavn"
                 }
             }
         ]
