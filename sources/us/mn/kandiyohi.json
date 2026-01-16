@@ -14,15 +14,28 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "https://gis.co.kandiyohi.mn.us/maps/kandigis/",
-                "data": "https://gis.co.kandiyohi.mn.us/arcgis/rest/services/Kandiyohi/MapServer/2",
+                "website": "https://gis.kcmn.us/arcgis/rest/services/Kandiyohi/911/MapServer",
+                "data": "https://gis.kcmn.us/arcgis/rest/services/Kandiyohi/911/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSENUM",
+                    "number": "ANUMBER",
                     "street": "STREETNAME",
-                    "city": "CITY",
+                    "unit": "UNIT",
+                    "city": "POSTCOMM",
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://gis.kcmn.us/arcgis/rest/services/Kandiyohi/PublicMailingKandi/FeatureServer",
+                "data": "https://gis.kcmn.us/arcgis/rest/services/Kandiyohi/PublicMailingKandi/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]
