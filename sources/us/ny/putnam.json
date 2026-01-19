@@ -1,0 +1,39 @@
+{
+    "coverage": {
+        "country": "us",
+        "state": "ny",
+        "county": "Putnam",
+        "fips": "36079"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "website": "https://data-pcny.opendata.arcgis.com/datasets/pcny::address-points/about",
+                "data": "https://services2.arcgis.com/dU6jdOIkCUj2UDe9/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_NUMBER",
+                    "street": ["PRE_DIRECTIONAL", "STREET_NAME", "POST_TYPE", "POST_DIRECTIONAL"],
+                    "unit": "UNIT",
+                    "city": "POSTAL_CITY",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://data-pcny.opendata.arcgis.com/maps/87ae151efbec46d196e4c66d08a4a33c/about",
+                "data": "https://services2.arcgis.com/dU6jdOIkCUj2UDe9/ArcGIS/rest/services/Putnam_parcels_2024/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
+    }
+}
