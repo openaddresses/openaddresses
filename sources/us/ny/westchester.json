@@ -14,20 +14,37 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://giswww.westchestergov.com/arcgis/rest/services/MappingWestchesterCounty_AdditionalLayers/MapServer/78",
+                "data": "https://giswww.westchestergov.com/arcgis/rest/services/DataHub_TaxParcels/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSENUM",
-                    "street": [
-                        "PREDIR",
-                        "STREETNAME",
-                        "SUFTYPE",
-                        "SUFDIR"
-                    ],
+                    "street": "PROPADDRESS",
                     "unit": "PROPAPT",
-                    "city": "PROPCITY",
+                    "city": "CITYTOWN_NAME",
                     "postcode": "PROPZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://giswww.westchestergov.com/arcgis/rest/services/DataHub_TaxParcels/MapServer/0",
+                "protocol": "ESRI",
+                "website": "https://giswww.westchestergov.com/arcgis/rest/services/DataHub_TaxParcels/MapServer",
+                "conform": {
+                    "format": "geojson",
+                    "id": "PRINTKEY"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://giswww.westchestergov.com/arcgis/rest/services/Planimetric_Basemap/MapServer/14",
+                "protocol": "ESRI",
+                "website": "https://giswww.westchestergov.com/arcgis/rest/services/Planimetric_Basemap/MapServer",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
