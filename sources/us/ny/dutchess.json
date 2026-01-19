@@ -1,0 +1,39 @@
+{
+    "schema": 2,
+    "coverage": {
+        "country": "us",
+        "state": "ny",
+        "county": "dutchess",
+        "fips": "36027"
+    },
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/3i1Ytxq3CWeA9q8g/ArcGIS/rest/services/Address_Point_File/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "NUM",
+                    "street": ["PREDIR", "PRETYPE", "STREET", "SUFFIX", "POSTDIR"],
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIPCODE",
+                    "id": "ID"
+                },
+                "website": "httpshttps://opendata-dcny.hub.arcgis.com/datasets/d2ec693695f248c2a86921504f73061b_0/about"
+            }
+        ]
+        ,
+        "buildings": [
+            {
+                "name": "buildings",
+                "data": "https://services5.arcgis.com/3i1Ytxq3CWeA9q8g/arcgis/rest/services/Structures/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                },
+                "website": "https://opendata-dcny.hub.arcgis.com/datasets/2da8336e4f79475eb5c93c5a5559d6b5_4/about"
+            }
+        ]
+    }
+}
