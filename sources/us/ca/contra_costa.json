@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.cccounty.us/Downloads/General%20County%20Data/CCC_AddressData.zip",
+                "data": "https://gis.cccounty.us/Downloads/General%20County%20Data/CCC_DOIT_AddressData.zip",
                 "website": "https://www.contracosta.ca.gov/1818/GIS",
                 "license": "https://gis.cccounty.us/Downloads/General%20County%20Data/Data%20Disclaimer.pdf",
                 "attribution": "Contra Costa County",
@@ -22,18 +22,15 @@
                 "compression": "zip",
                 "conform": {
                     "format": "shapefile",
-                    "number": "street_num",
-                    "street": [
-                        "prefix_typ",
-                        "prefix_dir",
-                        "street_nam",
-                        "street_typ",
-                        "suffix_dir"
-                    ],
-                    "unit": "unit_numbe",
-                    "city": "city",
-                    "region": "state",
-                    "postcode": "zip_code"
+                    "number": "sitenum",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "fulladd"
+                    },
+                    "unit": "siteunit",
+                    "city": "municipali",
+                    "region": "stateabbr",
+                    "postcode": "postal"
                 }
             }
         ],
