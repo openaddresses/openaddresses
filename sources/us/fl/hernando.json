@@ -1,60 +1,60 @@
 {
-    "coverage": {
-        "US Census": {
-            "geoid": "12053",
-            "name": "Hernando County",
-            "state": "Florida"
-        },
-        "country": "us",
-        "state": "fl",
-        "county": "Hernando"
+  "coverage": {
+    "US Census": {
+      "geoid": "12053",
+      "name": "Hernando County",
+      "state": "Florida"
     },
-    "schema": 2,
-    "layers": {
-        "addresses": [
-            {
-                "name": "county",
-                "data": "https://server.hernandopa-fl.us/server/rest/services/Basemap/MapServer/1",
-                "protocol": "ESRI",
-                "conform": {
-                    "format": "geojson",
-                    "number": "HOUSENUM",
-                    "street": [
-                        "PREFIX",
-                        "STREETNAME",
-                        "STREETTYPE",
-                        "SUFFIX"
-                    ],
-                    "unit": [
-                        "SECLOCTYPE",
-                        "SECLOCCODE"
-                    ],
-                    "city": "CITY",
-                    "region": "STATE",
-                    "postcode": "ZONE"
-                }
-            }
-        ],
-        "parcels": [
-            {
-                "name": "county",
-                "data": "https://www.hernandocountygis-florida.us/arcgis/rest/services/Parcels_Addresses/MapServer/6",
-                "protocol": "ESRI",
-                "conform": {
-                    "format": "geojson",
-                    "pid": "PARCEL_KEY"
-                }
-            }
-        ],
-        "buildings": [
-            {
-                "name": "county",
-                "data": "https://www.hernandocountygis-florida.us/arcgis/rest/services/Parcels_Addresses/MapServer/4",
-                "protocol": "ESRI",
-                "conform": {
-                    "format": "geojson"
-                }
-            }
-        ]
-    }
+    "country": "us",
+    "state": "fl",
+    "county": "Hernando"
+  },
+  "schema": 2,
+  "layers": {
+    "addresses": [
+      {
+        "name": "county",
+        "data": "https://services2.arcgis.com/x5zvhhxfUuRDntRe/arcgis/rest/services/Basemap_PublicMapGallery/FeatureServer/1",
+        "protocol": "ESRI",
+        "conform": {
+          "format": "geojson",
+          "number": "HOUSENUM",
+          "street": [
+            "PREFIX",
+            "STREETNAME",
+            "STREETTYPE",
+            "SUFFIX"
+          ],
+          "unit": [
+            "SECLOCTYPE",
+            "SECLOCCODE"
+          ],
+          "city": "CITY",
+          "region": "STATE",
+          "postcode": "ZONE"
+        }
+      }
+    ],
+    "parcels": [
+      {
+        "name": "county",
+        "data": "https://services2.arcgis.com/x5zvhhxfUuRDntRe/arcgis/rest/services/Basemap_PublicMapGallery/FeatureServer/10061",
+        "protocol": "ESRI",
+        "conform": {
+          "format": "geojson",
+          "pid": "PARCEL_KEY"
+        }
+      }
+    ],
+    "buildings": [
+      {
+        "name": "county",
+        "data": "https://services2.arcgis.com/x5zvhhxfUuRDntRe/arcgis/rest/services/Basemap_PublicMapGallery/FeatureServer/22",
+        "protocol": "ESRI",
+        "conform": {
+          "format": "geojson"
+        }
+      }
+    ]
+  }
 }
