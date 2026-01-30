@@ -1,27 +1,40 @@
 {
     "coverage": {
+        "ISO 3166": {
+            "alpha2": "CA-QC",
+            "country": "Canada",
+            "subdivision": "Quebec"
+        },
         "country": "ca",
-        "state": "qc",
-        "city": "Quebec City"
+        "state": "qc"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
-                "name": "city",
-                "data": "https://www.donneesquebec.ca/recherche/fr/dataset/2567eac8-a3ce-423a-a43d-6b8e74708c1d/resource/a8498bca-518f-4360-810b-24a0e85ea61c/download/vdq-adresse.zip",
-                "website": "https://www.donneesquebec.ca/recherche/fr/dataset/adresses-de-la-ville-de-quebec",
+                "name": "state",
+                "data": "https://diffusion.mern.gouv.qc.ca/diffusion/RGQ/Vectoriel/Theme/Local/RQA/CSV/RQA_CSV.zip",
+                "website": "https://mrnf.gouv.qc.ca/repertoire-geographique/adresses-referentiel-quebecois-adresses/",
                 "protocol": "http",
                 "compression": "zip",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "share-alike": false,
+                    "url": "https://creativecommons.org/licenses/by/4.0",
+                    "remarks": "https://diffusion.mern.gouv.qc.ca/diffusion/RGQ/Vectoriel/Theme/Local/RQA/Document/Guide_d_utilisation_RQA.pdf",
+                    "attribution name": "Le ministère des Ressources naturelles et des Forêts"
+                },
                 "conform": {
-                    "format": "shapefile",
-                    "number": "NO_CIVIQUE",
-                    "street": [
-                        "TYPE_VOIE",
-                        "LIEN_VOIE",
-                        "NOM_VOIE",
-                        "ORIENTATIO"
-                    ]
+                    "format": "csv",
+                    "unit": "numero_unite",
+                    "number": "numero_municipal",
+                    "street": "odonyme_recompose_court",
+                    "city": "nom_municipalite",
+                    "postcode": "code_postal",
+                    "lat": "latitude",
+                    "lon": "longitude",
+                    "srs": "EPSG:4617"
                 }
             }
         ]
