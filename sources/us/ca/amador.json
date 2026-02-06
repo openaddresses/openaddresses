@@ -14,34 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services9.arcgis.com/Z65sx307Hunxj6eq/arcgis/rest/services/Land_Use_Parcels_2025/FeatureServer/0",
+                "data": "https://services9.arcgis.com/Z65sx307Hunxj6eq/ArcGIS/rest/services/Parcels_AmadorCo_20210531/FeatureServer/0",
                 "attribution": "Amador County",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": {
                         "function": "prefixed_number",
-                        "field": "AddressStr"
+                        "field": "ADDRNUM"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "AddressStr",
+                        "field": "SITUS1",
                         "may_contain_units": true
                     },
-                    "unit": {
-                        "function": "postfixed_unit",
-                        "field": "AddressStr"
-                    },
-                    "city": "AddressCit",
-                    "region": "AddressSta",
-                    "postcode": "AddressZip"
+                    "city": "ADDRCITY",
+                    "region": "ADDRSTATE",
+                    "postcode": "ADDRZIP"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://services9.arcgis.com/Z65sx307Hunxj6eq/arcgis/rest/services/Land_Use_Parcels_2025/FeatureServer/0",
+                "data": "https://services9.arcgis.com/Z65sx307Hunxj6eq/ArcGIS/rest/services/Parcels_AmadorCo_20210531/FeatureServer/0",
                 "attribution": "Amador County",
                 "protocol": "ESRI",
                 "conform": {
