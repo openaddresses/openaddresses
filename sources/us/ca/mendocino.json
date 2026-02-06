@@ -20,7 +20,10 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "SITUS_NO",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUS_ADD"
+                    },
                     "street": {
                         "function": "postfixed_street",
                         "field": "SITUS_ADD"
