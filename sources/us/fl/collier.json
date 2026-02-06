@@ -15,13 +15,7 @@
             {
                 "name": "county",
                 "attribution": "Collier County",
-                "data": "https://gmdnags.colliercountyfl.gov/arcgis/rest/services/Public/AddressIdentify/MapServer//0",
-                "website": "https://hub-collierbcc.opendata.arcgis.com/datasets/CollierBCC::address-points/about",
-                "license": {
-                    "text": "Public Domain",
-                    "attribution": false,
-                    "share-alike": false
-                },
+                "data": "https://services2.arcgis.com/SlIq32SqARUHIhSx/arcgis/rest/services/Site_Address_Points_b/FeatureServer/3",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -36,7 +30,8 @@
                         "ADDRNUMSUF"
                     ],
                     "street": "FULLNAME",
-                    "city": "MUNICIPALITY"
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIPCODE"
                 }
             }
         ],
@@ -44,11 +39,13 @@
             {
                 "name": "county",
                 "attribution": "Collier County",
-                "data": "https://ags2.colliercountyfl.gov/gis/rest/services/Agency/Parcels/MapServer/0",
+                "data": "https://services2.arcgis.com/SlIq32SqARUHIhSx/arcgis/rest/services/Parcels/FeatureServer/42",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PARCELID"
+                    "pid": "ParcelId",
+                    "city": "SiteCity",
+                    "postcode": "SiteZipCode"
                 }
             }
         ],
