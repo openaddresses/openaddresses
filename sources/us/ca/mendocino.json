@@ -14,20 +14,21 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.mendocinocounty.org/server/rest/services/Parcels_sde_pub/MapServer/6",
+                "data": "https://services5.arcgis.com/8y4r60VTvWj2wnDH/arcgis/rest/services/Parcels_APN_view/FeatureServer/0",
                 "attribution": "Mendocino County",
                 "website": "https://gis.mendocinocounty.org/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "SITUS_NO",
-                    "street": [
-                        "SITUS_DIR",
-                        "SITUS_ST",
-                        "ST_TYPE"
-                    ],
-                    "unit": "APT",
-                    "city": "SITUS_CTY",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SITUS_ADD"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SITUS_ADD"
+                    },
+                    "city": "SITUS_CITY",
                     "postcode": "SITUS_ZIP"
                 }
             }
@@ -35,7 +36,7 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.mendocinocounty.org/server/rest/services/Parcels_sde_pub/MapServer/6",
+                "data": "https://services5.arcgis.com/8y4r60VTvWj2wnDH/arcgis/rest/services/Parcels_APN_view/FeatureServer/0",
                 "attribution": "Mendocino County",
                 "website": "https://gis.mendocinocounty.org/",
                 "protocol": "ESRI",
