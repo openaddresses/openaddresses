@@ -20,7 +20,10 @@
                 "conform": {
                     "format": "geojson",
                     "number": "STNUM",
-                    "street": "STREETNAME",
+                    "street": {
+                        "function": "prefixed_number",
+                        "field": "address"
+                    },
                     "unit": "SECONDARYL",
                     "city": "USPSCITY",
                     "postcode": "ZipCode"
