@@ -13,31 +13,31 @@
                 "name": "country",
                 "protocol": "http",
                 "compression": "zip",
-                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2025-02-25-thhqk/nl-countrywide.addresses.geojson.zip",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-02-20-ut1ec/verblijfsobject.csv.zip",
+                "website": "https://www.kadaster.nl/zakelijk/producten/adressen-en-gebouwen/bag-geopackage",
                 "license": {
-                    "url": "https://www.esri.nl/nl-nl/legal/voorwaarden/esri-nederland-terms-of-use",
-                    "text": "Indemnification"
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC0 1.0",
+                    "attribution": false,
+                    "share-alike": false
                 },
                 "conform": {
-                    "format": "geojson",
+                    "format": "csv",
+                    "lon": "X",
+                    "lat": "Y",
                     "number": {
                         "function": "format",
                         "fields": [
                             "huisnummer",
                             "huisletter",
-                            "huisnummertoevoeging"
+                            "toevoeging"
                         ],
                         "format": "$1$2-$3"
                     },
-                    "street": "openbareruimtenaam",
-                    "postcode": {
-                        "function": "regexp",
-                        "field": "postcode",
-                        "pattern": "^([0-9]{4})[ ]?([A-Z]{2})$",
-                        "replace": "$1 $2"
-                    },
-                    "city": "woonplaatsnaam",
-                    "id": "adresseerbaarobjectid"
+                    "street": "openbare_ruimte_naam",
+                    "postcode": "postcode",
+                    "city": "woonplaats_naam",
+                    "id": "identificatie"
                 }
             }
         ]
