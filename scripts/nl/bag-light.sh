@@ -16,12 +16,14 @@ fi
 mkdir -p "${WORK_DIR}"
 
 if [ ! -f "${GPKG_PATH}" ]; then
-  if command -v curl >/dev/null 2>&1; then
+  if command -v aria2c >/dev/null 2>&1; then
+    aria2c -x 16 -s 16 -k 64M -c "${URL}" -d "${WORK_DIR}" -o "$(basename "${GPKG_PATH}")"
+  elif command -v curl >/dev/null 2>&1; then
     curl -L "${URL}" -o "${GPKG_PATH}"
   elif command -v wget >/dev/null 2>&1; then
     wget -O "${GPKG_PATH}" "${URL}"
   else
-    echo "curl or wget is required to download ${URL}." >&2
+    echo "aria2c, curl, or wget is required to download ${URL}." >&2
     exit 1
   fi
 fi
