@@ -28,7 +28,23 @@
                 "conform": {
                     "format": "csv",
                     "unit": "numero_unite",
-                    "number": "numero_municipal",
+                    "number": {
+                        "function": "chain",
+                        "variable": "number_wip",
+                        "functions": [
+                            {
+                                "function": "format",
+                                "fields": ["numero_municipal", "numero_municipal_suffixe"],
+                                "format": "$1 $2"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "oa:number_wip",
+                                "pattern": "^(\\S+)(?:( [0-9]+(?:/[0-9]+)?)|(?: ([A-Za-z].*))|(?: (-.+))|(?: (?:&|<NUL>)))?$",
+                                "replace": "$1$2$3$4"
+                            }
+                        ]
+                    },
                     "street": "odonyme_recompose_court",
                     "city": "nom_municipalite",
                     "postcode": "code_postal",
