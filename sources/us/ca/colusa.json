@@ -15,7 +15,7 @@
             {
                 "name": "county",
                 "data": "https://services5.arcgis.com/RHVBVx0fVmUtvfJV/ArcGIS/rest/services/Colusa_County_Tax_Parcels/FeatureServer/0",
-                "website": "http://www.countyofcolusa.org/index.aspx?NID=710",
+                "website": "https://www.countyofcolusa.org/index.aspx?NID=710",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -26,6 +26,21 @@
                     "street": {
                         "function": "postfixed_street",
                         "field": "SITUS_1"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "SITUS_2",
+                        "pattern": "^([a-zA-Z ]+) [A-Z]{2} [0-9]{0,}$"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "SITUS_2",
+                        "pattern": " ([A-Z]{2}) [0-9]{5}$"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "SITUS_2",
+                        "pattern": " ([0-9]{5})$"
                     }
                 }
             }

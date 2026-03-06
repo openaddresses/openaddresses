@@ -14,10 +14,12 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.nccde.org/agsserver/rest/services/BaseMaps/Addresses/MapServer/2",
-                "protocol": "ESRI",
+                "data": "https://gis.nccde.org/agsserver/rest/directories/arcgisoutput/downloads/zipped/AddrPnts_SHP.zip",
+                "website": "https://apps-nccde.hub.arcgis.com/",
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "shapefile",
                     "number": "ADDR_NUM",
                     "street": [
                         "ADDR_PD",
@@ -30,6 +32,31 @@
                     "postcode": "ZIPCODE",
                     "city": "CITY",
                     "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.nccde.org/agsserver/rest/directories/arcgisoutput/downloads/zipped/Bldg_Outlines_SHP.zip",
+                "website": "https://apps-nccde.hub.arcgis.com/",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PRCLID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.nccde.org/agsserver/rest/directories/arcgisoutput/downloads/zipped/Bldg_Outlines_SHP.zip",
+                "website": "https://apps-nccde.hub.arcgis.com/",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile"
                 }
             }
         ]

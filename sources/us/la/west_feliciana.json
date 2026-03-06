@@ -14,22 +14,34 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://services.geoportalmaps.com/arcgis/rest/services/WestFeliciana_Services/MapServer/0",
+                "data": "https://services5.arcgis.com/SkttgSmcq6CPonms/ArcGIS/rest/services/Address_Data_Public/FeatureServer/10",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
+                    "id": "siteaddid",
                     "number": [
-                        "HOUSENUMBE",
-                        "HNUMSUFFIX"
+                        "addrnum",
+                        "addrnumsuf"
                     ],
-                    "street": [
-                        "STREETDIRP",
-                        "STREETNAME",
-                        "THOROUGHFA",
-                        "STREETDIRS"
+                    "street": "fullname",
+                    "unit": [
+                        "unittype",
+                        "unitid"
                     ],
-                    "city": "COMMUNITYN",
-                    "postcode": "ZIP"
+                    "city": "placename",
+                    "district": "county",
+                    "region": "stateabbreviation"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/SkttgSmcq6CPonms/ArcGIS/rest/services/Tax_Parcels_view/FeatureServer/250",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
                 }
             }
         ]

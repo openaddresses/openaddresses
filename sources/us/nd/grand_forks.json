@@ -14,21 +14,21 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.gfgis.com/arcgis/rest/services/Public_Layers/Labels/MapServer/0",
+                "data": "https://gfgis1.nd.gov/arcgis/rest/services/AGOParcelViewer/MapServer/5",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "housenum",
-                    "street": [
-                        "st_prefix",
-                        "st_name",
-                        "st_type",
-                        "st_suffix"
-                    ],
-                    "unit": "unitnum",
-                    "city": "usps_city",
-                    "region": "state",
-                    "postcode": "zipcode"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PROPERTY_ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PROPERTY_ADDRESS"
+                    },
+                    "city": "PROPERTY_CITY",
+                    "postcode": "PROPERTY_ZIP",
+                    "id": "PARCEL"
                 }
             }
         ]

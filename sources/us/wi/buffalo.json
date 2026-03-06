@@ -14,28 +14,16 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gisdata.wisc.edu/public/BUFFALO_ADDRESSES_2023.zip",
-                "website": "https://geodata.wisc.edu/catalog/8D795AA2-7E0E-4929-B471-F02877A4ED14",
-                "protocol": "http",
-                "compression": "zip",
-                "year": "2023",
+                "data": "https://services2.arcgis.com/4fskj6X2QqYEBVyr/arcgis/rest/services/Addresses/FeatureServer/1",
+                "website": "https://buffalocounty.maps.arcgis.com/home/index.html",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "gdb",
-                    "layer": "BUFFALO_ADDRESSES_2023",
-                    "number": [
-                        "addNum",
-                        "ADDNUMSUFFIX"
-                    ],
-                    "street": [
-                        "PREFIX",
-                        "STREETNAME",
-                        "STREETTYPE",
-                        "SUFFIX"
-                    ],
-                    "unit": [
-                        "UNITTYPE",
-                        "UNITID"
-                    ]
+                    "format": "geojson",
+                    "number": "AddNum",
+                    "street": "Street",
+                    "city": "Post_Comm",
+                    "region": "State",
+                    "postcode": "Post_Code"
                 }
             }
         ],

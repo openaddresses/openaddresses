@@ -14,24 +14,44 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://mcatlas.org/arcgis3/rest/services/overlays/Address_Labels/MapServer/0",
+                "data": "https://gis.montgomerycountymd.gov/ArcGIS/rest/services/energov/energov/MapServer/0",
                 "website": "https://gisportal.montgomerycountymd.gov/portal/home/index.html",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": [
-                        "ADDR_NUMBER",
-                        "ADDR_NUMBER_SUFFIX"
-                    ],
-                    "unit": "UNIT",
+                    "number": "ADDRNUM",
+                    "unit": "BLDG_NUM",
                     "street": [
                         "PRE_DIR",
-                        "ST_NAME",
-                        "ST_TYPE",
+                        "STREET_NAME",
+                        "STREET_TYPE",
                         "SUF_DIR"
                     ],
-                    "city": "CITY",
+                    "city": "POSTAL_CITY",
                     "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.montgomerycountymd.gov/ArcGIS/rest/services/energov/energov/MapServer/7",
+                "website": "https://gisportal.montgomerycountymd.gov/portal/home/index.html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ACCT"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.montgomerycountymd.gov/ArcGIS/rest/services/energov/energov/MapServer/11",
+                "website": "https://gisportal.montgomerycountymd.gov/portal/home/index.html",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

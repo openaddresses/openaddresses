@@ -14,8 +14,8 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://data.howardcountymd.gov/DataDownload/ESRI/address_points.zip",
-                "website": "http://data.howardcountymd.gov/",
+                "data": "https://hcgeoserver.howardcountymd.gov:8443/geoserver/general/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=general:Address_Points&outputFormat=shape-zip",
+                "website": "https://data.howardcountymd.gov/",
                 "license": {
                     "text": "PD",
                     "attribution": false,
@@ -23,13 +23,48 @@
                 },
                 "compression": "zip",
                 "protocol": "http",
-                "year": 2013,
                 "conform": {
-                    "street": "streetname",
-                    "number": "addressno",
                     "format": "shapefile",
+                    "id": "PKADDRESS",
+                    "street": "STREETNAME",
+                    "number": "ADDRESSNO",
                     "city": "PREMCITY",
-                    "postcode": "premzip"
+                    "region": "STATE",
+                    "postcode": "PREMZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://hcgeoserver.howardcountymd.gov:8443/geoserver/general/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=general:Property_Public&outputFormat=shape-zip",
+                "website": "https://data.howardcountymd.gov/",
+                "license": {
+                    "text": "PD",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "compression": "zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PKPARCELS"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://hcgeoserver.howardcountymd.gov:8443/geoserver/general/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=general:Buildings_Major&outputFormat=application/json",
+                "website": "https://data.howardcountymd.gov/",
+                "license": {
+                    "text": "PD",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

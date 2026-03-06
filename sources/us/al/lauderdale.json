@@ -18,9 +18,16 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "id": "PARCELID",
-                    "number": "SitusAddNumber",
-                    "street": "SitusAddName"
+                    "id": "ParcelNum",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PhysAddr"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PhysAddr"
+                    },
+                    "postcode": "PhysZipCodeID"
                 }
             }
         ],
@@ -31,7 +38,7 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PARCELID"
+                    "pid": "ParcelNum"
                 }
             }
         ],

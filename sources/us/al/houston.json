@@ -14,17 +14,23 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services.arcgis.com/UXN4FGWBfn79LLPC/ArcGIS/rest/services/Parcels_County_Current_050323/FeatureServer/0",
+                "data": "https://services.arcgis.com/UXN4FGWBfn79LLPC/ArcGIS/rest/services/SiteAddress/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "STREET_ADD"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "STREET_ADD"
+                    "number": "ADDRESSNUM",
+                    "street": [
+                        "PREDIR",
+                        "STNAME",
+                        "ADDRTYPD",
+                        "SUFDIR"
+                    ],
+                    "city": "CITY",
+                    "region": "ST",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "ZIP",
+                        "pattern": "^([0-9]{5})"
                     }
                 }
             }

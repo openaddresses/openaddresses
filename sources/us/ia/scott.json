@@ -14,12 +14,55 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "https://iowagisdata.org/gisdr/county/scott/open/browse",
-                "license": "https://iowagisdata.org/gisdr/county/scott/open/download?filename=1ScottCounty_GIS_Disclaimer.pdf",
-                "data": "https://iowagisdata.org/gisdr/county/scott/open/download?filename=SHP_Address.zip",
+                "license": "https://github.com/user-attachments/files/16608029/1ScottCounty_GIS_Disclaimer.pdf",
+                "data": "https://github.com/user-attachments/files/16608268/SHP_Address.zip",
                 "protocol": "http",
                 "compression": "zip",
-                "note": "address points; Address features, ESRI shape file: Address; AddressAlias"
+                "conform": {
+                    "id": "SIN",
+                    "number": [
+                        "SAN",
+                        "SANSUF"
+                    ],
+                    "street": [
+                        "PRT",
+                        "PRD",
+                        "STN",
+                        "STS",
+                        "POD",
+                        "POM"
+                    ],
+                    "unit": "UNIT",
+                    "city": "COMM",
+                    "region": "STATE",
+                    "postcode": "ZIP",
+                    "format": "shapefile"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "license": "https://github.com/user-attachments/files/16608029/1ScottCounty_GIS_Disclaimer.pdf",
+                "data": "https://github.com/user-attachments/files/16608265/SHP_Parcel.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "pid": "PIN",
+                    "format": "shapefile"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "license": "https://github.com/user-attachments/files/16608029/1ScottCounty_GIS_Disclaimer.pdf",
+                "data": "https://github.com/user-attachments/files/16608266/SHP_Planimetrics.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile"
+                }
             }
         ]
     }

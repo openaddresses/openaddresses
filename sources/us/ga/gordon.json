@@ -14,31 +14,25 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://gis.cityofcalhoun-ga.com/arcgis/rest/services/Roads_and_Parcels/MapServer/5",
+                "data": "https://gis.cityofcalhoun-ga.com/arcgis/rest/services/buildings_public/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "House_No",
-                    "street": [
-                        "Street_Nam",
-                        "Sttype"
+                    "number": [
+                        "housenum",
+                        "House_Number_Suffix"
                     ],
-                    "city": {
-                        "function": "regexp",
-                        "field": "City_St_Zip",
-                        "pattern": "^(.+)(?:\\sGA\\s\\d{5})$",
-                        "replace": "$1"
-                    },
-                    "region": {
-                        "function": "regexp",
-                        "field": "City_St_Zip",
-                        "pattern": "GA"
-                    },
-                    "postcode": {
-                        "function": "regexp",
-                        "field": "City_St_Zip",
-                        "pattern": "\\d{5}$"
-                    }
+                    "street": [
+                        "prefixdir",
+                        "prefixtype",
+                        "streetname",
+                        "streettype",
+                        "suffixdir"
+                    ],
+                    "unit": [
+                        "SubAddr_Type",
+                        "SubAddr_Unit"
+                    ]
                 }
             }
         ],

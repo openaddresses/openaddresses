@@ -14,31 +14,55 @@
         "addresses": [
             {
                 "name": "county",
-                "protocol": "ESRI",
-                "data": "https://gis.co.josephine.or.us/arcgis/rest/services/Assessor/Taxlot_Points/MapServer/0",
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://alt.co.josephine.or.us/filedrop/gis/JoCo_SiteAddress.zip",
+                "website": "https://www.josephinecounty.gov/departments/geographic_information_systems_(gis)/gis_data_download.php",
                 "conform": {
-                    "format": "geojson",
-                    "number": "ST_NO",
-                    "street": [
-                        "SITUS_PREF",
-                        "ST_NAME",
-                        "SITUS_SUFF"
+                    "format": "shapefile",
+                    "number": [
+                        "add_number",
+                        "addnum_suf"
                     ],
-                    "city": "SITUS_CITY",
-                    "region": "SITUS_ST",
-                    "postcode": "SITUS_ZIP",
-                    "district": "COUNTY"
+                    "street": [
+                        "st_premod",
+                        "st_predir",
+                        "st_pretyp",
+                        "st_presep",
+                        "st_name",
+                        "st_postyp",
+                        "st_posdir",
+                        "st_posmod"
+                    ],
+                    "city": "post_comm",
+                    "region": "state",
+                    "postcode": "post_code",
+                    "district": "county"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "protocol": "ESRI",
-                "data": "https://gis.co.josephine.or.us/arcgis/rest/services/Assessor/Assessor_Taxlots/FeatureServer/0",
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://alt.co.josephine.or.us/filedrop/gis/JoCo_Taxlots.zip",
+                "website": "https://www.josephinecounty.gov/departments/geographic_information_systems_(gis)/gis_data_download.php",
                 "conform": {
-                    "format": "geojson",
-                    "pid": "MNX"
+                    "format": "shapefile",
+                    "pid": "MapNum"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "protocol": "http",
+                "compression": "zip",
+                "data": "https://alt.co.josephine.or.us/filedrop/gis/JoCo_Buildings.zip",
+                "website": "https://www.josephinecounty.gov/departments/geographic_information_systems_(gis)/gis_data_download.php",
+                "conform": {
+                    "format": "shapefile"
                 }
             }
         ]

@@ -1,0 +1,49 @@
+{
+    "coverage": {
+        "country": "de",
+        "state": "rp",
+        "ISO 3166": {
+            "alpha2": "DE-RP"
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://geobasis-rlp.de/data/hk/current/zip/HAUSKOORDINATEN_RP.zip",
+                "website": "https://lvermgeo.rlp.de/geodaten-geoshop/open-data",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "url": "https://www.govdata.de/dl-de/by-2-0",
+                    "text": "DL-DE->BY-2.0",
+                    "attribution": true,
+                    "attribution name": "GeoBasis-DE / LVermGeoRP"
+                },
+                "conform": {
+                    "format": "csv",
+                    "csvsplit": ";",
+                    "file": "HAUSKOORDINATEN_RP_hk.csv",
+                    "srs": "EPSG:25832",
+                    "id": "oid",
+                    "street": "str",
+                    "number": {
+                        "function": "format",
+                        "fields": [
+                            "hnr",
+                            "adz"
+                        ],
+                        "format": "$1$2"
+                    },
+                    "city": "gmd",
+                    "district": "kreis",
+                    "region": "regbez",
+                    "postcode": "postplz",
+                    "lat": "nordwert",
+                    "lon": "ostwert"
+                }
+            }
+        ]
+    }
+}

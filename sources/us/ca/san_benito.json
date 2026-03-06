@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services2.arcgis.com/NjMFCzThTMQy3AJa/ArcGIS/rest/services/ArcOnline_Addresses/FeatureServer/0",
+                "data": "https://gisweb.cosb.us/arcgis/rest/services/Parcels/MapServer/0",
                 "website": "https://cosb.maps.arcgis.com/home/item.html?id=f7dd7210ee114965aeeac18e9886daec",
                 "protocol": "ESRI",
                 "conform": {
@@ -27,7 +27,12 @@
                         "TYPE"
                     ],
                     "postcode": "ZIPCODE",
-                    "unit": "UNIT"
+                    "unit": "UNIT",
+                    "city": {
+                        "function": "regexp",
+                        "field": "CSZ",
+                        "pattern": "^(.*)(?: CA)"
+                    }
                 }
             }
         ],

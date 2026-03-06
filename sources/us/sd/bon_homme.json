@@ -14,11 +14,17 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.districtiii.org/arcgis/rest/services/BON_HOMME_LAYERS3/MapServer/1",
+                "data": "https://gis.districtiii.org/server/rest/services/BON_HOMME_COUNTY_WEB_LAYERS/MapServer/10",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": "HOUSE",
-                    "street": "STREET",
+                    "number": "HOUSE_NUMBER",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "DLVRY_ADD"
+                    },
+                    "unit": "LOCATION",
+                    "city": "COMMUNITY",
+                    "district": "COUNTY",
                     "format": "geojson"
                 }
             }
@@ -26,7 +32,7 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.districtiii.org/arcgis/rest/services/BON_HOMME_LAYERS3/MapServer/1",
+                "data": "https://gis.districtiii.org/server/rest/services/BON_HOMME_COUNTY_WEB_LAYERS/MapServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",

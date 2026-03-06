@@ -13,64 +13,69 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "http://geonb.snb.ca/downloads/anb/geonb_anb_shp.zip",
-                "website": "http://www.snb.ca/geonb1/e/DC/ANB.asp",
+                "data": "https://geonb.snb.ca/arcgis/rest/services/GeoNB_DPS_Civic_Address/MapServer/0",
+                "website": "https://www.snb.ca/geonb1/e/DC/ANB.asp",
                 "license": {
-                    "url": "http://geonb.snb.ca/documents/license/geonb-odl_en.pdf",
+                    "url": "https://geonb.snb.ca/documents/license/geonb-odl_en.pdf",
                     "text": "Contains information licenced under the GeoNB Open Data Licence",
                     "attribution name": "GeoNB Open Data License",
                     "attribution": true,
                     "share-alike": false
                 },
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "number": "civic_num",
-                    "street": [ "STREET", "ST_TYPE_E" ],
+                    "format": "geojson",
+                    "number": "CIVIC_NUM",
+                    "street": [
+                        "STREET",
+                        "ST_TYPE_E"
+                    ],
                     "city": "COMMUNITY",
                     "district": "COUNTY",
-                    "format": "shapefile"
+                    "id": "PID"
                 }
             },
             {
                 "name": "state-french",
-                "data": "http://geonb.snb.ca/downloads/anb/geonb_anb_shp.zip",
-                "website": "http://www.snb.ca/geonb1/e/DC/ANB.asp",
+                "data": "https://geonb.snb.ca/arcgis/rest/services/GeoNB_DPS_Civic_Address/MapServer/0",
+                "website": "https://www.snb.ca/geonb1/e/DC/ANB.asp",
                 "license": {
-                    "url": "http://geonb.snb.ca/documents/license/geonb-odl_en.pdf",
+                    "url": "https://geonb.snb.ca/documents/license/geonb-odl_en.pdf",
                     "text": "Contains information licenced under the GeoNB Open Data Licence",
                     "attribution name": "GeoNB Open Data License",
                     "attribution": true,
                     "share-alike": false
                 },
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "number": "civic_num",
-                    "street": [ "ST_TYPE_F", "STREET" ],
+                    "format": "geojson",
+                    "number": "CIVIC_NUM",
+                    "street": [
+                        "ST_TYPE_F",
+                        "STREET"
+                    ],
                     "city": "COMMUNITY",
                     "district": "COUNTY",
-                    "format": "shapefile"
+                    "id": "PID"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "state",
-                "data": "http://geonb.snb.ca/downloads/pan/geonb_pan-ncb_shp.zip",
-                "website": "http://www.snb.ca/geonb1/e/DC/propmap.asp",
+                "data": "https://geonb.snb.ca/arcgis/rest/services/GeoNB_SNB_Parcels/MapServer/0",
+                "website": "https://www.snb.ca/geonb1/e/DC/propmap.asp",
                 "license": {
-                    "url": "http://geonb.snb.ca/documents/license/geonb-odl_en.pdf",
+                    "url": "https://geonb.snb.ca/documents/license/geonb-odl_en.pdf",
                     "text": "Contains information licenced under the GeoNB Open Data Licence",
                     "attribution name": "GeoNB Open Data License",
                     "attribution": true,
                     "share-alike": false
                 },
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "pid": "Pan"
+                    "format": "geojson",
+                    "pid": "PID"
                 }
             }
         ]

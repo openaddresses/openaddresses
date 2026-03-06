@@ -1,12 +1,12 @@
 #!/bin/sh
 
 mkdir -p /tmp/work
-ZIP=/tmp/work/brisbane_source.zip
+SOURCE=/tmp/work/brisbane-source.csv
 CSV=/tmp/work/brisbane.csv
 OUTPUT=/tmp/work/brisbane.csv.zip
-wget -O - 'https://www.data.brisbane.qld.gov.au/data/api/3/action/package_show?id=property-address-data' | jq --raw-output '.result.resources[].url' | grep 'address' | wget --input-file=- --output-document=$ZIP
+wget --output-document=$SOURCE "https://data.brisbane.qld.gov.au/api/explore/v2.1/catalog/datasets/property-address-locations/exports/csv?lang=en&use_labels=true&delimiter=%2C"
 
-zcat $ZIP | csvgrep -c 'EASTING,NORTHING' -r '.+' > $CSV
+cat $SOURCE | csvgrep -c 'EASTING,NORTHING' -r '.+' > $CSV
 
 mlr -I --csv put 'if (contains($EASTING, "|")) { $X = splita($EASTING, "|")[1] } else { $X = $EASTING }; if (contains($NORTHING, "|")) { $Y = splita($NORTHING, "|")[1] } else { $Y = $NORTHING }' $CSV
 

@@ -14,26 +14,29 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis3.cmpdd.org/arcgis/rest/services/County/RankinCounty/MapServer/8",
+                "data": "https://gis.cmpdd.org/server/rest/services/Hosted/Rankin_County_Feature_Layer/FeatureServer/3",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "STREET_NUM",
-                    "street": "STREET",
-                    "city": "CITY",
-                    "postcode": "ZIP",
-                    "region": "STATE"
+                    "number": [
+                        "st_number",
+                        "st_numsuff"
+                    ],
+                    "street": "fullname",
+                    "unit": "unit",
+                    "city": "community",
+                    "postcode": "zipcode"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis3.cmpdd.org/arcgis/rest/services/County/RankinCounty/MapServer/8",
+                "data": "https://gis.cmpdd.org/server/rest/services/Hosted/Rankin_County_Feature_Layer/FeatureServer/8",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PARCEL_ID"
+                    "pid": "parcel_id"
                 }
             }
         ]

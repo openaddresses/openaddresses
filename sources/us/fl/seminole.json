@@ -14,17 +14,17 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://www.apps.seminolecountyfl.gov/is/gis/GISData/Addresses.zip",
+                "data": "https://scwebapp2.seminolecountyfl.gov:6443/is/gis/GISData/addresses.gdb.zip",
                 "protocol": "http",
                 "compression": "zip",
-                "website": "http://www.seminolecountyfl.gov/departments-services/information-services/gis-geographic-information-systems/gis-data.stml",
+                "website": "https://www.seminolecountyfl.gov/departments-services/information-services/gis-geographic-information-systems/gis-data.stml",
                 "license": {
                     "text": "Indemnification",
                     "attribution": false,
                     "share-alike": false
                 },
                 "conform": {
-                    "format": "shapefile",
+                    "format": "gdb",
                     "number": "PAD_NUM",
                     "street": [
                         "PAD_DIR",
@@ -33,7 +33,11 @@
                     ],
                     "unit": "ADDRESS2",
                     "city": "CITY",
-                    "postcode": "ZIP",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "ZIP",
+                        "pattern": "(.*)(?:\\.\\d+$)"
+                    },
                     "id": "PARCEL"
                 }
             }
@@ -41,17 +45,17 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "http://www.apps.seminolecountyfl.gov/is/gis/GISData/Parcels.zip",
+                "data": "https://scwebapp2.seminolecountyfl.gov:6443/is/gis/GISData/Parcels.gdb.zip",
                 "protocol": "http",
                 "compression": "zip",
-                "website": "http://www.seminolecountyfl.gov/departments-services/information-services/gis-geographic-information-systems/gis-data.stml",
+                "website": "https://www.seminolecountyfl.gov/departments-services/information-services/gis-geographic-information-systems/gis-data.stml",
                 "license": {
                     "text": "Indemnification",
                     "attribution": false,
                     "share-alike": false
                 },
                 "conform": {
-                    "format": "shapefile",
+                    "format": "gdb",
                     "pid": "PARCEL"
                 }
             }

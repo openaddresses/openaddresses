@@ -14,16 +14,20 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://portal.segrass.org/crcarcgis/rest/services/Long/Addresses/MapServer/0",
+                "data": "https://portal.segrass.org/crcarcgis/rest/services/Long/Addresses/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "complete_addrnum",
-                    "street": "complete_street_name",
-                    "unit": "complete_subaddress",
-                    "city": "usps_city",
-                    "region": "state",
-                    "postcode": "zipcode"
+                    "number": "addrnum",
+                    "street": "fullname",
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "USPS_City",
+                    "district": "county",
+                    "region": "stateabbreviation",
+                    "postcode": "ZIP"
                 }
             }
         ],

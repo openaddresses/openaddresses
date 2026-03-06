@@ -11,13 +11,20 @@
         "addresses": [
             {
                 "name": "country",
-                "data": "http://gis.planning.gov.bm/arcgis/rest/services/PlanningLayers/MapServer/0",
+                "data": "https://gis.planning.gov.bm/arcgis/rest/services/PlanningLayers/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "id": "ADDRESSID",
-                    "number": "CIVICNUMBER",
-                    "street": "STREETNAME",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "CIVICNUMBER",
+                            "EXTENSION"
+                        ],
+                        "separator": ""
+                    },
+                    "street": "FULLSTREETNAME",
                     "district": "PARISHNAME",
                     "postcode": "POSTALCODE"
                 }

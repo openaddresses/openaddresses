@@ -14,13 +14,22 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.worldviewsolutions.com/arcgis/rest/services/accomack/public/MapServer/6",
+                "data": "https://parcelviewer.geodecisions.com/arcgis/rest/services/accomack/Public/MapServer/7",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": "ADDRESSS",
-                    "street": "STREET",
-                    "unit": "APT",
-                    "format": "geojson"
+                    "number": [
+                        "add_number",
+                        "addnum_suf"
+                    ],
+                    "street": [
+                        "st_predir",
+                        "st_name",
+                        "st_postyp",
+                        "st_posdir"
+                    ],
+                    "region":"post_comm",
+                    "format": "geojson",
+                    "postcode":"post_code"
                 }
             }
         ]

@@ -21,10 +21,11 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://311webservreq.cityofbeaumont.com/map/rest/services/CRW/FeatureServer/0",
+                "data": "https://gis.beaumonttexas.gov/arcgis/rest/services/CWAMS/MapServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
+                    "id": "OBJECTID",
                     "number": "HOUSE_NUM",
                     "street": [
                         "PREFIX_DIR",
@@ -35,6 +36,17 @@
                     ],
                     "unit": "APT",
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.beaumonttexas.gov/arcgis/rest/services/CWAMS/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "geo_id"
                 }
             }
         ]

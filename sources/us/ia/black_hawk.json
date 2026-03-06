@@ -1,0 +1,79 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "19013",
+            "name": "Black Hawk County",
+            "state": "Iowa"
+        },
+        "country": "us",
+        "state": "ia",
+        "county": "Black Hawk"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://github.com/user-attachments/files/16609191/BlackHawkIAParcelPts.gdb.zip",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "year": "2024",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "propertyad"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "propertyad"
+                    },
+                    "unit": "Unit",
+                    "city": {
+                        "function": "regexp",
+                        "field": "property_2",
+                        "pattern": "^(.+)(?:,\\sIA\\s\\d{5})$",
+                        "replace": "$1"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "property_2",
+                        "pattern": "^(?:.+,\\s)(IA)(?:\\s\\d{5})$",
+                        "replace": "$1"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "property_2",
+                        "pattern": "^(?:.+,\\sIA\\s)(\\d{5})$",
+                        "replace": "$1"
+                    },
+                    "format": "gdb",
+                    "layer": "parcelpts"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://github.com/user-attachments/files/16609407/BlackHawkIAParcels.gdb.zip",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "year": "2024",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "pid": "PIN",
+                    "format": "gdb",
+                    "layer": "parcel"
+                }
+            }
+        ]
+    }
+}

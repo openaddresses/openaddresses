@@ -16,20 +16,27 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://www.comune.torino.it/geoportale/dati/civici_10000_geo.zip",
-                "website": "http://www.comune.torino.it/geoportale/datibase.htm",
-                "license": "http://www.sistemapiemonte.it/sitad/ricercaEntita.do?idEntita=10001942&interfaccia=rupar&ricerca=off&authType=guest",
-                "attribution": "I livelli di cartografia derivata sono rappresentabili in scala 1:10000 e sono ottenuti per derivazione dalla Carta Tecnica della Città di Torino in scala 1:1000. I cassoni degli isolati sono semplificati e le sedi stradali sono deformate per ospitare la toponomastica.",
+                "data": "https://geoportale.comune.torino.it/geodati/civici_WGS84_EPSG4326_csv.csv",
+                "website": "https://www.geoportale.piemonte.it/geonetwork/srv/eng/catalog.search#/metadata/c_l219:8987bd22-fea8-44e0-a900-7a6400032b30",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "share-alike": false,
+                    "attribution name": "Comune di Torino"
+
+                },
                 "protocol": "http",
-                "compression": "zip",
                 "conform": {
-                    "format": "shapefile",
-                    "file": "civici_10000_geo.shp",
-                    "srs": "EPSG:3003",
-                    "number": "NCIVSUB",
-                    "street": "DENOMINAZI",
-                    "city": "Torino",
-                    "region": "Piemonte"
+                    "format": "csv",
+                    "csvsplit": ";",
+                    "srs": "EPSG:4326",
+                    "number": "CIVICO",
+                    "street": "VIA",
+                    "city": "COMUNE",
+                    "postcode": "CAP",
+                    "lat": "COORDINATA_Y",
+                    "lon": "COORDINATA_X"
                 }
             }
         ]

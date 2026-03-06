@@ -1,0 +1,36 @@
+{
+    "coverage": {
+        "country": "hk",
+        "ISO 3166": {
+            "alpha2": "HK",
+            "country": "Hong Kong"
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "website": "https://data.gov.hk/en-data/dataset/hk-dpo-als_01-als",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2025-12-23-rcvot/hk_countrywide.zip",
+                "license": {
+                  "url": "https://data.gov.hk/en/terms-and-conditions",
+                  "attribution": true,
+                  "share-alike": false,
+                  "attribution name": "Hong Kong Digital Policy Office"
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "csv",
+                    "number": ["BuildingNoFrom", "en_BuildingNoFrom"],
+                    "street": ["StreetName","en_VillageName"],
+                    "district": "en_EngDistrict",
+                    "region": "en_Region",
+                    "lat": "latitude",
+                    "lon": "longitude"
+                }
+            }
+        ]
+    }
+}

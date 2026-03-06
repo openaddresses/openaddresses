@@ -15,14 +15,23 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://kartor.malmo.se/arcgis/rest/services/atlaskarta/MapServer/14",
-                "protocol": "ESRI",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2024-11-03-n1890/malmo_adresser.csv.zip",
+                "license": {
+                    "text": "CC0 1.0",
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "attribution": false,
+                    "share-alike": false
+                  },
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "csv",
                     "number": "ADRESSPLAT",
                     "street": "ADRESSOMR",
                     "city": "POSTORT",
-                    "postcode": "POSTNR"
+                    "postcode": "POSTNR",
+                    "lat": "Y",
+                    "lon": "X"
                 }
             }
         ]

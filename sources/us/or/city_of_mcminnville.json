@@ -1,0 +1,65 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -123.197222,
+                45.210833
+            ]
+        },
+        "US Census": {
+            "geoid": "4145000",
+            "name": "City of McMinnville",
+            "state": "Oregon"
+        },
+        "country": "us",
+        "state": "or",
+        "city": "McMinnville"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://macgisworx.ci.mcminnville.or.us/mac_or/rest/services/Hosted/Address_Points/FeatureServer/4",
+                "website": "https://macgisworx.ci.mcminnville.or.us/cityofmcminnville/home/item.html?id=0630f1dc43d24c979379390a07e66ab2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "situs"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "situs"
+                    },
+                    "unit": "unit"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://macgisworx.ci.mcminnville.or.us/mac_or/rest/services/Hosted/Taxlots/FeatureServer/271",
+                "website": "https://macgisworx.ci.mcminnville.or.us/cityofmcminnville/home/item.html?id=947a5704fc85473c8bd25459732bc105",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "acad_text"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://macgisworx.ci.mcminnville.or.us/mac_or/rest/services/Hosted/Building_Footprints_2024/FeatureServer/0",
+                "website": "https://macgisworx.ci.mcminnville.or.us/cityofmcminnville/home/item.html?id=b45a22ae96584f478d84947a6232a964",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

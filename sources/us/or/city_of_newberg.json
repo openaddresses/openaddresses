@@ -21,19 +21,22 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://services.arcgis.com/LJLnwUl0uTPWJE9B/ArcGIS/rest/services/Addresses/FeatureServer/0",
-                "website": "https://newberg.maps.arcgis.com/home/item.html?id=6fa12aab6cd746d78234d3598f0a9e07",
+                "data": "https://services.arcgis.com/LJLnwUl0uTPWJE9B/arcgis/rest/services/Newberg_Addresses_2_view/FeatureServer/0",
+                "website": "https://map-newberg.hub.arcgis.com/datasets/Newberg::nddl-addresses/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
+                    "id": "Add_ID",
                     "number": "stnum",
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "fulladd"
-                    },
+                    "street": [
+                        "stprefix",
+                        "stname",
+                        "sttype",
+                        "stsuffix"
+                    ],
                     "unit": "unitnum",
                     "city": "city",
-                    "postcode": "zip"
+                    "postcode": "Zip"
                 }
             }
         ]

@@ -14,25 +14,36 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.co.wadena.mn.us/arcgis/rest/services/WADENAPUBLIC/MapServer/0",
+                "data": "https://gis.co.wadena.mn.us/arcgis/rest/services/Assessors/TaxParcels/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "number": {
                         "function": "regexp",
-                        "field": "GISData.dbo.tblParcelJoin.PHYSICAL_ADDRESS",
+                        "field": "PHYSICAL_ADDRESS",
                         "pattern": "^([0-9]+)"
                     },
                     "street": {
                         "function": "regexp",
-                        "field": "GISData.dbo.tblParcelJoin.PHYSICAL_ADDRESS",
+                        "field": "PHYSICAL_ADDRESS",
                         "pattern": "^(?:[0-9\\-]+ )(.*)(?: [0-9]{5})$",
                         "replace": "$1"
                     },
                     "postcode": {
                         "function": "regexp",
-                        "field": "GISData.dbo.tblParcelJoin.PHYSICAL_ADDRESS",
+                        "field": "PHYSICAL_ADDRESS",
                         "pattern": "^(?:.* )([0-9]{5})$"
                     },
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.wadena.mn.us/arcgis/rest/services/Assessors/TaxParcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PARCEL_NUM",
                     "format": "geojson"
                 }
             }

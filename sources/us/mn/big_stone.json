@@ -20,24 +20,47 @@
                     "share-alike": false
                 },
                 "protocol": "ESRI",
-                "data": "http://gis.co.big-stone.mn.us/arcgis/rest/services/BigStone_Public/MapServer/0",
-                "website": "http://www.bigstonecounty.org/gis/gis.vbhtml",
+                "data": "https://gis.bigstonecounty.gov/arcgis/rest/services/Addressing/AddressPoints/FeatureServer/0",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "ADDRESS",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "ADDRESS",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
+                    "number": [
+                        "ANUMBER",
+                        "ANUMBERSUF"
+                    ],
+                    "street": [
+                        "ST_PRE_MOD",
+                        "ST_PRE_DIR",
+                        "STREETYPE",
+                        "ST_PRE_SEP",
+                        "ST_NAME",
+                        "STTYPE",
+                        "ST_POS_DIR",
+                        "ST_POS_MOD"
+                    ],
+                    "unit": [
+                        "SUB_TYPE1",
+                        "SUBID1"
+                    ],
                     "city": "CITY",
+                    "district": "CO_NAME",
                     "region": "STATE",
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "data": "https://gis.bigstonecounty.gov/arcgis/rest/services/Assessor/TaxParcels/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NUMBER"
                 }
             }
         ]

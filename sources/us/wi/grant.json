@@ -1,32 +1,37 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "55041",
-            "name": "Forest County",
+            "geoid": "55043",
+            "name": "Grant County",
             "state": "Wisconsin"
         },
         "country": "us",
         "state": "wi",
-        "county": "Forest"
+        "county": "Grant"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.co.grant.wi.gov/gis/rest/services/Public/SiteAddressPoints_Public/MapServer/0",
+                "data": "https://gcarcgis.co.grant.wi.gov/server/rest/services/Address_Numbers/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRNUM",
-                    "street": "FULLNAME"
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
+                    ],
+                    "street": "FULLNAME",
+                    "id": "GlobalID"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.co.grant.wi.gov/gis/rest/services/Public/TaxParcels/MapServer/0",
+                "data": "https://gcarcgis.co.grant.wi.gov/server/rest/services/LandInformationLayers/Tax_Parcels/MapServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",

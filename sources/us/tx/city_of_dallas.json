@@ -1,0 +1,49 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -96.80465698242188,
+                32.773419354975175
+            ]
+        },
+        "country": "us",
+        "state": "tx",
+        "county": "Dallas",
+        "city": "Dallas"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/rwnOSbfKSwyTBcwN/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "id": "ADDRESSID",
+                    "number": [
+                        "HOUSENUMBER",
+                        "HOUSESUFFIX"
+                    ],
+                    "street": "FULLSTREETNAME",
+                    "format": "geojson"
+                }
+            },
+            {
+                "name": "sub",
+                "data": "https://services2.arcgis.com/rwnOSbfKSwyTBcwN/ArcGIS/rest/services/AddressPoints/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "id": "ADDRESSID",
+                    "number": [
+                        "HOUSENUMBER",
+                        "HOUSESUFFIX"
+                    ],
+                    "street": "FULLSTREETNAME",
+                    "unit": "SUITE",
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

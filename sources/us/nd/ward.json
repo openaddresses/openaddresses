@@ -15,18 +15,41 @@
             {
                 "name": "county",
                 "website": "https://wardnd.maps.arcgis.com/home/index.html",
-                "data": "https://maps.wardnd.com/arcgis/rest/services/Parcels/WCParcels/FeatureServer/0",
+                "data": "https://services2.arcgis.com/tvgNL3LD8EYwagwG/ArcGIS/rest/services/WC_911StructurePts/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "ADDRESS"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "ADDRESS"
-                    }
+                    "number": [
+                        "ANP",
+                        "AN",
+                        "ANS"
+                    ],
+                    "street": [
+                        "PRE_MOD",
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "PRE_TYPE_S",
+                        "STREET",
+                        "POST_TYPE",
+                        "POST_DIR",
+                        "POST_MOD"
+                    ],
+                    "unit": "UNIT",
+                    "city": "CITY",
+                    "region": "STATE",
+                    "postcode": "PC"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://wardnd.maps.arcgis.com/home/index.html",
+                "data": "https://services2.arcgis.com/tvgNL3LD8EYwagwG/ArcGIS/rest/services/Ward_County_ND_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

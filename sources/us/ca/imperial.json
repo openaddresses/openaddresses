@@ -15,12 +15,12 @@
             {
                 "name": "county",
                 "attribution": "Imperial County",
-                "data": "https://services7.arcgis.com/RomaVqqozKczDNgd/arcgis/rest/services/Parcels_07272022/FeatureServer/6",
+                "data": "https://services7.arcgis.com/RomaVqqozKczDNgd/ArcGIS/rest/services/Parcels_Oct_2023/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "id": "APN",
-                    "number": "GCHouNum",
+                    "number": "SitusNum",
                     "street": [
                         "GCPreDir",
                         "GCPreTyp",
@@ -29,6 +29,16 @@
                         "GCSufDir"
                     ],
                     "unit": "SitusApt",
+                    "city": {
+                        "function": "regexp",
+                        "field": "F_Situs2",
+                        "pattern": "^([a-zA-Z ]+) [A-Z]{2} [0-9]{0,}$"
+                    },
+                    "region": {
+                        "function": "regexp",
+                        "field": "F_Situs2",
+                        "pattern": "([A-Z]{2}) ?[0-9]{0,}$"
+                    },
                     "postcode": "Sit_Zip"
                 }
             }
@@ -37,7 +47,7 @@
             {
                 "name": "county",
                 "attribution": "Imperial County",
-                "data": "https://services7.arcgis.com/RomaVqqozKczDNgd/arcgis/rest/services/Parcels_07272022/FeatureServer/6",
+                "data": "https://services7.arcgis.com/RomaVqqozKczDNgd/ArcGIS/rest/services/Parcels_Oct_2023/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",

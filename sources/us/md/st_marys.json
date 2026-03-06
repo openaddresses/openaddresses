@@ -14,17 +14,32 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "https://www.stmarysmd.com/it/gis/",
-                "data": "https://stmgis.stmarysmd.com/arcgis/rest/services/Public/FullGISMap/MapServer/0",
+                "website": "https://www.stmaryscountymd.gov/it/gis/",
+                "data": "https://stmgis.stmarysmd.com/arcgis/rest/services/Public/PublicLayers2/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "street": [
+                        "PREDIR",
                         "STREET_NAM",
                         "STREET_SUF"
                     ],
                     "number": "STREET_NUM",
-                    "unit": "STREET_APA"
+                    "unit": "STREET_APA",
+                    "city": "POSTAL_NAME",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "website": "https://www.stmaryscountymd.gov/it/gis/",
+                "data": "https://stmgis.stmarysmd.com/arcgis/rest/services/Public/PublicLayers1/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Test.SDE.Parcels.ACCTID"
                 }
             }
         ]

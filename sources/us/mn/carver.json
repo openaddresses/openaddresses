@@ -15,26 +15,48 @@
             {
                 "name": "county",
                 "license": {
+                    "url": "https://data-carver.opendata.arcgis.com/#Disclaimer",
                     "text": "Indemnification",
                     "attribution": false,
                     "share-alike": false
                 },
                 "protocol": "ESRI",
-                "data": "https://gis.co.carver.mn.us/arcgis_ea/rest/services/OpenAccess/CC_OpenDataStandards/MapServer/0",
-                "website": "http://www.co.carver.mn.us/departments/admin/IS/gis.asp",
+                "data": "https://services.arcgis.com/wMZT8kNwa6tOxhKg/arcgis/rest/services/Open_Data_Address_Points/FeatureServer/0",
+                "website": "https://data-carver.opendata.arcgis.com/datasets/carver::open-data-address-points/about",
                 "conform": {
                     "format": "geojson",
                     "number": "ANUMBER",
                     "street": [
                         "ST_PRE_MOD",
                         "ST_PRE_DIR",
+                        "ST_PRE_TYP",
+                        "ST_PRE_SEP",
                         "ST_NAME",
+                        "St_POS_TYP",
                         "ST_POS_DIR",
                         "ST_POS_MOD"
                     ],
                     "postcode": "ZIP",
-                    "city": "MUNI_NAME",
-                    "id": "PIN"
+                    "city": "POSTCOMM",
+                    "id": "ADD_ID"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "license": {
+                    "url": "https://data-carver.opendata.arcgis.com/#Disclaimer",
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "data": "https://services.arcgis.com/wMZT8kNwa6tOxhKg/arcgis/rest/services/Open_Data_Parcels/FeatureServer/0",
+                "website": "https://data-carver.opendata.arcgis.com/datasets/carver::open-data-parcels/about",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "COUNTY_PIN"
                 }
             }
         ]

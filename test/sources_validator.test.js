@@ -1,5 +1,5 @@
 import tape from 'tape';
-import glob from 'glob';
+import { glob } from 'glob';
 import fs from 'fs';
 import OASchema from './lib.js';
 

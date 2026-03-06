@@ -14,26 +14,23 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.cccounty.us/Downloads/General%20County%20Data/CCC_AddressData.zip",
-                "website": "http://www.contracosta.ca.gov/1818/GIS",
+                "data": "https://gis.cccounty.us/Downloads/General%20County%20Data/CCC_DOIT_AddressData.zip",
+                "website": "https://www.contracosta.ca.gov/1818/GIS",
                 "license": "https://gis.cccounty.us/Downloads/General%20County%20Data/Data%20Disclaimer.pdf",
                 "attribution": "Contra Costa County",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
                     "format": "shapefile",
-                    "number": "street_num",
-                    "street": [
-                        "prefix_typ",
-                        "prefix_dir",
-                        "street_nam",
-                        "street_typ",
-                        "suffix_dir"
-                    ],
-                    "unit": "unit_numbe",
-                    "city": "city",
-                    "region": "state",
-                    "postcode": "zip_code"
+                    "number": "sitenum",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "fulladd"
+                    },
+                    "unit": "siteunit",
+                    "city": "municipali",
+                    "region": "stateabbr",
+                    "postcode": "postal"
                 }
             }
         ],
@@ -41,7 +38,7 @@
             {
                 "name": "county",
                 "data": "https://ccmap.cccounty.us/arcgis/rest/services/CCMAP/CCMAP/MapServer/0",
-                "website": "http://www.contracosta.ca.gov/1818/GIS",
+                "website": "https://www.contracosta.ca.gov/1818/GIS",
                 "license": "https://gis.cccounty.us/Downloads/General%20County%20Data/Data%20Disclaimer.pdf",
                 "attribution": "Contra Costa County",
                 "protocol": "ESRI",

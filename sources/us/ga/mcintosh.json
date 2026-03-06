@@ -18,25 +18,32 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "id": "addr_id",
-                    "number": "complete_addrnum",
-                    "street": "complete_street_name",
-                    "unit": "complete_subaddress",
-                    "city": "usps_city",
+                    "id": "siteaddid",
+                    "number": [
+                        "preaddrnum",
+                        "addrnum",
+                        "addrnumsuf"
+                    ],
+                    "street": "fullname",
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": "USPS_City",
                     "district": "county",
-                    "region": "state",
-                    "postcode": "zipcode"
+                    "region": "stateabbreviation",
+                    "postcode": "ZIP"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://portal.segrass.org/crcarcgis/rest/services/McIntosh/Addresses/MapServer/1",
+                "data": "https://portal.segrass.org/crcarcgis/rest/services/McIntosh/Property_Data/MapServer/2",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PIN"
+                    "pid": "ANGLE"
                 }
             }
         ]

@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://linkgis.org/arcgisweb/rest/services/addressPoints/MapServer/3",
+                "data": "https://maps.linkgis.org/server/rest/services/addressPoints/MapServer/3",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -24,6 +24,11 @@
                     },
                     "street": {
                         "function": "postfixed_street",
+                        "field": "NUMADDR",
+                        "may_contain_units": true
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
                         "field": "NUMADDR"
                     }
                 }
@@ -32,7 +37,7 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://linkgis.org/arcgisweb/rest/services/Web_Scene_Map_Parcels/MapServer/13",
+                "data": "https://maps.linkgis.org/server/rest/services/Web_Scene_Map_Parcels/MapServer/13",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -43,7 +48,7 @@
         "buildings": [
             {
                 "name": "county",
-                "data": "https://linkgis.org/arcgisweb/rest/services/Buildings/MapServer/0",
+                "data": "https://maps.linkgis.org/server/rest/services/Buildings/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"

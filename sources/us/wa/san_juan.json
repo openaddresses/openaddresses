@@ -18,17 +18,8 @@
                 "website": "https://data2017-01-09t190539232z-sjcgis.opendata.arcgis.com/datasets/SJCGIS::addresses/about",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": {
-                        "function": "regexp",
-                        "field": "FULLADDR",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "FULLADDR",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
                     "addrtype": "BLDGTYPE",
                     "format": "geojson"
                 }

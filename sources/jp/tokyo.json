@@ -14,10 +14,9 @@
             {
                 "name": "state",
                 "protocol": "http",
-                "data": "https://data.openaddresses.io/cache/jp-tokyo.zip",
-                "website": "http://nlftp.mlit.go.jp/isj/index.html",
+                "data": "https://nlftp.mlit.go.jp/isj/dls/data/23.0a/13000-23.0a.zip",
+                "website": "https://nlftp.mlit.go.jp/isj/index.html",
                 "compression": "zip",
-                "attribution": "Japanese Ministry of Land, Infrastructure and Transport",
                 "conform": {
                     "format": "csv",
                     "lat": "緯度",
@@ -25,19 +24,23 @@
                     "number": {
                         "function": "join",
                         "fields": [
-                            "街区符号・地番",
+                            "街区符号_地番",
                             "座標系番号"
                         ],
                         "separator": "-"
                     },
-                    "street": "大字・町丁目名",
+                    "street": "大字_丁目名",
                     "lon": "経度",
-                    "encoding": "SHIFT_JISX0213"
+                    "encoding": "SHIFT_JISX0213",
+                    "city": "市区町村名",
+                    "region": "都道府県名"
                 },
                 "license": {
-                    "url": "http://nlftp.mlit.go.jp/ksj/other/yakkan.html",
+                    "url": "https://nlftp.mlit.go.jp/ksj/other/agreement.html",
+                    "text": "CC-BY 4.0",
                     "attribution": true,
-                    "share-alike": false
+                    "share-alike": false,
+                    "attribution name": "Japanese Ministry of Land, Infrastructure and Transport"
                 }
             }
         ]

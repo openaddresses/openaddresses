@@ -14,14 +14,18 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://parcelviewer.geodecisions.com/arcgis/rest/services/Alleghany/Public/MapServer/4",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/AlleghanyCo_WebGIS/MapServer/4",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSE_NUM",
-                    "street": "STREET",
-                    "city": "POSTAL_COMM",
-                    "postcode": "POSTAL_CODE"
+                    "number": "Add_Number",
+                    "street": [
+                        "AddNum_Suf",
+                        "StFullNameNG"
+                    ],
+                    "city": "MSAGComm",
+                    "postcode": "Post_Code",
+                    "unit": "Unit"
                 }
             }
         ],
@@ -39,7 +43,7 @@
         "buildings": [
             {
                 "name": "county",
-                "data": "https://parcelviewer.geodecisions.com/arcgis/rest/services/Alleghany/Public/MapServer/17",
+                "data": "https://www.webgis.net/arcgis/rest/services/VA/AlleghanyCo_WebGIS/MapServer/17",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"

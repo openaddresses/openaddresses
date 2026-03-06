@@ -21,13 +21,12 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://opendata.arcgis.com/api/v3/datasets/d86a3d76c0984ee7a8d97d9604975bcf_0/downloads/data?format=shp&spatialRefId=2248&where=1%3D1",
-                "website": "https://data.baltimorecity.gov/datasets/d86a3d76c0984ee7a8d97d9604975bcf_0/explore",
+                "data": "https://egis.baltimorecity.gov/egis/rest/services/Address_Points/AddressPoint_Native/FeatureServer/0",
+                "website": "https://data.baltimorecity.gov/datasets/baltimore::address-point-native-2/about",
                 "attribution": "City of Baltimore",
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "number": [
                         "addr_numbe",
                         "addr_frac"
@@ -43,6 +42,31 @@
                     "city": "inc_muni",
                     "district": "county",
                     "region": "state"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://egis.baltimorecity.gov/egis/rest/services/Parcel_Information/Parcel/FeatureServer/0",
+                "website": "https://data.baltimorecity.gov/datasets/baltimore::parcel/about",
+                "attribution": "City of Baltimore",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAG"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services1.arcgis.com/UWYHeuuJISiGmgXx/arcgis/rest/services/buildings/FeatureServer/0",
+                "website": "https://data.baltimorecity.gov/datasets/baltimore::buildings-footprint/about",
+                "attribution": "City of Baltimore",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

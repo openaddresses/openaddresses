@@ -21,25 +21,42 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://services6.arcgis.com/CNNo1rxoi1NqCYkY/arcgis/rest/services/Address/FeatureServer/0",
+                "data": "https://gis.flagstaffaz.gov/arcgisserver/rest/services/Addresses/FeatureServer/0",
+                "website": "https://gis.flagstaffaz.gov/portal/apps/sites/#/opendata/datasets/54fa279b97294558b71e23869d60c487/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
+                    "id": "AddressID",
                     "number": [
-                        "ADDRNUM",
-                        "ADDRNUMSUF"
+                        "Add_Number",
+                        "AddNum_Suf"
                     ],
                     "unit": [
-                        "SUITEDESIG",
-                        "SUITE"
+                        "UnitType",
+                        "Unit"
                     ],
                     "street": [
-                        "PREFIXDIR",
-                        "STREETNAME",
-                        "SUFFIXTYPE",
-                        "SUFFIXDIR"
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
                     ],
-                    "postcode": "ZIPCODE"
+                    "city": "Post_Comm",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.flagstaffaz.gov/OpenData/BuildingFootprints.zip",
+                "website": "https://gis.flagstaffaz.gov/portal/apps/sites/#/opendata/datasets/001392ec4b604c2b878b70bd22efa9e1/about",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile"
                 }
             }
         ]

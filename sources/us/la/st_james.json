@@ -14,17 +14,39 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://stjamesassessor.com/Downloads/DownloadFile.asp?FileID=16670",
-                "website": "http://stjamesassessor.com/gis-data",
-                "year": "2017",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://gisviewer.stjamesla.com/arcgis/rest/services/TaxViewer/MapServer/0",
+                "website": "https://www.stjamesla.com/153/GIS-Maps-Data",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
+                    "id": "ADDPTID",
                     "number": "ADDRESS",
                     "street": "ST_LABEL",
                     "city": "COMMUNITY",
                     "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisviewer.stjamesla.com/arcgis/rest/services/TaxViewer/MapServer/4",
+                "website": "https://www.stjamesla.com/153/GIS-Maps-Data",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisviewer.stjamesla.com/arcgis/rest/services/TaxViewer/MapServer/2",
+                "website": "https://www.stjamesla.com/153/GIS-Maps-Data",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

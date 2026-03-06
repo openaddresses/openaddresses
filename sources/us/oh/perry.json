@@ -14,23 +14,32 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis1.oit.ohio.gov/LBRS/_downloads/PER_ADDS.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services7.arcgis.com/xdw4bqNcVlUgWjU8/ArcGIS/rest/services/Addresses/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
+                    "format": "geojson",
+                    "unit": "UNITNUM",
                     "number": "HOUSENUM",
                     "street": [
                         "ST_PREFIX",
                         "ST_NAME",
                         "ST_TYPE",
-                        "ST_SUFFIX"
+                        "ST_SUFFIX:"
                     ],
-                    "unit": "UNITNUM",
-                    "city": "MUNI",
-                    "district": "COUNTY",
-                    "region": "STATE",
-                    "format": "shapefile",
-                    "postcode": "zipcode"
+                    "postcode": "ZIPCODE",
+                    "city": "USPS_CITY",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/xdw4bqNcVlUgWjU8/ArcGIS/rest/services/PCEOParcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Name"
                 }
             }
         ]

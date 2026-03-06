@@ -1,0 +1,43 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "28031",
+            "name": "Covington County",
+            "state": "Mississippi"
+        },
+        "country": "us",
+        "state": "ms",
+        "county": "Covington"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.mississippi.edu/server/rest/services/CountyPointAddresses/Covington_PointAddresses_2022/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Label",
+                    "street": "FullName",
+                    "unit": "BldgUnit",
+                    "city": "City",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/zEXKj9GaZJZhjLD3/ArcGIS/rest/services/Covington_Service/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
+    }
+}

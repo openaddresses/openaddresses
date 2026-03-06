@@ -13,29 +13,34 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "http://www.geoservicos.segeth.df.gov.br/ArcGIS/rest/services/Operational/LOTE/MapServer/0",
-                "website": "http://www.geoportal.segeth.df.gov.br/",
-                "protocol": "ESRI",
+                "website": "https://www.ibge.gov.br/estatisticas/sociais/populacao/38734-cadastro-nacional-de-enderecos-para-fins-estatisticos.html",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Instituto Brasileiro de Geografia e Estatística"
+                },
+                "language": "pt",
+                "data": "https://data.openaddresses.io/cache/uploads/iandees/38d487/53_DF.zip",
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
-                    "accuracy": 2,
-                    "number": "lote",
-                    "street": [
-                        "setor",
-                        "quadra",
-                        "conjunto"
-                    ],
-                    "city": {
-                        "function": "regexp",
-                        "field": "end_comp",
-                        "pattern": "^(Plano Piloto|Gama|Taguatinga|Brazlândia|Sobradinho|Planaltina|Paranoá|Núcleo Bandeirante|Ceilândia|Guará|Cruzeiro|Samambaia|Santa Maria|São Sebastião|Recanto das Emas|Lago Sul|Riacho Fundo|Lago Norte|Candangolândia|Águas Claras|Riacho Fundo II|Sudoeste e Octogonal|Varjão|Park Way|SCIA|Sobradinho II|Jardim Botânico|Itapoã|SIA|Vicente Pires|Fercal|)"
-                    },
+                    "format": "csv",
+                    "id": "COD_UNICO_ENDERECO",
+                    "lat": "LATITUDE",
+                    "lon": "LONGITUDE",
+                    "number": "NUM_ENDERECO",
+                    "street": "LOGRADOURO",
+                    "unit": "COMPLEMENTO",
+                    "city": "MUNICIPIO",
+                    "district": "DISTRITO",
+                    "region": "UF",
                     "postcode": {
                         "function": "regexp",
-                        "field": "cep",
+                        "field": "CEP",
                         "pattern": "^([0-9]{5})([0-9]{3})$",
                         "replace": "$1-$2"
-                    }
+                    },
+                    "notes": "DSC_ESTABELECIMENTO",
+                    "accuracy": 1
                 }
             }
         ]

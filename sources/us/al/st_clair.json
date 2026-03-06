@@ -14,18 +14,20 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://map.stclairco.com/arcgis/rest/services/PublicParcelViewerStPln/MapServer/57",
+                "data": "https://map.stclairco.com/arcgis/rest/services/NG_Address/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "STREET_ADDRESS"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "STREET_ADDRESS"
-                    }
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": "LFull_St_Name",
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
                 }
             }
         ],

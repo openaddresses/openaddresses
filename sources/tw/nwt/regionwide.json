@@ -10,31 +10,46 @@
     "layers": {
         "addresses": [
             {
-                "name": "country",
-                "data": "http://rain.ntpc.gov.tw/ArcGIS/rest/services/Sewer/Basemap/MapServer/1",
-                "protocol": "ESRI",
+                "name": "state",
+                "website": "https://data.gov.tw/dataset/168887",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2025-12-23-4tsy7/New_Taipei_2025_12_12.zip",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://data.gov.tw/license",
+                    "attribution": true,
+                    "attribution name": "New Taipei City Government Civil Affairs Bureau",
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "csv",
+                    "srs": "EPSG:3826",
                     "number": {
                         "function": "regexp",
-                        "field": "NO_CH",
+                        "field": "number",
                         "pattern": "^([0-9０-９]+號?)"
                     },
                     "unit": {
                         "function": "regexp",
-                        "field": "NO_CH",
+                        "field": "number",
                         "pattern": "^(?:[0-9０-９]+號?)(.*)"
                     },
                     "street": {
                         "function": "join",
                         "fields": [
-                            "ROADSEC",
-                            "LANE_C",
-                            "LONG_C"
+                            "street",
+                            "area",
+                            "lane",
+                            "alley"
                         ],
                         "separator": ""
                     },
-                    "city": "TOWN_NAME"
+                    "city": "village",
+                    "district": "town",
+                    "region": "county",
+                    "lat": "y_3826",
+                    "lon": "x_3826"
                 }
             }
         ]

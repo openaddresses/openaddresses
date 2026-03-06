@@ -1,0 +1,36 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "48201",
+            "name": "Harris County",
+            "state": "Texas"
+        },
+        "country": "us",
+        "state": "tx",
+        "county": "Harris"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://arcweb.hcad.org/server/rest/services/public/public_query/MapServer/0",
+                "website": "https://arcweb.hcad.org/parcel-viewer-v2.0/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "address"
+                    },
+                    "city": "city",
+                    "postcode": "zip"
+                }
+            }
+        ]
+    }
+}

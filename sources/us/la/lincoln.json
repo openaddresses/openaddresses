@@ -15,7 +15,7 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "http://webserv.lincolnparish.org/arcgis/rest/services/Lincoln_Parish_Data/MapServer/0",
+                "data": "https://gis21svweb.lincolnparish.org/arcgis/rest/services/LA_Lincoln_Assessor/MapServer/0",
                 "conform": {
                     "format": "geojson",
                     "number": "HOUSE_NUM",
@@ -24,7 +24,21 @@
                         "field": "FUL_NAME",
                         "pattern": "^(.+?)(?: Pvt)?$"
                     },
-                    "unit": "UNIT"
+                    "unit": "UNIT",
+                    "city": "Community",
+                    "region": "State",
+                    "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://gis21svweb.lincolnparish.org/arcgis/rest/services/LA_Lincoln_Assessor/MapServer/5",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelId"
                 }
             }
         ]

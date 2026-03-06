@@ -14,13 +14,11 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.hennepin.us/publicgisdata/hennepin_county_address_points.zip",
-                "protocol": "http",
-                "compression": "zip",
-                "website": "http://gis.hennepin.opendata.arcgis.com",
-                "note": "Metadata can be seen at: https://www.arcgis.com/home/item.html?id=aefaf3090e8c49b1b08eb6fb77ba2d9e. Another data source option (ESRI): http://gis.hennepin.us/arcgis/rest/services/HennepinData/LAND_PROPERTY/MapServer/2",
+                "data": "https://gis.hennepin.us/arcgis/rest/services/HennepinData/LAND_PROPERTY/MapServer/0",
+                "protocol": "ESRI",
+                "website": "https://gis.hennepin.opendata.arcgis.com",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "number": [
                         "ANUMBER",
                         "ANUMBERSUF"
@@ -34,8 +32,20 @@
                         "ST_POS_DIR",
                         "ST_POS_MOD"
                     ],
+                    "unit": "SUB_AD_ID",
                     "city": "MUNI_NAME",
                     "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.hennepin.us/arcgis/rest/services/HennepinData/LAND_PROPERTY/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
                 }
             }
         ]

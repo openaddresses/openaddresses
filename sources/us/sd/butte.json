@@ -14,17 +14,18 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.districtiii.org/arcgis/rest/services/BUTTE_LAYERS/MapServer/3",
+                "data": "https://gis.districtiii.org/server/rest/services/BUTTE_COUNTY_WEB_LAYERS/MapServer/29",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "TC_SITE_ADDRESS"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "TC_SITE_ADDRESS"
-                    },
+                    "number": "new_add",
+                    "street": [
+                        "dir",
+                        "rd_nm"
+                    ],
+                    "unit": "location",
+                    "city": "new_city",
+                    "region": "new_st",
+                    "postcode": "new_zip",
                     "format": "geojson"
                 }
             }
@@ -32,10 +33,10 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.districtiii.org/arcgis/rest/services/BUTTE_LAYERS/MapServer/3",
+                "data": "https://gis.districtiii.org/server/rest/services/BUTTE_COUNTY_WEB_LAYERS/MapServer/3",
                 "protocol": "ESRI",
                 "conform": {
-                    "pid": "PARCEL_ID",
+                    "pid": "parcel_id",
                     "format": "geojson"
                 }
             }

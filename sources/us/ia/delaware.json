@@ -14,38 +14,60 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Delaware/Address_28.zip",
+                "data": "https://github.com/user-attachments/files/16608804/NG911_Delaware_20230117.zip",
                 "license": {
                     "text": "Public Domain",
                     "attribution": false,
                     "share-alike": false
                 },
-                "year": "2012?",
-                "protocol": "ftp",
+                "year": "2023",
+                "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "number": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "unit": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^.* ((Unit|Apt) [0-9A-Za-z])$",
-                        "replace": "$1"
-                    },
-                    "city": "POSTAL_COM",
-                    "district": "COUNTY",
-                    "region": "STATE",
-                    "postcode": "ZIP_CODE",
-                    "format": "shapefile"
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": "FullStreet",
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code",
+                    "format": "gdb",
+                    "layer": "Site_Structure"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/DelawareCountyIA_WFS/MapServer/2",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "PIN",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/DelawareCountyIA_WFS/MapServer/3",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

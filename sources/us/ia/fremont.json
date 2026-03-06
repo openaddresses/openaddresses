@@ -14,37 +14,45 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Fremont/Address_36.zip",
+                "data": "https://github.com/user-attachments/files/16608515/AddressPoints_03022022.zip",
                 "license": {
                     "text": "Public Domain",
                     "attribution": false,
                     "share-alike": false
                 },
-                "year": "2012?",
-                "protocol": "ftp",
+                "year": "2022",
+                "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "number": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "unit": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^.* ((Unit|Apt) [0-9A-Za-z])$",
-                        "replace": "$1"
-                    },
-                    "city": "POSTAL_COM",
+                    "number": [
+                        "HNP",
+                        "HNO",
+                        "HNS"
+                    ],
+                    "street": "FULL_STREE",
+                    "unit": "UNIT",
+                    "city": "POST_COMM",
                     "district": "COUNTY",
                     "region": "STATE",
-                    "postcode": "ZIP_CODE",
+                    "postcode": "ZIP",
+                    "format": "shapefile"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://github.com/user-attachments/files/16608516/Parcels_20240801.zip",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "year": "2024",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "pid": "PIN",
                     "format": "shapefile"
                 }
             }

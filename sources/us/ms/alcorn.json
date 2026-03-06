@@ -1,0 +1,43 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "28003",
+            "name": "Alcorn County",
+            "state": "Mississippi"
+        },
+        "country": "us",
+        "state": "ms",
+        "county": "Alcorn"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.mississippi.edu/server/rest/services/CountyPointAddresses/Alcorn_PointAddresses_2022/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Label",
+                    "street": "FullName",
+                    "unit": "BldgUnit",
+                    "city": "City",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/rctJwRL1kWp2v5Fa/ArcGIS/rest/services/AlcornMS_Service/FeatureServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ]
+    }
+}

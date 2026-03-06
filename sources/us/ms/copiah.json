@@ -14,29 +14,32 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis3.cmpdd.org/arcgis/rest/services/County/Copiah_County/MapServer/3",
+                "data": "https://gis.cmpdd.org/server/rest/services/Hosted/Copiah_County_Feature_Layer/FeatureServer/9",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": {
                         "function": "prefixed_number",
-                        "field": "SITUS"
+                        "field": "addr"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "SITUS"
-                    }
+                        "field": "addr"
+                    },
+                    "city": "city",
+                    "region": "state",
+                    "postcode": "zip"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis3.cmpdd.org/arcgis/rest/services/County/Copiah_County/MapServer/3",
+                "data": "https://gis.cmpdd.org/server/rest/services/Hosted/Copiah_County_Feature_Layer/FeatureServer/3",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PARCEL_ID"
+                    "pid": "parcel_id"
                 }
             }
         ]

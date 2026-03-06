@@ -14,22 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "ftp://ftp.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_co_itasca/plan_parcels/shp_plan_parcels.zip",
-                "protocol": "ftp",
-                "compression": "zip",
+                "data": "https://maps-test.co.itasca.mn.us/ArcGIS/rest/services/WAB_Maps/PublicOperationLayers/MapServer/15",
+                "website": "https://co.itasca.mn.us/625/Maps",
+                "protocol": "ESRI",
                 "conform": {
-                    "number": {
-                        "function": "regexp",
-                        "field": "ADDR_10001",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "ADDR_10001",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "format": "shapefile"
+                    "format": "geojson",
+                    "number": [
+                        "ANUMBER",
+                        "ANUMBERSUF"
+                    ],
+                    "street": [
+                        "ST_PRE_MOD",
+                        "ST_PRE_DIR",
+                        "ST_PRE_TYP",
+                        "ST_NAME",
+                        "ST_POS_TYP",
+                        "ST_POS_DIR"
+                    ],
+                    "unit": [
+                        "SUB_TYPE1",
+                        "SUB_ID1"
+                    ],
+                    "city": "POSTCOMM",
+                    "region": "STATE_CODE",
+                    "postcode": "ZIP"
                 }
             }
         ]

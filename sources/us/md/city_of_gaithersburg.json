@@ -1,0 +1,68 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -77.226,
+                39.132
+            ]
+        },
+        "US Census": {
+            "geoid": "2431175",
+            "name": "City of Gaithersburg",
+            "state": "Maryland"
+        },
+        "country": "us",
+        "state": "md",
+        "city": "Gaithersburg"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://maps.gaithersburgmd.gov/arcgis/rest/services/layers/AddressLookup/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Full_Address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Full_Address",
+                        "may_contain_units": true
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "Full_Address"
+                    },
+                    "city": "City",
+                    "postcode": "Zip_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://maps.gaithersburgmd.gov/arcgis/rest/services/layers/basicLayers/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "fullacctno"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://maps.gaithersburgmd.gov/arcgis/rest/services/StreetBaseMap/MapServer/15",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

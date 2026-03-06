@@ -15,24 +15,28 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "website": "http://www.co.beltrami.mn.us/Departments/gis/gis.html",
-                "data": "http://arcgis.co.beltrami.mn.us/arcgis/rest/services/BeltramiBasemap/MapServer/0",
+                "website": "https://gishub-beltramicounty.hub.arcgis.com/datasets/BeltramiCounty::address-points/about",
+                "data": "https://arcgis.co.beltrami.mn.us/arcgis/rest/services/BeltramiData/BeltramiOpenData/MapServer/0",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "ADDRESS",
-                        "pattern": "([0-9]*) (.*)",
-                        "replace": "$1"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "ADDRESS",
-                        "pattern": "([0-9]*) (.*)",
-                        "replace": "$2"
-                    },
+                    "number": "NUM_ADD",
+                    "street": "ROADNAME",
                     "postcode": "ZIPCODE",
-                    "city": "CITY"
+                    "city": "CITY",
+                    "district": "CO_NAME",
+                    "region": "STATE_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "website": "https://gishub-beltramicounty.hub.arcgis.com/datasets/BeltramiCounty::tax-parcels/about",
+                "data": "https://arcgis.co.beltrami.mn.us/arcgis/rest/services/BeltramiData/BeltramiOpenData/MapServer/2",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
                 }
             }
         ]

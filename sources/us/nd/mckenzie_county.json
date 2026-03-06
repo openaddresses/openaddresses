@@ -14,21 +14,36 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://maps5.gisworkshop.com/ArcGIS/rest/services/McKenzieTaxDirector/MapServer/2",
+                "data": "https://mckenziegis.co.mckenzie.nd.us/server/rest/services/AddressPoints/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "PROPADDRESS",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "PROPADDRESS",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    }
+                    "number": "HOUSENUM",
+                    "street": "STRNAME",
+                    "unit": "UNIT",
+                    "city": "POSTALCOMM",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://mckenziegis.co.mckenzie.nd.us/server/rest/services/ParcelOwnership/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://mckenziegis.co.mckenzie.nd.us/server/rest/services/BuildingFootprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

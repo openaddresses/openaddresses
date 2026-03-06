@@ -21,20 +21,39 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://adaptergis.cityoflewisville.com/arcgis/rest/services/OpenData/Housing_OpenData/MapServer/6",
+                "data": "https://services2.arcgis.com/kXGqZY4GIOcEYxoF/ArcGIS/rest/services/CS_Enterprise_Addresses_Apartments/FeatureServer/2",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "AddressNum",
-                    "street": [
-                        "PreDirection",
-                        "StreetName",
-                        "StreetType"
+                    "number": "Address",
+                    "street": "StreetName",
+                    "unit": [
+                        "Building",
+                        "Apartment"
                     ],
-                    "unit": "Unit",
-                    "city": "City",
                     "region": "State",
-                    "postcode": "Zip"
+                    "postcode": "ZipCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/kXGqZY4GIOcEYxoF/ArcGIS/rest/services/Parcels_Hosted/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "prop_id"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/kXGqZY4GIOcEYxoF/ArcGIS/rest/services/3D_Buildings_082020/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

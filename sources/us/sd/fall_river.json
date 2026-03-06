@@ -14,14 +14,22 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://web1.mobile311.com/arcgis/rest/services/SouthDakota/FallRiver/MapServer/1",
+                "data": "https://services7.arcgis.com/yz1kSnCgtG9EeKZN/ArcGIS/rest/services/ParcelID_FRC_proj_view/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": "Housenum",
-                    "street": [
-                        "Streetname",
-                        "Streettype"
-                    ],
+                    "number": "House_Numb",
+                    "street": "Address",
+                    "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services7.arcgis.com/yz1kSnCgtG9EeKZN/ArcGIS/rest/services/ParcelID_FRC_proj_view/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "pid": "ParcelID",
                     "format": "geojson"
                 }
             }

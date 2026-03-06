@@ -22,16 +22,45 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "http://gisweb.killeentexas.gov:6080/arcgis/rest/services/KilleenBaseLayers/MapServer/0",
+                "data": "https://killeengis.killeentexas.gov/arcgis/rest/services/Hosted/AddressPoints/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSE_NUM",
+                    "number": [
+                        "address_nu",
+                        "address__2"
+                    ],
                     "street": [
-                        "STREET_DIR",
-                        "STREET_NAME",
-                        "STREET_TYPE"
-                    ]
+                        "address_pr",
+                        "address_st",
+                        "address__1"
+                    ],
+                    "unit": "supplement",
+                    "city": "postal_com",
+                    "district": "county",
+                    "region": "state",
+                    "postcode": "zip_code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://killeengis.killeentexas.gov/arcgis/rest/services/Hosted/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "prop_id"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://killeengis.killeentexas.gov/arcgis/rest/services/Hosted/Structures/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

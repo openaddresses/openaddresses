@@ -1,0 +1,49 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "26011",
+            "name": "Arenac County",
+            "state": "Michigan"
+        },
+        "country": "us",
+        "state": "mi",
+        "county": "Arenac"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/SWvtgOskziun2bFF/ArcGIS/rest/services/Parcels_2022/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PROPERTY_A"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PROPERTY_A",
+                        "may_contain_units": true
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "PROPERTY_A"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/SWvtgOskziun2bFF/ArcGIS/rest/services/Parcels_2022/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "description": "map function definition",
+  "type": "object",
+  "required": ["function", "field", "mapping"],
+  "additionalProperties": false,
+  "properties": {
+    "function": { "type": "string", "const": "map" },
+    "field": { "type": "string" },
+    "mapping": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "else": { "type": "string" }
+  }
+}

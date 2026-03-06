@@ -14,21 +14,24 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.odessa-tx.gov/portal/sharing/rest/content/items/80e941000144430fb9bf4095a5edd60d/data",
-                "website": "http://www.odessa-tx.gov/index.aspx?page=354",
+                "data": "https://services6.arcgis.com/96XBo0KviQ3nV6zg/arcgis/rest/services/Address_Site_Points/FeatureServer/0",
+                "website": "https://geoint-ogis.hub.arcgis.com/",
                 "note": "despite the URL it's coming from, the data is for all of Ector County, TX",
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile-polygon",
-                    "number": "STR_NUM",
-                    "street": [
-                        "STR_DIR",
-                        "STR_NAM",
-                        "STR_SUF"
+                    "format": "geojson",
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
                     ],
-                    "city": "CIT_NAM",
-                    "district": "COU_NAM"
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "postcode": "ADDZIP"
                 }
             }
         ]

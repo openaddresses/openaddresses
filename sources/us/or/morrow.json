@@ -14,27 +14,29 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services6.arcgis.com/MQGnkVpUbcAxMorv/ArcGIS/rest/services/Taxlot_W_Ownership/FeatureServer/0",
+                "data": "https://services3.arcgis.com/e3KSI9Py4B7m3xu6/ArcGIS/rest/services/Morrow03AddressPoint/FeatureServer/0",
+                "website": "https://harneycounty.maps.arcgis.com/home/item.html?id=fa6b5215859d4d4cbe5864186e3766ee",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "SITUSSTR"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "SITUSSTR"
-                    },
-                    "city": "SITUSCITY",
-                    "postcode": "SITUSZIP"
+                    "number": [
+                        "addNum",
+                        "addNumSuf"
+                    ],
+                    "street": "srcfullnam",
+                    "unit": "unit",
+                    "city": "postComm",
+                    "district": "county",
+                    "region": "state",
+                    "postcode": "zipCode"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://services6.arcgis.com/MQGnkVpUbcAxMorv/ArcGIS/rest/services/Taxlot_W_Ownership/FeatureServer/0",
+                "data": "https://services3.arcgis.com/e3KSI9Py4B7m3xu6/ArcGIS/rest/services/Morrow02Taxlots/FeatureServer/0",
+                "website": "https://harneycounty.maps.arcgis.com/home/item.html?id=cab6d920cf7b444f94dc31cfb101b7b5",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
