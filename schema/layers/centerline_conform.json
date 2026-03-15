@@ -1,0 +1,24 @@
+{
+  "description": "top-level centerline conform schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "format": { "type": "string", "enum": ["gdb", "geojson", "gpkg", "shapefile"] },
+    "srs": { "type": "string", "pattern": "EPSG:[0-9]+" },
+    "file": { "type": "string" },
+    "layer": {
+      "description": "specifies a layer to use in the GDB",
+      "oneOf": [{ "type": "integer" }, { "type": "string" }]
+    },
+    "encoding": { "type": "string" },
+    "notes": { "type": "string" },
+    "id": {
+      "description": "unique identifier for the centerline",
+      "$ref": "../util/functions/standard_functions.json"
+    },
+    "name": {
+      "description": "street name for the centerline",
+      "$ref": "../util/functions/standard_functions.json"
+    }
+  }
+}
