@@ -6,9 +6,9 @@
 
 ## Reporting Sources & Issues
 
-We'd love to hear about a new address, cadastral parcel or building footprint sources, fixes to an old one, or improvements.
+We'd love to hear about a new address, cadastral parcel, building footprint or street centerline sources, fixes to an old one, or improvements.
 
-OpenAddresses is a collection of _authoritative data_ for address locations, cadastral parcels and building footprints around the world. We collect this data from authoritative sources; we do not create our own data. A source is a location where authoritative data can be found. Examples might be a downloadable CSV file or live ArcServer feature service hosted by a national postal service, a state GIS department, or a county property parcel database.
+OpenAddresses is a collection of _authoritative data_ for address locations, cadastral parcels, building footprints and street centerlines around the world. We collect this data from authoritative sources; we do not create our own data. A source is a location where authoritative data can be found. Examples might be a downloadable CSV file or live ArcServer feature service hosted by a national postal service, a state GIS department, or a county property parcel database.
 
 ### New Sources
 
@@ -83,7 +83,7 @@ instead of a pull request. We’ll determine if the data is suitable for inclusi
 --------------------- | --------- | ----
 `schema`              | Yes | The JSON Schema the source conforms to - currently always `2`
 `coverage`            | Yes | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String. [See below for more details](#coverage-object)
-`layers`              | Yes | An object containing the data layers for a given source. Valid layers are `addresses`, `parcels` and `buildings`.
+`layers`              | Yes | An object containing the data layers for a given source. Valid layers are `addresses`, `parcels`, `buildings` and `centerlines`.
 `layers.{layer}`      | Yes | An array of layer objects for a given layer type
 `{layer}.name`        | Yes | The name of the data provider (AlphaNumeric + Underscores). If unknown, just use the geographic entity, i.e. `town`, `city`, `county`
 `{layer}.data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal. If there isn't a good URL for the source, you can upload files to [https://batch.openaddresses.io/upload](https://batch.openaddresses.io/upload) which provides a cached URL.
@@ -187,6 +187,15 @@ Attribute tags are functions or field names for mapping the source data into a g
 ---------- | --- | ----
 `id`   | No | The unique identifier for the building
 `height`   | No | The height of the building (from the ground) in meters
+
+##### Centerline Attribute Tags
+
+Attribute tags are functions or field names for mapping the source data into a given format.
+
+ Tag | Required? | Note
+---------- | --- | ----
+`id`   | No | The unique identifier for the centerline
+`name`   | No | The street name for the centerline
 
 ##### Assembling Attributes
 

@@ -1,6 +1,6 @@
 # Attribute Functions
 
-The conform section of a source contains, along with metadata, the address attributes and how to derive their values.  The address attributes are:
+The conform section of a source contains, along with metadata, the attributes and how to derive their values.  The address attributes are:
 
 - `number` - the house number of an address
 - `street` - the street the address is on
@@ -10,7 +10,12 @@ The conform section of a source contains, along with metadata, the address attri
 - `region` - the first level administrative divisions within a country, such as state or province
 - `postcode` - the alphanumeric code used in many countries for sorting mail
 
-Of these attributes, only `number` and `street` are required in a source.
+Of these attributes, only `number` and `street` are required in an address source.
+
+For centerline sources, the available attributes are:
+
+- `id` - a unique identifier for the centerline
+- `name` - the street name for the centerline
 
 In an ideal world, data sources would have a single field for each OpenAddresses conform attribute.  That is, there would be a single field for `number`, a single field for `street`, and so on.  Unfortunately that's rarely the case.  A common occurrence is for the house number and street name to be combined into a single field, for example "123 South Main Street".  To accommodate data sources like this, OpenAddresses source conforms support a number of functions to separate and join fields to create appropriate values.  This page details each of the available functions and ends with a section on acceptance testing for validation.
 
