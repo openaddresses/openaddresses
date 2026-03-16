@@ -190,12 +190,37 @@ Attribute tags are functions or field names for mapping the source data into a g
 
 ##### Centerline Attribute Tags
 
-Attribute tags are functions or field names for mapping the source data into a given format.
+Attribute tags are functions or field names for mapping the source data into a given format. Centerlines represent road center lines as LineString geometries.
 
  Tag | Required? | Note
 ---------- | --- | ----
-`id`   | No | The unique identifier for the centerline
-`name`   | No | The street name for the centerline
+`id`   | No | Unique identifier for the centerline segment
+`name`   | No | Street name for the centerline
+`classification` | No | Functional road class. See table below.
+`oneway` | No | Traffic directionality: `yes` (one-way in digitized direction), `reverse` (one-way against digitized direction), or `no` (two-way)
+`speed` | No | Posted speed limit in km/h
+`surface` | No | Road surface type: `paved` or `unpaved`
+`addr_from_left` | No | Starting address number on the left side of the segment
+`addr_to_left` | No | Ending address number on the left side of the segment
+`addr_from_right` | No | Starting address number on the right side of the segment
+`addr_to_right` | No | Ending address number on the right side of the segment
+`zip_left` | No | Postal code on the left side of the segment
+`zip_right` | No | Postal code on the right side of the segment
+
+###### Classification Values
+
+Use a `map` function to convert source-specific road classifications to these standardized values. When choosing a value, pick the one that best describes the road's role in the overall network, not its physical characteristics.
+
+| Value | Description | Typical examples |
+| :---: | ----------- | ---------------- |
+| `motorway` | Controlled-access highway with grade-separated interchanges. No at-grade crossings or traffic signals. | Interstate (US), Autobahn (DE), Autoroute (FR), Motorway (UK) |
+| `trunk` | High-capacity road that is not a motorway. May have at-grade intersections. | US Highway, A-road (UK), Route nationale (FR) |
+| `primary` | Major route connecting large towns. | State highway (US), B-road (UK), Route départementale (FR) |
+| `secondary` | Road connecting smaller towns and villages. | County road (US), C-road (UK) |
+| `tertiary` | Minor road connecting small settlements or neighborhoods. | Township road, minor collector |
+| `residential` | Road primarily providing access to residential properties. | |
+| `service` | Road providing access to buildings, facilities, or other roads. | Alleys, driveways, parking lot roads |
+| `unclassified` | Other public road not fitting the above categories. | |
 
 ##### Assembling Attributes
 
@@ -248,6 +273,7 @@ Function | Note
 [`remove_postfix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the end of another field value
 [`regexp`](ATTRIBUTE_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region, etc. when the source has them in a single field
 [`map`](ATTRIBUTE_FUNCTIONS.md#map) | Allow for defining a mapping or lookup from a source value to a target value. Useful when the source values need to be transformed.
+[`mph_to_kph`](ATTRIBUTE_FUNCTIONS.md#mph_to_kph) | Convert a miles-per-hour value to kilometers-per-hour. Useful for the `speed` centerline attribute when the source uses imperial units.
 
 Sources vary in how they store data so several approaches to conforming attributes may apply.
 

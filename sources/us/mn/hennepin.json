@@ -48,6 +48,61 @@
                     "pid": "PID"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.hennepin.us/arcgis/rest/services/HennepinData/TRANSPORTATION/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "UNIQUE_ID",
+                    "name": "ST_CONCAT",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "F": "yes",
+                            "T": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEEDLIMIT"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "FUNCTIONAL",
+                        "mapping": {
+                            "1": "motorway",
+                            "2": "trunk",
+                            "3": "primary",
+                            "4": "secondary",
+                            "5": "tertiary",
+                            "6": "tertiary",
+                            "7": "residential"
+                        },
+                        "else": "unclassified"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "SURF_TYPE",
+                        "mapping": {
+                            "Paved": "paved",
+                            "Unpaved": "unpaved"
+                        },
+                        "else": ""
+                    },
+                    "addr_from_left": "ADR_FR_L",
+                    "addr_to_left": "ADR_TO_L",
+                    "addr_from_right": "ADR_FR_R",
+                    "addr_to_right": "ADR_TO_R",
+                    "zip_left": "ZIP_L",
+                    "zip_right": "ZIP_R"
+                }
+            }
         ]
     }
 }
