@@ -1,6 +1,6 @@
 # Attribute Functions
 
-The conform section of a source contains, along with metadata, the address attributes and how to derive their values.  The address attributes are:
+The conform section of a source contains, along with metadata, the attributes and how to derive their values.  The address attributes are:
 
 - `number` - the house number of an address
 - `street` - the street the address is on
@@ -10,7 +10,19 @@ The conform section of a source contains, along with metadata, the address attri
 - `region` - the first level administrative divisions within a country, such as state or province
 - `postcode` - the alphanumeric code used in many countries for sorting mail
 
-Of these attributes, only `number` and `street` are required in a source.
+Of these attributes, only `number` and `street` are required in an address source.
+
+For centerline sources, the available attributes are:
+
+- `id` - unique identifier for the centerline segment
+- `name` - street name for the centerline
+- `classification` - functional road class (motorway, trunk, primary, secondary, tertiary, residential, service, unclassified)
+- `oneway` - traffic directionality (yes, reverse, no)
+- `speed` - posted speed limit in km/h
+- `surface` - road surface type (paved, unpaved)
+- `addr_from_left` / `addr_to_left` - address range on the left side
+- `addr_from_right` / `addr_to_right` - address range on the right side
+- `zip_left` / `zip_right` - postal codes on each side
 
 In an ideal world, data sources would have a single field for each OpenAddresses conform attribute.  That is, there would be a single field for `number`, a single field for `street`, and so on.  Unfortunately that's rarely the case.  A common occurrence is for the house number and street name to be combined into a single field, for example "123 South Main Street".  To accommodate data sources like this, OpenAddresses source conforms support a number of functions to separate and join fields to create appropriate values.  This page details each of the available functions and ends with a section on acceptance testing for validation.
 
@@ -434,6 +446,29 @@ The `map` function allows for defining a mapping or lookup from a source value t
 | `field` | the source column field | none (required)
 | `mapping` | the lookup of source values to target values | none (required)
 | `else` | the default value to assign if not found in the mapping | none (required)
+
+
+## Conversion Functions
+
+### `mph_to_kph`
+
+The `mph_to_kph` function converts a miles-per-hour value to kilometers-per-hour, rounding to the nearest integer. This is useful for the `speed` centerline attribute when the source data uses imperial units.
+
+```json
+"speed": {
+    "function": "mph_to_kph",
+    "field": "SPEEDLIMIT"
+}
+```
+
+Given a source record with `"SPEEDLIMIT": "35"`, this would produce a `speed` value of `"56"` (35 × 1.60934 ≈ 56). If the field is empty or not a valid number, an empty string is returned.
+
+#### Definition:
+
+| parameter | value | default
+| --------- | ----- | -------
+| `function` | `mph_to_kph` |
+| `field` | any field name in the data source | none (required)
 
 
 ## Acceptance Testing
