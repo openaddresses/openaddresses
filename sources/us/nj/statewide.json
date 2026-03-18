@@ -53,6 +53,57 @@
                     "pid": "PAMS_PIN"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "state",
+                "data": "https://maps.nj.gov/arcgis/rest/services/Framework/Transportation/MapServer/14",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "RCL_NGUID",
+                    "name": "PRIMENAME",
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADCLASS",
+                        "mapping": {
+                            "Primary": "primary",
+                            "Secondary": "secondary",
+                            "Local": "residential"
+                        },
+                        "else": "residential"
+                    },
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEEDLIMIT"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "SURFACETYP",
+                        "mapping": {
+                            "Improved": "paved",
+                            "Unimproved": "unpaved"
+                        },
+                        "else": "paved"
+                    },
+                    "addr_from_left": "FROMADDR_L",
+                    "addr_to_left": "TOADDR_L",
+                    "addr_from_right": "FROMADDR_R",
+                    "addr_to_right": "TOADDR_R",
+                    "zip_left": "POSTCODE_L",
+                    "zip_right": "POSTCODE_R"
+                }
+            }
         ]
     }
 }

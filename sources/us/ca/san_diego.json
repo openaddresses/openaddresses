@@ -77,6 +77,32 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis-public.sandiegocounty.gov/arcgis/rest/services/sdep_warehouse/ROAD_SEGMENTS/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ROAD_SEG_ID",
+                    "name": "ROAD_NAME",
+                    "classification": {
+                        "function": "map",
+                        "field": "CALTRANS_FUNCTION_CLASS",
+                        "mapping": {
+                            "1": "motorway",
+                            "2": "trunk",
+                            "3": "primary",
+                            "4": "secondary",
+                            "5": "tertiary",
+                            "6": "tertiary",
+                            "7": "residential"
+                        },
+                        "else": "residential"
+                    }
+                }
+            }
         ]
     }
 }
