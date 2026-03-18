@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "48141",
+            "name": "El Paso County",
+            "state": "Texas"
+        },
+        "country": "us",
+        "state": "tx",
+        "county": "El Paso"
+    },
+    "schema": 2,
+    "layers": {
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.elpasotexas.gov/dev/rest/services/Streets/EPCenterline/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": [
+                        "DIR",
+                        "STREETNAME",
+                        "STYPE"
+                    ],
+                    "classification": {
+                        "function": "map",
+                        "field": "CLASS",
+                        "mapping": {
+                            "1": "motorway",
+                            "2": "trunk",
+                            "3": "primary",
+                            "4": "secondary",
+                            "5": "tertiary"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT",
+                    "zip_left": "ZIPL",
+                    "zip_right": "ZIPR"
+                }
+            }
+        ]
+    }
+}

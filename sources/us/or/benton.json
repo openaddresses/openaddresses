@@ -64,6 +64,52 @@
                     "file": "buildings.shp"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.co.benton.or.us/arcgis/rest/services/Public/TransportationService/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "FULLNAME",
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "FUNC_CLASS",
+                        "mapping": {
+                            "PRINCIPAL ARTERIAL": "motorway",
+                            "ARTERIALHWY": "trunk",
+                            "ARTERIAL": "primary",
+                            "MAJOR COLLECTOR": "secondary",
+                            "COLLECTOR": "tertiary",
+                            "NEIGHBORCOLLECTOR": "tertiary",
+                            "RESOURCE COLLECTOR": "tertiary"
+                        },
+                        "else": "residential"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "SURFACE",
+                        "mapping": {
+                            "AC": "paved",
+                            "PCC": "paved",
+                            "GRV": "unpaved",
+                            "GRAVEL": "unpaved"
+                        },
+                        "else": ""
+                    },
+                    "addr_from_left": "FRADDL",
+                    "addr_to_left": "TOADDL",
+                    "addr_from_right": "FRADDR",
+                    "addr_to_right": "TOADDR",
+                    "zip_left": "ZIPL",
+                    "zip_right": "ZIPR"
+                }
+            }
         ]
     }
 }

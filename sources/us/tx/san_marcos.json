@@ -1,0 +1,55 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "4865600",
+            "name": "City of San Marcos",
+            "state": "Texas"
+        },
+        "country": "us",
+        "state": "tx",
+        "city": "San Marcos"
+    },
+    "schema": 2,
+    "layers": {
+        "centerlines": [
+            {
+                "name": "city",
+                "data": "https://smgis.sanmarcostx.gov/arcgis/rest/services/Transportation/Centerline_Nice_Labels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "MAXIMOID",
+                    "name": "FULLSTREET",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEEDLIMIT"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "CLASS",
+                        "mapping": {
+                            "1": "motorway",
+                            "2": "trunk",
+                            "3": "primary",
+                            "4": "secondary",
+                            "5": "tertiary"
+                        },
+                        "else": "residential"
+                    },
+                    "zip_left": "L_ZIP",
+                    "zip_right": "R_ZIP"
+                }
+            }
+        ]
+    }
+}

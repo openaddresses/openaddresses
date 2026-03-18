@@ -45,6 +45,55 @@
                     "pid": "ParcelNo"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://maps.douglascountyga.gov/arcgis/rest/services/Basemap/DouglasCountyBasemap/MapServer/76",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "CENTERLINEID",
+                    "name": "FULLNAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAYDIR",
+                        "mapping": {
+                            "From-To": "yes",
+                            "To-From": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADCLASS",
+                        "mapping": {
+                            "Primary Road": "primary",
+                            "Ramp": "motorway_link"
+                        },
+                        "else": "residential"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "PAVSTATUS",
+                        "mapping": {
+                            "Paved": "paved",
+                            "Unpaved": "unpaved"
+                        },
+                        "else": ""
+                    },
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT",
+                    "zip_left": "ZIPLEFT",
+                    "zip_right": "ZIPRIGHT"
+                }
+            }
         ]
     }
 }
