@@ -65,6 +65,49 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "city_of_frederick",
+                "data": "https://spires.cityoffrederick.com/ArcGIS/rest/services/Street_Centerlines/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "CLSEG_ID",
+                    "name": "ST_FULL",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "O": "yes"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEEDLIMIT"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADTYPE",
+                        "mapping": {
+                            "Interstate": "motorway",
+                            "USHWY": "trunk",
+                            "State": "primary",
+                            "Major County": "secondary",
+                            "Ramp": "motorway_link",
+                            "Local": "residential"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "FRLEFT_A",
+                    "addr_to_left": "TOLEFT_A",
+                    "addr_from_right": "FRRIGHT_A",
+                    "addr_to_right": "TORIGHT_A"
+                }
+            }
         ]
     }
 }

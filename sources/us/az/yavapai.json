@@ -49,6 +49,34 @@
                     "pid": "PARCEL_ID"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.yavapaiaz.gov/ArcGIS/rest/services/Roads/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "NGUID",
+                    "name": "STD_NAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEEDLIMIT"
+                    },
+                    "zip_left": "POSTCODE_L",
+                    "zip_right": "POSTCODE_R"
+                }
+            }
         ]
     }
 }
