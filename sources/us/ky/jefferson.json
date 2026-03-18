@@ -31,6 +31,55 @@
                 },
                 "attribution": "Metro Louisville,  LOJIC partners"
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Metro Louisville, LOJIC partners",
+                "data": "https://gis.lojic.org/maps/rest/services/LojicSolutions/OpenDataAddresses/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "ROADNAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONE_WAY",
+                        "mapping": {
+                            "FT": "yes",
+                            " ": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "CLASS_ABRV",
+                        "mapping": {
+                            "XWAY": "motorway",
+                            "INRAMP": "motorway_link",
+                            "MAJART": "primary",
+                            "PRICOL": "primary",
+                            "MINART": "secondary",
+                            "SECCOL": "secondary",
+                            "LOCAL": "residential",
+                            "WLKWAY": "service",
+                            "RESPRT": "service",
+                            "INACTV": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "LFROM",
+                    "addr_to_left": "LTO",
+                    "addr_from_right": "RFROM",
+                    "addr_to_right": "RTO",
+                    "zip_left": "ZIP_LEFT",
+                    "zip_right": "ZIP_RIGHT"
+                }
+            }
         ]
     }
 }

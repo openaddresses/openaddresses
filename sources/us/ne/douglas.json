@@ -33,6 +33,52 @@
                     "postcode": "ZIP"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://dcgis.org/server/rest/services/vector/Street_Centerlines/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "CENTERLINEID",
+                    "name": "FULLNAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAYDIR",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEEDLMT"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADCLASS",
+                        "mapping": {
+                            "Expressway": "motorway",
+                            "Major Arterial": "primary",
+                            "Minor Arterial": "secondary",
+                            "Collector": "tertiary",
+                            "Local": "residential",
+                            "Ramp": "motorway_link",
+                            "Private": "service",
+                            "Other": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT",
+                    "zip_left": "ZIPLEFT",
+                    "zip_right": "ZIPRIGHT"
+                }
+            }
         ]
     }
 }

@@ -43,6 +43,69 @@
                     "pid": "PARID"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis12.cookcountyil.gov/arcgis/rest/services/planimetry/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "FULLSTNA",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no",
+                            "N": "no",
+                            "A": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SpeedLimit"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "RoadClass",
+                        "mapping": {
+                            "PRIMARY": "primary",
+                            "SECONDARY": "secondary",
+                            "LOCAL": "residential",
+                            "RAMP": "motorway_link",
+                            "SERVICE DRIVE": "service",
+                            "ALLEY": "service",
+                            "PRIVATE": "service",
+                            "PARKING LOT": "service",
+                            "TRAIL": "service",
+                            "VEHICULAR TRAIL": "service",
+                            "BRIDLE PATH": "service",
+                            "WALKWAY": "service",
+                            "STAIRWAY": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "SURFACE",
+                        "mapping": {
+                            "1": "paved",
+                            "2": "unpaved"
+                        },
+                        "else": ""
+                    },
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R"
+                }
+            }
         ]
     }
 }

@@ -44,6 +44,54 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "city",
+                "data": "https://gis.dallascityhall.com/arcgis/rest/services/Basemap/DallasAreaRoads/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SEGMENT_ID",
+                    "name": "FULLSTREETNAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONE_WAY",
+                        "mapping": {
+                            "F": "yes",
+                            "T": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "CLASS",
+                        "mapping": {
+                            "MINOR ARTERIAL": "secondary",
+                            "SECONDARY": "tertiary",
+                            "RAMP": "motorway_link",
+                            "PRIVATE": "service",
+                            "ALLEY": "service",
+                            "TRAIL": "service",
+                            "WALKWAY": "service",
+                            "CAD ONLY": "service",
+                            "PAPER": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "L_F_ADD",
+                    "addr_to_left": "L_T_ADD",
+                    "addr_from_right": "R_F_ADD",
+                    "addr_to_right": "R_T_ADD",
+                    "zip_left": "POSTAL_L",
+                    "zip_right": "POSTAL_R"
+                }
+            }
         ]
     }
 }

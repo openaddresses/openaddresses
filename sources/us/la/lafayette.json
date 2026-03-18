@@ -37,6 +37,47 @@
                     "pid": "ASSMT_NUM"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "parish",
+                "data": "https://maps.lafayettela.gov/arcgis/rest/services/BaseLayers/LCG_Centerlines/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "FULL_STR_NAME",
+                    "classification": {
+                        "function": "map",
+                        "field": "FUNC_STR_CLASS",
+                        "mapping": {
+                            "Interstate": "motorway",
+                            "Principal Arterial": "primary",
+                            "Minor Arterial": "secondary",
+                            "Major Collector": "tertiary",
+                            "Minor Collector": "tertiary"
+                        },
+                        "else": "residential"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "MATERIAL",
+                        "mapping": {
+                            "ASPHALT": "paved",
+                            "CONCRETE": "paved",
+                            "AGGREGATE": "paved",
+                            "LIMESTONE": "paved",
+                            "DIRT": "unpaved",
+                            "GRAVEL": "unpaved",
+                            "GRAVEL-DIRT": "unpaved"
+                        }
+                    },
+                    "addr_from_left": "L_ADD_FROM",
+                    "addr_to_left": "L_ADD_TO",
+                    "addr_from_right": "R_ADD_FROM",
+                    "addr_to_right": "R_ADD_TO"
+                }
+            }
         ]
     }
 }
