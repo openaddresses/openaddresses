@@ -59,6 +59,53 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://maps.hillsboroughcounty.org/arcgis/rest/services/DSD_Viewer_Services/DSD_Viewer_Transportation/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "STREET_ID",
+                    "name": "STREET",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no",
+                            "N": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "EST_SPEED"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "DSPLY_CLAS",
+                        "mapping": {
+                            "H": "trunk",
+                            "P": "primary",
+                            "M": "primary",
+                            "C": "tertiary",
+                            "R": "motorway_link",
+                            "O": "motorway_link",
+                            "A": "service",
+                            "S": "service",
+                            "V": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT"
+                }
+            }
         ]
     }
 }
