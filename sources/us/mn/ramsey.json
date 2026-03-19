@@ -43,6 +43,51 @@
                 "data": "https://maps.co.ramsey.mn.us/arcgis/rest/services/MapRamsey/MapRamseyOperational_AddressPoints/MapServer/0",
                 "protocol": "ESRI"
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://maps.co.ramsey.mn.us/arcgis/rest/services/OpenData/OpenData/FeatureServer/43",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "StreetNameAll",
+                    "oneway": {
+                        "function": "map",
+                        "field": "OneWay",
+                        "mapping": {
+                            "F": "yes",
+                            "T": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "PostedSpeed"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "FunctionalClass",
+                        "mapping": {
+                            "Principal Arterial Interstate": "motorway",
+                            "Principal Arterial Non-Interstate": "trunk",
+                            "Principal Arterial Other": "trunk",
+                            "Minor Arterial": "primary",
+                            "Major Collector": "secondary",
+                            "Minor Collector": "tertiary"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "LeftFromAddress",
+                    "addr_to_left": "LeftToAddress",
+                    "addr_from_right": "RightFromAddress",
+                    "addr_to_right": "RightToAddress",
+                    "zip_left": "LeftZIP",
+                    "zip_right": "RightZIP"
+                }
+            }
         ]
     }
 }

@@ -59,6 +59,53 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.co.eau-claire.wi.us/agsserver/rest/services/BaseLayers/Road_Centerline/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "FullStNm",
+                    "oneway": {
+                        "function": "map",
+                        "field": "OneWay",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SpeedLimit"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "RoadClass",
+                        "mapping": {
+                            "Interstate": "motorway",
+                            "US Highway": "trunk",
+                            "State Highway": "primary",
+                            "Ramp": "motorway_link",
+                            "Major Arterial": "primary",
+                            "Minor Arterial": "secondary",
+                            "Collector": "tertiary",
+                            "Private Drive": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R"
+                }
+            }
         ]
     }
 }

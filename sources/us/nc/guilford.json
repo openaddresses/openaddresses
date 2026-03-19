@@ -31,6 +31,56 @@
                     "postcode": "PHYADDR_ZIP"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gcgis.guilfordcountync.gov/arcgis/rest/services/GISDV/RoadCenterlines/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "CenterlineID",
+                    "name": "FullName",
+                    "oneway": {
+                        "function": "map",
+                        "field": "OneWay",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SpeedLimit"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "RoadClass",
+                        "mapping": {
+                            "FREEWAY": "motorway",
+                            "HIGHWAY": "trunk",
+                            "MAJOR ARTERIAL": "primary",
+                            "MINOR ARTERIAL": "secondary",
+                            "COLLECTOR": "tertiary",
+                            "LOCAL": "residential",
+                            "RAMP": "motorway_link",
+                            "SERVICE": "service",
+                            "AIRPORT": "service",
+                            "RECREATION": "service",
+                            "RESOURCE": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R"
+                }
+            }
         ]
     }
 }

@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-119.814, 39.530]
+        },
+        "country": "us",
+        "state": "nv",
+        "city": "Reno"
+    },
+    "schema": 2,
+    "layers": {
+        "centerlines": [
+            {
+                "name": "city",
+                "data": "https://pwmaps.reno.gov/server/rest/services/Street_Centerlines/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "FULLNAME",
+                    "classification": {
+                        "function": "map",
+                        "field": "CLASS",
+                        "mapping": {
+                            "FRONTAGE": "service",
+                            "RAMP": "motorway_link"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "FRADDL",
+                    "addr_to_left": "TOADDL",
+                    "addr_from_right": "FRADDR",
+                    "addr_to_right": "TOADDR",
+                    "zip_left": "ZIPL",
+                    "zip_right": "ZIPR"
+                }
+            }
+        ]
+    }
+}

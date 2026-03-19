@@ -60,6 +60,39 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis2.co.dakota.mn.us/arcgis/rest/services/DCGIS_OL_Transportation/MapServer/41",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "StreetID",
+                    "name": "STREET_NAME",
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADTYPE1",
+                        "mapping": {
+                            "1": "motorway",
+                            "2": "trunk",
+                            "3": "primary",
+                            "4": "secondary",
+                            "5": "secondary",
+                            "6": "tertiary",
+                            "7": "service",
+                            "8": "motorway_link"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "LEFT_FROM_ADD",
+                    "addr_to_left": "LEFT_TO_ADD",
+                    "addr_from_right": "RIGHT_FROM_ADD",
+                    "addr_to_right": "RIGHT_TO_ADD",
+                    "zip_left": "ZIP5_L",
+                    "zip_right": "ZIP5_R"
+                }
+            }
         ]
     }
 }
