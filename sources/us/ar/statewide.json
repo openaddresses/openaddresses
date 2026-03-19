@@ -3347,6 +3347,44 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "state",
+                "data": "https://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Transportation/FeatureServer/18",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "unique_id",
+                    "name": "pstr_fulnam",
+                    "classification": {
+                        "function": "map",
+                        "field": "rd_class",
+                        "mapping": {
+                            "Federal": "trunk",
+                            "State": "primary",
+                            "County": "secondary",
+                            "Municipal": "tertiary"
+                        },
+                        "else": "residential"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "rd_surftyp",
+                        "mapping": {
+                            "Paved": "paved",
+                            "Unpaved": "unpaved"
+                        },
+                        "else": ""
+                    },
+                    "addr_from_left": "pl_add_f",
+                    "addr_to_left": "pl_add_t",
+                    "addr_from_right": "pr_add_f",
+                    "addr_to_right": "pr_add_t",
+                    "zip_left": "zip5_l",
+                    "zip_right": "zip5_r"
+                }
+            }
         ]
     }
 }

@@ -71,6 +71,31 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://ocgis.com/arcpub/rest/services/Map_Layers/Centerlines/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "FOID",
+                    "name": "STREETNAME",
+                    "classification": {
+                        "function": "map",
+                        "field": "STREETCODE",
+                        "mapping": {
+                            "1": "primary",
+                            "2": "secondary",
+                            "3": "tertiary",
+                            "4": "residential",
+                            "5": "service",
+                            "7": "service"
+                        },
+                        "else": "residential"
+                    }
+                }
+            }
         ]
     }
 }

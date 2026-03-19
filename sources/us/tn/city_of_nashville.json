@@ -43,6 +43,39 @@
                     "postcode": "Zip"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "city",
+                "data": "https://maps.nashville.gov/arcgis/rest/services/Transportation/StreetCenterlines/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "TRANSPORTEDGEID",
+                    "name": "FULL_NAME",
+                    "classification": {
+                        "function": "map",
+                        "field": "CLASS",
+                        "mapping": {
+                            "1": "motorway",
+                            "2": "trunk",
+                            "3": "motorway_link",
+                            "4": "primary",
+                            "5": "secondary",
+                            "6": "tertiary",
+                            "7": "service",
+                            "8": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "LEFT_FROM",
+                    "addr_to_left": "LEFT_TO",
+                    "addr_from_right": "RIGHT_FROM",
+                    "addr_to_right": "RIGHT_TO",
+                    "zip_left": "ZIP_LEFT",
+                    "zip_right": "ZIP_RIGHT"
+                }
+            }
         ]
     }
 }
