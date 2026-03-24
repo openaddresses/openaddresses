@@ -57,6 +57,61 @@
                     "region": "kommunenavn"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "country",
+                "data": "https://nedlasting.geonorge.no/geonorge/Samferdsel/NVDBRuteplanNettverksdatasett/FGDB/Samferdsel_0000_Norge_25833_NVDBRuteplanNettverksdatasett_FGDB.zip",
+                "website": "https://kartkatalog.geonorge.no/metadata/statens-vegvesen/nvdb-ruteplan-nettverksdatasett/8d0f9066-34f9-4423-be12-8e8523089313",
+                "protocol": "http",
+                "compression": "zip",
+                "frequency": "monthly",
+                "license": {
+                    "text": "Norsk lisens for offentlige data (NLOD)",
+                    "url": "https://data.norge.no/nlod/no/1.0",
+                    "attribution": true,
+                    "attribution name": "Statens vegvesen",
+                    "share-alike": false
+                },
+                "contact": {
+                    "name": "Espen Gudevang",
+                    "email": "espen.fredrik.gudevang@vegvesen.no"
+                },
+                "conform": {
+                    "format": "gdb",
+                    "layer": "ERFKPS",
+                    "id": "linkid",
+                    "name": "streetname",
+                    "oneway": {
+                        "function": "map",
+                        "field": "oneway",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": "speedfw",
+                    "classification": {
+                        "function": "map",
+                        "field": "roadclass",
+                        "mapping": {
+                            "0": "motorway",
+                            "1": "trunk",
+                            "2": "primary",
+                            "3": "secondary",
+                            "4": "secondary",
+                            "5": "tertiary",
+                            "6": "residential",
+                            "7": "service",
+                            "8": "service",
+                            "9": "unclassified"
+                        },
+                        "else": ""
+                    }
+                }
+            }
         ]
     }
 }
