@@ -222,6 +222,50 @@
                     ]
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/fLeGjb7u4uXqeF9q/arcgis/rest/services/Street_Centerline/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "seg_id",
+                    "name": "stname",
+                    "oneway": {
+                        "function": "map",
+                        "field": "oneway",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "class",
+                        "mapping": {
+                            "1": "motorway",
+                            "2": "trunk",
+                            "3": "motorway_link",
+                            "4": "primary",
+                            "5": "secondary",
+                            "6": "tertiary",
+                            "9": "service",
+                            "10": "service",
+                            "14": "service",
+                            "15": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "l_f_add",
+                    "addr_to_left": "l_t_add",
+                    "addr_from_right": "r_f_add",
+                    "addr_to_right": "r_t_add",
+                    "zip_left": "zip_left",
+                    "zip_right": "zip_right"
+                }
+            }
         ]
     }
 }

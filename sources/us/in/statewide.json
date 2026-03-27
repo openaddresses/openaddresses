@@ -58,6 +58,58 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "state",
+                "data": "https://gisdata.in.gov/server/rest/services/Hosted/Street_Centerlines_of_Indiana_2022/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "objectid",
+                    "name": "st_full",
+                    "oneway": {
+                        "function": "map",
+                        "field": "oneway",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "speedlimit"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "roadclass",
+                        "mapping": {
+                            "PRIMARY": "primary",
+                            "SECONDARY": "secondary",
+                            "LOCAL": "residential",
+                            "RAMP": "motorway_link",
+                            "SERVICE DRIVE": "service",
+                            "ALLEY": "service",
+                            "PRIVATE": "service",
+                            "PARKING LOT": "service",
+                            "TRAIL": "service",
+                            "VEHICULAR TRAIL": "service",
+                            "BRIDLE PATH": "service",
+                            "WALKWAY": "service",
+                            "STAIRWAY": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "fromaddr_l",
+                    "addr_to_left": "toaddr_l",
+                    "addr_from_right": "fromaddr_r",
+                    "addr_to_right": "toaddr_r",
+                    "zip_left": "postcode_l",
+                    "zip_right": "postcode_r"
+                }
+            }
         ]
     }
 }

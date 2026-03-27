@@ -36,6 +36,26 @@
                     "postcode": "Zip Code"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "city",
+                "data": "https://gisshare.norfolk.gov/pubserver/rest/services/OpenData/Public_Works/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "UNIQUE_NO",
+                    "name": "FULLNAME",
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEEDLIMIT"
+                    },
+                    "addr_from_left": "LADD_FR",
+                    "addr_to_left": "LADD_TO",
+                    "addr_from_right": "RADD_FR",
+                    "addr_to_right": "RADD_TO"
+                }
+            }
         ]
     }
 }

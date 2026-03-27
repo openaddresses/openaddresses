@@ -62,6 +62,53 @@
                     "pid": "PARCEL"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://maps.achdidaho.org/server/rest/services/Assessor/roadcenterline/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "PermID",
+                    "name": "StrtConcat",
+                    "oneway": {
+                        "function": "map",
+                        "field": "OneWay",
+                        "mapping": {
+                            "F": "yes",
+                            "T": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "PostSpeed"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "FuncClass",
+                        "mapping": {
+                            "Principal Arterial": "primary",
+                            "Minor Arterial": "secondary",
+                            "Collector": "tertiary",
+                            "Local": "residential",
+                            "Ramp": "motorway_link",
+                            "Alley": "service",
+                            "Driveway": "service",
+                            "Parks": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "L_AddFrom",
+                    "addr_to_left": "L_AddTo",
+                    "addr_from_right": "R_AddFrom",
+                    "addr_to_right": "R_AddTo",
+                    "zip_left": "L_Zip4",
+                    "zip_right": "R_Zip4"
+                }
+            }
         ]
     }
 }

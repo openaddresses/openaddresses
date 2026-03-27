@@ -79,6 +79,76 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "attribution": "Fulton County",
+                "data": "https://services1.arcgis.com/AQDHTHDrZzfsFsB5/arcgis/rest/services/Street_Centerlines/FeatureServer/0",
+                "license": {
+                    "text": "Indemnification",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "id": "FeatureID",
+                    "name": "Label",
+                    "classification": {
+                        "function": "map",
+                        "field": "FuncClass",
+                        "mapping": {
+                            "Interstate Principal Arterial": "motorway",
+                            "Freeway and Expressway": "motorway",
+                            "Principal Arterial": "primary",
+                            "Minor Arterial": "secondary",
+                            "Major Collector": "tertiary",
+                            "Collector": "tertiary",
+                            "Minor Collector": "tertiary",
+                            "Local": "residential",
+                            "Alley": "service",
+                            "Entrance Ramp": "motorway_link",
+                            "Exit Ramp": "motorway_link",
+                            "Parking": "service",
+                            "Support": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "oneway": {
+                        "function": "map",
+                        "field": "DirTravel",
+                        "mapping": {
+                            "From": "yes",
+                            "To": "reverse",
+                            "Both": "no"
+                        },
+                        "else": "no"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "Surface",
+                        "mapping": {
+                            "Concrete": "paved",
+                            "Asphalt": "paved",
+                            "Brick or Block": "paved",
+                            "Gravel": "unpaved",
+                            "Dirt": "unpaved"
+                        },
+                        "else": ""
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SpeedLimit"
+                    },
+                    "addr_from_left": "FromLeft",
+                    "addr_to_left": "ToLeft",
+                    "addr_from_right": "FromRight",
+                    "addr_to_right": "ToRight",
+                    "zip_left": "ZipLeft",
+                    "zip_right": "ZipRight"
+                }
+            }
         ]
     }
 }

@@ -65,6 +65,67 @@
                     "layer": "BuildingFootprints"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "state",
+                "data": "https://gisservicemt.gov/arcgis/rest/services/MSDI_Framework/MontanaTransportation/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "LocalID",
+                    "name": [
+                        "St_PreDir",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "oneway": {
+                        "function": "map",
+                        "field": "OneWay",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SpeedLimit"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "RoadClass",
+                        "mapping": {
+                            "Primary": "primary",
+                            "Secondary": "secondary",
+                            "Local": "residential",
+                            "Ramp": "motorway_link",
+                            "Private": "service",
+                            "Service Drive": "service",
+                            "Alley": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "SurfaceType",
+                        "mapping": {
+                            "Paved": "paved",
+                            "Unpaved": "unpaved",
+                            "Gravel": "unpaved"
+                        },
+                        "else": ""
+                    },
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R"
+                }
+            }
         ]
     }
 }

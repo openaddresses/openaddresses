@@ -66,6 +66,47 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://mapservices.gis.saccounty.net/arcgis/rest/services/BASE_MAP_LABELS/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "UNIQUE_ID",
+                    "name": "STREETNAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "CLASS",
+                        "mapping": {
+                            "H": "trunk",
+                            "A": "primary",
+                            "C": "tertiary",
+                            "FRONT": "service",
+                            "ALLEY": "service",
+                            "RAMP": "motorway_link"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "LF_ACTUAL",
+                    "addr_to_left": "LT_ACTUAL",
+                    "addr_from_right": "RF_ACTUAL",
+                    "addr_to_right": "RT_ACTUAL",
+                    "zip_left": "ZIPLEFT",
+                    "zip_right": "ZIPRIGHT"
+                }
+            }
         ]
     }
 }

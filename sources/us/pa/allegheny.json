@@ -73,6 +73,52 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gisdata.alleghenycounty.us/arcgis/rest/services/Addressing/Addressing_Centerlines/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "FEATURE_KEY",
+                    "name": "FULL_NAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "FCC",
+                        "mapping": {
+                            "A11": "motorway",
+                            "A21": "trunk",
+                            "A32": "primary",
+                            "A31": "secondary",
+                            "A33": "secondary",
+                            "A63": "motorway_link",
+                            "A63A": "motorway_link",
+                            "A63B": "motorway_link"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "LLO",
+                    "addr_to_left": "LHI",
+                    "addr_from_right": "RLO",
+                    "addr_to_right": "RHI",
+                    "zip_left": "L_ZIP",
+                    "zip_right": "R_ZIP"
+                }
+            }
         ]
     }
 }

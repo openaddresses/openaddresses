@@ -75,6 +75,41 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://egis.pinellas.gov/gis/rest/services/AGO/Parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "CENTERLINEID",
+                    "name": "FULLNAME",
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADCLASS",
+                        "mapping": {
+                            "Interstate": "motorway",
+                            "Expressway": "motorway",
+                            "Highway": "trunk",
+                            "PA": "primary",
+                            "MA": "primary",
+                            "C": "tertiary",
+                            "MC": "tertiary",
+                            "TRL": "service",
+                            "Private": "service",
+                            "Ramp": "motorway_link"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT",
+                    "zip_left": "ZIPLEFT",
+                    "zip_right": "ZIPRIGHT"
+                }
+            }
         ]
     }
 }
