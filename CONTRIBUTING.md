@@ -6,9 +6,9 @@
 
 ## Reporting Sources & Issues
 
-We'd love to hear about a new address, cadastral parcel or building footprint sources, fixes to an old one, or improvements.
+We'd love to hear about a new address, cadastral parcel, building footprint or street centerline sources, fixes to an old one, or improvements.
 
-OpenAddresses is a collection of _authoritative data_ for address locations, cadastral parcels and building footprints around the world. We collect this data from authoritative sources; we do not create our own data. A source is a location where authoritative data can be found. Examples might be a downloadable CSV file or live ArcServer feature service hosted by a national postal service, a state GIS department, or a county property parcel database.
+OpenAddresses is a collection of _authoritative data_ for address locations, cadastral parcels, building footprints and street centerlines around the world. We collect this data from authoritative sources; we do not create our own data. A source is a location where authoritative data can be found. Examples might be a downloadable CSV file or live ArcServer feature service hosted by a national postal service, a state GIS department, or a county property parcel database.
 
 ### New Sources
 
@@ -83,7 +83,7 @@ instead of a pull request. We’ll determine if the data is suitable for inclusi
 --------------------- | --------- | ----
 `schema`              | Yes | The JSON Schema the source conforms to - currently always `2`
 `coverage`            | Yes | An object containing some combination of `country`, `state`, and either `city` or `county`. Each of which contain a String. [See below for more details](#coverage-object)
-`layers`              | Yes | An object containing the data layers for a given source. Valid layers are `addressess`, `parcels` and `buildings`.
+`layers`              | Yes | An object containing the data layers for a given source. Valid layers are `addresses`, `parcels`, `buildings` and `centerlines`.
 `layers.{layer}`      | Yes | An array of layer objects for a given layer type
 `{layer}.name`        | Yes | The name of the data provider (AlphaNumeric + Underscores). If unknown, just use the geographic entity, i.e. `town`, `city`, `county`
 `{layer}.data`        | Yes | A URL referencing the dataset. This should point to the raw data and not a web portal. If there isn't a good URL for the source, you can upload files to [https://batch.openaddresses.io/upload](https://batch.openaddresses.io/upload) which provides a cached URL.
@@ -130,9 +130,9 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
 
  Tag       | Required? | Note
 ---------------- | --- | ----
-`format`         | Yes | The format property stores the format. It can currently be one of `gdb`, `shapefile`, `csv`, `geojson`, or `xml` (for GML).
+`format`         | Yes | The format property stores the format. It can currently be one of `gdb`, `shapefile`, `csv`, `geojson`, `xml` (for GML), or `gpkg` (GeoPackage).
 `srs`            |     | Allows one to set a custom source srs. Currently only supported by `format:shapefile`, and `format:csv`. Should be in the format of `EPSG:####` and can be any code supported by `ogr2ogr`. Modern shapefiles typically store their projection in a `.prj` file. If this file exists, this tag should be omitted.
-`layer`          |     | The `gdb` source format allows multiple layers of geodata in a single input file. Use the `layer` tag to specify which of those layers to use. It can either be the string name of the layer or an integer index of the layer.
+`layer`          |     | The `gdb` and `gpkg` source formats allow multiple layers of geodata in a single input file. Use the `layer` tag to specify which of those layers to use. It can either be the string name of the layer or an integer index of the layer.
 `file`           |     | The majority of zips contain a single shapefile. Sometimes zips will contain multiple files, or the shapefile that is needed is located in a folder hierarchy in the zip. Since the program only supports determining single shapefiles not in a subfolder, `file` can be used to point the program to an exact file. The proper syntax would be `"file": "addresspoints/address.shp"` if the file was under a single subdirectory called `addresspoints`. Note there is no preceding forward slash.
 `encoding`       |     | A character encoding from which an input file will first be converted (into utf-8). Must be [recognizable by `iconv`](https://www.gnu.org/software/libiconv/).
 `csvsplit`       |     | The character to delimit input CSV’s by. Defaults to comma.
@@ -188,6 +188,40 @@ Attribute tags are functions or field names for mapping the source data into a g
 `id`   | No | The unique identifier for the building
 `height`   | No | The height of the building (from the ground) in meters
 
+##### Centerline Attribute Tags
+
+Attribute tags are functions or field names for mapping the source data into a given format. Centerlines represent road center lines as LineString geometries.
+
+ Tag | Required? | Note
+---------- | --- | ----
+`id`   | No | Unique identifier for the centerline segment
+`name`   | No | Street name for the centerline
+`classification` | No | Functional road class. See table below.
+`oneway` | No | Traffic directionality: `yes` (one-way in digitized direction), `reverse` (one-way against digitized direction), or `no` (two-way)
+`speed` | No | Posted speed limit in km/h
+`surface` | No | Road surface type: `paved` or `unpaved`
+`addr_from_left` | No | Starting address number on the left side of the segment
+`addr_to_left` | No | Ending address number on the left side of the segment
+`addr_from_right` | No | Starting address number on the right side of the segment
+`addr_to_right` | No | Ending address number on the right side of the segment
+`zip_left` | No | Postal code on the left side of the segment
+`zip_right` | No | Postal code on the right side of the segment
+
+###### Classification Values
+
+Use a `map` function to convert source-specific road classifications to these standardized values. When choosing a value, pick the one that best describes the road's role in the overall network, not its physical characteristics.
+
+| Value | Description | Typical examples |
+| :---: | ----------- | ---------------- |
+| `motorway` | Controlled-access highway with grade-separated interchanges. No at-grade crossings or traffic signals. | Interstate (US), Autobahn (DE), Autoroute (FR), Motorway (UK) |
+| `trunk` | High-capacity road that is not a motorway. May have at-grade intersections. | US Highway, A-road (UK), Route nationale (FR) |
+| `primary` | Major route connecting large towns. | State highway (US), B-road (UK), Route départementale (FR) |
+| `secondary` | Road connecting smaller towns and villages. | County road (US), C-road (UK) |
+| `tertiary` | Minor road connecting small settlements or neighborhoods. | Township road, minor collector |
+| `residential` | Road primarily providing access to residential properties. | |
+| `service` | Road providing access to buildings, facilities, or other roads. | Alleys, driveways, parking lot roads |
+| `unclassified` | Other public road not fitting the above categories. | |
+
 ##### Assembling Attributes
 
 In many sources, attribute values are provided in either single fields or several fields to be merged together.  Often times the `number` attribute is a single field in the source and the `street` attribute is merged together from several fields (see [Alameda County, California](sources/us/ca/alameda.json)).
@@ -239,6 +273,7 @@ Function | Note
 [`remove_postfix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the end of another field value
 [`regexp`](ATTRIBUTE_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region, etc. when the source has them in a single field
 [`map`](ATTRIBUTE_FUNCTIONS.md#map) | Allow for defining a mapping or lookup from a source value to a target value. Useful when the source values need to be transformed.
+[`mph_to_kph`](ATTRIBUTE_FUNCTIONS.md#mph_to_kph) | Convert a miles-per-hour value to kilometers-per-hour. Useful for the `speed` centerline attribute when the source uses imperial units.
 
 Sources vary in how they store data so several approaches to conforming attributes may apply.
 

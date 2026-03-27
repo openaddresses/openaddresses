@@ -87,6 +87,34 @@
                     "format": "shapefile"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/Zs2aNLFN00jrS4gG/arcgis/rest/services/Street_Centerline/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "cnn",
+                    "name": "streetname",
+                    "classification": {
+                        "function": "map",
+                        "field": "classcode",
+                        "mapping": {
+                            "1": "primary",
+                            "5": "residential",
+                            "0": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "lf_fadd",
+                    "addr_to_left": "lf_toadd",
+                    "addr_from_right": "rt_fadd",
+                    "addr_to_right": "rt_toadd",
+                    "zip_left": "zip_code",
+                    "zip_right": "zip_code"
+                }
+            }
         ]
     }
 }

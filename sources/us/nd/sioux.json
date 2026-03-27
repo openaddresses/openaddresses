@@ -7,6 +7,37 @@
     },
     "schema": 2,
     "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.openaddresses.io/cache/uploads/JasonHorning-NorthDakota/2026-03-10-uq3g2/SiteStructureAddressPoints.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": {
+                        "function": "join",
+                        "fields": ["AddNum_Pre", "Add_Number", "AddNum_Suf"],
+                        "separator": ""
+                    },
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code",
+                    "district": "County",
+                    "region": "State"
+                }
+            }
+        ],
         "parcels": [
             {
                 "name": "county",

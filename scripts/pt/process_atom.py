@@ -78,7 +78,17 @@ for nuts_link in base_page.findall(".//atom:entry/atom:link", namespaces=ATOM_NS
 print("All files cached, will begin parsing")
 
 with open(out_path, "w", newline="", encoding="utf-8") as csvfile:
-    fieldnames = ["id", "street", "house", "postcode", "city", "lon", "lat"]
+    fieldnames = [
+        "id",
+        "street",
+        "house",
+        "unit",
+        "floor",
+        "postcode",
+        "city",
+        "lon",
+        "lat",
+    ]
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
 
@@ -128,6 +138,8 @@ with open(out_path, "w", newline="", encoding="utf-8") as csvfile:
                 ad_pos = pos_el.text.split()
 
                 ad_num = None
+                ad_unit = None
+                ad_floor = None
                 ad_pc = None
                 ad_tf = None
 
@@ -140,12 +152,22 @@ with open(out_path, "w", newline="", encoding="utf-8") as csvfile:
                         loc_des = loc.find("ad:designator", namespaces=ns)
                         if loc_type is None or loc_des is None:
                             continue
+                        loc_href = loc_type.get("{%s}href" % ns["xlink"])
                         if (
-                            loc_type.get("{%s}href" % ns["xlink"])
+                            loc_href
                             == "http://inspire.ec.europa.eu/codelist/LocatorDesignatorTypeValue/buildingIdentifier"
                         ):
                             ad_num = loc_des.text
-                            break
+                        elif (
+                            loc_href
+                            == "http://inspire.ec.europa.eu/codelist/LocatorDesignatorTypeValue/unitIdentifier"
+                        ):
+                            ad_unit = loc_des.text
+                        elif (
+                            loc_href
+                            == "http://inspire.ec.europa.eu/codelist/LocatorDesignatorTypeValue/floorIdentifier"
+                        ):
+                            ad_floor = loc_des.text
 
                 for comp in ad.findall(".//ad:component", namespaces=ns):
                     href = comp.get("{%s}href" % ns["xlink"])
@@ -167,6 +189,8 @@ with open(out_path, "w", newline="", encoding="utf-8") as csvfile:
                         "id": ad_id,
                         "street": ad_tf,
                         "house": ad_num,
+                        "unit": ad_unit,
+                        "floor": ad_floor,
                         "postcode": postcode,
                         "city": city,
                         "lon": ad_pos[1],

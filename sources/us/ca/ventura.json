@@ -57,6 +57,43 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://maps.ventura.org/arcgis/rest/services/DataDownloads/Transportation/FeatureServer/15",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "cid",
+                    "name": "full_name",
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "speedlimit"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "road_type",
+                        "mapping": {
+                            "1": "motorway",
+                            "2": "trunk",
+                            "3": "primary",
+                            "4": "secondary",
+                            "5": "residential",
+                            "6": "motorway_link",
+                            "8": "service",
+                            "16": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "l_add_from",
+                    "addr_to_left": "l_add_to",
+                    "addr_from_right": "r_add_from",
+                    "addr_to_right": "r_add_to",
+                    "zip_left": "l_zip",
+                    "zip_right": "r_zip"
+                }
+            }
         ]
     }
 }

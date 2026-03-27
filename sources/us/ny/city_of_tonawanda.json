@@ -1,0 +1,61 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -78.880,
+                42.992
+            ]
+        },
+        "country": "us",
+        "state": "ny",
+        "city": "Tonawanda"
+    },
+    "schema": 2,
+    "layers": {
+        "centerlines": [
+            {
+                "name": "city",
+                "data": "https://gis1.tonawanda.ny.us/arcgis/rest/services/ParcelTracking/BasemapFeatures/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "CENTERLINEID",
+                    "name": "FULLNAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAYDIR",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADCLASS",
+                        "mapping": {
+                            "Interstate": "motorway",
+                            "US Highway": "trunk",
+                            "State Highway": "primary",
+                            "County Road": "secondary",
+                            "Ramp": "motorway_link"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT",
+                    "zip_left": "ZIPLEFT",
+                    "zip_right": "ZIPRIGHT"
+                }
+            }
+        ]
+    }
+}

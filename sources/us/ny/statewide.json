@@ -2400,7 +2400,7 @@
             {
                 "name": "state",
                 "website": "https://data.gis.ny.gov/datasets/sharegisny::nys-address-points/about",
-                "data": "https://data.openaddresses.io/cache/uploads/CraigFargione/2025-12-12-cimfg/OpenAddresses_NYS_20251212.gdb.zip",
+                "data": "https://data.openaddresses.io/cache/uploads/CraigFargione/2026-02-12-f8fm2/OpenAddresses_NYS_20260210.gdb.zip",
                 "protocol": "http",
                 "compression": "zip",
                 "note": "Data dictionary found at https://gis.ny.gov/system/files/documents/2022/10/address-points-data-dictionary.pdf",
@@ -2441,6 +2441,48 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "state",
+                "data": "https://gisservices.its.ny.gov/arcgis/rest/services/NYS_Streets/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "CompleteStreetName",
+                    "oneway": {
+                        "function": "map",
+                        "field": "OneWay",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "ACC",
+                        "mapping": {
+                            "1": "motorway",
+                            "2": "trunk",
+                            "3": "primary",
+                            "4": "secondary",
+                            "5": "tertiary"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "LeftFromAddress",
+                    "addr_to_left": "LeftToAddress",
+                    "addr_from_right": "RightFromAddress",
+                    "addr_to_right": "RightToAddress",
+                    "zip_left": "LeftPostal",
+                    "zip_right": "RightPostal"
                 }
             }
         ]

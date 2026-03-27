@@ -42,6 +42,48 @@
                     "pid": "PARCEL"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gisdata.pima.gov/arcgis1/rest/services/GISOpenData/Transportation/MapServer/11",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ROADID",
+                    "name": "STREET",
+                    "oneway": {
+                        "function": "map",
+                        "field": "TRAVDIR_CD",
+                        "mapping": {
+                            "B": "no",
+                            "A": "yes",
+                            "W": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADCAT_CD",
+                        "mapping": {
+                            "INTERSTATE": "motorway",
+                            "RMP_INT": "motorway_link",
+                            "ST_RT": "primary",
+                            "RMP_STRT": "motorway_link",
+                            "FRNT_RD": "service",
+                            "RMP_RDMJ": "motorway_link",
+                            "LRD_MJ": "tertiary",
+                            "IND_RT": "tertiary",
+                            "LRD_MN": "residential"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "L_ADD_FROM",
+                    "addr_to_left": "L_ADD_TO",
+                    "addr_from_right": "R_ADD_FROM",
+                    "addr_to_right": "R_ADD_TO"
+                }
+            }
         ]
     }
 }

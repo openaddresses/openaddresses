@@ -65,6 +65,53 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://maps.cityofmadison.com/arcgis/rest/services/Public/OPEN_DATA_TRANS/MapServer/16",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ROADID",
+                    "name": "fullStreetName",
+                    "oneway": {
+                        "function": "map",
+                        "field": "OneWay",
+                        "mapping": {
+                            "F": "yes",
+                            "T": "reverse",
+                            "B": "no",
+                            "N": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SpeedLimit"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "FAC2004",
+                        "mapping": {
+                            "1": "motorway",
+                            "2": "trunk",
+                            "3": "primary",
+                            "4": "secondary",
+                            "5": "tertiary",
+                            "7": "tertiary",
+                            "8": "tertiary"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "FrAddL",
+                    "addr_to_left": "ToAddL",
+                    "addr_from_right": "FrAddR",
+                    "addr_to_right": "ToAddR",
+                    "zip_left": "ZIPL",
+                    "zip_right": "ZIPR"
+                }
+            }
         ]
     }
 }

@@ -42,6 +42,48 @@
                     "pid": "APN"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://content.rcflood.org/arcgis/rest/services/PermitTracker/Centerlines/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "CL_ID",
+                    "name": "FULL_NAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "TRAVEL_DIRECTIONS",
+                        "mapping": {
+                            "One Way (With)": "yes",
+                            "One Way (Against)": "reverse",
+                            "Two Way": "no"
+                        },
+                        "else": "no"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "CA_FUNCTIONAL_CLASS",
+                        "mapping": {
+                            "1": "motorway",
+                            "2": "trunk",
+                            "3": "primary",
+                            "4": "secondary",
+                            "5": "tertiary",
+                            "6": "tertiary",
+                            "7": "residential"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "L_F_ADD",
+                    "addr_to_left": "L_T_ADD",
+                    "addr_from_right": "R_F_ADD",
+                    "addr_to_right": "R_T_ADD",
+                    "zip_left": "ZIP_LEFT",
+                    "zip_right": "ZIP_RIGHT"
+                }
+            }
         ]
     }
 }
