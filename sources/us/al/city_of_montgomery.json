@@ -60,6 +60,34 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.montgomeryal.gov/server/rest/services/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNo"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "city",
+                "data": "https://gis.montgomeryal.gov/server/rest/services/Roads/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "FULLNAME",
+                    "addr_from_left": "L_F_ADDR",
+                    "addr_to_left": "L_T_ADDR",
+                    "addr_from_right": "R_F_ADDR",
+                    "addr_to_right": "R_T_ADDR",
+                    "zip_left": "ZIP_L",
+                    "zip_right": "ZIP_R"
+                }
+            }
         ]
     }
 }
