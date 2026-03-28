@@ -22,6 +22,27 @@
                 }
             }
         ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.co.le-sueur.mn.us/server/rest/services/Road_Centerlines/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "street": {
+                        "function": "join",
+                        "fields": ["Street_Pre_Dir", "Street_Prefix", "Street_Name", "Street_Type", "Street_Post_Dir"],
+                        "separator": " "
+                    },
+                    "ltaddnum": "FROMLEFT",
+                    "rtaddnum": "FROMRIGHT",
+                    "ltaddrng": "TOLEFT",
+                    "rtaddrng": "TORIGHT",
+                    "ltplace": "COMM_L",
+                    "rtplace": "COMM_R"
+                }
+            }
+        ],
         "addresses": [
             {
                 "name": "county",
