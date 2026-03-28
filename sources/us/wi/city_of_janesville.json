@@ -37,6 +37,39 @@
                     "postcode": "ZipCode"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/i52vmcFqzIWK9plW/arcgis/rest/services/OpenDataHub/FeatureServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": [
+                        "PrefixDirection",
+                        "StreetName",
+                        "SuffixType",
+                        "SuffixDirection"
+                    ],
+                    "addr_from_left": "LowLeftAddress",
+                    "addr_to_left": "HighLeftAddress",
+                    "addr_from_right": "LowRightAddress",
+                    "addr_to_right": "HighRightAddress",
+                    "speed": "SpeedLimit",
+                    "oneway": "OneWay"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services2.arcgis.com/i52vmcFqzIWK9plW/arcgis/rest/services/OpenDataHub/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Taxkey"
+                }
+            }
         ]
     }
 }

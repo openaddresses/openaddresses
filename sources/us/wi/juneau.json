@@ -128,6 +128,26 @@
                 }
             }
         ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gismap.co.juneau.wi.us/server/rest/services/JuneauCo_PublicGIS/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": {
+                        "function": "join",
+                        "fields": ["DIR", "STREET_NAM", "TYPE_"],
+                        "separator": " "
+                    },
+                    "addr_from_left": "LEFT_FROM",
+                    "addr_to_left": "LEFT_TO",
+                    "addr_from_right": "RIGHT_FROM",
+                    "addr_to_right": "RIGHT_TO",
+                    "classification": "CLASS_DESC"
+                }
+            }
+        ],
         "parcels": [
             {
                 "name": "county",
