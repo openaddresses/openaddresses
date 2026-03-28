@@ -26,6 +26,34 @@
                     }
                 }
             }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/L3KwVADPEG6iD24f/ArcGIS/rest/services/Tax_Parcels_Public_View/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Name"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/L3KwVADPEG6iD24f/ArcGIS/rest/services/911_Road_Centerline/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "ST_CONCAT",
+                    "addr_from_left": "ADD_FR_L",
+                    "addr_to_left": "ADD_TO_L",
+                    "addr_from_right": "ADD_FR_R",
+                    "addr_to_right": "ADD_TO_R",
+                    "zip_left": "ZIP_L",
+                    "zip_right": "ZIP_R"
+                }
+            }
         ]
     }
 }
