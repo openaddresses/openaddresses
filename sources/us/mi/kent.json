@@ -58,6 +58,23 @@
                     "pid": "PPN"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.kentcountymi.gov/agisprod/rest/services/Kent_Streets/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": ["PREFIX_DIRECTION", "STREET_NAME", "STREET_SUFFIX", "SUFFIX_DIRECTION"],
+                    "addr_from_left": "LEFT_START_ADDRESS",
+                    "addr_to_left": "LEFT_END_ADDRESS",
+                    "addr_from_right": "RIGHT_START_ADDRESS",
+                    "addr_to_right": "RIGHT_END_ADDRESS",
+                    "zip_left": "LEFT_ZIP_CODE",
+                    "zip_right": "RIGHT_ZIP_CODE"
+                }
+            }
         ]
     }
 }

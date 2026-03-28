@@ -1,48 +1,50 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "26005",
-            "name": "Allegan County",
+            "geoid": "26115",
+            "name": "Monroe County",
             "state": "Michigan"
         },
         "country": "us",
         "state": "mi",
-        "county": "Allegan"
+        "county": "Monroe"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.allegancounty.org/server/rest/services/Hosted/addresses_20240708/FeatureServer/44",
+                "data": "https://gis.monroemi.gov/server/rest/services/Hosted/Address_Points_VIEW/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "number",
-                    "street": "roadname",
-                    "unit": "numbersup",
-                    "city": "city",
-                    "district": "county",
-                    "postcode": "zip"
+                    "number": "addressnum",
+                    "street": [
+                        "addrdir",
+                        "streetname"
+                    ],
+                    "unit": "unitapt",
+                    "city": "cityname",
+                    "postcode": "zipcode",
+                    "id": "parcelnum"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.allegancounty.org/server/rest/services/Hosted/Current_Parcels_Sept/FeatureServer/0",
-                "website": "https://gis.allegancounty.org/portal/apps/sites/#/allegan-county-gis-services/datasets/5d8a97f7274944aab7a5bc6e8548a02f/about?layer=0",
+                "data": "https://gis.monroemi.gov/server/rest/services/Hosted/Parcels_V2_View2/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "mapping_id"
+                    "pid": "pnumber"
                 }
             }
         ],
         "buildings": [
             {
                 "name": "county",
-                "data": "https://gis.allegancounty.org/server/rest/services/Hosted/ACBuildings/FeatureServer/1",
+                "data": "https://gis.monroemi.gov/server/rest/services/Hosted/General_Map_Layers_1_View/FeatureServer/5",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"
@@ -52,11 +54,11 @@
         "centerlines": [
             {
                 "name": "county",
-                "data": "https://gis.allegancounty.org/server/rest/services/Hosted/Centerlines_20250206_shp/FeatureServer/0",
+                "data": "https://gis.monroemi.gov/server/rest/services/Hosted/General_Map_Layers_1_View/FeatureServer/4",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "name": ["fedirp", "fename", "fetype", "fedirs"],
+                    "name": "roadname",
                     "addr_from_left": "fraddl",
                     "addr_to_left": "toaddl",
                     "addr_from_right": "fraddr",

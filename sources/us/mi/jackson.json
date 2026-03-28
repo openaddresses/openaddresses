@@ -1,69 +1,74 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "26163",
-            "name": "Wayne County",
+            "geoid": "26075",
+            "name": "Jackson County",
             "state": "Michigan"
         },
         "country": "us",
         "state": "mi",
-        "county": "Wayne"
+        "county": "Jackson"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services1.arcgis.com/b6rkZNtCd6Mx2gvB/arcgis/rest/services/Wayne_County_Parcels/FeatureServer/0",
+                "data": "https://gis.mijackson.org/countygis/rest/services/ParcelViewer/Parcels/FeatureServer/0",
                 "protocol": "ESRI",
-                "website": "https://wayne.maps.arcgis.com/apps/Viewer/index.html?appid=4e75960fbf28455c9acf115e97a3c7c0",
                 "conform": {
                     "format": "geojson",
                     "number": {
                         "function": "prefixed_number",
-                        "field": "propstreetcombined"
+                        "field": "P_FULLADD"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "propstreetcombined"
+                        "field": "P_FULLADD"
                     },
-                    "city": "propcity",
-                    "region": "propstate",
-                    "postcode": "propzip",
-                    "id": "packedParcelNumber"
+                    "city": "P_CITY",
+                    "postcode": "P_ZIP",
+                    "id": "PIN"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://services1.arcgis.com/b6rkZNtCd6Mx2gvB/arcgis/rest/services/Wayne_County_Parcels/FeatureServer/0",
+                "data": "https://gis.mijackson.org/countygis/rest/services/ParcelViewer/Parcels/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "packedParcelNumber"
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.mijackson.org/countygis/rest/services/Parks/NonMotorizedBase/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ],
         "centerlines": [
             {
                 "name": "county",
-                "data": "https://services1.arcgis.com/b6rkZNtCd6Mx2gvB/arcgis/rest/services/All_Roads_v17a/FeatureServer/0",
+                "data": "https://gis.mijackson.org/countygis/rest/services/Roads/MapServer/6",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "name": [
-                        "FEDIRP",
-                        "NAME",
-                        "FETYPE",
-                        "FEDIRS"
-                    ],
+                    "name": "RDNAME",
                     "addr_from_left": "FRADDL",
                     "addr_to_left": "TOADDL",
                     "addr_from_right": "FRADDR",
                     "addr_to_right": "TOADDR",
                     "zip_left": "ZIPL",
-                    "zip_right": "ZIPR"
+                    "zip_right": "ZIPR",
+                    "oneway": "Oneway",
+                    "speed": "Speed"
                 }
             }
         ]
