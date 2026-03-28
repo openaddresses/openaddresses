@@ -20,17 +20,17 @@
                 "conform": {
                     "format": "geojson",
                     "number": [
-                        "HSENO",
+                        "HseNo",
                         "HseNoSufx"
                     ],
                     "street": [
-                        "STDIR",
-                        "STNAME",
-                        "STTYPE",
-                        "STSUFX"
+                        "StDir",
+                        "StName",
+                        "StType",
+                        "StSufx"
                     ],
                     "unit": "UnitNo",
-                    "postcode": "ZIP",
+                    "postcode": "Zip",
                     "city": "USPSCityAlias"
                 }
             }
@@ -44,6 +44,64 @@
                 "conform": {
                     "format": "geojson",
                     "pid": "APN"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/ykpntM6e3tHvzKRJ/arcgis/rest/services/Maricopa_County_Streets/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SegmentID",
+                    "name": [
+                        "StDir",
+                        "StName",
+                        "StType",
+                        "StSufx"
+                    ],
+                    "oneway": {
+                        "function": "map",
+                        "field": "OneWay",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "SubClass",
+                        "mapping": {
+                            "1": "motorway",
+                            "3": "motorway",
+                            "5": "motorway",
+                            "7": "trunk",
+                            "9": "motorway_link",
+                            "11": "motorway_link",
+                            "13": "primary",
+                            "15": "secondary",
+                            "17": "residential",
+                            "19": "tertiary",
+                            "23": "residential",
+                            "25": "residential",
+                            "27": "service",
+                            "29": "service",
+                            "31": "service",
+                            "33": "service",
+                            "35": "service",
+                            "55": "residential",
+                            "59": "residential"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "FAddLfActl",
+                    "addr_to_left": "TAddLfActl",
+                    "addr_from_right": "FAddRtActl",
+                    "addr_to_right": "TAddRtActl",
+                    "zip_left": "ZipLeft",
+                    "zip_right": "ZipRight"
                 }
             }
         ]

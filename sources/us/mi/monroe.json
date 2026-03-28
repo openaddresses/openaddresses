@@ -1,0 +1,72 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "26115",
+            "name": "Monroe County",
+            "state": "Michigan"
+        },
+        "country": "us",
+        "state": "mi",
+        "county": "Monroe"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.monroemi.gov/server/rest/services/Hosted/Address_Points_VIEW/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "addressnum",
+                    "street": [
+                        "addrdir",
+                        "streetname"
+                    ],
+                    "unit": "unitapt",
+                    "city": "cityname",
+                    "postcode": "zipcode",
+                    "id": "parcelnum"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.monroemi.gov/server/rest/services/Hosted/Parcels_V2_View2/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pnumber"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.monroemi.gov/server/rest/services/Hosted/General_Map_Layers_1_View/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.monroemi.gov/server/rest/services/Hosted/General_Map_Layers_1_View/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "roadname",
+                    "addr_from_left": "fraddl",
+                    "addr_to_left": "toaddl",
+                    "addr_from_right": "fraddr",
+                    "addr_to_right": "toaddr",
+                    "zip_left": "zipl",
+                    "zip_right": "zipr"
+                }
+            }
+        ]
+    }
+}

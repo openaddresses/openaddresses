@@ -1,0 +1,65 @@
+{
+  "coverage": {
+    "ISO 3166": {
+      "alpha2": "FR-PM",
+      "country": "France",
+      "subdivision": "Saint-Pierre-et-Miquelon"
+    },
+    "state": "pm",
+    "country": "fr"
+  },
+  "schema": 2,
+  "layers": {
+    "addresses": [
+      {
+        "name": "state",
+        "website": "https://adresse.data.gouv.fr",
+        "data": "https://adresse.data.gouv.fr/data/ban/adresses/latest/csv/adresses-975.csv.gz",
+        "protocol": "http",
+        "compression": "gzip",
+        "conform": {
+          "format": "csv",
+          "csvsplit": ";",
+          "id": "id",
+          "number": {
+            "function": "join",
+            "fields": ["numero", "rep"],
+            "separator": ""
+          },
+          "street": "nom_voie",
+          "lon": "lon",
+          "lat": "lat",
+          "city": "nom_commune",
+          "postcode": "code_postal",
+          "accuracy": {
+            "function": "map",
+            "field": "type_position",
+            "mapping": {
+              "bâtiment": 1,
+              "cage d’escalier": 2,
+              "délivrance postale": 3,
+              "entrée": 2,
+              "logement": 2,
+              "parcelle": 2,
+              "segment": 3,
+              "service technique": 5
+            },
+            "else": 5
+          }
+        },
+        "language": "fr",
+        "license": {
+          "url": "https://alliance.numerique.gouv.fr/licence-ouverte-open-licence/",
+          "text": "Licence Ouverte Etalab 2.0",
+          "attribution": true,
+          "attribution name": "Base Adresse Nationale (adresse.data.gouv.fr)",
+          "share-alike": false,
+          "remarks": "https://www.etalab.gouv.fr/wp-content/uploads/2018/11/open-licence.pdf"
+        },
+        "contact": {
+          "email": "adresse@data.gouv.fr"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -119.027500,
+                36.068611
+            ]
+        },
+        "US Census": {
+            "geoid": "0658240",
+            "name": "City of Porterville",
+            "state": "California"
+        },
+        "country": "us",
+        "state": "ca",
+        "county": "Tulare",
+        "city": "Porterville"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://services6.arcgis.com/KUb9MOaWQkVh1cNC/ArcGIS/rest/services/AddressPoint/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "Number",
+                        "Fraction"
+                    ],
+                    "street": [
+                        "PreDir",
+                        "StreetName",
+                        "StreetType"
+                    ],
+                    "unit": "AptNum",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "ZIP5"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services6.arcgis.com/KUb9MOaWQkVh1cNC/ArcGIS/rest/services/Ext_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ]
+    }
+}

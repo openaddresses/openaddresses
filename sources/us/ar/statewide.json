@@ -3302,25 +3302,25 @@
                 "conform": {
                     "format": "geojson",
                     "number": [
-                        "ADR_NUM",
-                        "ADR_NUM_SUF"
+                        "adr_num",
+                        "adr_num_suf"
                     ],
                     "street": [
-                        "PRE_DIR",
-                        "PRE_TYPE",
-                        "PSTR_NAM",
-                        "PSTR_TYPE",
-                        "PSUF_DIR",
-                        "PSTR_MOD"
+                        "pre_dir",
+                        "pre_type",
+                        "pstr_nam",
+                        "pstr_type",
+                        "psuf_dir",
+                        "pstr_mod"
                     ],
                     "unit": [
-                        "ADR_UNIT_TYP",
-                        "ADR_UNIT_ID"
+                        "adr_unit_typ",
+                        "adr_unit_id"
                     ],
-                    "city": "ADR_CITY",
-                    "district": "CNTY_NAME",
-                    "region": "ADR_STATE",
-                    "postcode": "ADR_ZIP5"
+                    "city": "adr_city",
+                    "district": "cnty_name",
+                    "region": "adr_state",
+                    "postcode": "adr_zip5"
                 }
             }
         ],
@@ -3345,6 +3345,44 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "state",
+                "data": "https://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Transportation/FeatureServer/18",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "unique_id",
+                    "name": "pstr_fulnam",
+                    "classification": {
+                        "function": "map",
+                        "field": "rd_class",
+                        "mapping": {
+                            "Federal": "trunk",
+                            "State": "primary",
+                            "County": "secondary",
+                            "Municipal": "tertiary"
+                        },
+                        "else": "residential"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "rd_surftyp",
+                        "mapping": {
+                            "Paved": "paved",
+                            "Unpaved": "unpaved"
+                        },
+                        "else": ""
+                    },
+                    "addr_from_left": "pl_add_f",
+                    "addr_to_left": "pl_add_t",
+                    "addr_from_right": "pr_add_f",
+                    "addr_to_right": "pr_add_t",
+                    "zip_left": "zip5_l",
+                    "zip_right": "zip5_r"
                 }
             }
         ]

@@ -57,6 +57,37 @@
                     "layer": "PORTAGE_BUILDINGS_2023"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gisinfo.co.portage.wi.gov/server/rest/services/FinderApps/Roads/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "FullStNm",
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R",
+                    "speed": "SpeedLimit",
+                    "oneway": "OneWay",
+                    "classification": {
+                        "function": "map",
+                        "field": "RoadClass",
+                        "mapping": {
+                            "Primary": "primary",
+                            "Secondary": "secondary",
+                            "Local": "residential",
+                            "Private": "service",
+                            "Ramp": "motorway_link"
+                        },
+                        "else": "residential"
+                    }
+                }
+            }
         ]
     }
 }

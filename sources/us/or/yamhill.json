@@ -14,43 +14,42 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "http://www.yamhillcountymaps.com/",
-                "data": "https://www.yamhillcountygis.com/server/rest/services/2023_Planning/Private_2023/MapServer/29",
+                "website": "https://www.yamhillcountymaps.com/",
+                "data": "https://services6.arcgis.com/toubSXwoan3LMhOW/ArcGIS/rest/services/Taxlots_and_Taxing_Districts/FeatureServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "addhouse",
-                    "street": [
-                        "Streetdir",
-                        "StreetName",
-                        "StreetType"
-                    ],
-                    "unit": [
-                        "unittype",
-                        "unitnum"
-                    ],
-                    "city": "city",
-                    "id": "TXACCOUN_1"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "situs1"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "situs1"
+                    },
+                    "city": "situscity",
+                    "postcode": "situszip",
+                    "id": "maptaxlot"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "website": "http://www.yamhillcountymaps.com/",
-                "data": "https://www.yamhillcountygis.com/server/rest/services/2023_Planning/Private_2023/MapServer/61",
+                "website": "https://www.yamhillcountymaps.com/",
+                "data": "https://services6.arcgis.com/toubSXwoan3LMhOW/ArcGIS/rest/services/Taxlots_and_Taxing_Districts/FeatureServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "MapTaxlot"
+                    "pid": "maptaxlot"
                 }
             }
         ],
         "buildings": [
             {
                 "name": "county",
-                "website": "http://www.yamhillcountymaps.com/",
-                "data": "https://www.yamhillcountygis.com/server/rest/services/2023_Planning/Private_2023/MapServer/30",
+                "website": "https://www.yamhillcountymaps.com/",
+                "data": "https://services6.arcgis.com/toubSXwoan3LMhOW/ArcGIS/rest/services/Yamhill_County/FeatureServer/69",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"

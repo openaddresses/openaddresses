@@ -79,6 +79,62 @@
                     "pid": "PARCEL_ID"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "state",
+                "data": "https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/UtahRoads/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "FULLNAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "1": "yes",
+                            "2": "reverse",
+                            "0": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED_LMT"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "DOT_FCLASS",
+                        "mapping": {
+                            "Interstate": "motorway",
+                            "Other Freeway": "trunk",
+                            "Principal Arterial": "primary",
+                            "Minor Arterial": "secondary",
+                            "Major Collector": "tertiary",
+                            "Minor Collector": "tertiary"
+                        },
+                        "else": "residential"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "DOT_SRFTYP",
+                        "mapping": {
+                            "P": "paved",
+                            "P-ASP": "paved",
+                            "P-CON": "paved",
+                            "D": "unpaved",
+                            "N": "unpaved"
+                        },
+                        "else": ""
+                    },
+                    "addr_from_left": "FROMADDR_L",
+                    "addr_to_left": "TOADDR_L",
+                    "addr_from_right": "FROMADDR_R",
+                    "addr_to_right": "TOADDR_R",
+                    "zip_left": "ZIPCODE_L",
+                    "zip_right": "ZIPCODE_R"
+                }
+            }
         ]
     }
 }

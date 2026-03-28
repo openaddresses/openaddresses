@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services2.arcgis.com/njkzXmyapxfqgV2j/ArcGIS/rest/services/Parcel_locator2_ZS/FeatureServer/2",
+                "data": "https://services2.arcgis.com/njkzXmyapxfqgV2j/arcgis/rest/services/Door_County_Address_Points/FeatureServer/0",
                 "note": "Door County uses grid-style house numbers in two fields with no separator, so this uses the combined field.  Individual street fields are unreliable so this uses the combined field.",
                 "protocol": "ESRI",
                 "conform": {
@@ -27,14 +27,31 @@
                 }
             }
         ],
-        "parcels": [
+        "centerlines": [
             {
                 "name": "county",
-                "data": "https://services2.arcgis.com/njkzXmyapxfqgV2j/ArcGIS/rest/services/Parcel_locator2_ZS/FeatureServer/3",
+                "data": "https://services2.arcgis.com/njkzXmyapxfqgV2j/arcgis/rest/services/Labeled_Roads/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PIN"
+                    "name": "LABELNAME",
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT",
+                    "zip_left": "LZIP",
+                    "zip_right": "RZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/njkzXmyapxfqgV2j/arcgis/rest/services/Zoning_Layers/FeatureServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pin"
                 }
             }
         ],

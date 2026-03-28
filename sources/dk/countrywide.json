@@ -11,29 +11,31 @@
         "addresses": [
             {
                 "name": "country",
+                "website": "https://datafordeler.dk/dataoversigt/danmarks-adresseregister-dar/dar-graphql/",
+                "note": "Data sourced from Datafordeler DAR GraphQL API.",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-03-27-yr8up/dk_addresses.csv.zip",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "share-alike": false,
+                    "attribution name": "Klimadatastyrelsens"
+                },
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
                     "format": "csv",
-                    "lon": "wgs84koordinat_længde",
-                    "street": "vejnavn",
-                    "lat": "wgs84koordinat_bredde",
-                    "number": "husnr",
-                    "city": "postnrnavn",
-                    "postcode": "postnr",
-                    "region": "regionsnavn",
-                    "unit": {
-                        "function": "join",
-                        "fields": [
-                            "etage",
-                            "dør"
-                        ]
-                    }
-                },
-                "attribution": "Contains information from the Danish Ministry of Housing, Urban and Rural Address Web Services (AWS).",
-                "website": "https://dawadocs.dataforsyningen.dk/",
-                "protocol": "http",
-                "note": "License is disclaimer of liability, allows commercial use & transformation, & has attribution language (unclear if it is a requirement or suggestion)",
-                "data": "https://api.dataforsyningen.dk/adresser?format=csv",
-                "license": "https://dawadocs.dataforsyningen.dk/dok/om"
+                    "srs": "EPSG:25832",
+                    "lon": "x",
+                    "lat": "y",
+                    "number": "number",
+                    "street": "street",
+                    "unit": "unit",
+                    "postcode": "postcode",
+                    "city": "city",
+                    "district": "district",
+                    "region": "region"
+                }
             }
         ]
     }

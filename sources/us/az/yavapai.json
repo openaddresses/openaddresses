@@ -14,25 +14,25 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.yavapai.us/arcgis/rest/services/Property/MapServer/2",
+                "data": "https://gis.yavapaiaz.gov/arcgis/rest/services/Property/FeatureServer/2",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "CIVIC",
-                    "street": [
-                        "PRE_DIR",
-                        "STREET",
-                        "SUFFIX"
+                    "number": [
+                        "ADD_NUMBER",
+                        "ADDNUM_SUF"
                     ],
-                    "unit": "Unit",
-                    "city": "COMMUNITY"
+                    "street": "L_NGFULLSTNAME",
+                    "unit": "UNIT",
+                    "city": "POST_COMM",
+                    "postcode": "POST_CODE"
                 }
             }
         ],
         "buildings": [
             {
                 "name": "county",
-                "data": "https://gis.yavapai.us/arcgis/rest/services/Property/MapServer/5",
+                "data": "https://gis.yavapaiaz.gov/arcgis/rest/services/Property/FeatureServer/5",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"
@@ -42,11 +42,39 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.yavapai.us/arcgis/rest/services/Parcels/MapServer/0",
+                "data": "https://gis.yavapaiaz.gov/arcgis/rest/services/Parcels/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "pid": "PARCEL_ID"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.yavapaiaz.gov/ArcGIS/rest/services/Roads/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "NGUID",
+                    "name": "STD_NAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEEDLIMIT"
+                    },
+                    "zip_left": "POSTCODE_L",
+                    "zip_right": "POSTCODE_R"
                 }
             }
         ]

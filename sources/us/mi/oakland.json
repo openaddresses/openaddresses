@@ -15,6 +15,13 @@
             {
                 "name": "county",
                 "data": "https://gisservices.oakgov.com/arcgis/rest/services/Enterprise/EnterpriseOpenParcelDataMapService/MapServer/0",
+                "website": "https://accessoakland.oakgov.com/datasets/oakgov::oc-site-address/about",
+                "license": {
+                    "text": "You may retrieve, download, copy, modify, translate, adapt, distribute, sort, search, and reuse Open Data for any lawful purpose.",
+                    "attribution": true,
+                    "attribution name": "Oakland County",
+                    "share-alike": false
+                },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -28,6 +35,34 @@
                     "city": "SITECITY",
                     "postcode": "SITEZIPCODE",
                     "region": "SITESTATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisservices.oakgov.com/arcgis/rest/services/Enterprise/EnterpriseOpenParcelDataMapService/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gisservices.oakgov.com/arcgis/rest/services/Enterprise/EnterpriseTransportationDataMapService/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": ["DirectionalPrefix", "StreetName", "StreetType", "DirectionalSuffix"],
+                    "addr_from_left": "LowAddressLeft",
+                    "addr_to_left": "HighAddressLeft",
+                    "addr_from_right": "LowAddressRight",
+                    "addr_to_right": "HighAddressRight",
+                    "zip_left": "PostalZip5Left",
+                    "zip_right": "PostalZip5Right"
                 }
             }
         ]

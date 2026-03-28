@@ -11,10 +11,38 @@
     },
     "schema": 2,
     "layers": {
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.stlouiscountymn.gov/server2/rest/services/GeneralUse/Open_Data/MapServer/18",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "ST_CONCAT",
+                    "addr_from_left": "ADD_FR_L",
+                    "addr_to_left": "ADD_TO_L",
+                    "addr_from_right": "ADD_FR_R",
+                    "addr_to_right": "ADD_TO_R",
+                    "zip_left": "ZIP_L",
+                    "zip_right": "ZIP_R"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.stlouiscountymn.gov/server2/rest/services/GeneralUse/Open_Data/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PRCL_NBR"
+                }
+            }
+        ],
         "addresses": [
             {
                 "name": "county",
-                "website": "http://stlouiscountymndata-slcgis.opendata.arcgis.com/datasets/e1ca424971f8470d9afa4083c471a686_17",
+                "website": "https://stlouiscountymndata-slcgis.opendata.arcgis.com/datasets/e1ca424971f8470d9afa4083c471a686_17",
                 "data": "https://gis.stlouiscountymn.gov/server2/rest/services/GeneralUse/OpenData/MapServer/17",
                 "protocol": "ESRI",
                 "conform": {

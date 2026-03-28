@@ -32,6 +32,37 @@
                     "format": "shapefile",
                     "postcode": "zipcode"
                 }
+            },
+            {
+                "name": "county-gis",
+                "data": "https://webgis.co.trumbull.oh.us/gisserver/rest/services/Maps/DDTI/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "ST_PREFIX",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "ST_SUFFIX"
+                    ],
+                    "unit": "UNITNUM",
+                    "city": "MUNI",
+                    "district": "COUNTY",
+                    "region": "STATE",
+                    "postcode": "ZIPCODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://webgis.co.trumbull.oh.us/gisserver/rest/services/Maps/TaxParcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
             }
         ]
     }

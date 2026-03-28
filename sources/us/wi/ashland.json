@@ -34,12 +34,48 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://services8.arcgis.com/QlEvoqmtm2DnG9gw/arcgis/rest/services/Tax_Parcels_01042019/FeatureServer/0",
+                "data": "https://services8.arcgis.com/QlEvoqmtm2DnG9gw/arcgis/rest/services/AshlandCoParcels2024/FeatureServer/0",
                 "website": "https://data-ashlandcountywi.opendata.arcgis.com/datasets/AshlandCountyWI::ac-tax-parcels/about",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "pid": "PlanID"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services8.arcgis.com/QlEvoqmtm2DnG9gw/arcgis/rest/services/AC_Master_Road_Center_Lines/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": [
+                        "st_predir",
+                        "stpretype",
+                        "stname",
+                        "stpostype",
+                        "stposdir"
+                    ],
+                    "addr_from_left": "fromleft",
+                    "addr_to_left": "toleft",
+                    "addr_from_right": "fromright",
+                    "addr_to_right": "toright",
+                    "classification": {
+                        "function": "map",
+                        "field": "classifica",
+                        "mapping": {
+                            "Principal Arterial": "primary",
+                            "Minor Arterial": "secondary",
+                            "Major Collector": "tertiary",
+                            "Minor Collector": "tertiary",
+                            "Local": "residential",
+                            "Private access / Driveways / Easements": "service",
+                            "County Forest Road": "unclassified",
+                            "Public Undefined": "unclassified"
+                        },
+                        "else": "residential"
+                    }
                 }
             }
         ],

@@ -11,6 +11,49 @@
     },
     "schema": 2,
     "layers": {
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.co.sherburne.mn.us/arcgis/rest/services/Hybrid2015/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.co.sherburne.mn.us/arcgis/rest/services/CMRP_Data/FeatureServer/27",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": [
+                        "ST_PRE_DIR",
+                        "ST_NAME",
+                        "ST_POS_TYP",
+                        "ST_POS_DIR"
+                    ],
+                    "addr_from_left": "ADD_FR_L",
+                    "addr_to_left": "ADD_TO_L",
+                    "addr_from_right": "ADD_FR_R",
+                    "addr_to_right": "ADD_TO_R",
+                    "zip_left": "ZIP_L",
+                    "zip_right": "ZIP_R"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.sherburne.mn.us/arcgis/rest/services/OpenData/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
         "addresses": [
             {
                 "name": "county",

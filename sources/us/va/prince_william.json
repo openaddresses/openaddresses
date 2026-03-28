@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gisweb.pwcgov.org/arcgis/rest/services/AGOL/AGOL/MapServer/14",
+                "data": "https://gisweb.pwcgov.org/arcgis/rest/services/AGOL/AGOL/MapServer/14",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -37,6 +37,52 @@
                 "conform": {
                     "format": "geojson",
                     "pid": "GPIN"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gisweb.pwcva.gov/arcgis/rest/services/OpenData/OpenData/MapServer/5",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "STREET_NAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "TRAVEL_DIRECT",
+                        "mapping": {
+                            "1": "yes",
+                            "3": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED_LIMIT"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "TYPE_CODE",
+                        "mapping": {
+                            "1100": "motorway",
+                            "1200": "primary",
+                            "1300": "secondary",
+                            "1350": "tertiary",
+                            "1630": "motorway_link",
+                            "1635": "motorway_link",
+                            "1640": "service",
+                            "1730": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "L_ADD_FROM",
+                    "addr_to_left": "L_ADD_TO",
+                    "addr_from_right": "R_ADD_FROM",
+                    "addr_to_right": "R_ADD_TO",
+                    "zip_left": "L_ZIP",
+                    "zip_right": "R_ZIP"
                 }
             }
         ]

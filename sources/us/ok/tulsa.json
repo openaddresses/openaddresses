@@ -14,18 +14,50 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://maps.cityoftulsa.org/gis/rest/services/Base/tca_parcel/MapServer/0",
+                "data": "https://map11.incog.org/arcgis11wa/rest/services/Address_Points/FeatureServer/2",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "STREETNO",
-                    "street": [
-                        "STREETDIR",
-                        "STREETNAME",
-                        "STREETSUF"
-                    ],
-                    "postcode": "ZIP_PROP",
-                    "city": "PROPCITY"
+                    "number": "Address",
+                    "street": {
+                        "function": "join",
+                        "fields": ["PreDir", "Street", "StreetType", "SufDir"],
+                        "separator": " "
+                    },
+                    "city": "City",
+                    "postcode": "Zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://map11.incog.org/arcgis11wa/rest/services/Parcels_TulsaCo/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNo"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://map11.incog.org/arcgis11wa/rest/services/RoadCenterlines_updated/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": {
+                        "function": "join",
+                        "fields": ["PreDir", "Street", "StreetType", "SufDir"],
+                        "separator": " "
+                    },
+                    "addr_from_left": "Add_L_From",
+                    "addr_to_left": "Add_L_To",
+                    "addr_from_right": "Add_R_From",
+                    "addr_to_right": "Add_R_To",
+                    "zip_left": "Zipcode_L",
+                    "zip_right": "Zipcode_R"
                 }
             }
         ]

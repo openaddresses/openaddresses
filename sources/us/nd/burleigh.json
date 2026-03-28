@@ -1,0 +1,58 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "38015",
+            "name": "Burleigh County",
+            "state": "North Dakota"
+        },
+        "country": "us",
+        "state": "nd",
+        "county": "Burleigh"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/XxHmL09eFqJWI0gE/ArcGIS/rest/services/CenCom_Address_View/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                },
+                "note": "CenCom (Central Communications) addresses cover Burleigh County and Morton County. Filter by County='BURLEIGH COUNTY' if needed."
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/XxHmL09eFqJWI0gE/ArcGIS/rest/services/CenCom_Parcels/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                },
+                "note": "CenCom parcels cover Burleigh County and Morton County."
+            }
+        ]
+    }
+}

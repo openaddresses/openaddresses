@@ -14,33 +14,26 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://arcgis.tampagov.net/arcgis/rest/services/Address/AddressPoints/FeatureServer/0",
+                "data": "https://services.arcgis.com/apTfC6SUmnNfnxuF/arcgis/rest/services/Site_Address_Point/FeatureServer/0",
                 "protocol": "ESRI",
-                "website": "https://gis2017-01-10t133755357z-hillsborough.opendata.arcgis.com/datasets/hillsborough::site-address-point/about",
+                "website": "https://gis2017-01-10t133755357z-hillsborough.opendata.arcgis.com/datasets/hillsborough::site-address-points/about",
                 "license": {
                     "url": "https://creativecommons.org/licenses/by/4.0/",
                     "text": "CC BY 4.0",
                     "attribution": true,
                     "attribution name": "Hillsborough County",
-                    "share-alike": true
+                    "share-alike": false
                 },
                 "conform": {
                     "format": "geojson",
-                    "number": [
-                        "ADDRNUM",
-                        "ADDRNUMSUF"
-                    ],
-                    "unit": [
-                        "UNITTYPE",
-                        "UNITID"
-                    ],
-                    "street": [
-                        "DIRPRE",
-                        "STREETNAME",
-                        "TYPE",
-                        "DIRSUF"
-                    ],
-                    "postcode": "ZIP"
+                    "number": "ADDRNUM",
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "FULLADDRUNIT"
+                    },
+                    "street": "FULLNAME",
+                    "postcode": "ZIP",
+                    "city": "POSTALCOMM"
                 }
             }
         ],
@@ -64,6 +57,53 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://maps.hillsboroughcounty.org/arcgis/rest/services/DSD_Viewer_Services/DSD_Viewer_Transportation/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "STREET_ID",
+                    "name": "STREET",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no",
+                            "N": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "EST_SPEED"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "DSPLY_CLAS",
+                        "mapping": {
+                            "H": "trunk",
+                            "P": "primary",
+                            "M": "primary",
+                            "C": "tertiary",
+                            "R": "motorway_link",
+                            "O": "motorway_link",
+                            "A": "service",
+                            "S": "service",
+                            "V": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT"
                 }
             }
         ]

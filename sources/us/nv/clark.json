@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Address/MapServer/2",
+                "data": "https://gisgate.co.clark.nv.us/arcgis/rest/services/GISMO/Address/MapServer/2",
                 "protocol": "ESRI",
                 "conform": {
                     "number": [
@@ -28,6 +28,37 @@
                     ],
                     "unit": "strunit",
                     "format": "geojson"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://maps.clarkcountynv.gov/arcgis/rest/services/GISMO/scl/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "CENSUSID",
+                    "name": "STREET",
+                    "classification": {
+                        "function": "map",
+                        "field": "STRCLASS",
+                        "mapping": {
+                            "INTERSTATE": "motorway",
+                            "US HIGHWAY": "primary",
+                            "STATE HIGHWAY": "primary",
+                            "COUNTY HIGHWAY": "secondary",
+                            "MAJOR STREET": "tertiary",
+                            "RAMP": "motorway_link"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "LFADD",
+                    "addr_to_left": "LTADD",
+                    "addr_from_right": "RFADD",
+                    "addr_to_right": "RTADD",
+                    "zip_left": "LZIP",
+                    "zip_right": "RZIP"
                 }
             }
         ]

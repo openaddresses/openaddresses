@@ -1,0 +1,61 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -121.654,
+                36.678
+            ]
+        },
+        "country": "us",
+        "state": "ca",
+        "city": "Salinas"
+    },
+    "schema": 2,
+    "layers": {
+        "centerlines": [
+            {
+                "name": "city",
+                "data": "https://giswebservices.ci.salinas.ca.us/arcgis/rest/services/FacilitiesStreets/Roadway_Centerlines/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "cosid",
+                    "name": "st_fullnm",
+                    "oneway": {
+                        "function": "map",
+                        "field": "oneway",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "speedlimit"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "roadclass",
+                        "mapping": {
+                            "Primary": "primary",
+                            "Secondary": "secondary",
+                            "Local": "residential",
+                            "Ramp": "motorway_link",
+                            "Private": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "fromaddr_l",
+                    "addr_to_left": "toaddr_l",
+                    "addr_from_right": "fromaddr_r",
+                    "addr_to_right": "toaddr_r",
+                    "zip_left": "postcode_l",
+                    "zip_right": "postcode_r"
+                }
+            }
+        ]
+    }
+}

@@ -17,8 +17,8 @@
                 "license": "https://www.co.dakota.mn.us/HomeProperty/MappingServices/GISData/Pages/default.aspx",
                 "protocol": "ESRI",
                 "note": "ArcGIS for Server service",
-                "data": "http://gis2.co.dakota.mn.us/arcgis/rest/services/DCGIS_OL_PropertyInformation/MapServer/3",
-                "website": "http://www.co.dakota.mn.us/HomeProperty/MappingServices/GISData/Pages/default.aspx",
+                "data": "https://gis2.co.dakota.mn.us/arcgis/rest/services/DCGIS_OL_PropertyInformation/MapServer/0",
+                "website": "https://www.co.dakota.mn.us/HomeProperty/MappingServices/GISData/Pages/default.aspx",
                 "conform": {
                     "format": "geojson",
                     "number": "BLDG_NUM",
@@ -33,6 +33,64 @@
                     "unit": "UNIT_INFO",
                     "city": "CITY",
                     "postcode": "Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "license": "https://www.co.dakota.mn.us/HomeProperty/MappingServices/GISData/Pages/default.aspx",
+                "protocol": "ESRI",
+                "data": "https://gis2.co.dakota.mn.us/arcgis/rest/services/DCGIS_OL_PropertyInformation/MapServer/5",
+                "website": "https://www.co.dakota.mn.us/HomeProperty/MappingServices/GISData/Pages/default.aspx",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAXPIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "license": "https://www.co.dakota.mn.us/HomeProperty/MappingServices/GISData/Pages/default.aspx",
+                "protocol": "ESRI",
+                "data": "https://gis2.co.dakota.mn.us/arcgis/rest/services/DCGIS_OL_PropertyInformation/MapServer/50",
+                "website": "https://www.co.dakota.mn.us/HomeProperty/MappingServices/GISData/Pages/default.aspx",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis2.co.dakota.mn.us/arcgis/rest/services/DCGIS_OL_Transportation/MapServer/41",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "StreetID",
+                    "name": "STREET_NAME",
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADTYPE1",
+                        "mapping": {
+                            "1": "motorway",
+                            "2": "trunk",
+                            "3": "primary",
+                            "4": "secondary",
+                            "5": "secondary",
+                            "6": "tertiary",
+                            "7": "service",
+                            "8": "motorway_link"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "LEFT_FROM_ADD",
+                    "addr_to_left": "LEFT_TO_ADD",
+                    "addr_from_right": "RIGHT_FROM_ADD",
+                    "addr_to_right": "RIGHT_TO_ADD",
+                    "zip_left": "ZIP5_L",
+                    "zip_right": "ZIP5_R"
                 }
             }
         ]

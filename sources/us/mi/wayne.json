@@ -16,7 +16,7 @@
                 "name": "county",
                 "data": "https://services1.arcgis.com/b6rkZNtCd6Mx2gvB/arcgis/rest/services/Wayne_County_Parcels/FeatureServer/0",
                 "protocol": "ESRI",
-                "website": "http://wayne.maps.arcgis.com/apps/Viewer/index.html?appid=4e75960fbf28455c9acf115e97a3c7c0",
+                "website": "https://wayne.maps.arcgis.com/apps/Viewer/index.html?appid=4e75960fbf28455c9acf115e97a3c7c0",
                 "conform": {
                     "format": "geojson",
                     "number": {
@@ -31,6 +31,39 @@
                     "region": "propstate",
                     "postcode": "propzip",
                     "id": "packedParcelNumber"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/b6rkZNtCd6Mx2gvB/arcgis/rest/services/Wayne_County_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "packedParcelNumber"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/b6rkZNtCd6Mx2gvB/arcgis/rest/services/All_Roads_v17a/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": [
+                        "FEDIRP",
+                        "NAME",
+                        "FETYPE",
+                        "FEDIRS"
+                    ],
+                    "addr_from_left": "FRADDL",
+                    "addr_to_left": "TOADDL",
+                    "addr_from_right": "FRADDR",
+                    "addr_to_right": "TOADDR",
+                    "zip_left": "ZIPL",
+                    "zip_right": "ZIPR"
                 }
             }
         ]

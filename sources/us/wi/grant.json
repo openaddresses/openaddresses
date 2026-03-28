@@ -1,13 +1,13 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "55041",
-            "name": "Forest County",
+            "geoid": "55043",
+            "name": "Grant County",
             "state": "Wisconsin"
         },
         "country": "us",
         "state": "wi",
-        "county": "Forest"
+        "county": "Grant"
     },
     "schema": 2,
     "layers": {
@@ -31,11 +31,42 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gcarcgis.co.grant.wi.gov/server/rest/services/TaxParcel_13Oct23/MapServer/17",
+                "data": "https://gcarcgis.co.grant.wi.gov/server/rest/services/LandInformationLayers/Tax_Parcels/MapServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "pid": "PARCELID"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gcarcgis.co.grant.wi.gov/server/rest/services/Grant_County_Roads/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "gcFullName",
+                    "addr_from_left": "fromAddL",
+                    "addr_to_left": "toAddL",
+                    "addr_from_right": "fromAddR",
+                    "addr_to_right": "toAddR",
+                    "zip_left": "zipCodeL",
+                    "zip_right": "zipCodeR",
+                    "oneway": "oneWay",
+                    "speed": "speedLimit",
+                    "classification": {
+                        "function": "map",
+                        "field": "roadClass",
+                        "mapping": {
+                            "PRIMARY": "primary",
+                            "SECONDARY": "secondary",
+                            "LOCAL": "residential",
+                            "PRIVATE": "service",
+                            "B": "unclassified"
+                        },
+                        "else": "residential"
+                    }
                 }
             }
         ]

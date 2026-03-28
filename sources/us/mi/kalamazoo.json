@@ -1,0 +1,76 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "26077",
+            "name": "Kalamazoo County",
+            "state": "Michigan"
+        },
+        "country": "us",
+        "state": "mi",
+        "county": "Kalamazoo"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.kalamazoocity.org/hosting/rest/services/General_Items/Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": {
+                        "function": "join",
+                        "fields": ["PREDIR", "RDNAME", "RDTYPE", "POSTDIR"],
+                        "separator": " "
+                    },
+                    "unit": "UNIT",
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.kalamazoocity.org/hosting/rest/services/General_Items/Parcels_Spatial_View/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pnum"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.kalamazoocity.org/hosting/rest/services/General_Items/2018_Building_Outlines/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.kalamazoocity.org/hosting/rest/services/General_Items/Streets/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": {
+                        "function": "join",
+                        "fields": ["PREFIX", "NAME", "TYPE", "SUFFIX"],
+                        "separator": " "
+                    },
+                    "addr_from_left": "L_F_ADD",
+                    "addr_to_left": "L_T_ADD",
+                    "addr_from_right": "R_F_ADD",
+                    "addr_to_right": "R_T_ADD",
+                    "zip_left": "L_ZIP",
+                    "zip_right": "R_ZIP"
+                }
+            }
+        ]
+    }
+}

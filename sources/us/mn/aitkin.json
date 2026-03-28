@@ -18,12 +18,8 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "STR_NUM",
-                    "street": [
-                        "STR_NAME",
-                        "STR_TYPE",
-                        "POST_DIR"
-                    ],
+                    "number": "ANUMBER",
+                    "street": "STREET",
                     "unit": [
                         "UNIT_TYPE",
                         "UNIT_NUM"
@@ -32,6 +28,17 @@
                     "district": "COUNTY",
                     "region": "STATE",
                     "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisweb.co.aitkin.mn.us/arcgis/rest/services/ParcelSearch/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PRCL_NBR"
                 }
             }
         ]

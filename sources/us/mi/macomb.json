@@ -38,6 +38,33 @@
                     "pid": "PIN"
                 }
             }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.macombgov.org/arcgis1/rest/services/WEBMAPS/Building_Footprints/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.macombgov.org/arcgis1/rest/services/Dispatch_Comtec_Layers/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": ["PRE_DIR", "NAME", "SUFFIX", "POST_DIR"],
+                    "addr_from_left": "FR_ADD_L",
+                    "addr_to_left": "TO_ADD_L",
+                    "addr_from_right": "FR_ADD_R",
+                    "addr_to_right": "TO_ADD_R",
+                    "zip_left": "ZIP_L",
+                    "zip_right": "ZIP_R"
+                }
+            }
         ]
     }
 }

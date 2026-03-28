@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-112.074, 33.448]
+        },
+        "country": "us",
+        "state": "az",
+        "city": "Phoenix"
+    },
+    "schema": 2,
+    "layers": {
+        "centerlines": [
+            {
+                "name": "city",
+                "data": "https://maps.phoenix.gov/pub/rest/services/Public/STR_StreetCenterline/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "ANNAME",
+                    "classification": {
+                        "function": "map",
+                        "field": "STREETCLASS",
+                        "mapping": {
+                            "MA": "primary",
+                            "AT": "secondary",
+                            "CO": "tertiary",
+                            "MC": "tertiary"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "LTFROMADD",
+                    "addr_to_left": "LTTOADD",
+                    "addr_from_right": "RTFROMADD",
+                    "addr_to_right": "RTTOADD"
+                }
+            }
+        ]
+    }
+}

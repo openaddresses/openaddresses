@@ -16,7 +16,7 @@
                 "name": "county",
                 "data": "https://webgis.co.davidson.nc.us/arcgis/rest/services/E911_Addresses_Roads/MapServer/0",
                 "protocol": "ESRI",
-                "website": "http://webgis.co.davidson.nc.us/website/DavidsonGIS/default.htm",
+                "website": "https://webgis.co.davidson.nc.us/website/DavidsonGIS/default.htm",
                 "conform": {
                     "format": "geojson",
                     "unit": [
@@ -39,10 +39,43 @@
                 "name": "county",
                 "data": "https://webgis.co.davidson.nc.us/arcgis/rest/services/MobileMap/MapServer/8",
                 "protocol": "ESRI",
-                "website": "http://webgis.co.davidson.nc.us/website/DavidsonGIS/default.htm",
+                "website": "https://webgis.co.davidson.nc.us/website/DavidsonGIS/default.htm",
                 "conform": {
                     "format": "geojson",
                     "pid": "PIN"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://webgis.co.davidson.nc.us/arcgis/rest/services/E911_Addresses_Roads/MapServer/1",
+                "website": "https://webgis.co.davidson.nc.us/website/DavidsonGIS/default.htm",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "CenterlineID",
+                    "name": "FSt_Name",
+                    "oneway": {
+                        "function": "map",
+                        "field": "OneWay",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SpeedLimit"
+                    },
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R"
                 }
             }
         ]

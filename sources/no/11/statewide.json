@@ -1,0 +1,109 @@
+{
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://nedlasting.geonorge.no/geonorge/Basisdata/MatrikkelenAdresseLeilighetsniva/CSV/Basisdata_11_Rogaland_25833_MatrikkelenAdresseLeilighetsniva_CSV.zip",
+                "website": "https://kartkatalog.geonorge.no/metadata/matrikkelen-adresse-leilighetsnivaa/365b0591-b536-42a6-a20d-22e404fbfe55",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "text": "CC-BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "Kartverket",
+                    "share-alike": false
+                },
+                "contact": {
+                    "name": "Kartverket",
+                    "email": "kundesenter@kartverket.no",
+                    "address": "Kartverksveien 21, 3511 Hønefoss, Norway",
+                    "phone": "+47 32 11 80 00"
+                },
+                "conform": {
+                    "format": "csv",
+                    "csvsplit": ";",
+                    "srs": "EPSG:25833",
+                    "lat": "Nord",
+                    "lon": "Øst",
+                    "id": "adresseId",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "nummer",
+                            "bokstav"
+                        ],
+                        "separator": ""
+                    },
+                    "unit": "bruksenhetsnummerTekst",
+                    "street": "adressenavn",
+                    "city": "poststed",
+                    "district": "grunnkretsnavn",
+                    "postcode": "postnummer",
+                    "region": "kommunenavn"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "state",
+                "data": "https://nedlasting.geonorge.no/geonorge/Basisdata/MatrikkelenBygning/FGDB/Basisdata_11_Rogaland_25833_MatrikkelenBygning_FGDB.zip",
+                "website": "https://kartkatalog.geonorge.no/metadata/matrikkelen-bygningspunkt/24d7e9d1-87f6-45a0-b38e-3447f8d7f9a1",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "text": "CC-BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "Kartverket",
+                    "share-alike": false
+                },
+                "contact": {
+                    "name": "Kartverket",
+                    "email": "kundesenter@kartverket.no",
+                    "address": "Kartverksveien 21, 3511 Hønefoss, Norway",
+                    "phone": "+47 32 11 80 00"
+                },
+                "conform": {
+                    "format": "gdb",
+                    "srs": "EPSG:25833",
+                    "layer": "bygning",
+                    "id": "bygningid"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "state",
+                "website": "https://kartkatalog.geonorge.no/metadata/uuid/74340c24-1c8a-4454-b813-bfe498e80f16",
+                "protocol": "http",
+                "compression": "zip",
+                "license": {
+                    "text": "CC-BY 4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "Kartverket",
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "gdb",
+                    "srs": "EPSG:25833",
+                    "layer": "Teig",
+                    "pid": "teigid"
+                },
+                "data": "https://nedlasting.geonorge.no/geonorge/Basisdata/MatrikkelenEiendomskartTeig/FGDB/Basisdata_11_Rogaland_25833_MatrikkelenEiendomskartTeig_FGDB.zip"
+            }
+        ]
+    },
+    "coverage": {
+        "state": "11",
+        "county": "Rogaland",
+        "country": "no",
+        "ISO 3166": {
+            "alpha2": "NO-11",
+            "country": "Norway",
+            "subdivision": "Rogaland"
+        }
+    }
+}

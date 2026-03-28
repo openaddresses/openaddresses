@@ -34,7 +34,11 @@
                     ],
                     "city": "POSTALCITY",
                     "region": "State",
-                    "postcode": "Zipcode"
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "Zipcode",
+                        "pattern": "(.*)(?:\\.\\d+$)"
+                    }
                 }
             }
         ],

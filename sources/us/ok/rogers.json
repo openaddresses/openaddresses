@@ -14,23 +14,29 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps.meshekgis.com/arcgis/rest/services/public/OK_Parcels_Map/MapServer/2",
+                "data": "https://map11.incog.org/arcgis11wa/rest/services/Address_Points/FeatureServer/2",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "SITUS"
-                    },
+                    "number": "Address",
                     "street": {
-                        "function": "postfixed_street",
-                        "field": "SITUS",
-                        "may_contain_units": true
+                        "function": "join",
+                        "fields": ["PreDir", "Street", "StreetType", "SufDir"],
+                        "separator": " "
                     },
-                    "unit": {
-                        "function": "postfixed_unit",
-                        "field": "SITUS"
-                    }
+                    "city": "City",
+                    "postcode": "Zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://map11.incog.org/arcgis11wa/rest/services/Parcels_RogersCo/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "CADASTRAL"
                 }
             }
         ]

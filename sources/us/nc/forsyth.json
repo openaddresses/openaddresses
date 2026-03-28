@@ -31,6 +31,47 @@
                     "postcode": "ZIPCODE"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://maps.co.forsyth.nc.us/arcgis/rest/services/Addressing/Master_Address_Repository/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "UNIQUE_KEY",
+                    "name": "STNAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "DIR_TRAVEL",
+                        "mapping": {
+                            "F": "yes",
+                            "T": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "MPH"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "SURFACE",
+                        "mapping": {
+                            "P": "paved",
+                            "N": "unpaved"
+                        },
+                        "else": ""
+                    },
+                    "addr_from_left": "LF",
+                    "addr_to_left": "LT",
+                    "addr_from_right": "RF",
+                    "addr_to_right": "RT",
+                    "zip_left": "L_ZIP",
+                    "zip_right": "R_ZIP"
+                }
+            }
         ]
     }
 }

@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "26",
+            "state": "Michigan"
+        },
+        "country": "us",
+        "state": "mi"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://data.openaddresses.io/cache/uploads/iandees/2026-02-15-jtu8s/StructurePointsZip.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "SiteStructurePoints",
+                    "number": [
+                        "Address_Number_Prefix",
+                        "Address_Number",
+                        "Address_Number_Suffix"
+                    ],
+                    "street": [
+                        "StreetNamePreDirectional",
+                        "StreetName",
+                        "StreetNameType",
+                        "StreetNamePostDirectional"
+                    ],
+                    "unit": [
+                        "Unit_Type",
+                        "Unit"
+                    ],
+                    "city": "Incorporated_Municipality",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Zipcode"
+                }
+            }
+        ]
+    }
+}

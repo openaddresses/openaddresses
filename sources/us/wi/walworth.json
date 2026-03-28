@@ -52,6 +52,39 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gisinfo.co.walworth.wi.us/ArcGIS/rest/services/OpenData/Street_Centerlines/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SEGID",
+                    "name": [
+                        "PRE_DIR",
+                        "ST_NAME",
+                        "ST_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "surface": {
+                        "function": "map",
+                        "field": "SURFACE",
+                        "mapping": {
+                            "PAVED": "paved",
+                            "UNPAVED": "unpaved",
+                            "GRAVEL": "unpaved"
+                        },
+                        "else": ""
+                    },
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT",
+                    "zip_left": "LZIP",
+                    "zip_right": "RZIP"
+                }
+            }
         ]
     }
 }

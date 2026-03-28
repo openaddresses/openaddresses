@@ -54,6 +54,55 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis3.montgomerycountymd.gov/arcgis/rest/services/GDX/street_centerline/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "CENSUS_ID",
+                    "name": [
+                        "PRE_DIR",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "CFCC",
+                        "mapping": {
+                            "A10": "motorway",
+                            "A20": "trunk",
+                            "A30": "primary",
+                            "A40": "secondary",
+                            "A50": "tertiary"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "L_F_ADD",
+                    "addr_to_left": "L_T_ADD",
+                    "addr_from_right": "R_F_ADD",
+                    "addr_to_right": "R_T_ADD",
+                    "zip_left": "L_ZIP",
+                    "zip_right": "R_ZIP"
+                }
+            }
         ]
     }
 }

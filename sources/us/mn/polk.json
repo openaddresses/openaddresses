@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "http://gis.co.polk.mn.us/arcgis/rest/services/PolkALL/MapServer/20",
+                "data": "https://gis.co.polk.mn.us/arcgis/rest/services/PolkALL/MapServer/20",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -31,6 +31,37 @@
                     },
                     "postcode": "ZIP",
                     "city": "CITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.polk.mn.us/arcgis/rest/services/Assessor/TaxParcels_public/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_ID"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.co.polk.mn.us/arcgis/rest/services/Addressing/RoadCenterlines/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT",
+                    "name": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "POST_DIR"
+                    ]
                 }
             }
         ]

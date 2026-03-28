@@ -1,0 +1,55 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "4049200",
+            "name": "City of Moore",
+            "state": "Oklahoma"
+        },
+        "country": "us",
+        "state": "ok",
+        "county": "Cleveland",
+        "city": "Moore"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.cityofmoore.com/arcgis/rest/services/NG911/NG911_Address_Publish/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Address",
+                    "street": {
+                        "function": "join",
+                        "fields": ["PreDir", "Street", "StreetType", "SufDir"],
+                        "separator": " "
+                    },
+                    "city": "City",
+                    "postcode": "Zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.cityofmoore.com/arcgis/rest/services/Basemaps/Moore_General_Basemap/MapServer/153",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNO"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.cityofmoore.com/arcgis/rest/services/Basemaps/Moore_General_Basemap/MapServer/149",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

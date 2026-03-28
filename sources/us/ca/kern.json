@@ -20,20 +20,25 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "unit": [
-                        "UNTYP_SITE",
-                        "UNIT_SITE"
-                    ],
-                    "number": [
-                        "STNUM_SITE",
-                        "STFRA_SITE"
-                    ],
-                    "street": [
-                        "STDIR_SITE",
-                        "STNAM_SITE",
-                        "STSUF_SITE"
-                    ],
-                    "city": "CITY_SITE"
+                    "unit": {
+                        "function": "regexp",
+                        "field": "Situs_Address",
+                        "pattern": "(?i)(?:^|\\s)((?:(?:UNIT|APARTMENT|APT\\.?|SUITE|STE\\.?|BUILDING|BLDG\\.?|LOT)\\s+|#\\s*)[^,]+)(?:,.*)?$"
+                    },
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Situs_Address"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "Situs_Address",
+                        "pattern": "(?i)^(?:\\s*(?:\\d+(?:[ -]\\d/\\d)?|\\d+-\\d+|\\d+-?[A-Z])\\s+)?(.+?)(?:\\s+(?:(?:UNIT|APARTMENT|APT\\.?|SUITE|STE\\.?|BUILDING|BLDG\\.?|LOT)\\s+|#).+)?(?:,\\s*[^,]+)?$"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "Situs_Address",
+                        "pattern": ",\\s*([^,]+)$"
+                    }
                 }
             }
         ],

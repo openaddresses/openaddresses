@@ -1,0 +1,49 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "26103",
+            "name": "Marquette County",
+            "state": "Michigan"
+        },
+        "country": "us",
+        "state": "mi",
+        "county": "Marquette"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services9.arcgis.com/6EuFgO4fLTqfNOhu/ArcGIS/rest/services/MarquetteParcelData/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "address",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "address",
+                        "pattern": "^(?:[0-9]+) (.*)",
+                        "replace": "$1"
+                    },
+                    "city": "city",
+                    "postcode": "szip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services9.arcgis.com/6EuFgO4fLTqfNOhu/ArcGIS/rest/services/MarquetteParcelData/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ll_uuid"
+                }
+            }
+        ]
+    }
+}

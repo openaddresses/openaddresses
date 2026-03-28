@@ -38,6 +38,41 @@
                 }
             }
         ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/4fskj6X2QqYEBVyr/arcgis/rest/services/RoadCenterLine/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": [
+                        "St_PreDir",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R",
+                    "classification": {
+                        "function": "map",
+                        "field": "RoadClass",
+                        "mapping": {
+                            "Primary": "primary",
+                            "Secondary": "secondary",
+                            "Local": "residential",
+                            "Stairway": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "oneway": "OneWay",
+                    "speed": "SpeedLimit"
+                }
+            }
+        ],
         "buildings": [
             {
                 "name": "county",

@@ -16,7 +16,7 @@
                 "name": "county",
                 "website": "https://gis-kingcounty.opendata.arcgis.com/datasets/kingcounty::addresses-in-king-county-address-point/about",
                 "protocol": "ESRI",
-                "data": "http://gismaps.kingcounty.gov/arcgis/rest/services/Address/KingCo_AddressPoints/MapServer/0",
+                "data": "https://gismaps.kingcounty.gov/arcgis/rest/services/Address/KingCo_AddressPoints/MapServer/0",
                 "license": {
                     "url": "https://www5.kingcounty.gov/sdc/addl_doc/KCGISCenterTermsAndConditions.pdf"
                 },
@@ -50,6 +50,54 @@
                 "conform": {
                     "format": "geojson",
                     "pid": "PIN"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gismaps.kingcounty.gov/arcgis/rest/services/Roads/KingCo_Roads/MapServer/6",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "TLINK_ID",
+                    "name": "FULLNAME_L",
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED_LIM"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "CFCC_ID",
+                        "mapping": {
+                            "A5": "motorway",
+                            "A7": "motorway",
+                            "A30": "primary",
+                            "A31": "primary",
+                            "A35": "primary",
+                            "A40": "secondary",
+                            "A41": "secondary",
+                            "A44": "secondary",
+                            "A45": "tertiary",
+                            "A50": "tertiary",
+                            "A60": "motorway_link",
+                            "A61": "motorway_link",
+                            "A62": "motorway_link",
+                            "A63": "motorway_link",
+                            "A64": "motorway_link",
+                            "A70": "service",
+                            "A73": "service",
+                            "A74": "service",
+                            "A75": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "FR_ADD_L_A",
+                    "addr_to_left": "TO_ADD_L_A",
+                    "addr_from_right": "FR_ADD_R_A",
+                    "addr_to_right": "TO_ADD_R_A",
+                    "zip_left": "ZIP_L",
+                    "zip_right": "ZIP_R"
                 }
             }
         ]

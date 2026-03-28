@@ -16,7 +16,7 @@
                 "name": "county",
                 "attribution": "Pinellas County",
                 "website": "https://new-pinellas-egis.opendata.arcgis.com/maps/site-address-points-911/about",
-                "data": "http://egis.pinellascounty.org/arcgis/rest/services/AGO/Parcels/MapServer/2",
+                "data": "https://egis.pinellas.gov/gis/rest/services/AGO/Parcels/MapServer/2",
                 "license": {
                     "text": "Indemnification",
                     "attribution": false,
@@ -46,7 +46,7 @@
                 "name": "county",
                 "attribution": "Pinellas County",
                 "website": "https://new-pinellas-egis.opendata.arcgis.com/maps/parcels-pao/about",
-                "data": "http://egis.pinellascounty.org/arcgis/rest/services/AGO/Parcels/MapServer/0",
+                "data": "https://egis.pinellas.gov/gis/rest/services/AGO/Parcels/MapServer/0",
                 "license": {
                     "text": "Indemnification",
                     "attribution": false,
@@ -73,6 +73,41 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://egis.pinellas.gov/gis/rest/services/AGO/Parcels/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "CENTERLINEID",
+                    "name": "FULLNAME",
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADCLASS",
+                        "mapping": {
+                            "Interstate": "motorway",
+                            "Expressway": "motorway",
+                            "Highway": "trunk",
+                            "PA": "primary",
+                            "MA": "primary",
+                            "C": "tertiary",
+                            "MC": "tertiary",
+                            "TRL": "service",
+                            "Private": "service",
+                            "Ramp": "motorway_link"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT",
+                    "zip_left": "ZIPLEFT",
+                    "zip_right": "ZIPRIGHT"
                 }
             }
         ]
