@@ -11,6 +11,45 @@
     },
     "schema": 2,
     "layers": {
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.emmetcounty.org/arcgis/rest/services/ParcelOverlay/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.emmetcounty.org/arcgis/rest/services/ParcelPublicAccess/MapServer/32",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.emmetcounty.org/arcgis/rest/services/ParcelPublicAccess/MapServer/12",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "FULLNAME",
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT",
+                    "zip_left": "ZIPLEFT",
+                    "zip_right": "ZIPRIGHT",
+                    "classification": "ROADCLASS"
+                }
+            }
+        ],
         "addresses": [
             {
                 "name": "county",

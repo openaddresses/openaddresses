@@ -37,6 +37,34 @@
                     "region": "SITESTATE"
                 }
             }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisservices.oakgov.com/arcgis/rest/services/Enterprise/EnterpriseOpenParcelDataMapService/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gisservices.oakgov.com/arcgis/rest/services/Enterprise/EnterpriseTransportationDataMapService/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": ["DirectionalPrefix", "StreetName", "StreetType", "DirectionalSuffix"],
+                    "addr_from_left": "LowAddressLeft",
+                    "addr_to_left": "HighAddressLeft",
+                    "addr_from_right": "LowAddressRight",
+                    "addr_to_right": "HighAddressRight",
+                    "zip_left": "PostalZip5Left",
+                    "zip_right": "PostalZip5Right"
+                }
+            }
         ]
     }
 }
