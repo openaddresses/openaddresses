@@ -34,14 +34,44 @@
                 }
             }
         ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/nMZadKoFzy6dT2f8/ArcGIS/rest/services/CADMAP_PtLI/FeatureServer/17",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "FullStNm",
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R",
+                    "classification": {
+                        "function": "map",
+                        "field": "RoadClass",
+                        "mapping": {
+                            "Primary": "primary",
+                            "Secondary": "secondary",
+                            "Major Arterial": "primary",
+                            "Minor Arterial": "secondary",
+                            "Collector": "tertiary",
+                            "Local": "residential",
+                            "Private": "service",
+                            "Recreation": "unclassified",
+                            "Other": "unclassified"
+                        },
+                        "else": "residential"
+                    }
+                }
+            }
+        ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gisdata.wisc.edu/public/Chippewa_Parcels_2023_SHP.zip",
-                "website": "https://geodata.wisc.edu/catalog/EB73F63F-49C0-48A2-81F1-2C181FC692F6",
-                "protocol": "http",
-                "compression": "zip",
-                "year": "2023",
+                "data": "https://services5.arcgis.com/nMZadKoFzy6dT2f8/ArcGIS/rest/services/parcels_chippewa_county/FeatureServer/0",
+                "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "pid": "PARCELID"

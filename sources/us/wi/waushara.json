@@ -27,6 +27,37 @@
                 }
             }
         ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.co.waushara.wi.us/arcgis/rest/services/TaxParcelViewer_Basemap/MapServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "FULLSTREET",
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT",
+                    "zip_left": "ZIPLEFT",
+                    "zip_right": "ZIPRIGHT",
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADCLASS",
+                        "mapping": {
+                            "Interstate": "motorway",
+                            "STATE HIGHWAY": "primary",
+                            "COUNTY HIGHWAY": "secondary",
+                            "LOCAL": "residential",
+                            "PRIVATE": "service",
+                            "ACCESS": "service",
+                            "ALLEY": "service"
+                        },
+                        "else": "residential"
+                    }
+                }
+            }
+        ],
         "parcels": [
             {
                 "name": "county",

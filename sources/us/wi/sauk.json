@@ -52,6 +52,37 @@
                     "pid": "PARCELID"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.co.sauk.wi.us/arcgis/rest/services/Sauk/RoadCenterlines/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "FULLNAME",
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT",
+                    "zip_left": "ZIPLEFT",
+                    "zip_right": "ZIPRIGHT",
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADCLASS",
+                        "mapping": {
+                            "Freeway": "motorway",
+                            "Major Arterial": "primary",
+                            "Minor Arterial": "secondary",
+                            "Collector": "tertiary",
+                            "Collector Minor": "tertiary",
+                            "Local": "residential",
+                            "Recreation": "unclassified"
+                        },
+                        "else": "residential"
+                    }
+                }
+            }
         ]
     }
 }

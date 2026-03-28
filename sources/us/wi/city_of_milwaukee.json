@@ -42,6 +42,32 @@
                     "region": "State"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "city",
+                "data": "https://milwaukeemaps.milwaukee.gov/arcgis/rest/services/reference/CenterlinDatasets/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "Label",
+                    "addr_from_left": "FromLeftAddress",
+                    "addr_to_left": "ToLeftAddress",
+                    "addr_from_right": "FromRightAddress",
+                    "addr_to_right": "ToRightAddress"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://milwaukeemaps.milwaukee.gov/arcgis/rest/services/property/parcels_mprop/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TAXKEY"
+                }
+            }
         ]
     }
 }

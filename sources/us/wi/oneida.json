@@ -44,6 +44,46 @@
                 }
             }
         ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.co.oneida.wi.us/arcgis/rest/services/General/OneidaNextGEN/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": [
+                        "St_PreDir",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "addr_from_left": "FromAdd_L",
+                    "addr_to_left": "ToAdd_L",
+                    "addr_from_right": "FromAdd_R",
+                    "addr_to_right": "ToAdd_R",
+                    "zip_left": "Zip_L",
+                    "zip_right": "Zip_R",
+                    "speed": "SpeedLimit",
+                    "oneway": "ONEWAY",
+                    "classification": {
+                        "function": "map",
+                        "field": "RoadClass",
+                        "mapping": {
+                            "Federal": "trunk",
+                            "State": "primary",
+                            "County": "secondary",
+                            "Municipal": "tertiary",
+                            "Town": "residential",
+                            "Private": "service",
+                            "County Forest": "unclassified",
+                            "State Forest": "unclassified",
+                            "GIS Range": "unclassified"
+                        },
+                        "else": "residential"
+                    }
+                }
+            }
+        ],
         "buildings": [
             {
                 "name": "county",
