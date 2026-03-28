@@ -7,14 +7,49 @@
     },
     "schema": 2,
     "layers": {
-        "parcels": [
+        "addresses": [
             {
                 "name": "county",
-                "data": "https://services.arcgis.com/OeX2IGuO6RXdWbJX/ArcGIS/rest/services/Hillsdale_Parcels_Select_And_Query_Layer2/FeatureServer/0",
+                "data": "https://services.arcgis.com/OeX2IGuO6RXdWbJX/ArcGIS/rest/services/County_Parcels___20241031/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "ParcelUID"
+                    "number": "propaddrnu",
+                    "street": {
+                        "function": "join",
+                        "fields": ["propaddrdi", "propstreet"],
+                        "separator": " "
+                    },
+                    "city": "propcity",
+                    "postcode": "propzip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/OeX2IGuO6RXdWbJX/ArcGIS/rest/services/County_Parcels___20241031/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel_No"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/OeX2IGuO6RXdWbJX/ArcGIS/rest/services/hillsdale_roads/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "RDNAME",
+                    "addr_from_left": "FRADDL",
+                    "addr_to_left": "TOADDL",
+                    "addr_from_right": "FRADDR",
+                    "addr_to_right": "TOADDR",
+                    "zip_left": "ZIPL",
+                    "zip_right": "ZIPR"
                 }
             }
         ]
