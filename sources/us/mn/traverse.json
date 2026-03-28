@@ -34,6 +34,37 @@
                     "postcode": "ZIP_CODE"
                 }
             }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.co.traverse.mn.us/arcgis/rest/services/AGO_Reference_Layers/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NUMBER"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.co.traverse.mn.us/arcgis/rest/services/GIS_Data_Layers/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "addr_from_left": "LFROM",
+                    "addr_to_left": "LTO",
+                    "addr_from_right": "RFROM",
+                    "addr_to_right": "RTO",
+                    "name": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "SUFFIX",
+                        "POST_DIR"
+                    ]
+                }
+            }
         ]
     }
 }

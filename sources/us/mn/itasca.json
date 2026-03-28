@@ -11,6 +11,41 @@
     },
     "schema": 2,
     "layers": {
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://maps-test.co.itasca.mn.us/ArcGIS/rest/services/BaseDataSets/ParcelModel/FeatureServer/8",
+                "website": "https://co.itasca.mn.us/625/Maps",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARENTPIN"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://maps-test.co.itasca.mn.us/ArcGIS/rest/services/BaseDataSets/RoadsTrails/FeatureServer/23",
+                "website": "https://co.itasca.mn.us/625/Maps",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "addr_from_left": "ADD_FR_L",
+                    "addr_to_left": "ADD_TO_L",
+                    "addr_from_right": "ADD_FR_R",
+                    "addr_to_right": "ADD_TO_R",
+                    "zip_left": "ZIP_L",
+                    "zip_right": "ZIP_R",
+                    "name": [
+                        "ST_PRE_DIR",
+                        "ST_NAME",
+                        "ST_POS_TYP",
+                        "ST_POS_DIR"
+                    ]
+                }
+            }
+        ],
         "addresses": [
             {
                 "name": "county",
