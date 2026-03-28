@@ -55,7 +55,18 @@
                     "zip_right": "zipCodeR",
                     "oneway": "oneWay",
                     "speed": "speedLimit",
-                    "classification": "roadClass"
+                    "classification": {
+                        "function": "map",
+                        "field": "roadClass",
+                        "mapping": {
+                            "PRIMARY": "primary",
+                            "SECONDARY": "secondary",
+                            "LOCAL": "residential",
+                            "PRIVATE": "service",
+                            "B": "unclassified"
+                        },
+                        "else": "residential"
+                    }
                 }
             }
         ]

@@ -41,7 +41,20 @@
                     "addr_to_right": "TORIGHT",
                     "zip_left": "ZIPLEFT",
                     "zip_right": "ZIPRIGHT",
-                    "classification": "ROADCLASS"
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADCLASS",
+                        "mapping": {
+                            "Interstate": "motorway",
+                            "STATE HIGHWAY": "primary",
+                            "COUNTY HIGHWAY": "secondary",
+                            "LOCAL": "residential",
+                            "PRIVATE": "service",
+                            "ACCESS": "service",
+                            "ALLEY": "service"
+                        },
+                        "else": "residential"
+                    }
                 }
             }
         ],

@@ -67,7 +67,20 @@
                     "addr_to_right": "TORIGHT",
                     "zip_left": "ZIPLEFT",
                     "zip_right": "ZIPRIGHT",
-                    "classification": "ROADCLASS"
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADCLASS",
+                        "mapping": {
+                            "Freeway": "motorway",
+                            "Major Arterial": "primary",
+                            "Minor Arterial": "secondary",
+                            "Collector": "tertiary",
+                            "Collector Minor": "tertiary",
+                            "Local": "residential",
+                            "Recreation": "unclassified"
+                        },
+                        "else": "residential"
+                    }
                 }
             }
         ]

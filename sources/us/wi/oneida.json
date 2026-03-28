@@ -65,7 +65,22 @@
                     "zip_right": "Zip_R",
                     "speed": "SpeedLimit",
                     "oneway": "ONEWAY",
-                    "classification": "RoadClass"
+                    "classification": {
+                        "function": "map",
+                        "field": "RoadClass",
+                        "mapping": {
+                            "Federal": "trunk",
+                            "State": "primary",
+                            "County": "secondary",
+                            "Municipal": "tertiary",
+                            "Town": "residential",
+                            "Private": "service",
+                            "County Forest": "unclassified",
+                            "State Forest": "unclassified",
+                            "GIS Range": "unclassified"
+                        },
+                        "else": "residential"
+                    }
                 }
             }
         ],

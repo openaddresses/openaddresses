@@ -144,7 +144,24 @@
                     "addr_to_left": "LEFT_TO",
                     "addr_from_right": "RIGHT_FROM",
                     "addr_to_right": "RIGHT_TO",
-                    "classification": "CLASS_DESC"
+                    "classification": {
+                        "function": "map",
+                        "field": "CLASS_DESC",
+                        "mapping": {
+                            "INTERSTATE": "motorway",
+                            "US/STATE": "primary",
+                            "STATE": "primary",
+                            "COUNTY": "secondary",
+                            "TRIBAL": "secondary",
+                            "TOWN/LOCAL": "residential",
+                            "TOWN/LO AL": "residential",
+                            "PRIVATE": "service",
+                            "PRIVATE/ALLEY": "service",
+                            "PRIVATE/ALLY": "service",
+                            "OTHER": "unclassified"
+                        },
+                        "else": "residential"
+                    }
                 }
             }
         ],

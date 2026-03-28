@@ -62,7 +62,17 @@
                     "addr_to_left": "L_HADD",
                     "addr_from_right": "R_LADD",
                     "addr_to_right": "R_HADD",
-                    "classification": "CLASS",
+                    "classification": {
+                        "function": "map",
+                        "field": "CLASS",
+                        "mapping": {
+                            "INTE": "motorway",
+                            "HIGH": "primary",
+                            "CTY": "secondary",
+                            "LOCA": "residential"
+                        },
+                        "else": "residential"
+                    },
                     "speed": "SPEED",
                     "oneway": "ONEWAY"
                 }

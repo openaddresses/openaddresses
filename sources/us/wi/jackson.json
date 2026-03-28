@@ -53,7 +53,21 @@
                     "zip_right": "PostCode_R",
                     "speed": "SpeedLimit",
                     "oneway": "OneWay",
-                    "classification": "RoadClass"
+                    "classification": {
+                        "function": "map",
+                        "field": "RoadClass",
+                        "mapping": {
+                            "Primary": "primary",
+                            "Secondary": "secondary",
+                            "Local": "residential",
+                            "Private": "service",
+                            "Ramp": "motorway_link",
+                            "Vehicular Trail": "unclassified",
+                            "Walkway": "service",
+                            "Other": "unclassified"
+                        },
+                        "else": "residential"
+                    }
                 }
             }
         ],
