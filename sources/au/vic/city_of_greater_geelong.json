@@ -23,40 +23,45 @@
                 },
                 "conform": {
                     "format": "shapefile",
+                    "unit": {
+                        "function": "regexp",
+                        "field": "Unit",
+                        "pattern": "^([1-9].*)"
+                    },
                     "number": {
                         "function": "chain",
                         "variable": "number_wip",
                         "functions": [
                             {
                                 "function": "remove_postfix",
-                                "field": "fulladdres",
-                                "field_to_remove": "postcode"
+                                "field": "FullAddres",
+                                "field_to_remove": "PostCode"
                             },
                             {
                                 "function": "regexp",
-                                "field": "number_wip",
+                                "field": "oa:number_wip",
                                 "pattern": "^(.*)[ ]+VIC",
                                 "replace": "$1"
                             },
                             {
                                 "function": "remove_postfix",
-                                "field": "number_wip",
-                                "field_to_remove": "suburb"
+                                "field": "oa:number_wip",
+                                "field_to_remove": "Suburb"
                             },
                             {
                                 "function": "regexp",
-                                "field": "number_wip",
+                                "field": "oa:number_wip",
                                 "pattern": "^(.*),",
                                 "replace": "$1"
                             },
                             {
                                 "function": "remove_postfix",
-                                "field": "number_wip",
-                                "field_to_remove": "street"
+                                "field": "oa:number_wip",
+                                "field_to_remove": "Street"
                             },
                             {
                                 "function": "regexp",
-                                "field": "number_wip",
+                                "field": "oa:number_wip",
                                 "pattern": "^(.*)/(.*)",
                                 "replace": "$2"
                             }
@@ -70,12 +75,12 @@
                         "functions": [
                             {
                                 "function": "remove_postfix",
-                                "field": "fulladdres",
-                                "field_to_remove": "postcode"
+                                "field": "FullAddres",
+                                "field_to_remove": "PostCode"
                             },
                             {
                                 "function": "regexp",
-                                "field": "region_wip",
+                                "field": "oa:region_wip",
                                 "pattern": "^.*(VIC).*$",
                                 "replace": "$1"
                             }
