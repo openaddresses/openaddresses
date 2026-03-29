@@ -15,8 +15,8 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://dzgisweb01.uppsala.se/ags02/rest/services/iExternaKartan/ByggaBo/MapServer/11",
-                "website": "https://www.uppsala.se/boende-och-trafik/kartor-och-statistik/baskarta/",
+                "data": "https://kartportal.uppsala.se/integrations/rest/services/ByggR/ByggRNova_Plan/MapServer/1100",
+                "website": "https://kartportal.uppsala.se/portal/home/item.html?id=b90d3d6721fc48f6ba2a616b050b98bc",
                 "license": {
                     "attribution": true,
                     "share-alike": false
@@ -24,16 +24,8 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "Name",
-                        "pattern": "^(?:.*?)\\s*([\\d]+\\w*(?:\\-[\\d]+\\w*)?)$"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "Name",
-                        "pattern": "^(.*?)\\s*(?:[\\d]+\\w*(?:\\-[\\d]+\\w*)?)$"
-                    },
+                    "number": "AddressPlace",
+                    "street": "StreetName",
                     "city": "PostCity",
                     "postcode": {
                         "function": "regexp",
@@ -41,6 +33,37 @@
                         "pattern": "^([\\d]{3})([\\d]{2})$",
                         "replace": "$1 $2"
                     }
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://kartportal.uppsala.se/integrations/rest/services/ByggR/ByggRNova_Plan/MapServer/1010",
+                "website": "https://kartportal.uppsala.se/portal/home/item.html?id=b90d3d6721fc48f6ba2a616b050b98bc",
+                "license": {
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "objektidentitet"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://kartportal.uppsala.se/integrations/rest/services/ByggR/ByggRNova_Plan/MapServer/98988",
+                "website": "https://kartportal.uppsala.se/portal/home/item.html?id=b90d3d6721fc48f6ba2a616b050b98bc",
+                "license": {
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]
