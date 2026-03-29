@@ -1,0 +1,65 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17167",
+            "name": "Sangamon County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Sangamon"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://sangis.co.sangamon.il.us/server/rest/services/SangamonCountyEPL/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HN",
+                    "street": {
+                        "function": "join",
+                        "fields": ["PREDIR", "PRE_TYPE", "STNAME", "STTYPE", "SUFDIR"],
+                        "separator": " "
+                    },
+                    "city": "PHCITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://sangis.co.sangamon.il.us/server/rest/services/SangamonCountyEPL/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://sangis.co.sangamon.il.us/server/rest/services/SangamonCountyEPL/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": {
+                        "function": "join",
+                        "fields": ["PREDIR", "PreType", "STNAME", "STTYPE", "SufDir"],
+                        "separator": " "
+                    },
+                    "addr_from_left": "L_F_ADD",
+                    "addr_to_left": "L_T_ADD",
+                    "addr_from_right": "R_F_ADD",
+                    "addr_to_right": "R_T_ADD",
+                    "zip_left": "ZIP",
+                    "zip_right": "ZIP"
+                }
+            }
+        ]
+    }
+}
