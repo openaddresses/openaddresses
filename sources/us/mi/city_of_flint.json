@@ -21,19 +21,47 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://services5.arcgis.com/lqqWNtSxx8Akj04A/ArcGIS/rest/services/Flint_Parcels_2016_v2/FeatureServer/0",
+                "data": "https://services5.arcgis.com/lqqWNtSxx8Akj04A/ArcGIS/rest/services/Main_COF_Parcel_view/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "Property_Num",
-                    "unit": "Property_unit_apt",
-                    "street": [
-                        "Property_Street_Direction",
-                        "Property_Street_Name"
-                    ],
-                    "city": "Property_City",
-                    "region": "Property_State",
-                    "postcode": "Property_Zipcode"
+                    "number": "Prop_Num",
+                    "street": {
+                        "function": "join",
+                        "fields": ["Prop_Dir", "Prop_Stree"],
+                        "separator": " "
+                    },
+                    "unit": "Prop_Unit",
+                    "city": "Prop_City",
+                    "postcode": "Prop_Zip"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://services5.arcgis.com/lqqWNtSxx8Akj04A/ArcGIS/rest/services/Main_COF_Parcel_view/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIDdash"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "city",
+                "data": "https://services5.arcgis.com/lqqWNtSxx8Akj04A/ArcGIS/rest/services/Roads/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "RDNAME",
+                    "addr_from_left": "FRADDL",
+                    "addr_to_left": "TOADDL",
+                    "addr_from_right": "FRADDR",
+                    "addr_to_right": "TOADDR",
+                    "zip_left": "ZIPL",
+                    "zip_right": "ZIPR"
                 }
             }
         ]

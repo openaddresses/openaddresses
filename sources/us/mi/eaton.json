@@ -29,6 +29,45 @@
                     "postcode": "ZIPCODE"
                 }
             }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/c9l1e4fKpsCnqD7H/ArcGIS/rest/services/Parcels_AGO/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/c9l1e4fKpsCnqD7H/ArcGIS/rest/services/Building_Footprint/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/c9l1e4fKpsCnqD7H/ArcGIS/rest/services/Road_Centerlines/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "FULLNAME",
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT",
+                    "zip_left": "ZIPLEFT",
+                    "zip_right": "ZIPRIGHT",
+                    "classification": "ROADCLASS"
+                }
+            }
         ]
     }
 }

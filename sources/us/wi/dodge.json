@@ -45,6 +45,36 @@
                 }
             }
         ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://geo2.co.dodge.wi.us/arcgis/rest/services/Layers/Property_Civil/MapServer/26",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "FullStNm",
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R",
+                    "oneway": "OneWay",
+                    "speed": "SpeedLimit",
+                    "classification": {
+                        "function": "map",
+                        "field": "RoadClass",
+                        "mapping": {
+                            "Primary": "primary",
+                            "Secondary": "secondary",
+                            "Local": "residential",
+                            "Private": "service"
+                        },
+                        "else": "residential"
+                    }
+                }
+            }
+        ],
         "buildings": [
             {
                 "name": "county",

@@ -38,6 +38,33 @@
                     "pid": "mapping_id"
                 }
             }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gis.allegancounty.org/server/rest/services/Hosted/ACBuildings/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.allegancounty.org/server/rest/services/Hosted/Centerlines_20250206_shp/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": ["fedirp", "fename", "fetype", "fedirs"],
+                    "addr_from_left": "fraddl",
+                    "addr_to_left": "toaddl",
+                    "addr_from_right": "fraddr",
+                    "addr_to_right": "toaddr",
+                    "zip_left": "zipl",
+                    "zip_right": "zipr"
+                }
+            }
         ]
     }
 }

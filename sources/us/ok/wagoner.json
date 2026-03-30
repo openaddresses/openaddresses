@@ -14,18 +14,29 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps.meshekgis.com/arcgis/rest/services/public/OK_Parcels_Map/MapServer/4",
+                "data": "https://map11.incog.org/arcgis11wa/rest/services/Address_Points/FeatureServer/2",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "Situs"
-                    },
+                    "number": "Address",
                     "street": {
-                        "function": "postfixed_street",
-                        "field": "Situs"
-                    }
+                        "function": "join",
+                        "fields": ["PreDir", "Street", "StreetType", "SufDir"],
+                        "separator": " "
+                    },
+                    "city": "City",
+                    "postcode": "Zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://map11.incog.org/arcgis11wa/rest/services/Parcels_WagonerCo/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELID"
                 }
             }
         ]

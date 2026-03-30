@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "40037",
+            "name": "Creek County",
+            "state": "Oklahoma"
+        },
+        "country": "us",
+        "state": "ok",
+        "county": "Creek"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://map11.incog.org/arcgis11wa/rest/services/Address_Points/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Address",
+                    "street": {
+                        "function": "join",
+                        "fields": ["PreDir", "Street", "StreetType", "SufDir"],
+                        "separator": " "
+                    },
+                    "city": "City",
+                    "postcode": "Zipcode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://map11.incog.org/arcgis11wa/rest/services/Parcels_CreekCo/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcelid"
+                }
+            }
+        ]
+    }
+}

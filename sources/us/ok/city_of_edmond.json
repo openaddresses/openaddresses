@@ -1,0 +1,55 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "4023200",
+            "name": "City of Edmond",
+            "state": "Oklahoma"
+        },
+        "country": "us",
+        "state": "ok",
+        "county": "Oklahoma",
+        "city": "Edmond"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gis.edmondok.gov/arcgis/rest/services/EdmondOKPLL/EdmondOKPLL/MapServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSENUM",
+                    "street": {
+                        "function": "join",
+                        "fields": ["PRE_DIR", "ST_NAME", "ST_TYPE"],
+                        "separator": " "
+                    },
+                    "city": "CITY",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://gis.edmondok.gov/arcgis/rest/services/EdmondOKPLL/EdmondOKPLL/MapServer/22",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NO"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://gis.edmondok.gov/arcgis/rest/services/EdmondOKPLL/EdmondOKPLL/MapServer/16",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

@@ -35,6 +35,48 @@
                     "postcode": "zipcode"
                 }
             }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://maps.huntsvilleal.gov/server/rest/services/Boundaries/CombinedParcels/MapServer/8",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "city",
+                "data": "https://maps.huntsvilleal.gov/server/rest/services/Structures/ExistingStructures/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "city",
+                "data": "https://maps.huntsvilleal.gov/server/rest/services/Transportation/HuntsvilleMadisonCountyE911CenterRoadCenterlines/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": {
+                        "function": "join",
+                        "fields": ["DIRPRE", "FEANME", "FEATYP", "DIRSUF"],
+                        "separator": " "
+                    },
+                    "addr_from_left": "FRADDL",
+                    "addr_to_left": "TOADDL",
+                    "addr_from_right": "FRADDR",
+                    "addr_to_right": "TOADDR",
+                    "zip_left": "ZIPL",
+                    "zip_right": "ZIPR"
+                }
+            }
         ]
     }
 }
