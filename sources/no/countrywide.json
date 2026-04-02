@@ -43,19 +43,153 @@
                     "lon": "Øst",
                     "id": "adresseId",
                     "number": {
-                        "function": "join",
-                        "fields": [
-                            "nummer",
-                            "bokstav"
-                        ],
-                        "separator": ""
+                        "function": "regexp",
+                        "field": "offisiellAdresseTekstUtenAdressetilleggsnavn",
+                        "pattern": "^(?:.*\\s)?([^\\s]+?)(?:-[A-Z]\\d{4})?$"
                     },
                     "unit": "bruksenhetsnummerTekst",
-                    "street": "adressenavn",
+                    "street": {
+                        "function": "first_non_empty",
+                        "fields": [
+                            "adressenavn",
+                            "adressetilleggsnavn"
+                        ]
+                    },
                     "city": "poststed",
                     "district": "grunnkretsnavn",
                     "postcode": "postnummer",
                     "region": "kommunenavn"
+                },
+                "test": {
+                    "enabled": true,
+                    "description": "these are the tests that exercise valid inputs for Ostfold matrikkel and veg addresses",
+                    "acceptance-tests": [
+                        {
+                            "description": "vegadresse with unit should extract number from official address text",
+                            "inputs": {
+                                "Nord": "6569982.12",
+                                "Øst": "269574.08",
+                                "adresseId": "17866708",
+                                "offisiellAdresseTekstUtenAdressetilleggsnavn": "Nabbetorpveien 25A-H0301",
+                                "bruksenhetsnummerTekst": "H0301",
+                                "adressenavn": "Nabbetorpveien",
+                                "adressetilleggsnavn": "",
+                                "poststed": "GAMLE FREDRIKSTAD",
+                                "grunnkretsnavn": "Prestelandet",
+                                "postnummer": "1632",
+                                "kommunenavn": "FREDRIKSTAD"
+                            },
+                            "expected": {
+                                "number": "25A",
+                                "unit": "H0301",
+                                "street": "Nabbetorpveien",
+                                "city": "GAMLE FREDRIKSTAD",
+                                "district": "Prestelandet",
+                                "postcode": "1632",
+                                "region": "FREDRIKSTAD"
+                            }
+                        },
+                        {
+                            "description": "vegadresse without unit should still extract the trailing house number token",
+                            "inputs": {
+                                "Nord": "6569982.12",
+                                "Øst": "269574.08",
+                                "adresseId": "17866708",
+                                "offisiellAdresseTekstUtenAdressetilleggsnavn": "Nabbetorpveien 25A",
+                                "bruksenhetsnummerTekst": "",
+                                "adressenavn": "Nabbetorpveien",
+                                "adressetilleggsnavn": "",
+                                "poststed": "GAMLE FREDRIKSTAD",
+                                "grunnkretsnavn": "Prestelandet",
+                                "postnummer": "1632",
+                                "kommunenavn": "FREDRIKSTAD"
+                            },
+                            "expected": {
+                                "number": "25A",
+                                "unit": "",
+                                "street": "Nabbetorpveien",
+                                "city": "GAMLE FREDRIKSTAD",
+                                "district": "Prestelandet",
+                                "postcode": "1632",
+                                "region": "FREDRIKSTAD"
+                            }
+                        },
+                        {
+                            "description": "matrikkeladresse should fall back to adressetilleggsnavn for street",
+                            "inputs": {
+                                "Nord": "6580850.32",
+                                "Øst": "285758.15",
+                                "adresseId": "26601483",
+                                "offisiellAdresseTekstUtenAdressetilleggsnavn": "3041/7",
+                                "bruksenhetsnummerTekst": "",
+                                "adressenavn": "",
+                                "adressetilleggsnavn": "Spydevold",
+                                "poststed": "ISE",
+                                "grunnkretsnavn": "Sikkeland",
+                                "postnummer": "1730",
+                                "kommunenavn": "SARPSBORG"
+                            },
+                            "expected": {
+                                "number": "3041/7",
+                                "unit": "",
+                                "street": "Spydevold",
+                                "city": "ISE",
+                                "district": "Sikkeland",
+                                "postcode": "1730",
+                                "region": "SARPSBORG"
+                            }
+                        },
+                        {
+                            "description": "matrikkeladresse should preserve composite property numbers while stripping unit suffixes",
+                            "inputs": {
+                                "Nord": "6578991.73",
+                                "Øst": "280867.33",
+                                "adresseId": "6453784265",
+                                "offisiellAdresseTekstUtenAdressetilleggsnavn": "2095/149-3-H0301",
+                                "bruksenhetsnummerTekst": "H0301",
+                                "adressenavn": "",
+                                "adressetilleggsnavn": "",
+                                "poststed": "HAFSLUNDSØY",
+                                "grunnkretsnavn": "Helgeby",
+                                "postnummer": "1734",
+                                "kommunenavn": "SARPSBORG"
+                            },
+                            "expected": {
+                                "number": "2095/149-3",
+                                "unit": "H0301",
+                                "street": "",
+                                "city": "HAFSLUNDSØY",
+                                "district": "Helgeby",
+                                "postcode": "1734",
+                                "region": "SARPSBORG"
+                            }
+                        },
+                        {
+                            "description": "matrikkeladresse should keep slash-delimited property identifiers intact",
+                            "inputs": {
+                                "Nord": "6592446.94",
+                                "Øst": "280899.93",
+                                "adresseId": "26610302",
+                                "offisiellAdresseTekstUtenAdressetilleggsnavn": "2013/9/1",
+                                "bruksenhetsnummerTekst": "",
+                                "adressenavn": "",
+                                "adressetilleggsnavn": "Kjennsmoen",
+                                "poststed": "SARPSBORG",
+                                "grunnkretsnavn": "Minge",
+                                "postnummer": "1708",
+                                "kommunenavn": "SARPSBORG"
+                            },
+                            "expected": {
+                                "number": "2013/9/1",
+                                "unit": "",
+                                "street": "Kjennsmoen",
+                                "city": "SARPSBORG",
+                                "district": "Minge",
+                                "postcode": "1708",
+                                "region": "SARPSBORG"
+                            }
+                        }
+                    ]
                 }
             }
         ],

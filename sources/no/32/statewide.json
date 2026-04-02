@@ -29,15 +29,18 @@
                     "lon": "Øst",
                     "id": "adresseId",
                     "number": {
-                        "function": "join",
-                        "fields": [
-                            "nummer",
-                            "bokstav"
-                        ],
-                        "separator": ""
+                        "function": "regexp",
+                        "field": "offisiellAdresseTekstUtenAdressetilleggsnavn",
+                        "pattern": "^(?:.*\\s)?([^\\s]+?)(?:-[A-Z]\\d{4})?$"
                     },
                     "unit": "bruksenhetsnummerTekst",
-                    "street": "adressenavn",
+                    "street": {
+                        "function": "first_non_empty",
+                        "fields": [
+                            "adressenavn",
+                            "adressetilleggsnavn"
+                        ]
+                    },
                     "city": "poststed",
                     "district": "grunnkretsnavn",
                     "postcode": "postnummer",
