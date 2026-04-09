@@ -25,16 +25,21 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "ADDR2"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "ADDR2"
-                    },
+                    "number": "addrnum",
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
                     "city": "POSTOFFICE",
-                    "postcode": "C_ZIP"
+                    "postcode": "C_ZIP",
+                    "district": "county",
+                    "region": "stateabbreviation"
                 }
             }
         ],
