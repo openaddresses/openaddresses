@@ -26,17 +26,26 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "ADDRESS",
-                        "pattern": "^([0-9]+) "
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "ADDRESS",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    }
+                    "number": [
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
+                    ],
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_PreSep",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
                 }
             }
         ]
