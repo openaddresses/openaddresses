@@ -24,11 +24,12 @@
                 "compression": "zip",
                 "conform": {
                     "format": "gdb",
-                    "number": [
-                        "ADDNUMPREFIX",
-                        "ADDNUM",
-                        "ADDNUMSUFFIX"
-                    ],
+                    "number": {
+                                "function": "format",
+                                "fields": ["ADDNUMPREFIX", "ADDNUM", "ADDNUMSUFFIX" ]
+                                "format": "$1$2$3"
+                              },
+                    
                     "street": [
                         "PREFIX",
                         "STREETNAME",
