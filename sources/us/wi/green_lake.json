@@ -18,7 +18,11 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "Add_Number",
+                    "number": {
+                                "function": "format",
+                                "fields": ["AddNum_Pre", "Add_Number"],
+                                "format": "$1$2"
+                              },
                     "street": [
                         "St_PreDir",
                         "St_Name",
