@@ -18,10 +18,11 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": [
-                        "NUMBER",
-                        "NUMBERSUFFIX"
-                    ],
+                    "number": {
+                                "function": "format",
+                                "fields": ["GRIDDIR", "NUMBER", "NUMBERSUFFIX"],
+                                "format": "$1$2 $3"
+                              },
                     "street": "FULLSTREET",
                     "postcode": "ZIPCODE"
                 }
