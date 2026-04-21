@@ -1,0 +1,54 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17119",
+            "name": "Madison County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Madison"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisportal.co.madison.il.us/servera/rest/services/CCAO/Parcel_Owners/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "NUM",
+                    "street": [
+                        "ST_NAME",
+                        "ST_TYPE"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "region": "STATE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisportal.co.madison.il.us/servera/rest/services/CCAO/Parcel_Owners/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisportal.co.madison.il.us/servera/rest/services/Edit/Structures/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}
