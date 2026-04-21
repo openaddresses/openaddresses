@@ -14,30 +14,46 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.sheboygancounty.com/arcgis/rest/services/SiteAddressPoints/MapServer/0",
+                "data": "https://services3.arcgis.com/lZtNcxj8HI3jnkkl/arcgis/rest/services/Address_Point_Open_Data/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "id": "SITEADDID",
-                    "number": "ADDRNUM",
-                    "street": "FULLNAME",
+                    "id": "siteaddid",
+                    "number": "addrnum",
+                    "street": "fullname",
                     "unit": [
-                        "UNITTYPE",
-                        "UNITID"
+                        "unittype",
+                        "unitid"
                     ],
-                    "city": "MUNICIPALITY",
-                    "accuracy": 1
+                    "city": "municipality"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.sheboygancounty.com/server/rest/services/TaxParcel/MapServer/0",
+                "data": "https://services3.arcgis.com/lZtNcxj8HI3jnkkl/arcgis/rest/services/ParcelsOD/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "pid": "PARCELID"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/lZtNcxj8HI3jnkkl/arcgis/rest/services/Road_Centerline_Open_Data/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "fullname",
+                    "addr_from_left": "fromleft",
+                    "addr_to_left": "toleft",
+                    "addr_from_right": "fromright",
+                    "addr_to_right": "toright",
+                    "zip_left": "zipleft",
+                    "zip_right": "zipright"
                 }
             }
         ],
