@@ -14,16 +14,26 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.lacrossecounty.org/gisserver/rest/services/AGOL/AddressPoints/MapServer/1",
-                "protocol": "ESRI",
+                "data": "https://web.s3.wisc.edu/rml-gisdata/LA_CROSSE_ADDRESSES_2025.zip",
+                "website": "https://geodata.wisc.edu",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2025",
                 "conform": {
-                    "format": "geojson",
-                    "number": "HOUSENUMBE",
+                    "format": "gdb",
+                    "layer": "LA_CROSSE_ADDRESSES_2025",
+                    "number": "ADDRNUM",
                     "street": [
+                        "PREDIR",
                         "STREETNAME",
                         "STREETTYPE",
-                        "STREETSUFF"
+                        "SUFDIR"
                     ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNIT"
+                    ],
+                    "city": "COMMUNITY",
                     "postcode": "ZIP"
                 }
             }
@@ -31,11 +41,14 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.lacrossecounty.org/gisserver/rest/services/AGOL/TaxParcelPub/MapServer/0",
-                "protocol": "ESRI",
+                "data": "https://gisdata.wisc.edu/public/LaCrosse_Parcels_2023_SHP.zip",
+                "website": "https://geodata.wisc.edu",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2023",
                 "conform": {
-                    "format": "geojson",
-                    "pid": "TaxParcelNo"
+                    "format": "shapefile",
+                    "pid": "PARCELID"
                 }
             }
         ],
@@ -50,6 +63,27 @@
                 "conform": {
                     "format": "gdb",
                     "layer": "LaCrosse_Buildings_2018"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://web.s3.wisc.edu/rml-gisdata/LA_CROSSE_ROADS_2025.zip",
+                "website": "https://geodata.wisc.edu",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2025",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "LA_CROSSE_ROADS_2025",
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R",
+                    "name": "FullStNm"
                 }
             }
         ]
