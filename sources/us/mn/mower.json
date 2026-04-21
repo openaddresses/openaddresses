@@ -1,0 +1,70 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27099",
+            "name": "Mower County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Mower"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gisweb.co.mower.mn.us/server/rest/services/OpenData/Open_Data/FeatureServer/1",
+                "protocol": "ESRI",
+                "website": "https://geospatial-hub-mowercountymn.hub.arcgis.com/",
+                "conform": {
+                    "format": "geojson",
+                    "number": [
+                        "ANUMBERPRE",
+                        "ANUMBER",
+                        "ANUMBERSUF"
+                    ],
+                    "street": [
+                        "ST_PRE_MOD",
+                        "ST_PRE_DIR",
+                        "ST_PRE_TYP",
+                        "ST_PRE_SEP",
+                        "ST_NAME",
+                        "ST_POS_TYP",
+                        "ST_POS_DIR",
+                        "ST_POS_MOD"
+                    ],
+                    "unit": [
+                        "SUB_TYPE1",
+                        "SUB_ID1"
+                    ],
+                    "city": "CTU_NAME",
+                    "district": "CO_NAME",
+                    "postcode": "ZIP",
+                    "region": "STATE_CODE"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gisweb.co.mower.mn.us/server/rest/services/OpenData/Open_Data/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://gisweb.co.mower.mn.us/server/rest/services/LandRecords/County_Building_Footprints_Group/FeatureServer/20",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson"
+                }
+            }
+        ]
+    }
+}

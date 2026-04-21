@@ -14,20 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.co.pope.mn.us/arcgis/rest/services/OpenData/OpenData/MapServer/0/",
+                "data": "https://gis.popecountymn.gov/arcgis/rest/services/Addressing/Addressing_public/FeatureServer/0",
                 "protocol": "ESRI",
+                "website": "https://gis.popecountymn.gov/arcgis/rest/services/Addressing",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRNUM",
-                    "street": {
-                        "function": "regexp",
-                        "field": "FULLADDR",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
+                    "number": [
+                        "ANUMBERPRE",
+                        "ANUMBER",
+                        "ANUMBERSUF"
+                    ],
+                    "street": [
+                        "ST_PRE_MOD",
+                        "ST_PRE_DIR",
+                        "ST_PRE_TYP",
+                        "ST_PRE_SEP",
+                        "ST_NAME",
+                        "ST_POS_TYP",
+                        "ST_POS_DIR",
+                        "ST_POS_MOD"
+                    ],
+                    "city": "CTU_NAME",
+                    "district": "CO_NAME",
                     "postcode": "ZIP",
-                    "city": "MUNICIPALITY",
-                    "region": "STATE"
+                    "region": "STATE_CODE"
                 }
             }
         ]
