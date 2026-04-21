@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17013",
+            "name": "Calhoun County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Calhoun"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/BN5dINZZvv0oeIev/arcgis/rest/services/Greene_Calhoun_addresses_roads/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreDir",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "city": "Inc_Muni"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/BN5dINZZvv0oeIev/arcgis/rest/services/Greene_Calhoun_addresses_roads/FeatureServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": {
+                        "function": "join",
+                        "fields": ["Direction", "Name", "Type"],
+                        "separator": " "
+                    }
+                }
+            }
+        ]
+    }
+}

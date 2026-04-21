@@ -1,0 +1,53 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17161",
+            "name": "Rock Island County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Rock Island"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.rockislandcountyil.gov/arcgis/rest/services/Hosted/AddressPoints/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "num_only",
+                    "street": {
+                        "function": "regexp",
+                        "field": "address",
+                        "pattern": "^\\d+\\s+(.*)"
+                    },
+                    "city": "city"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.rockislandcountyil.gov/arcgis/rest/services/Hosted/STREETS_NEW/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": {
+                        "function": "join",
+                        "fields": ["prefix", "name", "type", "suffix"],
+                        "separator": " "
+                    },
+                    "addr_from_left": "l_f_add",
+                    "addr_to_left": "l_t_add",
+                    "addr_from_right": "r_f_add",
+                    "addr_to_right": "r_t_add",
+                    "zip_left": "zipl",
+                    "zip_right": "zipr"
+                }
+            }
+        ]
+    }
+}

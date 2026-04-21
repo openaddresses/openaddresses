@@ -1,0 +1,48 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17061",
+            "name": "Greene County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Greene"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/BN5dINZZvv0oeIev/arcgis/rest/services/Greene_Calhoun_addresses_roads/FeatureServer/2",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreDir",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "city": "Inc_Muni"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/BN5dINZZvv0oeIev/arcgis/rest/services/Greene_Calhoun_addresses_roads/FeatureServer/4",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": {
+                        "function": "join",
+                        "fields": ["Direction", "Name", "Type"],
+                        "separator": " "
+                    }
+                }
+            }
+        ]
+    }
+}
