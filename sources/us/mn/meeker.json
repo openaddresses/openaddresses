@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27093",
+            "name": "Meeker County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Meeker"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/pHb2Lre5eSy5plfE/arcgis/rest/services/Meeker%20Address%20Points/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    }
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/pHb2Lre5eSy5plfE/arcgis/rest/services/Meeker%20Roads/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "STREET"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27091",
+            "name": "Martin County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Martin"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/MartinCountyMN_WFS/MapServer/1",
+                "protocol": "ESRI",
+                "website": "https://beacon.schneidercorp.com/?site=MartinCountyMN",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StreetNum",
+                    "street": "StreetName",
+                    "city": "City"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/MartinCountyMN_WFS/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
+    }
+}

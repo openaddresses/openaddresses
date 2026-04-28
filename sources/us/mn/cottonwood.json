@@ -1,0 +1,47 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27033",
+            "name": "Cottonwood County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Cottonwood"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/CottonwoodCountyMN_WFS/MapServer/0",
+                "protocol": "ESRI",
+                "website": "https://beacon.schneidercorp.com/?site=CottonwoodCountyMN",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "propadr1"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "propadr1"
+                    },
+                    "city": "City_Twp",
+                    "postcode": "propzip1"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/CottonwoodCountyMN_WFS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                }
+            }
+        ]
+    }
+}

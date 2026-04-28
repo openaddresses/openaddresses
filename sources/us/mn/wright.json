@@ -1,25 +1,26 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "27021",
-            "name": "Cass County",
+            "geoid": "27171",
+            "name": "Wright County",
             "state": "Minnesota"
         },
         "country": "us",
         "state": "mn",
-        "county": "Cass"
+        "county": "Wright"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "https://cassweb.casscountymn.gov/arcgis/rest/services/DLANBasemap_Cass/MapServer/2",
+                "data": "https://services2.arcgis.com/CiQCvRGImIxsaFnM/arcgis/rest/services/Address_Points_Referenced/FeatureServer/0",
                 "protocol": "ESRI",
-                "website": "https://cassweb.casscountymn.gov/arcgis/rest/services",
+                "website": "https://wright-county-gis-wrightgis.hub.arcgis.com/",
                 "conform": {
                     "format": "geojson",
                     "number": [
+                        "ANUMBERPRE",
                         "ANUMBER",
                         "ANUMBERSUF"
                     ],
@@ -27,11 +28,19 @@
                         "ST_PRE_MOD",
                         "ST_PRE_DIR",
                         "ST_PRE_TYP",
+                        "ST_PRE_SEP",
                         "ST_NAME",
                         "ST_POS_TYP",
-                        "ST_POS_DIR"
+                        "ST_POS_DIR",
+                        "ST_POS_MOD"
                     ],
+                    "unit": [
+                        "SUB_TYPE1",
+                        "SUB_ID1"
+                    ],
+                    "city": "CTU_NAME",
                     "district": "CO_NAME",
+                    "postcode": "ZIP",
                     "region": "STATE_CODE"
                 }
             }

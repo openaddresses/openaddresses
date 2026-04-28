@@ -1,0 +1,60 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "27081",
+            "name": "Lincoln County",
+            "state": "Minnesota"
+        },
+        "country": "us",
+        "state": "mn",
+        "county": "Lincoln"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/4bzoopFK3ECP25Sn/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": [
+                        "ST_PRE_DIR",
+                        "ST_PRE_TYP",
+                        "ST_NAME",
+                        "ST_POS_TYP"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIPCODE",
+                    "region": "State_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/4bzoopFK3ECP25Sn/arcgis/rest/services/Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCEL_NUM"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/4bzoopFK3ECP25Sn/arcgis/rest/services/Roads/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "STREET"
+                }
+            }
+        ]
+    }
+}
