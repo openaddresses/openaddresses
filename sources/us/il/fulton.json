@@ -1,0 +1,56 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17057",
+            "name": "Fulton County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Fulton"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/Ggva1SWphWGX4bb8/arcgis/rest/services/Fulton_NG911_WFL1/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreDir",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/Ggva1SWphWGX4bb8/arcgis/rest/services/Fulton_NG911_WFL1/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": {
+                        "function": "join",
+                        "fields": ["St_PreDir", "St_Name", "St_PosTyp", "St_PosDir"],
+                        "separator": " "
+                    },
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R"
+                }
+            }
+        ]
+    }
+}

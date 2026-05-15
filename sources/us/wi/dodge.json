@@ -13,13 +13,31 @@
     "layers": {
         "addresses": [
             {
-                "name": "county",
-                "data": "https://geo2.co.dodge.wi.us/arcgis/rest/services/Layers/Open_Data/MapServer/1",
-                "website": "https://gis-dodgecounty.opendata.arcgis.com/datasets/address-points/about",
+                "name": "county-unincorporated",
+                "data": "https://geo2.co.dodge.wi.us/arcgis/rest/services/Layers/Property_Civil/MapServer/2",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDFULL",
+                    "number": "ADDNUM",
+                    "street": [
+                        "PREDIR",
+                        "PRETYPE",
+                        "STREETNAME",
+                        "SUFTYPE",
+                        "SUFDIR"
+                    ],
+                    "unit": "ADDUNIT",
+                    "city": "MUNINAME",
+                    "postcode": "ZIPCODE"
+                }
+            },
+            {
+                "name": "county-incorporated",
+                "data": "https://geo2.co.dodge.wi.us/arcgis/rest/services/Layers/Property_Civil/MapServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDNUM",
                     "street": [
                         "PREDIR",
                         "PRETYPE",
@@ -36,8 +54,7 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://geo2.co.dodge.wi.us/arcgis/rest/services/Layers/Open_Data/MapServer/2",
-                "website": "https://gis-dodgecounty.opendata.arcgis.com/datasets/dodgecounty::tax-parcels-current/about",
+                "data": "https://geo2.co.dodge.wi.us/arcgis/rest/services/Layers/Property_Civil/MapServer/11",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -78,8 +95,7 @@
         "buildings": [
             {
                 "name": "county",
-                "data": "https://geo2.co.dodge.wi.us/arcgis/rest/services/Layers/Open_Data/MapServer/4",
-                "website": "https://gis-dodgecounty.opendata.arcgis.com/datasets/dodgecounty::building-footprints/about",
+                "data": "https://geo2.co.dodge.wi.us/arcgis/rest/services/Layers/Property_Civil/MapServer/20",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"

@@ -1,47 +1,49 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "17037",
-            "name": "DeKalb County",
+            "geoid": "17119",
+            "name": "Madison County",
             "state": "Illinois"
         },
         "country": "us",
         "state": "il",
-        "county": "DeKalb"
+        "county": "Madison"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services7.arcgis.com/hEXJrPwm89CLXBYe/ArcGIS/rest/services/AddrPoints/FeatureServer/1",
+                "data": "https://gisportal.co.madison.il.us/servera/rest/services/CCAO/Parcel_Owners/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADR_NBR",
-                    "street": "xSTREET",
-                    "unit": "UNIT",
-                    "city": "xNEWCITST",
-                    "region": "STATE",
-                    "postcode": "ZIP"
+                    "number": "NUM",
+                    "street": [
+                        "ST_NAME",
+                        "ST_TYPE"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP",
+                    "region": "STATE"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://services7.arcgis.com/hEXJrPwm89CLXBYe/ArcGIS/rest/services/DeKalbIL_Parcels/FeatureServer/0",
+                "data": "https://gisportal.co.madison.il.us/servera/rest/services/CCAO/Parcel_Owners/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "Parcel_Number"
+                    "pid": "PIN"
                 }
             }
         ],
         "buildings": [
             {
                 "name": "county",
-                "data": "https://services7.arcgis.com/hEXJrPwm89CLXBYe/ArcGIS/rest/services/DeKalbIL_Buildings/FeatureServer/0",
+                "data": "https://gisportal.co.madison.il.us/servera/rest/services/Edit/Structures/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"

@@ -14,21 +14,51 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://landrecords.greencountywi.org/arcgis/rest/services/BasicParcelViewerService/MapServer/3",
+                "data": "https://web.s3.wisc.edu/rml-gisdata/GREEN_ADDRESSES_2025.zip",
+                "website": "https://geodata.wisc.edu",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2025",
+                "conform": {
+                    "format": "gdb",
+                    "layer": "GREEN_ADDRESSES_2025",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "PREDIR",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFDIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNIT"
+                    ],
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services5.arcgis.com/pkUtXVHrGelPAY8k/arcgis/rest/services/Roads_and_Streets_View/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "numb",
-                    "unit": "suffix",
-                    "street": "street",
-                    "city": "MCD_Name"
+                    "name": "street",
+                    "addr_from_left": "fromleft",
+                    "addr_to_left": "toleft",
+                    "addr_from_right": "fromright",
+                    "addr_to_right": "toright",
+                    "zip_left": "Lzip",
+                    "zip_right": "Rzip"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://landrecords.greencountywi.org/arcgis/rest/services/BasicParcelViewerService/MapServer/4",
+                "data": "https://services5.arcgis.com/pkUtXVHrGelPAY8k/arcgis/rest/services/Tax_Parcels_View/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",

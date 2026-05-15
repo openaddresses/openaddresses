@@ -12,7 +12,7 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://web.s3.wisc.edu/parcels/v11_parcels/V11.0.0_Wisconsin_Parcels_2025_10.3_Uncompressed.zip",
+                "data": "https://services3.arcgis.com/n6uYoouQZW75n5WI/arcgis/rest/services/Wisconsin_Statewide_Parcels/FeatureServer/0",
                 "website": "https://www.sco.wisc.edu/parcels/data/",
                 "license": {
                     "text": "No restrictions",
@@ -20,16 +20,14 @@
                     "share-alike": false,
                     "attribution name": "The Wisconsin State Cartographer's Office"
                 },
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "gdb",
+                    "format": "geojson",
                     "number": {
-                                "function": "format",
-                                "fields": ["ADDNUMPREFIX", "ADDNUM", "ADDNUMSUFFIX" ],
-                                "format": "$1$2$3"
-                              },
-
+                        "function": "format",
+                        "fields": ["ADDNUMPREFIX", "ADDNUM", "ADDNUMSUFFIX"],
+                        "format": "$1$2$3"
+                    },
                     "street": [
                         "PREFIX",
                         "STREETNAME",

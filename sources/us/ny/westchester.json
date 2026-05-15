@@ -14,20 +14,43 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://giswww.westchestergov.com/arcgis/rest/services/MappingWestchesterCounty_AdditionalLayers/MapServer/78",
+                "data": "https://giswww.westchestergov.com/arcgis/rest/services/Parcel_Identification/MapServer/3",
                 "protocol": "ESRI",
+                "website": "https://giswww.westchestergov.com/arcgis/rest/services/Parcel_Identification/MapServer",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSENUM",
+                    "number": "SITE_HOUSE_NUMBER",
                     "street": [
-                        "PREDIR",
-                        "STREETNAME",
-                        "SUFTYPE",
-                        "SUFDIR"
+                        "SITE_DIRECTION",
+                        "SITE_STREET_NAME",
+                        "SITE_MODE"
                     ],
-                    "unit": "PROPAPT",
-                    "city": "PROPCITY",
-                    "postcode": "PROPZIP"
+                    "unit": "SITE_UNIT_NUMBER",
+                    "city": "SITE_CITY",
+                    "postcode": "SITE_ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://giswww.westchestergov.com/arcgis/rest/services/DataHub_TaxParcels/MapServer/0",
+                "protocol": "ESRI",
+                "website": "https://giswww.westchestergov.com/arcgis/rest/services/DataHub_TaxParcels/MapServer",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PRINTKEY"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "data": "https://giswww.westchestergov.com/arcgis/rest/services/Planimetric_Basemap/MapServer/14",
+                "protocol": "ESRI",
+                "website": "https://giswww.westchestergov.com/arcgis/rest/services/Planimetric_Basemap/MapServer",
+                "conform": {
+                    "format": "geojson"
                 }
             }
         ]

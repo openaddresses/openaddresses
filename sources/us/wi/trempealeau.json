@@ -14,27 +14,54 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://map.co.trempealeau.wi.us/arcgis/rest/services/Public/Addressing/MapServer/1",
-                "protocol": "ESRI",
+                "data": "https://web.s3.wisc.edu/rml-gisdata/TREMPEALEAU_ADDRESSES_2025.zip",
+                "website": "https://geodata.wisc.edu",
+                "protocol": "http",
+                "compression": "zip",
+                "year": "2025",
                 "conform": {
-                    "format": "geojson",
-                    "number": "FIRE_NO",
-                    "street": {
-                        "function": "remove_prefix",
-                        "field": "ADDRESS",
-                        "field_to_remove": "FIRE_NO"
-                    }
+                    "format": "gdb",
+                    "layer": "TREMPEALEAU_ADDRESSES_2025",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "PREDIR",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFDIR"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNIT"
+                    ],
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://map.co.trempealeau.wi.us/arcgis/rest/services/Public/Parcels/MapServer/1",
+                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/TrempealeauCountyWI_WFS/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "pid": "PIN"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/TrempealeauCountyWI_WFS/MapServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": [
+                        "PREDIR",
+                        "STREETNAME",
+                        "STREETTYPE",
+                        "SUFDIR"
+                    ]
                 }
             }
         ],
