@@ -14,31 +14,31 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services3.arcgis.com/8mdusDCY0WncdJVw/ArcGIS/rest/services/Parcels/FeatureServer/0",
+                "data": "https://services3.arcgis.com/8mdusDCY0WncdJVw/arcgis/rest/services/KoochichingCountyParcelDataPublish/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": {
                         "function": "regexp",
                         "field": "ADDR_1",
-                        "pattern": "([0-9]*) (.*)",
+                        "pattern": "^(\\d+)\\s+.*",
                         "replace": "$1"
                     },
                     "street": {
                         "function": "regexp",
                         "field": "ADDR_1",
-                        "pattern": "([0-9]*) (.*)",
-                        "replace": "$2"
+                        "pattern": "^\\d+\\s+(.*)",
+                        "replace": "$1"
                     },
                     "city": "CITY",
-                    "postcode": "ZipCode5"
+                    "postcode": "ZIP_CODE_5"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://services3.arcgis.com/8mdusDCY0WncdJVw/ArcGIS/rest/services/KoochichingCountyParcels/FeatureServer/0",
+                "data": "https://services3.arcgis.com/8mdusDCY0WncdJVw/arcgis/rest/services/KoochichingCountyParcelDataPublish/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",

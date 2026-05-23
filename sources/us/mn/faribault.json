@@ -15,17 +15,29 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://services2.arcgis.com/fxB2C8mQfjMb1848/ArcGIS/rest/services/TaxParcels/FeatureServer/0",
+                "data": "https://services2.arcgis.com/fxB2C8mQfjMb1848/ArcGIS/rest/services/E911/FeatureServer/0",
                 "conform": {
                     "format": "geojson",
-                    "number": "BLDG_NUM",
-                    "street": [
-                        "STREETNAME",
-                        "STREETTYPE",
-                        "SUFFIX_DIR"
-                    ],
-                    "city": "CITY",
-                    "postcode": "ZIP"
+                    "number": "E911_NO",
+                    "street": {
+                        "function": "regexp",
+                        "field": "E911_ADD",
+                        "pattern": "^\\d+\\s+(.*)"
+                    },
+                    "city": "E911_CITY",
+                    "region": "E911_ST",
+                    "postcode": "E911_ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "protocol": "ESRI",
+                "data": "https://services2.arcgis.com/fxB2C8mQfjMb1848/ArcGIS/rest/services/TaxParcelsGAC/FeatureServer/0",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "STATE_PIN"
                 }
             }
         ]
