@@ -8,11 +8,11 @@
     "addresses": [
       {
         "name": "state",
-        "data": "https://data.openaddresses.io/cache/uploads/iandees/2025-04-11-vrni2/Snapshot20250401.gdb.zip",
-        "compression": "zip",
-        "protocol": "http",
+        "data": "https://enterprise.gisdata.mn.gov/aghost/rest/services/us_mn_state_mngeo/loc_addresses_open/FeatureServer/0",
+        "protocol": "ESRI",
+        "website": "https://gisdata.mn.gov/dataset/loc-addresses-open",
         "conform": {
-          "format": "gdb",
+          "format": "geojson",
           "number": [
             "anumberpre",
             "anumber",
@@ -28,11 +28,26 @@
             "st_pos_dir",
             "st_pos_mod"
           ],
-          "unit": "unit",
+          "unit": [
+            "sub_type1",
+            "sub_id1"
+          ],
           "city": "ctu_name",
           "district": "co_name",
           "postcode": "zip",
           "region": "state_code"
+        }
+      }
+    ],
+    "parcels": [
+      {
+        "name": "state",
+        "data": "https://enterprise.gisdata.mn.gov/aghost/rest/services/us_mn_state_mngeo/plan_parcels_open/FeatureServer/1",
+        "protocol": "ESRI",
+        "website": "https://gisdata.mn.gov/dataset/plan-parcels-open",
+        "conform": {
+          "format": "geojson",
+          "pid": "state_pin"
         }
       }
     ]
