@@ -21,7 +21,13 @@
                     "encoding": "utf-8",
                     "accuracy": 3,
                     "number": "house_number",
-                    "street": "streetname_de",
+                    "street": {
+                        "function": "first_non_empty",
+                        "fields": [
+                            "streetname_de",
+                            "streetname_fr"
+                        ]
+                    },
                     "city": "municipality_name_de",
                     "postcode": "postcode",
                     "id": {
