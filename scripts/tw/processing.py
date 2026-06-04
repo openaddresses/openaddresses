@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import re
 import pandas as pd
 import argparse
 import os
@@ -16,6 +17,18 @@ def normalize_areacode(code):
     return code
 
 
+def normalize_col(name):
+    """Strip punctuation and separators for fuzzy column matching (keeps CJK, Latin, digits)."""
+    return re.sub(r'[^a-zA-Z0-9一-鿿]', '', name)
+
+
+def fallback_transform(code):
+    # Re-inserts "00" at position 2 for unmatched 7-char codes, reversing normalize_areacode
+    if isinstance(code, str) and len(code) == 7:
+        return code[:2] + "00" + code[2:-2]
+    return code
+
+
 def load_address_csv(filepath):
     """Detect encoding and load address CSV with fallbacks."""
     with open(filepath, "rb") as f:
@@ -26,7 +39,9 @@ def load_address_csv(filepath):
 
     print(f"🔍 Detected encoding: {encoding} (confidence: {confidence:.2f})")
 
-    for enc in [encoding, "utf-8", "big5", "big5hkscs", "cp950", "latin1"]:
+    candidates = [encoding, "utf-8", "big5", "big5hkscs", "cp950", "latin1"]
+    seen = set()
+    for enc in [e for e in candidates if e and e.lower() not in seen and not seen.add(e.lower())]:
         try:
             df = pd.read_csv(filepath, dtype=str, encoding=enc)
             print(f"✅ Successfully decoded using: {enc}")
@@ -39,27 +54,32 @@ def load_address_csv(filepath):
     return pd.read_csv(filepath, dtype=str, encoding="utf-8", errors="replace")
 
 
-def main(address_csv, output_csv, code_table_csv, reproject):
+def main(address_csv, output_csv, code_table_csv, reproject, source_crs="EPSG:3826"):
     address_df = load_address_csv(address_csv)
 
-    # Normalize English column variants
+    # Normalize English column variants. Keys are normalize_col().lower() forms so that
+    # camelCase, leading spaces, and punctuation all collapse to the same lookup key.
     english_to_chinese = {
         "countycode": "省市縣市代碼",
+        "citycode": "省市縣市代碼",
         "areacode": "鄉鎮市區代碼",
+        "districtcode": "鄉鎮市區代碼",
         "village": "村里",
         "neighbor": "鄰",
-        "street、road、section": "街路段",
+        "neighborhood": "鄰",
+        "streetroadsection": "街路段",
         "area": "地區",
         "lane": "巷",
         "alley": "弄",
         "number": "號",
-        "x_3826": "橫座標",
-        "y_3826": "縱座標",
+        "housenumber": "號",
+        "coordinatex": "橫座標",
+        "coordinatey": "縱座標",
     }
 
     renamed_cols = {}
     for col in address_df.columns:
-        key = col.strip().lower()
+        key = normalize_col(col).lower()
         if key in english_to_chinese:
             renamed_cols[col] = english_to_chinese[key]
 
@@ -67,17 +87,26 @@ def main(address_csv, output_csv, code_table_csv, reproject):
         print(f"🔁 Renaming English column headers: {renamed_cols}")
         address_df.rename(columns=renamed_cols, inplace=True)
 
+    # Punctuation variants (街_路段, 街（路段）, etc.) are caught by normalize_col.
+    # Word-separator variants that survive normalization need an explicit entry.
     alias_map = {
         "TWD97橫坐標": "橫座標",
         "TWD97縱坐標": "縱座標",
         "WGS84經度": "x_4326",
         "WGS84緯度": "y_4326",
-        "街_路段": "街路段",
-        "街、路段": "街路段",
+        "街路段": "街路段",
+        "街或路段": "街路段",
     }
-    for src, dest in alias_map.items():
-        if src in address_df.columns and dest not in address_df.columns:
-            address_df.rename(columns={src: dest}, inplace=True)
+    norm_to_dest = {normalize_col(src): dest for src, dest in alias_map.items()}
+    col_renames = {}
+    for col in address_df.columns:
+        norm = normalize_col(col)
+        if norm in norm_to_dest:
+            dest = norm_to_dest[norm]
+            if dest not in address_df.columns and dest not in col_renames.values():
+                col_renames[col] = dest
+    if col_renames:
+        address_df.rename(columns=col_renames, inplace=True)
 
     if "地區" not in address_df.columns:
         print("⚠️  '地區' column is missing from input. Filling with null values.")
@@ -86,6 +115,7 @@ def main(address_csv, output_csv, code_table_csv, reproject):
     has_code_columns = (
         "省市縣市代碼" in address_df.columns and "鄉鎮市區代碼" in address_df.columns
     )
+
     if not has_code_columns:
         if "縣市" in address_df.columns and "鄉鎮市區" in address_df.columns:
             print("ℹ️  Using '縣市'/'鄉鎮市區' columns for county/town; skipping code join.")
@@ -95,75 +125,56 @@ def main(address_csv, output_csv, code_table_csv, reproject):
             address_df["鄉鎮市區代碼"] = pd.NA
         else:
             raise KeyError("Missing required code columns or county/town name columns.")
+    elif (
+        not address_df["省市縣市代碼"].str.isnumeric().all()
+        or not address_df["鄉鎮市區代碼"].str.isnumeric().all()
+    ):
+        print(
+            "⚠️  Non-numeric values detected in '省市縣市代碼' or '鄉鎮市區代碼'. Skipping join — using them directly for 'county' and 'town'."
+        )
+        address_df["county"] = address_df["省市縣市代碼"]
+        address_df["town"] = address_df["鄉鎮市區代碼"]
     else:
         address_df["省市縣市代碼"] = address_df["省市縣市代碼"].str.zfill(5)
         address_df["鄉鎮市區代碼"] = address_df["鄉鎮市區代碼"].apply(normalize_areacode)
 
-    if has_code_columns:
-        if (
-            not address_df["省市縣市代碼"].str.isnumeric().all()
-            or not address_df["鄉鎮市區代碼"].str.isnumeric().all()
-        ):
-            print(
-                "⚠️  Non-numeric values detected in '省市縣市代碼' or '鄉鎮市區代碼'. Skipping join — using them directly for 'county' and 'town'."
-            )
-            address_df["county"] = address_df["省市縣市代碼"]
-            address_df["town"] = address_df["鄉鎮市區代碼"]
-            has_code_columns = False
-        else:
-            code_df = (
-                pd.read_csv(code_table_csv, dtype=str)
-                .rename(columns={"區里代碼": "鄉鎮市區代碼"})
-                .drop_duplicates(subset=["鄉鎮市區代碼"], keep="first")
-            )
+        code_df = (
+            pd.read_csv(code_table_csv, dtype=str)
+            .rename(columns={"區里代碼": "鄉鎮市區代碼"})
+            .drop_duplicates(subset=["鄉鎮市區代碼"], keep="first")
+        )
 
+        merged_df = pd.merge(
+            address_df, code_df, on="鄉鎮市區代碼", how="left", indicator=True
+        )
+        total_rows = len(merged_df)
+        unmatched_mask = (merged_df["_merge"] != "both").values
+        num_unmatched = unmatched_mask.sum()
+
+        if num_unmatched > 0:
+            print(
+                f"⚠️  {num_unmatched} out of {total_rows} rows did not join initially. Attempting fallback transformation..."
+            )
+            address_df.loc[unmatched_mask, "鄉鎮市區代碼"] = address_df.loc[
+                unmatched_mask, "鄉鎮市區代碼"
+            ].apply(fallback_transform)
             merged_df = pd.merge(
                 address_df, code_df, on="鄉鎮市區代碼", how="left", indicator=True
             )
-            total_rows = len(merged_df)
-            unmatched_rows = merged_df["_merge"] != "both"
-            num_unmatched = unmatched_rows.sum()
-
-            if num_unmatched > 0:
-                print(
-                    f"⚠️  {num_unmatched} out of {total_rows} rows did not join initially. Attempting fallback transformation..."
-                )
-
-                def fallback_transform(code):
-                    if isinstance(code, str) and len(code) == 7:
-                        prefix = code[:2]
-                        middle = code[2:-2]
-                        return prefix + "00" + middle
-                    return code
-
-                address_df.loc[unmatched_rows, "鄉鎮市區代碼"] = address_df.loc[
-                    unmatched_rows, "鄉鎮市區代碼"
-                ].apply(fallback_transform)
-                merged_df_retry = pd.merge(
-                    address_df, code_df, on="鄉鎮市區代碼", how="left", indicator=True
-                )
-                unmatched_retry = merged_df_retry["_merge"] != "both"
-                recovered = num_unmatched - unmatched_retry.sum()
-
-                if recovered > 0:
-                    print(
-                        f"✅ Fallback transformation matched {recovered} previously unmatched rows."
-                    )
-                else:
-                    print(f"⚠️  Fallback transformation did not recover any rows.")
-
-                merged_df = merged_df_retry
-
-            final_unmatched = merged_df["_merge"] != "both"
-            if not final_unmatched.any():
-                print(f"✅ All {total_rows} rows successfully joined.")
+            recovered = num_unmatched - (merged_df["_merge"] != "both").values.sum()
+            if recovered > 0:
+                print(f"✅ Fallback transformation matched {recovered} previously unmatched rows.")
             else:
-                print(
-                    f"⚠️  {final_unmatched.sum()} rows still failed to join after fallback."
-                )
+                print("⚠️  Fallback transformation did not recover any rows.")
 
-            address_df["county"] = merged_df["縣市名稱"]
-            address_df["town"] = merged_df["區鄉鎮名稱"]
+        final_unmatched = (merged_df["_merge"] != "both").sum()
+        if final_unmatched == 0:
+            print(f"✅ All {total_rows} rows successfully joined.")
+        else:
+            print(f"⚠️  {final_unmatched} rows still failed to join after fallback.")
+
+        address_df["county"] = merged_df["縣市名稱"].values
+        address_df["town"] = merged_df["區鄉鎮名稱"].values
 
     if not reproject:
         print("🚫 Skipping reprojection. Copying original coords to x_4326/y_4326.")
@@ -174,7 +185,7 @@ def main(address_csv, output_csv, code_table_csv, reproject):
         address_df["x_3826"] = pd.NA
         address_df["y_3826"] = pd.NA
     else:
-        print("🔄 Reprojecting coordinates from EPSG:3826 to EPSG:4326...")
+        print(f"🔄 Reprojecting coordinates from {source_crs} to EPSG:4326...")
         if "x_3826" not in address_df.columns:
             address_df["x_3826"] = address_df["橫座標"]
         if "y_3826" not in address_df.columns:
@@ -183,18 +194,19 @@ def main(address_csv, output_csv, code_table_csv, reproject):
         if "x_4326" in address_df.columns and "y_4326" in address_df.columns:
             print("✅ Using provided WGS84 coordinates.")
         else:
-            transformer = Transformer.from_crs("EPSG:3826", "EPSG:4326", always_xy=True)
-
-            def safe_transform(x, y):
-                try:
-                    lon, lat = transformer.transform(float(x), float(y))
-                    return pd.Series({"x_4326": lon, "y_4326": lat})
-                except Exception:
-                    return pd.Series({"x_4326": pd.NA, "y_4326": pd.NA})
-
-            address_df[["x_4326", "y_4326"]] = address_df[["x_3826", "y_3826"]].apply(
-                lambda row: safe_transform(row["x_3826"], row["y_3826"]), axis=1
+            transformer = Transformer.from_crs(source_crs, "EPSG:4326", always_xy=True)
+            valid = (
+                pd.to_numeric(address_df["x_3826"], errors="coerce").notna()
+                & pd.to_numeric(address_df["y_3826"], errors="coerce").notna()
             )
+            address_df["x_4326"] = pd.NA
+            address_df["y_4326"] = pd.NA
+            lons, lats = transformer.transform(
+                address_df.loc[valid, "x_3826"].astype(float).values,
+                address_df.loc[valid, "y_3826"].astype(float).values,
+            )
+            address_df.loc[valid, "x_4326"] = lons
+            address_df.loc[valid, "y_4326"] = lats
 
     column_pairs = [
         ("省市縣市代碼", "countycode"),
@@ -241,6 +253,12 @@ if __name__ == "__main__":
         action="store_true",
         help="Skip coordinate reprojection and copy original values into x_4326/y_4326",
     )
+    parser.add_argument(
+        "--source-crs",
+        default="EPSG:3826",
+        help="Source CRS of the input coordinates (default: EPSG:3826). "
+             "Use EPSG:3825 for outlying islands (Penghu, Kinmen, Matsu).",
+    )
     args = parser.parse_args()
 
     if not os.path.exists(args.code_table):
@@ -248,4 +266,4 @@ if __name__ == "__main__":
             f"County/district code table not found at: {args.code_table}"
         )
 
-    main(args.address_csv, args.output_csv, args.code_table, not args.no_reproject)
+    main(args.address_csv, args.output_csv, args.code_table, not args.no_reproject, args.source_crs)
