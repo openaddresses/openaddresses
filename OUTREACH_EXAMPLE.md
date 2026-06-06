@@ -1,6 +1,6 @@
 Hello {GIS CONTACT (if available)},
 
-I am writing on behalf of the [OpenAddresses Project](http://openaddresses.io/), an open-source volunteer initiative working to collect and standardize address data for the world.
+I am writing on behalf of the [OpenAddresses Project](https://openaddresses.io/), an open-source volunteer initiative working to collect and standardize address data for the world.
 
 To best secure this information, I would like to ask for your assistance in adding {COUNTRY/REGION/CITY}'s geo-point data for inclusion in this important and impactful project.
 

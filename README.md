@@ -10,7 +10,7 @@ A global collection of address, cadastral parcel, building footprint and street 
 
 This repository is a collection of references to address, cadastral parcel, building footprint and street centerline data sources.
 
-- See [openaddresses.io](http://openaddresses.io/) for a data download.
+- See [openaddresses.io](https://openaddresses.io/) for a data download.
 
 ## Contributing addresses
 
