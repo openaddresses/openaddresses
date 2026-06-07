@@ -1,89 +1,76 @@
-import requests
-import zipfile
-import io
-import os
-import json
-import pandas as pd
+from __future__ import annotations
 
-# URL of the ZIP file. This may need to be updated for new versions.
-# Location of data is https://portal.csdi.gov.hk/geoportal/#metadataInfoPanel
-zip_url = "https://res.data.gov.hk/api/get-download-file?name=https%3A%2F%2Fwww.als.gov.hk%2Fdata%2FALS-GeoJSON.zip"
+import argparse
+from pathlib import Path
 
-# Directory to extract files
-extract_dir = "geojson_files"
-os.makedirs(extract_dir, exist_ok=True)
+from lib.download import (
+    DEFAULT_ARCHIVE_PATH,
+    DownloadInstructionsError,
+    load_or_download_archive,
+)
+from lib.fs import (
+    extract_geojson_archive,
+    list_geojson_files,
+    remove_intermediate_files,
+    write_csv,
+    zip_output_file,
+)
+from lib.process import collect_records
 
-# Download and extract the ZIP file
-response = requests.get(zip_url)
-if response.status_code == 200:
-    with zipfile.ZipFile(io.BytesIO(response.content)) as z:
-        z.extractall(extract_dir)
-else:
-    print("Failed to download the file.")
-    exit()
-
-# List all geojson files, excluding the unwanted one
-excluded_file = "als_addresses_3d_(public_rental_housing).geojson"
-geojson_files = [
-    f for f in os.listdir(extract_dir) if f.endswith(".geojson") and f != excluded_file
-]
-
-data_list = []
+# ALS provides 3D addresses for public housing estates, we exclude these from processing and only target 2D addresses.
+EXCLUDED_FILE = "als_addresses_3d_(public_rental_housing).geojson"
+BASE_DIR = Path(__file__).resolve().parent
+EXTRACT_DIR = BASE_DIR / "geojson_files"
+CSV_FILENAME = BASE_DIR / "hk_countrywide.csv"
+ZIP_FILENAME = BASE_DIR / "hk_countrywide.zip"
 
 
-def flatten_dict(d, parent_key="", sep="_"):
-    """Recursively flattens a nested dictionary with custom prefixes."""
-    items = []
-    for k, v in d.items():
-        prefix = ""
-        if "ChiPremisesAddress" in parent_key or "ChiVillage" in parent_key:
-            prefix = "ch_"
-        elif "EngPremisesAddress" in parent_key or "EngVillage" in parent_key:
-            prefix = "en_"
-        new_key = f"{prefix}{k}" if prefix else k
-
-        if isinstance(v, dict):
-            items.extend(flatten_dict(v, new_key, sep=sep).items())
-        else:
-            items.append((new_key, v))
-    return dict(items)
+def parse_args() -> argparse.Namespace:
+    """Parse CLI options for the Hong Kong import script."""
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--keep-intermediate",
+        action="store_true",
+        help="Keep the source ALS ZIP and extracted GeoJSON files after processing.",
+    )
+    return parser.parse_args()
 
 
-# Process each geojson file
-for file in geojson_files:
-    file_path = os.path.join(extract_dir, file)
-    with open(file_path, "r", encoding="utf-8") as f:
-        geojson_data = json.load(f)
+def main() -> int:
+    """Download, transform, and archive Hong Kong address data."""
+    args = parse_args()
+    archive_path: Path | None = None
 
-        for feature in geojson_data.get("features", []):
-            properties = feature.get("properties", {})
-            geometry = feature.get("geometry", {})
-            coordinates = geometry.get("coordinates", [])
+    try:
+        print("Attempting to load or download the Hong Kong ALS dataset...")
+        archive_bytes, archive_source, archive_path = load_or_download_archive(
+            DEFAULT_ARCHIVE_PATH
+        )
+    except DownloadInstructionsError as exc:
+        print(exc)
+        return 1
 
-            # Flatten nested properties
-            flat_properties = flatten_dict(properties)
+    try:
+        print(f"Using {archive_source} archive at\n  {archive_path}")
+        extract_geojson_archive(archive_bytes, EXTRACT_DIR)
 
-            # Add geometry data
-            flat_properties["longitude"] = (
-                coordinates[0] if len(coordinates) > 0 else None
-            )
-            flat_properties["latitude"] = (
-                coordinates[1] if len(coordinates) > 1 else None
-            )
+        geojson_files = list_geojson_files(EXTRACT_DIR, EXCLUDED_FILE)
+        records = collect_records(geojson_files)
 
-            data_list.append(flat_properties)
+        if not records:
+            print("No valid data found in GeoJSON files.")
+            return 1
 
-# Convert to DataFrame and save as CSV
-csv_filename = "hk_countrywide.csv"
-if data_list:
-    df = pd.DataFrame(data_list)
-    df.to_csv(csv_filename, index=False, encoding="utf-8-sig")
-    print(f"CSV file has been saved as {csv_filename}")
+        write_csv(records, CSV_FILENAME)
+        print(f"CSV file has been saved as\n  {CSV_FILENAME}")
 
-    # Zip the CSV file
-    zip_filename = "hk_countrywide.zip"
-    with zipfile.ZipFile(zip_filename, "w", zipfile.ZIP_DEFLATED) as zipf:
-        zipf.write(csv_filename)
-    print(f"Zipped file has been saved as {zip_filename}")
-else:
-    print("No valid data found in GeoJSON files.")
+        zip_output_file(CSV_FILENAME, ZIP_FILENAME)
+        print(f"Zipped file has been saved as\n  {ZIP_FILENAME}")
+        return 0
+    finally:
+        if not args.keep_intermediate:
+            remove_intermediate_files(archive_path, EXTRACT_DIR)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
