@@ -14,29 +14,24 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.districtiii.org/server/rest/services/CHARLES_MIX_WEB_LAYERS/MapServer/6",
+                "data": "https://gis.districtiii.org/server/rest/services/CHARLES_MIX_WEB_LAYERS2/MapServer/40",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "TC_SITE_ADDRESS"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "TC_SITE_ADDRESS"
-                    },
-                    "format": "geojson"
+                    "format": "geojson",
+                    "number": "HOUSE__",
+                    "street": ["PRE_DIR", "STREET_NAME"],
+                    "city": "LOCATION_TN"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.districtiii.org/server/rest/services/CHARLES_MIX_WEB_LAYERS/MapServer/10",
+                "data": "https://gis.districtiii.org/server/rest/services/CHARLES_MIX_WEB_LAYERS2/MapServer/6",
                 "protocol": "ESRI",
                 "conform": {
-                    "pid": "PARCEL_ID",
-                    "format": "geojson"
+                    "format": "geojson",
+                    "pid": "Parcelid"
                 }
             }
         ]
