@@ -375,4 +375,6 @@ Following the formatting guidelines keeps the rest of us sane!
 
 ### Debugging and local testing
 
-See https://github.com/openaddresses/batch-machine/
+See [DEVELOPMENT.md](DEVELOPMENT.md) for a full explanation of the pipeline and instructions for running `batch-machine` locally to test a source before submitting a pull request.
+
+For deeper information on the processing library itself, see https://github.com/openaddresses/batch-machine/
