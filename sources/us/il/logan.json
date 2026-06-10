@@ -14,21 +14,18 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.centralilmaps.com/arcgis/rest/services/Logan_Flex_Property/MapServer/4",
+                "data": "https://www.centralilmaps.com/arcgis/rest/services/Logan/Logan_PropertyAnno/MapServer/1",
                 "protocol": "ESRI",
                 "conform": {
+                    "format": "geojson",
                     "number": {
-                        "function": "regexp",
-                        "field": "site_address",
-                        "pattern": "^([0-9]+)"
+                        "function": "prefixed_number",
+                        "field": "Address"
                     },
                     "street": {
-                        "function": "regexp",
-                        "field": "site_address",
-                        "pattern": "^(?:[0-9]+ +)(.*)",
-                        "replace": "$1"
-                    },
-                    "format": "geojson"
+                        "function": "postfixed_street",
+                        "field": "Address"
+                    }
                 }
             }
         ]
