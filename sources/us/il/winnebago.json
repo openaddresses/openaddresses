@@ -14,30 +14,15 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps.wingis.org/public/rest/services/NG911/MapServer/9",
+                "data": "https://services2.arcgis.com/Fh2bD9911cyi2gO2/arcgis/rest/services/Rockford_Addresses/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "STNO",
-                    "street": "STNAME",
-                    "unit": [
-                        "UNITTYPE",
-                        "SUITE"
-                    ],
-                    "city": "MSAGComm",
-                    "region": "STATE",
+                    "street": ["PREFIX", "STNAME", "SUFFIX", "POSTDIR"],
+                    "unit": "SUITE",
+                    "city": "CITY",
                     "postcode": "ZIP"
-                }
-            }
-        ],
-        "parcels": [
-            {
-                "name": "county",
-                "data": "https://maps.wingis.org/public/rest/services/NG911/MapServer/1",
-                "protocol": "ESRI",
-                "conform": {
-                    "format": "geojson",
-                    "pid": "PIN"
                 }
             }
         ]
