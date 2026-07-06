@@ -13,6 +13,11 @@ You will then receive an email with the download link.
 
 There are two building datasets available from the Queensland Government, [Building areas - Queensland](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={BC24B68C-50D2-41E8-B0AE-FF4EB2913FDA}) which only includes large footprint buildings but has accurate geometries, and [Generated building outlines - Queensland](https://qldspatial.information.qld.gov.au/catalogue/custom/search.page?q=%22Generated%20building%20outlines%20-%20Queensland%22) which includes all buildings but has less accurate geometries. We have selected the latter to provide better coverage.
 
-    curl 'https://spatial.information.qld.gov.au/arcgis/sharing/servers/0c54a850c61240c284e7a0651766a46f/rest/services/QSC/ClipZipShip/GPServer/ClipZipShip/submitJob?f=json&env%3AoutSR=102100&Layers_to_Clip=%5B%22Generated%20building%20outlines%22%5D&Feature_Format=File%20Geodatabase%20-%20GDB%20-%20.gdb&Spatial_Reference=Same%20As%20Input&To_Email=USER%40EXAMPLE.COM&Prepackaged_Data_URLs=&Output_Title=Extract'
+Since 2026, requesting a full extract reports too many features to download, and hence we used the scripts within `scripts` to identify a mid latitude to split the state into two smaller areas for download.
 
-You will then receive an email with the download link.
+The two resulting extracts were then combined with
+
+    parallel "unzip {}" ::: QSC_Extracted_Data_*.zip
+    ogr2ogr -f OpenFileGDB Generated_building_outlines.gdb first.gdb
+    ogr2ogr -f OpenFileGDB -append Generated_building_outlines.gdb second.gdb
+    zip -X -r DP_QLD_GENERATED_BUILDING_OUTLINES.zip Generated_building_outlines.gdb
