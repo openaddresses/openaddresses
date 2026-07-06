@@ -21,4 +21,3 @@ The two resulting extracts were then combined with
     ogr2ogr -f OpenFileGDB Generated_building_outlines.gdb first.gdb
     ogr2ogr -f OpenFileGDB -append Generated_building_outlines.gdb second.gdb
     zip -X -r DP_QLD_GENERATED_BUILDING_OUTLINES.zip Generated_building_outlines.gdb
-
