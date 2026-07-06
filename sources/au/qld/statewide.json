@@ -14,35 +14,42 @@
             {
                 "name": "state",
                 "protocol": "http",
-                "data": "https://www.alantgeo.com.au/share/DP_QLD_DCDB_WOS_CUR.zip",
-                "website": "https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={3EAB4FBC-7E64-46E2-919B-6ECDC459C9AF}",
+                "data": "https://www.alantgeo.com.au/share/DP_PROP_LOCATION_INDEX_QLD.zip",
+                "website": "https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={F878C43D-3087-4102-8F28-1CFEA49B34F1}",
                 "compression": "zip",
                 "license": {
                     "text": "CC BY 4.0",
                     "url": "https://creativecommons.org/licenses/by/4.0/",
                     "attribution": true,
-                    "attribution name": "© State of Queensland 2025",
+                    "attribution name": "© State of Queensland 2026",
                     "share-alike": false
                 },
                 "note": "must use web interface & email workflow to download fresh data.",
                 "conform": {
-                    "format": "gdb",
-                    "file": "DP_QLD_DCDB_WOS_CUR.gdb",
-                    "layer": "QLD_LOCATION_ADDRESS",
+                    "format": "csv",
+                    "csvsplit": "|",
+                    "id": "ADDRESS_PID",
                     "unit": [
                         "UNIT_TYPE",
                         "UNIT_NUMBER",
                         "UNIT_SUFFIX"
                     ],
-                    "number": "STREET_NUMBER",
+                    "number": {
+                      "function": "format",
+                      "fields": ["STREET_NO_1", "STREET_NO_1_SUFFIX", "STREET_NO_2", "STREET_NO_2_SUFFIX"],
+                      "format": "$1$2-$3$4"
+                    },
                     "street": [
                         "STREET_NAME",
                         "STREET_TYPE",
                         "STREET_SUFFIX"
                     ],
                     "city": "LOCALITY",
-                    "region": "STATE",
-                    "notes": "LOTPLAN",
+                    "notes": {
+                      "function": "join",
+                      "fields": ["LOT", "PLAN"],
+                      "separator": "/"
+                    },
                     "accuracy": {
                       "function": "map",
                       "field": "GEOCODE_TYPE",
@@ -72,12 +79,12 @@
             {
                 "name": "state",
                 "protocol": "http",
-                "data": "https://www.alantgeo.com.au/share/DP_QLD_DCDB_WOS_CUR.zip",
-                "website": "https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={3EAB4FBC-7E64-46E2-919B-6ECDC459C9AF}",
+                "data": "https://www.alantgeo.com.au/share/DP_QLD_QSCF_WOS_CUR.zip",
+                "website": "https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={8FE3F785-2E3F-45D8-A095-CB20A892A5E3}",
                 "conform": {
                     "format": "gdb",
-                    "file": "DP_QLD_DCDB_WOS_CUR.gdb",
-                    "layer": "QLD_CADASTRE_DCDB",
+                    "file": "DP_QLD_QSCF_WOS_CUR.gdb",
+                    "layer": "ALL_PARCELS_PUBLISHED",
                     "pid": "LOTPLAN"
                 },
                 "compression": "zip",
@@ -85,7 +92,7 @@
                     "text": "CC BY 4.0",
                     "url" : "https://creativecommons.org/licenses/by/4.0/",
                     "attribution": true,
-                    "attribution name": "© State of Queensland 2025",
+                    "attribution name": "© State of Queensland 2026",
                     "share-alike": false
                 }
             }
@@ -94,8 +101,9 @@
             {
                 "name": "state",
                 "protocol": "http",
-                "data": "https://www.alantgeo.com.au/share/DP_QLD_BUILDING_AREAS.zip",
+                "data": "https://www.alantgeo.com.au/share/DP_QLD_GENERATED_BUILDING_OUTLINES.zip",
                 "website": "https://qldspatial.information.qld.gov.au/catalogue/custom/search.page?q=%22Generated%20building%20outlines%20-%20Queensland%22",
+                "note": "downloaded as two extracts, then appended together",
                 "conform": {
                     "format": "gdb",
                     "layer": "Generated_building_outlines"
@@ -105,7 +113,7 @@
                     "text": "CC BY 4.0",
                     "url" : "https://creativecommons.org/licenses/by/4.0/",
                     "attribution": true,
-                    "attribution name": "© State of Queensland 2025",
+                    "attribution name": "© State of Queensland 2026",
                     "share-alike": false
                 }
             }
