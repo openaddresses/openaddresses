@@ -32,6 +32,9 @@ def read_csvs(z, prefix, **kwargs):
     others
 
     """
+    # Avoid mixed-type chunk inference warnings for large CSV inputs.
+    kwargs.setdefault("low_memory", False)
+
     dfs = []
     for info in z.filelist:
         path = info.filename.split("/")
@@ -44,7 +47,7 @@ def read_csvs(z, prefix, **kwargs):
 
 
 def main():
-    with zipfile.ZipFile("202512.zip") as z:
+    with zipfile.ZipFile("202606.zip") as z:
         logging.info("Loading addresses")
         addresses = read_csvs(z, "Addresses")
 
