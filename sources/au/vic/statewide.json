@@ -86,6 +86,35 @@
                     "share-alike": false
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "state",
+                "protocol": "ESRI",
+                "data": "https://services-ap1.arcgis.com/P744lA0wf4LlBZ84/ArcGIS/rest/services/Vicmap_Transport/FeatureServer/1",
+                "note": "data URL provided by a weekly recurring order placed at https://datashare.maps.vic.gov.au/",
+                "website": "https://www.land.vic.gov.au/maps-and-spatial/spatial-data/vicmap-catalogue/vicmap-transport",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "© State of Victoria (Department of Energy, Environment and Climate Action)",
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "name": "ezi_road_name",
+                    "surface": {
+                      "function": "map",
+                      "field": "road_seal",
+                      "mapping": {
+                        "1": "paved",
+                        "2": "unpaved",
+                        "4": "unpaved"
+                      }
+                    }
+                }
+            }
         ]
     }
 }
