@@ -12,43 +12,23 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://services2.arcgis.com/MlJ0G8iWUyC7jAmu/ArcGIS/rest/services/Statewide_LBRS_Address_Points/FeatureServer/0",
-                "website": "https://geohio.maps.arcgis.com/home/item.html?id=c1991902e44941a0a2535e86d6e43021",
+                "data": "https://maps.ohio.gov/arcgis/rest/services/Hosted/Ohio_Statewide_LBRS_Address_Points/FeatureServer/0",
+                "website": "https://maps.ohio.gov/portal/home/item.html?id=52e242c6e3094493a0b1876a7b8a094e",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSENUM",
+                    "number": "addr_num",
                     "street": [
-                        "ST_PREFIX",
-                        "ST_NAME",
-                        "ST_TYPE",
-                        "ST_SUFFIX"
+                        "str_pre",
+                        "str_name",
+                        "str_type",
+                        "str_suffix"
                     ],
-                    "unit": "UNITNUM",
-                    "city": "USPS_CITY",
-                    "district": "COUNTY",
-                    "region": "STATE",
-                    "postcode": "ZIPCODE"
-                }
-            },
-            {
-                "name": "county-gis",
-                "data": "https://webgis.co.trumbull.oh.us/gisserver/rest/services/Maps/DDTI/MapServer/0",
-                "protocol": "ESRI",
-                "conform": {
-                    "format": "geojson",
-                    "number": "HOUSENUM",
-                    "street": [
-                        "ST_PREFIX",
-                        "ST_NAME",
-                        "ST_TYPE",
-                        "ST_SUFFIX"
-                    ],
-                    "unit": "UNITNUM",
-                    "city": "MUNI",
-                    "district": "COUNTY",
-                    "region": "STATE",
-                    "postcode": "ZIPCODE"
+                    "unit": "unit_num",
+                    "city": "usps_city",
+                    "district": "county",
+                    "region": "state",
+                    "postcode": "county"
                 }
             }
         ],
