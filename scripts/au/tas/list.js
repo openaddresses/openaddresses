@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
-const puppeteer = require('puppeteer');
-const fs = require('fs');
+import puppeteer from 'puppeteer';
+import fs from 'node:fs';
 
 var template = fs.readFileSync('LIST_template.json').toString();
 var asgs = fs.readFileSync('ASGS_LGA_2017_TAS.csv').toString().split("\n");
@@ -13,7 +13,7 @@ asgs.forEach((row) => {
 });
 
 (async() => {
-    const browser = await puppeteer.launch({ executablePath: '/usr/bin/chromium' });
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto('http://listdata.thelist.tas.gov.au/opendata/index.html');
     var municipalities = await page.evaluate('getMunicipalities()')
@@ -23,6 +23,7 @@ asgs.forEach((row) => {
     municipalities.forEach((municipality) => {
         var upper = municipality.toUpperCase();
         var lower = municipality.toLowerCase();
+        var title = municipality.replace(/_/g, ' ')
         var asgs_code = '';
 
         if (municipality in asgsCode) {
@@ -34,6 +35,7 @@ asgs.forEach((row) => {
         var source = template
             .replace(/{UPPER_CASE_MUNICIPALITY}/g, upper)
             .replace(/{LOWER_CASE_MUNICIPALITY}/g, lower)
+            .replace(/{TITLE_CASE_MUNICIPALITY}/g, title)
             .replace(/{ASGS_CODE}/g, asgs_code)
 
         var filename = `../../../sources/au/tas/list_${lower}_municipality.json`;
