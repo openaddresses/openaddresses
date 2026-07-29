@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17015",
+            "name": "Carroll County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Carroll"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/qv1nlKGEXHyUgE2M/arcgis/rest/services/Carrol_County_Base_Data/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Address_Nu",
+                    "street": [
+                        "Predirecti",
+                        "RoadName",
+                        "Roadtype"
+                    ],
+                    "city": "City",
+                    "postcode": "ZIP"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/qv1nlKGEXHyUgE2M/arcgis/rest/services/Carrol_County_Base_Data/FeatureServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "New_PIN"
+                }
+            }
+        ]
+    }
+}
