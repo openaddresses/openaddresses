@@ -4,6 +4,7 @@ import sys
 import time
 import zipfile
 from pathlib import Path
+from urllib.parse import urlparse
 
 import requests
 from requests.adapters import HTTPAdapter
@@ -16,7 +17,10 @@ from urllib3 import Retry
 # convention used by the direct-from-IBGE cnefe_2022 script, so they can be
 # re-uploaded to the OpenAddresses cache and referenced from sources/br/*.
 
-DOWNLOAD_URL = "https://www.addressforall.org/_private/ibge_cnefe2022_exp_OpenAddresses.csv.zip"
+DOWNLOAD_URL = (
+    "https://www.dropbox.com/scl/fi/gbfkot4dtx5u3cl2nktjg/"
+    "CNEFE_With_Neighbourhood_20250820.csv?rlkey=7pmirxpl5rwji1kbuodd7yfly&st=b329i8vc&dl=1"
+)
 
 STATES_BY_CODE = {
     "11": "RO",
@@ -156,7 +160,7 @@ def main():
             sys.exit(1)
     else:
         args.download_dir.mkdir(parents=True, exist_ok=True)
-        input_path = args.download_dir / Path(args.url).name
+        input_path = args.download_dir / Path(urlparse(args.url).path).name
         download(args.url, input_path)
 
     args.output_dir.mkdir(parents=True, exist_ok=True)

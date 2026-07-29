@@ -1,7 +1,7 @@
 Brazil 2022 census data (via AddressForAll)
 ============================================
 
-[AddressForAll](https://www.addressforall.org/) republishes IBGE's CNEFE 2022 address export as a single
+[AddressForAll](https://addressforall.org/en) republishes IBGE's CNEFE 2022 address export as a single
 countrywide CSV, already cleaned up and mapped onto OpenAddresses field names
 (`id, region, city, number, street, postcode, lat, lon`). This replaces the need to download and process
 53 separate per-state files directly from IBGE (see `../cnefe_2022`).
