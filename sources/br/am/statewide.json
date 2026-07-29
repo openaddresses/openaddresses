@@ -19,27 +19,26 @@
                     "attribution name": "Instituto Brasileiro de Geografia e Estatística"
                 },
                 "language": "pt",
-                "data": "https://data.openaddresses.io/cache/uploads/iandees/b40ad6/13_AM.zip",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-07-28-2o5f1/13_AM.zip",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
                     "format": "csv",
-                    "id": "COD_UNICO_ENDERECO",
-                    "lat": "LATITUDE",
-                    "lon": "LONGITUDE",
-                    "number": "NUM_ENDERECO",
-                    "street": "LOGRADOURO",
-                    "unit": "COMPLEMENTO",
-                    "city": "MUNICIPIO",
-                    "district": "DISTRITO",
-                    "region": "UF",
+                    "id": "id",
+                    "lat": "lat",
+                    "lon": "lon",
+                    "number": "number",
+                    "street": "street",
+                    "city": "city",
+                    "district": "neighborhood",
+                    "region": "region",
                     "postcode": {
                         "function": "regexp",
-                        "field": "CEP",
+                        "field": "postcode",
                         "pattern": "^([0-9]{5})([0-9]{3})$",
                         "replace": "$1-$2"
                     },
-                    "notes": "DSC_ESTABELECIMENTO",
+                    "notes": "Processed by AddressForAll. Neighborhood values stored as district",
                     "accuracy": 1
                 }
             }
