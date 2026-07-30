@@ -155,7 +155,7 @@ def cmd_merge(args):
         SELECT
             "Codice Comune formato alfanumerico" AS codice_istat,
             "Denominazione in italiano" AS comune,
-            "Denominazione dell'Unità territoriale sovracomunale 
+            "Denominazione dell'Unità territoriale sovracomunale
 (valida a fini statistici)" AS provincia,
             "Denominazione Regione" AS regione,
             LPAD(CAST("Codice Comune numerico con 103 Province (dal 1995 al 2005)" AS BIGINT)::VARCHAR, 6, '0') AS hist_103,
