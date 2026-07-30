@@ -283,6 +283,10 @@ def cmd_export_csv(args):
     like OpenAddresses' conform pipeline. So for this final CSV, we rewrite those same
     two columns as plain dot-decimal numbers (straight from the geometry column, which is
     already a clean float) instead of adding separate lon/lat columns.
+
+    Also renames LOCALITA' to LOCALITA - ANNCSU's own column name has a literal
+    apostrophe in it, which is a plausible trigger for downstream JSON-generation tools
+    that don't expect punctuation in a property key.
     """
     con = duckdb.connect()
     con.sql("INSTALL spatial; LOAD spatial;")
@@ -291,9 +295,10 @@ def cmd_export_csv(args):
     con.sql(f"""
         COPY (
             SELECT
-                * EXCLUDE (geometry, COORD_X_COMUNE, COORD_Y_COMUNE),
+                * EXCLUDE (geometry, COORD_X_COMUNE, COORD_Y_COMUNE, "LOCALITA'"),
                 ST_X(geometry) AS COORD_X_COMUNE,
-                ST_Y(geometry) AS COORD_Y_COMUNE
+                ST_Y(geometry) AS COORD_Y_COMUNE,
+                "LOCALITA'" AS LOCALITA
             FROM '{args.input}'
         ) TO '{args.output}' (HEADER, DELIMITER ',')
     """)
