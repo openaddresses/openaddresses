@@ -11,9 +11,11 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://services2.arcgis.com/jUpNdisbWqRpMo35/arcgis/rest/services/Adressen_Schleswig_Holstein/FeatureServer/0",
-                "website": "https://hub.arcgis.com/datasets/esri-de-content::adressen-schleswig-holstein",
-                "protocol": "ESRI",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-08-04-kzl3h/adressen-sh.txt.zip",
+                "website": "https://geodaten.schleswig-holstein.de/gaialight-sh/_apps/dladownload/dl-hk_alkis.html",
+                "note": "The live ArcGIS service stopped updating, so this now uses the state's periodic static Hauskoordinaten-aus-ALKIS export (semicolon-delimited, no header row, 24 columns; see Datenformatbeschreibung_Hauskoordinaten, 04/2023 v5.0). Columns are referenced positionally since the file has no headers.",
+                "protocol": "http",
+                "compression": "zip",
                 "license": {
                     "text": "CC BY 4.0",
                     "url": "https://geodaten.schleswig-holstein.de/gaialight-sh/_apps/dladownload/lizenz.html",
@@ -22,15 +24,21 @@
                     "share-alike": false
                 },
                 "conform": {
-                    "format": "geojson",
+                    "format": "csv",
+                    "file": "adressen-sh.txt",
+                    "headers": -1,
+                    "csvsplit": ";",
+                    "srs": "EPSG:25832",
+                    "lon": "COLUMN19",
+                    "lat": "COLUMN20",
                     "number": {
                         "function": "format",
-                        "fields": ["HNR", "ADZ"],
+                        "fields": ["COLUMN16", "COLUMN17"],
                         "format": "$1$2"
                     },
-                    "street": "STR",
-                    "postcode": "POSTPLZ",
-                    "city": "GMD"
+                    "street": "COLUMN15",
+                    "postcode": "COLUMN21",
+                    "city": "COLUMN11"
                 }
             }
         ]
