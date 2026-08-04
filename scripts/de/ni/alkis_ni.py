@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 import argparse
 import datetime as dt
-import os
 import shutil
-import subprocess
 import sys
 import tempfile
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from zipfile import ZipFile
+from zipfile import ZIP_DEFLATED, ZipFile
+
+import geopandas as gpd
 
 
 BASE_URL = "https://alkis-vektor-daten.s3.eu-de.cloud-object-storage.appdomain.cloud/"
@@ -19,12 +19,6 @@ BASE_URL = "https://alkis-vektor-daten.s3.eu-de.cloud-object-storage.appdomain.c
 def log(message: str) -> None:
     ts = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     print(f"[{ts}] {message}", file=sys.stderr)
-
-
-def require_tool(name: str) -> None:
-    if shutil.which(name) is None:
-        print(f"{name} is required.", file=sys.stderr)
-        sys.exit(1)
 
 
 def list_keys() -> list[str]:
@@ -73,59 +67,22 @@ def extract_zip(zip_path: Path, dest_dir: Path) -> Path | None:
     return None
 
 
-def run_ogr2ogr(datasource: Path, output_csv: Path, sql: str) -> None:
-    cmd = [
-        "ogr2ogr",
-        "-f",
-        "CSV",
-        str(output_csv),
-        str(datasource),
-        "-dialect",
-        "sqlite",
-        "-sql",
-        sql,
-        "-lco",
-        "GEOMETRY=AS_XY",
+def build_addresses_csv(gpkg_path: Path, output_csv: Path) -> None:
+    buildings = gpd.read_file(gpkg_path, layer="gebaeude")[["bez", "hnr", "geometry"]]
+    parcels = gpd.read_file(gpkg_path, layer="flurstuecke")[["gem__bez", "geometry"]]
+
+    joined = gpd.sjoin(buildings, parcels, how="left", predicate="intersects")
+    joined = joined[~joined.index.duplicated(keep="first")]
+    joined = joined[
+        joined["hnr"].notna() & (joined["hnr"] != "")
+        & joined["bez"].notna() & (joined["bez"] != "")
     ]
-    subprocess.run(cmd, check=True)
 
-
-def build_combined_gpkg(gpkg_path: Path, combined_path: Path) -> None:
-    if combined_path.exists():
-        combined_path.unlink()
-    # Copy only gebaeude into a lightweight working GPKG.
-    subprocess.run(
-        [
-            "ogr2ogr",
-            "-f",
-            "GPKG",
-            str(combined_path),
-            str(gpkg_path),
-            "gebaeude",
-        ],
-        check=True,
-    )
-    # Add dissolved flurstuecke layer for faster joins.
-    subprocess.run(
-        [
-            "ogr2ogr",
-            "-f",
-            "GPKG",
-            "-update",
-            "-append",
-            str(combined_path),
-            str(gpkg_path),
-            "-dialect",
-            "sqlite",
-            "-sql",
-            "SELECT gem__bez, ST_Union(geom) AS geom FROM flurstuecke GROUP BY gem__bez",
-            "-nlt",
-            "MULTIPOLYGON",
-            "-nln",
-            "flurstuecke_dissolved",
-        ],
-        check=True,
-    )
+    points = joined.geometry.representative_point()
+    result = joined.rename(columns={"bez": "street", "hnr": "number", "gem__bez": "city"})
+    result["X"] = points.x
+    result["Y"] = points.y
+    result[["street", "number", "city", "X", "Y"]].to_csv(output_csv, index=False)
 
 
 def main() -> None:
@@ -150,9 +107,6 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    require_tool("ogr2ogr")
-
-    root_dir = Path(__file__).resolve().parents[3]
     work_dir = Path(__file__).resolve().parent
     out_dir = Path(args.output) if args.output else work_dir / "output"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -178,14 +132,6 @@ def main() -> None:
             output_zip.unlink()
         if state_file.exists():
             state_file.unlink()
-
-    sql = (
-        "SELECT g.bez AS street, g.hnr AS number, "
-        "f.gem__bez AS city, ST_PointOnSurface(g.geom) AS geom "
-        "FROM gebaeude g "
-        "LEFT JOIN flurstuecke_dissolved f ON ST_Intersects(g.geom, f.geom) "
-        "WHERE g.hnr IS NOT NULL AND g.hnr != '' AND g.bez IS NOT NULL AND g.bez != ''"
-    )
 
     keys = list_keys()
     if not keys:
@@ -217,13 +163,9 @@ def main() -> None:
                 print(f"No GPKG found in {zip_name}", file=sys.stderr)
                 continue
 
-            combined_path = extract_dir / "combined.gpkg"
-            log(f"Building dissolved flurstuecke layer for {gpkg_path}...")
-            build_combined_gpkg(gpkg_path, combined_path)
-
-            log(f"Running ogr2ogr on {combined_path}...")
+            log(f"Joining house numbers to parcels for {gpkg_path}...")
             package_csv = extract_dir / "addresses.csv"
-            run_ogr2ogr(combined_path, package_csv, sql)
+            build_addresses_csv(gpkg_path, package_csv)
 
             if not package_csv.exists():
                 print(f"Missing CSV output for {gpkg_path}", file=sys.stderr)
@@ -251,7 +193,7 @@ def main() -> None:
                 fh.write(f"{key}\n")
             processed.add(key)
 
-    with ZipFile(output_zip, "w") as zf:
+    with ZipFile(output_zip, "w", ZIP_DEFLATED) as zf:
         zf.write(output_csv, output_csv.name)
 
     log(f"Wrote {output_zip}")
