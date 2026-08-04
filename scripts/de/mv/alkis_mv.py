@@ -7,7 +7,7 @@ import tempfile
 import urllib.parse
 import urllib.request
 from pathlib import Path
-from zipfile import ZipFile
+from zipfile import ZIP_DEFLATED, ZipFile
 
 import geopandas as gpd
 
@@ -122,7 +122,7 @@ def main() -> None:
         log("Joining house numbers to parcels...")
         build_addresses_csv(extract_dir, output_csv)
 
-    with ZipFile(output_zip, "w") as zf:
+    with ZipFile(output_zip, "w", ZIP_DEFLATED) as zf:
         zf.write(output_csv, output_csv.name)
 
     log(f"Wrote {output_zip}")
