@@ -1,0 +1,37 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "26159",
+            "name": "Van Buren County",
+            "state": "Michigan"
+        },
+        "country": "us",
+        "state": "mi",
+        "county": "Van Buren"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://github.com/user-attachments/files/30231553/mi_vb_addr.zip",
+                "website": "https://www.vanburencountymi.gov/departments/departments-offices/digital-information",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "number": "ADDRNUM",
+                    "street": [
+                        "ADDR_PD",
+                        "ADDR_SN",
+                        "ADDR_ST",
+                        "ADDR_SD"
+                    ],
+                    "unit": "UNITID",
+                    "city": "PLACENAME",
+                    "postcode": "postoffice"
+                }
+            }
+        ]
+    }
+}
