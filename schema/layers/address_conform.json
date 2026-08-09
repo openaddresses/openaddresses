@@ -28,6 +28,11 @@
     "headers": { "type": "integer", "minimum": -1 },
     "skiplines": { "type": "integer", "minimum": 1 },
     "notes": { "type": "string" },
+    "size": {
+      "description": "processing resource tier for unusually large sources (e.g. nationwide datasets). Omit unless the source has been shown to need more than the default scratch disk. See CONTRIBUTING.md",
+      "type": "string",
+      "enum": ["standard", "large"]
+    },
     "id": {
       "description": "unique identifier for the address row",
       "$ref": "../util/functions/standard_functions.json"

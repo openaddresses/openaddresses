@@ -1,0 +1,29 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "1712385",
+            "name": "City of Champaign",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "city": "Champaign"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://gisportal.champaignil.gov/ms/rest/services/Open_Data/Open_Data/MapServer/7",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "AddNum",
+                    "street": ["StreetPreDir", "StreetName", "StreetPostType"],
+                    "city": "City",
+                    "postcode": "ZipCode"
+                }
+            }
+        ]
+    }
+}

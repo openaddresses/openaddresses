@@ -13,6 +13,11 @@
     },
     "encoding": { "type": "string" },
     "notes": { "type": "string" },
+    "size": {
+      "description": "processing resource tier for unusually large sources (e.g. nationwide datasets). Omit unless the source has been shown to need more than the default scratch disk. See CONTRIBUTING.md",
+      "type": "string",
+      "enum": ["standard", "large"]
+    },
     "pid": {
       "description": "unique identifier for the parcel row",
       "$ref": "../util/functions/standard_functions.json"

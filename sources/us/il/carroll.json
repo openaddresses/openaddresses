@@ -1,43 +1,42 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "17179",
-            "name": "Tazewell County",
+            "geoid": "17015",
+            "name": "Carroll County",
             "state": "Illinois"
         },
         "country": "us",
         "state": "il",
-        "county": "Tazewell"
+        "county": "Carroll"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.tazewell.com/arcgis/rest/services/ETSB/ETSBData/MapServer/0",
+                "data": "https://services6.arcgis.com/qv1nlKGEXHyUgE2M/arcgis/rest/services/Carrol_County_Base_Data/FeatureServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "House",
+                    "number": "Address_Nu",
                     "street": [
-                        "Dir",
-                        "Street",
-                        "Suffix",
-                        "Post_Dir"
+                        "Predirecti",
+                        "RoadName",
+                        "Roadtype"
                     ],
-                    "unit": "AptNum",
-                    "city": "Community"
+                    "city": "City",
+                    "postcode": "ZIP"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.tazewell-il.gov/arcgis/rest/services/Hosted/Parcel_Fabric_Layers_Map/FeatureServer/2",
+                "data": "https://services6.arcgis.com/qv1nlKGEXHyUgE2M/arcgis/rest/services/Carrol_County_Base_Data/FeatureServer/3",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "pin"
+                    "pid": "New_PIN"
                 }
             }
         ]

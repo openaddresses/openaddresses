@@ -2,39 +2,24 @@
 import argparse
 import datetime as dt
 import shutil
-import subprocess
 import sys
 import tempfile
 import urllib.parse
 import urllib.request
-from os import environ
 from pathlib import Path
-from zipfile import ZipFile
+from zipfile import ZIP_DEFLATED, ZipFile
+
+import geopandas as gpd
 
 
 DATA_URL = (
-    "https://www.laiv-mv.de/static/LAIV/Geoinformation/Dateien/Download%20GEOBROKER/"
-    "AAA2Shape_LandMV__2026_01_06.zip"
+    "https://www.geodaten-mv.de/dienste/alkis_lds_download?index=0&dataset=edc8b197-5f60-4608-b911-97ca70c12d70&file=AAA2Shape_LandMV.zip&"
 )
 
 
 def log(message: str) -> None:
     ts = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     print(f"[{ts}] {message}", file=sys.stderr)
-
-
-def require_tool(name: str) -> None:
-    if shutil.which(name) is None:
-        print(f"{name} is required.", file=sys.stderr)
-        sys.exit(1)
-
-
-def build_env() -> dict:
-    env = dict(environ)
-    proj_path = Path("/opt/homebrew/share/proj")
-    if proj_path.exists():
-        env.setdefault("PROJ_LIB", str(proj_path))
-    return env
 
 
 def download(url: str, dest: Path, retries: int = 3) -> None:
@@ -55,9 +40,7 @@ def extract_zip(zip_path: Path, dest_dir: Path) -> None:
         zf.extractall(dest_dir)
 
 
-def build_combined_gpkg(input_dir: Path, combined_path: Path) -> None:
-    if combined_path.exists():
-        combined_path.unlink()
+def build_addresses_csv(input_dir: Path, output_csv: Path) -> None:
     hausnummer = input_dir / "02341_Hausnummer_P.shp"
     flurstueck = input_dir / "11001_Flurstueck_F.shp"
 
@@ -66,59 +49,21 @@ def build_combined_gpkg(input_dir: Path, combined_path: Path) -> None:
     if not flurstueck.exists():
         raise FileNotFoundError(f"Missing {flurstueck}")
 
-    env = build_env()
-    subprocess.run(
-        [
-            "ogr2ogr",
-            "-f",
-            "GPKG",
-            str(combined_path),
-            str(hausnummer),
-            "02341_Hausnummer_P",
-        ],
-        check=True,
-        env=env,
-    )
-    subprocess.run(
-        [
-            "ogr2ogr",
-            "-f",
-            "GPKG",
-            "-update",
-            "-append",
-            str(combined_path),
-            str(flurstueck),
-            "-dialect",
-            "sqlite",
-            "-sql",
-            "SELECT GMN_TXT, KRS_TXT, ST_Union(geometry) AS geom "
-            "FROM \"11001_Flurstueck_F\" GROUP BY GMN_TXT, KRS_TXT",
-            "-nlt",
-            "MULTIPOLYGON",
-            "-nln",
-            "flurstueck_dissolved",
-        ],
-        check=True,
-        env=env,
-    )
+    points = gpd.read_file(hausnummer)[["TEXT", "HNR", "geometry"]]
+    parcels = gpd.read_file(flurstueck)[["GMN_TXT", "KRS_TXT", "geometry"]]
 
-
-def run_ogr2ogr(datasource: Path, output_csv: Path, sql: str) -> None:
-    env = build_env()
-    cmd = [
-        "ogr2ogr",
-        "-f",
-        "CSV",
-        str(output_csv),
-        str(datasource),
-        "-dialect",
-        "sqlite",
-        "-sql",
-        sql,
-        "-lco",
-        "GEOMETRY=AS_XY",
+    joined = gpd.sjoin(points, parcels, how="left", predicate="intersects")
+    joined = joined[
+        joined["HNR"].notna() & (joined["HNR"] != "")
+        & joined["TEXT"].notna() & (joined["TEXT"] != "")
     ]
-    subprocess.run(cmd, check=True, env=env)
+
+    result = joined.rename(
+        columns={"TEXT": "street", "HNR": "number", "GMN_TXT": "city", "KRS_TXT": "district"}
+    )
+    result["X"] = result.geometry.x
+    result["Y"] = result.geometry.y
+    result[["street", "number", "city", "district", "X", "Y"]].to_csv(output_csv, index=False)
 
 
 def main() -> None:
@@ -142,8 +87,6 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    require_tool("ogr2ogr")
-
     work_dir = Path(__file__).resolve().parent
     out_dir = Path(args.output) if args.output else work_dir / "output"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -156,14 +99,6 @@ def main() -> None:
 
     url = args.url
     zip_name = Path(urllib.parse.urlparse(url).path).name or "mv_alkis.zip"
-
-    sql = (
-        "SELECT h.TEXT AS street, h.HNR AS number, "
-        "f.GMN_TXT AS city, f.KRS_TXT AS district, h.geom AS geom "
-        "FROM \"02341_Hausnummer_P\" h "
-        "LEFT JOIN flurstueck_dissolved f ON ST_Intersects(h.geom, f.geom) "
-        "WHERE h.HNR IS NOT NULL AND h.HNR != '' AND h.TEXT IS NOT NULL AND h.TEXT != ''"
-    )
 
     with tempfile.TemporaryDirectory(dir=work_dir) as tmp_dir:
         tmp_path = Path(tmp_dir)
@@ -184,14 +119,10 @@ def main() -> None:
         log(f"Unzipping {zip_name}...")
         extract_zip(zip_path, extract_dir)
 
-        combined_path = extract_dir / "combined.gpkg"
-        log("Building dissolved flurstueck layer...")
-        build_combined_gpkg(extract_dir, combined_path)
+        log("Joining house numbers to parcels...")
+        build_addresses_csv(extract_dir, output_csv)
 
-        log("Running ogr2ogr...")
-        run_ogr2ogr(combined_path, output_csv, sql)
-
-    with ZipFile(output_zip, "w") as zf:
+    with ZipFile(output_zip, "w", ZIP_DEFLATED) as zf:
         zf.write(output_csv, output_csv.name)
 
     log(f"Wrote {output_zip}")
