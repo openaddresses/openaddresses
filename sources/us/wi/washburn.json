@@ -1,46 +1,49 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "55127",
-            "name": "Walworth County",
+            "geoid": "55129",
+            "name": "Washburn County",
             "state": "Wisconsin"
         },
         "country": "us",
         "state": "wi",
-        "county": "Walworth"
+        "county": "Washburn"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.co.washburn.wi.us/images/custom/departments/land-information/gis-data/Address_Points.gdb.zip",
-                "website": "https://www.co.washburn.wi.us/departments/land-info-surveyor-mapping/gis-data",
+                "data": "https://co.washburn.wi.us/wp-content/uploads/2026/03/Address_Points.gdb_.zip",
+                "website": "https://co.washburn.wi.us/gis-data-downloads/",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
                     "format": "gdb",
-                    "layer": "Building_Points",
-                    "number": "ADDR_NUMB",
-                    "street": "ROAD_NAME",
-                    "city": "MCD",
-                    "district": "COUNTY",
-                    "region": "STATE",
-                    "postcode": "ZIP",
-                    "accuracy": 1
+                    "layer": "site_access",
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreDir",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "unit": "Unit_Value",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://www.co.washburn.wi.us/images/custom/departments/land-information/gis-data/Washburn_Parcels.gdb.zip",
-                "website": "https://www.co.washburn.wi.us/departments/land-info-surveyor-mapping/gis-data",
+                "data": "https://co.washburn.wi.us/wp-content/uploads/2026/03/Washburn_Parcels.gdb_.zip",
+                "website": "https://co.washburn.wi.us/gis-data-downloads/",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
                     "format": "gdb",
-                    "layer": "TaxParcel",
+                    "layer": "TaxParcel_public",
                     "pid": "PIN"
                 }
             }
@@ -48,8 +51,8 @@
         "buildings": [
             {
                 "name": "county",
-                "data": "https://www.co.washburn.wi.us/images/custom/departments/land-information/gis-data/Building_Footprints.gdb.zip",
-                "website": "https://www.co.washburn.wi.us/departments/land-info-surveyor-mapping/gis-data",
+                "data": "https://co.washburn.wi.us/wp-content/uploads/2026/03/Building_Footprints.gdb_.zip",
+                "website": "https://co.washburn.wi.us/gis-data-downloads/",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
