@@ -29,6 +29,19 @@
                         "pattern": "^(?:[0-9]+ )(.*)",
                         "replace": "$1"
                     }
+                },
+                "skip": true,
+                "note": "Source is broken; TODO use parcels for addresses"
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.knoxcountyil.gov/server/rest/services/Public/Knox_V4/MapServer/1129",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "TaxParcel.PARCELID"
                 }
             }
         ]
