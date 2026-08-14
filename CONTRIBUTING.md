@@ -280,6 +280,67 @@ Sources vary in how they store data so several approaches to conforming attribut
 
 The `lon` and `lat` attribute tags don't support attribute functions.
 
+##### Recipe: US House Numbers
+
+When adding a new US source, you may have a single field containing both the house number and street name, e.g. `"1756A N 2525 EAST RD"`. The pattern `^([0-9]+)` captures the numeric part of the house number, but real-world sources have needed to handle letter suffixes (`412A`), half-fractions (`509 1/2`), and hyphenated dual numbers (`2320-30`, `2019R-39`). If you're looking for a reusable pattern, the following `regexp` handles all of these at once. It has been validated against the existing acceptance tests in [Philadelphia, PA](sources/us/pa/philadelphia.json), which has some of the more robust US house number handling in this repo.
+
+```json
+"number": {
+    "function": "regexp",
+    "field": "address",
+    "pattern": "^([0-9]+[A-Za-z]?(?:\\s?1/2)?(?:-[0-9]+[A-Za-z]?(?:\\s?1/2)?)?)"
+},
+"street": {
+    "function": "regexp",
+    "field": "address",
+    "pattern": "^(?:[0-9]+[A-Za-z]?(?:\\s?1/2)?(?:-[0-9]+[A-Za-z]?(?:\\s?1/2)?)?)\\s+(.*)$",
+    "replace": "$1"
+},
+"test": {
+    "enabled": true,
+    "description": "house numbers may include letter suffixes, half-fractions, or hyphenated dual numbers",
+    "acceptance-tests": [
+        {
+            "description": "plain number",
+            "inputs": {"address": "123 Main St"},
+            "expected": {"number": "123", "street": "Main St"}
+        },
+        {
+            "description": "letter suffix",
+            "inputs": {"address": "412A W Samuel St"},
+            "expected": {"number": "412A", "street": "W Samuel St"}
+        },
+        {
+            "description": "half fraction",
+            "inputs": {"address": "509 1/2 S Chestnut St"},
+            "expected": {"number": "509 1/2", "street": "S Chestnut St"}
+        },
+        {
+            "description": "hyphenated dual number",
+            "inputs": {"address": "2320-30 Carpenter St"},
+            "expected": {"number": "2320-30", "street": "Carpenter St"}
+        },
+        {
+            "description": "hyphenated dual number with letter",
+            "inputs": {"address": "2019R-39 S 26th St"},
+            "expected": {"number": "2019R-39", "street": "S 26th St"}
+        },
+        {
+            "description": "hyphenated dual number with fraction",
+            "inputs": {"address": "909 1/2-11 S 9th St"},
+            "expected": {"number": "909 1/2-11", "street": "S 9th St"}
+        }
+    ]
+}
+```
+
+**Known limitation:** rarely, a house number will have a fraction attached without a space, e.g. `2181/2` (intended as `218 1/2`) — these are inherently ambiguous. Sources known to contain this kind of typo should apply a source-specific override, or accept that some house numbers will be like this in the processed data.
+
+**Not covered by this pattern** (use a different approach instead):
+- Directional/grid-road prefixes attached *before* the number, such as Wisconsin's `W123 N4567` rural addressing. These are typically already split into separate source fields, so combine them with [`join`](ATTRIBUTE_FUNCTIONS.md#join) or [`format`](ATTRIBUTE_FUNCTIONS.md#format) instead of a single regexp.
+- Unit/apartment markers abutting the number, e.g. `123 Unit 4`. See [`postfixed_unit`](ATTRIBUTE_FUNCTIONS.md#prefixed_number-postfixed_street-and-postfixed_unit), or [Providence, RI](sources/us/ri/providence.json) for a combined number/street/unit regexp.
+- Non-US composite house numbers such as the conscription/orientation-number format used in Czechia and Slovakia (e.g. `91/7a`), or the Netherlands' number-letter-number format (e.g. `25-k143`, [documented above](#format)). These follow different national conventions and need their own patterns.
+
 #### Coverage Object
 
 Although a coverage Object is not a mandatory part of a source, its presence
