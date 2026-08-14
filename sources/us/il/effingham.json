@@ -14,24 +14,22 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://propertysearch.co.effingham.il.us/ArcGIS/rest/services/effingham_parcels/MapServer/1",
+                "data": "https://services.arcgis.com/vj0V9Lal6oiz0YXp/arcgis/rest/services/Features/FeatureServer/3",
                 "protocol": "ESRI",
                 "conform": {
                     "number": {
                         "function": "regexp",
-                        "field": "site_address",
-                        "pattern": "^([0-9]+)"
+                        "field": "SiteAddress",
+                        "pattern": "^([0-9]+[A-Za-z]?(?:\\s?1/2)?(?:-[0-9]+[A-Za-z]?(?:\\s?1/2)?)?)"
                     },
                     "street": {
                         "function": "regexp",
-                        "field": "site_address",
-                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "field": "SiteAddress",
+                        "pattern": "^(?:[0-9]+[A-Za-z]?(?:\\s?1/2)?(?:-[0-9]+[A-Za-z]?(?:\\s?1/2)?)?)\\s+(.*)$",
                         "replace": "$1"
                     },
                     "format": "geojson"
-                },
-                "skip": true,
-                "note": "Endpoint is broken; TODO use parcel endpoint"
+                }
             }
         ],
         "parcels": [
