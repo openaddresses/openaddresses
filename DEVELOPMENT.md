@@ -180,6 +180,7 @@ The pipeline runs on a fixed AWS EventBridge (CloudWatch Events) schedule:
 
 | Day | Time (UTC) | Job | Description |
 | --- | ---------- | --- | ----------- |
+| Wednesday | 12:00 | `cleanup` | Prunes old runs/jobs and orphaned output from S3, Cloudflare R2, and the database to control storage costs (`task/cleanup.js`) |
 | Friday | 12:00 | `sources` | Clones the `openaddresses` repo, submits an AWS Batch job for every source layer, runs `batch-machine` on each one |
 | Sunday | 12:00 | `collect` | Aggregates all successful per-source outputs into downloadable country/region collection archives, uploads to S3 and Cloudflare R2 |
 | Sunday | 18:00 | `fabric` | Builds the global tiled map (PMTiles) that powers the map view on the website |
