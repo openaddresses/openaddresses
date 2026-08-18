@@ -440,6 +440,186 @@ tape('test schema itself', (test) => {
 
     });
 
+    test.test('non-object request should fail', (t) => {
+        nonObjectValues.forEach((value) => {
+            const source = {
+                schema: 2,
+                coverage: {
+                    country: 'some country'
+                },
+                layers: {
+                    addresses: [{
+                        protocol: 'http',
+                        name: 'county',
+                        data: 'http://xyz.com/',
+                        request: value
+                    }],
+                    buildings: []
+                }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-object request value should fail');
+            t.ok(isTypeError(validate, '/layers/addresses/0/request'), JSON.stringify(validate.errors));
+        });
+
+        t.end();
+
+    });
+
+    test.test('non-object request.headers should fail', (t) => {
+        nonObjectValues.forEach((value) => {
+            const source = {
+                schema: 2,
+                coverage: {
+                    country: 'some country'
+                },
+                layers: {
+                    addresses: [{
+                        protocol: 'http',
+                        name: 'county',
+                        data: 'http://xyz.com/',
+                        request: {
+                            headers: value
+                        }
+                    }],
+                    buildings: []
+                }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-object request.headers value should fail');
+            t.ok(isTypeError(validate, '/layers/addresses/0/request/headers'), JSON.stringify(validate.errors));
+        });
+
+        t.end();
+
+    });
+
+    test.test('non-string request.headers value should fail', (t) => {
+        nonStringValues.forEach((value) => {
+            const source = {
+                schema: 2,
+                coverage: {
+                    country: 'some country'
+                },
+                layers: {
+                    addresses: [{
+                        protocol: 'http',
+                        name: 'county',
+                        data: 'http://xyz.com/',
+                        request: {
+                            headers: {
+                                Referer: value
+                            }
+                        }
+                    }],
+                    buildings: []
+                }
+            };
+
+            const valid = validate(source);
+
+            t.notOk(valid, 'non-string request.headers value should fail');
+            t.ok(isTypeError(validate, '/layers/addresses/0/request/headers/Referer'), JSON.stringify(validate.errors));
+        });
+
+        t.end();
+
+    });
+
+    test.test('request.headers value should not fail', (t) => {
+        const source = {
+            schema: 2,
+            coverage: {
+                country: 'some country'
+            },
+            layers: {
+                addresses: [{
+                    protocol: 'http',
+                    name: 'county',
+                    data: 'http://xyz.com/',
+                    request: {
+                        headers: {
+                            Referer: 'https://example.gov/'
+                        }
+                    }
+                }],
+                buildings: []
+            }
+        };
+
+        const valid = validate(source);
+
+        t.ok(valid, 'request.headers value should not fail');
+        t.end();
+
+    });
+
+    test.test('request.headers should be accepted on all four layer types', (t) => {
+        const layer = {
+            protocol: 'http',
+            name: 'county',
+            data: 'http://xyz.com/',
+            request: {
+                headers: {
+                    Referer: 'https://example.gov/'
+                }
+            }
+        };
+
+        const source = {
+            schema: 2,
+            coverage: {
+                country: 'some country'
+            },
+            layers: {
+                addresses: [layer],
+                buildings: [layer],
+                centerlines: [layer],
+                parcels: [layer]
+            }
+        };
+
+        const valid = validate(source);
+
+        t.ok(valid, 'request.headers should be valid on addresses, buildings, centerlines, and parcels');
+        t.end();
+
+    });
+
+    test.test('unknown property inside request should fail', (t) => {
+        const source = {
+            schema: 2,
+            coverage: {
+                country: 'some country'
+            },
+            layers: {
+                addresses: [{
+                    protocol: 'http',
+                    name: 'county',
+                    data: 'http://xyz.com/',
+                    request: {
+                        headers: {
+                            Referer: 'https://example.gov/'
+                        },
+                        bogus: 'unknown_value'
+                    }
+                }],
+                buildings: []
+            }
+        };
+
+        const valid = validate(source);
+
+        t.notOk(valid, 'unknown property inside request should fail');
+        t.ok(isAdditionalPropertyError(validate, '/layers/addresses/0/request', 'bogus'), JSON.stringify(validate.errors));
+        t.end();
+
+    });
+
     test.test('non-string attribution should fail', (t) => {
         nonStringValues.forEach((value) => {
             const source = {
