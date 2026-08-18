@@ -18,6 +18,10 @@ This repository is a collection of references to address, cadastral parcel, buil
 - You can also create a pull request to the [sources](https://github.com/openaddresses/openaddresses/tree/master/sources) directory.
 - More details in [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## Developer documentation
+
+For an explanation of how the pipeline works end-to-end — including how to test sources locally, how pull request CI works, and how the weekly batch run is structured — see [DEVELOPMENT.md](DEVELOPMENT.md).
+
 ## Why collect addresses?
 
 Street address data is essential infrastructure. Street names, house numbers, and post codes combined with geographic coordinates connects digital to physical places. Free and open addresses are rocket fuel for civic and commercial innovation.
