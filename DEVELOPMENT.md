@@ -332,7 +332,7 @@ AI assistants work best when they can read the actual schema and real examples. 
 - `schema/layers/address_conform.json` — the authoritative list of valid conform keys
 - An existing source of the same type (e.g. another ESRI/shapefile/CSV source in the same country)
 
-For tools that automatically read a `CLAUDE.md` file (Claude Code, Cursor, and others), this repo includes one at the root. It gives a compact summary of the schema rules, the valid protocol/format combinations, and common mistakes — LLMs that read it before generating a source will make far fewer errors.
+This repo includes an [`AGENTS.md`](AGENTS.md) at the root, following the tool-agnostic [agents.md](https://agents.md/) convention (Cursor and others read it directly; `CLAUDE.md` imports it via `@AGENTS.md` so Claude Code picks up the same content). It gives a compact summary of the schema rules, the valid protocol/format combinations, and common mistakes — LLMs that read it before generating a source will make far fewer errors.
 
 ### Common LLM mistakes and how to catch them
 
