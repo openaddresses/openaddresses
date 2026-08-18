@@ -17,24 +17,21 @@
                 "data": "https://services.arcgis.com/vj0V9Lal6oiz0YXp/arcgis/rest/services/Features/FeatureServer/3",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": {
-                        "function": "regexp",
-                        "field": "SiteAddress",
-                        "pattern": "^([0-9]+[A-Za-z]?(?:\\s?1/2)?(?:-[0-9]+[A-Za-z]?(?:\\s?1/2)?)?)"
-                    },
+                    "number": "SiteHouse",
                     "street": {
                         "function": "chain",
                         "variable": "street_wip",
                         "functions": [
                             {
-                                "function": "remove_prefix",
+                                "function": "remove_postfix",
                                 "field": "SiteAddress",
-                                "field_to_remove": "SiteHouse"
+                                "field_to_remove": "SiteCSZ"
                             },
                             {
-                                "function": "remove_postfix",
+                                "function": "regexp",
                                 "field": "oa:street_wip",
-                                "field_to_remove": "SiteCSZ"
+                                "pattern": "^(?:[0-9]+[A-Za-z]?(?:\\s?1/2)?(?:-[0-9]+[A-Za-z]?(?:\\s?1/2)?)?\\s+)?(.*)$",
+                                "replace": "$1"
                             }
                         ]
                     },
