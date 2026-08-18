@@ -27,10 +27,9 @@
                         "variable": "street_wip",
                         "functions": [
                             {
-                                "function": "regexp",
+                                "function": "remove_prefix",
                                 "field": "SiteAddress",
-                                "pattern": "^(?:[0-9]+[A-Za-z]?(?:\\s?1/2)?(?:-[0-9]+[A-Za-z]?(?:\\s?1/2)?)?)\\s+(.*)$",
-                                "replace": "$1"
+                                "field_to_remove": "SiteHouse"
                             },
                             {
                                 "function": "remove_postfix",
