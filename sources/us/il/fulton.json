@@ -51,6 +51,20 @@
                     "zip_right": "PostCode_R"
                 }
             }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.fultoncountyil.gov/arcgis/rest/services/parcels/MapServer/76",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": {
+                        "function": "first_non_empty",
+                        "fields": ["parcel_number", "PIN_NO_DASH"]
+                    }
+                }
+            }
         ]
     }
 }
