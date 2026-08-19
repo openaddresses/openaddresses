@@ -169,24 +169,49 @@ function toParcelsGeoJSON(features, pidLabel) {
   return { type: 'FeatureCollection', features: out };
 }
 
-// address is left as a single raw string (e.g. "322 E WASHINGTON") - the
+// e.g. "HAVANA IL 62644" or "OLNEY, IL" -> { city: "HAVANA", postcode: "62644" }
+// (state is dropped - every county here is IL)
+function parseCityStateZip(text) {
+  if (!text) return {};
+  const cleaned = text.replace(/,/g, ' ').replace(/\s+/g, ' ').trim();
+  const m = cleaned.match(/^(.*)\s+[A-Z]{2}(?:\s+(\d{5}(?:-\d{4})?))?$/);
+  if (!m) return {};
+  const result = {};
+  if (m[1].trim()) result.city = m[1].trim();
+  if (m[2]) result.postcode = m[2];
+  return result;
+}
+
+// street is left as a single raw string (e.g. "322 E WASHINGTON") - the
 // source JSON's conform should split it with prefixed_number/postfixed_street,
 // same as sources/us/mi/mason.json does for a similar parcel-derived source.
 // Geometry is left as the parcel polygon; use "format": "shapefile-polygon"
 // equivalent (batch-machine centroids polygon address sources) in conform.
-function toAddressesGeoJSON(features, addressLabel) {
+//
+// city/zip come either from a second line within addressLabel itself (e.g.
+// Mason/Pike's "322 E WASHINGTON<br>HAVANA IL 62644") or, if cityStateZipLabel
+// is given, from that separate field (e.g. Richland's "taxPropCityStZip").
+function toAddressesGeoJSON(features, addressLabel, cityStateZipLabel) {
   const out = [];
   for (const f of features) {
     const raw = f.fields[addressLabel];
     if (!raw) continue;
-    const address = raw.split('\n')[0].trim(); // drop any trailing city/state/zip line
+    const lines = raw.split('\n');
+    const address = lines[0].trim();
     if (!address) continue;
-    out.push({ type: 'Feature', properties: { address }, geometry: f.geometry });
+
+    const properties = { address };
+    const cszText = cityStateZipLabel ? f.fields[cityStateZipLabel] : lines[1];
+    const csz = parseCityStateZip(cszText);
+    if (csz.city) properties.city = csz.city;
+    if (csz.postcode) properties.postcode = csz.postcode;
+
+    out.push({ type: 'Feature', properties, geometry: f.geometry });
   }
   return { type: 'FeatureCollection', features: out };
 }
 
-async function run({ name, host, dsid, pidLabel, addressLabel, maxFeatureId }) {
+async function run({ name, host, dsid, pidLabel, addressLabel, cityStateZipLabel, maxFeatureId }) {
   const os = require('os');
   const path = require('path');
   const fs = require('fs');
@@ -200,7 +225,7 @@ async function run({ name, host, dsid, pidLabel, addressLabel, maxFeatureId }) {
   console.log(`wrote ${parcels.features.length} parcels to ${parcelsPath}`);
 
   if (addressLabel) {
-    const addresses = toAddressesGeoJSON(features, addressLabel);
+    const addresses = toAddressesGeoJSON(features, addressLabel, cityStateZipLabel);
     const addressesPath = path.join(outDir, `${name}-addresses.geojson`);
     fs.writeFileSync(addressesPath, JSON.stringify(addresses));
     console.log(`wrote ${addresses.features.length} addresses to ${addressesPath}`);
