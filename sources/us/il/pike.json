@@ -11,6 +11,31 @@
     },
     "schema": 2,
     "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.openaddresses.io/cache/uploads/rmx90210/2026-08-21-8xys8/pike.geojson",
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "address"
+                    },
+                    "city": "city",
+                    "postcode": "postcode",
+                    "region": {
+                        "function": "constant",
+                        "value": "IL"
+                    }
+                },
+                "note": "Data as of 2026-08-21. See scripts/us/il/wth/pike."
+            }
+        ],
         "parcels": [
             {
                 "name": "county",
