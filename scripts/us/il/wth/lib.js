@@ -159,16 +159,6 @@ async function scrapeCounty({ host, dsid, concurrency = 5, maxFeatureId }) {
   return features;
 }
 
-function toParcelsGeoJSON(features, pidLabel) {
-  const out = [];
-  for (const f of features) {
-    const pid = f.fields[pidLabel];
-    if (!pid) continue;
-    out.push({ type: 'Feature', properties: { pid }, geometry: f.geometry });
-  }
-  return { type: 'FeatureCollection', features: out };
-}
-
 // e.g. "HAVANA IL 62644" or "OLNEY, IL" -> { city: "HAVANA", postcode: "62644" }
 // (state is dropped - every county here is IL)
 function parseCityStateZip(text) {
@@ -182,7 +172,12 @@ function parseCityStateZip(text) {
   return result;
 }
 
-// street is left as a single raw string (e.g. "322 E WASHINGTON") - the
+// One feature per parcel, carrying both parcel and address attributes -
+// the parcels and addresses layers in the source JSON can point at the
+// same uploaded file and each conform pull out what they need (this repo
+// already does that in plenty of sources, e.g. sources/au/qld/logan_city.json).
+//
+// address is left as a single raw string (e.g. "322 E WASHINGTON") - the
 // source JSON's conform should split it with prefixed_number/postfixed_street,
 // same as sources/us/mi/mason.json does for a similar parcel-derived source.
 // Geometry is left as the parcel polygon; use "format": "shapefile-polygon"
@@ -191,20 +186,28 @@ function parseCityStateZip(text) {
 // city/zip come either from a second line within addressLabel itself (e.g.
 // Mason/Pike's "322 E WASHINGTON<br>HAVANA IL 62644") or, if cityStateZipLabel
 // is given, from that separate field (e.g. Richland's "taxPropCityStZip").
-function toAddressesGeoJSON(features, addressLabel, cityStateZipLabel) {
+function toGeoJSON(features, { pidLabel, addressLabel, cityStateZipLabel }) {
   const out = [];
   for (const f of features) {
-    const raw = f.fields[addressLabel];
-    if (!raw) continue;
-    const lines = raw.split('\n');
-    const address = lines[0].trim();
-    if (!address) continue;
+    const pid = f.fields[pidLabel];
+    if (!pid) continue;
 
-    const properties = { address };
-    const cszText = cityStateZipLabel ? f.fields[cityStateZipLabel] : lines[1];
-    const csz = parseCityStateZip(cszText);
-    if (csz.city) properties.city = csz.city;
-    if (csz.postcode) properties.postcode = csz.postcode;
+    const properties = { pid };
+
+    if (addressLabel) {
+      const raw = f.fields[addressLabel];
+      if (raw) {
+        const lines = raw.split('\n');
+        const address = lines[0].trim();
+        if (address) {
+          properties.address = address;
+          const cszText = cityStateZipLabel ? f.fields[cityStateZipLabel] : lines[1];
+          const csz = parseCityStateZip(cszText);
+          if (csz.city) properties.city = csz.city;
+          if (csz.postcode) properties.postcode = csz.postcode;
+        }
+      }
+    }
 
     out.push({ type: 'Feature', properties, geometry: f.geometry });
   }
@@ -218,18 +221,17 @@ async function run({ name, host, dsid, pidLabel, addressLabel, cityStateZipLabel
   const outDir = process.env.DATA_DIR || os.tmpdir();
 
   const features = await scrapeCounty({ host, dsid, maxFeatureId });
+  const collection = toGeoJSON(features, { pidLabel, addressLabel, cityStateZipLabel });
 
-  const parcels = toParcelsGeoJSON(features, pidLabel);
-  const parcelsPath = path.join(outDir, `${name}-parcels.geojson`);
-  fs.writeFileSync(parcelsPath, JSON.stringify(parcels));
-  console.log(`wrote ${parcels.features.length} parcels to ${parcelsPath}`);
+  const outPath = path.join(outDir, `${name}.geojson`);
+  fs.writeFileSync(outPath, JSON.stringify(collection));
 
-  if (addressLabel) {
-    const addresses = toAddressesGeoJSON(features, addressLabel, cityStateZipLabel);
-    const addressesPath = path.join(outDir, `${name}-addresses.geojson`);
-    fs.writeFileSync(addressesPath, JSON.stringify(addresses));
-    console.log(`wrote ${addresses.features.length} addresses to ${addressesPath}`);
-  }
+  const withAddress = addressLabel
+    ? collection.features.filter((f) => f.properties.address).length
+    : 0;
+  console.log(
+    `wrote ${collection.features.length} parcels (${withAddress} with an address) to ${outPath}`
+  );
 }
 
-module.exports = { scrapeCounty, toParcelsGeoJSON, toAddressesGeoJSON, run };
+module.exports = { scrapeCounty, toGeoJSON, run };

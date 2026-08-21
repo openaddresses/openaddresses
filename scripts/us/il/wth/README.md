@@ -6,13 +6,13 @@ These viewers have no bulk export or REST API. Clicking a parcel calls `tgis/idf
 
 Field labels aren't consistent between counties either - some use a `<th class="leftheader">Label</th><td>Value</td>` table, others use `<td class=ftrfld>label</td><td class=ftrval>Value</td>` with different label names (e.g. `taxID` instead of `Parcel Number`). `lib.js`'s `parseFields()` handles both shapes generically; each county's `index.js` just names which label maps to `pid` and (if populated) address.
 
-Run `node index` in a county's directory (no dependencies, needs Node 18+ for global `fetch`) to produce `<county>-parcels.geojson` and, if that county has an `addressLabel` configured, `<county>-addresses.geojson`. Output goes to `$DATA_DIR` if set, otherwise the OS temp directory - the script prints the full output path(s) when it finishes.
+Run `node index` in a county's directory (no dependencies, needs Node 18+ for global `fetch`) to produce a single `<county>.geojson`. Output goes to `$DATA_DIR` if set, otherwise the OS temp directory - the script prints the full output path when it finishes.
 
-Address output is a single raw address string per feature (e.g. `"322 E WASHINGTON"`) plus the parcel polygon as geometry - split it into `number`/`street` in the source JSON's conform with `prefixed_number`/`postfixed_street` (see `sources/us/mi/mason.json` for the same pattern against a similar parcel-derived source).
+Each feature is a parcel polygon carrying both `pid` and, where that county has an `addressLabel` configured, `address`/`city`/`postcode`. This is one file per county rather than separate parcels/addresses files on purpose: upload it once, then point both the source JSON's `parcels` and `addresses` layers at the same uploaded URL, each with its own `conform` pulling out what it needs - this repo already does that in plenty of sources (e.g. `sources/au/qld/logan_city.json`). Split `address` into `number`/`street` with `prefixed_number`/`postfixed_street` (see `sources/us/mi/mason.json` for the same pattern against a similar parcel-derived source).
 
-| County | dsid | Site/tax address field |
-| --- | --- | --- |
-| Gallatin | 10435 | none populated |
-| Mason | 7930 | `Site Address` |
-| Pike | 10340 | `Site Address` |
-| Richland | 823 | `taxPropAddress` (not scraped by default - see `richland/index.js`) |
+| County | dsid | pid field | Site/tax address field |
+| --- | --- | --- | --- |
+| Gallatin | 10435 | `Parcel Number` | none populated |
+| Mason | 7930 | `Parcel Number` | `Site Address` |
+| Pike | 10340 | `Parcel Number` | `Site Address` |
+| Richland | 823 | `taxID` | `taxPropAddress` + `taxPropCityStZip` (no postcode - Richland's property-address record never carries one, only the owner's mailing zip, which is a different location) |
