@@ -1,0 +1,52 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17125",
+            "name": "Mason County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Mason"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://data.openaddresses.io/cache/uploads/rmx90210/2026-08-21-tg3wr/mason.geojson",
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "address"
+                    },
+                    "city": "city",
+                    "postcode": "postcode",
+                    "region": {
+                        "function": "constant",
+                        "value": "IL"
+                    }
+                },
+                "note": "Data as of 2026-08-21. See scripts/us/il/wth/mason."
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://data.openaddresses.io/cache/uploads/rmx90210/2026-08-21-tg3wr/mason.geojson",
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "pid"
+                },
+                "note": "Data as of 2026-08-21. See scripts/us/il/wth/mason."
+            }
+        ]
+    }
+}
