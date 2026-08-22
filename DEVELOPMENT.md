@@ -99,6 +99,7 @@ Inside the container, run a source with:
 
 ```bash
 openaddr-process-one \
+  --skip-preview \
   --layer addresses \
   --layersource county \
   /path/to/sources/us/ca/san_francisco.json \
@@ -107,6 +108,7 @@ openaddr-process-one \
 
 `--layer` is one of `addresses`, `parcels`, `buildings`, or `centerlines`.
 `--layersource` is the `name` field inside the layer array in the source JSON.
+`--skip-preview` skips rendering a map preview, which otherwise requires a Protomaps API key (`--protomaps-key`).
 
 To write output to your host machine, mount a volume:
 
@@ -115,7 +117,7 @@ docker run -it \
   -v /path/to/sources:/sources \
   -v /tmp/oa-output:/output \
   batch-machine \
-  openaddr-process-one --layer addresses --layersource county /sources/us/ca/san_francisco.json /output
+  openaddr-process-one --skip-preview --layer addresses --layersource county /sources/us/ca/san_francisco.json /output
 ```
 
 ### Running locally without Docker
@@ -127,7 +129,7 @@ cd /path/to/batch-machine
 python3 -m venv venv
 source venv/bin/activate
 pip install -e .
-openaddr-process-one --layer addresses --layersource county /path/to/source.json /tmp/output
+openaddr-process-one --skip-preview --layer addresses --layersource county /path/to/source.json /tmp/output
 ```
 
 ### Output files
