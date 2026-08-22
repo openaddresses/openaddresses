@@ -18,20 +18,54 @@
                     "format": "geojson",
                     "number": {
                         "function": "regexp",
-                        "field": "SiteAddres",
-                        "pattern": "^([0-9]+)"
+                        "field": "SiteAddress",
+                        "pattern": "^([0-9]+[A-Za-z]?(?:\\s?1/2)?(?:-[0-9]+[A-Za-z]?(?:\\s?1/2)?)?)"
                     },
                     "street": {
                         "function": "regexp",
-                        "field": "SiteAddres",
-                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "field": "SiteAddress",
+                        "pattern": "^(?:[0-9]+[A-Za-z]?(?:\\s?1/2)?(?:-[0-9]+[A-Za-z]?(?:\\s?1/2)?)?)\\s+(.*)$",
                         "replace": "$1"
                     }
                 },
-                "data": "https://services2.bhamaps.com/arcgis/rest/services/AGS_christian_co_il_taxmap/MapServer/0",
+                "data": "https://services.arcgis.com/Xn3XOQd1zDlYr9z7/arcgis/rest/services/Parcels/FeatureServer/0",
                 "protocol": "ESRI",
-                "note": "bhamaps.com servers are dead as of 2026-04",
-                "skip": true
+                "test": {
+                    "enabled": true,
+                    "description": "house numbers in this county may carry a letter suffix (e.g. 412A) or a half-fraction (e.g. 509 1/2)",
+                    "acceptance-tests": [
+                        {
+                            "description": "plain number",
+                            "inputs": {
+                                "SiteAddress": "1456 N 2100 EAST RD, ASSUMPTION, IL 62510"
+                            },
+                            "expected": {
+                                "number": "1456",
+                                "street": "N 2100 EAST RD, ASSUMPTION, IL 62510"
+                            }
+                        },
+                        {
+                            "description": "letter suffix",
+                            "inputs": {
+                                "SiteAddress": "412A W SAMUEL ST, ASSUMPTION, IL 62510"
+                            },
+                            "expected": {
+                                "number": "412A",
+                                "street": "W SAMUEL ST, ASSUMPTION, IL 62510"
+                            }
+                        },
+                        {
+                            "description": "half fraction",
+                            "inputs": {
+                                "SiteAddress": "509 1/2 S CHESTNUT ST, PANA, IL 62557"
+                            },
+                            "expected": {
+                                "number": "509 1/2",
+                                "street": "S CHESTNUT ST, PANA, IL 62557"
+                            }
+                        }
+                    ]
+                }
             }
         ],
         "parcels": [
