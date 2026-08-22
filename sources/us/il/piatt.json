@@ -14,18 +14,41 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps.piattcounty.org/arcgispiatt/rest/services/Webmap_Piatt/AddressPointLabels/MapServer/0",
+                "data": "https://services.ccgisc.org/portal/sharing/servers/7d1708891aa04721a1cca546d4de9755/rest/services/Piatt_General/AddressPointLabels/MapServer/0",
                 "protocol": "ESRI",
+                "request": {
+                    "headers": {
+                        "Referer": "https://maps.piattcounty.org"
+                    }
+                },
                 "conform": {
                     "format": "geojson",
-                    "number": "House",
+                    "number": "Add_Number",
                     "street": [
-                        "Dir",
-                        "Street"
+                        "St_PreDir",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
                     ],
-                    "unit": "Suffix",
-                    "city": "Community",
-                    "postcode": "ZipCode"
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.ccgisc.org/portal/sharing/servers/d4ef2ec9df07459db01b69bbc2f52e0a/rest/services/Piatt_General/ParcelSearch/MapServer/0",
+                "protocol": "ESRI",
+                "request": {
+                    "headers": {
+                        "Referer": "https://maps.piattcounty.org"
+                    }
+                },
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNumber"
                 }
             }
         ]
