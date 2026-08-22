@@ -1,0 +1,41 @@
+{
+    "coverage": {
+        "US Census": {
+            "geoid": "17191",
+            "name": "Wayne County",
+            "state": "Illinois"
+        },
+        "country": "us",
+        "state": "il",
+        "county": "Wayne"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/uPUVi2srVxNIkSU7/arcgis/rest/services/Parcel_WayneIL/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SitusStreetNumber",
+                    "street": ["SitusStreetDirPrefix", "SitusStreetTypePrefix", "SitusStreetName", "SitusStreetTypeSuffix", "SitusStreetDirSuffix"],
+                    "unit": "SitusUnitNumber",
+                    "city": "SitusCity",
+                    "postcode": "SitusPostalCode"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/uPUVi2srVxNIkSU7/arcgis/rest/services/Parcel_WayneIL/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNumber"
+                }
+            }
+        ]
+    }
+}
