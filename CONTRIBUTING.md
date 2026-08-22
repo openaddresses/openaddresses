@@ -280,6 +280,7 @@ Function | Note
 [`remove_prefix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the beginning of another field value
 [`remove_postfix`](ATTRIBUTE_FUNCTIONS.md#remove_prefix-and-remove_postfix) | Removes a field value from the end of another field value
 [`regexp`](ATTRIBUTE_FUNCTIONS.md#regexp) | Allow regex find and/or replace on a given field. Useful to extract house number/street/city/region, etc. when the source has them in a single field
+[`chain`](ATTRIBUTE_FUNCTIONS.md#chain) | Combine any number of other attribute functions as a sequence, passing the result of each step to the next
 [`map`](ATTRIBUTE_FUNCTIONS.md#map) | Allow for defining a mapping or lookup from a source value to a target value. Useful when the source values need to be transformed.
 [`mph_to_kph`](ATTRIBUTE_FUNCTIONS.md#mph_to_kph) | Convert a miles-per-hour value to kilometers-per-hour. Useful for the `speed` centerline attribute when the source uses imperial units.
 
