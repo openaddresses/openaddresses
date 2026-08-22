@@ -14,21 +14,55 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://propertysearch.co.effingham.il.us/ArcGIS/rest/services/effingham_parcels/MapServer/1",
+                "data": "https://services.arcgis.com/vj0V9Lal6oiz0YXp/arcgis/rest/services/Features/FeatureServer/3",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": {
-                        "function": "regexp",
-                        "field": "site_address",
-                        "pattern": "^([0-9]+)"
-                    },
+                    "number": "SiteHouse",
                     "street": {
+                        "function": "chain",
+                        "variable": "street_wip",
+                        "functions": [
+                            {
+                                "function": "remove_postfix",
+                                "field": "SiteAddress",
+                                "field_to_remove": "SiteCSZ"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "oa:street_wip",
+                                "pattern": "^(?:[0-9]+[A-Za-z]?(?:\\s?1/2)?(?:-[0-9]+[A-Za-z]?(?:\\s?1/2)?)?\\s+)?(.*)$",
+                                "replace": "$1"
+                            }
+                        ]
+                    },
+                    "city": {
                         "function": "regexp",
-                        "field": "site_address",
-                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "field": "SiteCSZ",
+                        "pattern": "^(.*?)\\s+IL\\s+[0-9]{5}(?:-[0-9]{4})?$",
+                        "replace": "$1"
+                    },
+                    "region": {
+                        "function": "constant",
+                        "value": "IL"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "SiteCSZ",
+                        "pattern": "^.*?([0-9]{5}(?:-[0-9]{4})?)$",
                         "replace": "$1"
                     },
                     "format": "geojson"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.arcgis.com/vj0V9Lal6oiz0YXp/arcgis/rest/services/Features/FeatureServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PinFormatted"
                 }
             }
         ]
