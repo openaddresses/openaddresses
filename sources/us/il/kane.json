@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gistech.countyofkane.org/arcgis/rest/services/KaneGIS/MapServer/9",
+                "data": "https://services1.arcgis.com/oRKmdBXD6EbdmVgJ/arcgis/rest/services/KaneCo_IL_AddressPoints/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -23,14 +23,31 @@
                         "AddressSuffix"
                     ],
                     "street": [
-                        "STPrefix",
-                        "STName",
-                        "STType",
-                        "STSuffix"
+                        "StPrefix",
+                        "StName",
+                        "StType",
+                        "StSuffix"
                     ],
-                    "unit": "Unit",
-                    "city": "City",
-                    "postcode": "Zip5"
+                    "unit": "SubAddress",
+                    "city": "USPSCity",
+                    "postcode": "Zip5",
+                    "id": "PIN"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://utility.arcgis.com/usrsvcs/servers/70e0fc5c3f304b38b8e3466247818b5b/rest/services/Kane_Parcels/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN"
+                },
+                "request": {
+                    "headers": {
+                        "Referer": "https://gistech.countyofkane.org/"
+                    }
                 }
             }
         ]
