@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.maps.ccgisc.org/arcgismaps/rest/services/Webmap_Champaign/AddressPointLabels/MapServer/0",
+                "data": "https://services.ccgisc.org/portal/sharing/servers/8067958d97694c35940c3266d80243ab/rest/services/General/AddressPointLabels/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -24,8 +24,27 @@
                     "street": "StreetName",
                     "postcode": "Zip"
                 },
-                "skip": true,
-                "note": "ccgisc.org server restructured, address data now behind authentication"
+                "request": {
+                    "headers": {
+                        "Referer": "https://maps.ccgisc.org/"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://services.ccgisc.org/portal/sharing/servers/9ed62f9e670e4d8e9d797ed62b89b859/rest/services/General/ParcelSearch/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN_DASH"
+                },
+                "request": {
+                    "headers": {
+                        "Referer": "https://maps.ccgisc.org/"
+                    }
+                }
             }
         ]
     }
