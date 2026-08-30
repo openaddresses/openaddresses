@@ -16,24 +16,22 @@
         "addresses": [
             {
                 "name": "city",
-                "protocol": "http",
-                "compression": "zip",
-                "data": "https://apps.cityofkingston.ca/data/gis/Civic_Address_SHP.zip",
-                "website": "https://www.cityofkingston.ca/explore/data-catalogue",
+                "data": "https://utility.arcgis.com/usrsvcs/servers/d76e1fe447e84cb1983c76e1cb9dadb4/rest/services/Planning/Civic_Address_Point_Public/FeatureServer/0",
+                "website": "https://opendatakingston.cityofkingston.ca/datasets/civic-address-point-public/about",
+                "license": {
+                    "url": "https://www.cityofkingston.ca/documents/10180/144997/CityofKingston_OpenDataLicense.pdf",
+                    "text": "Contains information licensed under the Open Data Licence - City of Kingston",
+                    "attribution": true,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "number": {
-                        "function": "format",
-                        "fields": [
-                            "ADDR_NUM",
-                            "A_NUM_SUF"
-                        ],
-                        "format": "$1$2"
-                    },
+                    "format": "geojson",
+                    "number": "ADDRESS_NUMBER",
                     "street": "STREET",
                     "unit": "UNIT",
-                    "postcode": "POSTAL_COD",
-                    "city": "MUNICIP"
+                    "city": "MUNICIPALITY",
+                    "postcode": "POSTAL_CODE"
                 }
             }
         ]
