@@ -8,6 +8,6 @@ RUN apt-get update -y && \
                     python3 python3-psycopg
 
 RUN git clone https://github.com/minus34/gnaf-loader.git /usr/local/gnaf-loader && \
-    git --git-dir /usr/local/gnaf-loader/.git --work-tree /usr/local/gnaf-loader checkout -b openaddr fd8fe75
+    git --git-dir /usr/local/gnaf-loader/.git --work-tree /usr/local/gnaf-loader checkout -b openaddr 7169957
 
 COPY gnaf.sh /usr/local/bin/run-cache
