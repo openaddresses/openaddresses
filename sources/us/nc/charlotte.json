@@ -22,16 +22,20 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://gis.mecklenburgcountync.gov/data/MAT.zip",
+                "data": "https://maps.mecklenburgcountync.gov/opendata/Master_Address_StatusAll_Table.zip",
                 "protocol": "http",
                 "compression": "zip",
+                "license": "https://creativecommons.org/public-domain/#cc0",
                 "conform": {
-                    "number": "txt_street",
-                    "street": [
-                        "nme_street",
-                        "cde_roadwa"
-                    ],
-                    "format": "shapefile"
+                    "format": "csv",
+                    "lon": "lon",
+                    "lat": "lat",
+                    "number": "addrnum",
+                    "street": "fullname",
+                    "unit": "unitid",
+                    "city": "placename",
+                    "postcode": "zipcode",
+                    "id": "siteaddid"
                 }
             }
         ]
