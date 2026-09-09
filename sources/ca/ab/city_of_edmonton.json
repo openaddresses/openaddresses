@@ -17,34 +17,23 @@
             {
                 "name": "city",
                 "website": "https://data.edmonton.ca/Geospatial-Boundaries/Parcel-Addresses/ut27-nrpn",
-                "data": "https://data.edmonton.ca/api/geospatial/ut27-nrpn?accessType=DOWNLOAD&method=export&format=Shapefile",
+                "data": "https://data.edmonton.ca/api/v3/views/ut27-nrpn/query.csv",
                 "license": {
                     "url": "https://data.edmonton.ca/stories/s/City-of-Edmonton-Open-Data-Terms-of-Use/msh8-if28/",
                     "text": "Open Government License - City of Edmonton 1.0",
                     "attribution name": "City of Edmonton",
                     "attribution": true,
-                    "share-alike": true
+                    "share-alike": false
                 },
                 "protocol": "http",
-                "compression": "zip",
                 "conform": {
-                    "id": {
-                        "function": "join",
-                        "fields": [
-                            "record_id"
-                        ],
-                        "separator": ""
-                    },
-                    "format": "shapefile",
-                    "number": {
-                        "function": "join",
-                        "fields": [
-                            "house_numb"
-                        ],
-                        "separator": ""
-                    },
-                    "unit": "sub_addres",
-                    "street": "street_nam"
+                    "format": "csv",
+                    "lon": "longitude",
+                    "lat": "latitude",
+                    "id": "record_id",
+                    "number": "house_number",
+                    "unit": "sub_address",
+                    "street": "street_name"
                 }
             }
         ],
@@ -52,18 +41,17 @@
             {
                 "name": "city",
                 "website": "https://data.edmonton.ca/Geospatial-Boundaries/Building-Footprint/6n9r-ddf8",
-                "data": "https://data.edmonton.ca/api/geospatial/6n9r-ddf8?accessType=DOWNLOAD&method=export&format=Shapefile",
+                "data": "https://data.edmonton.ca/api/v3/views/6n9r-ddf8/query.geojson",
                 "license": {
                     "url": "https://data.edmonton.ca/stories/s/City-of-Edmonton-Open-Data-Terms-of-Use/msh8-if28/",
                     "text": "Open Government License - City of Edmonton 1.0",
                     "attribution name": "City of Edmonton",
                     "attribution": true,
-                    "share-alike": true
+                    "share-alike": false
                 },
                 "protocol": "http",
-                "compression": "zip",
                 "conform": {
-                    "format": "shapefile"
+                    "format": "geojson"
                 }
             }
         ]
