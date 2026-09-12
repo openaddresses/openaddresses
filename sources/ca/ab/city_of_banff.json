@@ -16,16 +16,19 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://banffdata.blob.core.windows.net/converted/shp.AddressPoints.zip",
-                "website": "https://www.banffopendata.ca/DataBrowser/BanffData/AddressPoints",
-                "license": "https://www.banffopendata.ca/Home/About",
+                "data": "https://maps.banff.ca/opendata/shp/AddressPoints.zip",
+                "website": "https://maps.banff.ca/opendata/",
+                "license": "https://maps.banff.ca/opendata/",
                 "protocol": "http",
                 "compression": "zip",
-                "attribution": "City of Banff",
+                "attribution": "Town of Banff",
                 "conform": {
                     "format": "shapefile",
                     "number": "STREET_NUM",
-                    "street": "STREET_NAM",
+                    "street": [
+                        "STREET_NAM",
+                        "ST_TYPE"
+                    ],
                     "unit": "SUITE"
                 }
             }
