@@ -22,26 +22,20 @@
             {
                 "name": "city",
                 "website": "https://www.fayetteville-ar.gov/384/GIS-Interactive-Maps",
-                "data": "https://maps.fayetteville-ar.gov/server/rest/services/Addresses/MapServer/0",
+                "data": "https://maps.fayetteville-ar.gov/server/rest/services/Addresses_and_Zip_Codes/MapServer/0",
                 "protocol": "ESRI",
                 "attribution": "City of Fayetteville",
                 "conform": {
                     "format": "geojson",
-                    "number": [
-                        "NUMBER",
-                        "SUB_NUM"
-                    ],
-                    "street": [
-                        "PREDIR",
-                        "PRE_TYPE",
-                        "NAME",
-                        "TYPE",
-                        "SUF_DIR"
-                    ],
+                    "number": "NUMBER",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "FULLADD",
+                        "field_to_remove": "NUMBER"
+                    },
                     "unit": "UNIT_NUM",
-                    "city": "CITY",
-                    "postcode": "ZIP",
-                    "region": "STATE"
+                    "city": "ADR_CITY",
+                    "postcode": "ZIP"
                 }
             }
         ]
