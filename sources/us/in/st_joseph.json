@@ -14,23 +14,16 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "https://sjcgis-stjocogis.hub.arcgis.com/datasets/d0b95019cb834cfc85862a87cb0e6610_0",
-                "data": "https://services.arcgis.com/OjftlhRHkAABcyiF/arcgis/rest/services/Address/FeatureServer/0",
+                "website": "https://sjcgis-stjocogis.hub.arcgis.com/datasets/c87332939da6463ea36f582de850fb77_0",
+                "data": "https://services.arcgis.com/OjftlhRHkAABcyiF/arcgis/rest/services/address_pt/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "FullStreet"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "FullStreet"
-                    },
-                    "unit": {
-                        "function": "postfixed_unit",
-                        "field": "FullStreet"
-                    }
+                    "number": "HouseNumbe",
+                    "street": ["PreDirecti", "StreetName", "PostType", "PostDirect"],
+                    "unit": "UNIT",
+                    "city": "PostalCity",
+                    "postcode": "Zip"
                 }
             }
         ],
