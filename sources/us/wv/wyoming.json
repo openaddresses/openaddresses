@@ -15,17 +15,13 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://www.landmarkgeospatial.com:8443/arcgis/rest/services/Wyoming/WyomingParcels/MapServer/0",
+                "data": "https://services9.arcgis.com/KpMczgynHDNPRX7w/arcgis/rest/services/Wyoming_SAMB_Addresses/FeatureServer/0",
+                "website": "https://www.arcgis.com/home/item.html?id=399e83d524ee4b64967d2252925ce001",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "PARCELADDRESS"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "PARCELADDRESS"
-                    }
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "postcode": "Zip"
                 }
             }
         ],
