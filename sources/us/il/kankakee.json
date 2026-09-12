@@ -16,38 +16,23 @@
                 "name": "county",
                 "website": "https://www.k3gis.com/",
                 "license": "https://www.k3gis.com/#contact",
-                "compression": "zip",
-                "data": "https://webfiles.k3gis.com/download/cadastral/Parcels.zip",
-                "protocol": "http",
+                "data": "https://k3gis.net/arcgis/rest/services/Cadastral/Tax_Parcels_and_Subdivisions/MapServer/0",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile-polygon",
+                    "format": "geojson",
                     "number": {
-                        "function": "regexp",
-                        "field": "site_addre",
-                        "pattern": "^([0-9]+)"
+                        "function": "prefixed_number",
+                        "field": "site_address"
                     },
                     "street": {
-                        "function": "regexp",
-                        "field": "site_addre",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
+                        "function": "postfixed_street",
+                        "field": "site_address"
                     },
-                    "city": {
-                        "function": "regexp",
-                        "field": "site_csz",
-                        "pattern": "^(.*?),(?:.*)"
-                    },
-                    "postcode": {
-                        "function": "regexp",
-                        "field": "site_csz",
-                        "pattern": "^(?:.*?)([0-9]+(?:\\-[0-9]+)?)",
-                        "replace": "$1"
-                    },
+                    "city": "site_city",
+                    "postcode": "site_zip",
                     "id": "pin",
                     "accuracy": 2
-                },
-                "skip": true,
-                "note": "This source is broken; TODO use parcels below for addresses"
+                }
             }
         ],
         "parcels": [
