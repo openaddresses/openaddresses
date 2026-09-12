@@ -14,24 +14,27 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps.berkeleywv.org/bclive/rest/services/BC_GENERAL/DYN_ADDRESSES/MapServer/0",
+                "data": "https://services3.arcgis.com/XEKxIX32keB27PXV/arcgis/rest/services/Address_911/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRNUMBER",
-                    "street": "STREETNAME",
-                    "unit": "UNITID",
-                    "city": "CITY",
-                    "district": "COUNTY",
-                    "region": "STATE",
-                    "postcode": "ZIP"
+                    "number": "housenum",
+                    "street": {
+                        "function": "regexp",
+                        "field": "fulladdr",
+                        "pattern": "^[0-9]+\\s+(.*?)(?:\\s+(?:APT|STE|UNT)\\s+\\S+)?$",
+                        "replace": "$1"
+                    },
+                    "unit": "unitnumber",
+                    "city": "bc_city",
+                    "postcode": "zipcode"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://maps.berkeleywv.org/bclive/rest/services/BC_GENERAL/DYN_ASSESSOR/MapServer/1",
+                "data": "https://services3.arcgis.com/XEKxIX32keB27PXV/arcgis/rest/services/Public_Taxparcels/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
