@@ -14,24 +14,16 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://ags.bhamaps.com/arcgisserver/rest/services/VermilionIL/VermilionIL_PAT_Parcel_Taxmap/MapServer/0",
+                "data": "https://services6.arcgis.com/am689ZyfXfdo9vCK/arcgis/rest/services/Addressing/FeatureServer/3",
+                "website": "https://vermilion-county-illinois-gis-hub-vermilioncoil.hub.arcgis.com/",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": {
-                        "function": "regexp",
-                        "field": "FullSiteAddress1",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "FullSiteAddress1",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "format": "geojson"
-                },
-                "skip": true,
-                "note": "bhamaps.com servers are dead as of 2026-04"
+                    "format": "geojson",
+                    "number": ["Add_Number", "AddNum_Suf"],
+                    "street": ["St_PreDir", "St_PreTyp", "St_Name", "St_PosTyp", "St_PosDir", "St_PosMod"],
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                }
             }
         ],
         "parcels": [
