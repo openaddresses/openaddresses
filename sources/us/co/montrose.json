@@ -14,20 +14,15 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://mcmap.montrosecounty.net/server/rest/services/MontroseCOaddress/MapServer/0",
+                "data": "https://mcmap.montrosecounty.net/server/rest/services/MontroseCounty/FeatureServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "FSA"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "FSA"
-                    },
-                    "postcode": "ZIPCODE",
-                    "city": "PCN"
+                    "number": "san",
+                    "street": ["prd", "rd", "sts", "pod"],
+                    "unit": "unit",
+                    "city": "pcn",
+                    "postcode": "zipcode"
                 }
             }
         ],
