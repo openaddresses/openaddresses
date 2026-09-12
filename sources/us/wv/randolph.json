@@ -15,18 +15,19 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://www.landmarkgeospatial.com:8443/arcgis/rest/services/Randolph/RandolphOperational/MapServer/74",
+                "data": "https://services7.arcgis.com/IRwObajcV9nxQIrC/arcgis/rest/services/RandolphParcels/FeatureServer/0",
+                "website": "https://apps.landmarkgeospatial.com/randolphgis/",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRESS_NUMBER",
-                    "street": "STREET_NAME",
-                    "unit": [
-                        "UNIT_TYPE",
-                        "UNIT_NUMBER"
-                    ],
-                    "city": "CITY",
-                    "region": "STATE",
-                    "postcode": "ZIP"
+                    "id": "PARID",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PARCELADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PARCELADDRESS"
+                    }
                 }
             }
         ],
@@ -34,7 +35,8 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://www.landmarkgeospatial.com:8443/arcgis/rest/services/Randolph/RandolphParcels/MapServer/0",
+                "data": "https://services7.arcgis.com/IRwObajcV9nxQIrC/arcgis/rest/services/RandolphParcels/FeatureServer/0",
+                "website": "https://apps.landmarkgeospatial.com/randolphgis/",
                 "conform": {
                     "format": "geojson",
                     "pid": "PARID"
