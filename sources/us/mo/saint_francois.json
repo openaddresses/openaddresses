@@ -15,14 +15,18 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://maps.semogis.com/server/rest/services/StFrancois_CO/StFrancoisCo_911/MapServer/0",
+                "data": "https://maps.semogis.com/server/rest/services/Region/Public_911/MapServer/10",
                 "conform": {
                     "format": "geojson",
-                    "number": "NEW_ADD",
-                    "street": "RDNAME",
-                    "city": "CITY",
-                    "region": "STATE",
-                    "postcode": "ZIP"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FullAddress"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FullAddress"
+                    },
+                    "unit": "SubUnit"
                 }
             }
         ],
