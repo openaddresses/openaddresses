@@ -15,18 +15,19 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://gis.cityofmoore.com/arcgis/rest/services/NG911/NG911_Address_Publish/FeatureServer/0",
+                "data": "https://gis.cityofmoore.com/arcgis/rest/services/Basemaps/Moore_General_Basemap/MapServer/148",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "Address",
-                    "street": {
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": {
                         "function": "join",
-                        "fields": ["PreDir", "Street", "StreetType", "SufDir"],
+                        "fields": ["UNITTYPE", "UNITID"],
                         "separator": " "
                     },
-                    "city": "City",
-                    "postcode": "Zipcode"
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIPCODE"
                 }
             }
         ],
