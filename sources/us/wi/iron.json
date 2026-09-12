@@ -23,10 +23,23 @@
                 "conform": {
                     "format": "gdb",
                     "layer": "IRON_ADDRESSES_2025",
-                    "number": [
-                        "Add_Number",
-                        "AddNum_Suf"
-                    ],
+                    "number": {
+                        "function": "chain",
+                        "variable": "num_clean",
+                        "functions": [
+                            {
+                                "function": "regexp",
+                                "field": "Add_Number",
+                                "pattern": "^([0-9]+)(?:\\.0)?$",
+                                "replace": "$1"
+                            },
+                            {
+                                "function": "join",
+                                "fields": ["AddNum_Suf", "oa:num_clean"],
+                                "separator": ""
+                            }
+                        ]
+                    },
                     "street": "FullStNm",
                     "unit": "Unit",
                     "city": "Inc_Muni",
