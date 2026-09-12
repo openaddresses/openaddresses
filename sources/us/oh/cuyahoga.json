@@ -14,29 +14,23 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.cuyahogacounty.us/server/rest/services/CUYAHOGA_BASE/ADDRESSING_SITES_STREETS/FeatureServer/0",
-		"website": "https://data-cuyahoga.opendata.arcgis.com/datasets/cuyahoga::address-gc/explore",
+                "data": "https://gis.cuyahogacounty.gov/server/rest/services/NCGIDE/Addressing_Sites_Streets/FeatureServer/0",
+		"website": "https://addressing.gis.cuyahogacounty.gov",
 		"license": "https://cuyahoga.maps.arcgis.com/home/index.html",
                 "protocol": "ESRI",
                 "conform": {
                     "accuracy": 1,
                     "format": "geojson",
-                    "number": "ADDR_NUM",
-                    "street": [
-                        "PRE_DIR",
-                        "PRE_TYPE",
-                        "STR_NAME",
-                        "STR_SUFFIX",
-                        "SUFFIX_DIR"
-                    ],
+                    "number": "addrnum",
+                    "street": "fullname",
                     "unit": [
-                        "UNIT_TYPE",
-                        "UNIT"
+                        "unittype",
+                        "unitid"
                     ],
-                    "city": "CITY",
-                    "region": "STATE",
-                    "postcode": "ZIP",
-                    "addrtype": "STRUC_TYPE"
+                    "city": "municipality",
+                    "region": "stateabbreviation",
+                    "postcode": "Zip",
+                    "addrtype": "Structure_Type"
                 }
             }
         ],
