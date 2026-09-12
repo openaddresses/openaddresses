@@ -14,38 +14,14 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Dallas/Address_25.zip",
-                "license": {
-                    "text": "Public Domain",
-                    "attribution": false,
-                    "share-alike": false
-                },
-                "year": "2012?",
-                "protocol": "ftp",
-                "compression": "zip",
+                "data": "https://gis.dallascountyiowa.gov/arcgis/rest/services/Public/Public_AddressPoints/FeatureServer/0",
+                "website": "https://www.dallascountyiowa.gov/206/GIS",
+                "protocol": "ESRI",
                 "conform": {
-                    "number": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "unit": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^.* ((Unit|Apt) [0-9A-Za-z])$",
-                        "replace": "$1"
-                    },
-                    "city": "POSTAL_COM",
-                    "district": "COUNTY",
-                    "region": "STATE",
-                    "postcode": "ZIP_CODE",
-                    "format": "shapefile"
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "street": ["StN_PreDir", "StN_PreTyp", "StreetName", "StN_PosType", "StN_PosDir"],
+                    "city": "Post_Comm"
                 }
             }
         ]
