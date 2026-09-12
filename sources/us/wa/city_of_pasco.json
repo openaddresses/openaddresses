@@ -23,23 +23,27 @@
             {
                 "name": "city",
                 "protocol": "ESRI",
-                "data": "https://gis.pasco-wa.gov/gs/rest/services/Features_Viewer/Site_Address_Point/FeatureServer/0",
+                "data": "https://gis.pasco-wa.gov/gs/rest/services/Citybase_Published_Layers/Addresses/FeatureServer/0",
                 "website": "https://data-cityofpasco.opendata.arcgis.com/datasets/CityofPasco::addressing/about",
                 "conform": {
                     "format": "geojson",
-                    "id": "addressptid",
+                    "id": "SiteAddressID",
                     "number": [
-                        "preaddrnum",
-                        "addrnum",
-                        "addrnumsuf"
+                        "PreAddrNum",
+                        "AddrNum",
+                        "AddrNumSuf"
                     ],
-                    "street": "fullname",
+                    "street": [
+                        "RoadPrefix",
+                        "RoadName",
+                        "RoadSufix"
+                    ],
                     "unit": [
-                        "unittype",
-                        "unitid"
+                        "UnitType",
+                        "UnitID"
                     ],
                     "city": "CityName",
-                    "region": "stateabbreviation",
+                    "region": "State",
                     "postcode": "ZIP"
                 }
             }
