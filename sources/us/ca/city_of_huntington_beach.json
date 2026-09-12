@@ -22,23 +22,26 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://gis.huntingtonbeachca.gov/arcgis/rest/services/WebAddresses/MapServer/47",
+                "data": "https://gis.huntingtonbeachca.gov/arcgis/rest/services/AddressEdits/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": [
-                        "huntington.DBO.AddressesPT.Address_Num",
-                        "huntington.DBO.AddressesPT.Fraction"
+                        "Address_Num",
+                        "Fraction"
                     ],
                     "street": [
-                        "huntington.DBO.AddressesPT.CnStPrefix",
-                        "huntington.DBO.AddressesPT.CnStNm",
-                        "huntington.DBO.AddressesPT.CnStSuffix"
+                        "CnStPrefix",
+                        "CnStNm",
+                        "CnStSuffix"
                     ],
-                    "unit": "huntington.DBO.AddressesPT.Unit",
-                    "city": "Huntington.dbo.W2_HB.SITECITY",
-                    "region": "Huntington.dbo.W2_HB.SITESTATE",
-                    "postcode": "huntington.DBO.AddressesPT.ZIP4"
+                    "unit": "Unit",
+                    "city": "MUN",
+                    "region": {
+                        "function": "constant",
+                        "value": "CA"
+                    },
+                    "postcode": "ZIP4"
                 }
             }
         ],
