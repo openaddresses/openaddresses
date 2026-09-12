@@ -14,19 +14,23 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.landmarkgeospatial.com:8443/arcgis/rest/services/Lewis/LewisSites/MapServer/0",
+                "data": "https://services5.arcgis.com/6Ryg1DYnVze4GYYo/arcgis/rest/services/911_Addresses_Lewis/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRESS_NUMBER",
-                    "street": "STREET_NAME",
-                    "unit": [
-                        "UNIT_TYPE",
-                        "UNIT_NUMBER"
+                    "number": [
+                        "PREADDRNUM",
+                        "ADDRNUM",
+                        "ADDRNUMSUF"
                     ],
-                    "city": "CITY",
-                    "region": "STATE",
-                    "postcode": "ZIP"
+                    "street": "FULLNAME",
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALITY",
+                    "region": "State",
+                    "postcode": "Zip"
                 }
             }
         ],
