@@ -35,13 +35,13 @@
                     "region": {
                         "function": "regexp",
                         "field": "gis_data.site_csz",
-                        "pattern": "(IL)",
+                        "pattern": "^.*\\s(IL)\\s\\d{5}$",
                         "replace": "$1"
                     },
                     "postcode": {
                         "function": "regexp",
                         "field": "gis_data.site_csz",
-                        "pattern": "(\\d{5})",
+                        "pattern": "^.*\\sIL\\s(\\d{5})$",
                         "replace": "$1"
                     }
                 }
