@@ -31,24 +31,30 @@
                             {
                                 "function": "regexp",
                                 "field": "PRI_NAME",
-                                "pattern": "^STH (.+)",
+                                "pattern": "^(.*)$",
+                                "replace": "$1"
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "street",
+                                "pattern": "^STH (.+)$",
                                 "replace": "State Highway $1"
                             },
                             {
                                 "function": "regexp",
-                                "field": "oa:street",
-                                "pattern": "^USH (.+)",
+                                "field": "street",
+                                "pattern": "^USH (.+)$",
                                 "replace": "US Highway $1"
                             },
                             {
                                 "function": "regexp",
-                                "field": "oa:street",
-                                "pattern": "^CTH (.+)",
+                                "field": "street",
+                                "pattern": "^CTH (.+)$",
                                 "replace": "County Highway $1"
                             },
                             {
                                 "function": "join",
-                                "fields": ["DIRECTION", "oa:street", "TYPE"],
+                                "fields": ["DIRECTION", "street", "TYPE"],
                                 "separator": " "
                             }
                         ]
