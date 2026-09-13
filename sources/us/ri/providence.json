@@ -22,7 +22,7 @@
             {
                 "name": "city",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "number": {
                         "function": "regexp",
                         "field": "property_a",
@@ -40,13 +40,17 @@
                     },
                     "postcode": "zip_postal"
                 },
-                "data": "https://data.providenceri.gov/api/geospatial/29is-vppi?method=export&format=Shapefile",
+                "data": "https://data.providenceri.gov/api/views/cfbm-tf7t/rows.geojson?accessType=DOWNLOAD",
                 "website": "https://data.providenceri.gov/Neighborhoods/Providence-Parcel-Boundaries-2015/29is-vppi",
                 "protocol": "http",
-                "compression": "zip",
+                "license": {
+                    "text": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                    "attribution": false,
+                    "share-alike": false
+                },
                 "year": "2015",
                 "note": {
-                    "description": "Full parcel shapefile set (not points); address string is stored in the property_a attribute; current as of 2015",
+                    "description": "Full parcel set (not points); address string is stored in the property_a attribute; current as of 2015/2016. The old export endpoint (/api/geospatial/29is-vppi?method=export&format=Shapefile) started returning HTML/500 errors; this uses the underlying Socrata dataset (cfbm-tf7t, 'Parcels_2015', the same data backing the 29is-vppi map view) directly as GeoJSON, which has the same property_a/zip_postal fields.",
                     "unit regexp": "There is a 'Unit St' in Providence so the unit regexp has to include the house number non-capturing group",
                     "examples": [
                         "1 Di Mario St",
