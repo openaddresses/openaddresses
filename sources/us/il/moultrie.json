@@ -21,25 +21,25 @@
                     "number": {
                         "function": "regexp",
                         "field": "Site_Address",
-                        "pattern": "([0-9]+)(.*)",
+                        "pattern": "^([0-9]+)(.*)$",
                         "replace": "$1"
                     },
                     "street": {
                         "function": "regexp",
                         "field": "Site_Address",
-                        "pattern": "([0-9]+)(.*)~(.*), IL ([0-9]+)",
+                        "pattern": "^([0-9]+)(.*)~(.*), IL ([0-9]{5})(?:-[0-9]{4})?$",
                         "replace": "$2"
                     },
                     "city": {
                         "function": "regexp",
                         "field": "Site_Address",
-                        "pattern": "([0-9]+)(.*)~(.*), IL ([0-9]+)",
+                        "pattern": "^([0-9]+)(.*)~(.*), IL ([0-9]{5})(?:-[0-9]{4})?$",
                         "replace": "$3"
                     },
                     "postcode": {
                         "function": "regexp",
                         "field": "Site_Address",
-                        "pattern": "([0-9]+)(.*)~(.*), IL ([0-9]+)",
+                        "pattern": "^([0-9]+)(.*)~(.*), IL ([0-9]{5})(?:-[0-9]{4})?$",
                         "replace": "$4"
                     }
                 },
