@@ -10,14 +10,14 @@
 Compact output optimized for LLM token consumption.
 
 Usage:
-  uv run scripts/esri-explore.py services <server_url>
-  uv run scripts/esri-explore.py layers <service_url>
-  uv run scripts/esri-explore.py fields <layer_url>
-  uv run scripts/esri-explore.py sample <layer_url> [--count N]
-  uv run scripts/esri-explore.py count <layer_url>
-  uv run scripts/esri-explore.py suggest <layer_url>
-  uv run scripts/esri-explore.py search <server_url> <keyword>
-  uv run scripts/esri-explore.py values <layer_url> <field> [--limit N]
+  uv run .claude/bin/esri-explore.py services <server_url>
+  uv run .claude/bin/esri-explore.py layers <service_url>
+  uv run .claude/bin/esri-explore.py fields <layer_url>
+  uv run .claude/bin/esri-explore.py sample <layer_url> [--count N]
+  uv run .claude/bin/esri-explore.py count <layer_url>
+  uv run .claude/bin/esri-explore.py suggest <layer_url>
+  uv run .claude/bin/esri-explore.py search <server_url> <keyword>
+  uv run .claude/bin/esri-explore.py values <layer_url> <field> [--limit N]
 """
 
 import argparse
