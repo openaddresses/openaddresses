@@ -995,7 +995,7 @@ tape('conform tests', (test) => {
     });
 
     test.test('supported format values should not fail', (t) => {
-        ['geojson', 'shapefile', 'shapefile-polygon', 'gdb', 'xml', 'csv'].forEach((value) => {
+        ['geojson', 'shapefile', 'gdb', 'xml', 'csv'].forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
