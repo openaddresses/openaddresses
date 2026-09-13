@@ -1,0 +1,44 @@
+{
+    "schema": 2,
+    "coverage": {
+        "US Census": {
+            "geoid": "19005",
+            "name": "Allamakee County",
+            "state": "Iowa"
+        },
+        "country": "us",
+        "state": "ia",
+        "county": "Allamakee"
+    },
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services9.arcgis.com/CYmvZ83iuoHJ0uD7/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://allamakeecoia.maps.arcgis.com",
+                "license": {
+                    "text": "Public Domain",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
+                    "city": "POSTAL_COM",
+                    "postcode": "ZIP_CODE"
+                }
+            }
+        ]
+    }
+}
