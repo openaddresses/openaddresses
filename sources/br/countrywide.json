@@ -1,0 +1,46 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "country": "Brasil",
+            "alpha2": "BR"
+        },
+        "country": "br"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "https://www.addressforall.org/_private/ibge_cnefe2022_exp_OpenAddresses.csv.zip",
+                "website": "https://github.com/digital-guard/preserv-BR/blob/main/data/_pk0001.05/SRC_README.md",
+                "license": {
+                    "text": "CC0",
+                    "url": "https://dl.digital-guard.org/f7cf4616ea6726ab6a42f521f68bc633509d3d64a1ce17630f592992481fa9f2.pdf",
+                    "attribution": true,
+                    "attribution name": "Implied licenses",
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "language": "pt",
+                "conform": {
+                    "format": "csv",
+                    "srs": "EPSG:4326",
+                    "number": "number",
+                    "street": "street",
+                    "region":"region",
+                    "city":"city",
+                    "id": "id",
+                    "lat": "lat",
+                    "lon": "lon",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "postcode",
+                        "pattern": "^([0-9]{5})([0-9]{3})$",
+                        "replace": "$1-$2"
+                    }
+                }
+            }
+        ]
+    }
+}
