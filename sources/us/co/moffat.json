@@ -16,13 +16,26 @@
                 "name": "county",
                 "conform": {
                     "format": "geojson",
-                    "number": "STREETNO",
-                    "street": "STREETNAME",
-                    "city": "CITY",
-                    "postcode": "ZIPCODE"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SiteAddres"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SiteAddres"
+                    },
+                    "city": "SITECITY",
+                    "postcode": "SITEZIP"
                 },
-                "data": "https://gisweb.co.rio-blanco.co.us/arcgis/rest/services/MoffatCOfeatures/MapServer/22",
-                "protocol": "ESRI"
+                "data": "https://services.arcgis.com/nG7uHX1mi3PRD2sK/ArcGIS/rest/services/MC_Parcels/FeatureServer/0",
+                "website": "https://moffatcounty.colorado.gov/government/elected-officials/county-assessor/mapping-and-gis-information",
+                "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Moffat County Assessor's Office",
+                    "presumed": true,
+                    "remarks": "https://moffatcounty.colorado.gov/government/elected-officials/county-assessor/mapping-and-gis-information"
+                }
             }
         ],
         "parcels": [
@@ -30,10 +43,17 @@
                 "name": "county",
                 "conform": {
                     "format": "geojson",
-                    "pid": "GIS_Parcel_Number"
+                    "pid": "Pin_"
                 },
-                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/MoffatCOFeatures/FeatureServer/4",
-                "protocol": "ESRI"
+                "data": "https://services.arcgis.com/nG7uHX1mi3PRD2sK/ArcGIS/rest/services/MC_Parcels/FeatureServer/0",
+                "website": "https://moffatcounty.colorado.gov/government/elected-officials/county-assessor/mapping-and-gis-information",
+                "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Moffat County Assessor's Office",
+                    "presumed": true,
+                    "remarks": "https://moffatcounty.colorado.gov/government/elected-officials/county-assessor/mapping-and-gis-information"
+                }
             }
         ]
     }
