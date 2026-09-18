@@ -53,6 +53,14 @@ ls sources/<country>/<state>/
 - If no file exists, this is a **new source**.
 - File naming convention: `sources/<country>/<state>/<coverage>.json`
 
+**Also check for an existing per-geography tracking issue at this point** (see Step 6.5 for the full format):
+
+```bash
+gh issue list --repo openaddresses/openaddresses --search "<County/City>, <State>" --state all
+```
+
+If one exists, read it (body + all comments) before doing anything else — it's a running log of everything previously tried for this geography, including dead ends you'd otherwise re-discover from scratch.
+
 ---
 
 ### Step 1.5 — For Broken-Source Fixes: Diagnose Before Searching
@@ -125,40 +133,9 @@ Before writing the conform, do at least one of:
 
 If the dataset can't be filtered and doesn't cleanly match, treat it the same as "no replacement found" — do not use it, even if it was the only lead.
 
-#### 2g. Before giving up: check for (or create) a tracking issue for this specific source
+#### 2g. If this ends with no usable replacement
 
-When Step 2 (including 2f) ends with no usable replacement, don't just leave the source broken silently — the point of documenting a dead end is so the next person (or agent) doesn't repeat the same search. **One issue per source (i.e. per geography)** — do not fold multiple counties/cities into a single shared list issue.
-
-```bash
-gh issue list --repo openaddresses/openaddresses --search "<County/City>, <State>"
-```
-
-- **If a tracking issue for this exact geography already exists**, add a comment re-verifying it (what you checked today, what's still true, what's changed) — see the comment format below. Don't duplicate a fresh issue.
-- **If none exists**, create one:
-  - **Title**: just the geography name, e.g. `Mineral County, Colorado` or `City of Gainesville, Florida` — no "addresses source"/"broken"/etc suffix. (If an older, broader list-style issue for the same state already covers this source — e.g. [openaddresses/openaddresses#7501](https://github.com/openaddresses/openaddresses/issues/7501), a legacy per-state "manually reviewed" list, not the current convention — link/mention it in the body for context, but still open the dedicated per-geography issue rather than adding another bullet there.)
-  - **Body**: keep it short and structured, not the investigation narrative — that goes in a comment (see below):
-    ```markdown
-    **Geography:** <County/City name>
-    **US Census geoid:** <geoid, if applicable — omit the line entirely if not>
-    **Source file:** [`sources/<country>/<state>/<coverage>.json`](https://github.com/openaddresses/openaddresses/blob/master/sources/<country>/<state>/<coverage>.json) <!-- omit this line if no source file exists yet -->
-
-    **Status:**
-    - Addresses: present|not found <!-- "present" = a layers.addresses entry exists in the source file, regardless of whether it currently works -->
-    - Parcels: present|not found
-    - Buildings: present|not found
-    - Centerlines: present|not found
-
-    See comments for investigation history.
-    ```
-  - **First comment**: post the actual investigation as a separate comment right after creating the issue — root cause, everything searched and why each lead was rejected or accepted, and the conclusion. Re-verifications on later visits are additional comments, newest at the bottom; the description never accumulates this detail.
-  - **Labels**: apply from the existing label set for searchability — `Broken Source` if the current source is dead/erroring, `No Data` if you concluded no usable open data exists at all, `Researching` if the issue should stay open for someone to pick up later, plus any relevant existing layer-type label (e.g. `Parcels`). Don't invent new labels.
-  - **Open/closed state**: leave the issue **open** if further research is worth doing or data might still be missing/incomplete. **Close** it (`state_reason: not_planned`) once either all layers have working data, or you've concluded a genuine dead end — a closed issue is still valuable searchable history, not a discouragement from reopening it later if circumstances change.
-
-Do this instead of opening a no-op PR. This step is required whenever your investigation ends in "no replacement found" for a US source — it does not replace documenting the search in a PR body when a fix *is* found.
-
-#### 2h. Reference the tracking issue from any PR
-
-If a tracking issue exists for this geography (whether you just created it or found an existing one) and you go on to open a PR that changes the source, reference the issue in the PR body (e.g. `Refs #8555` — use `Refs`, not `Closes`, unless the PR fully resolves every layer the issue tracks). This keeps the issue and its PR history connected without prematurely auto-closing an issue that still tracks other layers.
+Note it and move on for now — you'll write this up in the per-geography tracking issue in Step 6.5, which runs regardless of outcome (fix found, no fix found, or new source added). Don't open a no-op PR for a dead end; Step 6.5 is where that gets recorded.
 
 ---
 
@@ -370,6 +347,40 @@ One branch and one PR per source file change.
 
 ---
 
+### Step 6.5 — Create or Update the Per-Geography Tracking Issue
+
+**Do this for every source you touch, regardless of outcome** — a successful fix, a new source added, or a dead end all get logged here. The issue is a running log for the geography, not just a dead-end record: its whole value is that the next person (or agent) who touches this geography — in a week or in three years — can read one thread and see everything that's ever been tried, instead of re-discovering old dead ends or re-verifying things that already work.
+
+You checked for this issue back in Step 1 — this is where you act on what you found (or didn't).
+
+```bash
+gh issue list --repo openaddresses/openaddresses --search "<County/City>, <State>" --state all
+```
+
+- **If none exists, create one:**
+  - **Title**: just the geography name, e.g. `Mineral County, Colorado` or `City of Gainesville, Florida` — no "addresses source"/"broken"/"fixed"/etc suffix, since the title should stay accurate across many future visits, not describe today's outcome. (If an older, broader list-style issue for the same state already covers this source — e.g. [openaddresses/openaddresses#7501](https://github.com/openaddresses/openaddresses/issues/7501), a legacy per-state "manually reviewed" list, not the current convention — link/mention it in the body for context, but still open the dedicated per-geography issue rather than adding another bullet there.)
+  - **Body**: keep it short and structured, current-state only — history goes in comments, never the description:
+    ```markdown
+    **Geography:** <County/City name>
+    **US Census geoid:** <geoid, if applicable — omit the line entirely if not>
+    **Source file:** [`sources/<country>/<state>/<coverage>.json`](https://github.com/openaddresses/openaddresses/blob/master/sources/<country>/<state>/<coverage>.json) <!-- omit this line if no source file exists yet -->
+
+    **Status:**
+    - Addresses: present, working | present, broken | not found
+    - Parcels: present, working | present, broken | not found
+    - Buildings: present, working | present, broken | not found
+    - Centerlines: present, working | present, broken | not found
+
+    See comments for history.
+    ```
+- **If one already exists, update it, don't create a duplicate:**
+  - Edit the body's **Status** block in place to reflect the current state after your work (this is a status snapshot, not a log — always overwrite it, never append to it).
+  - Add a **new comment** describing this visit: what you did, what you found, why (root cause if fixing a break, what was searched if it's a dead end, what changed if it's a routine update), and the PR link once you have one (GitHub auto-links the issue from a PR that references it, but a plain-language comment here matters too, since not every visit produces a PR). Comments accumulate oldest-to-newest — never rewrite or delete an earlier comment to "correct" it; add a new one instead, the same way you'd add a re-verification.
+- **Labels**: apply from the existing label set for searchability — `Broken Source` if any layer is currently dead/erroring, `No Data` if some layer has no usable open data and you've concluded a dead end, `Researching` if the issue should stay open for someone to pick up later, plus any relevant existing layer-type label (e.g. `Parcels`). Don't invent new labels. Update labels on every visit — a source that was `Broken Source` last time but is fixed now should have that label removed.
+- **Open/closed state, reconsidered on every visit**: **open** if further research is worth doing or any layer's data might still be missing/incomplete/broken. **Closed** (`state_reason: not_planned` for a dead end, `completed` if every layer now has working data) once there's nothing left to do — a closed issue is still valuable searchable history, not a discouragement from reopening it later if circumstances change (e.g. a dead host comes back, or a county finally publishes an addressing layer).
+
+---
+
 ### Step 7 — Open a Pull Request
 
 **Ask for user approval before running `gh pr create`** — unless you were dispatched by a coordinating session that already told you to push and open the PR directly without pausing (e.g. a batch/fleet run across many sources where this was pre-authorized). In an interactive single-source session, default to asking first.
@@ -385,7 +396,7 @@ PR description should include:
 - Any license notes
 - If fixing a broken source: what was wrong and what was searched
 - `Closes #<issue_number>` — **only** if an actual issue number was given to you in Step 0's input. Never invent, guess, or reuse a plausible-looking issue number — if no issue number was part of your input, omit this line entirely. A fabricated `Closes #` reference can silently close an unrelated real issue when the PR merges.
-- If a per-geography tracking issue exists (Step 2g/2h), reference it too — `Refs #<issue_number>` normally, or `Closes #<issue_number>` only if this PR resolves every layer that issue tracks.
+- Reference the per-geography tracking issue from Step 6.5 — `Refs #<issue_number>` normally, or `Closes #<issue_number>` only if this PR resolves every layer that issue tracks. This applies to every PR, not just fixes — you should always have a tracking issue number by this point.
 
 ```bash
 gh pr create \
@@ -409,8 +420,9 @@ gh pr create \
 |-----------|--------|
 | Issue references a URL that works | Validate it, write JSON, open PR |
 | Issue has data attached (zip) | Upload to batch.openaddresses.io/upload, use that URL |
-| Source is broken, replacement found | Update the source file, document fix in PR |
-| Source is broken, no replacement found | Leave broken; no PR — instead check/create a per-geography tracking issue (Step 2g), close it as a dead end, and add the search performed as a comment |
+| Source is broken, replacement found | Update the source file, open a PR, update the tracking issue (Step 6.5) and close it if this was its last open item |
+| Source is broken, no replacement found | Leave broken; no PR — instead update the per-geography tracking issue (Step 6.5), close it as a dead end, and add the search performed as a comment |
+| Any outcome at all — fix, new source, routine update, or dead end | Always create/update the per-geography tracking issue (Step 6.5). It's a running log for the geography, not just a dead-end record |
 | License is "no repackaging/reselling" | Skip — too restrictive for OpenAddresses |
 | License is CC-BY or similar, explicitly verified (Step 3.5) | Include with `license` object, `presumed` unset |
 | No explicit terms found, but you know who provided the data (the common case) | Include with `license` object: `attribution name` set, `"presumed": true`, state what was checked in the PR |
@@ -428,3 +440,4 @@ gh pr create \
 - ArcGIS Online URLs with `/ArcGIS/rest/services` and `/arcgis/rest/services` may both work — try both if one fails
 - Use `esri-explore.py` for ALL ESRI endpoint inspection — never raw curl for ESRI
 - Don't append a "Generated by/with Claude Code" signature anywhere on GitHub in this repo — PR descriptions, issue bodies, *and* comments. GitHub's own authorship metadata already covers it: PRs/commits show normal git authorship, and comments/issues posted through the Claude GitHub App carry a `performed_via_github_app` field that renders as a "via Claude" badge in the UI. A text footer on top of that is redundant noise for other contributors reading the thread.
+- The per-geography tracking issue (Step 6.5) is not just for dead ends — update it every time you touch a source, including a clean successful fix or a brand-new source, so it stays a complete running log rather than a record of only the failures.
