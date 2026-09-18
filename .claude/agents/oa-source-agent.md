@@ -199,6 +199,26 @@ If `Content-Type: text/html` is returned, the link is broken — find the correc
 
 ---
 
+### Step 3.5 — Classify the License (do this before writing the conform)
+
+The `license` field is the most commonly skipped or guessed field in this repo — most source entries have no `license` field at all, and of the ones that do, almost none mark `presumed: true` even though many were clearly inferred rather than verified. **Do not guess, and do not assert a license you haven't actually read.** An absent `license` field is honest; a fabricated or over-confident one is not, and misclassifying a license (e.g. missing a no-redistribution clause) can create real legal exposure for downstream users of the data.
+
+Follow this in order, and stop as soon as you have a verified answer:
+
+1. **Check machine-readable metadata first** — quick, but often blank, so don't stop here if it comes back empty:
+   - **ArcGIS Online-hosted item**: fetch `https://www.arcgis.com/sharing/rest/content/items/<itemId>?f=json` and check `licenseInfo` (raw HTML terms, when set) and `accessInformation` (the attribution string, when set).
+   - **Any ArcGIS REST service**: fetch the service's own `?f=json` and check `copyrightText`.
+   - Both fields are commonly empty even for real, legitimately-open government data — **a blank field means "not recorded here," never "no restrictions."** Don't treat it as permission to skip the next step.
+2. **Always also check the GIS/open-data site itself directly** — this step is required, not a fallback only for when step 1 comes up empty. Esri metadata frequently doesn't carry the county's actual policy at all, so look for the county/city GIS department's own terms-of-use, open-data, or licensing page (often linked from the department's homepage, an ArcGIS Hub/open-data portal page for the specific dataset, or a state open-records statute the department cites). Read the actual page — don't infer its contents from the fact that a government body "usually" allows this kind of use.
+3. **Write what you found, in the object form only** (never the deprecated bare-string `license` value):
+   - Found and read an explicit license (a real CC license, PDDL, an explicit terms-of-use page, a cited statute): set `url`/`text` to that source, `attribution`/`share-alike` matching its actual stated terms, `attribution name` if it names a required attribution holder, and `remarks` linking to the primary document you read. Leave `presumed` unset — this was verified, not guessed.
+   - Found circumstantial evidence but no explicit stated terms (e.g. "this is a county GIS department that's historically been fine with attribution-only use, but I found no stated policy"): you may still record a best-judgment entry, but you **must** set `"presumed": true`, and your PR/tracking-issue comment must say plainly what you checked and that this is an inference, not a documented fact.
+   - Found nothing at all, with no basis even for a presumed judgment: **omit the `license` field entirely.** Do not write `"license": {}` or a conservative-sounding invented default.
+4. **Reject the source, don't guess favorably, when you find an actual restriction**: "no repackaging/reselling," "internal use only," a paywall/registration gate, or explicit non-commercial-only terms mean the source is excluded outright (see `bad-license` / `Paid Source` / `prohibitive` in the Decision Guide) — don't rationalize past a restriction you've actually read because the geometry itself looked usable.
+5. **When the terms are genuinely ambiguous or conflicting, don't pick the reading that lets you proceed** — flag it explicitly in the PR body or tracking issue for a maintainer to decide, per the "License is unclear" row below.
+
+---
+
 ### Step 4 — Build the Source JSON
 
 Use the following structure as a starting point, including only the layers you have data for:
@@ -384,8 +404,10 @@ gh pr create \
 | Source is broken, replacement found | Update the source file, document fix in PR |
 | Source is broken, no replacement found | Leave broken; no PR — instead check/create a per-geography tracking issue (Step 2g), close it as a dead end, and add the search performed as a comment |
 | License is "no repackaging/reselling" | Skip — too restrictive for OpenAddresses |
-| License is CC-BY or similar | Include with `license` object |
-| License is unclear | Note in PR for maintainer decision |
+| License is CC-BY or similar, explicitly verified (Step 3.5) | Include with `license` object, `presumed` unset |
+| No explicit terms found, but a reasonable inference can be made | Include with `license` object and `"presumed": true`, state what was checked in the PR |
+| Nothing found at all, no basis for even a presumed judgment | Omit the `license` field entirely — don't invent one |
+| License is unclear/ambiguous/conflicting | Don't guess — note in PR for maintainer decision |
 | OSM extract | Reject — ODbL share-alike incompatible |
 
 ## Notes
