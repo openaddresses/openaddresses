@@ -22,7 +22,7 @@ Work through each step in order. After completing all steps, open one PR per cha
 
 ---
 
-### Step 0 — Parse the Input
+### Step 1 — Parse the Input
 
 **If given a GitHub issue number:**
 ```bash
@@ -39,7 +39,7 @@ Extract:
 
 ---
 
-### Step 1 — Check Whether a Source Already Exists
+### Step 2 — Check Whether a Source Already Exists
 
 ```bash
 # Find existing source files for this location
@@ -53,7 +53,7 @@ ls sources/<country>/<state>/
 - If no file exists, this is a **new source**.
 - File naming convention: `sources/<country>/<state>/<coverage>.json`
 
-**Also check for an existing per-geography tracking issue at this point** (see Step 6.5 for the full format):
+**Also check for an existing per-geography tracking issue at this point** (see Step 10 for the full format):
 
 ```bash
 gh issue list --repo openaddresses/openaddresses --search "<County/City>, <State>" --state all
@@ -63,7 +63,7 @@ If one exists, read it (body + all comments) before doing anything else — it's
 
 ---
 
-### Step 1.5 — For Broken-Source Fixes: Diagnose Before Searching
+### Step 3 — For Broken-Source Fixes: Diagnose Before Searching
 
 If the task is fixing a currently-failing source (not adding a new one), find the root cause **before** looking for a replacement — don't skip straight to searching.
 
@@ -75,7 +75,7 @@ curl -s "https://batch.openaddresses.io/api/job?source=<country>/<state>/<covera
 curl -s "https://batch.openaddresses.io/api/job/<job_id>/log"
 ```
 
-Match the error against REVIEW.md's "Common failure patterns" table (renamed/deleted service, host dead, became private, layer ID shifted, timeout, etc.) — the fix strategy differs by cause. Only move to Step 2's search once you know *why* it's broken.
+Match the error against REVIEW.md's "Common failure patterns" table (renamed/deleted service, host dead, became private, layer ID shifted, timeout, etc.) — the fix strategy differs by cause. Only move to Step 4's search once you know *why* it's broken.
 
 **If you were handed a diagnosis rather than making it yourself** (e.g. a coordinating session told you "layer X is broken, layer Y is currently healthy"), re-verify it against the single most recent job for *every* layer before trusting it — don't just check the layer you were told is broken. Job status can go stale between when a diagnosis was written and when you actually start (a "healthy" sibling layer can die in the meantime, as happened when fixing Moffat County, CO: the parcels layer was reported healthy but had actually started failing days earlier). Your own fresh check of the latest job always wins over an earlier claim, however it was sourced.
 
@@ -85,14 +85,14 @@ Match the error against REVIEW.md's "Common failure patterns" table (renamed/del
 
 ---
 
-### Step 2 — Find the Data
+### Step 4 — Find the Data
 
 Work through these in order, stopping when you have a confirmed working source URL.
 
-#### 2a. URLs from the issue
-Validate any explicit issue URLs first (Step 3) before searching further.
+#### 4a. URLs from the issue
+Validate any explicit issue URLs first (Step 5) before searching further.
 
-#### 2b. ArcGIS Online search
+#### 4b. ArcGIS Online search
 ```bash
 curl -s "https://www.arcgis.com/sharing/rest/search?q=<location>+<type>&f=json&num=10" \
   | python3 -c "
@@ -105,7 +105,7 @@ for r in data.get('results', []):
 ```
 Filter to `access: public` items with a `FeatureServer` URL.
 
-#### 2c. Web search
+#### 4c. Web search
 Search for:
 - `"<county/city> GIS address points download"`
 - `"<county/city> open data portal addresses arcgis"`
@@ -113,16 +113,16 @@ Search for:
 
 Look for ArcGIS Hub / Open Data portals, county/city GIS download pages, state GIS clearinghouses.
 
-#### 2d. State GIS clearinghouses
+#### 4d. State GIS clearinghouses
 Common US ones: Wisconsin `geodata.wisc.edu`, California `gis.data.ca.gov`, Minnesota `gisdata.mn.gov`, Pennsylvania `mapservices.pasda.psu.edu` (PASDA mirrors many PA counties' own layers).
 
-#### 2e. Avoid these sources
+#### 4e. Avoid these sources
 - **OpenStreetMap extracts** — ODbL share-alike incompatible
 - **Paid / authentication-required** data
 - **Raster/image-only** data
 - **Statewide sources as a county replacement** — don't widen coverage to fix a broken source
 
-#### 2f. Verify the replacement is actually scoped to this jurisdiction — not just plausibly named
+#### 4f. Verify the replacement is actually scoped to this jurisdiction — not just plausibly named
 
 The single most common mistake: a service that *looks* right (right name, one sample record with the right city/county) turns out to be a different jurisdiction entirely, or a regional/multi-jurisdiction dataset with no way to filter it down. This has bitten real fixes: a "Lancaster"-sounding layer that was actually Chester County; a Terrebonne-looking layer that was actually Tangipahoa; a shared regional consortium layer (e.g. INCOG, ACOG) mixing five counties together; a city's "joint 911" layer that includes several surrounding towns.
 
@@ -133,13 +133,13 @@ Before writing the conform, do at least one of:
 
 If the dataset can't be filtered and doesn't cleanly match, treat it the same as "no replacement found" — do not use it, even if it was the only lead.
 
-#### 2g. If this ends with no usable replacement
+#### 4g. If this ends with no usable replacement
 
-Note it and move on for now — you'll write this up in the per-geography tracking issue in Step 6.5, which runs regardless of outcome (fix found, no fix found, or new source added). Don't open a no-op PR for a dead end; Step 6.5 is where that gets recorded.
+Note it and move on for now — you'll write this up in the per-geography tracking issue in Step 10, which runs regardless of outcome (fix found, no fix found, or new source added). Don't open a no-op PR for a dead end; Step 10 is where that gets recorded.
 
 ---
 
-### Step 3 — Inspect and Validate the Data
+### Step 5 — Inspect and Validate the Data
 
 **Never write source JSON before confirming the data works.**
 
@@ -178,7 +178,7 @@ If `Content-Type: text/html` is returned, the link is broken — find the correc
 
 ---
 
-### Step 3.5 — Classify the License (do this before writing the conform)
+### Step 6 — Classify the License (do this before writing the conform)
 
 The `license` field is the most commonly skipped or guessed field in this repo — most source entries have no `license` field at all, and of the ones that do, almost none mark `presumed: true` even though many were clearly inferred rather than verified. **Do not guess, and do not assert a license you haven't actually read.** An absent `license` field is honest; a fabricated or over-confident one is not, and misclassifying a license (e.g. missing a no-redistribution clause) can create real legal exposure for downstream users of the data.
 
@@ -204,7 +204,7 @@ Follow this in order, and stop as soon as you have a verified answer:
 
 ---
 
-### Step 4 — Build the Source JSON
+### Step 7 — Build the Source JSON
 
 Use the following structure as a starting point, including only the layers you have data for:
 
@@ -309,7 +309,7 @@ Omit street components that don't exist. Use a single string instead of array wh
 
 ---
 
-### Step 5 — Validate the JSON
+### Step 8 — Validate the JSON
 
 ```bash
 node --input-type=module << 'EOF'
@@ -330,7 +330,7 @@ Fix any schema errors before continuing. Common mistakes:
 
 ---
 
-### Step 6 — Create a Branch and Commit
+### Step 9 — Create a Branch and Commit
 
 You run in an isolated git worktree (`isolation: worktree`), already checked out on a fresh branch off the default branch — do NOT run `git checkout master` or `git pull` yourself; `master` is likely checked out elsewhere (the main checkout or a sibling worktree) and switching to it will fail or conflict. Just rename your current branch and commit:
 
@@ -347,11 +347,11 @@ One branch and one PR per source file change.
 
 ---
 
-### Step 6.5 — Create or Update the Per-Geography Tracking Issue
+### Step 10 — Create or Update the Per-Geography Tracking Issue
 
 **Do this for every source you touch, regardless of outcome** — a successful fix, a new source added, or a dead end all get logged here. The issue is a running log for the geography, not just a dead-end record: its whole value is that the next person (or agent) who touches this geography — in a week or in three years — can read one thread and see everything that's ever been tried, instead of re-discovering old dead ends or re-verifying things that already work.
 
-You checked for this issue back in Step 1 — this is where you act on what you found (or didn't).
+You checked for this issue back in Step 2 — this is where you act on what you found (or didn't).
 
 ```bash
 gh issue list --repo openaddresses/openaddresses --search "<County/City>, <State>" --state all
@@ -381,7 +381,7 @@ gh issue list --repo openaddresses/openaddresses --search "<County/City>, <State
 
 ---
 
-### Step 7 — Open a Pull Request
+### Step 11 — Open a Pull Request
 
 **Ask for user approval before running `gh pr create`** — unless you were dispatched by a coordinating session that already told you to push and open the PR directly without pausing (e.g. a batch/fleet run across many sources where this was pre-authorized). In an interactive single-source session, default to asking first.
 
@@ -395,8 +395,8 @@ PR description should include:
 - Where the data comes from (URL, provider)
 - Any license notes
 - If fixing a broken source: what was wrong and what was searched
-- `Closes #<issue_number>` — **only** if an actual issue number was given to you in Step 0's input. Never invent, guess, or reuse a plausible-looking issue number — if no issue number was part of your input, omit this line entirely. A fabricated `Closes #` reference can silently close an unrelated real issue when the PR merges.
-- Reference the per-geography tracking issue from Step 6.5 — `Refs #<issue_number>` normally, or `Closes #<issue_number>` only if this PR resolves every layer that issue tracks. This applies to every PR, not just fixes — you should always have a tracking issue number by this point.
+- `Closes #<issue_number>` — **only** if an actual issue number was given to you in Step 1's input. Never invent, guess, or reuse a plausible-looking issue number — if no issue number was part of your input, omit this line entirely. A fabricated `Closes #` reference can silently close an unrelated real issue when the PR merges.
+- Reference the per-geography tracking issue from Step 10 — `Refs #<issue_number>` normally, or `Closes #<issue_number>` only if this PR resolves every layer that issue tracks. This applies to every PR, not just fixes — you should always have a tracking issue number by this point.
 
 ```bash
 gh pr create \
@@ -410,7 +410,7 @@ gh pr create \
   --base master
 ```
 
-(The `Closes #8026` line above is illustrative of the *format* only — include it in a real PR solely when Step 0 actually gave you issue #8026 or similar, never by default.)
+(The `Closes #8026` line above is illustrative of the *format* only — include it in a real PR solely when Step 1 actually gave you issue #8026 or similar, never by default.)
 
 ---
 
@@ -420,11 +420,11 @@ gh pr create \
 |-----------|--------|
 | Issue references a URL that works | Validate it, write JSON, open PR |
 | Issue has data attached (zip) | Upload to batch.openaddresses.io/upload, use that URL |
-| Source is broken, replacement found | Update the source file, open a PR, update the tracking issue (Step 6.5) and close it if this was its last open item |
-| Source is broken, no replacement found | Leave broken; no PR — instead update the per-geography tracking issue (Step 6.5), close it as a dead end, and add the search performed as a comment |
-| Any outcome at all — fix, new source, routine update, or dead end | Always create/update the per-geography tracking issue (Step 6.5). It's a running log for the geography, not just a dead-end record |
+| Source is broken, replacement found | Update the source file, open a PR, update the tracking issue (Step 10) and close it if this was its last open item |
+| Source is broken, no replacement found | Leave broken; no PR — instead update the per-geography tracking issue (Step 10), close it as a dead end, and add the search performed as a comment |
+| Any outcome at all — fix, new source, routine update, or dead end | Always create/update the per-geography tracking issue (Step 10). It's a running log for the geography, not just a dead-end record |
 | License is "no repackaging/reselling" | Skip — too restrictive for OpenAddresses |
-| License is CC-BY or similar, explicitly verified (Step 3.5) | Include with `license` object, `presumed` unset |
+| License is CC-BY or similar, explicitly verified (Step 6) | Include with `license` object, `presumed` unset |
 | No explicit terms found, but you know who provided the data (the common case) | Include with `license` object: `attribution name` set, `"presumed": true`, state what was checked in the PR |
 | Truly nothing found — can't even identify a provider to credit | Omit the `license` field entirely — don't invent one |
 | License is unclear/ambiguous/conflicting | Don't guess — note in PR for maintainer decision |
@@ -440,4 +440,4 @@ gh pr create \
 - ArcGIS Online URLs with `/ArcGIS/rest/services` and `/arcgis/rest/services` may both work — try both if one fails
 - Use `esri-explore.py` for ALL ESRI endpoint inspection — never raw curl for ESRI
 - Don't append a "Generated by/with Claude Code" signature anywhere on GitHub in this repo — PR descriptions, issue bodies, *and* comments. GitHub's own authorship metadata already covers it: PRs/commits show normal git authorship, and comments/issues posted through the Claude GitHub App carry a `performed_via_github_app` field that renders as a "via Claude" badge in the UI. A text footer on top of that is redundant noise for other contributors reading the thread.
-- The per-geography tracking issue (Step 6.5) is not just for dead ends — update it every time you touch a source, including a clean successful fix or a brand-new source, so it stays a complete running log rather than a record of only the failures.
+- The per-geography tracking issue (Step 10) is not just for dead ends — update it every time you touch a source, including a clean successful fix or a brand-new source, so it stays a complete running log rather than a record of only the failures.
