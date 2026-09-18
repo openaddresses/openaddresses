@@ -123,6 +123,41 @@ Before writing the conform, do at least one of:
 
 If the dataset can't be filtered and doesn't cleanly match, treat it the same as "no replacement found" — do not use it, even if it was the only lead.
 
+#### 2g. Before giving up: check for (or create) a tracking issue for this specific source
+
+When Step 2 (including 2f) ends with no usable replacement, don't just leave the source broken silently — the point of documenting a dead end is so the next person (or agent) doesn't repeat the same search. **One issue per source (i.e. per geography)** — do not fold multiple counties/cities into a single shared list issue.
+
+```bash
+gh issue list --repo openaddresses/openaddresses --search "<County/City>, <State>"
+```
+
+- **If a tracking issue for this exact geography already exists**, add a comment re-verifying it (what you checked today, what's still true, what's changed) — see the comment format below. Don't duplicate a fresh issue.
+- **If none exists**, create one:
+  - **Title**: just the geography name, e.g. `Mineral County, Colorado` or `City of Gainesville, Florida` — no "addresses source"/"broken"/etc suffix. (If an older, broader list-style issue for the same state already covers this source — e.g. [openaddresses/openaddresses#7501](https://github.com/openaddresses/openaddresses/issues/7501), a legacy per-state "manually reviewed" list, not the current convention — link/mention it in the body for context, but still open the dedicated per-geography issue rather than adding another bullet there.)
+  - **Body**: keep it short and structured, not the investigation narrative — that goes in a comment (see below):
+    ```markdown
+    **Geography:** <County/City name>
+    **US Census geoid:** <geoid, if applicable — omit the line entirely if not>
+    **Source file:** [`sources/<country>/<state>/<coverage>.json`](https://github.com/openaddresses/openaddresses/blob/master/sources/<country>/<state>/<coverage>.json) <!-- omit this line if no source file exists yet -->
+
+    **Status:**
+    - Addresses: present|not found <!-- "present" = a layers.addresses entry exists in the source file, regardless of whether it currently works -->
+    - Parcels: present|not found
+    - Buildings: present|not found
+    - Centerlines: present|not found
+
+    See comments for investigation history.
+    ```
+  - **First comment**: post the actual investigation as a separate comment right after creating the issue — root cause, everything searched and why each lead was rejected or accepted, and the conclusion. Re-verifications on later visits are additional comments, newest at the bottom; the description never accumulates this detail.
+  - **Labels**: apply from the existing label set for searchability — `Broken Source` if the current source is dead/erroring, `No Data` if you concluded no usable open data exists at all, `Researching` if the issue should stay open for someone to pick up later, plus any relevant existing layer-type label (e.g. `Parcels`). Don't invent new labels.
+  - **Open/closed state**: leave the issue **open** if further research is worth doing or data might still be missing/incomplete. **Close** it (`state_reason: not_planned`) once either all layers have working data, or you've concluded a genuine dead end — a closed issue is still valuable searchable history, not a discouragement from reopening it later if circumstances change.
+
+Do this instead of opening a no-op PR. This step is required whenever your investigation ends in "no replacement found" for a US source — it does not replace documenting the search in a PR body when a fix *is* found.
+
+#### 2h. Reference the tracking issue from any PR
+
+If a tracking issue exists for this geography (whether you just created it or found an existing one) and you go on to open a PR that changes the source, reference the issue in the PR body (e.g. `Refs #8555` — use `Refs`, not `Closes`, unless the PR fully resolves every layer the issue tracks). This keeps the issue and its PR history connected without prematurely auto-closing an issue that still tracks other layers.
+
 ---
 
 ### Step 3 — Inspect and Validate the Data
@@ -322,6 +357,7 @@ PR description should include:
 - Any license notes
 - If fixing a broken source: what was wrong and what was searched
 - `Closes #<issue_number>` — **only** if an actual issue number was given to you in Step 0's input. Never invent, guess, or reuse a plausible-looking issue number — if no issue number was part of your input, omit this line entirely. A fabricated `Closes #` reference can silently close an unrelated real issue when the PR merges.
+- If a per-geography tracking issue exists (Step 2g/2h), reference it too — `Refs #<issue_number>` normally, or `Closes #<issue_number>` only if this PR resolves every layer that issue tracks.
 
 ```bash
 gh pr create \
@@ -346,7 +382,7 @@ gh pr create \
 | Issue references a URL that works | Validate it, write JSON, open PR |
 | Issue has data attached (zip) | Upload to batch.openaddresses.io/upload, use that URL |
 | Source is broken, replacement found | Update the source file, document fix in PR |
-| Source is broken, no replacement found | Leave broken; PR description must document full search |
+| Source is broken, no replacement found | Leave broken; no PR — instead check/create a per-geography tracking issue (Step 2g), close it as a dead end, and add the search performed as a comment |
 | License is "no repackaging/reselling" | Skip — too restrictive for OpenAddresses |
 | License is CC-BY or similar | Include with `license` object |
 | License is unclear | Note in PR for maintainer decision |
@@ -361,3 +397,4 @@ gh pr create \
 - Use `uv run .claude/bin/esri-explore.py suggest` to get conform suggestions, then verify with `sample`
 - ArcGIS Online URLs with `/ArcGIS/rest/services` and `/arcgis/rest/services` may both work — try both if one fails
 - Use `esri-explore.py` for ALL ESRI endpoint inspection — never raw curl for ESRI
+- Don't append a "Generated by/with Claude Code" signature anywhere on GitHub in this repo — PR descriptions, issue bodies, *and* comments. GitHub's own authorship metadata already covers it: PRs/commits show normal git authorship, and comments/issues posted through the Claude GitHub App carry a `performed_via_github_app` field that renders as a "via Claude" badge in the UI. A text footer on top of that is redundant noise for other contributors reading the thread.
