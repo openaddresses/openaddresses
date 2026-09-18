@@ -21,21 +21,22 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://services.arcgis.com/cNo3jpluyt69V8Ek/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
-                "note": "while there is a UNIT field, it appears to incorrectly contain the same value that's in ROADTYPE.  the FULLADDR field does have the unit appended with a '-'.",
+                "data": "https://services2.arcgis.com/Zzhtlau4ccHkQgTu/arcgis/rest/services/Gainesville_Address_Points/FeatureServer/1",
+                "website": "https://www.arcgis.com/home/item.html?id=ddeb7cbc6aa44e7ca277000dbb3c6b84",
+                "note": "The prior AddressPoints FeatureServer (org cNo3jpluyt69V8Ek) was retired. This replacement is the City of Gainesville's current address point service, hosted in a newer ArcGIS Online org. MSAGCOMM is 'GAINESVILLE' for 100% of the ~89.6k records (verified), confirming scope matches the city's E911/postal addressing area; a minority of records (~12%) fall in the surrounding unincorporated urban cluster that also carries the Gainesville postal community name, per the source's own MUNICIPALITY/UC fields.",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "id": "ADDRESSPTID",
-                    "number": "ADD_NUMBER",
+                    "id": "GUID",
+                    "number": "ADDRNUM",
                     "street": [
-                        "LST_PREDIR",
-                        "LST_NAME",
-                        "LST_TYPE"
+                        "ROADPREDIR",
+                        "ROADNAME",
+                        "ROADTYPE"
                     ],
                     "unit": "UNIT",
                     "city": "MSAGCOMM",
-                    "district": "COUNTY",
+                    "postcode": "ZIP5",
                     "region": "STATE"
                 }
             }
