@@ -123,6 +123,23 @@ Before writing the conform, do at least one of:
 
 If the dataset can't be filtered and doesn't cleanly match, treat it the same as "no replacement found" — do not use it, even if it was the only lead.
 
+#### 2g. Before giving up: check (and update) the state's tracking issue
+
+When Step 2 (including 2f) ends with no usable replacement, don't just leave the source broken silently — the point of documenting a dead end is so the next person (or agent) doesn't repeat the same search. Before concluding, check GitHub for an existing per-state tracking issue:
+
+```bash
+gh issue list --repo openaddresses/openaddresses --search "Manually reviewed: List of <State> address datasets with bad data"
+```
+
+Precedent: [openaddresses/openaddresses#7501](https://github.com/openaddresses/openaddresses/issues/7501) ("Manually reviewed: List of Alabama address datasets with bad data") is a running per-state list — one bullet per broken jurisdiction, each pointing at a numbered note explaining the actual investigation (dead host, wrong-jurisdiction trap, mailing-address-only field, no machine-readable API, etc).
+
+- **If a tracking issue for this state already exists:**
+  - If it already lists this county/city, add a comment re-verifying it (what you checked today, what's still true, what's changed) rather than silently duplicating the note.
+  - If it doesn't yet list this county/city, add a comment appending a new bullet + note in the same style as the existing entries.
+- **If no tracking issue for this state exists yet**, create one titled `Manually reviewed: List of <State> address datasets with bad data`, modeled on #7501's format.
+
+Do this instead of opening a no-op PR. This step is required whenever your investigation ends in "no replacement found" for a US source — it does not replace documenting the search in a PR body when a fix *is* found.
+
 ---
 
 ### Step 3 — Inspect and Validate the Data
@@ -346,7 +363,7 @@ gh pr create \
 | Issue references a URL that works | Validate it, write JSON, open PR |
 | Issue has data attached (zip) | Upload to batch.openaddresses.io/upload, use that URL |
 | Source is broken, replacement found | Update the source file, document fix in PR |
-| Source is broken, no replacement found | Leave broken; PR description must document full search |
+| Source is broken, no replacement found | Leave broken; no PR — instead check/update the state's tracking issue (Step 2g) with the full search performed |
 | License is "no repackaging/reselling" | Skip — too restrictive for OpenAddresses |
 | License is CC-BY or similar | Include with `license` object |
 | License is unclear | Note in PR for maintainer decision |
