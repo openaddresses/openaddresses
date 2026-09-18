@@ -18,7 +18,12 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "NUMBER",
+                    "number": {
+                        "function": "regexp",
+                        "field": "AddNew",
+                        "pattern": "^([0-9]+)( .*)",
+                        "replace": "$1"
+                    },
                     "street": "ROADNAME",
                     "city": "COMM"
                 }
