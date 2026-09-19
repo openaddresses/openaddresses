@@ -22,18 +22,43 @@
         "addresses": [
             {
                 "name": "city",
-                "attribution": "City of Avon",
-                "data": "https://54.243.125.146/arcgis/rest/services/AvonCT/AvonCT_Basemap2017/MapServer/21",
+                "data": "https://hostingdata4.tighebond.com/arcgis/rest/services/AvonCT/AvonParcels/FeatureServer/0",
                 "website": "https://hosting.tighebond.com/AvonCT_public/index.html",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Town of Avon, CT",
+                    "presumed": true,
+                    "remarks": "https://www.avonct.gov/engineering-sewer-and-gis-department/pages/maps"
+                },
                 "conform": {
                     "format": "geojson",
-                    "number": "SADDNO",
-                    "street": "SADDSTNAME",
-                    "unit": "SUNIT",
-                    "city": "MUNINAME",
-                    "district": "CNTYNAME",
-                    "region": "STNAME"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "STRLOC"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "STRLOC"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "city",
+                "data": "https://hostingdata4.tighebond.com/arcgis/rest/services/AvonCT/AvonParcels/FeatureServer/0",
+                "website": "https://hosting.tighebond.com/AvonCT_public/index.html",
+                "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Town of Avon, CT",
+                    "presumed": true,
+                    "remarks": "https://www.avonct.gov/engineering-sewer-and-gis-department/pages/maps"
+                },
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARNO"
                 }
             }
         ]
