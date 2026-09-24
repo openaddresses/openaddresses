@@ -13,7 +13,7 @@
     "layers": {
         "addresses": [
             {
-                "name": "county",
+                "name": "residential",
                 "data": "https://giswww.westchestergov.com/arcgis/rest/services/Parcel_Identification/MapServer/3",
                 "protocol": "ESRI",
                 "website": "https://giswww.westchestergov.com/arcgis/rest/services/Parcel_Identification/MapServer",
@@ -28,6 +28,36 @@
                     "unit": "SITE_UNIT_NUMBER",
                     "city": "SITE_CITY",
                     "postcode": "SITE_ZIP"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Westchester County GIS",
+                    "presumed": true,
+                    "remarks": "https://giswww.westchestergov.com/arcgis/rest/services/Parcel_Identification/MapServer"
+                }
+            },
+            {
+                "name": "commercial",
+                "data": "https://giswww.westchestergov.com/arcgis/rest/services/Parcel_Identification/MapServer/2",
+                "protocol": "ESRI",
+                "website": "https://giswww.westchestergov.com/arcgis/rest/services/Parcel_Identification/MapServer",
+                "conform": {
+                    "format": "geojson",
+                    "number": "SITE_HOUSE_NUMBER",
+                    "street": [
+                        "SITE_DIRECTION",
+                        "SITE_STREET_NAME",
+                        "SITE_MODE"
+                    ],
+                    "unit": "SITE_UNIT_NUMBER",
+                    "city": "SITE_CITY",
+                    "postcode": "SITE_ZIP"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Westchester County GIS",
+                    "presumed": true,
+                    "remarks": "https://giswww.westchestergov.com/arcgis/rest/services/Parcel_Identification/MapServer"
                 }
             }
         ],
@@ -39,18 +69,30 @@
                 "website": "https://giswww.westchestergov.com/arcgis/rest/services/DataHub_TaxParcels/MapServer",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PRINTKEY"
+                    "pid": "PRINT_KEY"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Westchester County GIS / NYS ITS Geospatial Services",
+                    "presumed": true,
+                    "remarks": "https://gis.westchestercountyny.gov/datasets/wcgis::tax-parcels/about"
                 }
             }
         ],
         "buildings": [
             {
                 "name": "county",
-                "data": "https://giswww.westchestergov.com/arcgis/rest/services/Planimetric_Basemap/MapServer/14",
+                "data": "https://giswww.westchestergov.com/arcgis/rest/services/DataHub_BasemapPlanimetrics/MapServer/14",
                 "protocol": "ESRI",
-                "website": "https://giswww.westchestergov.com/arcgis/rest/services/Planimetric_Basemap/MapServer",
+                "website": "https://giswww.westchestergov.com/arcgis/rest/services/DataHub_BasemapPlanimetrics/MapServer",
                 "conform": {
                     "format": "geojson"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Westchester County GIS",
+                    "presumed": true,
+                    "remarks": "https://gis.westchestercountyny.gov/datasets/wcgis::structures-1/about"
                 }
             }
         ]
