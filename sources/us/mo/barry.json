@@ -14,12 +14,29 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis-server.greatriv.com/ArcGIS/rest/services/BarryCo/BarryCo_operational/MapServer/2",
+                "website": "https://data-msdis.opendata.arcgis.com/datasets/MSDIS::barry-county-mo-ng911-data/",
+                "data": "https://services2.arcgis.com/kNS2ppBA4rwAQQZy/arcgis/rest/services/Barry_County_MO_NG911_Data/FeatureServer/1",
                 "protocol": "ESRI",
+                "license": {
+                    "url": "https://data-msdis.opendata.arcgis.com/maps/c22efafeed924bd8afea5ed24a265b13/about",
+                    "attribution": true,
+                    "attribution name": "Barry County Emergency Services E 9-1-1",
+                    "presumed": true
+                },
                 "conform": {
-                    "number": "address",
-                    "street": "roadname",
-                    "format": "geojson"
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code",
+                    "region": "State"
                 }
             }
         ]
