@@ -343,7 +343,18 @@ Fix any schema errors before continuing. Common mistakes:
 
 ### Step 9 — Create a Branch and Commit
 
-You run in an isolated git worktree (`isolation: worktree`), already checked out on a fresh branch off the default branch — do NOT run `git checkout master` or `git pull` yourself; `master` is likely checked out elsewhere (the main checkout or a sibling worktree) and switching to it will fail or conflict. Just rename your current branch and commit:
+You run in an isolated git worktree (`isolation: worktree`), already checked out on a fresh branch off the default branch — do NOT run `git checkout master` or `git pull` yourself; `master` is likely checked out elsewhere (the main checkout or a sibling worktree) and switching to it will fail or conflict.
+
+**First, check whether your worktree's base has gone stale.** In a coordinating sweep with many agents running over several minutes, other sources' PRs can merge into `master` while you're still working — including, occasionally, a PR touching the very same file (e.g. someone else already fixed a sibling layer in the file you're editing). Committing blindly on top of a stale base can silently revert or duplicate that merged change. Before committing:
+
+```bash
+git fetch origin master
+git diff HEAD..origin/master -- sources/<country>/<state>/<coverage>.json
+```
+
+If that diff is non-empty, your on-disk copy is behind. Reconcile before committing: pull the current `origin/master` copy of just that file (`git show origin/master:sources/<country>/<state>/<coverage>.json > sources/<country>/<state>/<coverage>.json`), reapply your own change on top of it, and re-validate the schema. Then verify your final diff is clean with `git diff origin/master -- sources/<country>/<state>/<coverage>.json` — it should show only the change you intended, not a reversion of someone else's merged work.
+
+Once your base is current, rename your branch and commit:
 
 ```bash
 # Branch naming: <verb>-<country>-<state>-<coverage>, verb matches what you actually did:
