@@ -45,7 +45,12 @@
                 "data": "https://gis.co.richland.nd.us/arcgis/rest/services/Parcel_Feature_Service/FeatureServer/14",
                 "conform": {
                     "format": "geojson",
-                    "pid": "pin_num"
+                    "pid": {
+                        "function": "regexp",
+                        "field": "pin_num",
+                        "pattern": "^([0-9]+)(?:\\.0)?$",
+                        "replace": "$1"
+                    }
                 }
             }
         ],
