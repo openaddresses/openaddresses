@@ -41,7 +41,24 @@ Extract:
 
 ---
 
-### Step 2 — Check Whether a Source Already Exists
+### Step 2 — Check for an Existing Tracking Issue First, Then Whether a Source Already Exists
+
+**2a. Check for an existing per-geography tracking issue before anything else** (see Step 10 for the full format):
+
+```bash
+gh issue list --repo openaddresses/openaddresses --search "<County/City>, <State>" --state all
+```
+
+Look specifically for one titled with just the bare geography name (the current convention, e.g. "Mineral County, Colorado") — not just any older issue that happens to mention the place (a legacy per-state list issue, a one-off 2016-era bug report, etc.; note those for context if relevant, but they aren't the tracking issue). If a real match exists, **read it in full — body and every comment — before doing anything else in Step 3 onward.** It's a running log of everything already tried for this geography, and it should change what you actually do next, not just be read and set aside:
+
+- **Replacement URLs or candidates already tested and rejected** — don't re-propose the same one without new evidence the situation has changed (e.g. don't re-suggest a service already logged as a login-gated dead end).
+- **License research already done** — reuse the prior finding instead of re-deriving it from scratch, unless something material has changed.
+- **Root causes and diagnoses already recorded for other layers in the same file** — if a sibling layer's break was already root-caused on a prior visit, you don't need to re-diagnose it, just note its current state in Step 10's status update.
+- **Dead ends already ruled out, with the reasoning why** — treat these as closed questions unless you find genuinely new information.
+
+If no matching issue exists yet, proceed to research as normal — you'll create one in Step 10.
+
+**2b. Check whether a source file already exists for this coverage:**
 
 ```bash
 # Find existing source files for this location
@@ -54,14 +71,6 @@ ls sources/<country>/<state>/
 - If an existing source file matches the coverage, this is an **update** — read it first.
 - If no file exists, this is a **new source**.
 - File naming convention: `sources/<country>/<state>/<coverage>.json`
-
-**Also check for an existing per-geography tracking issue at this point** (see Step 10 for the full format):
-
-```bash
-gh issue list --repo openaddresses/openaddresses --search "<County/City>, <State>" --state all
-```
-
-If one exists, read it (body + all comments) before doing anything else — it's a running log of everything previously tried for this geography, including dead ends you'd otherwise re-discover from scratch.
 
 ---
 
