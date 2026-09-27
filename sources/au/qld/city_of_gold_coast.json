@@ -10,28 +10,46 @@
             {
                 "name": "city",
                 "protocol": "ESRI",
-                "data": "https://services-ap1.arcgis.com/lnVW0dLI3fvST2hd/ArcGIS/rest/services/City_Plan_Version_13_Open_Data/FeatureServer/0",
-                "website": "https://data-goldcoast.opendata.arcgis.com/datasets/0ec7b75a2a794e8eb71c12720c008332_0/about?layer=0",
+                "data": "https://services.arcgis.com/3vStCH7NDoBOZ5zn/arcgis/rest/services/CoGC_Property_Address/FeatureServer/0",
+                "website": "https://data-goldcoast.opendata.arcgis.com/datasets/204e1622c2804b14b298dbcf0c4db59e_0/about",
                 "language": "en",
                 "license": {
                     "url": "https://creativecommons.org/licenses/by/4.0",
                     "text": "CC BY 4.0",
                     "attribution": true,
                     "attribution name": "City of Gold Coast",
-                    "share-alike": false
+                    "share-alike": false,
+                    "presumed": true,
+                    "remarks": "https://data-goldcoast.opendata.arcgis.com/datasets/204e1622c2804b14b298dbcf0c4db59e_0/about"
                 },
                 "conform": {
                     "format": "geojson",
                     "number": {
-                        "function": "prefixed_number",
-                        "field": "HOUSE_ADDRESS"
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:UNIT\\s+[^,]+,\\s*)?(?:LOT\\s+[0-9]+\\s+)?([0-9]+)"
                     },
                     "street": {
-                        "function": "postfixed_street",
-                        "field": "HOUSE_ADDRESS"
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:UNIT\\s+[^,]+,\\s*)?(?:LOT\\s+[0-9]+\\s+)?(?:[0-9]+(?:-[0-9]+)?\\s+)?([^,]+),",
+                        "replace": "$1"
                     },
-                    "city": "SUBURB",
-                    "postcode": "POST_CODE"
+                    "unit": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^UNIT\\s+([^,]+),"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "([^,]+),\\s*[0-9]{4}\\s*$"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": ",\\s*([0-9]{4})\\s*$"
+                    }
                 }
             }
         ],
