@@ -1,5 +1,10 @@
 {
     "coverage": {
+        "US Census": {
+            "geoid": "5183136",
+            "name": "Town of Warrenton",
+            "state": "Virginia"
+        },
         "country": "us",
         "state": "va",
         "town": "Warrenton"
@@ -9,18 +14,30 @@
         "addresses": [
             {
                 "name": "town",
-                "data": "https://www.webgis.net/arcgis/rest/services/VA/Warrenton_WebGIS/MapServer/0",
+                "data": "https://services3.arcgis.com/7Q2bdSYWSeUYx2U5/arcgis/rest/services/Warrenton_Municipality_Address_Points/FeatureServer/0",
+                "website": "https://www.arcgis.com/home/item.html?id=0aea88cc41f04b0ea2fa6b845a5dee45",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "ADDRNUM",
-                    "street": {
-                        "function": "remove_prefix",
-                        "field": "FULLADDR",
-                        "field_to_remove": "ADDRNUM"
-                    },
-                    "city": "MUNICIPALITY",
+                    "street": [
+                        "DIRECTION",
+                        "PLAINST",
+                        "STTYPE",
+                        "POSTDIRECT"
+                    ],
+                    "unit": [
+                        "UNITTYPE",
+                        "UNITID"
+                    ],
+                    "city": "MUNICIPALI",
                     "postcode": "ZIPCODE"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Fauquier County GIS & Town of Warrenton",
+                    "presumed": true,
+                    "remarks": "https://www.arcgis.com/home/item.html?id=0aea88cc41f04b0ea2fa6b845a5dee45"
                 }
             }
         ],
