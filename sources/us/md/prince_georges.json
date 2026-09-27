@@ -26,6 +26,13 @@
                     "city": "PLACE_NAME",
                     "region": "STATE_NAME",
                     "postcode": "ZIP_CODE"
+                },
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "Prince George's County Planning Department",
+                    "share-alike": false,
+                    "remarks": "https://gisdata.pgplanning.org/opendata/"
                 }
             }
         ],
@@ -39,6 +46,13 @@
                 "conform": {
                     "format": "shapefile",
                     "pid": "PROP_ID"
+                },
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "Prince George's County Planning Department",
+                    "share-alike": false,
+                    "remarks": "https://gisdata.pgplanning.org/opendata/"
                 }
             }
         ],
@@ -46,11 +60,53 @@
             {
                 "name": "county",
                 "website": "https://gisdata.pgplanning.org/opendata/",
-                "data": "https://gisdata.pgplanning.org/opendata/downloadzip.asp?FileName=/data/ShapeFile/Building_2020_Py.zip",
+                "data": "https://gisdata.pgplanning.org/opendata/downloadzip.asp?FileName=/data/ShapeFile/Building_2023_Py.zip",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
                     "format": "shapefile"
+                },
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "Prince George's County Planning Department",
+                    "share-alike": false,
+                    "remarks": "https://gisdata.pgplanning.org/opendata/"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "website": "https://gisdata.pgplanning.org/opendata/",
+                "data": "https://gisdata.pgplanning.org/opendata/downloadzip.asp?FileName=/data/ShapeFile/Street_Centerline_Ln.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "name": "FULLNAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "addr_from_left": "LLEFT",
+                    "addr_to_left": "HLEFT",
+                    "addr_from_right": "LRGT",
+                    "addr_to_right": "HRGT",
+                    "zip_left": "ZIPCODEL",
+                    "zip_right": "ZIPCODER"
+                },
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "Prince George's County Planning Department",
+                    "share-alike": false,
+                    "remarks": "https://gisdata.pgplanning.org/opendata/"
                 }
             }
         ]
