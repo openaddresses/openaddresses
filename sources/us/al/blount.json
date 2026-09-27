@@ -14,33 +14,62 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://web2.kcsgis.com/kcsgis/rest/services/Blount/Public/MapServer/32",
+                "data": "https://services5.arcgis.com/MXVrt4nfGKuC8vSj/ArcGIS/rest/services/BlountBuildings/FeatureServer/0",
+                "website": "https://www.blount911.org/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "AL08_CAMA_dbo_vw_Parcel_CAMA_SitusAddNumber",
-                    "street": "AL08_CAMA_dbo_vw_Parcel_CAMA_SitusAddName"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "city": "COMMUNITY",
+                    "postcode": "ZIP"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Blount County Communications District",
+                    "presumed": true,
+                    "remarks": "https://www.blount911.org/"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://web2.kcsgis.com/kcsgis/rest/services/Blount/Public/MapServer/32",
+                "data": "https://al08portal.kcsgis.com/al08server/rest/services/Blount_Public_ISV/MapServer/32",
+                "website": "https://blountrevenue.com/mapping/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "pid": "ParcelNumber"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Blount County Revenue Commissioner",
+                    "presumed": true,
+                    "remarks": "https://blountrevenue.com/mapping/"
                 }
             }
         ],
         "buildings": [
             {
                 "name": "county",
-                "data": "https://web2.kcsgis.com/kcsgis/rest/services/Blount/Public/MapServer/38",
+                "data": "https://services5.arcgis.com/MXVrt4nfGKuC8vSj/ArcGIS/rest/services/BlountBuildings/FeatureServer/0",
+                "website": "https://www.blount911.org/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Blount County Communications District",
+                    "presumed": true,
+                    "remarks": "https://www.blount911.org/"
                 }
             }
         ]
