@@ -14,20 +14,37 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.okc.gov/arcgis/rest/services/Accela/AGIS_PPLS_DEV/MapServer/0",
+                "data": "https://services8.arcgis.com/euhkr1dAJeQBIjV0/arcgis/rest/services/TaxParcelsPublics_view/FeatureServer/0",
+                "website": "https://ok-county-gis-hub-ok-co.hub.arcgis.com/datasets/Ok-Co::tax-parcels-public",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Oklahoma County Assessor",
+                    "presumed": true
+                },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": [
-                        "ADDRESS",
-                        "ADDRESS2"
-                    ],
-                    "street": [
-                        "ST_PRE",
-                        "ST_NAME",
-                        "ST_TYPE"
-                    ],
-                    "unit": "UNIT"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "location"
+                    },
+                    "street": {
+                        "function": "chain",
+                        "variable": "street_wip",
+                        "functions": [
+                            {
+                                "function": "postfixed_street",
+                                "field": "location"
+                            },
+                            {
+                                "function": "remove_postfix",
+                                "field": "oa:street_wip",
+                                "field_to_remove": "locationcity"
+                            }
+                        ]
+                    },
+                    "city": "locationcity",
+                    "postcode": "zipcode"
                 }
             }
         ]
