@@ -14,42 +14,59 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_co_rice/loc_addresses/shp_loc_addresses.zip",
-                "protocol": "http",
-                "compression": "zip",
-                "website": "https://gisdata.mn.gov/dataset/us-mn-co-rice-loc-addresses",
+                "data": "https://asr-arcgis01.ricecountymn.gov/arcgis/rest/services/Maps/Address/MapServer/0",
+                "protocol": "ESRI",
+                "website": "https://www.arcgis.com/home/item.html?id=3001c2722c9c4d12bf80c7f09aac8b13",
                 "conform": {
-                    "number": "STNUM",
-                    "street": "STREET",
-                    "unit": "UNIT_NO",
-                    "city": "CITY",
-                    "postcode": "ZIPCODE",
-                    "format": "shapefile"
+                    "format": "geojson",
+                    "number": "ANUMBER",
+                    "street": ["ST_NAME", "ST_POS_TYP", "ST_POS_DIR"],
+                    "unit": "UNIT",
+                    "city": "POSTCOMM",
+                    "postcode": "ZIP"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Rice County GIS",
+                    "presumed": true,
+                    "remarks": "https://www.arcgis.com/home/item.html?id=3001c2722c9c4d12bf80c7f09aac8b13"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_co_rice/plan_parcels/shp_plan_parcels.zip",
-                "protocol": "http",
-                "compression": "zip",
-                "website": "https://gisdata.mn.gov/dataset/us-mn-co-rice-plan-parcels",
+                "data": "https://asr-arcgis01.ricecountymn.gov/arcgis/rest/services/Maps/TaxParcels/MapServer/1",
+                "protocol": "ESRI",
+                "website": "https://www.arcgis.com/home/item.html?id=d79e1a5432e44980877703f5371a1a70",
                 "conform": {
-                    "pid": "PARCELID",
-                    "format": "shapefile"
+                    "format": "geojson",
+                    "pid": "Name"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Rice County",
+                    "presumed": true,
+                    "remarks": "https://www.arcgis.com/home/item.html?id=d79e1a5432e44980877703f5371a1a70"
                 }
             }
         ],
         "buildings": [
             {
                 "name": "county",
-                "data": "https://resources.gisdata.mn.gov/pub/gdrs/data/pub/us_mn_co_rice/struc_buildingfootprints/shp_struc_buildingfootprints.zip",
-                "protocol": "http",
-                "compression": "zip",
-                "website": "https://gisdata.mn.gov/dataset/us-mn-co-rice-struc-buildingfootprints",
+                "skip": true,
+                "note": "Service advertises esriGeometryPolygon but returns no geometry for any feature (confirmed via esridump-equivalent query and the ArcGIS Hub bulk-export pipeline in both GeoJSON and Shapefile formats); a sibling layer on the same server with identical query params returns valid geometry, ruling out a client-side or CRS issue. No alternative building footprint source found for Rice County (old statewide gisdata.mn.gov export is also 404). See PR #9047 and issue #9045 for the full investigation.",
+                "data": "https://asr-arcgis01.ricecountymn.gov/arcgis/rest/services/Maps/BuildingFootprints/MapServer/0",
+                "protocol": "ESRI",
+                "website": "https://www.arcgis.com/home/item.html?id=67d6d26fc68247eda56c4ab3f2496baa",
                 "conform": {
-                    "format": "shapefile"
+                    "format": "geojson"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Rice County GIS",
+                    "presumed": true,
+                    "remarks": "https://www.arcgis.com/home/item.html?id=67d6d26fc68247eda56c4ab3f2496baa"
                 }
             }
         ]
