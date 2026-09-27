@@ -3,20 +3,26 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                72.7795,
+                -72.7795,
                 41.6612
             ]
         },
         "country": "us",
         "state": "ct",
-        "city": "New Britain"
+        "city": "New Britain",
+        "US Census": {
+            "geoid": "0950370",
+            "name": "New Britain city",
+            "state": "Connecticut"
+        }
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "city",
-                "data": "https://server1.mapxpress.net:6080/arcgis/rest/services/New_Britain/Active/MapServer/22",
+                "data": "https://server1.mapxpress.net/arcgis/rest/services/New_Britain/Active/MapServer/22",
+                "website": "https://newbritain.mapxpress.net/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -24,17 +30,12 @@
                     "number": "House_Number",
                     "street": "FullStreetName",
                     "postcode": "ZipCode"
-                }
-            }
-        ],
-        "parcels": [
-            {
-                "name": "city",
-                "data": "https://server1.mapxpress.net:6080/arcgis/rest/services/New_Britain/Basemap/MapServer/13",
-                "protocol": "ESRI",
-                "conform": {
-                    "format": "geojson",
-                    "pid": "GIS_LINK"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "City of New Britain, CT",
+                    "presumed": true,
+                    "remarks": "https://newbritain.mapxpress.net/pages/datadownloads.html"
                 }
             }
         ]
