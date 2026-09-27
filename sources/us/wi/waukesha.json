@@ -14,42 +14,50 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis2.waukcogeo.com/server/rest/services/E911/MapServer/10",
+                "data": "https://gis.waukeshacounty.gov/host/rest/services/NG911_Features/FeatureServer/4",
+                "website": "https://www.waukeshacounty.gov/parks-and-land-use/land-information-system/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "StreetNumber",
-                    "street": [
-                        "PrefixDir",
-                        "RoadName",
-                        "RoadType",
-                        "SuffixDir"
-                    ],
+                    "number": "site_number_full",
+                    "street": "fullname",
                     "unit": [
-                        "UnitType",
-                        "UnitNumber"
+                        "unittype",
+                        "unitnumber"
                     ],
-                    "city": "PostOffice",
-                    "postcode": "ZipCode",
-                    "accuracy": 1
+                    "city": "post_comm",
+                    "postcode": "post_code"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Waukesha County, Wisconsin",
+                    "presumed": true,
+                    "remarks": "https://www.waukeshacounty.gov/parks-and-land-use/land-information-system/"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis2.waukcogeo.com/server/rest/services/Web_Tax_Parcel/FeatureServer/2",
+                "data": "https://gis.waukeshacounty.gov/host/rest/services/Web_Tax_Parcel/FeatureServer/2",
+                "website": "https://www.waukeshacounty.gov/parks-and-land-use/land-information-system/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PIN"
+                    "pid": "TAXKEY"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Waukesha County, Wisconsin",
+                    "presumed": true,
+                    "remarks": "https://www.waukeshacounty.gov/parks-and-land-use/land-information-system/"
                 }
             }
         ],
         "buildings": [
             {
                 "name": "county",
-                "data": "https://gisdata.wisc.edu/public/Waukesha_Buildings_2020.zip",
+                "data": "https://web.s3.wisc.edu/rml-gisdata/Waukesha_Buildings_2020.zip",
                 "website": "https://geodata.wisc.edu/catalog/344D97CD-1476-4CAB-91E9-56877ECF8BE3",
                 "protocol": "http",
                 "compression": "zip",
