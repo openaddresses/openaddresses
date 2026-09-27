@@ -14,31 +14,42 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://ash.bernco.gov/arcgis/rest/services/Public_Advanced/MapServer/140",
+                "data": "https://pdsgismaps.bernco.gov/server/rest/services/BERNCOBASEMAP/County_Address_Points/MapServer/299",
+                "website": "https://www.bernco.gov/planning/gis-overview/map-gallery/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "FULL_NAME"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "FULL_NAME"
-                    },
-                    "city": "PCity",
-                    "postcode": "PZip"
+                    "number": "STREETNUMBER",
+                    "street": [
+                        "STREETNAME",
+                        "STREETDESIGNATION",
+                        "STREETQUADRANT"
+                    ],
+                    "unit": "APARTMENT"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Bernalillo County GIS Technology Section, Planning & Development Services",
+                    "presumed": true,
+                    "remarks": "https://www.bernco.gov/planning/gis-overview/map-gallery/"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://ash.bernco.gov/arcgis/rest/services/Public_Atlas/MapServer/45",
+                "data": "https://pdsgismaps.bernco.gov/server/rest/services/BERNCOBASEMAP/BC_Platted_Parcels/MapServer/245",
+                "website": "https://www.bernco.gov/planning/gis-overview/map-gallery/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "UPC"
+                    "pid": "PIN"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Bernalillo County GIS Technology Section, Planning & Development Services",
+                    "presumed": true,
+                    "remarks": "https://www.bernco.gov/planning/gis-overview/map-gallery/"
                 }
             }
         ]
