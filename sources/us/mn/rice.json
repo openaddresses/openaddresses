@@ -54,6 +54,8 @@
         "buildings": [
             {
                 "name": "county",
+                "skip": true,
+                "note": "Service advertises esriGeometryPolygon but returns no geometry for any feature (confirmed via esridump-equivalent query and the ArcGIS Hub bulk-export pipeline in both GeoJSON and Shapefile formats); a sibling layer on the same server with identical query params returns valid geometry, ruling out a client-side or CRS issue. No alternative building footprint source found for Rice County (old statewide gisdata.mn.gov export is also 404). See PR #9047 and issue #9045 for the full investigation.",
                 "data": "https://asr-arcgis01.ricecountymn.gov/arcgis/rest/services/Maps/BuildingFootprints/MapServer/0",
                 "protocol": "ESRI",
                 "website": "https://www.arcgis.com/home/item.html?id=67d6d26fc68247eda56c4ab3f2496baa",
