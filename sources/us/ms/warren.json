@@ -15,12 +15,25 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://gis3.cmpdd.org/arcgis/rest/services/County/Warren_County/MapServer/4",
+                "data": "https://gis.cmpdd.org/server/rest/services/Hosted/Warren_County_Feature_Layer/FeatureServer/4",
+                "website": "https://gis.cmpdd.org/arcgis/apps/webappviewer/index.html?id=fe704123b7d64b42b3adb3452b267f54",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Warren County, Mississippi",
+                    "presumed": true
+                },
                 "conform": {
                     "format": "geojson",
-                    "accuracy": 2,
-                    "number": "STREET_NUM",
-                    "street": "STREET_NAM"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "siteadd"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "siteadd"
+                    },
+                    "city": "scity",
+                    "postcode": "szip"
                 }
             }
         ],
@@ -28,10 +41,16 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://gis3.cmpdd.org/arcgis/rest/services/County/Warren_County/MapServer/4",
+                "data": "https://gis.cmpdd.org/server/rest/services/Hosted/Warren_County_Feature_Layer/FeatureServer/4",
+                "website": "https://gis.cmpdd.org/arcgis/apps/webappviewer/index.html?id=fe704123b7d64b42b3adb3452b267f54",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Warren County, Mississippi",
+                    "presumed": true
+                },
                 "conform": {
                     "format": "geojson",
-                    "pid": "PPIN"
+                    "pid": "ppin"
                 }
             }
         ]
