@@ -14,16 +14,31 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "https://gis.ny.gov/gisdata/inventories/details.cfm?DSID=1138",
-                "data": "https://gis.cayugacounty.us/arcgis/rest/services/Flexviewer/MapContents/MapServer/1",
+                "website": "https://www.cayugacounty.gov/687/Interactive-GIS",
+                "data": "https://ccgis.cayugacounty.us/arcgis/rest/services/District/AddressPoints/MapServer/100",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "id": "PT_ID",
-                    "number": "HOUSE_NUM",
-                    "street": "STREET",
-                    "unit": "APT_NUM",
-                    "city": "TOWN_NAME"
+                    "id": "OBJECTID_1",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS",
+                        "may_contain_units": true
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "ADDRESS"
+                    },
+                    "city": "TOWN2"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Cayuga County Department of Planning and Economic Development",
+                    "presumed": true
                 }
             }
         ]
