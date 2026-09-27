@@ -14,16 +14,31 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Essex/Essex_WL_P/MapServer/3",
+                "data": "https://services7.arcgis.com/hPGyuBCaFm583AVs/arcgis/rest/services/Addresses20230726/FeatureServer/3",
+                "website": "https://essex-county-virginia-gis-portal-essex-virginia.hub.arcgis.com/datasets/533bc07ee3cb488981e82b0ed2502746",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Essex County, Virginia GIS Office",
+                    "share-alike": false,
+                    "presumed": true,
+                    "remarks": "https://essex-county-virginia-gis-portal-essex-virginia.hub.arcgis.com/datasets/533bc07ee3cb488981e82b0ed2502746"
+                },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "ADDRNUM",
-                    "street": "FULLNAME",
+                    "street": [
+                        "ST_PREDIR",
+                        "FULLNAME",
+                        "ST_POSTYP",
+                        "ST_POSDIR"
+                    ],
                     "unit": [
                         "UNITTYPE",
                         "UNITID"
-                    ]
+                    ],
+                    "city": "MUNICIPALITY",
+                    "postcode": "MSAG"
                 }
             }
         ]
