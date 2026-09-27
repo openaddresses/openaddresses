@@ -22,22 +22,27 @@
             {
                 "name": "city",
                 "website": "https://open-data.bouldercolorado.gov/",
-                "data": "https://maps.bouldercolorado.gov/arcgis/rest/services/plan/AddressPoints/MapServer/0",
+                "data": "https://gis.bouldercolorado.gov/ags_svr1/rest/services/plan/AddressPoints/MapServer/0",
                 "protocol": "ESRI",
-                "attribution": "City of Boulder",
                 "conform": {
                     "format": "geojson",
                     "unit": "UNITID",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "FULLADDR"
-                    },
+                    "number": "ADDRNUM",
                     "street": [
                         "PREDIR",
                         "STREETNAME",
                         "STREETSUFFIX",
                         "POSTDIR"
-                    ]
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP5"
+                },
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC0 1.0 Universal (Public Domain Dedication)",
+                    "attribution": false,
+                    "attribution name": "City of Boulder",
+                    "remarks": "https://open-data.bouldercolorado.gov/datasets/d63e537da54640bd967c2fedc4c99a92_0"
                 }
             }
         ],
@@ -45,12 +50,18 @@
             {
                 "name": "city",
                 "website": "https://open-data.bouldercolorado.gov/",
-                "data": "https://maps.bouldercolorado.gov/arcgis/rest/services/plan/Parcels/MapServer/0",
+                "data": "https://gis.bouldercolorado.gov/ags_svr1/rest/services/plan/Parcels/MapServer/0",
                 "protocol": "ESRI",
-                "attribution": "City of Boulder",
                 "conform": {
                     "format": "geojson",
                     "pid": "PARCELNUM"
+                },
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC0 1.0 Universal (Public Domain Dedication)",
+                    "attribution": false,
+                    "attribution name": "City of Boulder",
+                    "remarks": "https://open-data.bouldercolorado.gov/datasets/51d34a6c5c37405cbee54576c63253ee_0"
                 }
             }
         ],
@@ -58,11 +69,17 @@
             {
                 "name": "city",
                 "website": "https://open-data.bouldercolorado.gov/",
-                "data": "https://maps.bouldercolorado.gov/arcgis/rest/services/general/BuildingFootprints/MapServer/0",
+                "data": "https://gis.bouldercolorado.gov/ags_svr3/rest/services/pw/BuildingFootprints/MapServer/0",
                 "protocol": "ESRI",
-                "attribution": "City of Boulder",
                 "conform": {
                     "format": "geojson"
+                },
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC0 1.0 Universal (Public Domain Dedication)",
+                    "attribution": false,
+                    "attribution name": "City of Boulder",
+                    "remarks": "https://open-data.bouldercolorado.gov/datasets/0d43652d038a4a0dbca68f0501151bb0_0"
                 }
             }
         ]
