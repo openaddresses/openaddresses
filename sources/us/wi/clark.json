@@ -1,36 +1,35 @@
 {
     "coverage": {
         "US Census": {
-            "geoid": "55017",
-            "name": "Chippewa County",
+            "geoid": "55019",
+            "name": "Clark County",
             "state": "Wisconsin"
         },
         "country": "us",
         "state": "wi",
-        "county": "Chippewa"
+        "county": "Clark"
     },
     "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "https://filecloud.co.clark.wi.us/core/downloadfile?disposition=attachment&filename=Addr3_23.zip&filepath=%2FSHARED%2Fmorrellc%2FGIS%20Data%2FAddr3_23.zip&redirect=1&checkonly=1",
-                "website": "https://filecloud.co.clark.wi.us/url/CountyGISdata",
-                "protocol": "http",
-                "compression": "zip",
-                "year": "2023",
+                "data": "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Addresses_Clark_County_WI_2019/FeatureServer/0",
+                "website": "https://www.arcgis.com/home/item.html?id=950ca2a637cc431a9b89d6901d948a96",
+                "protocol": "ESRI",
+                "year": "2019",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "number": "NUMBER_1",
-                    "street": {
-                        "function": "remove_prefix",
-                        "field": "Address",
-                        "field_to_remove": "ADDRNUM"
-                    },
-                    "unit": "Unit",
+                    "street": "NAME",
                     "city": "City",
-                    "region": "State",
                     "postcode": "Zip"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Clark County Planning, Zoning, and Land Information",
+                    "presumed": true,
+                    "remarks": "https://www.arcgis.com/home/item.html?id=950ca2a637cc431a9b89d6901d948a96"
                 }
             }
         ],
@@ -51,7 +50,7 @@
         "buildings": [
             {
                 "name": "county",
-                "data": "https://gisdata.wisc.edu/public/Clark_Buildings_2020.zip",
+                "data": "https://web.s3.wisc.edu/rml-gisdata/Clark_Buildings_2020.zip",
                 "website": "https://geodata.wisc.edu/catalog/67315C46-0A56-459A-B100-04832CD90826",
                 "protocol": "http",
                 "compression": "zip",
@@ -59,6 +58,12 @@
                 "conform": {
                     "format": "gdb",
                     "layer": "Clark_Buildings_2020"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Clark County",
+                    "presumed": true,
+                    "remarks": "https://geodata.wisc.edu/catalog/67315C46-0A56-459A-B100-04832CD90826"
                 }
             }
         ],
