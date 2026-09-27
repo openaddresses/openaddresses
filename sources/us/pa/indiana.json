@@ -14,19 +14,24 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "https://www.pasda.psu.edu",
-                "data": "https://www.pasda.psu.edu/download/indianacounty/IndianaCountyParcels201912.zip",
-                "note": "Dataset appears to be from 2019.",
-                "protocol": "http",
+                "website": "https://www.pasda.psu.edu/uci/DataSummary.aspx?dataset=1943",
+                "data": "https://mapservices.pasda.psu.edu/server/rest/services/pasda/IndianaCounty/MapServer/5",
+                "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Indiana County, Pennsylvania",
+                    "presumed": true,
+                    "remarks": "https://www.pasda.psu.edu/uci/DataSummary.aspx?dataset=1943"
+                },
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "number": {
                         "function": "prefixed_number",
-                        "field": "combined_s"
+                        "field": "COMBINED_S"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "combined_s"
+                        "field": "COMBINED_S"
                     }
                 }
             }
@@ -34,13 +39,40 @@
         "parcels": [
             {
                 "name": "county",
-                "website": "https://www.pasda.psu.edu",
-                "data": "https://www.pasda.psu.edu/download/indianacounty/IndianaCountyParcels201912.zip",
-                "note": "Dataset appears to be from 2019.",
-                "protocol": "http",
+                "website": "https://www.pasda.psu.edu/uci/DataSummary.aspx?dataset=1943",
+                "data": "https://mapservices.pasda.psu.edu/server/rest/services/pasda/IndianaCounty/MapServer/5",
+                "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Indiana County, Pennsylvania",
+                    "presumed": true,
+                    "remarks": "https://www.pasda.psu.edu/uci/DataSummary.aspx?dataset=1943"
+                },
                 "conform": {
-                    "format": "shapefile",
-                    "pid": "parcel_id"
+                    "format": "geojson",
+                    "pid": "PARCEL_ID"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "website": "https://www.pasda.psu.edu/uci/DataSummary.aspx?dataset=1948",
+                "data": "https://mapservices.pasda.psu.edu/server/rest/services/pasda/IndianaCounty/MapServer/0",
+                "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Indiana County, Pennsylvania",
+                    "presumed": true,
+                    "remarks": "https://www.pasda.psu.edu/uci/DataSummary.aspx?dataset=1948"
+                },
+                "conform": {
+                    "format": "geojson",
+                    "name": "STREET",
+                    "addr_from_left": "CLOW_LEFT",
+                    "addr_to_left": "CHIGH_LEFT",
+                    "addr_from_right": "CLOW_RT",
+                    "addr_to_right": "CHIGH_RT"
                 }
             }
         ]
