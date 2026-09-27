@@ -21,29 +21,37 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://macgisworx.ci.mcminnville.or.us/mac_or/rest/services/Hosted/Address_Points/FeatureServer/4",
-                "website": "https://macgisworx.ci.mcminnville.or.us/cityofmcminnville/home/item.html?id=0630f1dc43d24c979379390a07e66ab2",
+                "data": "https://macgisworx.ci.mcminnville.or.us/mac_or/rest/services/Hosted/Addresses/FeatureServer/2",
+                "website": "https://macgisworx.ci.mcminnville.or.us/cityofmcminnville/home/item.html?id=2385cef52cf24d119b98d5d90279f263",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "City of McMinnville",
+                    "presumed": true,
+                    "remarks": "https://www.mcminnvilleoregon.gov/engineering/page/gis-and-mapping"
+                },
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "situs"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "situs"
-                    },
-                    "unit": "unit"
+                    "number": "housenum",
+                    "street": ["directional", "streetname", "streettype"],
+                    "unit": "unit",
+                    "city": "city",
+                    "postcode": "zipcode"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "city",
-                "data": "https://macgisworx.ci.mcminnville.or.us/mac_or/rest/services/Hosted/Taxlots/FeatureServer/271",
-                "website": "https://macgisworx.ci.mcminnville.or.us/cityofmcminnville/home/item.html?id=947a5704fc85473c8bd25459732bc105",
+                "data": "https://macgisworx.ci.mcminnville.or.us/mac_or/rest/services/Hosted/main_Tax_Lot_Lines/FeatureServer/0",
+                "website": "https://macgisworx.ci.mcminnville.or.us/cityofmcminnville/home/item.html?id=be0bda04d3834c7aad22e4725b9dfc55",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "City of McMinnville",
+                    "presumed": true,
+                    "remarks": "https://www.mcminnvilleoregon.gov/engineering/page/gis-and-mapping"
+                },
                 "conform": {
                     "format": "geojson",
                     "pid": "acad_text"
@@ -53,9 +61,15 @@
         "buildings": [
             {
                 "name": "city",
-                "data": "https://macgisworx.ci.mcminnville.or.us/mac_or/rest/services/Hosted/Building_Footprints_2024/FeatureServer/0",
-                "website": "https://macgisworx.ci.mcminnville.or.us/cityofmcminnville/home/item.html?id=b45a22ae96584f478d84947a6232a964",
+                "data": "https://macgisworx.ci.mcminnville.or.us/mac_or/rest/services/Hosted/Building_Footprints_2020/FeatureServer/114",
+                "website": "https://macgisworx.ci.mcminnville.or.us/cityofmcminnville/home/item.html?id=77850ea5fbde403ea66a5818f1c34211",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "City of McMinnville",
+                    "presumed": true,
+                    "remarks": "https://www.mcminnvilleoregon.gov/engineering/page/gis-and-mapping"
+                },
                 "conform": {
                     "format": "geojson"
                 }
