@@ -21,19 +21,20 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Williamsburg/Williamsburg_WL_P/MapServer/1",
+                "data": "https://services1.arcgis.com/96Dq0JXOtjNW10pz/arcgis/rest/services/Addresses/FeatureServer/0",
+                "website": "https://gis-williamsburg.hub.arcgis.com/datasets/Williamsburg::addresses",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "P_Address"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "P_Address"
-                    },
-                    "unit": "NUMBSFX"
+                    "number": "StrtNum",
+                    "street": ["StPfx", "StrtName", "StrtType"],
+                    "postcode": "Zip"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "City of Williamsburg, Virginia",
+                    "presumed": true,
+                    "remarks": "https://gis-williamsburg.hub.arcgis.com/datasets/Williamsburg::addresses"
                 }
             }
         ]
