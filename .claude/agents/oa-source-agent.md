@@ -94,6 +94,8 @@ Match the error against REVIEW.md's "Common failure patterns" table (renamed/del
 - Check whether the host requires a specific `User-Agent` header to avoid bot-blocking — a plain 401/403 with no clear auth reason can sometimes be fixed with a `request.headers.User-Agent` override in the conform (see `sources/us/il/champaign.json` and `sources/us/ut/utah.json` for the pattern). Try this before giving up.
 - Check whether a *different, currently-succeeding* layer on the exact same server (e.g. `parcels` in the same source file) is completing with its full real feature count via the batch API (`curl -s "https://batch.openaddresses.io/api/job/<id>"` and look at `count`). If a sibling layer is fine, the server itself is healthy and esridump likely has a working pagination strategy even if a quick manual `curl`/`resultOffset` test seems to fail — don't treat your own manual test as stronger evidence than real production job history.
 
+**Very large sources (millions of features, e.g. most statewide files) can time out in the batch pipeline even when the fix is completely correct.** A confirmed-correct statewide fix once got killed by the job runner partway through (reached ~22% of 3.76M records after 1h40m of steady pagination) — the job showed `Fail`, but the log showed no data or URL error, just the run getting cut off mid-pagination. If you fix a very large source and its `data-please` bot comment doesn't appear for a long time, check the job directly (`curl -s "https://batch.openaddresses.io/api/job?source=..."`) before assuming the fix is wrong — a `Fail` with a clean partial-pagination log and no other error is a pipeline/timeout limitation to note in the tracking issue, not evidence to revert your change.
+
 ---
 
 ### Step 4 — Find the Data
@@ -137,14 +139,27 @@ Common US ones: Wisconsin `geodata.wisc.edu`, California `gis.data.ca.gov`, Minn
 
 The single most common mistake: a service that *looks* right (right name, one sample record with the right city/county) turns out to be a different jurisdiction entirely, or a regional/multi-jurisdiction dataset with no way to filter it down. This has bitten real fixes: a "Lancaster"-sounding layer that was actually Chester County; a Terrebonne-looking layer that was actually Tangipahoa; a shared regional consortium layer (e.g. INCOG, ACOG) mixing five counties together; a city's "joint 911" layer that includes several surrounding towns.
 
+**A service's own name, folder, or `description`/`serviceDescription` metadata is not evidence — it's frequently stale or just wrong.** These get cloned from whatever map-document template the county's GIS vendor started from and never get corrected: a real fix used a layer whose `serviceDescription` read "Mellette Web Viewer" when the data was actually Jackson County's; another rejected a same-server "Building_Footprints" layer that *looked* like the obvious upgrade but covered a 30-mile regional extent, not the city. Always verify against the actual data (extent, distinct-value breakdown, sample records) — never against what the service calls itself.
+
 Before writing the conform, do at least one of:
 - Check the total feature count is sane for a single jurisdiction of this size (a few hundred thousand for a big county is fine; hundreds of thousands to millions on a "city" layer is a red flag).
 - Query a value that should return zero for this jurisdiction (e.g. `where=CITY<>'Expected City'` or `where=COUNTY='Some Neighboring County'`) and confirm the count is 0 or negligible border noise.
 - Pull a `groupBy`/distinct-values breakdown of the jurisdiction field and confirm it matches only the target area.
 
+**Why "can't be filtered" is a real dead end, not just an inconvenience:** the batch pipeline's ESRI downloader (`esridump`) always queries with `where=1=1` — there is no supported way to pass a custom `where` clause through the OA schema's ESRI protocol, and a raw `http`+`geojson` single-shot fetch against the same service is capped by the server's own `maxRecordCount` (typically 1000–2000 records per request), far short of a real county's row count. So if a dataset covers the right area only alongside several others with no clean way to carve out just yours, it cannot be safely ingested at all — not with a smaller/partial pull, not with a query-string workaround. Confirm this rather than assuming it (check the OA schema docs and, if you want to be sure, `esridump`'s own source) before ruling a lead out on this basis.
+
 If the dataset can't be filtered and doesn't cleanly match, treat it the same as "no replacement found" — do not use it, even if it was the only lead.
 
-#### 4g. If this ends with no usable replacement
+#### 4g. If you need to find a host you don't already know about
+
+Beyond ArcGIS Online search (4b), web search (4c), and state clearinghouses (4d), a crowd-sourced index of already-crawled ArcGIS servers is available at `https://cloudflare-esri-indexer.93b6cf.workers.dev`:
+- `GET /api/search?q=<text>&bbox=<xmin,ymin,xmax,ymax>` — keyword/location search across ~300k indexed services and their layers.
+- `GET /api/servers?page=N` — lists indexed servers (base URL, service count).
+- `POST /api/servers` with `{"urls": ["https://host/arcgis/rest/services | optional name"]}` submits a new host to crawl — useful for indexing a specific server you already suspect but that isn't crawled yet. Crawling is async (a submitted host may show `status: "queued"` for a while) — don't block waiting on it, but check back once if time allows.
+
+This is a supplement to, not a replacement for, checking the jurisdiction's own likely domain directly — it's most useful when a host is entirely gone and you have no lead on where its data moved to.
+
+#### 4h. If this ends with no usable replacement
 
 Note it and move on for now — you'll write this up in the per-geography tracking issue in Step 10, which runs regardless of outcome (fix found, no fix found, or new source added). Don't open a no-op PR for a dead end; Step 10 is where that gets recorded.
 
@@ -211,6 +226,8 @@ Follow this in order, and stop as soon as you have a verified answer:
    - **Never set `attribution: true` without an `attribution name`** — if you don't know who to credit, you haven't actually finished this step.
 5. **Reject the source, don't guess favorably, when you find an actual restriction**: "no repackaging/reselling," "internal use only," a paywall/registration gate, or explicit non-commercial-only terms mean the source is excluded outright (see `bad-license` / `Paid Source` / `prohibitive` in the Decision Guide) — don't rationalize past a restriction you've actually read because the geometry itself looked usable.
 6. **When the terms are genuinely ambiguous or conflicting, don't pick the reading that lets you proceed** — flag it explicitly in the PR body or tracking issue for a maintainer to decide, per the "License is unclear" row below.
+   - **Before flagging it as a fresh judgment call, check for precedent.** Search closed issues and other source files for the same jurisdiction, the same GIS vendor/hosting platform, or the same "type" of ambiguity (e.g. a site-wide ToS restriction vs. a GIS-specific disclaimer) — a maintainer may have already reasoned through the identical tension once (e.g. a county's data being reused despite a paid-product listing, on the grounds that facts published without a click-wrap aren't restricted). Reusing a documented precedent is stronger and faster than re-litigating from scratch, but always say in the PR/issue that you're following a specific precedent (name it) rather than presenting it as newly settled.
+   - **If your search turns up the *repo* being inconsistent with itself** — e.g. one live source carries language you'd otherwise treat as disqualifying, while this task's candidate with near-identical language would get rejected — don't silently resolve it either way. Flag the inconsistency itself, by name (which existing source, what language), so a maintainer can decide the actual policy once rather than each source drifting toward whatever the agent visiting it that day happened to conclude.
 7. **When multiple layers in the same source file pull from the same underlying dataset/service** (e.g. `addresses` derived from the same parcels layer as `parcels` itself), repeat the identical `license` object on each layer entry — there's no source-level or shared `license` field in the schema, so this duplication is expected and correct, not a sign you did something wrong.
 
 ---
