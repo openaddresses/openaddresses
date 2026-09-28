@@ -12,20 +12,26 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "https://gis2.erie.gov/HTML5/ErieCountyNY/",
-                "data": "https://gis2.erie.gov/arcgis/rest/services/ErieCountyNY/MapServer/2",
+                "website": "https://www3.erie.gov/gis/",
+                "data": "https://gis.erie.gov/server/rest/services/MGOConnect/AddressPoints_Basemap/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "id": "PIN",
-                    "street": "ADDNAME",
-                    "number": "ADDNUM",
-                    "city": "CITYTOWN",
-                    "postcode": [
-                        "ZIP",
-                        "ZIP4"
-                    ],
-                    "accuracy": 2
+                    "number": "AddressNumber",
+                    "street": {
+                        "function": "regexp",
+                        "field": "AddressLabel",
+                        "pattern": "^[0-9]+\\s+([^\\r]+)",
+                        "replace": "$1"
+                    },
+                    "city": "CityTownName",
+                    "postcode": "ZipCode"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Erie County Office of Geographic Information Services (OGIS)",
+                    "presumed": true,
+                    "remarks": "https://www3.erie.gov/gis/"
                 }
             }
         ]
