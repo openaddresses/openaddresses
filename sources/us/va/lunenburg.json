@@ -14,18 +14,22 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Lunenburg/Lunenburg_WL_P/MapServer/1",
+                "data": "https://services.arcgis.com/4fG3YBzBoefRGq66/arcgis/rest/services/Lunenburg_MapInsights_Prod/FeatureServer/0",
+                "website": "https://www.arcgis.com/home/item.html?id=48563e543d044778a6300041687a913c",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "ParcelAddress1"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "ParcelAddress1"
-                    }
+                    "number": "ADDRESS",
+                    "street": "STREET_NAME_FULL",
+                    "unit": "SUB_ADDRESS_UNIT",
+                    "city": "CITY",
+                    "postcode": "ZIP"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Timmons Group; Lunenburg County, VA",
+                    "presumed": true,
+                    "remarks": "https://www.arcgis.com/home/item.html?id=48563e543d044778a6300041687a913c"
                 }
             }
         ]
