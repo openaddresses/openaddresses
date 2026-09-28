@@ -14,16 +14,24 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://secure.boonecountygis.com/server/rest/services/Address_Points/MapServer/0",
+                "data": "https://secure.boonecountygis.com/server/rest/services/Addresses/MapServer/0",
+                "website": "https://www.boonecountygis.com/",
                 "protocol": "ESRI",
-                "attribution": "GIS Services Division, Boone County Planning Commission",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "GIS Services Division, Boone County Planning Commission",
+                    "presumed": true,
+                    "remarks": "https://www.boonecountygis.com/"
+                },
                 "conform": {
                     "format": "geojson",
                     "number": "SITENUM",
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "SITEADD1"
-                    },
+                    "street": [
+                        "STRPREFIX",
+                        "STRNAME",
+                        "STRTYPE",
+                        "STRSUFFIX"
+                    ],
                     "unit": "SITEADD2",
                     "city": "CITYNAME",
                     "postcode": "SITEZIP",
