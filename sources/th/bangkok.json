@@ -1,0 +1,56 @@
+{
+    "coverage": {
+        "country": "th",
+        "state": "bangkok",
+        "ISO 3166": {
+            "alpha2": "TH-10",
+            "country": "Thailand",
+            "subdivision": "Bangkok"
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://cpudgiapp.bangkok.go.th/arcgis/rest/services/HID/Survey_Basemap/MapServer/1",
+                "website": "https://cpudgiapp.bangkok.go.th/arcgis/rest/services/HID/Survey_Basemap/MapServer",
+                "license": "Unknown",
+                "year": 2026,
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "BL_HOUSENUM",
+                    "street": "BL_ROAD",
+                    "city": {
+                        "function": "constant",
+                        "value": "Bangkok"
+                    },
+                    "district": "BL_DISTRICT",
+                    "postcode": "BL_POSTCODE",
+                    "id": "OBJECTID",
+                    "size": "large",
+                    "notes": "Source layer is อาคาร ปัจจุบัน (Current Buildings) from Bangkok Metropolitan Administration's internal house-ID survey (HID/Survey_Basemap, layer 1). Only ~43% of records have BL_HOUSENUM and ~31% have BL_ROAD filled (~29% have both); BL_ADDRESS (not mapped here) carries a full-text address for ~99.99% of rows if richer coverage is needed via custom parsing later. A subset of this dataset's polygons are unusually expensive for the source server to serialize (single pages of 200 records have been observed taking 60-140+ seconds), so a full pull needs a generous timeout/retry policy."
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "state",
+                "data": "https://cpudgiapp.bangkok.go.th/arcgis/rest/services/HID/Survey_Basemap/MapServer/1",
+                "website": "https://cpudgiapp.bangkok.go.th/arcgis/rest/services/HID/Survey_Basemap/MapServer",
+                "license": "Unknown",
+                "year": 2026,
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "height": "BL_HEIGHT",
+                    "levels": "BL_NSTOREY",
+                    "size": "large",
+                    "notes": "Same source service as the addresses layer; building footprint polygons for the whole city. See the addresses layer notes about server-side pagination slowness for a subset of records."
+                }
+            }
+        ]
+    }
+}
