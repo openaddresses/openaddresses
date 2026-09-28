@@ -2,7 +2,7 @@
     "coverage": {
         "country": "ca",
         "state": "on",
-        "city": "West Parry Sound",
+        "county": "West Parry Sound District",
         "geometry": {
             "type": "Point",
             "coordinates": [
@@ -15,21 +15,24 @@
     "layers": {
         "addresses": [
             {
-                "name": "city",
-                "data": "https://www.wpsgn.ca/arcgis/rest/services/WPSGN/WPSGN_Layers/MapServer/6",
-                "website": "https://www.wpsgn.ca/website/seguin.html",
+                "name": "county",
+                "data": "https://www.wpsgn.ca/s22/rest/services/NG911/NG911/FeatureServer/9112",
+                "website": "https://www.wpsgn.ca/opendata",
                 "license": {
-                    "url": "https://wpsgn.ca/OpenGovernmentLicense%E2%80%93TownshipofTheArchipelago.pdf",
-                    "text": "Contains information licensed under the Open Government License – Township of The Archipelago.",
+                    "url": "https://www.wpsgn.ca/ogl",
+                    "text": "Contains information licensed under the Open Government License – West Parry Sound Geography Network (WPSGN) / Township of The Archipelago.",
                     "attribution": true,
+                    "attribution name": "West Parry Sound Geography Network (WPSGN)",
                     "share-alike": false
                 },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "CivicNumber",
-                    "street": "CivicAddress",
-                    "city": "Municipality"
+                    "number": "add_num",
+                    "street": "name_body",
+                    "unit": "unitnumber",
+                    "city": "municipality",
+                    "postcode": "postalcode"
                 }
             }
         ]
