@@ -21,20 +21,22 @@
                     "email": "planning_department@co.delaware.pa.us",
                     "address": "1055 E. Baltimore Pike, Media, PA 19063"
                 },
-                "website": "https://www.delcopa.gov/planning/mapping/gisdatalayers.html",
-                "data": "https://dcgis.co.delaware.pa.us/arcgis/rest/services/Hosted/Parcels_Public/FeatureServer/0",
+                "website": "https://www.delcopa.gov/odmi",
+                "data": "https://gis.delcopa.gov/arcgis/rest/services/DataLayers_911/Site_Structure_Address_Points/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "site_address"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "site_address"
-                    },
-                    "id": "pin"
+                    "number": "Add_Number",
+                    "street": ["St_PreDir", "St_Name", "St_PosTyp", "St_PosDir"],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Delaware County Emergency Services",
+                    "presumed": true,
+                    "remarks": "https://gisdata-delco.hub.arcgis.com/maps/319c975ff74d465abf8df89c3f4e6ef2"
                 }
             }
         ]
