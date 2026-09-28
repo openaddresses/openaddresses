@@ -14,8 +14,15 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.semogis.com/arcgis/rest/services/ScottCo/ScottAssess/MapServer/0",
+                "data": "https://maps.semogis.com/server/rest/services/Scott_CO/ScottCo_Assessment/MapServer/0",
+                "website": "https://semogis.com/maps/scott-county/",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Scott County Assessor / SEMO Regional Planning Commission",
+                    "presumed": true,
+                    "remarks": "https://semogis.com/maps/scott-county/"
+                },
                 "conform": {
                     "format": "geojson",
                     "number": {
@@ -30,7 +37,9 @@
                     "unit": {
                         "function": "postfixed_unit",
                         "field": "SITE_ADDRESS"
-                    }
+                    },
+                    "city": "SITE_CITY",
+                    "postcode": "SITE_ZIP"
                 }
             }
         ]
