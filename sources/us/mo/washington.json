@@ -14,13 +14,28 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.semogis.com/ArcGIS/rest/services/WashCo/WashAssess/MapServer/0",
+                "data": "https://maps.semogis.com/server/rest/services/Washington_CO/WashingtonCo_911/MapServer/0",
+                "website": "https://semogis.com/maps/washington-county-missouri/",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Washington County 911 / SEMO Regional Planning Commission",
+                    "presumed": true,
+                    "remarks": "https://semogis.com/maps/washington-county-missouri/"
+                },
                 "conform": {
-                    "id": "PIN",
-                    "street": "ADDRESS",
-                    "number": "HOUSENUM",
-                    "format": "geojson"
+                    "format": "geojson",
+                    "id": "ID",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "ADDRESS"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "ADDRESS"
+                    },
+                    "city": "CITY",
+                    "postcode": "ZIPCODE"
                 }
             }
         ]
