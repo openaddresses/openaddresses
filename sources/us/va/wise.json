@@ -14,19 +14,23 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.webgis.net/arcgis/rest/services/VA/WiseCo_WebGIS/MapServer/2",
+                "data": "https://services7.arcgis.com/Ae2apjWUMm5bph7e/arcgis/rest/services/Site_Address_Points/FeatureServer/0",
+                "website": "https://www.wisecounty.org/275/GIS-E911",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "FULLADDR"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "FULLADDR"
-                    },
-                    "unit": "UNIT"
+                    "number": "Add_Number",
+                    "street": ["St_PreDir", "St_Name", "St_PosTyp", "St_PosDir"],
+                    "unit": "Unit",
+                    "city": "City",
+                    "postcode": "Postal"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Wise County GIS/E911",
+                    "share-alike": false,
+                    "presumed": true,
+                    "remarks": "https://www.wisecounty.org/275/GIS-E911"
                 }
             }
         ]
