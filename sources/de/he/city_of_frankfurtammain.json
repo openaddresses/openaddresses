@@ -30,23 +30,13 @@
                 "conform": {
                     "format": "csv",
                     "csvsplit": ";",
-                    "srs": "EPSG:25832",
+                    "srs": "EPSG:4647",
                     "city": "Postalischer Ortsname",
                     "street": "(Unverschlüsselter) Straßenname",
                     "number": "Hausnummer",
                     "postcode": "Postleitzahl",
-                    "lon": {
-                        "function": "regexp",
-                        "field": "Koordinatenwert ETRS89/UTM East-Wert der UTM-Koordinate",
-                        "pattern": "^32([0-9]+),?([0-9]*)$",
-                        "replace": "$1.$2"
-                    },
-                    "lat": {
-                        "function": "regexp",
-                        "field": "Koordinatenwert ETRS89/UTM North-Wert der UTM-Koordinate",
-                        "pattern": "^([0-9]+),?([0-9]*)$",
-                        "replace": "$1.$2"
-                    }
+                    "lon": "Koordinatenwert ETRS89/UTM East-Wert der UTM-Koordinate",
+                    "lat": "Koordinatenwert ETRS89/UTM North-Wert der UTM-Koordinate"
                 }
             }
         ]
