@@ -22,17 +22,22 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://gis.wpb.org/arcgis/rest/services/BaseMap/Site_Addresses/MapServer/0",
+                "data": "https://wpbgisportal.wpb.org/server/rest/services/Address/Address_Points/FeatureServer/0",
+                "website": "https://gisportal-wpbgis.opendata.arcgis.com/datasets/wpbgis::address-points",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "id": "SITEADDID",
                     "number": [
-                        "PREADDRNUM",
                         "ADDRNUM",
                         "ADDRNUMSUF"
                     ],
-                    "street": "FULLNAME",
+                    "street": [
+                        "ROADPREDIR",
+                        "STREETNAME",
+                        "ROADTYPE",
+                        "ROADPOSTDI"
+                    ],
                     "unit": [
                         "UNITTYPE",
                         "UNITID"
@@ -40,6 +45,12 @@
                     "city": "MUNICIPALITY",
                     "region": "STATE",
                     "postcode": "ZIP_CODE"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "City of West Palm Beach",
+                    "presumed": true,
+                    "remarks": "https://gisportal-wpbgis.opendata.arcgis.com/datasets/wpbgis::address-points"
                 }
             }
         ]
