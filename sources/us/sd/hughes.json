@@ -14,17 +14,27 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.districtiii.org/arcgis/rest/services/HUGHES_LAYERS/MapServer/16",
+                "data": "https://gis.districtiii.org/server/rest/services/HUGHES_COUNTY_WEB_LAYERS/MapServer/29",
+                "website": "https://www.districtiii.org/",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Hughes County, SD / Planning and Development District III",
+                    "presumed": true
+                },
                 "conform": {
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "CAMA.PROPERTY_ADDRESS"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "CAMA.PROPERTY_ADDRESS"
-                    },
+                    "number": "STR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "POST_DIR"
+                    ],
+                    "unit": "UNIT_NUM",
+                    "city": "CITY",
+                    "postcode": "ZIP_CODE",
+                    "district": "COUNTY",
+                    "region": "STATE",
                     "format": "geojson"
                 }
             }
@@ -32,10 +42,16 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.districtiii.org/arcgis/rest/services/HUGHES_LAYERS/MapServer/16",
+                "data": "https://gis.districtiii.org/server/rest/services/HUGHES_COUNTY_WEB_LAYERS/MapServer/2",
+                "website": "https://www.districtiii.org/",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Hughes County, SD / Planning and Development District III",
+                    "presumed": true
+                },
                 "conform": {
-                    "pid": "PARCELS.PARCEL_ID",
+                    "pid": "PARCEL_ID",
                     "format": "geojson"
                 }
             }
