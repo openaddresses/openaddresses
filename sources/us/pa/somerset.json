@@ -20,24 +20,36 @@
                     "email": "zieglerg@co.somerset.pa.us",
                     "address": "300 North Center Avenue, Somerset, PA 15501"
                 },
-                "data": "https://github.com/aaronpdennis/pa-county-addresses/raw/master/data/SOMERSET/SOMERSET_addresses.csv",
-                "protocol": "http",
-                "note": "Data extracted from 2009 state government collection. Individual county GIS offices may have more recent addresses.",
+                "data": "https://mapservices.pasda.psu.edu/server/rest/services/pasda/SomersetCounty/MapServer/1",
+                "protocol": "ESRI",
+                "note": "House Numbers layer, mirrored on PASDA (Pennsylvania Spatial Data Access) from Somerset County's own GIS. The prior 2009-vintage CSV source (aaronpdennis/pa-county-addresses) started 404ing; the ADDR field here is a single combined 'number street city' string with no separate street/city fields, so number/street/city are split out with regexp using the closed list of postal place names found in this county's data.",
+                "license": {
+                    "url": "https://www.pasda.psu.edu/uci/FullMetadataDisplay.aspx?file=SomersetCountyHouseNumbers202409.xml",
+                    "text": "Access_Constraints: None. Use_Constraints: None.",
+                    "attribution": false,
+                    "attribution name": "Somerset County, Pennsylvania",
+                    "remarks": "https://www.pasda.psu.edu/uci/DataSummary.aspx?dataset=2072"
+                },
                 "conform": {
-                    "format": "csv",
-                    "number": "SAN",
-                    "street": [
-                        "PRD",
-                        "STP",
-                        "STN",
-                        "STS",
-                        "POD"
-                    ],
-                    "city": "MCN",
-                    "lon": "X",
-                    "lat": "Y",
-                    "id": "PIN",
-                    "accuracy": 5
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "ADDR",
+                        "pattern": "^([0-9]+)"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDR",
+                        "pattern": "^[0-9]+\\s+(.*?)\\s+(?:NEW BALTIMORE|CENTRAL CITY|HIDDEN VALLEY|FORT HILL|TIRE HILL|BUFFALO MILLS|SOMERSET|WINDBER|MEYERSDALE|BERLIN|ROCKWOOD|BOSWELL|FRIEDENS|STOYSTOWN|HOLLSOPPLE|CONFLUENCE|JOHNSTOWN|CHAMPION|SALISBURY|HOOVERSVILLE|DAVIDSVILLE|ADDISON|FAIRHOPE|GARRETT|CAIRNBROOK|MARKLETON|JENNERSTOWN|JEROME|HYNDMAN|JENNERS|URSINA|ACOSTA|SPRINGS|SHANKSVILLE|GRAY|WELLERSBURG|BOYNTON|SIPESVILLE|LISTIE|QUECREEK|SEANOR|SCHELLSBURG)$",
+                        "replace": "$1"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "ADDR",
+                        "pattern": "(NEW BALTIMORE|CENTRAL CITY|HIDDEN VALLEY|FORT HILL|TIRE HILL|BUFFALO MILLS|SOMERSET|WINDBER|MEYERSDALE|BERLIN|ROCKWOOD|BOSWELL|FRIEDENS|STOYSTOWN|HOLLSOPPLE|CONFLUENCE|JOHNSTOWN|CHAMPION|SALISBURY|HOOVERSVILLE|DAVIDSVILLE|ADDISON|FAIRHOPE|GARRETT|CAIRNBROOK|MARKLETON|JENNERSTOWN|JEROME|HYNDMAN|JENNERS|URSINA|ACOSTA|SPRINGS|SHANKSVILLE|GRAY|WELLERSBURG|BOYNTON|SIPESVILLE|LISTIE|QUECREEK|SEANOR|SCHELLSBURG)$",
+                        "replace": "$1"
+                    },
+                    "unit": "Unit"
                 }
             }
         ]
