@@ -14,13 +14,12 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data-campbellva.opendata.arcgis.com/datasets/f9be506a218645f1a8de82529344832a_0.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://gis.co.campbell.va.us/arcgis/rest/services/Public_Data/E_911_Addresses/MapServer/11",
+                "website": "https://data-campbellva.opendata.arcgis.com/",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "number": "ADDRNUM",
-                    "unit": "UNITID",
                     "street": [
                         "PRE_DIR",
                         "STREET_NAM",
@@ -28,6 +27,11 @@
                     ],
                     "city": "MSAG",
                     "postcode": "ZIP_CODE"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Campbell County, VA GIS Office",
+                    "presumed": true
                 }
             }
         ],
