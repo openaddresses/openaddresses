@@ -14,16 +14,23 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps.clermontcountyohio.gov/arcgis/rest/services/WMAS/Parcels/MapServer/0",
+                "data": "https://maps.clermontcountyohio.gov/server/rest/services/WMAS/AddressPoint/MapServer/0",
+                "website": "https://gis.clermontcountyohio.gov/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADRNO",
+                    "number": "ADDR_NO",
                     "street": [
-                        "ADRDIR",
-                        "ADRSTR",
-                        "ADRSUF"
-                    ]
+                        "PRE_DIR",
+                        "STREETNAME",
+                        "STR_TYPE"
+                    ],
+                    "city": "CITY"
+                },
+                "license": {
+                    "url": "https://gis.clermontcountyohio.gov/security-and-privacy-policy",
+                    "attribution": false,
+                    "attribution name": "Clermont County GIS"
                 }
             }
         ]
