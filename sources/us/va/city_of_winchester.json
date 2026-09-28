@@ -21,18 +21,27 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://maps2.timmons.com/arcgis/rest/services/WL_Winchester/Winchester_WL_P/MapServer/0",
+                "data": "https://gis.winchesterva.gov/arcgis/rest/services/Winchester/Address/MapServer/0",
+                "website": "https://www.arcgis.com/home/item.html?id=d631909df1c549fa9b78136dce10ebda",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "ParcelAddress1"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "ParcelAddress1"
-                    }
+                    "number": "addNum",
+                    "street": [
+                        "lgcyPreDir",
+                        "lgcyName",
+                        "lgcyType"
+                    ],
+                    "unit": "unit",
+                    "city": "incMuni",
+                    "postcode": "zipCode"
+                },
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "Creative Commons Attribution 4.0 International License",
+                    "attribution": true,
+                    "attribution name": "City of Winchester, Virginia",
+                    "remarks": "https://www.arcgis.com/home/item.html?id=d631909df1c549fa9b78136dce10ebda"
                 }
             }
         ]
