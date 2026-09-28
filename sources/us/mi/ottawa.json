@@ -14,15 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.co.ottawa.mi.us/gisweb/rest/services/layers/Parcel/MapServer/1",
+                "data": "https://gis.miottawa.org/arcgis/rest/services/HostedServices/Addresses/FeatureServer/0",
                 "protocol": "ESRI",
-                "website": "https://www.gis.co.ottawa.mi.us/",
-                "note": "Data includes polygon shape of parcels. Address data is found in PROPSTREETNUM, PROPSTREETNAME, ADDRESS, PROPCITY, PROPSTATE, PROPZIP. Polygon is found in the SHAPE column.",
+                "website": "https://gis-ottawacountymi.hub.arcgis.com/",
                 "conform": {
-                    "number": "PROPSTREETNUM",
-                    "street": "PROPSTREETNAME",
-                    "postcode": "PROPZIP",
-                    "format": "geojson"
+                    "format": "geojson",
+                    "number": "SiteNumber",
+                    "street": [
+                        "StreetNamePreModifier",
+                        "StreetNamePreDirectional",
+                        "StreetNamePreType",
+                        "StreetName",
+                        "StreetNamePostType",
+                        "StreetNamePostDirectional",
+                        "StreetNamePostModifier"
+                    ],
+                    "unit": "UnitNumber",
+                    "city": "PostalCommunityName",
+                    "postcode": "PostalCode"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Ottawa County GIS",
+                    "presumed": true,
+                    "remarks": "https://gis-ottawacountymi.hub.arcgis.com/pages/gisdataportal"
                 }
             }
         ]
