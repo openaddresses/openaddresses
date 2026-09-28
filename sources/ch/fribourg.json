@@ -11,18 +11,24 @@
         "addresses": [
             {
                 "name": "state",
-                "data": "https://www.sit.fr.ch/arcgis/rest/services/Coordonnees/Adresses_rues/MapServer/0",
+                "data": "https://geo.fr.ch/arcgis/rest/services/ExtensionREGBL/ExtensionREGBL/MapServer/0",
+                "website": "https://www.fr.ch/territoire-amenagement-et-constructions/cartes-plans-cadastre-et-geomatique/acces-aux-geodonnees-de-la-mensuration-officielle",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "DEINR",
-                    "street": "STRNAME1",
-                    "city": {
-                        "function": "regexp",
-                        "pattern": "^(.*?)(?:\\s+FR)?\\s*$",
-                        "field": "LOCALITE"
-                    },
-                    "postcode": "PLZ4"
+                    "number": "HOUSE_NUMBER",
+                    "street": "STREET_NAME",
+                    "city": "CITY",
+                    "postcode": "POSTALCODE"
+                },
+                "license": {
+                    "text": "CC-BY-SA 4.0",
+                    "url": "https://opendata.fr.ch/terms/terms-and-conditions/",
+                    "attribution": true,
+                    "attribution name": "État de Fribourg, Service de la géoinformation",
+                    "share-alike": true,
+                    "presumed": true,
+                    "remarks": "https://www.geocat.ch/geonetwork/srv/api/records/b49166a5-5b96-4462-9d82-3256d45c8215"
                 }
             }
         ]
