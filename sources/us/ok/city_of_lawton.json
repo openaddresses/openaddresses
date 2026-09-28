@@ -21,13 +21,22 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://www.gislawton.us/arcgis/rest/services/Basemap/MapServer/48",
+                "data": "https://services2.arcgis.com/baoUryRiOxhCY0yb/arcgis/rest/services/LawtonData/FeatureServer/13",
+                "website": "https://www.lawtonok.gov",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "House_Num",
-                    "street": "Address",
+                    "number": "StructNo",
+                    "street": ["PreDir", "St_Name", "St_Type", "SufDir"],
+                    "unit": "StructNoSu",
+                    "city": "Community",
                     "id": "EID"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "City of Lawton GIS Division",
+                    "presumed": true,
+                    "remarks": "https://www.arcgis.com/home/item.html?id=9689a5c39b624e2da7401e4fe9b1b7d1"
                 }
             }
         ]
