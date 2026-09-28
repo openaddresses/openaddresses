@@ -9,25 +9,31 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://geo.rdc.govt.nz/arcgis/rest/services/Core/Cadastral/MapServer/14",
-                "website": "https://opendata.arcgis.com/datasets/a382c2f4421645dda3c80206bd7bc8ad_14",
+                "data": "https://gis.rdc.govt.nz/server/rest/services/Core/Cadastral/MapServer/145",
+                "website": "https://rotorua.maps.arcgis.com/home/item.html?id=8ade72d1d1f548a6b204b44a5dd957e6",
                 "protocol": "ESRI",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Rotorua Lakes Council",
+                    "presumed": true
+                },
                 "conform": {
                     "format": "geojson",
                     "number": {
-                        "function": "format",
-                        "fields": [
-                            "Address",
-                            "HouseSuffix"
-                        ],
-                        "format": "$1$2"
+                        "function": "regexp",
+                        "field": "AddressLabel",
+                        "pattern": "^(?:.*/)?(.+)$",
+                        "replace": "$1"
                     },
-                    "street": [
-                        "RoadName",
-                        "RoadType",
-                        "RoadSuffix"
-                    ],
-                    "unit": "Unit"
+                    "street": "RoadLabel",
+                    "unit": {
+                        "function": "regexp",
+                        "field": "AddressLabel",
+                        "pattern": "^([^/]+)/.*$",
+                        "replace": "$1"
+                    }
                 }
             }
         ]
