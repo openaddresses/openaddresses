@@ -22,18 +22,27 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://maps.normanok.gov/arcgis/rest/services/LandBase/MapServer/2",
+                "data": "https://services.arcgis.com/rt1leD4Hj3sLGHNL/arcgis/rest/services/Address_Points/FeatureServer/1",
+                "website": "https://www.normanok.gov/your-government/departments/planning-and-community-development/gis-services",
                 "protocol": "ESRI",
-                "note": "source contains a UNIT field but it seems to contain '001' if it's single-residence",
                 "conform": {
                     "format": "geojson",
-                    "number": "F_ADD",
+                    "number": "Address",
                     "street": [
-                        "PRE_DIR",
-                        "STREET_NAME",
-                        "STREET_TYPE",
-                        "SUF_DIR"
-                    ]
+                        "PreDir",
+                        "Street",
+                        "StreetType",
+                        "SufDir"
+                    ],
+                    "unit": "Unit",
+                    "city": "City",
+                    "postcode": "Zipcode"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "City of Norman GIS Services Division",
+                    "presumed": true,
+                    "remarks": "https://www.normanok.gov/your-government/departments/information-technology/conditions-and-use-policy"
                 }
             }
         ]
