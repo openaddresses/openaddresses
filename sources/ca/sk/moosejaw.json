@@ -16,19 +16,20 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://gis.moosejaw.ca/arcgis/rest/services/Public/Parcels/MapServer/0",
+                "data": "https://gis.moosejaw.ca/server/rest/services/Site_Addresses/FeatureServer/5",
+                "website": "https://moosejaw.ca/maps/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "FullAddress"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "FullAddress"
-                    },
-                    "city": "Municipality"
+                    "number": "STREETNUM",
+                    "street": "FULLSTREETNAME",
+                    "city": "MUNINAME"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "City of Moose Jaw",
+                    "presumed": true,
+                    "remarks": "https://moosejaw.ca/maps/"
                 }
             }
         ]
