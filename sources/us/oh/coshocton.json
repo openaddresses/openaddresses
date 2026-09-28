@@ -15,25 +15,25 @@
             {
                 "name": "county",
                 "conform": {
-                    "number": "ADRSNUM",
-                    "street": [
-                        "P_ROADNME",
-                        "ROADNME",
-                        "S_ROADNME"
-                    ],
-                    "unit": [
-                        "ADRSNUM_S",
-                        "ADRSRNG"
-                    ],
-                    "city": "COMMUNITY",
-                    "postcode": "ZIP",
-                    "format": "shapefile",
-                    "accuracy": 5
+                    "format": "geojson",
+                    "number": "LHN",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "LSN",
+                        "field_to_remove": "LHN"
+                    },
+                    "city": "USPS_CITY",
+                    "postcode": "ZIPCODE"
                 },
-                "data": "https://www.coshoctoncounty.net/files/1413456603Address.zip",
-                "website": "https://www.coshoctoncounty.net/agency/taxmap/GISfiles.php",
-                "protocol": "http",
-                "compression": "zip"
+                "data": "https://services5.arcgis.com/zhyAQE7C1EXFJ6bG/arcgis/rest/services/Addresses/FeatureServer/0",
+                "website": "https://experience.arcgis.com/experience/dcc7010b7b4f47a983273a642fa8164d",
+                "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Coshocton County GIS Office",
+                    "presumed": true,
+                    "remarks": "https://www.arcgis.com/home/item.html?id=73f04c8c977f4975bbc2fe3525580822"
+                }
             }
         ]
     }
