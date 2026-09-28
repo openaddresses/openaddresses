@@ -14,30 +14,52 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://fayettemaps.rba.com:8080/geoserver/fayette/ows?service=WFS&version=1.1.1&request=GetFeature&typename=fayette:ParcelsPolygon&outputFormat=shape-zip",
-                "protocol": "http",
-                "compression": "zip",
+                "website": "https://mapservices.pasda.psu.edu/server/rest/services/pasda/FayetteCounty/MapServer",
+                "data": "https://mapservices.pasda.psu.edu/server/rest/services/pasda/FayetteCounty/MapServer/3",
+                "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Fayette County, Pennsylvania",
+                    "presumed": true,
+                    "remarks": "https://mapservices.pasda.psu.edu/server/rest/services/pasda/FayetteCounty/MapServer/3?f=json"
+                },
                 "conform": {
-                    "format": "shapefile",
-                    "accuracy": 2,
-                    "number": "ADDR_PHYSI",
-                    "street": [
-                        "ADDR_PHY_1",
-                        "ADDR_PHY_2"
+                    "format": "geojson",
+                    "number": [
+                        "Add_Number",
+                        "AddNum_Suf"
                     ],
-                    "postcode": "ZIP1"
+                    "street": [
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "unit": "Unit",
+                    "city": "Inc_Muni",
+                    "district": "County",
+                    "region": "State",
+                    "postcode": "Post_Code"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://fayettemaps.rba.com:8080/geoserver/fayette/ows?service=WFS&version=1.1.1&request=GetFeature&typename=fayette:ParcelsPolygon&outputFormat=shape-zip",
-                "protocol": "http",
-                "compression": "zip",
+                "website": "https://mapservices.pasda.psu.edu/server/rest/services/pasda/FayetteCounty/MapServer",
+                "data": "https://mapservices.pasda.psu.edu/server/rest/services/pasda/FayetteCounty/MapServer/2",
+                "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Fayette County, Pennsylvania",
+                    "presumed": true,
+                    "remarks": "https://mapservices.pasda.psu.edu/server/rest/services/pasda/FayetteCounty/MapServer/2?f=json"
+                },
                 "conform": {
-                    "format": "shapefile",
-                    "pid": "taxidnum"
+                    "format": "geojson",
+                    "pid": "TAXIDNUM"
                 }
             }
         ]
