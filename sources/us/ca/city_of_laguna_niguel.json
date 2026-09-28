@@ -9,30 +9,21 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://gis.cityoflagunaniguel.org:6080/arcgis/rest/services/Parcels_Address_Points/MapServer/1",
+                "data": "https://utility.arcgis.com/usrsvcs/servers/9b70bc61d0b545b288adca2df99bc623/rest/services/Parcels_Address_Points_Public/FeatureServer/1",
+                "website": "https://www.cityoflagunaniguel.org/705/Maps",
                 "license": {
-                    "url": "https://www.cityoflagunaniguel.org/705/Maps"
+                    "url": "https://www.cityoflagunaniguel.org/705/Maps",
+                    "attribution": true,
+                    "attribution name": "City of Laguna Niguel",
+                    "presumed": true,
+                    "remarks": "https://www.cityoflagunaniguel.org/705/Maps"
                 },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "unit": "UNIT",
                     "number": "STNUM",
-                    "street": {
-                        "function": "chain",
-                        "variable": "street_wip",
-                        "functions": [
-                            {
-                                "function": "postfixed_street",
-                                "field": "SITEADDRESS"
-                            },
-                            {
-                                "function": "remove_postfix",
-                                "field": "oa:street_wip",
-                                "field_to_remove": "UNIT"
-                            }
-                        ]
-                    },
+                    "street": "NAMESUFF",
+                    "unit": "UNIT",
                     "postcode": "SITEZIP"
                 }
             }
@@ -40,9 +31,14 @@
         "parcels": [
             {
                 "name": "city",
-                "data": "https://gis.cityoflagunaniguel.org:6080/arcgis/rest/services/Parcels_Address_Points/MapServer/0",
+                "data": "https://utility.arcgis.com/usrsvcs/servers/9b70bc61d0b545b288adca2df99bc623/rest/services/Parcels_Address_Points_Public/FeatureServer/0",
+                "website": "https://www.cityoflagunaniguel.org/705/Maps",
                 "license": {
-                    "url": "https://www.cityoflagunaniguel.org/705/Maps"
+                    "url": "https://www.cityoflagunaniguel.org/705/Maps",
+                    "attribution": true,
+                    "attribution name": "City of Laguna Niguel",
+                    "presumed": true,
+                    "remarks": "https://www.cityoflagunaniguel.org/705/Maps"
                 },
                 "protocol": "ESRI",
                 "conform": {
