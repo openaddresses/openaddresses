@@ -16,28 +16,37 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://offenedaten.frankfurt.de/dataset/9c902fd2-dd17-40cc-9fab-52c9c28aea3c/resource/59eae6ec-8788-4347-8760-257f50aaced7/download/adressen.csv",
-                "website": "https://www.offenedaten.frankfurt.de/",
+                "data": "https://offenedaten.frankfurt.de/dcat/dataset/de-he-frankfurtam-hauskoordinaten/content.csv",
+                "website": "https://offenedaten.frankfurt.de/dcat/dataset/de-he-frankfurtam-hauskoordinaten.html",
                 "license": {
-                    "url": "https://www.govdata.de/dl-de/by-1-0",
-                    "text": "Datenlizenz Deutschland Namensnennung",
+                    "url": "https://www.govdata.de/dl-de/by-2-0",
+                    "text": "Datenlizenz Deutschland Namensnennung 2.0",
                     "attribution": true,
                     "share-alike": false,
-                    "attribution name": "Stadtvermessungsamt Frankfurt am Main"
+                    "attribution name": "Stadtvermessungsamt Frankfurt am Main",
+                    "remarks": "https://offenedaten.frankfurt.de/dcat/dataset/de-he-frankfurtam-hauskoordinaten.html"
                 },
                 "protocol": "http",
                 "conform": {
                     "format": "csv",
-                    "headers": -1,
                     "csvsplit": ";",
-                    "encoding": "latin-1",
-                    "srs": "EPSG:10288",
-                    "city": "COLUMN16",
-                    "street": "COLUMN14",
-                    "number": "COLUMN10",
-                    "postcode": "COLUMN15",
-                    "lat": "COLUMN13",
-                    "lon": "COLUMN12"
+                    "srs": "EPSG:25832",
+                    "city": "Postalischer Ortsname",
+                    "street": "(Unverschlüsselter) Straßenname",
+                    "number": "Hausnummer",
+                    "postcode": "Postleitzahl",
+                    "lon": {
+                        "function": "regexp",
+                        "field": "Koordinatenwert ETRS89/UTM East-Wert der UTM-Koordinate",
+                        "pattern": "^32([0-9]+),?([0-9]*)$",
+                        "replace": "$1.$2"
+                    },
+                    "lat": {
+                        "function": "regexp",
+                        "field": "Koordinatenwert ETRS89/UTM North-Wert der UTM-Koordinate",
+                        "pattern": "^([0-9]+),?([0-9]*)$",
+                        "replace": "$1.$2"
+                    }
                 }
             }
         ]
