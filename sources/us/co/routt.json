@@ -14,13 +14,54 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.co.routt.co.us/server/rest/services/PublishedAddressing/Addresses_Routt_County/FeatureServer/0",
+                "data": "https://services6.arcgis.com/VxFGFP4XeHMTNgVs/arcgis/rest/services/Routt_County_Addresses/FeatureServer/0",
+                "website": "https://data-routtgis.opendata.arcgis.com/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "unit": "UNITFULL",
-                    "number": "ADDRNUM",
-                    "street": "FULLNAME"
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Routt County GIS",
+                    "presumed": true,
+                    "remarks": "https://data-routtgis.opendata.arcgis.com/"
+                }
+            },
+            {
+                "name": "city",
+                "data": "https://services6.arcgis.com/VxFGFP4XeHMTNgVs/arcgis/rest/services/City_of_Steamboat_Springs_Addresses/FeatureServer/0",
+                "website": "https://data-routtgis.opendata.arcgis.com/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Routt County GIS",
+                    "presumed": true,
+                    "remarks": "https://data-routtgis.opendata.arcgis.com/"
                 }
             }
         ],
