@@ -14,16 +14,20 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.leecountyil.com/server/rest/services/Addresses/MapServer/0",
+                "data": "https://gis.leecountyil.gov/leecogis/rest/services/Address_Points_911/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "HOUSE_NUM",
                     "street": "NAME0",
-                    "city": "CITY"
+                    "city": "CITY",
+                    "postcode": "Post_Code"
                 },
-                "skip": true,
-                "note": "Source is broken; TODO use parcels for addresses"
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Lee County GIS",
+                    "presumed": true
+                }
             }
         ],
         "parcels": [
