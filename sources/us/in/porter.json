@@ -14,21 +14,27 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.porterco.org/arcgis/rest/services/PropertyAddressPoints/FeatureServer/0",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/arcgis/rest/services/PorterINWFSFeatures/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": {
                         "function": "prefixed_number",
-                        "field": "Address"
+                        "field": "StreetAddress"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "Address"
+                        "field": "StreetAddress"
                     },
                     "city": "City",
                     "region": "State",
                     "postcode": "Zip"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Porter County GIS",
+                    "presumed": true,
+                    "remarks": "https://porter-county-open-data-portercogov.hub.arcgis.com/"
                 }
             }
         ],
