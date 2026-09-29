@@ -1,0 +1,54 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                17.141,
+                60.675
+            ]
+        },
+        "country": "se",
+        "city": "Gävle"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://catalog.gavle.se/store/1/resource/48",
+                "website": "https://catalog.gavle.se/store/1/resource/45",
+                "license": {
+                    "text": "CC0 1.0",
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "attribution": "Gävle kommun",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "shapefile",
+                    "file": "baskarta_adress.shp",
+                    "encoding": "utf-8",
+                    "number": {
+                        "function": "regexp",
+                        "field": "GATUADRESS",
+                        "pattern": "^(?:.*?)\\s*([\\d]+\\w*(?:\\-[\\d]+\\w*)?)$"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "GATUADRESS",
+                        "pattern": "^(.*?)\\s*(?:[\\d]+\\w*(?:\\-[\\d]+\\w*)?)$"
+                    },
+                    "city": "POSTORT",
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "POSTNR",
+                        "pattern": "^([\\d]{3})([\\d]{2})$",
+                        "replace": "$1 $2"
+                    }
+                }
+            }
+        ]
+    }
+}
