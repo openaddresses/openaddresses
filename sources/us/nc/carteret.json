@@ -15,12 +15,18 @@
             {
                 "name": "county",
                 "website": "https://gisdata-cc-gis.opendata.arcgis.com/datasets/address-points",
-                "data": "https://arcgisweb.carteretcountync.gov/arcgis/rest/services/Feature_Services/Address_Points/MapServer/0",
+                "data": "https://arcgisweb.carteretcountync.gov/arcgis/rest/services/Layers/Address_Points/FeatureServer/0",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Carteret County GIS",
+                    "presumed": true,
+                    "remarks": "http://www.carteretcountync.gov/DocumentCenter/View/4659"
+                },
                 "conform": {
                     "format": "geojson",
                     "number": "Address",
-                    "street": "StreetName",
+                    "street": ["PREDIR_LEG", "StreetName", "Type", "SUFDIR"],
                     "unit": "Unit",
                     "city": "COMMUNITY",
                     "postcode": "Zipcode",
