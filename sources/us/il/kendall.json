@@ -15,22 +15,36 @@
             {
                 "name": "county",
                 "website": "https://maps.co.kendall.il.us/portal/home/",
-                "data": "https://maps.co.kendall.il.us/server/rest/services/Hosted/Site_Addresses_(Web_Map_View)/FeatureServer/0",
+                "data": "https://maps.co.kendall.il.us/server/rest/services/Hosted/Current_Cadastral_Features/FeatureServer/1",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Kendall County GIS",
+                    "presumed": true,
+                    "remarks": "https://maps.co.kendall.il.us/portal/home/"
+                },
                 "conform": {
                     "format": "geojson",
-                    "number": "housenumber",
-                    "street": [
-                        "predirectional",
-                        "pretype",
-                        "streetname",
-                        "posttype",
-                        "posttypesuffix",
-                        "postdirectional"
-                    ],
-                    "unit": "UNIT",
-                    "city": "postalcity",
-                    "postcode": "zip"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "site_address"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "site_address"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "site_csz",
+                        "pattern": "^(.+?)\\s+IL\\s+\\d{5}.*$",
+                        "replace": "$1"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "site_csz",
+                        "pattern": "^.*\\s(\\d{5})(?:-\\d{4})?$",
+                        "replace": "$1"
+                    }
                 }
             }
         ],

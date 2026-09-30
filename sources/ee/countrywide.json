@@ -12,38 +12,44 @@
             {
                 "name": "country",
                 "data": "https://address.dev.peatus.ee/",
-                "website": "https://xgis.maaamet.ee/adsavalik/ads",
-                "note": "Cache data is dated 2019-09-10. Downloads are under 'VÄLJAVÕTTED', look for 'Jõusolevad aadressiobjektid koos aadressidega'",
-                "attribution": "Estonian Land Board 2019-09-10",
+                "website": "https://aks.geoportaal.ee/aks",
+                "note": "Mirror of the Estonian Land and Spatial Development Board (Maa- ja Ruumiamet) address data system (ADS) extract. The official download portal at xgis.maaamet.ee/adsavalik/ads has moved to the JS-rendered aks.geoportaal.ee/aks app; this mirror republishes the same 'väljavõte' CSV extract (filename prefix vv1_) on an ongoing basis. As of 2026-09 the extract's column headers are all lowercase.",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "encoding": "ISO-8859-1",
+                    "encoding": "utf-8",
                     "format": "csv",
                     "csvsplit": ";",
                     "srs": "EPSG:3301",
-                    "lon": "VIITEPUNKT_X",
-                    "lat": "VIITEPUNKT_Y",
-                    "region": "TASE1_NIMETUS_LIIGIGA",
-                    "district": "TASE2_NIMETUS_LIIGIGA",
+                    "lon": "viitepunkt_x",
+                    "lat": "viitepunkt_y",
+                    "region": "tase1_nimetus_liigiga",
+                    "district": "tase2_nimetus_liigiga",
                     "city": {
                         "function": "join",
                         "fields": [
-                            "TASE3_NIMETUS_LIIGIGA",
-                            "TASE4_NIMETUS_LIIGIGA"
+                            "tase3_nimetus_liigiga",
+                            "tase4_nimetus_liigiga"
                         ],
                         "separator": ","
                     },
                     "number": {
                         "function": "join",
                         "fields": [
-                            "TASE6_NIMETUS_LIIGIGA",
-                            "TASE7_NIMETUS_LIIGIGA"
+                            "tase6_nimetus_liigiga",
+                            "tase7_nimetus_liigiga"
                         ],
                         "separator": " "
                     },
-                    "street": "TASE5_NIMETUS_LIIGIGA",
-                    "unit": "TASE8_NIMETUS_LIIGIGA"
+                    "street": "tase5_nimetus_liigiga",
+                    "unit": "tase8_nimetus_liigiga"
+                },
+                "license": {
+                    "url": "https://geoportaal.maaruum.ee/opendata-licence",
+                    "text": "The licensee receives the rights to use the data free of charge for an unspecified term, for good purpose in accordance with laws and best practice. The licensee may produce derivatives of data, adapt and combine data with its own (or other) data, products or services, use the data for commercial or non-commercial purposes and redistribute data. The licensee obliges to refer to the origin of data when publishing and redistributing data (name of licensor, title of data, and age/date of extraction).",
+                    "attribution": true,
+                    "attribution name": "Republic of Estonia Land and Spatial Development Board (Maa- ja Ruumiamet)",
+                    "share-alike": false
                 }
             }
         ]
