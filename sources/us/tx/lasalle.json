@@ -11,14 +11,47 @@
     },
     "schema": 2,
     "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services1.arcgis.com/bpzdxsiZxgumiUwi/arcgis/rest/services/LaSalleCADWebService/FeatureServer/0",
+                "website": "https://www.lasallecad.com/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "situs_num",
+                    "street": [
+                        "situs_street_prefx",
+                        "situs_street",
+                        "situs_street_sufix"
+                    ],
+                    "city": "situs_city",
+                    "region": "situs_state",
+                    "postcode": "situs_zip"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "La Salle County Appraisal District",
+                    "presumed": true,
+                    "remarks": "https://www.lasallecad.com/"
+                }
+            }
+        ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://services6.arcgis.com/j94FvPaik4etwHFk/ArcGIS/rest/services/LaSalleCADMatixService/FeatureServer/0",
+                "data": "https://services1.arcgis.com/bpzdxsiZxgumiUwi/arcgis/rest/services/LaSalleCADWebService/FeatureServer/0",
+                "website": "https://www.lasallecad.com/",
                 "protocol": "ESRI",
                 "conform": {
-                    "pid": "prop_id",
-                    "format": "geojson"
+                    "format": "geojson",
+                    "pid": "prop_id"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "La Salle County Appraisal District",
+                    "presumed": true,
+                    "remarks": "https://www.lasallecad.com/"
                 }
             }
         ]

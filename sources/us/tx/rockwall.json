@@ -14,22 +14,27 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.rockwallcountytexas.com/DocumentCenter/View/5608",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services9.arcgis.com/9RjmpzvuPPeYSNdf/arcgis/rest/services/CAD_Data_to_Address_Lookup/FeatureServer/0",
+                "website": "https://www.arcgis.com/home/item.html?id=e69ba04c5360483daa93f2e97995d35a",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "id": "OBJECTID",
-                    "number": [
-                        "Add_Number",
-                        "AddNum_Suf"
+                    "format": "geojson",
+                    "id": "FID",
+                    "number": "streetnum",
+                    "street": [
+                        "streetpre",
+                        "streetnam",
+                        "streetsuf"
                     ],
-                    "street": "St_FullNam",
-                    "unit": "Unit",
-                    "city": "Post_Comm",
-                    "district": "County",
-                    "region": "State",
-                    "postcode": "Post_Code"
+                    "city": "streetcity",
+                    "region": "streetstat",
+                    "postcode": "streetzip"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Rockwall County GIS",
+                    "presumed": true,
+                    "remarks": "https://www.arcgis.com/home/item.html?id=e69ba04c5360483daa93f2e97995d35a"
                 }
             }
         ]

@@ -1,0 +1,49 @@
+{
+    "coverage": {
+        "country": "eg",
+        "ISO 3166": {
+            "alpha2": "EG",
+            "country": "Egypt"
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-09-25-ve8gc/egypt_addresses.zip",
+                "website": "https://mgeoportal.egyptpost.org",
+                "license": "Unknown",
+                "year": 2024,
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "csv",
+                    "lon": "x",
+                    "lat": "y",
+                    "number": {
+                        "function": "regexp",
+                        "field": "PN",
+                        "pattern": "^([0-9]+),"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "PN",
+                        "pattern": "^[0-9]+,(.*)$",
+                        "replace": "$1"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "QISM_CITY",
+                        "pattern": "^[^-]+-(.*)$",
+                        "replace": "$1"
+                    },
+                    "district": "QISM",
+                    "region": "GOV",
+                    "postcode": "PC",
+                    "id": "OBJECTID"
+                }
+            }
+        ]
+    }
+}

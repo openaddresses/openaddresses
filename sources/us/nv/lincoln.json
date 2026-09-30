@@ -10,7 +10,8 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://sei.cloudsmartgis.com/arcgis/rest/services/Public/LincolnCounty_Addressing_Public/MapServer/0",
+                "data": "https://services7.arcgis.com/zEd0UM6DWpfqnURg/arcgis/rest/services/Addressing_Viewer/FeatureServer/0",
+                "website": "https://prs.lincolncountynv.gov/map/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -19,18 +20,33 @@
                         "FULLNAME",
                         "ADDRNUMSUF"
                     ],
-                    "city": "MUNICIPALITY"
+                    "unit": "UNITID",
+                    "city": "MUNICIPALITY",
+                    "postcode": "ADDZIPCODE"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Lincoln County, Nevada",
+                    "presumed": true,
+                    "remarks": "https://lincolncountynv.org/departments/assessors-office/"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://sei.cloudsmartgis.com/arcgis/rest/services/Public/LincolnCounty_TaxParcels_Public/MapServer/0",
+                "data": "https://services7.arcgis.com/zEd0UM6DWpfqnURg/arcgis/rest/services/Tax_Parcels_Viewer/FeatureServer/0",
+                "website": "https://prs.lincolncountynv.gov/map/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "LincolnCounty_EditingLayers.DBO.TaxParcels.APN"
+                    "pid": "APN"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Lincoln County, Nevada",
+                    "presumed": true,
+                    "remarks": "https://lincolncountynv.org/departments/assessors-office/"
                 }
             }
         ]

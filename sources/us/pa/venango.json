@@ -21,25 +21,26 @@
                     "email": "mgilara@co.venango.pa.us",
                     "address": "Tax Assessment Office, 1168 Liberty Street, Franklin, PA 16323"
                 },
-                "website": "https://www.co.venango.pa.us/618/Geographic-Information-Systems",
-                "data": "https://github.com/aaronpdennis/pa-county-addresses/raw/master/data/VENANGO/VENANGO_addresses.csv",
-                "protocol": "http",
-                "note": "Data extracted from 2009 state government collection. Individual county GIS offices may have more recent addresses.",
+                "website": "https://www.venangocountypa.gov/618/Geographic-Information-Systems",
+                "data": "https://mapservices.pasda.psu.edu/server/rest/services/pasda/VenangoCounty/MapServer/1",
+                "protocol": "ESRI",
+                "note": "Derived from county tax parcel polygons mirrored on PASDA; the parcel layer has no separate house-number/street fields, only a combined situs address string.",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Venango County",
+                    "presumed": true,
+                    "remarks": "https://www.pasda.psu.edu/uci/DataSummary.aspx?dataset=1998"
+                },
                 "conform": {
-                    "format": "csv",
-                    "number": "SAN",
-                    "street": [
-                        "PRD",
-                        "STP",
-                        "STN",
-                        "STS",
-                        "POD"
-                    ],
-                    "city": "MCN",
-                    "lon": "X",
-                    "lat": "Y",
-                    "id": "PIN",
-                    "accuracy": 2
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Situs"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Situs"
+                    }
                 }
             }
         ]

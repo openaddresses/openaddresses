@@ -14,7 +14,8 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://geaugarealink.co.geauga.oh.us/ArcGIS/rest/services/MapService/GeaugaParcelData/MapServer/14",
+                "data": "https://gcgis.geauga.oh.gov/arcgis/rest/services/ServiceLayersForNewWorld/FeatureServer/16",
+                "website": "https://auditor.geauga.oh.gov/geographic-information-gis/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
@@ -29,7 +30,15 @@
                         "field": "LOCATION_A",
                         "pattern": "^(?:[0-9]+ )(.*)",
                         "replace": "$1"
-                    }
+                    },
+                    "city": "LOCATION_C",
+                    "postcode": "LOCATION_Z"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Geauga County Auditor",
+                    "presumed": true,
+                    "remarks": "https://auditor.geauga.oh.gov/geographic-information-gis/"
                 }
             }
         ]

@@ -14,24 +14,19 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services1.arcgis.com/pfZ4YwxhgKucWn2S/ArcGIS/rest/services/RBC_FiberRoutesHosted/FeatureServer/0",
+                "data": "https://services1.arcgis.com/pfZ4YwxhgKucWn2S/ArcGIS/rest/services/RioBlancoCO_features/FeatureServer/0",
+                "website": "https://www.rbc.us/263/Maps-Data",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "id": "SITEADDID",
-                    "number": [
-                        "PREADDRNUM",
-                        "ADDRNUM",
-                        "ADDRNUMSUF"
-                    ],
-                    "street": [
-                        "ROADPREDIR",
-                        "ROADNAME",
-                        "ROADTYPE",
-                        "ROADPOSTDIR"
-                    ],
-                    "unit": "APARTMENT",
-                    "city": "MUNICIPALITY",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FULLADDR"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FULLADDR"
+                    },
                     "postcode": "ZIP"
                 }
             }
@@ -39,7 +34,8 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://services1.arcgis.com/pfZ4YwxhgKucWn2S/ArcGIS/rest/services/RBC_FiberRoutesHosted/FeatureServer/24",
+                "data": "https://services1.arcgis.com/pfZ4YwxhgKucWn2S/ArcGIS/rest/services/RioBlancoCO_features/FeatureServer/4",
+                "website": "https://www.rbc.us/263/Maps-Data",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",

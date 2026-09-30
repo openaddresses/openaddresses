@@ -1,4 +1,5 @@
 {
+    "schema": 2,
     "coverage": {
         "US Census": {
             "geoid": "51119",
@@ -9,45 +10,62 @@
         "state": "va",
         "county": "Middlesex"
     },
-    "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.co.middlesex.va.us/DocumentCenter/View/2018/Addresses-Point-Data-ZIP",
-                "protocol": "http",
-                "compression": "zip",
-                "website": "https://www.co.middlesex.va.us/176/GIS-Shapefile-Downloads",
+                "data": "https://services9.arcgis.com/UrElc2PRESEUr5jw/arcgis/rest/services/Addresses/FeatureServer/7",
+                "website": "https://gis-middlesex-county.hub.arcgis.com/",
+                "protocol": "ESRI",
                 "conform": {
-                    "unit": "Suffix",
-                    "number": "House",
-                    "street": "Street",
-                    "format": "shapefile"
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": ["STREET_PREFIX", "STREET_NAME", "STREET_SUFFIX", "STREET_SUFFIX_DIRECTION"],
+                    "unit": ["UNITTYPE", "UNITID"],
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIP_5"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Middlesex County, Virginia",
+                    "presumed": true,
+                    "remarks": "https://gis-middlesex-county.hub.arcgis.com/"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://www.co.middlesex.va.us/DocumentCenter/View/1925/Parcel-polygons",
-                "protocol": "http",
-                "compression": "zip",
-                "website": "https://www.co.middlesex.va.us/176/GIS-Shapefile-Downloads",
+                "data": "https://services9.arcgis.com/UrElc2PRESEUr5jw/arcgis/rest/services/Parcels/FeatureServer/14",
+                "website": "https://gis-middlesex-county.hub.arcgis.com/",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "pid": "PIN"
+                    "format": "geojson",
+                    "pid": "LINK_JOIN"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Middlesex County, Virginia",
+                    "presumed": true,
+                    "remarks": "https://gis-middlesex-county.hub.arcgis.com/"
                 }
             }
         ],
         "buildings": [
             {
                 "name": "county",
-                "data": "https://www.co.middlesex.va.us/DocumentCenter/View/2019/Building-Footprints-Data-ZIP",
-                "protocol": "http",
-                "compression": "zip",
-                "website": "https://www.co.middlesex.va.us/176/GIS-Shapefile-Downloads",
+                "data": "https://services9.arcgis.com/UrElc2PRESEUr5jw/arcgis/rest/services/Building_Footprints/FeatureServer/10",
+                "website": "https://gis-middlesex-county.hub.arcgis.com/",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile"
+                    "format": "geojson",
+                    "height": "BldgHeight"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Middlesex County, Virginia",
+                    "presumed": true,
+                    "remarks": "https://gis-middlesex-county.hub.arcgis.com/"
                 }
             }
         ]

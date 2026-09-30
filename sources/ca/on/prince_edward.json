@@ -10,18 +10,23 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://maps.thecounty.ca/pecountyext/rest/services/PEC_PublicViewerDynamic/MapServer/2",
-                "website": "https://www.pecounty.on.ca/county_overview/location_maps.php",
+                "data": "https://services1.arcgis.com/4HnHVMMKSNypEIkS/arcgis/rest/services/HostedFeatures___Property_Info/FeatureServer/0",
+                "website": "https://www.thecounty.ca/residents/services/gis-mapping/",
+                "license": {
+                    "attribution name": "Prince Edward County GIS",
+                    "attribution": true,
+                    "presumed": true
+                },
                 "conform": {
                     "format": "geojson",
-                    "id": "SITEADDID",
-                    "number": "ADDRNUM",
-                    "street": "FULLNAME",
-                    "unit": [
-                        "UNITTYPE",
-                        "UNITID"
+                    "id": "GlobalID",
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreDir",
+                        "St_Name",
+                        "St_PosTyp"
                     ],
-                    "district": "MUNICIPALITY"
+                    "unit": "Unit"
                 }
             }
         ]

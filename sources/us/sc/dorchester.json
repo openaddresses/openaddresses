@@ -14,40 +14,46 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gisservices.dorchestercounty.net/arcgis/rest/services/MATIX/MATIX_Parcel/MapServer/0",
+                "data": "https://gisportal.dorchestercounty.net/hosting/rest/services/General_Data/Address_Points_Public/FeatureServer/0",
+                "website": "https://www.dorchestercountysc.gov/government/planning-development/maps-gis/gis-data-layers",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRNUM",
-                    "street": "FULLNAME",
-                    "unit": [
-                        "UNITTYPE",
-                        "UNITID"
+                    "number": "ADD_NUMBER",
+                    "street": [
+                        "ST_PREDIR",
+                        "ST_NAME",
+                        "ST_POSTYP",
+                        "ST_POSDIR"
                     ],
-                    "city": "MUNICIPALITY",
-                    "region": "STATE_",
-                    "postcode": "ZIPCODE_"
+                    "unit": [
+                        "UNIT_TYPE",
+                        "UNIT_NUM"
+                    ],
+                    "city": "POST_COMM",
+                    "postcode": "ZIP_CODE"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Dorchester County GIS Dept",
+                    "presumed": true
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gisservices.dorchestercounty.net/arcgis/rest/services/MATIX/MATIX_Parcel/MapServer/1",
+                "data": "https://gisportal.dorchestercounty.net/hosting/rest/services/General_Data/Parcels_Public/FeatureServer/0",
+                "website": "https://www.dorchestercountysc.gov/government/planning-development/maps-gis/gis-data-layers",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "pid": "TMS"
-                }
-            }
-        ],
-        "buildings": [
-            {
-                "name": "county",
-                "data": "https://gisservices.dorchestercounty.net/arcgis/rest/services/MATIX/MATIX_Parcel/MapServer/7",
-                "protocol": "ESRI",
-                "conform": {
-                    "format": "geojson"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Dorchester County GIS and Assessors Office",
+                    "presumed": true
                 }
             }
         ]

@@ -16,27 +16,36 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://opendata.arcgis.com/datasets/1f00ade410af45a09a539dd05f3c8558_49.zip?outSR=%7B%22latestWkid%22%3A3402%2C%22wkid%22%3A3402%7D",
-                "website": "https://opendata.parklandcounty.com/datasets/1f00ade410af45a09a539dd05f3c8558_49",
+                "data": "https://services7.arcgis.com/aQPIo9CLnYoGfISV/arcgis/rest/services/Municipal_Address_Points/FeatureServer/0",
+                "website": "https://opendata.parklandcounty.com/datasets/bc57c84cac3744018ce1c9a6fdde2afd_0",
                 "license": {
-                    "url": "https://www.parklandcounty.com/en/live-and-play/open-data-license.aspx",
+                    "url": "https://www.parklandcounty.com/home-property-utilities/maps/open-data-licence/",
                     "text": "Contains information licensed under the Open Government License – Parkland County.",
                     "attribution": true,
                     "share-alike": false
                 },
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
-                    "number": "STREETNUMB",
-                    "street": [
-                      "NAME",
-                      "TYPE",
-                      "SUFFIX"
-                      ],
-                    "unit": "SUITE",
-                    "city": "COMMUNITY",
-                    "region": "PROV"
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "MunAdd",
+                        "pattern": "^\\s*(?:([0-9]{1,3}[A-Za-z]?)-([0-9]{4,6}[A-Za-z]?)\\s+(.+?)|([0-9]{1,6}[A-Za-z]?)-(.+?)|([0-9]{1,6}[A-Za-z]?)\\s+(.+?))\\s*$",
+                        "replace": "$2$4$6"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "MunAdd",
+                        "pattern": "^\\s*(?:([0-9]{1,3}[A-Za-z]?)-([0-9]{4,6}[A-Za-z]?)\\s+(.+?)|([0-9]{1,6}[A-Za-z]?)-(.+?)|([0-9]{1,6}[A-Za-z]?)\\s+(.+?))\\s*$",
+                        "replace": "$3$5$7"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "MunAdd",
+                        "pattern": "^\\s*(?:([0-9]{1,3}[A-Za-z]?)-([0-9]{4,6}[A-Za-z]?)\\s+(.+?)|([0-9]{1,6}[A-Za-z]?)-(.+?)|([0-9]{1,6}[A-Za-z]?)\\s+(.+?))\\s*$",
+                        "replace": "$1"
+                    },
+                    "district": "Subdiv"
                 }
             }
         ]

@@ -21,18 +21,22 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://web1.mobile311.com/arcgis/rest/services/NewMexico/RuidosoNM/MapServer/20",
+                "data": "https://services2.arcgis.com/Rj8QhN9Wb2hxHgpN/arcgis/rest/services/Address/FeatureServer/1",
+                "website": "https://www.ruidoso-nm.gov/planning-zoning",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "STR_NO",
-                    "street": [
-                        "STR_PREFIX",
-                        "STR_NAME",
-                        "STR_SUFFIX"
-                    ],
-                    "unit": "UNIT_NO",
-                    "city": "CITY"
+                    "number": "ADD_NUMBER",
+                    "street": "ROAD_LABEL",
+                    "unit": "ADD_SUFFIX",
+                    "city": "MSAG_COM",
+                    "postcode": "ZIPCODE"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "NM911 Program",
+                    "presumed": true,
+                    "remarks": "https://edac.unm.edu/new-mexico-911-nm911-program/"
                 }
             }
         ]

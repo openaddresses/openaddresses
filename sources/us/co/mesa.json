@@ -15,18 +15,24 @@
             {
                 "name": "county",
                 "attribution": "Mesa County",
-                "data": "https://emap.mesacounty.us/datadownload/FileShapeFiles/E911_AddressPoints.zip",
-                "protocol": "http",
+                "data": "https://mcgis.mesacounty.us/arcgis/rest/services/maps/Open_Data/FeatureServer/52",
+                "protocol": "ESRI",
                 "website": "https://gis.mesacounty.us",
+                "license": {
+                    "text": "CC BY. The Geographic Information System (GIS) and its components are designed as a source of reference for answering inquiries, for planning and for modeling. GIS is not intended or does not replace legal description information in the chain of title and other information contained in official government records such as the County Clerk and Recorders office or the courts. In addition, the representations of locations in this GIS cannot be substituted for actual legal surveys. The information contained herein is believed accurate and suitable for the use for the limited uses, and subject to the limitations, set forth above. Mesa County makes no warranty as to the accuracy or suitability of any information contained herein. Users assume all risk and responsibility for any and all damages, including consequential damages, which may flow from the user's use of this information.",
+                    "attribution": true,
+                    "attribution name": "Mesa County GIS",
+                    "remarks": "https://www.arcgis.com/home/item.html?id=33f2e376aefc4be1b6588dfab7d263e6"
+                },
                 "conform": {
-                    "format": "shapefile",
-                    "number": "HOUSE_NUMB",
+                    "format": "geojson",
+                    "number": "HOUSE_NUMBER",
                     "street": [
-                        "PREFIX_DIR",
-                        "PREFIX_TYP",
-                        "STREET_NAM",
-                        "STREET_TYP",
-                        "SUFFIX_DIR"
+                        "PREFIX_DIRECTION",
+                        "PREFIX_TYPE",
+                        "STREET_NAME",
+                        "STREET_TYPE",
+                        "SUFFIX_DIRECTION"
                     ],
                     "unit": "UNIT",
                     "city": "CITY",

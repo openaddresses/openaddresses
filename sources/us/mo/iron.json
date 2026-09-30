@@ -14,24 +14,45 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.semogis.com/arcgis/rest/services/IronCo/IronAssess/MapServer/0",
+                "data": "https://maps.semogis.com/server/rest/services/Iron_CO/IronCo_911/MapServer/0",
+                "website": "https://semogis.com/maps/iron-county-missouri/",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Iron County 911 / SEMO Regional Planning Commission",
+                    "presumed": true,
+                    "remarks": "https://semogis.com/maps/iron-county-missouri/"
+                },
                 "conform": {
                     "format": "geojson",
-                    "number": "parcdata.SITE_NO",
-                    "street": "parcdata.SITE_STREE",
-                    "city": "parcdata.SITE_CITY"
+                    "number": "STRUCTURE_",
+                    "street": [
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "STREET_NAM",
+                        "STREET_TYP",
+                        "POST_DIR"
+                    ],
+                    "city": "CITY",
+                    "postcode": "ZIP"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://www.semogis.com/arcgis/rest/services/IronCo/IronAssess/MapServer/0",
+                "data": "https://maps.semogis.com/server/rest/services/Iron_CO/IronCo_Assessment/MapServer/0",
+                "website": "https://semogis.com/maps/iron-county-missouri/",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Iron County Assessor / SEMO Regional Planning Commission",
+                    "presumed": true,
+                    "remarks": "https://semogis.com/maps/iron-county-missouri/"
+                },
                 "conform": {
                     "format": "geojson",
-                    "pid": "Parcel.PIN"
+                    "pid": "PIN"
                 }
             }
         ]

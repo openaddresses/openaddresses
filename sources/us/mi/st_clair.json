@@ -14,18 +14,21 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.stclaircounty.org:6080/arcgis/rest/services/parcels_web/MapServer/0",
+                "data": "https://maps.stclaircounty.org/geocortex_wa/rest/services/Public_GISweb/PointAddress_Master/FeatureServer/0",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "St. Clair County GIS",
+                    "presumed": true
+                },
+                "website": "https://www.stclaircounty.org/Offices/gis/GISServices.aspx",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "PROP_ADDRESS_COMBINED"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "PROP_ADDRESS_COMBINED"
-                    }
+                    "number": "ADDRNUM",
+                    "street": "FULLNAME",
+                    "unit": "UNITID",
+                    "city": "MUNICIPALITY",
+                    "postcode": "ZIP"
                 }
             }
         ]
