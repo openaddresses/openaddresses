@@ -97,6 +97,65 @@
                     "pid": "planoid"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "TfNSW",
+                "data": "https://opendata.transport.nsw.gov.au/data/dataset/4253a054-b377-4b5b-83d1-71385bb6ff33/resource/bc2da977-65d2-4caa-a73a-48d0c8bf1100/download/speed_zones.geojson",
+                "website": "https://opendata.transport.nsw.gov.au/data/dataset/speed-zones",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Transport for NSW"
+                },
+                "language": "en",
+                "protocol": "http",
+                "conform": {
+                    "format": "geojson",
+                    "speed": {
+                      "function": "regexp",
+                      "field": "Speed",
+                      "pattern": "^([0-9]+)"
+                    }
+                }
+            },
+            {
+                "name": "SpatialServices",
+                "data": "https://www.alantgeo.com.au/share/NSWTransportTheme.zip",
+                "website": "https://portal.spatial.nsw.gov.au/client/services?id=54d5e60231fd420d9fa66df7e187efcd",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "© State of New South Wales (Spatial Services, a business unit of the Department of Customer Service NSW). For current information go to spatial.nsw.gov.au."
+                },
+                "language": "en",
+                "compression": "zip",
+                "protocol": "http",
+                "conform": {
+                    "format": "gdb",
+                    "name": ["roadnamebase", "roadnametype", "roadnamesuffix"],
+                    "classification": {
+                      "function": "map",
+                      "field": "functionhierarchy",
+                      "mapping": {
+                        "1": "motorway",
+                        "2": "primary",
+                        "3": "secondary"
+                      }
+                    },
+                    "oneway": "",
+                    "surface": {
+                      "function": "map",
+                      "field": "surface",
+                      "mapping": {
+                        "1": "paved",
+                        "2": "unpaved"
+                      }
+                    }
+                }
+            }
         ]
     }
 }
