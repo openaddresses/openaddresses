@@ -13,29 +13,35 @@
         "addresses": [
             {
                 "name": "state",
+                "data": "https://opendata.geoportal.gov.pl/prg/adresy/PunktyAdresowe/02/02.zip",
+                "website": "https://www.geoportal.gov.pl/pl/dane/panstwowy-rejestr-granic-prg/",
                 "license": {
                     "text": "Polish Law on Geodesy and Cartography of 17 May 1989",
                     "url": "https://github.com/openaddresses/openaddresses/issues/187#issuecomment-63327973",
                     "attribution": false,
                     "share-alike": false
                 },
+                "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "srs": "EPSG:2180",
-                    "id": "lokalnyId",
-                    "region": "jednostkaAdmnistracyjna3",
-                    "district": "jednostkaAdmnistracyjna2",
-                    "city": "miejscowosc",
-                    "postcode": "kodPocztowy",
-                    "street": "ulica",
-                    "number": "numerPorzadkowy",
-                    "format": "csv",
-                    "lat": "Y",
-                    "lon": "X"
-                },
-                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-06-03-xzz98/dolnoslaskie.csv.zip",
-                "protocol": "http",
-                "note": "https://opendata.geoportal.gov.pl/prg/adresy/PRG-punkty_adresowe.zip"
+                    "format": "shapefile",
+                    "file": "PRG_PunktyAdresowe_02.shp",
+                    "encoding": "utf-8",
+                    "id": {
+                        "function": "regexp",
+                        "field": "ID_IIP",
+                        "pattern": "^[^_]+_([0-9a-fA-F-]+)_"
+                    },
+                    "number": "NUMER_PORZ",
+                    "street": "NAZWA_ULC",
+                    "city": "NAZWA_MSC",
+                    "district": "NAZWA_GMI",
+                    "region": {
+                        "function": "constant",
+                        "value": "dolnośląskie"
+                    },
+                    "postcode": "KOD_POCZT"
+                }
             }
         ]
     }
