@@ -14,18 +14,25 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://web1.mobile311.com/arcgis/rest/services/NorthCarolina/Lenoir/MapServer/8",
+                "data": "https://services5.arcgis.com/oHyVM17u2FMyV4oB/arcgis/rest/services/AddressPoints/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "PhysStrAdd"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "PhysStrAdd"
-                    }
+                    "number": "Address",
+                    "street": [
+                        "Prefix",
+                        "Street_Nam",
+                        "Street_Typ"
+                    ],
+                    "unit": "Apartment",
+                    "city": "City",
+                    "postcode": "piz"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "City of Kinston",
+                    "presumed": true,
+                    "remarks": "https://www.arcgis.com/home/item.html?id=e4f96071431f43039498461db2082176"
                 }
             }
         ]
