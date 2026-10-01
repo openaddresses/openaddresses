@@ -30,6 +30,35 @@
                     "street": "STR_FULNAM"
                 }
             }
+        ],
+        "parcels": [
+            {
+                "name": "country",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-10-01-mrflm/parcel_all.zip",
+                "website": "https://data.gov.il/api/3/action/package_show?id=shape",
+                "protocol": "http",
+                "license": {
+                    "url": "https://data.gov.il/he/terms-of-use",
+                    "attribution": true,
+                    "attribution name": "Survey of Israel"
+                },
+                "conform": {
+                    "format": "shapefile",
+                    "file": "PARCEL_ALL.shp",
+                    "srs": "EPSG:2039",
+                    "encoding": "cp1255",
+                    "pid": {
+                        "function": "format",
+                        "fields": [
+                            "GUSH_NUM",
+                            "GUSH_SUFFI",
+                            "PARCEL"
+                        ],
+                        "format": "$1-$2-$3"
+                    },
+                    "notes": "pid is gush (block)-gush suffix-helka (parcel), unique across the file"
+                }
+            }
         ]
     }
 }
