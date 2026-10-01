@@ -1,0 +1,50 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                34.791,
+                31.252
+            ]
+        },
+        "ISO 3166": {
+            "alpha2": "IL-D"
+        },
+        "country": "il"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://data.gov.il/dataset/727e865d-25b1-43ce-9dcb-af297851f87b/resource/66755b06-bf71-4e4e-989b-e6ee98cffb68/download/addresses.csv",
+                "website": "https://data.gov.il/api/3/action/package_show?id=addresses-br7",
+                "protocol": "http",
+                "language": "HE",
+                "license": {
+                    "url": "https://data.gov.il/he/terms-of-use",
+                    "attribution": true,
+                    "attribution name": "Be'er Sheva Municipality"
+                },
+                "conform": {
+                    "format": "csv",
+                    "lat": "lat",
+                    "lon": "lon",
+                    "number": {
+                        "function": "format",
+                        "fields": [
+                            "HouseNuber",
+                            "letter"
+                        ],
+                        "format": "$1$2"
+                    },
+                    "street": "streetName",
+                    "city": {
+                        "function": "constant",
+                        "value": "באר שבע"
+                    }
+                }
+            }
+        ]
+    }
+}
