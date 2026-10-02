@@ -1,0 +1,31 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "TT-TUP",
+            "country": "Trinidad and Tobago",
+            "subdivision": "Tunapuna-Piarco"
+        },
+        "country": "tt",
+        "state": "tup"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "trincity",
+                "data": "https://services1.arcgis.com/NUSHso3rgWERZOFF/ArcGIS/rest/services/Trincity_Address/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "HOUSE_BLOC",
+                    "street": "STREET_THO",
+                    "city": {
+                        "function": "first_non_empty",
+                        "fields": ["TOWN_VIL_1", "PO_NAME"]
+                    },
+                    "postcode": "POSTCODE"
+                }
+            }
+        ]
+    }
+}
