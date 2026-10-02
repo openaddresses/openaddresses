@@ -1,0 +1,42 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "KY",
+            "country": "Cayman Islands"
+        },
+        "country": "ky"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "https://adapter1.caymanlandinfo.ky/wahost/rest/services/Layer_AddressLocator/MapServer/0",
+                "website": "https://www.caymanlandinfo.ky",
+                "protocol": "ESRI",
+                "license": {
+                    "url": "https://www.arcgis.com/home/item.html?id=f9847387857b462b956583a0bbbc51a9",
+                    "text": "Crown Copyright, all rights reserved",
+                    "attribution": true,
+                    "attribution name": "Lands and Survey Department, Cayman Islands Government"
+                },
+                "conform": {
+                    "format": "geojson",
+                    "filter": "SEARCH3 = 'Address'",
+                    "number": {
+                        "function": "regexp",
+                        "field": "SEARCH2",
+                        "pattern": "^\\s*(\\S+)\\s+(.*)$",
+                        "replace": "$1"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "SEARCH2",
+                        "pattern": "^\\s*(\\S+)\\s+(.*)$",
+                        "replace": "$2"
+                    }
+                }
+            }
+        ]
+    }
+}
