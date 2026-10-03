@@ -1,0 +1,61 @@
+{
+    "coverage": {
+        "country": "th",
+        "state": "bangkok",
+        "ISO 3166": {
+            "alpha2": "TH-10",
+            "country": "Thailand",
+            "subdivision": "Bangkok"
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-10-02-gb6p9/HID_Survey_Basemap_layer0_HouseNumber.geojson.zip",
+                "website": "https://cpudgiapp.bangkok.go.th/arcgis/rest/services/HID/Survey_Basemap/MapServer",
+                "license": "Unknown",
+                "year": 2026,
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "geojson",
+                    "number": "BL_HOUSENUM",
+                    "street": {
+                        "function": "first_non_empty",
+                        "fields": ["BL_ROAD", "BL_SOI"]
+                    },
+                    "city": {
+                        "function": "constant",
+                        "value": "Bangkok"
+                    },
+                    "district": "BL_DISTRICT",
+                    "postcode": "BL_POSTCODE",
+                    "id": "OBJECTID",
+                    "size": "large",
+                    "notes": "Cached copy of Bangkok Metropolitan Administration's ArcGIS layer เลขที่บ้าน (House Number), HID/Survey_Basemap MapServer layer 0 (see website), pulled 2026-09 and converted to GeoJSON (2,091,357 features). The live service is too slow to page through within a batch job (~30-90s per 1,000-record page, ~2 days for a full pull), so it is cached instead. Building-footprint layer linked to house-number records: ~77% of records have BL_HOUSENUM, ~66% have BL_ROAD or BL_SOI (~58% both); BL_POSTCODE/BL_DISTRICT are filled in virtually every row. BL_ADDRESS and BL_SUB_DISTRICT are kept in the cached file for future use. Many unmatched rows carry a placeholder BLDG_ID of 0 with no house number (footprints not yet linked to a house record) and are skipped for lacking number/street."
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "state",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-10-03-j700c/HID_Survey_Basemap_layer1_CurrentBuildings.geojson.zip",
+                "website": "https://cpudgiapp.bangkok.go.th/arcgis/rest/services/HID/Survey_Basemap/MapServer",
+                "license": "Unknown",
+                "year": 2026,
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "height": "BL_HEIGHT",
+                    "levels": "BL_NSTOREY",
+                    "size": "large",
+                    "notes": "Cached copy of Bangkok Metropolitan Administration's ArcGIS layer อาคาร ปัจจุบัน (Current Buildings), HID/Survey_Basemap MapServer layer 1 (see website), pulled 2026-09 and converted to GeoJSON (2,560,754 features; 72 rows with null or non-polygonal geometry dropped, and GeometryCollections reduced to their polygon parts). Cached for the same reason as the addresses layer: the live service is too slow to page through within a batch job."
+                }
+            }
+        ]
+    }
+}
