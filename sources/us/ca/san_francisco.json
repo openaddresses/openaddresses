@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.sfgov.org/api/views/ramy-di5m/rows.csv?accessType=DOWNLOAD&api_foundry=true",
+                "data": "https://data.sfgov.org/api/v3/views/ramy-di5m/query.csv?query=SELECT%20%60eas_fullid%60%2C%20%60address_number%60%2C%20%60address_number_suffix%60%2C%20%60street_name%60%2C%20%60street_type%60%2C%20%60unit_number%60%2C%20%60zip_code%60%2C%20%60longitude%60%20AS%20%60Longitude%60%2C%20%60latitude%60%20AS%20%60Latitude%60",
                 "license": {
                     "url": "https://opendatacommons.org/licenses/pddl/1-0/",
                     "text": "Public Domain Dedication and License (PDDL) v1.0",
@@ -28,15 +28,15 @@
                     "format": "csv",
                     "accuracy": 2,
                     "number":[
-                            "Address Number",
-                            "Address Number Suffix"
+                            "address_number",
+                            "address_number_suffix"
                         ],
                     "street": [
-                        "Street Name",
-                        "Street Type"
+                        "street_name",
+                        "street_type"
                     ],
-                    "unit": "Unit Number",
-                    "postcode": "ZIP Code",
+                    "unit": "unit_number",
+                    "postcode": "zip_code",
                     "city": {
                         "function": "constant",
                         "value": "San Francisco"
@@ -45,7 +45,7 @@
                         "function": "constant",
                         "value": "CA"
                     },
-                    "id": "EAS FullID",
+                    "id": "eas_fullid",
                     "lon": "Longitude",
                     "lat": "Latitude"
                 }
