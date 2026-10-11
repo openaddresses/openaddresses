@@ -58,6 +58,45 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services2.arcgis.com/bYBANhmQGwSSLC0l/ArcGIS/rest/services/RoadCenterLine/FeatureServer/0",
+                "website": "https://tularecounty.hub.arcgis.com/datasets/b02a219c08d14d12b7159b2afc71f9ed",
+                "protocol": "ESRI",
+                "license": {
+                    "url": "https://tularecounty.hub.arcgis.com/pages/disclaimer",
+                    "text": "OPEN DATA (NO COPYRIGHT) - The work on this site has been dedicated to the public domain by waiving all rights to this work worldwide under copyright law, including all related and neighboring rights, to the extend allowed by law. You can copy, modify, distribute, and perform the work, even for commercial purposes, all without asking permission.",
+                    "attribution": false,
+                    "attribution name": "County of Tulare",
+                    "share-alike": false,
+                    "remarks": "https://tularecounty.hub.arcgis.com/pages/disclaimer"
+                },
+                "conform": {
+                    "format": "geojson",
+                    "id": "NGUID",
+                    "name": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R",
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SpeedLimit"
+                    }
+                }
+            }
         ]
     }
 }
