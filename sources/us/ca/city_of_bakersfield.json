@@ -78,6 +78,34 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "city",
+                "data": "https://gis.bakersfieldcity.us/webmaps/rest/services/General/Transportation/FeatureServer/4",
+                "website": "https://bakersfielddatalibrary-cob.opendata.arcgis.com/",
+                "license": {
+                    "url": "https://www.bakersfieldcity.us/958/GIS-Data-Disclaimer",
+                    "attribution": true,
+                    "attribution name": "City of Bakersfield",
+                    "presumed": true
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "filter": "JURISDICTIONL = 'BAK' OR JURISDICTIONR = 'BAK'",
+                    "name": [
+                        "PREFIX",
+                        "NAME",
+                        "TYPE",
+                        "SUFFIX"
+                    ],
+                    "addr_from_left": "LEFTFROM",
+                    "addr_to_left": "LEFTTO",
+                    "addr_from_right": "RIGHTFROM",
+                    "addr_to_right": "RIGHTTO"
+                }
+            }
         ]
     }
 }
