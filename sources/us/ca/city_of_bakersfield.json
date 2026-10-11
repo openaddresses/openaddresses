@@ -100,10 +100,30 @@
                         "TYPE",
                         "SUFFIX"
                     ],
-                    "addr_from_left": "LEFTFROM",
-                    "addr_to_left": "LEFTTO",
-                    "addr_from_right": "RIGHTFROM",
-                    "addr_to_right": "RIGHTTO"
+                    "addr_from_left": {
+                        "function": "regexp",
+                        "field": "LEFTFROM",
+                        "pattern": "^([0-9]+)(?:\\.0+)?$",
+                        "replace": "$1"
+                    },
+                    "addr_to_left": {
+                        "function": "regexp",
+                        "field": "LEFTTO",
+                        "pattern": "^([0-9]+)(?:\\.0+)?$",
+                        "replace": "$1"
+                    },
+                    "addr_from_right": {
+                        "function": "regexp",
+                        "field": "RIGHTFROM",
+                        "pattern": "^([0-9]+)(?:\\.0+)?$",
+                        "replace": "$1"
+                    },
+                    "addr_to_right": {
+                        "function": "regexp",
+                        "field": "RIGHTTO",
+                        "pattern": "^([0-9]+)(?:\\.0+)?$",
+                        "replace": "$1"
+                    }
                 }
             }
         ]
