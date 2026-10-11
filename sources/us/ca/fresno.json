@@ -56,6 +56,44 @@
                     "format": "shapefile"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/ibgDyuD2DLBge82s/arcgis/rest/services/REGIONAL_STREETS_VW/FeatureServer/1",
+                "website": "https://datasharing-cofgisonline.hub.arcgis.com/datasets/cofgisonline::regional-streets-vw/about",
+                "license": {
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "text": "CC0 1.0",
+                    "attribution": false,
+                    "attribution name": "County of Fresno",
+                    "share-alike": false,
+                    "remarks": "https://datasharing-cofgisonline.hub.arcgis.com/datasets/cofgisonline::regional-streets-vw/about"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": [
+                        "STR_DIR",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "STR_POST_DIR"
+                    ],
+                    "classification": {
+                        "function": "map",
+                        "field": "DS_REGIONAL_TYPE",
+                        "mapping": {
+                            "Freeway": "motorway",
+                            "Expressway": "trunk",
+                            "Super Arterial": "primary",
+                            "Arterial": "secondary",
+                            "Collector": "tertiary",
+                            "Private": "service"
+                        },
+                        "else": "residential"
+                    }
+                }
+            }
         ]
     }
 }
