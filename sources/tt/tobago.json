@@ -19,7 +19,13 @@
                     "format": "geojson",
                     "number": "HOUSE_BLOC",
                     "street": "STREET_THO",
-                    "city": "TOWN_VIL_1",
+                    "city": {
+                        "function": "first_non_empty",
+                        "fields": [
+                            "TOWN_VIL_1",
+                            "PO_NAME"
+                        ]
+                    },
                     "postcode": "POSTCODE"
                 }
             }
