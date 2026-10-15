@@ -28,6 +28,71 @@
                     "unit": "unit_apt",
                     "city": "CITY",
                     "postcode": "ZIP"
+                },
+                "website": "https://gis.yadkincountync.gov/",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Yadkin County, NC",
+                    "presumed": true,
+                    "remarks": "https://gis.yadkincountync.gov/assets/yadkin/disclaimer.html"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "data": "https://gis.yadkincountync.gov/DataDownload/tax_parcels.zip",
+                "website": "https://gis.yadkincountync.gov/",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "pid": "PIN"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Yadkin County, NC",
+                    "presumed": true,
+                    "remarks": "https://gis.yadkincountync.gov/assets/yadkin/disclaimer.html"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.yadkincountync.gov/DataDownload/centerlines.zip",
+                "website": "https://gis.yadkincountync.gov/",
+                "protocol": "http",
+                "conform": {
+                    "format": "shapefile",
+                    "id": "GlobalID",
+                    "name": "FULL_NAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no",
+                            "0": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED"
+                    },
+                    "addr_from_left": "L_FROM",
+                    "addr_to_left": "L_TO",
+                    "addr_from_right": "R_FROM",
+                    "addr_to_right": "R_TO",
+                    "zip_left": "LEFT_ZIP",
+                    "zip_right": "RIGHT_ZIP"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Yadkin County, NC",
+                    "presumed": true,
+                    "remarks": "https://gis.yadkincountync.gov/assets/yadkin/disclaimer.html"
                 }
             }
         ]
