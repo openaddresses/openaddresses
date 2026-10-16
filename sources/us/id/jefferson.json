@@ -1,54 +1,86 @@
 {
+    "schema": 2,
     "coverage": {
+        "country": "us",
+        "state": "id",
+        "county": "Jefferson",
         "US Census": {
             "geoid": "16051",
             "name": "Jefferson County",
             "state": "Idaho"
-        },
-        "country": "us",
-        "state": "id",
-        "county": "Jefferson"
+        }
     },
-    "schema": 2,
     "layers": {
         "addresses": [
             {
                 "name": "county",
-                "data": "https://grant.co.jefferson.id.us/arcgis/rest/services/Labels/MapServer/0",
-                "protocol": "ESRI",
+                "data": "https://www.jcgov.us/DocumentCenter/View/1132/address-ZIP",
+                "website": "https://www.jcgov.us/479/Data-Files",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Jefferson County, ID",
+                    "presumed": true,
+                    "remarks": "https://www.jcgov.us/224/Geographic-Information-Systems-GIS-Mappi"
+                },
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
-                    "number": "HOUSE_NUM",
-                    "street": {
-                        "function": "regexp",
-                        "field": "ADDRESS",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "unit": [
-                        "SB_UNIT_TP",
-                        "SB_UNIT"
+                    "format": "shapefile",
+                    "number": "HOUSENUM",
+                    "street": [
+                        "PRE_DIR",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "SUF_DIR"
                     ],
+                    "unit": "UNIT",
                     "city": "COMMUNITY",
-                    "postcode": "ZIP"
+                    "postcode": "POSTALCODE"
+                },
+                "request": {
+                    "headers": {
+                        "User-Agent": "OpenAddresses/1.0 (https://openaddresses.io)"
+                    }
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://grant.co.jefferson.id.us/arcgis/rest/services/Cadastre/MapServer/12",
-                "protocol": "ESRI",
+                "data": "https://www.jcgov.us/DocumentCenter/View/1124/Parcels-ZIP",
+                "website": "https://www.jcgov.us/479/Data-Files",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Jefferson County, ID",
+                    "presumed": true,
+                    "remarks": "https://www.jcgov.us/224/Geographic-Information-Systems-GIS-Mappi"
+                },
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
-                    "pid": "Enterprise.dbo.T_PARCEL.PIN"
+                    "format": "shapefile",
+                    "pid": "PIN"
+                },
+                "request": {
+                    "headers": {
+                        "User-Agent": "OpenAddresses/1.0 (https://openaddresses.io)"
+                    }
                 }
             }
         ],
         "buildings": [
             {
                 "name": "county",
-                "data": "https://grant.co.jefferson.id.us/arcgis/rest/services/BuildingFootprints/MapServer/0",
+                "data": "https://services6.arcgis.com/Do88DoK2xjTUCXd1/arcgis/rest/services/Jefferson_County_ID_Buildings/FeatureServer/0",
+                "website": "https://www.arcgis.com/home/item.html?id=e16c6d898cc44d548665da3f760074c0",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Esri Community Maps Contributors; Jefferson County, ID",
+                    "share-alike": false,
+                    "remarks": "https://www.arcgis.com/home/item.html?id=e16c6d898cc44d548665da3f760074c0"
+                },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson"
