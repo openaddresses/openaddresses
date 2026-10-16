@@ -1,0 +1,52 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "AU-SA"
+        },
+        "country": "au",
+        "state": "sa"
+    },
+    "schema": 2,
+    "layers": {
+        "centerlines": [
+            {
+                "name": "state",
+                "data": "https://www.dptiapps.com.au/dataportal/Roads_geojson.zip",
+                "website": "https://data.sa.gov.au/data/dataset/roads",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Department for Infrastructure and Transport"
+                },
+                "language": "en",
+                "protocol": "http",
+                "compression": "zip",
+                "conform": {
+                    "format": "geojson",
+                    "name": ["name", "roadtype", "typesuffix"],
+                    "classification": {
+                      "function": "map",
+                      "field": "class",
+                      "mapping": {
+                        "HWY": "trunk",
+                        "COLL": "primary",
+                        "SUBA": "residential",
+                        "LOCL": "unclassified",
+                        "TRK2": "track",
+                        "TRK4": "track"
+                      }
+                    },
+                    "surface": {
+                      "function": "map",
+                      "field": "surface",
+                      "mapping": {
+                        "SEAL": "paved",
+                        "UNSE": "unpaved"
+                      }
+                    }
+                }
+            }
+        ]
+    }
+}
