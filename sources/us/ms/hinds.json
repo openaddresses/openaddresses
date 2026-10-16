@@ -14,16 +14,21 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis3.cmpdd.org/arcgis/rest/services/County/Hinds_County_Map_Service/MapServer/13",
+                "data": "https://gis.cmpdd.org/server/rest/services/Hosted/Hinds_County_Map/FeatureServer/24",
                 "protocol": "ESRI",
                 "conform": {
+                    "format": "geojson",
+                    "number": "loc_num",
                     "street": [
                         "loc_ns",
                         "loc_alpha"
                     ],
-                    "number": "loc_num",
-                    "unit": "loc_apt",
-                    "format": "geojson"
+                    "unit": "loc_apt"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Hinds County, Mississippi",
+                    "presumed": true
                 },
                 "note": "Very poor address coverage"
             }
@@ -31,11 +36,38 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis3.cmpdd.org/arcgis/rest/services/County/Hinds_County_Map_Service/MapServer/13",
+                "data": "https://gis.cmpdd.org/server/rest/services/Hosted/Hinds_County_Map/FeatureServer/24",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "parcel"
+                    "pid": "dpin"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Hinds County, Mississippi",
+                    "presumed": true
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://gis.cmpdd.org/server/rest/services/Hosted/Hinds_County_Map/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "name",
+                    "addr_from_left": "start_left",
+                    "addr_to_left": "end_left",
+                    "addr_from_right": "start_right",
+                    "addr_to_right": "end_right",
+                    "zip_left": "left_zip",
+                    "zip_right": "right_zip"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Hinds County, Mississippi",
+                    "presumed": true
                 }
             }
         ]
