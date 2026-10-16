@@ -16,19 +16,26 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.niagaraopendata.ca//dataset/89185b23-8326-4163-a85b-a949233c3e3c/resource/8bd7aa20-37d7-4760-aed0-17dd285c77f5/download/addresspoints.zip",
-                "website": "https://niagaraopendata.ca/dataset/address-points",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services1.arcgis.com/WxiLK82TWf8W3O3f/arcgis/rest/services/OpenData_Address_Points/FeatureServer/43",
+                "website": "https://open.niagararegion.ca/datasets/NiagaraRegion::address-points/about",
+                "license": {
+                    "url": "https://niagaraopendata.ca/pages/open-government-license-2-0-niagara-region",
+                    "text": "Contains information licensed under the Open Government Licence - Niagara Region",
+                    "attribution": true,
+                    "attribution name": "Niagara Region",
+                    "share-alike": false
+                },
+                "protocol": "ESRI",
                 "conform": {
-                    "number": "Full_Stree",
+                    "format": "geojson",
+                    "number": "Full_StreetNo",
                     "street": [
-                        "StreetDir",
                         "StreetName",
-                        "StreetType"
+                        "StreetType",
+                        "StreetDir"
                     ],
-                    "city": "Municipali",
-                    "format": "shapefile"
+                    "unit": "Unit",
+                    "city": "Municipality"
                 }
             }
         ]
