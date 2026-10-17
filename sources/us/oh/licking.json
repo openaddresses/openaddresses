@@ -11,6 +11,34 @@
     },
     "schema": 2,
     "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://gis.lickingcounty.gov/server/rest/services/Engineer/AddressPoints/FeatureServer/1",
+                "website": "https://gis.lickingcounty.gov/server/rest/services/Engineer/AddressPoints/FeatureServer",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDR_NUM",
+                    "street": [
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "STR_NAME",
+                        "STR_TYPE",
+                        "SUF_DIR"
+                    ],
+                    "unit": "UNIT_NUM",
+                    "city": "POSTALCITY",
+                    "postcode": "ZIP"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Licking County GIS",
+                    "presumed": true,
+                    "remarks": "https://gis.lickingcounty.gov/server/rest/services/Engineer/AddressPoints/FeatureServer/1"
+                }
+            }
+        ],
         "buildings": [
             {
                 "name": "county",
@@ -24,11 +52,18 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://apps.lcounty.com/arcgis/rest/services/TaxMapWeb/TAXMAPWEB/MapServer/3",
+                "data": "https://gis.lickingcounty.gov/server/rest/services/Auditor/Parcels/FeatureServer/0",
+                "website": "https://gis.lickingcounty.gov/server/rest/services/Auditor/Parcels/FeatureServer",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "FLDPARCELNO"
+                    "pid": "Parcel"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Licking County Auditor",
+                    "presumed": true,
+                    "remarks": "https://gis.lickingcounty.gov/server/rest/services/Auditor/Parcels/FeatureServer/0"
                 }
             }
         ]
