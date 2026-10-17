@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://web.co.orange.nc.us/gisdownloads/addresses.zip",
+                "data": "https://web.co.orange.nc.us/gisdownloads/AddressesFGDB.gdb.zip",
                 "license": {
                     "text": "Indemnification",
                     "attribution": false,
@@ -23,16 +23,18 @@
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "number": "housenum",
+                    "format": "gdb",
+                    "layer": "AddressesFGDB",
+                    "number": "HouseNum",
                     "street": [
                         "DirPrefix",
-                        "name",
-                        "type",
+                        "Name",
+                        "Type",
                         "DirSuffix"
                     ],
                     "unit": "UnitNum",
-                    "format": "shapefile",
-                    "postcode": "zipcode"
+                    "city": "MailingCity",
+                    "postcode": "ZipCode"
                 }
             }
         ]
