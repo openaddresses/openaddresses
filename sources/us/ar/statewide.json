@@ -3341,25 +3341,27 @@
             {
                 "name": "state",
                 "website": "https://gis.arkansas.gov/product/building-footprints-composite/",
-                "data": "https://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Structure/FeatureServer/54",
-                "protocol": "ESRI",
+                "data": "https://hub.arcgis.com/api/v3/datasets/6530052fd2c94872a23e7d9aa5e23108_54/downloads/data?format=shp&spatialRefId=4326&where=1%3D1",
+                "protocol": "http",
                 "conform": {
-                    "format": "geojson"
-                }
+                    "format": "shapefile"
+                },
+                "note": "https://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Structure/FeatureServer/54",
+                "compression": "zip"
             }
         ],
         "centerlines": [
             {
                 "name": "state",
-                "data": "https://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Transportation/FeatureServer/18",
-                "protocol": "ESRI",
+                "data": "https://geostor-vectors.s3.amazonaws.com/Transportation/SHP/ROADS_ACF.zip",
+                "protocol": "http",
                 "conform": {
-                    "format": "geojson",
-                    "id": "unique_id",
-                    "name": "pstr_fulnam",
+                    "format": "shapefile",
+                    "id": "UNIQUE_ID",
+                    "name": "PSTR_FULNA",
                     "classification": {
                         "function": "map",
-                        "field": "rd_class",
+                        "field": "RD_CLASS",
                         "mapping": {
                             "Federal": "trunk",
                             "State": "primary",
@@ -3370,20 +3372,22 @@
                     },
                     "surface": {
                         "function": "map",
-                        "field": "rd_surftyp",
+                        "field": "RD_SURFTYP",
                         "mapping": {
                             "Paved": "paved",
                             "Unpaved": "unpaved"
                         },
                         "else": ""
                     },
-                    "addr_from_left": "pl_add_f",
-                    "addr_to_left": "pl_add_t",
-                    "addr_from_right": "pr_add_f",
-                    "addr_to_right": "pr_add_t",
-                    "zip_left": "zip5_l",
-                    "zip_right": "zip5_r"
-                }
+                    "addr_from_left": "PL_ADD_F",
+                    "addr_to_left": "PL_ADD_T",
+                    "addr_from_right": "PR_ADD_F",
+                    "addr_to_right": "PR_ADD_T",
+                    "zip_left": "ZIP5_L",
+                    "zip_right": "ZIP5_R"
+                },
+                "note": "https://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Transportation/FeatureServer/18",
+                "compression": "zip"
             }
         ]
     }
