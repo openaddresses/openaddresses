@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://spatial.jacksoncountyor.gov/arcgis/rest/services/OpenData/ReferenceData/MapServer/1",
+                "data": "https://jcportal.jacksoncountyor.gov/server/rest/services/Property/Address_Points/FeatureServer/1",
                 "website": "https://gis.jacksoncountyor.gov/datasets/JCGIS::address-point/about",
                 "license": {
                     "url": "https://creativecommons.org/licenses/by/4.0/",
@@ -26,16 +26,25 @@
                 "conform": {
                     "format": "geojson",
                     "number": [
-                        "PREADDRNUM",
-                        "ADDRNUM",
-                        "ADDRNUMSUF"
+                        "AddNum_Pre",
+                        "Add_Number",
+                        "AddNum_Suf"
                     ],
                     "unit": [
-                        "UNITTYPE",
-                        "UNITID"
+                        "UnitType",
+                        "Unit"
                     ],
-                    "street": "FULLNAME",
-                    "city": "MUNICIPALITY",
+                    "street": [
+                        "St_PreMod",
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir",
+                        "St_PosMod"
+                    ],
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code",
                     "accuracy": 2
                 }
             }
@@ -43,7 +52,7 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://spatial.jacksoncountyor.gov/arcgis/rest/services/OpenData/ReferenceData/MapServer/3",
+                "data": "https://jcportal.jacksoncountyor.gov/server/rest/services/Property/Taxlots/FeatureServer/2",
                 "website": "https://gis.jacksoncountyor.gov/datasets/JCGIS::tax-lots/about",
                 "license": {
                     "url": "https://creativecommons.org/licenses/by/4.0/",
@@ -61,7 +70,7 @@
         "buildings": [
             {
                 "name": "county",
-                "data": "https://spatial.jacksoncountyor.gov/arcgis/rest/services/OpenData/ReferenceData/MapServer/2",
+                "data": "https://jcportal.jacksoncountyor.gov/server/rest/services/Property/Building_Footprints/FeatureServer/4",
                 "website": "https://gis.jacksoncountyor.gov/datasets/JCGIS::building-footprints/about",
                 "license": {
                     "url": "https://creativecommons.org/licenses/by/4.0/",
