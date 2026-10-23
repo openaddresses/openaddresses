@@ -36,7 +36,7 @@
                             {
                                 "function": "regexp",
                                 "field": "STD",
-                                "pattern": "^(?!\")([^,]*)",
+                                "pattern": "^(?!\")([^,]*).*$",
                                 "replace": "$1"
                             },
                             {
@@ -49,13 +49,13 @@
                     "city": {
                         "function": "regexp",
                         "field": "STD",
-                        "pattern": "^[^,]*,\\s*([^,]*),",
+                        "pattern": "^[^,]*,\\s*([^,]*),.*$",
                         "replace": "$1"
                     },
                     "district": {
                         "function": "regexp",
                         "field": "STD",
-                        "pattern": "^[^,]*,[^,]*,\\s*([^,]*),",
+                        "pattern": "^[^,]*,[^,]*,\\s*([^,]*),.*$",
                         "replace": "$1"
                     },
                     "postcode": "ATRIB"
