@@ -23,16 +23,22 @@
                 },
                 "website": "https://www.syke.fi/en/environmental-data/open-web-services/web-map-services#addresses",
                 "conform": {
-                    "street": "address_name_fin",
+                    "street": {
+                        "function": "first_non_empty",
+                        "fields": ["address_name_fin", "address_name_swe"]
+                    },
                     "lat": "y",
                     "lon": "x",
                     "number": {
-                        "function": "remove_prefix",
-                        "field": "address_fin",
-                        "field_to_remove": "address_name_fin"
+                        "function": "format",
+                        "fields": ["number_part_of_address_number", "subdivision_letter_of_address_number", "number_part_of_address_number2", "subdivision_letter_of_address_number2"],
+                        "format": "$1$2-$3$4"
                     },
                     "id": "address_key",
-                    "city": "postal_office_fin",
+                    "city": {
+                        "function": "first_non_empty",
+                        "fields": ["postal_office_fin", "postal_office_swe"]
+                    },
                     "postcode": "postal_code",
                     "format": "csv",
                     "accuracy": 1
