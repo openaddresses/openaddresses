@@ -25,6 +25,12 @@
     "pid": {
       "description": "unique identifier for the parcel row",
       "$ref": "../util/functions/standard_functions.json"
+    },
+    "owners": {
+      "description": "owners of the parcel, one entry per owner slot in the source. Owner names are personal data: only map them where the source licence permits redistribution",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "./parcel_owner.json" }
     }
   }
 }

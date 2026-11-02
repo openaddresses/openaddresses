@@ -3388,3 +3388,108 @@ tape('format function tests', (test) => {
 
     });
 });
+
+tape('parcel owners tests', (test) => {
+    function parcelSource(conform) {
+        return {
+            schema: 2,
+            coverage: {
+                country: 'some country'
+            },
+            layers: {
+                parcels: [{
+                    protocol: 'http',
+                    name: 'county',
+                    data: 'http://xyz.com/',
+                    conform: {
+                        format: 'geojson',
+                        pid: 'PIN',
+                        ...conform
+                    }
+                }]
+            }
+        };
+    }
+
+    test.test('owners with field, list and function names should not fail', (t) => {
+        const valid = validate(parcelSource({
+            owners: [
+                { name: 'OWNER1' },
+                { name: ['OWNER_FIRST_NAME_2', 'OWNER_LAST_NAME_2'] },
+                { name: { function: 'regexp', field: 'OWNER3', pattern: '^(.*?)\\s*&?$' } }
+            ]
+        }));
+
+        t.ok(valid, JSON.stringify(validate.errors));
+        t.end();
+    });
+
+    test.test('owner address as field or list should not fail', (t) => {
+        const valid = validate(parcelSource({
+            owners: [
+                { name: 'OWNER1', address: ['MAIL_ADDR1', 'MAIL_CITY', 'MAIL_STATE', 'MAIL_ZIP'] },
+                { name: 'OWNER2', address: 'OWNER2_MAILING_ADDRESS' }
+            ]
+        }));
+
+        t.ok(valid, JSON.stringify(validate.errors));
+        t.end();
+    });
+
+    test.test('owners must be an array', (t) => {
+        const valid = validate(parcelSource({
+            owners: { name: 'OWNER1' }
+        }));
+
+        t.notOk(valid, 'object owners should fail');
+        t.ok(isTypeError(validate, '/layers/parcels/0/conform/owners'), JSON.stringify(validate.errors));
+        t.end();
+    });
+
+    test.test('owners must not be empty', (t) => {
+        const valid = validate(parcelSource({
+            owners: []
+        }));
+
+        t.notOk(valid, 'empty owners should fail');
+        t.ok(isMinItemsError(validate, '/layers/parcels/0/conform/owners'), JSON.stringify(validate.errors));
+        t.end();
+    });
+
+    test.test('owner entries must be objects with a name', (t) => {
+        let valid = validate(parcelSource({
+            owners: ['OWNER1']
+        }));
+
+        t.notOk(valid, 'bare string owner should fail');
+        t.ok(isTypeError(validate, '/layers/parcels/0/conform/owners/0'), JSON.stringify(validate.errors));
+
+        valid = validate(parcelSource({
+            owners: [{ address: 'MAIL_ADDR1' }]
+        }));
+
+        t.notOk(valid, 'owner without name should fail');
+        t.ok(isMissingPropertyError(validate, '/layers/parcels/0/conform/owners/0', 'name'), JSON.stringify(validate.errors));
+        t.end();
+    });
+
+    test.test('unknown property in owner should fail', (t) => {
+        const valid = validate(parcelSource({
+            owners: [{ name: 'OWNER1', type: 'OWNTYPE' }]
+        }));
+
+        t.notOk(valid, 'unknown owner property should fail');
+        t.ok(isAdditionalPropertyError(validate, '/layers/parcels/0/conform/owners/0', 'type'), JSON.stringify(validate.errors));
+        t.end();
+    });
+
+    test.test('owner name must be a valid conform value', (t) => {
+        const valid = validate(parcelSource({
+            owners: [{ name: 17 }]
+        }));
+
+        t.notOk(valid, 'numeric owner name should fail');
+        t.ok(isOneOfError(validate, '/layers/parcels/0/conform/owners/0/name'), JSON.stringify(validate.errors));
+        t.end();
+    });
+});
