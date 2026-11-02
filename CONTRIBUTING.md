@@ -187,6 +187,7 @@ Attribute tags are functions or field names for mapping the source data into a g
  Tag | Required? | Note
 ---------- | --- | ----
 `pid`   | Yes | The unique identifier for the parcel
+`owners` |     | List of owner objects, one per owner slot in the source. Each has a required `name` (field name, list of fields to merge, or function) and an optional single-line `address` for that owner's mailing address. Slots that resolve to an empty string are dropped. Only map owner names where the source licence permits redistribution.
 
 ##### Building Attribute Tags
 
