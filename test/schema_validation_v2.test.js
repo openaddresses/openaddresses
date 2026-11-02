@@ -1061,7 +1061,7 @@ tape('conform tests', (test) => {
     });
 
     test.test('non-integer accuracy should fail', (t) => {
-        nonIntegerValues.forEach((value) => {
+        nonIntegerValues.filter((value) => typeof value !== 'string').forEach((value) => {
             const source = {
                 schema: 2,
                 coverage: {
@@ -1090,6 +1090,35 @@ tape('conform tests', (test) => {
 
         });
 
+        t.end();
+
+    });
+
+    test.test('accuracy as a source field name should not fail', (t) => {
+        const source = {
+            schema: 2,
+            coverage: {
+                country: 'some country'
+            },
+            layers: {
+                addresses: [{
+                    protocol: 'http',
+                    name: 'county',
+                    data: 'http://xyz.com/',
+                    conform: {
+                        format: 'geojson',
+                        accuracy: 'accuracy field',
+                        number: 'number field',
+                        street: 'street field'
+                    }
+                }],
+                buildings: []
+            }
+        };
+
+        const valid = validate(source);
+
+        t.ok(valid, JSON.stringify(validate.errors));
         t.end();
 
     });
