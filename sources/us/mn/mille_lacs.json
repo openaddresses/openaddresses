@@ -42,7 +42,18 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "CDSTRL_Parcels.Name"
+                    "pid": "CDSTRL_Parcels.Name",
+                    "owners": [
+                        {
+                            "name": "dbo.tblParcelJoin.TAXPAYER_NAME",
+                            "address": [
+                                "dbo.tblParcelJoin.TAXPAYER_ADDRESS",
+                                "dbo.tblParcelJoin.TAXPAYER_ADDRESS_2",
+                                "dbo.tblParcelJoin.TAXPAYER_ADDRESS_3",
+                                "dbo.tblParcelJoin.TAXPAYER_ADDRESS_4"
+                            ]
+                        }
+                    ]
                 }
             }
         ]
