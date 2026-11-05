@@ -56,6 +56,36 @@
                 "data": "https://maps.deltacountyco.gov/arcgis/rest/services/PARCELSonly/FeatureServer/209",
                 "protocol": "ESRI"
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Delta County",
+                "data": "https://maps.deltacountyco.gov/arcgis/rest/services/RoadCenterlines/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SID",
+                    "name": "FSN",
+                    "classification": {
+                        "function": "map",
+                        "field": "ROC",
+                        "mapping": {
+                            "LOCAL": "residential",
+                            "PRIMARY": "primary",
+                            "SECONDARY": "secondary",
+                            "PRIVATE": "service"
+                        },
+                        "else": "unclassified"
+                    },
+                    "addr_from_left": "LFR",
+                    "addr_to_left": "LTO",
+                    "addr_from_right": "RFR",
+                    "addr_to_right": "RTO",
+                    "zip_left": "City_PO_left",
+                    "zip_right": "City_PO_right"
+                }
+            }
         ]
     }
 }

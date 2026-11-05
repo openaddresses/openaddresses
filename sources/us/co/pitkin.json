@@ -63,6 +63,34 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Pitkin County",
+                "data": "https://maps.pitkincounty.com/arcgis/rest/services/Hosted/Road_Centerlines_Open_Data/FeatureServer/3",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "objectid",
+                    "name": "short_name",
+                    "oneway": {
+                        "function": "map",
+                        "field": "oneway",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "addr_from_left": "l_ladd",
+                    "addr_to_left": "l_hadd",
+                    "addr_from_right": "r_ladd",
+                    "addr_to_right": "r_hadd",
+                    "zip_left": "left_zip",
+                    "zip_right": "right_zip"
+                }
+            }
         ]
     }
 }

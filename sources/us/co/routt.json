@@ -82,6 +82,47 @@
                     "remarks": "https://data-routtgis.opendata.arcgis.com/datasets/RouttGIS::parcels"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Routt County",
+                "data": "https://services6.arcgis.com/VxFGFP4XeHMTNgVs/arcgis/rest/services/Road_Centerline/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "https://data-routtgis.opendata.arcgis.com/",
+                "conform": {
+                    "format": "geojson",
+                    "id": "CenterlineID",
+                    "name": "St_FullNm",
+                    "oneway": {
+                        "function": "map",
+                        "field": "OneWay",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "RoadSurface",
+                        "mapping": {
+                            "Gravel": "unpaved",
+                            "Dirt": "unpaved",
+                            "Native": "unpaved",
+                            "Paved": "paved",
+                            "Asphalt": "paved",
+                            "Chip Seal": "paved"
+                        }
+                    },
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R"
+                }
+            }
         ]
     }
 }

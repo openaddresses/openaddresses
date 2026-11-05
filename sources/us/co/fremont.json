@@ -49,6 +49,32 @@
                     ]
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Fremont County",
+                "data": "https://fremontgis.com/server/rest/services/FC_Roads__ENT/MapServer/1082516606",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "GL_STR_FUL",
+                    "classification": {
+                        "function": "map",
+                        "field": "func_class",
+                        "mapping": {
+                            "interstate": "motorway",
+                            "highway": "trunk",
+                            "arterial": "secondary",
+                            "collector": "tertiary",
+                            "local": "residential",
+                            "private": "service"
+                        },
+                        "else": "residential"
+                    }
+                }
+            }
         ]
     }
 }

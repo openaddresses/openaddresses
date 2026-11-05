@@ -71,6 +71,38 @@
                     "pid": "PARCEL_NO"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Boulder County",
+                "data": "https://maps.bouldercounty.org/arcgis/rest/services/Transportation/STREETS/MapServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "EXTERNALSTREETKEY",
+                    "name": "STREETNAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAYCODE",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEEDLIMIT"
+                    },
+                    "addr_from_left": "LEFTFROMADDRESS",
+                    "addr_to_left": "LEFTTOADDRESS",
+                    "addr_from_right": "RIGHTFROMADDRESS",
+                    "addr_to_right": "RIGHTTOADDRESS",
+                    "zip_left": "ZIPCODELEFT",
+                    "zip_right": "ZIPCODERIGHT"
+                }
+            }
         ]
     }
 }

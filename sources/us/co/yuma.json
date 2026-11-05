@@ -14,62 +14,46 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/YumaCOFeatures/FeatureServer/4",
+                "attribution": "Yuma County",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/Parcels_Yuma/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "Replaces the YumaCOFeatures service that stopped answering in 2026-10; situs address taken from the parcel polygons",
+                "conform": {
+                    "format": "geojson",
+                    "number": "streetno",
+                    "street": "streetname",
+                    "city": "City",
+                    "postcode": "Zipcode"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Yuma County",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/Roads_Yuma/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "TSC_Site_Address"
-                    },
-                    "street": {
-                        "function": "chain",
-                        "variable": "street_wip",
-                        "functions": [
-                            {
-                                "function": "postfixed_street",
-                                "field": "TSC_Site_Address"
-                            },
-                            {
-                                "function": "regexp",
-                                "field": "oa:street_wip",
-                                "pattern": "^([A-Za-z0-9 ]+) ([A-Za-z]{4,}) ([0-9]{5})$",
-                                "replace": "$1"
-                            }
-                        ]
-                    },
-                    "city": {
-                        "function": "chain",
-                        "variable": "city_wip",
-                        "functions": [
-                            {
-                                "function": "postfixed_street",
-                                "field": "TSC_Site_Address"
-                            },
-                            {
-                                "function": "regexp",
-                                "field": "oa:city_wip",
-                                "pattern": "^([A-Za-z0-9 ]+) ([A-Za-z]{4,}) ([0-9]{5})$",
-                                "replace": "$2"
-                            }
-                        ]
-                    },
-                    "postcode": {
-                        "function": "chain",
-                        "variable": "postcode_wip",
-                        "functions": [
-                            {
-                                "function": "postfixed_street",
-                                "field": "TSC_Site_Address"
-                            },
-                            {
-                                "function": "regexp",
-                                "field": "oa:postcode_wip",
-                                "pattern": "^([A-Za-z0-9 ]+) ([A-Za-z]{4,}) ([0-9]{5})$",
-                                "replace": "$3"
-                            }
-                        ]
-                    }
+                    "id": "OBJECTID",
+                    "name": "Road_Name"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Yuma County",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/Parcels_Yuma/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN",
+                    "owners": [
+                        {
+                            "name": "Name1"
+                        }
+                    ]
                 }
             }
         ]

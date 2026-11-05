@@ -1,0 +1,98 @@
+{
+    "schema": 2,
+    "coverage": {
+        "US Census": {
+            "geoid": "08033",
+            "name": "Dolores County",
+            "state": "Colorado"
+        },
+        "country": "us",
+        "state": "co",
+        "county": "Dolores"
+    },
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Dolores County",
+                "data": "https://gis-server.co.montezuma.co.us/arcgis/rest/services/DoloresCounty/DoloresCountyBasemap/MapServer/10",
+                "protocol": "ESRI",
+                "website": "https://dolocnty.colorado.gov/addressing-and-mapping-gis",
+                "note": "Served from the Montezuma County GIS server, which hosts Dolores County's basemap service",
+                "conform": {
+                    "format": "geojson",
+                    "number": "StreetNo",
+                    "street": [
+                        "StreetDir",
+                        "StreetName",
+                        "StreetSuf",
+                        "StDirSuffx"
+                    ],
+                    "unit": "UnitNo",
+                    "city": "City",
+                    "region": "State",
+                    "postcode": "ZipCode"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Dolores County",
+                "data": "https://gis-server.co.montezuma.co.us/arcgis/rest/services/DoloresCounty/DoloresCountyBasemap/MapServer/26",
+                "protocol": "ESRI",
+                "website": "https://dolocnty.colorado.gov/addressing-and-mapping-gis",
+                "note": "Served from the Montezuma County GIS server, which hosts Dolores County's basemap service; the layer is a regional footprint set so it is filtered to the Dolores County jurisdiction",
+                "conform": {
+                    "format": "geojson",
+                    "id": "pictometry_outline_id",
+                    "filter": "Jurisdiction = 'Dolores County'"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Dolores County",
+                "data": "https://gis-server.co.montezuma.co.us/arcgis/rest/services/DoloresCounty/DoloresCountyBasemap/MapServer/20",
+                "protocol": "ESRI",
+                "website": "https://dolocnty.colorado.gov/addressing-and-mapping-gis",
+                "note": "Served from the Montezuma County GIS server, which hosts Dolores County's basemap service",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "StreetName",
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SpeedLimit"
+                    },
+                    "addr_from_left": "FrAdd_L",
+                    "addr_to_left": "ToAdd_L",
+                    "addr_from_right": "FrAdd_R",
+                    "addr_to_right": "ToAdd_R",
+                    "zip_left": "Zip_L",
+                    "zip_right": "Zip_R"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Dolores County",
+                "data": "https://gis-server.co.montezuma.co.us/arcgis/rest/services/DoloresCounty/DoloresCountyBasemap/MapServer/14",
+                "protocol": "ESRI",
+                "website": "https://dolocnty.colorado.gov/addressing-and-mapping-gis",
+                "note": "Served from the Montezuma County GIS server, which hosts Dolores County's basemap service",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN",
+                    "owners": [
+                        {
+                            "name": "ANAME1"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

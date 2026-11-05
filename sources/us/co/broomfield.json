@@ -62,6 +62,44 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "City and County of Broomfield",
+                "data": "https://services1.arcgis.com/vXSRPZbyyOmH9pek/arcgis/rest/services/Streets/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "GIS_ID",
+                    "name": "FULL_STREETNAME",
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED_LIMIT"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "FUNCTIONAL_CLASS",
+                        "mapping": {
+                            "Interstate": "motorway",
+                            "Freeway": "motorway",
+                            "Principal Arterial": "primary",
+                            "Minor Arterial": "secondary",
+                            "Major Collector": "tertiary",
+                            "Collector": "tertiary",
+                            "Minor Collector": "tertiary",
+                            "Local": "residential"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "LEFT_FROM_ADDRESS",
+                    "addr_to_left": "LEFT_TO_ADDRESS",
+                    "addr_from_right": "RIGHT_FROM_ADDRESS",
+                    "addr_to_right": "RIGHT_TO_ADDRESS",
+                    "zip_left": "LEFT_ZIPCODE",
+                    "zip_right": "RIGHT_ZIPCODE"
+                }
+            }
         ]
     }
 }

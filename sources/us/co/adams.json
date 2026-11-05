@@ -66,6 +66,34 @@
                 "license": "CC BY 4.0",
                 "website": "https://data-adcogov.opendata.arcgis.com/datasets/873a167377444d3a93c101ca8661e6bb_0/about"
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Adams County",
+                "data": "https://services3.arcgis.com/4PNQOtAivErR7nbT/arcgis/rest/services/Roads/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "https://data-adcogov.opendata.arcgis.com/",
+                "license": "CC BY 4.0",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ROAD_ID",
+                    "name": "FULLSTREETNAME",
+                    "classification": {
+                        "function": "map",
+                        "field": "USECLASS",
+                        "mapping": {
+                            "Interstate": "motorway",
+                            "Highway": "trunk",
+                            "Arterial": "secondary",
+                            "Collector": "tertiary",
+                            "Local": "residential",
+                            "Private": "service"
+                        },
+                        "else": "residential"
+                    }
+                }
+            }
         ]
     }
 }
