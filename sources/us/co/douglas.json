@@ -92,6 +92,29 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Douglas County",
+                "data": "https://services.arcgis.com/seTexOicoRXDvRsJ/arcgis/rest/services/Centerline_View/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "CENTERLINE_EID",
+                    "name": "STREET_NAME_FULL",
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED"
+                    },
+                    "addr_from_left": "L_ADD_FROM",
+                    "addr_to_left": "L_ADD_TO",
+                    "addr_from_right": "R_ADD_FROM",
+                    "addr_to_right": "R_ADD_TO",
+                    "zip_left": "L_ZIP_CODE",
+                    "zip_right": "R_ZIP_CODE"
+                }
+            }
         ]
     }
 }

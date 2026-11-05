@@ -1,0 +1,53 @@
+{
+    "schema": 2,
+    "coverage": {
+        "US Census": {
+            "geoid": "08105",
+            "name": "Rio Grande County",
+            "state": "Colorado"
+        },
+        "country": "us",
+        "state": "co",
+        "county": "Rio Grande"
+    },
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Rio Grande County",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/Parcel_RioGrandeCO/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "Hosted on the county's GIS vendor ArcGIS Online org (the same org that serves the Logan and Yuma sources); situs address parsed from the parcel polygons",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "TSC_Site_A"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "TSC_Site_A"
+                    }
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Rio Grande County",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/Parcel_RioGrandeCO/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "Hosted on the county's GIS vendor ArcGIS Online org (the same org that serves the Logan and Yuma sources)",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "GIS_Parcel",
+                    "owners": [
+                        {
+                            "name": "TSC_OWNER1"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

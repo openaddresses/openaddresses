@@ -64,6 +64,29 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Montezuma County",
+                "data": "https://gis-server.co.montezuma.co.us/arcgis/rest/services/Address_Verification_Viewer/MapServer/12",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "StreetName",
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SpeedLimit"
+                    },
+                    "addr_from_left": "FrAdd_L",
+                    "addr_to_left": "ToAdd_L",
+                    "addr_from_right": "FrAdd_R",
+                    "addr_to_right": "ToAdd_R",
+                    "zip_left": "Zip_L",
+                    "zip_right": "Zip_R"
+                }
+            }
         ]
     }
 }

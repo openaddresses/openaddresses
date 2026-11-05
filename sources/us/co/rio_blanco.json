@@ -54,6 +54,46 @@
                     ]
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Rio Blanco County",
+                "data": "https://services1.arcgis.com/pfZ4YwxhgKucWn2S/arcgis/rest/services/Roads/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "LABEL",
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED_LIMI"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "SURFACE_TY",
+                        "mapping": {
+                            "DIRT": "unpaved",
+                            "GRAVEL": "unpaved",
+                            "PAVED": "paved",
+                            "ASPHALT": "paved",
+                            "CHIP SEAL": "paved"
+                        }
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "CLASS",
+                        "mapping": {
+                            "PRIVATE": "service",
+                            "LOCAL": "residential",
+                            "COLLECTOR": "tertiary",
+                            "ARTERIAL": "secondary",
+                            "HIGHWAY": "trunk"
+                        },
+                        "else": "unclassified"
+                    }
+                }
+            }
         ]
     }
 }

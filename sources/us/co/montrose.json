@@ -48,6 +48,31 @@
                     ]
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Montrose County",
+                "data": "https://mcmap.montrosecounty.net/server/rest/services/MontroseCounty/FeatureServer/2",
+                "protocol": "ESRI",
+                "note": "Service caps responses at 100 records per request",
+                "conform": {
+                    "format": "geojson",
+                    "id": "objectid",
+                    "name": "fsn",
+                    "classification": {
+                        "function": "map",
+                        "field": "roc",
+                        "mapping": {
+                            "LOCAL": "residential",
+                            "PRIMARY": "primary",
+                            "SECONDARY": "secondary",
+                            "PRIVATE": "service"
+                        },
+                        "else": "unclassified"
+                    }
+                }
+            }
         ]
     }
 }

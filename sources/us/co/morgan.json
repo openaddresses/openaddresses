@@ -41,6 +41,40 @@
                     "pid": "FID"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Morgan County",
+                "data": "https://services6.arcgis.com/iSzqv8eal4TO2oVb/arcgis/rest/services/Roads/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "UniqueId",
+                    "name": "MCCCFullName",
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SpeedLimit"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "Surface",
+                        "mapping": {
+                            "Asphalt": "paved",
+                            "Concrete": "paved",
+                            "Chip Seal": "paved",
+                            "Gravel": "unpaved",
+                            "Dirt": "unpaved"
+                        }
+                    },
+                    "addr_from_left": "LeftFromRange",
+                    "addr_to_left": "LeftToRange",
+                    "addr_from_right": "RightFromRange",
+                    "addr_to_right": "RightToRange",
+                    "zip_left": "ZipCode",
+                    "zip_right": "ZipCode"
+                }
+            }
         ]
     }
 }

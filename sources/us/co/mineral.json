@@ -68,6 +68,48 @@
                     ]
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county-local",
+                "attribution": "Mineral County",
+                "data": "https://services7.arcgis.com/QRZ3Fl7A33hVHixV/arcgis/rest/services/Local_Road_Mineral/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "CDOT-style road inventory split across local, major and highway services",
+                "conform": {
+                    "format": "geojson",
+                    "id": "GIS_ID",
+                    "name": "ROUTENAME"
+                }
+            },
+            {
+                "name": "county-major",
+                "attribution": "Mineral County",
+                "data": "https://services7.arcgis.com/QRZ3Fl7A33hVHixV/arcgis/rest/services/Major_Road_Mineral/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "CDOT-style road inventory split across local, major and highway services",
+                "conform": {
+                    "format": "geojson",
+                    "id": "GIS_ID",
+                    "name": "ROUTENAME"
+                }
+            },
+            {
+                "name": "county-highway",
+                "attribution": "Mineral County",
+                "data": "https://services7.arcgis.com/QRZ3Fl7A33hVHixV/arcgis/rest/services/Highway_Mineral/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "CDOT-style road inventory split across local, major and highway services",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "ALIAS",
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEEDLIM"
+                    }
+                }
+            }
         ]
     }
 }

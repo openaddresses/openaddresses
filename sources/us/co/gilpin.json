@@ -58,6 +58,68 @@
                     "pid": "account_pk"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Gilpin County",
+                "data": "https://gis.gilpincounty.org/server/rest/services/Hosted/Road_Centerlines_of_Gilpin_County_Colorado/FeatureServer/13",
+                "protocol": "ESRI",
+                "website": "https://gilpincounty.colorado.gov/elected-officials/assessor/gis-maps",
+                "conform": {
+                    "format": "geojson",
+                    "id": "globalid",
+                    "name": "lst_fullname",
+                    "oneway": {
+                        "function": "map",
+                        "field": "oneway",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "speedlimit"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "roadclass",
+                        "mapping": {
+                            "Primary": "primary",
+                            "Secondary": "secondary",
+                            "Local": "residential",
+                            "Private": "service",
+                            "Alley": "service",
+                            "Easement": "service",
+                            "Ramp": "motorway_link",
+                            "Interstate": "motorway",
+                            "Highway": "trunk",
+                            "Arterial": "secondary",
+                            "Collector": "tertiary",
+                            "Trail": "track",
+                            "Other": "unclassified"
+                        },
+                        "else": "residential"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "paved",
+                        "mapping": {
+                            "Y": "paved",
+                            "N": "unpaved"
+                        },
+                        "else": "paved"
+                    },
+                    "addr_from_left": "fromaddr_l",
+                    "addr_to_left": "toaddr_l",
+                    "addr_from_right": "fromaddr_r",
+                    "addr_to_right": "toaddr_r",
+                    "zip_left": "postcode_l",
+                    "zip_right": "postcode_r"
+                }
+            }
         ]
     }
 }

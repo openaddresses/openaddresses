@@ -293,6 +293,27 @@
                     "remarks": "https://www.summitcountyco.gov/services/information_systems_gis/gis/open_data.php"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Summit County",
+                "data": "https://services6.arcgis.com/dmNYNuTJZDtkcRJq/arcgis/rest/services/Road_Centerline/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SEGMENT_ID",
+                    "name": "FullName",
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "ROUTE_MPH"
+                    },
+                    "addr_from_left": "L_LADD",
+                    "addr_to_left": "L_HADD",
+                    "addr_from_right": "R_LADD",
+                    "addr_to_right": "R_HADD"
+                }
+            }
         ]
     }
 }
