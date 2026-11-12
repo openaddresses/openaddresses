@@ -11,7 +11,7 @@
         "addresses": [
             {
                 "name": "country",
-                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-06-03-5omy1/es_addresses.csv.zip",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-11-11-5r8yr/es_addresses.csv.zip",
                 "website": "https://centrodedescargas.cnig.es/CentroDescargas/buscadorCatalogo.do",
                 "note": "Addresses comes in 52 regional packages in gpkg format combined with some parcel and municipal data. These were processed by trimming the data down to addresses, merging into one layer, and converting to CSV.",
                 "license": {
@@ -29,12 +29,30 @@
                     "number": "numero",
                     "unit": "extension",
                     "street": {
-                        "function": "join",
-                        "fields": [
-                            "tipo_vial",
-                            "nombre_via"
-                        ],
-                        "separator": " "
+                        "function": "chain",
+                        "variable": "street_wip",
+                        "functions": [
+                            {
+                                "function": "join",
+                                "fields": [
+                                    "tipo_vial",
+                                    "nombre_via"
+                                ],
+                                "separator": " "
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "oa:street_wip",
+                                "pattern": "^([^()]*\\([^()]*)$",
+                                "replace": "$1)"
+                            },
+                            {
+                                "function": "first_non_empty",
+                                "fields": [
+                                    "street_wip"
+                                ]
+                            }
+                        ]
                     },
                     "postcode": "cod_postal",
                     "city": "municipio",
