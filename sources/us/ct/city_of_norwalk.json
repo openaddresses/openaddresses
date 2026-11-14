@@ -3,8 +3,8 @@
         "geometry": {
             "type": "Point",
             "coordinates": [
-                -118.0849,
-                33.9093
+                -73.4268,
+                41.1094
             ]
         },
         "country": "us",
@@ -16,16 +16,38 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://host.cdmsmithgis.com/arcgis/rest/services/NorwalkCT_OpsLayers/MapServer/7",
+                "data": "https://services2.arcgis.com/HfsHDBmkGwb1UtID/arcgis/rest/services/NorwalkAddressPoints/FeatureServer/0",
+                "website": "https://www.norwalkct.gov/1397/GIS-Mapping",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "StreetNum",
+                    "number": "Norwalk_GIS_CW_GISADMIN_Pat_5",
                     "street": {
-                        "function": "remove_prefix",
-                        "field": "StreetName",
-                        "field_to_remove": "StreetNum"
+                        "function": "regexp",
+                        "field": "Norwalk_GIS_CW_GISADMIN_Pat_7",
+                        "pattern": "^(.*?)\\s*$"
+                    },
+                    "unit": {
+                        "function": "regexp",
+                        "field": "Norwalk_GIS_CW_GISADMIN_Pat_9",
+                        "pattern": "^(.*?)\\s*$"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "Norwalk_GIS_CW_GISADMIN_Pat_8",
+                        "pattern": "^([^,]+)"
+                    },
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "Norwalk_GIS_CW_GISADMIN_Pat_18",
+                        "pattern": "^(\\d{5})"
                     }
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "City of Norwalk, CT",
+                    "presumed": true,
+                    "remarks": "https://www.norwalkct.gov/1397/GIS-Mapping"
                 }
             }
         ]

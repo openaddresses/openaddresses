@@ -14,24 +14,25 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "ftp://ftp.clarkecounty.gov/gis/buildings.zip",
+                "data": "https://services7.arcgis.com/1uNEgmtBVWGKSY5Q/arcgis/rest/services/Addresses/FeatureServer/0",
+                "website": "https://clarkeva.maps.arcgis.com/home/item.html?id=ebf6a93b1c5b4c02842acba28f9e96e2",
                 "license": {
                     "text": "Public Domain",
                     "attribution": false,
                     "share-alike": false
                 },
-                "year": "2014",
-                "protocol": "ftp",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "file": "buildings/buildings.shp",
-                    "number": "number",
+                    "format": "geojson",
+                    "number": "NUMBER",
                     "street": [
-                        "name",
-                        "type"
+                        "DIR",
+                        "NAME",
+                        "TYPE"
                     ],
-                    "format": "shapefile-polygon",
-                    "postcode": "zipcode"
+                    "unit": "LOC_APT",
+                    "city": "POST",
+                    "postcode": "ZIPCODE"
                 }
             }
         ]

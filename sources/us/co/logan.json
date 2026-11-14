@@ -40,7 +40,33 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "parcelid"
+                    "pid": "parcelid",
+                    "owners": [
+                        {
+                            "name": "ownernme1"
+                        },
+                        {
+                            "name": "ownernme2"
+                        }
+                    ]
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Logan County",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/Road_LoganCO/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "TIGER-derived road layer republished by the county's GIS vendor; the same org also hosts an Addresses_LoganCO point layer",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "FULLNAME",
+                    "addr_from_left": "FRADDL",
+                    "addr_to_left": "TOADDL",
+                    "addr_from_right": "FRADDR",
+                    "addr_to_right": "TOADDR"
                 }
             }
         ]

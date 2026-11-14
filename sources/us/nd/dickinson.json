@@ -23,19 +23,21 @@
             {
                 "name": "city",
                 "protocol": "ESRI",
-                "data": "https://maps5.gisworkshop.com/ArcGIS/rest/services/CityofDickinsonElectric/MapServer/4",
+                "data": "https://gis.dickinsongov.com/server/rest/services/OrgData/PUB_Land_Info_FS/FeatureServer/1",
+                "website": "https://www.arcgis.com/home/item.html?id=204b65b9df5f4a81adbb7abb74d9a048",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Dickinson Engineering Department",
+                    "presumed": true,
+                    "remarks": "https://www.arcgis.com/home/item.html?id=204b65b9df5f4a81adbb7abb74d9a048"
+                },
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "PROPADDRESS",
-                        "pattern": "^(\\S+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "PROPADDRESS",
-                        "pattern": "^(?:\\S+ )(.*)",
-                        "replace": "$1"
+                    "number": "HOUSENUM",
+                    "street": "ADDRESS",
+                    "city": {
+                        "function": "constant",
+                        "value": "Dickinson"
                     }
                 }
             }

@@ -7,6 +7,11 @@
                 41.307858155
             ]
         },
+        "US Census": {
+            "geoid": "0952000",
+            "name": "New Haven city",
+            "state": "Connecticut"
+        },
         "country": "us",
         "state": "ct",
         "city": "new haven"
@@ -16,13 +21,27 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://nhgis.newhavenct.gov/server/rest/services/Web_Services/NH_Parcels/MapServer/0",
+                "data": "https://gis.newhavenct.gov/server/rest/services/Hosted/New_Haven_Addresses_Authoritative_view/FeatureServer/0",
                 "website": "https://www.newhavenct.gov/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "street": "Street_Name",
-                    "number": "Street_Number"
+                    "number": "house_number",
+                    "street": [
+                        "prefix_direction",
+                        "street_name",
+                        "suffix_type",
+                        "suffix_direction"
+                    ],
+                    "unit": "unit",
+                    "city": "city",
+                    "postcode": "zip"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "City of New Haven",
+                    "presumed": true,
+                    "remarks": "https://gis.newhavenct.gov/server/rest/services/Hosted/New_Haven_Addresses_Authoritative_view/FeatureServer"
                 }
             }
         ]

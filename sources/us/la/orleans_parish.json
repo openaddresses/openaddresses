@@ -14,18 +14,35 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.nola.gov/arcgis/rest/services/Address/SiteAddressPoint/MapServer/0",
-                "protocol": "ESRI",
+                "data": "https://data.nola.gov/api/v3/views/hfvu-md72/query.csv",
+                "website": "https://data.nola.gov/Public-Safety-and-Preparedness/Site-Address-Point/hfvu-md72",
+                "license": {
+                    "text": "CC0 1.0",
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "protocol": "http",
                 "conform": {
-                    "format": "geojson",
-                    "id": "SITEADDID",
-                    "number": "ADDRNUM",
-                    "street": "FULLNAME",
-                    "unit": [
-                        "UNITTYPE",
-                        "UNITID"
+                    "format": "csv",
+                    "srs": "EPSG:3452",
+                    "lon": "long",
+                    "lat": "lat",
+                    "id": "siteaddid",
+                    "number": [
+                        "preaddrnum",
+                        "addrnum",
+                        "addrnumsuf"
                     ],
-                    "city": "MUNICIPALITY"
+                    "street": "fullname",
+                    "unit": [
+                        "unittype",
+                        "unitid"
+                    ],
+                    "city": {
+                        "function": "constant",
+                        "value": "New Orleans"
+                    }
                 }
             }
         ]

@@ -14,29 +14,59 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services1.arcgis.com/zH7gQ37AKcpvTX6d/ArcGIS/rest/services/ConejosParcels/FeatureServer/0",
+                "data": "https://services7.arcgis.com/qznFlX1g8SfaPebZ/arcgis/rest/services/Conejos_River_Flood_2026-DA_Structures/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
+                    "id": "Parcel_ID",
                     "number": {
                         "function": "prefixed_number",
-                        "field": "SITUS"
+                        "field": "Address"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "SITUS"
-                    }
+                        "field": "Address"
+                    },
+                    "city": "City"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://services1.arcgis.com/zH7gQ37AKcpvTX6d/ArcGIS/rest/services/ConejosParcels/FeatureServer/0",
+                "data": "https://services7.arcgis.com/qznFlX1g8SfaPebZ/arcgis/rest/services/Conejos_Parcels_2026-View/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "pid": "Parcel"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Conejos County",
+                "data": "https://services7.arcgis.com/qznFlX1g8SfaPebZ/arcgis/rest/services/ConejosRoads/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "FID",
+                    "name": "LABEL",
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADCLASS",
+                        "mapping": {
+                            "LOCAL": "residential",
+                            "PRIMARY": "primary",
+                            "SECONDARY": "secondary",
+                            "PRIVATE": "service"
+                        },
+                        "else": "unclassified"
+                    },
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT"
                 }
             }
         ]

@@ -3296,70 +3296,80 @@
             {
                 "name": "state",
                 "website": "https://gis.arkansas.gov/product/situs-address-points/",
-                "data": "https://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Location/FeatureServer/14",
-                "protocol": "ESRI",
+                "data": "https://geostor-vectors.s3.amazonaws.com/Location/FGDB/SITUS_ADDRESS_PT.gdb.zip",
+                "protocol": "http",
+                "compression": "zip",
                 "attribution": "Arkansas Geographic Information Office",
                 "conform": {
-                    "format": "geojson",
+                    "format": "gdb",
+                    "file": "SITUS_ADDRESS_PT.gdb",
+                    "layer": "SITUS_ADDRESS_PT",
                     "number": [
-                        "adr_num",
-                        "adr_num_suf"
+                        "ADR_NUM",
+                        "ADR_NUM_SUF"
                     ],
                     "street": [
-                        "pre_dir",
-                        "pre_type",
-                        "pstr_nam",
-                        "pstr_type",
-                        "psuf_dir",
-                        "pstr_mod"
+                        "PRE_DIR",
+                        "PRE_TYPE",
+                        "PSTR_NAM",
+                        "PSTR_TYPE",
+                        "PSUF_DIR",
+                        "PSTR_MOD"
                     ],
                     "unit": [
-                        "adr_unit_typ",
-                        "adr_unit_id"
+                        "ADR_UNIT_TYP",
+                        "ADR_UNIT_ID"
                     ],
-                    "city": "adr_city",
-                    "district": "cnty_name",
-                    "region": "adr_state",
-                    "postcode": "adr_zip5"
-                }
+                    "city": "ADR_CITY",
+                    "district": "CNTY_NAME",
+                    "region": "ADR_STATE",
+                    "postcode": "ADR_ZIP5"
+                },
+                "note": "https://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Location/FeatureServer/14"
             }
         ],
         "parcels": [
             {
                 "name": "state",
                 "website": "https://gis.arkansas.gov/product/parcel-polygon-county-assessor-mapping-program-polygon/",
-                "data": "https://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Planning_Cadastre/FeatureServer/6",
-                "protocol": "ESRI",
+                "data": "https://geostor-vectors.s3.amazonaws.com/Planning_Cadastre/FGDB/PARCEL_POLYGON_CAMP.gdb.zip",
+                "protocol": "http",
+                "compression": "zip",
                 "attribution": "Arkansas Geographic Information Office",
                 "conform": {
-                    "format": "geojson",
-                    "pid": "parcelid"
-                }
+                    "format": "gdb",
+                    "file": "PARCEL_POLYGON_CAMP.gdb",
+                    "layer": "planning_cadastre_PARCEL_POLYGON_CAMP",
+                    "pid": "ParcelId"
+                },
+                "note": "https://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Planning_Cadastre/FeatureServer/6"
             }
         ],
         "buildings": [
             {
                 "name": "state",
                 "website": "https://gis.arkansas.gov/product/building-footprints-composite/",
-                "data": "https://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Structure/FeatureServer/54",
-                "protocol": "ESRI",
+                "data": "https://hub.arcgis.com/api/v3/datasets/6530052fd2c94872a23e7d9aa5e23108_54/downloads/data?format=shp&spatialRefId=4326&where=1%3D1",
+                "protocol": "http",
                 "conform": {
-                    "format": "geojson"
-                }
+                    "format": "shapefile"
+                },
+                "note": "https://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Structure/FeatureServer/54",
+                "compression": "zip"
             }
         ],
         "centerlines": [
             {
                 "name": "state",
-                "data": "https://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Transportation/FeatureServer/18",
-                "protocol": "ESRI",
+                "data": "https://geostor-vectors.s3.amazonaws.com/Transportation/SHP/ROADS_ACF.zip",
+                "protocol": "http",
                 "conform": {
-                    "format": "geojson",
-                    "id": "unique_id",
-                    "name": "pstr_fulnam",
+                    "format": "shapefile",
+                    "id": "UNIQUE_ID",
+                    "name": "PSTR_FULNA",
                     "classification": {
                         "function": "map",
-                        "field": "rd_class",
+                        "field": "RD_CLASS",
                         "mapping": {
                             "Federal": "trunk",
                             "State": "primary",
@@ -3370,20 +3380,22 @@
                     },
                     "surface": {
                         "function": "map",
-                        "field": "rd_surftyp",
+                        "field": "RD_SURFTYP",
                         "mapping": {
                             "Paved": "paved",
                             "Unpaved": "unpaved"
                         },
                         "else": ""
                     },
-                    "addr_from_left": "pl_add_f",
-                    "addr_to_left": "pl_add_t",
-                    "addr_from_right": "pr_add_f",
-                    "addr_to_right": "pr_add_t",
-                    "zip_left": "zip5_l",
-                    "zip_right": "zip5_r"
-                }
+                    "addr_from_left": "PL_ADD_F",
+                    "addr_to_left": "PL_ADD_T",
+                    "addr_from_right": "PR_ADD_F",
+                    "addr_to_right": "PR_ADD_T",
+                    "zip_left": "ZIP5_L",
+                    "zip_right": "ZIP5_R"
+                },
+                "note": "https://gis.arkansas.gov/arcgis/rest/services/FEATURESERVICES/Transportation/FeatureServer/18",
+                "compression": "zip"
             }
         ]
     }

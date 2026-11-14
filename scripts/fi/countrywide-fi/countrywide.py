@@ -45,7 +45,14 @@ def fetch_page_json(
     backoff: float,
 ) -> Dict[str, Any]:
     """Fetch one GeoJSON page; new request per call (thread-safe)."""
-    params = {"f": "application/geo+json", "limit": limit, "startIndex": start_index}
+    # sortby gives a stable order so startIndex pages don't overlap or skip features
+    params = {
+        "f": "application/geo+json",
+        "limit": limit,
+        "startIndex": start_index,
+        "sortby": "address_key",
+        "crs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84",
+    }
     attempt = 0
     while True:
         try:

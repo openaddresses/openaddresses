@@ -14,18 +14,30 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://duchesnecountygis.org/arcgis/rest/services/CurrentAddress/FeatureServer/0",
+                "data": "https://services1.arcgis.com/99lidPhWCzftIe9K/arcgis/rest/services/Parcels_Duchesne/FeatureServer/0",
+                "website": "https://opendata.gis.utah.gov/datasets/utah::utah-duchesne-county-parcels/about",
+                "license": {
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "Creative Commons Attribution 4.0 International",
+                    "attribution": true,
+                    "attribution name": "Utah Geospatial Reference Center (AGRC)",
+                    "share-alike": false,
+                    "remarks": "https://www.arcgis.com/home/item.html?id=30168700f4f04059a3f3fca72735ba0a"
+                },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "HOUSE_N",
-                    "street": [
-                        "PRE_DIR",
-                        "S_NAME",
-                        "SUF_DIR",
-                        "S_TYPE"
-                    ],
-                    "id": "PARCEL_ID"
+                    "id": "PARCEL_ID",
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PARCEL_ADD"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PARCEL_ADD"
+                    },
+                    "city": "PARCEL_CITY",
+                    "postcode": "PARCEL_ZIP"
                 }
             }
         ],

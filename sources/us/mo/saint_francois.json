@@ -15,14 +15,18 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://maps.semogis.com/server/rest/services/StFrancois_CO/StFrancoisCo_911/MapServer/0",
+                "data": "https://maps.semogis.com/server/rest/services/Region/Public_911/MapServer/10",
                 "conform": {
                     "format": "geojson",
-                    "number": "NEW_ADD",
-                    "street": "RDNAME",
-                    "city": "CITY",
-                    "region": "STATE",
-                    "postcode": "ZIP"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "FullAddress"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "FullAddress"
+                    },
+                    "unit": "SubUnit"
                 }
             }
         ],
@@ -30,10 +34,29 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://maps.semogis.com/server/rest/services/StFrancois_CO/StFrancoisCo_Assessment/MapServer/5",
+                "website": "https://semogis.com/maps/st-francois-county/",
+                "data": "https://maps.semogis.com/server/rest/services/StFrancois_CO/StFranCo_PublicBase/MapServer/39",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "St. Francois County Assessor / SEMO Regional Planning Commission",
+                    "presumed": true,
+                    "remarks": "https://semogis.com/maps/st-francois-county/"
+                },
                 "conform": {
                     "format": "geojson",
-                    "pid": "PARCEL_NUM"
+                    "pid": "PARCEL_NUMBER",
+                    "owners": [
+                        {
+                            "name": "OWNER_NAME",
+                            "address": [
+                                "MAILTO_ADDRESS1",
+                                "MAILTO_ADDRESS2",
+                                "MAILTO_CITY",
+                                "MAILTO_STATE",
+                                "MAILTO_ZIP"
+                            ]
+                        }
+                    ]
                 }
             }
         ]

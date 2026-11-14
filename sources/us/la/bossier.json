@@ -1,0 +1,36 @@
+{
+    "schema": 2,
+    "coverage": {
+        "country": "us",
+        "state": "la",
+        "county": "Bossier",
+        "US Census": {
+            "geoid": "22015",
+            "name": "Bossier Parish",
+            "state": "Louisiana"
+        }
+    },
+    "layers": {
+        "addresses": [
+            {
+                "name": "parish",
+                "data": "https://services1.arcgis.com/jh7pbmmfSzUSNziy/ArcGIS/rest/services/Parish_Address/FeatureServer/0",
+                "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Bossier Parish GIS Department",
+                    "presumed": true,
+                    "remarks": "https://www.bossierparishla.gov/police-jury/divisions/geographic-information-system-(gis)/maps"
+                },
+                "conform": {
+                    "format": "geojson",
+                    "number": "E911_NUMBE",
+                    "street": ["PREDIR", "NAME", "SUFDIR", "POSTDIR"],
+                    "unit": "UNIT",
+                    "city": "City_code",
+                    "postcode": "Zip_code"
+                }
+            }
+        ]
+    }
+}

@@ -16,20 +16,18 @@
                 "name": "county",
                 "conform": {
                     "format": "geojson",
-                    "unit": [
-                        "UNIT_TYPE",
-                        "UNIT_NUM"
-                    ],
                     "number": "HNO",
-                    "street": [
-                        "PRD",
-                        "RD",
-                        "STS"
-                    ],
-                    "city": "POSTCO",
-                    "postcode": "ZIP"
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "LABEL"
+                    },
+                    "unit": {
+                        "function": "postfixed_unit",
+                        "field": "LABEL"
+                    },
+                    "city": "POSTCO"
                 },
-                "data": "https://www2.pottcounty.org/arcgis2/rest/services/AddressAll/MapServer/1",
+                "data": "https://services6.arcgis.com/Zt2LWLYlpbYKRPfg/arcgis/rest/services/WebAddress/FeatureServer/0",
                 "protocol": "ESRI"
             }
         ]

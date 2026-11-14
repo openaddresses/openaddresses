@@ -22,11 +22,17 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://services6.arcgis.com/Vdk8uHgdgYx8ZqS6/ArcGIS/rest/services/AddressPointsArcGISOnline/FeatureServer/1",
+                "data": "https://gismaps.amarillo.gov/services/rest/services/AddressPoints/FeatureServer/1",
+                "website": "https://www.amarillo.gov/gis/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ADDRESS",
+                    "number": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^([0-9]+)(?:\\.0)?$",
+                        "replace": "$1"
+                    },
                     "street": [
                         "ST_DIR",
                         "ST_NAME",
@@ -35,7 +41,12 @@
                     ],
                     "unit": "APP_UNIT_ID",
                     "city": "POST_CITY",
-                    "postcode": "ZIPCODE"
+                    "postcode": {
+                        "function": "regexp",
+                        "field": "ZIPCODE",
+                        "pattern": "^([0-9]+)(?:\\.0)?$",
+                        "replace": "$1"
+                    }
                 }
             }
         ]

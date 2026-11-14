@@ -7,14 +7,60 @@
     },
     "schema": 2,
     "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/haQkIWW9RWRd8Arf/ArcGIS/rest/services/Lea_County_Addresses/FeatureServer/10",
+                "website": "https://lea-county-portico-lea-county.hub.arcgis.com/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "add_number",
+                    "street": ["st_predir", "st_name", "st_postyp"],
+                    "unit": "unit",
+                    "city": "msagcomm",
+                    "postcode": "post_code"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Lea County, New Mexico",
+                    "presumed": true,
+                    "remarks": "https://lea-county-portico-lea-county.hub.arcgis.com/"
+                }
+            },
+            {
+                "name": "hobbs",
+                "data": "https://services3.arcgis.com/haQkIWW9RWRd8Arf/ArcGIS/rest/services/City_of_Hobbs_Addresses/FeatureServer/56",
+                "website": "https://lea-county-portico-lea-county.hub.arcgis.com/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDNO",
+                    "street": ["PRD", "STNAME", "STTYPE"]
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Lea County, New Mexico",
+                    "presumed": true,
+                    "remarks": "https://lea-county-portico-lea-county.hub.arcgis.com/"
+                }
+            }
+        ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://emapsplus.com/arcgis/rest/services/NewMexico/LeaEmaps/MapServer/0",
+                "data": "https://services3.arcgis.com/haQkIWW9RWRd8Arf/ArcGIS/rest/services/Owner_Parcels/FeatureServer/22",
+                "website": "https://lea-county-portico-lea-county.hub.arcgis.com/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "pid": "PARCELCODE"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Lea County, New Mexico",
+                    "presumed": true,
+                    "remarks": "https://lea-county-portico-lea-county.hub.arcgis.com/"
                 }
             }
         ]

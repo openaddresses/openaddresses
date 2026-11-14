@@ -14,17 +14,19 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "https://gis.tetoncountywy.gov/portal/apps/sites/#/teton-county-gis-hub/datasets/687993dd9d494ed9b89203255b948117/about?layer=0",
+                "website": "https://maps.terragis.net/tetonwy/mapserver/download/download.php",
                 "license": {
                     "url": "https://www.tetoncountywy.gov/958/Geographic-Information-System",
                     "text": "Indemnification",
                     "attribution": false,
                     "share-alike": false
                 },
-                "data": "https://gis.tetoncountywy.gov/server/rest/services/Public_Services/Addressing/FeatureServer/0",
-                "protocol": "ESRI",
+                "data": "https://maps.terragis.net/tetonwy/mapserver/download/data/ownership_shp.zip",
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "shapefile",
+                    "file": "ownership/address.shp",
                     "number": "street_num",
                     "street": [
                         "st_dir",
@@ -43,17 +45,19 @@
         "parcels": [
             {
                 "name": "county",
-                "website": "https://gis.tetoncountywy.gov/portal/apps/sites/#/teton-county-gis-hub/datasets/687993dd9d494ed9b89203255b948117/about?layer=1",
+                "website": "https://maps.terragis.net/tetonwy/mapserver/download/download.php",
                 "license": {
                     "url": "https://www.tetoncountywy.gov/958/Geographic-Information-System",
                     "text": "Indemnification",
                     "attribution": false,
                     "share-alike": false
                 },
-                "data": "https://gis.tetoncountywy.gov/server/rest/services/Public_Services/Parcels/FeatureServer/0",
-                "protocol": "ESRI",
+                "data": "https://maps.terragis.net/tetonwy/mapserver/download/data/ownership_shp.zip",
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "shapefile",
+                    "file": "ownership/ownership.shp",
                     "pid": "pidn"
                 }
             }

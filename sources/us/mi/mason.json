@@ -19,7 +19,7 @@
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
-                    "format": "shapefile-polygon",
+                    "format": "shapefile",
                     "id": "Parcel",
                     "number": {
                         "function": "prefixed_number",
@@ -32,13 +32,13 @@
                     "city": {
                         "function": "regexp",
                         "field": "PropCitySt",
-                        "pattern": "(.*),.*",
+                        "pattern": "^(.*),.*$",
                         "replace": "$1"
                     },
                     "postcode": {
                         "function": "regexp",
                         "field": "PropCitySt",
-                        "pattern": ".*([0-9]{5})$",
+                        "pattern": "^.*([0-9]{5})$",
                         "replace": "$1"
                     }
                 }

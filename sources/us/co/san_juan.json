@@ -1,0 +1,84 @@
+{
+    "schema": 2,
+    "coverage": {
+        "US Census": {
+            "geoid": "08111",
+            "name": "San Juan County",
+            "state": "Colorado"
+        },
+        "country": "us",
+        "state": "co",
+        "county": "San Juan"
+    },
+    "layers": {
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "San Juan County",
+                "data": "https://services9.arcgis.com/wkH46IqOhYntFxVp/arcgis/rest/services/Roads_Master/FeatureServer/12",
+                "protocol": "ESRI",
+                "note": "Many segments carry no name; the Structures service on the same org is address points rather than footprints",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": {
+                        "function": "first_non_empty",
+                        "fields": [
+                            "St_Name",
+                            "Road_Label",
+                            "Road_Alias"
+                        ]
+                    },
+                    "oneway": {
+                        "function": "map",
+                        "field": "OneWay",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SpeedLimit"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "RoadClass",
+                        "mapping": {
+                            "Private": "service",
+                            "Highway": "trunk",
+                            "Local": "residential",
+                            "County": "residential"
+                        },
+                        "else": "unclassified"
+                    },
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "San Juan County",
+                "data": "https://services9.arcgis.com/wkH46IqOhYntFxVp/arcgis/rest/services/SanJuanCountyParcelData_20260209/FeatureServer/116",
+                "protocol": "ESRI",
+                "note": "Service name embeds a vintage date and will need re-pointing when the county republishes it",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "parcel_id",
+                    "owners": [
+                        {
+                            "name": "owner"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

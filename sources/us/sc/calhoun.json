@@ -14,34 +14,39 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.aecomonline.net/arcgis/rest/services/CalhounCO/Dynamic/MapServer/0",
+                "data": "https://services5.arcgis.com/B3Zo1xqTw8CidOoF/arcgis/rest/services/AddressPoints/FeatureServer/0",
+                "website": "https://calhouncounty.sc.gov/departments/assessor",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "Z11_ADD",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "Z11_ADD",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
+                    "number": "NEW_ADDRES",
+                    "street": "ST_NAME",
                     "city": "CITY",
                     "postcode": "ZIP"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Calhoun County Assessor",
+                    "presumed": true,
+                    "remarks": "https://calhouncounty.sc.gov/departments/assessor"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.aecomonline.net/arcgis/rest/services/CalhounCO/Dynamic/MapServer/13",
+                "data": "https://services5.arcgis.com/B3Zo1xqTw8CidOoF/arcgis/rest/services/WebParcels/FeatureServer/0",
+                "website": "https://calhouncounty.sc.gov/departments/assessor",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "TaxPIN"
+                    "pid": "TMS"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Calhoun County Assessor",
+                    "presumed": true,
+                    "remarks": "https://calhouncounty.sc.gov/departments/assessor"
                 }
             }
         ]

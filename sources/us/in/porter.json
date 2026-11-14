@@ -14,32 +14,50 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.porterco.org/arcgis/rest/services/PropertyAddressPoints/FeatureServer/0",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/arcgis/rest/services/PorterINWFSFeatures/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": {
                         "function": "prefixed_number",
-                        "field": "Address"
+                        "field": "StreetAddress"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "Address"
+                        "field": "StreetAddress"
                     },
                     "city": "City",
                     "region": "State",
                     "postcode": "Zip"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Porter County GIS",
+                    "presumed": true,
+                    "remarks": "https://porter-county-open-data-portercogov.hub.arcgis.com/"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.porterco.org/arcgis/rest/services/PoCoMap_TaxParcel/FeatureServer/0",
+                "data": "https://services6.arcgis.com/TQ2Al5QIvv4tMBL7/arcgis/rest/services/PropertyParcel/FeatureServer/0",
+                "website": "https://porter-county-open-data-portercogov.hub.arcgis.com/datasets/PorterCoGov::propertyparcel",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PIN"
+                    "pid": "PIN",
+                    "owners": [
+                        {
+                            "name": "Owner"
+                        }
+                    ]
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Porter County GIS",
+                    "presumed": true,
+                    "remarks": "https://porter-county-open-data-portercogov.hub.arcgis.com/"
                 }
             }
         ]

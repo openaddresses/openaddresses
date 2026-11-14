@@ -14,21 +14,29 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://smpesri.scdot.org/arcgis/rest/services/GISMapping/SC_Parcels/MapServer/28",
+                "data": "https://services6.arcgis.com/kyYrMHheB5jkAnFA/arcgis/rest/services/Addresses_view/FeatureServer/0",
+                "website": "https://kershawcountydataportal-kershawcounty.hub.arcgis.com",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "taxLocStre",
-                    "street": "taxlocSt1",
-                    "city": "taxLocCity",
-                    "postcode": "taxLocZip"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "Full_Add"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "Full_Add"
+                    },
+                    "city": "Community",
+                    "postcode": "Zip_Code"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://smpesri.scdot.org/arcgis/rest/services/GISMapping/SC_Parcels/MapServer/28",
+                "data": "https://services6.arcgis.com/kyYrMHheB5jkAnFA/arcgis/rest/services/Parcels_view/FeatureServer/0",
+                "website": "https://kershawcountydataportal-kershawcounty.hub.arcgis.com",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",

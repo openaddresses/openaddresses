@@ -14,20 +14,19 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gisdownload.buncombecounty.org/addresses.zip",
-                "protocol": "http",
-                "compression": "zip",
-                "website": "https://www.buncombecounty.org/Governing/Depts/GIS/DataDownload.aspx",
+                "data": "https://gis.buncombecounty.org/arcgis/rest/services/opendata/FeatureServer/2",
+                "protocol": "ESRI",
+                "website": "https://gis.buncombecounty.org/buncomap/",
                 "conform": {
-                    "number": "street_num",
+                    "format": "geojson",
+                    "number": "HouseNumber",
                     "street": [
-                        "street_pre",
-                        "street_nam",
-                        "street_typ",
-                        "street_pos"
+                        "StreetPrefix",
+                        "StreetName",
+                        "StreetType",
+                        "StreetPostDirection"
                     ],
-                    "format": "shapefile",
-                    "postcode": "postal_cod"
+                    "postcode": "ZipCode"
                 }
             }
         ]

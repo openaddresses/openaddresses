@@ -21,19 +21,22 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://arcgis4.roktech.net/arcgis/rest/services/KeyBiscayne/KeyBiscayne/MapServer/15",
+                "data": "https://services2.arcgis.com/YEffcnRB1mRYUPKT/arcgis/rest/services/Address/FeatureServer/0",
+                "website": "https://vkb.maps.arcgis.com/home/item.html?id=c8f5de9111dc4fd1af22e6ba1efa4064",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Village of Key Biscayne",
+                    "presumed": true
+                },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "H_NUM",
-                    "street": [
-                        "PRE_DIR",
-                        "ST_NAME",
-                        "ST_TYPE",
-                        "SUF_DIR"
-                    ],
-                    "unit": "SUBUNIT",
-                    "postcode": "ZIP_CODE"
+                    "number": "HOUSE_NUM",
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "FULL_ADDRESS",
+                        "field_to_remove": "HOUSE_NUM"
+                    }
                 }
             }
         ]

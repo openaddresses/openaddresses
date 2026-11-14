@@ -16,19 +16,22 @@
         "addresses": [
             {
                 "name": "county",
-                "website": "https://www.regionofwaterloo.ca/en/discoveringtheregion/maps.asp",
-                "data": "https://gis.region.waterloo.on.ca/arcgis/rest/services/Basemap/MapServer/4",
+                "website": "https://rowopendata-rmw.opendata.arcgis.com/",
+                "data": "https://utility.arcgis.com/usrsvcs/servers/d4d0c6dedec14e59930688f3830776c6/rest/services/OpenData/OpenData/MapServer/1",
                 "protocol": "ESRI",
+                "license": {
+                    "url": "https://www.regionofwaterloo.ca/government-and-council/transparency-and-accountability/open-data/",
+                    "text": "Contains information provided by the Regional Municipality of Waterloo under licence",
+                    "attribution": false,
+                    "attribution name": "Regional Municipality of Waterloo",
+                    "share-alike": false,
+                    "remarks": "https://www.regionofwaterloo.ca/government-and-council/transparency-and-accountability/open-data/"
+                },
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "Location"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "Location"
-                    },
+                    "number": "AddressNumber",
+                    "street": "FullStreetName",
+                    "unit": "UnitNumber",
                     "city": "Municipality"
                 }
             }

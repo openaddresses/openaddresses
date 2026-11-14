@@ -1,13 +1,20 @@
 # au/qld/statewide
 
-## Parcels/Addresses
-[Cadastral data weekly - whole of State Queensland](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={4091CAF1-50E6-4BC3-B3D4-229AA318231A}) data is updated weekly on Sunday.
+## Addresses
+[Property address Queensland - Text data package](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={F878C43D-3087-4102-8F28-1CFEA49B34F1}) (this URL will visit the homepage on your vist visit to the site, so click the link a second time to visit the correct page) data is updated weekly on Sunday.
 
 To download the data in an automated fashion you can run the following (replacing USERNAME%40EXAMPLE.com with your email address):
 
-    curl 'https://spatial.information.qld.gov.au/arcgis/sharing/servers/0c54a850c61240c284e7a0651766a46f/rest/services/QSC/ClipZipShip/GPServer/ClipZipShip/submitJob?f=json&env%3AoutSR=102100&Layers_to_Clip=%5B%5D&Feature_Format=&Spatial_Reference=&To_Email=USER%40EXAMPLE.COM&Prepackaged_Data_URLs=DP_QLD_DCDB_WOS_CUR.zip%3Aundefined&Output_Title=Extract'
+    curl -H 'referer: https://qldspatial.information.qld.gov.au/' 'https://spatial.information.qld.gov.au/arcgis/sharing/servers/370fdcd7a9aa42148d497d06e6accdd1/rest/services/QSC/ClipZipShip/GPServer/ClipZipShip/submitJob?f=json&env%3AoutSR=102100&Layers_to_Clip=%5B%5D&Feature_Format=&Spatial_Reference=&To_Email=USER%40EXAMPLE.COM&Prepackaged_Data_URLs=DP_PROP_LOCATION_INDEX_QLD.zip%3Aundefined&Output_Title=Extract'
 
-You will then receive an email with the download link.
+You will then receive an email with the data link.
+
+## Parcels
+[Queensland Spatial Cadastral Fabric (QSCF) - whole-of-state Queensland - GDA2020](https://qldspatial.information.qld.gov.au/catalogue/custom/detail.page?fid={8FE3F785-2E3F-45D8-A095-CB20A892A5E3})
+
+Similar to addresses to trigger the data request use:
+
+    curl 'https://spatial.information.qld.gov.au/arcgis/sharing/servers/370fdcd7a9aa42148d497d06e6accdd1/rest/services/QSC/ClipZipShip/GPServer/ClipZipShip/submitJob?f=json&env%3AoutSR=102100&Layers_to_Clip=%5B%5D&Feature_Format=&Spatial_Reference=&To_Email=USER%40EXAMPLE.COM&Prepackaged_Data_URLs=DP_QLD_QSCF_WOS_CUR.zip%3Aundefined&Output_Title=Extract'
 
 ## Buildings
 

@@ -1,0 +1,44 @@
+{
+    "schema": 2,
+    "coverage": {
+        "US Census": {
+            "geoid": "08053",
+            "name": "Hinsdale County",
+            "state": "Colorado"
+        },
+        "country": "us",
+        "state": "co",
+        "county": "Hinsdale"
+    },
+    "layers": {
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Hinsdale County",
+                "data": "https://services3.arcgis.com/DgjqnJA1rgO92Soi/arcgis/rest/services/Hinsdale_County_Roads/FeatureServer/1",
+                "protocol": "ESRI",
+                "note": "Published by the Colorado OIT GIS ArcGIS Online account on behalf of the county",
+                "conform": {
+                    "format": "geojson",
+                    "id": "SID",
+                    "name": "FSN",
+                    "classification": {
+                        "function": "map",
+                        "field": "ROC",
+                        "mapping": {
+                            "LOCAL": "residential",
+                            "PRIMARY": "primary",
+                            "SECONDARY": "secondary",
+                            "PRIVATE": "service"
+                        },
+                        "else": "unclassified"
+                    },
+                    "addr_from_left": "LFR",
+                    "addr_to_left": "LTO",
+                    "addr_from_right": "RFR",
+                    "addr_to_right": "RTO"
+                }
+            }
+        ]
+    }
+}

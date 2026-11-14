@@ -33,12 +33,32 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://assets-admin.elpasoco.com/wp-content/uploads/parcels1foot_public-8.zip",
-                "protocol": "http",
-                "compression": "zip",
+                "attribution": "El Paso County",
+                "data": "https://gisservices.elpasoco.com/arcgis2/rest/services/HubPublic/Parcels/MapServer/0",
+                "protocol": "ESRI",
+                "note": "Replaces the parcels1foot_public zip download that has failed since 2021; the hub layer carries the parcel number only",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "pid": "PARCEL"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "El Paso County",
+                "data": "https://services3.arcgis.com/r1Gf4AJYRBIM0N25/arcgis/rest/services/Streets___Roads/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "STREET",
+                    "addr_from_left": "LLO",
+                    "addr_to_left": "LHI",
+                    "addr_from_right": "RLO",
+                    "addr_to_right": "RHI",
+                    "zip_left": "LZIP",
+                    "zip_right": "RZIP"
                 }
             }
         ]

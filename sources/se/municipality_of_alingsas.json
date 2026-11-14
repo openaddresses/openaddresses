@@ -15,19 +15,21 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://gisak.alingsas.se/arcgis/rest/services/Administrativt/Adresser/MapServer/0",
+                "data": "https://geoportal.alingsas.se/arcgis/rest/services/GeoFIR/Adresser/MapServer/2",
                 "protocol": "ESRI",
+                "license": {
+                    "url": "https://www.alingsas.se/bygga-bo-och-miljo/kartor-och-geografisk-information/kartor-och-geodata/",
+                    "attribution": true,
+                    "attribution name": "Alingsås kommun",
+                    "share-alike": false,
+                    "presumed": true
+                },
                 "conform": {
                     "format": "geojson",
-                    "number": "AddressPlace",
-                    "street": "StreetName",
-                    "city": "PostCity",
-                    "postcode": {
-                        "function": "regexp",
-                        "field": "PostCode",
-                        "pattern": "^([\\d]{3})([\\d]{2})$",
-                        "replace": "$1 $2"
-                    }
+                    "number": "ADRESSPLATS",
+                    "street": "ADRESSOMRADE",
+                    "city": "POSTORT",
+                    "postcode": "POSTNR"
                 }
             }
         ]

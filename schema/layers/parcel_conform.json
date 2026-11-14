@@ -13,6 +13,10 @@
     },
     "encoding": { "type": "string" },
     "notes": { "type": "string" },
+    "filter": {
+      "description": "SQL where clause sent to an Esri REST layer instead of the default 1=1 (which fetches all rows). Only used with the ESRI protocol",
+      "type": "string"
+    },
     "size": {
       "description": "processing resource tier for unusually large sources (e.g. nationwide datasets). Omit unless the source has been shown to need more than the default scratch disk. See CONTRIBUTING.md",
       "type": "string",
@@ -21,6 +25,12 @@
     "pid": {
       "description": "unique identifier for the parcel row",
       "$ref": "../util/functions/standard_functions.json"
+    },
+    "owners": {
+      "description": "owners of the parcel, one entry per owner slot in the source. Owner names are personal data: only map them where the source licence permits redistribution",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "./parcel_owner.json" }
     }
   }
 }

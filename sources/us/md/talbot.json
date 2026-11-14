@@ -14,37 +14,74 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://geodata.md.gov/appdata/rest/services/Addressing/MD_Addressing/MapServer/23",
+                "data": "https://mdgeodata.md.gov/appdata/rest/services/Addressing/MD_Addressing/MapServer/23",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "id": "ADDID",
-                    "number": "ADDNUMCPLT",
-                    "street": "NAMECPLT",
-                    "unit": "SUBBADDCPLT",
-                    "city": "CITY",
-                    "district": "COUNTY",
-                    "region": "STATE",
-                    "postcode": "ZIPCODE"
+                    "id": "Add_Id",
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreDir",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "district": "County",
+                    "region": {
+                        "function": "constant",
+                        "value": "MD"
+                    },
+                    "postcode": "Post_Code"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.talbotdes.org/hosting/rest/services/Address_Mail_Parcels/FeatureServer/0",
+                "data": "https://services6.arcgis.com/ScyqVZ3lUUihZ0ky/arcgis/rest/services/Parcels/FeatureServer/29",
+                "website": "https://www.talbotcountymd.gov/departments/publicworks/office-of-gis",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Talbot County Government",
+                    "presumed": true,
+                    "remarks": "https://www.talbotcountymd.gov/departments/publicworks/office-of-gis"
+                },
                 "conform": {
                     "format": "geojson",
-                    "pid": "ACCTID"
+                    "pid": "acctid",
+                    "owners": [
+                        {
+                            "name": "ownname1",
+                            "address": [
+                                "ownadd1",
+                                "owncity",
+                                "ownstate",
+                                "ownerzip"
+                            ]
+                        },
+                        {
+                            "name": "ownname2",
+                            "address": "ownadd2"
+                        }
+                    ]
                 }
             }
         ],
         "buildings": [
             {
                 "name": "county",
-                "data": "https://gis.talbotdes.org/hosting/rest/services/NewFolder/Buildings/FeatureServer/0",
+                "data": "https://services6.arcgis.com/ScyqVZ3lUUihZ0ky/arcgis/rest/services/Building_Footprint/FeatureServer/26",
+                "website": "https://www.talbotcountymd.gov/departments/publicworks/office-of-gis",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Talbot County Government",
+                    "presumed": true,
+                    "remarks": "https://www.talbotcountymd.gov/departments/publicworks/office-of-gis"
+                },
                 "conform": {
                     "format": "geojson"
                 }

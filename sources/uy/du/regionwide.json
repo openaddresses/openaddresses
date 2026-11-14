@@ -1,0 +1,53 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -56.52,
+                -33.37
+            ]
+        },
+        "ISO 3166": {
+            "alpha2": "UY-DU",
+            "country": "Uruguay",
+            "subdivision": "Durazno"
+        },
+        "country": "uy",
+        "state": "du"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://catalogodatos.gub.uy/dataset/85ca8574-3bb3-4329-b005-aed19883e19a/resource/66a8e451-96ca-4c4d-afc4-1a32abc2295e/download/durazno.csv",
+                "website": "https://catalogodatos.gub.uy/dataset/ide-direcciones-geograficas-del-uruguay",
+                "license": {
+                    "text": "Licencia de Datos Abiertos del Uruguay",
+                    "url": "https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf",
+                    "attribution": true,
+                    "attribution name": "Infraestructura de Datos Espaciales (IDE Uruguay), Correo Uruguayo",
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "language": "es",
+                "conform": {
+                    "format": "csv",
+                    "encoding": "cp1252",
+                    "srs": "EPSG:4326",
+                    "lat": "latitud",
+                    "lon": "longitud",
+                    "number": {
+                        "function": "regexp",
+                        "field": "num_puerta",
+                        "pattern": "^([0-9]+)$"
+                    },
+                    "street": "nombre_via",
+                    "city": "localidad",
+                    "region": "departamento",
+                    "postcode": "codigo_postal"
+                }
+            }
+        ]
+    }
+}

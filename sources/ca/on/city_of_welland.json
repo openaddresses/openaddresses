@@ -16,27 +16,20 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://www.welland.ca/open/Datasheets/Welland_civic_addresses_LatLon.zip",
-                "website": "https://www.welland.ca/open/OpendataResp.asp?utitle=Civic%20Addresses",
+                "data": "https://arcgisweb.welland.ca/serverprodpub/rest/services/OpenData/OPENDATA_Civic_Addresses_Active/FeatureServer/0",
+                "website": "https://open-welland.hub.arcgis.com/datasets/welland-civic-address-points",
                 "license": {
-                    "url": "https://www.welland.ca/open/OpendataTermUse.asp",
+                    "url": "https://open-welland.hub.arcgis.com/pages/terms-of-use",
                     "text": "Contains information licensed under the Open Government Licence – City of Welland",
                     "attribution": true,
+                    "attribution name": "City of Welland",
                     "share-alike": false
                 },
-                "year": "2014",
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "Civic_Addr"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "Civic_Addr"
-                    },
-                    "format": "shapefile"
+                    "number": "Civic_No",
+                    "street": "StName",
+                    "format": "geojson"
                 }
             }
         ]

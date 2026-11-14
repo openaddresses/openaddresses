@@ -14,17 +14,25 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://arcgisweb.countyofnewaygo.com:6080/arcgis/rest/services/WebMaps/NewaygoCounty/MapServer/2",
+                "data": "https://arcgisweb.countyofnewaygo.com/hosting/rest/services/WebMaps/PublicCountyViewerProV3/MapServer/2",
+                "website": "https://www.newaygocountymi.gov/gis/gis/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "P_NUMB",
-                    "street": [
-                        "P_DIR",
-                        "P_STREET"
-                    ],
+                    "street": {
+                        "function": "remove_prefix",
+                        "field": "P_ADDRESS",
+                        "field_to_remove": "P_NUMB"
+                    },
                     "city": "P_CITY",
                     "postcode": "P_ZIP"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Newaygo County",
+                    "presumed": true,
+                    "remarks": "https://www.newaygocountymi.gov/gis/gis/"
                 }
             }
         ]

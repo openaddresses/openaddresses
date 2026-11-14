@@ -14,26 +14,25 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps.canyonco.org/arcgisserver/rest/services/Hosted/Taxparcels/FeatureServer/0",
+                "data": "https://maps.canyonco.org/arcgisserver/rest/services/General/Canyon_County_Public_Tax_Parcels/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": [
-                        "sitenum",
-                        "sitenumsfx"
-                    ],
-                    "street": [
-                        "predir",
-                        "sitestreet",
-                        "streettype",
-                        "postdir"
-                    ],
-                    "unit": [
-                        "sitesuite",
-                        "SiteSubNum"
-                    ],
-                    "city": "sitecity",
-                    "postcode": "sitezip"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "SiteAddress"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "SiteAddress"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "InCity",
+                        "pattern": "^.*CITY OF (.+)$",
+                        "replace": "$1"
+                    },
+                    "postcode": "SiteZIP"
                 }
             }
         ]

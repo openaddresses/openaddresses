@@ -15,14 +15,25 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://gis.osteraker.se/arcgis/rest/services/Osteraker/Adress/MapServer/0",
+                "data": "https://gisportal.osteraker.se/arcgis/rest/services/Adress_projekt/MapServer/0",
+                "website": "https://www.osteraker.se/byggabomiljo/kartormatningochgis/digitalakartor.4.367d658917909e8fc2b2e37.html",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": "ADRESSPL_1",
-                    "street": "ADROMRADE_",
-                    "city": "POSTORT",
-                    "postcode": "POSTNR"
+                    "street": {
+                        "function": "remove_postfix",
+                        "field": "BELADRESS",
+                        "field_to_remove": "ADRESSPL_1"
+                    },
+                    "city": "postort",
+                    "postcode": "postnr"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Österåkers kommun",
+                    "presumed": true,
+                    "remarks": "https://www.osteraker.se/byggabomiljo/kartormatningochgis/digitalakartor.4.367d658917909e8fc2b2e37.html"
                 }
             }
         ]

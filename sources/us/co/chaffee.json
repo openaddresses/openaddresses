@@ -1,0 +1,56 @@
+{
+    "schema": 2,
+    "coverage": {
+        "US Census": {
+            "geoid": "08015",
+            "name": "Chaffee County",
+            "state": "Colorado"
+        },
+        "country": "us",
+        "state": "co",
+        "county": "Chaffee"
+    },
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Chaffee County",
+                "data": "https://services8.arcgis.com/fRzYA77NIM7odeAM/arcgis/rest/services/CHAFFEE_PARCELS/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "Countywide assessor parcels republished from a City of Salida GIS account; dated copies of the same layer sit alongside it; situs address taken from the parcel polygons",
+                "conform": {
+                    "format": "geojson",
+                    "number": "STREETNO",
+                    "street": [
+                        "PREDIRECTI",
+                        "STREETNAME",
+                        "STREETTYPE"
+                    ],
+                    "unit": "UNITNAME",
+                    "city": "PROPERTYCI"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Chaffee County",
+                "data": "https://services8.arcgis.com/fRzYA77NIM7odeAM/arcgis/rest/services/CHAFFEE_PARCELS/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "Countywide assessor parcels republished from a City of Salida GIS account; dated copies of the same layer sit alongside it",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PARCELNO",
+                    "owners": [
+                        {
+                            "name": "NAME1"
+                        },
+                        {
+                            "name": "NAME2"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

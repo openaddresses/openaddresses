@@ -1,0 +1,44 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "JP",
+            "country": "Japan"
+        },
+        "country": "jp"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-10-01-tkes5/jp_abr_residential.csv.zip",
+                "website": "https://www.digital.go.jp/policies/base_registry_address",
+                "note": "Building-level 住居表示 addresses from the Digital Agency Address Base Registry. Built by OpenAddresses with scripts/jp/abr_residential.py, which joins the residence master (mt_rsdtdsp_rsdt) to its position table (mt_rsdtdsp_rsdt_pos) and the town master (mt_town). The ABR CDN only serves Japanese IP addresses.",
+                "license": {
+                    "text": "CC BY 4.0 (公共データ利用規約 第1.0版 / PDL1.0)",
+                    "url": "https://www.digital.go.jp/policies/base_registry_address_tos",
+                    "attribution": true,
+                    "attribution name": "デジタル庁 アドレス・ベース・レジストリ (Digital Agency, Address Base Registry)",
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
+                "language": "ja",
+                "conform": {
+                    "format": "csv",
+                    "size": "large",
+                    "file": "jp_abr_residential.csv",
+                    "srs": "EPSG:6668",
+                    "id": "id",
+                    "number": "number",
+                    "street": "street",
+                    "city": "city",
+                    "region": "pref",
+                    "postcode": "postcode",
+                    "lat": "lat",
+                    "lon": "lon"
+                }
+            }
+        ]
+    }
+}

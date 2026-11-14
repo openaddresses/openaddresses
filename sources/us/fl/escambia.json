@@ -42,11 +42,30 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://arcgis4.roktech.net/arcgis/rest/services/escambia/escambia_query_new/MapServer/13",
+                "data": "https://gismaps.myescambia.com/arcgis/rest/services/Individual_Layers/parcels/FeatureServer/0",
+                "website": "https://myescambia.com/gis",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "REFNUM"
+                    "pid": "REFNUM",
+                    "owners": [
+                        {
+                            "name": "OWNER",
+                            "address": [
+                                "MAILADDRESS1",
+                                "MAILADDRESS2",
+                                "MAILCITY",
+                                "MAILSTATE",
+                                "MAILZIP"
+                            ]
+                        }
+                    ]
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Escambia County Property Appraiser",
+                    "presumed": true,
+                    "remarks": "https://myescambia.com/gis"
                 }
             }
         ]

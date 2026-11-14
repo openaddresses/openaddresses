@@ -14,23 +14,16 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services1.arcgis.com/PsDtSYIjNsyfjwcX/ArcGIS/rest/services/Parcels_gdb/FeatureServer/0",
+                "data": "https://services1.arcgis.com/PsDtSYIjNsyfjwcX/ArcGIS/rest/services/NG911_Address_Points/FeatureServer/0",
+                "website": "https://gisdata-monmouthcty.opendata.arcgis.com/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "PropertyLocation"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "PropertyLocation",
-                        "may_contain_units": true
-                    },
-                    "unit": {
-                        "function": "postfixed_unit",
-                        "field": "PropertyLocation"
-                    }
+                    "number": "ADD_NUMBER",
+                    "street": ["ST_PREDIR", "ST_NAME", "ST_POSTYP", "ST_POSDIR"],
+                    "unit": "UNIT",
+                    "city": "POST_COMM",
+                    "postcode": "POST_CODE"
                 }
             }
         ]

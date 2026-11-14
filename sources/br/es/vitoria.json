@@ -4756,15 +4756,20 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://proxygis.vitoria.es.gov.br/arcgis/rest/services/Externo/PortalInstitucional/MapServer/27",
+                "data": "https://gis.vitoria.es.gov.br/arcgis/rest/services/Opendata/HubGeoweb/MapServer/66",
                 "website": "https://geoweb.vitoria.es.gov.br",
-                "attribution": "Prefeitura de Vitória",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Prefeitura Municipal de Vitória",
+                    "presumed": true,
+                    "remarks": "https://geoweb.vitoria.es.gov.br"
+                },
                 "conform": {
                     "format": "geojson",
                     "number": {
                         "function": "regexp",
-                        "field": "Numero",
+                        "field": "numero",
                         "pattern": "^0*([1-9][0-9]*.*|S/N)$",
                         "replace": "$1"
                     },

@@ -37,11 +37,54 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.co.grand.co.us:6443/arcgis/rest/services/Property/AssesssorMap/MapServer/0",
+                "data": "https://gis.co.grand.co.us:6443/arcgis/rest/services/GrandCoParcels/MapServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PIN"
+                    "pid": "PIN",
+                    "owners": [
+                        {
+                            "name": "OWNER1",
+                            "address": [
+                                "OWNERADD",
+                                "OWNERCITY",
+                                "OWNERSTATE",
+                                "OWNERZIP"
+                            ]
+                        },
+                        {
+                            "name": "OWNER2"
+                        }
+                    ]
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Grand County",
+                "data": "https://gis.co.grand.co.us:6443/arcgis/rest/services/Roads/Roads/MapServer/9",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "ROAD_ID",
+                    "name": "ROAD_NAME",
+                    "surface": {
+                        "function": "map",
+                        "field": "SURFTYPE",
+                        "mapping": {
+                            "GRAVEL": "unpaved",
+                            "DIRT": "unpaved",
+                            "NATIVE": "unpaved",
+                            "PAVED": "paved",
+                            "ASPHALT": "paved",
+                            "CONCRETE": "paved"
+                        }
+                    },
+                    "addr_from_left": "LEFT_FROM",
+                    "addr_to_left": "LEFT_TO",
+                    "addr_from_right": "RIGHT_FROM",
+                    "addr_to_right": "RIGHT_TO"
                 }
             }
         ]

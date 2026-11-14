@@ -14,24 +14,113 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.co.routt.co.us/server/rest/services/PublishedAddressing/Addresses_Routt_County/FeatureServer/0",
+                "data": "https://services6.arcgis.com/VxFGFP4XeHMTNgVs/arcgis/rest/services/Routt_County_Addresses/FeatureServer/0",
+                "website": "https://data-routtgis.opendata.arcgis.com/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "unit": "UNITFULL",
-                    "number": "ADDRNUM",
-                    "street": "FULLNAME"
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Routt County GIS",
+                    "presumed": true,
+                    "remarks": "https://data-routtgis.opendata.arcgis.com/"
+                }
+            },
+            {
+                "name": "city",
+                "data": "https://services6.arcgis.com/VxFGFP4XeHMTNgVs/arcgis/rest/services/City_of_Steamboat_Springs_Addresses/FeatureServer/0",
+                "website": "https://data-routtgis.opendata.arcgis.com/",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "street": [
+                        "St_PreDir",
+                        "St_PreTyp",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
+                    ],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Routt County GIS",
+                    "presumed": true,
+                    "remarks": "https://data-routtgis.opendata.arcgis.com/"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.co.routt.co.us/server/rest/services/PublishedMapServices/RouttCoViewpoint/MapServer/155",
+                "data": "https://services6.arcgis.com/VxFGFP4XeHMTNgVs/arcgis/rest/services/Parcels/FeatureServer/0",
+                "website": "https://data-routtgis.opendata.arcgis.com/datasets/RouttGIS::parcels",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "pid": "PIN"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Routt County GIS",
+                    "presumed": true,
+                    "remarks": "https://data-routtgis.opendata.arcgis.com/datasets/RouttGIS::parcels"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Routt County",
+                "data": "https://services6.arcgis.com/VxFGFP4XeHMTNgVs/arcgis/rest/services/Road_Centerline/FeatureServer/0",
+                "protocol": "ESRI",
+                "website": "https://data-routtgis.opendata.arcgis.com/",
+                "conform": {
+                    "format": "geojson",
+                    "id": "CenterlineID",
+                    "name": "St_FullNm",
+                    "oneway": {
+                        "function": "map",
+                        "field": "OneWay",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "RoadSurface",
+                        "mapping": {
+                            "Gravel": "unpaved",
+                            "Dirt": "unpaved",
+                            "Native": "unpaved",
+                            "Paved": "paved",
+                            "Asphalt": "paved",
+                            "Chip Seal": "paved"
+                        }
+                    },
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R"
                 }
             }
         ]

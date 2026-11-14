@@ -40,13 +40,75 @@
         "parcels": [
             {
                 "name": "county",
-                "attribution": "Jefferson County",
-                "data": "https://gisportal.jeffco.us/server/rest/services/Parcel/MapServer/20",
+                "data": "https://gisportal.jeffco.us/server2/rest/services/Parcel/FeatureServer/20",
                 "website": "https://data-jeffersoncounty.opendata.arcgis.com/datasets/parcel/explore",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Jefferson County, Colorado",
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "text": "Creative Commons Attribution 4.0 International License",
+                    "remarks": "https://www.jeffco.us/3165/Maps-Data-Download"
+                },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "pid": "PIN"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Jefferson County",
+                "data": "https://gisportal.jeffco.us/server2/rest/services/Street/FeatureServer/25",
+                "protocol": "ESRI",
+                "website": "https://data-jeffersoncounty.opendata.arcgis.com/",
+                "conform": {
+                    "format": "geojson",
+                    "id": "BLUID",
+                    "name": "STREET_NAME_FULL",
+                    "oneway": {
+                        "function": "map",
+                        "field": "STREET_TRAVEL_DIRECTION",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "STREET_SPEED_LIMIT"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "STREET_PAVED",
+                        "mapping": {
+                            "Y": "paved",
+                            "N": "unpaved"
+                        },
+                        "else": "paved"
+                    },
+                    "addr_from_left": "STREET_LLO",
+                    "addr_to_left": "STREET_LHI",
+                    "addr_from_right": "STREET_RLO",
+                    "addr_to_right": "STREET_RHI",
+                    "zip_left": "STREET_LZIP",
+                    "zip_right": "STREET_RZIP"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Jefferson County",
+                "data": "https://gisportal.jeffco.us/server/rest/services/Hosted/Building_Roofprint_Static_2022/FeatureServer/7",
+                "protocol": "ESRI",
+                "website": "https://data-jeffersoncounty.opendata.arcgis.com/",
+                "year": 2022,
+                "conform": {
+                    "format": "geojson",
+                    "id": "building_id"
                 }
             }
         ]

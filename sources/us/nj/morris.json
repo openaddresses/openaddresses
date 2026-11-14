@@ -14,17 +14,23 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://morrisgisapps.co.morris.nj.us/GISData/PublicData/Shapefiles/Countywide/Addresses.zip",
+                "data": "https://morrisgisapps.co.morris.nj.us/GISData/PublicData/Shapefiles/Countywide/AddressPoints.zip",
+                "website": "https://morrisgisapps.co.morris.nj.us/gisdata.html",
                 "protocol": "http",
                 "compression": "zip",
                 "conform": {
                     "format": "shapefile",
                     "number": "AddNum",
-                    "street": "FullName",
-                    "unit": "Unit",
-                    "city": "City",
-                    "postcode": "ZIP",
-                    "region": "State",
+                    "street": [
+                        "ST_PREDIR",
+                        "ST_NAME",
+                        "ST_POSTYP",
+                        "ST_POSDIR"
+                    ],
+                    "unit": "UNIT",
+                    "city": "POST_COMM",
+                    "postcode": "POST_CODE",
+                    "region": "STATE",
                     "accuracy": 1
                 }
             }

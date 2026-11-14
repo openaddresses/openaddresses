@@ -13,19 +13,39 @@
     "layers": {
         "addresses": [
             {
-                "name": "county",
-                "data": "https://services3.arcgis.com/x30BNDiAn8ea61Vv/ArcGIS/rest/services/November_2021_Addresses/FeatureServer/0",
+                "name": "unincorporated",
+                "data": "https://services3.arcgis.com/x30BNDiAn8ea61Vv/ArcGIS/rest/services/City_View_Addresses_view/FeatureServer/0",
+                "website": "https://www.madisoncountyal.gov/departments/public-works/gis",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "STREET_NUM",
-                    "street": [
-                        "STREET_NAM",
-                        "STREET_SUF",
-                        "STREET_DIR"
-                    ],
-                    "unit": "UNIT",
-                    "city": "CITY"
+                    "number": "addrnum",
+                    "street": "rdname",
+                    "unit": "unitid"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Madison County, Alabama",
+                    "presumed": true,
+                    "remarks": "https://www.madisoncountyal.gov/departments/public-works/gis"
+                }
+            },
+            {
+                "name": "incorporated",
+                "data": "https://services3.arcgis.com/x30BNDiAn8ea61Vv/ArcGIS/rest/services/Incorporated_Addresses_view/FeatureServer/0",
+                "website": "https://www.madisoncountyal.gov/departments/public-works/gis",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "addrnum",
+                    "street": "rdname",
+                    "unit": "unitid"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Madison County, Alabama",
+                    "presumed": true,
+                    "remarks": "https://www.madisoncountyal.gov/departments/public-works/gis"
                 }
             }
         ]

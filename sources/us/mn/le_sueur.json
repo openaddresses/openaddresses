@@ -50,23 +50,27 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.co.le-sueur.mn.us/server/rest/services/LandRecords/Parcels/MapServer/1",
+                "data": "https://gis.co.le-sueur.mn.us/server/rest/services/NG911_Address_Points/FeatureServer/3",
+                "website": "https://www.lesueurcounty.gov/646/GIS-Data",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "PROPERTY_ADDRESS_LINE_1",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "PROPERTY_ADDRESS_LINE_1",
-                        "pattern": "^(?:[0-9]+) (.*)",
-                        "replace": "$1"
-                    },
-                    "city": "PROPERTY_CITY",
-                    "postcode": "PROPERTY_ZIP_6"
+                    "number": "ANUMBER",
+                    "street": [
+                        "ST_PRE_DIR",
+                        "ST_PRE_TYP",
+                        "ST_NAME",
+                        "ST_POS_TYP",
+                        "ST_POS_DIR"
+                    ],
+                    "city": "POSTCOMM",
+                    "postcode": "ZIP"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Le Sueur County GIS Department",
+                    "presumed": true,
+                    "remarks": "https://www.lesueurcounty.gov/646/GIS-Data"
                 }
             }
         ]

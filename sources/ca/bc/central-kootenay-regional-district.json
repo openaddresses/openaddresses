@@ -9,17 +9,27 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.rdck.bc.ca/server/rest/services/RDCK_Public_Web_Map_MIL/MapServer/7",
+                "data": "https://services5.arcgis.com/YrichWXF9aowPgGP/arcgis/rest/services/AddressingLayers/FeatureServer/0",
+                "website": "https://www.rdck.ca/development-community-sustainability-services/mapping/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "id": "OBJECTID",
-                    "number": "HouseNumber",
+                    "number": "STREETNO",
                     "street": [
-                        "StreetName",
-                        "StreetType"
+                        "PREFIX",
+                        "STRNAME",
+                        "STRTYPE",
+                        "SUFFIX"
                     ],
-                    "unit": "UnitNumber"
+                    "unit": "SUITE",
+                    "city": "COMM"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Regional District of Central Kootenay",
+                    "presumed": true,
+                    "remarks": "https://www.rdck.ca/development-community-sustainability-services/mapping/"
                 }
             }
         ]

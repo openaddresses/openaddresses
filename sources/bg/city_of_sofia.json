@@ -1,0 +1,88 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "BG-22",
+            "country": "Bulgaria",
+            "subdivision": "Sofia City"
+        },
+        "country": "bg",
+        "city": "Sofia",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                23.32,
+                42.70
+            ]
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://urbandata.sofia.bg/dataset/5dd1b862-7b4e-4fed-9061-96f1f1288c1e/resource/7b32c5f8-5f25-4b24-92f9-43e265275587/download/address_sofia.zip",
+                "website": "https://urbandata.sofia.bg/dataset/address_sofia-zip",
+                "note": "Official address register of Sofia Municipality (Столична община), published by GIS Sofia EOOD. Block-addressed buildings in housing estates have no street or house number; for those the housing estate (lareaunit) is used as the street and the block as the number (бл. N).",
+                "protocol": "http",
+                "compression": "zip",
+                "language": "bg",
+                "license": {
+                    "text": "CC-BY-4.0",
+                    "url": "https://creativecommons.org/licenses/by/4.0/",
+                    "attribution": true,
+                    "attribution name": "GIS Sofia EOOD / Sofia Municipality",
+                    "share-alike": false
+                },
+                "conform": {
+                    "format": "geojson",
+                    "file": "address_sofia.geojson",
+                    "id": "rn",
+                    "number": {
+                        "function": "chain",
+                        "variable": "block_number",
+                        "functions": [
+                            {
+                                "function": "format",
+                                "fields": [
+                                    "block"
+                                ],
+                                "format": "бл. $1"
+                            },
+                            {
+                                "function": "first_non_empty",
+                                "fields": [
+                                    "streetnum",
+                                    "oa:block_number"
+                                ]
+                            }
+                        ]
+                    },
+                    "street": {
+                        "function": "first_non_empty",
+                        "fields": [
+                            "street",
+                            "lareaunit"
+                        ]
+                    },
+                    "unit": {
+                        "function": "format",
+                        "fields": [
+                            "entrance"
+                        ],
+                        "format": "вх. $1"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "settlement",
+                        "pattern": "^(?:гр\\.|с\\.)?\\s*(.*)$"
+                    },
+                    "district": "region",
+                    "region": {
+                        "function": "constant",
+                        "value": "София-град"
+                    }
+                }
+            }
+        ]
+    }
+}

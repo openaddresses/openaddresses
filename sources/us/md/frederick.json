@@ -69,8 +69,15 @@
         "centerlines": [
             {
                 "name": "city_of_frederick",
-                "data": "https://spires.cityoffrederick.com/ArcGIS/rest/services/Street_Centerlines/MapServer/0",
+                "data": "https://spires.cityoffrederick.com/ArcGIS/rest/services/Base/MapServer/4",
+                "website": "https://www.cityoffrederickmd.gov/1306/Geographic-Information-Systems-GIS-Data",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "City of Frederick, Maryland",
+                    "presumed": true,
+                    "remarks": "https://www.cityoffrederickmd.gov/1306/Geographic-Information-Systems-GIS-Data"
+                },
                 "conform": {
                     "format": "geojson",
                     "id": "CLSEG_ID",
@@ -93,12 +100,12 @@
                         "function": "map",
                         "field": "ROADTYPE",
                         "mapping": {
-                            "Interstate": "motorway",
+                            "INTERSTATE": "motorway",
                             "USHWY": "trunk",
-                            "State": "primary",
-                            "Major County": "secondary",
-                            "Ramp": "motorway_link",
-                            "Local": "residential"
+                            "STATE": "primary",
+                            "MAJOR COUNTY": "secondary",
+                            "RAMP": "motorway_link",
+                            "LOCAL": "residential"
                         },
                         "else": "residential"
                     },

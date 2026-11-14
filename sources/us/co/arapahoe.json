@@ -42,7 +42,49 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PARCEL_ID"
+                    "pid": "PARCEL_ID",
+                    "owners": [
+                        {
+                            "name": "Owner",
+                            "address": [
+                                "Owner_Mail_Address",
+                                "Owner_City_State_Zip"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Arapahoe County",
+                "data": "https://gis.arapahoegov.com/arcgis/rest/services/OpenDataService/FeatureServer/1",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "FULL_NAME",
+                    "classification": {
+                        "function": "map",
+                        "field": "CLASSIFICATION",
+                        "mapping": {
+                            "Interstate": "motorway",
+                            "US Highway": "trunk",
+                            "State Highway": "primary",
+                            "Arterial": "secondary",
+                            "Collector": "tertiary",
+                            "Local": "residential",
+                            "Private": "service"
+                        },
+                        "else": "residential"
+                    },
+                    "addr_from_left": "L_F_ADD",
+                    "addr_to_left": "L_T_ADD",
+                    "addr_from_right": "R_F_ADD",
+                    "addr_to_right": "R_T_ADD",
+                    "zip_left": "L_ZIP",
+                    "zip_right": "R_ZIP"
                 }
             }
         ]

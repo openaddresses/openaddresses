@@ -55,6 +55,58 @@
                     "pid": "APN"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/24gLq1DBBzDfd0cZ/ArcGIS/rest/services/Streets/FeatureServer/0",
+                "website": "https://countyofkingsca.gov/departments/general-services/community-development-agency/gis-mapping",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "County of Kings",
+                    "presumed": true,
+                    "remarks": "https://countyofkingsca.gov/departments/general-services/community-development-agency/gis-mapping"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "FULLNAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no",
+                            "2": "no"
+                        }
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "CLASS",
+                        "mapping": {
+                            "Interstate": "motorway",
+                            "Other Fwy or Expwy": "trunk",
+                            "Other Principal Arterial": "trunk",
+                            "HIGHWAY": "primary",
+                            "Highway": "primary",
+                            "Arterial": "secondary",
+                            "ARTERIAL": "secondary",
+                            "Minor Arterial": "secondary",
+                            "Major Collector": "tertiary",
+                            "Collector": "tertiary",
+                            "Minor Collector": "tertiary",
+                            "Minor Road": "residential",
+                            "Minor": "residential",
+                            "Private Road": "service"
+                        }
+                    },
+                    "addr_from_left": "LADD_FR",
+                    "addr_to_left": "LADD_TO",
+                    "addr_from_right": "RADD_FR",
+                    "addr_to_right": "RADD_TO"
+                }
+            }
         ]
     }
 }

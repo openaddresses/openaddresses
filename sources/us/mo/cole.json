@@ -15,27 +15,31 @@
             {
                 "name": "county",
                 "website": "https://www.midmogis.org/digitaldata.html",
-                "data": "https://www.midmogis.org/free/GISData/VectorGIS/SitusAddresses.zip",
-                "license": "https://www.midmogis.org/mapdisclaimer.asp",
-                "year": "2014",
-                "protocol": "http",
-                "compression": "zip",
+                "data": "https://services6.arcgis.com/rXa0aMElf2BPjgBA/arcgis/rest/services/Situs_Addr/FeatureServer/0",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Cole County and City of Jefferson, Missouri (MidMoGIS)",
+                    "presumed": true,
+                    "remarks": "https://www.midmogis.org/digitaldata.html"
+                },
+                "protocol": "ESRI",
                 "conform": {
+                    "format": "geojson",
+                    "number": "Number",
                     "street": [
                         "Direction",
-                        "streetname",
-                        "suffix",
-                        "PostDirect"
+                        "PreType",
+                        "StreetName",
+                        "Suffix",
+                        "PostDirection"
                     ],
-                    "number": "number",
                     "unit": [
                         "UnitType",
                         "UnitID"
                     ],
                     "city": "City",
                     "region": "State_",
-                    "format": "shapefile",
-                    "postcode": "zip"
+                    "postcode": "Zip"
                 }
             }
         ]

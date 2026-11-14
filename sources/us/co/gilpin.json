@@ -43,11 +43,81 @@
             {
                 "name": "county",
                 "attribution": "Gilpin County",
-                "data": "https://gis.gilpincounty.org/arcgis/rest/services/WebMapServices/PropertyInfo/MapServer/3",
+                "data": "https://gis.gilpincounty.org/server/rest/services/Hosted/GilpinCountyCAMAParcels_20260501/FeatureServer/0",
+                "website": "https://gilpincounty.colorado.gov/elected-officials/assessor/gis-maps",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Gilpin County",
+                    "presumed": true,
+                    "remarks": "https://gilpincounty.colorado.gov/elected-officials/assessor/gis-maps"
+                },
+                "note": "Service name embeds a vintage date (GilpinCountyCAMAParcels_20260501) and is republished under a new dated name periodically; expect this URL to need re-pointing again when the county's GIS vendor next regenerates it.",
                 "conform": {
                     "format": "geojson",
-                    "pid": "parcelid"
+                    "pid": "account_pk"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Gilpin County",
+                "data": "https://gis.gilpincounty.org/server/rest/services/Hosted/Road_Centerlines_of_Gilpin_County_Colorado/FeatureServer/13",
+                "protocol": "ESRI",
+                "website": "https://gilpincounty.colorado.gov/elected-officials/assessor/gis-maps",
+                "conform": {
+                    "format": "geojson",
+                    "id": "globalid",
+                    "name": "lst_fullname",
+                    "oneway": {
+                        "function": "map",
+                        "field": "oneway",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "speedlimit"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "roadclass",
+                        "mapping": {
+                            "Primary": "primary",
+                            "Secondary": "secondary",
+                            "Local": "residential",
+                            "Private": "service",
+                            "Alley": "service",
+                            "Easement": "service",
+                            "Ramp": "motorway_link",
+                            "Interstate": "motorway",
+                            "Highway": "trunk",
+                            "Arterial": "secondary",
+                            "Collector": "tertiary",
+                            "Trail": "track",
+                            "Other": "unclassified"
+                        },
+                        "else": "residential"
+                    },
+                    "surface": {
+                        "function": "map",
+                        "field": "paved",
+                        "mapping": {
+                            "Y": "paved",
+                            "N": "unpaved"
+                        },
+                        "else": "paved"
+                    },
+                    "addr_from_left": "fromaddr_l",
+                    "addr_to_left": "toaddr_l",
+                    "addr_from_right": "fromaddr_r",
+                    "addr_to_right": "toaddr_r",
+                    "zip_left": "postcode_l",
+                    "zip_right": "postcode_r"
                 }
             }
         ]

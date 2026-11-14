@@ -14,38 +14,15 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Mills/Address_65.zip",
-                "license": {
-                    "text": "Public Domain",
-                    "attribution": false,
-                    "share-alike": false
-                },
-                "year": "2012?",
-                "protocol": "ftp",
-                "compression": "zip",
+                "data": "https://services1.arcgis.com/20XE3PmEegLQbaze/arcgis/rest/services/Parcels/FeatureServer/0",
+                "website": "https://www.millscoia.us/208/GIS-Mapping",
+                "protocol": "ESRI",
                 "conform": {
-                    "number": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "unit": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^.* ((Unit|Apt) [0-9A-Za-z])$",
-                        "replace": "$1"
-                    },
-                    "city": "POSTAL_COM",
-                    "district": "COUNTY",
-                    "region": "STATE",
-                    "postcode": "ZIP_CODE",
-                    "format": "shapefile"
+                    "format": "geojson",
+                    "accuracy": 2,
+                    "number": "Streetnum",
+                    "street": "Streetname",
+                    "city": "City"
                 }
             }
         ]

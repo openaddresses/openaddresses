@@ -1,0 +1,49 @@
+{
+    "schema": 2,
+    "coverage": {
+        "US Census": {
+            "geoid": "08027",
+            "name": "Custer County",
+            "state": "Colorado"
+        },
+        "country": "us",
+        "state": "co",
+        "county": "Custer"
+    },
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Custer County",
+                "data": "https://services7.arcgis.com/qznFlX1g8SfaPebZ/arcgis/rest/services/Custer_County_Address_Points/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "Published by the regional 911 GIS contractor account that also hosts the Conejos and Costilla sources",
+                "conform": {
+                    "format": "geojson",
+                    "number": "Address",
+                    "street": "Roadname"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Custer County",
+                "data": "https://services7.arcgis.com/qznFlX1g8SfaPebZ/arcgis/rest/services/CusterCountyRoads/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "Published by the regional 911 GIS contractor account that also hosts the Conejos and Costilla sources",
+                "conform": {
+                    "format": "geojson",
+                    "id": "RoadUID",
+                    "name": "ShortNameC",
+                    "addr_from_left": "FromLeft",
+                    "addr_to_left": "ToLeft",
+                    "addr_from_right": "FromRight",
+                    "addr_to_right": "ToRight",
+                    "zip_left": "ZipCode",
+                    "zip_right": "ZipCode"
+                }
+            }
+        ]
+    }
+}

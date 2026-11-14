@@ -14,20 +14,15 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://mcmap.montrosecounty.net/server/rest/services/MontroseCOaddress/MapServer/0",
+                "data": "https://mcmap.montrosecounty.net/server/rest/services/MontroseCounty/FeatureServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "FSA"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "FSA"
-                    },
-                    "postcode": "ZIPCODE",
-                    "city": "PCN"
+                    "number": "san",
+                    "street": ["prd", "rd", "sts", "pod"],
+                    "unit": "unit",
+                    "city": "pcn",
+                    "postcode": "zipcode"
                 }
             }
         ],
@@ -38,7 +33,44 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "ASSESSORSI"
+                    "pid": "ASSESSORSI",
+                    "owners": [
+                        {
+                            "name": "NAME",
+                            "address": [
+                                "ADDRESS1",
+                                "ADDRESS2",
+                                "CITY",
+                                "STATE",
+                                "ZIPCODE"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Montrose County",
+                "data": "https://mcmap.montrosecounty.net/server/rest/services/MontroseCounty/FeatureServer/2",
+                "protocol": "ESRI",
+                "note": "Service caps responses at 100 records per request",
+                "conform": {
+                    "format": "geojson",
+                    "id": "objectid",
+                    "name": "fsn",
+                    "classification": {
+                        "function": "map",
+                        "field": "roc",
+                        "mapping": {
+                            "LOCAL": "residential",
+                            "PRIMARY": "primary",
+                            "SECONDARY": "secondary",
+                            "PRIVATE": "service"
+                        },
+                        "else": "unclassified"
+                    }
                 }
             }
         ]

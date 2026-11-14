@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services.arcgis.com/ewjSqmSyHJnkfBLL/arcgis/rest/services/Address_Points_open_data/FeatureServer/0",
+                "data": "https://services.arcgis.com/ewjSqmSyHJnkfBLL/arcgis/rest/services/Address_Points_open_data/FeatureServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "number": "HOUSENUM",
@@ -41,7 +41,51 @@
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PARCEL"
+                    "pid": "PARCEL",
+                    "owners": [
+                        {
+                            "name": "NAME",
+                            "address": [
+                                "ADDRESS1",
+                                "ADDRESS2",
+                                "CITY",
+                                "STATE",
+                                "ZIPCODE"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Weld County",
+                "data": "https://services.arcgis.com/ewjSqmSyHJnkfBLL/arcgis/rest/services/Address_Centerlines_open_data/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "JoinID",
+                    "name": "CC_FULLNAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONE_WAY",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEED"
+                    },
+                    "addr_from_left": "L_F_Add",
+                    "addr_to_left": "L_T_Add",
+                    "addr_from_right": "R_F_Add",
+                    "addr_to_right": "R_T_Add",
+                    "zip_left": "ZIPCODE_L",
+                    "zip_right": "ZIPCODE_R"
                 }
             }
         ]

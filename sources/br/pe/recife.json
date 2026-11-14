@@ -17984,27 +17984,25 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://dados.recife.pe.gov.br/dataset/c1f100f0-f56f-4dd4-9dcc-1aa4da28798a/resource/c82a414a-066f-4acc-922c-e3a63ed047f8/download/lotes.zip",
-                "website": "https://dados.recife.pe.gov.br/dataset/area-urbana/resource/c82a414a-066f-4acc-922c-e3a63ed047f8",
-                "note": "A possibly more up-to-date version of the dataset (without clear license info) can be found at https://esigr.recife.pe.gov.br/arcgis/rest/services/Financas/Base_Lotes_Numero/MapServer/0",
+                "data": "https://dados.recife.pe.gov.br/dataset/1702c764-ec7a-4ef0-9861-8acd0e40c819/resource/c41ee0d0-bb33-4380-8809-2e9082d79ab0/download/lotes.geojson",
+                "website": "https://dados.recife.pe.gov.br/dataset/area-urbana",
                 "license": {
                     "url": "https://opendefinition.org/licenses/odc-odbl/",
                     "text": "ODbL",
                     "attribution": true,
                     "attribution name": "Secretaria de Infraestrutura e Serviços Urbanos do Recife",
-                    "share-alike": true
+                    "share-alike": true,
+                    "remarks": "https://dados.recife.pe.gov.br/dataset/area-urbana"
                 },
                 "protocol": "http",
-                "compression": "zip",
                 "conform": {
                     "format": "geojson",
                     "encoding": "utf-8",
-                    "file": "lotes.geojson",
-                    "number": "endereco_numero",
+                    "number": "ENDNUMERO",
                     "street": {
                         "function": "regexp",
-                        "field": "endereco_completo",
-                        "pattern": "^(.*?)(, [0-9]+)?$",
+                        "field": "NMENDCOMP",
+                        "pattern": "^([^,]*),",
                         "replace": "$1"
                     }
                 }

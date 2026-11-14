@@ -14,7 +14,7 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gisdata.wisc.edu/public/CRAWFORD_ADDRESSES_2023.zip",
+                "data": "https://web.s3.wisc.edu/rml-gisdata/CRAWFORD_ADDRESSES_2023.zip",
                 "website": "https://geodata.wisc.edu/catalog/5C3180A8-ABD5-4DB5-BAB5-96E9A5FF08BA",
                 "protocol": "http",
                 "compression": "zip",
@@ -23,25 +23,37 @@
                     "format": "gdb",
                     "layer": "CRAWFORD_ADDRESSES_2023",
                     "number": "HSENO",
-                    "street": "PARCELSTRE",
+                    "street": ["DIR", "PARCELSTRE"],
                     "unit": "LOC_EXT",
                     "region": "PS",
                     "postcode": "PZIP",
-                    "city": "TOWN"
+                    "city": "PARCELCITY"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Crawford County",
+                    "presumed": true,
+                    "remarks": "https://geodata.wisc.edu/catalog/5C3180A8-ABD5-4DB5-BAB5-96E9A5FF08BA"
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gisdata.wisc.edu/public/Crawford_Parcels_2023_SHP.zip",
-                "website": "https://geodata.wisc.edu/catalog/AD85144A-767A-4194-9C55-DD97C12D02B6",
+                "data": "https://web.s3.wisc.edu/parcels/v10_parcels/county/V1000_Wisconsin_Parcels_CRAWFORD_SHP.zip",
+                "website": "https://geodata.wisc.edu/catalog/cf513e0e-0443-4323-b4de-7a193c8dbc45",
                 "protocol": "http",
                 "compression": "zip",
-                "year": "2023",
+                "year": "2024",
                 "conform": {
                     "format": "shapefile",
                     "pid": "PARCELID"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Wisconsin Department of Administration",
+                    "presumed": true,
+                    "remarks": "https://geodata.wisc.edu/catalog/cf513e0e-0443-4323-b4de-7a193c8dbc45"
                 }
             }
         ]

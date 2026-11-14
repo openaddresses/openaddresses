@@ -14,23 +14,27 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "ftp://ftp.hamiltoncounty.in.gov/GIS/Data/Address Points/E911_Addresses_web.zip",
-                "protocol": "ftp",
-                "compression": "zip",
+                "data": "https://gis1.hamiltoncounty.in.gov/arcgis/rest/services/HamCo911/FeatureServer/0",
+                "website": "https://www.hamiltoncounty.in.gov/442/GIS-and-Maps",
+                "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Hamilton County, Indiana GIS Office",
+                    "presumed": true,
+                    "remarks": "https://www.hamiltoncounty.in.gov/442/GIS-and-Maps"
+                },
                 "conform": {
-                    "number": [
-                        "LOC_NO",
-                        "LOC_NO_SUF"
-                    ],
+                    "format": "geojson",
+                    "number": "Add_Number",
                     "street": [
-                        "LOC_PR_DIR",
-                        "LOC_ST",
-                        "LOC_ST_SUF",
-                        "LOC_DIR"
+                        "St_PreDir",
+                        "St_Name",
+                        "St_PosTyp",
+                        "St_PosDir"
                     ],
-                    "city": "LOC_CITY",
-                    "format": "shapefile",
-                    "postcode": "LOC_ZIP"
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "postcode": "Post_Code"
                 }
             }
         ]

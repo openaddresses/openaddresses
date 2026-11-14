@@ -21,24 +21,30 @@
         "addresses": [
             {
                 "name": "city",
-                "protocol": "http",
-                "data": "https://data.kcmo.org/api/views/3639-4c86/rows.csv?accessType=DOWNLOAD",
+                "protocol": "ESRI",
+                "data": "https://maps2.kcmo.org/kcgis/rest/services/ParcelViewer/Address_Master/FeatureServer/0",
+                "website": "https://data.kcmo.org/",
+                "license": {
+                    "url": "https://data.kcmo.org/terms",
+                    "text": "This site provides applications using data that has been modified for use from its original source, www.data.kcmo.gov",
+                    "attribution": true,
+                    "attribution name": "City of Kansas City, Missouri",
+                    "remarks": "https://data.kcmo.org/terms"
+                },
                 "conform": {
-                    "format": "csv",
-                    "lat": "Latitude",
-                    "lon": "Longitude",
+                    "format": "geojson",
                     "number": [
-                        "Address Number",
-                        "Fraction"
+                        "ADDR",
+                        "FRACTION"
                     ],
                     "street": [
-                        "Prefix",
-                        "Street",
-                        "Street Type"
+                        "PREFIX",
+                        "STREET",
+                        "STREETTYPE",
+                        "POSTDIR"
                     ],
-                    "unit": "Suite",
-                    "city": "City",
-                    "region": "State"
+                    "unit": "SUITE",
+                    "postcode": "ZIP"
                 }
             }
         ]

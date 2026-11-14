@@ -16,22 +16,27 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://gis2.brentwoodtn.gov:6080/arcgis/rest/services/Datasets/Transportation/MapServer/0",
+                "data": "https://maps.brentwoodtn.gov/arcgis/rest/services/Datasets/Transportation/MapServer/0",
+                "website": "https://www.brentwoodtn.gov/Departments/Information-Technology/GIS",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "ADDRESS"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "ADDRESS"
-                    },
+                    "number": "STNUM",
+                    "street": [
+                        "PREDIR",
+                        "StreetName"
+                    ],
+                    "unit": "UNIT_NUM",
                     "city": "CITY",
                     "district": "COUNTY",
                     "region": "STATE",
                     "postcode": "ZIP"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "City of Brentwood, TN",
+                    "presumed": true,
+                    "remarks": "https://www.brentwoodtn.gov/Departments/Information-Technology/GIS"
                 }
             }
         ]

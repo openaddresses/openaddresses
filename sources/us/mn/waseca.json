@@ -14,19 +14,27 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.co.waseca.mn.us/arcgis/rest/services/CountyServices/Waseca_Internal_GIS/MapServer/2",
+                "data": "https://gis.wasecacounty.gov/arcgis/rest/services/Public/Cadastral/FeatureServer/0",
+                "website": "https://www.wasecacounty.gov/164/GIS-Information",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "ANUMBER",
-                    "street": [
-                        "ST_NAME",
-                        "ST_POS_TYP",
-                        "ST_POS_DIR"
-                    ],
-                    "unit": "ANUMBERSUF",
-                    "city": "POSTCOMM",
-                    "postcode": "ZIP"
+                    "number": {
+                        "function": "prefixed_number",
+                        "field": "PropertyAddress"
+                    },
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "PropertyAddress"
+                    },
+                    "city": "PropertyCity"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Waseca County GIS",
+                    "url": "https://www.wasecacounty.gov/164/GIS-Information",
+                    "remarks": "https://www.wasecacounty.gov/164/GIS-Information",
+                    "presumed": true
                 }
             }
         ]

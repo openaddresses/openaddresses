@@ -1,0 +1,16 @@
+{
+  "description": "a single owner of a parcel. Each entry maps one owner slot in the source (e.g. OWNER1, OWNER2) and is dropped from the output when it resolves to an empty string",
+  "type": "object",
+  "required": ["name"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "description": "name of the owner (person, company or agency) as it appears in the source",
+      "$ref": "../util/functions/standard_functions.json"
+    },
+    "address": {
+      "description": "mailing address of this owner as a single line. Pass split source columns as an ordered list (street, city, region, postcode) to merge them. Where the source has one mailing address per parcel, set it on the first owner only",
+      "$ref": "../util/functions/standard_functions.json"
+    }
+  }
+}

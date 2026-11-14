@@ -9,13 +9,20 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://maps.cobourg.ca/arcgis/rest/services/PublicBase/MapServer/1",
-                "website": "https://gis.cobourg.ca/",
+                "data": "https://services5.arcgis.com/bD7yhukP2irPxz1v/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://public-townofcobourg.hub.arcgis.com/",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": "STREET_NO",
-                    "street": "STREET_NAM",
-                    "format": "geojson"
+                    "format": "geojson",
+                    "number": "ADDNUM",
+                    "street": ["PREFIX", "STREETNAME", "STREETTYPE", "SUFFIX"],
+                    "unit": "BLDG_UNIT"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Town of Cobourg",
+                    "share-alike": true,
+                    "url": "https://public-townofcobourg.hub.arcgis.com/pages/terms-of-use"
                 }
             }
         ]

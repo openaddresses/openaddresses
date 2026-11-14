@@ -24,16 +24,26 @@
                     "format": "gdb",
                     "layer": "IRON_ADDRESSES_2025",
                     "number": {
-                        "function": "prefixed_number",
-                        "field": "ADDRESS"
+                        "function": "chain",
+                        "variable": "num_clean",
+                        "functions": [
+                            {
+                                "function": "regexp",
+                                "field": "Add_Number",
+                                "pattern": "^([0-9]+)(?:\\.0)?$",
+                                "replace": "$1"
+                            },
+                            {
+                                "function": "join",
+                                "fields": ["AddNum_Suf", "oa:num_clean"],
+                                "separator": ""
+                            }
+                        ]
                     },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "ADDRESS"
-                    },
-                    "unit": "UNIT",
-                    "city": "TOWN",
-                    "postcode": "ZIPCODE"
+                    "street": "FullStNm",
+                    "unit": "Unit",
+                    "city": "Inc_Muni",
+                    "postcode": "Post_Code"
                 }
             }
         ],
@@ -54,11 +64,17 @@
         "buildings": [
             {
                 "name": "county",
-                "data": "https://gisdata.wisc.edu/public/Iron_Buildings_2015.zip",
+                "data": "https://web.s3.wisc.edu/rml-gisdata/Iron_Buildings_2015.zip",
                 "website": "https://geodata.wisc.edu/catalog/0F1437BE-BEA1-402B-978A-CFB257468A41",
                 "protocol": "http",
                 "compression": "zip",
                 "year": "2015",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Iron County, Wisconsin",
+                    "presumed": true,
+                    "remarks": "https://geodata.wisc.edu/catalog/0F1437BE-BEA1-402B-978A-CFB257468A41"
+                },
                 "conform": {
                     "format": "shapefile"
                 }

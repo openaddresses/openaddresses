@@ -1,0 +1,50 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                12.94,
+                57.721
+            ]
+        },
+        "country": "se",
+        "city": "Borås"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "city",
+                "data": "https://kartportalen.boras.se/server/rest/services/Adresser/FeatureServer/0",
+                "website": "https://data.europa.eu/data/datasets/https-catalog-boras-se-store-1-resource-139?locale=en",
+                "license": {
+                    "text": "CC0 1.0",
+                    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                    "attribution": false,
+                    "share-alike": false
+                },
+                "attribution": "Borås Stad",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": {
+                        "function": "regexp",
+                        "field": "BELADRESS2",
+                        "pattern": "^.*\\s([\\d]+[A-Za-zÅÄÖåäö]?)(?:\\s+\\S+)?$"
+                    },
+                    "street": {
+                        "function": "regexp",
+                        "field": "BELADRESS2",
+                        "pattern": "^(.*)\\s[\\d]+[A-Za-zÅÄÖåäö]?(?:\\s+\\S+)?$"
+                    },
+                    "city": {
+                        "function": "regexp",
+                        "field": "BELADRESS2",
+                        "pattern": "^.*\\s[\\d]+[A-Za-zÅÄÖåäö]?(?:\\s+(\\S+))?$"
+                    },
+                    "id": "ADRESSPLATS_ID"
+                }
+            }
+        ]
+    }
+}

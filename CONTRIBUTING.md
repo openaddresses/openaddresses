@@ -147,6 +147,7 @@ They are called [Processing Tags](#processing-tags) and [Attribute Tags](#attrib
 `skiplines`      |     | (`'csv'` format only) May be used in conjunction with `headers` (see above).  For example, if `headers` is 1 but a second header line exists and must be skipped.
 `accuracy`       |     | The accuracy of the data source (addresses only). See table below. Should never be 0, defaults to 5. If this is not set, address duplicates of higher accuracy will replace the addresses from this source when they are conflated.
 `size`           |     | Processing resource tier, one of `standard` (default) or `large`. Only set this if the source has actually failed processing due to running out of scratch disk space - it's meant for a small number of true outliers (e.g. nationwide/statewide datasets with millions of rows), not a general "make my source faster" knob. `large` gives roughly 250GB of scratch disk instead of the default ~30GB. If `large` isn't enough, open an issue rather than guessing at a bigger value - there isn't one yet.
+`filter`    |     | SQL `where` clause for `ESRI` protocol sources, used instead of the default `1=1` (all rows). For example `"filter": "STATUS = 'ACTIVE'"`. Ignored for other protocols.
 
 ###### Accuracy (addresses only)
 
@@ -186,6 +187,7 @@ Attribute tags are functions or field names for mapping the source data into a g
  Tag | Required? | Note
 ---------- | --- | ----
 `pid`   | Yes | The unique identifier for the parcel
+`owners` |     | List of owner objects, one per owner slot in the source. Each has a required `name` (field name, list of fields to merge, or function) and an optional single-line `address` for that owner's mailing address. Slots that resolve to an empty string are dropped. Only map owner names where the source licence permits redistribution.
 
 ##### Building Attribute Tags
 

@@ -1,0 +1,36 @@
+{
+    "coverage": {
+        "ISO 3166": {
+            "alpha2": "GR",
+            "country": "Greece"
+        },
+        "country": "gr"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-09-29-jcosp/gr_countrywide_addresses.csv.zip",
+                "protocol": "http",
+                "compression": "zip",
+                "note": "Built from two upstream sources joined by scripts/gr/ in this repo: Hellenic Cadastre declared-streets points (street name + number only, no city) and the Ministry of Environment & Energy's national Kallikratis municipality boundaries, used to attach a city name via spatial join. See scripts/gr/README.md.",
+                "website": "https://data.gov.gr/dataset/16068541-970c-4d1a-8047-b95fd4d261ba",
+                "license": {
+                    "url": "https://data.gov.gr/en/pages/terms-of-use",
+                    "text": "CC BY 4.0",
+                    "attribution": true,
+                    "attribution name": "Ελληνικό Κτηματολόγιο (Hellenic Cadastre) / Υπουργείο Περιβάλλοντος και Ενέργειας (Ministry of Environment & Energy)"
+                },
+                "conform": {
+                    "format": "csv",
+                    "number": "NUMBER",
+                    "street": "STREET",
+                    "city": "CITY",
+                    "lon": "LON",
+                    "lat": "LAT"
+                }
+            }
+        ]
+    }
+}

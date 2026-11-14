@@ -1,0 +1,53 @@
+{
+    "coverage": {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -58.03,
+                -33.26
+            ]
+        },
+        "ISO 3166": {
+            "alpha2": "UY-SO",
+            "country": "Uruguay",
+            "subdivision": "Soriano"
+        },
+        "country": "uy",
+        "state": "so"
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "state",
+                "data": "https://catalogodatos.gub.uy/dataset/85ca8574-3bb3-4329-b005-aed19883e19a/resource/26820104-d0ee-4823-9b9a-ab7b441a6c94/download/soriano.csv",
+                "website": "https://catalogodatos.gub.uy/dataset/ide-direcciones-geograficas-del-uruguay",
+                "license": {
+                    "text": "Licencia de Datos Abiertos del Uruguay",
+                    "url": "https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/sites/agencia-gobierno-electronico-sociedad-informacion-conocimiento/files/documentos/publicaciones/licencia_de_datos_abiertos_0.pdf",
+                    "attribution": true,
+                    "attribution name": "Infraestructura de Datos Espaciales (IDE Uruguay), Correo Uruguayo",
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "language": "es",
+                "conform": {
+                    "format": "csv",
+                    "encoding": "cp1252",
+                    "srs": "EPSG:4326",
+                    "lat": "latitud",
+                    "lon": "longitud",
+                    "number": {
+                        "function": "regexp",
+                        "field": "num_puerta",
+                        "pattern": "^([0-9]+)$"
+                    },
+                    "street": "nombre_via",
+                    "city": "localidad",
+                    "region": "departamento",
+                    "postcode": "codigo_postal"
+                }
+            }
+        ]
+    }
+}

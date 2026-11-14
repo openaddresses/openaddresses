@@ -114,19 +114,34 @@ async function fetchFeature(host, dsid, featureId, attempt = 1) {
 
 // Feature ids are a small sequential range per county with no published
 // upper bound, so probe for it: double up from 1 until a whole window
-// comes back empty, then binary-search the boundary.
+// comes back empty, then binary-search the boundary. Windows are checked
+// with a small worker pool (not one request at a time) since a window
+// beyond the real data has to be fully exhausted before it can report "no
+// hit" - at concurrency 1 that's up to `windowSize` sequential round-trips
+// with no visible progress in between.
 async function findMaxFeatureId(host, dsid) {
   const windowSize = 200;
+  const concurrency = 10;
+
   const hasAnyHit = async (start, end) => {
-    for (let id = start; id <= end; id += 1) {
-      if (await fetchFeature(host, dsid, id)) return true;
+    let nextId = start;
+    let found = false;
+    async function worker() {
+      while (!found && nextId <= end) {
+        const id = nextId++;
+        if (await fetchFeature(host, dsid, id)) found = true;
+      }
     }
-    return false;
+    await Promise.all(Array.from({ length: concurrency }, worker));
+    return found;
   };
+
+  console.log(`probing ${host} (D=${dsid}) for its id range...`);
 
   let lo = 1;
   let hi = windowSize;
   while (await hasAnyHit(hi - windowSize + 1, hi)) {
+    console.log(`  ids exist up to at least ${hi}, checking further...`);
     lo = hi;
     hi *= 2;
   }
@@ -139,6 +154,7 @@ async function findMaxFeatureId(host, dsid) {
     } else {
       hi = mid;
     }
+    console.log(`  narrowing id range... [${lo}, ${hi}]`);
   }
   return hi;
 }

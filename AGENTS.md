@@ -36,7 +36,7 @@ A collection of ~2 800 JSON source definition files in `sources/`. Each file tel
 - `schema` must be `2`.
 - `coverage.country` is required. `state`/`province`, `county`, `city` are optional but strongly preferred.
 - `protocol` is exactly one of: `"http"`, `"ftp"`, `"ESRI"` (case-sensitive).
-- `format` in `conform` is exactly one of: `"csv"`, `"geojson"`, `"shapefile"`, `"shapefile-polygon"`, `"gdb"`, `"gpkg"`, `"xml"`.
+- `format` in `conform` is exactly one of: `"csv"`, `"geojson"`, `"shapefile"`, `"gdb"`, `"gpkg"`, `"xml"`. Note: `"shapefile-polygon"` is NOT valid — it was a format from the retired pre-`batch` engine and the current pipeline doesn't recognize it. A polygon-geometry shapefile (e.g. parcels used as an address source) still uses plain `"shapefile"`; the pipeline computes a representative point automatically.
 - **For ESRI sources, always use `"format": "geojson"`** — that is how `batch-machine` receives the dumped features.
 - `lon` and `lat` in `conform` are **only for CSV sources**. Omit them for every other format.
 - `number` and `street` are required in `addresses` conform. Everything else is optional.

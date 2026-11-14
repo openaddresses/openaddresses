@@ -1,0 +1,51 @@
+{
+    "schema": 2,
+    "coverage": {
+        "US Census": {
+            "geoid": "08023",
+            "name": "Costilla County",
+            "state": "Colorado"
+        },
+        "country": "us",
+        "state": "co",
+        "county": "Costilla"
+    },
+    "layers": {
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Costilla County",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/CostillaRds_CostillaCO/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "Hosted on the county's GIS vendor ArcGIS Online org (the same org that serves the Logan and Yuma sources)",
+                "conform": {
+                    "format": "geojson",
+                    "id": "GlobalID",
+                    "name": "COMPLETE_N",
+                    "addr_from_left": "LEFT_FROM",
+                    "addr_to_left": "LEFT_TO",
+                    "addr_from_right": "RIGHT_FROM",
+                    "addr_to_right": "RIGHT_TO"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Costilla County",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/ParcelPolygon_CostillaCO/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "Hosted on the county's GIS vendor ArcGIS Online org (the same org that serves the Logan and Yuma sources)",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "ParcelNum",
+                    "owners": [
+                        {
+                            "name": "Owner_Name"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

@@ -21,49 +21,33 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://services6.arcgis.com/VsJGTl1jmCYBc0EX/ArcGIS/rest/services/Parcels/FeatureServer/1",
+                "data": "https://services6.arcgis.com/VsJGTl1jmCYBc0EX/ArcGIS/rest/services/AddressPoints/FeatureServer/0",
+                "website": "https://www.asotincountywa.gov/",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "PA2"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "PA2",
-                        "may_contain_units": true
-                    },
-                    "unit": {
-                        "function": "postfixed_unit",
-                        "field": "PA2"
-                    },
-                    "city": {
-                        "function": "regexp",
-                        "field": "PA3",
-                        "pattern": "^(.+?)(?:\\s+(?:WA|\\d+))"
-                    },
-                    "region": {
-                        "function": "regexp",
-                        "field": "PA3",
-                        "pattern": "\\b(WA)\\b"
-                    },
-                    "postcode": {
-                        "function": "regexp",
-                        "field": "PA3",
-                        "pattern": "\\b(\\d+)$"
-                    }
+                    "number": "Add_Number",
+                    "street": ["St_PreDir", "StreetName", "St_PosTyp", "St_PosDir"],
+                    "unit": "Unit",
+                    "city": "Post_Comm",
+                    "region": "State",
+                    "postcode": "Post_Code"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Asotin County Public Works",
+                    "presumed": true
                 }
             }
         ],
         "parcels": [
             {
                 "name": "city",
-                "data": "https://services6.arcgis.com/VsJGTl1jmCYBc0EX/ArcGIS/rest/services/Parcels/FeatureServer/1",
+                "data": "https://services6.arcgis.com/VsJGTl1jmCYBc0EX/ArcGIS/rest/services/Asotin_County_Parcels/FeatureServer/1",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "PARCEL_ID"
+                    "pid": "PARCEL"
                 }
             }
         ]

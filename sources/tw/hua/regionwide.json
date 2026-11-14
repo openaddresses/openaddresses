@@ -10,32 +10,46 @@
     "layers": {
         "addresses": [
             {
-                "name": "country",
-                "data": "https://gis.hl.gov.tw/arcgis/rest/services/HLADDR/HLADDR_user/MapServer/1",
-                "protocol": "ESRI",
+                "name": "state",
+                "website": "https://data.gov.tw/dataset/175221",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-09-03-p3l6p/Hualien_2026_09.zip",
+                "license": {
+                    "text": "CC BY 4.0",
+                    "url": "https://data.gov.tw/license",
+                    "attribution": true,
+                    "attribution name": "Hualien County Government",
+                    "share-alike": false
+                },
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "csv",
+                    "srs": "EPSG:3826",
                     "number": {
                         "function": "regexp",
-                        "field": "NUMBER_",
+                        "field": "number",
                         "pattern": "^([0-9０-９]+號?)"
                     },
                     "unit": {
                         "function": "regexp",
-                        "field": "NUMBER_",
+                        "field": "number",
                         "pattern": "^(?:[0-9０-９]+號?)(.*)"
                     },
                     "street": {
                         "function": "join",
                         "fields": [
-                            "ROAD",
-                            "LANE",
-                            "ALLEY"
+                            "street",
+                            "area",
+                            "lane",
+                            "alley"
                         ],
                         "separator": ""
                     },
-                    "city": "NEW_ID",
-                    "district": "COUN_ID"
+                    "city": "village",
+                    "district": "town",
+                    "region": "county",
+                    "lat": "y_3826",
+                    "lon": "x_3826"
                 }
             }
         ]

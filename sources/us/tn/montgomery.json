@@ -14,22 +14,22 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gismapper.apsu.edu/arcgis/rest/services/Montgomery/MontgomeryViewer/MapServer/2",
+                "data": "https://apnsgis4.apsu.edu/arcgis/rest/services/CMCGIS/Address_Points/FeatureServer/0",
+                "website": "https://montgomerytn.gov/assessor/gis",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "regexp",
-                        "field": "propaddr",
-                        "pattern": "^( .* )^([0-9]+)$",
-                        "replace": "$2"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "propaddr",
-                        "pattern": "^(.*)( [0-9]+)$",
-                        "replace": "$1"
-                    }
+                    "number": "stnum",
+                    "street": ["predir", "pretype", "name", "type", "sufdir"],
+                    "unit": "unit_num",
+                    "city": "city",
+                    "postcode": "zip"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Montgomery County, TN",
+                    "presumed": true,
+                    "remarks": "https://montgomerytn.gov/assessor/gis"
                 }
             }
         ]

@@ -14,38 +14,19 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "ftp://ftp.igsb.uiowa.edu/gis_library/counties/Hamilton/Address_40.zip",
+                "data": "https://wfs.schneidercorp.com/arcgis/rest/services/HamiltonCountyIA_WFS/MapServer/1",
                 "license": {
                     "text": "Public Domain",
                     "attribution": false,
                     "share-alike": false
                 },
-                "year": "2012?",
-                "protocol": "ftp",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "number": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^([0-9]+)"
-                    },
-                    "street": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
-                    },
-                    "unit": {
-                        "function": "regexp",
-                        "field": "address",
-                        "pattern": "^.* ((Unit|Apt) [0-9A-Za-z])$",
-                        "replace": "$1"
-                    },
-                    "city": "POSTAL_COM",
-                    "district": "COUNTY",
-                    "region": "STATE",
-                    "postcode": "ZIP_CODE",
-                    "format": "shapefile"
+                    "format": "geojson",
+                    "number": "Add_Number",
+                    "street": ["StN_PreDir", "StN_PreTyp", "StreetName", "StN_PosType"],
+                    "unit": "Unit",
+                    "city": "MSAG_Comm"
                 }
             }
         ]

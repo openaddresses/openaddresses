@@ -17,25 +17,27 @@
             {
                 "name": "county",
                 "protocol": "ESRI",
-                "data": "https://maps.haldimandcounty.on.ca/arcgis/rest/services/OpenData/MapServer/0",
-                "website": "https://opendata.haldimandcounty.on.ca/datasets/civic-addresses",
+                "data": "https://gis.haldimandcounty.ca/server/rest/services/Topo/AddressPoints/FeatureServer/0",
+                "website": "https://opendata-haldimand.hub.arcgis.com/",
                 "license": {
-                    "url": "https://opendata.haldimandcounty.on.ca/",
-                    "text": "Contains information licensed under the Open Government Licence – Haldimand County",
-                    "attribution name": "Open Government Licence - Haldimand County",
+                    "url": "https://opendata-haldimand.hub.arcgis.com/pages/terms",
+                    "text": "Haldimand County's open data site sets a default license of Creative Commons Attribution-ShareAlike (CC-BY-SA)",
+                    "attribution name": "Haldimand County GIS",
                     "attribution": true,
-                    "share-alike": false
+                    "share-alike": true,
+                    "presumed": true
                 },
                 "conform": {
                     "format": "geojson",
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "StreetAddress"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "StreetAddress"
-                    }
+                    "number": "ADDR_HN",
+                    "street": [
+                        "ADDR_PD",
+                        "ADDR_SN",
+                        "ADDR_ST",
+                        "ADDR_SD"
+                    ],
+                    "unit": "ADDR_UN",
+                    "city": "ZONE_MUN"
                 }
             }
         ]

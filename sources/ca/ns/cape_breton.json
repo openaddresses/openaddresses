@@ -16,7 +16,7 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://www.thedatazone.ca/api/views/wg22-3ric/rows.csv?accessType=DOWNLOAD",
+                "data": "https://www.thedatazone.ca/api/v3/views/wg22-3ric/query.csv?query=SELECT%20%60address_num%60%2C%20%60address_direction%60%2C%20%60address_street%60%2C%20%60address_suffix%60%2C%20%60address_city%60%2C%20%60y_coord%60%2C%20%60x_coord%60",
                 "website": "https://www.thedatazone.ca/Assessment/Parcel-Land-Sizes/wg22-3ric",
                 "license": {
                     "url": "https://www.pvsc.ca/site/media/PVSC/Documents/Open%20Data%20and%20Information%20Government%20Licence%20-%20PVSC%20and%20Participating%20Municipalities.pdf",
@@ -27,15 +27,15 @@
                 "protocol": "http",
                 "conform": {
                     "format": "csv",
-                    "number": "Civic Number",
+                    "number": "address_num",
                     "street": [
-                        "Civic Street Name",
-                        "Civic Street Suffix",
-                        "Civic Direction"
+                        "address_street",
+                        "address_suffix",
+                        "address_direction"
                     ],
-                    "city": "Civic City Name",
-                    "lat": "Y Map Coordinate",
-                    "lon": "X Map Coordinate"
+                    "city": "address_city",
+                    "lat": "y_coord",
+                    "lon": "x_coord"
                 }
             }
         ]

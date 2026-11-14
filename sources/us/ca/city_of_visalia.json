@@ -51,6 +51,59 @@
                     "pid": "APN_ID"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "city",
+                "data": "https://services7.arcgis.com/q3SI94vj8qWDxwBr/ArcGIS/rest/services/Public_Road_Centerline/FeatureServer/0",
+                "website": "https://geodata.visalia.city/datasets/d8f7385bc2814ce5adad7260aab5e2ef_0/about",
+                "license": {
+                    "text": "GIS data supplied by the City of Visalia",
+                    "attribution": true,
+                    "attribution name": "City of Visalia",
+                    "remarks": "https://www.arcgis.com/home/item.html?id=d8f7385bc2814ce5adad7260aab5e2ef"
+                },
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "filter": "MUNILEFT IS NULL OR MUNILEFT <> 'Goshen'",
+                    "id": "CENTERLINEID",
+                    "name": "FULLNAME",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAYDIR",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEEDLIMIT"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADCLASS",
+                        "mapping": {
+                            "Highway": "motorway",
+                            "Ramp": "motorway_link",
+                            "Major Arterial": "primary",
+                            "Minor Arterial": "secondary",
+                            "Collector": "tertiary",
+                            "Local": "residential",
+                            "Service": "service"
+                        },
+                        "else": "unclassified"
+                    },
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT",
+                    "zip_left": "ZIPLEFT",
+                    "zip_right": "ZIPRIGHT"
+                }
+            }
         ]
     }
 }

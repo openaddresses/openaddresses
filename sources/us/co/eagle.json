@@ -39,6 +39,36 @@
                 "data": "https://map.eaglecounty.us/arcgiswa/rest/services/FlexApp/Parcel_Viewer/FeatureServer/0/",
                 "protocol": "ESRI"
             }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Eagle County",
+                "data": "https://map.eaglecounty.us/arcgiswa/rest/services/StreetCenterlines/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "FULLNAME",
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R"
+                }
+            }
+        ],
+        "buildings": [
+            {
+                "name": "county",
+                "attribution": "Eagle County",
+                "data": "https://map.eaglecounty.us/arcgiswa/rest/services/ArcGIS_Server_BuildingLocations/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "Footprint polygons last bulk-updated in 2008 according to the UPDATE_ attribute",
+                "conform": {
+                    "format": "geojson",
+                    "id": "BDG_ID"
+                }
+            }
         ]
     }
 }

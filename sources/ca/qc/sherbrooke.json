@@ -9,13 +9,24 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://cartes.ville.sherbrooke.qc.ca/arcgis/rest/services/Basemaps/BaseMap2/MapServer/4",
+                "data": "https://services3.arcgis.com/qsNXG7LzoUbR4c1C/arcgis/rest/services/Adresse/FeatureServer/0",
+                "website": "https://donneesouvertes-sherbrooke.opendata.arcgis.com/datasets/d03eeb91762a41259eb8b959635c7437_0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "CIVIQUE",
+                    "number": "NO_CIVIQUE",
                     "street": "RUE",
-                    "city": "VILLE"
+                    "city": {
+                        "function": "constant",
+                        "value": "Sherbrooke"
+                    }
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Ville de Sherbrooke",
+                    "url": "https://donneesouvertes-sherbrooke.opendata.arcgis.com/datasets/d03eeb91762a41259eb8b959635c7437_0",
+                    "text": "CC BY",
+                    "remarks": "https://www.arcgis.com/sharing/rest/content/items/d03eeb91762a41259eb8b959635c7437?f=json"
                 }
             }
         ]

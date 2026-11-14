@@ -14,22 +14,29 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://arcgis.co.adams.in.us/arcgis/rest/services/County/Parcels/MapServer/0",
+                "data": "https://adamsingis.adams.in.us/arcgis/rest/services/General/TaxParcels/MapServer/0",
+                "website": "https://www.co.adams.in.us/180/Geographical-Information-Systems-GIS",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Adams County, Indiana GIS",
+                    "presumed": true,
+                    "remarks": "https://www.co.adams.in.us/180/Geographical-Information-Systems-GIS"
+                },
                 "conform": {
                     "number": {
                         "function": "regexp",
-                        "field": "Street",
+                        "field": "StreetAddr",
                         "pattern": "^([0-9]+)"
                     },
                     "street": {
                         "function": "regexp",
-                        "field": "Street",
+                        "field": "StreetAddr",
                         "pattern": "^(?:[0-9]+ )(.*)",
                         "replace": "$1"
                     },
                     "city": "City",
-                    "region": "St",
+                    "region": "State",
                     "postcode": "Zip",
                     "format": "geojson"
                 }

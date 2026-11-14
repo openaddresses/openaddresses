@@ -14,20 +14,99 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services1.arcgis.com/zH7gQ37AKcpvTX6d/ArcGIS/rest/services/MineralParcels_04112016/FeatureServer/0",
+                "attribution": "Mineral County Assessor",
+                "website": "https://experience.arcgis.com/experience/0fd866277a8d405798c1d556a94a8b3f",
+                "data": "https://services7.arcgis.com/QRZ3Fl7A33hVHixV/arcgis/rest/services/Parcels_Mineral2/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
+                    "accuracy": 2,
+                    "id": "PIN",
                     "number": {
                         "function": "regexp",
-                        "field": "APADDR",
+                        "field": "STREETNO",
                         "pattern": "^([0-9]+)"
                     },
                     "street": {
-                        "function": "regexp",
-                        "field": "APADDR",
-                        "pattern": "^(?:[0-9]+ )(.*)",
-                        "replace": "$1"
+                        "function": "chain",
+                        "variable": "street_wip",
+                        "functions": [
+                            {
+                                "function": "regexp",
+                                "field": "SiteAddress",
+                                "pattern": "^[^,]*, ([^,]*?)\\s*,(?: ([A-Za-z]+))? .*$",
+                                "replace": "$1 $2"
+                            },
+                            {
+                                "function": "join",
+                                "fields": [
+                                    "DIRECTIONSUFFIX",
+                                    "oa:street_wip"
+                                ]
+                            }
+                        ]
+                    },
+                    "city": "LOCCITY"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Mineral County Assessor",
+                "website": "https://experience.arcgis.com/experience/0fd866277a8d405798c1d556a94a8b3f",
+                "data": "https://services7.arcgis.com/QRZ3Fl7A33hVHixV/arcgis/rest/services/Parcels_Mineral2/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "PIN",
+                    "owners": [
+                        {
+                            "name": "NAME",
+                            "address": "Address"
+                        }
+                    ]
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county-local",
+                "attribution": "Mineral County",
+                "data": "https://services7.arcgis.com/QRZ3Fl7A33hVHixV/arcgis/rest/services/Local_Road_Mineral/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "CDOT-style road inventory split across local, major and highway services",
+                "conform": {
+                    "format": "geojson",
+                    "id": "GIS_ID",
+                    "name": "ROUTENAME"
+                }
+            },
+            {
+                "name": "county-major",
+                "attribution": "Mineral County",
+                "data": "https://services7.arcgis.com/QRZ3Fl7A33hVHixV/arcgis/rest/services/Major_Road_Mineral/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "CDOT-style road inventory split across local, major and highway services",
+                "conform": {
+                    "format": "geojson",
+                    "id": "GIS_ID",
+                    "name": "ROUTENAME"
+                }
+            },
+            {
+                "name": "county-highway",
+                "attribution": "Mineral County",
+                "data": "https://services7.arcgis.com/QRZ3Fl7A33hVHixV/arcgis/rest/services/Highway_Mineral/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "CDOT-style road inventory split across local, major and highway services",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "ALIAS",
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEEDLIM"
                     }
                 }
             }

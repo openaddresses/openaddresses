@@ -92,10 +92,13 @@ def main(address_csv, output_csv, code_table_csv, reproject, source_crs="EPSG:38
     alias_map = {
         "TWD97橫坐標": "橫座標",
         "TWD97縱坐標": "縱座標",
+        "橫坐標": "橫座標",
+        "縱坐標": "縱座標",
         "WGS84經度": "x_4326",
         "WGS84緯度": "y_4326",
         "街路段": "街路段",
         "街或路段": "街路段",
+        "號樓": "號",
     }
     norm_to_dest = {normalize_col(src): dest for src, dest in alias_map.items()}
     col_renames = {}

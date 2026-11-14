@@ -39,8 +39,34 @@
             "license": "https://data-garfieldcolorado.opendata.arcgis.com/datasets/garfieldcolorado::garfield-county-parcels",
             "conform": {
                 "format": "geojson",
-                "pid": "PARCELNB"
+                "pid": "PARCELNB",
+                "owners": [
+                    {
+                        "name": "OWNER",
+                        "address": "OWNERADDRESS"
+                    }
+                ]
             }
-        }]
+        }],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Garfield County",
+                "data": "https://maps.garfield-county.com/arcgis/rest/services/webmaps/roads/MapServer/0",
+                "protocol": "ESRI",
+                "note": "Road centerlines maintained by Garfield 911",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "STR_LABEL",
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R"
+                }
+            }
+        ]
     }
 }

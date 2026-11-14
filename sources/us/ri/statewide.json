@@ -12,16 +12,27 @@
         "addresses": [
             {
                 "name": "state",
-                "website": "https://www.rigis.org/datasets/e-911-sites",
-                "data": "https://services2.arcgis.com/S8zZg9pg23JUEexQ/ArcGIS/rest/services/E911_Sites/FeatureServer/0",
-                "license": "https://www.rigis.org/opendata",
+                "website": "https://www.arcgis.com/home/item.html?id=26c8df834cbb4aa49ed571ad35c5647f",
+                "data": "https://services2.arcgis.com/S8zZg9pg23JUEexQ/arcgis/rest/services/FACILITY_AddressPoints_E911domains/FeatureServer/5",
+                "license": {
+                    "url": "https://www.arcgis.com/home/item.html?id=26c8df834cbb4aa49ed571ad35c5647f",
+                    "text": "This dataset is provided 'as is.' The producer(s) of this dataset, contributors to this dataset, the Rhode Island Geographic Information System (RIGIS) consortium, the State of Rhode Island, and the University of Rhode Island do not make any warranties of any kind for this dataset, and are not liable for any loss or damage however and whenever caused by any use of this dataset. Please acknowledge both RIGIS and the primary producer(s) of this dataset in any derived products.",
+                    "attribution": true,
+                    "attribution name": "Rhode Island Geographic Information System (RIGIS) / RI E 9-1-1 and AK Associates",
+                    "remarks": "https://www.arcgis.com/home/item.html?id=26c8df834cbb4aa49ed571ad35c5647f"
+                },
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "number": "AddNumFull",
-                    "street": "St_Full",
-                    "city": "MSAGComm",
-                    "postcode": "Post_Code"
+                    "number": "addrnum",
+                    "street": "fullname",
+                    "unit": {
+                        "function": "join",
+                        "fields": ["unittype", "unitid"],
+                        "separator": " "
+                    },
+                    "city": "municipality",
+                    "postcode": "zipcode"
                 }
             }
         ]

@@ -1,0 +1,42 @@
+{
+    "schema": 2,
+    "coverage": {
+        "country": "us",
+        "state": "oh",
+        "county": "Lucas",
+        "US Census": {
+            "geoid": "39095",
+            "name": "Lucas County",
+            "state": "Ohio"
+        }
+    },
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services3.arcgis.com/T8dczfwPixv79EgZ/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://www.co.lucas.oh.us/3145/GIS-Maps-Apps-Data",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": "housenum",
+                    "street": [
+                        "st_prefix",
+                        "st_name",
+                        "st_type",
+                        "st_suffix"
+                    ],
+                    "unit": "unitnum",
+                    "city": "usps_city",
+                    "postcode": "zipcode"
+                },
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Lucas County Auditor's Office, GIS Department",
+                    "presumed": true,
+                    "remarks": "https://www.co.lucas.oh.us/3145/GIS-Maps-Apps-Data"
+                }
+            }
+        ]
+    }
+}

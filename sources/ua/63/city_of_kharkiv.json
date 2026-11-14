@@ -16,22 +16,23 @@
         "addresses": [
             {
                 "name": "city",
-                "data": "https://cdr.citynet.kharkov.ua/arcgis/rest/services/gis_ort_stat_general/MapServer/1",
+                "data": "https://smart.khmr.gov.ua/arcgis/rest/services/gis_ort_stat_general/MapServer/1",
+                "website": "https://smart.khmr.gov.ua/opendataportal",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": {
                         "function": "regexp",
-                        "field": "FULLADDRRU",
-                        "pattern": "^(?:[^,]+, )(.+)$",
+                        "field": "FULLADDRUA",
+                        "pattern": "^(?:[^,]+, )(.+?)\\s*$",
                         "replace": "$1"
                     },
                     "street": {
                         "function": "regexp",
-                        "field": "FULLADDRRU",
+                        "field": "FULLADDRUA",
                         "pattern": "^([^,]+)"
                     },
-                    "srs": "EPSG:28467"
+                    "postcode": "POST_CODE"
                 }
             }
         ]

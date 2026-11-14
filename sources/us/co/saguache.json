@@ -1,0 +1,80 @@
+{
+    "schema": 2,
+    "coverage": {
+        "US Census": {
+            "geoid": "08109",
+            "name": "Saguache County",
+            "state": "Colorado"
+        },
+        "country": "us",
+        "state": "co",
+        "county": "Saguache"
+    },
+    "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "attribution": "Saguache County",
+                "data": "https://services1.arcgis.com/zH7gQ37AKcpvTX6d/ArcGIS/rest/services/SaguAddressesOct31/FeatureServer/74",
+                "protocol": "ESRI",
+                "note": "Hosted on the San Luis Valley GIS (slvgis) ArcGIS Online org on behalf of the county",
+                "conform": {
+                    "format": "geojson",
+                    "number": "ADDRNUM",
+                    "street": {
+                        "function": "postfixed_street",
+                        "field": "LABEL"
+                    },
+                    "city": "MUNI"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "attribution": "Saguache County",
+                "data": "https://services1.arcgis.com/zH7gQ37AKcpvTX6d/ArcGIS/rest/services/SaguCenterlinesAug2024/FeatureServer/63",
+                "protocol": "ESRI",
+                "note": "Hosted on the San Luis Valley GIS (slvgis) ArcGIS Online org on behalf of the county",
+                "conform": {
+                    "format": "geojson",
+                    "id": "OBJECTID",
+                    "name": "LABEL",
+                    "classification": {
+                        "function": "map",
+                        "field": "ROADCLASS",
+                        "mapping": {
+                            "LOCAL": "residential",
+                            "PRIMARY": "primary",
+                            "SECONDARY": "secondary",
+                            "PRIVATE": "service"
+                        },
+                        "else": "unclassified"
+                    },
+                    "addr_from_left": "FROMLEFT",
+                    "addr_to_left": "TOLEFT",
+                    "addr_from_right": "FROMRIGHT",
+                    "addr_to_right": "TORIGHT"
+                }
+            }
+        ],
+        "parcels": [
+            {
+                "name": "county",
+                "attribution": "Saguache County",
+                "data": "https://services1.arcgis.com/zH7gQ37AKcpvTX6d/ArcGIS/rest/services/Saguache_County_Parcels_View/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "Hosted on the San Luis Valley GIS (slvgis) ArcGIS Online org on behalf of the county",
+                "conform": {
+                    "format": "geojson",
+                    "pid": "Parcel",
+                    "owners": [
+                        {
+                            "name": "Owner"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
