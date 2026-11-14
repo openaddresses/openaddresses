@@ -11,6 +11,53 @@
     },
     "schema": 2,
     "layers": {
+        "addresses": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/Z4Q9ZsVmYEJy5ct5/ArcGIS/rest/services/Parcels_Fayette2/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "number": ["SitusStreetNumber", "SitusStreetNumberSuffix"],
+                    "street": ["SitusStreetDirPrefix", "SitusStreetTypePrefix", "SitusStreetName", "SitusStreetTypeSuffix", "SitusStreetDirSuffix"],
+                    "unit": "SitusUnitNumber",
+                    "city": "SitusCity",
+                    "region": "SitusState",
+                    "postcode": "SitusPostalCode"
+                }
+            }
+        ],
+        "centerlines": [
+            {
+                "name": "county",
+                "data": "https://services6.arcgis.com/Z4Q9ZsVmYEJy5ct5/ArcGIS/rest/services/FayetteRoads2025/FeatureServer/0",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "name": "FullName",
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SpeedLimit"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "Rd_Type",
+                        "mapping": {
+                            "INTERSTATE": "motorway",
+                            "US HIGHWAY": "trunk",
+                            "STATE HIGHWAY": "primary",
+                            "COUNTY HIGHWAY": "secondary",
+                            "TOWNSHIP": "tertiary"
+                        },
+                        "else": "unclassified"
+                    },
+                    "addr_from_left": "LFROM",
+                    "addr_to_left": "LTO",
+                    "addr_from_right": "RFROM",
+                    "addr_to_right": "RTO"
+                }
+            }
+        ],
         "parcels": [
             {
                 "name": "county",
