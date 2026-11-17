@@ -14,20 +14,28 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-01-05-qo8uh/plumas_2025_07.geojson.zip",
+                "data": "https://data.openaddresses.io/cache/uploads/jeffdefacto/2026-11-17-fn002/plumas_2026_07.geojson.zip",
                 "website": "https://plumascounty.us/2199/Interactive-GIS-Data-to-Download-Page",
                 "protocol": "http",
                 "compression": "zip",
-                "year": "2025",
+                "year": "2026",
                 "conform": {
                     "format": "geojson",
-                    "file": "plumas_2025_07.geojson",
+                    "file": "plumas_2026_07.geojson",
                     "number": {
                         "function": "prefixed_number",
                         "field": "ADDRCOMB"
                     },
                     "street": "RDNAMECOMB",
-                    "city": "COMMUNITY"
+                    "city": "COMMUNITY",
+                    "unit": {
+                        "function": "join",
+                        "fields": [
+                            "RDUNITTYPE",
+                            "RDUNIT"
+                        ],
+                        "separator": " "
+                    }
                 }
             }
         ],
