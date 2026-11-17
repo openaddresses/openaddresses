@@ -1,0 +1,49 @@
+{
+    "coverage": {
+        "country": "mc",
+        "ISO 3166": {
+            "alpha2": "MC",
+            "country": "Monaco"
+        }
+    },
+    "schema": 2,
+    "layers": {
+        "addresses": [
+            {
+                "name": "country",
+                "data": "https://montecarto-srv.gouv.mc/arcgis/rest/services/REF/geomc_adresses/MapServer/0",
+                "website": "https://urbamonaco.gouv.mc/plan-parcellaire",
+                "protocol": "ESRI",
+                "conform": {
+                    "format": "geojson",
+                    "filter": "code_insee = '99138' AND (type IS NULL OR type <> 'Historique')",
+                    "id": "id_adr",
+                    "number": {
+                        "function": "join",
+                        "fields": [
+                            "numero",
+                            "suffixe"
+                        ],
+                        "separator": " "
+                    },
+                    "street": "nom_voie",
+                    "city": {
+                        "function": "constant",
+                        "value": "Monaco"
+                    },
+                    "postcode": {
+                        "function": "constant",
+                        "value": "98000"
+                    }
+                },
+                "license": {
+                    "url": "https://urbamonaco.gouv.mc/mentions-legales-cgu",
+                    "attribution": true,
+                    "attribution name": "Direction de la Prospective, de l'Urbanisme et de la Mobilité (DPUM), Gouvernement Princier de Monaco",
+                    "presumed": true,
+                    "remarks": "https://urbamonaco.gouv.mc/mentions-legales-cgu"
+                }
+            }
+        ]
+    }
+}
