@@ -14,57 +14,44 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://www.jcgov.us/DocumentCenter/View/1132/address-ZIP",
-                "website": "https://www.jcgov.us/479/Data-Files",
+                "data": "https://services.arcgis.com/7iO9jzKTrQqVrA3p/arcgis/rest/services/Address_-_View/FeatureServer/0",
+                "website": "https://www.arcgis.com/home/item.html?id=6af6b3148a1545c689d3129011473639",
                 "license": {
                     "attribution": true,
-                    "attribution name": "Jefferson County, ID",
-                    "presumed": true,
-                    "remarks": "https://www.jcgov.us/224/Geographic-Information-Systems-GIS-Mappi"
+                    "attribution name": "Jefferson County, Idaho",
+                    "remarks": "https://www.arcgis.com/home/item.html?id=6af6b3148a1545c689d3129011473639"
                 },
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "number": "HOUSENUM",
-                    "street": [
-                        "PRE_DIR",
-                        "STR_NAME",
-                        "STR_TYPE",
-                        "SUF_DIR"
-                    ],
+                    "street": {
+                        "function": "regexp",
+                        "field": "ADDRESS",
+                        "pattern": "^(?:[0-9]+ )(.*)",
+                        "replace": "$1"
+                    },
                     "unit": "UNIT",
                     "city": "COMMUNITY",
                     "postcode": "POSTALCODE"
-                },
-                "request": {
-                    "headers": {
-                        "User-Agent": "OpenAddresses/1.0 (https://openaddresses.io)"
-                    }
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://www.jcgov.us/DocumentCenter/View/1124/Parcels-ZIP",
+                "data": "https://services.arcgis.com/7iO9jzKTrQqVrA3p/arcgis/rest/services/Parcels/FeatureServer/0",
                 "website": "https://www.jcgov.us/479/Data-Files",
                 "license": {
                     "attribution": true,
-                    "attribution name": "Jefferson County, ID",
+                    "attribution name": "Jefferson County, Idaho",
                     "presumed": true,
                     "remarks": "https://www.jcgov.us/224/Geographic-Information-Systems-GIS-Mappi"
                 },
-                "protocol": "http",
-                "compression": "zip",
+                "protocol": "ESRI",
                 "conform": {
-                    "format": "shapefile",
+                    "format": "geojson",
                     "pid": "PIN"
-                },
-                "request": {
-                    "headers": {
-                        "User-Agent": "OpenAddresses/1.0 (https://openaddresses.io)"
-                    }
                 }
             }
         ],
