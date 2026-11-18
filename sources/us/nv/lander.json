@@ -14,17 +14,16 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/LanderNVFeatures/FeatureServer/3",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/Parcel_LanderNV/FeatureServer/0",
                 "protocol": "ESRI",
+                "license": {
+                    "attribution": true,
+                    "attribution name": "Lander County",
+                    "presumed": true
+                },
                 "conform": {
-                    "number": {
-                        "function": "prefixed_number",
-                        "field": "TSC_Site_Address"
-                    },
-                    "street": {
-                        "function": "postfixed_street",
-                        "field": "TSC_Site_Address"
-                    },
+                    "number": "str_num",
+                    "street": "str_name",
                     "format": "geojson"
                 }
             }
