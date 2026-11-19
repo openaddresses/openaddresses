@@ -14,15 +14,15 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://gis.willcountyillinois.com/hosting/rest/services/Basemap/Address_Points_V/MapServer/0",
+                "data": "https://webapp.willcountyillinois.com/WebsiteDataStore/WillCounty_Address_Points.zip",
                 "website": "https://willcounty.gov/County-Offices/Administration/GIS-Division/Data",
-                "protocol": "ESRI",
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "shapefile",
                     "number": "HOUSENUMBE",
                     "street": [
                         "PREFIXDIRE",
-                        "PREFIXTYPE",
                         "STREETNAME",
                         "SUFFIXTYPE",
                         "SUFFIXDIRE"
@@ -37,11 +37,12 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://gis.willcountyillinois.com/hosting/rest/services/Basemap/Parcels_LY_V/MapServer/0",
+                "data": "https://webapp.willcountyillinois.com/WebsiteDataStore/WillCounty_Tax_Map_Parcels_LY.zip",
                 "website": "https://willcounty.gov/County-Offices/Administration/GIS-Division/Data",
-                "protocol": "ESRI",
+                "protocol": "http",
+                "compression": "zip",
                 "conform": {
-                    "format": "geojson",
+                    "format": "shapefile",
                     "pid": "PIN"
                 }
             }
