@@ -1,6 +1,10 @@
 {
     "coverage": {
-        "US Census": {"geoid": "17039", "name": "DeWitt County", "state": "Illinois"},
+        "US Census": {
+            "geoid": "17039",
+            "name": "DeWitt County",
+            "state": "Illinois"
+        },
         "country": "us",
         "state": "il",
         "county": "DeWitt"
@@ -10,51 +14,83 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/arcgis/rest/services/DeWittILFeatures/FeatureServer/5",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/Parcel_DeWittIL/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": {
                         "function": "regexp",
-                        "field": "TSC_Site_Address",
-                        "pattern": "^(\\d+)(?:\\s.+)$",
+                        "field": "SiteAddress",
+                        "pattern": "^(\\d+)\\s.*~.*$",
                         "replace": "$1"
                     },
                     "street": {
                         "function": "regexp",
-                        "field": "TSC_Site_Address",
-                        "pattern": "^(?:\\d+\\s)(.+)(?:,.+,.+)$",
+                        "field": "SiteAddress",
+                        "pattern": "^\\d+\\s+([^~]+)~.*$",
                         "replace": "$1"
                     },
                     "city": {
                         "function": "regexp",
-                        "field": "TSC_Site_Address",
-                        "pattern": "^(?:\\d+\\s.+)?(?:,\\s)(.+)(?:\\sIL)(?:,.+)$",
+                        "field": "SiteAddress",
+                        "pattern": "^[^~]*~(.+?)(?:\\s+IL)?,\\s*IL\\b.*$",
                         "replace": "$1"
                     },
                     "region": {
                         "function": "regexp",
-                        "field": "TSC_Site_Address",
-                        "pattern": "^(?:\\d+\\s.+)?(?:,.+,\\s)(.+)(?:\\s.+)$",
+                        "field": "SiteAddress",
+                        "pattern": "^[^~]*~.*,\\s*(IL)\\b.*$",
                         "replace": "$1"
                     },
                     "postcode": {
                         "function": "regexp",
-                        "field": "TSC_Site_Address",
-                        "pattern": "^(?:.+\\s)(\\d{5})$",
+                        "field": "SiteAddress",
+                        "pattern": "^.*\\s(\\d{5})\\s*$",
                         "replace": "$1"
                     }
+                },
+                "test": {
+                    "enabled": true,
+                    "description": "DeWitt County SiteAddress is STREET~CITY, IL ZIP",
+                    "acceptance-tests": [
+                        {
+                            "description": "normal",
+                            "inputs": {
+                                "SiteAddress": "4253 BRUSH COLLEGE ROAD~CLINTON, IL 61727    "
+                            },
+                            "expected": {
+                                "number": "4253",
+                                "street": "BRUSH COLLEGE ROAD",
+                                "city": "CLINTON",
+                                "region": "IL",
+                                "postcode": "61727"
+                            }
+                        },
+                        {
+                            "description": "city with stray IL",
+                            "inputs": {
+                                "SiteAddress": "1712 E WASHINGTON~CLINTON IL, IL 61727    "
+                            },
+                            "expected": {
+                                "number": "1712",
+                                "street": "E WASHINGTON",
+                                "city": "CLINTON",
+                                "region": "IL",
+                                "postcode": "61727"
+                            }
+                        }
+                    ]
                 }
             }
         ],
         "parcels": [
             {
                 "name": "county",
-                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/arcgis/rest/services/DeWittILFeatures/FeatureServer/5",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/Parcel_DeWittIL/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "TSC_Parcel_Number"
+                    "pid": "ParcelNumber"
                 }
             }
         ]
