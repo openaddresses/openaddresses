@@ -31,10 +31,26 @@
                             "address_number",
                             "address_number_suffix"
                         ],
-                    "street": [
-                        "street_name",
-                        "street_type"
-                    ],
+                    "street": {
+                        "function": "chain",
+                        "variable": "street_wip",
+                        "functions": [
+                            {
+                                "function": "join",
+                                "fields": [
+                                    "street_name",
+                                    "street_type"
+                                ],
+                                "separator": " "
+                            },
+                            {
+                                "function": "regexp",
+                                "field": "oa:street_wip",
+                                "pattern": "(?i)\\b0+([1-9][0-9]*(?:ST|ND|RD|TH))\\b|^",
+                                "replace": "$1"
+                            }
+                        ]
+                    },
                     "unit": "unit_number",
                     "postcode": "zip_code",
                     "city": {
@@ -48,6 +64,63 @@
                     "id": "eas_fullid",
                     "lon": "Longitude",
                     "lat": "Latitude"
+                },
+                "test": {
+                    "enabled": true,
+                    "description": "single-digit ordinal street names are zero-padded in the source (05TH); the padding is dropped so they match the road network",
+                    "acceptance-tests": [
+                        {
+                            "description": "a zero-padded ordinal loses its padding",
+                            "inputs": {
+                                "eas_fullid": "1",
+                                "address_number": "1450",
+                                "address_number_suffix": "",
+                                "street_name": "05TH",
+                                "street_type": "ST",
+                                "unit_number": "",
+                                "zip_code": "94103",
+                                "Longitude": "-122.4",
+                                "Latitude": "37.78"
+                            },
+                            "expected": {
+                                "street": "5TH ST"
+                            }
+                        },
+                        {
+                            "description": "multi-digit ordinals are unchanged",
+                            "inputs": {
+                                "eas_fullid": "2",
+                                "address_number": "100",
+                                "address_number_suffix": "",
+                                "street_name": "10TH",
+                                "street_type": "AVE",
+                                "unit_number": "",
+                                "zip_code": "94118",
+                                "Longitude": "-122.4",
+                                "Latitude": "37.78"
+                            },
+                            "expected": {
+                                "street": "10TH AVE"
+                            }
+                        },
+                        {
+                            "description": "named streets are unchanged",
+                            "inputs": {
+                                "eas_fullid": "3",
+                                "address_number": "1670",
+                                "address_number_suffix": "",
+                                "street_name": "MARKET",
+                                "street_type": "ST",
+                                "unit_number": "",
+                                "zip_code": "94102",
+                                "Longitude": "-122.4",
+                                "Latitude": "37.78"
+                            },
+                            "expected": {
+                                "street": "MARKET ST"
+                            }
+                        }
+                    ]
                 }
             }
         ],
