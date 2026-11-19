@@ -8,14 +8,26 @@
     "layers": {
         "addresses": [
             {
-                "name": "county",
-                "data": "https://maps.northumberlandcounty.ca/arcgis/rest/services/Internal_Parcel_Update_July2017/MapServer/0",
-                "website": "https://northumberlandcounty.ca/en/location_maps/",
+                "name": "cobourg",
+                "data": "https://services5.arcgis.com/bD7yhukP2irPxz1v/arcgis/rest/services/Address_Points/FeatureServer/0",
+                "website": "https://public-townofcobourg.hub.arcgis.com/",
                 "protocol": "ESRI",
                 "conform": {
-                    "number": "StreetNum",
-                    "street": "StreetName",
-                    "format": "geojson"
+                    "format": "geojson",
+                    "number": "ADDNUM",
+                    "street": ["STREETNAME", "STREETTYPE", "SUFFIX"],
+                    "unit": "BLDG_UNIT",
+                    "city": {
+                        "function": "constant",
+                        "value": "Cobourg"
+                    }
+                },
+                "license": {
+                    "url": "https://public-townofcobourg.hub.arcgis.com/pages/terms-of-use",
+                    "text": "Town of Cobourg Open Data Terms of Use (revised Nov 1, 2021): non-exclusive, non-transferable license to copy and use unmodified Open Datasets for any lawful purpose; redistribution is permitted provided the Town's copyright notice is retained and recipients are bound by these same Terms of Use.",
+                    "attribution": true,
+                    "attribution name": "Town of Cobourg",
+                    "share-alike": true
                 }
             }
         ]
