@@ -14,31 +14,31 @@
         "addresses": [
             {
                 "name": "county",
-                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/WhiteILFeatures/FeatureServer/3",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/Parcels_WhiteIL2/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
                     "number": {
                         "function": "prefixed_number",
-                        "field": "TSC_Site_Address"
+                        "field": "site_address"
                     },
                     "street": {
                         "function": "postfixed_street",
-                        "field": "TSC_Site_Address"
+                        "field": "site_address"
                     },
                     "city": {
                         "function": "regexp",
-                        "field": "TSC_Site_CityStateZip",
+                        "field": "Site_City_State_Zip",
                         "pattern": "^(.+?)\\s+IL"
                     },
                     "region": {
                         "function": "regexp",
-                        "field": "TSC_Site_CityStateZip",
+                        "field": "Site_City_State_Zip",
                         "pattern": "\\b(IL)\\b"
                     },
                     "postcode": {
                         "function": "regexp",
-                        "field": "TSC_Site_CityStateZip",
+                        "field": "Site_City_State_Zip",
                         "pattern": "(\\d+)$"
                     }
                 },
@@ -49,8 +49,8 @@
                         {
                             "description": "has city/state/zip",
                             "inputs": {
-                                "TSC_Site_Address": "216 E COMMERCE ST",
-                                "TSC_Site_CityStateZip": "GRAYVILLE IL 62844"
+                                "site_address": "216 E COMMERCE ST",
+                                "Site_City_State_Zip": "GRAYVILLE IL 62844"
                             },
                             "expected": {
                                 "number": "216",
@@ -63,8 +63,8 @@
                         {
                             "description": "has city/state, no zip",
                             "inputs": {
-                                "TSC_Site_Address": "220 E COMMERCE ST",
-                                "TSC_Site_CityStateZip": "GRAYVILLE IL"
+                                "site_address": "220 E COMMERCE ST",
+                                "Site_City_State_Zip": "GRAYVILLE IL"
                             },
                             "expected": {
                                 "number": "220",
@@ -81,11 +81,11 @@
         "parcels": [
             {
                 "name": "county",
-                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/WhiteILFeatures/FeatureServer/3",
+                "data": "https://services.arcgis.com/4YineAQdtmx0tv46/ArcGIS/rest/services/Parcels_WhiteIL2/FeatureServer/0",
                 "protocol": "ESRI",
                 "conform": {
                     "format": "geojson",
-                    "pid": "GIS_Parcel_Number"
+                    "pid": "PIN"
                 }
             }
         ]
