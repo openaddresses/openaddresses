@@ -31,6 +31,55 @@
                     "region": "State"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "state",
+                "website": "https://gishubdata-ndgov.hub.arcgis.com/",
+                "data": "https://services1.arcgis.com/GOcSXpzwBHyk2nog/arcgis/rest/services/NDGISHUBRoadsNG911/FeatureServer/0",
+                "protocol": "ESRI",
+                "note": "NG9-1-1 road centerlines in the NENA NG9-1-1 GIS Data Model schema, compiled by the GIS Hub from local addressing authorities.",
+                "conform": {
+                    "format": "geojson",
+                    "id": "RCL_NGUID",
+                    "name": "FULL_NAME",
+                    "addr_from_left": "FromAddr_L",
+                    "addr_to_left": "ToAddr_L",
+                    "addr_from_right": "FromAddr_R",
+                    "addr_to_right": "ToAddr_R",
+                    "zip_left": "PostCode_L",
+                    "zip_right": "PostCode_R",
+                    "oneway": {
+                        "function": "map",
+                        "field": "OneWay",
+                        "mapping": {
+                            "FT": "yes",
+                            "TF": "reverse",
+                            "B": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SpeedLimit"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "RoadClass",
+                        "else": "unclassified",
+                        "mapping": {
+                            "Primary": "motorway",
+                            "Ramp": "motorway_link",
+                            "Secondary": "primary",
+                            "Local": "residential",
+                            "Service Drive": "service",
+                            "Alley": "service",
+                            "Private": "service",
+                            "Parking Lot": "service"
+                        }
+                    }
+                }
+            }
         ]
     }
 }
