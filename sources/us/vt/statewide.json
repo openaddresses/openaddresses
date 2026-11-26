@@ -69,6 +69,99 @@
                     "format": "geojson"
                 }
             }
+        ],
+        "centerlines": [
+            {
+                "name": "state",
+                "website": "https://geodata.vermont.gov/datasets/VCGI::vt-data-e911-road-centerlines",
+                "data": "https://services1.arcgis.com/BkFxaEFNwHqX3tAw/arcgis/rest/services/FS_VCGI_OPENDATA_Emergency_RDS_line_SP_v1/FeatureServer/0",
+                "license": "https://vcgi.vermont.gov/sites/vcgi/files/warehouse/VCGI_Warranty_Copyright_Notice_2013.pdf",
+                "attribution": "VT Enhanced 911 Board, VCGI",
+                "protocol": "ESRI",
+                "note": "E911 Board road centerlines. Ferries (AOTCLASS 65), proposed roads (80-89), discontinued roads (96) and features that are not roads (98) are filtered out.",
+                "conform": {
+                    "format": "geojson",
+                    "filter": "AOTCLASS NOT IN (65, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 96, 98)",
+                    "id": "SEGMENTID",
+                    "name": [
+                        "PD",
+                        "PT",
+                        "SN",
+                        "ST",
+                        "SD"
+                    ],
+                    "addr_from_left": "LLO_A",
+                    "addr_to_left": "LHI_A",
+                    "addr_from_right": "RLO_A",
+                    "addr_to_right": "RHI_A",
+                    "zip_left": "LZIP",
+                    "zip_right": "RZIP",
+                    "oneway": {
+                        "function": "map",
+                        "field": "ONEWAY",
+                        "mapping": {
+                            "Y": "yes",
+                            "X": "reverse",
+                            "N": "no"
+                        },
+                        "else": "no"
+                    },
+                    "speed": {
+                        "function": "mph_to_kph",
+                        "field": "SPEEDLIMIT"
+                    },
+                    "classification": {
+                        "function": "map",
+                        "field": "AOTCLASS",
+                        "else": "unclassified",
+                        "mapping": {
+                            "1": "secondary",
+                            "2": "tertiary",
+                            "3": "residential",
+                            "8": "service",
+                            "9": "service",
+                            "10": "service",
+                            "11": "secondary",
+                            "12": "secondary",
+                            "13": "secondary",
+                            "14": "secondary",
+                            "15": "secondary",
+                            "16": "secondary",
+                            "20": "tertiary",
+                            "21": "tertiary",
+                            "22": "tertiary",
+                            "23": "tertiary",
+                            "24": "tertiary",
+                            "25": "tertiary",
+                            "30": "primary",
+                            "31": "primary",
+                            "32": "primary",
+                            "33": "primary",
+                            "34": "primary",
+                            "35": "primary",
+                            "40": "trunk",
+                            "41": "trunk",
+                            "42": "trunk",
+                            "43": "trunk",
+                            "44": "trunk",
+                            "45": "trunk",
+                            "46": "trunk",
+                            "47": "service",
+                            "50": "motorway",
+                            "51": "motorway",
+                            "52": "motorway",
+                            "53": "motorway",
+                            "54": "motorway",
+                            "55": "motorway_link",
+                            "56": "motorway",
+                            "57": "service",
+                            "59": "motorway",
+                            "92": "service",
+                            "97": "service"
+                        }
+                    }
+                }
+            }
         ]
     }
 }
